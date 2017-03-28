@@ -49,12 +49,12 @@ $ npm run package
 
 MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
 
-[npm-image]: https://img.shields.io/npm/v/kintone-plugin-packer.svg
-[npm-url]: https://npmjs.org/package/kintone-plugin-packer
-[npm-downloads-image]: https://img.shields.io/npm/dm/kintone-plugin-packer.svg
+[npm-image]: https://img.shields.io/npm/v/@teppeis/kintone-plugin-packer.svg
+[npm-url]: https://npmjs.org/package/@teppeis/kintone-plugin-packer
+[npm-downloads-image]: https://img.shields.io/npm/dm/@teppeis/kintone-plugin-packer.svg
 [travis-image]: https://img.shields.io/travis/teppeis/kintone-plugin-packer/master.svg
 [travis-url]: https://travis-ci.org/teppeis/kintone-plugin-packer
-[circleci-image]: https://circleci.com/gh/teppeis/kintone-plugin-packer.svg?style=svg&circle-token=08a5fd6a348cc436e985fd9ee3e3629a9fc4a5fd
+[circleci-image]: https://circleci.com/gh/teppeis/kintone-plugin-packer.svg?style=svg
 [circleci-url]: https://circleci.com/gh/teppeis/kintone-plugin-packer
 [appveyor-image]: https://ci.appveyor.com/api/projects/status/5fv4fdrnt4wj7evy?svg=true
 [appveyor-url]: https://ci.appveyor.com/project/teppeis/kintone-plugin-packer/branch/master
@@ -63,4 +63,4 @@ MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
 [node-version]: https://img.shields.io/badge/Node.js%20support-v4,v6,v7-brightgreen.svg
 [coverage-image]: https://img.shields.io/coveralls/teppeis/kintone-plugin-packer/master.svg
 [coverage-url]: https://coveralls.io/github/teppeis/kintone-plugin-packer?branch=master
-[license]: https://img.shields.io/npm/l/kintone-plugin-packer.svg
+[license]: https://img.shields.io/npm/l/@teppeis/kintone-plugin-packer.svg
