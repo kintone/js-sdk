@@ -15,6 +15,12 @@ It's written in pure JavaScript:
 - Works with Node.js in Mac/Linux/Windows
 - Works in browsers
 
+# How to install
+
+```console
+$ npm install @teppeis/kintone-plugin-packer
+```
+
 # Usage
 
 ```console
