@@ -56,7 +56,7 @@ MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
 [travis-url]: https://travis-ci.org/teppeis/kintone-plugin-packer
 [circleci-image]: https://circleci.com/gh/teppeis/kintone-plugin-packer.svg?style=svg&circle-token=08a5fd6a348cc436e985fd9ee3e3629a9fc4a5fd
 [circleci-url]: https://circleci.com/gh/teppeis/kintone-plugin-packer
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/<TOKEN>/branch/master?svg=true
+[appveyor-image]: https://ci.appveyor.com/api/projects/status/5fv4fdrnt4wj7evy?svg=true
 [appveyor-url]: https://ci.appveyor.com/project/teppeis/kintone-plugin-packer/branch/master
 [deps-image]: https://img.shields.io/david/teppeis/kintone-plugin-packer.svg
 [deps-url]: https://david-dm.org/teppeis/kintone-plugin-packer
