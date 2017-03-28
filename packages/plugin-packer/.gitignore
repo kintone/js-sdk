@@ -1,3 +1,4 @@
+yarn.lock
 .vault
 test/fixtures/sample-plugin/plugin.zip
 test/fixtures/sample-plugin/*.ppk
