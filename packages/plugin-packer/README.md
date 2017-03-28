@@ -1,7 +1,7 @@
 kintone-plugin-packer
 ====
 
-[kintone plugin package.sh](https://github.com/kintone/plugin-sdk) for JavaScript
+[kintone plugin package.sh](https://github.com/kintone/plugin-sdk) in JavaScript
 
 [![npm version][npm-image]][npm-url]
 ![Node.js Version Support][node-version]
