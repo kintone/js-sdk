@@ -1,0 +1,8 @@
+{
+  "extends": "teppeis/node-v4",
+  "rules": {
+    "no-magic-numbers": 0,
+    "no-sync": 0,
+    "max-len": 0
+  }
+}

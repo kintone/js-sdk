@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:4
+    environment:
+      TEST_REPORTS: /tmp/test-reports
+    working_directory: ~/wd
+    steps:
+      - run:
+          name: Versions
+          command: |
+            yarn versions
+            echo "npm: $(npm --version)"
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-yarn-{{ .Branch }}
+            - v1-yarn-master
+      - run:
+          name: Install dependencies
+          command: yarn install --no-lockfile
+      - run:
+          name: Test
+          command: |
+            mkdir -p $TEST_REPORTS
+            # https://github.com/yarnpkg/yarn/pull/2843
+            # yarn run circleci
+            npm run circleci
+      - save_cache:
+          key: v1-yarn-{{ .Branch }}-#{{ .BuildNum }}
+          paths:
+            - ~/.cache/yarn
+      - store_test_results:
+          path: /tmp/test-reports
