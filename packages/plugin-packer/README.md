@@ -4,7 +4,6 @@ kintone-plugin-packer
 [kintone plugin package.sh](https://github.com/kintone/plugin-sdk) for JavaScript
 
 [![npm version][npm-image]][npm-url]
-[![npm downloads][npm-downloads-image]][npm-url]
 ![Node.js Version Support][node-version]
 [![build status][circleci-image]][circleci-url]
 [![windows build status][appveyor-image]][appveyor-url]
