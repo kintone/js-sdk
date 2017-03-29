@@ -18,7 +18,7 @@ It's written in pure JavaScript:
 # How to install
 
 ```console
-$ npm install @teppeis/kintone-plugin-packer
+$ npm install -g @teppeis/kintone-plugin-packer
 ```
 
 # Usage
