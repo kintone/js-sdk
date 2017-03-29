@@ -3,31 +3,41 @@
 const assert = require('assert');
 const crypto = require('crypto');
 const path = require('path');
+const fs = require('fs');
 const AdmZip = require('adm-zip');
-const denodeify = require('denodeify');
-const rimraf = denodeify(require('rimraf'));
 const RSA = require('node-rsa');
 
 const packer = require('../src/');
-const pluginDir = path.join(__dirname, 'fixtures/sample-plugin/plugin-dir');
+const privateKeyPath = path.join(__dirname, 'fixtures', 'private.ppk');
+const contentsZipPath = path.join(__dirname, 'fixtures', 'contents.zip');
 
 describe('packer', () => {
   it('is a function', () => {
     assert(typeof packer === 'function');
   });
 
-  context('generates `plugin.zip` without ppk', () => {
-    let zip;
-    beforeEach(() =>
-      rimraf(`${path.dirname(pluginDir)}/*.*(ppk|zip)`)
-      .then(() => packer(pluginDir))
-      .then(pluginFile => {
-        assert(path.basename(pluginFile) === 'plugin.zip');
-        zip = new AdmZip(pluginFile);
-      })
-    );
+  context('without privateKey', () => {
+    let output;
+    beforeEach(() => {
+      const contentsZip = fs.readFileSync(contentsZipPath);
+      return packer(contentsZip)
+        .then(o => {
+          output = o;
+        });
+    });
+
+    it('the id is generated', () => {
+      assert(typeof output.id === 'string');
+      assert(output.id.length === 32);
+    });
+
+    it('the privateKey is generated', () => {
+      assert(typeof output.privateKey === 'string');
+      assert(/^-----BEGIN RSA PRIVATE KEY-----/.test(output.privateKey));
+    });
 
     it('the zip contains 3 files', () => {
+      const zip = new AdmZip(output.plugin);
       const fileNames = zip.getEntries().map(entry => entry.entryName).sort();
       assert.deepEqual(fileNames, [
         'contents.zip',
@@ -37,14 +47,44 @@ describe('packer', () => {
     });
 
     it('the zip passes signature verification', () => {
-      const verifier = crypto.createVerify('RSA-SHA1');
-      verifier.update(zip.readFile(zip.getEntry('contents.zip')));
-      const publicKey = zip.readFile(zip.getEntry('PUBKEY'));
-      const signature = zip.readFile(zip.getEntry('SIGNATURE'));
-      assert(verifier.verify(derToPem(publicKey), signature));
+      verifyPlugin(output.plugin);
+    });
+  });
+
+  context('with privateKey', () => {
+    let privateKey;
+    let output;
+    beforeEach(() => {
+      const contentsZip = fs.readFileSync(contentsZipPath);
+      privateKey = fs.readFileSync(privateKeyPath, 'utf8');
+      return packer(contentsZip, privateKey)
+        .then(o => {
+          output = o;
+        });
+    });
+
+    it('the id is expected', () => {
+      assert(output.id === 'ldmhlgpmfpfhpgimbjlblmfkmcnbjnnj');
+    });
+
+    it('the privateKey is same', () => {
+      assert(output.privateKey === privateKey);
+    });
+
+    it('the zip passes signature verification', () => {
+      verifyPlugin(output.plugin);
     });
   });
 });
+
+function verifyPlugin(plugin) {
+  const zip = new AdmZip(plugin);
+  const verifier = crypto.createVerify('RSA-SHA1');
+  verifier.update(zip.readFile(zip.getEntry('contents.zip')));
+  const publicKey = zip.readFile(zip.getEntry('PUBKEY'));
+  const signature = zip.readFile(zip.getEntry('SIGNATURE'));
+  assert(verifier.verify(derToPem(publicKey), signature));
+}
 
 function derToPem(der) {
   const key = new RSA(der, 'pkcs8-public-der');

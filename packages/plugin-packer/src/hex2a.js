@@ -1,6 +1,5 @@
 'use strict';
 
-const assert = require('assert');
 const N_TO_A = 'a'.charCodeAt(0) - '0'.charCodeAt(0);
 const A_TO_K = 'k'.charCodeAt(0) - 'a'.charCodeAt(0);
 
@@ -11,8 +10,6 @@ const A_TO_K = 'k'.charCodeAt(0) - 'a'.charCodeAt(0);
  * @return {string}
  */
 function hex2a(hex) {
-  assert.equal(typeof hex, 'string');
-
   return Array.from(hex).map(s => {
     if ('0' <= s && s <= '9') {
       return String.fromCharCode(s.charCodeAt(0) + N_TO_A);
