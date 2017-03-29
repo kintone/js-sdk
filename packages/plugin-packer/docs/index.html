@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Package your kintone plugin!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css" integrity="sha256-VbcxqgMGQYm3q8qZMd63uETHXXZkqs7ME1bEvAY1xK8=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.js?features=setImmediate" defer></script>
+  <script src="./dist/bundle.js" defer></script>
+</head>
+<body>
+  <h1>Package your kintone plugin!</h1>
+  <div id=input>
+    <p>プラグインディレクトリをzipで固めて添付してください。<br>
+    秘密鍵と署名済みのプラグインファイルを生成します。<br>
+    2回目以降の場合は、秘密鍵も添付してください。</p>
+    <ul>
+      <li>Zipファイル: <input type=file class=contents accept=".zip"></li>
+      <li>秘密鍵（オプション）: <input type=file class=ppk></li>
+    </ul>
+  </div>
+
+  <div id=output class="hide">
+    <h2>パッケージが完成しました</h2>
+    <ul>
+      <li>ID: <span class=id></span></li>
+      <li><a class=plugin download=plugin.zip>plugin.zip</a></li>
+      <li><a class=ppk download=private.ppk>private.ppk</a></li>
+    </ul>
+  </div>
+</body>
+</html>

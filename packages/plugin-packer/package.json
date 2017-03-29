@@ -15,13 +15,15 @@
     "src"
   ],
   "scripts": {
+    "site": "browserify site/index.js --ignore graceful-fs -o docs/dist/bundle.js",
     "circleci": "npm run test",
-    "eslint": "eslint bin src test",
+    "eslint": "eslint bin src site test",
     "mocha": "mocha --require intelli-espower-loader",
     "test": "npm run eslint && npm run mocha"
   },
   "dependencies": {
     "archiver": "^1.3.0",
+    "browserify": "^14.1.0",
     "debug": "^2.6.3",
     "denodeify": "^1.2.1",
     "meow": "^3.7.0",
