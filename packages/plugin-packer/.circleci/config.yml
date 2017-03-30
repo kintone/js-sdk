@@ -39,7 +39,7 @@ jobs:
             - v1-yarn-master-{{ .Environment.CIRCLE_JOB }}
       - run:
           name: Install dependencies
-          command: yarn install --no-lockfile
+          command: yarn install
       - run:
           name: Test
           command: |
