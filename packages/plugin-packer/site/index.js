@@ -1,5 +1,6 @@
 'use strict';
 
+require('setimmediate'); // polyfill
 const Buffer = require('buffer').Buffer;
 const packer = require('../src/');
 
