@@ -465,6 +465,12 @@ clone@^1.0.0, clone@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.2.tgz#260b7a99ebb1edfe247538175f783243cb19d149"
 
+closure-compiler-cli@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/closure-compiler-cli/-/closure-compiler-cli-1.0.1.tgz#9c8c7c07df7404e07c974b429c31065b967fa5fb"
+  dependencies:
+    google-closure-compiler ">=20170218.0.0"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -1285,7 +1291,7 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-google-closure-compiler@^20170218.0.0:
+google-closure-compiler@>=20170218.0.0:
   version "20170218.0.0"
   resolved "https://registry.yarnpkg.com/google-closure-compiler/-/google-closure-compiler-20170218.0.0.tgz#059c7f91cf1cb2c1a66b4c95f745f5efd0fb4ba4"
   dependencies:
