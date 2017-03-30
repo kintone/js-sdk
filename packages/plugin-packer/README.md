@@ -10,10 +10,10 @@ kintone-plugin-packer
 [![dependency status][deps-image]][deps-url]
 ![License][license]
 
-It's written in pure JavaScript:
+It's written in pure JavaScript, so
 
-- Works with Node.js in Mac/Linux/Windows
-- Works in browsers
+- The CLI works with Node.js in Mac/Linux/Windows
+- [The Web page](https://teppeis.github.io/kintone-plugin-packer/) works in browsers
 
 # How to install
 
@@ -30,7 +30,7 @@ $ kintone-plugin-packer [OPTIONS] PLUGIN_DIR
 ## Options
 
 - `--ppk PPK_FILE`: The path of input private key file. If omitted, it is generated automatically into `<Plugin ID>.ppk` in the same directory of `PLUGIN_DIR`.
-- <del>`--out PLUGIN_FILE`: The path of generated plugin file. The default is `plugin.zip` in the same directory of `PLUGIN_DIR`.</del> Not implemented yet.
+- <del>`--out PLUGIN_FILE`: The path of generated plugin file. The default is `plugin.zip` in the same directory of `PLUGIN_DIR`.</del> Not implemented yet. Current behavior is default only.
 
 
 ## How to use with `npm run`
