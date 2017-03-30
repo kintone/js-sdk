@@ -205,7 +205,7 @@ file.normalizeFilesArray = function(data) {
 
   return files;
 };
-},{"glob":139,"graceful-fs":64,"lodash":155,"path":195}],2:[function(require,module,exports){
+},{"glob":61,"graceful-fs":61,"lodash":144,"path":182}],2:[function(require,module,exports){
 (function (Buffer){
 /**
  * archiver-utils
@@ -365,7 +365,7 @@ utils.walkdir = function(dirpath, base, callback) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./file.js":1,"buffer":68,"graceful-fs":64,"lazystream":154,"lodash":155,"normalize-path":177,"path":195,"readable-stream":216,"stream":230,"util":243}],3:[function(require,module,exports){
+},{"./file.js":1,"buffer":65,"graceful-fs":61,"lazystream":143,"lodash":144,"normalize-path":165,"path":182,"readable-stream":202,"stream":216,"util":225}],3:[function(require,module,exports){
 /**
  * Archiver Vending
  *
@@ -1346,7 +1346,7 @@ module.exports = Archiver;
  */
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"_process":200,"archiver-utils":2,"async":29,"buffer":68,"fs":64,"glob":139,"lodash":155,"path":195,"readable-stream":216,"util":243,"walkdir":245}],5:[function(require,module,exports){
+},{"_process":186,"archiver-utils":2,"async":29,"buffer":65,"fs":61,"glob":61,"lodash":144,"path":182,"readable-stream":202,"util":225,"walkdir":61}],5:[function(require,module,exports){
 /**
  * JSON Format Plugin
  *
@@ -1456,7 +1456,7 @@ module.exports = Json;
  * @typedef {Object} JsonOptions
  * @global
  */
-},{"archiver-utils":2,"buffer-crc32":65,"readable-stream":216,"util":243}],6:[function(require,module,exports){
+},{"archiver-utils":2,"buffer-crc32":62,"readable-stream":202,"util":225}],6:[function(require,module,exports){
 /**
  * TAR Format Plugin
  *
@@ -1623,7 +1623,7 @@ module.exports = Tar;
  * @external TarStream
  * @see {@link https://github.com/mafintosh/tar-stream}
  */
-},{"archiver-utils":2,"tar-stream":238,"zlib":63}],7:[function(require,module,exports){
+},{"archiver-utils":2,"tar-stream":61,"zlib":60}],7:[function(require,module,exports){
 /**
  * ZIP Format Plugin
  *
@@ -1739,7 +1739,7 @@ module.exports = Zip;
  * @external ZipStream
  * @see {@link https://archiverjs.com/zip-stream/ZipStream.html}
  */
-},{"archiver-utils":2,"zip-stream":248}],8:[function(require,module,exports){
+},{"archiver-utils":2,"zip-stream":227}],8:[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -1750,7 +1750,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":9,"./asn1/base":11,"./asn1/constants":15,"./asn1/decoders":17,"./asn1/encoders":20,"bn.js":33}],9:[function(require,module,exports){
+},{"./asn1/api":9,"./asn1/base":11,"./asn1/constants":15,"./asn1/decoders":17,"./asn1/encoders":20,"bn.js":31}],9:[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -1813,7 +1813,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":8,"inherits":151,"vm":244}],10:[function(require,module,exports){
+},{"../asn1":8,"inherits":140,"vm":226}],10:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -1931,7 +1931,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":11,"buffer":68,"inherits":151}],11:[function(require,module,exports){
+},{"../base":11,"buffer":65,"inherits":140}],11:[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -2575,7 +2575,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":11,"minimalistic-assert":157}],13:[function(require,module,exports){
+},{"../base":11,"minimalistic-assert":146}],13:[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -2698,7 +2698,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":151}],14:[function(require,module,exports){
+},{"inherits":140}],14:[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -3089,7 +3089,7 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":8,"inherits":151}],17:[function(require,module,exports){
+},{"../../asn1":8,"inherits":140}],17:[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
@@ -3146,7 +3146,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":16,"buffer":68,"inherits":151}],19:[function(require,module,exports){
+},{"./der":16,"buffer":65,"inherits":140}],19:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -3443,7 +3443,7 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":8,"buffer":68,"inherits":151}],20:[function(require,module,exports){
+},{"../../asn1":8,"buffer":65,"inherits":140}],20:[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
@@ -3472,7 +3472,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":19,"inherits":151}],22:[function(require,module,exports){
+},{"./der":19,"inherits":140}],22:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -3781,7 +3781,7 @@ Reader.prototype._readTag = function(tag) {
 module.exports = Reader;
 
 }).call(this,require("buffer").Buffer)
-},{"./errors":22,"./types":25,"assert":28,"buffer":68}],25:[function(require,module,exports){
+},{"./errors":22,"./types":25,"assert":28,"buffer":65}],25:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -4139,7 +4139,7 @@ Writer.prototype._ensure = function(len) {
 module.exports = Writer;
 
 }).call(this,require("buffer").Buffer)
-},{"./errors":22,"./types":25,"assert":28,"buffer":68}],27:[function(require,module,exports){
+},{"./errors":22,"./types":25,"assert":28,"buffer":65}],27:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 // If you have no idea what ASN.1 or BER is, see this:
@@ -4655,7 +4655,7 @@ var objectKeys = Object.keys || function (obj) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":243}],29:[function(require,module,exports){
+},{"util/":225}],29:[function(require,module,exports){
 (function (process,global){
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -10061,67 +10061,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 })));
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":200}],30:[function(require,module,exports){
-module.exports = balanced;
-function balanced(a, b, str) {
-  if (a instanceof RegExp) a = maybeMatch(a, str);
-  if (b instanceof RegExp) b = maybeMatch(b, str);
-
-  var r = range(a, b, str);
-
-  return r && {
-    start: r[0],
-    end: r[1],
-    pre: str.slice(0, r[0]),
-    body: str.slice(r[0] + a.length, r[1]),
-    post: str.slice(r[1] + b.length)
-  };
-}
-
-function maybeMatch(reg, str) {
-  var m = str.match(reg);
-  return m ? m[0] : null;
-}
-
-balanced.range = range;
-function range(a, b, str) {
-  var begs, beg, left, right, result;
-  var ai = str.indexOf(a);
-  var bi = str.indexOf(b, ai + 1);
-  var i = ai;
-
-  if (ai >= 0 && bi > 0) {
-    begs = [];
-    left = str.length;
-
-    while (i >= 0 && !result) {
-      if (i == ai) {
-        begs.push(i);
-        ai = str.indexOf(a, i + 1);
-      } else if (begs.length == 1) {
-        result = [ begs.pop(), bi ];
-      } else {
-        beg = begs.pop();
-        if (beg < left) {
-          left = beg;
-          right = bi;
-        }
-
-        bi = str.indexOf(b, i + 1);
-      }
-
-      i = ai < bi && ai >= 0 ? ai : bi;
-    }
-
-    if (begs.length) {
-      result = [ left, right ];
-    }
-  }
-
-  return result;
-}
-
-},{}],31:[function(require,module,exports){
+},{"_process":186}],30:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -10237,291 +10177,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],32:[function(require,module,exports){
-(function (Buffer){
-var DuplexStream = require('readable-stream/duplex')
-  , util         = require('util')
-
-
-function BufferList (callback) {
-  if (!(this instanceof BufferList))
-    return new BufferList(callback)
-
-  this._bufs  = []
-  this.length = 0
-
-  if (typeof callback == 'function') {
-    this._callback = callback
-
-    var piper = function piper (err) {
-      if (this._callback) {
-        this._callback(err)
-        this._callback = null
-      }
-    }.bind(this)
-
-    this.on('pipe', function onPipe (src) {
-      src.on('error', piper)
-    })
-    this.on('unpipe', function onUnpipe (src) {
-      src.removeListener('error', piper)
-    })
-  } else {
-    this.append(callback)
-  }
-
-  DuplexStream.call(this)
-}
-
-
-util.inherits(BufferList, DuplexStream)
-
-
-BufferList.prototype._offset = function _offset (offset) {
-  var tot = 0, i = 0, _t
-  if (offset === 0) return [ 0, 0 ]
-  for (; i < this._bufs.length; i++) {
-    _t = tot + this._bufs[i].length
-    if (offset < _t || i == this._bufs.length - 1)
-      return [ i, offset - tot ]
-    tot = _t
-  }
-}
-
-
-BufferList.prototype.append = function append (buf) {
-  var i = 0
-
-  if (Buffer.isBuffer(buf)) {
-    this._appendBuffer(buf);
-  } else if (Array.isArray(buf)) {
-    for (; i < buf.length; i++)
-      this.append(buf[i])
-  } else if (buf instanceof BufferList) {
-    // unwrap argument into individual BufferLists
-    for (; i < buf._bufs.length; i++)
-      this.append(buf._bufs[i])
-  } else if (buf != null) {
-    // coerce number arguments to strings, since Buffer(number) does
-    // uninitialized memory allocation
-    if (typeof buf == 'number')
-      buf = buf.toString()
-
-    this._appendBuffer(new Buffer(buf));
-  }
-
-  return this
-}
-
-
-BufferList.prototype._appendBuffer = function appendBuffer (buf) {
-  this._bufs.push(buf)
-  this.length += buf.length
-}
-
-
-BufferList.prototype._write = function _write (buf, encoding, callback) {
-  this._appendBuffer(buf)
-
-  if (typeof callback == 'function')
-    callback()
-}
-
-
-BufferList.prototype._read = function _read (size) {
-  if (!this.length)
-    return this.push(null)
-
-  size = Math.min(size, this.length)
-  this.push(this.slice(0, size))
-  this.consume(size)
-}
-
-
-BufferList.prototype.end = function end (chunk) {
-  DuplexStream.prototype.end.call(this, chunk)
-
-  if (this._callback) {
-    this._callback(null, this.slice())
-    this._callback = null
-  }
-}
-
-
-BufferList.prototype.get = function get (index) {
-  return this.slice(index, index + 1)[0]
-}
-
-
-BufferList.prototype.slice = function slice (start, end) {
-  if (typeof start == 'number' && start < 0)
-    start += this.length
-  if (typeof end == 'number' && end < 0)
-    end += this.length
-  return this.copy(null, 0, start, end)
-}
-
-
-BufferList.prototype.copy = function copy (dst, dstStart, srcStart, srcEnd) {
-  if (typeof srcStart != 'number' || srcStart < 0)
-    srcStart = 0
-  if (typeof srcEnd != 'number' || srcEnd > this.length)
-    srcEnd = this.length
-  if (srcStart >= this.length)
-    return dst || new Buffer(0)
-  if (srcEnd <= 0)
-    return dst || new Buffer(0)
-
-  var copy   = !!dst
-    , off    = this._offset(srcStart)
-    , len    = srcEnd - srcStart
-    , bytes  = len
-    , bufoff = (copy && dstStart) || 0
-    , start  = off[1]
-    , l
-    , i
-
-  // copy/slice everything
-  if (srcStart === 0 && srcEnd == this.length) {
-    if (!copy) { // slice, but full concat if multiple buffers
-      return this._bufs.length === 1
-        ? this._bufs[0]
-        : Buffer.concat(this._bufs, this.length)
-    }
-
-    // copy, need to copy individual buffers
-    for (i = 0; i < this._bufs.length; i++) {
-      this._bufs[i].copy(dst, bufoff)
-      bufoff += this._bufs[i].length
-    }
-
-    return dst
-  }
-
-  // easy, cheap case where it's a subset of one of the buffers
-  if (bytes <= this._bufs[off[0]].length - start) {
-    return copy
-      ? this._bufs[off[0]].copy(dst, dstStart, start, start + bytes)
-      : this._bufs[off[0]].slice(start, start + bytes)
-  }
-
-  if (!copy) // a slice, we need something to copy in to
-    dst = new Buffer(len)
-
-  for (i = off[0]; i < this._bufs.length; i++) {
-    l = this._bufs[i].length - start
-
-    if (bytes > l) {
-      this._bufs[i].copy(dst, bufoff, start)
-    } else {
-      this._bufs[i].copy(dst, bufoff, start, start + bytes)
-      break
-    }
-
-    bufoff += l
-    bytes -= l
-
-    if (start)
-      start = 0
-  }
-
-  return dst
-}
-
-BufferList.prototype.shallowSlice = function shallowSlice (start, end) {
-  start = start || 0
-  end = end || this.length
-
-  if (start < 0)
-    start += this.length
-  if (end < 0)
-    end += this.length
-
-  var startOffset = this._offset(start)
-    , endOffset = this._offset(end)
-    , buffers = this._bufs.slice(startOffset[0], endOffset[0] + 1)
-
-  if (startOffset[1] != 0)
-    buffers[0] = buffers[0].slice(startOffset[1])
-
-  if (endOffset[1] == 0)
-    buffers.pop()
-  else
-    buffers[buffers.length-1] = buffers[buffers.length-1].slice(0, endOffset[1])
-
-  return new BufferList(buffers)
-}
-
-BufferList.prototype.toString = function toString (encoding, start, end) {
-  return this.slice(start, end).toString(encoding)
-}
-
-BufferList.prototype.consume = function consume (bytes) {
-  while (this._bufs.length) {
-    if (bytes >= this._bufs[0].length) {
-      bytes -= this._bufs[0].length
-      this.length -= this._bufs[0].length
-      this._bufs.shift()
-    } else {
-      this._bufs[0] = this._bufs[0].slice(bytes)
-      this.length -= bytes
-      break
-    }
-  }
-  return this
-}
-
-
-BufferList.prototype.duplicate = function duplicate () {
-  var i = 0
-    , copy = new BufferList()
-
-  for (; i < this._bufs.length; i++)
-    copy.append(this._bufs[i])
-
-  return copy
-}
-
-
-BufferList.prototype.destroy = function destroy () {
-  this._bufs.length = 0
-  this.length = 0
-  this.push(null)
-}
-
-
-;(function () {
-  var methods = {
-      'readDoubleBE' : 8
-    , 'readDoubleLE' : 8
-    , 'readFloatBE'  : 4
-    , 'readFloatLE'  : 4
-    , 'readInt32BE'  : 4
-    , 'readInt32LE'  : 4
-    , 'readUInt32BE' : 4
-    , 'readUInt32LE' : 4
-    , 'readInt16BE'  : 2
-    , 'readInt16LE'  : 2
-    , 'readUInt16BE' : 2
-    , 'readUInt16LE' : 2
-    , 'readInt8'     : 1
-    , 'readUInt8'    : 1
-  }
-
-  for (var m in methods) {
-    (function (m) {
-      BufferList.prototype[m] = function (offset) {
-        return this.slice(offset, offset + methods[m])[m](0)
-      }
-    }(m))
-  }
-}())
-
-
-module.exports = BufferList
-
-}).call(this,require("buffer").Buffer)
-},{"buffer":68,"readable-stream/duplex":208,"util":243}],33:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -13950,210 +13606,7 @@ module.exports = BufferList
   };
 })(typeof module === 'undefined' || module, this);
 
-},{}],34:[function(require,module,exports){
-var concatMap = require('concat-map');
-var balanced = require('balanced-match');
-
-module.exports = expandTop;
-
-var escSlash = '\0SLASH'+Math.random()+'\0';
-var escOpen = '\0OPEN'+Math.random()+'\0';
-var escClose = '\0CLOSE'+Math.random()+'\0';
-var escComma = '\0COMMA'+Math.random()+'\0';
-var escPeriod = '\0PERIOD'+Math.random()+'\0';
-
-function numeric(str) {
-  return parseInt(str, 10) == str
-    ? parseInt(str, 10)
-    : str.charCodeAt(0);
-}
-
-function escapeBraces(str) {
-  return str.split('\\\\').join(escSlash)
-            .split('\\{').join(escOpen)
-            .split('\\}').join(escClose)
-            .split('\\,').join(escComma)
-            .split('\\.').join(escPeriod);
-}
-
-function unescapeBraces(str) {
-  return str.split(escSlash).join('\\')
-            .split(escOpen).join('{')
-            .split(escClose).join('}')
-            .split(escComma).join(',')
-            .split(escPeriod).join('.');
-}
-
-
-// Basically just str.split(","), but handling cases
-// where we have nested braced sections, which should be
-// treated as individual members, like {a,{b,c},d}
-function parseCommaParts(str) {
-  if (!str)
-    return [''];
-
-  var parts = [];
-  var m = balanced('{', '}', str);
-
-  if (!m)
-    return str.split(',');
-
-  var pre = m.pre;
-  var body = m.body;
-  var post = m.post;
-  var p = pre.split(',');
-
-  p[p.length-1] += '{' + body + '}';
-  var postParts = parseCommaParts(post);
-  if (post.length) {
-    p[p.length-1] += postParts.shift();
-    p.push.apply(p, postParts);
-  }
-
-  parts.push.apply(parts, p);
-
-  return parts;
-}
-
-function expandTop(str) {
-  if (!str)
-    return [];
-
-  // I don't know why Bash 4.3 does this, but it does.
-  // Anything starting with {} will have the first two bytes preserved
-  // but *only* at the top level, so {},a}b will not expand to anything,
-  // but a{},b}c will be expanded to [a}c,abc].
-  // One could argue that this is a bug in Bash, but since the goal of
-  // this module is to match Bash's rules, we escape a leading {}
-  if (str.substr(0, 2) === '{}') {
-    str = '\\{\\}' + str.substr(2);
-  }
-
-  return expand(escapeBraces(str), true).map(unescapeBraces);
-}
-
-function identity(e) {
-  return e;
-}
-
-function embrace(str) {
-  return '{' + str + '}';
-}
-function isPadded(el) {
-  return /^-?0\d/.test(el);
-}
-
-function lte(i, y) {
-  return i <= y;
-}
-function gte(i, y) {
-  return i >= y;
-}
-
-function expand(str, isTop) {
-  var expansions = [];
-
-  var m = balanced('{', '}', str);
-  if (!m || /\$$/.test(m.pre)) return [str];
-
-  var isNumericSequence = /^-?\d+\.\.-?\d+(?:\.\.-?\d+)?$/.test(m.body);
-  var isAlphaSequence = /^[a-zA-Z]\.\.[a-zA-Z](?:\.\.-?\d+)?$/.test(m.body);
-  var isSequence = isNumericSequence || isAlphaSequence;
-  var isOptions = /^(.*,)+(.+)?$/.test(m.body);
-  if (!isSequence && !isOptions) {
-    // {a},b}
-    if (m.post.match(/,.*\}/)) {
-      str = m.pre + '{' + m.body + escClose + m.post;
-      return expand(str);
-    }
-    return [str];
-  }
-
-  var n;
-  if (isSequence) {
-    n = m.body.split(/\.\./);
-  } else {
-    n = parseCommaParts(m.body);
-    if (n.length === 1) {
-      // x{{a,b}}y ==> x{a}y x{b}y
-      n = expand(n[0], false).map(embrace);
-      if (n.length === 1) {
-        var post = m.post.length
-          ? expand(m.post, false)
-          : [''];
-        return post.map(function(p) {
-          return m.pre + n[0] + p;
-        });
-      }
-    }
-  }
-
-  // at this point, n is the parts, and we know it's not a comma set
-  // with a single entry.
-
-  // no need to expand pre, since it is guaranteed to be free of brace-sets
-  var pre = m.pre;
-  var post = m.post.length
-    ? expand(m.post, false)
-    : [''];
-
-  var N;
-
-  if (isSequence) {
-    var x = numeric(n[0]);
-    var y = numeric(n[1]);
-    var width = Math.max(n[0].length, n[1].length)
-    var incr = n.length == 3
-      ? Math.abs(numeric(n[2]))
-      : 1;
-    var test = lte;
-    var reverse = y < x;
-    if (reverse) {
-      incr *= -1;
-      test = gte;
-    }
-    var pad = n.some(isPadded);
-
-    N = [];
-
-    for (var i = x; test(i, y); i += incr) {
-      var c;
-      if (isAlphaSequence) {
-        c = String.fromCharCode(i);
-        if (c === '\\')
-          c = '';
-      } else {
-        c = String(i);
-        if (pad) {
-          var need = width - c.length;
-          if (need > 0) {
-            var z = new Array(need + 1).join('0');
-            if (i < 0)
-              c = '-' + z + c.slice(1);
-            else
-              c = z + c;
-          }
-        }
-      }
-      N.push(c);
-    }
-  } else {
-    N = concatMap(n, function(el) { return expand(el, false) });
-  }
-
-  for (var j = 0; j < N.length; j++) {
-    for (var k = 0; k < post.length; k++) {
-      var expansion = pre + N[j] + post[k];
-      if (!isTop || isSequence || expansion)
-        expansions.push(expansion);
-    }
-  }
-
-  return expansions;
-}
-
-
-},{"balanced-match":30,"concat-map":80}],35:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -14220,9 +13673,9 @@ if (typeof self === 'object') {
   }
 }
 
-},{"crypto":36}],36:[function(require,module,exports){
+},{"crypto":33}],33:[function(require,module,exports){
 
-},{}],37:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 (function (Buffer){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
@@ -14403,7 +13856,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],38:[function(require,module,exports){
+},{"buffer":65}],35:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -14504,7 +13957,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":37,"./ghash":42,"buffer":68,"buffer-xor":67,"cipher-base":69,"inherits":151}],39:[function(require,module,exports){
+},{"./aes":34,"./ghash":39,"buffer":65,"buffer-xor":64,"cipher-base":66,"inherits":140}],36:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -14517,7 +13970,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":40,"./encrypter":41,"./modes":43}],40:[function(require,module,exports){
+},{"./decrypter":37,"./encrypter":38,"./modes":40}],37:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -14658,7 +14111,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":37,"./authCipher":38,"./modes":43,"./modes/cbc":44,"./modes/cfb":45,"./modes/cfb1":46,"./modes/cfb8":47,"./modes/ctr":48,"./modes/ecb":49,"./modes/ofb":50,"./streamCipher":51,"buffer":68,"cipher-base":69,"evp_bytestokey":135,"inherits":151}],41:[function(require,module,exports){
+},{"./aes":34,"./authCipher":35,"./modes":40,"./modes/cbc":41,"./modes/cfb":42,"./modes/cfb1":43,"./modes/cfb8":44,"./modes/ctr":45,"./modes/ecb":46,"./modes/ofb":47,"./streamCipher":48,"buffer":65,"cipher-base":66,"evp_bytestokey":130,"inherits":140}],38:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -14784,7 +14237,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":37,"./authCipher":38,"./modes":43,"./modes/cbc":44,"./modes/cfb":45,"./modes/cfb1":46,"./modes/cfb8":47,"./modes/ctr":48,"./modes/ecb":49,"./modes/ofb":50,"./streamCipher":51,"buffer":68,"cipher-base":69,"evp_bytestokey":135,"inherits":151}],42:[function(require,module,exports){
+},{"./aes":34,"./authCipher":35,"./modes":40,"./modes/cbc":41,"./modes/cfb":42,"./modes/cfb1":43,"./modes/cfb8":44,"./modes/ctr":45,"./modes/ecb":46,"./modes/ofb":47,"./streamCipher":48,"buffer":65,"cipher-base":66,"evp_bytestokey":130,"inherits":140}],39:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -14886,7 +14339,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],43:[function(require,module,exports){
+},{"buffer":65}],40:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -15059,7 +14512,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 }
 
-},{}],44:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -15078,7 +14531,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":67}],45:[function(require,module,exports){
+},{"buffer-xor":64}],42:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -15113,7 +14566,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"buffer-xor":67}],46:[function(require,module,exports){
+},{"buffer":65,"buffer-xor":64}],43:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -15151,7 +14604,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],47:[function(require,module,exports){
+},{"buffer":65}],44:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -15170,7 +14623,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],48:[function(require,module,exports){
+},{"buffer":65}],45:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -15205,7 +14658,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"buffer-xor":67}],49:[function(require,module,exports){
+},{"buffer":65,"buffer-xor":64}],46:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -15213,7 +14666,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],50:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -15233,7 +14686,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"buffer-xor":67}],51:[function(require,module,exports){
+},{"buffer":65,"buffer-xor":64}],48:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -15262,7 +14715,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":37,"buffer":68,"cipher-base":69,"inherits":151}],52:[function(require,module,exports){
+},{"./aes":34,"buffer":65,"cipher-base":66,"inherits":140}],49:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -15337,7 +14790,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":39,"browserify-aes/modes":43,"browserify-des":53,"browserify-des/modes":54,"evp_bytestokey":135}],53:[function(require,module,exports){
+},{"browserify-aes/browser":36,"browserify-aes/modes":40,"browserify-des":50,"browserify-des/modes":51,"evp_bytestokey":130}],50:[function(require,module,exports){
 (function (Buffer){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
@@ -15384,7 +14837,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"cipher-base":69,"des.js":107,"inherits":151}],54:[function(require,module,exports){
+},{"buffer":65,"cipher-base":66,"des.js":103,"inherits":140}],51:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -15410,7 +14863,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],55:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -15454,10 +14907,10 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":33,"buffer":68,"randombytes":207}],56:[function(require,module,exports){
+},{"bn.js":31,"buffer":65,"randombytes":193}],53:[function(require,module,exports){
 module.exports = require('./browser/algorithms.json')
 
-},{"./browser/algorithms.json":57}],57:[function(require,module,exports){
+},{"./browser/algorithms.json":54}],54:[function(require,module,exports){
 module.exports={
   "sha224WithRSAEncryption": {
     "sign": "rsa",
@@ -15611,7 +15064,7 @@ module.exports={
   }
 }
 
-},{}],58:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 module.exports={
   "1.3.132.0.10": "secp256k1",
   "1.3.132.0.33": "p224",
@@ -15621,7 +15074,7 @@ module.exports={
   "1.3.132.0.35": "p521"
 }
 
-},{}],59:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash')
 var stream = require('stream')
@@ -15716,7 +15169,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algorithms.json":57,"./sign":60,"./verify":61,"buffer":68,"create-hash":100,"inherits":151,"stream":230}],60:[function(require,module,exports){
+},{"./algorithms.json":54,"./sign":57,"./verify":58,"buffer":65,"create-hash":96,"inherits":140,"stream":216}],57:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -15865,7 +15318,7 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves.json":58,"bn.js":33,"browserify-rsa":55,"buffer":68,"create-hmac":103,"elliptic":117,"parse-asn1":194}],61:[function(require,module,exports){
+},{"./curves.json":55,"bn.js":31,"browserify-rsa":52,"buffer":65,"create-hmac":99,"elliptic":113,"parse-asn1":181}],58:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var BN = require('bn.js')
@@ -15952,7 +15405,7 @@ function checkValue (b, q) {
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves.json":58,"bn.js":33,"buffer":68,"elliptic":117,"parse-asn1":194}],62:[function(require,module,exports){
+},{"./curves.json":55,"bn.js":31,"buffer":65,"elliptic":113,"parse-asn1":181}],59:[function(require,module,exports){
 (function (process,Buffer){
 var msg = require('pako/lib/zlib/messages');
 var zstream = require('pako/lib/zlib/zstream');
@@ -16192,7 +15645,7 @@ Zlib.prototype._error = function(status) {
 exports.Zlib = Zlib;
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"_process":200,"buffer":68,"pako/lib/zlib/constants":181,"pako/lib/zlib/deflate.js":183,"pako/lib/zlib/inflate.js":185,"pako/lib/zlib/messages":187,"pako/lib/zlib/zstream":189}],63:[function(require,module,exports){
+},{"_process":186,"buffer":65,"pako/lib/zlib/constants":168,"pako/lib/zlib/deflate.js":170,"pako/lib/zlib/inflate.js":172,"pako/lib/zlib/messages":174,"pako/lib/zlib/zstream":176}],60:[function(require,module,exports){
 (function (process,Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -16806,9 +16259,9 @@ util.inherits(InflateRaw, Zlib);
 util.inherits(Unzip, Zlib);
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./binding":62,"_process":200,"_stream_transform":217,"assert":28,"buffer":68,"util":243}],64:[function(require,module,exports){
-arguments[4][36][0].apply(exports,arguments)
-},{"dup":36}],65:[function(require,module,exports){
+},{"./binding":59,"_process":186,"_stream_transform":203,"assert":28,"buffer":65,"util":225}],61:[function(require,module,exports){
+arguments[4][33][0].apply(exports,arguments)
+},{"dup":33}],62:[function(require,module,exports){
 var Buffer = require('buffer').Buffer;
 
 var CRC_TABLE = [
@@ -16921,7 +16374,7 @@ crc32.unsigned = function () {
 
 module.exports = crc32;
 
-},{"buffer":68}],66:[function(require,module,exports){
+},{"buffer":65}],63:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -17033,7 +16486,7 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":68}],67:[function(require,module,exports){
+},{"buffer":65}],64:[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -17047,7 +16500,7 @@ module.exports = function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],68:[function(require,module,exports){
+},{"buffer":65}],65:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -18755,7 +18208,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":31,"ieee754":148}],69:[function(require,module,exports){
+},{"base64-js":30,"ieee754":138}],66:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -18849,7 +18302,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"inherits":151,"stream":230,"string_decoder":235}],70:[function(require,module,exports){
+},{"buffer":65,"inherits":140,"stream":216,"string_decoder":221}],67:[function(require,module,exports){
 /**
  * node-compress-commons
  *
@@ -18866,7 +18319,7 @@ ArchiveEntry.prototype.getSize = function() {};
 ArchiveEntry.prototype.getLastModifiedDate = function() {};
 
 ArchiveEntry.prototype.isDirectory = function() {};
-},{}],71:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 (function (Buffer){
 /**
  * node-compress-commons
@@ -18986,7 +18439,7 @@ ArchiveOutputStream.prototype.write = function(chunk, cb) {
   return Transform.prototype.write.call(this, chunk, cb);
 };
 }).call(this,{"isBuffer":require("../../../is-buffer/index.js")})
-},{"../../../is-buffer/index.js":152,"../util":79,"./archive-entry":70,"readable-stream":216,"util":243}],72:[function(require,module,exports){
+},{"../../../is-buffer/index.js":141,"../util":76,"./archive-entry":67,"readable-stream":202,"util":225}],69:[function(require,module,exports){
 (function (Buffer){
 /**
  * node-compress-commons
@@ -19061,7 +18514,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],73:[function(require,module,exports){
+},{"buffer":65}],70:[function(require,module,exports){
 /**
  * node-compress-commons
  *
@@ -19163,7 +18616,7 @@ GeneralPurposeBit.prototype.useUTF8ForNames = function(b) {
 GeneralPurposeBit.prototype.usesUTF8ForNames = function() {
   return this.utf8;
 };
-},{"./util":75}],74:[function(require,module,exports){
+},{"./util":72}],71:[function(require,module,exports){
 /**
  * node-compress-commons
  *
@@ -19217,7 +18670,7 @@ module.exports = {
      */
     DEFAULT_FILE_PERM: 420 // 0644
 };
-},{}],75:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 (function (Buffer){
 /**
  * node-compress-commons
@@ -19294,7 +18747,7 @@ util.toDosTime = function(d) {
   return util.getLongBytes(util.dateToDos(d));
 };
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],76:[function(require,module,exports){
+},{"buffer":65}],73:[function(require,module,exports){
 (function (Buffer){
 /**
  * node-compress-commons
@@ -19704,7 +19157,7 @@ ZipArchiveEntry.prototype.isZip64 = function() {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../archive-entry":70,"./constants":72,"./general-purpose-bit":73,"./unix-stat":74,"./util":75,"buffer":68,"normalize-path":177,"util":243}],77:[function(require,module,exports){
+},{"../archive-entry":67,"./constants":69,"./general-purpose-bit":70,"./unix-stat":71,"./util":72,"buffer":65,"normalize-path":165,"util":225}],74:[function(require,module,exports){
 (function (Buffer){
 /**
  * node-compress-commons
@@ -20147,7 +19600,7 @@ ZipArchiveOutputStream.prototype.setComment = function(comment) {
   this._archive.comment = comment;
 };
 }).call(this,require("buffer").Buffer)
-},{"../../util":79,"../archive-output-stream":71,"./constants":72,"./general-purpose-bit":73,"./util":75,"./zip-archive-entry":76,"buffer":68,"buffer-crc32":65,"crc32-stream":98,"util":243}],78:[function(require,module,exports){
+},{"../../util":76,"../archive-output-stream":68,"./constants":69,"./general-purpose-bit":70,"./util":72,"./zip-archive-entry":73,"buffer":65,"buffer-crc32":62,"crc32-stream":94,"util":225}],75:[function(require,module,exports){
 /**
  * node-compress-commons
  *
@@ -20161,7 +19614,7 @@ module.exports = {
   ArchiveOutputStream: require('./archivers/archive-output-stream'),
   ZipArchiveOutputStream: require('./archivers/zip/zip-archive-output-stream')
 };
-},{"./archivers/archive-entry":70,"./archivers/archive-output-stream":71,"./archivers/zip/zip-archive-entry":76,"./archivers/zip/zip-archive-output-stream":77}],79:[function(require,module,exports){
+},{"./archivers/archive-entry":67,"./archivers/archive-output-stream":68,"./archivers/zip/zip-archive-entry":73,"./archivers/zip/zip-archive-output-stream":74}],76:[function(require,module,exports){
 (function (Buffer){
 /**
  * node-compress-commons
@@ -20194,22 +19647,7 @@ util.normalizeInputSource = function(source) {
   return source;
 };
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"readable-stream":216,"stream":230}],80:[function(require,module,exports){
-module.exports = function (xs, fn) {
-    var res = [];
-    for (var i = 0; i < xs.length; i++) {
-        var x = fn(xs[i], i);
-        if (isArray(x)) res.push.apply(res, x);
-        else res.push(x);
-    }
-    return res;
-};
-
-var isArray = Array.isArray || function (xs) {
-    return Object.prototype.toString.call(xs) === '[object Array]';
-};
-
-},{}],81:[function(require,module,exports){
+},{"buffer":65,"readable-stream":202,"stream":216}],77:[function(require,module,exports){
 module.exports={
   "O_RDONLY": 0,
   "O_WRONLY": 1,
@@ -20420,7 +19858,7 @@ module.exports={
   "UV_UDP_REUSEADDR": 4
 }
 
-},{}],82:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -20531,7 +19969,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":152}],83:[function(require,module,exports){
+},{"../../is-buffer/index.js":141}],79:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20560,7 +19998,7 @@ module.exports = (0, _define_crc2.default)('crc1', function (buf, previous) {
   crc += accum % 256;
   return crc % 256;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],84:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],80:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20592,7 +20030,7 @@ module.exports = (0, _define_crc2.default)('crc-16', function (buf, previous) {
 
   return crc;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],85:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],81:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20624,7 +20062,7 @@ module.exports = (0, _define_crc2.default)('ccitt', function (buf, previous) {
 
   return crc;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],86:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],82:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20656,7 +20094,7 @@ module.exports = (0, _define_crc2.default)('kermit', function (buf, previous) {
 
   return crc;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],87:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],83:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20688,7 +20126,7 @@ module.exports = (0, _define_crc2.default)('crc-16-modbus', function (buf, previ
 
   return crc;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],88:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],84:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20724,7 +20162,7 @@ module.exports = (0, _define_crc2.default)('xmodem', function (buf, previous) {
 
   return crc;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],89:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],85:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20756,7 +20194,7 @@ module.exports = (0, _define_crc2.default)('crc-24', function (buf, previous) {
 
   return crc;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],90:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],86:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20788,7 +20226,7 @@ module.exports = (0, _define_crc2.default)('crc-32', function (buf, previous) {
 
   return crc ^ -1;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],91:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],87:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20820,7 +20258,7 @@ module.exports = (0, _define_crc2.default)('crc-8', function (buf, previous) {
 
   return crc;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],92:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],88:[function(require,module,exports){
 'use strict';
 
 var _buffer = require('buffer');
@@ -20852,7 +20290,7 @@ module.exports = (0, _define_crc2.default)('dallas-1-wire', function (buf, previ
 
   return crc;
 });
-},{"./create_buffer":93,"./define_crc":94,"buffer":68}],93:[function(require,module,exports){
+},{"./create_buffer":89,"./define_crc":90,"buffer":65}],89:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20869,7 +20307,7 @@ var createBuffer = _buffer.Buffer.from && _buffer.Buffer.alloc && _buffer.Buffer
 };
 
 exports.default = createBuffer;
-},{"buffer":68}],94:[function(require,module,exports){
+},{"buffer":65}],90:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20886,7 +20324,7 @@ exports.default = function (model, calc) {
 
   return fn;
 };
-},{}],95:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -20901,7 +20339,7 @@ module.exports = {
   crc24: require('./crc24'),
   crc32: require('./crc32')
 };
-},{"./crc1":83,"./crc16":84,"./crc16_ccitt":85,"./crc16_kermit":86,"./crc16_modbus":87,"./crc16_xmodem":88,"./crc24":89,"./crc32":90,"./crc8":91,"./crc8_1wire":92}],96:[function(require,module,exports){
+},{"./crc1":79,"./crc16":80,"./crc16_ccitt":81,"./crc16_kermit":82,"./crc16_modbus":83,"./crc16_xmodem":84,"./crc24":85,"./crc32":86,"./crc8":87,"./crc8_1wire":88}],92:[function(require,module,exports){
 (function (Buffer){
 /**
  * node-crc32-stream
@@ -20949,7 +20387,7 @@ CRC32Stream.prototype.size = function() {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"crc":95,"readable-stream":216,"util":243}],97:[function(require,module,exports){
+},{"buffer":65,"crc":91,"readable-stream":202,"util":225}],93:[function(require,module,exports){
 (function (Buffer){
 /**
  * node-crc32-stream
@@ -21022,7 +20460,7 @@ DeflateCRC32Stream.prototype.size = function(compressed) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"crc":95,"util":243,"zlib":63}],98:[function(require,module,exports){
+},{"buffer":65,"crc":91,"util":225,"zlib":60}],94:[function(require,module,exports){
 /**
  * node-crc32-stream
  *
@@ -21033,7 +20471,7 @@ DeflateCRC32Stream.prototype.size = function(compressed) {
 exports = module.exports = require('./crc32-stream');
 exports.CRC32Stream = exports;
 exports.DeflateCRC32Stream = require('./deflate-crc32-stream');
-},{"./crc32-stream":96,"./deflate-crc32-stream":97}],99:[function(require,module,exports){
+},{"./crc32-stream":92,"./deflate-crc32-stream":93}],95:[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic');
 var BN = require('bn.js');
@@ -21159,7 +20597,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":33,"buffer":68,"elliptic":117}],100:[function(require,module,exports){
+},{"bn.js":31,"buffer":65,"elliptic":113}],96:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -21215,7 +20653,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":102,"buffer":68,"cipher-base":69,"inherits":151,"ripemd160":220,"sha.js":223}],101:[function(require,module,exports){
+},{"./md5":98,"buffer":65,"cipher-base":66,"inherits":140,"ripemd160":206,"sha.js":209}],97:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var intSize = 4;
@@ -21252,7 +20690,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 }
 exports.hash = hash;
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],102:[function(require,module,exports){
+},{"buffer":65}],98:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -21409,7 +20847,7 @@ function bit_rol(num, cnt)
 module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
-},{"./helpers":101}],103:[function(require,module,exports){
+},{"./helpers":97}],99:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var createHash = require('create-hash/browser');
@@ -21481,7 +20919,7 @@ module.exports = function createHmac(alg, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"create-hash/browser":100,"inherits":151,"stream":230}],104:[function(require,module,exports){
+},{"buffer":65,"create-hash/browser":96,"inherits":140,"stream":216}],100:[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -21560,7 +20998,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":52,"browserify-sign":59,"browserify-sign/algos":56,"create-ecdh":99,"create-hash":100,"create-hmac":103,"diffie-hellman":113,"pbkdf2":197,"public-encrypt":201,"randombytes":207}],105:[function(require,module,exports){
+},{"browserify-cipher":49,"browserify-sign":56,"browserify-sign/algos":53,"create-ecdh":95,"create-hash":96,"create-hmac":99,"diffie-hellman":109,"pbkdf2":183,"public-encrypt":187,"randombytes":193}],101:[function(require,module,exports){
 (function (process){
 /**
  * This is the web browser implementation of `debug()`.
@@ -21749,7 +21187,7 @@ function localstorage() {
 }
 
 }).call(this,require('_process'))
-},{"./debug":106,"_process":200}],106:[function(require,module,exports){
+},{"./debug":102,"_process":186}],102:[function(require,module,exports){
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -21953,7 +21391,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":160}],107:[function(require,module,exports){
+},{"ms":148}],103:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -21962,7 +21400,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":108,"./des/cipher":109,"./des/des":110,"./des/ede":111,"./des/utils":112}],108:[function(require,module,exports){
+},{"./des/cbc":104,"./des/cipher":105,"./des/des":106,"./des/ede":107,"./des/utils":108}],104:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -22029,7 +21467,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":151,"minimalistic-assert":157}],109:[function(require,module,exports){
+},{"inherits":140,"minimalistic-assert":146}],105:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -22172,7 +21610,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":157}],110:[function(require,module,exports){
+},{"minimalistic-assert":146}],106:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -22317,7 +21755,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"../des":107,"inherits":151,"minimalistic-assert":157}],111:[function(require,module,exports){
+},{"../des":103,"inherits":140,"minimalistic-assert":146}],107:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -22374,7 +21812,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"../des":107,"inherits":151,"minimalistic-assert":157}],112:[function(require,module,exports){
+},{"../des":103,"inherits":140,"minimalistic-assert":146}],108:[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -22632,7 +22070,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],113:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -22678,7 +22116,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":114,"./lib/generatePrime":115,"./lib/primes.json":116,"buffer":68}],114:[function(require,module,exports){
+},{"./lib/dh":110,"./lib/generatePrime":111,"./lib/primes.json":112,"buffer":65}],110:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -22846,7 +22284,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":115,"bn.js":33,"buffer":68,"miller-rabin":156,"randombytes":207}],115:[function(require,module,exports){
+},{"./generatePrime":111,"bn.js":31,"buffer":65,"miller-rabin":145,"randombytes":193}],111:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -22953,7 +22391,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":33,"miller-rabin":156,"randombytes":207}],116:[function(require,module,exports){
+},{"bn.js":31,"miller-rabin":145,"randombytes":193}],112:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -22988,7 +22426,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],117:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -23003,7 +22441,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":132,"./elliptic/curve":120,"./elliptic/curves":123,"./elliptic/ec":124,"./elliptic/eddsa":127,"./elliptic/utils":131,"brorand":35}],118:[function(require,module,exports){
+},{"../package.json":128,"./elliptic/curve":116,"./elliptic/curves":119,"./elliptic/ec":120,"./elliptic/eddsa":123,"./elliptic/utils":127,"brorand":32}],114:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -23380,7 +22818,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":117,"bn.js":33}],119:[function(require,module,exports){
+},{"../../elliptic":113,"bn.js":31}],115:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -23815,7 +23253,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":117,"../curve":120,"bn.js":33,"inherits":151}],120:[function(require,module,exports){
+},{"../../elliptic":113,"../curve":116,"bn.js":31,"inherits":140}],116:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -23825,7 +23263,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":118,"./edwards":119,"./mont":121,"./short":122}],121:[function(require,module,exports){
+},{"./base":114,"./edwards":115,"./mont":117,"./short":118}],117:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -24007,7 +23445,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":117,"../curve":120,"bn.js":33,"inherits":151}],122:[function(require,module,exports){
+},{"../../elliptic":113,"../curve":116,"bn.js":31,"inherits":140}],118:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -24947,7 +24385,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":117,"../curve":120,"bn.js":33,"inherits":151}],123:[function(require,module,exports){
+},{"../../elliptic":113,"../curve":116,"bn.js":31,"inherits":140}],119:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -25154,7 +24592,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":117,"./precomputed/secp256k1":130,"hash.js":141}],124:[function(require,module,exports){
+},{"../elliptic":113,"./precomputed/secp256k1":126,"hash.js":131}],120:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -25396,7 +24834,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":117,"./key":125,"./signature":126,"bn.js":33,"hmac-drbg":147}],125:[function(require,module,exports){
+},{"../../elliptic":113,"./key":121,"./signature":122,"bn.js":31,"hmac-drbg":137}],121:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -25517,7 +24955,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../../elliptic":117,"bn.js":33}],126:[function(require,module,exports){
+},{"../../elliptic":113,"bn.js":31}],122:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -25654,7 +25092,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":117,"bn.js":33}],127:[function(require,module,exports){
+},{"../../elliptic":113,"bn.js":31}],123:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -25774,7 +25212,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":117,"./key":128,"./signature":129,"hash.js":141}],128:[function(require,module,exports){
+},{"../../elliptic":113,"./key":124,"./signature":125,"hash.js":131}],124:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -25872,7 +25310,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":117}],129:[function(require,module,exports){
+},{"../../elliptic":113}],125:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -25940,7 +25378,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":117,"bn.js":33}],130:[function(require,module,exports){
+},{"../../elliptic":113,"bn.js":31}],126:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -26722,7 +26160,7 @@ module.exports = {
   }
 };
 
-},{}],131:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -26844,7 +26282,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":33,"minimalistic-assert":157,"minimalistic-crypto-utils":158}],132:[function(require,module,exports){
+},{"bn.js":31,"minimalistic-assert":146,"minimalistic-crypto-utils":147}],128:[function(require,module,exports){
 module.exports={
   "name": "elliptic",
   "version": "6.4.0",
@@ -26904,92 +26342,7 @@ module.exports={
   }
 }
 
-},{}],133:[function(require,module,exports){
-var once = require('once');
-
-var noop = function() {};
-
-var isRequest = function(stream) {
-	return stream.setHeader && typeof stream.abort === 'function';
-};
-
-var isChildProcess = function(stream) {
-	return stream.stdio && Array.isArray(stream.stdio) && stream.stdio.length === 3
-};
-
-var eos = function(stream, opts, callback) {
-	if (typeof opts === 'function') return eos(stream, null, opts);
-	if (!opts) opts = {};
-
-	callback = once(callback || noop);
-
-	var ws = stream._writableState;
-	var rs = stream._readableState;
-	var readable = opts.readable || (opts.readable !== false && stream.readable);
-	var writable = opts.writable || (opts.writable !== false && stream.writable);
-
-	var onlegacyfinish = function() {
-		if (!stream.writable) onfinish();
-	};
-
-	var onfinish = function() {
-		writable = false;
-		if (!readable) callback.call(stream);
-	};
-
-	var onend = function() {
-		readable = false;
-		if (!writable) callback.call(stream);
-	};
-
-	var onexit = function(exitCode) {
-		callback.call(stream, exitCode ? new Error('exited with error code: ' + exitCode) : null);
-	};
-
-	var onclose = function() {
-		if (readable && !(rs && rs.ended)) return callback.call(stream, new Error('premature close'));
-		if (writable && !(ws && ws.ended)) return callback.call(stream, new Error('premature close'));
-	};
-
-	var onrequest = function() {
-		stream.req.on('finish', onfinish);
-	};
-
-	if (isRequest(stream)) {
-		stream.on('complete', onfinish);
-		stream.on('abort', onclose);
-		if (stream.req) onrequest();
-		else stream.on('request', onrequest);
-	} else if (writable && !ws) { // legacy streams
-		stream.on('end', onlegacyfinish);
-		stream.on('close', onlegacyfinish);
-	}
-
-	if (isChildProcess(stream)) stream.on('exit', onexit);
-
-	stream.on('end', onend);
-	stream.on('finish', onfinish);
-	if (opts.error !== false) stream.on('error', callback);
-	stream.on('close', onclose);
-
-	return function() {
-		stream.removeListener('complete', onfinish);
-		stream.removeListener('abort', onclose);
-		stream.removeListener('request', onrequest);
-		if (stream.req) stream.req.removeListener('finish', onfinish);
-		stream.removeListener('end', onlegacyfinish);
-		stream.removeListener('close', onlegacyfinish);
-		stream.removeListener('finish', onfinish);
-		stream.removeListener('exit', onexit);
-		stream.removeListener('end', onend);
-		stream.removeListener('error', callback);
-		stream.removeListener('close', onclose);
-	};
-};
-
-module.exports = eos;
-
-},{"once":178}],134:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -27293,7 +26646,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],135:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 (function (Buffer){
 var md5 = require('create-hash/md5')
 module.exports = EVP_BytesToKey
@@ -27365,1914 +26718,7 @@ function EVP_BytesToKey (password, salt, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"create-hash/md5":102}],136:[function(require,module,exports){
-(function (process){
-module.exports = realpath
-realpath.realpath = realpath
-realpath.sync = realpathSync
-realpath.realpathSync = realpathSync
-realpath.monkeypatch = monkeypatch
-realpath.unmonkeypatch = unmonkeypatch
-
-var fs = require('fs')
-var origRealpath = fs.realpath
-var origRealpathSync = fs.realpathSync
-
-var version = process.version
-var ok = /^v[0-5]\./.test(version)
-var old = require('./old.js')
-
-function newError (er) {
-  return er && er.syscall === 'realpath' && (
-    er.code === 'ELOOP' ||
-    er.code === 'ENOMEM' ||
-    er.code === 'ENAMETOOLONG'
-  )
-}
-
-function realpath (p, cache, cb) {
-  if (ok) {
-    return origRealpath(p, cache, cb)
-  }
-
-  if (typeof cache === 'function') {
-    cb = cache
-    cache = null
-  }
-  origRealpath(p, cache, function (er, result) {
-    if (newError(er)) {
-      old.realpath(p, cache, cb)
-    } else {
-      cb(er, result)
-    }
-  })
-}
-
-function realpathSync (p, cache) {
-  if (ok) {
-    return origRealpathSync(p, cache)
-  }
-
-  try {
-    return origRealpathSync(p, cache)
-  } catch (er) {
-    if (newError(er)) {
-      return old.realpathSync(p, cache)
-    } else {
-      throw er
-    }
-  }
-}
-
-function monkeypatch () {
-  fs.realpath = realpath
-  fs.realpathSync = realpathSync
-}
-
-function unmonkeypatch () {
-  fs.realpath = origRealpath
-  fs.realpathSync = origRealpathSync
-}
-
-}).call(this,require('_process'))
-},{"./old.js":137,"_process":200,"fs":64}],137:[function(require,module,exports){
-(function (process){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-var pathModule = require('path');
-var isWindows = process.platform === 'win32';
-var fs = require('fs');
-
-// JavaScript implementation of realpath, ported from node pre-v6
-
-var DEBUG = process.env.NODE_DEBUG && /fs/.test(process.env.NODE_DEBUG);
-
-function rethrow() {
-  // Only enable in debug mode. A backtrace uses ~1000 bytes of heap space and
-  // is fairly slow to generate.
-  var callback;
-  if (DEBUG) {
-    var backtrace = new Error;
-    callback = debugCallback;
-  } else
-    callback = missingCallback;
-
-  return callback;
-
-  function debugCallback(err) {
-    if (err) {
-      backtrace.message = err.message;
-      err = backtrace;
-      missingCallback(err);
-    }
-  }
-
-  function missingCallback(err) {
-    if (err) {
-      if (process.throwDeprecation)
-        throw err;  // Forgot a callback but don't know where? Use NODE_DEBUG=fs
-      else if (!process.noDeprecation) {
-        var msg = 'fs: missing callback ' + (err.stack || err.message);
-        if (process.traceDeprecation)
-          console.trace(msg);
-        else
-          console.error(msg);
-      }
-    }
-  }
-}
-
-function maybeCallback(cb) {
-  return typeof cb === 'function' ? cb : rethrow();
-}
-
-var normalize = pathModule.normalize;
-
-// Regexp that finds the next partion of a (partial) path
-// result is [base_with_slash, base], e.g. ['somedir/', 'somedir']
-if (isWindows) {
-  var nextPartRe = /(.*?)(?:[\/\\]+|$)/g;
-} else {
-  var nextPartRe = /(.*?)(?:[\/]+|$)/g;
-}
-
-// Regex to find the device root, including trailing slash. E.g. 'c:\\'.
-if (isWindows) {
-  var splitRootRe = /^(?:[a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/][^\\\/]+)?[\\\/]*/;
-} else {
-  var splitRootRe = /^[\/]*/;
-}
-
-exports.realpathSync = function realpathSync(p, cache) {
-  // make p is absolute
-  p = pathModule.resolve(p);
-
-  if (cache && Object.prototype.hasOwnProperty.call(cache, p)) {
-    return cache[p];
-  }
-
-  var original = p,
-      seenLinks = {},
-      knownHard = {};
-
-  // current character position in p
-  var pos;
-  // the partial path so far, including a trailing slash if any
-  var current;
-  // the partial path without a trailing slash (except when pointing at a root)
-  var base;
-  // the partial path scanned in the previous round, with slash
-  var previous;
-
-  start();
-
-  function start() {
-    // Skip over roots
-    var m = splitRootRe.exec(p);
-    pos = m[0].length;
-    current = m[0];
-    base = m[0];
-    previous = '';
-
-    // On windows, check that the root exists. On unix there is no need.
-    if (isWindows && !knownHard[base]) {
-      fs.lstatSync(base);
-      knownHard[base] = true;
-    }
-  }
-
-  // walk down the path, swapping out linked pathparts for their real
-  // values
-  // NB: p.length changes.
-  while (pos < p.length) {
-    // find the next part
-    nextPartRe.lastIndex = pos;
-    var result = nextPartRe.exec(p);
-    previous = current;
-    current += result[0];
-    base = previous + result[1];
-    pos = nextPartRe.lastIndex;
-
-    // continue if not a symlink
-    if (knownHard[base] || (cache && cache[base] === base)) {
-      continue;
-    }
-
-    var resolvedLink;
-    if (cache && Object.prototype.hasOwnProperty.call(cache, base)) {
-      // some known symbolic link.  no need to stat again.
-      resolvedLink = cache[base];
-    } else {
-      var stat = fs.lstatSync(base);
-      if (!stat.isSymbolicLink()) {
-        knownHard[base] = true;
-        if (cache) cache[base] = base;
-        continue;
-      }
-
-      // read the link if it wasn't read before
-      // dev/ino always return 0 on windows, so skip the check.
-      var linkTarget = null;
-      if (!isWindows) {
-        var id = stat.dev.toString(32) + ':' + stat.ino.toString(32);
-        if (seenLinks.hasOwnProperty(id)) {
-          linkTarget = seenLinks[id];
-        }
-      }
-      if (linkTarget === null) {
-        fs.statSync(base);
-        linkTarget = fs.readlinkSync(base);
-      }
-      resolvedLink = pathModule.resolve(previous, linkTarget);
-      // track this, if given a cache.
-      if (cache) cache[base] = resolvedLink;
-      if (!isWindows) seenLinks[id] = linkTarget;
-    }
-
-    // resolve the link, then start over
-    p = pathModule.resolve(resolvedLink, p.slice(pos));
-    start();
-  }
-
-  if (cache) cache[original] = p;
-
-  return p;
-};
-
-
-exports.realpath = function realpath(p, cache, cb) {
-  if (typeof cb !== 'function') {
-    cb = maybeCallback(cache);
-    cache = null;
-  }
-
-  // make p is absolute
-  p = pathModule.resolve(p);
-
-  if (cache && Object.prototype.hasOwnProperty.call(cache, p)) {
-    return process.nextTick(cb.bind(null, null, cache[p]));
-  }
-
-  var original = p,
-      seenLinks = {},
-      knownHard = {};
-
-  // current character position in p
-  var pos;
-  // the partial path so far, including a trailing slash if any
-  var current;
-  // the partial path without a trailing slash (except when pointing at a root)
-  var base;
-  // the partial path scanned in the previous round, with slash
-  var previous;
-
-  start();
-
-  function start() {
-    // Skip over roots
-    var m = splitRootRe.exec(p);
-    pos = m[0].length;
-    current = m[0];
-    base = m[0];
-    previous = '';
-
-    // On windows, check that the root exists. On unix there is no need.
-    if (isWindows && !knownHard[base]) {
-      fs.lstat(base, function(err) {
-        if (err) return cb(err);
-        knownHard[base] = true;
-        LOOP();
-      });
-    } else {
-      process.nextTick(LOOP);
-    }
-  }
-
-  // walk down the path, swapping out linked pathparts for their real
-  // values
-  function LOOP() {
-    // stop if scanned past end of path
-    if (pos >= p.length) {
-      if (cache) cache[original] = p;
-      return cb(null, p);
-    }
-
-    // find the next part
-    nextPartRe.lastIndex = pos;
-    var result = nextPartRe.exec(p);
-    previous = current;
-    current += result[0];
-    base = previous + result[1];
-    pos = nextPartRe.lastIndex;
-
-    // continue if not a symlink
-    if (knownHard[base] || (cache && cache[base] === base)) {
-      return process.nextTick(LOOP);
-    }
-
-    if (cache && Object.prototype.hasOwnProperty.call(cache, base)) {
-      // known symbolic link.  no need to stat again.
-      return gotResolvedLink(cache[base]);
-    }
-
-    return fs.lstat(base, gotStat);
-  }
-
-  function gotStat(err, stat) {
-    if (err) return cb(err);
-
-    // if not a symlink, skip to the next path part
-    if (!stat.isSymbolicLink()) {
-      knownHard[base] = true;
-      if (cache) cache[base] = base;
-      return process.nextTick(LOOP);
-    }
-
-    // stat & read the link if not read before
-    // call gotTarget as soon as the link target is known
-    // dev/ino always return 0 on windows, so skip the check.
-    if (!isWindows) {
-      var id = stat.dev.toString(32) + ':' + stat.ino.toString(32);
-      if (seenLinks.hasOwnProperty(id)) {
-        return gotTarget(null, seenLinks[id], base);
-      }
-    }
-    fs.stat(base, function(err) {
-      if (err) return cb(err);
-
-      fs.readlink(base, function(err, target) {
-        if (!isWindows) seenLinks[id] = target;
-        gotTarget(err, target);
-      });
-    });
-  }
-
-  function gotTarget(err, target, base) {
-    if (err) return cb(err);
-
-    var resolvedLink = pathModule.resolve(previous, target);
-    if (cache) cache[base] = resolvedLink;
-    gotResolvedLink(resolvedLink);
-  }
-
-  function gotResolvedLink(resolvedLink) {
-    // resolve the link, then start over
-    p = pathModule.resolve(resolvedLink, p.slice(pos));
-    start();
-  }
-};
-
-}).call(this,require('_process'))
-},{"_process":200,"fs":64,"path":195}],138:[function(require,module,exports){
-(function (process){
-exports.alphasort = alphasort
-exports.alphasorti = alphasorti
-exports.setopts = setopts
-exports.ownProp = ownProp
-exports.makeAbs = makeAbs
-exports.finish = finish
-exports.mark = mark
-exports.isIgnored = isIgnored
-exports.childrenIgnored = childrenIgnored
-
-function ownProp (obj, field) {
-  return Object.prototype.hasOwnProperty.call(obj, field)
-}
-
-var path = require("path")
-var minimatch = require("minimatch")
-var isAbsolute = require("path-is-absolute")
-var Minimatch = minimatch.Minimatch
-
-function alphasorti (a, b) {
-  return a.toLowerCase().localeCompare(b.toLowerCase())
-}
-
-function alphasort (a, b) {
-  return a.localeCompare(b)
-}
-
-function setupIgnores (self, options) {
-  self.ignore = options.ignore || []
-
-  if (!Array.isArray(self.ignore))
-    self.ignore = [self.ignore]
-
-  if (self.ignore.length) {
-    self.ignore = self.ignore.map(ignoreMap)
-  }
-}
-
-// ignore patterns are always in dot:true mode.
-function ignoreMap (pattern) {
-  var gmatcher = null
-  if (pattern.slice(-3) === '/**') {
-    var gpattern = pattern.replace(/(\/\*\*)+$/, '')
-    gmatcher = new Minimatch(gpattern, { dot: true })
-  }
-
-  return {
-    matcher: new Minimatch(pattern, { dot: true }),
-    gmatcher: gmatcher
-  }
-}
-
-function setopts (self, pattern, options) {
-  if (!options)
-    options = {}
-
-  // base-matching: just use globstar for that.
-  if (options.matchBase && -1 === pattern.indexOf("/")) {
-    if (options.noglobstar) {
-      throw new Error("base matching requires globstar")
-    }
-    pattern = "**/" + pattern
-  }
-
-  self.silent = !!options.silent
-  self.pattern = pattern
-  self.strict = options.strict !== false
-  self.realpath = !!options.realpath
-  self.realpathCache = options.realpathCache || Object.create(null)
-  self.follow = !!options.follow
-  self.dot = !!options.dot
-  self.mark = !!options.mark
-  self.nodir = !!options.nodir
-  if (self.nodir)
-    self.mark = true
-  self.sync = !!options.sync
-  self.nounique = !!options.nounique
-  self.nonull = !!options.nonull
-  self.nosort = !!options.nosort
-  self.nocase = !!options.nocase
-  self.stat = !!options.stat
-  self.noprocess = !!options.noprocess
-  self.absolute = !!options.absolute
-
-  self.maxLength = options.maxLength || Infinity
-  self.cache = options.cache || Object.create(null)
-  self.statCache = options.statCache || Object.create(null)
-  self.symlinks = options.symlinks || Object.create(null)
-
-  setupIgnores(self, options)
-
-  self.changedCwd = false
-  var cwd = process.cwd()
-  if (!ownProp(options, "cwd"))
-    self.cwd = cwd
-  else {
-    self.cwd = path.resolve(options.cwd)
-    self.changedCwd = self.cwd !== cwd
-  }
-
-  self.root = options.root || path.resolve(self.cwd, "/")
-  self.root = path.resolve(self.root)
-  if (process.platform === "win32")
-    self.root = self.root.replace(/\\/g, "/")
-
-  // TODO: is an absolute `cwd` supposed to be resolved against `root`?
-  // e.g. { cwd: '/test', root: __dirname } === path.join(__dirname, '/test')
-  self.cwdAbs = isAbsolute(self.cwd) ? self.cwd : makeAbs(self, self.cwd)
-  if (process.platform === "win32")
-    self.cwdAbs = self.cwdAbs.replace(/\\/g, "/")
-  self.nomount = !!options.nomount
-
-  // disable comments and negation in Minimatch.
-  // Note that they are not supported in Glob itself anyway.
-  options.nonegate = true
-  options.nocomment = true
-
-  self.minimatch = new Minimatch(pattern, options)
-  self.options = self.minimatch.options
-}
-
-function finish (self) {
-  var nou = self.nounique
-  var all = nou ? [] : Object.create(null)
-
-  for (var i = 0, l = self.matches.length; i < l; i ++) {
-    var matches = self.matches[i]
-    if (!matches || Object.keys(matches).length === 0) {
-      if (self.nonull) {
-        // do like the shell, and spit out the literal glob
-        var literal = self.minimatch.globSet[i]
-        if (nou)
-          all.push(literal)
-        else
-          all[literal] = true
-      }
-    } else {
-      // had matches
-      var m = Object.keys(matches)
-      if (nou)
-        all.push.apply(all, m)
-      else
-        m.forEach(function (m) {
-          all[m] = true
-        })
-    }
-  }
-
-  if (!nou)
-    all = Object.keys(all)
-
-  if (!self.nosort)
-    all = all.sort(self.nocase ? alphasorti : alphasort)
-
-  // at *some* point we statted all of these
-  if (self.mark) {
-    for (var i = 0; i < all.length; i++) {
-      all[i] = self._mark(all[i])
-    }
-    if (self.nodir) {
-      all = all.filter(function (e) {
-        var notDir = !(/\/$/.test(e))
-        var c = self.cache[e] || self.cache[makeAbs(self, e)]
-        if (notDir && c)
-          notDir = c !== 'DIR' && !Array.isArray(c)
-        return notDir
-      })
-    }
-  }
-
-  if (self.ignore.length)
-    all = all.filter(function(m) {
-      return !isIgnored(self, m)
-    })
-
-  self.found = all
-}
-
-function mark (self, p) {
-  var abs = makeAbs(self, p)
-  var c = self.cache[abs]
-  var m = p
-  if (c) {
-    var isDir = c === 'DIR' || Array.isArray(c)
-    var slash = p.slice(-1) === '/'
-
-    if (isDir && !slash)
-      m += '/'
-    else if (!isDir && slash)
-      m = m.slice(0, -1)
-
-    if (m !== p) {
-      var mabs = makeAbs(self, m)
-      self.statCache[mabs] = self.statCache[abs]
-      self.cache[mabs] = self.cache[abs]
-    }
-  }
-
-  return m
-}
-
-// lotta situps...
-function makeAbs (self, f) {
-  var abs = f
-  if (f.charAt(0) === '/') {
-    abs = path.join(self.root, f)
-  } else if (isAbsolute(f) || f === '') {
-    abs = f
-  } else if (self.changedCwd) {
-    abs = path.resolve(self.cwd, f)
-  } else {
-    abs = path.resolve(f)
-  }
-
-  if (process.platform === 'win32')
-    abs = abs.replace(/\\/g, '/')
-
-  return abs
-}
-
-
-// Return true, if pattern ends with globstar '**', for the accompanying parent directory.
-// Ex:- If node_modules/** is the pattern, add 'node_modules' to ignore list along with it's contents
-function isIgnored (self, path) {
-  if (!self.ignore.length)
-    return false
-
-  return self.ignore.some(function(item) {
-    return item.matcher.match(path) || !!(item.gmatcher && item.gmatcher.match(path))
-  })
-}
-
-function childrenIgnored (self, path) {
-  if (!self.ignore.length)
-    return false
-
-  return self.ignore.some(function(item) {
-    return !!(item.gmatcher && item.gmatcher.match(path))
-  })
-}
-
-}).call(this,require('_process'))
-},{"_process":200,"minimatch":159,"path":195,"path-is-absolute":196}],139:[function(require,module,exports){
-(function (process){
-// Approach:
-//
-// 1. Get the minimatch set
-// 2. For each pattern in the set, PROCESS(pattern, false)
-// 3. Store matches per-set, then uniq them
-//
-// PROCESS(pattern, inGlobStar)
-// Get the first [n] items from pattern that are all strings
-// Join these together.  This is PREFIX.
-//   If there is no more remaining, then stat(PREFIX) and
-//   add to matches if it succeeds.  END.
-//
-// If inGlobStar and PREFIX is symlink and points to dir
-//   set ENTRIES = []
-// else readdir(PREFIX) as ENTRIES
-//   If fail, END
-//
-// with ENTRIES
-//   If pattern[n] is GLOBSTAR
-//     // handle the case where the globstar match is empty
-//     // by pruning it out, and testing the resulting pattern
-//     PROCESS(pattern[0..n] + pattern[n+1 .. $], false)
-//     // handle other cases.
-//     for ENTRY in ENTRIES (not dotfiles)
-//       // attach globstar + tail onto the entry
-//       // Mark that this entry is a globstar match
-//       PROCESS(pattern[0..n] + ENTRY + pattern[n .. $], true)
-//
-//   else // not globstar
-//     for ENTRY in ENTRIES (not dotfiles, unless pattern[n] is dot)
-//       Test ENTRY against pattern[n]
-//       If fails, continue
-//       If passes, PROCESS(pattern[0..n] + item + pattern[n+1 .. $])
-//
-// Caveat:
-//   Cache all stats and readdirs results to minimize syscall.  Since all
-//   we ever care about is existence and directory-ness, we can just keep
-//   `true` for files, and [children,...] for directories, or `false` for
-//   things that don't exist.
-
-module.exports = glob
-
-var fs = require('fs')
-var rp = require('fs.realpath')
-var minimatch = require('minimatch')
-var Minimatch = minimatch.Minimatch
-var inherits = require('inherits')
-var EE = require('events').EventEmitter
-var path = require('path')
-var assert = require('assert')
-var isAbsolute = require('path-is-absolute')
-var globSync = require('./sync.js')
-var common = require('./common.js')
-var alphasort = common.alphasort
-var alphasorti = common.alphasorti
-var setopts = common.setopts
-var ownProp = common.ownProp
-var inflight = require('inflight')
-var util = require('util')
-var childrenIgnored = common.childrenIgnored
-var isIgnored = common.isIgnored
-
-var once = require('once')
-
-function glob (pattern, options, cb) {
-  if (typeof options === 'function') cb = options, options = {}
-  if (!options) options = {}
-
-  if (options.sync) {
-    if (cb)
-      throw new TypeError('callback provided to sync glob')
-    return globSync(pattern, options)
-  }
-
-  return new Glob(pattern, options, cb)
-}
-
-glob.sync = globSync
-var GlobSync = glob.GlobSync = globSync.GlobSync
-
-// old api surface
-glob.glob = glob
-
-function extend (origin, add) {
-  if (add === null || typeof add !== 'object') {
-    return origin
-  }
-
-  var keys = Object.keys(add)
-  var i = keys.length
-  while (i--) {
-    origin[keys[i]] = add[keys[i]]
-  }
-  return origin
-}
-
-glob.hasMagic = function (pattern, options_) {
-  var options = extend({}, options_)
-  options.noprocess = true
-
-  var g = new Glob(pattern, options)
-  var set = g.minimatch.set
-
-  if (!pattern)
-    return false
-
-  if (set.length > 1)
-    return true
-
-  for (var j = 0; j < set[0].length; j++) {
-    if (typeof set[0][j] !== 'string')
-      return true
-  }
-
-  return false
-}
-
-glob.Glob = Glob
-inherits(Glob, EE)
-function Glob (pattern, options, cb) {
-  if (typeof options === 'function') {
-    cb = options
-    options = null
-  }
-
-  if (options && options.sync) {
-    if (cb)
-      throw new TypeError('callback provided to sync glob')
-    return new GlobSync(pattern, options)
-  }
-
-  if (!(this instanceof Glob))
-    return new Glob(pattern, options, cb)
-
-  setopts(this, pattern, options)
-  this._didRealPath = false
-
-  // process each pattern in the minimatch set
-  var n = this.minimatch.set.length
-
-  // The matches are stored as {<filename>: true,...} so that
-  // duplicates are automagically pruned.
-  // Later, we do an Object.keys() on these.
-  // Keep them as a list so we can fill in when nonull is set.
-  this.matches = new Array(n)
-
-  if (typeof cb === 'function') {
-    cb = once(cb)
-    this.on('error', cb)
-    this.on('end', function (matches) {
-      cb(null, matches)
-    })
-  }
-
-  var self = this
-  var n = this.minimatch.set.length
-  this._processing = 0
-  this.matches = new Array(n)
-
-  this._emitQueue = []
-  this._processQueue = []
-  this.paused = false
-
-  if (this.noprocess)
-    return this
-
-  if (n === 0)
-    return done()
-
-  var sync = true
-  for (var i = 0; i < n; i ++) {
-    this._process(this.minimatch.set[i], i, false, done)
-  }
-  sync = false
-
-  function done () {
-    --self._processing
-    if (self._processing <= 0) {
-      if (sync) {
-        process.nextTick(function () {
-          self._finish()
-        })
-      } else {
-        self._finish()
-      }
-    }
-  }
-}
-
-Glob.prototype._finish = function () {
-  assert(this instanceof Glob)
-  if (this.aborted)
-    return
-
-  if (this.realpath && !this._didRealpath)
-    return this._realpath()
-
-  common.finish(this)
-  this.emit('end', this.found)
-}
-
-Glob.prototype._realpath = function () {
-  if (this._didRealpath)
-    return
-
-  this._didRealpath = true
-
-  var n = this.matches.length
-  if (n === 0)
-    return this._finish()
-
-  var self = this
-  for (var i = 0; i < this.matches.length; i++)
-    this._realpathSet(i, next)
-
-  function next () {
-    if (--n === 0)
-      self._finish()
-  }
-}
-
-Glob.prototype._realpathSet = function (index, cb) {
-  var matchset = this.matches[index]
-  if (!matchset)
-    return cb()
-
-  var found = Object.keys(matchset)
-  var self = this
-  var n = found.length
-
-  if (n === 0)
-    return cb()
-
-  var set = this.matches[index] = Object.create(null)
-  found.forEach(function (p, i) {
-    // If there's a problem with the stat, then it means that
-    // one or more of the links in the realpath couldn't be
-    // resolved.  just return the abs value in that case.
-    p = self._makeAbs(p)
-    rp.realpath(p, self.realpathCache, function (er, real) {
-      if (!er)
-        set[real] = true
-      else if (er.syscall === 'stat')
-        set[p] = true
-      else
-        self.emit('error', er) // srsly wtf right here
-
-      if (--n === 0) {
-        self.matches[index] = set
-        cb()
-      }
-    })
-  })
-}
-
-Glob.prototype._mark = function (p) {
-  return common.mark(this, p)
-}
-
-Glob.prototype._makeAbs = function (f) {
-  return common.makeAbs(this, f)
-}
-
-Glob.prototype.abort = function () {
-  this.aborted = true
-  this.emit('abort')
-}
-
-Glob.prototype.pause = function () {
-  if (!this.paused) {
-    this.paused = true
-    this.emit('pause')
-  }
-}
-
-Glob.prototype.resume = function () {
-  if (this.paused) {
-    this.emit('resume')
-    this.paused = false
-    if (this._emitQueue.length) {
-      var eq = this._emitQueue.slice(0)
-      this._emitQueue.length = 0
-      for (var i = 0; i < eq.length; i ++) {
-        var e = eq[i]
-        this._emitMatch(e[0], e[1])
-      }
-    }
-    if (this._processQueue.length) {
-      var pq = this._processQueue.slice(0)
-      this._processQueue.length = 0
-      for (var i = 0; i < pq.length; i ++) {
-        var p = pq[i]
-        this._processing--
-        this._process(p[0], p[1], p[2], p[3])
-      }
-    }
-  }
-}
-
-Glob.prototype._process = function (pattern, index, inGlobStar, cb) {
-  assert(this instanceof Glob)
-  assert(typeof cb === 'function')
-
-  if (this.aborted)
-    return
-
-  this._processing++
-  if (this.paused) {
-    this._processQueue.push([pattern, index, inGlobStar, cb])
-    return
-  }
-
-  //console.error('PROCESS %d', this._processing, pattern)
-
-  // Get the first [n] parts of pattern that are all strings.
-  var n = 0
-  while (typeof pattern[n] === 'string') {
-    n ++
-  }
-  // now n is the index of the first one that is *not* a string.
-
-  // see if there's anything else
-  var prefix
-  switch (n) {
-    // if not, then this is rather simple
-    case pattern.length:
-      this._processSimple(pattern.join('/'), index, cb)
-      return
-
-    case 0:
-      // pattern *starts* with some non-trivial item.
-      // going to readdir(cwd), but not include the prefix in matches.
-      prefix = null
-      break
-
-    default:
-      // pattern has some string bits in the front.
-      // whatever it starts with, whether that's 'absolute' like /foo/bar,
-      // or 'relative' like '../baz'
-      prefix = pattern.slice(0, n).join('/')
-      break
-  }
-
-  var remain = pattern.slice(n)
-
-  // get the list of entries.
-  var read
-  if (prefix === null)
-    read = '.'
-  else if (isAbsolute(prefix) || isAbsolute(pattern.join('/'))) {
-    if (!prefix || !isAbsolute(prefix))
-      prefix = '/' + prefix
-    read = prefix
-  } else
-    read = prefix
-
-  var abs = this._makeAbs(read)
-
-  //if ignored, skip _processing
-  if (childrenIgnored(this, read))
-    return cb()
-
-  var isGlobStar = remain[0] === minimatch.GLOBSTAR
-  if (isGlobStar)
-    this._processGlobStar(prefix, read, abs, remain, index, inGlobStar, cb)
-  else
-    this._processReaddir(prefix, read, abs, remain, index, inGlobStar, cb)
-}
-
-Glob.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
-  var self = this
-  this._readdir(abs, inGlobStar, function (er, entries) {
-    return self._processReaddir2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
-  })
-}
-
-Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
-
-  // if the abs isn't a dir, then nothing can match!
-  if (!entries)
-    return cb()
-
-  // It will only match dot entries if it starts with a dot, or if
-  // dot is set.  Stuff like @(.foo|.bar) isn't allowed.
-  var pn = remain[0]
-  var negate = !!this.minimatch.negate
-  var rawGlob = pn._glob
-  var dotOk = this.dot || rawGlob.charAt(0) === '.'
-
-  var matchedEntries = []
-  for (var i = 0; i < entries.length; i++) {
-    var e = entries[i]
-    if (e.charAt(0) !== '.' || dotOk) {
-      var m
-      if (negate && !prefix) {
-        m = !e.match(pn)
-      } else {
-        m = e.match(pn)
-      }
-      if (m)
-        matchedEntries.push(e)
-    }
-  }
-
-  //console.error('prd2', prefix, entries, remain[0]._glob, matchedEntries)
-
-  var len = matchedEntries.length
-  // If there are no matched entries, then nothing matches.
-  if (len === 0)
-    return cb()
-
-  // if this is the last remaining pattern bit, then no need for
-  // an additional stat *unless* the user has specified mark or
-  // stat explicitly.  We know they exist, since readdir returned
-  // them.
-
-  if (remain.length === 1 && !this.mark && !this.stat) {
-    if (!this.matches[index])
-      this.matches[index] = Object.create(null)
-
-    for (var i = 0; i < len; i ++) {
-      var e = matchedEntries[i]
-      if (prefix) {
-        if (prefix !== '/')
-          e = prefix + '/' + e
-        else
-          e = prefix + e
-      }
-
-      if (e.charAt(0) === '/' && !this.nomount) {
-        e = path.join(this.root, e)
-      }
-      this._emitMatch(index, e)
-    }
-    // This was the last one, and no stats were needed
-    return cb()
-  }
-
-  // now test all matched entries as stand-ins for that part
-  // of the pattern.
-  remain.shift()
-  for (var i = 0; i < len; i ++) {
-    var e = matchedEntries[i]
-    var newPattern
-    if (prefix) {
-      if (prefix !== '/')
-        e = prefix + '/' + e
-      else
-        e = prefix + e
-    }
-    this._process([e].concat(remain), index, inGlobStar, cb)
-  }
-  cb()
-}
-
-Glob.prototype._emitMatch = function (index, e) {
-  if (this.aborted)
-    return
-
-  if (isIgnored(this, e))
-    return
-
-  if (this.paused) {
-    this._emitQueue.push([index, e])
-    return
-  }
-
-  var abs = isAbsolute(e) ? e : this._makeAbs(e)
-
-  if (this.mark)
-    e = this._mark(e)
-
-  if (this.absolute)
-    e = abs
-
-  if (this.matches[index][e])
-    return
-
-  if (this.nodir) {
-    var c = this.cache[abs]
-    if (c === 'DIR' || Array.isArray(c))
-      return
-  }
-
-  this.matches[index][e] = true
-
-  var st = this.statCache[abs]
-  if (st)
-    this.emit('stat', e, st)
-
-  this.emit('match', e)
-}
-
-Glob.prototype._readdirInGlobStar = function (abs, cb) {
-  if (this.aborted)
-    return
-
-  // follow all symlinked directories forever
-  // just proceed as if this is a non-globstar situation
-  if (this.follow)
-    return this._readdir(abs, false, cb)
-
-  var lstatkey = 'lstat\0' + abs
-  var self = this
-  var lstatcb = inflight(lstatkey, lstatcb_)
-
-  if (lstatcb)
-    fs.lstat(abs, lstatcb)
-
-  function lstatcb_ (er, lstat) {
-    if (er && er.code === 'ENOENT')
-      return cb()
-
-    var isSym = lstat && lstat.isSymbolicLink()
-    self.symlinks[abs] = isSym
-
-    // If it's not a symlink or a dir, then it's definitely a regular file.
-    // don't bother doing a readdir in that case.
-    if (!isSym && lstat && !lstat.isDirectory()) {
-      self.cache[abs] = 'FILE'
-      cb()
-    } else
-      self._readdir(abs, false, cb)
-  }
-}
-
-Glob.prototype._readdir = function (abs, inGlobStar, cb) {
-  if (this.aborted)
-    return
-
-  cb = inflight('readdir\0'+abs+'\0'+inGlobStar, cb)
-  if (!cb)
-    return
-
-  //console.error('RD %j %j', +inGlobStar, abs)
-  if (inGlobStar && !ownProp(this.symlinks, abs))
-    return this._readdirInGlobStar(abs, cb)
-
-  if (ownProp(this.cache, abs)) {
-    var c = this.cache[abs]
-    if (!c || c === 'FILE')
-      return cb()
-
-    if (Array.isArray(c))
-      return cb(null, c)
-  }
-
-  var self = this
-  fs.readdir(abs, readdirCb(this, abs, cb))
-}
-
-function readdirCb (self, abs, cb) {
-  return function (er, entries) {
-    if (er)
-      self._readdirError(abs, er, cb)
-    else
-      self._readdirEntries(abs, entries, cb)
-  }
-}
-
-Glob.prototype._readdirEntries = function (abs, entries, cb) {
-  if (this.aborted)
-    return
-
-  // if we haven't asked to stat everything, then just
-  // assume that everything in there exists, so we can avoid
-  // having to stat it a second time.
-  if (!this.mark && !this.stat) {
-    for (var i = 0; i < entries.length; i ++) {
-      var e = entries[i]
-      if (abs === '/')
-        e = abs + e
-      else
-        e = abs + '/' + e
-      this.cache[e] = true
-    }
-  }
-
-  this.cache[abs] = entries
-  return cb(null, entries)
-}
-
-Glob.prototype._readdirError = function (f, er, cb) {
-  if (this.aborted)
-    return
-
-  // handle errors, and cache the information
-  switch (er.code) {
-    case 'ENOTSUP': // https://github.com/isaacs/node-glob/issues/205
-    case 'ENOTDIR': // totally normal. means it *does* exist.
-      var abs = this._makeAbs(f)
-      this.cache[abs] = 'FILE'
-      if (abs === this.cwdAbs) {
-        var error = new Error(er.code + ' invalid cwd ' + this.cwd)
-        error.path = this.cwd
-        error.code = er.code
-        this.emit('error', error)
-        this.abort()
-      }
-      break
-
-    case 'ENOENT': // not terribly unusual
-    case 'ELOOP':
-    case 'ENAMETOOLONG':
-    case 'UNKNOWN':
-      this.cache[this._makeAbs(f)] = false
-      break
-
-    default: // some unusual error.  Treat as failure.
-      this.cache[this._makeAbs(f)] = false
-      if (this.strict) {
-        this.emit('error', er)
-        // If the error is handled, then we abort
-        // if not, we threw out of here
-        this.abort()
-      }
-      if (!this.silent)
-        console.error('glob error', er)
-      break
-  }
-
-  return cb()
-}
-
-Glob.prototype._processGlobStar = function (prefix, read, abs, remain, index, inGlobStar, cb) {
-  var self = this
-  this._readdir(abs, inGlobStar, function (er, entries) {
-    self._processGlobStar2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
-  })
-}
-
-
-Glob.prototype._processGlobStar2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
-  //console.error('pgs2', prefix, remain[0], entries)
-
-  // no entries means not a dir, so it can never have matches
-  // foo.txt/** doesn't match foo.txt
-  if (!entries)
-    return cb()
-
-  // test without the globstar, and with every child both below
-  // and replacing the globstar.
-  var remainWithoutGlobStar = remain.slice(1)
-  var gspref = prefix ? [ prefix ] : []
-  var noGlobStar = gspref.concat(remainWithoutGlobStar)
-
-  // the noGlobStar pattern exits the inGlobStar state
-  this._process(noGlobStar, index, false, cb)
-
-  var isSym = this.symlinks[abs]
-  var len = entries.length
-
-  // If it's a symlink, and we're in a globstar, then stop
-  if (isSym && inGlobStar)
-    return cb()
-
-  for (var i = 0; i < len; i++) {
-    var e = entries[i]
-    if (e.charAt(0) === '.' && !this.dot)
-      continue
-
-    // these two cases enter the inGlobStar state
-    var instead = gspref.concat(entries[i], remainWithoutGlobStar)
-    this._process(instead, index, true, cb)
-
-    var below = gspref.concat(entries[i], remain)
-    this._process(below, index, true, cb)
-  }
-
-  cb()
-}
-
-Glob.prototype._processSimple = function (prefix, index, cb) {
-  // XXX review this.  Shouldn't it be doing the mounting etc
-  // before doing stat?  kinda weird?
-  var self = this
-  this._stat(prefix, function (er, exists) {
-    self._processSimple2(prefix, index, er, exists, cb)
-  })
-}
-Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
-
-  //console.error('ps2', prefix, exists)
-
-  if (!this.matches[index])
-    this.matches[index] = Object.create(null)
-
-  // If it doesn't exist, then just mark the lack of results
-  if (!exists)
-    return cb()
-
-  if (prefix && isAbsolute(prefix) && !this.nomount) {
-    var trail = /[\/\\]$/.test(prefix)
-    if (prefix.charAt(0) === '/') {
-      prefix = path.join(this.root, prefix)
-    } else {
-      prefix = path.resolve(this.root, prefix)
-      if (trail)
-        prefix += '/'
-    }
-  }
-
-  if (process.platform === 'win32')
-    prefix = prefix.replace(/\\/g, '/')
-
-  // Mark this as a match
-  this._emitMatch(index, prefix)
-  cb()
-}
-
-// Returns either 'DIR', 'FILE', or false
-Glob.prototype._stat = function (f, cb) {
-  var abs = this._makeAbs(f)
-  var needDir = f.slice(-1) === '/'
-
-  if (f.length > this.maxLength)
-    return cb()
-
-  if (!this.stat && ownProp(this.cache, abs)) {
-    var c = this.cache[abs]
-
-    if (Array.isArray(c))
-      c = 'DIR'
-
-    // It exists, but maybe not how we need it
-    if (!needDir || c === 'DIR')
-      return cb(null, c)
-
-    if (needDir && c === 'FILE')
-      return cb()
-
-    // otherwise we have to stat, because maybe c=true
-    // if we know it exists, but not what it is.
-  }
-
-  var exists
-  var stat = this.statCache[abs]
-  if (stat !== undefined) {
-    if (stat === false)
-      return cb(null, stat)
-    else {
-      var type = stat.isDirectory() ? 'DIR' : 'FILE'
-      if (needDir && type === 'FILE')
-        return cb()
-      else
-        return cb(null, type, stat)
-    }
-  }
-
-  var self = this
-  var statcb = inflight('stat\0' + abs, lstatcb_)
-  if (statcb)
-    fs.lstat(abs, statcb)
-
-  function lstatcb_ (er, lstat) {
-    if (lstat && lstat.isSymbolicLink()) {
-      // If it's a symlink, then treat it as the target, unless
-      // the target does not exist, then treat it as a file.
-      return fs.stat(abs, function (er, stat) {
-        if (er)
-          self._stat2(f, abs, null, lstat, cb)
-        else
-          self._stat2(f, abs, er, stat, cb)
-      })
-    } else {
-      self._stat2(f, abs, er, lstat, cb)
-    }
-  }
-}
-
-Glob.prototype._stat2 = function (f, abs, er, stat, cb) {
-  if (er && (er.code === 'ENOENT' || er.code === 'ENOTDIR')) {
-    this.statCache[abs] = false
-    return cb()
-  }
-
-  var needDir = f.slice(-1) === '/'
-  this.statCache[abs] = stat
-
-  if (abs.slice(-1) === '/' && stat && !stat.isDirectory())
-    return cb(null, false, stat)
-
-  var c = true
-  if (stat)
-    c = stat.isDirectory() ? 'DIR' : 'FILE'
-  this.cache[abs] = this.cache[abs] || c
-
-  if (needDir && c === 'FILE')
-    return cb()
-
-  return cb(null, c, stat)
-}
-
-}).call(this,require('_process'))
-},{"./common.js":138,"./sync.js":140,"_process":200,"assert":28,"events":134,"fs":64,"fs.realpath":136,"inflight":150,"inherits":151,"minimatch":159,"once":178,"path":195,"path-is-absolute":196,"util":243}],140:[function(require,module,exports){
-(function (process){
-module.exports = globSync
-globSync.GlobSync = GlobSync
-
-var fs = require('fs')
-var rp = require('fs.realpath')
-var minimatch = require('minimatch')
-var Minimatch = minimatch.Minimatch
-var Glob = require('./glob.js').Glob
-var util = require('util')
-var path = require('path')
-var assert = require('assert')
-var isAbsolute = require('path-is-absolute')
-var common = require('./common.js')
-var alphasort = common.alphasort
-var alphasorti = common.alphasorti
-var setopts = common.setopts
-var ownProp = common.ownProp
-var childrenIgnored = common.childrenIgnored
-var isIgnored = common.isIgnored
-
-function globSync (pattern, options) {
-  if (typeof options === 'function' || arguments.length === 3)
-    throw new TypeError('callback provided to sync glob\n'+
-                        'See: https://github.com/isaacs/node-glob/issues/167')
-
-  return new GlobSync(pattern, options).found
-}
-
-function GlobSync (pattern, options) {
-  if (!pattern)
-    throw new Error('must provide pattern')
-
-  if (typeof options === 'function' || arguments.length === 3)
-    throw new TypeError('callback provided to sync glob\n'+
-                        'See: https://github.com/isaacs/node-glob/issues/167')
-
-  if (!(this instanceof GlobSync))
-    return new GlobSync(pattern, options)
-
-  setopts(this, pattern, options)
-
-  if (this.noprocess)
-    return this
-
-  var n = this.minimatch.set.length
-  this.matches = new Array(n)
-  for (var i = 0; i < n; i ++) {
-    this._process(this.minimatch.set[i], i, false)
-  }
-  this._finish()
-}
-
-GlobSync.prototype._finish = function () {
-  assert(this instanceof GlobSync)
-  if (this.realpath) {
-    var self = this
-    this.matches.forEach(function (matchset, index) {
-      var set = self.matches[index] = Object.create(null)
-      for (var p in matchset) {
-        try {
-          p = self._makeAbs(p)
-          var real = rp.realpathSync(p, self.realpathCache)
-          set[real] = true
-        } catch (er) {
-          if (er.syscall === 'stat')
-            set[self._makeAbs(p)] = true
-          else
-            throw er
-        }
-      }
-    })
-  }
-  common.finish(this)
-}
-
-
-GlobSync.prototype._process = function (pattern, index, inGlobStar) {
-  assert(this instanceof GlobSync)
-
-  // Get the first [n] parts of pattern that are all strings.
-  var n = 0
-  while (typeof pattern[n] === 'string') {
-    n ++
-  }
-  // now n is the index of the first one that is *not* a string.
-
-  // See if there's anything else
-  var prefix
-  switch (n) {
-    // if not, then this is rather simple
-    case pattern.length:
-      this._processSimple(pattern.join('/'), index)
-      return
-
-    case 0:
-      // pattern *starts* with some non-trivial item.
-      // going to readdir(cwd), but not include the prefix in matches.
-      prefix = null
-      break
-
-    default:
-      // pattern has some string bits in the front.
-      // whatever it starts with, whether that's 'absolute' like /foo/bar,
-      // or 'relative' like '../baz'
-      prefix = pattern.slice(0, n).join('/')
-      break
-  }
-
-  var remain = pattern.slice(n)
-
-  // get the list of entries.
-  var read
-  if (prefix === null)
-    read = '.'
-  else if (isAbsolute(prefix) || isAbsolute(pattern.join('/'))) {
-    if (!prefix || !isAbsolute(prefix))
-      prefix = '/' + prefix
-    read = prefix
-  } else
-    read = prefix
-
-  var abs = this._makeAbs(read)
-
-  //if ignored, skip processing
-  if (childrenIgnored(this, read))
-    return
-
-  var isGlobStar = remain[0] === minimatch.GLOBSTAR
-  if (isGlobStar)
-    this._processGlobStar(prefix, read, abs, remain, index, inGlobStar)
-  else
-    this._processReaddir(prefix, read, abs, remain, index, inGlobStar)
-}
-
-
-GlobSync.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar) {
-  var entries = this._readdir(abs, inGlobStar)
-
-  // if the abs isn't a dir, then nothing can match!
-  if (!entries)
-    return
-
-  // It will only match dot entries if it starts with a dot, or if
-  // dot is set.  Stuff like @(.foo|.bar) isn't allowed.
-  var pn = remain[0]
-  var negate = !!this.minimatch.negate
-  var rawGlob = pn._glob
-  var dotOk = this.dot || rawGlob.charAt(0) === '.'
-
-  var matchedEntries = []
-  for (var i = 0; i < entries.length; i++) {
-    var e = entries[i]
-    if (e.charAt(0) !== '.' || dotOk) {
-      var m
-      if (negate && !prefix) {
-        m = !e.match(pn)
-      } else {
-        m = e.match(pn)
-      }
-      if (m)
-        matchedEntries.push(e)
-    }
-  }
-
-  var len = matchedEntries.length
-  // If there are no matched entries, then nothing matches.
-  if (len === 0)
-    return
-
-  // if this is the last remaining pattern bit, then no need for
-  // an additional stat *unless* the user has specified mark or
-  // stat explicitly.  We know they exist, since readdir returned
-  // them.
-
-  if (remain.length === 1 && !this.mark && !this.stat) {
-    if (!this.matches[index])
-      this.matches[index] = Object.create(null)
-
-    for (var i = 0; i < len; i ++) {
-      var e = matchedEntries[i]
-      if (prefix) {
-        if (prefix.slice(-1) !== '/')
-          e = prefix + '/' + e
-        else
-          e = prefix + e
-      }
-
-      if (e.charAt(0) === '/' && !this.nomount) {
-        e = path.join(this.root, e)
-      }
-      this._emitMatch(index, e)
-    }
-    // This was the last one, and no stats were needed
-    return
-  }
-
-  // now test all matched entries as stand-ins for that part
-  // of the pattern.
-  remain.shift()
-  for (var i = 0; i < len; i ++) {
-    var e = matchedEntries[i]
-    var newPattern
-    if (prefix)
-      newPattern = [prefix, e]
-    else
-      newPattern = [e]
-    this._process(newPattern.concat(remain), index, inGlobStar)
-  }
-}
-
-
-GlobSync.prototype._emitMatch = function (index, e) {
-  if (isIgnored(this, e))
-    return
-
-  var abs = this._makeAbs(e)
-
-  if (this.mark)
-    e = this._mark(e)
-
-  if (this.absolute) {
-    e = abs
-  }
-
-  if (this.matches[index][e])
-    return
-
-  if (this.nodir) {
-    var c = this.cache[abs]
-    if (c === 'DIR' || Array.isArray(c))
-      return
-  }
-
-  this.matches[index][e] = true
-
-  if (this.stat)
-    this._stat(e)
-}
-
-
-GlobSync.prototype._readdirInGlobStar = function (abs) {
-  // follow all symlinked directories forever
-  // just proceed as if this is a non-globstar situation
-  if (this.follow)
-    return this._readdir(abs, false)
-
-  var entries
-  var lstat
-  var stat
-  try {
-    lstat = fs.lstatSync(abs)
-  } catch (er) {
-    if (er.code === 'ENOENT') {
-      // lstat failed, doesn't exist
-      return null
-    }
-  }
-
-  var isSym = lstat && lstat.isSymbolicLink()
-  this.symlinks[abs] = isSym
-
-  // If it's not a symlink or a dir, then it's definitely a regular file.
-  // don't bother doing a readdir in that case.
-  if (!isSym && lstat && !lstat.isDirectory())
-    this.cache[abs] = 'FILE'
-  else
-    entries = this._readdir(abs, false)
-
-  return entries
-}
-
-GlobSync.prototype._readdir = function (abs, inGlobStar) {
-  var entries
-
-  if (inGlobStar && !ownProp(this.symlinks, abs))
-    return this._readdirInGlobStar(abs)
-
-  if (ownProp(this.cache, abs)) {
-    var c = this.cache[abs]
-    if (!c || c === 'FILE')
-      return null
-
-    if (Array.isArray(c))
-      return c
-  }
-
-  try {
-    return this._readdirEntries(abs, fs.readdirSync(abs))
-  } catch (er) {
-    this._readdirError(abs, er)
-    return null
-  }
-}
-
-GlobSync.prototype._readdirEntries = function (abs, entries) {
-  // if we haven't asked to stat everything, then just
-  // assume that everything in there exists, so we can avoid
-  // having to stat it a second time.
-  if (!this.mark && !this.stat) {
-    for (var i = 0; i < entries.length; i ++) {
-      var e = entries[i]
-      if (abs === '/')
-        e = abs + e
-      else
-        e = abs + '/' + e
-      this.cache[e] = true
-    }
-  }
-
-  this.cache[abs] = entries
-
-  // mark and cache dir-ness
-  return entries
-}
-
-GlobSync.prototype._readdirError = function (f, er) {
-  // handle errors, and cache the information
-  switch (er.code) {
-    case 'ENOTSUP': // https://github.com/isaacs/node-glob/issues/205
-    case 'ENOTDIR': // totally normal. means it *does* exist.
-      var abs = this._makeAbs(f)
-      this.cache[abs] = 'FILE'
-      if (abs === this.cwdAbs) {
-        var error = new Error(er.code + ' invalid cwd ' + this.cwd)
-        error.path = this.cwd
-        error.code = er.code
-        throw error
-      }
-      break
-
-    case 'ENOENT': // not terribly unusual
-    case 'ELOOP':
-    case 'ENAMETOOLONG':
-    case 'UNKNOWN':
-      this.cache[this._makeAbs(f)] = false
-      break
-
-    default: // some unusual error.  Treat as failure.
-      this.cache[this._makeAbs(f)] = false
-      if (this.strict)
-        throw er
-      if (!this.silent)
-        console.error('glob error', er)
-      break
-  }
-}
-
-GlobSync.prototype._processGlobStar = function (prefix, read, abs, remain, index, inGlobStar) {
-
-  var entries = this._readdir(abs, inGlobStar)
-
-  // no entries means not a dir, so it can never have matches
-  // foo.txt/** doesn't match foo.txt
-  if (!entries)
-    return
-
-  // test without the globstar, and with every child both below
-  // and replacing the globstar.
-  var remainWithoutGlobStar = remain.slice(1)
-  var gspref = prefix ? [ prefix ] : []
-  var noGlobStar = gspref.concat(remainWithoutGlobStar)
-
-  // the noGlobStar pattern exits the inGlobStar state
-  this._process(noGlobStar, index, false)
-
-  var len = entries.length
-  var isSym = this.symlinks[abs]
-
-  // If it's a symlink, and we're in a globstar, then stop
-  if (isSym && inGlobStar)
-    return
-
-  for (var i = 0; i < len; i++) {
-    var e = entries[i]
-    if (e.charAt(0) === '.' && !this.dot)
-      continue
-
-    // these two cases enter the inGlobStar state
-    var instead = gspref.concat(entries[i], remainWithoutGlobStar)
-    this._process(instead, index, true)
-
-    var below = gspref.concat(entries[i], remain)
-    this._process(below, index, true)
-  }
-}
-
-GlobSync.prototype._processSimple = function (prefix, index) {
-  // XXX review this.  Shouldn't it be doing the mounting etc
-  // before doing stat?  kinda weird?
-  var exists = this._stat(prefix)
-
-  if (!this.matches[index])
-    this.matches[index] = Object.create(null)
-
-  // If it doesn't exist, then just mark the lack of results
-  if (!exists)
-    return
-
-  if (prefix && isAbsolute(prefix) && !this.nomount) {
-    var trail = /[\/\\]$/.test(prefix)
-    if (prefix.charAt(0) === '/') {
-      prefix = path.join(this.root, prefix)
-    } else {
-      prefix = path.resolve(this.root, prefix)
-      if (trail)
-        prefix += '/'
-    }
-  }
-
-  if (process.platform === 'win32')
-    prefix = prefix.replace(/\\/g, '/')
-
-  // Mark this as a match
-  this._emitMatch(index, prefix)
-}
-
-// Returns either 'DIR', 'FILE', or false
-GlobSync.prototype._stat = function (f) {
-  var abs = this._makeAbs(f)
-  var needDir = f.slice(-1) === '/'
-
-  if (f.length > this.maxLength)
-    return false
-
-  if (!this.stat && ownProp(this.cache, abs)) {
-    var c = this.cache[abs]
-
-    if (Array.isArray(c))
-      c = 'DIR'
-
-    // It exists, but maybe not how we need it
-    if (!needDir || c === 'DIR')
-      return c
-
-    if (needDir && c === 'FILE')
-      return false
-
-    // otherwise we have to stat, because maybe c=true
-    // if we know it exists, but not what it is.
-  }
-
-  var exists
-  var stat = this.statCache[abs]
-  if (!stat) {
-    var lstat
-    try {
-      lstat = fs.lstatSync(abs)
-    } catch (er) {
-      if (er && (er.code === 'ENOENT' || er.code === 'ENOTDIR')) {
-        this.statCache[abs] = false
-        return false
-      }
-    }
-
-    if (lstat && lstat.isSymbolicLink()) {
-      try {
-        stat = fs.statSync(abs)
-      } catch (er) {
-        stat = lstat
-      }
-    } else {
-      stat = lstat
-    }
-  }
-
-  this.statCache[abs] = stat
-
-  var c = true
-  if (stat)
-    c = stat.isDirectory() ? 'DIR' : 'FILE'
-
-  this.cache[abs] = this.cache[abs] || c
-
-  if (needDir && c === 'FILE')
-    return false
-
-  return c
-}
-
-GlobSync.prototype._mark = function (p) {
-  return common.mark(this, p)
-}
-
-GlobSync.prototype._makeAbs = function (f) {
-  return common.makeAbs(this, f)
-}
-
-}).call(this,require('_process'))
-},{"./common.js":138,"./glob.js":139,"_process":200,"assert":28,"fs":64,"fs.realpath":136,"minimatch":159,"path":195,"path-is-absolute":196,"util":243}],141:[function(require,module,exports){
+},{"buffer":65,"create-hash/md5":98}],131:[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -29289,7 +26735,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":142,"./hash/hmac":143,"./hash/ripemd":144,"./hash/sha":145,"./hash/utils":146}],142:[function(require,module,exports){
+},{"./hash/common":132,"./hash/hmac":133,"./hash/ripemd":134,"./hash/sha":135,"./hash/utils":136}],132:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -29382,7 +26828,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"../hash":141}],143:[function(require,module,exports){
+},{"../hash":131}],133:[function(require,module,exports){
 var hmac = exports;
 
 var hash = require('../hash');
@@ -29432,7 +26878,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"../hash":141}],144:[function(require,module,exports){
+},{"../hash":131}],134:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 
@@ -29578,7 +27024,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"../hash":141}],145:[function(require,module,exports){
+},{"../hash":131}],135:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -30144,7 +27590,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../hash":141}],146:[function(require,module,exports){
+},{"../hash":131}],136:[function(require,module,exports){
 var utils = exports;
 var inherits = require('inherits');
 
@@ -30403,7 +27849,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":151}],147:[function(require,module,exports){
+},{"inherits":140}],137:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -30518,7 +27964,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"hash.js":141,"minimalistic-assert":157,"minimalistic-crypto-utils":158}],148:[function(require,module,exports){
+},{"hash.js":131,"minimalistic-assert":146,"minimalistic-crypto-utils":147}],138:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -30604,7 +28050,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],149:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -30615,65 +28061,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],150:[function(require,module,exports){
-(function (process){
-var wrappy = require('wrappy')
-var reqs = Object.create(null)
-var once = require('once')
-
-module.exports = wrappy(inflight)
-
-function inflight (key, cb) {
-  if (reqs[key]) {
-    reqs[key].push(cb)
-    return null
-  } else {
-    reqs[key] = [cb]
-    return makeres(key)
-  }
-}
-
-function makeres (key) {
-  return once(function RES () {
-    var cbs = reqs[key]
-    var len = cbs.length
-    var args = slice(arguments)
-
-    // XXX It's somewhat ambiguous whether a new callback added in this
-    // pass should be queued for later execution if something in the
-    // list of callbacks throws, or if it should just be discarded.
-    // However, it's such an edge case that it hardly matters, and either
-    // choice is likely as surprising as the other.
-    // As it happens, we do go ahead and schedule it for later execution.
-    try {
-      for (var i = 0; i < len; i++) {
-        cbs[i].apply(null, args)
-      }
-    } finally {
-      if (cbs.length > len) {
-        // added more in the interim.
-        // de-zalgo, just in case, but don't call again.
-        cbs.splice(0, len)
-        process.nextTick(function () {
-          RES.apply(null, args)
-        })
-      } else {
-        delete reqs[key]
-      }
-    }
-  })
-}
-
-function slice (args) {
-  var length = args.length
-  var array = []
-
-  for (var i = 0; i < length; i++) array[i] = args[i]
-  return array
-}
-
-}).call(this,require('_process'))
-},{"_process":200,"once":178,"wrappy":246}],151:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -30698,7 +28086,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],152:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -30721,14 +28109,14 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],153:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],154:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 var util = require('util');
 var PassThrough = require('readable-stream/passthrough');
 
@@ -30784,7 +28172,7 @@ function Writable(fn, options) {
 }
 
 
-},{"readable-stream/passthrough":215,"util":243}],155:[function(require,module,exports){
+},{"readable-stream/passthrough":201,"util":225}],144:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -47872,7 +45260,7 @@ function Writable(fn, options) {
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],156:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -47987,7 +45375,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":33,"brorand":35}],157:[function(require,module,exports){
+},{"bn.js":31,"brorand":32}],146:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -48000,7 +45388,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],158:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -48060,932 +45448,7 @@ utils.encode = function encode(arr, enc) {
     return arr;
 };
 
-},{}],159:[function(require,module,exports){
-module.exports = minimatch
-minimatch.Minimatch = Minimatch
-
-var path = { sep: '/' }
-try {
-  path = require('path')
-} catch (er) {}
-
-var GLOBSTAR = minimatch.GLOBSTAR = Minimatch.GLOBSTAR = {}
-var expand = require('brace-expansion')
-
-var plTypes = {
-  '!': { open: '(?:(?!(?:', close: '))[^/]*?)'},
-  '?': { open: '(?:', close: ')?' },
-  '+': { open: '(?:', close: ')+' },
-  '*': { open: '(?:', close: ')*' },
-  '@': { open: '(?:', close: ')' }
-}
-
-// any single thing other than /
-// don't need to escape / when using new RegExp()
-var qmark = '[^/]'
-
-// * => any number of characters
-var star = qmark + '*?'
-
-// ** when dots are allowed.  Anything goes, except .. and .
-// not (^ or / followed by one or two dots followed by $ or /),
-// followed by anything, any number of times.
-var twoStarDot = '(?:(?!(?:\\\/|^)(?:\\.{1,2})($|\\\/)).)*?'
-
-// not a ^ or / followed by a dot,
-// followed by anything, any number of times.
-var twoStarNoDot = '(?:(?!(?:\\\/|^)\\.).)*?'
-
-// characters that need to be escaped in RegExp.
-var reSpecials = charSet('().*{}+?[]^$\\!')
-
-// "abc" -> { a:true, b:true, c:true }
-function charSet (s) {
-  return s.split('').reduce(function (set, c) {
-    set[c] = true
-    return set
-  }, {})
-}
-
-// normalizes slashes.
-var slashSplit = /\/+/
-
-minimatch.filter = filter
-function filter (pattern, options) {
-  options = options || {}
-  return function (p, i, list) {
-    return minimatch(p, pattern, options)
-  }
-}
-
-function ext (a, b) {
-  a = a || {}
-  b = b || {}
-  var t = {}
-  Object.keys(b).forEach(function (k) {
-    t[k] = b[k]
-  })
-  Object.keys(a).forEach(function (k) {
-    t[k] = a[k]
-  })
-  return t
-}
-
-minimatch.defaults = function (def) {
-  if (!def || !Object.keys(def).length) return minimatch
-
-  var orig = minimatch
-
-  var m = function minimatch (p, pattern, options) {
-    return orig.minimatch(p, pattern, ext(def, options))
-  }
-
-  m.Minimatch = function Minimatch (pattern, options) {
-    return new orig.Minimatch(pattern, ext(def, options))
-  }
-
-  return m
-}
-
-Minimatch.defaults = function (def) {
-  if (!def || !Object.keys(def).length) return Minimatch
-  return minimatch.defaults(def).Minimatch
-}
-
-function minimatch (p, pattern, options) {
-  if (typeof pattern !== 'string') {
-    throw new TypeError('glob pattern string required')
-  }
-
-  if (!options) options = {}
-
-  // shortcut: comments match nothing.
-  if (!options.nocomment && pattern.charAt(0) === '#') {
-    return false
-  }
-
-  // "" only matches ""
-  if (pattern.trim() === '') return p === ''
-
-  return new Minimatch(pattern, options).match(p)
-}
-
-function Minimatch (pattern, options) {
-  if (!(this instanceof Minimatch)) {
-    return new Minimatch(pattern, options)
-  }
-
-  if (typeof pattern !== 'string') {
-    throw new TypeError('glob pattern string required')
-  }
-
-  if (!options) options = {}
-  pattern = pattern.trim()
-
-  // windows support: need to use /, not \
-  if (path.sep !== '/') {
-    pattern = pattern.split(path.sep).join('/')
-  }
-
-  this.options = options
-  this.set = []
-  this.pattern = pattern
-  this.regexp = null
-  this.negate = false
-  this.comment = false
-  this.empty = false
-
-  // make the set of regexps etc.
-  this.make()
-}
-
-Minimatch.prototype.debug = function () {}
-
-Minimatch.prototype.make = make
-function make () {
-  // don't do it more than once.
-  if (this._made) return
-
-  var pattern = this.pattern
-  var options = this.options
-
-  // empty patterns and comments match nothing.
-  if (!options.nocomment && pattern.charAt(0) === '#') {
-    this.comment = true
-    return
-  }
-  if (!pattern) {
-    this.empty = true
-    return
-  }
-
-  // step 1: figure out negation, etc.
-  this.parseNegate()
-
-  // step 2: expand braces
-  var set = this.globSet = this.braceExpand()
-
-  if (options.debug) this.debug = console.error
-
-  this.debug(this.pattern, set)
-
-  // step 3: now we have a set, so turn each one into a series of path-portion
-  // matching patterns.
-  // These will be regexps, except in the case of "**", which is
-  // set to the GLOBSTAR object for globstar behavior,
-  // and will not contain any / characters
-  set = this.globParts = set.map(function (s) {
-    return s.split(slashSplit)
-  })
-
-  this.debug(this.pattern, set)
-
-  // glob --> regexps
-  set = set.map(function (s, si, set) {
-    return s.map(this.parse, this)
-  }, this)
-
-  this.debug(this.pattern, set)
-
-  // filter out everything that didn't compile properly.
-  set = set.filter(function (s) {
-    return s.indexOf(false) === -1
-  })
-
-  this.debug(this.pattern, set)
-
-  this.set = set
-}
-
-Minimatch.prototype.parseNegate = parseNegate
-function parseNegate () {
-  var pattern = this.pattern
-  var negate = false
-  var options = this.options
-  var negateOffset = 0
-
-  if (options.nonegate) return
-
-  for (var i = 0, l = pattern.length
-    ; i < l && pattern.charAt(i) === '!'
-    ; i++) {
-    negate = !negate
-    negateOffset++
-  }
-
-  if (negateOffset) this.pattern = pattern.substr(negateOffset)
-  this.negate = negate
-}
-
-// Brace expansion:
-// a{b,c}d -> abd acd
-// a{b,}c -> abc ac
-// a{0..3}d -> a0d a1d a2d a3d
-// a{b,c{d,e}f}g -> abg acdfg acefg
-// a{b,c}d{e,f}g -> abdeg acdeg abdeg abdfg
-//
-// Invalid sets are not expanded.
-// a{2..}b -> a{2..}b
-// a{b}c -> a{b}c
-minimatch.braceExpand = function (pattern, options) {
-  return braceExpand(pattern, options)
-}
-
-Minimatch.prototype.braceExpand = braceExpand
-
-function braceExpand (pattern, options) {
-  if (!options) {
-    if (this instanceof Minimatch) {
-      options = this.options
-    } else {
-      options = {}
-    }
-  }
-
-  pattern = typeof pattern === 'undefined'
-    ? this.pattern : pattern
-
-  if (typeof pattern === 'undefined') {
-    throw new TypeError('undefined pattern')
-  }
-
-  if (options.nobrace ||
-    !pattern.match(/\{.*\}/)) {
-    // shortcut. no need to expand.
-    return [pattern]
-  }
-
-  return expand(pattern)
-}
-
-// parse a component of the expanded set.
-// At this point, no pattern may contain "/" in it
-// so we're going to return a 2d array, where each entry is the full
-// pattern, split on '/', and then turned into a regular expression.
-// A regexp is made at the end which joins each array with an
-// escaped /, and another full one which joins each regexp with |.
-//
-// Following the lead of Bash 4.1, note that "**" only has special meaning
-// when it is the *only* thing in a path portion.  Otherwise, any series
-// of * is equivalent to a single *.  Globstar behavior is enabled by
-// default, and can be disabled by setting options.noglobstar.
-Minimatch.prototype.parse = parse
-var SUBPARSE = {}
-function parse (pattern, isSub) {
-  if (pattern.length > 1024 * 64) {
-    throw new TypeError('pattern is too long')
-  }
-
-  var options = this.options
-
-  // shortcuts
-  if (!options.noglobstar && pattern === '**') return GLOBSTAR
-  if (pattern === '') return ''
-
-  var re = ''
-  var hasMagic = !!options.nocase
-  var escaping = false
-  // ? => one single character
-  var patternListStack = []
-  var negativeLists = []
-  var stateChar
-  var inClass = false
-  var reClassStart = -1
-  var classStart = -1
-  // . and .. never match anything that doesn't start with .,
-  // even when options.dot is set.
-  var patternStart = pattern.charAt(0) === '.' ? '' // anything
-  // not (start or / followed by . or .. followed by / or end)
-  : options.dot ? '(?!(?:^|\\\/)\\.{1,2}(?:$|\\\/))'
-  : '(?!\\.)'
-  var self = this
-
-  function clearStateChar () {
-    if (stateChar) {
-      // we had some state-tracking character
-      // that wasn't consumed by this pass.
-      switch (stateChar) {
-        case '*':
-          re += star
-          hasMagic = true
-        break
-        case '?':
-          re += qmark
-          hasMagic = true
-        break
-        default:
-          re += '\\' + stateChar
-        break
-      }
-      self.debug('clearStateChar %j %j', stateChar, re)
-      stateChar = false
-    }
-  }
-
-  for (var i = 0, len = pattern.length, c
-    ; (i < len) && (c = pattern.charAt(i))
-    ; i++) {
-    this.debug('%s\t%s %s %j', pattern, i, re, c)
-
-    // skip over any that are escaped.
-    if (escaping && reSpecials[c]) {
-      re += '\\' + c
-      escaping = false
-      continue
-    }
-
-    switch (c) {
-      case '/':
-        // completely not allowed, even escaped.
-        // Should already be path-split by now.
-        return false
-
-      case '\\':
-        clearStateChar()
-        escaping = true
-      continue
-
-      // the various stateChar values
-      // for the "extglob" stuff.
-      case '?':
-      case '*':
-      case '+':
-      case '@':
-      case '!':
-        this.debug('%s\t%s %s %j <-- stateChar', pattern, i, re, c)
-
-        // all of those are literals inside a class, except that
-        // the glob [!a] means [^a] in regexp
-        if (inClass) {
-          this.debug('  in class')
-          if (c === '!' && i === classStart + 1) c = '^'
-          re += c
-          continue
-        }
-
-        // if we already have a stateChar, then it means
-        // that there was something like ** or +? in there.
-        // Handle the stateChar, then proceed with this one.
-        self.debug('call clearStateChar %j', stateChar)
-        clearStateChar()
-        stateChar = c
-        // if extglob is disabled, then +(asdf|foo) isn't a thing.
-        // just clear the statechar *now*, rather than even diving into
-        // the patternList stuff.
-        if (options.noext) clearStateChar()
-      continue
-
-      case '(':
-        if (inClass) {
-          re += '('
-          continue
-        }
-
-        if (!stateChar) {
-          re += '\\('
-          continue
-        }
-
-        patternListStack.push({
-          type: stateChar,
-          start: i - 1,
-          reStart: re.length,
-          open: plTypes[stateChar].open,
-          close: plTypes[stateChar].close
-        })
-        // negation is (?:(?!js)[^/]*)
-        re += stateChar === '!' ? '(?:(?!(?:' : '(?:'
-        this.debug('plType %j %j', stateChar, re)
-        stateChar = false
-      continue
-
-      case ')':
-        if (inClass || !patternListStack.length) {
-          re += '\\)'
-          continue
-        }
-
-        clearStateChar()
-        hasMagic = true
-        var pl = patternListStack.pop()
-        // negation is (?:(?!js)[^/]*)
-        // The others are (?:<pattern>)<type>
-        re += pl.close
-        if (pl.type === '!') {
-          negativeLists.push(pl)
-        }
-        pl.reEnd = re.length
-      continue
-
-      case '|':
-        if (inClass || !patternListStack.length || escaping) {
-          re += '\\|'
-          escaping = false
-          continue
-        }
-
-        clearStateChar()
-        re += '|'
-      continue
-
-      // these are mostly the same in regexp and glob
-      case '[':
-        // swallow any state-tracking char before the [
-        clearStateChar()
-
-        if (inClass) {
-          re += '\\' + c
-          continue
-        }
-
-        inClass = true
-        classStart = i
-        reClassStart = re.length
-        re += c
-      continue
-
-      case ']':
-        //  a right bracket shall lose its special
-        //  meaning and represent itself in
-        //  a bracket expression if it occurs
-        //  first in the list.  -- POSIX.2 2.8.3.2
-        if (i === classStart + 1 || !inClass) {
-          re += '\\' + c
-          escaping = false
-          continue
-        }
-
-        // handle the case where we left a class open.
-        // "[z-a]" is valid, equivalent to "\[z-a\]"
-        if (inClass) {
-          // split where the last [ was, make sure we don't have
-          // an invalid re. if so, re-walk the contents of the
-          // would-be class to re-translate any characters that
-          // were passed through as-is
-          // TODO: It would probably be faster to determine this
-          // without a try/catch and a new RegExp, but it's tricky
-          // to do safely.  For now, this is safe and works.
-          var cs = pattern.substring(classStart + 1, i)
-          try {
-            RegExp('[' + cs + ']')
-          } catch (er) {
-            // not a valid class!
-            var sp = this.parse(cs, SUBPARSE)
-            re = re.substr(0, reClassStart) + '\\[' + sp[0] + '\\]'
-            hasMagic = hasMagic || sp[1]
-            inClass = false
-            continue
-          }
-        }
-
-        // finish up the class.
-        hasMagic = true
-        inClass = false
-        re += c
-      continue
-
-      default:
-        // swallow any state char that wasn't consumed
-        clearStateChar()
-
-        if (escaping) {
-          // no need
-          escaping = false
-        } else if (reSpecials[c]
-          && !(c === '^' && inClass)) {
-          re += '\\'
-        }
-
-        re += c
-
-    } // switch
-  } // for
-
-  // handle the case where we left a class open.
-  // "[abc" is valid, equivalent to "\[abc"
-  if (inClass) {
-    // split where the last [ was, and escape it
-    // this is a huge pita.  We now have to re-walk
-    // the contents of the would-be class to re-translate
-    // any characters that were passed through as-is
-    cs = pattern.substr(classStart + 1)
-    sp = this.parse(cs, SUBPARSE)
-    re = re.substr(0, reClassStart) + '\\[' + sp[0]
-    hasMagic = hasMagic || sp[1]
-  }
-
-  // handle the case where we had a +( thing at the *end*
-  // of the pattern.
-  // each pattern list stack adds 3 chars, and we need to go through
-  // and escape any | chars that were passed through as-is for the regexp.
-  // Go through and escape them, taking care not to double-escape any
-  // | chars that were already escaped.
-  for (pl = patternListStack.pop(); pl; pl = patternListStack.pop()) {
-    var tail = re.slice(pl.reStart + pl.open.length)
-    this.debug('setting tail', re, pl)
-    // maybe some even number of \, then maybe 1 \, followed by a |
-    tail = tail.replace(/((?:\\{2}){0,64})(\\?)\|/g, function (_, $1, $2) {
-      if (!$2) {
-        // the | isn't already escaped, so escape it.
-        $2 = '\\'
-      }
-
-      // need to escape all those slashes *again*, without escaping the
-      // one that we need for escaping the | character.  As it works out,
-      // escaping an even number of slashes can be done by simply repeating
-      // it exactly after itself.  That's why this trick works.
-      //
-      // I am sorry that you have to see this.
-      return $1 + $1 + $2 + '|'
-    })
-
-    this.debug('tail=%j\n   %s', tail, tail, pl, re)
-    var t = pl.type === '*' ? star
-      : pl.type === '?' ? qmark
-      : '\\' + pl.type
-
-    hasMagic = true
-    re = re.slice(0, pl.reStart) + t + '\\(' + tail
-  }
-
-  // handle trailing things that only matter at the very end.
-  clearStateChar()
-  if (escaping) {
-    // trailing \\
-    re += '\\\\'
-  }
-
-  // only need to apply the nodot start if the re starts with
-  // something that could conceivably capture a dot
-  var addPatternStart = false
-  switch (re.charAt(0)) {
-    case '.':
-    case '[':
-    case '(': addPatternStart = true
-  }
-
-  // Hack to work around lack of negative lookbehind in JS
-  // A pattern like: *.!(x).!(y|z) needs to ensure that a name
-  // like 'a.xyz.yz' doesn't match.  So, the first negative
-  // lookahead, has to look ALL the way ahead, to the end of
-  // the pattern.
-  for (var n = negativeLists.length - 1; n > -1; n--) {
-    var nl = negativeLists[n]
-
-    var nlBefore = re.slice(0, nl.reStart)
-    var nlFirst = re.slice(nl.reStart, nl.reEnd - 8)
-    var nlLast = re.slice(nl.reEnd - 8, nl.reEnd)
-    var nlAfter = re.slice(nl.reEnd)
-
-    nlLast += nlAfter
-
-    // Handle nested stuff like *(*.js|!(*.json)), where open parens
-    // mean that we should *not* include the ) in the bit that is considered
-    // "after" the negated section.
-    var openParensBefore = nlBefore.split('(').length - 1
-    var cleanAfter = nlAfter
-    for (i = 0; i < openParensBefore; i++) {
-      cleanAfter = cleanAfter.replace(/\)[+*?]?/, '')
-    }
-    nlAfter = cleanAfter
-
-    var dollar = ''
-    if (nlAfter === '' && isSub !== SUBPARSE) {
-      dollar = '$'
-    }
-    var newRe = nlBefore + nlFirst + nlAfter + dollar + nlLast
-    re = newRe
-  }
-
-  // if the re is not "" at this point, then we need to make sure
-  // it doesn't match against an empty path part.
-  // Otherwise a/* will match a/, which it should not.
-  if (re !== '' && hasMagic) {
-    re = '(?=.)' + re
-  }
-
-  if (addPatternStart) {
-    re = patternStart + re
-  }
-
-  // parsing just a piece of a larger pattern.
-  if (isSub === SUBPARSE) {
-    return [re, hasMagic]
-  }
-
-  // skip the regexp for non-magical patterns
-  // unescape anything in it, though, so that it'll be
-  // an exact match against a file etc.
-  if (!hasMagic) {
-    return globUnescape(pattern)
-  }
-
-  var flags = options.nocase ? 'i' : ''
-  try {
-    var regExp = new RegExp('^' + re + '$', flags)
-  } catch (er) {
-    // If it was an invalid regular expression, then it can't match
-    // anything.  This trick looks for a character after the end of
-    // the string, which is of course impossible, except in multi-line
-    // mode, but it's not a /m regex.
-    return new RegExp('$.')
-  }
-
-  regExp._glob = pattern
-  regExp._src = re
-
-  return regExp
-}
-
-minimatch.makeRe = function (pattern, options) {
-  return new Minimatch(pattern, options || {}).makeRe()
-}
-
-Minimatch.prototype.makeRe = makeRe
-function makeRe () {
-  if (this.regexp || this.regexp === false) return this.regexp
-
-  // at this point, this.set is a 2d array of partial
-  // pattern strings, or "**".
-  //
-  // It's better to use .match().  This function shouldn't
-  // be used, really, but it's pretty convenient sometimes,
-  // when you just want to work with a regex.
-  var set = this.set
-
-  if (!set.length) {
-    this.regexp = false
-    return this.regexp
-  }
-  var options = this.options
-
-  var twoStar = options.noglobstar ? star
-    : options.dot ? twoStarDot
-    : twoStarNoDot
-  var flags = options.nocase ? 'i' : ''
-
-  var re = set.map(function (pattern) {
-    return pattern.map(function (p) {
-      return (p === GLOBSTAR) ? twoStar
-      : (typeof p === 'string') ? regExpEscape(p)
-      : p._src
-    }).join('\\\/')
-  }).join('|')
-
-  // must match entire pattern
-  // ending in a * or ** will make it less strict.
-  re = '^(?:' + re + ')$'
-
-  // can match anything, as long as it's not this.
-  if (this.negate) re = '^(?!' + re + ').*$'
-
-  try {
-    this.regexp = new RegExp(re, flags)
-  } catch (ex) {
-    this.regexp = false
-  }
-  return this.regexp
-}
-
-minimatch.match = function (list, pattern, options) {
-  options = options || {}
-  var mm = new Minimatch(pattern, options)
-  list = list.filter(function (f) {
-    return mm.match(f)
-  })
-  if (mm.options.nonull && !list.length) {
-    list.push(pattern)
-  }
-  return list
-}
-
-Minimatch.prototype.match = match
-function match (f, partial) {
-  this.debug('match', f, this.pattern)
-  // short-circuit in the case of busted things.
-  // comments, etc.
-  if (this.comment) return false
-  if (this.empty) return f === ''
-
-  if (f === '/' && partial) return true
-
-  var options = this.options
-
-  // windows: need to use /, not \
-  if (path.sep !== '/') {
-    f = f.split(path.sep).join('/')
-  }
-
-  // treat the test path as a set of pathparts.
-  f = f.split(slashSplit)
-  this.debug(this.pattern, 'split', f)
-
-  // just ONE of the pattern sets in this.set needs to match
-  // in order for it to be valid.  If negating, then just one
-  // match means that we have failed.
-  // Either way, return on the first hit.
-
-  var set = this.set
-  this.debug(this.pattern, 'set', set)
-
-  // Find the basename of the path by looking for the last non-empty segment
-  var filename
-  var i
-  for (i = f.length - 1; i >= 0; i--) {
-    filename = f[i]
-    if (filename) break
-  }
-
-  for (i = 0; i < set.length; i++) {
-    var pattern = set[i]
-    var file = f
-    if (options.matchBase && pattern.length === 1) {
-      file = [filename]
-    }
-    var hit = this.matchOne(file, pattern, partial)
-    if (hit) {
-      if (options.flipNegate) return true
-      return !this.negate
-    }
-  }
-
-  // didn't get any hits.  this is success if it's a negative
-  // pattern, failure otherwise.
-  if (options.flipNegate) return false
-  return this.negate
-}
-
-// set partial to true to test if, for example,
-// "/a/b" matches the start of "/*/b/*/d"
-// Partial means, if you run out of file before you run
-// out of pattern, then that's fine, as long as all
-// the parts match.
-Minimatch.prototype.matchOne = function (file, pattern, partial) {
-  var options = this.options
-
-  this.debug('matchOne',
-    { 'this': this, file: file, pattern: pattern })
-
-  this.debug('matchOne', file.length, pattern.length)
-
-  for (var fi = 0,
-      pi = 0,
-      fl = file.length,
-      pl = pattern.length
-      ; (fi < fl) && (pi < pl)
-      ; fi++, pi++) {
-    this.debug('matchOne loop')
-    var p = pattern[pi]
-    var f = file[fi]
-
-    this.debug(pattern, p, f)
-
-    // should be impossible.
-    // some invalid regexp stuff in the set.
-    if (p === false) return false
-
-    if (p === GLOBSTAR) {
-      this.debug('GLOBSTAR', [pattern, p, f])
-
-      // "**"
-      // a/**/b/**/c would match the following:
-      // a/b/x/y/z/c
-      // a/x/y/z/b/c
-      // a/b/x/b/x/c
-      // a/b/c
-      // To do this, take the rest of the pattern after
-      // the **, and see if it would match the file remainder.
-      // If so, return success.
-      // If not, the ** "swallows" a segment, and try again.
-      // This is recursively awful.
-      //
-      // a/**/b/**/c matching a/b/x/y/z/c
-      // - a matches a
-      // - doublestar
-      //   - matchOne(b/x/y/z/c, b/**/c)
-      //     - b matches b
-      //     - doublestar
-      //       - matchOne(x/y/z/c, c) -> no
-      //       - matchOne(y/z/c, c) -> no
-      //       - matchOne(z/c, c) -> no
-      //       - matchOne(c, c) yes, hit
-      var fr = fi
-      var pr = pi + 1
-      if (pr === pl) {
-        this.debug('** at the end')
-        // a ** at the end will just swallow the rest.
-        // We have found a match.
-        // however, it will not swallow /.x, unless
-        // options.dot is set.
-        // . and .. are *never* matched by **, for explosively
-        // exponential reasons.
-        for (; fi < fl; fi++) {
-          if (file[fi] === '.' || file[fi] === '..' ||
-            (!options.dot && file[fi].charAt(0) === '.')) return false
-        }
-        return true
-      }
-
-      // ok, let's see if we can swallow whatever we can.
-      while (fr < fl) {
-        var swallowee = file[fr]
-
-        this.debug('\nglobstar while', file, fr, pattern, pr, swallowee)
-
-        // XXX remove this slice.  Just pass the start index.
-        if (this.matchOne(file.slice(fr), pattern.slice(pr), partial)) {
-          this.debug('globstar found match!', fr, fl, swallowee)
-          // found a match.
-          return true
-        } else {
-          // can't swallow "." or ".." ever.
-          // can only swallow ".foo" when explicitly asked.
-          if (swallowee === '.' || swallowee === '..' ||
-            (!options.dot && swallowee.charAt(0) === '.')) {
-            this.debug('dot detected!', file, fr, pattern, pr)
-            break
-          }
-
-          // ** swallows a segment, and continue.
-          this.debug('globstar swallow a segment, and continue')
-          fr++
-        }
-      }
-
-      // no match was found.
-      // However, in partial mode, we can't say this is necessarily over.
-      // If there's more *pattern* left, then
-      if (partial) {
-        // ran out of file
-        this.debug('\n>>> no match, partial?', file, fr, pattern, pr)
-        if (fr === fl) return true
-      }
-      return false
-    }
-
-    // something other than **
-    // non-magic patterns just have to match exactly
-    // patterns with magic have been turned into regexps.
-    var hit
-    if (typeof p === 'string') {
-      if (options.nocase) {
-        hit = f.toLowerCase() === p.toLowerCase()
-      } else {
-        hit = f === p
-      }
-      this.debug('string match', p, f, hit)
-    } else {
-      hit = f.match(p)
-      this.debug('pattern match', p, f, hit)
-    }
-
-    if (!hit) return false
-  }
-
-  // Note: ending in / means that we'll get a final ""
-  // at the end of the pattern.  This can only match a
-  // corresponding "" at the end of the file.
-  // If the file ends in /, then it can only match a
-  // a pattern that ends in /, unless the pattern just
-  // doesn't have any more for it. But, a/b/ should *not*
-  // match "a/b/*", even though "" matches against the
-  // [^/]*? pattern, except in partial mode, where it might
-  // simply not be reached yet.
-  // However, a/b/ should still satisfy a/*
-
-  // now either we fell off the end of the pattern, or we're done.
-  if (fi === fl && pi === pl) {
-    // ran out of pattern and filename at the same time.
-    // an exact hit!
-    return true
-  } else if (fi === fl) {
-    // ran out of file, but still had pattern left.
-    // this is ok if we're doing the match as part of
-    // a glob fs traversal.
-    return partial
-  } else if (pi === pl) {
-    // ran out of pattern, still have file left.
-    // this is only acceptable if we're on the very last
-    // empty segment of a file with a trailing slash.
-    // a/* should match a/b/
-    var emptyFileEnd = (fi === fl - 1) && (file[fi] === '')
-    return emptyFileEnd
-  }
-
-  // should be unreachable.
-  throw new Error('wtf?')
-}
-
-// replace stuff like \* with *
-function globUnescape (s) {
-  return s.replace(/\\(.)/g, '$1')
-}
-
-function regExpEscape (s) {
-  return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
-}
-
-},{"brace-expansion":34,"path":195}],160:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 /**
  * Helpers.
  */
@@ -49136,7 +45599,7 @@ function plural(ms, n, name) {
   return Math.ceil(ms / n) + ' ' + name + 's'
 }
 
-},{}],161:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 (function (Buffer){
 /*!
  * RSA library for Node.js
@@ -49538,7 +46001,7 @@ module.exports = (function () {
 })();
 
 }).call(this,require("buffer").Buffer)
-},{"./formats/formats.js":167,"./libs/rsa.js":171,"./schemes/schemes.js":175,"./utils":176,"asn1":27,"buffer":68,"constants":81,"crypto":104}],162:[function(require,module,exports){
+},{"./formats/formats.js":155,"./libs/rsa.js":159,"./schemes/schemes.js":163,"./utils":164,"asn1":27,"buffer":65,"constants":77,"crypto":100}],150:[function(require,module,exports){
 var crypt = require('crypto');
 
 module.exports = {
@@ -49556,7 +46019,7 @@ module.exports = {
         return engine(keyPair, options);
     }
 };
-},{"./io.js":163,"./js.js":164,"./node12.js":165,"crypto":104}],163:[function(require,module,exports){
+},{"./io.js":151,"./js.js":152,"./node12.js":153,"crypto":100}],151:[function(require,module,exports){
 var crypto = require('crypto');
 var constants = require('constants');
 var schemes = require('../schemes/schemes.js');
@@ -49627,7 +46090,7 @@ module.exports = function (keyPair, options) {
         }
     };
 };
-},{"../schemes/schemes.js":175,"constants":81,"crypto":104}],164:[function(require,module,exports){
+},{"../schemes/schemes.js":163,"constants":77,"crypto":100}],152:[function(require,module,exports){
 var BigInteger = require('../libs/jsbn.js');
 var schemes = require('../schemes/schemes.js');
 
@@ -49662,7 +46125,7 @@ module.exports = function (keyPair, options) {
         }
     };
 };
-},{"../libs/jsbn.js":170,"../schemes/schemes.js":175}],165:[function(require,module,exports){
+},{"../libs/jsbn.js":158,"../schemes/schemes.js":163}],153:[function(require,module,exports){
 var crypto = require('crypto');
 var constants = require('constants');
 var schemes = require('../schemes/schemes.js');
@@ -49719,7 +46182,7 @@ module.exports = function (keyPair, options) {
         }
     };
 };
-},{"../schemes/schemes.js":175,"./js.js":164,"constants":81,"crypto":104}],166:[function(require,module,exports){
+},{"../schemes/schemes.js":163,"./js.js":152,"constants":77,"crypto":100}],154:[function(require,module,exports){
 var _ = require('../utils')._;
 var utils = require('../utils');
 
@@ -49792,7 +46255,7 @@ module.exports = {
     }
 };
 
-},{"../utils":176}],167:[function(require,module,exports){
+},{"../utils":164}],155:[function(require,module,exports){
 var _ = require('../utils')._;
 
 function formatParse(format) {
@@ -49889,7 +46352,7 @@ module.exports = {
         }
     }
 };
-},{"../utils":176,"./components":166,"./pkcs1":168,"./pkcs8":169}],168:[function(require,module,exports){
+},{"../utils":164,"./components":154,"./pkcs1":156,"./pkcs8":157}],156:[function(require,module,exports){
 (function (Buffer){
 var ber = require('asn1').Ber;
 var _ = require('../utils')._;
@@ -50035,7 +46498,7 @@ module.exports = {
     }
 };
 }).call(this,require("buffer").Buffer)
-},{"../utils":176,"asn1":27,"buffer":68}],169:[function(require,module,exports){
+},{"../utils":164,"asn1":27,"buffer":65}],157:[function(require,module,exports){
 (function (Buffer){
 var ber = require('asn1').Ber;
 var _ = require('../utils')._;
@@ -50221,7 +46684,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../utils":176,"asn1":27,"buffer":68}],170:[function(require,module,exports){
+},{"../utils":164,"asn1":27,"buffer":65}],158:[function(require,module,exports){
 (function (Buffer){
 /*
  * Basic JavaScript BN library - subset useful for RSA encryption.
@@ -51764,7 +48227,7 @@ BigInteger.prototype.square = bnSquare;
 
 module.exports = BigInteger;
 }).call(this,require("buffer").Buffer)
-},{"../utils":176,"buffer":68,"crypto":104}],171:[function(require,module,exports){
+},{"../utils":164,"buffer":65,"crypto":100}],159:[function(require,module,exports){
 (function (Buffer){
 /*
  * RSA Encryption / Decryption with PKCS1 v2 Padding.
@@ -52084,7 +48547,7 @@ module.exports.Key = (function () {
 
 
 }).call(this,require("buffer").Buffer)
-},{"../encryptEngines/encryptEngines.js":162,"../schemes/schemes.js":175,"../utils":176,"../utils.js":176,"./jsbn.js":170,"buffer":68,"crypto":104}],172:[function(require,module,exports){
+},{"../encryptEngines/encryptEngines.js":150,"../schemes/schemes.js":163,"../utils":164,"../utils.js":164,"./jsbn.js":158,"buffer":65,"crypto":100}],160:[function(require,module,exports){
 (function (Buffer){
 /**
  * PKCS_OAEP signature scheme
@@ -52268,7 +48731,7 @@ module.exports.makeScheme = function (key, options) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../libs/jsbn":170,"buffer":68,"crypto":104}],173:[function(require,module,exports){
+},{"../libs/jsbn":158,"buffer":65,"crypto":100}],161:[function(require,module,exports){
 (function (Buffer){
 /**
  * PKCS1 padding and signature scheme
@@ -52504,7 +48967,7 @@ module.exports.makeScheme = function (key, options) {
 
 
 }).call(this,require("buffer").Buffer)
-},{"../libs/jsbn":170,"buffer":68,"constants":81,"crypto":104}],174:[function(require,module,exports){
+},{"../libs/jsbn":158,"buffer":65,"constants":77,"crypto":100}],162:[function(require,module,exports){
 (function (Buffer){
 /**
  * PSS signature scheme
@@ -52691,7 +49154,7 @@ module.exports.makeScheme = function (key, options) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../libs/jsbn":170,"./schemes":175,"buffer":68,"crypto":104}],175:[function(require,module,exports){
+},{"../libs/jsbn":158,"./schemes":163,"buffer":65,"crypto":100}],163:[function(require,module,exports){
 module.exports = {
     pkcs1: require('./pkcs1'),
     pkcs1_oaep: require('./oaep'),
@@ -52715,7 +49178,7 @@ module.exports = {
         return module.exports[scheme] && module.exports[scheme].isSignature;
     }
 };
-},{"./oaep":172,"./pkcs1":173,"./pss":174}],176:[function(require,module,exports){
+},{"./oaep":160,"./pkcs1":161,"./pss":162}],164:[function(require,module,exports){
 (function (process){
 /*
  * Utils functions
@@ -52805,7 +49268,7 @@ module.exports._ = {
     }
 };
 }).call(this,require('_process'))
-},{"_process":200,"crypto":104}],177:[function(require,module,exports){
+},{"_process":186,"crypto":100}],165:[function(require,module,exports){
 /*!
  * normalize-path <https://github.com/jonschlinkert/normalize-path>
  *
@@ -52826,51 +49289,7 @@ module.exports = function normalizePath(str, stripTrailing) {
   return str;
 };
 
-},{"remove-trailing-separator":219}],178:[function(require,module,exports){
-var wrappy = require('wrappy')
-module.exports = wrappy(once)
-module.exports.strict = wrappy(onceStrict)
-
-once.proto = once(function () {
-  Object.defineProperty(Function.prototype, 'once', {
-    value: function () {
-      return once(this)
-    },
-    configurable: true
-  })
-
-  Object.defineProperty(Function.prototype, 'onceStrict', {
-    value: function () {
-      return onceStrict(this)
-    },
-    configurable: true
-  })
-})
-
-function once (fn) {
-  var f = function () {
-    if (f.called) return f.value
-    f.called = true
-    return f.value = fn.apply(this, arguments)
-  }
-  f.called = false
-  return f
-}
-
-function onceStrict (fn) {
-  var f = function () {
-    if (f.called)
-      throw new Error(f.onceError)
-    f.called = true
-    return f.value = fn.apply(this, arguments)
-  }
-  var name = fn.name || 'Function wrapped with `once`'
-  f.onceError = name + " shouldn't be called more than once"
-  f.called = false
-  return f
-}
-
-},{"wrappy":246}],179:[function(require,module,exports){
+},{"remove-trailing-separator":205}],166:[function(require,module,exports){
 'use strict';
 
 
@@ -52974,7 +49393,7 @@ exports.setTyped = function (on) {
 
 exports.setTyped(TYPED_OK);
 
-},{}],180:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 'use strict';
 
 // Note: adler32 takes 12% for level 0 and 2% for level 6.
@@ -53008,7 +49427,7 @@ function adler32(adler, buf, len, pos) {
 
 module.exports = adler32;
 
-},{}],181:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 'use strict';
 
 
@@ -53060,7 +49479,7 @@ module.exports = {
   //Z_NULL:                 null // Use -1 or null inline, depending on var type
 };
 
-},{}],182:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 'use strict';
 
 // Note: we can't get significant speed boost here.
@@ -53103,7 +49522,7 @@ function crc32(crc, buf, len, pos) {
 
 module.exports = crc32;
 
-},{}],183:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 'use strict';
 
 var utils   = require('../utils/common');
@@ -54960,7 +51379,7 @@ exports.deflatePrime = deflatePrime;
 exports.deflateTune = deflateTune;
 */
 
-},{"../utils/common":179,"./adler32":180,"./crc32":182,"./messages":187,"./trees":188}],184:[function(require,module,exports){
+},{"../utils/common":166,"./adler32":167,"./crc32":169,"./messages":174,"./trees":175}],171:[function(require,module,exports){
 'use strict';
 
 // See state defs from inflate.js
@@ -55288,7 +51707,7 @@ module.exports = function inflate_fast(strm, start) {
   return;
 };
 
-},{}],185:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 'use strict';
 
 
@@ -56828,7 +53247,7 @@ exports.inflateSyncPoint = inflateSyncPoint;
 exports.inflateUndermine = inflateUndermine;
 */
 
-},{"../utils/common":179,"./adler32":180,"./crc32":182,"./inffast":184,"./inftrees":186}],186:[function(require,module,exports){
+},{"../utils/common":166,"./adler32":167,"./crc32":169,"./inffast":171,"./inftrees":173}],173:[function(require,module,exports){
 'use strict';
 
 
@@ -57157,7 +53576,7 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
   return 0;
 };
 
-},{"../utils/common":179}],187:[function(require,module,exports){
+},{"../utils/common":166}],174:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -57172,7 +53591,7 @@ module.exports = {
   '-6':   'incompatible version' /* Z_VERSION_ERROR (-6) */
 };
 
-},{}],188:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 'use strict';
 
 
@@ -58376,7 +54795,7 @@ exports._tr_flush_block  = _tr_flush_block;
 exports._tr_tally = _tr_tally;
 exports._tr_align = _tr_align;
 
-},{"../utils/common":179}],189:[function(require,module,exports){
+},{"../utils/common":166}],176:[function(require,module,exports){
 'use strict';
 
 
@@ -58407,7 +54826,7 @@ function ZStream() {
 
 module.exports = ZStream;
 
-},{}],190:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -58421,7 +54840,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],191:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 'use strict'
@@ -58545,7 +54964,7 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"./certificate":192,"asn1.js":8}],192:[function(require,module,exports){
+},{"./certificate":179,"asn1.js":8}],179:[function(require,module,exports){
 // from https://github.com/Rantanen/node-dtls/blob/25a7dc861bda38cfeac93a723500eea4f0ac2e86/Certificate.js
 // thanks to @Rantanen
 
@@ -58635,7 +55054,7 @@ var X509Certificate = asn.define('X509Certificate', function () {
 
 module.exports = X509Certificate
 
-},{"asn1.js":8}],193:[function(require,module,exports){
+},{"asn1.js":8}],180:[function(require,module,exports){
 (function (Buffer){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED\n\r?DEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\n\r?\n\r?([0-9A-z\n\r\+\/\=]+)\n\r?/m
@@ -58669,7 +55088,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":39,"buffer":68,"evp_bytestokey":135}],194:[function(require,module,exports){
+},{"browserify-aes":36,"buffer":65,"evp_bytestokey":130}],181:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -58779,7 +55198,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":190,"./asn1":191,"./fixProc":193,"browserify-aes":39,"buffer":68,"pbkdf2":197}],195:[function(require,module,exports){
+},{"./aesid.json":177,"./asn1":178,"./fixProc":180,"browserify-aes":36,"buffer":65,"pbkdf2":183}],182:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -59007,31 +55426,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":200}],196:[function(require,module,exports){
-(function (process){
-'use strict';
-
-function posix(path) {
-	return path.charAt(0) === '/';
-}
-
-function win32(path) {
-	// https://github.com/nodejs/node/blob/b3fcc245fb25539909ef1d5eaa01dbf92e168633/lib/path.js#L56
-	var splitDeviceRe = /^([a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/]+[^\\\/]+)?([\\\/])?([\s\S]*?)$/;
-	var result = splitDeviceRe.exec(path);
-	var device = result[1] || '';
-	var isUnc = Boolean(device && device.charAt(1) !== ':');
-
-	// UNC paths are always absolute
-	return Boolean(result[2] || isUnc);
-}
-
-module.exports = process.platform === 'win32' ? win32 : posix;
-module.exports.posix = posix;
-module.exports.win32 = win32;
-
-}).call(this,require('_process'))
-},{"_process":200}],197:[function(require,module,exports){
+},{"_process":186}],183:[function(require,module,exports){
 (function (process,Buffer){
 var createHmac = require('create-hmac')
 var checkParameters = require('./precondition')
@@ -59103,7 +55498,7 @@ exports.pbkdf2Sync = function (password, salt, iterations, keylen, digest) {
 }
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./precondition":198,"_process":200,"buffer":68,"create-hmac":103}],198:[function(require,module,exports){
+},{"./precondition":184,"_process":186,"buffer":65,"create-hmac":99}],184:[function(require,module,exports){
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
 module.exports = function (iterations, keylen) {
   if (typeof iterations !== 'number') {
@@ -59123,7 +55518,7 @@ module.exports = function (iterations, keylen) {
   }
 }
 
-},{}],199:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -59170,7 +55565,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":200}],200:[function(require,module,exports){
+},{"_process":186}],186:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -59352,7 +55747,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],201:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt');
 exports.privateDecrypt = require('./privateDecrypt');
 
@@ -59363,7 +55758,7 @@ exports.privateEncrypt = function privateEncrypt(key, buf) {
 exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
-},{"./privateDecrypt":203,"./publicEncrypt":204}],202:[function(require,module,exports){
+},{"./privateDecrypt":189,"./publicEncrypt":190}],188:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function (seed, len) {
@@ -59382,7 +55777,7 @@ function i2ops(c) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":68,"create-hash":100}],203:[function(require,module,exports){
+},{"buffer":65,"create-hash":96}],189:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var mgf = require('./mgf');
@@ -59493,7 +55888,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":202,"./withPublic":205,"./xor":206,"bn.js":33,"browserify-rsa":55,"buffer":68,"create-hash":100,"parse-asn1":194}],204:[function(require,module,exports){
+},{"./mgf":188,"./withPublic":191,"./xor":192,"bn.js":31,"browserify-rsa":52,"buffer":65,"create-hash":96,"parse-asn1":181}],190:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -59591,7 +55986,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":202,"./withPublic":205,"./xor":206,"bn.js":33,"browserify-rsa":55,"buffer":68,"create-hash":100,"parse-asn1":194,"randombytes":207}],205:[function(require,module,exports){
+},{"./mgf":188,"./withPublic":191,"./xor":192,"bn.js":31,"browserify-rsa":52,"buffer":65,"create-hash":96,"parse-asn1":181,"randombytes":193}],191:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -59604,7 +55999,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":33,"buffer":68}],206:[function(require,module,exports){
+},{"bn.js":31,"buffer":65}],192:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -59613,7 +56008,7 @@ module.exports = function xor(a, b) {
   }
   return a
 };
-},{}],207:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict'
 
@@ -59653,10 +56048,10 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":200,"buffer":68}],208:[function(require,module,exports){
+},{"_process":186,"buffer":65}],194:[function(require,module,exports){
 module.exports = require("./lib/_stream_duplex.js")
 
-},{"./lib/_stream_duplex.js":209}],209:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":195}],195:[function(require,module,exports){
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
@@ -59732,7 +56127,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":211,"./_stream_writable":213,"core-util-is":82,"inherits":151,"process-nextick-args":199}],210:[function(require,module,exports){
+},{"./_stream_readable":197,"./_stream_writable":199,"core-util-is":78,"inherits":140,"process-nextick-args":185}],196:[function(require,module,exports){
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
@@ -59759,7 +56154,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":212,"core-util-is":82,"inherits":151}],211:[function(require,module,exports){
+},{"./_stream_transform":198,"core-util-is":78,"inherits":140}],197:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -60703,7 +57098,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":209,"./internal/streams/BufferList":214,"_process":200,"buffer":68,"buffer-shims":66,"core-util-is":82,"events":134,"inherits":151,"isarray":153,"process-nextick-args":199,"string_decoder/":235,"util":36}],212:[function(require,module,exports){
+},{"./_stream_duplex":195,"./internal/streams/BufferList":200,"_process":186,"buffer":65,"buffer-shims":63,"core-util-is":78,"events":129,"inherits":140,"isarray":142,"process-nextick-args":185,"string_decoder/":221,"util":33}],198:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -60886,7 +57281,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":209,"core-util-is":82,"inherits":151}],213:[function(require,module,exports){
+},{"./_stream_duplex":195,"core-util-is":78,"inherits":140}],199:[function(require,module,exports){
 (function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -61440,7 +57835,7 @@ function CorkedRequest(state) {
   };
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":209,"_process":200,"buffer":68,"buffer-shims":66,"core-util-is":82,"events":134,"inherits":151,"process-nextick-args":199,"util-deprecate":240}],214:[function(require,module,exports){
+},{"./_stream_duplex":195,"_process":186,"buffer":65,"buffer-shims":63,"core-util-is":78,"events":129,"inherits":140,"process-nextick-args":185,"util-deprecate":222}],200:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('buffer').Buffer;
@@ -61505,10 +57900,10 @@ BufferList.prototype.concat = function (n) {
   }
   return ret;
 };
-},{"buffer":68,"buffer-shims":66}],215:[function(require,module,exports){
+},{"buffer":65,"buffer-shims":63}],201:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
-},{"./lib/_stream_passthrough.js":210}],216:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":196}],202:[function(require,module,exports){
 (function (process){
 var Stream = (function (){
   try {
@@ -61528,13 +57923,13 @@ if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":209,"./lib/_stream_passthrough.js":210,"./lib/_stream_readable.js":211,"./lib/_stream_transform.js":212,"./lib/_stream_writable.js":213,"_process":200}],217:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":195,"./lib/_stream_passthrough.js":196,"./lib/_stream_readable.js":197,"./lib/_stream_transform.js":198,"./lib/_stream_writable.js":199,"_process":186}],203:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
-},{"./lib/_stream_transform.js":212}],218:[function(require,module,exports){
+},{"./lib/_stream_transform.js":198}],204:[function(require,module,exports){
 module.exports = require("./lib/_stream_writable.js")
 
-},{"./lib/_stream_writable.js":213}],219:[function(require,module,exports){
+},{"./lib/_stream_writable.js":199}],205:[function(require,module,exports){
 (function (process){
 const isWin = process.platform === 'win32';
 
@@ -61551,7 +57946,7 @@ function endsInSeparator(str) {
 }
 
 }).call(this,require('_process'))
-},{"_process":200}],220:[function(require,module,exports){
+},{"_process":186}],206:[function(require,module,exports){
 (function (Buffer){
 /*
 CryptoJS v3.1.2
@@ -61765,7 +58160,7 @@ function ripemd160 (message) {
 module.exports = ripemd160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],221:[function(require,module,exports){
+},{"buffer":65}],207:[function(require,module,exports){
 (function (process,global){
 (function (global, undefined) {
     "use strict";
@@ -61955,7 +58350,7 @@ module.exports = ripemd160
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":200}],222:[function(require,module,exports){
+},{"_process":186}],208:[function(require,module,exports){
 (function (Buffer){
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -62028,7 +58423,7 @@ Hash.prototype._update = function () {
 module.exports = Hash
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":68}],223:[function(require,module,exports){
+},{"buffer":65}],209:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -62045,7 +58440,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":224,"./sha1":225,"./sha224":226,"./sha256":227,"./sha384":228,"./sha512":229}],224:[function(require,module,exports){
+},{"./sha":210,"./sha1":211,"./sha224":212,"./sha256":213,"./sha384":214,"./sha512":215}],210:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -62142,7 +58537,7 @@ Sha.prototype._hash = function () {
 module.exports = Sha
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":222,"buffer":68,"inherits":151}],225:[function(require,module,exports){
+},{"./hash":208,"buffer":65,"inherits":140}],211:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -62244,7 +58639,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":222,"buffer":68,"inherits":151}],226:[function(require,module,exports){
+},{"./hash":208,"buffer":65,"inherits":140}],212:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -62300,7 +58695,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":222,"./sha256":227,"buffer":68,"inherits":151}],227:[function(require,module,exports){
+},{"./hash":208,"./sha256":213,"buffer":65,"inherits":140}],213:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -62438,7 +58833,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":222,"buffer":68,"inherits":151}],228:[function(require,module,exports){
+},{"./hash":208,"buffer":65,"inherits":140}],214:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
@@ -62498,7 +58893,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":222,"./sha512":229,"buffer":68,"inherits":151}],229:[function(require,module,exports){
+},{"./hash":208,"./sha512":215,"buffer":65,"inherits":140}],215:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var Hash = require('./hash')
@@ -62761,7 +59156,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":222,"buffer":68,"inherits":151}],230:[function(require,module,exports){
+},{"./hash":208,"buffer":65,"inherits":140}],216:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -62890,7 +59285,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":134,"inherits":151,"readable-stream/duplex.js":208,"readable-stream/passthrough.js":215,"readable-stream/readable.js":216,"readable-stream/transform.js":217,"readable-stream/writable.js":218}],231:[function(require,module,exports){
+},{"events":129,"inherits":140,"readable-stream/duplex.js":194,"readable-stream/passthrough.js":201,"readable-stream/readable.js":202,"readable-stream/transform.js":203,"readable-stream/writable.js":204}],217:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -62900,7 +59295,7 @@ module.exports = {
   DEFAULT_CHUNK_SIZE: 1024
 };
 
-},{}],232:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -63009,14 +59404,14 @@ var ReadableStreamBuffer = module.exports = function(opts) {
 util.inherits(ReadableStreamBuffer, stream.Readable);
 
 }).call(this,require("buffer").Buffer)
-},{"./constants":231,"buffer":68,"stream":230,"util":243}],233:[function(require,module,exports){
+},{"./constants":217,"buffer":65,"stream":216,"util":225}],219:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./constants');
 module.exports.ReadableStreamBuffer = require('./readable_streambuffer');
 module.exports.WritableStreamBuffer = require('./writable_streambuffer');
 
-},{"./constants":231,"./readable_streambuffer":232,"./writable_streambuffer":234}],234:[function(require,module,exports){
+},{"./constants":217,"./readable_streambuffer":218,"./writable_streambuffer":220}],220:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -63092,7 +59487,7 @@ var WritableStreamBuffer = module.exports = function(opts) {
 util.inherits(WritableStreamBuffer, stream.Writable);
 
 }).call(this,require("buffer").Buffer)
-},{"./constants":231,"buffer":68,"stream":230,"util":243}],235:[function(require,module,exports){
+},{"./constants":217,"buffer":65,"stream":216,"util":225}],221:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -63315,802 +59710,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":68}],236:[function(require,module,exports){
-var util = require('util')
-var bl = require('bl')
-var xtend = require('xtend')
-var headers = require('./headers')
-
-var Writable = require('readable-stream').Writable
-var PassThrough = require('readable-stream').PassThrough
-
-var noop = function () {}
-
-var overflow = function (size) {
-  size &= 511
-  return size && 512 - size
-}
-
-var emptyStream = function (self, offset) {
-  var s = new Source(self, offset)
-  s.end()
-  return s
-}
-
-var mixinPax = function (header, pax) {
-  if (pax.path) header.name = pax.path
-  if (pax.linkpath) header.linkname = pax.linkpath
-  header.pax = pax
-  return header
-}
-
-var Source = function (self, offset) {
-  this._parent = self
-  this.offset = offset
-  PassThrough.call(this)
-}
-
-util.inherits(Source, PassThrough)
-
-Source.prototype.destroy = function (err) {
-  this._parent.destroy(err)
-}
-
-var Extract = function (opts) {
-  if (!(this instanceof Extract)) return new Extract(opts)
-  Writable.call(this, opts)
-
-  this._offset = 0
-  this._buffer = bl()
-  this._missing = 0
-  this._onparse = noop
-  this._header = null
-  this._stream = null
-  this._overflow = null
-  this._cb = null
-  this._locked = false
-  this._destroyed = false
-  this._pax = null
-  this._paxGlobal = null
-  this._gnuLongPath = null
-  this._gnuLongLinkPath = null
-
-  var self = this
-  var b = self._buffer
-
-  var oncontinue = function () {
-    self._continue()
-  }
-
-  var onunlock = function (err) {
-    self._locked = false
-    if (err) return self.destroy(err)
-    if (!self._stream) oncontinue()
-  }
-
-  var onstreamend = function () {
-    self._stream = null
-    var drain = overflow(self._header.size)
-    if (drain) self._parse(drain, ondrain)
-    else self._parse(512, onheader)
-    if (!self._locked) oncontinue()
-  }
-
-  var ondrain = function () {
-    self._buffer.consume(overflow(self._header.size))
-    self._parse(512, onheader)
-    oncontinue()
-  }
-
-  var onpaxglobalheader = function () {
-    var size = self._header.size
-    self._paxGlobal = headers.decodePax(b.slice(0, size))
-    b.consume(size)
-    onstreamend()
-  }
-
-  var onpaxheader = function () {
-    var size = self._header.size
-    self._pax = headers.decodePax(b.slice(0, size))
-    if (self._paxGlobal) self._pax = xtend(self._paxGlobal, self._pax)
-    b.consume(size)
-    onstreamend()
-  }
-
-  var ongnulongpath = function () {
-    var size = self._header.size
-    this._gnuLongPath = headers.decodeLongPath(b.slice(0, size))
-    b.consume(size)
-    onstreamend()
-  }
-
-  var ongnulonglinkpath = function () {
-    var size = self._header.size
-    this._gnuLongLinkPath = headers.decodeLongPath(b.slice(0, size))
-    b.consume(size)
-    onstreamend()
-  }
-
-  var onheader = function () {
-    var offset = self._offset
-    var header
-    try {
-      header = self._header = headers.decode(b.slice(0, 512))
-    } catch (err) {
-      self.emit('error', err)
-    }
-    b.consume(512)
-
-    if (!header) {
-      self._parse(512, onheader)
-      oncontinue()
-      return
-    }
-    if (header.type === 'gnu-long-path') {
-      self._parse(header.size, ongnulongpath)
-      oncontinue()
-      return
-    }
-    if (header.type === 'gnu-long-link-path') {
-      self._parse(header.size, ongnulonglinkpath)
-      oncontinue()
-      return
-    }
-    if (header.type === 'pax-global-header') {
-      self._parse(header.size, onpaxglobalheader)
-      oncontinue()
-      return
-    }
-    if (header.type === 'pax-header') {
-      self._parse(header.size, onpaxheader)
-      oncontinue()
-      return
-    }
-
-    if (self._gnuLongPath) {
-      header.name = self._gnuLongPath
-      self._gnuLongPath = null
-    }
-
-    if (self._gnuLongLinkPath) {
-      header.linkname = self._gnuLongLinkPath
-      self._gnuLongLinkPath = null
-    }
-
-    if (self._pax) {
-      self._header = header = mixinPax(header, self._pax)
-      self._pax = null
-    }
-
-    self._locked = true
-
-    if (!header.size) {
-      self._parse(512, onheader)
-      self.emit('entry', header, emptyStream(self, offset), onunlock)
-      return
-    }
-
-    self._stream = new Source(self, offset)
-
-    self.emit('entry', header, self._stream, onunlock)
-    self._parse(header.size, onstreamend)
-    oncontinue()
-  }
-
-  this._parse(512, onheader)
-}
-
-util.inherits(Extract, Writable)
-
-Extract.prototype.destroy = function (err) {
-  if (this._destroyed) return
-  this._destroyed = true
-
-  if (err) this.emit('error', err)
-  this.emit('close')
-  if (this._stream) this._stream.emit('close')
-}
-
-Extract.prototype._parse = function (size, onparse) {
-  if (this._destroyed) return
-  this._offset += size
-  this._missing = size
-  this._onparse = onparse
-}
-
-Extract.prototype._continue = function () {
-  if (this._destroyed) return
-  var cb = this._cb
-  this._cb = noop
-  if (this._overflow) this._write(this._overflow, undefined, cb)
-  else cb()
-}
-
-Extract.prototype._write = function (data, enc, cb) {
-  if (this._destroyed) return
-
-  var s = this._stream
-  var b = this._buffer
-  var missing = this._missing
-
-  // we do not reach end-of-chunk now. just forward it
-
-  if (data.length < missing) {
-    this._missing -= data.length
-    this._overflow = null
-    if (s) return s.write(data, cb)
-    b.append(data)
-    return cb()
-  }
-
-  // end-of-chunk. the parser should call cb.
-
-  this._cb = cb
-  this._missing = 0
-
-  var overflow = null
-  if (data.length > missing) {
-    overflow = data.slice(missing)
-    data = data.slice(0, missing)
-  }
-
-  if (s) s.end(data)
-  else b.append(data)
-
-  this._overflow = overflow
-  this._onparse()
-}
-
-module.exports = Extract
-
-},{"./headers":237,"bl":32,"readable-stream":216,"util":243,"xtend":247}],237:[function(require,module,exports){
-(function (Buffer){
-var ZEROS = '0000000000000000000'
-var ZERO_OFFSET = '0'.charCodeAt(0)
-var USTAR = 'ustar\x0000'
-var MASK = parseInt('7777', 8)
-
-var clamp = function (index, len, defaultValue) {
-  if (typeof index !== 'number') return defaultValue
-  index = ~~index  // Coerce to integer.
-  if (index >= len) return len
-  if (index >= 0) return index
-  index += len
-  if (index >= 0) return index
-  return 0
-}
-
-var toType = function (flag) {
-  switch (flag) {
-    case 0:
-      return 'file'
-    case 1:
-      return 'link'
-    case 2:
-      return 'symlink'
-    case 3:
-      return 'character-device'
-    case 4:
-      return 'block-device'
-    case 5:
-      return 'directory'
-    case 6:
-      return 'fifo'
-    case 7:
-      return 'contiguous-file'
-    case 72:
-      return 'pax-header'
-    case 55:
-      return 'pax-global-header'
-    case 27:
-      return 'gnu-long-link-path'
-    case 28:
-    case 30:
-      return 'gnu-long-path'
-  }
-
-  return null
-}
-
-var toTypeflag = function (flag) {
-  switch (flag) {
-    case 'file':
-      return 0
-    case 'link':
-      return 1
-    case 'symlink':
-      return 2
-    case 'character-device':
-      return 3
-    case 'block-device':
-      return 4
-    case 'directory':
-      return 5
-    case 'fifo':
-      return 6
-    case 'contiguous-file':
-      return 7
-    case 'pax-header':
-      return 72
-  }
-
-  return 0
-}
-
-var alloc = function (size) {
-  var buf = new Buffer(size)
-  buf.fill(0)
-  return buf
-}
-
-var indexOf = function (block, num, offset, end) {
-  for (; offset < end; offset++) {
-    if (block[offset] === num) return offset
-  }
-  return end
-}
-
-var cksum = function (block) {
-  var sum = 8 * 32
-  for (var i = 0; i < 148; i++) sum += block[i]
-  for (var j = 156; j < 512; j++) sum += block[j]
-  return sum
-}
-
-var encodeOct = function (val, n) {
-  val = val.toString(8)
-  return ZEROS.slice(0, n - val.length) + val + ' '
-}
-
-/* Copied from the node-tar repo and modified to meet
- * tar-stream coding standard.
- *
- * Source: https://github.com/npm/node-tar/blob/51b6627a1f357d2eb433e7378e5f05e83b7aa6cd/lib/header.js#L349
- */
-function parse256 (buf) {
-  // first byte MUST be either 80 or FF
-  // 80 for positive, FF for 2's comp
-  var positive
-  if (buf[0] === 0x80) positive = true
-  else if (buf[0] === 0xFF) positive = false
-  else return null
-
-  // build up a base-256 tuple from the least sig to the highest
-  var zero = false
-  var tuple = []
-  for (var i = buf.length - 1; i > 0; i--) {
-    var byte = buf[i]
-    if (positive) tuple.push(byte)
-    else if (zero && byte === 0) tuple.push(0)
-    else if (zero) {
-      zero = false
-      tuple.push(0x100 - byte)
-    } else tuple.push(0xFF - byte)
-  }
-
-  var sum = 0
-  var l = tuple.length
-  for (i = 0; i < l; i++) {
-    sum += tuple[i] * Math.pow(256, i)
-  }
-
-  return positive ? sum : -1 * sum
-}
-
-var decodeOct = function (val, offset) {
-  // If prefixed with 0x80 then parse as a base-256 integer
-  if (val[offset] & 0x80) {
-    return parse256(val.slice(offset, offset + 8))
-  } else {
-    // Older versions of tar can prefix with spaces
-    while (offset < val.length && val[offset] === 32) offset++
-    var end = clamp(indexOf(val, 32, offset, val.length), val.length, val.length)
-    while (offset < end && val[offset] === 0) offset++
-    if (end === offset) return 0
-    return parseInt(val.slice(offset, end).toString(), 8)
-  }
-}
-
-var decodeStr = function (val, offset, length) {
-  return val.slice(offset, indexOf(val, 0, offset, offset + length)).toString()
-}
-
-var addLength = function (str) {
-  var len = Buffer.byteLength(str)
-  var digits = Math.floor(Math.log(len) / Math.log(10)) + 1
-  if (len + digits > Math.pow(10, digits)) digits++
-
-  return (len + digits) + str
-}
-
-exports.decodeLongPath = function (buf) {
-  return decodeStr(buf, 0, buf.length)
-}
-
-exports.encodePax = function (opts) { // TODO: encode more stuff in pax
-  var result = ''
-  if (opts.name) result += addLength(' path=' + opts.name + '\n')
-  if (opts.linkname) result += addLength(' linkpath=' + opts.linkname + '\n')
-  var pax = opts.pax
-  if (pax) {
-    for (var key in pax) {
-      result += addLength(' ' + key + '=' + pax[key] + '\n')
-    }
-  }
-  return new Buffer(result)
-}
-
-exports.decodePax = function (buf) {
-  var result = {}
-
-  while (buf.length) {
-    var i = 0
-    while (i < buf.length && buf[i] !== 32) i++
-    var len = parseInt(buf.slice(0, i).toString(), 10)
-    if (!len) return result
-
-    var b = buf.slice(i + 1, len - 1).toString()
-    var keyIndex = b.indexOf('=')
-    if (keyIndex === -1) return result
-    result[b.slice(0, keyIndex)] = b.slice(keyIndex + 1)
-
-    buf = buf.slice(len)
-  }
-
-  return result
-}
-
-exports.encode = function (opts) {
-  var buf = alloc(512)
-  var name = opts.name
-  var prefix = ''
-
-  if (opts.typeflag === 5 && name[name.length - 1] !== '/') name += '/'
-  if (Buffer.byteLength(name) !== name.length) return null // utf-8
-
-  while (Buffer.byteLength(name) > 100) {
-    var i = name.indexOf('/')
-    if (i === -1) return null
-    prefix += prefix ? '/' + name.slice(0, i) : name.slice(0, i)
-    name = name.slice(i + 1)
-  }
-
-  if (Buffer.byteLength(name) > 100 || Buffer.byteLength(prefix) > 155) return null
-  if (opts.linkname && Buffer.byteLength(opts.linkname) > 100) return null
-
-  buf.write(name)
-  buf.write(encodeOct(opts.mode & MASK, 6), 100)
-  buf.write(encodeOct(opts.uid, 6), 108)
-  buf.write(encodeOct(opts.gid, 6), 116)
-  buf.write(encodeOct(opts.size, 11), 124)
-  buf.write(encodeOct((opts.mtime.getTime() / 1000) | 0, 11), 136)
-
-  buf[156] = ZERO_OFFSET + toTypeflag(opts.type)
-
-  if (opts.linkname) buf.write(opts.linkname, 157)
-
-  buf.write(USTAR, 257)
-  if (opts.uname) buf.write(opts.uname, 265)
-  if (opts.gname) buf.write(opts.gname, 297)
-  buf.write(encodeOct(opts.devmajor || 0, 6), 329)
-  buf.write(encodeOct(opts.devminor || 0, 6), 337)
-
-  if (prefix) buf.write(prefix, 345)
-
-  buf.write(encodeOct(cksum(buf), 6), 148)
-
-  return buf
-}
-
-exports.decode = function (buf) {
-  var typeflag = buf[156] === 0 ? 0 : buf[156] - ZERO_OFFSET
-
-  var name = decodeStr(buf, 0, 100)
-  var mode = decodeOct(buf, 100)
-  var uid = decodeOct(buf, 108)
-  var gid = decodeOct(buf, 116)
-  var size = decodeOct(buf, 124)
-  var mtime = decodeOct(buf, 136)
-  var type = toType(typeflag)
-  var linkname = buf[157] === 0 ? null : decodeStr(buf, 157, 100)
-  var uname = decodeStr(buf, 265, 32)
-  var gname = decodeStr(buf, 297, 32)
-  var devmajor = decodeOct(buf, 329)
-  var devminor = decodeOct(buf, 337)
-
-  if (buf[345]) name = decodeStr(buf, 345, 155) + '/' + name
-
-  // to support old tar versions that use trailing / to indicate dirs
-  if (typeflag === 0 && name && name[name.length - 1] === '/') typeflag = 5
-
-  var c = cksum(buf)
-
-  // checksum is still initial value if header was null.
-  if (c === 8 * 32) return null
-
-  // valid checksum
-  if (c !== decodeOct(buf, 148)) throw new Error('Invalid tar header. Maybe the tar is corrupted or it needs to be gunzipped?')
-
-  return {
-    name: name,
-    mode: mode,
-    uid: uid,
-    gid: gid,
-    size: size,
-    mtime: new Date(1000 * mtime),
-    type: type,
-    linkname: linkname,
-    uname: uname,
-    gname: gname,
-    devmajor: devmajor,
-    devminor: devminor
-  }
-}
-
-}).call(this,require("buffer").Buffer)
-},{"buffer":68}],238:[function(require,module,exports){
-exports.extract = require('./extract')
-exports.pack = require('./pack')
-
-},{"./extract":236,"./pack":239}],239:[function(require,module,exports){
-(function (process,Buffer){
-var constants = require('constants')
-var eos = require('end-of-stream')
-var util = require('util')
-
-var Readable = require('readable-stream').Readable
-var Writable = require('readable-stream').Writable
-var StringDecoder = require('string_decoder').StringDecoder
-
-var headers = require('./headers')
-
-var DMODE = parseInt('755', 8)
-var FMODE = parseInt('644', 8)
-
-var END_OF_TAR = new Buffer(1024)
-END_OF_TAR.fill(0)
-
-var noop = function () {}
-
-var overflow = function (self, size) {
-  size &= 511
-  if (size) self.push(END_OF_TAR.slice(0, 512 - size))
-}
-
-function modeToType (mode) {
-  switch (mode & constants.S_IFMT) {
-    case constants.S_IFBLK: return 'block-device'
-    case constants.S_IFCHR: return 'character-device'
-    case constants.S_IFDIR: return 'directory'
-    case constants.S_IFIFO: return 'fifo'
-    case constants.S_IFLNK: return 'symlink'
-  }
-
-  return 'file'
-}
-
-var Sink = function (to) {
-  Writable.call(this)
-  this.written = 0
-  this._to = to
-  this._destroyed = false
-}
-
-util.inherits(Sink, Writable)
-
-Sink.prototype._write = function (data, enc, cb) {
-  this.written += data.length
-  if (this._to.push(data)) return cb()
-  this._to._drain = cb
-}
-
-Sink.prototype.destroy = function () {
-  if (this._destroyed) return
-  this._destroyed = true
-  this.emit('close')
-}
-
-var LinkSink = function () {
-  Writable.call(this)
-  this.linkname = ''
-  this._decoder = new StringDecoder('utf-8')
-  this._destroyed = false
-}
-
-util.inherits(LinkSink, Writable)
-
-LinkSink.prototype._write = function (data, enc, cb) {
-  this.linkname += this._decoder.write(data)
-  cb()
-}
-
-LinkSink.prototype.destroy = function () {
-  if (this._destroyed) return
-  this._destroyed = true
-  this.emit('close')
-}
-
-var Void = function () {
-  Writable.call(this)
-  this._destroyed = false
-}
-
-util.inherits(Void, Writable)
-
-Void.prototype._write = function (data, enc, cb) {
-  cb(new Error('No body allowed for this entry'))
-}
-
-Void.prototype.destroy = function () {
-  if (this._destroyed) return
-  this._destroyed = true
-  this.emit('close')
-}
-
-var Pack = function (opts) {
-  if (!(this instanceof Pack)) return new Pack(opts)
-  Readable.call(this, opts)
-
-  this._drain = noop
-  this._finalized = false
-  this._finalizing = false
-  this._destroyed = false
-  this._stream = null
-}
-
-util.inherits(Pack, Readable)
-
-Pack.prototype.entry = function (header, buffer, callback) {
-  if (this._stream) throw new Error('already piping an entry')
-  if (this._finalized || this._destroyed) return
-
-  if (typeof buffer === 'function') {
-    callback = buffer
-    buffer = null
-  }
-
-  if (!callback) callback = noop
-
-  var self = this
-
-  if (!header.size || header.type === 'symlink') header.size = 0
-  if (!header.type) header.type = modeToType(header.mode)
-  if (!header.mode) header.mode = header.type === 'directory' ? DMODE : FMODE
-  if (!header.uid) header.uid = 0
-  if (!header.gid) header.gid = 0
-  if (!header.mtime) header.mtime = new Date()
-
-  if (typeof buffer === 'string') buffer = new Buffer(buffer)
-  if (Buffer.isBuffer(buffer)) {
-    header.size = buffer.length
-    this._encode(header)
-    this.push(buffer)
-    overflow(self, header.size)
-    process.nextTick(callback)
-    return new Void()
-  }
-
-  if (header.type === 'symlink' && !header.linkname) {
-    var linkSink = new LinkSink()
-    eos(linkSink, function (err) {
-      if (err) { // stream was closed
-        self.destroy()
-        return callback(err)
-      }
-
-      header.linkname = linkSink.linkname
-      self._encode(header)
-      callback()
-    })
-
-    return linkSink
-  }
-
-  this._encode(header)
-
-  if (header.type !== 'file' && header.type !== 'contiguous-file') {
-    process.nextTick(callback)
-    return new Void()
-  }
-
-  var sink = new Sink(this)
-
-  this._stream = sink
-
-  eos(sink, function (err) {
-    self._stream = null
-
-    if (err) { // stream was closed
-      self.destroy()
-      return callback(err)
-    }
-
-    if (sink.written !== header.size) { // corrupting tar
-      self.destroy()
-      return callback(new Error('size mismatch'))
-    }
-
-    overflow(self, header.size)
-    if (self._finalizing) self.finalize()
-    callback()
-  })
-
-  return sink
-}
-
-Pack.prototype.finalize = function () {
-  if (this._stream) {
-    this._finalizing = true
-    return
-  }
-
-  if (this._finalized) return
-  this._finalized = true
-  this.push(END_OF_TAR)
-  this.push(null)
-}
-
-Pack.prototype.destroy = function (err) {
-  if (this._destroyed) return
-  this._destroyed = true
-
-  if (err) this.emit('error', err)
-  this.emit('close')
-  if (this._stream && this._stream.destroy) this._stream.destroy()
-}
-
-Pack.prototype._encode = function (header) {
-  if (!header.pax) {
-    var buf = headers.encode(header)
-    if (buf) {
-      this.push(buf)
-      return
-    }
-  }
-  this._encodePax(header)
-}
-
-Pack.prototype._encodePax = function (header) {
-  var paxHeader = headers.encodePax({
-    name: header.name,
-    linkname: header.linkname,
-    pax: header.pax
-  })
-
-  var newHeader = {
-    name: 'PaxHeader',
-    mode: header.mode,
-    uid: header.uid,
-    gid: header.gid,
-    size: paxHeader.length,
-    mtime: header.mtime,
-    type: 'pax-header',
-    linkname: header.linkname && 'PaxHeader',
-    uname: header.uname,
-    gname: header.gname,
-    devmajor: header.devmajor,
-    devminor: header.devminor
-  }
-
-  this.push(headers.encode(newHeader))
-  this.push(paxHeader)
-  overflow(this, paxHeader.length)
-
-  newHeader.size = header.size
-  newHeader.type = header.type
-  this.push(headers.encode(newHeader))
-}
-
-Pack.prototype._read = function (n) {
-  var drain = this._drain
-  this._drain = noop
-  drain()
-}
-
-module.exports = Pack
-
-}).call(this,require('_process'),require("buffer").Buffer)
-},{"./headers":237,"_process":200,"buffer":68,"constants":81,"end-of-stream":133,"readable-stream":216,"string_decoder":235,"util":243}],240:[function(require,module,exports){
+},{"buffer":65}],222:[function(require,module,exports){
 (function (global){
 
 /**
@@ -64181,16 +59781,16 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],241:[function(require,module,exports){
-arguments[4][151][0].apply(exports,arguments)
-},{"dup":151}],242:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
+arguments[4][140][0].apply(exports,arguments)
+},{"dup":140}],224:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],243:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -64780,7 +60380,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":242,"_process":200,"inherits":241}],244:[function(require,module,exports){
+},{"./support/isBuffer":224,"_process":186,"inherits":223}],226:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -64920,321 +60520,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":149}],245:[function(require,module,exports){
-(function (process){
-var EventEmitter = require('events').EventEmitter,
-_fs = require('fs'),
-_path = require('path'),
-sep = _path.sep||'/';// 0.6.x
-
-
-module.exports = walkdir;
-
-walkdir.find = walkdir.walk = walkdir;
-
-walkdir.sync = function(path,options,cb){
-  if(typeof options == 'function') cb = options;
-  options = options || {};
-  options.sync = true;
-  return walkdir(path,options,cb);
-
-};
-
-function walkdir(path,options,cb){
-
-  if(typeof options == 'function') cb = options;
-
-  options = options || {};
-  
-  var fs = options.fs || _fs;
-
-  var emitter = new EventEmitter(),
-  dontTraverse = [],
-  allPaths = (options.return_object?{}:[]),
-  resolved = false,
-  inos = {},
-  stop = 0,
-  pause = null,
-  ended = 0, 
-  jobs=0, 
-  job = function(value) {
-    jobs += value;
-    if(value < 1 && !tick) {
-      tick = 1;
-      process.nextTick(function(){
-        tick = 0;
-        if(jobs <= 0 && !ended) {
-          ended = 1;
-          emitter.emit('end');
-        }
-      });
-    }
-  }, tick = 0;
-
-  emitter.ignore = function(path){
-    if(Array.isArray(path)) dontTraverse.push.apply(dontTraverse,path)
-    else dontTraverse.push(path)
-    return this
-  }
-
-  //mapping is stat functions to event names.	
-  var statIs = [['isFile','file'],['isDirectory','directory'],['isSymbolicLink','link'],['isSocket','socket'],['isFIFO','fifo'],['isBlockDevice','blockdevice'],['isCharacterDevice','characterdevice']];
-
-  var statter = function (path,first,depth) {
-    job(1);
-    var statAction = function fn(err,stat,data) {
-
-      job(-1);
-      if(stop) return;
-
-      // in sync mode i found that node will sometimes return a null stat and no error =(
-      // this is reproduceable in file descriptors that no longer exist from this process
-      // after a readdir on /proc/3321/task/3321/ for example. Where 3321 is this pid
-      // node @ v0.6.10 
-      if(err || !stat) { 
-        emitter.emit('fail',path,err);
-        return;
-      }
-
-
-      //if i have evented this inode already dont again.
-      var fileName = _path.basename(path);
-      var fileKey = stat.dev + '-' + stat.ino + '-' + fileName;
-      if(inos[fileKey] && stat.ino) return;
-      inos[fileKey] = 1;
-
-      if (first && stat.isDirectory()) {
-        emitter.emit('targetdirectory',path,stat,depth);
-        return;
-      }
-
-      emitter.emit('path', path, stat,depth);
-
-      var i,name;
-
-      for(var j=0,k=statIs.length;j<k;j++) {
-        if(stat[statIs[j][0]]()) {
-          emitter.emit(statIs[j][1],path,stat,depth);
-          break;
-        }
-      }
-    };
-    
-    if(options.sync) {
-      var stat,ex;
-      try{
-        stat = fs.lstatSync(path);
-      } catch (e) {
-        ex = e;
-      }
-
-      statAction(ex,stat);
-    } else {
-        fs.lstat(path,statAction);
-    }
-  },readdir = function(path,stat,depth){
-    if(!resolved) {
-      path = _path.resolve(path);
-      resolved = 1;
-    }
-
-    if(options.max_depth && depth >= options.max_depth){
-      emitter.emit('maxdepth',path,stat,depth);
-      return;
-    }
-
-    if(dontTraverse.length){
-      for(var i=0;i<dontTraverse.length;++i){
-        if(dontTraverse[i] == path) {
-          dontTraverse.splice(i,1)
-          return;
-        }
-      }
-    }
-
-    job(1);
-    var readdirAction = function(err,files) {
-      job(-1);
-      if (err || !files) {
-        //permissions error or invalid files
-        emitter.emit('fail',path,err);
-        return;
-      }
-
-      if(!files.length) {
-        // empty directory event.
-        emitter.emit('empty',path,stat,depth);
-        return;     
-      }
-
-      if(path == sep) path='';
-      for(var i=0,j=files.length;i<j;i++){
-        statter(path+sep+files[i],false,(depth||0)+1);
-      }
-
-    };
-
-
-    //use same pattern for sync as async api
-    if(options.sync) {
-      var e,files;
-      try {
-          files = fs.readdirSync(path);
-      } catch (e) { }
-
-      readdirAction(e,files);
-    } else {
-      fs.readdir(path,readdirAction);
-    }
-  };
-
-  if (options.follow_symlinks) {
-    var linkAction = function(err,path,depth){
-      job(-1);
-      //TODO should fail event here on error?
-      statter(path,false,depth);
-    };
-
-    emitter.on('link',function(path,stat,depth){
-      job(1);
-      if(options.sync) {
-        var lpath,ex;
-        try {
-          lpath = fs.readlinkSync(path);
-        } catch(e) {
-          ex = e;
-        }
-        linkAction(ex,_path.resolve(_path.dirname(path),lpath),depth);
-
-      } else {
-        fs.readlink(path,function(err,lpath){
-          linkAction(err,_path.resolve(_path.dirname(path),lpath),depth);
-        });
-      }
-    });
-  }
-
-  if (cb) {
-    emitter.on('path',cb);
-  }
-
-  if (options.sync) {
-    if(!options.no_return){
-      emitter.on('path',function(path,stat){
-        if(options.return_object) allPaths[path] = stat;
-        else allPaths.push(path);
-      });
-    }
-  }
-
-  if (!options.no_recurse) {
-    emitter.on('directory',readdir);
-  }
-  //directory that was specified by argument.
-  emitter.once('targetdirectory',readdir);
-  //only a fail on the path specified by argument is fatal 
-  emitter.once('fail',function(_path,err){
-    //if the first dir fails its a real error
-    if(path == _path) {
-      emitter.emit('error',path,err);
-    }
-  });
-
-  statter(path,1);
-  if (options.sync) {
-    return allPaths;
-  } else {
-    //support stopping everything.
-    emitter.end = emitter.stop = function(){stop = 1;};
-    //support pausing everything
-    var emitQ = [];
-    emitter.pause = function(){
-      job(1);
-      pause = true;
-      emitter.emit = function(){
-        emitQ.push(arguments);
-      };
-    };
-    // support getting the show going again
-    emitter.resume = function(){
-      if(!pause) return;
-      pause = false;
-      // not pending
-      job(-1);
-      //replace emit
-      emitter.emit = EventEmitter.prototype.emit;
-      // local ref
-      var q = emitQ;
-      // clear ref to prevent infinite loops
-      emitQ = [];
-      while(q.length) {
-        emitter.emit.apply(emitter,q.shift());
-      }
-    };
-
-    return emitter;
-  }
-
-}
-
-}).call(this,require('_process'))
-},{"_process":200,"events":134,"fs":64,"path":195}],246:[function(require,module,exports){
-// Returns a wrapper function that returns a wrapped callback
-// The wrapper function should do some stuff, and return a
-// presumably different callback function.
-// This makes sure that own properties are retained, so that
-// decorations and such are not lost along the way.
-module.exports = wrappy
-function wrappy (fn, cb) {
-  if (fn && cb) return wrappy(fn)(cb)
-
-  if (typeof fn !== 'function')
-    throw new TypeError('need wrapper function')
-
-  Object.keys(fn).forEach(function (k) {
-    wrapper[k] = fn[k]
-  })
-
-  return wrapper
-
-  function wrapper() {
-    var args = new Array(arguments.length)
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i]
-    }
-    var ret = fn.apply(this, args)
-    var cb = args[args.length-1]
-    if (typeof ret === 'function' && ret !== cb) {
-      Object.keys(cb).forEach(function (k) {
-        ret[k] = cb[k]
-      })
-    }
-    return ret
-  }
-}
-
-},{}],247:[function(require,module,exports){
-module.exports = extend
-
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-function extend() {
-    var target = {}
-
-    for (var i = 0; i < arguments.length; i++) {
-        var source = arguments[i]
-
-        for (var key in source) {
-            if (hasOwnProperty.call(source, key)) {
-                target[key] = source[key]
-            }
-        }
-    }
-
-    return target
-}
-
-},{}],248:[function(require,module,exports){
+},{"indexof":139}],227:[function(require,module,exports){
 /**
  * ZipStream
  *
@@ -65396,7 +60682,7 @@ ZipStream.prototype.finalize = function() {
  * @external ZipArchiveOutputStream
  * @see {@link https://github.com/archiverjs/node-compress-commons}
  */
-},{"archiver-utils":2,"compress-commons":78,"util":243}],249:[function(require,module,exports){
+},{"archiver-utils":2,"compress-commons":75,"util":225}],228:[function(require,module,exports){
 'use strict';
 
 require('setimmediate'); // polyfill
@@ -65446,7 +60732,7 @@ function outputResult(output) {
   $('#output .ppk').href = URL.createObjectURL(new Blob([output.privateKey], {type: 'text/plain'}));
 }
 
-},{"../src/":251,"buffer":68,"setimmediate":221}],250:[function(require,module,exports){
+},{"../src/":230,"buffer":65,"setimmediate":207}],229:[function(require,module,exports){
 'use strict';
 
 const N_TO_A = 'a'.charCodeAt(0) - '0'.charCodeAt(0);
@@ -65472,7 +60758,7 @@ function hex2a(hex) {
 
 module.exports = hex2a;
 
-},{}],251:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 'use strict';
 
 const archiver = require('archiver');
@@ -65537,7 +60823,7 @@ function zip(contentsZip, publicKey, signature) {
 
 module.exports = packer;
 
-},{"./sign":252,"./uuid":253,"archiver":3,"debug":105,"node-rsa":161,"stream-buffers":233}],252:[function(require,module,exports){
+},{"./sign":231,"./uuid":232,"archiver":3,"debug":101,"node-rsa":149,"stream-buffers":219}],231:[function(require,module,exports){
 'use strict';
 
 const RSA = require('node-rsa');
@@ -65554,7 +60840,7 @@ function sign(contents, privateKey) {
 
 module.exports = sign;
 
-},{"node-rsa":161}],253:[function(require,module,exports){
+},{"node-rsa":149}],232:[function(require,module,exports){
 'use strict';
 
 const crypto = require('crypto');
@@ -65574,4 +60860,4 @@ function uuid(publicKey) {
 
 module.exports = uuid;
 
-},{"./hex2a":250,"crypto":104}]},{},[249]);
+},{"./hex2a":229,"crypto":100}]},{},[228]);
