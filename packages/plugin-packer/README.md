@@ -21,7 +21,7 @@ It's written in pure JavaScript, so
 $ npm install -g @teppeis/kintone-plugin-packer
 ```
 
-# Usage
+# Usage: CLI
 
 ```console
 $ kintone-plugin-packer [OPTIONS] PLUGIN_DIR
@@ -49,6 +49,20 @@ and then
 
 ```console
 $ npm run package
+```
+
+# Usage: Node.js API
+
+```js
+const packer = require('@teppeis/kintone-plugin-packer');
+const fs = require('fs');
+
+const buffer = createContentsZipBufferInYourSelf();
+packer(buffer).then(output => {
+  console.log(output.id);
+  fs.writeFileSync('./private.ppk', output.privateKey);
+  fs.writeFileSync('./plugin.zip', output.plugin);
+});
 ```
 
 ## License
