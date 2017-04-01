@@ -45,8 +45,8 @@ jobs:
           command: |
             mkdir -p $TEST_REPORTS
             # https://github.com/yarnpkg/yarn/pull/2843
-            # yarn run circleci
-            npm run circleci
+            # yarn test
+            npm test
       - save_cache:
           key: v1-yarn-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-#{{ .BuildNum }}
           paths:
