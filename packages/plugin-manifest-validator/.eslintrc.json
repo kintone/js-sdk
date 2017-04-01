@@ -1,0 +1,3 @@
+{
+  "extends": ["teppeis/node-v4"]
+}
