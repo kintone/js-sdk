@@ -19,8 +19,22 @@ $ npm install @teppeis/kintone-plugin-packer
 const validator = require('@teppeis/kintone-plugin-manifest-validator');
 
 const result = validator(manifestJson);
-console.log(result.valid); // boolean
-console.log(result.errors); // [{field: string, message: string}]
+console.log(result.valid); // true or fals
+console.log(result.errors); // array of ajv error objects
+```
+
+[ajv error objects](https://github.com/epoberezkin/ajv#validation-errors) is like:
+
+```js
+{
+  dataPath: '.version',
+  keyword: 'type',
+  message: 'should be integer',
+  params: {
+    type: 'integer',
+  },
+  schemaPath: '#/properties/version/type',
+}
 ```
 
 ## License
