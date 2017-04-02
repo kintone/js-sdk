@@ -1,5 +1,5 @@
 {
-  "name": "kintone-plugin-manifest-vaidator",
+  "name": "@teppeis/kintone-plugin-manifest-vaidator",
   "version": "1.0.0",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "main": "index.js",
