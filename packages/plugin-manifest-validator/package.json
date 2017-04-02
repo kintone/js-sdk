@@ -4,6 +4,7 @@
   "author": "Teppei Sato <teppeis@gmail.com>",
   "main": "index.js",
   "files": [
+    "manifest-schema.json",
     "index.js",
     "src"
   ],
@@ -11,6 +12,9 @@
     "lint": "eslint index.js src test",
     "mocha": "mocha test --require intelli-espower-loader",
     "test": "run-s lint mocha"
+  },
+  "dependencies": {
+    "ajv": "^4.11.5"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
