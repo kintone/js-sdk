@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "kintone plugin manifest.json",
+  "type": "object",
+  "properties": {
+    "manifest_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "type": {
+      "type": "string",
+      "enum": ["APP"]
+    },
+    "name": {
+      "type": "object",
+      "properties": {
+        "ja": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "zh": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "en"
+      ]
+    },
+    "description": {
+      "type": "object",
+      "properties": {
+        "ja": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "zh": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "en"
+      ]
+    },
+    "icon": {
+      "type": "string",
+      "description": "internal only",
+      "minLength": 1,
+      "format": "uri"
+    },
+    "homepage_url": {
+      "type": "object",
+      "properties": {
+        "ja": {
+          "type": "string",
+          "minLength": 1,
+          "format": "uri"
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "format": "uri"
+        },
+        "zh": {
+          "type": "string",
+          "minLength": 1,
+          "format": "uri"
+        }
+      },
+      "required": [
+      ]
+    },
+    "desktop": {
+      "type": "object",
+      "properties": {
+        "js": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "description": "internal or external",
+            "type": "string",
+            "format": "uri",
+            "maxItems": 30
+          }
+        },
+        "css": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "description": "internal or external",
+            "type": "string",
+            "format": "uri",
+            "maxItems": 30
+          }
+        }
+      },
+      "required": [
+      ]
+    },
+    "mobile": {
+      "type": "object",
+      "properties": {
+        "js": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "description": "internal or external",
+            "type": "string",
+            "format": "uri",
+            "maxItems": 30
+          }
+        }
+      },
+      "required": [
+      ]
+    },
+    "config": {
+      "type": "object",
+      "properties": {
+        "html": {
+          "description": "internal only",
+          "type": "string",
+          "format": "uri",
+          "minLength": 1
+        },
+        "js": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "description": "internal or external",
+            "type": "string",
+            "format": "uri",
+            "maxItems": 30
+          }
+        },
+        "css": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "description": "internal or external",
+            "type": "string",
+            "format": "uri",
+            "maxItems": 30
+          }
+        },
+        "required_params": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          }
+        }
+      },
+      "required": [
+      ]
+    }
+  },
+  "required": [
+    "manifest_version",
+    "version",
+    "type",
+    "name",
+    "icon"
+  ]
+}

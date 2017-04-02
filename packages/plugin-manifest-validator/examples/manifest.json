@@ -1,0 +1,52 @@
+{
+  "manifest_version": 1,
+  "version": 1,
+  "type": "APP",
+  "name": {
+    "ja": "サンプルプラグイン",
+    "en": "sample plugin",
+    "zh": "插件的例子"
+  },
+  "description": {
+    "ja": "これはサンプルプラグインです。",
+    "en": "This is sample plugin.",
+    "zh": "这是插件的例子"
+  },
+  "icon": "image/icon.png",
+  "homepage_url": {
+    "ja": "http://sample_cybozu.jp",
+    "en": "http://sample_cybozu.com",
+    "zh": "http://sample_cybozu.cn"
+  },
+  "desktop": {
+    "js": [
+      "js/customize.js",
+      "https://example.com/js/customize.js"
+    ],
+    "css": [
+      "https://example.com/css/customize.css",
+      "css/customize.css"
+    ]
+  },
+  "mobile": {
+    "js": [
+      "js/mobile-customize.js",
+      "https://example.com/js/mobile-customize.js"
+    ]
+  },
+  "config": {
+    "html": "html/config.html",
+    "js": [
+      "https://example.com/js/config.js",
+      "js/config.js"
+    ],
+    "css": [
+      "css/config.css",
+      "https://example.com/css/config.css"
+    ],
+    "required_params": [
+      "Param1",
+      "Param2"
+    ]
+  }
+}
