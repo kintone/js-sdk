@@ -1,0 +1,8 @@
+{
+  "manifest_version": 1,
+  "type": "APP",
+  "name": {
+    "en": "sample plugin"
+  },
+  "icon": "image/icon.png"
+}
