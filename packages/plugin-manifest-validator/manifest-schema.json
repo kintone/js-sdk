@@ -85,9 +85,7 @@
           "minLength": 1,
           "format": "uri"
         }
-      },
-      "required": [
-      ]
+      }
     },
     "desktop": {
       "type": "object",
@@ -112,9 +110,7 @@
             "maxItems": 30
           }
         }
-      },
-      "required": [
-      ]
+      }
     },
     "mobile": {
       "type": "object",
@@ -129,9 +125,7 @@
             "maxItems": 30
           }
         }
-      },
-      "required": [
-      ]
+      }
     },
     "config": {
       "type": "object",
@@ -170,9 +164,7 @@
             "maxLength": 64
           }
         }
-      },
-      "required": [
-      ]
+      }
     }
   },
   "required": [
