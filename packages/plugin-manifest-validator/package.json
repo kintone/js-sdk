@@ -1,5 +1,5 @@
 {
-  "name": "@teppeis/kintone-plugin-manifest-vaidator",
+  "name": "@teppeis/kintone-plugin-manifest-validator",
   "version": "1.0.0",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "main": "index.js",
@@ -24,13 +24,13 @@
     "npm-run-all": "^4.0.2",
     "power-assert": "^1.4.2"
   },
-  "homepage": "https://github.com/teppeis/kintone-plugin-manifest-vaidator#readme",
+  "homepage": "https://github.com/teppeis/kintone-plugin-manifest-validator#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/teppeis/kintone-plugin-manifest-vaidator.git"
+    "url": "git+ssh://git@github.com/teppeis/kintone-plugin-manifest-validator.git"
   },
   "bugs": {
-    "url": "https://github.com/teppeis/kintone-plugin-manifest-vaidator/issues"
+    "url": "https://github.com/teppeis/kintone-plugin-manifest-validator/issues"
   },
   "keywords": [],
   "license": "MIT"
