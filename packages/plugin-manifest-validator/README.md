@@ -4,7 +4,6 @@ kintone-plugin-manifest-validator
 [![npm version][npm-image]][npm-url]
 ![Node.js Version Support][node-version]
 [![build status][circleci-image]][circleci-url]
-[![windows build status][appveyor-image]][appveyor-url]
 [![dependency status][deps-image]][deps-url]
 ![License][license]
 
