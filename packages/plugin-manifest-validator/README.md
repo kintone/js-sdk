@@ -19,7 +19,7 @@ $ npm install @teppeis/kintone-plugin-packer
 const validator = require('@teppeis/kintone-plugin-manifest-validator');
 
 const result = validator(manifestJson);
-console.log(result.valid); // true or fals
+console.log(result.valid); // true or false
 console.log(result.errors); // array of ajv error objects
 ```
 
