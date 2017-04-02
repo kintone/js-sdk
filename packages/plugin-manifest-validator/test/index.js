@@ -18,9 +18,9 @@ describe('validator', () => {
     assert.deepEqual(validator(require('./fixtures/no-version.json')), {
       valid: false,
       errors: [{
-        dataPath: '',
+        dataPath: '.version',
         keyword: 'required',
-        message: "should have required property 'version'",
+        message: 'is a required property',
         params: {
           missingProperty: 'version',
         },
@@ -82,9 +82,9 @@ describe('validator', () => {
     assert.deepEqual(validator(require('./fixtures/no-english-description.json')), {
       valid: false,
       errors: [{
-        dataPath: '.description',
+        dataPath: '.description.en',
         keyword: 'required',
-        message: "should have required property 'en'",
+        message: 'is a required property',
         params: {
           missingProperty: 'en',
         },

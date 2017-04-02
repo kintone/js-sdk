@@ -11,6 +11,7 @@ module.exports = function(json) {
   const ajv = new Ajv({
     allErrors: true,
     unknownFormats: true,
+    errorDataPath: 'property',
   });
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);
