@@ -1,3 +1,6 @@
 {
-  "extends": ["teppeis/node-v4"]
+  "extends": ["teppeis/node-v4"],
+  "rules": {
+    "no-magic-numbers": 0
+  }
 }

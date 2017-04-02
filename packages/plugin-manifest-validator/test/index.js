@@ -92,4 +92,10 @@ describe('validator', () => {
       }]
     });
   });
+
+  it('2 errors', () => {
+    const actual = validator(require('./fixtures/2-errors.json'));
+    assert(actual.valid === false);
+    assert(actual.errors.length === 2);
+  });
 });

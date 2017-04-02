@@ -9,6 +9,7 @@ const jsonSchema = require('./manifest-schema.json');
  */
 module.exports = function(json) {
   const ajv = new Ajv({
+    allErrors: true,
     unknownFormats: true,
   });
   const validate = ajv.compile(jsonSchema);
