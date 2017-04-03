@@ -60775,23 +60775,21 @@ const uuid = require('./uuid');
  * @return {!Promise<{plugin: !Buffer, privateKey: string, id: string}>}
  */
 function packer(contentsZip, privateKey) {
-  return Promise.resolve().then(() => {
-    let key;
-    if (privateKey) {
-      key = new RSA(privateKey);
-    } else {
-      debug('generating a new key');
-      key = new RSA({b: 1024});
-      privateKey = key.exportKey('pkcs1-private');
-    }
+  let key;
+  if (privateKey) {
+    key = new RSA(privateKey);
+  } else {
+    debug('generating a new key');
+    key = new RSA({b: 1024});
+    privateKey = key.exportKey('pkcs1-private');
+  }
 
-    const signature = sign(contentsZip, privateKey);
-    const publicKey = key.exportKey('pkcs8-public-der');
-    const id = uuid(publicKey);
-    debug(`id : ${id}`);
-    return zip(contentsZip, publicKey, signature)
-      .then(plugin => ({plugin: plugin, privateKey: privateKey, id: id}));
-  });
+  const signature = sign(contentsZip, privateKey);
+  const publicKey = key.exportKey('pkcs8-public-der');
+  const id = uuid(publicKey);
+  debug(`id : ${id}`);
+  return zip(contentsZip, publicKey, signature)
+    .then(plugin => ({plugin: plugin, privateKey: privateKey, id: id}));
 }
 
 /**
