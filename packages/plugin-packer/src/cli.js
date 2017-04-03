@@ -8,6 +8,7 @@ const writeFile = denodeify(fs.writeFile);
 const recursive = denodeify(require('recursive-readdir'));
 const streamBuffers = require('stream-buffers');
 const debug = require('debug')('cli');
+const validate = require('@teppeis/kintone-plugin-manifest-validator');
 
 const packer = require('./');
 
@@ -26,8 +27,17 @@ function cli(pluginDir, options) {
   }
 
   // 2. check pluginDir/manifest.json
-  if (!fs.statSync(path.join(pluginDir, 'manifest.json')).isFile()) {
+  const manifestJsonPath = path.join(pluginDir, 'manifest.json');
+  if (!fs.statSync(manifestJsonPath).isFile()) {
     throw new Error('Manifest file $PLUGIN_DIR/manifest.json not found.');
+  }
+
+  const result = validate(loadJson(manifestJsonPath));
+  if (!result.valid) {
+    const msg = generateErrorMessage(result.errors);
+    console.error('Invalid manifest.json:');
+    console.error(msg);
+    throw new Error('Invalid manifest.json');
   }
 
   const outputDir = path.dirname(path.resolve(pluginDir));
@@ -102,4 +112,29 @@ function outputPlugin(outputDir, plugin) {
   const outputPath = path.join(outputDir, 'plugin.zip');
   return writeFile(outputPath, plugin)
     .then(arg => outputPath);
+}
+
+/**
+ * @param {sting} jsonPath
+ * @return {Object}
+ */
+function loadJson(jsonPath) {
+  const content = fs.readFileSync(jsonPath, 'utf8');
+  return JSON.parse(content);
+}
+
+/**
+ * @param {!Array<{dataPath: string, message: string, params: {Object}}>} errors
+ * @return {string}
+ * @private
+ * @override
+ */
+function generateErrorMessage(errors) {
+  return errors.map(e => {
+    if (e.keyword === 'enum') {
+      return `- "${e.dataPath}" ${e.message} (${e.params.allowedValues.join(', ')})`;
+    } else {
+      return `- "${e.dataPath}" ${e.message}`;
+    }
+  }).join('\n');
 }
