@@ -1,6 +1,8 @@
 kintone-plugin-manifest-validator
 ====
 
+Validate `manifest.json` of kintone plugin. Used in [kintone-plugin-packer](https://github.com/teppeis/kintone-plugin-packer).
+
 [![npm version][npm-image]][npm-url]
 ![Node.js Version Support][node-version]
 [![build status][circleci-image]][circleci-url]
