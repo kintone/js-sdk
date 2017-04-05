@@ -37,10 +37,10 @@
   },
   "devDependencies": {
     "adm-zip": "^0.4.7",
-    "browserify": "^14.1.0",
-    "closure-compiler-cli": "^1.0.1",
+    "browserify": "^14.3.0",
+    "closure-compiler-cli": "^1.0.2",
     "cssnano-cli": "^1.0.5",
-    "eslint": "^3.18.0",
+    "eslint": "^3.19.0",
     "eslint-config-teppeis": "^5.3.0",
     "glob": "^7.1.1",
     "intelli-espower-loader": "^1.0.1",
