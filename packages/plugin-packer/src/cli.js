@@ -2,10 +2,12 @@
 
 const path = require('path');
 const fs = require('fs');
-const archiver = require('archiver');
+const ZipFile = require('yazl').ZipFile;
 const denodeify = require('denodeify');
 const writeFile = denodeify(fs.writeFile);
-const recursive = denodeify(require('recursive-readdir'));
+const nodeDir = require('node-dir');
+const listPaths = denodeify(nodeDir.paths);
+const listFiles = denodeify(nodeDir.files);
 const streamBuffers = require('stream-buffers');
 const debug = require('debug')('cli');
 const validate = require('@teppeis/kintone-plugin-manifest-validator');
@@ -43,7 +45,7 @@ function cli(pluginDir, options) {
   const outputDir = path.dirname(path.resolve(pluginDir));
   debug(`outDir : ${outputDir}`);
 
-  return recursive(pluginDir).then(files => {
+  return listFiles(pluginDir).then(files => {
     files.forEach(file => {
       const basename = path.basename(file);
       // 3. check dot files
@@ -85,20 +87,25 @@ module.exports = cli;
  * @return {!Promise<!Buffer>}
  */
 function createContentsZip(pluginDir) {
-  return new Promise((res, rej) => {
+  return listPaths(pluginDir).then(result => new Promise((res, rej) => {
     const output = new streamBuffers.WritableStreamBuffer();
-    const archive = archiver('zip');
+    const zipFile = new ZipFile();
+    let size = null;
     output.on('finish', () => {
-      debug(`contents.zip: ${archive.pointer()} bytes`);
+      debug(`plugin.zip: ${size} bytes`);
       res(output.getContents());
     });
-    archive.pipe(output);
-    archive.on('error', e => {
-      rej(e);
+    zipFile.outputStream.pipe(output);
+    result.files.forEach(file => {
+      zipFile.addFile(file, path.relative(pluginDir, file));
     });
-    archive.directory(pluginDir, '.');
-    archive.finalize();
-  });
+    result.dirs.forEach(dir => {
+      zipFile.addEmptyDirectory(path.relative(pluginDir, dir));
+    });
+    zipFile.end(finalSize => {
+      size = finalSize;
+    });
+  }));
 }
 
 /**

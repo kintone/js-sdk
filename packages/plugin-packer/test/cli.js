@@ -46,9 +46,9 @@ describe('cli', () => {
       const zip = new AdmZip(packer.args[0][0]);
       const files = zip.getEntries().map(entry => entry.entryName).sort();
       assert.deepEqual(files, [
-        './image/',
-        './image/icon.png',
-        './manifest.json',
+        'image/',
+        'image/icon.png',
+        'manifest.json',
       ].sort());
     });
 

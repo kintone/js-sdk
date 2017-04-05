@@ -1,6 +1,6 @@
 'use strict';
 
-const archiver = require('archiver');
+const ZipFile = require('yazl').ZipFile;
 const RSA = require('node-rsa');
 const streamBuffers = require('stream-buffers');
 const debug = require('debug')('packer');
@@ -34,27 +34,27 @@ function packer(contentsZip, privateKey) {
 /**
  * Create plugin.zip
  *
- * @param {!Buffer|!stream.Readable|string} contentsZip
- * @param {!Buffer|!stream.Readable|string} publicKey
- * @param {!Buffer|!stream.Readable|string} signature
+ * @param {!Buffer} contentsZip
+ * @param {!Buffer} publicKey
+ * @param {!Buffer} signature
  * @return {!Promise<!Buffer>}
  */
 function zip(contentsZip, publicKey, signature) {
   return new Promise((res, rej) => {
     const output = new streamBuffers.WritableStreamBuffer();
-    const archive = archiver('zip');
+    const zipFile = new ZipFile();
+    let size = null;
     output.on('finish', () => {
-      debug(`plugin.zip: ${archive.pointer()} bytes`);
+      debug(`plugin.zip: ${size} bytes`);
       res(output.getContents());
     });
-    archive.pipe(output);
-    archive.on('error', e => {
-      rej(e);
+    zipFile.outputStream.pipe(output);
+    zipFile.addBuffer(contentsZip, 'contents.zip');
+    zipFile.addBuffer(publicKey, 'PUBKEY');
+    zipFile.addBuffer(signature, 'SIGNATURE');
+    zipFile.end(finalSize => {
+      size = finalSize;
     });
-    archive.append(contentsZip, {name: 'contents.zip'});
-    archive.append(publicKey, {name: 'PUBKEY'});
-    archive.append(signature, {name: 'SIGNATURE'});
-    archive.finalize();
   });
 }
 

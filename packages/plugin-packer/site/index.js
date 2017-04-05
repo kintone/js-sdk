@@ -11,6 +11,9 @@ let privateKey;
 
 $('#input .contents').addEventListener('change', event => {
   const file = event.target.files[0];
+  if (!file) {
+    return;
+  }
   const reader = new FileReader();
   reader.onload = () => {
     contents = reader.result;
@@ -21,6 +24,9 @@ $('#input .contents').addEventListener('change', event => {
 
 $('#input .ppk').addEventListener('change', event => {
   const file = event.target.files[0];
+  if (!file) {
+    return;
+  }
   const reader = new FileReader();
   reader.onload = () => {
     privateKey = reader.result;
