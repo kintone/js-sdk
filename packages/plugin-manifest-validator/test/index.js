@@ -98,4 +98,19 @@ describe('validator', () => {
     assert(actual.valid === false);
     assert(actual.errors.length === 2);
   });
+
+  it('invalid relative url', () => {
+    const actual = validator(require('./fixtures/invalid-relative-url.json'));
+    assert(actual.valid === false);
+    assert(actual.errors.length === 1);
+    assert(actual.errors[0].params.format === 'url');
+  });
+
+  // enable after implement relative-path
+  it.skip('invalid http url', () => {
+    const actual = validator(require('./fixtures/invalid-http-url.json'));
+    assert(actual.valid === false);
+    console.log(actual.errors);
+    assert(actual.errors.length === 1);
+  });
 });

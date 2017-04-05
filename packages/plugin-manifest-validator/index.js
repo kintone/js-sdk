@@ -2,6 +2,7 @@
 
 const Ajv = require('ajv');
 const jsonSchema = require('./manifest-schema.json');
+const validateUrl = require('./src/validate-https-url');
 
 /**
  * @param {Object} json
@@ -12,6 +13,11 @@ module.exports = function(json) {
     allErrors: true,
     unknownFormats: true,
     errorDataPath: 'property',
+    formats: {
+      url: str => validateUrl(str, true),
+      'https-url': str => validateUrl(str),
+      'relative-path': str => true,
+    },
   });
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);

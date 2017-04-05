@@ -73,17 +73,17 @@
         "ja": {
           "type": "string",
           "minLength": 1,
-          "format": "uri"
+          "format": "url"
         },
         "en": {
           "type": "string",
           "minLength": 1,
-          "format": "uri"
+          "format": "url"
         },
         "zh": {
           "type": "string",
           "minLength": 1,
-          "format": "uri"
+          "format": "url"
         }
       }
     },
@@ -96,7 +96,11 @@
           "items": {
             "description": "internal or external",
             "type": "string",
-            "format": "uri",
+            "anyOf": [{
+              "format": "https-url"
+            }, {
+              "format": "relative-path"
+            }],
             "maxItems": 30
           }
         },

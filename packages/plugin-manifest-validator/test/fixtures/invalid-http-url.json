@@ -1,0 +1,14 @@
+{
+  "manifest_version": 1,
+  "version": 1,
+  "type": "APP",
+  "name": {
+    "en": "sample plugin"
+  },
+  "icon": "image/icon.png",
+  "desktop": {
+    "js": [
+      "http://example.com/icon.png"
+    ]
+  }
+}
