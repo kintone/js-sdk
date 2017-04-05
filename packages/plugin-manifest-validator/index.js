@@ -6,9 +6,15 @@ const validateUrl = require('./src/validate-https-url');
 
 /**
  * @param {Object} json
+ * @param {Object=} options
  * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
  */
-module.exports = function(json) {
+module.exports = function(json, options) {
+  options = options || {};
+  let relativePath = str => true;
+  if (options.relativePath) {
+    relativePath = options.relativePath;
+  }
   const ajv = new Ajv({
     allErrors: true,
     unknownFormats: true,
@@ -16,7 +22,7 @@ module.exports = function(json) {
     formats: {
       url: str => validateUrl(str, true),
       'https-url': str => validateUrl(str),
-      'relative-path': str => true,
+      'relative-path': relativePath,
     },
   });
   const validate = ajv.compile(jsonSchema);
