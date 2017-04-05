@@ -13,6 +13,7 @@ const debug = require('debug')('cli');
 const validate = require('@teppeis/kintone-plugin-manifest-validator');
 
 const packer = require('./');
+const generateErrorMessages = require('./gen-error-msg');
 
 /**
  * @param {string} pluginDir path to plugin directory.
@@ -36,9 +37,11 @@ function cli(pluginDir, options) {
 
   const result = validate(loadJson(manifestJsonPath));
   if (!result.valid) {
-    const msg = generateErrorMessage(result.errors);
+    const msgs = generateErrorMessages(result.errors);
     console.error('Invalid manifest.json:');
-    console.error(msg);
+    msgs.for(msg => {
+      console.error(`- ${msg}`);
+    });
     throw new Error('Invalid manifest.json');
   }
 
@@ -128,20 +131,4 @@ function outputPlugin(outputDir, plugin) {
 function loadJson(jsonPath) {
   const content = fs.readFileSync(jsonPath, 'utf8');
   return JSON.parse(content);
-}
-
-/**
- * @param {!Array<{dataPath: string, message: string, params: {Object}}>} errors
- * @return {string}
- * @private
- * @override
- */
-function generateErrorMessage(errors) {
-  return errors.map(e => {
-    if (e.keyword === 'enum') {
-      return `- "${e.dataPath}" ${e.message} (${e.params.allowedValues.join(', ')})`;
-    } else {
-      return `- "${e.dataPath}" ${e.message}`;
-    }
-  }).join('\n');
 }

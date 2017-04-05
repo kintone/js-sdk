@@ -50,7 +50,8 @@
     "power-assert": "^1.4.2",
     "rimraf": "^2.6.1",
     "setimmediate": "^1.0.5",
-    "sinon": "^2.1.0"
+    "sinon": "^2.1.0",
+    "yauzl": "^2.7.0"
   },
   "homepage": "https://github.com/teppeis/kintone-plugin-packer",
   "repository": {

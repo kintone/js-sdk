@@ -15,7 +15,7 @@
     秘密鍵と署名済みのプラグインファイルを生成します。<br>
     2回目以降の場合は、秘密鍵も添付してください。</p>
     <ul>
-      <li>Zipファイル: <input type=file class=contents accept=".zip"></li>
+      <li>Zipファイル: <input type=file class=contents></li>
       <li>秘密鍵（オプション）: <input type=file class=ppk></li>
     </ul>
   </div>
@@ -28,5 +28,11 @@
       <li><a class=ppk download=private.ppk>private.ppk</a></li>
     </ul>
   </div>
+
+  <div id=output-error class="hide">
+    <h2>エラー</h2>
+    <ul class=messages></ul>
+  </div>
+
 </body>
 </html>
