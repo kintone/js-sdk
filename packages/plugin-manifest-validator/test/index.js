@@ -1,7 +1,5 @@
 'use strict';
 
-/* eslint-disable global-require */
-
 const assert = require('assert');
 const validator = require('../');
 
@@ -11,11 +9,13 @@ describe('validator', () => {
   });
 
   it('minimal valid JSON', () => {
-    assert.deepEqual(validator(require('./fixtures/minimal.json')), {valid: true, errors: null});
+    assert.deepEqual(validator(json()), {valid: true, errors: null});
   });
 
   it('missing property', () => {
-    assert.deepEqual(validator(require('./fixtures/no-version.json')), {
+    const manifestJson = json();
+    delete manifestJson.version;
+    assert.deepEqual(validator(manifestJson), {
       valid: false,
       errors: [{
         dataPath: '.version',
@@ -30,7 +30,7 @@ describe('validator', () => {
   });
 
   it('invalid type', () => {
-    assert.deepEqual(validator(require('./fixtures/version-is-string.json')), {
+    assert.deepEqual(validator(json({version: '1'})), {
       valid: false,
       errors: [{
         dataPath: '.version',
@@ -45,7 +45,7 @@ describe('validator', () => {
   });
 
   it('integer is out of range', () => {
-    assert.deepEqual(validator(require('./fixtures/version-is-zero.json')), {
+    assert.deepEqual(validator(json({version: 0})), {
       valid: false,
       errors: [{
         dataPath: '.version',
@@ -62,7 +62,7 @@ describe('validator', () => {
   });
 
   it('invalid enum value', () => {
-    assert.deepEqual(validator(require('./fixtures/type-is-not-app.json')), {
+    assert.deepEqual(validator(json({type: 'FOO'})), {
       valid: false,
       errors: [{
         dataPath: '.type',
@@ -79,7 +79,7 @@ describe('validator', () => {
   });
 
   it('no English description', () => {
-    assert.deepEqual(validator(require('./fixtures/no-english-description.json')), {
+    assert.deepEqual(validator(json({description: {}})), {
       valid: false,
       errors: [{
         dataPath: '.description.en',
@@ -94,21 +94,30 @@ describe('validator', () => {
   });
 
   it('2 errors', () => {
-    const actual = validator(require('./fixtures/2-errors.json'));
+    const actual = validator(json({
+      manifest_version: 'a',
+      version: 0,
+    }));
     assert(actual.valid === false);
     assert(actual.errors.length === 2);
   });
 
-  it('invalid relative url', () => {
-    const actual = validator(require('./fixtures/invalid-relative-url.json'));
+  it('relative path is invalid for `url`', () => {
+    const actual = validator(json({homepage_url: {en: 'foo/bar.html'}}));
     assert(actual.valid === false);
     assert(actual.errors.length === 1);
     assert(actual.errors[0].params.format === 'url');
   });
 
-  it('invalid http url', () => {
-    const actual = validator(require('./fixtures/invalid-http-url.json'), {
-      relativePath: str => false,
+  it('"http:" is invalid for `https-url`', () => {
+    const actual = validator(json({
+      desktop: {
+        js: [
+          'http://example.com/icon.png'
+        ]
+      }
+    }), {
+      relativePath: str => !/^https?:/.test(str),
     });
     assert(actual.valid === false);
     assert(actual.errors.length === 3);
@@ -117,3 +126,21 @@ describe('validator', () => {
     assert(actual.errors[2].keyword === 'anyOf');
   });
 });
+
+/**
+ * Generate minimum valid manifest.json and overwrite with source
+ *
+ * @param {Object=} source
+ * @return {!Object}
+ */
+function json(source) {
+  return Object.assign({
+    manifest_version: 1,
+    version: 1,
+    type: 'APP',
+    name: {
+      en: 'sample plugin',
+    },
+    icon: 'image/icon.png',
+  }, source);
+}
