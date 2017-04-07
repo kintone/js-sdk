@@ -1,6 +1,6 @@
 {
   "name": "@teppeis/kintone-plugin-manifest-validator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "main": "index.js",
   "files": [
