@@ -65,7 +65,7 @@
       "type": "string",
       "description": "internal only",
       "minLength": 1,
-      "format": "uri"
+      "format": "relative-path"
     },
     "homepage_url": {
       "type": "object",
@@ -91,28 +91,10 @@
       "type": "object",
       "properties": {
         "js": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "description": "internal or external",
-            "type": "string",
-            "anyOf": [{
-              "format": "https-url"
-            }, {
-              "format": "relative-path"
-            }],
-            "maxItems": 30
-          }
+          "$ref": "#resources"
         },
         "css": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "description": "internal or external",
-            "type": "string",
-            "format": "uri",
-            "maxItems": 30
-          }
+          "$ref": "#resources"
         }
       }
     },
@@ -120,14 +102,7 @@
       "type": "object",
       "properties": {
         "js": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "description": "internal or external",
-            "type": "string",
-            "format": "uri",
-            "maxItems": 30
-          }
+          "$ref": "#resources"
         }
       }
     },
@@ -137,28 +112,14 @@
         "html": {
           "description": "internal only",
           "type": "string",
-          "format": "uri",
+          "format": "relative-path",
           "minLength": 1
         },
         "js": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "description": "internal or external",
-            "type": "string",
-            "format": "uri",
-            "maxItems": 30
-          }
+          "$ref": "#resources"
         },
         "css": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "description": "internal or external",
-            "type": "string",
-            "format": "uri",
-            "maxItems": 30
-          }
+          "$ref": "#resources"
         },
         "required_params": {
           "type": "array",
@@ -177,5 +138,21 @@
     "type",
     "name",
     "icon"
-  ]
+  ],
+  "definitions": {
+    "resources": {
+      "id": "#resources",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "anyOf": [{
+          "format": "https-url"
+        }, {
+          "format": "relative-path"
+        }],
+        "maxItems": 30
+      }
+    }
+  }
 }
