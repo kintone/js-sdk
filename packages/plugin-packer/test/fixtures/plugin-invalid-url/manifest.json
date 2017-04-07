@@ -1,0 +1,12 @@
+{
+    "manifest_version": 1,
+    "version": 1,
+    "type": "APP",
+    "name": {
+        "en": "sample extension"
+    },
+    "homepage_url": {
+        "ja": "ftp://example.com/ftp-is-invalid.png"
+    },
+    "icon": "image/icon.png"
+}

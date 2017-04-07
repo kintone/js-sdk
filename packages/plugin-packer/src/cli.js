@@ -35,11 +35,15 @@ function cli(pluginDir, options) {
     throw new Error('Manifest file $PLUGIN_DIR/manifest.json not found.');
   }
 
-  const result = validate(loadJson(manifestJsonPath));
+  const result = validate(loadJson(manifestJsonPath), {
+    relativePath: validateRelativePath(pluginDir)
+  });
+  debug(result);
+
   if (!result.valid) {
     const msgs = generateErrorMessages(result.errors);
     console.error('Invalid manifest.json:');
-    msgs.for(msg => {
+    msgs.forEach(msg => {
       console.error(`- ${msg}`);
     });
     throw new Error('Invalid manifest.json');
@@ -125,10 +129,29 @@ function outputPlugin(outputDir, plugin) {
 }
 
 /**
+ * Load JSON file without caching
+ *
  * @param {sting} jsonPath
  * @return {Object}
  */
 function loadJson(jsonPath) {
   const content = fs.readFileSync(jsonPath, 'utf8');
   return JSON.parse(content);
+}
+
+/**
+ * Return validator for relative path
+ *
+ * @param {string} pluginDir
+ * @return {function(string): boolean}
+ */
+function validateRelativePath(pluginDir) {
+  return str => {
+    try {
+      const stat = fs.statSync(path.join(pluginDir, str));
+      return stat.isFile();
+    } catch (e) {
+      return false;
+    }
+  };
 }

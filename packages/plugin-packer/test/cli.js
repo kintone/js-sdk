@@ -10,9 +10,10 @@ const sinon = require('sinon');
 const glob = require('glob');
 
 const cli = require('../src/cli');
-const outDir = path.join(__dirname, 'fixtures', 'sample-plugin');
+const fixturesDir = path.join(__dirname, 'fixtures');
+const outDir = path.join(fixturesDir, 'sample-plugin');
 const pluginDir = path.join(outDir, 'plugin-dir');
-const ppkPath = path.join(__dirname, 'fixtures/private.ppk');
+const ppkPath = path.join(fixturesDir, 'private.ppk');
 
 const ID = 'aaa';
 const PRIVATE_KEY = 'PRIVATE_KEY';
@@ -21,6 +22,35 @@ const PLUGIN_BUFFER = Buffer.from('foo');
 describe('cli', () => {
   it('is a function', () => {
     assert(typeof cli === 'function');
+  });
+
+  describe('validation', () => {
+    let packer;
+    beforeEach(() => {
+      packer = sinon.stub().returns({
+        id: ID,
+        privateKey: PRIVATE_KEY,
+        plugin: PLUGIN_BUFFER,
+      });
+    });
+
+    it('invalid `url`', () => {
+      assert.throws(() => {
+        cli(path.join(fixturesDir, 'plugin-invalid-url'), {packerMock_: packer});
+      }, /Invalid manifest.json/);
+    });
+
+    it('invalid `https-url`', () => {
+      assert.throws(() => {
+        cli(path.join(fixturesDir, 'plugin-invalid-https-url'), {packerMock_: packer});
+      }, /Invalid manifest.json/);
+    });
+
+    it('invalid `relative-path`', () => {
+      assert.throws(() => {
+        cli(path.join(fixturesDir, 'plugin-invalid-relative-path'), {packerMock_: packer});
+      }, /Invalid manifest.json/);
+    });
   });
 
   context('without ppk', () => {

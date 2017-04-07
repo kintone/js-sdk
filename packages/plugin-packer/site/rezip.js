@@ -51,7 +51,9 @@ function rezip(contentsZip) {
       });
     });
   })
-  .then(manifestJson => validate(JSON.parse(manifestJson)))
+  .then(manifestJson => validate(JSON.parse(manifestJson), {
+    relativePath: str => entries.hasOwnProperty(str),
+  }))
   .then(result => {
     if (result.valid) {
       return contentsZip;

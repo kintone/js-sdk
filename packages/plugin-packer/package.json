@@ -19,14 +19,14 @@
     "css": "cssnano node_modules/normalize.css/normalize.css --safe > docs/dist/normalize.min.css",
     "eslint": "eslint bin src site test",
     "js": "run-s js:browserify js:minify",
-    "js:browserify": "browserify site/index.js -i graceful-fs -i glob -i walkdir -i tar-stream -o docs/dist/bundle.js",
+    "js:browserify": "browserify site/index.js -i graceful-fs -i glob -i walkdir -i tar-stream -i isomorphic-url -o docs/dist/bundle.js",
     "js:minify": "closure-compiler --js docs/dist/bundle.js --language_out ES6 -O WHITESPACE_ONLY > docs/dist/bundle.min.js",
     "mocha": "mocha --require intelli-espower-loader",
     "site": "run-p js css",
     "test": "run-s eslint mocha"
   },
   "dependencies": {
-    "@teppeis/kintone-plugin-manifest-validator": "^0.1.0",
+    "@teppeis/kintone-plugin-manifest-validator": "^0.3.0",
     "debug": "^2.6.3",
     "denodeify": "^1.2.1",
     "meow": "^3.7.0",
