@@ -65,7 +65,8 @@
       "type": "string",
       "description": "internal only",
       "minLength": 1,
-      "format": "relative-path"
+      "format": "relative-path",
+      "maxFileSize": "512KB"
     },
     "homepage_url": {
       "type": "object",
@@ -113,6 +114,7 @@
           "description": "internal only",
           "type": "string",
           "format": "relative-path",
+          "maxFileSize": "65535B",
           "minLength": 1
         },
         "js": {
@@ -149,7 +151,8 @@
         "anyOf": [{
           "format": "https-url"
         }, {
-          "format": "relative-path"
+          "format": "relative-path",
+          "maxFileSize": "512KB"
         }],
         "maxItems": 30
       }
