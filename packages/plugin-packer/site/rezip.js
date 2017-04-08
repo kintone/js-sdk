@@ -52,7 +52,14 @@ function rezip(contentsZip) {
     });
   })
   .then(manifestJson => validate(JSON.parse(manifestJson), {
-    relativePath: str => entries.hasOwnProperty(str),
+    relativePath: filePath => entries.hasOwnProperty(filePath),
+    maxFileSize(maxBytes, filePath) {
+      const entry = entries[filePath];
+      if (entry) {
+        return entry.uncompressedSize <= maxBytes;
+      }
+      return false;
+    }
   }))
   .then(result => {
     if (result.valid) {

@@ -2,11 +2,12 @@
 # yarn lockfile v1
 
 
-"@teppeis/kintone-plugin-manifest-validator@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@teppeis/kintone-plugin-manifest-validator/-/kintone-plugin-manifest-validator-0.3.1.tgz#b9fbfb0bce1979dcaf67ed173b13be300139bc2b"
+"@teppeis/kintone-plugin-manifest-validator@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@teppeis/kintone-plugin-manifest-validator/-/kintone-plugin-manifest-validator-0.4.0.tgz#2126ce32b2e6d04d21357a4098795b13f82e8708"
   dependencies:
     ajv "^4.11.5"
+    bytes "^2.5.0"
     isomorphic-url "1.0.0-alpha12"
 
 JSONStream@^1.0.3:
@@ -339,6 +340,10 @@ builtin-modules@^1.0.0:
 builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
+
+bytes@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.5.0.tgz#4c9423ea2d252c270c41b2bdefeff9bb6b62c06a"
 
 cached-path-relative@^1.0.0:
   version "1.0.1"

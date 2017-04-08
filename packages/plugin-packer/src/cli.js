@@ -36,7 +36,8 @@ function cli(pluginDir, options) {
   }
 
   const result = validate(loadJson(manifestJsonPath), {
-    relativePath: validateRelativePath(pluginDir)
+    relativePath: validateRelativePath(pluginDir),
+    maxFileSize: validateMaxFileSize(pluginDir),
   });
   debug(result);
 
@@ -140,7 +141,7 @@ function loadJson(jsonPath) {
 }
 
 /**
- * Return validator for relative path
+ * Return validator for `relative-path` format
  *
  * @param {string} pluginDir
  * @return {function(string): boolean}
@@ -150,6 +151,23 @@ function validateRelativePath(pluginDir) {
     try {
       const stat = fs.statSync(path.join(pluginDir, str));
       return stat.isFile();
+    } catch (e) {
+      return false;
+    }
+  };
+}
+
+/**
+ * Return validator for `maxFileSize` keyword
+ *
+ * @param {string} pluginDir
+ * @return {function(string, string): boolean}
+ */
+function validateMaxFileSize(pluginDir) {
+  return (maxBytes, filePath) => {
+    try {
+      const stat = fs.statSync(path.join(pluginDir, filePath));
+      return stat.size <= maxBytes;
     } catch (e) {
       return false;
     }

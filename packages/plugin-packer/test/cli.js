@@ -51,6 +51,12 @@ describe('cli', () => {
         cli(path.join(fixturesDir, 'plugin-invalid-relative-path'), {packerMock_: packer});
       }, /Invalid manifest.json/);
     });
+
+    it('invalid `maxFileSize`', () => {
+      assert.throws(() => {
+        cli(path.join(fixturesDir, 'plugin-invalid-maxFileSize'), {packerMock_: packer});
+      }, /Invalid manifest.json/);
+    });
   });
 
   context('without ppk', () => {
