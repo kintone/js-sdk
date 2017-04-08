@@ -44245,9 +44245,7 @@ function rezip(contentsZip) {
     });
   })
   .then(manifestJson => validate(JSON.parse(manifestJson), {
-    relativePath(str) {
-      return entries.hasOwnProperty(str);
-    }
+    relativePath: str => entries.hasOwnProperty(str),
   }))
   .then(result => {
     if (result.valid) {
