@@ -12,7 +12,6 @@ const glob = require('glob');
 const cli = require('../src/cli');
 const fixturesDir = path.join(__dirname, 'fixtures');
 const outDir = path.join(fixturesDir, 'sample-plugin');
-const pluginDir = path.join(outDir, 'plugin-dir');
 const ppkPath = path.join(fixturesDir, 'private.ppk');
 
 const ID = 'aaa';
@@ -60,6 +59,7 @@ describe('cli', () => {
   });
 
   context('without ppk', () => {
+    const pluginDir = path.join(outDir, 'plugin-dir');
     let packer;
     let pluginFilePath;
     beforeEach(() => {
@@ -82,7 +82,6 @@ describe('cli', () => {
       const zip = new AdmZip(packer.args[0][0]);
       const files = zip.getEntries().map(entry => entry.entryName).sort();
       assert.deepEqual(files, [
-        'image/',
         'image/icon.png',
         'manifest.json',
       ].sort());
@@ -94,7 +93,7 @@ describe('cli', () => {
     });
 
     it('generates a private key file', () => {
-      const privateKey = fs.readFileSync(path.join(path.dirname(pluginDir), `${ID}.ppk`), 'utf8');
+      const privateKey = fs.readFileSync(path.join(outDir, `${ID}.ppk`), 'utf8');
       assert(privateKey === PRIVATE_KEY);
     });
 
@@ -105,6 +104,7 @@ describe('cli', () => {
   });
 
   context('with ppk', () => {
+    const pluginDir = path.join(outDir, 'plugin-dir');
     let packer;
     beforeEach(() => {
       packer = sinon.stub().returns({
@@ -127,5 +127,31 @@ describe('cli', () => {
       const ppkFiles = glob.sync(`${outDir}/*.ppk`);
       assert.deepEqual(ppkFiles, []);
     });
+  });
+
+  it('includes files listed in manifest.json only', () => {
+    const pluginDir = path.join(fixturesDir, 'plugin-full-manifest');
+    let packer = sinon.stub().returns({
+      id: ID,
+      privateKey: PRIVATE_KEY,
+      plugin: PLUGIN_BUFFER,
+    });
+
+    return rimraf(`${outDir}/*.*(ppk|zip)`)
+      .then(() => cli(pluginDir, {packerMock_: packer}))
+      .then(() => {
+        const zip = new AdmZip(packer.args[0][0]);
+        const files = zip.getEntries().map(entry => entry.entryName).sort();
+        assert.deepEqual(files, [
+          'css/config.css',
+          'css/desktop.css',
+          'html/config.html',
+          'image/icon.png',
+          'js/config.js',
+          'js/desktop.js',
+          'js/mobile.js',
+          'manifest.json',
+        ].sort());
+      });
   });
 });
