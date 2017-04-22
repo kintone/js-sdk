@@ -12,6 +12,7 @@ const validate = require('@teppeis/kintone-plugin-manifest-validator');
 
 const packer = require('./');
 const generateErrorMessages = require('./gen-error-msg');
+const sourceList = require('./sourcelist');
 
 /**
  * @param {string} pluginDir path to plugin directory.
@@ -108,39 +109,13 @@ function createContentsZip(pluginDir, manifest) {
       res(output.getContents());
     });
     zipFile.outputStream.pipe(output);
-    createSourceList(manifest).forEach(src => {
+    sourceList(manifest).forEach(src => {
       zipFile.addFile(path.join(pluginDir, src), src);
     });
     zipFile.end(finalSize => {
       size = finalSize;
     });
   });
-}
-
-/**
- * Create content file list from manifest.json
- *
- * @param {!Object} manifest
- * @return {!Array<string>}
- */
-function createSourceList(manifest) {
-  const sourceTypes = [
-    ['desktop', 'js'],
-    ['desktop', 'css'],
-    ['mobile', 'js'],
-    ['config', 'js'],
-    ['config', 'css']
-  ];
-  const list = sourceTypes
-    .map(t => manifest[t[0]] && manifest[t[0]][t[1]])
-    .filter(i => !!i)
-    .reduce((a, b) => a.concat(b), [])
-    .filter(file => !/^https?:\/\//.test(file));
-  if (manifest.config && manifest.config.html) {
-    list.push(manifest.config.html);
-  }
-  list.push('manifest.json', manifest.icon);
-  return list;
 }
 
 /**
