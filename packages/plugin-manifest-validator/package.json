@@ -15,8 +15,7 @@
   },
   "dependencies": {
     "ajv": "^5.0.0",
-    "bytes": "^2.5.0",
-    "isomorphic-url": "1.0.0-alpha12"
+    "bytes": "^2.5.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

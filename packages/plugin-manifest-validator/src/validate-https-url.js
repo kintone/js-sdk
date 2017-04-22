@@ -1,6 +1,6 @@
 'use strict';
 
-const URL = require('isomorphic-url').URL;
+const formats = require('ajv/lib/compile/formats');
 
 /**
  * @param {string} str
@@ -8,13 +8,14 @@ const URL = require('isomorphic-url').URL;
  * @return {boolean}
  */
 function validateHttpsUrl(str, opt_allowHttp) {
-  const allowHttp = !!opt_allowHttp;
-  try {
-    const url = new URL(str);
-    return url.protocol === 'https:' || (allowHttp && url.protocol === 'http:');
-  } catch (e) {
-    return false;
+  if (formats.full.url.test(str)) {
+    if (opt_allowHttp) {
+      return /^https?:/.test(str);
+    } else {
+      return /^https:/.test(str);
+    }
   }
+  return false;
 }
 
 module.exports = validateHttpsUrl;

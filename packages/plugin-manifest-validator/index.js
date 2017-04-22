@@ -26,7 +26,6 @@ module.exports = function(json, options) {
     unknownFormats: true,
     errorDataPath: 'property',
     formats: {
-      url: str => validateUrl(str, true),
       'https-url': str => validateUrl(str),
       'relative-path': relativePath,
     },
