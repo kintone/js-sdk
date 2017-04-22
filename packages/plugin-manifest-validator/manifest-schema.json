@@ -74,17 +74,17 @@
         "ja": {
           "type": "string",
           "minLength": 1,
-          "format": "url"
+          "format": "http-url"
         },
         "en": {
           "type": "string",
           "minLength": 1,
-          "format": "url"
+          "format": "http-url"
         },
         "zh": {
           "type": "string",
           "minLength": 1,
-          "format": "url"
+          "format": "http-url"
         }
       }
     },

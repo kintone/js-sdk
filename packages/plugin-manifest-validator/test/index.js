@@ -102,11 +102,11 @@ describe('validator', () => {
     assert(actual.errors.length === 2);
   });
 
-  it('relative path is invalid for `url`', () => {
+  it('relative path is invalid for `http-url`', () => {
     const actual = validator(json({homepage_url: {en: 'foo/bar.html'}}));
     assert(actual.valid === false);
     assert(actual.errors.length === 1);
-    assert(actual.errors[0].params.format === 'url');
+    assert(actual.errors[0].params.format === 'http-url');
   });
 
   it('"http:" is invalid for `https-url`', () => {
