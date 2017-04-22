@@ -49,11 +49,7 @@ function rezip(contentsZip) {
     .then(result => {
       const manifestPrefix = path.dirname(result.manifestPath);
       validateManifest(result.entries, result.manifestJson, manifestPrefix);
-      if (manifestPrefix === '.') {
-        return contentsZip;
-      } else {
-        return rezipContents(result.zipFile, result.entries, result.manifestJson, manifestPrefix);
-      }
+      return rezipContents(result.zipFile, result.entries, result.manifestJson, manifestPrefix);
     });
 }
 
