@@ -14,6 +14,7 @@ It's written in pure JavaScript, so
 
 - The CLI works with Node.js in Mac/Linux/Windows
 - [The Web page](https://teppeis.github.io/kintone-plugin-packer/) works in browsers
+- Validate your `manifest.json` with [JSON Schema](https://github.com/teppeis/kintone-plugin-manifest-validator)
 
 # How to install
 
