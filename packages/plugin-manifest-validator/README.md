@@ -6,6 +6,7 @@ Validate `manifest.json` of kintone plugin. Used in [kintone-plugin-packer](http
 [![npm version][npm-image]][npm-url]
 ![Node.js Version Support][node-version]
 [![build status][circleci-image]][circleci-url]
+[![appveyor status][appveyor-image]][appveyor-url]
 [![dependency status][deps-image]][deps-url]
 ![License][license]
 
@@ -51,7 +52,7 @@ MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
 [travis-url]: https://travis-ci.org/teppeis/kintone-plugin-manifest-validator
 [circleci-image]: https://circleci.com/gh/teppeis/kintone-plugin-manifest-validator.svg?style=svg
 [circleci-url]: https://circleci.com/gh/teppeis/kintone-plugin-manifest-validator
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/KEY?svg=true
+[appveyor-image]: https://ci.appveyor.com/api/projects/status/pcsvpsj4ff8u4jop/branch/master?svg=true
 [appveyor-url]: https://ci.appveyor.com/project/teppeis/kintone-plugin-manifest-validator/branch/master
 [deps-image]: https://img.shields.io/david/teppeis/kintone-plugin-manifest-validator.svg
 [deps-url]: https://david-dm.org/teppeis/kintone-plugin-manifest-validator
