@@ -44,19 +44,24 @@ function generatePlugin() {
     .then(contentsZip => packer(contentsZip, privateKey))
     .then(output => {
       console.log('result', output.id);
-      outputResult(output);
+      outputResult(output, !!privateKey);
     }).catch(e => {
       console.error(e);
       outputError(e);
     });
 }
 
-function outputResult(output) {
+function outputResult(output, hasPrivateKey) {
   $('#output-error').classList.add('hide');
   $('#output').classList.remove('hide');
   $('#output .id').textContent = output.id;
   $('#output .plugin').href = URL.createObjectURL(new Blob([output.plugin], {type: 'application/zip'}));
-  $('#output .ppk').href = URL.createObjectURL(new Blob([output.privateKey], {type: 'text/plain'}));
+  if (hasPrivateKey) {
+    $('#output .ppk').parentNode.classList.add('hide');
+  } else {
+    $('#output .ppk').parentNode.classList.remove('hide');
+    $('#output .ppk').href = URL.createObjectURL(new Blob([output.privateKey], {type: 'text/plain'}));
+  }
 }
 
 function outputError(e) {
