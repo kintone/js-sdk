@@ -11,7 +11,7 @@ const glob = require('glob');
 
 const cli = require('../src/cli');
 const fixturesDir = path.join(__dirname, 'fixtures');
-const outDir = path.join(fixturesDir, 'sample-plugin');
+const sampleDir = path.join(fixturesDir, 'sample-plugin');
 const ppkPath = path.join(fixturesDir, 'private.ppk');
 
 const ID = 'aaa';
@@ -59,9 +59,9 @@ describe('cli', () => {
   });
 
   context('without ppk', () => {
-    const pluginDir = path.join(outDir, 'plugin-dir');
+    const pluginDir = path.join(sampleDir, 'plugin-dir');
     let packer;
-    let pluginFilePath;
+    let resultPluginPath;
     beforeEach(() => {
       packer = sinon.stub().returns({
         id: ID,
@@ -69,10 +69,10 @@ describe('cli', () => {
         plugin: PLUGIN_BUFFER,
       });
 
-      return rimraf(`${outDir}/*.*(ppk|zip)`)
+      return rimraf(`${sampleDir}/*.*(ppk|zip)`)
         .then(() => cli(pluginDir, {packerMock_: packer}))
         .then(filePath => {
-          pluginFilePath = filePath;
+          resultPluginPath = filePath;
         });
     });
 
@@ -93,18 +93,18 @@ describe('cli', () => {
     });
 
     it('generates a private key file', () => {
-      const privateKey = fs.readFileSync(path.join(outDir, `${ID}.ppk`), 'utf8');
+      const privateKey = fs.readFileSync(path.join(sampleDir, `${ID}.ppk`), 'utf8');
       assert(privateKey === PRIVATE_KEY);
     });
 
     it('generates a plugin file', () => {
-      const pluginFile = fs.readFileSync(pluginFilePath);
-      assert(PLUGIN_BUFFER.equals(pluginFile));
+      const pluginBuffer = fs.readFileSync(resultPluginPath);
+      assert(PLUGIN_BUFFER.equals(pluginBuffer));
     });
   });
 
   context('with ppk', () => {
-    const pluginDir = path.join(outDir, 'plugin-dir');
+    const pluginDir = path.join(sampleDir, 'plugin-dir');
     let packer;
     beforeEach(() => {
       packer = sinon.stub().returns({
@@ -113,7 +113,7 @@ describe('cli', () => {
         plugin: PLUGIN_BUFFER,
       });
 
-      return rimraf(`${outDir}/*.*(ppk|zip)`)
+      return rimraf(`${sampleDir}/*.*(ppk|zip)`)
         .then(() => cli(pluginDir, {ppk: ppkPath, packerMock_: packer}));
     });
 
@@ -124,7 +124,7 @@ describe('cli', () => {
     });
 
     it('does not generate a private key file', () => {
-      const ppkFiles = glob.sync(`${outDir}/*.ppk`);
+      const ppkFiles = glob.sync(`${sampleDir}/*.ppk`);
       assert.deepEqual(ppkFiles, []);
     });
   });
@@ -137,7 +137,7 @@ describe('cli', () => {
       plugin: PLUGIN_BUFFER,
     });
 
-    return rimraf(`${outDir}/*.*(ppk|zip)`)
+    return rimraf(`${sampleDir}/*.*(ppk|zip)`)
       .then(() => cli(pluginDir, {packerMock_: packer}))
       .then(() => {
         const zip = new AdmZip(packer.args[0][0]);
@@ -152,6 +152,27 @@ describe('cli', () => {
           'js/mobile.js',
           'manifest.json',
         ].sort());
+      });
+  });
+
+  it('includes files listed in manifest.json only', () => {
+    const pluginDir = path.join(sampleDir, 'plugin-dir');
+    const outputDir = path.join('test', '.output');
+    const outputPluginPath = path.join(outputDir, 'foo.zip');
+    let packer = sinon.stub().returns({
+      id: ID,
+      privateKey: PRIVATE_KEY,
+      plugin: PLUGIN_BUFFER,
+    });
+
+    return rimraf(outputDir)
+      .then(() => cli(pluginDir, {packerMock_: packer, out: outputPluginPath}))
+      .then(resultPluginPath => {
+        assert.equal(resultPluginPath, outputPluginPath);
+        const pluginBuffer = fs.readFileSync(outputPluginPath);
+        assert(PLUGIN_BUFFER.equals(pluginBuffer));
+        const ppk = fs.readFileSync(path.join(outputDir, `${ID}.ppk`));
+        assert.equal(PRIVATE_KEY, ppk);
       });
   });
 });
