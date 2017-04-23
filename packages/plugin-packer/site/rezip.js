@@ -3,7 +3,7 @@
 const path = require('path');
 const yazl = require('yazl');
 const yauzl = require('yauzl');
-const fromBuffer = require('denodeify')(yauzl.fromBuffer);
+const denodeify = require('denodeify');
 const validate = require('@teppeis/kintone-plugin-manifest-validator');
 const streamBuffers = require('stream-buffers');
 
@@ -17,33 +17,18 @@ const sourceList = require('../src/sourcelist');
  * @return {!Promise<!Buffer>}
  */
 function rezip(contentsZip) {
-  return fromBuffer(contentsZip)
-    .then(zipFile => new Promise((res, rej) => {
-      const entries = new Map();
-      const result = {
-        zipFile: zipFile,
-        entries: entries,
-      };
-      zipFile.on('entry', entry => {
-        entries.set(entry.fileName, entry);
-      });
-      zipFile.on('end', entry => {
-        res(result);
-      });
-      zipFile.on('error', error => {
-        rej(error);
-      });
-    }))
+  return zipEntriesFromBuffer(contentsZip)
     .then(result => {
       const manifestList = Array.from(result.entries.keys())
-        .filter(file => /(^|\/)manifest.json$/.test(file));
+        .filter(file => path.basename(file) === 'manifest.json');
       if (manifestList.length === 0) {
         throw new Error('The zip file has no manifest.json');
       } else if (manifestList.length > 1) {
         throw new Error('The zip file has many manifest.json files');
       }
       result.manifestPath = manifestList[0];
-      return getManifestJsonFromEntry(result.zipFile, result.entries.get(result.manifestPath))
+      const manifestEntry = result.entries.get(result.manifestPath);
+      return getManifestJsonFromEntry(result.zipFile, manifestEntry)
         .then(json => Object.assign(result, {manifestJson: json}));
     })
     .then(result => {
@@ -54,6 +39,28 @@ function rezip(contentsZip) {
 }
 
 /**
+ * @param {!Buffer} contentsZip
+ * @return {!Promise<{zipFile: !yauzl.ZipFile, entries: !Map<string, !yauzl.ZipEntry>}>}
+ */
+function zipEntriesFromBuffer(contentsZip) {
+  return denodeify(yauzl.fromBuffer)(contentsZip)
+    .then(zipFile => new Promise((res, rej) => {
+      const entries = new Map();
+      const result = {
+        zipFile: zipFile,
+        entries: entries,
+      };
+      zipFile.on('entry', entry => {
+        entries.set(entry.fileName, entry);
+      });
+      zipFile.on('end', () => {
+        res(result);
+      });
+      zipFile.on('error', rej);
+    }));
+}
+
+/**
  * @param {!yauzl.ZipFile} zipFile
  * @param {!yauzl.ZipEntry} zipEntry
  * @return {!Promise<string>}
@@ -61,10 +68,7 @@ function rezip(contentsZip) {
 function zipEntryToString(zipFile, zipEntry) {
   return new Promise((res, rej) => {
     zipFile.openReadStream(zipEntry, (e, stream) => {
-      if (e) {
-        rej(e);
-        return;
-      }
+      if (e) return rej(e);
       const output = new streamBuffers.WritableStreamBuffer();
       output.on('finish', () => {
         res(output.getContents().toString('utf8'));
@@ -80,8 +84,7 @@ function zipEntryToString(zipFile, zipEntry) {
  * @return {!Promise<string>}
  */
 function getManifestJsonFromEntry(zipFile, zipEntry) {
-  return zipEntryToString(zipFile, zipEntry)
-    .then(str => JSON.parse(str));
+  return zipEntryToString(zipFile, zipEntry).then(str => JSON.parse(str));
 }
 
 /**
@@ -115,7 +118,7 @@ function validateManifest(entries, manifestJson, prefix) {
  * @param {!Map<string, !yauzl.ZipEntry>} entries
  * @param {!Object} manifestJson
  * @param {string} prefix
- * @return {!Promise<Buffer>}
+ * @return {!Promise<!Buffer>}
  */
 function rezipContents(zipFile, entries, manifestJson, prefix) {
   return new Promise((res, rej) => {
@@ -126,15 +129,13 @@ function rezipContents(zipFile, entries, manifestJson, prefix) {
       res(output.getContents());
     });
     newZipFile.outputStream.pipe(output);
-    return Promise.all(sourceList(manifestJson).map(src => new Promise((resolve, reject) => {
+    const openReadStream = denodeify(zipFile.openReadStream.bind(zipFile));
+    Promise.all(sourceList(manifestJson).map(src => {
       const entry = entries.get(path.join(prefix, src));
-      // eslint-disable-next-line consistent-return
-      zipFile.openReadStream(entry, (e, readStream) => {
-        if (e) return reject(e);
-        newZipFile.addReadStream(readStream, src, {size: entry.uncompressedSize});
-        resolve();
+      return openReadStream(entry).then(stream => {
+        newZipFile.addReadStream(stream, src, {size: entry.uncompressedSize});
       });
-    }))).then(() => {
+    })).then(() => {
       newZipFile.end();
     });
   });
