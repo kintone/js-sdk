@@ -20,7 +20,7 @@
     "eslint": "eslint bin src site test",
     "js": "run-s js:browserify js:minify",
     "js:browserify": "browserify site/index.js -i graceful-fs -i glob -i walkdir -i tar-stream -i isomorphic-url -o docs/dist/bundle.js",
-    "js:minify": "closure-compiler --js docs/dist/bundle.js --language_out ES6 -O WHITESPACE_ONLY > docs/dist/bundle.min.js",
+    "js:minify": "closure-compiler --flagfile closure.conf > docs/dist/bundle.min.js",
     "mocha": "mocha --require intelli-espower-loader",
     "site": "run-p js css",
     "test": "run-s eslint mocha"
