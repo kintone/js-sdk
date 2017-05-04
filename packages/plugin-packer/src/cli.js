@@ -133,7 +133,7 @@ function outputPlugin(outputPath, plugin) {
 /**
  * Load JSON file without caching
  *
- * @param {sting} jsonPath
+ * @param {string} jsonPath
  * @return {Object}
  */
 function loadJson(jsonPath) {
@@ -162,7 +162,7 @@ function validateRelativePath(pluginDir) {
  * Return validator for `maxFileSize` keyword
  *
  * @param {string} pluginDir
- * @return {function(string, string): boolean}
+ * @return {function(number, string): boolean}
  */
 function validateMaxFileSize(pluginDir) {
   return (maxBytes, filePath) => {

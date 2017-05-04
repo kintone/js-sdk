@@ -5,13 +5,12 @@ const Buffer = require('buffer').Buffer;
 const rezip = require('./rezip');
 const packer = require('../src/');
 
-// eslint-disable-next-line id-match
 const $ = document.querySelector.bind(document);
 let contents;
 let privateKey;
 
-$('#input .contents').addEventListener('change', event => {
-  const file = event.target.files[0];
+$('#input .contents').addEventListener('change', function(event) {
+  const file = this.files[0];
   if (!file) {
     return;
   }
@@ -23,8 +22,8 @@ $('#input .contents').addEventListener('change', event => {
   reader.readAsArrayBuffer(file);
 });
 
-$('#input .ppk').addEventListener('change', event => {
-  const file = event.target.files[0];
+$('#input .ppk').addEventListener('change', function(event) {
+  const file = this.files[0];
   if (!file) {
     return;
   }
