@@ -10,13 +10,13 @@ Validate `manifest.json` of kintone plugin. Used in [kintone-plugin-packer](http
 [![dependency status][deps-image]][deps-url]
 ![License][license]
 
-# How to install
+## How to install
 
 ```console
 $ npm install @teppeis/kintone-plugin-packer
 ```
 
-# Usage
+## Usage
 
 ```js
 const validator = require('@teppeis/kintone-plugin-manifest-validator');
@@ -39,6 +39,14 @@ console.log(result.errors); // array of ajv error objects
   },
   schemaPath: '#/properties/version/type',
 }
+```
+
+## `manifest-json.d.ts`
+
+```js
+/// <reference types="@teppeis/kintone-plugin-manifest-validator/manifest-json" />
+
+let manifest: KintonePluginManifestJson;
 ```
 
 ## License

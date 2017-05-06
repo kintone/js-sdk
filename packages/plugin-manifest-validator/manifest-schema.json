@@ -92,10 +92,10 @@
       "type": "object",
       "properties": {
         "js": {
-          "$ref": "#resources"
+          "$ref": "#/definitions/resources"
         },
         "css": {
-          "$ref": "#resources"
+          "$ref": "#/definitions/resources"
         }
       }
     },
@@ -103,7 +103,7 @@
       "type": "object",
       "properties": {
         "js": {
-          "$ref": "#resources"
+          "$ref": "#/definitions/resources"
         }
       }
     },
@@ -118,10 +118,10 @@
           "minLength": 1
         },
         "js": {
-          "$ref": "#resources"
+          "$ref": "#/definitions/resources"
         },
         "css": {
-          "$ref": "#resources"
+          "$ref": "#/definitions/resources"
         },
         "required_params": {
           "type": "array",
