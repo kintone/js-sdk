@@ -11,22 +11,21 @@ jobs:
           # Generate CircleCI API token with `all` privilege and set to $CIRCLE_API_TOKEN
           command: |
             function trigger_job() {
-              job_name=$1
-              echo "trigger_job $job_name"
-              http_code=$(curl --user ${CIRCLE_API_TOKEN}: \
-                --data build_parameters[CIRCLE_JOB]=$job_name \
-                --data revision=$CIRCLE_SHA1 \
-                -o curl.output \
-                -w '%{http_code}\n' \
-                -s \
-                https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH)
-              cat curl.output
-              echo ""
-              echo "http_code: $http_code"
-              if [[ ! "$http_code" =~ ^20[0-9]$ ]]; then
-                echo "Bad status code: $http_code" >&2
-                return 1
-              fi
+                job_name=$1
+                echo "trigger_job $job_name"
+                http_code=$(curl --user ${CIRCLE_API_TOKEN}: \
+                    --data build_parameters[CIRCLE_JOB]=$job_name \
+                    --data revision=$CIRCLE_SHA1 \
+                    -o curl.output \
+                    -w '%{http_code}\n' \
+                    -s \
+                    https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH)
+                cat curl.output
+                echo "http_code: $http_code"
+                if [[ ! "$http_code" =~ ^20[0-9]$ ]]; then
+                    echo "Bad status code: $http_code" >&2
+                    return 1
+                fi
             }
             trigger_job node-v4
             trigger_job node-v6
@@ -47,7 +46,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
             - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
             - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
       - run:
@@ -57,21 +57,26 @@ jobs:
           name: Test
           command: |
             mkdir -p $TEST_REPORTS
-            # Will be fixed in yarn v0.23
-            # https://github.com/yarnpkg/yarn/pull/2843
-            # yarn run circleci
-            npm run circleci
+            yarn run circleci
       - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_JOB }}
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
       - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-#{{ .BuildNum }}
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
-      - store_test_results:
-          # Variables are not available in `path`
+            - /usr/local/share/.cache/yarn
+      - run:
+          # Variables are not available in `path` or `paths`!
           # https://discuss.circleci.com/t/can-i-use-variables-in-cache-paths/11393
+          name: Check `yarn cache dir`
+          command: |
+            CACHE_DIR=$(yarn cache dir)
+            echo "yarn cache dir: ${CACHE_DIR}"
+            if [[ "$CACHE_DIR" != /usr/local/share/.cache/yarn* ]]; then
+                exit 1
+            fi
+      - store_test_results:
           # path: {{ .Environment.TEST_REPORTS }}
           path: /tmp/test-reports
 
@@ -79,12 +84,10 @@ jobs:
     <<: *node-base
     docker:
       - image: node:4
-
   node-v6:
     <<: *node-base
     docker:
       - image: node:6
-
   node-v7:
     <<: *node-base
     docker:
