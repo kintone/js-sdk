@@ -64,7 +64,7 @@ MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
 [appveyor-url]: https://ci.appveyor.com/project/teppeis/kintone-plugin-manifest-validator/branch/master
 [deps-image]: https://img.shields.io/david/teppeis/kintone-plugin-manifest-validator.svg
 [deps-url]: https://david-dm.org/teppeis/kintone-plugin-manifest-validator
-[node-version]: https://img.shields.io/badge/Node.js%20support-v4,v6,v7-brightgreen.svg
+[node-version]: https://img.shields.io/badge/Node.js%20support-v4,v6,v8-brightgreen.svg
 [coverage-image]: https://img.shields.io/coveralls/teppeis/kintone-plugin-manifest-validator/master.svg
 [coverage-url]: https://coveralls.io/github/teppeis/kintone-plugin-manifest-validator?branch=master
 [license]: https://img.shields.io/npm/l/@teppeis/kintone-plugin-manifest-validator.svg
