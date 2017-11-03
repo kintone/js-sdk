@@ -20,7 +20,7 @@
     "test:dts": "tsc --noEmit --strict test/manifest-schema.ts"
   },
   "dependencies": {
-    "ajv": "^5.0.0",
+    "ajv": "5.1",
     "bytes": "^2.5.0"
   },
   "devDependencies": {

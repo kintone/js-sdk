@@ -28,11 +28,12 @@ ajv-keywords@^2.1.0:
   version "2.1.1"
   resolved "https://registry.npmjs.org/ajv-keywords/-/ajv-keywords-2.1.1.tgz#617997fc5f60576894c435f940d819e135b80762"
 
-ajv@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.0.0.tgz#a2c717764e8036d15fd227b070ddaf7867ab413a"
+ajv@5.1:
+  version "5.1.6"
+  resolved "https://registry.npmjs.org/ajv/-/ajv-5.1.6.tgz#4b2f1a19dece93d57ac216037e3e9791c7dd1564"
   dependencies:
     co "^4.6.0"
+    json-schema-traverse "^0.3.0"
     json-stable-stringify "^1.0.1"
 
 ajv@^5.2.0, ajv@^5.2.3:
@@ -232,7 +233,7 @@ cli-width@^2.0.0:
 
 co@^4.6.0:
   version "4.6.0"
-  resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
+  resolved "https://registry.npmjs.org/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
 
 color-convert@^1.9.0:
   version "1.9.0"
@@ -1000,7 +1001,7 @@ json-schema-traverse@^0.3.0:
 
 json-stable-stringify@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/json-stable-stringify/-/json-stable-stringify-1.0.1.tgz#9a759d39c5f2ff503fd5300646ed445f88c4f9af"
+  resolved "https://registry.npmjs.org/json-stable-stringify/-/json-stable-stringify-1.0.1.tgz#9a759d39c5f2ff503fd5300646ed445f88c4f9af"
   dependencies:
     jsonify "~0.0.0"
 
@@ -1014,7 +1015,7 @@ json3@3.3.2:
 
 jsonify@~0.0.0:
   version "0.0.0"
-  resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
+  resolved "https://registry.npmjs.org/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
 
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"

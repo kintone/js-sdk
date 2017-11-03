@@ -53,7 +53,7 @@ describe('validator', () => {
         message: 'should be >= 1',
         params: {
           comparison: '>=',
-          exclusive: undefined,
+          exclusive: false,
           limit: 1,
         },
         schemaPath: '#/properties/version/minimum',
