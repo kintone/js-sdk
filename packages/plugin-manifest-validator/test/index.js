@@ -25,7 +25,7 @@ describe('validator', () => {
           missingProperty: 'version',
         },
         schemaPath: '#/required',
-      }]
+      }],
     });
   });
 
@@ -40,7 +40,7 @@ describe('validator', () => {
           type: 'integer',
         },
         schemaPath: '#/properties/version/type',
-      }]
+      }],
     });
   });
 
@@ -57,7 +57,7 @@ describe('validator', () => {
           limit: 1,
         },
         schemaPath: '#/properties/version/minimum',
-      }]
+      }],
     });
   });
 
@@ -74,7 +74,7 @@ describe('validator', () => {
           ],
         },
         schemaPath: '#/properties/type/enum',
-      }]
+      }],
     });
   });
 
@@ -89,7 +89,7 @@ describe('validator', () => {
           missingProperty: 'en',
         },
         schemaPath: '#/properties/description/required',
-      }]
+      }],
     });
   });
 
@@ -113,9 +113,9 @@ describe('validator', () => {
     const actual = validator(json({
       desktop: {
         js: [
-          'http://example.com/icon.png'
-        ]
-      }
+          'http://example.com/icon.png',
+        ],
+      },
     }), {
       relativePath: str => !/^https?:/.test(str),
     });
