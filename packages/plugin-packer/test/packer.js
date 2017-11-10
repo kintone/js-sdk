@@ -8,6 +8,7 @@ const AdmZip = require('adm-zip');
 const RSA = require('node-rsa');
 
 const packer = require('../src/');
+
 const privateKeyPath = path.join(__dirname, 'fixtures', 'private.ppk');
 const contentsZipPath = path.join(__dirname, 'fixtures', 'contents.zip');
 

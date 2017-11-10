@@ -1,6 +1,6 @@
 # Test against the latest version of this Node.js version
 environment:
-  nodejs_version: "6"
+  nodejs_version: "8"
 
 # Install scripts. (runs after repo cloning)
 install:
@@ -15,7 +15,7 @@ test_script:
   - yarn versions
   - npm version
   # run tests
-  - npm run circleci
+  - yarn test
 
 # Don't actually build.
 build: off

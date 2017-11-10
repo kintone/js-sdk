@@ -102,7 +102,7 @@ function validateManifest(entries, manifestJson, prefix) {
         return entry.uncompressedSize <= maxBytes;
       }
       return false;
-    }
+    },
   });
 
   if (!result.valid) {

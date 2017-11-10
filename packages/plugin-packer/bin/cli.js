@@ -4,6 +4,7 @@
 
 const meow = require('meow');
 const packer = require('../src/cli');
+
 const USAGE = '$ kintone-plugin-packer [options] PLUGIN_DIR';
 
 const cli = meow(`

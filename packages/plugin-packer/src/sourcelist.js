@@ -12,7 +12,7 @@ function sourceList(manifest) {
     ['desktop', 'css'],
     ['mobile', 'js'],
     ['config', 'js'],
-    ['config', 'css']
+    ['config', 'css'],
   ];
   const list = sourceTypes
     .map(t => manifest[t[0]] && manifest[t[0]][t[1]])

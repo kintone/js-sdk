@@ -12,8 +12,8 @@ kintone-plugin-packer
 
 It's written in pure JavaScript, so
 
-- The CLI works with Node.js in Mac/Linux/Windows
-- [The Web page](https://teppeis.github.io/kintone-plugin-packer/) works in browsers
+- The CLI works with Node.js in Mac/Windows/Linux
+- [The web page](https://teppeis.github.io/kintone-plugin-packer/) works in any modern browsers
 - Validate your `manifest.json` with [JSON Schema](https://github.com/teppeis/kintone-plugin-manifest-validator)
 
 # How to install
@@ -81,7 +81,7 @@ MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
 [appveyor-url]: https://ci.appveyor.com/project/teppeis/kintone-plugin-packer/branch/master
 [deps-image]: https://img.shields.io/david/teppeis/kintone-plugin-packer.svg
 [deps-url]: https://david-dm.org/teppeis/kintone-plugin-packer
-[node-version]: https://img.shields.io/badge/Node.js%20support-v4,v6,v7-brightgreen.svg
+[node-version]: https://img.shields.io/badge/Node.js%20support-v4,v6,v8,v9-brightgreen.svg
 [coverage-image]: https://img.shields.io/coveralls/teppeis/kintone-plugin-packer/master.svg
 [coverage-url]: https://coveralls.io/github/teppeis/kintone-plugin-packer?branch=master
 [license]: https://img.shields.io/npm/l/@teppeis/kintone-plugin-packer.svg
