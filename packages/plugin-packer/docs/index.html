@@ -2,19 +2,18 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Package your kintone plugin!</title>
+  <title>Package your kintone plug-in!</title>
   <link rel="stylesheet" href="./dist/normalize.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <script src="./dist/bundle.min.js" defer></script>
   <!-- <script src="./dist/bundle.js" defer></script> -->
 </head>
 <body>
-  <h1>Package your kintone plugin!</h1>
+  <h1>Package your kintone plug-in!</h1>
   <div id=input>
-    <p><a href="./index-ja.html">In Japanese</a></p>
-    <p>Please zip the plugin file and attach it.<br>
-    It will generate the secret key file and a signed plug-in file.<br>
-    From the second time, please also attach the secret key file.</p>
+    <p>Upload the zipped plug-in file.</ br>
+    A secret key file and a signed plug-in file will be generated.</ br>
+    The secret key will also need to be uploaded when repackaging your plug-in.</p>
     <ul>
       <li>Zip file: <input type=file class=contents></li>
       <li>Secret key file (optional): <input type=file class=ppk></li>
@@ -22,7 +21,7 @@
   </div>
 
   <div id=output class="hide">
-    <h2>Packaging plugin is completed.</h2>
+    <h2>Packaging plug-in is completed.</h2>
     <ul>
       <li>ID: <span class=id></span></li>
       <li><a class=plugin download=plugin.zip>plugin.zip</a></li>
@@ -34,6 +33,6 @@
     <h2>Error</h2>
     <ul class=messages></ul>
   </div>
-
+    <p>Lang: <a href="./index-ja.html">JP</a></p>
 </body>
 </html>
