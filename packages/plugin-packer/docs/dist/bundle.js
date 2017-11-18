@@ -45739,6 +45739,10 @@ $('#input .ppk').addEventListener('change', function(event) {
   reader.readAsText(file);
 });
 
+document.querySelectorAll('.clear').forEach(button => {
+  button.addEventListener('click', clearAll);
+});
+
 function generatePlugin() {
   if (!contents) {
     return Promise.resolve();
@@ -45781,6 +45785,13 @@ function outputError(e) {
     li.textContent = error;
     ul.appendChild(li);
   });
+}
+
+function clearAll() {
+  $('#input .contents').value = null;
+  $('#input .ppk').value = null;
+  $('#output').classList.add('hide');
+  $('#output-error').classList.add('hide');
 }
 
 },{"../src/":271,"./rezip":268,"buffer":102,"setimmediate":243}],268:[function(require,module,exports){
