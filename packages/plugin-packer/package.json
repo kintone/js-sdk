@@ -18,12 +18,17 @@
     "circleci": "run-s test",
     "css": "cssnano node_modules/normalize.css/normalize.css --safe > docs/dist/normalize.min.css",
     "eslint": "eslint bin src site test",
-    "js": "run-s js:browserify js:minify",
-    "js:browserify": "browserify site/index.js -i graceful-fs -i glob -i walkdir -i tar-stream -i isomorphic-url -o docs/dist/bundle.js",
-    "js:minify": "google-closure-compiler --flagfile closure.conf > docs/dist/bundle.min.js",
+    "js": "webpack --mode production",
+    "js:dev": "webpack-dev-server --mode development",
     "mocha": "mocha --require intelli-espower-loader",
     "site": "run-p js css",
+    "site:dev": "run-p css js:dev",
     "test": "run-s eslint mocha"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm run site && git add docs"
+    }
   },
   "dependencies": {
     "@teppeis/kintone-plugin-manifest-validator": "^0.6.1",
@@ -37,12 +42,11 @@
   },
   "devDependencies": {
     "adm-zip": "^0.4.7",
-    "browserify": "^14.3.0",
     "cssnano-cli": "^1.0.5",
     "eslint": "^4.10.0",
     "eslint-config-teppeis": "^6.3.1",
     "glob": "^7.1.1",
-    "google-closure-compiler": "^20171023.0.1",
+    "husky": "^0.15.0-rc.8",
     "intelli-espower-loader": "^1.0.1",
     "mocha": "^4.0.1",
     "normalize.css": "^7.0.0",
@@ -51,6 +55,9 @@
     "rimraf": "^2.6.1",
     "setimmediate": "^1.0.5",
     "sinon": "^4.1.2",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.0.0",
     "yauzl": "^2.8.0"
   },
   "homepage": "https://github.com/teppeis/kintone-plugin-packer",

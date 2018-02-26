@@ -1,5 +1,5 @@
 {
-  "extends": "teppeis/node-v4",
+  "extends": "teppeis/node-v6",
   "rules": {
     "consistent-return": 0,
     "max-len": 0,
