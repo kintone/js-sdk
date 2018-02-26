@@ -58,7 +58,7 @@ MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
 [npm-downloads-image]: https://img.shields.io/npm/dm/@teppeis/kintone-plugin-manifest-validator.svg
 [travis-image]: https://img.shields.io/travis/teppeis/kintone-plugin-manifest-validator/master.svg
 [travis-url]: https://travis-ci.org/teppeis/kintone-plugin-manifest-validator
-[circleci-image]: https://circleci.com/gh/teppeis/kintone-plugin-manifest-validator.svg?style=svg
+[circleci-image]: https://circleci.com/gh/teppeis/kintone-plugin-manifest-validator.svg?style=shield
 [circleci-url]: https://circleci.com/gh/teppeis/kintone-plugin-manifest-validator
 [appveyor-image]: https://ci.appveyor.com/api/projects/status/pcsvpsj4ff8u4jop/branch/master?svg=true
 [appveyor-url]: https://ci.appveyor.com/project/teppeis/kintone-plugin-manifest-validator/branch/master
