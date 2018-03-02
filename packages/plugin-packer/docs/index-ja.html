@@ -2,9 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
   <title>Package your kintone plug-in!</title>
   <link rel="stylesheet" href="./dist/normalize.min.css">
   <link rel="stylesheet" href="./style.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-378780-11"></script>
   <script>
 window.dataLayer = window.dataLayer || [];
@@ -13,35 +15,83 @@ gtag('js', new Date());
 gtag('config', 'UA-378780-11');
   </script>
   <script src="./dist/bundle.js" defer></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
 </head>
 <body>
-  <h1>Package your kintone plug-in!</h1>
-  <div id=input>
-    <p>プラグインディレクトリをzipで固めて添付してください。<br>
-    秘密鍵と署名済みのプラグインファイルを生成します。<br>
-    2回目以降の場合は、秘密鍵も添付してください。</p>
-    <ul>
-      <li>Zipファイル: <input type=file class=contents></li>
-      <li>秘密鍵（オプション）: <input type=file class=ppk></li>
-    </ul>
-  </div>
-
-  <div id=output class="hide">
-    <h2>パッケージが完成しました</h2>
-    <ul>
-      <li>ID: <span class=id></span></li>
-      <li><a class=plugin download=plugin.zip>plugin.zip</a></li>
-      <li><a class=ppk download=private.ppk>private.ppk</a></li>
-    </ul>
-    <button class=clear>クリア</button>
-  </div>
-
-  <div id=output-error class="hide">
-    <h2>エラー</h2>
-    <ul class=messages></ul>
-    <button class=clear>クリア</button>
-  </div>
-  <p>Lang: <a href="./index.html">English</a></p>
+  <header class="header">
+    <h1 class="header__title">Package your kintone plug-in!</h1>
+  </header>
+  <main>
+    <section class="description">
+      <p>
+        プラグインディレクトリをzipで固めて添付してください。<br>
+        秘密鍵と署名済みのプラグインファイルを生成します。<br>
+        2回目以降の場合は、秘密鍵も添付してください。
+      </p>
+    </section>
+    <section class="upload-area">
+      <div class="upload-area__droppable js-upload js-upload-zip">
+        <p class="upload-area__text">
+          <span class="hide js-zip-ok-icon ok-icon"><i class="fas fa-check-circle"></i></span>
+          <i class="far fa-folder"></i>
+          <a href="" class="upload-area__zip-link js-upload-zip-link">
+            Zipファイルをドラッグアンドドロップするか、ここをクリックして選択してください
+          </a>
+          <br />
+          <i class="fas fa-upload"></i>
+          <span class="js-zip-file-name"></span>
+          <input type=file class="upload-area__file-upload js-file-upload" accept=".zip" tabindex="-1">
+        </p>
+      </div>
+      <div class="upload-area__droppable js-upload js-upload-ppk">
+        <p class="upload-area__text">
+          <span class="hide js-ppk-ok-icon ok-icon"><i class="fas fa-check-circle"></i></span>
+          <i class="fas fa-key"></i>
+          <a href="" class="upload-area__ppk-link js-upload-ppk-link">
+            秘密鍵(.ppk)ファイルをドラッグアンドドロップするか、ここをクリックして選択してください（オプション）
+          </a>
+          <br />
+          <i class="fas fa-upload"></i>
+          <span class="js-ppk-file-name"></span>
+          <input type=file class="upload-area__file-upload js-file-upload" accept=".ppk" tabInde="-1">
+        </p>
+      </div>
+    </section>
+    <section class="hide download js-download">
+      <h2 class="download__title">プラグインを作成しました！</h2>
+      <ul class="download__list">
+        <li class="download__list-element">
+          ID: <span class="js-download-plugin-id"></span>
+        </li>
+        <li class="download__list-element">
+          <span class="ok-icon"><i class="fas fa-check-circle"></i></span>
+          <span><i class="far fa-folder"></i></span>
+          <a class="js-download-plugin" download="plugin.zip">
+            plugin.zip
+          </a>
+        </li>
+        <li class="download__list-element">
+          <span class="ok-icon"><i class="fas fa-check-circle"></i></span>
+          <i class="fas fa-key"></i>
+          <a class="js-download-ppk" download="private.ppk">
+            private.ppk
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="hide error js-error">
+      <h2 class="error__title">プラグインの作成に失敗しました</h2>
+      <ul class="error__messages js-error-messages"></ul>
+    </section>
+    <section class="action">
+      <button class="action__button action__button--create js-create-btn disabled">作成する</button>
+      <button class="action__button action__button--create js-create-loading-btn hide">
+        <span class="loading"><i class="fas fa-spinner"></i></span>
+      </button>
+      <button class="action__button action__button--clear js-clear-btn">リセットする</button>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>Lang: <a href="./index.html">English</a></p>
+  </footer>
 </body>
 </html>

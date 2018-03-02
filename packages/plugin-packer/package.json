@@ -23,7 +23,8 @@
     "mocha": "mocha --require intelli-espower-loader",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
-    "test": "run-s eslint mocha"
+    "site:test": "mocha site/test --require site/test/setup.js",
+    "test": "run-s eslint mocha site:test"
   },
   "husky": {
     "hooks": {
@@ -52,9 +53,12 @@
     "normalize.css": "^7.0.0",
     "npm-run-all": "^4.0.2",
     "power-assert": "^1.4.2",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "rimraf": "^2.6.1",
     "setimmediate": "^1.0.5",
-    "sinon": "^4.1.2",
+    "sinon": "^4.4.2",
     "webpack": "^4.0.0",
     "webpack-cli": "^2.0.9",
     "webpack-dev-server": "^3.0.0",

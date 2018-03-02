@@ -2,9 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
   <title>Package your kintone plug-in!</title>
   <link rel="stylesheet" href="./dist/normalize.min.css">
   <link rel="stylesheet" href="./style.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-378780-11"></script>
   <script>
 window.dataLayer = window.dataLayer || [];
@@ -15,32 +17,81 @@ gtag('config', 'UA-378780-11');
   <script src="./dist/bundle.js" defer></script>
 </head>
 <body>
-  <h1>Package your kintone plug-in!</h1>
-  <div id=input>
-    <p>Upload the zipped plug-in file.<br>
-    A secret key file and a signed plug-in file will be generated.<br>
-    The secret key will also need to be uploaded when repackaging your plug-in.</p>
-    <ul>
-      <li>Zip file: <input type=file class=contents></li>
-      <li>Secret key file (optional): <input type=file class=ppk></li>
-    </ul>
-  </div>
-
-  <div id=output class="hide">
-    <h2>Packaging plug-in is completed.</h2>
-    <ul>
-      <li>ID: <span class=id></span></li>
-      <li><a class=plugin download=plugin.zip>plugin.zip</a></li>
-      <li><a class=ppk download=private.ppk>private.ppk</a></li>
-    </ul>
-    <button class=clear>Clear</button>
-  </div>
-
-  <div id=output-error class="hide">
-    <h2>Error</h2>
-    <ul class=messages></ul>
-    <button class=clear>Clear</button>
-  </div>
-  <p>Lang: <a href="./index-ja.html">JP</a></p>
+  <header class="header">
+    <h1 class="header__title">Package your kintone plug-in!</h1>
+  </header>
+  <main>
+    <section class="description">
+      <p>
+        Upload the zipped plug-in file.<br>
+        A secret key file and a signed plug-in file will be generated.<br>
+        The secret key will also need to be uploaded when repackaging your plug-in.
+      </p>
+    </section>
+    <section class="upload-area">
+      <div class="upload-area__droppable js-upload js-upload-zip">
+        <p class="upload-area__text">
+          <span class="hide js-zip-ok-icon ok-icon"><i class="fas fa-check-circle"></i></span>
+          <i class="far fa-folder"></i>
+          <a href="" class="upload-area__zip-link js-upload-zip-link">
+            Drop your kintone plugin zip!
+          </a>
+          <br />
+          <i class="fas fa-upload"></i>
+          <span class="js-zip-file-name"></span>
+          <input type=file class="upload-area__file-upload js-file-upload" accept=".zip" tabindex="-1">
+        </p>
+      </div>
+      <div class="upload-area__droppable js-upload js-upload-ppk">
+        <p class="upload-area__text">
+          <span class="hide js-ppk-ok-icon ok-icon"><i class="fas fa-check-circle"></i></span>
+          <i class="fas fa-key"></i>
+          <a href="" class="upload-area__ppk-link js-upload-ppk-link">
+            Drop your secret key file(.ppk)
+          </a>
+          (optional)<br />
+          <i class="fas fa-upload"></i>
+          <span class="js-ppk-file-name"></span>
+          <input type=file class="upload-area__file-upload js-file-upload" accept=".ppk" tabInde="-1">
+        </p>
+      </div>
+    </section>
+    <section class="hide download js-download">
+      <h2 class="download__title">Success!</h2>
+      <ul class="download__list">
+        <li class="download__list-element">
+          ID: <span class="js-download-plugin-id"></span>
+        </li>
+        <li class="download__list-element">
+          <span class="ok-icon"><i class="fas fa-check-circle"></i></span>
+          <span><i class="far fa-folder"></i></span>
+          <a class="js-download-plugin" download="plugin.zip">
+            plugin.zip
+          </a>
+        </li>
+        <li class="download__list-element">
+          <span class="ok-icon"><i class="fas fa-check-circle"></i></span>
+          <i class="fas fa-key"></i>
+          <a class="js-download-ppk" download="private.ppk">
+            private.ppk
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="hide error js-error">
+      <h2 class="error__title">Failed</h2>
+      <ul class="error__messages js-error-messages"></ul>
+    </section>
+    <section class="action">
+      <button class="action__button action__button--create js-create-btn disabled">Create</button>
+      <button class="action__button action__button--create js-create-loading-btn hide">
+        <span class="loading"><i class="fas fa-spinner"></i></span>
+      </button>
+      <button class="action__button action__button--clear js-clear-btn">Reset</button>
+    </section>
+  </main>
+  <footer class="footer">
+      <p>Lang: <a href="./index-ja.html">JP</a></p>
+  </footer>
 </body>
 </html>
