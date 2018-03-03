@@ -4,7 +4,7 @@
   "version": "0.7.1",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "main": "src/index.js",
   "bin": {
@@ -25,11 +25,6 @@
     "site:dev": "run-p css js:dev",
     "site:test": "mocha site/test --require site/test/setup.js",
     "test": "run-s eslint mocha site:test"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test && npm run site && git add docs"
-    }
   },
   "dependencies": {
     "@teppeis/kintone-plugin-manifest-validator": "^0.6.1",
@@ -71,6 +66,11 @@
     "url": "ssh://git@github.com/teppeis/kintone-plugin-packer.git"
   },
   "bugs": "https://github.com/teppeis/kintone-plugin-packer/issues",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm run site && git add docs"
+    }
+  },
   "keywords": [
     "kintone"
   ],
