@@ -18,13 +18,15 @@ const RESET = 'RESET';
  * @return {function(dispatch: function)}
  */
 const uploadPPK = (fileName, fileReader) => dispatch => {
-  fileReader().then(text => dispatch({
-    type: UPLOAD_PPK,
-    payload: {
-      data: text,
-      name: fileName,
-    },
-  }));
+  fileReader().then(text =>
+    dispatch({
+      type: UPLOAD_PPK,
+      payload: {
+        data: text,
+        name: fileName,
+      },
+    })
+  );
 };
 
 /**
@@ -84,13 +86,14 @@ const createPluginZip = generatePluginZip => (dispatch, getState) => {
         type: CREATE_PLUGIN_ZIP_FAILURE,
         payload: error,
       });
-    });
+    }
+  );
 };
 
 /**
  * Dispatch an action to reset the state
  * @return {{type: string}}
-*/
+ */
 const reset = () => ({
   type: RESET,
 });

@@ -14,8 +14,7 @@ const generatePluginZip = (contents, privateKey) => {
   if (!contents) {
     return Promise.resolve();
   }
-  return rezip(Buffer.from(contents))
-    .then(contentsZip => packer(contentsZip, privateKey));
+  return rezip(Buffer.from(contents)).then(contentsZip => packer(contentsZip, privateKey));
 };
 
 /**

@@ -21,10 +21,9 @@ describe('packer', () => {
     let output;
     beforeEach(() => {
       const contentsZip = fs.readFileSync(contentsZipPath);
-      return packer(contentsZip)
-        .then(o => {
-          output = o;
-        });
+      return packer(contentsZip).then(o => {
+        output = o;
+      });
     });
 
     it('the id is generated', () => {
@@ -39,12 +38,11 @@ describe('packer', () => {
 
     it('the zip contains 3 files', () => {
       const zip = new AdmZip(output.plugin);
-      const fileNames = zip.getEntries().map(entry => entry.entryName).sort();
-      assert.deepEqual(fileNames, [
-        'contents.zip',
-        'PUBKEY',
-        'SIGNATURE',
-      ].sort());
+      const fileNames = zip
+        .getEntries()
+        .map(entry => entry.entryName)
+        .sort();
+      assert.deepEqual(fileNames, ['contents.zip', 'PUBKEY', 'SIGNATURE'].sort());
     });
 
     it('the zip passes signature verification', () => {
@@ -58,10 +56,9 @@ describe('packer', () => {
     beforeEach(() => {
       const contentsZip = fs.readFileSync(contentsZipPath);
       privateKey = fs.readFileSync(privateKeyPath, 'utf8');
-      return packer(contentsZip, privateKey)
-        .then(o => {
-          output = o;
-        });
+      return packer(contentsZip, privateKey).then(o => {
+        output = o;
+      });
     });
 
     it('the id is expected', () => {

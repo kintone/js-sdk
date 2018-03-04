@@ -27,8 +27,11 @@ function packer(contentsZip, privateKey) {
   const publicKey = key.exportKey('pkcs8-public-der');
   const id = uuid(publicKey);
   debug(`id : ${id}`);
-  return zip(contentsZip, publicKey, signature)
-    .then(plugin => ({plugin: plugin, privateKey: privateKey, id: id}));
+  return zip(contentsZip, publicKey, signature).then(plugin => ({
+    plugin: plugin,
+    privateKey: privateKey,
+    id: id,
+  }));
 }
 
 /**

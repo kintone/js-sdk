@@ -19,8 +19,9 @@ const sourceList = require('../src/sourcelist');
 function rezip(contentsZip) {
   return zipEntriesFromBuffer(contentsZip)
     .then(result => {
-      const manifestList = Array.from(result.entries.keys())
-        .filter(file => path.basename(file) === 'manifest.json');
+      const manifestList = Array.from(result.entries.keys()).filter(
+        file => path.basename(file) === 'manifest.json'
+      );
       if (manifestList.length === 0) {
         throw new Error('The zip file has no manifest.json');
       } else if (manifestList.length > 1) {
@@ -28,8 +29,9 @@ function rezip(contentsZip) {
       }
       result.manifestPath = manifestList[0];
       const manifestEntry = result.entries.get(result.manifestPath);
-      return getManifestJsonFromEntry(result.zipFile, manifestEntry)
-        .then(json => Object.assign(result, {manifestJson: json}));
+      return getManifestJsonFromEntry(result.zipFile, manifestEntry).then(json =>
+        Object.assign(result, {manifestJson: json})
+      );
     })
     .then(result => {
       const manifestPrefix = path.dirname(result.manifestPath);
@@ -43,21 +45,23 @@ function rezip(contentsZip) {
  * @return {!Promise<{zipFile: !yauzl.ZipFile, entries: !Map<string, !yauzl.ZipEntry>}>}
  */
 function zipEntriesFromBuffer(contentsZip) {
-  return denodeify(yauzl.fromBuffer)(contentsZip)
-    .then(zipFile => new Promise((res, rej) => {
-      const entries = new Map();
-      const result = {
-        zipFile: zipFile,
-        entries: entries,
-      };
-      zipFile.on('entry', entry => {
-        entries.set(entry.fileName, entry);
-      });
-      zipFile.on('end', () => {
-        res(result);
-      });
-      zipFile.on('error', rej);
-    }));
+  return denodeify(yauzl.fromBuffer)(contentsZip).then(
+    zipFile =>
+      new Promise((res, rej) => {
+        const entries = new Map();
+        const result = {
+          zipFile: zipFile,
+          entries: entries,
+        };
+        zipFile.on('entry', entry => {
+          entries.set(entry.fileName, entry);
+        });
+        zipFile.on('end', () => {
+          res(result);
+        });
+        zipFile.on('error', rej);
+      })
+  );
 }
 
 /**
@@ -130,12 +134,14 @@ function rezipContents(zipFile, entries, manifestJson, prefix) {
     });
     newZipFile.outputStream.pipe(output);
     const openReadStream = denodeify(zipFile.openReadStream.bind(zipFile));
-    Promise.all(sourceList(manifestJson).map(src => {
-      const entry = entries.get(path.join(prefix, src));
-      return openReadStream(entry).then(stream => {
-        newZipFile.addReadStream(stream, src, {size: entry.uncompressedSize});
-      });
-    })).then(() => {
+    Promise.all(
+      sourceList(manifestJson).map(src => {
+        const entry = entries.get(path.join(prefix, src));
+        return openReadStream(entry).then(stream => {
+          newZipFile.addReadStream(stream, src, {size: entry.uncompressedSize});
+        });
+      })
+    ).then(() => {
       newZipFile.end();
     });
   });

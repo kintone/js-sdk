@@ -1,5 +1,5 @@
 {
-  "extends": "teppeis/node-v6",
+  "extends": ["teppeis/node-v6", "teppeis/prettier"],
   "rules": {
     "consistent-return": 0,
     "max-len": 0,

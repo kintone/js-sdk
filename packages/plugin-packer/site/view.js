@@ -2,7 +2,7 @@
 
 /**
  * View class
-*/
+ */
 class View {
   /**
    * @constructor

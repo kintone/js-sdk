@@ -10,10 +10,7 @@
   "bin": {
     "kintone-plugin-packer": "bin/cli.js"
   },
-  "files": [
-    "bin",
-    "src"
-  ],
+  "files": ["bin", "src"],
   "scripts": {
     "circleci": "run-s test",
     "css": "cssnano node_modules/normalize.css/normalize.css --safe > docs/dist/normalize.min.css",
@@ -49,6 +46,7 @@
     "normalize.css": "^8.0.0",
     "npm-run-all": "^4.0.2",
     "power-assert": "^1.4.2",
+    "prettier": "1.11.1",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
@@ -71,8 +69,6 @@
       "pre-commit": "npm test && npm run site && git add docs"
     }
   },
-  "keywords": [
-    "kintone"
-  ],
+  "keywords": ["kintone"],
   "license": "MIT"
 }

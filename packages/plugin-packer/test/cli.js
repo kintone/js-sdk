@@ -82,11 +82,11 @@ describe('cli', () => {
       assert(packer.calledOnce);
       assert(packer.args[0][0]);
       const zip = new AdmZip(packer.args[0][0]);
-      const files = zip.getEntries().map(entry => entry.entryName).sort();
-      assert.deepEqual(files, [
-        'image/icon.png',
-        'manifest.json',
-      ].sort());
+      const files = zip
+        .getEntries()
+        .map(entry => entry.entryName)
+        .sort();
+      assert.deepEqual(files, ['image/icon.png', 'manifest.json'].sort());
     });
 
     it('calles `packer` with privateKey as the 2nd argument', () => {
@@ -115,8 +115,9 @@ describe('cli', () => {
         plugin: PLUGIN_BUFFER,
       });
 
-      return rimraf(`${sampleDir}/*.*(ppk|zip)`)
-        .then(() => cli(pluginDir, {ppk: ppkPath, packerMock_: packer}));
+      return rimraf(`${sampleDir}/*.*(ppk|zip)`).then(() =>
+        cli(pluginDir, {ppk: ppkPath, packerMock_: packer})
+      );
     });
 
     it('calles `packer` with privateKey as the 2nd argument', () => {
@@ -143,17 +144,23 @@ describe('cli', () => {
       .then(() => cli(pluginDir, {packerMock_: packer}))
       .then(() => {
         const zip = new AdmZip(packer.args[0][0]);
-        const files = zip.getEntries().map(entry => entry.entryName).sort();
-        assert.deepEqual(files, [
-          'css/config.css',
-          'css/desktop.css',
-          'html/config.html',
-          'image/icon.png',
-          'js/config.js',
-          'js/desktop.js',
-          'js/mobile.js',
-          'manifest.json',
-        ].sort());
+        const files = zip
+          .getEntries()
+          .map(entry => entry.entryName)
+          .sort();
+        assert.deepEqual(
+          files,
+          [
+            'css/config.css',
+            'css/desktop.css',
+            'html/config.html',
+            'image/icon.png',
+            'js/config.js',
+            'js/desktop.js',
+            'js/mobile.js',
+            'manifest.json',
+          ].sort()
+        );
       });
   });
 

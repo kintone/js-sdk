@@ -37,10 +37,7 @@ const expectedInitialState = {
 describe('reducer', () => {
   describe('initial state', () => {
     it('should be initialized all values', () => {
-      assert.deepStrictEqual(
-        reducer(undefined, {type: 'INIT_TEST'}),
-        expectedInitialState
-      );
+      assert.deepStrictEqual(reducer(undefined, {type: 'INIT_TEST'}), expectedInitialState);
     });
   });
   describe('UPLOAD_PPK', () => {
@@ -49,12 +46,9 @@ describe('reducer', () => {
         ppk: null,
       };
       const ppk = {data: [], name: 'hgoe.ppk'};
-      assert.deepStrictEqual(
-        reducer(state, {type: UPLOAD_PPK, payload: ppk}),
-        {
-          ppk,
-        }
-      );
+      assert.deepStrictEqual(reducer(state, {type: UPLOAD_PPK, payload: ppk}), {
+        ppk,
+      });
     });
   });
   describe('UPLOAD_PLUGIN_START', () => {
@@ -70,20 +64,17 @@ describe('reducer', () => {
         },
         error: 'hoge',
       };
-      assert.deepStrictEqual(
-        reducer(state, {type: UPLOAD_PLUGIN_START}),
-        {
-          contents: {
-            data: null,
-            name: null,
-          },
-          ppk: {
-            data: 'ok',
-            name: 'okok',
-          },
-          error: null,
-        }
-      );
+      assert.deepStrictEqual(reducer(state, {type: UPLOAD_PLUGIN_START}), {
+        contents: {
+          data: null,
+          name: null,
+        },
+        ppk: {
+          data: 'ok',
+          name: 'okok',
+        },
+        error: null,
+      });
     });
   });
   describe('UPLOAD_PLUGIN', () => {
@@ -92,12 +83,9 @@ describe('reducer', () => {
         contents: null,
       };
       const contents = {data: [], name: 'hoge.zip'};
-      assert.deepStrictEqual(
-        reducer(state, {type: UPLOAD_PLUGIN, payload: contents}),
-        {
-          contents,
-        }
-      );
+      assert.deepStrictEqual(reducer(state, {type: UPLOAD_PLUGIN, payload: contents}), {
+        contents,
+      });
     });
   });
   describe('CREATE_PLUGIN_ZIP_START', () => {
@@ -115,16 +103,13 @@ describe('reducer', () => {
         error: 'error',
         loading: false,
       };
-      assert.deepStrictEqual(
-        reducer(state, {type: CREATE_PLUGIN_ZIP_START}),
-        {
-          contents: 'contents',
-          ppk: 'ppk',
-          plugin: expectedInitialState.plugin,
-          error: null,
-          loading: true,
-        }
-      );
+      assert.deepStrictEqual(reducer(state, {type: CREATE_PLUGIN_ZIP_START}), {
+        contents: 'contents',
+        ppk: 'ppk',
+        plugin: expectedInitialState.plugin,
+        error: null,
+        loading: true,
+      });
     });
   });
   describe('CREATE_PLUGIN_ZIP', () => {
@@ -151,29 +136,20 @@ describe('reducer', () => {
           id: 'abcd',
         },
       };
-      assert.deepStrictEqual(
-        reducer(state, action),
-        {
-          ppk: {
-            data: 'secret',
-            name: 'abcd.ppk',
+      assert.deepStrictEqual(reducer(state, action), {
+        ppk: {
+          data: 'secret',
+          name: 'abcd.ppk',
+        },
+        plugin: {
+          id: 'abcd',
+          url: {
+            contents: [['plugin data'], {type: 'application/zip'}],
+            ppk: [['secret'], {type: 'text/plain'}],
           },
-          plugin: {
-            id: 'abcd',
-            url: {
-              contents: [
-                ['plugin data'],
-                {type: 'application/zip'},
-              ],
-              ppk: [
-                ['secret'],
-                {type: 'text/plain'},
-              ],
-            },
-          },
-          loading: false,
-        }
-      );
+        },
+        loading: false,
+      });
     });
   });
   describe('UPLOAD_PLUGIN_FAILURE and CREATE_PLUGIN_ZIP_FAILURE', () => {
@@ -182,29 +158,20 @@ describe('reducer', () => {
         error: null,
         loading: true,
       };
-      assert.deepStrictEqual(
-        reducer(state, {type: UPLOAD_PLUGIN_FAILURE, payload: 'error'}),
-        {
-          error: 'error',
-          loading: false,
-        }
-      );
-      assert.deepStrictEqual(
-        reducer(state, {type: CREATE_PLUGIN_ZIP_FAILURE, payload: 'error'}),
-        {
-          error: 'error',
-          loading: false,
-        }
-      );
+      assert.deepStrictEqual(reducer(state, {type: UPLOAD_PLUGIN_FAILURE, payload: 'error'}), {
+        error: 'error',
+        loading: false,
+      });
+      assert.deepStrictEqual(reducer(state, {type: CREATE_PLUGIN_ZIP_FAILURE, payload: 'error'}), {
+        error: 'error',
+        loading: false,
+      });
     });
   });
   describe('RESET', () => {
     it('should reset all values', () => {
       const state = 'dirty';
-      assert.deepStrictEqual(
-        reducer(state, {type: RESET}),
-        expectedInitialState
-      );
+      assert.deepStrictEqual(reducer(state, {type: RESET}), expectedInitialState);
     });
   });
 });

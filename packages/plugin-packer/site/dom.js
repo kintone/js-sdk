@@ -13,17 +13,11 @@ const revokeDownloadUrl = url => URL.revokeObjectURL(url);
  * @param {string} type
  * @return {string}
  */
-const createDownloadUrl = (data, type) => URL.createObjectURL(
-  new Blob([data], {type})
-);
+const createDownloadUrl = (data, type) => URL.createObjectURL(new Blob([data], {type}));
 
 const isDropEvent = e => e.type === 'drop';
 
-const getFileFromEvent = e => (
-  isDropEvent(e) ?
-    e.dataTransfer.files[0] :
-    e.target.files[0]
-);
+const getFileFromEvent = e => (isDropEvent(e) ? e.dataTransfer.files[0] : e.target.files[0]);
 
 /**
  * Create an handler for an event to convert a File
@@ -46,26 +40,24 @@ const createFileHanlder = cb => e => {
  * @param {File} file
  * @return {Promise<string>}
  */
-const readText = file => (
+const readText = file =>
   new Promise(resolve => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result);
     reader.readAsText(file);
-  })
-);
+  });
 
 /**
  * Read a file and return it as an array buffer
  * @param {File} file
  * @return {Promise<ArrayBuffer>}
  */
-const readArrayBuffer = file => (
+const readArrayBuffer = file =>
   new Promise(resolve => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result);
     reader.readAsArrayBuffer(file);
-  })
-);
+  });
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);

@@ -6,25 +6,12 @@ const {createStore, applyMiddleware} = require('redux');
 const thunk = require('redux-thunk').default;
 const logger = require('redux-logger').default;
 
-const {
-  $,
-  $$,
-  listen,
-  readText,
-  readArrayBuffer,
-  createFileHanlder,
-} = require('./dom');
+const {$, $$, listen, readText, readArrayBuffer, createFileHanlder} = require('./dom');
 const View = require('./view');
 
 const reducer = require('./reducer');
-const {
-  uploadPPK,
-  uploadPlugin,
-  createPluginZip,
-  reset,
-} = require('./action');
+const {uploadPPK, uploadPlugin, createPluginZip, reset} = require('./action');
 const {generatePluginZip, validatePlugin, revokePluginUrls} = require('./plugin');
-
 
 const $ppkFileUploader = $('.js-upload-ppk .js-file-upload');
 const $zipFileUploader = $('.js-upload-zip .js-file-upload');
@@ -79,28 +66,18 @@ if (process.env.NODE_ENV !== 'production') {
   middlewares.push(logger);
 }
 
-const store = createStore(
-  reducer,
-  applyMiddleware(...middlewares)
-);
+const store = createStore(reducer, applyMiddleware(...middlewares));
 
 store.subscribe(() => {
   view.render(store.getState());
 });
 
 const uploadPluginZipHandler = createFileHanlder(file => {
-  store.dispatch(
-    uploadPlugin(
-      file.name,
-      () => readArrayBuffer(file),
-      validatePlugin
-    ));
+  store.dispatch(uploadPlugin(file.name, () => readArrayBuffer(file), validatePlugin));
 });
 
 const uploadPPKHanlder = createFileHanlder(file => {
-  store.dispatch(
-    uploadPPK(file.name, () => readText(file))
-  );
+  store.dispatch(uploadPPK(file.name, () => readText(file)));
 });
 
 // Handle a file upload

@@ -23,88 +23,63 @@ describe('action', () => {
   beforeEach(() => {
     dispatch = sinon.spy();
   });
-  afterEach(() => {
-  });
+  afterEach(() => {});
   describe('uploadPPK', () => {
     it('should dispatch an UPLOAD_PPK action with payload including data and name properties', () => {
       const promise = Promise.resolve('value');
       uploadPPK('hoge.ppk', () => promise)(dispatch);
       return promise.then(() => {
         assert(dispatch.calledOnce);
-        assert.deepStrictEqual(
-          dispatch.getCall(0).args,
-          [
-            {
-              type: UPLOAD_PPK,
-              payload: {
-                data: 'value',
-                name: 'hoge.ppk',
-              },
+        assert.deepStrictEqual(dispatch.getCall(0).args, [
+          {
+            type: UPLOAD_PPK,
+            payload: {
+              data: 'value',
+              name: 'hoge.ppk',
             },
-          ]
-        );
+          },
+        ]);
       });
     });
   });
   describe('uploadPlugin', () => {
     it('should dispatch UPLOAD_PLUGIN_START action', () => {
-      uploadPlugin(
-        'hoge.zip',
-        () => Promise.resolve('ok'),
-        () => Promise.resolve()
-      )(dispatch);
+      uploadPlugin('hoge.zip', () => Promise.resolve('ok'), () => Promise.resolve())(dispatch);
       assert(dispatch.calledOnce);
-      assert.deepStrictEqual(
-        dispatch.getCall(0).args,
-        [{type: UPLOAD_PLUGIN_START}]
-      );
+      assert.deepStrictEqual(dispatch.getCall(0).args, [{type: UPLOAD_PLUGIN_START}]);
     });
     it('should dispatch UPLOAD_PLUGIN action if validateManifest was success', done => {
       const validateManifestStub = sinon.stub().returns(Promise.resolve());
-      uploadPlugin(
-        'hoge.zip',
-        () => Promise.resolve('ok'),
-        validateManifestStub
-      )(dispatch);
+      uploadPlugin('hoge.zip', () => Promise.resolve('ok'), validateManifestStub)(dispatch);
       // In order to guarantee to execute assertion after uploadPlugin has finished
       setTimeout(() => {
         assert.equal(dispatch.callCount, 2);
         assert.equal(validateManifestStub.getCall(0).args[0], 'ok');
-        assert.deepStrictEqual(
-          dispatch.getCall(1).args,
-          [
-            {
-              type: UPLOAD_PLUGIN,
-              payload: {
-                data: 'ok',
-                name: 'hoge.zip',
-              },
+        assert.deepStrictEqual(dispatch.getCall(1).args, [
+          {
+            type: UPLOAD_PLUGIN,
+            payload: {
+              data: 'ok',
+              name: 'hoge.zip',
             },
-          ]
-        );
+          },
+        ]);
         done();
       });
     });
     it('should dispatch UPLOAD_PLUGIN_FAILURE action if validateManifest was failure', done => {
       const validateManifestStub = sinon.stub().returns(Promise.reject('error'));
-      uploadPlugin(
-        'hoge.zip',
-        () => Promise.resolve('ng'),
-        validateManifestStub
-      )(dispatch);
+      uploadPlugin('hoge.zip', () => Promise.resolve('ng'), validateManifestStub)(dispatch);
       // In order to guarantee to execute assertion after uploadPlugin has finished
       setTimeout(() => {
         assert.equal(dispatch.callCount, 2);
         assert.equal(validateManifestStub.getCall(0).args[0], 'ng');
-        assert.deepStrictEqual(
-          dispatch.getCall(1).args,
-          [
-            {
-              type: UPLOAD_PLUGIN_FAILURE,
-              payload: 'error',
-            },
-          ]
-        );
+        assert.deepStrictEqual(dispatch.getCall(1).args, [
+          {
+            type: UPLOAD_PLUGIN_FAILURE,
+            payload: 'error',
+          },
+        ]);
         done();
       });
     });
@@ -127,17 +102,14 @@ describe('action', () => {
     createPluginZip(() => Promise.resolve({foo: 'bar'}))(dispatch, getState);
     setTimeout(() => {
       assert.equal(dispatch.callCount, 2);
-      assert.deepStrictEqual(
-        dispatch.getCall(1).args,
-        [
-          {
-            type: CREATE_PLUGIN_ZIP,
-            payload: {
-              foo: 'bar',
-            },
+      assert.deepStrictEqual(dispatch.getCall(1).args, [
+        {
+          type: CREATE_PLUGIN_ZIP,
+          payload: {
+            foo: 'bar',
           },
-        ]
-      );
+        },
+      ]);
       done();
     }, 500);
   });
@@ -149,26 +121,20 @@ describe('action', () => {
     createPluginZip(() => Promise.reject('error'))(dispatch, getState);
     setTimeout(() => {
       assert.equal(dispatch.callCount, 2);
-      assert.deepStrictEqual(
-        dispatch.getCall(1).args,
-        [
-          {
-            type: CREATE_PLUGIN_ZIP_FAILURE,
-            payload: 'error',
-          },
-        ]
-      );
+      assert.deepStrictEqual(dispatch.getCall(1).args, [
+        {
+          type: CREATE_PLUGIN_ZIP_FAILURE,
+          payload: 'error',
+        },
+      ]);
       done();
     }, 500);
   });
   describe('reset', () => {
     it('should dispatch RESET action', () => {
-      assert.deepStrictEqual(
-        reset(),
-        {
-          type: RESET,
-        }
-      );
+      assert.deepStrictEqual(reset(), {
+        type: RESET,
+      });
     });
   });
 });

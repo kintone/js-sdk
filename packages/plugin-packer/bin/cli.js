@@ -16,16 +16,19 @@ const flagSpec = {
   },
 };
 
-const cli = meow(`
+const cli = meow(
+  `
 Usage
   ${USAGE}
 
 Options
   --ppk PPK_FILE: Private key file. If omitted, it's generated into '<Plugin ID>.ppk' in the same directory of PLUGIN_DIR.
   --out PLUGIN_FILE: The default is 'plugin.zip' in the same directory of PLUGIN_DIR.
-`, {
-  flag: flagSpec,
-});
+`,
+  {
+    flag: flagSpec,
+  }
+);
 
 if (!cli.input[0]) {
   console.error('Error: An argument `PLUGIN_DIR` is required.');

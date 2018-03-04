@@ -59,8 +59,9 @@ function cli(pluginDir, options) {
   // 5. package plugin.zip
   return Promise.all([
     mkdirp(outputDir),
-    createContentsZip(pluginDir, manifest)
-      .then(contentsZip => packerLocal(contentsZip, privateKey)),
+    createContentsZip(pluginDir, manifest).then(contentsZip =>
+      packerLocal(contentsZip, privateKey)
+    ),
   ]).then(result => {
     const output = result[1];
     if (!ppkFile) {
@@ -127,8 +128,7 @@ function createContentsZip(pluginDir, manifest) {
  * @return {!Promise<string>} The value is output path of plugin.zip.
  */
 function outputPlugin(outputPath, plugin) {
-  return writeFile(outputPath, plugin)
-    .then(arg => outputPath);
+  return writeFile(outputPath, plugin).then(arg => outputPath);
 }
 
 /**
