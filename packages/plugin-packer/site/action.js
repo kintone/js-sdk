@@ -2,14 +2,25 @@
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+const UPLOAD_PPK_START = 'UPLOAD_PPK_START';
 const UPLOAD_PPK = 'UPLOAD_PPK';
 const UPLOAD_PLUGIN_START = 'UPLOADING_PLUGIN_START';
 const UPLOAD_PLUGIN = 'UPLOAD_PLUGIN';
-const UPLOAD_PLUGIN_FAILURE = 'UPLOAD_PLUGIN_FAILURE';
+const UPLOAD_FAILURE = 'UPLOAD_FAILURE';
 const CREATE_PLUGIN_ZIP = 'CREATE_PLUGIN_ZIP';
 const CREATE_PLUGIN_ZIP_START = 'CREATE_PLUGIN_ZIP_START';
 const CREATE_PLUGIN_ZIP_FAILURE = 'CREATE_PLUGIN_ZIP_FAILURE';
 const RESET = 'RESET';
+
+/**
+ * Dispatch an action for uploading an error
+ * @param {Error} error
+ * @return {{type: string, payload: Error}}
+ */
+const uploadFailure = error => ({
+  type: UPLOAD_FAILURE,
+  payload: error,
+});
 
 /**
  * Dispatch an action for uploading a ppk file
@@ -18,14 +29,20 @@ const RESET = 'RESET';
  * @return {function(dispatch: function)}
  */
 const uploadPPK = (fileName, fileReader) => dispatch => {
-  fileReader().then(text =>
-    dispatch({
-      type: UPLOAD_PPK,
-      payload: {
-        data: text,
-        name: fileName,
-      },
-    })
+  dispatch({type: UPLOAD_PPK_START});
+  fileReader().then(
+    text => {
+      dispatch({
+        type: UPLOAD_PPK,
+        payload: {
+          data: text,
+          name: fileName,
+        },
+      });
+    },
+    error => {
+      dispatch(uploadFailure(error));
+    }
   );
 };
 
@@ -42,7 +59,6 @@ const uploadPlugin = (fileName, fileReader, validateManifest) => dispatch => {
     .then(buffer => validateManifest(buffer).then(() => buffer))
     .then(
       buffer => {
-        console.log(buffer);
         dispatch({
           type: UPLOAD_PLUGIN,
           payload: {
@@ -52,10 +68,7 @@ const uploadPlugin = (fileName, fileReader, validateManifest) => dispatch => {
         });
       },
       error => {
-        dispatch({
-          type: UPLOAD_PLUGIN_FAILURE,
-          payload: error,
-        });
+        dispatch(uploadFailure(error));
       }
     );
 };
@@ -99,14 +112,16 @@ const reset = () => ({
 });
 
 module.exports = {
+  UPLOAD_FAILURE,
   UPLOAD_PPK,
+  UPLOAD_PPK_START,
   UPLOAD_PLUGIN,
   UPLOAD_PLUGIN_START,
-  UPLOAD_PLUGIN_FAILURE,
   CREATE_PLUGIN_ZIP,
   CREATE_PLUGIN_ZIP_START,
   CREATE_PLUGIN_ZIP_FAILURE,
   RESET,
+  uploadFailure,
   uploadPPK,
   uploadPlugin,
   reset,

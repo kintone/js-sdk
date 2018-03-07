@@ -23,7 +23,8 @@ gtag('config', 'UA-378780-11');
   <main>
     <section class="description">
       <p>
-        プラグインディレクトリをzipで固めて添付してください。<br>
+        プラグインディレクトリをアップロードしてください。<br>
+        Chrome, Firefox以外の場合は、Zipで固めてアップロードしてください。<br>
         秘密鍵と署名済みのプラグインファイルを生成します。<br>
         2回目以降の場合は、秘密鍵も添付してください。
       </p>
@@ -34,12 +35,12 @@ gtag('config', 'UA-378780-11');
           <span class="hide js-zip-ok-icon ok-icon"><i class="fas fa-check-circle"></i></span>
           <i class="far fa-folder"></i>
           <a href="" class="upload-area__zip-link js-upload-zip-link">
-            Zipファイルをドラッグアンドドロップするか、ここをクリックして選択してください
+            プラグインをドラッグアンドドロップするか、ここをクリックして選択してください
           </a>
           <br />
           <i class="fas fa-upload"></i>
           <span class="js-zip-file-name"></span>
-          <input type=file class="upload-area__file-upload js-file-upload" accept=".zip" tabindex="-1">
+          <input type=file class="upload-area__file-upload js-file-upload" accept=".zip" tabindex="-1" webkitdirectory>
         </p>
       </div>
       <div class="upload-area__droppable js-upload js-upload-ppk">

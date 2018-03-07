@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "adm-zip": "^0.4.7",
+    "array-flatten": "^2.1.1",
     "cssnano-cli": "^1.0.5",
     "eslint": "^4.18.2",
     "eslint-config-teppeis": "^6.6.1",

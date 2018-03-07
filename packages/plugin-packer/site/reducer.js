@@ -2,10 +2,11 @@
 
 const {createDownloadUrls} = require('./plugin');
 const {
+  UPLOAD_FAILURE,
   UPLOAD_PPK,
+  UPLOAD_PPK_START,
   UPLOAD_PLUGIN,
   UPLOAD_PLUGIN_START,
-  UPLOAD_PLUGIN_FAILURE,
   CREATE_PLUGIN_ZIP,
   CREATE_PLUGIN_ZIP_START,
   CREATE_PLUGIN_ZIP_FAILURE,
@@ -40,15 +41,26 @@ const getInitialState = () => ({
  */
 const reducer = (state = getInitialState(), action) => {
   switch (action.type) {
+    case UPLOAD_PPK_START: {
+      const {ppk, plugin} = getInitialState();
+      return Object.assign({}, state, {
+        ppk,
+        plugin,
+        error: null,
+      });
+    }
     case UPLOAD_PPK:
       return Object.assign({}, state, {
         ppk: action.payload,
       });
-    case UPLOAD_PLUGIN_START:
+    case UPLOAD_PLUGIN_START: {
+      const {contents, plugin} = getInitialState();
       return Object.assign({}, state, {
-        contents: getInitialState().contents,
+        contents,
+        plugin,
         error: null,
       });
+    }
     case UPLOAD_PLUGIN:
       return Object.assign({}, state, {
         contents: action.payload,
@@ -71,7 +83,7 @@ const reducer = (state = getInitialState(), action) => {
         },
         loading: false,
       });
-    case UPLOAD_PLUGIN_FAILURE:
+    case UPLOAD_FAILURE:
     case CREATE_PLUGIN_ZIP_FAILURE:
       return Object.assign({}, state, {
         error: action.payload,

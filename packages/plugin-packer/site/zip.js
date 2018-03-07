@@ -7,6 +7,8 @@ const denodeify = require('denodeify');
 const validate = require('@teppeis/kintone-plugin-manifest-validator');
 const streamBuffers = require('stream-buffers');
 
+const {readArrayBuffer} = require('./dom');
+
 const genErrorMsg = require('../src/gen-error-msg');
 const sourceList = require('../src/sourcelist');
 
@@ -147,4 +149,39 @@ function rezipContents(zipFile, entries, manifestJson, prefix) {
   });
 }
 
-module.exports = rezip;
+/**
+ * Create a buffer of the zip file
+ * @typedef {{file: File, fullPath: string}} FileEntry
+ * @param {Map<string, File>} fileMap
+ * @return {Buffer}
+ */
+function zipDirectory(fileMap) {
+  const zipFile = new yazl.ZipFile();
+  return Promise.all(
+    Array.from(fileMap.entries()).map(([path, file]) =>
+      readArrayBuffer(file).then(buffer => ({buffer, path}))
+    )
+  )
+    .then(results => {
+      results.forEach(result => {
+        zipFile.addBuffer(Buffer.from(result.buffer), result.path);
+      });
+      zipFile.end();
+      return zipFile;
+    })
+    .then(
+      zipFile =>
+        new Promise(resolve => {
+          const output = new streamBuffers.WritableStreamBuffer();
+          output.on('finish', () => {
+            resolve(output.getContents());
+          });
+          zipFile.outputStream.pipe(output);
+        })
+    );
+}
+
+module.exports = {
+  rezip,
+  zipDirectory,
+};

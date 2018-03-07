@@ -23,7 +23,8 @@ gtag('config', 'UA-378780-11');
   <main>
     <section class="description">
       <p>
-        Upload the zipped plug-in file.<br>
+        Upload the plug-in directory.<br>
+        If you are using a browser except for Chrome or Firefox, upload the zipped plug-in file.<br>
         A secret key file and a signed plug-in file will be generated.<br>
         The secret key will also need to be uploaded when repackaging your plug-in.
       </p>
@@ -34,12 +35,12 @@ gtag('config', 'UA-378780-11');
           <span class="hide js-zip-ok-icon ok-icon"><i class="fas fa-check-circle"></i></span>
           <i class="far fa-folder"></i>
           <a href="" class="upload-area__zip-link js-upload-zip-link">
-            Drop your kintone plugin zip!
+            Drag and drop your kintone plug-in!
           </a>
           <br />
           <i class="fas fa-upload"></i>
           <span class="js-zip-file-name"></span>
-          <input type=file class="upload-area__file-upload js-file-upload" accept=".zip" tabindex="-1">
+          <input type=file class="upload-area__file-upload js-file-upload" accept=".zip" tabindex="-1" webkitdirectory>
         </p>
       </div>
       <div class="upload-area__droppable js-upload js-upload-ppk">
@@ -47,7 +48,7 @@ gtag('config', 'UA-378780-11');
           <span class="hide js-ppk-ok-icon ok-icon"><i class="fas fa-check-circle"></i></span>
           <i class="fas fa-key"></i>
           <a href="" class="upload-area__ppk-link js-upload-ppk-link">
-            Drop your secret key file(.ppk)
+            Drag and drop your secret key file(.ppk)
           </a>
           (optional)<br />
           <i class="fas fa-upload"></i>

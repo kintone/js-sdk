@@ -10,8 +10,9 @@ const {$, $$, listen, readText, readArrayBuffer, createFileHanlder} = require('.
 const View = require('./view');
 
 const reducer = require('./reducer');
-const {uploadPPK, uploadPlugin, createPluginZip, reset} = require('./action');
+const {uploadPPK, uploadPlugin, createPluginZip, reset, uploadFailure} = require('./action');
 const {generatePluginZip, validatePlugin, revokePluginUrls} = require('./plugin');
+const {zipDirectory} = require('./zip');
 
 const $ppkFileUploader = $('.js-upload-ppk .js-file-upload');
 const $zipFileUploader = $('.js-upload-zip .js-file-upload');
@@ -72,12 +73,37 @@ store.subscribe(() => {
   view.render(store.getState());
 });
 
-const uploadPluginZipHandler = createFileHanlder(file => {
-  store.dispatch(uploadPlugin(file.name, () => readArrayBuffer(file), validatePlugin));
+const uploadPluginZipHandler = createFileHanlder(promise => {
+  promise
+    .then(file => {
+      // Uploading a directory
+      if (file instanceof Map) {
+        zipDirectory(file).then(buffer => {
+          // Should we respect the directory name?
+          store.dispatch(uploadPlugin('plugin.zip', () => Promise.resolve(buffer), validatePlugin));
+        });
+      } else {
+        store.dispatch(uploadPlugin(file.name, () => readArrayBuffer(file), validatePlugin));
+      }
+    })
+    .catch(error => {
+      store.dispatch(uploadFailure(error));
+    });
 });
 
-const uploadPPKHanlder = createFileHanlder(file => {
-  store.dispatch(uploadPPK(file.name, () => readText(file)));
+const uploadPPKHanlder = createFileHanlder(promise => {
+  promise
+    .then(file => {
+      // Uploading a directory
+      if (file instanceof Map) {
+        store.dispatch(uploadFailure(new Error('secret file should be a text file')));
+      } else {
+        store.dispatch(uploadPPK(file.name, () => readText(file)));
+      }
+    })
+    .catch(error => {
+      store.dispatch(uploadFailure(error));
+    });
 });
 
 // Handle a file upload

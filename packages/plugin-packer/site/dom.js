@@ -1,5 +1,7 @@
 'use strict';
 
+const flatten = require('array-flatten');
+
 /**
  * Revoke an object URL
  * @param {string} url
@@ -17,22 +19,85 @@ const createDownloadUrl = (data, type) => URL.createObjectURL(new Blob([data], {
 
 const isDropEvent = e => e.type === 'drop';
 
-const getFileFromEvent = e => (isDropEvent(e) ? e.dataTransfer.files[0] : e.target.files[0]);
+/**
+ *  Read files from FileSystemEntry
+ * @typedef {{path: string, file: File}} FileEntry
+ * @param {FileSystemEntry} entry
+ * @return {Promise<FileEntry | FileEntry[]>}
+ * */
+const readEntries = entry =>
+  new Promise((resolve, reject) => {
+    if (entry.isFile) {
+      // Convert the fullPath to the relative path from the plugin directory
+      entry.file(file => resolve({path: entry.fullPath.replace(/^\/[^/]+?\//, ''), file}));
+    } else if (entry.isDirectory) {
+      entry.createReader().readEntries(childEntries => {
+        Promise.all(childEntries.map(childEntry => readEntries(childEntry))).then(resolve);
+      });
+    } else {
+      reject(new Error('Unsupported file system entry specified'));
+    }
+  });
+
+/**
+ * Get a file or a file list from Event
+ * @param {Event} e
+ * @return {Promise<File | Map<string, File>>}
+ */
+const getFileFromEvent = e => {
+  if (!isDropEvent(e)) {
+    const files = e.target.files;
+    if (files.length === 1) {
+      return Promise.resolve(files[0]);
+    }
+    // Create a Map<path, File>
+    return Promise.resolve(new Map(Array.from(files).map(file => [file.webkitRelativePath, file])));
+  }
+  if (
+    typeof e.dataTransfer.items === 'undefined' ||
+    typeof e.dataTransfer.items[0].webkitGetAsEntry !== 'function'
+  ) {
+    // We assume a string was dropped if we can't get the File object
+    const file = e.dataTransfer.files[0];
+    if (!file) {
+      return Promise.reject(new Error('Unsupported file type item specified'));
+    }
+    // the upload file name doesn't have any dot so we can infer the file is a directory
+    if (file.name.indexOf('.') === -1) {
+      return Promise.reject(new Error("Your browser doesn't support a directory upload"));
+    }
+    return Promise.resolve(file);
+  }
+  return new Promise((resolve, reject) => {
+    const dataTransferItem = e.dataTransfer.items[0];
+    if (dataTransferItem.kind !== 'file') {
+      reject(new Error('Unsupported file type item specified'));
+      return;
+    }
+    const entry = dataTransferItem.webkitGetAsEntry();
+    if (entry.isFile) {
+      entry.file(resolve);
+    } else if (entry.isDirectory) {
+      readEntries(entry).then(entries => {
+        // Create a Map<path, File>
+        resolve(new Map(flatten(entries).map(({path, file}) => [path, file])));
+      });
+    } else {
+      reject(new Error('Unsupported file system entry specified'));
+    }
+  });
+};
 
 /**
  * Create an handler for an event to convert a File
- * @param {function(file: File): Promise<*>} cb
+ * @param {function(promise: Promise<File>): void} cb
  * @return {function(e: Event)}
  */
 const createFileHanlder = cb => e => {
-  const file = getFileFromEvent(e);
-  if (!file) {
-    return;
-  }
   if (isDropEvent(e)) {
     e.preventDefault();
   }
-  return cb(file);
+  cb(getFileFromEvent(e));
 };
 
 /**
@@ -53,9 +118,10 @@ const readText = file =>
  * @return {Promise<ArrayBuffer>}
  */
 const readArrayBuffer = file =>
-  new Promise(resolve => {
+  new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
     reader.readAsArrayBuffer(file);
   });
 
