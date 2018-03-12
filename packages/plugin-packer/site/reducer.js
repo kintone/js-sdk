@@ -96,4 +96,30 @@ const reducer = (state = getInitialState(), action) => {
   }
 };
 
-module.exports = reducer;
+/**
+ * Return a basename of download files
+ * @param {Object} state
+ * @return {string}
+ */
+const getPluginBaseName = state =>
+  `${state.contents.name.replace(/\.\w+$/, '')}.${state.plugin.id}`;
+
+/**
+ * Return a filename for a plugin zip
+ * @param {Object} state
+ * @return {string}
+ */
+const getDownloadPluginZipName = state => `${getPluginBaseName(state)}.plugin.zip`;
+
+/**
+ * Return a filename for a secret file(ppk)
+ * @param {Object} state
+ * @return {string}
+ */
+const getDownloadPPKFileName = state => `${getPluginBaseName(state)}.private.ppk`;
+
+module.exports = {
+  reducer,
+  getDownloadPluginZipName,
+  getDownloadPPKFileName,
+};

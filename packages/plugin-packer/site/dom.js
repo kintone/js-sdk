@@ -42,7 +42,7 @@ const readEntries = entry =>
 /**
  * Get a file or a file list from Event
  * @param {Event} e
- * @return {Promise<File | Map<string, File>>}
+ * @return {Promise<File | {name: string, entries: Map<string, File>}>}
  */
 const getFileFromEvent = e => {
   if (!isDropEvent(e)) {
@@ -51,7 +51,11 @@ const getFileFromEvent = e => {
       return Promise.resolve(files[0]);
     }
     // Create a Map<path, File>
-    return Promise.resolve(new Map(Array.from(files).map(file => [file.webkitRelativePath, file])));
+    return Promise.resolve({
+      // Get a uploaded directory name from webkitRelativePath
+      name: files[0].webkitRelativePath.replace(/\/.*/, ''),
+      entries: new Map(Array.from(files).map(file => [file.webkitRelativePath, file])),
+    });
   }
   if (
     typeof e.dataTransfer.items === 'undefined' ||
@@ -79,8 +83,11 @@ const getFileFromEvent = e => {
       entry.file(resolve);
     } else if (entry.isDirectory) {
       readEntries(entry).then(entries => {
-        // Create a Map<path, File>
-        resolve(new Map(flatten(entries).map(({path, file}) => [path, file])));
+        resolve({
+          name: entry.name,
+          // Create a Map<path, File>
+          entries: new Map(flatten(entries).map(({path, file}) => [path, file])),
+        });
       });
     } else {
       reject(new Error('Unsupported file system entry specified'));

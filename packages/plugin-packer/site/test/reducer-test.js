@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 
-const reducer = require('../reducer');
+const {reducer, getDownloadPluginZipName, getDownloadPPKFileName} = require('../reducer');
 const {
   UPLOAD_FAILURE,
   UPLOAD_PPK_START,
@@ -219,6 +219,39 @@ describe('reducer', () => {
     it('should reset all values', () => {
       const state = 'dirty';
       assert.deepStrictEqual(reducer(state, {type: RESET}), expectedInitialState);
+    });
+  });
+  describe('getDownloadPluginZipName', () => {
+    it('should return a filename to download a plugin zip', () => {
+      assert.equal(
+        getDownloadPluginZipName({
+          contents: {
+            name: 'awesome-plugin.zip',
+          },
+          plugin: {
+            id: 'abcd',
+          },
+        }),
+        'awesome-plugin.abcd.plugin.zip'
+      );
+    });
+  });
+  describe('getDownloadPPKFileName', () => {
+    it('should return a filename to download a private key', () => {
+      assert.equal(
+        getDownloadPPKFileName({
+          contents: {
+            name: 'awesome-plugin.zip',
+          },
+          ppk: {
+            name: 'secret.ppk',
+          },
+          plugin: {
+            id: 'abcd',
+          },
+        }),
+        'awesome-plugin.abcd.private.ppk'
+      );
     });
   });
 });

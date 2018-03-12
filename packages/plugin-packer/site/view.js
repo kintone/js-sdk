@@ -1,5 +1,7 @@
 'use strict';
 
+const {getDownloadPluginZipName, getDownloadPPKFileName} = require('./reducer');
+
 /**
  * View class
  */
@@ -120,11 +122,18 @@ class View {
    * @param {Object} state
    */
   renderDownloadLinks(state) {
+    const pluginName = getDownloadPluginZipName(state);
+    const ppkName = getDownloadPPKFileName(state);
+
     this.hide(this.$.error);
     this.show(this.$.download);
     this.$.downloadPluginId.textContent = state.plugin.id;
     this.$.downloadPlugin.href = state.plugin.url.contents;
+    this.$.downloadPlugin.download = pluginName;
+    this.$.downloadPlugin.innerText = pluginName;
     this.$.downloadPPK.href = state.plugin.url.ppk;
+    this.$.downloadPPK.download = ppkName;
+    this.$.downloadPPK.innerText = ppkName;
   }
   /**
    * Render error messages for the result of creating a plugin zip with a passed state

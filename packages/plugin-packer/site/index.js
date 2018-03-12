@@ -9,7 +9,7 @@ const logger = require('redux-logger').default;
 const {$, $$, listen, readText, readArrayBuffer, createFileHanlder} = require('./dom');
 const View = require('./view');
 
-const reducer = require('./reducer');
+const {reducer} = require('./reducer');
 const {uploadPPK, uploadPlugin, createPluginZip, reset, uploadFailure} = require('./action');
 const {generatePluginZip, validatePlugin, revokePluginUrls} = require('./plugin');
 const {zipDirectory} = require('./zip');
@@ -75,15 +75,16 @@ store.subscribe(() => {
 
 const uploadPluginZipHandler = createFileHanlder(promise => {
   promise
-    .then(file => {
-      // Uploading a directory
-      if (file instanceof Map) {
-        zipDirectory(file).then(buffer => {
-          // Should we respect the directory name?
-          store.dispatch(uploadPlugin('plugin.zip', () => Promise.resolve(buffer), validatePlugin));
+    .then(result => {
+      if (result instanceof File) {
+        store.dispatch(uploadPlugin(result.name, () => readArrayBuffer(result), validatePlugin));
+        // Uploading a directory
+      } else if (result.entries instanceof Map) {
+        zipDirectory(result.entries).then(buffer => {
+          store.dispatch(uploadPlugin(result.name, () => Promise.resolve(buffer), validatePlugin));
         });
       } else {
-        store.dispatch(uploadPlugin(file.name, () => readArrayBuffer(file), validatePlugin));
+        throw new Error('Something went wrong.');
       }
     })
     .catch(error => {
@@ -93,12 +94,14 @@ const uploadPluginZipHandler = createFileHanlder(promise => {
 
 const uploadPPKHanlder = createFileHanlder(promise => {
   promise
-    .then(file => {
-      // Uploading a directory
-      if (file instanceof Map) {
+    .then(result => {
+      if (result instanceof File) {
+        store.dispatch(uploadPPK(result.name, () => readText(result)));
+        // Uploading a directory
+      } else if (result.entries instanceof Map) {
         store.dispatch(uploadFailure(new Error('secret file should be a text file')));
       } else {
-        store.dispatch(uploadPPK(file.name, () => readText(file)));
+        throw new Error('Something went wrong.');
       }
     })
     .catch(error => {
