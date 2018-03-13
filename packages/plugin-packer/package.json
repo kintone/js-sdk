@@ -46,7 +46,7 @@
     "glob": "^7.1.2",
     "husky": "^0.15.0-rc.8",
     "intelli-espower-loader": "^1.0.1",
-    "mocha": "^5.0.1",
+    "mocha": "^5.0.4",
     "normalize.css": "^8.0.0",
     "npm-run-all": "^4.0.2",
     "power-assert": "^1.4.2",
