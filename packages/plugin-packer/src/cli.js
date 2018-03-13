@@ -2,18 +2,16 @@
 
 const path = require('path');
 const fs = require('fs');
-const ZipFile = require('yazl').ZipFile;
 const denodeify = require('denodeify');
 
 const writeFile = denodeify(fs.writeFile);
 const mkdirp = denodeify(require('mkdirp'));
-const streamBuffers = require('stream-buffers');
 const debug = require('debug')('cli');
 const validate = require('@teppeis/kintone-plugin-manifest-validator');
 
 const packer = require('./');
 const generateErrorMessages = require('./gen-error-msg');
-const sourceList = require('./sourcelist');
+const createContentsZip = require('./create-contents-zip');
 
 /**
  * @param {string} pluginDir path to plugin directory.
@@ -92,32 +90,6 @@ function throwIfInvalidManifest(manifest, pluginDir) {
     });
     throw new Error('Invalid manifest.json');
   }
-}
-
-/**
- * Create contents.zip
- *
- * @param {string} pluginDir
- * @param {!Object} manifest
- * @return {!Promise<!Buffer>}
- */
-function createContentsZip(pluginDir, manifest) {
-  return new Promise((res, rej) => {
-    const output = new streamBuffers.WritableStreamBuffer();
-    const zipFile = new ZipFile();
-    let size = null;
-    output.on('finish', () => {
-      debug(`plugin.zip: ${size} bytes`);
-      res(output.getContents());
-    });
-    zipFile.outputStream.pipe(output);
-    sourceList(manifest).forEach(src => {
-      zipFile.addFile(path.join(pluginDir, src), src);
-    });
-    zipFile.end(finalSize => {
-      size = finalSize;
-    });
-  });
 }
 
 /**
