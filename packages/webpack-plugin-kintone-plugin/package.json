@@ -8,7 +8,7 @@
     "build": "tsc",
     "lint": "tslint -c tslint.json src/**/*.ts",
     "unittest": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts",
-    "test": "npm-run-all build --parallel lint unittest"
+    "test": "run-s lint build unittest"
   },
   "keywords": [
     "webpack",
