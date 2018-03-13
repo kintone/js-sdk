@@ -7163,7 +7163,7 @@ yargs@~1.2.6:
   dependencies:
     minimist "^0.1.0"
 
-yauzl@^2.8.0:
+yauzl@^2.9.1:
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-2.9.1.tgz#a81981ea70a57946133883f029c5821a89359a7f"
   dependencies:
