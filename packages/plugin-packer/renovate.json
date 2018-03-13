@@ -1,10 +1,12 @@
 {
   "extends": [
     "config:base",
+    "schedule:daily",
     ":separatePatchReleases",
     ":automergePatch",
     ":maintainLockFilesMonthly",
     ":prConcurrentLimit10",
+    ":prNotPending",
     ":preserveSemverRanges",
     ":unpublishSafe"
   ],
