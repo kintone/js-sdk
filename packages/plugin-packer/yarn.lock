@@ -2261,18 +2261,18 @@ eslint-config-prettier@^2.9.0:
   dependencies:
     get-stdin "^5.0.1"
 
-eslint-config-teppeis@^6.6.1:
-  version "6.6.1"
-  resolved "https://registry.npmjs.org/eslint-config-teppeis/-/eslint-config-teppeis-6.6.1.tgz#3aba3369c0b3a9cf071815af8016aba54f359bb3"
+eslint-config-teppeis@^6.6.2:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-teppeis/-/eslint-config-teppeis-6.6.2.tgz#1f45a0789b88356ed1dd851e9b7b2c5fd9275694"
   dependencies:
     eslint-config-prettier "^2.9.0"
-    eslint-plugin-eslint-comments "^2.0.0"
+    eslint-plugin-eslint-comments "^2.0.2"
     eslint-plugin-node "^6.0.1"
     eslint-plugin-prettier "^2.6.0"
 
-eslint-plugin-eslint-comments@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-eslint-comments/-/eslint-plugin-eslint-comments-2.0.1.tgz#2cddd5507f1f93b6738b5295f1730f4c2712f2a3"
+eslint-plugin-eslint-comments@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-eslint-comments/-/eslint-plugin-eslint-comments-2.0.2.tgz#006e1c834beffe6ff3014e84a3ae69acfa539a28"
   dependencies:
     escape-string-regexp "^1.0.5"
     ignore "^3.3.7"
