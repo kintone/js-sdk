@@ -12,7 +12,8 @@
   },
   "files": [
     "bin",
-    "src"
+    "src",
+    "from-manifest.js"
   ],
   "scripts": {
     "circleci": "run-s test",
