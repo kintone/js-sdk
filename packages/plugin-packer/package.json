@@ -58,7 +58,7 @@
     "setimmediate": "^1.0.5",
     "sinon": "^4.4.3",
     "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.10",
+    "webpack-cli": "^2.0.11",
     "webpack-dev-server": "^3.1.0",
     "yauzl": "^2.8.0"
   },
