@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "config:base",
+    ":separatePatchReleases",
+    ":automergePatch",
+    ":maintainLockFilesMonthly",
+    ":prConcurrentLimit10",
+    ":preserveSemverRanges",
+    ":unpublishSafe"
+  ],
+  "upgradeInRange": true,
+  "timezone": "Asia/Tokyo"
+}
