@@ -8,15 +8,10 @@
     "build": "tsc",
     "lint": "tslint -c tslint.json src/**/*.ts",
     "unittest": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts",
-    "test": "run-s lint build unittest"
+    "test": "run-s build unittest"
   },
-  "keywords": [
-    "webpack",
-    "kintone"
-  ],
-  "files": [
-    "dist/src"
-  ],
+  "keywords": ["webpack", "kintone"],
+  "files": ["dist/src"],
   "author": "koba04",
   "license": "MIT",
   "devDependencies": {
