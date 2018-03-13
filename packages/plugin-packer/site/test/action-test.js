@@ -59,18 +59,17 @@ describe('action', () => {
       });
     });
     it('should dispatch UPLOAD_FAILURE action if fileReader was failure', done => {
-      const promise = Promise.reject('ng');
-      uploadPPK('hoge.ppk', () => promise);
-      promise.then(() => {
-        assert(dispatch.calledOnce);
+      uploadPPK('hoge.ppk', () => Promise.reject('ng'))(dispatch);
+      setTimeout(() => {
+        assert.equal(dispatch.callCount, 2);
         assert.deepStrictEqual(dispatch.getCall(1).args, [
           {
             type: UPLOAD_FAILURE,
             payload: 'ng',
           },
         ]);
+        done();
       });
-      done();
     });
   });
   describe('uploadPlugin', () => {
