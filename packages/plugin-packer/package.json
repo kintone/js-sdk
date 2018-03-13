@@ -18,7 +18,7 @@
   "scripts": {
     "circleci": "run-s test",
     "css": "cssnano node_modules/normalize.css/normalize.css --safe > docs/dist/normalize.min.css",
-    "eslint": "eslint bin src site test",
+    "eslint": "eslint *.js bin src site test",
     "js": "webpack --mode production",
     "js:dev": "webpack-dev-server --mode development",
     "mocha": "mocha --require intelli-espower-loader",
