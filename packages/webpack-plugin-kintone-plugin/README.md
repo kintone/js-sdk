@@ -73,4 +73,4 @@ plugins: [
 
 ## License
 
-MIT License: Toru Kobayashi <mailto:koba0004@gmail.com>
+MIT License: Toru Kobayashi <koba0004@gmail.com>
