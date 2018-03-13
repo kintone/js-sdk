@@ -1,4 +1,3 @@
-// @ts-ignore
 import * as fs from 'fs';
 import { Compiler, Plugin } from 'webpack';
 
