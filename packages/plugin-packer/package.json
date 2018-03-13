@@ -54,7 +54,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "rimraf": "^2.6.1",
+    "rimraf": "^2.6.2",
     "setimmediate": "^1.0.5",
     "sinon": "^4.4.2",
     "webpack": "^4.0.1",
