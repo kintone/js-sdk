@@ -1,0 +1,38 @@
+{
+  "name": "@koba04/webpack-plugin-kintone-plugin",
+  "version": "0.1.0",
+  "description": "A webpack plugin to generate a plugin zip",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "start": "tsc -w",
+    "build": "tsc",
+    "lint": "tslint -c tslint.json src/**/*.ts",
+    "test":
+      "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts"
+  },
+  "keywords": ["webpack", "kintone"],
+  "files": ["dist/src"],
+  "author": "koba04",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/adm-zip": "^0.4.31",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.4.7",
+    "@types/webpack": "^4.1.0",
+    "adm-zip": "^0.4.7",
+    "mocha": "^5.0.4",
+    "prettier": "^1.11.1",
+    "ts-node": "^5.0.1",
+    "tslint": "^5.9.1",
+    "tslint-plugin-prettier": "^1.3.0",
+    "typescript": "^2.7.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
+  },
+  "peerDependencies": {
+    "webpack": "^4.1.1"
+  },
+  "dependencies": {
+    "@teppeis/kintone-plugin-packer": "^0.8.0"
+  }
+}
