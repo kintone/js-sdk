@@ -1,7 +1,7 @@
 {
   "name": "@teppeis/kintone-plugin-packer",
   "description": "Package your kintone plugin with pure JavaScript",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=6"
@@ -10,7 +10,10 @@
   "bin": {
     "kintone-plugin-packer": "bin/cli.js"
   },
-  "files": ["bin", "src"],
+  "files": [
+    "bin",
+    "src"
+  ],
   "scripts": {
     "circleci": "run-s test",
     "css": "cssnano node_modules/normalize.css/normalize.css --safe > docs/dist/normalize.min.css",
@@ -70,6 +73,8 @@
       "pre-commit": "npm test && npm run site && git add docs"
     }
   },
-  "keywords": ["kintone"],
+  "keywords": [
+    "kintone"
+  ],
   "license": "MIT"
 }
