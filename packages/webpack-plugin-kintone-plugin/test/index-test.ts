@@ -1,13 +1,11 @@
-import { IZipEntry } from 'adm-zip';
-
-const assert = require('assert');
-const path = require('path');
-const fs = require('fs');
-const webpack = require('webpack');
-const AdmZip = require('adm-zip');
-const { spawnSync } = require('child_process');
-
-const webpackConfig = require('./fixtures/sample/webpack.config.js');
+import * as AdmZip from 'adm-zip';
+import * as assert from 'assert';
+import { spawnSync } from 'child_process';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as webpack from 'webpack';
+// @ts-ignore
+import * as webpackConfig from './fixtures/sample/webpack.config';
 
 const pluginDir = path.resolve(__dirname, 'fixtures', 'sample');
 const pluginZipPath = path.resolve(pluginDir, 'dist', 'plugin.zip');
@@ -30,7 +28,7 @@ const verifyPluginZip = (zipPath: string) => {
   assert(fs.existsSync(zipPath));
   const zip = new AdmZip(zipPath);
   assert.deepStrictEqual(
-    zip.getEntries().map((entry: IZipEntry) => entry.entryName),
+    zip.getEntries().map((entry: AdmZip.IZipEntry) => entry.entryName),
     ['contents.zip', 'PUBKEY', 'SIGNATURE']
   );
 };
