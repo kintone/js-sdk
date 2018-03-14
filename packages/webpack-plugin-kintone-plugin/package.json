@@ -10,12 +10,18 @@
     "unittest": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts",
     "test": "run-s build unittest"
   },
-  "keywords": ["webpack", "kintone"],
-  "files": ["dist/src"],
+  "keywords": [
+    "webpack",
+    "kintone"
+  ],
+  "files": [
+    "dist/src"
+  ],
   "author": "koba04",
   "license": "MIT",
   "devDependencies": {
     "@types/adm-zip": "^0.4.31",
+    "@types/chokidar": "^1.7.5",
     "@types/mocha": "^2.2.48",
     "@types/node": "^9.4.7",
     "@types/webpack": "^4.1.0",
@@ -34,6 +40,7 @@
     "webpack": "^4.1.1"
   },
   "dependencies": {
-    "@teppeis/kintone-plugin-packer": "^0.8.0"
+    "@teppeis/kintone-plugin-packer": "^0.8.1",
+    "chokidar": "^2.0.2"
   }
 }

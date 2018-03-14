@@ -1,10 +1,10 @@
 import * as fs from 'fs';
+import * as path from 'path';
 import { Compiler, Plugin } from 'webpack';
 
-// FIXME: Use @teppeis/kintone-plugin-packe/from-manifest after the file is exported
-const packFromManifest = require('@teppeis/kintone-plugin-packer/src/pack-plugin-from-manifest');
+import { generatePlugin, getAssetPaths } from './plugin';
 
-type PluginZipPathFunction = (id: string, manifest: object) => string;
+import { watchFiles } from './watch';
 
 interface Option {
   manifestJSONPath: string;
@@ -16,6 +16,8 @@ interface PackedPlugin {
   id: string;
   plugin: Buffer;
 }
+
+type PluginZipPathFunction = (id: string, manifest: object) => string;
 
 class KintonePlugin implements Plugin {
   private options: Option;
@@ -43,24 +45,61 @@ class KintonePlugin implements Plugin {
         throw new Error(`privateKeyPath cannot found: ${privateKeyPath}`);
       }
       this.privateKey = fs.readFileSync(privateKeyPath, 'utf-8');
+      if (compiler.options.watch) {
+        this.watchAssets();
+      } else {
+        compiler.hooks.afterEmit.tapPromise(this.name, compilation =>
+          this.generatePlugin()
+        );
+      }
     });
-    compiler.hooks.afterEmit.tapPromise(this.name, compilation =>
-      packFromManifest(manifestJSONPath, this.privateKey).then(
-        (output: PackedPlugin) => {
-          fs.writeFileSync(
-            typeof pluginZipPath === 'function'
-              ? // You can customize the zip file name using the plugin id and manifest
-                pluginZipPath(
-                  output.id,
-                  JSON.parse(fs.readFileSync(manifestJSONPath, 'utf-8'))
-                )
-              : pluginZipPath,
-            output.plugin
+  }
+  /**
+   * Watch assets specified in manifest.json
+   */
+  private watchAssets(): void {
+    let unwatch: () => void;
+    const onFileChange = (file: string) => {
+      console.log(`${file} was changed`);
+      this.generatePlugin().then(() => {
+        // If manifest.json has been updated we should reevaluate the target files and rewatch them
+        if (/manifest\.json$/.test(file)) {
+          if (typeof unwatch === 'function') {
+            unwatch();
+          }
+          watchFiles(
+            getAssetPaths(this.options.manifestJSONPath),
+            onFileChange
           );
-          console.log('Plugin ID:', output.id);
         }
-      )
+      });
+    };
+    unwatch = watchFiles(
+      getAssetPaths(this.options.manifestJSONPath),
+      onFileChange
     );
+  }
+  /**
+   * Generate a plugin zip
+   */
+  private generatePlugin(): Promise<void> {
+    const { manifestJSONPath, pluginZipPath } = this.options;
+    return generatePlugin(manifestJSONPath, this.privateKey).then(result => {
+      const zipPath =
+        typeof pluginZipPath === 'function'
+          ? // You can customize the zip file name using the plugin id and manifest
+            pluginZipPath(
+              result.id,
+              JSON.parse(fs.readFileSync(manifestJSONPath, 'utf-8'))
+            )
+          : pluginZipPath;
+      fs.writeFileSync(zipPath, result.buffer);
+      console.log('----------------------');
+      console.log('Success to create a plugin zip!');
+      console.log(`Plugin ID: ${result.id}`);
+      console.log(`Path: ${zipPath}`);
+      console.log('----------------------');
+    });
   }
 }
 
