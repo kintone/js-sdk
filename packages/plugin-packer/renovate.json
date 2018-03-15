@@ -2,6 +2,7 @@
   "extends": [
     "config:base",
     "schedule:daily",
+    ":noUnscheduledUpdates",
     ":separatePatchReleases",
     ":automergePatch",
     ":maintainLockFilesMonthly",
