@@ -15,14 +15,19 @@ const customNamePluginZipPath = path.resolve(
   'dist',
   'nfjiheanbocphdnoehhpddjmkhciokjb.sample.plugin.zip'
 );
-const webpackCommand = path.resolve(
-  __dirname,
-  '..',
-  'node_modules',
-  '.bin',
-  'webpack-cli'
-);
-const webpackOptions = ['--mode', 'production'];
+
+const npmBinPath = spawnSync('npm', ['bin'])
+  .stdout.toString()
+  .replace(/[\n\r]/, '');
+
+const runWebpack = (config = 'webpack.config.js') =>
+  spawnSync(
+    path.resolve(npmBinPath, 'webpack'),
+    ['--config', config, '--mode', 'production'],
+    {
+      cwd: pluginDir
+    }
+  );
 
 const verifyPluginZip = (zipPath: string) => {
   assert(fs.existsSync(zipPath));
@@ -47,16 +52,12 @@ describe('KintonePlugin', () => {
     );
   });
   it('should be able to create a plugin zip', () => {
-    const rs = spawnSync(webpackCommand, webpackOptions, { cwd: pluginDir });
+    const rs = runWebpack();
     assert(rs.error == null, rs.error && rs.error.message);
     verifyPluginZip(pluginZipPath);
   });
   it('should be able to customize the zip name', () => {
-    const rs = spawnSync(
-      webpackCommand,
-      ['--config', 'webpack.config.customize.name.js', ...webpackOptions],
-      { cwd: pluginDir }
-    );
+    const rs = runWebpack('webpack.config.customize.name.js');
     assert(rs.error == null, rs.error && rs.error.message);
     verifyPluginZip(customNamePluginZipPath);
   });
