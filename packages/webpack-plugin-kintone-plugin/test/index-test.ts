@@ -18,8 +18,14 @@ const customNamePluginZipPath = path.resolve(
 
 const runWebpack = (config = 'webpack.config.js') =>
   spawnSync(
-    path.resolve('node_modules', '.bin', 'webpack'),
-    ['--config', config, '--mode', 'production'],
+    'node',
+    [
+      path.resolve('node_modules', 'webpack-cli', 'bin', 'webpack.js'),
+      '--config',
+      config,
+      '--mode',
+      'production'
+    ],
     {
       cwd: pluginDir
     }
