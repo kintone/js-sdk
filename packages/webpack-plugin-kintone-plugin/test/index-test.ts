@@ -20,7 +20,7 @@ const webpackCommand = path.resolve(
   '..',
   'node_modules',
   '.bin',
-  'webpack'
+  'webpack-cli'
 );
 const webpackOptions = ['--mode', 'production'];
 
@@ -47,7 +47,8 @@ describe('KintonePlugin', () => {
     );
   });
   it('should be able to create a plugin zip', () => {
-    spawnSync(webpackCommand, webpackOptions, { cwd: pluginDir });
+    const rs = spawnSync(webpackCommand, webpackOptions, { cwd: pluginDir });
+    assert(rs.error == null, rs.error && rs.error.message);
     verifyPluginZip(pluginZipPath);
   });
   it('should be able to customize the zip name', () => {
