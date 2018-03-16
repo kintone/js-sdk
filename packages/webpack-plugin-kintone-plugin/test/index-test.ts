@@ -56,6 +56,7 @@ describe('KintonePlugin', () => {
       ['--config', 'webpack.config.customize.name.js', ...webpackOptions],
       { cwd: pluginDir }
     );
+    assert(rs.error == null, rs.error && rs.error.message);
     verifyPluginZip(customNamePluginZipPath);
   });
 });
