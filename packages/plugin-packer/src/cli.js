@@ -11,6 +11,7 @@ const debug = require('debug')('cli');
 const validate = require('@teppeis/kintone-plugin-manifest-validator');
 
 const packer = require('./');
+const console = require('./console');
 const generateErrorMessages = require('./gen-error-msg');
 const createContentsZip = require('./create-contents-zip');
 

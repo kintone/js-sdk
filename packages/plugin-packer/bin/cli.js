@@ -16,6 +16,7 @@ const flagSpec = {
   },
   watch: {
     type: 'boolean',
+    alias: 'w',
   },
 };
 
@@ -30,7 +31,7 @@ Options
   --watch: Watch PLUGIN_DIR for the changes.
 `,
   {
-    flag: flagSpec,
+    flags: flagSpec,
   }
 );
 

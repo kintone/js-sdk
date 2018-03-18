@@ -11,6 +11,7 @@ const sinon = require('sinon');
 const glob = require('glob');
 
 const cli = require('../src/cli');
+const console = require('../src/console');
 
 const fixturesDir = path.join(__dirname, 'fixtures');
 const sampleDir = path.join(fixturesDir, 'sample-plugin');
@@ -21,6 +22,17 @@ const PRIVATE_KEY = 'PRIVATE_KEY';
 const PLUGIN_BUFFER = Buffer.from('foo');
 
 describe('cli', () => {
+  const log = console.log;
+  const error = console.error;
+  beforeEach(() => {
+    console.log = () => {};
+    console.error = () => {};
+  });
+  afterEach(() => {
+    console.log = log;
+    console.error = error;
+  });
+
   it('is a function', () => {
     assert(typeof cli === 'function');
   });

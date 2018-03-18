@@ -23,22 +23,38 @@ describe('bin', () => {
 
   it('should recieve 1st arg as PLUGIN_DIR', () =>
     exec('foo').then(result => {
-      assert.deepEqual(JSON.parse(result.stdout), {pluginDir: 'foo', flags: {}});
+      assert.deepEqual(JSON.parse(result.stdout), {pluginDir: 'foo', flags: {watch: false}});
     }));
 
   it('should recieve --ppk', () =>
     exec('foo', '--ppk', 'bar').then(result => {
-      assert.deepEqual(JSON.parse(result.stdout), {pluginDir: 'foo', flags: {ppk: 'bar'}});
+      assert.deepEqual(JSON.parse(result.stdout), {
+        pluginDir: 'foo',
+        flags: {watch: false, ppk: 'bar'},
+      });
     }));
 
   it('should recieve --out', () =>
     exec('foo', '--out', 'bar').then(result => {
-      assert.deepEqual(JSON.parse(result.stdout), {pluginDir: 'foo', flags: {out: 'bar'}});
+      assert.deepEqual(JSON.parse(result.stdout), {
+        pluginDir: 'foo',
+        flags: {watch: false, out: 'bar'},
+      });
+    }));
+
+  it('should recieve --watch', () =>
+    exec('foo', '--watch').then(result => {
+      assert.deepEqual(JSON.parse(result.stdout), {pluginDir: 'foo', flags: {watch: true}});
+    }));
+
+  it('should recieve -w as an alias of --watch', () =>
+    exec('foo', '-w').then(result => {
+      assert.deepEqual(JSON.parse(result.stdout), {pluginDir: 'foo', flags: {watch: true}});
     }));
 
   it('should filter unexpected option', () =>
     exec('foo', '--bar').then(result => {
-      assert.deepEqual(JSON.parse(result.stdout), {pluginDir: 'foo', flags: {}});
+      assert.deepEqual(JSON.parse(result.stdout), {pluginDir: 'foo', flags: {watch: false}});
     }));
 });
 
