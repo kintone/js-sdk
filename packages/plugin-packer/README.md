@@ -32,6 +32,7 @@ $ kintone-plugin-packer [OPTIONS] PLUGIN_DIR
 
 - `--ppk PPK_FILE`: The path of input private key file. If omitted, it is generated automatically into `<Plugin ID>.ppk` in the same directory of `PLUGIN_DIR` or `--out` if specified.
 - `--out PLUGIN_FILE`: The path of generated plugin file. The default is `plugin.zip` in the same directory of `PLUGIN_DIR`.
+- `--watch`: Watch PLUGIN_DIR for the changes.
 
 
 ## How to use with `npm run`

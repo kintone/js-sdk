@@ -14,6 +14,9 @@ const flagSpec = {
   out: {
     type: 'string',
   },
+  watch: {
+    type: 'boolean',
+  },
 };
 
 const cli = meow(
@@ -24,6 +27,7 @@ Usage
 Options
   --ppk PPK_FILE: Private key file. If omitted, it's generated into '<Plugin ID>.ppk' in the same directory of PLUGIN_DIR.
   --out PLUGIN_FILE: The default is 'plugin.zip' in the same directory of PLUGIN_DIR.
+  --watch: Watch PLUGIN_DIR for the changes.
 `,
   {
     flag: flagSpec,

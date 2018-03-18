@@ -2,6 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const chokidar = require('chokidar');
 const denodeify = require('denodeify');
 
 const writeFile = denodeify(fs.writeFile);
@@ -22,51 +23,69 @@ function cli(pluginDir, options) {
   options = options || {};
   const packerLocal = options.packerMock_ ? options.packerMock_ : packer;
 
-  // 1. check if pluginDir is a directory
-  if (!fs.statSync(pluginDir).isDirectory()) {
-    throw new Error(`${pluginDir} should be a directory.`);
-  }
+  return Promise.resolve()
+    .then(() => {
+      // 1. check if pluginDir is a directory
+      if (!fs.statSync(pluginDir).isDirectory()) {
+        throw new Error(`${pluginDir} should be a directory.`);
+      }
 
-  // 2. check pluginDir/manifest.json
-  const manifestJsonPath = path.join(pluginDir, 'manifest.json');
-  if (!fs.statSync(manifestJsonPath).isFile()) {
-    throw new Error('Manifest file $PLUGIN_DIR/manifest.json not found.');
-  }
+      // 2. check pluginDir/manifest.json
+      const manifestJsonPath = path.join(pluginDir, 'manifest.json');
+      if (!fs.statSync(manifestJsonPath).isFile()) {
+        throw new Error('Manifest file $PLUGIN_DIR/manifest.json not found.');
+      }
 
-  // 3. validate manifest.json
-  const manifest = loadJson(manifestJsonPath);
-  throwIfInvalidManifest(manifest, pluginDir);
+      // 3. validate manifest.json
+      const manifest = loadJson(manifestJsonPath);
+      throwIfInvalidManifest(manifest, pluginDir);
 
-  let outputDir = path.dirname(path.resolve(pluginDir));
-  let outputFile = path.join(outputDir, 'plugin.zip');
-  if (options.out) {
-    outputFile = options.out;
-    outputDir = path.dirname(path.resolve(outputFile));
-  }
-  debug(`outputDir : ${outputDir}`);
-  debug(`outputFile : ${outputFile}`);
+      let outputDir = path.dirname(path.resolve(pluginDir));
+      let outputFile = path.join(outputDir, 'plugin.zip');
+      if (options.out) {
+        outputFile = options.out;
+        outputDir = path.dirname(path.resolve(outputFile));
+      }
+      debug(`outputDir : ${outputDir}`);
+      debug(`outputFile : ${outputFile}`);
 
-  // 4. generate new ppk if not specified
-  const ppkFile = options.ppk;
-  let privateKey;
-  if (ppkFile) {
-    debug(`loading an existing key: ${ppkFile}`);
-    privateKey = fs.readFileSync(ppkFile, 'utf8');
-  }
+      // 4. generate new ppk if not specified
+      const ppkFile = options.ppk;
+      let privateKey;
+      if (ppkFile) {
+        debug(`loading an existing key: ${ppkFile}`);
+        privateKey = fs.readFileSync(ppkFile, 'utf8');
+      }
 
-  // 5. package plugin.zip
-  return Promise.all([
-    mkdirp(outputDir),
-    createContentsZip(pluginDir, manifest).then(contentsZip =>
-      packerLocal(contentsZip, privateKey)
-    ),
-  ]).then(result => {
-    const output = result[1];
-    if (!ppkFile) {
-      fs.writeFileSync(path.join(outputDir, `${output.id}.ppk`), output.privateKey, 'utf8');
-    }
-    return outputPlugin(outputFile, output.plugin);
-  });
+      // 5. package plugin.zip
+      return Promise.all([
+        mkdirp(outputDir),
+        createContentsZip(pluginDir, manifest).then(contentsZip =>
+          packerLocal(contentsZip, privateKey)
+        ),
+      ]).then(result => {
+        const output = result[1];
+        if (!ppkFile) {
+          fs.writeFileSync(path.join(outputDir, `${output.id}.ppk`), output.privateKey, 'utf8');
+        }
+
+        if (options.watch) {
+          const watcher = chokidar.watch(pluginDir);
+          watcher.on('change', () => {
+            cli(pluginDir, Object.assign({}, options, {watch: false}));
+          });
+        }
+        return outputPlugin(outputFile, output.plugin);
+      });
+    })
+    .then(outputFile => {
+      console.log('Succeeded:', outputFile);
+      return outputFile;
+    })
+    .catch(error => {
+      console.error('Failed:', error.message);
+      return Promise.reject(error);
+    });
 }
 
 module.exports = cli;

@@ -35,28 +35,38 @@ describe('cli', () => {
       });
     });
 
-    it('invalid `url`', () => {
-      assert.throws(() => {
-        cli(path.join(fixturesDir, 'plugin-invalid-url'), {packerMock_: packer});
-      }, /Invalid manifest.json/);
+    it('invalid `url`', done => {
+      cli(path.join(fixturesDir, 'plugin-invalid-url'), {packerMock_: packer}).catch(error => {
+        assert(/Invalid manifest.json/.test(error.message));
+        done();
+      });
     });
 
-    it('invalid `https-url`', () => {
-      assert.throws(() => {
-        cli(path.join(fixturesDir, 'plugin-invalid-https-url'), {packerMock_: packer});
-      }, /Invalid manifest.json/);
+    it('invalid `https-url`', done => {
+      cli(path.join(fixturesDir, 'plugin-invalid-https-url'), {packerMock_: packer}).catch(
+        error => {
+          assert(/Invalid manifest.json/.test(error.message));
+          done();
+        }
+      );
     });
 
-    it('invalid `relative-path`', () => {
-      assert.throws(() => {
-        cli(path.join(fixturesDir, 'plugin-invalid-relative-path'), {packerMock_: packer});
-      }, /Invalid manifest.json/);
+    it('invalid `relative-path`', done => {
+      cli(path.join(fixturesDir, 'plugin-invalid-relative-path'), {packerMock_: packer}).catch(
+        error => {
+          assert(/Invalid manifest.json/.test(error.message));
+          done();
+        }
+      );
     });
 
-    it('invalid `maxFileSize`', () => {
-      assert.throws(() => {
-        cli(path.join(fixturesDir, 'plugin-invalid-maxFileSize'), {packerMock_: packer});
-      }, /Invalid manifest.json/);
+    it('invalid `maxFileSize`', done => {
+      cli(path.join(fixturesDir, 'plugin-invalid-maxFileSize'), {packerMock_: packer}).catch(
+        error => {
+          assert(/Invalid manifest.json/.test(error.message));
+          done();
+        }
+      );
     });
   });
 
