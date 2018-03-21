@@ -1,7 +1,6 @@
 {
   "extends": [
     "config:base",
-    "schedule:daily",
     ":noUnscheduledUpdates",
     ":separatePatchReleases",
     ":automergePatch",
@@ -12,5 +11,6 @@
     ":unpublishSafe"
   ],
   "upgradeInRange": true,
+  "schedule": "before 6am",
   "timezone": "Asia/Tokyo"
 }
