@@ -3272,9 +3272,9 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
-husky@^0.15.0-rc.8:
-  version "0.15.0-rc.8"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-0.15.0-rc.8.tgz#b658c597a8f9bbcd00a5c039709e7c61e61238e7"
+husky@^0.15.0-rc.12:
+  version "0.15.0-rc.12"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-0.15.0-rc.12.tgz#24123fc87f20647036c6de0dd4ad84f8ce60dcaf"
   dependencies:
     cosmiconfig "^4.0.0"
     execa "^0.9.0"
