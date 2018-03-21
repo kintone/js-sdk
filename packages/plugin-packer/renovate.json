@@ -1,16 +1,5 @@
 {
   "extends": [
-    "config:base",
-    ":noUnscheduledUpdates",
-    ":separatePatchReleases",
-    ":automergePatch",
-    ":maintainLockFilesMonthly",
-    ":prConcurrentLimit10",
-    ":prNotPending",
-    ":preserveSemverRanges",
-    ":unpublishSafe"
-  ],
-  "upgradeInRange": true,
-  "schedule": "before 6am",
-  "timezone": "Asia/Tokyo"
+    "@teppeis"
+  ]
 }
