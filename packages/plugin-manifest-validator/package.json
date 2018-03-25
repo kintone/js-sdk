@@ -31,7 +31,7 @@
     "mocha": "^5.0.5",
     "npm-run-all": "^4.0.2",
     "power-assert": "^1.4.4",
-    "typescript": "^2.3.4"
+    "typescript": "^2.7.2"
   },
   "homepage": "https://github.com/teppeis/kintone-plugin-manifest-validator#readme",
   "repository": {
