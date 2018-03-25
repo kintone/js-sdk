@@ -914,9 +914,9 @@ json-schema-ref-parser@^3.3.1:
     ono "^4.0.2"
     z-schema "^3.18.2"
 
-json-schema-to-typescript@^4.2.0:
+json-schema-to-typescript@^4.2.1:
   version "4.6.5"
-  resolved "https://registry.npmjs.org/json-schema-to-typescript/-/json-schema-to-typescript-4.6.5.tgz#02ad6dd75510d1224c02b94aab565685ffde9d12"
+  resolved "https://registry.yarnpkg.com/json-schema-to-typescript/-/json-schema-to-typescript-4.6.5.tgz#02ad6dd75510d1224c02b94aab565685ffde9d12"
   dependencies:
     cli-color "^1.2.0"
     json-schema-ref-parser "^3.3.1"
