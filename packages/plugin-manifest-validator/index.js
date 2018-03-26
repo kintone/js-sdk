@@ -11,8 +11,7 @@ const validateUrl = require('./src/validate-https-url');
  * @param {Object=} options
  * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
  */
-module.exports = function(json, options) {
-  options = options || {};
+module.exports = function(json, options = {}) {
   let relativePath = () => true;
   let maxFileSize = () => true;
   if (typeof options.relativePath === 'function') {
@@ -52,13 +51,15 @@ module.exports = function(json, options) {
       const maxBytes = bytes.parse(schema);
       const valid = maxFileSize(maxBytes, data);
       if (!valid) {
-        validateMaxFileSize.errors = [{
-          keyword: 'maxFileSize',
-          message: `file size should be <= ${schema}`,
-          params: {
-            limit: maxBytes,
+        validateMaxFileSize.errors = [
+          {
+            keyword: 'maxFileSize',
+            message: `file size should be <= ${schema}`,
+            params: {
+              limit: maxBytes,
+            },
           },
-        }];
+        ];
       }
       return valid;
     },
@@ -66,7 +67,7 @@ module.exports = function(json, options) {
 
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);
-  return {valid: valid, errors: transformErrors(validate.errors)};
+  return {valid, errors: transformErrors(validate.errors)};
 };
 
 /**

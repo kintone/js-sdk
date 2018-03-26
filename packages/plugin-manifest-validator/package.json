@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "gen-dts": "node script/generate-dts.js",
-    "lint": "eslint index.js src test",
+    "lint": "eslint index.js src test script",
     "mocha": "mocha test --require intelli-espower-loader",
     "test": "run-s lint mocha test:dts",
     "test:dts": "tsc --noEmit --strict test/manifest-schema.ts"
@@ -31,6 +31,7 @@
     "mocha": "^5.0.5",
     "npm-run-all": "^4.1.2",
     "power-assert": "^1.4.4",
+    "prettier": "1.11.1",
     "typescript": "^2.7.2"
   },
   "homepage": "https://github.com/teppeis/kintone-plugin-manifest-validator#readme",

@@ -1,12 +1,9 @@
 'use strict';
 
 const fs = require('fs');
-const json2ts = require('json-schema-to-typescript');
+const {compile} = require('json-schema-to-typescript');
+const schema = require('../manifest-schema.json');
 
-const compile = json2ts.compile;
-const json = require('../manifest-schema.json');
+delete schema.definitions.resources.items.anyOf;
 
-delete json.definitions.resources.items.anyOf;
-
-compile(json, 'manifest-schema.json')
-  .then(ts => fs.writeFileSync('manifest-schema.d.ts', ts));
+compile(schema, 'manifest-schema.json').then(dts => fs.writeFileSync('manifest-schema.d.ts', dts));

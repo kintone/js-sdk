@@ -5,14 +5,13 @@ const validate = require('../src/validate-https-url');
 
 describe('validate-https-url', () => {
   context('valid', () => {
-    [
-      'https://example.com/path/to?foo=bar&baz=piyo#hash',
-      'https://user:pass@example.com/',
-    ].forEach(url => {
-      it(url, () => {
-        assert(validate(url));
-      });
-    });
+    ['https://example.com/path/to?foo=bar&baz=piyo#hash', 'https://user:pass@example.com/'].forEach(
+      url => {
+        it(url, () => {
+          assert(validate(url));
+        });
+      }
+    );
   });
 
   context('invalid', () => {
@@ -33,10 +32,7 @@ describe('validate-https-url', () => {
 
   context('`allowHttp`', () => {
     context('valid', () => {
-      [
-        'https://example.com',
-        'http://example.com',
-      ].forEach(url => {
+      ['https://example.com', 'http://example.com'].forEach(url => {
         it(url, () => {
           assert(validate(url, true));
         });

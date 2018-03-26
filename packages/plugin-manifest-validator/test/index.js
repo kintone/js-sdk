@@ -17,87 +17,97 @@ describe('validator', () => {
     delete manifestJson.version;
     assert.deepEqual(validator(manifestJson), {
       valid: false,
-      errors: [{
-        dataPath: '.version',
-        keyword: 'required',
-        message: 'is a required property',
-        params: {
-          missingProperty: 'version',
+      errors: [
+        {
+          dataPath: '.version',
+          keyword: 'required',
+          message: 'is a required property',
+          params: {
+            missingProperty: 'version',
+          },
+          schemaPath: '#/required',
         },
-        schemaPath: '#/required',
-      }],
+      ],
     });
   });
 
   it('invalid type', () => {
     assert.deepEqual(validator(json({version: '1'})), {
       valid: false,
-      errors: [{
-        dataPath: '.version',
-        keyword: 'type',
-        message: 'should be integer',
-        params: {
-          type: 'integer',
+      errors: [
+        {
+          dataPath: '.version',
+          keyword: 'type',
+          message: 'should be integer',
+          params: {
+            type: 'integer',
+          },
+          schemaPath: '#/properties/version/type',
         },
-        schemaPath: '#/properties/version/type',
-      }],
+      ],
     });
   });
 
   it('integer is out of range', () => {
     assert.deepEqual(validator(json({version: 0})), {
       valid: false,
-      errors: [{
-        dataPath: '.version',
-        keyword: 'minimum',
-        message: 'should be >= 1',
-        params: {
-          comparison: '>=',
-          exclusive: false,
-          limit: 1,
+      errors: [
+        {
+          dataPath: '.version',
+          keyword: 'minimum',
+          message: 'should be >= 1',
+          params: {
+            comparison: '>=',
+            exclusive: false,
+            limit: 1,
+          },
+          schemaPath: '#/properties/version/minimum',
         },
-        schemaPath: '#/properties/version/minimum',
-      }],
+      ],
     });
   });
 
   it('invalid enum value', () => {
     assert.deepEqual(validator(json({type: 'FOO'})), {
       valid: false,
-      errors: [{
-        dataPath: '.type',
-        keyword: 'enum',
-        message: 'should be equal to one of the allowed values',
-        params: {
-          allowedValues: [
-            'APP',
-          ],
+      errors: [
+        {
+          dataPath: '.type',
+          keyword: 'enum',
+          message: 'should be equal to one of the allowed values',
+          params: {
+            allowedValues: ['APP'],
+          },
+          schemaPath: '#/properties/type/enum',
         },
-        schemaPath: '#/properties/type/enum',
-      }],
+      ],
     });
   });
 
   it('no English description', () => {
     assert.deepEqual(validator(json({description: {}})), {
       valid: false,
-      errors: [{
-        dataPath: '.description.en',
-        keyword: 'required',
-        message: 'is a required property',
-        params: {
-          missingProperty: 'en',
+      errors: [
+        {
+          dataPath: '.description.en',
+          keyword: 'required',
+          message: 'is a required property',
+          params: {
+            missingProperty: 'en',
+          },
+          schemaPath: '#/properties/description/required',
         },
-        schemaPath: '#/properties/description/required',
-      }],
+      ],
     });
   });
 
   it('2 errors', () => {
-    const actual = validator(json({
-      manifest_version: 'a',
-      version: 0,
-    }));
+    const actual = validator(
+      json({
+        manifest_version: 'a',
+        version: 0,
+      })
+    );
     assert(actual.valid === false);
     assert(actual.errors.length === 2);
   });
@@ -110,15 +120,16 @@ describe('validator', () => {
   });
 
   it('"http:" is invalid for `https-url`', () => {
-    const actual = validator(json({
-      desktop: {
-        js: [
-          'http://example.com/icon.png',
-        ],
-      },
-    }), {
-      relativePath: str => !/^https?:/.test(str),
-    });
+    const actual = validator(
+      json({
+        desktop: {
+          js: ['http://example.com/icon.png'],
+        },
+      }),
+      {
+        relativePath: str => !/^https?:/.test(str),
+      }
+    );
     assert(actual.valid === false);
     assert(actual.errors.length === 3);
     assert(actual.errors[0].keyword === 'format');
@@ -129,8 +140,7 @@ describe('validator', () => {
   describe('maxFileSize', () => {
     it('valid file size', () => {
       let called = 0;
-      const actual = validator(json({
-      }), {
+      const actual = validator(json({}), {
         maxFileSize(maxFileSizeInBytes, path) {
           assert(maxFileSizeInBytes === 524288);
           assert(path === 'image/icon.png');
@@ -143,8 +153,7 @@ describe('validator', () => {
     });
 
     it('invalid file size', () => {
-      const actual = validator(json({
-      }), {
+      const actual = validator(json({}), {
         maxFileSize(maxFileSizeInBytes, path) {
           return false;
         },
@@ -171,13 +180,16 @@ describe('validator', () => {
  * @return {!Object}
  */
 function json(source) {
-  return Object.assign({
-    manifest_version: 1,
-    version: 1,
-    type: 'APP',
-    name: {
-      en: 'sample plugin',
+  return Object.assign(
+    {
+      manifest_version: 1,
+      version: 1,
+      type: 'APP',
+      name: {
+        en: 'sample plugin',
+      },
+      icon: 'image/icon.png',
     },
-    icon: 'image/icon.png',
-  }, source);
+    source
+  );
 }

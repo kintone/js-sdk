@@ -1,5 +1,8 @@
 {
-  "extends": ["teppeis/node-v4"],
+  "extends": [
+    "teppeis/node-v6",
+    "teppeis/prettier"
+  ],
   "rules": {
   }
 }
