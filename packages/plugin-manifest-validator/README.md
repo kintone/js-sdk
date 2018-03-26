@@ -44,7 +44,7 @@ console.log(result.errors); // array of ajv error objects
 ## `manifest-json.d.ts`
 
 ```js
-/// <reference types="@teppeis/kintone-plugin-manifest-validator/manifest-json" />
+import {KintonePluginManifestJson} from '@teppeis/kintone-plugin-manifest-validator/manifest-json';
 
 let manifest: KintonePluginManifestJson;
 ```

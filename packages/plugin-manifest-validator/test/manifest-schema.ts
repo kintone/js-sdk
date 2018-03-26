@@ -1,11 +1,11 @@
-/// <reference path="../manifest-schema.d.ts" />
+import {KintonePluginManifestJson} from '../manifest-schema';
 
 let manifest: KintonePluginManifestJson = {
   manifest_version: 1,
   version: 1,
   type: 'APP',
   name: {
-    en: 'foo'
+    en: 'foo',
   },
-  icon: 'path/to/icon.png'
+  icon: 'path/to/icon.png',
 };

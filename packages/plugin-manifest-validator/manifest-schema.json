@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "kintone plugin manifest.json",
   "type": "object",
+  "additionalProperties": false,
   "properties": {
     "manifest_version": {
       "type": "integer",
@@ -17,6 +18,7 @@
     },
     "name": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "ja": {
           "type": "string",
@@ -40,6 +42,7 @@
     },
     "description": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "ja": {
           "type": "string",
@@ -70,6 +73,7 @@
     },
     "homepage_url": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "ja": {
           "type": "string",
@@ -90,6 +94,7 @@
     },
     "desktop": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "js": {
           "$ref": "#/definitions/resources"
@@ -101,6 +106,7 @@
     },
     "mobile": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "js": {
           "$ref": "#/definitions/resources"
@@ -109,6 +115,7 @@
     },
     "config": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "html": {
           "description": "internal only",
