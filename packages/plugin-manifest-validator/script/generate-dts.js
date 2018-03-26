@@ -8,5 +8,5 @@ const json = require('../manifest-schema.json');
 
 delete json.definitions.resources.items.anyOf;
 
-compile(json)
+compile(json, 'manifest-schema.json')
   .then(ts => fs.writeFileSync('manifest-schema.d.ts', ts));
