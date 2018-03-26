@@ -22,6 +22,8 @@ module.exports = function(json, options) {
     maxFileSize = options.maxFileSize;
   }
   const ajv = new Ajv({
+    schemaId: 'id', // for draft-04
+    meta: false, // don't load draft-07 meta schema
     allErrors: true,
     unknownFormats: true,
     errorDataPath: 'property',
@@ -39,6 +41,9 @@ module.exports = function(json, options) {
   ajv.removeKeyword('propertyNames');
   ajv.removeKeyword('contains');
   ajv.removeKeyword('const');
+  ajv.removeKeyword('if');
+  ajv.removeKeyword('then');
+  ajv.removeKeyword('else');
 
   ajv.addKeyword('maxFileSize', {
     validate: function validateMaxFileSize(schema, data) {
