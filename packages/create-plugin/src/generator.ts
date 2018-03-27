@@ -45,14 +45,17 @@ function buildProject(outputDirectory: string, manifest: Manifest): void {
   const templateType = getTemplateType(manifest);
   fs.mkdirSync(outputDirectory);
   glob
-    .sync(path.join('templates', templateType, '**', '*'), {
-      dot: true
-    })
+    .sync(
+      path.join(__dirname, '..', '..', 'templates', templateType, '**', '*'),
+      {
+        dot: true
+      }
+    )
     .filter(filterTemplateFile.bind(null, manifest))
     .forEach((file: string) =>
       processTemplateFile(
         file,
-        path.join('templates', templateType),
+        path.join(__dirname, '..', '..', 'templates', templateType),
         outputDirectory,
         manifest
       )
