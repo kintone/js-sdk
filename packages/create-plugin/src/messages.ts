@@ -106,6 +106,10 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
     en: 'Create a kintone plugin zip.',
     ja: 'プラグインのzipを作成します'
   },
+  npmLint: {
+    en: 'Lint js files with ESLint.',
+    ja: 'ESLintを使ってJavaScriptのソースコードをチェックします'
+  },
   nextAction: {
     en: 'Try the following commands',
     ja: 'まずは次のコマンドを実行してください'
