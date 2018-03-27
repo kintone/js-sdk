@@ -1,0 +1,10 @@
+{
+  "name": "<%= normalizePackageName(name.en) %>",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "npm run develop",
+    "develop": "npm run build -- --watch",
+    "build": "kintone-plugin-packer --ppk private.ppk --out dist/puglin.zip src",
+    "lint": "eslint src"
+  }
+}
