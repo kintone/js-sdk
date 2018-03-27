@@ -66,14 +66,6 @@ export function processTemplateFile(
   manifest: Manifest
 ): void {
   if (path.basename(filePath).startsWith('_')) {
-    console.log(
-      filePath,
-      path.resolve(
-        destDir,
-        path.dirname(filePath).replace(srcDir, ''),
-        path.basename(filePath).substring(1)
-      )
-    );
     const src = fs.readFileSync(filePath, 'utf-8');
     const destPath = filePath
       .replace(srcDir, destDir)
