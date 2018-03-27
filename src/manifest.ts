@@ -11,7 +11,7 @@ const baseManifest = {
   type: 'APP',
   desktop: {
     js: [jQueryURL, 'js/desktop.js'],
-    css: ['css/desktop.css']
+    css: ['css/51-modern-default.css', 'css/desktop.css']
   },
   icon: 'image/icon.png'
 };
