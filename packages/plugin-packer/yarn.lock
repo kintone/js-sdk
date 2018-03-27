@@ -12,11 +12,11 @@
   dependencies:
     samsam "1.3.0"
 
-"@teppeis/kintone-plugin-manifest-validator@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@teppeis/kintone-plugin-manifest-validator/-/kintone-plugin-manifest-validator-0.6.1.tgz#adb115c5d85d8cd5fb48f84d1e8c043a00603097"
+"@teppeis/kintone-plugin-manifest-validator@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@teppeis/kintone-plugin-manifest-validator/-/kintone-plugin-manifest-validator-0.7.0.tgz#af1cff111906050e1e82b60a04ab6826c332a75e"
   dependencies:
-    ajv "^5.3.0"
+    ajv "^6.4.0"
     bytes "^3.0.0"
 
 abbrev@1:
@@ -97,6 +97,15 @@ ajv@^6.1.0:
     fast-deep-equal "^1.0.0"
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
+
+ajv@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.4.0.tgz#d3aff78e9277549771daf0164cff48482b754fc6"
+  dependencies:
+    fast-deep-equal "^1.0.0"
+    fast-json-stable-stringify "^2.0.0"
+    json-schema-traverse "^0.3.0"
+    uri-js "^3.0.2"
 
 alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
@@ -5411,6 +5420,10 @@ punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
+punycode@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
+
 pupa@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/pupa/-/pupa-1.0.0.tgz#9a9568a5af7e657b8462a6e9d5328743560ceff6"
@@ -6761,6 +6774,12 @@ untildify@^3.0.2:
 upath@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/upath/-/upath-1.0.4.tgz#ee2321ba0a786c50973db043a50b7bcba822361d"
+
+uri-js@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-3.0.2.tgz#f90b858507f81dea4dcfbb3c4c3dbfa2b557faaa"
+  dependencies:
+    punycode "^2.1.0"
 
 urix@^0.1.0:
   version "0.1.0"
