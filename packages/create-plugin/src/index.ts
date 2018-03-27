@@ -61,6 +61,10 @@ ${chalk.cyan('npm run build')}
 
   ${m('npmBuild')}
 
+${chalk.cyan('npm run lint')}
+
+  ${m('npmLint')}
+
 ${m('nextAction')}
 
   cd ${outputDir}
