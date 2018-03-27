@@ -41,6 +41,6 @@
   },
   "dependencies": {
     "@teppeis/kintone-plugin-packer": "^0.8.1",
-    "chokidar": "^2.0.2"
+    "chokidar": "^2.0.3"
   }
 }
