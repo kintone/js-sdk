@@ -1,6 +1,6 @@
 {
   "name": "@koba04/create-kintone-plugin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": "bin/cli.js",
   "main": "dist/src/index.js",
@@ -29,7 +29,9 @@
     "typescript": "^2.7.2"
   },
   "files": [
-    "dist/src"
+    "bin",
+    "dist/src",
+    "templates"
   ],
   "scripts": {
     "start": "tsc -w",
