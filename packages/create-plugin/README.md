@@ -18,3 +18,23 @@ or
 npm install -g create-kintone-app
 create-kintone-app ${name}
 ```
+
+After the command has been finished, you can start development kintone plugin!
+
+```
+cd ${name}
+npm start
+```
+
+## Language
+
+`create-kintone-plugin` is supporting Japanese,
+if you want to use console messages in Japanese, you can use `--lang ja` option.
+
+```
+npx create-kintone-app ${name} --lang ja
+```
+
+## LICENSE
+
+MIT License: Toru Kobayashi
