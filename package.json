@@ -1,6 +1,6 @@
 {
   "name": "@koba04/create-kintone-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": "bin/cli.js",
   "main": "dist/src/index.js",
