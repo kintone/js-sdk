@@ -23,7 +23,8 @@ function sourceList(manifest) {
     list.push(manifest.config.html);
   }
   list.push('manifest.json', manifest.icon);
-  return list;
+  // Make the file list unique
+  return [...new Set(list)];
 }
 
 module.exports = sourceList;
