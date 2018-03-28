@@ -2,7 +2,7 @@
 
 import { spawnSync } from 'child_process';
 import { printLog } from './logger';
-import { Lang, getMessage } from './messages';
+import { getMessage, Lang } from './messages';
 
 /**
  * Install specified dependencies
