@@ -102,7 +102,7 @@ export function buildManifest(answers: UserAnswers): Manifest {
         config: {
           html: 'html/config.html',
           js: [jQueryURL, 'js/config.js'],
-          css: ['css/config.css'],
+          css: ['css/51-modern-default.css', 'css/config.css'],
           required_params: []
         }
       }
