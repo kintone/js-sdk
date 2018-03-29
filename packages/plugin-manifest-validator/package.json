@@ -32,7 +32,7 @@
     "npm-run-all": "^4.1.2",
     "power-assert": "^1.4.4",
     "prettier": "1.11.1",
-    "typescript": "^2.7.2"
+    "typescript": "^2.8.1"
   },
   "homepage": "https://github.com/teppeis/kintone-plugin-manifest-validator#readme",
   "repository": {
