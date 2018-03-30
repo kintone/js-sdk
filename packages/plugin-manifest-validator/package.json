@@ -17,7 +17,7 @@
     "lint": "eslint index.js src test script",
     "mocha": "mocha test --require intelli-espower-loader",
     "test": "run-s lint mocha test:dts",
-    "test:dts": "tsc --noEmit --strict test/manifest-schema.ts"
+    "test:dts": "tsc -p test/tsconfig.json"
   },
   "dependencies": {
     "ajv": "^6.4.0",
