@@ -6,7 +6,7 @@
   "main": "dist/src/index.js",
   "dependencies": {
     "@types/glob": "^5.0.35",
-    "@types/node-rsa": "^0.4.1",
+    "@types/node-rsa": "^0.4.3",
     "chalk": "^2.3.2",
     "glob": "^7.1.2",
     "inquirer": "^5.1.0",
