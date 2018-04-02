@@ -22,15 +22,25 @@ export function installDependencies(
     printLog(getMessage(lang, 'installDependencies'));
   }
   if (dependencies.length) {
-    spawnSync('npm', ['install', ...dependencies], {
+    const result = spawnSync('npm', ['install', ...dependencies], {
       cwd: outputDirectory,
       stdio: 'inherit'
     });
+    if (result.status !== 0) {
+      throw new Error('Installing dependencies were failed');
+    }
   }
   if (devDependencies.length) {
-    spawnSync('npm', ['install', '--save-dev', ...devDependencies], {
-      cwd: outputDirectory,
-      stdio: 'inherit'
-    });
+    const result = spawnSync(
+      'npm',
+      ['install', '--save-dev', ...devDependencies],
+      {
+        cwd: outputDirectory,
+        stdio: 'inherit'
+      }
+    );
+    if (result.status !== 0) {
+      throw new Error('Installing devDependencies were failed');
+    }
   }
 }
