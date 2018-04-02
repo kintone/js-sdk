@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.3"></a>
+## [0.3.3](https://github.com/koba04/create-kintone-plugin/compare/v0.3.2...v0.3.3) (2018-04-02)
+
+
+### Bug Fixes
+
+* clean up the output directory if installing was failed ([#19](https://github.com/koba04/create-kintone-plugin/issues/19)) ([698372a](https://github.com/koba04/create-kintone-plugin/commit/698372a))
+
+
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/koba04/create-kintone-plugin/compare/v0.3.1...v0.3.2) (2018-04-02)
 
