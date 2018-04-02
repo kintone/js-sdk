@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/koba04/create-kintone-plugin/compare/v0.3.0...v0.3.1) (2018-04-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency [@types](https://github.com/types)/node-rsa to ^0.4.3 ([4553289](https://github.com/koba04/create-kintone-plugin/commit/4553289))
+* **deps:** update dependency inquirer to ^5.2.0 ([#10](https://github.com/koba04/create-kintone-plugin/issues/10)) ([f474473](https://github.com/koba04/create-kintone-plugin/commit/f474473))
+* **templates:** typo plugin.zip ([#14](https://github.com/koba04/create-kintone-plugin/issues/14)) ([3b985b5](https://github.com/koba04/create-kintone-plugin/commit/3b985b5))
+
+
+
 <a name="0.3.0"></a>
 # 0.3.0 (2018-03-28)
 
