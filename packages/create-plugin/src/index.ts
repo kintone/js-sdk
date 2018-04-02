@@ -3,6 +3,7 @@
 import chalk from 'chalk';
 import * as fs from 'fs';
 import { Answers, Questions } from 'inquirer';
+import * as rimraf from 'rimraf';
 import { generatePlugin } from './generator';
 import { printError, printLog } from './logger';
 import { buildManifest, Manifest } from './manifest';
@@ -16,16 +17,13 @@ const inquirer = require('inquirer');
  * Verify whether the output directory is valid
  * @param outputDirectory
  */
-function verifyOutputDirectory(
-  outputDirectory: string,
-  lang: Lang
-): Promise<boolean> {
+function verifyOutputDirectory(outputDirectory: string, lang: Lang): void {
   if (fs.existsSync(outputDirectory)) {
-    return Promise.reject(
-      new Error(`${outputDirectory} ${getMessage(lang, 'Error_alreadyExists')}`)
+    console.error(
+      `${outputDirectory} ${getMessage(lang, 'Error_alreadyExists')}`
     );
+    process.exit(1);
   }
-  return Promise.resolve(true);
 }
 
 /**
@@ -34,21 +32,21 @@ function verifyOutputDirectory(
  */
 function run(outputDir: string, lang: Lang) {
   const m = getBoundMessage(lang);
-  verifyOutputDirectory(outputDir, lang)
-    .then(() => {
-      printLog(`
+  verifyOutputDirectory(outputDir, lang);
+  printLog(`
 
-${m('introduction')}
+  ${m('introduction')}
 
-      `);
-    })
-    .then(() => inquirer.prompt(buildQuestions(outputDir, lang)))
+  `);
+
+  inquirer
+    .prompt(buildQuestions(outputDir, lang))
     .then((answers: UserAnswers) => {
       const manifest = buildManifest(answers);
       generatePlugin(outputDir, manifest, lang);
       return manifest;
     })
-    .then(manifest => {
+    .then((manifest: Manifest) => {
       printLog(`
 
 Success! Created ${manifest.name.en} at ${outputDir}
@@ -74,8 +72,10 @@ ${m('lastMessage')}
 
       `);
     })
-    .catch(error => {
-      printError(m('Error_cannotCreatePlugin'), error.message);
+    .catch((error: Error) => {
+      rimraf(outputDir, () => {
+        printError(m('Error_cannotCreatePlugin'), error.message);
+      });
     });
 }
 
