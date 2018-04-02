@@ -7,7 +7,7 @@ type MessageMap = { [key in keyof typeof messages]: LangMap };
 
 const messages = {
   Q_NameEn: {
-    en: 'Input your plugin name for English [1-64chars]',
+    en: 'Input your plugin name in English [1-64chars]',
     ja: 'プラグインの英語名を入力してください [1-64文字]'
   },
   Q_NameEnError: {
@@ -15,7 +15,7 @@ const messages = {
     ja: 'プラグイン名は1〜64文字で入力してください'
   },
   Q_DescriptionEn: {
-    en: 'Input your plugin description for English [1-200chars]',
+    en: 'Input your plugin description in English [1-200chars]',
     ja: 'プラグインの説明を入力してください [1-200文字]'
   },
   Q_DescriptionEnError: {
@@ -24,10 +24,10 @@ const messages = {
   },
   Q_SupportJa: {
     en: 'Does your plugin support Japanese?',
-    ja: 'あなたのプラグインは日本語をサポートしますか？'
+    ja: '日本語をサポートしますか？'
   },
   Q_NameJa: {
-    en: 'Input your plugin name for Japanese [1-64chars] (Optional)',
+    en: 'Input your plugin name in Japanese [1-64chars] (Optional)',
     ja: 'プラグインの日本語名を入力してください [1-64文字] (省略可)'
   },
   Q_NameJaError: {
@@ -35,7 +35,7 @@ const messages = {
     ja: 'プラグイン名は64文字以内で入力してください'
   },
   Q_DescriptionJa: {
-    en: 'Input your plugin description for Japanese [1-200chars] (Optional)',
+    en: 'Input your plugin description in Japanese [1-200chars] (Optional)',
     ja: 'プラグインの日本語の説明を入力してください [1-200文字] (省略可)'
   },
   Q_DescriptionJaError: {
@@ -44,10 +44,10 @@ const messages = {
   },
   Q_SupportCn: {
     en: 'Does your plugin support Chinese?',
-    ja: 'あなたのプラグインは中国語をサポートしますか？'
+    ja: '中国語をサポートしますか？'
   },
   Q_NameCn: {
-    en: 'Input your plugin name for Chinese [1-64chars] (Optional)',
+    en: 'Input your plugin name in Chinese [1-64chars] (Optional)',
     ja: 'プラグインの中国語名を入力してください [1-64文字] (省略可)'
   },
   Q_NameCnError: {
@@ -55,7 +55,7 @@ const messages = {
     ja: 'プラグイン名は64文字以内で入力してください'
   },
   Q_DescriptionCn: {
-    en: 'Input your plugin description for Chinese [1-200chars] (Optional)',
+    en: 'Input your plugin description in Chinese [1-200chars] (Optional)',
     ja: 'プラグインの中国語の説明を入力してください [1-200文字] (省略可)'
   },
   Q_DescriptionCnError: {
