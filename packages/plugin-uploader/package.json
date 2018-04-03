@@ -2,6 +2,7 @@
   "name": "@koba04/kintone-plugin-uploader",
   "version": "1.0.0",
   "description": "A kintone plugin uploader using puppetieer",
+  "bin": "bin/cli.js",
   "main": "dist/src/index.js",
   "engines": {
     "node": ">=6"
