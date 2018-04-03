@@ -1,0 +1,13 @@
+{
+  "extends": ["tslint:recommended", "tslint-plugin-prettier"],
+  "rules": {
+    "prettier": true,
+    "interface-name": false,
+    "quotemark": [true, "single", "avoid-escape"],
+    "no-var-requires": false,
+    "no-console": false,
+    "object-literal-sort-keys": false,
+    "trailing-comma": false,
+    "arrow-parens": false
+  }
+}
