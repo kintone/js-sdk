@@ -4,6 +4,9 @@
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": "bin/cli.js",
   "main": "dist/src/index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "dependencies": {
     "chalk": "^2.3.2",
     "glob": "^7.1.2",
