@@ -116,7 +116,14 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
   },
   lastMessage: {
     en: 'Enjoy Hacking kintone plugin!',
-    ja: 'kintoneプラグイン開発を楽しんでください！'
+    ja: 'kintoneプラグイン開発をはじめましょう！'
+  },
+  developerSite: {
+    en: '',
+    ja: `開発に関する情報はCybozu Developer Network:
+
+  https://developer.cybozu.io/hc/ja
+`
   },
   Error_alreadyExists: {
     en: 'already exists so please choose an other directory',
