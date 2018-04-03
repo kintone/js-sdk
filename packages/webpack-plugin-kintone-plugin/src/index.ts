@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import { debounce } from 'lodash';
 import * as path from 'path';
 import { Compiler, Plugin } from 'webpack';
 
@@ -59,7 +60,7 @@ class KintonePlugin implements Plugin {
    */
   private watchAssets(): void {
     let unwatch: () => void;
-    const onFileChange = (file: string) => {
+    const onFileChange = debounce((file: string) => {
       console.log(`${file} was changed`);
       this.generatePlugin().then(() => {
         // If manifest.json has been updated we should reevaluate the target files and rewatch them
@@ -73,7 +74,7 @@ class KintonePlugin implements Plugin {
           );
         }
       });
-    };
+    });
     unwatch = watchFiles(
       getAssetPaths(this.options.manifestJSONPath),
       onFileChange
