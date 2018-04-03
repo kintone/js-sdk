@@ -69,6 +69,7 @@ ${m('nextAction')}
   npm start
 
 ${m('lastMessage')}
+${m('developerSite')}
 
       `);
     })
