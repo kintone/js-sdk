@@ -44,7 +44,7 @@ export function buildQuestions(outputDir: string, lang: Lang): Question[] {
     {
       type: 'confirm',
       name: 'ja',
-      default: false,
+      default: lang === 'ja' ? true : false,
       message: m('Q_SupportJa')
     },
     {
