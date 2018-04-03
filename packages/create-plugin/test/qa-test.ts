@@ -81,6 +81,18 @@ describe('qa', () => {
         );
       });
     });
+    context('ja', () => {
+      it('should be true by default if the lang is ja', () => {
+        const questions = buildQuestions('dist', 'ja');
+        const q = getQuestion(questions, ({ name }: Question) => name === 'ja');
+        assert(q.default === true);
+      });
+      it('should be false by default if the lang is not ja', () => {
+        const questions = buildQuestions('dist', 'en');
+        const q = getQuestion(questions, ({ name }: Question) => name === 'ja');
+        assert(q.default === false);
+      });
+    });
     context('name.ja', () => {
       it('should be enabled only in anwers.ja is true', () => {
         const questions = buildQuestions('dist', 'en');
