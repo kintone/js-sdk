@@ -7,7 +7,8 @@ A kintone plugin uploader using [puppeteer](https://github.com/GoogleChrome/pupp
 ## Usage
 
 ```
-npx @koba04/kintone-plugin-uploader \
+% npm install @koba04/kintone-plugin-uploader
+% ./node_modules/.bin/kintone-plugin-uploader
 --domain ${yourDomain} \
 --username ${yourLoginName} \
 --password ${yourPassword} \
@@ -17,8 +18,8 @@ ${pluginZipPath}
 or
 
 ```
-npm install -g @koba04/kintone-plugin-uploader
-kintone-plugin-uploader \
+% npm install -g @koba04/kintone-plugin-uploader
+% kintone-plugin-uploader \
 --domain ${yourDomain} \
 --username ${yourLoginName} \
 --password ${yourPassword} \
@@ -28,7 +29,7 @@ ${pluginZipPath}
 If you want to upload the plugin automatically when the plugin is updated, you can use `--watch` option.
 
 ```
-npx @koba04/kintone-plugin-uploader \
+% kintone-plugin-uploader \
 --domain ${yourDomain} \
 --username ${yourLoginName} \
 --password ${yourPassword} \
