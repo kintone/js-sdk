@@ -1,6 +1,6 @@
 {
   "name": "@koba04/webpack-plugin-kintone-plugin",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A webpack plugin to generate a plugin zip",
   "main": "dist/src/index.js",
   "scripts": {

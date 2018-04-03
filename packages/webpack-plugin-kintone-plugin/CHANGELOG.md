@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/koba04/webpack-plugin-kintone-plugin/compare/v0.3.0...v0.3.1) (2018-04-03)
+
+
+### Bug Fixes
+
+* debounce file changes ([#16](https://github.com/koba04/webpack-plugin-kintone-plugin/issues/16)) ([2303ed2](https://github.com/koba04/webpack-plugin-kintone-plugin/commit/2303ed2))
+
+
+
 <a name="0.3.0"></a>
 # 0.3.0 (2018-04-02)
 
