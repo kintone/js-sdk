@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/node": "^9.6.1",
-    "@types/puppeteer": "^1.2.0",
+    "@types/puppeteer": "^1.2.1",
     "prettier": "^1.11.1",
     "standard-version": "^4.3.0",
     "tslint": "^5.9.1",
