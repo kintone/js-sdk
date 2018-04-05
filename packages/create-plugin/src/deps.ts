@@ -1,8 +1,9 @@
 'use strict';
 
 import { spawnSync } from 'child_process';
+import { Lang } from './lang';
 import { printLog } from './logger';
-import { getMessage, Lang } from './messages';
+import { getMessage } from './messages';
 
 /**
  * Install specified dependencies

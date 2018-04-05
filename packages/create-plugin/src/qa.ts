@@ -1,8 +1,9 @@
 'use strict';
 
 import { Answers, Question } from 'inquirer';
+import { Lang } from './lang';
 import { Manifest } from './manifest';
-import { getBoundMessage, Lang } from './messages';
+import { getBoundMessage } from './messages';
 
 export type UserAnswers = Manifest & {
   ja: boolean;
