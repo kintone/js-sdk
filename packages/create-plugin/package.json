@@ -45,7 +45,7 @@
     "lint": "tslint -c tslint.json src/**/*.ts",
     "release": "standard-version",
     "unittest": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts",
-    "test": "run-s build unittest"
+    "test": "npm-run-all -s build -p lint unittest"
   },
   "keywords": [
     "kintone"
