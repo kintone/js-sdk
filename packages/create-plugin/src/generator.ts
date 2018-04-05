@@ -5,8 +5,8 @@ import * as fs from 'fs';
 import * as glob from 'glob';
 import * as path from 'path';
 import { installDependencies } from './deps';
+import { Lang } from './lang';
 import { Manifest } from './manifest';
-import { Lang } from './messages';
 import { generatePrivateKey } from './privateKey';
 import {
   filterTemplateFile,

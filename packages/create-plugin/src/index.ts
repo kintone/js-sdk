@@ -5,9 +5,10 @@ import * as fs from 'fs';
 import { Answers, Questions } from 'inquirer';
 import * as rimraf from 'rimraf';
 import { generatePlugin } from './generator';
+import { Lang } from './lang';
 import { printError, printLog } from './logger';
 import { buildManifest, Manifest } from './manifest';
-import { getBoundMessage, getMessage, Lang } from './messages';
+import { getBoundMessage, getMessage } from './messages';
 import { buildQuestions, UserAnswers } from './qa';
 
 const util = require('util');
