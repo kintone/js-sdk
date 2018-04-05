@@ -4,6 +4,7 @@
 
 const meow = require('meow');
 const run = require('../dist/src/index');
+const { getDefaultLang } = require('../dist/src/lang');
 
 const cli = meow(
   `
@@ -16,7 +17,7 @@ const cli = meow(
     flags: {
       lang: {
         type: 'string',
-        default: 'en'
+        default: getDefaultLang(process.env.LANG)
       }
     }
   }

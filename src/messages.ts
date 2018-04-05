@@ -1,6 +1,6 @@
 'use strict';
 
-export type Lang = 'ja' | 'en';
+import { Lang } from './lang';
 
 type LangMap = { [lang in Lang]: string };
 type MessageMap = { [key in keyof typeof messages]: LangMap };
