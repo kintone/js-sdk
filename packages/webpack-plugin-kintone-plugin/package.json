@@ -3,6 +3,9 @@
   "version": "0.3.1",
   "description": "A webpack plugin to generate a plugin zip",
   "main": "dist/src/index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "start": "tsc -w",
     "build": "tsc",
