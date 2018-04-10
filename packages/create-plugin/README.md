@@ -35,6 +35,8 @@ if you want to use console messages in Japanese, you can use `--lang ja` option.
 npx create-kintone-app ${name} --lang ja
 ```
 
+If you set `LANG` environment variable `ja_XX.XXX`, the lang option will be `ja` automatically.
+
 ## LICENSE
 
 MIT License: Toru Kobayashi
