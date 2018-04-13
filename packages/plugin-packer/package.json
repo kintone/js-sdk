@@ -52,7 +52,7 @@
     "normalize.css": "^8.0.0",
     "npm-run-all": "^4.1.2",
     "power-assert": "^1.5.0",
-    "prettier": "1.11.1",
+    "prettier": "1.12.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
