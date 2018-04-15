@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-config-teppeis": "^6.7.0",
+    "eslint-config-teppeis": "^6.8.0",
     "intelli-espower-loader": "^1.0.1",
     "json-schema-to-typescript": "^5.4.0",
     "mocha": "^5.1.0",
