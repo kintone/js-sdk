@@ -7,10 +7,8 @@ const denodeify = require('denodeify');
 const validate = require('@teppeis/kintone-plugin-manifest-validator');
 const streamBuffers = require('stream-buffers');
 
-const {readArrayBuffer} = require('./dom');
-
-const genErrorMsg = require('../src/gen-error-msg');
-const sourceList = require('../src/sourcelist');
+const genErrorMsg = require('./gen-error-msg');
+const sourceList = require('./sourcelist');
 
 /**
  * Extract, validate and rezip contents.zip
@@ -19,27 +17,45 @@ const sourceList = require('../src/sourcelist');
  * @return {!Promise<!Buffer>}
  */
 function rezip(contentsZip) {
-  return zipEntriesFromBuffer(contentsZip)
-    .then(result => {
-      const manifestList = Array.from(result.entries.keys()).filter(
-        file => path.basename(file) === 'manifest.json'
-      );
-      if (manifestList.length === 0) {
-        throw new Error('The zip file has no manifest.json');
-      } else if (manifestList.length > 1) {
-        throw new Error('The zip file has many manifest.json files');
-      }
-      result.manifestPath = manifestList[0];
-      const manifestEntry = result.entries.get(result.manifestPath);
-      return getManifestJsonFromEntry(result.zipFile, manifestEntry).then(json =>
-        Object.assign(result, {manifestJson: json})
-      );
-    })
-    .then(result => {
-      const manifestPrefix = path.dirname(result.manifestPath);
-      validateManifest(result.entries, result.manifestJson, manifestPrefix);
-      return rezipContents(result.zipFile, result.entries, result.manifestJson, manifestPrefix);
-    });
+  return preprocessToRezip(contentsZip).then(({zipFile, entries, manifestJson, manifestPath}) => {
+    validateManifest(entries, manifestJson, manifestPath);
+    return rezipContents(zipFile, entries, manifestJson, manifestPath);
+  });
+}
+
+/**
+ * Validate a buffer of contents.zip
+ * @param {!Buffer} contentsZip
+ * @return {!Promise<*>}
+ */
+function validateContentsZip(contentsZip) {
+  return preprocessToRezip(contentsZip).then(({entries, manifestJson, manifestPath}) =>
+    validateManifest(entries, manifestJson, manifestPath)
+  );
+}
+
+/**
+ * Create an intermediate representation for contents.zip
+ * @typedef {{zipFile: !yauzl.ZipFile,entries: !Map<string, !yauzl.ZipEntry>, manifestJson: Object, manifestPath: string}} PreprocessedContentsZip
+ * @param {!Buffer} contentsZip
+ * @return {Promise<PreprocessedContentsZip>}
+ */
+function preprocessToRezip(contentsZip) {
+  return zipEntriesFromBuffer(contentsZip).then(result => {
+    const manifestList = Array.from(result.entries.keys()).filter(
+      file => path.basename(file) === 'manifest.json'
+    );
+    if (manifestList.length === 0) {
+      throw new Error('The zip file has no manifest.json');
+    } else if (manifestList.length > 1) {
+      throw new Error('The zip file has many manifest.json files');
+    }
+    result.manifestPath = manifestList[0];
+    const manifestEntry = result.entries.get(result.manifestPath);
+    return getManifestJsonFromEntry(result.zipFile, manifestEntry).then(json =>
+      Object.assign(result, {manifestJson: json})
+    );
+  });
 }
 
 /**
@@ -96,21 +112,23 @@ function getManifestJsonFromEntry(zipFile, zipEntry) {
 /**
  * @param {!Map<string, !yauzl.ZipEntry>} entries
  * @param {!Object} manifestJson
- * @param {string} prefix
+ * @param {string} manifestPath
  * @throws if manifest.json is invalid
  */
-function validateManifest(entries, manifestJson, prefix) {
+function validateManifest(entries, manifestJson, manifestPath) {
+  // entry.fileName is a relative path separated by posix style(/) so this makes separators always posix style.
+  const getEntryKey = filePath =>
+    path.join(path.dirname(manifestPath), filePath).replace(new RegExp(`\\${path.sep}`, 'g'), '/');
   const result = validate(manifestJson, {
-    relativePath: filePath => entries.has(path.join(prefix, filePath)),
+    relativePath: filePath => entries.has(getEntryKey(filePath)),
     maxFileSize(maxBytes, filePath) {
-      const entry = entries.get(path.join(prefix, filePath));
+      const entry = entries.get(getEntryKey(filePath));
       if (entry) {
         return entry.uncompressedSize <= maxBytes;
       }
       return false;
     },
   });
-
   if (!result.valid) {
     const errors = genErrorMsg(result.errors);
     const e = new Error(errors.join(', '));
@@ -123,10 +141,12 @@ function validateManifest(entries, manifestJson, prefix) {
  * @param {!yauzl.ZipFile} zipFile
  * @param {!Map<string, !yauzl.ZipEntry>} entries
  * @param {!Object} manifestJson
- * @param {string} prefix
+ * @param {string} manifestPath
  * @return {!Promise<!Buffer>}
  */
-function rezipContents(zipFile, entries, manifestJson, prefix) {
+function rezipContents(zipFile, entries, manifestJson, manifestPath) {
+  const manifestPrefix = path.dirname(manifestPath);
+
   return new Promise((res, rej) => {
     const newZipFile = new yazl.ZipFile();
     newZipFile.on('error', rej);
@@ -138,7 +158,7 @@ function rezipContents(zipFile, entries, manifestJson, prefix) {
     const openReadStream = denodeify(zipFile.openReadStream.bind(zipFile));
     Promise.all(
       sourceList(manifestJson).map(src => {
-        const entry = entries.get(path.join(prefix, src));
+        const entry = entries.get(path.join(manifestPrefix, src));
         return openReadStream(entry).then(stream => {
           newZipFile.addReadStream(stream, src, {size: entry.uncompressedSize});
         });
@@ -149,39 +169,7 @@ function rezipContents(zipFile, entries, manifestJson, prefix) {
   });
 }
 
-/**
- * Create a buffer of the zip file
- * @typedef {{file: File, fullPath: string}} FileEntry
- * @param {Map<string, File>} fileMap
- * @return {Buffer}
- */
-function zipDirectory(fileMap) {
-  const zipFile = new yazl.ZipFile();
-  return Promise.all(
-    Array.from(fileMap.entries()).map(([path, file]) =>
-      readArrayBuffer(file).then(buffer => ({buffer, path}))
-    )
-  )
-    .then(results => {
-      results.forEach(result => {
-        zipFile.addBuffer(Buffer.from(result.buffer), result.path);
-      });
-      zipFile.end();
-      return zipFile;
-    })
-    .then(
-      zipFile =>
-        new Promise(resolve => {
-          const output = new streamBuffers.WritableStreamBuffer();
-          output.on('finish', () => {
-            resolve(output.getContents());
-          });
-          zipFile.outputStream.pipe(output);
-        })
-    );
-}
-
 module.exports = {
   rezip,
-  zipDirectory,
+  validateContentsZip,
 };

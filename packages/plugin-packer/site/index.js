@@ -6,13 +6,20 @@ const {createStore, applyMiddleware} = require('redux');
 const thunk = require('redux-thunk').default;
 const logger = require('redux-logger').default;
 
-const {$, $$, listen, readText, readArrayBuffer, createFileHanlder} = require('./dom');
+const {
+  $,
+  $$,
+  fileMapToBuffer,
+  listen,
+  readText,
+  readArrayBuffer,
+  createFileHanlder,
+} = require('./dom');
 const View = require('./view');
 
 const {reducer} = require('./reducer');
 const {uploadPPK, uploadPlugin, createPluginZip, reset, uploadFailure} = require('./action');
 const {generatePluginZip, validatePlugin, revokePluginUrls} = require('./plugin');
-const {zipDirectory} = require('./zip');
 
 const $ppkFileUploader = $('.js-upload-ppk .js-file-upload');
 const $zipFileUploader = $('.js-upload-zip .js-file-upload');
@@ -80,7 +87,7 @@ const uploadPluginZipHandler = createFileHanlder(promise => {
         store.dispatch(uploadPlugin(result.name, () => readArrayBuffer(result), validatePlugin));
         // Uploading a directory
       } else if (result.entries instanceof Map) {
-        zipDirectory(result.entries).then(buffer => {
+        fileMapToBuffer(result.entries).then(buffer => {
           store.dispatch(uploadPlugin(result.name, () => Promise.resolve(buffer), validatePlugin));
         });
       } else {

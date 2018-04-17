@@ -7,6 +7,7 @@ const debug = require('debug')('packer');
 
 const sign = require('./sign');
 const uuid = require('./uuid');
+const {validateContentsZip} = require('./zip');
 
 /**
  * @param {!Buffer} contentsZip The zipped plugin contents directory.
@@ -27,11 +28,13 @@ function packer(contentsZip, privateKey) {
   const publicKey = key.exportKey('pkcs8-public-der');
   const id = uuid(publicKey);
   debug(`id : ${id}`);
-  return zip(contentsZip, publicKey, signature).then(plugin => ({
-    plugin: plugin,
-    privateKey: privateKey,
-    id: id,
-  }));
+  return validateContentsZip(contentsZip)
+    .then(() => zip(contentsZip, publicKey, signature))
+    .then(plugin => ({
+      plugin: plugin,
+      privateKey: privateKey,
+      id: id,
+    }));
 }
 
 /**

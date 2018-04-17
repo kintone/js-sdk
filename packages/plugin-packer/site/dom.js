@@ -1,6 +1,8 @@
 'use strict';
 
 const flatten = require('array-flatten');
+const yazl = require('yazl');
+const streamBuffers = require('stream-buffers');
 
 /**
  * Revoke an object URL
@@ -147,9 +149,42 @@ const listen = (el, ...args) => {
   el.addEventListener(...args);
 };
 
+/**
+ * Create a buffer of the zip file
+ * @typedef {{file: File, fullPath: string}} FileEntry
+ * @param {Map<string, File>} fileMap
+ * @return {Promise<Buffer>}
+ */
+function fileMapToBuffer(fileMap) {
+  const zipFile = new yazl.ZipFile();
+  return Promise.all(
+    Array.from(fileMap.entries()).map(([path, file]) =>
+      readArrayBuffer(file).then(buffer => ({buffer, path}))
+    )
+  )
+    .then(results => {
+      results.forEach(result => {
+        zipFile.addBuffer(Buffer.from(result.buffer), result.path);
+      });
+      zipFile.end();
+      return zipFile;
+    })
+    .then(
+      zipFile =>
+        new Promise(resolve => {
+          const output = new streamBuffers.WritableStreamBuffer();
+          output.on('finish', () => {
+            resolve(output.getContents());
+          });
+          zipFile.outputStream.pipe(output);
+        })
+    );
+}
+
 module.exports = {
   $,
   $$,
+  fileMapToBuffer,
   listen,
   revokeDownloadUrl,
   createDownloadUrl,

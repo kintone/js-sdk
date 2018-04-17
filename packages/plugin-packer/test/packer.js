@@ -11,6 +11,11 @@ const packer = require('../src/');
 
 const privateKeyPath = path.join(__dirname, 'fixtures', 'private.ppk');
 const contentsZipPath = path.join(__dirname, 'fixtures', 'contents.zip');
+const invalidMaxFileSizeContentsZipPath = path.join(
+  __dirname,
+  'fixtures',
+  'invalid-maxFileSize-contents.zip'
+);
 
 describe('packer', () => {
   it('is a function', () => {
@@ -71,6 +76,16 @@ describe('packer', () => {
 
     it('the zip passes signature verification', () => {
       verifyPlugin(output.plugin);
+    });
+  });
+
+  context('invalid contents.zip', () => {
+    it('throws an error if the contents.zip is invalid', done => {
+      const contentsZip = fs.readFileSync(invalidMaxFileSizeContentsZipPath);
+      packer(contentsZip).catch(error => {
+        assert(error.message.indexOf('".icon" file size should be <= 512KB') !== -1);
+        done();
+      });
     });
   });
 });
