@@ -5,6 +5,8 @@ import { Lang } from './lang';
 import { printLog } from './logger';
 import { getMessage } from './messages';
 
+const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+
 /**
  * Install specified dependencies
  * @param deps
@@ -23,7 +25,7 @@ export function installDependencies(
     printLog(getMessage(lang, 'installDependencies'));
   }
   if (dependencies.length) {
-    const result = spawnSync('npm', ['install', ...dependencies], {
+    const result = spawnSync(npmCommand, ['install', ...dependencies], {
       cwd: outputDirectory,
       stdio: 'inherit'
     });
@@ -33,7 +35,7 @@ export function installDependencies(
   }
   if (devDependencies.length) {
     const result = spawnSync(
-      'npm',
+      npmCommand,
       ['install', '--save-dev', ...devDependencies],
       {
         cwd: outputDirectory,
