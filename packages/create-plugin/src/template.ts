@@ -68,6 +68,7 @@ export function processTemplateFile(
   if (path.basename(filePath).startsWith('_')) {
     const src = fs.readFileSync(filePath, 'utf-8');
     const destPath = filePath
+      .replace(/\//g, path.sep) // For windows
       .replace(srcDir, destDir)
       .replace(
         new RegExp(path.basename(filePath) + '$'),
