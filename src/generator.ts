@@ -44,21 +44,19 @@ export function generatePlugin(
 function buildProject(outputDirectory: string, manifest: Manifest): void {
   const templateType = getTemplateType(manifest);
   fs.mkdirSync(outputDirectory);
+  // This is necessary for unit testing
+  // We use src/generator.ts directory instead of dist/src/generator.js when unit testing
+  const templatePath =
+    __dirname.indexOf('dist') === -1
+      ? path.join(__dirname, '..', 'templates', templateType)
+      : path.join(__dirname, '..', '..', 'templates', templateType);
   glob
-    .sync(
-      path.join(__dirname, '..', '..', 'templates', templateType, '**', '*'),
-      {
-        dot: true
-      }
-    )
+    .sync(path.resolve(templatePath, '**', '*'), {
+      dot: true
+    })
     .filter(filterTemplateFile.bind(null, manifest))
     .forEach((file: string) =>
-      processTemplateFile(
-        file,
-        path.join(__dirname, '..', '..', 'templates', templateType),
-        outputDirectory,
-        manifest
-      )
+      processTemplateFile(file, templatePath, outputDirectory, manifest)
     );
   fs.writeFileSync(
     path.resolve(outputDirectory, 'private.ppk'),
