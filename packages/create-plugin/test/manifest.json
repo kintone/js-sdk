@@ -1,0 +1,25 @@
+{
+  "manifest_version": 1,
+  "version": 1,
+  "type": "APP",
+  "desktop": {
+    "js": ["https://js.cybozu.com/jquery/3.3.1/jquery.min.js", "js/desktop.js"],
+    "css": ["css/51-modern-default.css", "css/desktop.css"]
+  },
+  "icon": "image/icon.png",
+  "name": {
+    "en": "kintone-plugin-demo"
+  },
+  "description": {
+    "en": "kintone-plugin-demo"
+  },
+  "mobile": {
+    "js": ["https://js.cybozu.com/jquery/3.3.1/jquery.min.js", "js/mobile.js"]
+  },
+  "config": {
+    "html": "html/config.html",
+    "js": ["https://js.cybozu.com/jquery/3.3.1/jquery.min.js", "js/config.js"],
+    "css": ["css/51-modern-default.css", "css/config.css"],
+    "required_params": []
+  }
+}
