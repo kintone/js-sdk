@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/koba04/create-kintone-plugin/compare/v0.5.0...v0.5.1) (2018-04-18)
+
+
+### Bug Fixes
+
+* **windows:** copy a directory on windows ([#36](https://github.com/koba04/create-kintone-plugin/issues/36)) ([1bdefc3](https://github.com/koba04/create-kintone-plugin/commit/1bdefc3))
+* **windows:** npm command needs .cmd extension on windows ([#37](https://github.com/koba04/create-kintone-plugin/issues/37)) ([d934907](https://github.com/koba04/create-kintone-plugin/commit/d934907))
+* **windows:** paths for template files on windows ([#35](https://github.com/koba04/create-kintone-plugin/issues/35)) ([d931224](https://github.com/koba04/create-kintone-plugin/commit/d931224))
+* **windows:** replace srcPath with destPath ([c65a421](https://github.com/koba04/create-kintone-plugin/commit/c65a421))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/koba04/create-kintone-plugin/compare/v0.4.0...v0.5.0) (2018-04-06)
 
