@@ -84,6 +84,10 @@ export function processTemplateFile(
     );
   } else {
     const destPath = filePath.replace(srcDir, destDir);
-    fs.copyFileSync(filePath, destPath);
+    if (fs.statSync(filePath).isDirectory()) {
+      fs.mkdirSync(destPath);
+    } else {
+      fs.copyFileSync(filePath, destPath);
+    }
   }
 }
