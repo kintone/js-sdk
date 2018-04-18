@@ -65,15 +65,17 @@ export function processTemplateFile(
   destDir: string,
   manifest: Manifest
 ): void {
+  const destFilePath = filePath
+    // For Windows
+    .replace(/\//g, path.sep)
+    .replace(srcDir, destDir);
+
   if (path.basename(filePath).startsWith('_')) {
     const src = fs.readFileSync(filePath, 'utf-8');
-    const destPath = filePath
-      .replace(/\//g, path.sep) // For windows
-      .replace(srcDir, destDir)
-      .replace(
-        new RegExp(path.basename(filePath) + '$'),
-        path.basename(filePath).substring(1)
-      );
+    const destPath = destFilePath.replace(
+      new RegExp(path.basename(filePath) + '$'),
+      path.basename(filePath).substring(1)
+    );
     fs.writeFileSync(
       destPath,
       _.template(src)(
@@ -84,11 +86,10 @@ export function processTemplateFile(
       )
     );
   } else {
-    const destPath = filePath.replace(srcDir, destDir);
     if (fs.statSync(filePath).isDirectory()) {
-      fs.mkdirSync(destPath);
+      fs.mkdirSync(destFilePath);
     } else {
-      fs.copyFileSync(filePath, destPath);
+      fs.copyFileSync(filePath, destFilePath);
     }
   }
 }
