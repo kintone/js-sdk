@@ -16,7 +16,7 @@
   "homepage_url": {
     "ja": "https://example.com/ja",
     "en": "https://example.com/en",
-    "zn": "https://example.com/zn"
+    "zh": "https://example.com/zn"
   },
   "desktop": {
     "js": ["js/customize.js"]
