@@ -8,7 +8,7 @@
     "node": ">=6"
   },
   "dependencies": {
-    "chalk": "^2.3.2",
+    "chalk": "^2.4.0",
     "glob": "^7.1.2",
     "inquirer": "^5.2.0",
     "lodash": "^4.17.5",
