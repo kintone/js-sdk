@@ -32,6 +32,7 @@ describe('generator', () => {
       stdio: 'inherit',
       shell: true
     });
+    assert(fs.existsSync(path.resolve(outputDir, 'dist', 'plugin.zip')));
     assert(buildResult.status === 0);
 
     assert.deepStrictEqual(
