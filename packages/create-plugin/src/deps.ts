@@ -5,8 +5,6 @@ import { Lang } from './lang';
 import { printLog } from './logger';
 import { getMessage } from './messages';
 
-const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-
 /**
  * Install specified dependencies
  * @param deps
@@ -24,23 +22,24 @@ export function installDependencies(
   if (dependencies.length || devDependencies.length) {
     printLog(getMessage(lang, 'installDependencies'));
   }
+
+  const spawnOption = {
+    cwd: outputDirectory,
+    stdio: 'inherit',
+    shell: true
+  };
+
   if (dependencies.length) {
-    const result = spawnSync(npmCommand, ['install', ...dependencies], {
-      cwd: outputDirectory,
-      stdio: 'inherit'
-    });
+    const result = spawnSync('npm', ['install', ...dependencies], spawnOption);
     if (result.status !== 0) {
       throw new Error('Installing dependencies were failed');
     }
   }
   if (devDependencies.length) {
     const result = spawnSync(
-      npmCommand,
+      'npm',
       ['install', '--save-dev', ...devDependencies],
-      {
-        cwd: outputDirectory,
-        stdio: 'inherit'
-      }
+      spawnOption
     );
     if (result.status !== 0) {
       throw new Error('Installing devDependencies were failed');
