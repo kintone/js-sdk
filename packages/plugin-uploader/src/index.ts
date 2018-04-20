@@ -33,11 +33,14 @@ async function init(
   return [browser, page];
 }
 
+let uploading = false;
+
 async function upload(
   browser: Browser,
   page: Page,
   pluginPath: string
 ): Promise<void> {
+  uploading = true;
   try {
     console.log(`Try to upload ${pluginPath}`);
     await page.click('#page-admin-system-plugin-index-addplugin');
@@ -53,6 +56,8 @@ async function upload(
   } catch (e) {
     console.error('An error occured', e);
     await browser.close();
+  } finally {
+    uploading = false;
   }
 }
 
@@ -77,7 +82,9 @@ export async function run(
   await upload(browser, page, pluginPath);
   if (options.watch) {
     fs.watch(pluginPath, () => {
-      upload(browser, page, pluginPath);
+      if (!uploading) {
+        upload(browser, page, pluginPath);
+      }
     });
   } else {
     await browser.close();
