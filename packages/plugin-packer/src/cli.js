@@ -2,6 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 const chokidar = require('chokidar');
 const denodeify = require('denodeify');
 
@@ -71,7 +72,19 @@ function cli(pluginDir, options) {
         }
 
         if (options.watch) {
-          const watcher = chokidar.watch(pluginDir);
+          // change events are fired before chagned files are flushed on Windows,
+          // which generate an invalid plugin zip.
+          // in order to fix this, we use awaitWriteFinish option only on Windows.
+          const watchOptions =
+            os.platform() === 'win32'
+              ? {
+                  awaitWriteFinish: {
+                    stabilityThreshold: 1000,
+                    pollInterval: 250,
+                  },
+                }
+              : {};
+          const watcher = chokidar.watch(pluginDir, watchOptions);
           watcher.on('change', () => {
             cli(pluginDir, Object.assign({}, options, {watch: false}));
           });
