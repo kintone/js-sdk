@@ -1,6 +1,6 @@
 {
   "name": "@koba04/kintone-plugin-uploader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A kintone plugin uploader using puppetieer",
   "bin": "bin/cli.js",
   "main": "dist/src/index.js",
