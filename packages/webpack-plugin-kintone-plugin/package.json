@@ -47,7 +47,7 @@
     "webpack": "^4.5.0"
   },
   "dependencies": {
-    "@teppeis/kintone-plugin-packer": "^0.10.0",
+    "@teppeis/kintone-plugin-packer": "^0.10.1",
     "chokidar": "^2.0.3",
     "lodash": "^4.17.5"
   }
