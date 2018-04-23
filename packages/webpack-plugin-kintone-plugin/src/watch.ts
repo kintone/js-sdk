@@ -1,4 +1,5 @@
 import * as chokidar from 'chokidar';
+import * as os from 'os';
 
 /**
  * Watch changes of the files, which returns a function to unwatch
@@ -9,7 +10,19 @@ export function watchFiles(
   files: string[],
   cb: (file: string) => void
 ): () => void {
-  const watcher = chokidar.watch(files);
+  // change events are fired before chagned files are flushed on Windows,
+  // which generate an invalid plugin zip.
+  // in order to fix this, we use awaitWriteFinish option only on Windows.
+  const watchOptions =
+    os.platform() === 'win32'
+      ? {
+          awaitWriteFinish: {
+            stabilityThreshold: 1000,
+            pollInterval: 250
+          }
+        }
+      : {};
+  const watcher = chokidar.watch(files, watchOptions);
   watcher.on('change', file => {
     cb(file);
   });

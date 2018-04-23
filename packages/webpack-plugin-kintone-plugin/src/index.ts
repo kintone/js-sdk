@@ -68,7 +68,7 @@ class KintonePlugin implements Plugin {
           if (typeof unwatch === 'function') {
             unwatch();
           }
-          watchFiles(
+          unwatch = watchFiles(
             getAssetPaths(this.options.manifestJSONPath),
             onFileChange
           );
