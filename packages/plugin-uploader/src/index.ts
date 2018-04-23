@@ -13,7 +13,7 @@ async function init(
   const kintoneUrl = `https://${domain}/`;
   try {
     console.log(`Open ${kintoneUrl}`);
-    await page.goto(kintoneUrl);
+    await page.goto(`${kintoneUrl}login?saml=off`);
 
     await page.waitFor('.form-username-slash');
     console.log('Try to logged-in...');
