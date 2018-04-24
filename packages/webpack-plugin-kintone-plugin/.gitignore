@@ -3,3 +3,4 @@ dist/src/*
 dist/test/*
 test/fixture/sample/dist/*.zip
 test/fixture/sample/js/*.js
+.vscode/
