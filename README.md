@@ -9,14 +9,14 @@ A CLI tool for creating a kintone plugin!
 ## Usage
 
 ```
-npx create-kintone-app ${name}
+npx create-kintone-plugin ${name}
 ```
 
 or
 
 ```
-npm install -g create-kintone-app
-create-kintone-app ${name}
+npm install -g create-kintone-plugin
+create-kintone-plugin ${name}
 ```
 
 After the command has been finished, you can start development kintone plugin!
@@ -32,7 +32,7 @@ npm start
 if you want to use console messages in Japanese, you can use `--lang ja` option.
 
 ```
-npx create-kintone-app ${name} --lang ja
+npx create-kintone-plugin ${name} --lang ja
 ```
 
 If you set `LANG` environment variable `ja_XX.XXX`, the lang option will be `ja` automatically.
