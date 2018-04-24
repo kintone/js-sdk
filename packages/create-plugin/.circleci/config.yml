@@ -3,36 +3,49 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8@sha256:257fdc7e2949a9576e1a96364e0428d461d0505167c70dcc3e6c3825ce8a6557
+
+defaults: &defaults
+  working_directory: ~/repo
+
+  steps:
+    - checkout
+
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package-lock.json" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+
+    - run: npm install
+
+    - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "package-lock.json" }}
       
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+    # run tests!
+    - run: npm run lint
+    - run: npm run test:all
 
-    working_directory: ~/repo
+jobs:
+  node-v6:
+    <<: *defaults
+    docker:
+      - image: circleci/node:6
+  node-v8:
+    <<: *defaults
+    docker:
+      - image: circleci/node:8
+  node-v9:
+    <<: *defaults
+    docker:
+      - image: circleci/node:9
 
-    steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package-lock.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
-        
-      # run tests!
-      - run: npm run lint
-      - run: npm run test:all
+workflows:
+  version: 2
+  multiple_builds:
+    jobs:
+      - node-v6
+      - node-v8
+      - node-v9
