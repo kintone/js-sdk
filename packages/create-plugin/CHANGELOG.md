@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.5"></a>
+## [0.5.5](https://github.com/koba04/create-kintone-plugin/compare/v0.5.4...v0.5.5) (2018-04-24)
+
+
+### Bug Fixes
+
+* use fs.readFileSync and fs.writeFileSync instead of fs.copyFileSync ([#57](https://github.com/koba04/create-kintone-plugin/issues/57)) ([2dcb27f](https://github.com/koba04/create-kintone-plugin/commit/2dcb27f))
+
+
+
 <a name="0.5.4"></a>
 ## [0.5.4](https://github.com/koba04/create-kintone-plugin/compare/v0.5.3...v0.5.4) (2018-04-19)
 
