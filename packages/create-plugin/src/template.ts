@@ -89,7 +89,9 @@ export function processTemplateFile(
     if (fs.statSync(filePath).isDirectory()) {
       fs.mkdirSync(destFilePath);
     } else {
-      fs.copyFileSync(filePath, destFilePath);
+      // fs.copyFileSync is only available <= v8.5.0
+      // fs.copyFileSync(filePath, destFilePath);
+      fs.writeFileSync(destFilePath, fs.readFileSync(filePath));
     }
   }
 }
