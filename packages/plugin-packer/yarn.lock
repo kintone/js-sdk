@@ -62,9 +62,9 @@ acorn@^5.5.0:
   version "5.5.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.5.3.tgz#f473dd47e0277a08e28e9bec5aeeb04751f0b8c9"
 
-adm-zip@^0.4.8:
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.8.tgz#fc0b348954e24ca5792f425bf63c47dfda679267"
+adm-zip@^0.4.9:
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.9.tgz#1a574627d3aa4ea6b8b4948e066cbd6fed4ae2f6"
 
 ajv-keywords@^2.1.0:
   version "2.1.1"
