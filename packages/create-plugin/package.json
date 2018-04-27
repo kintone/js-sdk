@@ -20,7 +20,7 @@
     "@teppeis/kintone-plugin-packer": "^0.10.1",
     "@types/glob": "^5.0.35",
     "@types/inquirer": "^0.0.41",
-    "@types/lodash": "^4.14.107",
+    "@types/lodash": "^4.14.108",
     "@types/mocha": "^5.2.0",
     "@types/node": "^9.6.6",
     "@types/node-rsa": "^0.4.3",
