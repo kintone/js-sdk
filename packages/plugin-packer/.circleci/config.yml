@@ -4,63 +4,48 @@ workflows:
     jobs:
       - node-v6
       - node-v8
-      - node-v9
+      - node-v10
 
 version: 2
 jobs:
   node-base: &node-base
     docker:
-      - image: node:latest@sha256:bd6c5415c7e8be74a9cab65972df41a5464f032a6034b488a2138e887b74bd28
-    working_directory: ~/working_directory
+      - image: node
     steps:
       - run:
           name: Versions
-          command: |
-            yarn versions
-            echo "npm: $(npm --version)"
+          command: npm version
       - checkout
       - restore_cache:
           keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-lock-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-cache-master-{{ .Environment.CIRCLE_JOB }}
       - run:
           name: Install dependencies
-          command: yarn install
+          command: npm install
       - run:
           name: Test
-          command: yarn test
+          command: npm test
       - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
           paths:
-            - /usr/local/share/.cache/yarn
-            - /root/.cache/yarn
-      - run:
-          # Variables are not available in `path` or `paths`
-          # https://discuss.circleci.com/t/can-i-use-variables-in-cache-paths/11393
-          name: Check `yarn cache dir`
-          command: |
-            CACHE_DIR=$(yarn cache dir)
-            echo "yarn cache dir: ${CACHE_DIR}"
-            # v0.x or v1.x
-            if [[ "$CACHE_DIR" != /usr/local/share/.cache/yarn* && "$CACHE_DIR" != /root/.cache/yarn/* ]]; then
-                exit 1
-            fi
+            - ~/.npm/_cacache
 
   node-v6:
     <<: *node-base
     docker:
-      - image: node:6@sha256:4f280f2855b3c860e14faa007db941b6e88c3a467b94401bc5a593086c2105ee
+      - image: node:6
   node-v8:
     <<: *node-base
     docker:
-      - image: node:8@sha256:c55f3e9a7a2b9194e8c8c6b68b182caac02d0f6a77aacba1ebd73f6001a1c381
-  node-v9:
+      - image: node:8
+  node-v10:
     <<: *node-base
     docker:
-      - image: node:9@sha256:bd6c5415c7e8be74a9cab65972df41a5464f032a6034b488a2138e887b74bd28
+      - image: node:10

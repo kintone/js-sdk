@@ -1,29 +1,29 @@
 # Test against the latest version of this Node.js version
 environment:
-  nodejs_version: "8"
+  matrix:
+    - nodejs_version: "8"
+    - nodejs_version: "10"
 
 # Install scripts. (runs after repo cloning)
 install:
   # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
   # install modules
-  - yarn install
+  - npm install
 
 # Post-install test scripts.
 test_script:
   # Output useful info for debugging.
-  - yarn versions
   - npm version
   # run tests
-  - yarn test
+  - npm test
 
 # Don't actually build.
 build: off
 
 # Cache
 cache:
-  - node_modules -> yarn.lock
-  # - "%LOCALAPPDATA%\\Yarn"
+  - node_modules -> package-lock.json
 
 # Just incremental build number
 version: "{build}"
