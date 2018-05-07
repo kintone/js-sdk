@@ -1,8 +1,8 @@
 # webpack-plugin-kintone-plugin
 
-[![npm version](https://badge.fury.io/js/%40koba04%2Fwebpack-plugin-kintone-plugin.svg)](https://badge.fury.io/js/%40koba04%2Fwebpack-plugin-kintone-plugin)
-[![CircleCI](https://circleci.com/gh/koba04/webpack-plugin-kintone-plugin.svg?style=shield)](https://circleci.com/gh/koba04/webpack-plugin-kintone-plugin)
-[![Build status](https://ci.appveyor.com/api/projects/status/13f2hhrllyv157x9?svg=true)](https://ci.appveyor.com/project/koba04/webpack-plugin-kintone-plugin)
+[![npm version](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin)
+[![CircleCI](https://circleci.com/gh/kintone/webpack-plugin-kintone-plugin.svg?style=shield)](https://circleci.com/gh/kintone/webpack-plugin-kintone-plugin)
+[![Build status](https://ci.appveyor.com/api/projects/status/13f2hhrllyv157x9?svg=true)](https://ci.appveyor.com/project/kintone/webpack-plugin-kintone-plugin)
 
 A webpack plugin to create a plugin zip of kintone.
 
@@ -12,7 +12,7 @@ A webpack plugin to create a plugin zip of kintone.
 'use strict';
 
 const path = require('path');
-const KintonePlugin = require('@koba04/webpack-plugin-kintone-plugin');
+const KintonePlugin = require('@kintone/webpack-plugin-kintone-plugin');
 
 module.exports = {
   entry: {
@@ -44,7 +44,7 @@ The settings is the following structure.
 ## Install
 
 ```
-npm install @koba04/webpack-plugin-kintone-plugin
+npm install @kintone/webpack-plugin-kintone-plugin
 ```
 
 ## Options
@@ -64,7 +64,7 @@ If you want to customize these values, you can update the values like this.
 'use strict';
 
 const path = require('path');
-const KintonePlugin = require('@koba04/webpack-plugin-kintone-plugin');
+const KintonePlugin = require('@kintone/webpack-plugin-kintone-plugin');
 
 module.exports = {
   entry: {
@@ -99,4 +99,4 @@ plugins: [
 
 ## License
 
-MIT License: Toru Kobayashi
+MIT License

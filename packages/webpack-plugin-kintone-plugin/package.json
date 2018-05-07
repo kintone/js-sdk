@@ -1,5 +1,5 @@
 {
-  "name": "@koba04/webpack-plugin-kintone-plugin",
+  "name": "@kintone/webpack-plugin-kintone-plugin",
   "version": "0.3.4",
   "description": "A webpack plugin to generate a plugin zip",
   "main": "dist/src/index.js",
@@ -22,7 +22,7 @@
   "files": [
     "dist/src"
   ],
-  "author": "koba04",
+  "author": "kintone",
   "license": "MIT",
   "devDependencies": {
     "@types/adm-zip": "^0.4.31",
