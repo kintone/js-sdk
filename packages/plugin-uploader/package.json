@@ -22,7 +22,7 @@
   "author": "koba04",
   "license": "MIT",
   "dependencies": {
-    "meow": "^4.0.1",
+    "meow": "^5.0.0",
     "puppeteer": "^1.3.0"
   },
   "devDependencies": {
