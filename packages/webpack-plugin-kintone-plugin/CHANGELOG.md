@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/koba04/webpack-plugin-kintone-plugin/compare/v0.3.4...v1.0.0) (2018-05-07)
+
+
+### Chores
+
+* transfer this repository to kintone organization ([#56](https://github.com/koba04/webpack-plugin-kintone-plugin/issues/56)) ([eeecc4f](https://github.com/koba04/webpack-plugin-kintone-plugin/commit/eeecc4f))
+
+
+### BREAKING CHANGES
+
+* The GitHub repository and the npm package are now kintone from koba04
+
+
+
 <a name="0.3.4"></a>
 
 ## [0.3.4](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v0.3.3...v0.3.4) (2018-04-23)
