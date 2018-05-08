@@ -1,5 +1,5 @@
 {
-  "name": "@koba04/kintone-plugin-uploader",
+  "name": "@kintone/plugin-uploader",
   "version": "1.0.4",
   "description": "A kintone plugin uploader using puppetieer",
   "bin": "bin/cli.js",
@@ -19,8 +19,11 @@
     "dist"
   ],
   "keywords": [],
-  "author": "koba04",
+  "author": "kintone",
   "license": "MIT",
+  "repository": "kintone/plugin-uploader",
+  "homepage": "https://github.com/kintone/plugin-uploader",
+  "bugs": "https://github.com/kintone/plugin-uploader/issues",
   "dependencies": {
     "meow": "^5.0.0",
     "puppeteer": "^1.3.0"

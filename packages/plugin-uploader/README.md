@@ -1,14 +1,14 @@
-# kintone-plugin-uploader
+# @kintone/plugin-uploader
 
-[![npm version](https://badge.fury.io/js/%40koba04%2Fkintone-plugin-uploader.svg)](https://badge.fury.io/js/%40koba04%2Fkintone-plugin-uploader)
-[![CircleCI](https://circleci.com/gh/koba04/kintone-plugin-uploader.svg?style=svg)](https://circleci.com/gh/koba04/kintone-plugin-uploader)
+[![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-uploader.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-uploader)
+[![CircleCI](https://circleci.com/gh/kintone/plugin-uploader.svg?style=svg)](https://circleci.com/gh/kintone/plugin-uploader)
 
 A kintone plugin uploader using [puppeteer](https://github.com/GoogleChrome/puppeteer)
 
 ## Usage
 
 ```
-% npm install @koba04/kintone-plugin-uploader
+% npm install @kintone/plugin-uploader
 % ./node_modules/.bin/kintone-plugin-uploader
 --domain ${yourDomain} \
 --username ${yourLoginName} \
@@ -19,7 +19,7 @@ ${pluginZipPath}
 or
 
 ```
-% npm install -g @koba04/kintone-plugin-uploader
+% npm install -g @kintone/plugin-uploader
 % kintone-plugin-uploader \
 --domain ${yourDomain} \
 --username ${yourLoginName} \
@@ -62,4 +62,4 @@ You can create a project based on `kintone-plugin-packer` using [create-kintone-
 
 ## LICENSE
 
-MIT License: Toru Kobayashi
+MIT License
