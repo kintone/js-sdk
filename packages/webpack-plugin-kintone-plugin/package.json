@@ -24,6 +24,9 @@
   ],
   "author": "kintone",
   "license": "MIT",
+  "repository": "kintone/webpack-plugin-kintone-plugin",
+  "homepage": "https://github.com/kintone/webpack-plugin-kintone-plugin",
+  "bugs": "https://github.com/kintone/webpack-plugin-kintone-plugin/issues",
   "devDependencies": {
     "@types/adm-zip": "^0.4.31",
     "@types/chokidar": "^1.7.5",
