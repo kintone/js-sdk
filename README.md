@@ -12,6 +12,13 @@ A CLI tool for creating a kintone plugin!
 npx @kintone/create-plugin ${name}
 ```
 
+or
+
+```
+npm install -g @kintone/create-plugin
+create-kintone-plugin ${name}
+```
+
 After the command has been finished, you can start development kintone plugin!
 
 ```
