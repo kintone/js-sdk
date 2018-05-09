@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/kintone/create-plugin/compare/v0.5.5...v1.0.0) (2018-05-09)
+
+
+### Chores
+
+* transfer [@koba04](https://github.com/koba04)/create-kintone-plugin to [@kintone](https://github.com/kintone)/create-plugin ([#78](https://github.com/kintone/create-plugin/issues/78)) ([0d563a4](https://github.com/kintone/create-plugin/commit/0d563a4))
+
+
+### BREAKING CHANGES
+
+* The GitHub repository and the npm package are now kintone from koba04
+
+
+
 <a name="0.5.5"></a>
 ## [0.5.5](https://github.com/koba04/create-kintone-plugin/compare/v0.5.4...v0.5.5) (2018-04-24)
 
