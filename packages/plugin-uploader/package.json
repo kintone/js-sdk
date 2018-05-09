@@ -2,7 +2,9 @@
   "name": "@kintone/plugin-uploader",
   "version": "1.0.4",
   "description": "A kintone plugin uploader using puppetieer",
-  "bin": "bin/cli.js",
+  "bin": {
+    "kintone-plugin-uploader": "bin/cli.js"
+  },
   "main": "dist/src/index.js",
   "engines": {
     "node": ">=6"
