@@ -1,7 +1,8 @@
 # @kintone/plugin-uploader
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-uploader.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-uploader)
-[![CircleCI](https://circleci.com/gh/kintone/plugin-uploader.svg?style=svg)](https://circleci.com/gh/kintone/plugin-uploader)
+[![CircleCI](https://circleci.com/gh/kintone/plugin-uploader.svg?style=shield)](https://circleci.com/gh/kintone/plugin-uploader)
+
 
 A kintone plugin uploader using [puppeteer](https://github.com/GoogleChrome/puppeteer)
 
