@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/kintone/plugin-uploader/compare/v1.0.4...v2.0.0) (2018-05-09)
+
+
+### Chores
+
+* transfer [@koba04](https://github.com/koba04)/kintone-plugin-uploader to [@kintone](https://github.com/kintone)/plugin-uploader ([#31](https://github.com/kintone/plugin-uploader/issues/31)) ([64ba7d2](https://github.com/kintone/plugin-uploader/commit/64ba7d2))
+
+
+### BREAKING CHANGES
+
+* The GitHub repository and the npm package are now kintone from koba04
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/koba04/kintone-plugin-uploader/compare/v1.0.3...v1.0.4) (2018-04-23)
 

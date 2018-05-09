@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-uploader",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "A kintone plugin uploader using puppetieer",
   "bin": {
     "kintone-plugin-uploader": "bin/cli.js"
