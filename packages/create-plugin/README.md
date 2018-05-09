@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fcreate-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fcreate-plugin)
 [![CircleCI](https://circleci.com/gh/kintone/create-plugin.svg?style=shield)](https://circleci.com/gh/kintone/create-plugin)
-[![Build status](https://ci.appveyor.com/api/projects/status/emvyvmk1vd4rwbef?svg=true)](https://ci.appveyor.com/project/koba04/create-kintone-plugin)
+[![Build status](https://ci.appveyor.com/api/projects/status/8yw1p1qntqlgg6v5?svg=true)](https://ci.appveyor.com/project/koba04/create-plugin)
 
 A CLI tool for creating a kintone plugin!
 
