@@ -20,7 +20,7 @@ describe('template', () => {
       const deps = getDepsByTemplateType(getTemplateType(createBaseManifest()));
       assert(Array.isArray(deps.dependencies));
       assert(Array.isArray(deps.devDependencies));
-      assert(deps.devDependencies[0] === '@teppeis/kintone-plugin-packer');
+      assert(deps.devDependencies[0] === '@kintone/plugin-packer');
     });
   });
   describe('filterTemplateFile', () => {
