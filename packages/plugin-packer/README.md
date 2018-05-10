@@ -34,7 +34,6 @@ $ kintone-plugin-packer [OPTIONS] PLUGIN_DIR
 - `--out PLUGIN_FILE`: The path of generated plugin file. The default is `plugin.zip` in the same directory of `PLUGIN_DIR`.
 - `--watch`, `-w`: Watch PLUGIN_DIR for the changes.
 
-
 ## How to use with `npm run`
 
 If your private key is `./private.ppk` and the plugin directory is `./plugin`, edit `package.json`:
@@ -75,8 +74,8 @@ MIT License
 [npm-url]: https://npmjs.org/package/@kintone/plugin-packer
 [circleci-image]: https://circleci.com/gh/kintone/plugin-packer.svg?style=shield
 [circleci-url]: https://circleci.com/gh/kintone/plugin-packer
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/5fv4fdrnt4wj7evy/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/teppeis/kintone-plugin-packer/branch/master
+[appveyor-image]: https://ci.appveyor.com/api/projects/status/2ms7t6p9bt7fd74x/branch/master?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/teppeis/plugin-packer/branch/master
 [deps-image]: https://img.shields.io/david/kintone/plugin-packer.svg
 [deps-url]: https://david-dm.org/kintone/plugin-packer
 [node-version]: https://img.shields.io/badge/Node.js%20support-v6,v8,v10-brightgreen.svg
