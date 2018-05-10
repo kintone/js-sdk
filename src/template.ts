@@ -11,7 +11,7 @@ const deps = {
   minimum: {
     dependencies: [],
     devDependencies: [
-      '@teppeis/kintone-plugin-packer',
+      '@kintone/plugin-packer',
       'eslint',
       'eslint-config-kintone'
     ]
