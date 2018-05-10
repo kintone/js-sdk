@@ -57,8 +57,8 @@ MIT License
 [npm-url]: https://npmjs.org/package/@kintone/plugin-manifest-validator
 [circleci-image]: https://circleci.com/gh/kintone/plugin-manifest-validator.svg?style=shield
 [circleci-url]: https://circleci.com/gh/kintone/plugin-manifest-validator
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/pcsvpsj4ff8u4jop/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/teppeis/kintone-plugin-manifest-validator/branch/master
+[appveyor-image]: https://ci.appveyor.com/api/projects/status/bsoep14h9y0m2a6x/branch/master?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/teppeis/plugin-manifest-validator/branch/master
 [deps-image]: https://img.shields.io/david/kintone/plugin-manifest-validator.svg
 [deps-url]: https://david-dm.org/kintone/plugin-manifest-validator
 [node-version]: https://img.shields.io/badge/Node.js%20support-v6,v8,v10-brightgreen.svg
