@@ -46,12 +46,12 @@ function packer(contentsZip, privateKey) {
  * @return {!Promise<!Buffer>}
  */
 function zip(contentsZip, publicKey, signature) {
+  debug(`zip(): start`);
   return new Promise((res, rej) => {
     const output = new streamBuffers.WritableStreamBuffer();
     const zipFile = new ZipFile();
-    let size = null;
     output.on('finish', () => {
-      debug(`plugin.zip: ${size} bytes`);
+      debug(`zip(): output finish event`);
       res(output.getContents());
     });
     zipFile.outputStream.pipe(output);
@@ -59,7 +59,7 @@ function zip(contentsZip, publicKey, signature) {
     zipFile.addBuffer(publicKey, 'PUBKEY');
     zipFile.addBuffer(signature, 'SIGNATURE');
     zipFile.end(finalSize => {
-      size = finalSize;
+      debug(`zip(): ZipFile end event: finalSize ${finalSize} bytes`);
     });
   });
 }

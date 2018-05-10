@@ -16,6 +16,7 @@ test_script:
   # Output useful info for debugging.
   - npm version
   # run tests
+  - set DEBUG=packer
   - npm test
 
 # Don't actually build.
