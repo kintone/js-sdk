@@ -13,13 +13,13 @@ kintone-plugin-packer
 It's written in pure JavaScript, so
 
 - The CLI works with Node.js in Mac/Windows/Linux
-- [The web page](https://teppeis.github.io/kintone-plugin-packer/) works in any modern browsers
+- [The web page](https://kintone.github.io/plugin-packer/) works in any modern browsers
 - Validate your `manifest.json` with [JSON Schema](https://github.com/teppeis/kintone-plugin-manifest-validator)
 
 # How to install
 
 ```console
-$ npm install -g @teppeis/kintone-plugin-packer
+$ npm install -g @kintone/plugin-packer
 ```
 
 # Usage: CLI
@@ -56,7 +56,7 @@ $ npm run package
 # Usage: Node.js API
 
 ```js
-const packer = require('@teppeis/kintone-plugin-packer');
+const packer = require('@kintone/plugin-packer');
 const fs = require('fs');
 
 const buffer = createContentsZipBufferInYourSelf();
@@ -69,20 +69,15 @@ packer(buffer).then(output => {
 
 ## License
 
-MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
+MIT License
 
-[npm-image]: https://img.shields.io/npm/v/@teppeis/kintone-plugin-packer.svg
-[npm-url]: https://npmjs.org/package/@teppeis/kintone-plugin-packer
-[npm-downloads-image]: https://img.shields.io/npm/dm/@teppeis/kintone-plugin-packer.svg
-[travis-image]: https://img.shields.io/travis/teppeis/kintone-plugin-packer/master.svg
-[travis-url]: https://travis-ci.org/teppeis/kintone-plugin-packer
-[circleci-image]: https://circleci.com/gh/teppeis/kintone-plugin-packer.svg?style=shield
-[circleci-url]: https://circleci.com/gh/teppeis/kintone-plugin-packer
+[npm-image]: https://img.shields.io/npm/v/@kintone/plugin-packer.svg
+[npm-url]: https://npmjs.org/package/@kintone/plugin-packer
+[circleci-image]: https://circleci.com/gh/kintone/plugin-packer.svg?style=shield
+[circleci-url]: https://circleci.com/gh/kintone/plugin-packer
 [appveyor-image]: https://ci.appveyor.com/api/projects/status/5fv4fdrnt4wj7evy/branch/master?svg=true
 [appveyor-url]: https://ci.appveyor.com/project/teppeis/kintone-plugin-packer/branch/master
-[deps-image]: https://img.shields.io/david/teppeis/kintone-plugin-packer.svg
-[deps-url]: https://david-dm.org/teppeis/kintone-plugin-packer
+[deps-image]: https://img.shields.io/david/kintone/plugin-packer.svg
+[deps-url]: https://david-dm.org/kintone/plugin-packer
 [node-version]: https://img.shields.io/badge/Node.js%20support-v6,v8,v10-brightgreen.svg
-[coverage-image]: https://img.shields.io/coveralls/teppeis/kintone-plugin-packer/master.svg
-[coverage-url]: https://coveralls.io/github/teppeis/kintone-plugin-packer?branch=master
-[license]: https://img.shields.io/npm/l/@teppeis/kintone-plugin-packer.svg
+[license]: https://img.shields.io/npm/l/@kintone/plugin-packer.svg
