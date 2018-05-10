@@ -42,6 +42,6 @@
   "bugs": {
     "url": "https://github.com/kintone/plugin-manifest-validator/issues"
   },
-  "keywords": [],
+  "keywords": ["kintone"],
   "license": "MIT"
 }
