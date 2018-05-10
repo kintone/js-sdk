@@ -4,7 +4,7 @@ const path = require('path');
 const yazl = require('yazl');
 const yauzl = require('yauzl');
 const denodeify = require('denodeify');
-const validate = require('@teppeis/kintone-plugin-manifest-validator');
+const validate = require('@kintone/plugin-manifest-validator');
 const streamBuffers = require('stream-buffers');
 
 const genErrorMsg = require('./gen-error-msg');

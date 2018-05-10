@@ -9,7 +9,7 @@ const denodeify = require('denodeify');
 const writeFile = denodeify(fs.writeFile);
 const mkdirp = denodeify(require('mkdirp'));
 const debug = require('debug')('cli');
-const validate = require('@teppeis/kintone-plugin-manifest-validator');
+const validate = require('@kintone/plugin-manifest-validator');
 
 const packer = require('./');
 const console = require('./console');
