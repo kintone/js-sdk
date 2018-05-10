@@ -13,7 +13,7 @@ Validate `manifest.json` of kintone plugin. Used in [@kintone/plugin-packer](htt
 ## How to install
 
 ```console
-$ npm install @teppeis/kintone-plugin-packer
+$ npm install @kintone/plugin-manifest-validator
 ```
 
 ## Usage
