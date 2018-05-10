@@ -31,7 +31,7 @@ jobs:
   node-v6:
     <<: *defaults
     docker:
-      - image: circleci/node:6@sha256:921254e5cca448bc360ba619414de58254000d78b2b73def0bbed81caf5cd4b5
+      - image: circleci/node:6@sha256:a1cf7197e2ed99b0952a871ffae143f7b29ba5e417a4f9c36457c5b10cd3c1a8
   node-v8:
     <<: *defaults
     docker:
