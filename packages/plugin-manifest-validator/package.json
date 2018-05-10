@@ -1,5 +1,5 @@
 {
-  "name": "@teppeis/kintone-plugin-manifest-validator",
+  "name": "@kintone/plugin-manifest-validator",
   "version": "0.7.0",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
@@ -34,13 +34,13 @@
     "prettier": "1.12.1",
     "typescript": "^2.8.3"
   },
-  "homepage": "https://github.com/teppeis/kintone-plugin-manifest-validator#readme",
+  "homepage": "https://github.com/kintone/plugin-manifest-validator#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/teppeis/kintone-plugin-manifest-validator.git"
+    "url": "git+ssh://git@github.com/kintone/plugin-manifest-validator.git"
   },
   "bugs": {
-    "url": "https://github.com/teppeis/kintone-plugin-manifest-validator/issues"
+    "url": "https://github.com/kintone/plugin-manifest-validator/issues"
   },
   "keywords": [],
   "license": "MIT"
