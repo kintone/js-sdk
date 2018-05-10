@@ -50,7 +50,7 @@
     "webpack": "^4.7.0"
   },
   "dependencies": {
-    "@teppeis/kintone-plugin-packer": "^0.10.1",
+    "@kintone/plugin-packer": "^1.0.0",
     "chokidar": "^2.0.3",
     "lodash": "^4.17.10"
   }

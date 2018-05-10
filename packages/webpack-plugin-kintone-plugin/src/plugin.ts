@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const packFromManifest = require('@teppeis/kintone-plugin-packer/from-manifest');
+const packFromManifest = require('@kintone/plugin-packer/from-manifest');
 
 interface PackedPlugin {
   id: string;
@@ -25,7 +25,7 @@ interface Manifest {
   icon: string;
 }
 
-// Taken from https://github.com/teppeis/kintone-plugin-packer/blob/master/src/sourcelist.js
+// Taken from https://github.com/kintone/plugin-packer/blob/master/src/sourcelist.js
 function sourceList(manifest: Manifest): string[] {
   const sourceTypes = [
     ['desktop', 'js'],
