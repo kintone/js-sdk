@@ -21,7 +21,7 @@ $ npm install @kintone/plugin-manifest-validator
 ```js
 const validator = require('@kintone/plugin-manifest-validator');
 
-const manifestJson = require('path/to/your/manifest.json');
+const manifestJson = require('./path/to/your/manifest.json');
 const result = validator(manifestJson);
 console.log(result.valid); // true or false
 console.log(result.errors); // array of ajv error objects
@@ -40,10 +40,19 @@ console.log(result.errors); // array of ajv error objects
   schemaPath: '#/properties/version/type',
 }
 ```
+## `manifest-schema.json`
 
-## `manifest-json.d.ts`
+JSON schema for manifest.json is available.
 
 ```js
+const manifestJsonSchema = require('@kintone/plugin-manifest-validator/manifest-schema.json');
+```
+
+## `manifest-schema.d.ts`
+
+TypeScript type definition (d.ts) for manifest.json is available.
+
+```typescript
 import {KintonePluginManifestJson} from '@kintone/plugin-manifest-validator/manifest-schema';
 
 let manifest: KintonePluginManifestJson;
