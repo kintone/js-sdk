@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-manifest-validator",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=6"
@@ -42,6 +42,8 @@
   "bugs": {
     "url": "https://github.com/kintone/plugin-manifest-validator/issues"
   },
-  "keywords": ["kintone"],
+  "keywords": [
+    "kintone"
+  ],
   "license": "MIT"
 }
