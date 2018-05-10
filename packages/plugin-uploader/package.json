@@ -20,7 +20,7 @@
     "bin",
     "dist"
   ],
-  "keywords": [],
+  "keywords": ["kintone"],
   "author": "kintone",
   "license": "MIT",
   "repository": "kintone/plugin-uploader",
