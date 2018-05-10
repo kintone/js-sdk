@@ -40,7 +40,7 @@ jobs:
   node-v10:
     <<: *defaults
     docker:
-      - image: circleci/node:10
+      - image: circleci/node:10@sha256:11ec281fcfb7c92a0492691459f6971cd4a41af67fedb4778a6a05922028ad0b
 
 workflows:
   version: 2
