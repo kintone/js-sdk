@@ -28,7 +28,7 @@
   "bugs": "https://github.com/kintone/plugin-uploader/issues",
   "dependencies": {
     "meow": "^5.0.0",
-    "puppeteer": "^1.3.0"
+    "puppeteer": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^9.6.12",
