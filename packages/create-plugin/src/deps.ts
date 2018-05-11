@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-import { spawnSync } from 'child_process';
-import { Lang } from './lang';
-import { printLog } from './logger';
-import { getMessage } from './messages';
+import { spawnSync } from "child_process";
+import { Lang } from "./lang";
+import { printLog } from "./logger";
+import { getMessage } from "./messages";
 
 /**
  * Install specified dependencies
@@ -20,29 +20,29 @@ export function installDependencies(
 ): void {
   const { dependencies, devDependencies } = deps;
   if (dependencies.length || devDependencies.length) {
-    printLog(getMessage(lang, 'installDependencies'));
+    printLog(getMessage(lang, "installDependencies"));
   }
 
   const spawnOption = {
     cwd: outputDirectory,
-    stdio: 'inherit',
+    stdio: "inherit",
     shell: true
   };
 
   if (dependencies.length) {
-    const result = spawnSync('npm', ['install', ...dependencies], spawnOption);
+    const result = spawnSync("npm", ["install", ...dependencies], spawnOption);
     if (result.status !== 0) {
-      throw new Error('Installing dependencies were failed');
+      throw new Error("Installing dependencies were failed");
     }
   }
   if (devDependencies.length) {
     const result = spawnSync(
-      'npm',
-      ['install', '--save-dev', ...devDependencies],
+      "npm",
+      ["install", "--save-dev", ...devDependencies],
       spawnOption
     );
     if (result.status !== 0) {
-      throw new Error('Installing devDependencies were failed');
+      throw new Error("Installing devDependencies were failed");
     }
   }
 }
