@@ -7,17 +7,6 @@ import { Manifest } from "./manifest";
 
 export type TemplateType = "minimum";
 
-const deps = {
-  minimum: {
-    dependencies: [],
-    devDependencies: [
-      "@kintone/plugin-packer",
-      "eslint",
-      "eslint-config-kintone"
-    ]
-  }
-};
-
 /**
  * Return a template type corresponding to the manifest
  * @param manifest
@@ -25,16 +14,6 @@ const deps = {
 export function getTemplateType(manifest: Manifest): TemplateType {
   // We don't have any other template types
   return "minimum";
-}
-
-/**
- * Return the dependencies and devDependencies correponding to the template type
- * @param templateType
- */
-export function getDepsByTemplateType(
-  templateType: TemplateType
-): { dependencies: string[]; devDependencies: string[] } {
-  return deps[templateType];
 }
 
 /**

@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
-import * as assert from 'assert';
-import { buildManifest } from '../src/manifest';
+import * as assert from "assert";
+import { buildManifest } from "../src/manifest";
 
-import createBaseManifest from './baseManifest';
+import createBaseManifest from "./baseManifest";
 
-describe('manifest', () => {
-  describe('buildManifest', () => {
-    it('should include basic settings', () => {
+describe("manifest", () => {
+  describe("buildManifest", () => {
+    it("should include basic settings", () => {
       // @ts-ignore We can fix this using conditional types
       const manifest = buildManifest({
         ...createBaseManifest(),
@@ -15,10 +15,10 @@ describe('manifest', () => {
         cn: false
       });
       assert.equal(manifest.manifest_version, 1);
-      assert.equal(manifest.name.en, 'sample');
+      assert.equal(manifest.name.en, "sample");
       assert.equal(manifest.mobile, undefined);
     });
-    it('should include mobile.js if the answers enable mobile', () => {
+    it("should include mobile.js if the answers enable mobile", () => {
       // @ts-ignore We can fix this using conditional types
       const manifest = buildManifest({
         ...createBaseManifest(),
@@ -28,7 +28,7 @@ describe('manifest', () => {
       });
       assert(manifest.mobile && Array.isArray(manifest.mobile.js));
     });
-    it('should include config if the answers enable config', () => {
+    it("should include config if the answers enable config", () => {
       // @ts-ignore We can fix this using conditional types
       const manifest = buildManifest({
         ...createBaseManifest(),
@@ -37,10 +37,10 @@ describe('manifest', () => {
         config: true
       });
       assert.deepStrictEqual(manifest.config && Object.keys(manifest.config), [
-        'html',
-        'js',
-        'css',
-        'required_params'
+        "html",
+        "js",
+        "css",
+        "required_params"
       ]);
     });
   });
