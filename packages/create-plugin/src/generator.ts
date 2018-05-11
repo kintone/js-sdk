@@ -10,7 +10,6 @@ import { Manifest } from "./manifest";
 import { generatePrivateKey } from "./privateKey";
 import {
   filterTemplateFile,
-  getDepsByTemplateType,
   getTemplateType,
   processTemplateFile,
   TemplateType
@@ -29,11 +28,7 @@ export function generatePlugin(
   // copy and build a project into the output diretory
   buildProject(outputDirectory, manifest);
   // npm install
-  installDependencies(
-    getDepsByTemplateType(getTemplateType(manifest)),
-    outputDirectory,
-    lang
-  );
+  installDependencies(outputDirectory, lang);
 }
 
 /**
