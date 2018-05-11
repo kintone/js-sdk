@@ -31,11 +31,7 @@ async function readyForUpload(
   return page;
 }
 
-async function upload(
-  browser: Browser,
-  page: Page,
-  pluginPath: string
-): Promise<void> {
+async function upload(page: Page, pluginPath: string): Promise<void> {
   console.log(`Try to upload ${pluginPath}`);
   await page.click('#page-admin-system-plugin-index-addplugin');
 
@@ -68,7 +64,7 @@ export async function run(
   let page: Page;
   try {
     page = await readyForUpload(browser, domain, userName, password);
-    await upload(browser, page, pluginPath);
+    await upload(page, pluginPath);
     if (options.watch) {
       let uploading = false;
       fs.watch(pluginPath, async () => {
@@ -77,14 +73,14 @@ export async function run(
         }
         try {
           uploading = true;
-          await upload(browser, page, pluginPath);
+          await upload(page, pluginPath);
         } catch (e) {
           console.log(e);
           console.log('An error occured, retry with a new browser');
           await browser.close();
           browser = await launchBrowser(options.proxyServer);
           page = await readyForUpload(browser, domain, userName, password);
-          await upload(browser, page, pluginPath);
+          await upload(page, pluginPath);
         } finally {
           uploading = false;
         }
