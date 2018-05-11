@@ -1,15 +1,15 @@
-'use strict';
+"use strict";
 
-import { Manifest } from '../src/manifest';
+import { Manifest } from "../src/manifest";
 
 export default function createBaseManifest(): Manifest {
   return {
     manifest_version: 1,
     version: 1,
-    type: 'APP',
+    type: "APP",
     name: {
-      en: 'sample'
+      en: "sample"
     },
-    icon: 'image/icon.png'
+    icon: "image/icon.png"
   };
 }
