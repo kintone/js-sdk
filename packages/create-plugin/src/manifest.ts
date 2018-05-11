@@ -1,25 +1,25 @@
-'use strict';
+"use strict";
 
-import { Answers } from 'inquirer';
-import { UserAnswers } from './qa';
+import { Answers } from "inquirer";
+import { UserAnswers } from "./qa";
 
-const jQueryURL = 'https://js.cybozu.com/jquery/3.3.1/jquery.min.js';
+const jQueryURL = "https://js.cybozu.com/jquery/3.3.1/jquery.min.js";
 
 const baseManifest = {
   manifest_version: 1,
   version: 1,
-  type: 'APP',
+  type: "APP",
   desktop: {
-    js: [jQueryURL, 'js/desktop.js'],
-    css: ['css/51-modern-default.css', 'css/desktop.css']
+    js: [jQueryURL, "js/desktop.js"],
+    css: ["css/51-modern-default.css", "css/desktop.css"]
   },
-  icon: 'image/icon.png'
+  icon: "image/icon.png"
 };
 
 export interface Manifest {
   manifest_version: number;
   version: number;
-  type: 'APP';
+  type: "APP";
   name: {
     ja?: string;
     en: string;
@@ -53,23 +53,23 @@ export interface Manifest {
 
 function answer2Manifest(answers: Answers): Manifest {
   const filteredAnswer = Object.keys(answers).reduce((acc, key) => {
-    if (typeof answers[key] === 'boolean') {
+    if (typeof answers[key] === "boolean") {
       return acc;
     }
     if (
-      typeof answers[key] === 'string' &&
-      (answers[key] === '' || answers[key] == null)
+      typeof answers[key] === "string" &&
+      (answers[key] === "" || answers[key] == null)
     ) {
       return acc;
     }
-    if (typeof answers[key] === 'object' && !Array.isArray(answers[key])) {
+    if (typeof answers[key] === "object" && !Array.isArray(answers[key])) {
       return { ...acc, [key]: answer2Manifest(answers[key]) };
     }
     return { ...acc, ...{ [key]: answers[key] } };
   }, {}) as { [key: string]: string };
   return Object.keys(filteredAnswer).reduce((acc, key) => {
     if (
-      typeof filteredAnswer[key] === 'object' &&
+      typeof filteredAnswer[key] === "object" &&
       !Array.isArray(filteredAnswer[key]) &&
       Object.keys(filteredAnswer[key]).length === 0
     ) {
@@ -90,7 +90,7 @@ export function buildManifest(answers: UserAnswers): Manifest {
       ...manifest,
       ...{
         mobile: {
-          js: [jQueryURL, 'js/mobile.js']
+          js: [jQueryURL, "js/mobile.js"]
         }
       }
     };
@@ -100,9 +100,9 @@ export function buildManifest(answers: UserAnswers): Manifest {
       ...manifest,
       ...{
         config: {
-          html: 'html/config.html',
-          js: [jQueryURL, 'js/config.js'],
-          css: ['css/51-modern-default.css', 'css/config.css'],
+          html: "html/config.html",
+          js: [jQueryURL, "js/config.js"],
+          css: ["css/51-modern-default.css", "css/config.css"],
           required_params: []
         }
       }

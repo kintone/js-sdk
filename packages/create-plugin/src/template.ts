@@ -1,19 +1,19 @@
-'use strict';
+"use strict";
 
-import * as fs from 'fs';
-import * as _ from 'lodash';
-import * as path from 'path';
-import { Manifest } from './manifest';
+import * as fs from "fs";
+import * as _ from "lodash";
+import * as path from "path";
+import { Manifest } from "./manifest";
 
-export type TemplateType = 'minimum';
+export type TemplateType = "minimum";
 
 const deps = {
   minimum: {
     dependencies: [],
     devDependencies: [
-      '@kintone/plugin-packer',
-      'eslint',
-      'eslint-config-kintone'
+      "@kintone/plugin-packer",
+      "eslint",
+      "eslint-config-kintone"
     ]
   }
 };
@@ -24,7 +24,7 @@ const deps = {
  */
 export function getTemplateType(manifest: Manifest): TemplateType {
   // We don't have any other template types
-  return 'minimum';
+  return "minimum";
 }
 
 /**
@@ -70,10 +70,10 @@ export function processTemplateFile(
     .replace(/\//g, path.sep)
     .replace(srcDir, destDir);
 
-  if (path.basename(filePath).startsWith('_')) {
-    const src = fs.readFileSync(filePath, 'utf-8');
+  if (path.basename(filePath).startsWith("_")) {
+    const src = fs.readFileSync(filePath, "utf-8");
     const destPath = destFilePath.replace(
-      new RegExp(path.basename(filePath) + '$'),
+      new RegExp(path.basename(filePath) + "$"),
       path.basename(filePath).substring(1)
     );
     fs.writeFileSync(
@@ -81,7 +81,7 @@ export function processTemplateFile(
       _.template(src)(
         Object.assign({}, manifest, {
           // It's a function to remove whitespaces for pacakge.json's name field
-          normalizePackageName: (name: string) => name.replace(/\s/g, '-')
+          normalizePackageName: (name: string) => name.replace(/\s/g, "-")
         })
       )
     );
