@@ -1,5 +1,5 @@
-import * as chokidar from 'chokidar';
-import * as os from 'os';
+import * as chokidar from "chokidar";
+import * as os from "os";
 
 /**
  * Watch changes of the files, which returns a function to unwatch
@@ -14,7 +14,7 @@ export function watchFiles(
   // which generate an invalid plugin zip.
   // in order to fix this, we use awaitWriteFinish option only on Windows.
   const watchOptions =
-    os.platform() === 'win32'
+    os.platform() === "win32"
       ? {
           awaitWriteFinish: {
             stabilityThreshold: 1000,
@@ -23,7 +23,7 @@ export function watchFiles(
         }
       : {};
   const watcher = chokidar.watch(files, watchOptions);
-  watcher.on('change', file => {
+  watcher.on("change", file => {
     cb(file);
   });
   return () => files.map(f => watcher.unwatch(f));

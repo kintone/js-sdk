@@ -1,7 +1,7 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
-const packFromManifest = require('@kintone/plugin-packer/from-manifest');
+const packFromManifest = require("@kintone/plugin-packer/from-manifest");
 
 interface PackedPlugin {
   id: string;
@@ -28,11 +28,11 @@ interface Manifest {
 // Taken from https://github.com/kintone/plugin-packer/blob/master/src/sourcelist.js
 function sourceList(manifest: Manifest): string[] {
   const sourceTypes = [
-    ['desktop', 'js'],
-    ['desktop', 'css'],
-    ['mobile', 'js'],
-    ['config', 'js'],
-    ['config', 'css']
+    ["desktop", "js"],
+    ["desktop", "css"],
+    ["mobile", "js"],
+    ["config", "js"],
+    ["config", "css"]
   ];
   const list = sourceTypes
     // @ts-ignore
@@ -43,7 +43,7 @@ function sourceList(manifest: Manifest): string[] {
   if (manifest.config && manifest.config.html) {
     list.push(manifest.config.html);
   }
-  list.push('manifest.json', manifest.icon);
+  list.push("manifest.json", manifest.icon);
   return list;
 }
 
@@ -52,7 +52,7 @@ function sourceList(manifest: Manifest): string[] {
  * @param manifestJSONPath
  */
 export function getAssetPaths(manifestJSONPath: string): string[] {
-  const manifest = JSON.parse(fs.readFileSync(manifestJSONPath, 'utf-8'));
+  const manifest = JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8"));
   return sourceList(manifest)
     .map((file: string) => path.resolve(path.dirname(manifestJSONPath), file))
     .concat(manifestJSONPath);

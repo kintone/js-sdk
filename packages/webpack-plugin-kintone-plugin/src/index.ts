@@ -1,11 +1,11 @@
-import * as fs from 'fs';
-import { debounce } from 'lodash';
-import * as path from 'path';
-import { Compiler, Plugin } from 'webpack';
+import * as fs from "fs";
+import { debounce } from "lodash";
+import * as path from "path";
+import { Compiler, Plugin } from "webpack";
 
-import { generatePlugin, getAssetPaths } from './plugin';
+import { generatePlugin, getAssetPaths } from "./plugin";
 
-import { watchFiles } from './watch';
+import { watchFiles } from "./watch";
 
 interface Option {
   manifestJSONPath: string;
@@ -25,27 +25,27 @@ class KintonePlugin implements Plugin {
   private name: string;
   private privateKey: string | null;
   constructor(options = {}) {
-    this.name = 'KintonePlugin';
+    this.name = "KintonePlugin";
     this.privateKey = null;
     this.options = Object.assign(
       {
-        manifestJSONPath: './plugin/manifest.json',
-        privateKeyPath: './private.ppk',
-        pluginZipPath: './dist/plugin.zip'
+        manifestJSONPath: "./plugin/manifest.json",
+        privateKeyPath: "./private.ppk",
+        pluginZipPath: "./dist/plugin.zip"
       },
       options
     );
   }
   public apply(compiler: Compiler) {
     const { manifestJSONPath, privateKeyPath, pluginZipPath } = this.options;
-    compiler.hooks.afterPlugins.tap('KintonePlugin', () => {
+    compiler.hooks.afterPlugins.tap("KintonePlugin", () => {
       if (!fs.existsSync(manifestJSONPath)) {
         throw new Error(`manifestJSONPath cannot found: ${manifestJSONPath}`);
       }
       if (!fs.existsSync(privateKeyPath)) {
         throw new Error(`privateKeyPath cannot found: ${privateKeyPath}`);
       }
-      this.privateKey = fs.readFileSync(privateKeyPath, 'utf-8');
+      this.privateKey = fs.readFileSync(privateKeyPath, "utf-8");
       if (compiler.options.watch) {
         this.watchAssets();
       } else {
@@ -65,7 +65,7 @@ class KintonePlugin implements Plugin {
       this.generatePlugin().then(() => {
         // If manifest.json has been updated we should reevaluate the target files and rewatch them
         if (/manifest\.json$/.test(file)) {
-          if (typeof unwatch === 'function') {
+          if (typeof unwatch === "function") {
             unwatch();
           }
           unwatch = watchFiles(
@@ -87,19 +87,19 @@ class KintonePlugin implements Plugin {
     const { manifestJSONPath, pluginZipPath } = this.options;
     return generatePlugin(manifestJSONPath, this.privateKey).then(result => {
       const zipPath =
-        typeof pluginZipPath === 'function'
+        typeof pluginZipPath === "function"
           ? // You can customize the zip file name using the plugin id and manifest
             pluginZipPath(
               result.id,
-              JSON.parse(fs.readFileSync(manifestJSONPath, 'utf-8'))
+              JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8"))
             )
           : pluginZipPath;
       fs.writeFileSync(zipPath, result.buffer);
-      console.log('----------------------');
-      console.log('Success to create a plugin zip!');
+      console.log("----------------------");
+      console.log("Success to create a plugin zip!");
       console.log(`Plugin ID: ${result.id}`);
       console.log(`Path: ${zipPath}`);
-      console.log('----------------------');
+      console.log("----------------------");
     });
   }
 }
