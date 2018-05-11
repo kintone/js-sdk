@@ -1,5 +1,5 @@
-import fs from 'fs';
-import puppeteer, { Browser, Page } from 'puppeteer';
+import fs from "fs";
+import puppeteer, { Browser, Page } from "puppeteer";
 
 async function launchBrowser(proxy?: string): Promise<Browser> {
   const args = proxy ? [`--proxy-server=${proxy}`] : [];
@@ -18,11 +18,11 @@ async function readyForUpload(
   console.log(`Open ${loginUrl}`);
   await page.goto(loginUrl);
 
-  await page.waitFor('.form-username-slash');
-  console.log('Try to logged-in...');
-  await page.type('.form-username-slash > input.form-text', userName);
-  await page.type('.form-password-slash > input.form-text', password);
-  await page.click('.login-button');
+  await page.waitFor(".form-username-slash");
+  console.log("Try to logged-in...");
+  await page.type(".form-username-slash > input.form-text", userName);
+  await page.type(".form-password-slash > input.form-text", password);
+  await page.click(".login-button");
   await page.waitForNavigation();
 
   const pluginUrl = `${kintoneUrl}k/admin/system/plugin/`;
@@ -33,7 +33,7 @@ async function readyForUpload(
 
 async function upload(page: Page, pluginPath: string): Promise<void> {
   console.log(`Try to upload ${pluginPath}`);
-  await page.click('#page-admin-system-plugin-index-addplugin');
+  await page.click("#page-admin-system-plugin-index-addplugin");
 
   const file = await page.$('.plupload > input[type="file"]');
   if (file == null) {
@@ -41,7 +41,7 @@ async function upload(page: Page, pluginPath: string): Promise<void> {
   }
   await file.uploadFile(pluginPath);
   await page.click('button[name="ok"]');
-  await page.waitForSelector('.ocean-ui-dialog', {
+  await page.waitForSelector(".ocean-ui-dialog", {
     hidden: true,
     timeout: 5000
   });
@@ -76,7 +76,7 @@ export async function run(
           await upload(page, pluginPath);
         } catch (e) {
           console.log(e);
-          console.log('An error occured, retry with a new browser');
+          console.log("An error occured, retry with a new browser");
           await browser.close();
           browser = await launchBrowser(options.proxyServer);
           page = await readyForUpload(browser, domain, userName, password);
@@ -89,7 +89,7 @@ export async function run(
       await browser.close();
     }
   } catch (e) {
-    console.error('An error occured', e);
+    console.error("An error occured", e);
     await browser.close();
   }
 }

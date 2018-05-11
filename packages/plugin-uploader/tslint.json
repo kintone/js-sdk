@@ -3,7 +3,6 @@
   "rules": {
     "prettier": true,
     "interface-name": false,
-    "quotemark": [true, "single", "avoid-escape"],
     "no-var-requires": false,
     "no-console": false,
     "object-literal-sort-keys": false,
