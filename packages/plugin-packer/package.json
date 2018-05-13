@@ -40,7 +40,7 @@
     "yazl": "^2.4.3"
   },
   "devDependencies": {
-    "adm-zip": "^0.4.9",
+    "adm-zip": "^0.4.11",
     "array-flatten": "^2.1.1",
     "cssnano-cli": "^1.0.5",
     "eslint": "^4.19.1",
