@@ -9,25 +9,25 @@ A webpack plugin to create a plugin zip of kintone.
 ## Usage
 
 ```js
-'use strict';
+"use strict";
 
-const path = require('path');
-const KintonePlugin = require('@kintone/webpack-plugin-kintone-plugin');
+const path = require("path");
+const KintonePlugin = require("@kintone/webpack-plugin-kintone-plugin");
 
 module.exports = {
   entry: {
-    desktop: './src/desktop.js',
-    mobile: './src/mobile.js'
+    desktop: "./src/desktop.js",
+    mobile: "./src/mobile.js"
   },
   output: {
-    path: path.resolve(__dirname, 'plugin', 'js'),
-    filename: '[name].js'
+    path: path.resolve(__dirname, "plugin", "js"),
+    filename: "[name].js"
   },
   plugins: [
     new KintonePlugin({
-      manifestJSONPath: './plugin/manifest.json',
-      privateKeyPath: './private.ppk',
-      pluginZipPath: './dist/plugin.zip'
+      manifestJSONPath: "./plugin/manifest.json",
+      privateKeyPath: "./private.ppk",
+      pluginZipPath: "./dist/plugin.zip"
     })
   ]
 };
@@ -61,25 +61,25 @@ pluginZipPath: './dist/plugin.zip'
 If you want to customize these values, you can update the values like this.
 
 ```js
-'use strict';
+"use strict";
 
-const path = require('path');
-const KintonePlugin = require('@kintone/webpack-plugin-kintone-plugin');
+const path = require("path");
+const KintonePlugin = require("@kintone/webpack-plugin-kintone-plugin");
 
 module.exports = {
   entry: {
-    desktop: './src/desktop.js',
-    mobile: './src/mobile.js'
+    desktop: "./src/desktop.js",
+    mobile: "./src/mobile.js"
   },
   output: {
-    path: path.resolve(__dirname, 'plugin', 'js'),
-    filename: '[name].js'
+    path: path.resolve(__dirname, "plugin", "js"),
+    filename: "[name].js"
   },
   plugins: [
     new KintonePlugin({
-      manifestJSONPath: './plugin/manifest.json',
-      privateKeyPath: './private.ppk',
-      pluginZipPath: './dist/plugin.zip'
+      manifestJSONPath: "./plugin/manifest.json",
+      privateKeyPath: "./private.ppk",
+      pluginZipPath: "./dist/plugin.zip"
     })
   ]
 };
@@ -90,8 +90,8 @@ In addition to that, you can specify the plugin zip name based on the plugin id 
 ```js
 plugins: [
   new KintonePlugin({
-    manifestJSONPath: './plugin/manifest.json',
-    privateKeyPath: './private.ppk',
+    manifestJSONPath: "./plugin/manifest.json",
+    privateKeyPath: "./private.ppk",
     pluginZipPath: (id, manifest) => `${id}.${manifest.version}.plugin.zip`
   })
 ];
