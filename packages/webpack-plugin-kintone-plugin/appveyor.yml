@@ -25,3 +25,8 @@ cache:
 
 # Just incremental build number
 version: "{build}"
+
+# https://github.com/kintone/webpack-plugin-kintone-plugin/pull/82
+branches:
+  only:
+    - master
