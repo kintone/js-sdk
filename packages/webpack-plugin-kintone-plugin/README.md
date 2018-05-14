@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin)
 [![CircleCI](https://circleci.com/gh/kintone/webpack-plugin-kintone-plugin.svg?style=shield)](https://circleci.com/gh/kintone/webpack-plugin-kintone-plugin)
-[![Build status](https://ci.appveyor.com/api/projects/status/0w8g1l84hithtlap?svg=true)](https://ci.appveyor.com/project/koba04/webpack-plugin-kintone-plugin)
+[![Build status](https://ci.appveyor.com/api/projects/status/0w8g1l84hithtlap/branch/master?svg=true)](https://ci.appveyor.com/project/koba04/webpack-plugin-kintone-plugin/branch/master)
 
 A webpack plugin to create a plugin zip of kintone.
 
