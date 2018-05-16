@@ -1,5 +1,6 @@
 {
-  "extends": [
-    "@teppeis"
-  ]
+  "extends": ["@teppeis", ":widenPeerDependencies"],
+  "circleci": {
+    "schedule": ["before 9am on Monday"]
+  }
 }
