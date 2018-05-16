@@ -1,7 +1,6 @@
 # Test against the latest version of this Node.js version
 environment:
   matrix:
-    - nodejs_version: "6"
     - nodejs_version: "8"
     - nodejs_version: "10"
 
@@ -29,3 +28,8 @@ cache:
 
 # Just incremental build number
 version: "{build}"
+
+# https://github.com/kintone/webpack-plugin-kintone-plugin/pull/82
+branches:
+  only:
+    - master
