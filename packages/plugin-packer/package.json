@@ -35,7 +35,7 @@
     "meow": "^5.0.0",
     "mkdirp": "^0.5.1",
     "node-rsa": "~1.0.0",
-    "stream-buffers": "^3.0.1",
+    "stream-buffers": "^3.0.2",
     "yauzl": "^2.9.1",
     "yazl": "^2.4.3"
   },
