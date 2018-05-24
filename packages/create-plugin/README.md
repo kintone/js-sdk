@@ -124,9 +124,9 @@ npm run lint
   npm start
 
 kintoneプラグイン開発をはじめましょう！
-開発に関する情報はCybozu Developer Network:
+開発に関する情報はcybozu developer network:
 
-  https://developer.cybozu.io/hc/ja
+  https://developer.cybozu.io
 ```
 
 If you set `LANG` environment variable like `ja_XX.XXX`, the lang option will be `ja` automatically.

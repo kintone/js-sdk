@@ -120,9 +120,9 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
   },
   developerSite: {
     en: "",
-    ja: `開発に関する情報はCybozu Developer Network:
+    ja: `開発に関する情報はcybozu developer network:
 
-  https://developer.cybozu.io/hc/ja
+  https://developer.cybozu.io
 `
   },
   Error_alreadyExists: {
