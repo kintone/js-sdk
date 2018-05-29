@@ -2,6 +2,7 @@
 
 'use strict';
 
+const osLocale = require('os-locale');
 const meow = require('meow');
 const run = require('../dist/src/index');
 const { getDefaultLang } = require('../dist/src/lang');
@@ -17,7 +18,7 @@ const cli = meow(
     flags: {
       lang: {
         type: 'string',
-        default: getDefaultLang(process.env.LANG)
+        default: getDefaultLang(osLocale.sync())
       }
     }
   }
