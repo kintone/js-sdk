@@ -24,7 +24,7 @@ describe("generator", () => {
     const manifest = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "manifest.json"), "utf8")
     );
-    generatePlugin(outputDir, manifest, "ja");
+    generatePlugin(outputDir, manifest, "ja", true);
 
     // test that `npm run build` doesn't fail
     const buildResult = spawnSync("npm", ["run", "build"], {

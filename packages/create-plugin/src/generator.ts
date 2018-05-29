@@ -23,10 +23,11 @@ import {
 export function generatePlugin(
   outputDirectory: string,
   manifest: Manifest,
-  lang: Lang
+  lang: Lang,
+  enablePluginUploader: boolean
 ): void {
   // copy and build a project into the output diretory
-  buildProject(outputDirectory, manifest);
+  buildProject(outputDirectory, manifest, enablePluginUploader);
   // npm install
   installDependencies(outputDirectory, lang);
 }
@@ -36,7 +37,11 @@ export function generatePlugin(
  * @param outputDirectory
  * @param manifest
  */
-function buildProject(outputDirectory: string, manifest: Manifest): void {
+function buildProject(
+  outputDirectory: string,
+  manifest: Manifest,
+  enablePluginUploader: boolean
+): void {
   const templateType = getTemplateType(manifest);
   fs.mkdirSync(outputDirectory);
   // This is necessary for unit testing
@@ -51,7 +56,13 @@ function buildProject(outputDirectory: string, manifest: Manifest): void {
     })
     .filter(filterTemplateFile.bind(null, manifest))
     .forEach((file: string) =>
-      processTemplateFile(file, templatePath, outputDirectory, manifest)
+      processTemplateFile(
+        file,
+        templatePath,
+        outputDirectory,
+        manifest,
+        enablePluginUploader
+      )
     );
   fs.writeFileSync(
     path.resolve(outputDirectory, "private.ppk"),

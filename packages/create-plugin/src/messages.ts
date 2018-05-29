@@ -82,6 +82,10 @@ const messages = {
     en: "Does your plugin need a config page?",
     ja: "設定ページを作成しますか？"
   },
+  Q_enablePluginUploader: {
+    en: "Do you use @kintone/plugin-uploader?",
+    ja: "@kintone/plugin-uploaderを使いますか？"
+  },
   installDependencies: {
     en: "Installing dependencies...",
     ja: "依存ライブラリをインストールします"
@@ -113,6 +117,10 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
   nextAction: {
     en: "Try the following commands",
     ja: "まずは次のコマンドを実行してください"
+  },
+  howToUsePluginUploader: {
+    en: "And then ,please input your information for kintone account",
+    ja: "その後、あなたのkintone環境の情報を入力してください"
   },
   lastMessage: {
     en: "Enjoy Hacking kintone plugin!",
