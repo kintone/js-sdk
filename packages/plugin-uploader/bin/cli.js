@@ -24,6 +24,7 @@ const cli = meow(
     --password User's password
     --proxy Proxy server
     --watch Watch the changes of plugin zip and re-run
+    --waiting-dialog-ms A ms for waiting show a input dialog
 
     You can set the values through environment variables
     domain: KINTONE_DOMAIN
@@ -52,13 +53,17 @@ const cli = meow(
       watch: {
         type: "boolean",
         default: false
+      },
+      waitingDialogMs: {
+        type: "number",
+        default: 0
       }
     }
   }
 );
 
 const pluginPath = cli.input[0];
-const { username, password, domain, proxy, watch } = cli.flags;
+const { username, password, domain, proxy, watch, waitingDialogMs } = cli.flags;
 const options = proxy ? { watch, proxyServer: proxy } : { watch };
 
 if (!pluginPath) {
@@ -67,7 +72,10 @@ if (!pluginPath) {
   process.exit(1);
 }
 
-inquireParams({ username, password, domain }).then(
-  ({ username, password, domain }) =>
+const wait = ms => new Promise(r => setTimeout(r, ms));
+
+wait(waitingDialogMs)
+  .then(() => inquireParams({ username, password, domain }))
+  .then(({ username, password, domain }) =>
     run(domain, username, password, pluginPath, options)
-);
+  );
