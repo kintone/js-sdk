@@ -10,6 +10,7 @@ export type UserAnswers = Manifest & {
   cn: boolean;
   mobile?: boolean;
   config?: boolean;
+  pluginUploader: boolean;
 };
 
 const NAME_MAX_LENGTH = 64;
@@ -122,6 +123,12 @@ export function buildQuestions(outputDir: string, lang: Lang): Question[] {
       name: "config",
       default: false,
       message: m("Q_ConfigPage")
+    },
+    {
+      type: "confirm",
+      name: "pluginUploader",
+      default: true,
+      message: m("Q_enablePluginUploader")
     }
   ];
 }
