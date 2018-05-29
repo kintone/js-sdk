@@ -76,8 +76,9 @@ npm start
 
 ## Language
 
-The default language of `@kintone/create-plugin` is English.
-If you want to use messages in Japanese, you can use `--lang ja` option.
+`@kintone/create-plugin` detects your language with `os-locale`. (default: English)
+If you want to use other languages, you can use `--lang` option.
+Currently, `--lang` option accepts `ja` or `en`.
 
 ```
 npx @kintone/create-plugin hello-kintone-plugin --lang ja
@@ -128,8 +129,6 @@ kintoneプラグイン開発をはじめましょう！
 
   https://developer.cybozu.io
 ```
-
-If you set `LANG` environment variable like `ja_XX.XXX`, the lang option will be `ja` automatically.
 
 ## LICENSE
 
