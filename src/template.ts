@@ -42,23 +42,25 @@ export function processTemplateFile(
   filePath: string,
   srcDir: string,
   destDir: string,
-  manifest: Manifest
+  manifest: Manifest,
+  enablePluginUploader: boolean
 ): void {
   const destFilePath = filePath
     // For Windows
     .replace(/\//g, path.sep)
     .replace(srcDir, destDir);
 
-  if (path.basename(filePath).startsWith("_")) {
+  if (path.basename(filePath).endsWith(".tmpl")) {
     const src = fs.readFileSync(filePath, "utf-8");
     const destPath = destFilePath.replace(
       new RegExp(path.basename(filePath) + "$"),
-      path.basename(filePath).substring(1)
+      path.basename(filePath).replace(/\.tmpl$/, "")
     );
     fs.writeFileSync(
       destPath,
       _.template(src)(
         Object.assign({}, manifest, {
+          enablePluginUploader,
           // It's a function to remove whitespaces for pacakge.json's name field
           normalizePackageName: (name: string) => name.replace(/\s/g, "-")
         })

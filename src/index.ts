@@ -44,10 +44,10 @@ function run(outputDir: string, lang: Lang) {
     .prompt(buildQuestions(outputDir, lang))
     .then((answers: UserAnswers) => {
       const manifest = buildManifest(answers);
-      generatePlugin(outputDir, manifest, lang);
-      return manifest;
+      generatePlugin(outputDir, manifest, lang, answers.pluginUploader);
+      return [manifest, answers.pluginUploader];
     })
-    .then((manifest: Manifest) => {
+    .then(([manifest, enablePluginUploader]: [Manifest, boolean]) => {
       printLog(`
 
 Success! Created ${manifest.name.en} at ${outputDir}
@@ -65,6 +65,7 @@ ${chalk.cyan("npm run lint")}
   ${m("npmLint")}
 
 ${m("nextAction")}
+${enablePluginUploader ? m("howToUsePluginUploader") : ""}
 
   cd ${outputDir}
   npm start
