@@ -4,7 +4,7 @@
   "scripts": {
     <% if (enablePluginUploader) { %>
     "start": "npm-run-all -p develop upload",
-    "upload": "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 2000",
+    "upload": "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 3000",
     <% } else { %>
     "start": "npm run develop",
     <% } %>
