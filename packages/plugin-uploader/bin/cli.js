@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
-const meow = require('meow');
-const { run } = require('../dist/index');
-const { inquireParams } = require('../dist/params');
+const meow = require("meow");
+const { run } = require("../dist/index");
+const { inquireParams } = require("../dist/params");
 
 const {
   HTTP_PROXY,
@@ -34,23 +34,23 @@ const cli = meow(
   {
     flags: {
       domain: {
-        type: 'string',
+        type: "string",
         default: KINTONE_DOMAIN
       },
       username: {
-        type: 'string',
+        type: "string",
         default: KINTONE_USERNAME
       },
       password: {
-        type: 'string',
+        type: "string",
         default: KINTONE_PASSWORD
       },
       proxy: {
-        type: 'string',
+        type: "string",
         default: HTTPS_PROXY || HTTP_PROXY
       },
       watch: {
-        type: 'boolean',
+        type: "boolean",
         default: false
       }
     }
@@ -62,11 +62,12 @@ const { username, password, domain, proxy, watch } = cli.flags;
 const options = proxy ? { watch, proxyServer: proxy } : { watch };
 
 if (!pluginPath) {
-  console.error('Please specify the path of kintone plugin zip');
+  console.error("Please specify the path of kintone plugin zip");
   cli.showHelp();
   process.exit(1);
 }
 
-inquireParams({username, password, domain}).then(({username, password, domain}) =>
-  run(domain, username, password, pluginPath, options)
+inquireParams({ username, password, domain }).then(
+  ({ username, password, domain }) =>
+    run(domain, username, password, pluginPath, options)
 );
