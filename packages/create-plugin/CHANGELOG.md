@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/kintone/create-plugin/compare/v1.0.3...v1.1.0) (2018-05-29)
+
+
+### Features
+
+* detect a language with os-locale ([#107](https://github.com/kintone/create-plugin/issues/107)) ([89d3a56](https://github.com/kintone/create-plugin/commit/89d3a56))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/kintone/create-plugin/compare/v1.0.2...v1.0.3) (2018-05-24)
 
