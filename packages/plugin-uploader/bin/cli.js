@@ -4,6 +4,7 @@
 
 const meow = require('meow');
 const { run } = require('../dist/index');
+const { inquireParams } = require('../dist/params');
 
 const {
   HTTP_PROXY,
@@ -60,27 +61,12 @@ const pluginPath = cli.input[0];
 const { username, password, domain, proxy, watch } = cli.flags;
 const options = proxy ? { watch, proxyServer: proxy } : { watch };
 
-let error = false;
-
-if (!username) {
-  console.error('Please specify the login username');
-  error = true;
-}
-if (!password) {
-  console.error('Please specify the login password');
-  error = true;
-}
-if (!domain) {
-  console.error('Please specify the kintone domain');
-  error = true;
-}
 if (!pluginPath) {
   console.error('Please specify the path of kintone plugin zip');
-  error = true;
-}
-if (error) {
   cli.showHelp();
   process.exit(1);
 }
 
-run(domain, username, password, pluginPath, options);
+inquireParams({username, password, domain}).then(({username, password, domain}) =>
+  run(domain, username, password, pluginPath, options)
+);

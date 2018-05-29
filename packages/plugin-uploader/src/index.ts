@@ -1,6 +1,8 @@
 import fs from "fs";
 import puppeteer, { Browser, Page } from "puppeteer";
 
+const TIMEOUT_MS = 5000;
+
 async function launchBrowser(proxy?: string): Promise<Browser> {
   const args = proxy ? [`--proxy-server=${proxy}`] : [];
   return await puppeteer.launch({ args });
@@ -23,7 +25,10 @@ async function readyForUpload(
   await page.type(".form-username-slash > input.form-text", userName);
   await page.type(".form-password-slash > input.form-text", password);
   await page.click(".login-button");
-  await page.waitForNavigation();
+  await page.waitForNavigation({
+    timeout: TIMEOUT_MS,
+    waitUntil: "domcontentloaded"
+  });
 
   const pluginUrl = `${kintoneUrl}k/admin/system/plugin/`;
   console.log(`Navigate to ${pluginUrl}`);
@@ -43,7 +48,7 @@ async function upload(page: Page, pluginPath: string): Promise<void> {
   await page.click('button[name="ok"]');
   await page.waitForSelector(".ocean-ui-dialog", {
     hidden: true,
-    timeout: 5000
+    timeout: TIMEOUT_MS
   });
   console.log(`${pluginPath} has been uploaded!`);
 }

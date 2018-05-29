@@ -61,6 +61,15 @@ You can create a project based on `@kintone/plugin-packer` using [@kintone/creat
     proxy: HTTPS_PROXY or HTTP_PROXY
 ```
 
+If you ommit the options, you can input the options interactively.
+
+```
+% kintone-plugin-uploader plugin.zip
+? Input your username: hoge
+? Input your password: [hidden]
+? Input your domain: example.com
+```
+
 ## LICENSE
 
 MIT License
