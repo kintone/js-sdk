@@ -10,6 +10,14 @@ export const inquireParams = ({ username, password, domain }: Params) => {
   const questions = [
     {
       type: "input",
+      message: "Input your kintone's domain (example.cybozu.com):",
+      name: "domain",
+      default: domain,
+      when: () => !domain,
+      validate: (v: string) => !!v
+    },
+    {
+      type: "input",
       name: "username",
       message: "Input your username:",
       default: username,
@@ -19,17 +27,10 @@ export const inquireParams = ({ username, password, domain }: Params) => {
     {
       type: "password",
       name: "password",
-      message: "Input your password:",
+      message: (answers: { username: string }) =>
+        `Input ${answers.username}'s password:`,
       default: password,
       when: () => !password,
-      validate: (v: string) => !!v
-    },
-    {
-      type: "input",
-      message: "Input your domain:",
-      name: "domain",
-      default: domain,
-      when: () => !domain,
       validate: (v: string) => !!v
     }
   ];
