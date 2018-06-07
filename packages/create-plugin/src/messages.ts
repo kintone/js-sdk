@@ -102,6 +102,12 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
     ja:
       "ファイルの変更を監視してプラグインのzipを自動的に作成するプロセスを起動します"
   },
+  npmStartWithPluginUploader: {
+    en:
+      "And then, the plugin zip is uploaded automatically by @kintone/plugin-uploader.",
+    ja:
+      "その後、@kintone/plugin-uploaderにより、プラグインのzipは自動的にアップロードされます"
+  },
   npmBuild: {
     en: "Create a kintone plugin zip.",
     ja: "プラグインのzipを作成します"
@@ -115,7 +121,7 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
     ja: "まずは次のコマンドを実行してください"
   },
   howToUsePluginUploader: {
-    en: "And then ,please input your information for kintone account",
+    en: "And then, please input your information for kintone account",
     ja: "その後、あなたのkintone環境の情報を入力してください"
   },
   lastMessage: {
