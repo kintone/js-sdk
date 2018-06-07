@@ -55,6 +55,7 @@ Success! Created ${manifest.name.en} at ${outputDir}
 ${chalk.cyan("npm start")}
 
   ${m("npmStart")}
+  ${enablePluginUploader ? m("npmStartWithPluginUploader") : ""}
 
 ${chalk.cyan("npm run build")}
 
