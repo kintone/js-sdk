@@ -41,7 +41,7 @@ Let's start!
 ? Input your home page url for Japanese (Optional)
 ? Input your home page url for Chinese (Optional)
 ? Does your plugin support mobile views? Yes
-? Does your plugin need a config page? Yes
+? Do you use @kintone/plugin-uploader? Yes
 :
 :
 :
@@ -50,6 +50,7 @@ Success! Created hello-kintone-plugin at hello-kintone-plugin
 npm start
 
   Start the process watching file changes and create a kintone plugin zip.
+  And then, the plugin zip is uploaded automatically by @kintone/plugin-uploader.
 
 npm run build
 
@@ -60,6 +61,7 @@ npm run lint
   Lint js files with ESLint.
 
 Try the following commands
+And then, please input your information for kintone account
 
   cd hello-kintone-plugin
   npm start
@@ -100,7 +102,7 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
 ? プラグインの日本語のWebサイトURLを入力してください (省略可)
 ? プラグインの中国語のWebサイトURLを入力してください (省略可)
 ? モバイルページをサポートしますか？ Yes
-? 設定ページを作成しますか？ Yes
+? @kintone/plugin-uploaderを使いますか？ Yes
 依存ライブラリをインストールします
 :
 :
@@ -110,6 +112,7 @@ Success! Created hello-kintone-plugin at hello-kintone-plugin
 npm start
 
   ファイルの変更を監視してプラグインのzipを自動的に作成するプロセスを起動します
+  その後、@kintone/plugin-uploaderにより、プラグインのzipは自動的にアップロードされます
 
 npm run build
 
@@ -120,6 +123,7 @@ npm run lint
   ESLintを使ってJavaScriptのソースコードをチェックします
 
 まずは次のコマンドを実行してください
+その後、あなたのkintone環境の情報を入力してください
 
   cd hello-kintone-plugin
   npm start
