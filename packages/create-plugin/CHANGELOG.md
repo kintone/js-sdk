@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0-2"></a>
+# [1.2.0-2](https://github.com/kintone/create-plugin/compare/v1.2.0-1...v1.2.0-2) (2018-06-07)
+
+
+### Features
+
+* **template:** use settings for the plugin ([#124](https://github.com/kintone/create-plugin/issues/124)) ([a536d9f](https://github.com/kintone/create-plugin/commit/a536d9f))
+
+
+
 <a name="1.2.0-1"></a>
 # [1.2.0-1](https://github.com/kintone/create-plugin/compare/v1.2.0-0...v1.2.0-1) (2018-05-29)
 
