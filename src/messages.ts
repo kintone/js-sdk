@@ -78,10 +78,6 @@ const messages = {
     en: "Does your plugin support mobile views?",
     ja: "モバイルページをサポートしますか？"
   },
-  Q_ConfigPage: {
-    en: "Does your plugin need a config page?",
-    ja: "設定ページを作成しますか？"
-  },
   Q_enablePluginUploader: {
     en: "Do you use @kintone/plugin-uploader?",
     ja: "@kintone/plugin-uploaderを使いますか？"

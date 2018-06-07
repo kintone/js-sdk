@@ -1,3 +1,7 @@
-.plugin-config {
-  font-size: 1.2em;
+.settings-heading {
+  padding: 1em 0;
+}
+
+.kintoneplugin-input-text {
+  width: 20em;
 }

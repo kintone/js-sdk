@@ -120,12 +120,6 @@ export function buildQuestions(outputDir: string, lang: Lang): Question[] {
     },
     {
       type: "confirm",
-      name: "config",
-      default: false,
-      message: m("Q_ConfigPage")
-    },
-    {
-      type: "confirm",
       name: "pluginUploader",
       default: true,
       message: m("Q_enablePluginUploader")

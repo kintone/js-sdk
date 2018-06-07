@@ -13,7 +13,13 @@ const baseManifest = {
     js: [jQueryURL, "js/desktop.js"],
     css: ["css/51-modern-default.css", "css/desktop.css"]
   },
-  icon: "image/icon.png"
+  icon: "image/icon.png",
+  config: {
+    html: "html/config.html",
+    js: [jQueryURL, "js/config.js"],
+    css: ["css/51-modern-default.css", "css/config.css"],
+    required_params: ["message"]
+  }
 };
 
 export interface Manifest {
@@ -91,19 +97,6 @@ export function buildManifest(answers: UserAnswers): Manifest {
       ...{
         mobile: {
           js: [jQueryURL, "js/mobile.js"]
-        }
-      }
-    };
-  }
-  if (answers.config) {
-    manifest = {
-      ...manifest,
-      ...{
-        config: {
-          html: "html/config.html",
-          js: [jQueryURL, "js/config.js"],
-          css: ["css/51-modern-default.css", "css/config.css"],
-          required_params: []
         }
       }
     };
