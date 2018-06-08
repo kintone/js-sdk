@@ -67,8 +67,9 @@ function cli(pluginDir, options) {
         ),
       ]).then(result => {
         const output = result[1];
+        const ppkFilePath = path.join(outputDir, `${output.id}.ppk`);
         if (!ppkFile) {
-          fs.writeFileSync(path.join(outputDir, `${output.id}.ppk`), output.privateKey, 'utf8');
+          fs.writeFileSync(ppkFilePath, output.privateKey, 'utf8');
         }
 
         if (options.watch) {
@@ -86,7 +87,10 @@ function cli(pluginDir, options) {
               : {};
           const watcher = chokidar.watch(pluginDir, watchOptions);
           watcher.on('change', () => {
-            cli(pluginDir, Object.assign({}, options, {watch: false}));
+            cli(
+              pluginDir,
+              Object.assign({}, options, {watch: false, ppk: options.ppk || ppkFilePath})
+            );
           });
         }
         return outputPlugin(outputFile, output.plugin);
