@@ -12,10 +12,8 @@
     "build": "kintone-plugin-packer --ppk private.ppk --out dist/plugin.zip src",
     "lint": "eslint src"
   },
-  "dependencies": {
-    "@kintone/plugin-packer": "^1.0.0"
-  },
   "devDependencies": {
+    "@kintone/plugin-packer": "^1.0.1",
     <% if (enablePluginUploader) { %>
     "@kintone/plugin-uploader": "^2.2.0",
     "npm-run-all": "^4.1.3",
