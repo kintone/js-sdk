@@ -22,9 +22,11 @@
     "js": "webpack --mode production",
     "js:dev": "webpack-dev-server --mode development",
     "mocha": "mocha --require intelli-espower-loader",
+    "release": "run-s test standard-version",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
     "site:test": "mocha site/test --require site/test/setup.js",
+    "standard-version": "standard-version",
     "test": "run-s eslint mocha site:test"
   },
   "dependencies": {
@@ -60,6 +62,7 @@
     "rimraf": "^2.6.2",
     "setimmediate": "^1.0.5",
     "sinon": "^5.1.0",
+    "standard-version": "^4.4.0",
     "webpack": "^4.11.1",
     "webpack-cli": "^3.0.3",
     "webpack-dev-server": "^3.1.4"
