@@ -9,3 +9,9 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * **cli:** reuse a new ppk file with --watch option ([#160](https://github.com/kintone/plugin-packer/issues/160)) ([add5c71](https://github.com/kintone/plugin-packer/commit/add5c71))
+
+## Before 1.0.1
+
+The chagelogs are in the GitHub's release page.
+
+* https://github.com/kintone/plugin-packer/releases
