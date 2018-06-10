@@ -2,6 +2,7 @@ import * as AdmZip from 'adm-zip';
 import * as assert from 'assert';
 import { spawnSync } from 'child_process';
 import * as fs from 'fs';
+import * as os from 'os';
 import * as path from 'path';
 import * as webpack from 'webpack';
 // @ts-ignore
@@ -16,11 +17,11 @@ const customNamePluginZipPath = path.resolve(
   'nfjiheanbocphdnoehhpddjmkhciokjb.sample.plugin.zip'
 );
 
-const runWebpack = (config = 'webpack.config.js') =>
-  spawnSync(
-    'node',
+const runWebpack = (config = 'webpack.config.js') => {
+  const webpackCommand = `webpack${os.platform() === 'win32' ? '.cmd' : ''}`;
+  return spawnSync(
+    webpackCommand,
     [
-      path.resolve('node_modules', 'webpack-cli', 'bin', 'webpack.js'),
       '--config',
       config,
       '--mode',
@@ -30,6 +31,7 @@ const runWebpack = (config = 'webpack.config.js') =>
       cwd: pluginDir
     }
   );
+}
 
 const verifyPluginZip = (zipPath: string) => {
   assert(fs.existsSync(zipPath));
