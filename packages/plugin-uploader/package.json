@@ -31,7 +31,7 @@
   "dependencies": {
     "inquirer": "^6.0.0",
     "meow": "^5.0.0",
-    "puppeteer": "^1.4.0"
+    "puppeteer": "^1.5.0"
   },
   "devDependencies": {
     "@types/inquirer": "0.0.41",
