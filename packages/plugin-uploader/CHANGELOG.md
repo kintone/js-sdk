@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/kintone/plugin-uploader/compare/v2.3.0...v2.4.0) (2018-06-13)
+
+
+### Features
+
+* add an error message for domain ([#72](https://github.com/kintone/plugin-uploader/issues/72)) ([55aa8a8](https://github.com/kintone/plugin-uploader/commit/55aa8a8))
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/kintone/plugin-uploader/compare/v2.2.1...v2.3.0) (2018-06-13)
 
