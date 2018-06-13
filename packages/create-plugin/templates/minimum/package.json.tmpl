@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     <% if (enablePluginUploader) { %>
-    "start": "npm-run-all -p develop upload",
+    "start": "node scripts/npm-start.js",
     "upload": "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 3000",
     <% } else { %>
     "start": "npm run develop",
