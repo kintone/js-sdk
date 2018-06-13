@@ -26,8 +26,12 @@ async function readyForUpload(
   const loginUrl = `${kintoneUrl}login?saml=off`;
   console.log(`Open ${loginUrl}`);
   await page.goto(loginUrl);
-
-  await page.waitFor(".form-username-slash");
+  try {
+    await page.waitFor(".form-username-slash", { timeout: TIMEOUT_MS });
+  } catch (e) {
+    console.log(chalk.red(m("Error_cannotOpenLogin")));
+    process.exit(1);
+  }
   console.log("Try to logged-in...");
   await page.type(".form-username-slash > input.form-text", userName);
   await page.type(".form-password-slash > input.form-text", password);

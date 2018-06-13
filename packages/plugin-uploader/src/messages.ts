@@ -35,6 +35,12 @@ const messages = {
     ja:
       "エラー: kintoneへのログインに失敗しました。ログイン名とパスワードを確認してください"
   },
+  Error_cannotOpenLogin: {
+    en:
+      "Error: Cannot find login form of kintone, please confirm the domain you input",
+    ja:
+      "エラー: 指定されたページにログインフォームが見つかりませんでした。ドメインを確認してください"
+  },
   Error_adminPrivilege: {
     en:
       "Error: Cannot navigate to the plugin-ins page, please retry with an account having the administrator privilege",
