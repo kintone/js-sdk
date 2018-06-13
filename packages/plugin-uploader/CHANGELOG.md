@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/kintone/plugin-uploader/compare/v2.2.1...v2.3.0) (2018-06-13)
+
+
+### Features
+
+* add error messages for login and admin privilege ([#70](https://github.com/kintone/plugin-uploader/issues/70)) ([4c7d4ca](https://github.com/kintone/plugin-uploader/commit/4c7d4ca))
+* support messages in Japanese ([#71](https://github.com/kintone/plugin-uploader/issues/71)) ([a6642db](https://github.com/kintone/plugin-uploader/commit/a6642db))
+
+
+
 <a name="2.2.1"></a>
 ## [2.2.1](https://github.com/kintone/plugin-uploader/compare/v2.2.0...v2.2.1) (2018-05-30)
 
