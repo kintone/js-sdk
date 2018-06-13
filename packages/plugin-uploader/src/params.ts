@@ -1,16 +1,20 @@
 import * as inquirer from "inquirer";
+import { Lang } from "./lang";
+import { getBoundMessage } from "./messages";
 
 interface Params {
   username?: string;
   password?: string;
   domain?: string;
+  lang: Lang;
 }
 
-export const inquireParams = ({ username, password, domain }: Params) => {
+export const inquireParams = ({ username, password, domain, lang }: Params) => {
+  const m = getBoundMessage(lang);
   const questions = [
     {
       type: "input",
-      message: "Input your kintone's domain (example.cybozu.com):",
+      message: m("Q_Domain"),
       name: "domain",
       default: domain,
       when: () => !domain,
@@ -19,7 +23,7 @@ export const inquireParams = ({ username, password, domain }: Params) => {
     {
       type: "input",
       name: "username",
-      message: "Input your username:",
+      message: m("Q_UserName"),
       default: username,
       when: () => !username,
       validate: (v: string) => !!v
@@ -27,8 +31,7 @@ export const inquireParams = ({ username, password, domain }: Params) => {
     {
       type: "password",
       name: "password",
-      message: (answers: { username: string }) =>
-        `Input ${answers.username}'s password:`,
+      message: m("Q_Password"),
       default: password,
       when: () => !password,
       validate: (v: string) => !!v

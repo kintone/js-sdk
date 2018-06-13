@@ -2,6 +2,9 @@ import chalk from "chalk";
 import fs from "fs";
 import puppeteer, { Browser, Page } from "puppeteer";
 
+import { Lang } from "./lang";
+import { getBoundMessage } from "./messages";
+
 const TIMEOUT_MS = 5000;
 
 async function launchBrowser(proxy?: string): Promise<Browser> {
@@ -13,8 +16,11 @@ async function readyForUpload(
   browser: Browser,
   domain: string,
   userName: string,
-  password: string
+  password: string,
+  lang: Lang
 ): Promise<Page> {
+  const m = getBoundMessage(lang);
+
   const page = await browser.newPage();
   const kintoneUrl = `https://${domain}/`;
   const loginUrl = `${kintoneUrl}login?saml=off`;
@@ -32,9 +38,7 @@ async function readyForUpload(
       waitUntil: "domcontentloaded"
     });
   } catch (e) {
-    console.log(
-      chalk.red("Login was failed, please confirm your username and password")
-    );
+    console.log(chalk.red(m("Error_failedLogin")));
     process.exit(1);
   }
 
@@ -46,17 +50,18 @@ async function readyForUpload(
       timeout: TIMEOUT_MS
     });
   } catch (e) {
-    console.log(
-      chalk.red(
-        "Cannot navigate to the plugin-ins page, please retry with an account having the administrator privilege"
-      )
-    );
+    console.log(chalk.red(m("Error_adminPrivilege")));
     process.exit(1);
   }
   return page;
 }
 
-async function upload(page: Page, pluginPath: string): Promise<void> {
+async function upload(
+  page: Page,
+  pluginPath: string,
+  lang: Lang
+): Promise<void> {
+  const m = getBoundMessage(lang);
   console.log(`Try to upload ${pluginPath}`);
   await page.click("#page-admin-system-plugin-index-addplugin");
 
@@ -70,12 +75,13 @@ async function upload(page: Page, pluginPath: string): Promise<void> {
     hidden: true,
     timeout: TIMEOUT_MS
   });
-  console.log(`${pluginPath} has been uploaded!`);
+  console.log(`${pluginPath} ${m("Uploaded")}`);
 }
 
 interface Option {
   proxyServer?: string;
   watch?: boolean;
+  lang: Lang;
 }
 
 export async function run(
@@ -83,13 +89,15 @@ export async function run(
   userName: string,
   password: string,
   pluginPath: string,
-  options: Option = {}
+  options: Option
 ): Promise<void> {
   let browser = await launchBrowser(options.proxyServer);
   let page: Page;
+  const { lang } = options;
+  const m = getBoundMessage(lang);
   try {
-    page = await readyForUpload(browser, domain, userName, password);
-    await upload(page, pluginPath);
+    page = await readyForUpload(browser, domain, userName, password, lang);
+    await upload(page, pluginPath, lang);
     if (options.watch) {
       let uploading = false;
       fs.watch(pluginPath, async () => {
@@ -98,14 +106,20 @@ export async function run(
         }
         try {
           uploading = true;
-          await upload(page, pluginPath);
+          await upload(page, pluginPath, lang);
         } catch (e) {
           console.log(e);
-          console.log("An error occured, retry with a new browser");
+          console.log(m("Error_retry"));
           await browser.close();
           browser = await launchBrowser(options.proxyServer);
-          page = await readyForUpload(browser, domain, userName, password);
-          await upload(page, pluginPath);
+          page = await readyForUpload(
+            browser,
+            domain,
+            userName,
+            password,
+            lang
+          );
+          await upload(page, pluginPath, lang);
         } finally {
           uploading = false;
         }
@@ -114,7 +128,7 @@ export async function run(
       await browser.close();
     }
   } catch (e) {
-    console.error("An error occured", e);
+    console.error(m("Error"), e);
     await browser.close();
   }
 }

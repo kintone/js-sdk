@@ -52,6 +52,7 @@ You can create a project based on `@kintone/plugin-packer` using [@kintone/creat
     --password User's password
     --proxy Proxy server
     --watch Watch the changes of plugin zip and re-run
+    --lang Using language (en or ja)
 
     You can set the values through environment variables
     domain: KINTONE_DOMAIN
