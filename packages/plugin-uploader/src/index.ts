@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import fs from "fs";
 import puppeteer, { Browser, Page } from "puppeteer";
 
@@ -25,14 +26,33 @@ async function readyForUpload(
   await page.type(".form-username-slash > input.form-text", userName);
   await page.type(".form-password-slash > input.form-text", password);
   await page.click(".login-button");
-  await page.waitForNavigation({
-    timeout: TIMEOUT_MS,
-    waitUntil: "domcontentloaded"
-  });
+  try {
+    await page.waitForNavigation({
+      timeout: TIMEOUT_MS,
+      waitUntil: "domcontentloaded"
+    });
+  } catch (e) {
+    console.log(
+      chalk.red("Login was failed, please confirm your username and password")
+    );
+    process.exit(1);
+  }
 
   const pluginUrl = `${kintoneUrl}k/admin/system/plugin/`;
   console.log(`Navigate to ${pluginUrl}`);
   await page.goto(pluginUrl);
+  try {
+    await page.waitForSelector("#page-admin-system-plugin-index-addplugin", {
+      timeout: TIMEOUT_MS
+    });
+  } catch (e) {
+    console.log(
+      chalk.red(
+        "Cannot navigate to the plugin-ins page, please retry with an account having the administrator privilege"
+      )
+    );
+    process.exit(1);
+  }
   return page;
 }
 

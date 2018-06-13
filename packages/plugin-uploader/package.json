@@ -29,6 +29,7 @@
   "homepage": "https://github.com/kintone/plugin-uploader",
   "bugs": "https://github.com/kintone/plugin-uploader/issues",
   "dependencies": {
+    "chalk": "^2.4.1",
     "inquirer": "^6.0.0",
     "meow": "^5.0.0",
     "puppeteer": "^1.5.0"
