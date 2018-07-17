@@ -42,23 +42,23 @@ const messages = {
     en: "Plugin description must be within 64chars",
     ja: "プラグインの日本語の説明を64文字以内で入力してください"
   },
-  Q_SupportCn: {
+  Q_SupportZh: {
     en: "Does your plugin support Chinese?",
     ja: "中国語をサポートしますか？"
   },
-  Q_NameCn: {
+  Q_NameZh: {
     en: "Input your plugin name in Chinese [1-64chars] (Optional)",
     ja: "プラグインの中国語名を入力してください [1-64文字] (省略可)"
   },
-  Q_NameCnError: {
+  Q_NameZhError: {
     en: "Plugin name must be within 64chars",
     ja: "プラグイン名は64文字以内で入力してください"
   },
-  Q_DescriptionCn: {
+  Q_DescriptionZh: {
     en: "Input your plugin description in Chinese [1-200chars] (Optional)",
     ja: "プラグインの中国語の説明を入力してください [1-200文字] (省略可)"
   },
-  Q_DescriptionCnError: {
+  Q_DescriptionZhError: {
     en: "Plugin description must be within 64chars",
     ja: "プラグインの中国語の説明を64文字以内で入力してください"
   },
@@ -70,7 +70,7 @@ const messages = {
     en: "Input your home page url for Japanese (Optional)",
     ja: "プラグインの日本語のWebサイトURLを入力してください (省略可)"
   },
-  Q_websiteUrlCn: {
+  Q_websiteUrlZh: {
     en: "Input your home page url for Chinese (Optional)",
     ja: "プラグインの中国語のWebサイトURLを入力してください (省略可)"
   },

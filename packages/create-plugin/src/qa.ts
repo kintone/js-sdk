@@ -71,29 +71,29 @@ export function buildQuestions(outputDir: string, lang: Lang): Question[] {
     },
     {
       type: "confirm",
-      name: "cn",
+      name: "zh",
       default: false,
-      message: m("Q_SupportCn")
+      message: m("Q_SupportZh")
     },
     {
       type: "input",
-      name: "name.cn",
-      when: answers => answers.cn,
-      message: m("Q_NameCn"),
+      name: "name.zh",
+      when: answers => answers.zh,
+      message: m("Q_NameZh"),
       validate: value =>
         value.length === 0 || value.length <= NAME_MAX_LENGTH
           ? true
-          : m("Q_NameCnError")
+          : m("Q_NameZhError")
     },
     {
       type: "input",
-      name: "description.cn",
-      when: answers => answers.cn,
-      message: m("Q_DescriptionCn"),
+      name: "description.zh",
+      when: answers => answers.zh,
+      message: m("Q_DescriptionZh"),
       validate: value =>
         value.length === 0 || value.length <= DESCRIPTION_MAX_LENGTH
           ? true
-          : m("Q_DescriptionCnError")
+          : m("Q_DescriptionZhError")
     },
     {
       type: "input",
@@ -108,9 +108,9 @@ export function buildQuestions(outputDir: string, lang: Lang): Question[] {
     },
     {
       type: "input",
-      name: "homepage_url.cn",
-      when: answers => answers.cn,
-      message: m("Q_websiteUrlCn")
+      name: "homepage_url.zh",
+      when: answers => answers.zh,
+      message: m("Q_websiteUrlZh")
     },
     {
       type: "confirm",
