@@ -115,26 +115,26 @@ describe("qa", () => {
         assert(typeof q.when === "function" && q.when({ ja: true }) === true);
       });
     });
-    context("name.cn", () => {
-      it("should be enabled only in anwers.cn is true", () => {
+    context("name.zh", () => {
+      it("should be enabled only in anwers.zh is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "name.cn"
+          ({ name }: Question) => name === "name.zh"
         );
-        assert(typeof q.when === "function" && q.when({ cn: false }) === false);
-        assert(typeof q.when === "function" && q.when({ cn: true }) === true);
+        assert(typeof q.when === "function" && q.when({ zh: false }) === false);
+        assert(typeof q.when === "function" && q.when({ zh: true }) === true);
       });
     });
-    context("description.cn", () => {
-      it("should be enabled only in anwers.cn is true", () => {
+    context("description.zh", () => {
+      it("should be enabled only in anwers.zh is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "description.cn"
+          ({ name }: Question) => name === "description.zh"
         );
-        assert(typeof q.when === "function" && q.when({ cn: false }) === false);
-        assert(typeof q.when === "function" && q.when({ cn: true }) === true);
+        assert(typeof q.when === "function" && q.when({ zh: false }) === false);
+        assert(typeof q.when === "function" && q.when({ zh: true }) === true);
       });
     });
     context("homepage_url.ja", () => {
@@ -148,15 +148,15 @@ describe("qa", () => {
         assert(typeof q.when === "function" && q.when({ ja: true }) === true);
       });
     });
-    context("homepage_url.cn", () => {
-      it("should be enabled only in anwers.cn is true", () => {
+    context("homepage_url.zh", () => {
+      it("should be enabled only in anwers.zh is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "homepage_url.cn"
+          ({ name }: Question) => name === "homepage_url.zh"
         );
-        assert(typeof q.when === "function" && q.when({ cn: false }) === false);
-        assert(typeof q.when === "function" && q.when({ cn: true }) === true);
+        assert(typeof q.when === "function" && q.when({ zh: false }) === false);
+        assert(typeof q.when === "function" && q.when({ zh: true }) === true);
       });
     });
   });
