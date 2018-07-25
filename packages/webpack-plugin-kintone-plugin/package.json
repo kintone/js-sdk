@@ -33,7 +33,7 @@
     "@types/lodash": "^4.14.113",
     "@types/mocha": "^5.2.5",
     "@types/node": "^9.6.23",
-    "@types/webpack": "^4.4.7",
+    "@types/webpack": "^4.4.8",
     "adm-zip": "^0.4.11",
     "mocha": "^5.2.0",
     "npm-run-all": "^4.1.3",
