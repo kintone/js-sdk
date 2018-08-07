@@ -10,3 +10,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **deps:** update dependency ajv to ^6.5.2 ([10ad0d3](https://github.com/kintone/plugin-manifest-validator/commit/10ad0d3))
 * **eslint:** fix eslintrc for eslint@5 ([#71](https://github.com/kintone/plugin-manifest-validator/issues/71)) ([52ad801](https://github.com/kintone/plugin-manifest-validator/commit/52ad801))
+
+## Before 1.0.1
+
+The changelog are in the GitHub's release page.
+
+https://github.com/kintone/plugin-manifest-validator/releases
