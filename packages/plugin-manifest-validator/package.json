@@ -16,6 +16,8 @@
     "gen-dts": "node script/generate-dts.js",
     "lint": "eslint index.js src test script",
     "mocha": "mocha test --require intelli-espower-loader",
+    "release": "npm-s test gen-dts standard-version",
+    "standard-version": "standard-version",
     "test": "run-s lint mocha test:dts",
     "test:dts": "tsc -p test/tsconfig.json"
   },
@@ -32,6 +34,7 @@
     "npm-run-all": "^4.1.3",
     "power-assert": "^1.6.0",
     "prettier": "1.13.7",
+    "standard-version": "^4.4.0",
     "typescript": "^3.0.1"
   },
   "homepage": "https://github.com/kintone/plugin-manifest-validator#readme",
