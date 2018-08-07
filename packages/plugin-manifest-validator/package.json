@@ -16,7 +16,7 @@
     "gen-dts": "node script/generate-dts.js",
     "lint": "eslint index.js src test script",
     "mocha": "mocha test --require intelli-espower-loader",
-    "release": "npm-s test gen-dts standard-version",
+    "release": "run-s test gen-dts standard-version",
     "standard-version": "standard-version",
     "test": "run-s lint mocha test:dts",
     "test:dts": "tsc -p test/tsconfig.json"
