@@ -24,7 +24,7 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "@kintone/plugin-packer": "^1.0.1",
+    "@kintone/plugin-packer": "^1.0.2",
     "@types/glob": "^5.0.35",
     "@types/inquirer": "^0.0.42",
     "@types/lodash": "^4.14.116",
