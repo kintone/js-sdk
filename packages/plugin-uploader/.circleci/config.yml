@@ -31,15 +31,15 @@ jobs:
   node-v6:
     <<: *defaults
     docker:
-      - image: circleci/node:6@sha256:1bbc978d4654b2ba346af21ed4743f50baa9bfe7db459c2e8aba0e2d8335619f
+      - image: circleci/node:6@sha256:dafb94626b0dee2cda3a289bd3d10a5338ee1a14efc61b043700863375e9a626
   node-v8:
     <<: *defaults
     docker:
-      - image: circleci/node:8@sha256:c9ab794b937dce49052805d8069f47a8075166efe7fdba452dab2c8496b68182
+      - image: circleci/node:8@sha256:602bbf6938a9ebad50a7d3f5e72ca99253cf9c93805b4091aac4c5e64be1f632
   node-v10:
     <<: *defaults
     docker:
-      - image: circleci/node:10@sha256:c249d738029712037d72b202c2ea2e1b1f65737a79e4e5c6e2781bbf50921b5b
+      - image: circleci/node:10@sha256:7c1c1427de666e26ca1cdfef182cfa2021b41fd69eb5b321b3cc64965f16eceb
 
 workflows:
   version: 2
