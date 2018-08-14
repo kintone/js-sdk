@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import { debounce } from "lodash";
+import * as mkdirp from "mkdirp";
 import * as path from "path";
 import { Compiler, Plugin } from "webpack";
 
@@ -87,13 +88,17 @@ class KintonePlugin implements Plugin {
     const { manifestJSONPath, pluginZipPath } = this.options;
     return generatePlugin(manifestJSONPath, this.privateKey).then(result => {
       const zipPath =
+        // You can customize the zip file name using the plugin id and manifest
         typeof pluginZipPath === "function"
-          ? // You can customize the zip file name using the plugin id and manifest
-            pluginZipPath(
+          ? pluginZipPath(
               result.id,
               JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8"))
             )
           : pluginZipPath;
+      const zipDir = path.dirname(zipPath);
+      if (!fs.existsSync(zipDir)) {
+        mkdirp.sync(zipDir);
+      }
       fs.writeFileSync(zipPath, result.buffer);
       console.log("----------------------");
       console.log("Success to create a plugin zip!");
