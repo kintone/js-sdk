@@ -36,7 +36,7 @@
     "puppeteer": "^1.6.2"
   },
   "devDependencies": {
-    "@types/inquirer": "0.0.42",
+    "@types/inquirer": "0.0.43",
     "@types/node": "^9.6.27",
     "@types/puppeteer": "^1.6.0",
     "npm-run-all": "^4.1.3",
