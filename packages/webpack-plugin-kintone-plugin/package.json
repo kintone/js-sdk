@@ -35,7 +35,7 @@
     "@types/mocha": "^5.2.5",
     "@types/node": "^9.6.28",
     "@types/rimraf": "^2.0.2",
-    "@types/webpack": "^4.4.9",
+    "@types/webpack": "^4.4.10",
     "adm-zip": "^0.4.11",
     "mocha": "^5.2.0",
     "npm-run-all": "^4.1.3",
