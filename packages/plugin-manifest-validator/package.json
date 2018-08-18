@@ -22,7 +22,7 @@
     "test:dts": "tsc -p test/tsconfig.json"
   },
   "dependencies": {
-    "ajv": "^6.5.2",
+    "ajv": "^6.5.3",
     "bytes": "^3.0.0"
   },
   "devDependencies": {
