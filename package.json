@@ -20,7 +20,7 @@
     "lodash": "^4.17.10",
     "meow": "^5.0.0",
     "node-rsa": "^1.0.1",
-    "os-locale": "^3.0.0",
+    "os-locale": "^3.0.1",
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
