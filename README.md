@@ -56,12 +56,13 @@ ${manifestFile}
 If you omit the options, you can input the options interactively.
 ```
 % kintone-customize-uploader manifest.json
-? Input your username: hoge
+? Input your domain: example.cybozu.com
+? Input your username: sato
 ? Input your password: [hidden]
-? Input your domain: example.com
 ```
 
-## manifest.json
+## Example
+This is an example of `manifest.json` .
 ```json
 {
     "app": "1",
@@ -86,6 +87,26 @@ If you omit the options, you can input the options interactively.
 - `scope`: The scope to apply your customization (`"ALL"` || `"ADMIN"` || `"NONE"`)
 - `desktop`: The customize files applied in PC view  (`"js": []` || `"css": []`)
 - `mobile`: The customize files applied in mobile view (`"js": []`)
+
+To upload files, run the `kintone-customize-uploader` .
+```
+% kintone-customize-uploader
+? Input your domain: example.cybozu.com
+? Input your username: sato
+? Input your password: [hidden]
+
+sample/customize.js has been uploaded!
+sample/51-modern-default.css has been uploaded!
+JavaScript/CSS files have been uploaded!
+Customize setting has been updated!
+Wait for deploying completed...
+Wait for deploying completed...
+Wait for deploying completed...
+Setting has been deployed!
+```
+
+In this exapmle, JavaScript and CSS Customization is set as below.
+![Example screenshot of JavaScript and CSS Customization](https://raw.githubusercontent.com/msttttk/customize-uploader/master/pics/example_setting.PNG)
 
 ## LICENSE
 MIT License
