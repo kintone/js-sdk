@@ -1,0 +1,54 @@
+{
+  "name": "kintone-customize-uploader",
+  "version": "0.1.0",
+  "description": "A kintone customize uploader using request-promise",
+  "bin": {
+    "kintone-customize-uploader": "bin/cli.js"
+  },
+  "main": "dist/src/index.js",
+  "scripts": {
+    "start": "tsc -w --outDir ./dist/src",
+    "build": "tsc --outDir ./dist/src",
+    "test": "node bin/cli.js manifest.json",
+    "ndb-test": "ndb node bin/cli.js manifest.json",
+    "lint": "tslint -c tslint.json src/*.ts"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msttttk/customize-uploader.git"
+  },
+  "keywords": [
+    "kintone"
+  ],
+  "author": "Masataka Miyahara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/msttttk/customize-uploader/issues"
+  },
+  "homepage": "https://github.com/msttttk/customize-uploader#readme",
+  "devDependencies": {
+    "@types/bluebird-global": "^3.5.9",
+    "@types/chokidar": "^1.7.5",
+    "@types/inquirer": "0.0.43",
+    "@types/node": "^10.9.4",
+    "@types/request-promise": "^4.1.42",
+    "ndb": "^1.0.24",
+    "prettier": "^1.14.2",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "chokidar": "^2.0.4",
+    "inquirer": "^6.2.0",
+    "meow": "^5.0.0",
+    "os-locale": "^3.0.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "tslint-plugin-prettier": "^1.3.0"
+  }
+}
