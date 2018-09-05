@@ -61,5 +61,31 @@ If you omit the options, you can input the options interactively.
 ? Input your domain: example.com
 ```
 
+## manifest.json
+```json
+{
+    "app": "1",
+    "scope": "ALL",
+    "desktop": {
+        "js": [
+            "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
+            "sample/customize.js"
+        ],
+        "css": [
+            "sample/51-modern-default.css"
+        ]
+    },
+    "mobile": {
+        "js": [
+            "https://js.cybozu.com/jquery/3.3.1/jquery.min.js"
+        ]
+    }
+}
+```
+- `app` : The app id where to upload customize files to (`"APP_ID"`)
+- `scope`: The scope to apply your customization (`"ALL"` || `"ADMIN"` || `"NONE"`)
+- `desktop`: The customize files applied in PC view  (`"js": []` || `"css": []`)
+- `mobile`: The customize files applied in mobile view (`"js": []`)
+
 ## LICENSE
 MIT License
