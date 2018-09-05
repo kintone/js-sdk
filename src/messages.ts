@@ -61,8 +61,10 @@ const messages = {
     ja: 'エラーが発生しました。リトライします'
   },
   E_Exit: {
-    en: 'An error occured, exit process. Please check if you passed proper arguments and manifest.json',
-    ja: 'エラーが発生しました。引数の値と、manifest.jsonに正しい値が入力されているか確認してください'
+    en:
+      'An error occured, exit process. Please check if you passed proper arguments and manifest.json',
+    ja:
+      'エラーが発生しました。引数の値と、manifest.jsonに正しい値が入力されているか確認してください'
   }
 };
 
