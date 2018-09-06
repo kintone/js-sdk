@@ -27,7 +27,6 @@ export async function getCustomizeUploadParams(
       };
     } else {
       const {fileKey} = await new UploadFile(auth, kintoneUrl, fileOrUrl, contentType, options).send();
-      console.log(`${fileOrUrl} ` + m('M_Uploaded'));
       return {
         type: 'FILE',
         file: {
@@ -35,5 +34,6 @@ export async function getCustomizeUploadParams(
         }
       }
     }
+    console.log(`${fileOrUrl} ` + m('M_Uploaded'));
   }));
 }
