@@ -21,12 +21,14 @@ export async function getCustomizeUploadParams(
   return await Promise.all(files.map(async (fileOrUrl: string) => {
     const isUrl = Boolean(fileOrUrl.match(regexp));
     if (isUrl) {
+      console.log(`${fileOrUrl} ` + m('M_Uploaded'));
       return {
         type: 'URL',
         url: fileOrUrl
       };
     } else {
       const {fileKey} = await new UploadFile(auth, kintoneUrl, fileOrUrl, contentType, options).send();
+      console.log(`${fileOrUrl} ` + m('M_Uploaded'));
       return {
         type: 'FILE',
         file: {
@@ -34,6 +36,5 @@ export async function getCustomizeUploadParams(
         }
       }
     }
-    console.log(`${fileOrUrl} ` + m('M_Uploaded'));
   }));
 }
