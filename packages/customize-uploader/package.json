@@ -1,6 +1,6 @@
 {
   "name": "kintone-customize-uploader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A kintone customize uploader using request-promise",
   "bin": {
     "kintone-customize-uploader": "bin/cli.js"
