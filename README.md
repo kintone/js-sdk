@@ -43,7 +43,6 @@ ${manifestFile}
     --password User's password
     --proxy Proxy server
     --watch Watch the changes of customize files and re-run
-    --waiting-dialog-ms A ms for waiting show a input dialog
     --lang Using language (en or ja)
     --guest-space-id Guest space ID for uploading files
     You can set the values through environment variables
