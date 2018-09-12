@@ -95,13 +95,7 @@ if (!manifestFile) {
   process.exit(1);
 }
 
-const wait = ms => new Promise(r => setTimeout(r, ms));
-
-wait(waitingDialogMs)
-  .then(() => inquireParams({ username, password, domain, lang }))
-  .then(async({ username, password, domain }) => {
-    await run(domain, username, password, manifestFile, options);
-    if (!options.watch) {
-      process.exit();
-    }
+inquireParams({ username, password, domain, lang })
+  .then(({ username, password, domain }) => {
+    run(domain, username, password, manifestFile, options);
   });
