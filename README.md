@@ -1,5 +1,5 @@
 # kintone-customize-uploader
-A kintone customize uploader using [request-promise](https://github.com/request/request-promise)
+A kintone customize uploader
 
 ## Usage
 ```
