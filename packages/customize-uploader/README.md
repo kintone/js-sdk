@@ -54,14 +54,14 @@ ${manifestFile}
 
 If you omit the options, you can input the options interactively.
 ```
-% kintone-customize-uploader manifest.json
+% kintone-customize-uploader customize-manifest.json
 ? Input your domain: example.cybozu.com
 ? Input your username: sato
 ? Input your password: [hidden]
 ```
 
 ## Example
-This is an example of `manifest.json` .
+This is an example of `customize-manifest.json` .
 ```json
 {
     "app": "1",
