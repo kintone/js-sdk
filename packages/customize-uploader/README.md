@@ -109,7 +109,7 @@ Setting has been deployed!
 ```
 
 In this exapmle, JavaScript and CSS Customization is set as below.
-![Example screenshot of JavaScript and CSS Customization](https://raw.githubusercontent.com/kintone/customize-uploader/master/docs/example_setting.PNG)
+![Example screenshot of JavaScript and CSS Customization](docs/example_setting.PNG)
 
 ## LICENSE
 MIT License
