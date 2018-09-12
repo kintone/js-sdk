@@ -3,7 +3,7 @@ A kintone customize uploader
 
 ## Usage
 ```
-% npm install kintone-customize-uploader
+% npm install @kintone/customize-uploader
 % ./node_modules/.bin/kintone-customize-uploader
 --domain ${yourDomain} \
 --username ${yourLoginName} \
@@ -14,7 +14,7 @@ ${manifestFile}
 or
 
 ```
-% npm install -g kintone-customize-uploader
+% npm install -g @kintone/customize-uploader
 % kintone-customize-uploader \
 --domain ${yourDomain} \
 --username ${yourLoginName} \
