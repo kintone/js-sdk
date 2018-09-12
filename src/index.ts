@@ -1,6 +1,6 @@
 import chokidar from 'chokidar';
 import fs from 'fs';
-import { Option } from '../types/option';
+import { Option } from './util';
 import { getBoundMessage } from './messages';
 import { DeploySetting, DeployStatus, UpdateCustomizeSetting } from './request';
 import { getCustomizeUploadParams, getXCybozuAuthorization } from './util';

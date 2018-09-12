@@ -1,6 +1,13 @@
 import { UploadFile } from './request';
 import { getBoundMessage } from './messages';
-import { Option } from '../types/option';
+import { Lang } from './lang';
+
+export interface Option {
+  watch?: string,
+  lang: Lang,
+  proxy: string,
+  guestSpaceId: number
+}
 
 export function getXCybozuAuthorization(username: string, password: string): string {
   const buffer = new Buffer(username + ':' + password);

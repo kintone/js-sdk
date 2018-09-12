@@ -1,6 +1,6 @@
 import fs from 'fs';
 import request = require('request-promise');
-import { Option } from '../types/option';
+import { Option } from './util';
 import { getBoundMessage } from './messages';
 
 interface RequestOption {
