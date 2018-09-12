@@ -9,8 +9,6 @@
   "scripts": {
     "start": "tsc -w --outDir ./dist/src",
     "build": "tsc --outDir ./dist/src",
-    "test": "node bin/cli.js manifest.json",
-    "ndb-test": "ndb node bin/cli.js manifest.json",
     "lint": "tslint -c tslint.json src/*.ts"
   },
   "files": [
