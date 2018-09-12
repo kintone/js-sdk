@@ -15,9 +15,7 @@
   },
   "files": [
     "bin",
-    "dist",
-    "sample",
-    "manifest.json"
+    "dist"
   ],
   "repository": {
     "type": "git",
