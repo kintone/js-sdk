@@ -1,70 +1,70 @@
-import { Lang } from './lang';
+import { Lang } from "./lang";
 
 type LangMap = { [lang in Lang]: string };
 type MessageMap = { [key in keyof typeof messages]: LangMap };
 
 const messages = {
   E_requiredManifestFile: {
-    en: 'Please specify manifest.json',
-    ja: 'マニフェストファイルを指定してください'
+    en: "Please specify manifest.json",
+    ja: "マニフェストファイルを指定してください"
   },
   Q_Domain: {
-    en: 'Input your kintone\'s domain (example.cybozu.com):',
-    ja: 'kintoneのドメインを入力してください (example.cybozu.com):'
+    en: "Input your kintone's domain (example.cybozu.com):",
+    ja: "kintoneのドメインを入力してください (example.cybozu.com):"
   },
   Q_UserName: {
-    en: 'Input your username:',
-    ja: 'ログイン名を入力してください:'
+    en: "Input your username:",
+    ja: "ログイン名を入力してください:"
   },
   Q_Password: {
-    en: 'Input your password:',
-    ja: 'パスワードを入力してください:'
+    en: "Input your password:",
+    ja: "パスワードを入力してください:"
   },
   M_FileUploaded: {
-    en: 'JavaScript/CSS files have been uploaded!',
-    ja: 'JavaScript/CSS ファイルをアップロードしました!'
+    en: "JavaScript/CSS files have been uploaded!",
+    ja: "JavaScript/CSS ファイルをアップロードしました!"
   },
   E_FileUploaded: {
-    en: 'Failed to upload JavaScript/CSS files',
-    ja: 'JavaScript/CSS ファイルのアップロードに失敗しました'
+    en: "Failed to upload JavaScript/CSS files",
+    ja: "JavaScript/CSS ファイルのアップロードに失敗しました"
   },
   M_Uploaded: {
-    en: 'has been uploaded!',
-    ja: 'をアップロードしました!'
+    en: "has been uploaded!",
+    ja: "をアップロードしました!"
   },
   M_Updated: {
-    en: 'Customize setting has been updated!',
-    ja: 'JavaScript/CSS カスタマイズの設定を変更しました!'
+    en: "Customize setting has been updated!",
+    ja: "JavaScript/CSS カスタマイズの設定を変更しました!"
   },
   E_Updated: {
-    en: 'Failed to update customize setting',
-    ja: 'JavaScript/CSS カスタマイズの設定の変更に失敗しました'
+    en: "Failed to update customize setting",
+    ja: "JavaScript/CSS カスタマイズの設定の変更に失敗しました"
   },
   M_Deployed: {
-    en: 'Setting has been deployed!',
-    ja: '運用環境に反映しました!'
+    en: "Setting has been deployed!",
+    ja: "運用環境に反映しました!"
   },
   E_Deployed: {
-    en: 'Failed to deploy setting',
-    ja: '運用環境への反映に失敗しました'
+    en: "Failed to deploy setting",
+    ja: "運用環境への反映に失敗しました"
   },
   M_Deploying: {
-    en: 'Wait for deploying completed...',
-    ja: '運用環境への反映の完了を待っています...'
+    en: "Wait for deploying completed...",
+    ja: "運用環境への反映の完了を待っています..."
   },
   M_Watching: {
-    en: 'Watcing for file changes...',
-    ja: 'ファイルの変更を監視しています...'
+    en: "Watcing for file changes...",
+    ja: "ファイルの変更を監視しています..."
   },
   E_Retry: {
-    en: 'An error occured, retry',
-    ja: 'エラーが発生しました。リトライします'
+    en: "An error occured, retry",
+    ja: "エラーが発生しました。リトライします"
   },
   E_Exit: {
     en:
-      'An error occured, exit process. Please check if you passed proper arguments and manifest.json',
+      "An error occured, exit process. Please check if you passed proper arguments and manifest.json",
     ja:
-      'エラーが発生しました。引数の値と、manifest.jsonに正しい値が入力されているか確認してください'
+      "エラーが発生しました。引数の値と、manifest.jsonに正しい値が入力されているか確認してください"
   }
 };
 

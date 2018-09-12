@@ -1,9 +1,9 @@
-import chokidar from 'chokidar';
-import fs from 'fs';
-import { Option } from './util';
-import { getBoundMessage } from './messages';
-import { DeploySetting, DeployStatus, UpdateCustomizeSetting } from './request';
-import { getCustomizeUploadParams, getXCybozuAuthorization } from './util';
+import chokidar from "chokidar";
+import fs from "fs";
+import { getBoundMessage } from "./messages";
+import { DeploySetting, DeployStatus, UpdateCustomizeSetting } from "./request";
+import { Option } from "./util";
+import { getCustomizeUploadParams, getXCybozuAuthorization } from "./util";
 
 async function handler(
   auth: string,
@@ -39,27 +39,27 @@ async function handler(
           auth,
           kintoneUrl,
           manifest.desktop.js,
-          'text/javascript',
+          "text/javascript",
           options
         );
         updateBody.desktop.css = await getCustomizeUploadParams(
           auth,
           kintoneUrl,
           manifest.desktop.css,
-          'text/css',
+          "text/css",
           options
         );
         updateBody.mobile.js = await getCustomizeUploadParams(
           auth,
           kintoneUrl,
           manifest.mobile.js,
-          'text/javascript',
+          "text/javascript",
           options
         );
-        console.log(m('M_FileUploaded'));
+        console.log(m("M_FileUploaded"));
         uploaded = true;
       } catch (e) {
-        console.log(m('E_FileUploaded'));
+        console.log(m("E_FileUploaded"));
         throw new Error(e);
       }
     }
@@ -72,10 +72,10 @@ async function handler(
           updateBody,
           options
         ).send();
-        console.log(m('M_Updated'));
+        console.log(m("M_Updated"));
         updated = true;
       } catch (e) {
-        console.log(m('E_Updated'));
+        console.log(m("E_Updated"));
         throw new Error(e);
       }
     }
@@ -84,10 +84,10 @@ async function handler(
       try {
         await new DeploySetting(auth, kintoneUrl, appId, options).send();
         await new DeployStatus(auth, kintoneUrl, appId, options).check();
-        console.log(m('M_Deployed'));
+        console.log(m("M_Deployed"));
         deployed = true;
       } catch (e) {
-        console.log(m('E_Deployed'));
+        console.log(m("E_Deployed"));
         throw new Error(e);
       }
     }
@@ -95,7 +95,7 @@ async function handler(
     successed = true;
   } catch (e) {
     console.log(e);
-    console.log(m('E_Retry'));
+    console.log(m("E_Retry"));
   } finally {
     count++;
     running = false;
@@ -105,7 +105,7 @@ async function handler(
       await new Promise(r => setTimeout(r, 1000));
       await handler(auth, kintoneUrl, manifest, status, options);
     } else if (!successed) {
-      console.log(m('E_Exit'));
+      console.log(m("E_Exit"));
     }
   }
 }
@@ -121,8 +121,8 @@ export const run = async (
 
   const auth = getXCybozuAuthorization(username, password);
   const kintoneUrl =
-    domain.indexOf('https://') > -1 ? domain : `https://${domain}`;
-  const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    domain.indexOf("https://") > -1 ? domain : `https://${domain}`;
+  const manifest = JSON.parse(fs.readFileSync(manifestFile, "utf8"));
   const status = {
     count: 0,
     running: false,
@@ -150,8 +150,8 @@ export const run = async (
         pollInterval: 100
       }
     });
-    console.log(m('M_Watching'));
-    watcher.on('change', async () => {
+    console.log(m("M_Watching"));
+    watcher.on("change", async () => {
       await handler(auth, kintoneUrl, manifest, status, options);
     });
   } else {
