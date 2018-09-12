@@ -5,7 +5,7 @@ type MessageMap = { [key in keyof typeof messages]: LangMap };
 
 const messages = {
   E_requiredManifestFile: {
-    en: "Please specify manifest.json",
+    en: "Please specify manifest file",
     ja: "マニフェストファイルを指定してください"
   },
   Q_Domain: {
@@ -62,9 +62,9 @@ const messages = {
   },
   E_Exit: {
     en:
-      "An error occured, exit process. Please check if you passed proper arguments and manifest.json",
+      "An error occured, exit process. Please check if you passed proper arguments and manifest file",
     ja:
-      "エラーが発生しました。引数の値と、manifest.jsonに正しい値が入力されているか確認してください"
+      "エラーが発生しました。引数の値と、マニフェストファイルに正しい値が入力されているか確認してください"
   }
 };
 
