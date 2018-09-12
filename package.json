@@ -1,5 +1,5 @@
 {
-  "name": "kintone-customize-uploader",
+  "name": "@kintone/customize-uploader",
   "version": "0.0.6",
   "description": "A kintone customize uploader",
   "bin": {
@@ -17,17 +17,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/msttttk/customize-uploader.git"
+    "url": "git+https://github.com/kintone/customize-uploader.git"
   },
   "keywords": [
     "kintone"
   ],
-  "author": "Masataka Miyahara",
+  "author": "kintone",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/msttttk/customize-uploader/issues"
+    "url": "https://github.com/kintone/customize-uploader/issues"
   },
-  "homepage": "https://github.com/msttttk/customize-uploader#readme",
+  "homepage": "https://github.com/kintone/customize-uploader#readme",
   "devDependencies": {
     "@types/chokidar": "^1.7.5",
     "@types/inquirer": "0.0.43",
