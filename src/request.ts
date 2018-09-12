@@ -1,7 +1,7 @@
-import fs from 'fs';
-import request = require('request-promise');
-import { Option } from './util';
-import { getBoundMessage } from './messages';
+import fs from "fs";
+import request = require("request-promise");
+import { getBoundMessage } from "./messages";
+import { Option } from "./util";
 
 interface RequestOption {
   method: string;
@@ -15,6 +15,8 @@ interface RequestOption {
   tunnel?: boolean;
   [propName: string]: any;
 }
+
+/* tslint:disable max-classes-per-file */
 
 export default class KintoneRequest {
   public requestOptions: RequestOption;
@@ -30,8 +32,8 @@ export default class KintoneRequest {
       method: this.method,
       url: this.kintoneUrl + this.path,
       headers: {
-        'X-Cybozu-Authorization': this.auth,
-        'Content-Type': 'application/json'
+        "X-Cybozu-Authorization": this.auth,
+        "Content-Type": "application/json"
       },
       body: this.body
     };
@@ -56,10 +58,10 @@ export default class KintoneRequest {
     this.requestOptions.tunnel = value;
   }
   set contentType(value: string) {
-    this.requestOptions.headers['Content-Type'] = value;
+    this.requestOptions.headers["Content-Type"] = value;
   }
   set contentLength(value: number) {
-    this.requestOptions.headers['Content-Length'] = value;
+    this.requestOptions.headers["Content-Length"] = value;
   }
   set formData(value: object) {
     this.requestOptions.formData = value;
@@ -80,11 +82,11 @@ export class UploadFile extends KintoneRequest {
     public contentType: string,
     public options: Option
   ) {
-    super(auth, kintoneUrl, '/k/v1/file.json', 'POST', null, options);
-    this.contentType = 'multipart/form-data';
+    super(auth, kintoneUrl, "/k/v1/file.json", "POST", null, options);
+    this.contentType = "multipart/form-data";
     this.formData = {
       file: {
-        value: fs.createReadStream(filePath, 'utf8'),
+        value: fs.createReadStream(filePath, "utf8"),
         options: { contentType }
       }
     };
@@ -101,8 +103,8 @@ export class UpdateCustomizeSetting extends KintoneRequest {
     super(
       auth,
       kintoneUrl,
-      '/k/v1/preview/app/customize.json',
-      'PUT',
+      "/k/v1/preview/app/customize.json",
+      "PUT",
       JSON.stringify(body),
       options
     );
@@ -119,8 +121,8 @@ export class DeploySetting extends KintoneRequest {
     super(
       auth,
       kintoneUrl,
-      '/k/v1/preview/app/deploy.json',
-      'POST',
+      "/k/v1/preview/app/deploy.json",
+      "POST",
       JSON.stringify({ apps: [{ app: appId }] }),
       options
     );
@@ -137,8 +139,8 @@ export class DeployStatus extends KintoneRequest {
     super(
       auth,
       kintoneUrl,
-      '/k/v1/preview/app/deploy.json',
-      'GET',
+      "/k/v1/preview/app/deploy.json",
+      "GET",
       JSON.stringify({ apps: [appId] }),
       options
     );
@@ -151,11 +153,11 @@ export class DeployStatus extends KintoneRequest {
       await this.send().then(resp => {
         const successedApps: [any] = resp.apps;
         const successedAppsLength = successedApps.filter(r => {
-          return r.status === 'SUCCESS';
+          return r.status === "SUCCESS";
         }).length;
         deployed = successedAppsLength === resp.apps.length;
       });
-      console.log(m('M_Deploying'));
+      console.log(m("M_Deploying"));
     }
     deployed = true;
   }
