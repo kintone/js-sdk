@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.3"></a>
+## [1.3.3](https://github.com/kintone/create-plugin/compare/v1.3.2...v1.3.3) (2018-09-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to ^7.1.3 ([b4ca943](https://github.com/kintone/create-plugin/commit/b4ca943))
+* **deps:** update dependency inquirer to ^6.1.0 ([#175](https://github.com/kintone/create-plugin/issues/175)) ([e668c7a](https://github.com/kintone/create-plugin/commit/e668c7a))
+* **deps:** update dependency inquirer to ^6.2.0 ([#183](https://github.com/kintone/create-plugin/issues/183)) ([fb122f5](https://github.com/kintone/create-plugin/commit/fb122f5))
+* **deps:** update dependency os-locale to ^3.0.1 ([1d7c30f](https://github.com/kintone/create-plugin/commit/1d7c30f))
+* **deps:** update dependency os-locale to v3 ([#172](https://github.com/kintone/create-plugin/issues/172)) ([8bf8eb3](https://github.com/kintone/create-plugin/commit/8bf8eb3))
+
+
+
 <a name="1.3.2"></a>
 ## [1.3.2](https://github.com/kintone/create-plugin/compare/v1.3.1...v1.3.2) (2018-08-07)
 
