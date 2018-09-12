@@ -25,7 +25,6 @@ const cli = meow(
     --password User's password
     --proxy Proxy server
     --watch Watch the changes of customize files and re-run
-    --waiting-dialog-ms A ms for waiting show a input dialog
     --lang Using language (en or ja)
     --guest-space-id Guest space ID for uploading files
     You can set the values through environment variables
@@ -56,10 +55,6 @@ const cli = meow(
         type: 'boolean',
         default: false
       },
-      waitingDialogMs: {
-        type: 'number',
-        default: 0
-      },
       lang: {
         type: 'string',
         default: getDefaultLang(osLocale.sync())
@@ -79,7 +74,6 @@ const {
   domain,
   proxy,
   watch,
-  waitingDialogMs,
   lang,
   guestSpaceId
 } = cli.flags;
