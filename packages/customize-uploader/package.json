@@ -9,7 +9,9 @@
   "scripts": {
     "start": "tsc -w --outDir ./dist/src",
     "build": "tsc --outDir ./dist/src",
-    "lint": "tslint -c tslint.json src/*.ts",
+    "lint": "run-p tsc tslint",
+    "tsc": "tsc --noEmit",
+    "tslint": "tslint -c tslint.json src/*.ts",
     "standard-version": "standard-version",
     "release": "run-s lint build standard-version"
   },
