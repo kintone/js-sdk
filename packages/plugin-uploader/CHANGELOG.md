@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.4.2"></a>
+## [2.4.2](https://github.com/kintone/plugin-uploader/compare/v2.4.1...v2.4.2) (2018-09-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^6.1.0 ([#97](https://github.com/kintone/plugin-uploader/issues/97)) ([1095886](https://github.com/kintone/plugin-uploader/commit/1095886))
+* **deps:** update dependency inquirer to ^6.2.0 ([#103](https://github.com/kintone/plugin-uploader/issues/103)) ([194d275](https://github.com/kintone/plugin-uploader/commit/194d275))
+* **deps:** update dependency os-locale to ^3.0.1 ([594105a](https://github.com/kintone/plugin-uploader/commit/594105a))
+* **deps:** update dependency os-locale to v3 ([#95](https://github.com/kintone/plugin-uploader/issues/95)) ([d81ef00](https://github.com/kintone/plugin-uploader/commit/d81ef00))
+* **deps:** update dependency puppeteer to ^1.7.0 ([#99](https://github.com/kintone/plugin-uploader/issues/99)) ([d3dda39](https://github.com/kintone/plugin-uploader/commit/d3dda39))
+* **deps:** update dependency puppeteer to ^1.8.0 ([#111](https://github.com/kintone/plugin-uploader/issues/111)) ([65f36bd](https://github.com/kintone/plugin-uploader/commit/65f36bd))
+
+
+
 <a name="2.4.1"></a>
 ## [2.4.1](https://github.com/kintone/plugin-uploader/compare/v2.4.0...v2.4.1) (2018-08-07)
 
