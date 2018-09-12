@@ -33,7 +33,6 @@
   },
   "homepage": "https://github.com/msttttk/customize-uploader#readme",
   "devDependencies": {
-    "@types/bluebird-global": "^3.5.9",
     "@types/chokidar": "^1.7.5",
     "@types/inquirer": "0.0.43",
     "@types/node": "^10.9.4",
