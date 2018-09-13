@@ -6,6 +6,9 @@
     "kintone-customize-uploader": "bin/cli.js"
   },
   "main": "dist/src/index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "start": "tsc -w --outDir ./dist/src",
     "build": "tsc --outDir ./dist/src",
