@@ -5,7 +5,7 @@ import { DeploySetting, DeployStatus, UpdateCustomizeSetting } from "./request";
 import { Option } from "./util";
 import { getCustomizeUploadParams, getXCybozuAuthorization } from "./util";
 
-async function handler(
+async function upload(
   auth: string,
   kintoneUrl: string,
   manifest: {
@@ -103,7 +103,7 @@ async function handler(
 
     if (!successed && count < 3) {
       await new Promise(r => setTimeout(r, 1000));
-      await handler(auth, kintoneUrl, manifest, status, options);
+      await upload(auth, kintoneUrl, manifest, status, options);
     } else if (!successed) {
       console.log(m("E_Exit"));
     }
@@ -141,6 +141,8 @@ export const run = async (
     return !fileOrPath.match(regexp);
   });
 
+  await upload(auth, kintoneUrl, manifest, status, options);
+
   if (options.watch) {
     const watcher = chokidar.watch(files, {
       // Avoid that multiple change events were fired depending on which OS or text editors you are using with
@@ -152,11 +154,7 @@ export const run = async (
     });
     console.log(m("M_Watching"));
     watcher.on("change", async () => {
-      await handler(auth, kintoneUrl, manifest, status, options);
+      await upload(auth, kintoneUrl, manifest, status, options);
     });
-  } else {
-    await handler(auth, kintoneUrl, manifest, status, options).then(() =>
-      process.exit()
-    );
   }
 };
