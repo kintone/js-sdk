@@ -44,6 +44,11 @@ const messages = {
     en: "Setting has been deployed!",
     ja: "運用環境に反映しました!"
   },
+  E_Authentication: {
+    en:
+      "Failed to authenticate. Please confirm your username and password and domain",
+    ja: "認証に失敗しました。ログイン名、パスワード、ドメインを確認してください"
+  },
   E_Deployed: {
     en: "Failed to deploy setting",
     ja: "運用環境への反映に失敗しました"

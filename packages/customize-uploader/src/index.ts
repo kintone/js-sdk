@@ -1,111 +1,119 @@
 import chokidar from "chokidar";
 import fs from "fs";
+import KintoneApiClient, { AuthenticationError } from "./KintoneApiClient";
+import { Lang } from "./lang";
 import { getBoundMessage } from "./messages";
-import { DeploySetting, DeployStatus, UpdateCustomizeSetting } from "./request";
-import { Option } from "./util";
-import { getCustomizeUploadParams, getXCybozuAuthorization } from "./util";
+import { isUrlString, wait } from "./util";
+
+export interface Option {
+  watch?: string;
+  lang: Lang;
+  proxy: string;
+  guestSpaceId: number;
+}
+
+interface CustomizeManifest {
+  app: string;
+  scope: "ALL" | "ADMIN" | "NONE";
+  desktop: {
+    js: string[];
+    css: string[];
+  };
+  mobile: {
+    js: string[];
+  };
+}
+
+const MAX_RETRY_COUNT = 3;
 
 async function upload(
-  auth: string,
-  kintoneUrl: string,
-  manifest: {
-    [propName: string]: any;
-  },
+  kintoneApiClient: KintoneApiClient,
+  manifest: CustomizeManifest,
   status: {
-    count: number;
-    running: boolean;
-    uploaded: boolean;
+    retryCount: number;
+    updateBody: any;
     updated: boolean;
-    deployed: boolean;
   },
   options: Option
 ): Promise<void> {
   const m = getBoundMessage(options.lang);
   const appId = manifest.app;
-  let { count, running, uploaded, updated, deployed } = status;
+  let { retryCount, updateBody, updated } = status;
 
-  let successed = false;
-  // Stop running multiple times as "change" event will be fired as many times as the number of files in watching path
-  if (running) {
-    return;
-  }
   try {
-    running = true;
-
-    const updateBody = JSON.parse(JSON.stringify(manifest));
-    if (!uploaded) {
+    if (!updateBody) {
       try {
-        updateBody.desktop.js = await getCustomizeUploadParams(
-          auth,
-          kintoneUrl,
-          manifest.desktop.js,
-          "text/javascript",
-          options
+        const [desktopJS, desktopCSS, mobileJS] = await Promise.all(
+          [
+            { files: manifest.desktop.js, type: "text/javascript" },
+            { files: manifest.desktop.css, type: "text/css" },
+            { files: manifest.mobile.js, type: "text/javascript" }
+          ].map(({ files, type }) =>
+            Promise.all(
+              files.map((file: string) =>
+                kintoneApiClient
+                  .prepareCustomizeFile(file, type)
+                  .then(result => {
+                    console.log(`${file} ` + m("M_Uploaded"));
+                    return result;
+                  })
+              )
+            )
+          )
         );
-        updateBody.desktop.css = await getCustomizeUploadParams(
-          auth,
-          kintoneUrl,
-          manifest.desktop.css,
-          "text/css",
-          options
-        );
-        updateBody.mobile.js = await getCustomizeUploadParams(
-          auth,
-          kintoneUrl,
-          manifest.mobile.js,
-          "text/javascript",
-          options
-        );
+        updateBody = Object.assign({}, manifest, {
+          desktop: {
+            js: desktopJS,
+            css: desktopCSS
+          },
+          mobile: {
+            js: mobileJS
+          }
+        });
         console.log(m("M_FileUploaded"));
-        uploaded = true;
       } catch (e) {
         console.log(m("E_FileUploaded"));
-        throw new Error(e);
+        throw e;
       }
     }
 
     if (!updated) {
       try {
-        await new UpdateCustomizeSetting(
-          auth,
-          kintoneUrl,
-          updateBody,
-          options
-        ).send();
+        await kintoneApiClient.updateCustomizeSetting(updateBody);
         console.log(m("M_Updated"));
         updated = true;
       } catch (e) {
         console.log(m("E_Updated"));
-        throw new Error(e);
+        throw e;
       }
     }
 
-    if (!deployed) {
-      try {
-        await new DeploySetting(auth, kintoneUrl, appId, options).send();
-        await new DeployStatus(auth, kintoneUrl, appId, options).check();
-        console.log(m("M_Deployed"));
-        deployed = true;
-      } catch (e) {
-        console.log(m("E_Deployed"));
-        throw new Error(e);
-      }
+    try {
+      await kintoneApiClient.deploySetting(appId);
+      await kintoneApiClient.waitFinishingDeploy(appId, () =>
+        console.log(m("M_Deploying"))
+      );
+      console.log(m("M_Deployed"));
+    } catch (e) {
+      console.log(m("E_Deployed"));
+      throw e;
     }
-
-    successed = true;
   } catch (e) {
-    console.log(e);
-    console.log(m("E_Retry"));
-  } finally {
-    count++;
-    running = false;
-    status = { count, running, uploaded, updated, deployed };
-
-    if (!successed && count < 3) {
-      await new Promise(r => setTimeout(r, 1000));
-      await upload(auth, kintoneUrl, manifest, status, options);
-    } else if (!successed) {
-      console.log(m("E_Exit"));
+    const isAuthenticationError = e instanceof AuthenticationError;
+    retryCount++;
+    if (isAuthenticationError) {
+      console.log(m("E_Authentication"));
+    } else if (retryCount < MAX_RETRY_COUNT) {
+      await wait(1000);
+      console.log(m("E_Retry"));
+      await upload(
+        kintoneApiClient,
+        manifest,
+        { retryCount, updateBody, updated },
+        options
+      );
+    } else {
+      console.log(e.message);
     }
   }
 }
@@ -119,29 +127,26 @@ export const run = async (
 ): Promise<void> => {
   const m = getBoundMessage(options.lang);
 
-  const auth = getXCybozuAuthorization(username, password);
-  const kintoneUrl =
-    domain.indexOf("https://") > -1 ? domain : `https://${domain}`;
-  const manifest = JSON.parse(fs.readFileSync(manifestFile, "utf8"));
+  const manifest: CustomizeManifest = JSON.parse(
+    fs.readFileSync(manifestFile, "utf8")
+  );
   const status = {
-    count: 0,
-    running: false,
-    uploaded: false,
-    updated: false,
-    deployed: false
+    retryCount: 0,
+    updateBody: null,
+    updated: false
   };
 
-  const exp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/gi;
-  const regexp = new RegExp(exp);
-  const filesArray: [string] = manifest.desktop.js.concat(
-    manifest.desktop.css,
-    manifest.mobile.js
-  );
-  const files = filesArray.filter(fileOrPath => {
-    return !fileOrPath.match(regexp);
-  });
+  const files = manifest.desktop.js
+    .concat(manifest.desktop.css, manifest.mobile.js)
+    .filter((fileOrPath: string) => !isUrlString(fileOrPath));
 
-  await upload(auth, kintoneUrl, manifest, status, options);
+  const kintoneApiClient = new KintoneApiClient(
+    username,
+    password,
+    domain,
+    options
+  );
+  await upload(kintoneApiClient, manifest, status, options);
 
   if (options.watch) {
     const watcher = chokidar.watch(files, {
@@ -153,8 +158,8 @@ export const run = async (
       }
     });
     console.log(m("M_Watching"));
-    watcher.on("change", async () => {
-      await upload(auth, kintoneUrl, manifest, status, options);
-    });
+    watcher.on("change", () =>
+      upload(kintoneApiClient, manifest, status, options)
+    );
   }
 };
