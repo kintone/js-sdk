@@ -12,7 +12,13 @@ export interface Option {
   guestSpaceId: number;
 }
 
-interface CustomizeManifest {
+export interface Status {
+  retryCount: number;
+  updateBody: any;
+  updated: boolean;
+}
+
+export interface CustomizeManifest {
   app: string;
   scope: "ALL" | "ADMIN" | "NONE";
   desktop: {
@@ -26,7 +32,7 @@ interface CustomizeManifest {
 
 const MAX_RETRY_COUNT = 3;
 
-async function upload(
+export async function upload(
   kintoneApiClient: KintoneApiClient,
   manifest: CustomizeManifest,
   status: {

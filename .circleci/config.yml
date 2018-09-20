@@ -27,6 +27,7 @@ defaults: &defaults
 
     # run tests!
     - run: npm run lint
+    - run: npm test
 
 jobs:
   node-v6:
