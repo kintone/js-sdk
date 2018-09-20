@@ -19,7 +19,7 @@ export interface Option {
   guestSpaceId: number;
 }
 
-interface RequestParams {
+export interface RequestParams {
   method: "GET" | "POST" | "PUT" | "DELETE";
   path: string;
   body: object;
