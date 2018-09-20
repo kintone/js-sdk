@@ -20,6 +20,10 @@ const messages = {
     en: "Input your password:",
     ja: "パスワードを入力してください:"
   },
+  M_StartUploading: {
+    en: "Start uploading customize files",
+    ja: "カスタマイズのアップロードを開始します"
+  },
   M_FileUploaded: {
     en: "JavaScript/CSS files have been uploaded!",
     ja: "JavaScript/CSS ファイルをアップロードしました!"

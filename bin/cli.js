@@ -90,6 +90,8 @@ if (!manifestFile) {
 }
 
 inquireParams({ username, password, domain, lang })
-  .then(({ username, password, domain }) => {
-    run(domain, username, password, manifestFile, options);
-  });
+  .then(({ username, password, domain }) => (
+    run(domain, username, password, manifestFile, options)
+  ))
+  .catch(error => console.log(error.message));
+  ;

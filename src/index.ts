@@ -42,6 +42,7 @@ async function upload(
 
   try {
     if (!updateBody) {
+      console.log(m("M_StartUploading"));
       try {
         const [desktopJS, desktopCSS, mobileJS] = await Promise.all(
           [
@@ -54,7 +55,9 @@ async function upload(
                 kintoneApiClient
                   .prepareCustomizeFile(file, type)
                   .then(result => {
-                    console.log(`${file} ` + m("M_Uploaded"));
+                    if (result.type === "FILE") {
+                      console.log(`${file} ` + m("M_Uploaded"));
+                    }
                     return result;
                   })
               )
@@ -102,7 +105,7 @@ async function upload(
     const isAuthenticationError = e instanceof AuthenticationError;
     retryCount++;
     if (isAuthenticationError) {
-      console.log(m("E_Authentication"));
+      throw new Error(m("E_Authentication"));
     } else if (retryCount < MAX_RETRY_COUNT) {
       await wait(1000);
       console.log(m("E_Retry"));
@@ -113,7 +116,7 @@ async function upload(
         options
       );
     } else {
-      console.log(e.message);
+      throw e;
     }
   }
 }
