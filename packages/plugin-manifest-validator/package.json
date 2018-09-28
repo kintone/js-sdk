@@ -26,8 +26,8 @@
     "bytes": "^3.0.0"
   },
   "devDependencies": {
+    "@cybozu/eslint-config": "^2.2.1",
     "eslint": "^5.0.1",
-    "eslint-config-teppeis": "^7.0.1",
     "intelli-espower-loader": "^1.0.1",
     "json-schema-to-typescript": "^6.0.1",
     "mocha": "^5.2.0",
