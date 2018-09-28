@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @param {!Array<{keyword: string, dataPath: string, message: string, params: {allowedValues: string[]}}>} errors
@@ -6,13 +6,12 @@
  */
 function generateErrorMessages(errors) {
   return errors.map(e => {
-    if (e.keyword === 'enum') {
+    if (e.keyword === "enum") {
       return `"${e.dataPath}" ${e.message} (${e.params.allowedValues
         .map(v => `"${v}"`)
-        .join(', ')})`;
-    } else {
-      return `"${e.dataPath}" ${e.message}`;
+        .join(", ")})`;
     }
+    return `"${e.dataPath}" ${e.message}`;
   });
 }
 

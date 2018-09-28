@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const N_TO_A = 'a'.charCodeAt(0) - '0'.charCodeAt(0);
-const A_TO_K = 'k'.charCodeAt(0) - 'a'.charCodeAt(0);
+const N_TO_A = "a".charCodeAt(0) - "0".charCodeAt(0);
+const A_TO_K = "k".charCodeAt(0) - "a".charCodeAt(0);
 
 /**
  * `tr '0-9a-f' 'a-p'` in JS
@@ -12,15 +12,14 @@ const A_TO_K = 'k'.charCodeAt(0) - 'a'.charCodeAt(0);
 function hex2a(hex) {
   return Array.from(hex)
     .map(s => {
-      if ('0' <= s && s <= '9') {
+      if (s >= "0" && s <= "9") {
         return String.fromCharCode(s.charCodeAt(0) + N_TO_A);
-      } else if ('a' <= s && s <= 'f') {
+      } else if (s >= "a" && s <= "f") {
         return String.fromCharCode(s.charCodeAt(0) + A_TO_K);
-      } else {
-        throw new Error(`invalid char: ${s}`);
       }
+      throw new Error(`invalid char: ${s}`);
     })
-    .join('');
+    .join("");
 }
 
 module.exports = hex2a;

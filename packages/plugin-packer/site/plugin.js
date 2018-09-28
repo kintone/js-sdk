@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const packer = require('../src/');
-const {rezip} = require('../src/zip');
-const {createDownloadUrl, revokeDownloadUrl} = require('./dom');
+const packer = require("../src/");
+const { rezip } = require("../src/zip");
+const { createDownloadUrl, revokeDownloadUrl } = require("./dom");
 
 /**
  * Generate a plugin zip
@@ -14,7 +14,9 @@ const generatePluginZip = (contents, privateKey) => {
   if (!contents) {
     return Promise.resolve();
   }
-  return rezip(Buffer.from(contents)).then(contentsZip => packer(contentsZip, privateKey));
+  return rezip(Buffer.from(contents)).then(contentsZip =>
+    packer(contentsZip, privateKey)
+  );
 };
 
 /**
@@ -32,8 +34,8 @@ const validatePlugin = generatePluginZip;
  * @return {{plugin: string, ppk: string}}
  */
 const createDownloadUrls = result => ({
-  contents: createDownloadUrl(result.plugin, 'application/zip'),
-  ppk: createDownloadUrl(result.privateKey, 'text/plain'),
+  contents: createDownloadUrl(result.plugin, "application/zip"),
+  ppk: createDownloadUrl(result.privateKey, "text/plain")
 });
 
 /**
@@ -50,5 +52,5 @@ module.exports = {
   generatePluginZip,
   validatePlugin,
   createDownloadUrls,
-  revokePluginUrls,
+  revokePluginUrls
 };

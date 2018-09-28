@@ -1,6 +1,9 @@
-'use strict';
+"use strict";
 
-const {getDownloadPluginZipName, getDownloadPPKFileName} = require('./reducer');
+const {
+  getDownloadPluginZipName,
+  getDownloadPPKFileName
+} = require("./reducer");
 
 /**
  * View class
@@ -18,14 +21,14 @@ class View {
    * @param {HTMLElement} el
    */
   show(el) {
-    el.classList.remove('hide');
+    el.classList.remove("hide");
   }
   /**
    * Hide the element on the display
    * @param {HTMLElement} el
    */
   hide(el) {
-    el.classList.add('hide');
+    el.classList.add("hide");
   }
   /**
    * Render the view with a passed state
@@ -42,14 +45,14 @@ class View {
    * @param {HTMLElement} el
    */
   decorateDragOver(el) {
-    el.classList.add('upload-area__droppable--drag');
+    el.classList.add("upload-area__droppable--drag");
   }
   /**
    * Decorate the element for drag leave
    * @param {HTMLElement} el
    */
   decorateDragLeave(el) {
-    el.classList.remove('upload-area__droppable--drag');
+    el.classList.remove("upload-area__droppable--drag");
   }
   /**
    * Render a botton area with a passed state
@@ -64,9 +67,9 @@ class View {
       this.hide(this.$.createLoadingBtn);
     }
     if (state.contents.data) {
-      this.$.createBtn.classList.remove('disabled');
+      this.$.createBtn.classList.remove("disabled");
     } else if (!state.loading) {
-      this.$.createBtn.classList.add('disabled');
+      this.$.createBtn.classList.add("disabled");
     }
   }
   /**
@@ -83,7 +86,7 @@ class View {
     if (state.contents.name) {
       this.$.zipFileName.textContent = state.contents.name;
     } else {
-      this.$.zipFileName.textContent = '...';
+      this.$.zipFileName.textContent = "...";
     }
   }
   /**
@@ -100,7 +103,7 @@ class View {
     if (state.ppk.name) {
       this.$.ppkFileName.textContent = state.ppk.name;
     } else {
-      this.$.ppkFileName.textContent = '...';
+      this.$.ppkFileName.textContent = "...";
     }
   }
   /**
@@ -148,9 +151,9 @@ class View {
       errors = [e.message];
     }
     const ul = this.$.errorMessages;
-    ul.innerHTML = '';
+    ul.innerHTML = "";
     errors.forEach(error => {
-      const li = document.createElement('li');
+      const li = document.createElement("li");
       li.textContent = error;
       ul.appendChild(li);
     });

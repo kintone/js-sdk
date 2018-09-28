@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
 // We don't test behaviors depending on Browser
 // so this defines minimum APIs to run the tests on Node without errors.
 global.document = {
   querySelector() {},
   querySelectorAll() {},
-  createElement() {},
+  createElement() {}
 };
 global.URL = {
-  createObjectURL: data => data,
+  createObjectURL: data => data
 };
 class Blob {
   constructor(...args) {

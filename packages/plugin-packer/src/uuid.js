@@ -1,19 +1,19 @@
-'use strict';
+"use strict";
 
-const crypto = require('crypto');
+const crypto = require("crypto");
 
-const hex2a = require('./hex2a');
+const hex2a = require("./hex2a");
 
 /**
  * @param {!Buffer} publicKey
  * @return {string}
  */
 function uuid(publicKey) {
-  const hash = crypto.createHash('sha256');
+  const hash = crypto.createHash("sha256");
   hash.update(publicKey);
   const hexId = hash
     .digest()
-    .toString('hex')
+    .toString("hex")
     .slice(0, 32);
   return hex2a(hexId);
 }

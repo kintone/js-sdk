@@ -1,23 +1,23 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
-const meow = require('meow');
-const packer = require('../src/cli');
+const meow = require("meow");
+const packer = require("../src/cli");
 
-const USAGE = '$ kintone-plugin-packer [options] PLUGIN_DIR';
+const USAGE = "$ kintone-plugin-packer [options] PLUGIN_DIR";
 
 const flagSpec = {
   ppk: {
-    type: 'string',
+    type: "string"
   },
   out: {
-    type: 'string',
+    type: "string"
   },
   watch: {
-    type: 'boolean',
-    alias: 'w',
-  },
+    type: "boolean",
+    alias: "w"
+  }
 };
 
 const cli = meow(
@@ -31,12 +31,12 @@ Options
   --watch: Watch PLUGIN_DIR for the changes.
 `,
   {
-    flags: flagSpec,
+    flags: flagSpec
   }
 );
 
 if (!cli.input[0]) {
-  console.error('Error: An argument `PLUGIN_DIR` is required.');
+  console.error("Error: An argument `PLUGIN_DIR` is required.");
   cli.showHelp();
 }
 
@@ -46,8 +46,8 @@ const flags = Object.keys(flagSpec).reduce((prev, cur) => {
   return prev;
 }, {});
 
-if (process.env.NODE_ENV === 'test') {
-  console.log(JSON.stringify({pluginDir, flags}));
+if (process.env.NODE_ENV === "test") {
+  console.log(JSON.stringify({ pluginDir, flags }));
 } else {
   packer(pluginDir, flags);
 }

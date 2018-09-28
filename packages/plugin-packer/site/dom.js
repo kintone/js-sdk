@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const flatten = require('array-flatten');
-const yazl = require('yazl');
-const streamBuffers = require('stream-buffers');
+const flatten = require("array-flatten");
+const yazl = require("yazl");
+const streamBuffers = require("stream-buffers");
 
 /**
  * Revoke an object URL
@@ -17,9 +17,10 @@ const revokeDownloadUrl = url => URL.revokeObjectURL(url);
  * @param {string} type
  * @return {string}
  */
-const createDownloadUrl = (data, type) => URL.createObjectURL(new Blob([data], {type}));
+const createDownloadUrl = (data, type) =>
+  URL.createObjectURL(new Blob([data], { type }));
 
-const isDropEvent = e => e.type === 'drop';
+const isDropEvent = e => e.type === "drop";
 
 /**
  *  Read files from FileSystemEntry
@@ -31,13 +32,17 @@ const readEntries = entry =>
   new Promise((resolve, reject) => {
     if (entry.isFile) {
       // Convert the fullPath to the relative path from the plugin directory
-      entry.file(file => resolve({path: entry.fullPath.replace(/^\/[^/]+?\//, ''), file}));
+      entry.file(file =>
+        resolve({ path: entry.fullPath.replace(/^\/[^/]+?\//, ""), file })
+      );
     } else if (entry.isDirectory) {
       entry.createReader().readEntries(childEntries => {
-        Promise.all(childEntries.map(childEntry => readEntries(childEntry))).then(resolve);
+        Promise.all(
+          childEntries.map(childEntry => readEntries(childEntry))
+        ).then(resolve);
       });
     } else {
-      reject(new Error('Unsupported file system entry specified'));
+      reject(new Error("Unsupported file system entry specified"));
     }
   });
 
@@ -55,29 +60,33 @@ const getFileFromEvent = e => {
     // Create a Map<path, File>
     return Promise.resolve({
       // Get a uploaded directory name from webkitRelativePath
-      name: files[0].webkitRelativePath.replace(/\/.*/, ''),
-      entries: new Map(Array.from(files).map(file => [file.webkitRelativePath, file])),
+      name: files[0].webkitRelativePath.replace(/\/.*/, ""),
+      entries: new Map(
+        Array.from(files).map(file => [file.webkitRelativePath, file])
+      )
     });
   }
   if (
-    typeof e.dataTransfer.items === 'undefined' ||
-    typeof e.dataTransfer.items[0].webkitGetAsEntry !== 'function'
+    typeof e.dataTransfer.items === "undefined" ||
+    typeof e.dataTransfer.items[0].webkitGetAsEntry !== "function"
   ) {
     // We assume a string was dropped if we can't get the File object
     const file = e.dataTransfer.files[0];
     if (!file) {
-      return Promise.reject(new Error('Unsupported file type item specified'));
+      return Promise.reject(new Error("Unsupported file type item specified"));
     }
     // the upload file name doesn't have any dot so we can infer the file is a directory
-    if (file.name.indexOf('.') === -1) {
-      return Promise.reject(new Error("Your browser doesn't support a directory upload"));
+    if (file.name.indexOf(".") === -1) {
+      return Promise.reject(
+        new Error("Your browser doesn't support a directory upload")
+      );
     }
     return Promise.resolve(file);
   }
   return new Promise((resolve, reject) => {
     const dataTransferItem = e.dataTransfer.items[0];
-    if (dataTransferItem.kind !== 'file') {
-      reject(new Error('Unsupported file type item specified'));
+    if (dataTransferItem.kind !== "file") {
+      reject(new Error("Unsupported file type item specified"));
       return;
     }
     const entry = dataTransferItem.webkitGetAsEntry();
@@ -88,11 +97,13 @@ const getFileFromEvent = e => {
         resolve({
           name: entry.name,
           // Create a Map<path, File>
-          entries: new Map(flatten(entries).map(({path, file}) => [path, file])),
+          entries: new Map(
+            flatten(entries).map(({ path, file }) => [path, file])
+          )
         });
       });
     } else {
-      reject(new Error('Unsupported file system entry specified'));
+      reject(new Error("Unsupported file system entry specified"));
     }
   });
 };
@@ -156,13 +167,13 @@ const listen = (el, ...args) => {
  * @return {Promise<Buffer>}
  */
 function fileMapToBuffer(fileMap) {
-  const zipFile = new yazl.ZipFile();
   return Promise.all(
     Array.from(fileMap.entries()).map(([path, file]) =>
-      readArrayBuffer(file).then(buffer => ({buffer, path}))
+      readArrayBuffer(file).then(buffer => ({ buffer, path }))
     )
   )
     .then(results => {
+      const zipFile = new yazl.ZipFile();
       results.forEach(result => {
         zipFile.addBuffer(Buffer.from(result.buffer), result.path);
       });
@@ -173,7 +184,7 @@ function fileMapToBuffer(fileMap) {
       zipFile =>
         new Promise(resolve => {
           const output = new streamBuffers.WritableStreamBuffer();
-          output.on('finish', () => {
+          output.on("finish", () => {
             resolve(output.getContents());
           });
           zipFile.outputStream.pipe(output);
@@ -190,5 +201,5 @@ module.exports = {
   createDownloadUrl,
   createFileHanlder,
   readText,
-  readArrayBuffer,
+  readArrayBuffer
 };

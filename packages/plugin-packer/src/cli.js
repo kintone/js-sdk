@@ -1,28 +1,28 @@
-'use strict';
+"use strict";
 
-const path = require('path');
-const fs = require('fs');
-const os = require('os');
-const chokidar = require('chokidar');
-const denodeify = require('denodeify');
+const path = require("path");
+const fs = require("fs");
+const os = require("os");
+const chokidar = require("chokidar");
+const denodeify = require("denodeify");
 
 const writeFile = denodeify(fs.writeFile);
-const mkdirp = denodeify(require('mkdirp'));
-const debug = require('debug')('cli');
-const validate = require('@kintone/plugin-manifest-validator');
+const mkdirp = denodeify(require("mkdirp"));
+const debug = require("debug")("cli");
+const validate = require("@kintone/plugin-manifest-validator");
 
-const packer = require('./');
-const console = require('./console');
-const generateErrorMessages = require('./gen-error-msg');
-const createContentsZip = require('./create-contents-zip');
+const packer = require("./");
+const console = require("./console");
+const generateErrorMessages = require("./gen-error-msg");
+const createContentsZip = require("./create-contents-zip");
 
 /**
  * @param {string} pluginDir path to plugin directory.
  * @param {Object=} options {ppk: string, out: string}.
  * @return {!Promise<string>} The resolved value is a path to the output plugin zip file.
  */
-function cli(pluginDir, options) {
-  options = options || {};
+function cli(pluginDir, options_) {
+  const options = options_ || {};
   const packerLocal = options.packerMock_ ? options.packerMock_ : packer;
 
   return Promise.resolve()
@@ -33,9 +33,9 @@ function cli(pluginDir, options) {
       }
 
       // 2. check pluginDir/manifest.json
-      const manifestJsonPath = path.join(pluginDir, 'manifest.json');
+      const manifestJsonPath = path.join(pluginDir, "manifest.json");
       if (!fs.statSync(manifestJsonPath).isFile()) {
-        throw new Error('Manifest file $PLUGIN_DIR/manifest.json not found.');
+        throw new Error("Manifest file $PLUGIN_DIR/manifest.json not found.");
       }
 
       // 3. validate manifest.json
@@ -43,7 +43,7 @@ function cli(pluginDir, options) {
       throwIfInvalidManifest(manifest, pluginDir);
 
       let outputDir = path.dirname(path.resolve(pluginDir));
-      let outputFile = path.join(outputDir, 'plugin.zip');
+      let outputFile = path.join(outputDir, "plugin.zip");
       if (options.out) {
         outputFile = options.out;
         outputDir = path.dirname(path.resolve(outputFile));
@@ -56,7 +56,7 @@ function cli(pluginDir, options) {
       let privateKey;
       if (ppkFile) {
         debug(`loading an existing key: ${ppkFile}`);
-        privateKey = fs.readFileSync(ppkFile, 'utf8');
+        privateKey = fs.readFileSync(ppkFile, "utf8");
       }
 
       // 5. package plugin.zip
@@ -64,12 +64,12 @@ function cli(pluginDir, options) {
         mkdirp(outputDir),
         createContentsZip(pluginDir, manifest).then(contentsZip =>
           packerLocal(contentsZip, privateKey)
-        ),
+        )
       ]).then(result => {
         const output = result[1];
         const ppkFilePath = path.join(outputDir, `${output.id}.ppk`);
         if (!ppkFile) {
-          fs.writeFileSync(ppkFilePath, output.privateKey, 'utf8');
+          fs.writeFileSync(ppkFilePath, output.privateKey, "utf8");
         }
 
         if (options.watch) {
@@ -77,19 +77,22 @@ function cli(pluginDir, options) {
           // which generate an invalid plugin zip.
           // in order to fix this, we use awaitWriteFinish option only on Windows.
           const watchOptions =
-            os.platform() === 'win32'
+            os.platform() === "win32"
               ? {
                   awaitWriteFinish: {
                     stabilityThreshold: 1000,
-                    pollInterval: 250,
-                  },
+                    pollInterval: 250
+                  }
                 }
               : {};
           const watcher = chokidar.watch(pluginDir, watchOptions);
-          watcher.on('change', () => {
+          watcher.on("change", () => {
             cli(
               pluginDir,
-              Object.assign({}, options, {watch: false, ppk: options.ppk || ppkFilePath})
+              Object.assign({}, options, {
+                watch: false,
+                ppk: options.ppk || ppkFilePath
+              })
             );
           });
         }
@@ -97,11 +100,11 @@ function cli(pluginDir, options) {
       });
     })
     .then(outputFile => {
-      console.log('Succeeded:', outputFile);
+      console.log("Succeeded:", outputFile);
       return outputFile;
     })
     .catch(error => {
-      console.error('Failed:', error.message);
+      console.error("Failed:", error.message);
       return Promise.reject(error);
     });
 }
@@ -115,17 +118,17 @@ module.exports = cli;
 function throwIfInvalidManifest(manifest, pluginDir) {
   const result = validate(manifest, {
     relativePath: validateRelativePath(pluginDir),
-    maxFileSize: validateMaxFileSize(pluginDir),
+    maxFileSize: validateMaxFileSize(pluginDir)
   });
   debug(result);
 
   if (!result.valid) {
     const msgs = generateErrorMessages(result.errors);
-    console.error('Invalid manifest.json:');
+    console.error("Invalid manifest.json:");
     msgs.forEach(msg => {
       console.error(`- ${msg}`);
     });
-    throw new Error('Invalid manifest.json');
+    throw new Error("Invalid manifest.json");
   }
 }
 
@@ -147,7 +150,7 @@ function outputPlugin(outputPath, plugin) {
  * @return {Object}
  */
 function loadJson(jsonPath) {
-  const content = fs.readFileSync(jsonPath, 'utf8');
+  const content = fs.readFileSync(jsonPath, "utf8");
   return JSON.parse(content);
 }
 

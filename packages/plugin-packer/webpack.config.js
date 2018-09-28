@@ -1,20 +1,20 @@
-'use strict';
+"use strict";
 
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './site/index.js',
+  entry: "./site/index.js",
   output: {
-    path: path.resolve(__dirname, 'docs', 'dist'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "docs", "dist"),
+    filename: "bundle.js"
   },
   node: {
-    fs: 'empty',
+    fs: "empty"
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'docs'),
-    publicPath: '/dist/',
+    contentBase: path.resolve(__dirname, "docs"),
+    publicPath: "/dist/",
     watchContentBase: true,
-    open: true,
-  },
+    open: true
+  }
 };

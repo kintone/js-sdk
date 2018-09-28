@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
-const path = require('path');
-const ZipFile = require('yazl').ZipFile;
+const path = require("path");
+const ZipFile = require("yazl").ZipFile;
 
-const streamBuffers = require('stream-buffers');
-const debug = require('debug')('create-contents-zip');
+const streamBuffers = require("stream-buffers");
+const debug = require("debug")("create-contents-zip");
 
-const sourceList = require('./sourcelist');
+const sourceList = require("./sourcelist");
 
 /**
  * Create a zipped contents
@@ -20,7 +20,7 @@ function createContentsZip(pluginDir, manifest) {
     const output = new streamBuffers.WritableStreamBuffer();
     const zipFile = new ZipFile();
     let size = null;
-    output.on('finish', () => {
+    output.on("finish", () => {
       debug(`plugin.zip: ${size} bytes`);
       res(output.getContents());
     });
