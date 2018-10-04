@@ -40,7 +40,7 @@
     "@types/chokidar": "^1.7.5",
     "@types/inquirer": "0.0.43",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.11.3",
+    "@types/node": "^10.11.4",
     "@types/request-promise": "^4.1.42",
     "mocha": "^5.2.0",
     "npm-run-all": "^4.1.3",
