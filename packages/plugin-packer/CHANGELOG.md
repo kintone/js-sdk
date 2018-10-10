@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/kintone/plugin-packer/compare/v1.0.3...v1.0.4) (2018-10-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency [@kintone](https://github.com/kintone)/plugin-manifest-validator to ^1.0.2 ([#218](https://github.com/kintone/plugin-packer/issues/218)) ([ce518cb](https://github.com/kintone/plugin-packer/commit/ce518cb))
+* **deps:** update dependency debug to ^4.1.0 ([#234](https://github.com/kintone/plugin-packer/issues/234)) ([38ba5e4](https://github.com/kintone/plugin-packer/commit/38ba5e4))
+* **deps:** update dependency debug to v4 ([#220](https://github.com/kintone/plugin-packer/issues/220)) ([b2caf72](https://github.com/kintone/plugin-packer/commit/b2caf72))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/kintone/plugin-packer/compare/v1.0.2...v1.0.3) (2018-09-12)
 
