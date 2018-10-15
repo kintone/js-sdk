@@ -55,7 +55,7 @@
     "unittest": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts",
     "test": "npm-run-all -s build -p lint unittest",
     "test:all": "run-p test e2e",
-    "e2e": "mocha --require ts-node/register --watch-extensions ts test/e2e.ts"
+    "e2e": "mocha --require ts-node/register --watch-extensions ts --timeout 60000 test/e2e.ts"
   },
   "keywords": [
     "kintone"
