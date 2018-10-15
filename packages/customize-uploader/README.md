@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fcustomize-uploader.svg)](https://badge.fury.io/js/%40kintone%2Fcustomize-uploader)
 [![CircleCI](https://circleci.com/gh/kintone/customize-uploader.svg?style=shield)](https://circleci.com/gh/kintone/customize-uploader)
+[![Build Status](https://travis-ci.org/kintone/customize-uploader.svg?branch=master)](https://travis-ci.org/kintone/customize-uploader)
 
 A kintone customize uploader
 
