@@ -6,7 +6,7 @@ Validate `manifest.json` of kintone plugin. Used in [@kintone/plugin-packer](htt
 [![npm version][npm-image]][npm-url]
 ![Node.js Version Support][node-version]
 [![build status][circleci-image]][circleci-url]
-[![appveyor status][appveyor-image]][appveyor-url]
+[![build status][travisci-image]][travisci-url]
 [![dependency status][deps-image]][deps-url]
 ![License][license]
 
@@ -66,8 +66,8 @@ MIT License
 [npm-url]: https://npmjs.org/package/@kintone/plugin-manifest-validator
 [circleci-image]: https://circleci.com/gh/kintone/plugin-manifest-validator.svg?style=shield
 [circleci-url]: https://circleci.com/gh/kintone/plugin-manifest-validator
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/xduj1q65x80cxe3k/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/cybozu-frontend/plugin-manifest-validator/branch/master
+[travisci-image]: https://travis-ci.org/kintone/plugin-manifest-validator.svg?branch=master
+[travisci-url]: https://travis-ci.org/kintone/plugin-manifest-validator
 [deps-image]: https://img.shields.io/david/kintone/plugin-manifest-validator.svg
 [deps-url]: https://david-dm.org/kintone/plugin-manifest-validator
 [node-version]: https://img.shields.io/badge/Node.js%20support-v6,v8,v10-brightgreen.svg
