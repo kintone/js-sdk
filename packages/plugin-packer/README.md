@@ -6,7 +6,7 @@ kintone-plugin-packer
 [![npm version][npm-image]][npm-url]
 ![Node.js Version Support][node-version]
 [![build status][circleci-image]][circleci-url]
-[![windows build status][appveyor-image]][appveyor-url]
+[![build status][travisci-image]][travisci-url]
 [![dependency status][deps-image]][deps-url]
 ![License][license]
 
@@ -74,8 +74,8 @@ MIT License
 [npm-url]: https://npmjs.org/package/@kintone/plugin-packer
 [circleci-image]: https://circleci.com/gh/kintone/plugin-packer.svg?style=shield
 [circleci-url]: https://circleci.com/gh/kintone/plugin-packer
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/0ia1473iwm24u545/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/cybozu-frontend/plugin-packer/branch/master
+[travisci-image]: https://travis-ci.org/kintone/plugin-packer.svg?branch=master
+[travisci-url]: https://travis-ci.org/kintone/plugin-packer
 [deps-image]: https://img.shields.io/david/kintone/plugin-packer.svg
 [deps-url]: https://david-dm.org/kintone/plugin-packer
 [node-version]: https://img.shields.io/badge/Node.js%20support-v6,v8,v10-brightgreen.svg
