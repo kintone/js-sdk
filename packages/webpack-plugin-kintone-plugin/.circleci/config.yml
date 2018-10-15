@@ -20,19 +20,16 @@ commands:
       - run: npm test
 jobs:
   node-v6:
-    working_directory: ~/repo
     docker:
       - image: circleci/node:6@sha256:263ec29bc93d90443fc094e305437d6a42be707508dace108f171a6ded1d10e2
     steps:
       - run-npm-test
   node-v8:
-    working_directory: ~/repo
     docker:
       - image: circleci/node:8@sha256:8dc1d8ae2f295930fa165c36caab3c70cd8bee03c31f1205e1c45dfcdac68109
     steps:
       - run-npm-test
   node-v10:
-    working_directory: ~/repo
     docker:
       - image: circleci/node:10@sha256:76f874d78a6316a3f431b70b86f45016753454654b6af5558d1a56750c54f9ba
     steps:
