@@ -21,7 +21,7 @@
     "eslint": "eslint *.js bin src site test",
     "js": "webpack --mode production",
     "js:dev": "webpack-dev-server --mode development",
-    "mocha": "mocha --require intelli-espower-loader",
+    "mocha": "mocha --require intelli-espower-loader --timeout 10000",
     "release": "run-s test standard-version",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
