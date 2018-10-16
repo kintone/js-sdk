@@ -1,51 +1,42 @@
+version: 2.1
+
+commands:
+  run-npm-test:
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package-lock.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      # run tests!
+      - run: npm test
+jobs:
+  node-v6:
+    docker:
+      - image: circleci/node:6@sha256:263ec29bc93d90443fc094e305437d6a42be707508dace108f171a6ded1d10e2
+    steps:
+      - run-npm-test
+  node-v8:
+    docker:
+      - image: circleci/node:8@sha256:8dc1d8ae2f295930fa165c36caab3c70cd8bee03c31f1205e1c45dfcdac68109
+    steps:
+      - run-npm-test
+  node-v10:
+    docker:
+      - image: circleci/node:10@sha256:76f874d78a6316a3f431b70b86f45016753454654b6af5558d1a56750c54f9ba
+    steps:
+      - run-npm-test
+
 workflows:
-  version: 2
-  node-multi-build:
+  multiple_builds:
     jobs:
       - node-v6
       - node-v8
       - node-v10
-
-version: 2
-jobs:
-  node-base: &node-base
-    docker:
-      - image: node:latest@sha256:6d92bf6062b9fe5c440479dd97aecc80426aa8bb2a2a92c4657eee0492081c8c
-    steps:
-      - run:
-          name: Versions
-          command: npm version
-      - checkout
-      - restore_cache:
-          keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-lock-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-cache-master-{{ .Environment.CIRCLE_JOB }}
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Test
-          command: npm test
-      - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-      - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-          paths:
-            - ~/.npm/_cacache
-
-  node-v6:
-    <<: *node-base
-    docker:
-      - image: node:6@sha256:68d8ca89524a21200e6a3ec0948893f3fe2c9e807ecc2a74319fbee59a13d2c4
-  node-v8:
-    <<: *node-base
-    docker:
-      - image: node:8@sha256:d97f5bf54e016ad55dd0475f8710b99be14884ab1afcae8875f8092341264b0c
-  node-v10:
-    <<: *node-base
-    docker:
-      - image: node:10@sha256:6d92bf6062b9fe5c440479dd97aecc80426aa8bb2a2a92c4657eee0492081c8c
