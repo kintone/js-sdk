@@ -1,49 +1,41 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
+version: 2.1
 
-defaults: &defaults
-  working_directory: ~/repo
-
-  steps:
-    - checkout
-
-    # Download and cache dependencies
-    - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "package-lock.json" }}
-        # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
-
-    - run: npm install
-
-    - save_cache:
-        paths:
-          - node_modules
-        key: v1-dependencies-{{ checksum "package-lock.json" }}
-      
-    # run tests!
-    - run: npm run lint
-    - run: npm run test:all
-
+commands:
+  run-npm-test:
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      # run tests!
+      - run: npm run lint
+      - run: npm run test:all
 jobs:
   node-v6:
-    <<: *defaults
     docker:
-      - image: circleci/node:6@sha256:573c797807706c897172d541b90a1d67ca3f312a514df3eeef0bb5cf44f3e05c
+      - image: circleci/node:6@sha256:263ec29bc93d90443fc094e305437d6a42be707508dace108f171a6ded1d10e2
+    steps:
+      - run-npm-test
   node-v8:
-    <<: *defaults
     docker:
-      - image: circleci/node:8@sha256:dc2c2da84421fcd1d0e31a1feb156a886309e631638314e30b7da97f76eaff37
+      - image: circleci/node:8@sha256:8dc1d8ae2f295930fa165c36caab3c70cd8bee03c31f1205e1c45dfcdac68109
+    steps:
+      - run-npm-test
   node-v10:
-    <<: *defaults
     docker:
-      - image: circleci/node:10@sha256:83abc54725269acadb3313c5334d7d1fc2b2d8f2f7573949148936836253d208
+      - image: circleci/node:10@sha256:76f874d78a6316a3f431b70b86f45016753454654b6af5558d1a56750c54f9ba
+    steps:
+      - run-npm-test
 
 workflows:
-  version: 2
   multiple_builds:
     jobs:
       - node-v6
