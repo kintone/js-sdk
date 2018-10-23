@@ -131,6 +131,8 @@ export const run = async (
   domain: string,
   username: string,
   password: string,
+  basicAuthUsername: string | null,
+  basicAuthPassword: string | null,
   manifestFile: string,
   options: Option
 ): Promise<void> => {
@@ -152,6 +154,8 @@ export const run = async (
   const kintoneApiClient = new KintoneApiClient(
     username,
     password,
+    basicAuthUsername,
+    basicAuthPassword,
     domain,
     options
   );

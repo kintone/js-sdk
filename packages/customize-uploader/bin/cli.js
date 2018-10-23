@@ -12,7 +12,9 @@ const {
   HTTPS_PROXY,
   KINTONE_DOMAIN,
   KINTONE_USERNAME,
-  KINTONE_PASSWORD
+  KINTONE_PASSWORD,
+  KINTONE_BASIC_AUTH_USERNAME,
+  KINTONE_BASIC_AUTH_PASSWORD
 } = process.env;
 
 const cli = meow(
@@ -23,6 +25,8 @@ const cli = meow(
     --domain Domain of your kintone
     --username Login username
     --password User's password
+    --basic-auth-username Basic Authentication username
+    --basic-auth-password Basic Authentication password
     --proxy Proxy server
     --watch Watch the changes of customize files and re-run
     --lang Using language (en or ja)
@@ -31,6 +35,8 @@ const cli = meow(
     domain: KINTONE_DOMAIN
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
+    basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
+    basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
     proxy: HTTPS_PROXY or HTTP_PROXY
 `,
   {
@@ -46,6 +52,14 @@ const cli = meow(
       password: {
         type: 'string',
         default: KINTONE_PASSWORD
+      },
+      basicAuthUsername: {
+        type: 'string',
+        default: KINTONE_BASIC_AUTH_USERNAME
+      },
+      basicAuthPassword: {
+        type: 'string',
+        default: KINTONE_BASIC_AUTH_PASSWORD
       },
       proxy: {
         type: 'string',
@@ -71,6 +85,8 @@ const manifestFile = cli.input[0];
 const {
   username,
   password,
+  basicAuthUsername,
+  basicAuthPassword,
   domain,
   proxy,
   watch,
@@ -91,7 +107,7 @@ if (!manifestFile) {
 
 inquireParams({ username, password, domain, lang })
   .then(({ username, password, domain }) => (
-    run(domain, username, password, manifestFile, options)
+    run(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
   ))
   .catch(error => console.log(error.message));
   ;

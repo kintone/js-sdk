@@ -28,16 +28,23 @@ export interface RequestParams {
 
 export default class KintoneApiClient {
   private auth: string;
+  private basicAuth: string | null;
   private kintoneUrl: string;
   public constructor(
     username: string,
     password: string,
+    basicAuthUsername: string | null,
+    basicAuthPassword: string | null,
     domain: string,
     public options: Option
   ) {
+    this.auth = this.getBase64EncodedCredentials(username, password);
+    this.basicAuth =
+      basicAuthUsername && basicAuthPassword
+        ? this.getBasicAuthorization(basicAuthUsername, basicAuthPassword)
+        : null;
     this.kintoneUrl =
       domain.indexOf("https://") > -1 ? domain : `https://${domain}`;
-    this.auth = this.getXCybozuAuthorization(username, password);
   }
 
   public uploadFile(filePath: string, contentType: string) {
@@ -153,6 +160,9 @@ export default class KintoneApiClient {
         ? { formData: body, body: null }
         : { body: JSON.stringify(body) }
     );
+    if (this.basicAuth) {
+      requestOptions.headers.Authorization = this.basicAuth;
+    }
     if (this.options.proxy) {
       requestOptions.proxy = this.options.proxy;
       requestOptions.tunnel = true;
@@ -160,9 +170,22 @@ export default class KintoneApiClient {
     return requestOptions;
   }
 
-  private getXCybozuAuthorization(username: string, password: string): string {
+  private getBase64EncodedCredentials(
+    username: string,
+    password: string
+  ): string {
     const buffer = new Buffer(username + ":" + password);
     return buffer.toString("base64");
+  }
+
+  private getBasicAuthorization(
+    basicAuthUsername: string,
+    basicAuthPassword: string
+  ): string {
+    return `Basic ${this.getBase64EncodedCredentials(
+      basicAuthUsername,
+      basicAuthPassword
+    )}`;
   }
 }
 
