@@ -46,6 +46,8 @@ ${manifestFile}
     --domain Domain of your kintone
     --username Login username
     --password User's password
+    --basic-auth-username Basic Authentication username
+    --basic-auth-password Basic Authentication password
     --proxy Proxy server
     --watch Watch the changes of customize files and re-run
     --lang Using language (en or ja)
@@ -54,6 +56,8 @@ ${manifestFile}
     domain: KINTONE_DOMAIN
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
+    basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
+    basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
     proxy: HTTPS_PROXY or HTTP_PROXY
 ```
 
@@ -109,7 +113,7 @@ Wait for deploying completed...
 Setting has been deployed!
 ```
 
-In this exapmle, JavaScript and CSS Customization is set as below.
+In this example, JavaScript and CSS Customization is set as below.
 ![Example screenshot of JavaScript and CSS Customization](docs/example_setting.PNG)
 
 ## LICENSE

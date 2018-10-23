@@ -50,7 +50,7 @@ const messages = {
   },
   E_Authentication: {
     en:
-      "Failed to authenticate. Please confirm your username and password and domain",
+      "Failed to authenticate. Please confirm your username, password, and domain",
     ja: "認証に失敗しました。ログイン名、パスワード、ドメインを確認してください"
   },
   E_Deployed: {
@@ -62,7 +62,7 @@ const messages = {
     ja: "運用環境への反映の完了を待っています..."
   },
   M_Watching: {
-    en: "Watcing for file changes...",
+    en: "Watching for file changes...",
     ja: "ファイルの変更を監視しています..."
   },
   E_Retry: {

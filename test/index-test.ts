@@ -12,6 +12,8 @@ describe("index", () => {
       kintoneApiClient = new MockKintoneApiClient(
         "kintone",
         "hogehoge",
+        "basicAuthUser",
+        "basicAuthPass",
         "example.com",
         {
           proxy: "",
