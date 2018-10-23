@@ -32,7 +32,7 @@ async function readyForUpload(
     console.log(chalk.red(m("Error_cannotOpenLogin")));
     process.exit(1);
   }
-  console.log("Try to logged-in...");
+  console.log("Trying to log in...");
   await page.type(".form-username-slash > input.form-text", userName);
   await page.type(".form-password-slash > input.form-text", password);
   await page.click(".login-button");
@@ -66,7 +66,7 @@ async function upload(
   lang: Lang
 ): Promise<void> {
   const m = getBoundMessage(lang);
-  console.log(`Try to upload ${pluginPath}`);
+  console.log(`Trying to upload ${pluginPath}`);
   await page.click("#page-admin-system-plugin-index-addplugin");
 
   const file = await page.$('.plupload > input[type="file"]');
