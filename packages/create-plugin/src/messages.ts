@@ -97,8 +97,7 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
 `
   },
   npmStart: {
-    en:
-      "Start watching file changes and create a Kintone plug-in zip file.",
+    en: "Start watching file changes and create a Kintone plug-in zip file.",
     ja:
       "ファイルの変更を監視してプラグインのzipを自動的に作成するプロセスを起動します"
   },
