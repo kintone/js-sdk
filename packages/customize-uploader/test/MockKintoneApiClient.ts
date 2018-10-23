@@ -5,7 +5,9 @@ import KintoneApiClient, {
 
 export default class MockKintoneApiClient extends KintoneApiClient {
   public logs: RequestParams[];
-  constructor(...args: [string, string, string, string, string, ApiClientOption]) {
+  constructor(
+    ...args: [string, string, string, string, string, ApiClientOption]
+  ) {
     super(...args);
     this.logs = [];
   }
