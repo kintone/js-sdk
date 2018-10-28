@@ -20,17 +20,17 @@ commands:
 jobs:
   node-v6:
     docker:
-      - image: circleci/node:6@sha256:d85c6151da03c3c63765e30911478c060df11e1546fba52d550cccd027a44503
+      - image: circleci/node:6@sha256:5a575fa05f84c2427d82ea42c0ad27c01af4f3e669076c915f21e03ff5a23ac9
     steps:
       - run-npm-test
   node-v8:
     docker:
-      - image: circleci/node:8@sha256:09a58e532eadcf4ed349e5616715e84e27ffc29df0d806dfba348e74078a027b
+      - image: circleci/node:8@sha256:63d8e3118985122f47191caf9c8a6d3d10132ff4fe7146929ba3269b3b913de5
     steps:
       - run-npm-test
   node-v10:
     docker:
-      - image: circleci/node:10@sha256:95292b01f23b6a4d9def9f5a70f7fcab1e8bba86ff59eb9c955a55860d2933f7
+      - image: circleci/node:10@sha256:cc4a5fc34ac2a4911585c4c65cf933b6e91da0c0a6b71d2e92cc0c2be1bc0331
     steps:
       - run-npm-test
 workflows:
