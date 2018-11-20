@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/kintone/customize-uploader/compare/v1.1.2...v1.2.0) (2018-11-20)
+
+
+### Features
+
+* Support basic authentication ([#38](https://github.com/kintone/customize-uploader/issues/38)) ([cfaf629](https://github.com/kintone/customize-uploader/commit/cfaf629))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/kintone/customize-uploader/compare/v1.1.1...v1.1.2) (2018-10-10)
 
