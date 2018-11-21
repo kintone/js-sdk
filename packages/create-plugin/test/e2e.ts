@@ -20,7 +20,7 @@ describe("generator", () => {
   });
   it("should be able to create a plugin project based on the minimum template", function() {
     // This timeout is for npm install
-    this.timeout(120000);
+    this.timeout(300000);
     const manifest = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "manifest.json"), "utf8")
     );
