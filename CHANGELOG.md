@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.5"></a>
+## [1.3.5](https://github.com/kintone/create-plugin/compare/v1.3.4...v1.3.5) (2018-11-21)
+
+
+### Bug Fixes
+
+* improve messages in English ([#215](https://github.com/kintone/create-plugin/issues/215)) ([86541a0](https://github.com/kintone/create-plugin/commit/86541a0))
+
+
+
 <a name="1.3.4"></a>
 ## [1.3.4](https://github.com/kintone/create-plugin/compare/v1.3.3...v1.3.4) (2018-10-10)
 
