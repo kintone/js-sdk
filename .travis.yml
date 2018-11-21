@@ -5,8 +5,9 @@ node_js:
   - "6"
   - "8"
   - "10"
-cache:
-  directories:
-    - "node_modules"
+# running tests only when pushing a commit in master except PRs
+branches:
+  only:
+  - master
 script:
   - npm run test:all
