@@ -9,7 +9,9 @@ import * as rimraf from "rimraf";
 
 import { generatePlugin } from "../src/generator";
 
-describe("generator", () => {
+describe("generator", function() {
+  // This timeout is for npm install
+  this.timeout(300000);
   let outputDir: string;
   beforeEach(() => {
     outputDir = fs.mkdtempSync(`${os.tmpdir()}${path.sep}`);
@@ -18,9 +20,7 @@ describe("generator", () => {
   afterEach(() => {
     rimraf.sync(outputDir);
   });
-  it("should be able to create a plugin project based on the minimum template", function() {
-    // This timeout is for npm install
-    this.timeout(300000);
+  it("should be able to create a plugin project based on the minimum template", () => {
     const manifest = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "manifest.json"), "utf8")
     );
