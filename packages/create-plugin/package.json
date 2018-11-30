@@ -29,7 +29,7 @@
     "@types/inquirer": "^0.0.43",
     "@types/lodash": "^4.14.118",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^9.6.39",
+    "@types/node": "^9.6.40",
     "@types/node-rsa": "^0.4.3",
     "@types/rimraf": "^2.0.2",
     "mocha": "^5.2.0",
