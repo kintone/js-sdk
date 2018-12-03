@@ -3,7 +3,8 @@
 const assert = require("assert");
 const path = require("path");
 const fs = require("fs");
-const AdmZip = require("adm-zip");
+
+const { readZipContentsNames } = require("./helper/zip");
 
 const packer = require("../src/");
 const packPluginFromManifest = require("../src/pack-plugin-from-manifest");
@@ -27,11 +28,10 @@ describe("pack-plugin-from-manifest", () => {
       assert(result1.id === result2.id);
       assert(result1.plugin.length === result2.plugin.length);
       assert(result1.privateKey === result2.privateKey);
-      const files = new AdmZip(result1.plugin)
-        .getEntries()
-        .map(e => e.entryName);
-      assert.deepStrictEqual(files, ["contents.zip", "PUBKEY", "SIGNATURE"]);
-      done();
+      readZipContentsNames(result1.plugin).then(files => {
+        assert.deepStrictEqual(files, ["contents.zip", "PUBKEY", "SIGNATURE"]);
+        done();
+      });
     });
   });
 });

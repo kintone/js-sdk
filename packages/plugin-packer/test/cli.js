@@ -3,12 +3,13 @@
 const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
-const AdmZip = require("adm-zip");
 const denodeify = require("denodeify");
 
 const rimraf = denodeify(require("rimraf"));
 const sinon = require("sinon");
 const glob = require("glob");
+
+const { readZipContentsNames } = require("./helper/zip");
 
 const cli = require("../src/cli");
 const console = require("../src/console");
@@ -102,15 +103,16 @@ describe("cli", () => {
         });
     });
 
-    it("calles `packer` with contents.zip as the 1st argument", () => {
+    it("calles `packer` with contents.zip as the 1st argument", done => {
       assert(packer.calledOnce);
       assert(packer.args[0][0]);
-      const zip = new AdmZip(packer.args[0][0]);
-      const files = zip
-        .getEntries()
-        .map(entry => entry.entryName)
-        .sort();
-      assert.deepStrictEqual(files, ["image/icon.png", "manifest.json"].sort());
+      readZipContentsNames(packer.args[0][0]).then(files => {
+        assert.deepStrictEqual(
+          files.sort(),
+          ["image/icon.png", "manifest.json"].sort()
+        );
+        done();
+      });
     });
 
     it("calles `packer` with privateKey as the 2nd argument", () => {
@@ -170,24 +172,21 @@ describe("cli", () => {
     return rimraf(`${sampleDir}/*.*(ppk|zip)`)
       .then(() => cli(pluginDir, { packerMock_: packer }))
       .then(() => {
-        const zip = new AdmZip(packer.args[0][0]);
-        const files = zip
-          .getEntries()
-          .map(entry => entry.entryName)
-          .sort();
-        assert.deepStrictEqual(
-          files,
-          [
-            "css/config.css",
-            "css/desktop.css",
-            "html/config.html",
-            "image/icon.png",
-            "js/config.js",
-            "js/desktop.js",
-            "js/mobile.js",
-            "manifest.json"
-          ].sort()
-        );
+        return readZipContentsNames(packer.args[0][0]).then(files => {
+          assert.deepStrictEqual(
+            files.sort(),
+            [
+              "css/config.css",
+              "css/desktop.css",
+              "html/config.html",
+              "image/icon.png",
+              "js/config.js",
+              "js/desktop.js",
+              "js/mobile.js",
+              "manifest.json"
+            ].sort()
+          );
+        });
       });
   });
 

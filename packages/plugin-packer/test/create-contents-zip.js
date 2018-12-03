@@ -3,7 +3,8 @@
 const assert = require("assert");
 const path = require("path");
 const fs = require("fs");
-const AdmZip = require("adm-zip");
+
+const { readZipContentsNames } = require("./helper/zip");
 
 const createContentsZip = require("../src/create-contents-zip");
 
@@ -15,10 +16,11 @@ describe("create-contents-zip", () => {
     const manifestJSONPath = path.join(pluginDir, "manifest.json");
     const manifest = JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8"));
     createContentsZip(pluginDir, manifest).then(buffer => {
-      const files = new AdmZip(buffer).getEntries().map(e => e.entryName);
-      assert.deepStrictEqual(files, ["manifest.json", "image/icon.png"]);
-      assert(buffer instanceof Buffer);
-      done();
+      readZipContentsNames(buffer).then(files => {
+        assert.deepStrictEqual(files, ["manifest.json", "image/icon.png"]);
+        assert(buffer instanceof Buffer);
+        done();
+      });
     });
   });
 });

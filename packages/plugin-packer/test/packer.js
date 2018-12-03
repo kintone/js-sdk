@@ -4,8 +4,10 @@ const assert = require("assert");
 const crypto = require("crypto");
 const path = require("path");
 const fs = require("fs");
-const AdmZip = require("adm-zip");
 const RSA = require("node-rsa");
+const yauzl = require("yauzl");
+
+const { readZipContentsNames } = require("./helper/zip");
 
 const packer = require("../src/");
 
@@ -41,20 +43,18 @@ describe("packer", () => {
       assert(/^-----BEGIN RSA PRIVATE KEY-----/.test(output.privateKey));
     });
 
-    it("the zip contains 3 files", () => {
-      const zip = new AdmZip(output.plugin);
-      const fileNames = zip
-        .getEntries()
-        .map(entry => entry.entryName)
-        .sort();
-      assert.deepStrictEqual(
-        fileNames,
-        ["contents.zip", "PUBKEY", "SIGNATURE"].sort()
-      );
+    it("the zip contains 3 files", done => {
+      readZipContentsNames(output.plugin).then(files => {
+        assert.deepStrictEqual(
+          files.sort(),
+          ["contents.zip", "PUBKEY", "SIGNATURE"].sort()
+        );
+        done();
+      });
     });
 
     it("the zip passes signature verification", () => {
-      verifyPlugin(output.plugin);
+      return verifyPlugin(output.plugin);
     });
   });
 
@@ -78,7 +78,7 @@ describe("packer", () => {
     });
 
     it("the zip passes signature verification", () => {
-      verifyPlugin(output.plugin);
+      return verifyPlugin(output.plugin);
     });
   });
 
@@ -95,13 +95,49 @@ describe("packer", () => {
   });
 });
 
+function streamToBuffer(stream) {
+  return new Promise((resolve, reject) => {
+    const buffers = [];
+    stream.on("data", data => buffers.push(data));
+    stream.on("end", () => resolve(Buffer.concat(buffers)));
+    stream.on("error", reject);
+  });
+}
+
+function readZipContents(zipEntry) {
+  const zipContentsMap = new Map();
+  const streamToBufferPromises = [];
+  return new Promise((resolve, reject) => {
+    zipEntry.on("entry", entry => {
+      zipEntry.openReadStream(entry, (err, stream) => {
+        if (err) reject(err);
+        streamToBufferPromises.push(
+          streamToBuffer(stream).then(buffer => {
+            zipContentsMap.set(entry.fileName, buffer);
+          })
+        );
+      });
+    });
+    zipEntry.on("end", () => {
+      Promise.all(streamToBufferPromises).then(() => resolve(zipContentsMap));
+    });
+  });
+}
+
 function verifyPlugin(plugin) {
-  const zip = new AdmZip(plugin);
-  const verifier = crypto.createVerify("RSA-SHA1");
-  verifier.update(zip.readFile(zip.getEntry("contents.zip")));
-  const publicKey = zip.readFile(zip.getEntry("PUBKEY"));
-  const signature = zip.readFile(zip.getEntry("SIGNATURE"));
-  assert(verifier.verify(derToPem(publicKey), signature));
+  return new Promise((resolve, reject) => {
+    yauzl.fromBuffer(plugin, (err, zipEntry) => {
+      if (err) reject(err);
+      readZipContents(zipEntry).then(zipContentsMap => {
+        const verifier = crypto.createVerify("RSA-SHA1");
+        verifier.update(zipContentsMap.get("contents.zip"));
+        const publicKey = zipContentsMap.get("PUBKEY");
+        const signature = zipContentsMap.get("SIGNATURE");
+        assert(verifier.verify(derToPem(publicKey), signature));
+        resolve();
+      });
+    });
+  });
 }
 
 function derToPem(der) {
