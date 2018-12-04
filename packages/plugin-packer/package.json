@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^2.2.1",
-    "array-flatten": "^2.1.1",
+    "array-flatten": "^2.1.2",
     "cssnano-cli": "^1.0.5",
     "eslint": "^5.9.0",
     "execa": "^1.0.0",
