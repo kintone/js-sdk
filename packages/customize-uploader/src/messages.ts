@@ -40,6 +40,19 @@ const messages = {
     en: "Customize setting has been updated!",
     ja: "JavaScript/CSS カスタマイズの設定を変更しました!"
   },
+  M_GenerateManifestFile: {
+    en: "Generate customize-manifest.json from kintone app customize",
+    ja: "kintoneのアプリから customize-manifest.jsonを生成しています"
+  },
+  M_DownloadUploadedFile: {
+    en: "Download Uploaded files on kintone app customize",
+    ja:
+      "kintoneのアプリからカスタマイズ設定されたファイルをダウンロードしています"
+  },
+  M_CommandImportFinish: {
+    en: "Fisnish importing from kintone app customize",
+    ja: "kintoneのアプリカスタマイズからインポートが完了しました"
+  },
   E_Updated: {
     en: "Failed to update customize setting",
     ja: "JavaScript/CSS カスタマイズの設定の変更に失敗しました"

@@ -46,7 +46,7 @@ describe("index", () => {
         guestSpaceId: 0
       };
     });
-    it("shoule succeed the uploading", async () => {
+    it("should succeed the uploading", async () => {
       try {
         await upload(kintoneApiClient, manifest, status, options);
         assert.ok(true, "the upload has been successful");
