@@ -3,6 +3,7 @@
 const osLocale = require('os-locale');
 const meow = require('meow');
 const { run } = require('../dist/src/index');
+const { runImport } = require('../dist/src/import');
 const { inquireParams } = require('../dist/src/params');
 const { getDefaultLang } = require('../dist/src/lang');
 const { getMessage } = require('../dist/src/messages');
@@ -16,7 +17,6 @@ const {
   KINTONE_BASIC_AUTH_USERNAME,
   KINTONE_BASIC_AUTH_PASSWORD
 } = process.env;
-
 const cli = meow(
   `
   Usage
@@ -29,8 +29,16 @@ const cli = meow(
     --basic-auth-password Basic Authentication password
     --proxy Proxy server
     --watch Watch the changes of customize files and re-run
+    --dest-dir -d option for subcommand import. 
+                  this option stands for output directory
+                  default value is dest/
     --lang Using language (en or ja)
     --guest-space-id Guest space ID for uploading files
+
+   SubCommands
+    import generate customize-manifest.json and 
+           download js/css files from existing app customization  
+    
     You can set the values through environment variables
     domain: KINTONE_DOMAIN
     username: KINTONE_USERNAME
@@ -77,11 +85,23 @@ const cli = meow(
         type: 'number',
         default: 0
       },
+      // Optional option for import subcommand
+      destDir: {
+        type: 'string',
+        default: 'dest',
+        alias: 'd'
+      }
     }
   }
 );
 
-const manifestFile = cli.input[0];
+const subCommands = ["import"];
+const hasSubCommand = subCommands.indexOf(cli.input[0]) >= 0;
+const subCommand = hasSubCommand ? cli.input[0] : null;
+const isImportCommand = subCommand === "import";
+
+const manifestFile =  hasSubCommand ? cli.input[1] : cli.input[0];
+
 const {
   username,
   password,
@@ -91,12 +111,17 @@ const {
   proxy,
   watch,
   lang,
-  guestSpaceId
+  guestSpaceId,
+  destDir,
 } = cli.flags;
 
 const options = proxy ? { watch, lang, proxy } : { watch, lang };
 if (guestSpaceId) {
   options.guestSpaceId = guestSpaceId;
+}
+
+if(isImportCommand) {
+  options.destDir = destDir;
 }
 
 if (!manifestFile) {
@@ -106,8 +131,12 @@ if (!manifestFile) {
 }
 
 inquireParams({ username, password, domain, lang })
-  .then(({ username, password, domain }) => (
-    run(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
-  ))
+  .then(({ username, password, domain }) => {
+    if(isImportCommand) {
+      runImport(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
+    } else {
+      run(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
+    }
+  })
   .catch(error => console.log(error.message));
-  ;
+

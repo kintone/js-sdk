@@ -12,10 +12,11 @@ describe("util", () => {
   });
 
   describe("wait", () => {
-    it("should wait the specific ms", async () => {
+    it("should wait the specific ms", () => {
       const start = Date.now();
-      await wait(50);
-      assert(Date.now() >= start + 50);
+      return wait(50).then(() => {
+        assert(Date.now() >= start + 50);
+      });
     });
   });
 });

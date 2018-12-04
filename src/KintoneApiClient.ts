@@ -12,6 +12,7 @@ interface RequestOption {
   formData?: object;
   proxy?: string;
   tunnel?: boolean;
+  resolveWithFullResponse: boolean;
 }
 
 export interface Option {
@@ -119,11 +120,38 @@ export default class KintoneApiClient {
     deployed = true;
   }
 
+  public async downloadFile(fileKey: string) {
+    return this.sendRequest({
+      method: "GET",
+      path: "/k/v1/file.json",
+      body: { fileKey }
+    });
+  }
+
+  public async getAppCustomize(appId: string) {
+    return this.sendRequest({
+      method: "GET",
+      path: "/k/v1/app/customize.json",
+      body: { app: appId }
+    });
+  }
+
   public async sendRequest(params: RequestParams) {
     const requestOptions = this.buildRequestOptions(params);
     try {
-      const resp = await request(requestOptions);
-      return JSON.parse(resp);
+      return request(requestOptions).then(response => {
+        if (response.statusCode !== 200) {
+          throw new Error(
+            `Failed to Request(StatusCode:${response.statusCode}`
+          );
+        }
+        const contentType = response.headers["content-type"];
+        if (contentType && contentType.startsWith("application/json")) {
+          return JSON.parse(response.body);
+        } else {
+          return response.body;
+        }
+      });
     } catch (e) {
       if (e.statusCode === 520) {
         const responseBody = JSON.parse(e.response.body);
@@ -154,7 +182,8 @@ export default class KintoneApiClient {
         headers: {
           "X-Cybozu-Authorization": this.auth,
           "Content-Type": contentType || "application/json"
-        }
+        },
+        resolveWithFullResponse: true
       },
       isFormData
         ? { formData: body, body: null }
@@ -167,6 +196,7 @@ export default class KintoneApiClient {
       requestOptions.proxy = this.options.proxy;
       requestOptions.tunnel = true;
     }
+    requestOptions.resolveWithFullResponse = true;
     return requestOptions;
   }
 
