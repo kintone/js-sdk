@@ -59,19 +59,29 @@
   font-weight: bold;
 }
 
-/* 設定項目名 */
-/* 項目 */
+/* Heading for each settings*/
+/* Heading */
 /*
-<div class="kintoneplugin-title">設定項目名</div>
+<div class="kintoneplugin-label">Heading for the setting</div>
+*/
+.kintoneplugin-label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Title for each settings */
+/* Title */
+/*
+<div class="kintoneplugin-title">Title of the setting</div>
 */
 .kintoneplugin-title {
   margin-bottom: 8px;
 }
 
-/* 設定項目の説明 */
-/* 説明 */
+/* Description for each settings */
+/* Description */
 /*
-<div class="kintoneplugin-desc">設定項目の説明</div>
+<div class="kintoneplugin-desc">Description of the setting</div>
 */
 .kintoneplugin-desc {
   margin-bottom: 8px;
