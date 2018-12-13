@@ -19,7 +19,7 @@
     "inquirer": "^6.2.1",
     "lodash": "^4.17.11",
     "meow": "^5.0.0",
-    "node-rsa": "^1.0.1",
+    "node-rsa": "^1.0.2",
     "os-locale": "^3.0.1",
     "rimraf": "^2.6.2"
   },
