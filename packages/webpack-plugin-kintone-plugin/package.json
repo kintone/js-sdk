@@ -33,7 +33,7 @@
     "@types/lodash": "^4.14.119",
     "@types/mkdirp": "^0.5.2",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^9.6.40",
+    "@types/node": "^9.6.41",
     "@types/rimraf": "^2.0.2",
     "@types/webpack": "^4.4.21",
     "adm-zip": "^0.4.13",
