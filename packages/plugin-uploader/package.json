@@ -33,12 +33,12 @@
     "inquirer": "^6.2.1",
     "meow": "^5.0.0",
     "os-locale": "^3.0.1",
-    "puppeteer": "^1.10.0"
+    "puppeteer": "^1.11.0"
   },
   "devDependencies": {
     "@types/inquirer": "0.0.43",
     "@types/node": "^9.6.41",
-    "@types/puppeteer": "^1.10.2",
+    "@types/puppeteer": "^1.11.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.15.3",
     "standard-version": "^4.4.0",
