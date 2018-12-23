@@ -39,7 +39,7 @@
     "node-rsa": "~1.0.2",
     "stream-buffers": "^3.0.2",
     "yauzl": "^2.10.0",
-    "yazl": "^2.4.3"
+    "yazl": "^2.5.1"
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^2.2.1",
