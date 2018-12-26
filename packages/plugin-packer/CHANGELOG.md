@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/kintone/plugin-packer/compare/v1.0.4...v1.0.5) (2018-12-26)
+
+
+### Bug Fixes
+
+* **ci:** convert linebreak LF only *.js ([#271](https://github.com/kintone/plugin-packer/issues/271)) ([2482418](https://github.com/kintone/plugin-packer/commit/2482418))
+* **deps:** update dependency [@kintone](https://github.com/kintone)/plugin-manifest-validator to ^1.0.3 ([#236](https://github.com/kintone/plugin-packer/issues/236)) ([0e3cfa5](https://github.com/kintone/plugin-packer/commit/0e3cfa5))
+* **deps:** update dependency [@kintone](https://github.com/kintone)/plugin-manifest-validator to ^1.0.4 ([#260](https://github.com/kintone/plugin-packer/issues/260)) ([bff3c25](https://github.com/kintone/plugin-packer/commit/bff3c25))
+* **deps:** update dependency debug to ^4.1.1 ([#280](https://github.com/kintone/plugin-packer/issues/280)) ([f6639de](https://github.com/kintone/plugin-packer/commit/f6639de))
+* **deps:** update dependency node-rsa to ~1.0.2 ([#277](https://github.com/kintone/plugin-packer/issues/277)) ([c33ec10](https://github.com/kintone/plugin-packer/commit/c33ec10))
+* **deps:** update dependency yazl to ^2.5.1 ([#257](https://github.com/kintone/plugin-packer/issues/257)) ([4bd6b3c](https://github.com/kintone/plugin-packer/commit/4bd6b3c))
+* **test:** line break warnings ([#270](https://github.com/kintone/plugin-packer/issues/270)) ([684e65c](https://github.com/kintone/plugin-packer/commit/684e65c))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/kintone/plugin-packer/compare/v1.0.3...v1.0.4) (2018-10-10)
 
