@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/kintone/create-plugin/compare/v1.3.5...v1.4.0) (2018-12-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^6.2.1 ([ffb28f4](https://github.com/kintone/create-plugin/commit/ffb28f4))
+* **deps:** update dependency node-rsa to ^1.0.2 ([6e9ffc5](https://github.com/kintone/create-plugin/commit/6e9ffc5))
+
+
+### Features
+
+* **template:** Updated 51-modern-default.css ([#236](https://github.com/kintone/create-plugin/issues/236)) ([8d387dd](https://github.com/kintone/create-plugin/commit/8d387dd))
+
+
+
 <a name="1.3.5"></a>
 ## [1.3.5](https://github.com/kintone/create-plugin/compare/v1.3.4...v1.3.5) (2018-11-21)
 
