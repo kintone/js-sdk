@@ -21,7 +21,7 @@
     "meow": "^5.0.0",
     "node-rsa": "^1.0.2",
     "os-locale": "^3.0.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.3"
   },
   "devDependencies": {
     "@kintone/plugin-packer": "^1.0.5",
