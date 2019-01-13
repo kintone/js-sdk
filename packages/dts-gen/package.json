@@ -1,0 +1,25 @@
+{
+  "name": "kintone-types",
+  "version": "0.0.1",
+  "description": "Types for kintone js api and Types generating tools",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test-run": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tomoya Yokota",
+  "license": "MIT",
+  "dependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "@types/node": "^10.12.18",
+    "@types/nunjucks": "^3.1.0",
+    "axios": "^0.18.0",
+    "commander": "^2.19.0",
+    "nunjucks": "^3.1.7",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "prettier": "^1.15.3"
+  }
+}

@@ -1,0 +1,87 @@
+{% macro simpleTypes(simpleFields) %}
+{%for f in simpleFields %}
+{{f.code}} : {
+    type: "{{f.type}}";
+    value: string;
+}{{";" if not loop.last}}
+{% endfor %}
+{%endmacro%}
+
+{%macro stringListTypes(stringListFields) %}
+{% for s in stringListFields %}
+{{s.code}} : {
+    type: "{{s.type}}";
+    value : string[];
+}{{";" if not loop.last}}
+{% endfor %}
+{% endmacro %}
+
+{% macro userFieldTypes(userFields) %}
+{% for u in userFields %}
+{{u.code}} : {
+    type: "{{u.type}}";
+    value: {code: string, name: string};
+}{{";" if not loop.last}}
+{% endfor %}
+{%endmacro%}
+
+{%macro userListFieldType(userListFields) %}
+{% for u in userListFields %}
+{{u.code}} : {
+    type: "{{u.type}}";
+    value: {code: string, name: string}[];
+}{{";" if not loop.last}}
+{% endfor %}
+{%endmacro%}
+
+{%macro fileFieldTypes(fileTypeFields) %}
+{% for f in fileTypeFields %}
+{{f.code}} : {
+    type: "{{f.type}}";
+    value: {
+        contentType: string;
+        fileKey: string;
+        name: string;
+        size: string;
+    }
+}{{";" if not loop.last}}
+{% endfor %}
+{%endmacro%}
+
+{%macro flatTypes(simpleFields, userFields, stringListFields, userListFields, fileTypeFields) %}
+{{simpleTypes(simpleFields) }}
+
+{{ ";" if stringListFields | length }}
+{{ stringListTypes(stringListFields) }}
+
+{{ ";" if userFields | length }}
+{{userFieldTypes(userFields) }}
+
+{{ ";" if userListFields | length }}
+{{userListFieldType(userListFields) }}
+
+{{ ";" if fileTypeFields | length }}
+{{fileFieldTypes(fileTypeFields) }}
+{%endmacro%}
+/**
+ * This type defenition is genrated.
+ * If you update kintone form settings, Please regenerate type defenition
+ */
+declare namespace kintone.types.app {
+    interface Fields {
+        {{flatTypes(simpleFields, userFields, stringListFields, userListFields, fileTypeFields) }}
+        {{";" if subTableFields | length }}
+
+        {% for rowcode, row in subTableFields %}
+        {{rowcode}} : {
+            type: "SUBTABLE";
+            value: {
+                id: string;
+                value: {                  
+                    {{ flatTypes(row.simpleFields, row.userFields, row.stringListFields, row.userListFields, row.fileTypeFields) }}
+                };
+            }[];
+        }{{";" if not loop.last}}
+        {% endfor %}
+    }
+};
