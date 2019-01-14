@@ -13,7 +13,7 @@ interface RenderInput {
 }
 
 function renderAsFile(output: string, renderInput: RenderInput) {
-  fs.readFile(path.join(__dirname, "/appfields.d.ts.njk"), (err, data) => {
+  fs.readFile(path.join(__dirname, "/fields.d.ts.njk"), (err, data) => {
     if (err) {
       throw err;
     }
