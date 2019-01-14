@@ -18,7 +18,7 @@ export class FormsClientImpl implements FormsClient {
     constructor(input: NewInstanceInput) {
         const token = Buffer.from(`${input.username}:${input.password}`).toString('base64');
         this.client = axios.create({
-            url: input.host,
+            baseURL: input.host,
             headers: {
                 "X-Cybozu-Authorization": token
             }
@@ -27,12 +27,14 @@ export class FormsClientImpl implements FormsClient {
     
     fetchFormProperties(input: FetchFormPropertiesInput) : Promise<{[key:string]: FieldType|SubTableFieldType}> {
         const config : AxiosRequestConfig = {
+            method: "GET",
+            url: this.constructUrl(input),
             data: {
                 app: input.appId
             }
         };
 
-        return this.client.get(this.constructUrl(input), config)
+        return this.client.request(config)
                 .then(resp => resp.data.properties) as Promise<{[key:string]: FieldType|SubTableFieldType}>;
     }
 

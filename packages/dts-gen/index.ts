@@ -35,4 +35,4 @@ client.fetchFormProperties({appId: "123"})
             fields
         };
         TypeDefinitionTemplate.renderAsFile(program.output, input)
-    });
+    }).catch(err => console.error(err));
