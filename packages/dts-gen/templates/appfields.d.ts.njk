@@ -69,27 +69,6 @@
  */
 declare namespace {{namespace}} {
     interface {{typeName}} {
-        $id : {
-            type: "__ID__";
-            value: string;
-        };
-        $revision: {
-            type: "__REVISION__";
-            value: string;
-        };
-
-        更新日時: {
-            type: "UPDATED_TIME";
-            value: string;
-        }
-
-        更新者: {
-            type: "MODIFIER";
-            value: {
-                code: string;
-                name: string;
-            };
-        }
 
         {{flatTypes(simpleFields, userFields, stringListFields, userListFields, fileTypeFields) }}
         {{";" if subTableFields | length }}
@@ -105,5 +84,129 @@ declare namespace {{namespace}} {
             }[];
         }{{";" if not loop.last}}
         {% endfor %}
+    }
+
+    interface {{savedTypeName}} extends {{typeName}} {
+        $id : {
+            type: "__ID__";
+            value: string;
+        };
+        $revision: {
+            type: "__REVISION__";
+            value: string;
+        };
+    }
+
+    namespace events {
+
+        namespace record.create.show {
+            interface Event {
+                appId: Number;
+                record: {{fqdnTypeName}};
+                reuse: boolean;
+                type: string;
+            }
+        }
+        
+
+        namespace record.create.submit {
+            interface Event {
+                appId: Number;
+                record: {{fqdnTypeName}};
+            }
+        }
+
+        namespace record.create.submit.success {
+            interface Event {
+                appId: Number;
+                recordId: Number;
+                record: {{savedFqdnTypeName}};
+            }
+        }
+
+        namespace record.create.change {
+            interface Event {
+                appId: Number;
+                record: {{fqdnTypeName}};
+                changes: {
+                    field: any;
+                    row: any;
+                }
+            }
+        }
+
+        namespace record.edit.show {
+            interface Event {
+                appId: Number;
+                recordId: Number;
+                record: {{savedFqdnTypeName}};
+            }
+        }
+
+        namespace record.edit.submit {
+            interface Event extends record.edit.show.Event {};
+        }
+
+        namespace record.edit.submit.success { 
+            interface Event extends record.edit.show.Event {};
+        }
+
+        namespace record.index.edit.show {
+            interface Event extends record.edit.show.Event {};
+        }
+        
+        namespace record.edit.submit.change {
+            interface Event {
+                appId: Number;
+                record: {{savedFqdnTypeName}};
+                recordId: Number;
+                changes: {
+                    field: any;
+                    row: any;
+                }
+            }
+        }
+
+        namespace record.index.edit.change {
+            interface Event {
+                appId: Number;
+                record: {{savedFqdnTypeName}};
+                recordId: Number;
+                changes: {
+                    field: any;
+                };
+            }
+        }
+
+        namespace record.deteil.deletesubmit {
+            interface Event {
+                appId: Number;
+                recordId: Number;
+                record: {{savedFqdnTypeName}};
+            }
+        }
+
+        namespace record.index.deletesubmit {
+            interface Event {
+                appId: Number;
+                record: {{savedFqdnTypeName}};
+                recordId: Number;
+            }
+        }
+
+        namespace record.detail.process.proceed {
+            interface Event {
+                action: {
+                    value: string;
+                };
+                status: {
+                    value:string;
+                };
+                nexStatus: {
+                    value:string;
+                };
+                record: {{savedFqdnTypeName}};
+            }
+        }
     }
 };

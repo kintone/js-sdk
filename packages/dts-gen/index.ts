@@ -12,7 +12,7 @@ program
     .option('-p, --password [password]')
     .option('--app-id [appId]')   
     .option('--type-name [typeName]', 'type name to be generated', 'Fields')
-    .option('--namespace [namespace]', 'namespace of type to be generated', 'kintone.types.app')
+    .option('--namespace [namespace]', 'namespace of type to be generated', 'kintone.types')
     .option('--demo', 'Generate Type definition from demo data.', null, false)
     .option('-o, --output [output]', 'output file name', 'appfields.d.ts')
     .parse(process.argv);
@@ -24,7 +24,7 @@ const newClientInput = {
 };
 const client = program.demo ? new DemoClient() : FormsClientImpl.newClient(newClientInput);
 
-client.fetchFormProperties({appId: "123"})
+client.fetchFormProperties({appId: program.appId})
     .then(FieldTypeConverter.convertFieldTypesToFieldTypeGroups)
     .then(fields => {
         const typeName = program.typeName;

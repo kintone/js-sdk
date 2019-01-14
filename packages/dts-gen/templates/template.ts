@@ -21,10 +21,16 @@ function renderAsFile(output: string, renderInput: RenderInput) {
     nunjucks.configure({ autoescape: false });
     const namespace = renderInput.namespace;
     const typeName = renderInput.typeName;
+    const savedTypeName = `Saved${typeName}`;
+    const fqdnTypeName = `${namespace}.${typeName}`;
+    const savedFqdnTypeName = `${namespace}.Saved${typeName}`;
     const fields = renderInput.fields;
     const source = nunjucks.renderString(data.toString(), {
       namespace,
       typeName,
+      savedTypeName,
+      fqdnTypeName,
+      savedFqdnTypeName,
       ...fields
     });
     const formatOption = { parser: "typescript" };
