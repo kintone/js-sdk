@@ -32,6 +32,8 @@ kintone-typelify generates record field definition from kintone form settings.
 And from this command line option, record field type definition(`company.name.types.SampleFields`) 
 is defined in `sample-fields.d.ts`.
 
+**If you change form settings in kintone, Please re-generate type definition files**
+
 ### demo mode
 If you won't have a kintone, you can try with demo mode. 
 you can generate demo type definition like below:
@@ -66,10 +68,11 @@ Options:
 /// <reference path="kintone.d.ts" />
 /// <reference path="demo-fields.d.ts" />
 
-
-kintone.events.on("app.record.create.show", (event: com.cybozu.kintone.types.events.record.create.show.Event) => {
-    const type = event.record.チェックボックス.value[0];
-});
+(() => {
+    kintone.events.on("app.record.create.show", (event: com.cybozu.kintone.types.events.record.create.show.Event) => {
+        const type = event.record.テーブル.value[0].value.文字列__1行_テーブル;
+    });    
+})();
 ```
 
 you can compile `.ts` files! you can write kintone JavaScript customize with TypeScript.
@@ -91,8 +94,10 @@ This is JavaScript coding sample:
 /// <reference path="demo-fields.d.ts" />
 
 (function() {
-    kintone.events.on("test", function(ev){
+    kintone.events.on("test", function(/* this argument is not type safe */ ev){
+        // event is typed object
         const event = /** @type {com.cybozu.kintone.types.events.record.create.show.Event} */ ev;
+        const type = event.record.テーブル.value[0].value.文字列__1行_テーブル;
     });
 })();
 ```
