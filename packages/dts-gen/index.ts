@@ -14,7 +14,7 @@ program
     .option('--type-name [typeName]', 'type name to be generated', 'Fields')
     .option('--namespace [namespace]', 'namespace of type to be generated', 'kintone.types')
     .option('--demo', 'Generate Type definition from demo data.', null, false)
-    .option('-o, --output [output]', 'output file name', 'appfields.d.ts')
+    .option('-o, --output [output]', 'output file name', 'fields.d.ts')
     .parse(process.argv);
 
 const newClientInput = {

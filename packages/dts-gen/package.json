@@ -8,6 +8,7 @@
     "lint": "eslint --fix **/*.ts",
     "demo": "node index.js --demo --type-name DemoFields --namespace com.cybozu.kintone.types -o demo-fields.d.ts",
     "generate": "node index.js --host https://****.cybozu.com --username **** --password *** --app-id *** -o appfields.d.ts",
+    "help": "node index.js --help",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tomoya Yokota",
