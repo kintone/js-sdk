@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
-    "test-run": "node index.js --demo --type-name DemoFields --namespace com.cybozu.kintone.types -o demo-fields.d.ts",
+    "lint": "eslint --fix **/*.ts",
+    "demo": "node index.js --demo --type-name DemoFields --namespace com.cybozu.kintone.types -o demo-fields.d.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tomoya Yokota",
@@ -20,6 +21,11 @@
     "typescript": "^3.2.2"
   },
   "devDependencies": {
-    "prettier": "^1.15.3"
+    "eslint": "^5.12.0",
+    "eslint-config-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-typescript": "^0.14.0",
+    "prettier": "^1.15.3",
+    "typescript-eslint-parser": "^21.0.2"
   }
 }

@@ -1,0 +1,12 @@
+{
+    "env": {
+        "node":true,
+        "es6": true
+    },
+    "parser": "typescript-eslint-parser",
+    "plugins": ["typescript"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended"
+    ]
+}

@@ -2,7 +2,7 @@ import {FetchFormPropertiesInput, FormsClient, FieldType, SubTableFieldType} fro
 import {Promise} from 'es6-promise';
 
 export class DemoClient implements FormsClient {
-    fetchFormProperties(input: FetchFormPropertiesInput): Promise<{ [p: string]: FieldType | SubTableFieldType }> {
+    fetchFormProperties(input: FetchFormPropertiesInput): Promise<{ [key    : string]: FieldType | SubTableFieldType }> {
         return Promise.resolve({
             "properties": {
                 "文字列__1行_": {
