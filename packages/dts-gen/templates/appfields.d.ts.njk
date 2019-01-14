@@ -69,6 +69,28 @@
  */
 declare namespace {{namespace}} {
     interface {{typeName}} {
+        $id : {
+            type: "__ID__";
+            value: string;
+        };
+        $revision: {
+            type: "__REVISION__";
+            value: string;
+        };
+
+        更新日時: {
+            type: "UPDATED_TIME";
+            value: string;
+        }
+
+        更新者: {
+            type: "MODIFIER";
+            value: {
+                code: string;
+                name: string;
+            };
+        }
+
         {{flatTypes(simpleFields, userFields, stringListFields, userListFields, fileTypeFields) }}
         {{";" if subTableFields | length }}
 
