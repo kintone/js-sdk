@@ -1,5 +1,6 @@
 {
     "files": [
-        "index.ts"
+        "index.ts",
+        "kintone.d.ts"
     ]
 }
