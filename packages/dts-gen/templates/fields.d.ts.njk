@@ -64,8 +64,8 @@
 {{fileFieldTypes(fileTypeFields) }}
 {%endmacro%}
 /**
- * This type defenition is genrated.
- * If you update kintone form settings, Please regenerate type defenition
+ * This type definition is auto-generated.
+ * If you update kintone form settings, Please regenerate this type definition
  */
 declare namespace {{namespace}} {
     interface {{typeName}} {
@@ -178,7 +178,7 @@ declare namespace {{namespace}} {
             }
         }
 
-        namespace record.deteil.deletesubmit {
+        namespace record.detail.deleteSubmit {
             interface Event {
                 appId: Number;
                 recordId: Number;
@@ -186,7 +186,7 @@ declare namespace {{namespace}} {
             }
         }
 
-        namespace record.index.deletesubmit {
+        namespace record.index.deleteSubmit {
             interface Event {
                 appId: Number;
                 record: {{savedFqdnTypeName}};
