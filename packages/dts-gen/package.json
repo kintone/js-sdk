@@ -8,8 +8,8 @@
     "tsc": "tsc",
     "clean": "rm -rfv dist",
     "lint": "eslint --fix **/*.ts",
-    "demo": "node index.js --demo --type-name DemoFields --namespace com.cybozu.kintone.types -o demo-fields.d.ts",
-    "generate": "node index.js --host https://****.cybozu.com --username **** --password *** --app-id *** -o fields.d.ts",
+    "demo": "node dist/index.js --demo --type-name DemoFields --namespace com.cybozu.kintone.types -o demo-fields.d.ts",
+    "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
     "help": "node index.js --help",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

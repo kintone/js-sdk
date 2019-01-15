@@ -1,4 +1,6 @@
 *.js
 *.js.map
-app.d.ts
-node_modules
+demo-fields.d.ts
+fields.d.ts
+node_modules/
+dist/

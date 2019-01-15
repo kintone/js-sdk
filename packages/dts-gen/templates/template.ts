@@ -37,10 +37,10 @@ function renderAsFile(output: string, renderInput: RenderInput) {
     const prettySource = prettier.format(source, formatOption);
     const outputPath = path.join(process.cwd(), output);
 
-    if(fs.existsSync(path.dirname(outputPath))) {
+    if (!fs.existsSync(path.dirname(outputPath))) {
       fs.mkdirSync(path.dirname(outputPath));
     }
-    
+
     fs.writeFile(path.join(process.cwd(), output), prettySource, err => {
       if (err) {
         throw err;
