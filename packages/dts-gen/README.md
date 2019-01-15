@@ -1,4 +1,4 @@
-# kintone-typelify
+# kintone-typlify
 
 Type definition for kintone customize and 
 Type definition generation tool from kintone form settings.
@@ -95,7 +95,7 @@ This is JavaScript coding sample:
 
 (function() {
     kintone.events.on("test", function(/* this argument is not type safe */ ev){
-        /** @type {com.cybozu.kintone.types.events.record.create.show.Event} */
+        /** @type {kintone.types.events.record.create.show.Event} */
         const event =  ev;
         const type = event.record.テーブル.value[0].value.文字列__1行_テーブル;
     });
