@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, {AxiosInstance, AxiosProxyConfig, AxiosRequestConfig} from 'axios';
 import {Promise} from 'es6-promise';
 
 import {FormsClient, FetchFormPropertiesInput, FieldType, SubTableFieldType} from './forms-client';
@@ -6,7 +6,11 @@ import {FormsClient, FetchFormPropertiesInput, FieldType, SubTableFieldType} fro
 interface NewInstanceInput {
     host: string,
     username: string,
-    password: string
+    password: string,
+    proxyHost: string | null,
+    proxyPort: string | null,
+    basicAuthPassword: string | null,
+    basicAuthUsername: string | null,
 }
 
 export class FormsClientImpl implements FormsClient {
@@ -16,12 +20,25 @@ export class FormsClientImpl implements FormsClient {
     }
 
     constructor(input: NewInstanceInput) {
-        const token = Buffer.from(`${input.username}:${input.password}`).toString('base64');
+
+        let proxy : AxiosProxyConfig | false = false;
+        if(input.proxyHost !== null && input.proxyPort !== null) {
+            proxy = {
+                host: input.proxyHost,
+                port: parseInt(input.proxyPort)
+            }
+        }
+
+        const headers = {
+            "X-Cybozu-Authorization": Buffer.from(`${input.username}:${input.password}`).toString('base64'),
+        };
+        if(input.basicAuthPassword && input.basicAuthPassword) {
+            headers["Authorization"] = "Basic " + Buffer.from(`${input.basicAuthUsername}:${input.basicAuthPassword}`);
+        }
         this.client = axios.create({
             baseURL: input.host,
-            headers: {
-                "X-Cybozu-Authorization": token
-            }
+            headers,
+            proxy
         });
     }
     
@@ -39,9 +56,9 @@ export class FormsClientImpl implements FormsClient {
     }
 
     private constructUrl(input: FetchFormPropertiesInput) : string {
-        if(input.guest && input.preview) {
+        if(input.guestSpaceId !== null && input.preview) {
             return `/k/guest/${input.guestSpaceId}/v1/preview/app/form/fields.json`;
-        } else if(input.guest) {
+        } else if(input.guestSpaceId !== null) {
             return `/k/guest/${input.guestSpaceId}/v1/app/form/fields.json`;
         }else if(input.preview) {
             return `/k/v1/preview/app/form/fields.json`;

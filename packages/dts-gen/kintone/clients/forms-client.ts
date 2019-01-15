@@ -1,9 +1,8 @@
 
 export interface FetchFormPropertiesInput {
     appId: string,
-    preview?: boolean | false,
-    guest?: boolean | false,
-    guestSpaceId?: string | null
+    preview: boolean | false,
+    guestSpaceId: string | null
 }
 
 export interface FieldType {
