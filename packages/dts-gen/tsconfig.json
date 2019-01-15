@@ -2,5 +2,8 @@
     "files": [
         "index.ts",
         "kintone.d.ts"
-    ]
+    ],
+    "compilerOptions": {
+        "outDir": "dist"
+    }
 }

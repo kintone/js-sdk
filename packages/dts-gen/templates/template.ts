@@ -35,8 +35,13 @@ function renderAsFile(output: string, renderInput: RenderInput) {
     });
     const formatOption = { parser: "typescript" };
     const prettySource = prettier.format(source, formatOption);
+    const outputPath = path.join(process.cwd(), output);
 
-    fs.writeFile(path.join(__dirname, "/../", output), prettySource, err => {
+    if(fs.existsSync(path.dirname(outputPath))) {
+      fs.mkdirSync(path.dirname(outputPath));
+    }
+    
+    fs.writeFile(path.join(process.cwd(), output), prettySource, err => {
       if (err) {
         throw err;
       }

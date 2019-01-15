@@ -1,13 +1,15 @@
 {
-  "name": "kintone-types",
+  "name": "kintone-typlify",
   "version": "0.0.1",
   "description": "Types for kintone js api and Types generating tools",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "bin/npm-build.sh",
+    "tsc": "tsc",
+    "clean": "rm -rfv dist",
     "lint": "eslint --fix **/*.ts",
     "demo": "node index.js --demo --type-name DemoFields --namespace com.cybozu.kintone.types -o demo-fields.d.ts",
-    "generate": "node index.js --host https://****.cybozu.com --username **** --password *** --app-id *** -o appfields.d.ts",
+    "generate": "node index.js --host https://****.cybozu.com --username **** --password *** --app-id *** -o fields.d.ts",
     "help": "node index.js --help",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,14 +22,21 @@
     "axios": "^0.18.0",
     "commander": "^2.19.0",
     "nunjucks": "^3.1.7",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "prettier": "^1.15.3",
+    "typescript-eslint-parser": "^21.0.2"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
     "eslint-config-prettier": "^3.4.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-typescript": "^0.14.0",
-    "prettier": "^1.15.3",
-    "typescript-eslint-parser": "^21.0.2"
-  }
+    "eslint-plugin-typescript": "^0.14.0"
+  },
+  "bin" : {
+    "kintone-typlify" : "dist/index.js"
+  },
+  "files" : [
+    "dist",
+    "kintone.d.ts"
+  ]
 }
