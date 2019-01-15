@@ -65,8 +65,8 @@ Options:
 ### Write kintone JavaScript customize with TypeScript
 
 ```typescript
-/// <reference path="kintone.d.ts" />
-/// <reference path="demo-fields.d.ts" />
+/// <reference types="kintone-typlify/kintone" />
+/// <reference path="./demo-fields.d.ts" />
 
 (() => {
     kintone.events.on("app.record.create.show", (event: com.cybozu.kintone.types.events.record.create.show.Event) => {
@@ -90,13 +90,13 @@ This is JavaScript coding sample:
 
 ```javascript
 
-/// <reference path="kintone.d.ts" />
-/// <reference path="demo-fields.d.ts" />
+/// <reference types="kintone-typlify/kintone" />
+/// <reference path="./demo-fields.d.ts" />
 
 (function() {
     kintone.events.on("test", function(/* this argument is not type safe */ ev){
-        // event is typed object
-        const event = /** @type {com.cybozu.kintone.types.events.record.create.show.Event} */ ev;
+        /** @type {com.cybozu.kintone.types.events.record.create.show.Event} */
+        const event =  ev;
         const type = event.record.テーブル.value[0].value.文字列__1行_テーブル;
     });
 })();
