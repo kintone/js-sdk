@@ -1,6 +1,6 @@
 {
     "files": [
-        "index.ts",
+        "src/index.ts",
         "kintone.d.ts"
     ],
     "compilerOptions": {

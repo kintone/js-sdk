@@ -8,7 +8,7 @@
     "tsc": "tsc",
     "clean": "rm -rfv dist",
     "lint": "eslint --fix **/*.ts",
-    "demo": "node dist/index.js --demo --type-name DemoFields --namespace com.cybozu.kintone.types -o demo-fields.d.ts",
+    "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",
     "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
     "help": "node index.js --help",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,15 +27,18 @@
     "typescript-eslint-parser": "^21.0.2"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.12",
     "eslint": "^5.12.0",
     "eslint-config-prettier": "^3.4.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-typescript": "^0.14.0"
+    "eslint-plugin-typescript": "^0.14.0",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5"
   },
-  "bin" : {
-    "kintone-typlify" : "dist/index.js"
+  "bin": {
+    "kintone-typlify": "dist/index.js"
   },
-  "files" : [
+  "files": [
     "dist",
     "kintone.d.ts"
   ]
