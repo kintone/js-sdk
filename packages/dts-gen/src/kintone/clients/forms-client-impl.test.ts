@@ -1,4 +1,7 @@
-import { FormsClientImpl, VisibleForTesting } from "./forms-client-impl";
+import {
+    FormsClientImpl,
+    VisibleForTesting,
+} from "./forms-client-impl";
 import { AxiosRequestConfig } from "axios";
 import { Promise } from "es6-promise";
 
@@ -17,7 +20,8 @@ describe("VisibleForTesting.constructUrl", () => {
         {
             preview: true,
             guestSpaceId: "1",
-            expected: "/k/guest/1/v1/preview/app/form/fields.json",
+            expected:
+                "/k/guest/1/v1/preview/app/form/fields.json",
         },
         {
             preview: true,
@@ -33,14 +37,18 @@ describe("VisibleForTesting.constructUrl", () => {
                 preview,
                 guestSpaceId,
             };
-            expect(VisibleForTesting.constructUrl(input)).toEqual(expected);
+            expect(
+                VisibleForTesting.constructUrl(input)
+            ).toEqual(expected);
         }
     );
 });
 
 describe("FormsClientImpl#constructor", () => {
     const baseURL = "https://kintone.com";
-    const authToken = Buffer.from("username:password").toString("base64");
+    const authToken = Buffer.from(
+        "username:password"
+    ).toString("base64");
 
     function assertConstructorWithArgs(
         input,
@@ -48,9 +56,9 @@ describe("FormsClientImpl#constructor", () => {
     ) {
         VisibleForTesting.newAxiosInstance = jest.fn();
         new FormsClientImpl(input);
-        expect(VisibleForTesting.newAxiosInstance).toBeCalledWith(
-            expectedInput
-        );
+        expect(
+            VisibleForTesting.newAxiosInstance
+        ).toBeCalledWith(expectedInput);
     }
 
     test("with plain settings", () => {
@@ -72,7 +80,10 @@ describe("FormsClientImpl#constructor", () => {
             baseURL,
             proxy: false,
         } as AxiosRequestConfig;
-        assertConstructorWithArgs(input, expectedCalledWith);
+        assertConstructorWithArgs(
+            input,
+            expectedCalledWith
+        );
     });
 
     test("with proxy", () => {
@@ -97,7 +108,10 @@ describe("FormsClientImpl#constructor", () => {
                 port: 1234,
             },
         };
-        assertConstructorWithArgs(input, expectedCalledWith);
+        assertConstructorWithArgs(
+            input,
+            expectedCalledWith
+        );
     });
 
     test("with basic auth", () => {
@@ -113,21 +127,27 @@ describe("FormsClientImpl#constructor", () => {
 
         const headers = {
             "X-Cybozu-Authorization": authToken,
-            Authorization: "Basic YmFzaWNQYXNzd29yZDpiYXNpY1VzZXJuYW1l",
+            Authorization:
+                "Basic YmFzaWNQYXNzd29yZDpiYXNpY1VzZXJuYW1l",
         };
         const expectedCalledWith = {
             headers,
             baseURL,
             proxy: false,
         } as AxiosRequestConfig;
-        assertConstructorWithArgs(input, expectedCalledWith);
+        assertConstructorWithArgs(
+            input,
+            expectedCalledWith
+        );
     });
 });
 
 describe("FormsClientImpl#fetchFormProperties", () => {
     test("", () => {
         const mockConstructUrl = jest.fn();
-        mockConstructUrl.mockReturnValue("/k/v1/app/form/fields.json");
+        mockConstructUrl.mockReturnValue(
+            "/k/v1/app/form/fields.json"
+        );
         VisibleForTesting.constructUrl = mockConstructUrl;
 
         const mockRequest = jest.fn();
@@ -155,7 +175,9 @@ describe("FormsClientImpl#fetchFormProperties", () => {
             preview: false,
             guestSpaceId: null,
         };
-        new FormsClientImpl(input).fetchFormProperties(fetchInput);
+        new FormsClientImpl(input).fetchFormProperties(
+            fetchInput
+        );
 
         const expectedRequestConfig = {
             method: "GET",
@@ -164,6 +186,8 @@ describe("FormsClientImpl#fetchFormProperties", () => {
                 app: "1",
             },
         };
-        expect(mockRequest).toBeCalledWith(expectedRequestConfig);
+        expect(mockRequest).toBeCalledWith(
+            expectedRequestConfig
+        );
     });
 });

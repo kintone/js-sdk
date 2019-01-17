@@ -18,5 +18,7 @@ export interface SubTableFieldType {
 export interface FormsClient {
     fetchFormProperties(
         input: FetchFormPropertiesInput
-    ): Promise<{ [key: string]: FieldType | SubTableFieldType }>;
+    ): Promise<{
+        [key: string]: FieldType | SubTableFieldType;
+    }>;
 }

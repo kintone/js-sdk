@@ -4,6 +4,7 @@
         "kintone.d.ts"
     ],
     "compilerOptions": {
-        "outDir": "dist"
+        "outDir": "dist",
+        "target": "es5"
     }
 }

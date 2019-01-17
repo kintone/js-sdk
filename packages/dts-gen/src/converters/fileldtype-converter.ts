@@ -1,4 +1,7 @@
-import { FieldType, SubTableFieldType } from "../kintone/clients/forms-client";
+import {
+    FieldType,
+    SubTableFieldType,
+} from "../kintone/clients/forms-client";
 
 const SIMPLE_VALUE_TYPES = [
     "SINGLE_LINE_TEXT",
@@ -36,11 +39,17 @@ export interface FieldTypeGroups {
 
 function selectFieldsTypesIn(
     types: string[],
-    codeAndFieldType: { [key: string]: FieldType | SubTableFieldType }
+    codeAndFieldType: {
+        [key: string]: FieldType | SubTableFieldType;
+    }
 ): FieldType[] {
     const fields = [];
     Object.keys(codeAndFieldType)
-        .filter(key => types.indexOf(codeAndFieldType[key].type) >= 0)
+        .filter(
+            key =>
+                types.indexOf(codeAndFieldType[key].type) >=
+                0
+        )
         .forEach(key => fields.push(codeAndFieldType[key]));
 
     return fields;
@@ -48,7 +57,9 @@ function selectFieldsTypesIn(
 
 function selectFieldsTypesEquals(
     type: string,
-    codeAndFieldType: { [key: string]: FieldType | SubTableFieldType }
+    codeAndFieldType: {
+        [key: string]: FieldType | SubTableFieldType;
+    }
 ): FieldType[] {
     const fields = [];
     Object.keys(codeAndFieldType)
@@ -64,31 +75,52 @@ function convertSubTableFields(
     const fieldAndFieldTypes = {};
     subTableFields
         .map(field => {
-            const fields = field.fields as { [key: string]: FieldType };
+            const fields = field.fields as {
+                [key: string]: FieldType;
+            };
             return {
                 code: field.code,
-                fields: convertFieldTypesToFieldTypeGroups(fields),
+                fields: convertFieldTypesToFieldTypeGroups(
+                    fields
+                ),
             };
         })
-        .forEach(({ code, fields }) => (fieldAndFieldTypes[code] = fields));
+        .forEach(
+            ({ code, fields }) =>
+                (fieldAndFieldTypes[code] = fields)
+        );
     return fieldAndFieldTypes;
 }
 
 function convertFieldTypesToFieldTypeGroups(properties: {
     [key: string]: FieldType | SubTableFieldType;
 }): FieldTypeGroups {
-    const simpleFields = selectFieldsTypesIn(SIMPLE_VALUE_TYPES, properties);
-    const userFields = selectFieldsTypesIn(USER_TYPES, properties);
-    const stringListFields = selectFieldsTypesIn(STRING_LIST_TYPES, properties);
+    const simpleFields = selectFieldsTypesIn(
+        SIMPLE_VALUE_TYPES,
+        properties
+    );
+    const userFields = selectFieldsTypesIn(
+        USER_TYPES,
+        properties
+    );
+    const stringListFields = selectFieldsTypesIn(
+        STRING_LIST_TYPES,
+        properties
+    );
     const userListFields = selectFieldsTypesEquals(
         USER_SELECT_TYPE,
         properties
     );
-    const fileTypeFields = selectFieldsTypesEquals(FILE_TYPE, properties);
-    const subTableFields = convertSubTableFields(selectFieldsTypesEquals(
-        SUB_TABLE_TYPE,
+    const fileTypeFields = selectFieldsTypesEquals(
+        FILE_TYPE,
         properties
-    ) as SubTableFieldType[]);
+    );
+    const subTableFields = convertSubTableFields(
+        selectFieldsTypesEquals(
+            SUB_TABLE_TYPE,
+            properties
+        ) as SubTableFieldType[]
+    );
 
     return {
         simpleFields,

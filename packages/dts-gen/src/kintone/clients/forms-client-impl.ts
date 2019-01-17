@@ -27,7 +27,10 @@ export class FormsClientImpl implements FormsClient {
 
     constructor(input: NewInstanceInput) {
         let proxy: AxiosProxyConfig | false = false;
-        if (input.proxyHost !== null && input.proxyPort !== null) {
+        if (
+            input.proxyHost !== null &&
+            input.proxyPort !== null
+        ) {
             proxy = {
                 host: input.proxyHost,
                 port: parseInt(input.proxyPort),
@@ -39,11 +42,16 @@ export class FormsClientImpl implements FormsClient {
                 `${input.username}:${input.password}`
             ).toString("base64"),
         };
-        if (input.basicAuthPassword && input.basicAuthPassword) {
+        if (
+            input.basicAuthPassword &&
+            input.basicAuthPassword
+        ) {
             headers["Authorization"] =
                 "Basic " +
                 Buffer.from(
-                    `${input.basicAuthUsername}:${input.basicAuthPassword}`
+                    `${input.basicAuthUsername}:${
+                        input.basicAuthPassword
+                    }`
                 ).toString("base64");
         }
         this.client = VisibleForTesting.newAxiosInstance({
@@ -55,7 +63,9 @@ export class FormsClientImpl implements FormsClient {
 
     fetchFormProperties(
         input: FetchFormPropertiesInput
-    ): Promise<{ [key: string]: FieldType | SubTableFieldType }> {
+    ): Promise<{
+        [key: string]: FieldType | SubTableFieldType;
+    }> {
         const config: AxiosRequestConfig = {
             method: "GET",
             url: constructUrl(input),
@@ -72,11 +82,17 @@ export class FormsClientImpl implements FormsClient {
     }
 }
 
-function constructUrl(input: FetchFormPropertiesInput): string {
+function constructUrl(
+    input: FetchFormPropertiesInput
+): string {
     if (input.guestSpaceId !== null && input.preview) {
-        return `/k/guest/${input.guestSpaceId}/v1/preview/app/form/fields.json`;
+        return `/k/guest/${
+            input.guestSpaceId
+        }/v1/preview/app/form/fields.json`;
     } else if (input.guestSpaceId !== null) {
-        return `/k/guest/${input.guestSpaceId}/v1/app/form/fields.json`;
+        return `/k/guest/${
+            input.guestSpaceId
+        }/v1/app/form/fields.json`;
     } else if (input.preview) {
         return `/k/v1/preview/app/form/fields.json`;
     } else {
@@ -84,7 +100,9 @@ function constructUrl(input: FetchFormPropertiesInput): string {
     }
 }
 
-function newAxiosInstance(config: AxiosRequestConfig): AxiosInstance {
+function newAxiosInstance(
+    config: AxiosRequestConfig
+): AxiosInstance {
     return axios.create(config);
 }
 

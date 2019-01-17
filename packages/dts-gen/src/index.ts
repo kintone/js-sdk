@@ -7,7 +7,12 @@ import { TypeDefinitionTemplate } from "./templates/template";
 
 program
     .version("0.0.1")
-    .option("--demo", "Generate Type definition from demo data.", null, false)
+    .option(
+        "--demo",
+        "Generate Type definition from demo data.",
+        null,
+        false
+    )
 
     .option("--host [host]")
     .option("-u, --username [username]")
@@ -19,7 +24,11 @@ program
         "set this option if kintone app is in preview mode",
         false
     )
-    .option("--type-name [typeName]", "type name to be generated", "Fields")
+    .option(
+        "--type-name [typeName]",
+        "type name to be generated",
+        "Fields"
+    )
     .option(
         "--namespace [namespace]",
         "namespace of type to be generated",
@@ -37,7 +46,11 @@ program
         "password for basic authentication",
         null
     )
-    .option("-o, --output [output]", "output file name", "fields.d.ts")
+    .option(
+        "-o, --output [output]",
+        "output file name",
+        "fields.d.ts"
+    )
     .parse(process.argv);
 
 const newClientInput = {
@@ -62,7 +75,9 @@ const fetchFormPropertiesInput = {
 
 client
     .fetchFormProperties(fetchFormPropertiesInput)
-    .then(FieldTypeConverter.convertFieldTypesToFieldTypeGroups)
+    .then(
+        FieldTypeConverter.convertFieldTypesToFieldTypeGroups
+    )
     .then(fields => {
         const typeName = program.typeName;
         const namespace = program.namespace;
@@ -71,7 +86,10 @@ client
             namespace,
             fields,
         };
-        TypeDefinitionTemplate.renderAsFile(program.output, input);
+        TypeDefinitionTemplate.renderAsFile(
+            program.output,
+            input
+        );
     })
     // eslint-disable-next-line no-console
     .catch(err => console.error(err));

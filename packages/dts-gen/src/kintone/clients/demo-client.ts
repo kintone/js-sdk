@@ -9,7 +9,9 @@ import { Promise } from "es6-promise";
 export class DemoClient implements FormsClient {
     fetchFormProperties(
         input: FetchFormPropertiesInput
-    ): Promise<{ [key: string]: FieldType | SubTableFieldType }> {
+    ): Promise<{
+        [key: string]: FieldType | SubTableFieldType;
+    }> {
         return Promise.resolve(
             {
                 properties: {
@@ -71,7 +73,10 @@ export class DemoClient implements FormsClient {
                         label: "チェックボックス",
                         noLabel: false,
                         required: false,
-                        defaultValue: ["sample1", "sample3"],
+                        defaultValue: [
+                            "sample1",
+                            "sample3",
+                        ],
                         options: {
                             sample1: {
                                 label: "sample1",
@@ -105,7 +110,8 @@ export class DemoClient implements FormsClient {
                         noLabel: false,
                         required: false,
                         unique: false,
-                        defaultValue: "2012-07-19T00:00:00.000Z",
+                        defaultValue:
+                            "2012-07-19T00:00:00.000Z",
                         defaultNowValue: false,
                     },
                     添付ファイル: {
@@ -174,10 +180,13 @@ export class DemoClient implements FormsClient {
                                 code: "参照先アプリ",
                             },
                             condition: {
-                                field: "このアプリのフィールド",
-                                relatedField: "参照するアプリのフィールド",
+                                field:
+                                    "このアプリのフィールド",
+                                relatedField:
+                                    "参照するアプリのフィールド",
                             },
-                            filterCond: "数値 > 10 and 数値2 > 20",
+                            filterCond:
+                                "数値 > 10 and 数値2 > 20",
                             displayFields: [
                                 "表示するフィールド1",
                                 "表示するフィールド2",
@@ -198,17 +207,21 @@ export class DemoClient implements FormsClient {
                                 app: "100",
                                 code: "コピー元アプリ",
                             },
-                            relatedKeyField: "コピー元のフィールド",
+                            relatedKeyField:
+                                "コピー元のフィールド",
                             fieldMappings: [
                                 {
-                                    field: "コピー先のフィールド",
-                                    relatedField: "コピー元のフィールド",
+                                    field:
+                                        "コピー先のフィールド",
+                                    relatedField:
+                                        "コピー元のフィールド",
                                 },
                             ],
                             lookupPickerFields: [
                                 "ルックアップ選択時に表示されるフィールド1",
                             ],
-                            filterCond: "数値 > 10 and 数値2 > 20",
+                            filterCond:
+                                "数値 > 10 and 数値2 > 20",
                             sort:
                                 "ソートフィールド1 desc, ソートフィールド2 asc",
                         },
@@ -226,8 +239,10 @@ export class DemoClient implements FormsClient {
                         fields: {
                             文字列__1行_テーブル: {
                                 type: "SINGLE_LINE_TEXT",
-                                code: "文字列__1行_テーブル",
-                                label: "文字列 (1行)テーブル",
+                                code:
+                                    "文字列__1行_テーブル",
+                                label:
+                                    "文字列 (1行)テーブル",
                                 noLabel: false,
                                 required: true,
                                 unique: false,
@@ -239,8 +254,10 @@ export class DemoClient implements FormsClient {
                             },
                             文字列__1行_テーブル2: {
                                 type: "SINGLE_LINE_TEXT",
-                                code: "文字列__1行_テーブル2",
-                                label: "文字列 (1行)テーブル",
+                                code:
+                                    "文字列__1行_テーブル2",
+                                label:
+                                    "文字列 (1行)テーブル",
                                 noLabel: false,
                                 required: true,
                                 unique: false,
