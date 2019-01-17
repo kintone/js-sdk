@@ -14,7 +14,8 @@
     "test": "jest",
     "prettier:base": "prettier --parser typescript",
     "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
-    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\""
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
+    "build:integration": "webpack --config webpack.config.js"
   },
   "author": "Tomoya Yokota",
   "license": "MIT",
@@ -25,7 +26,6 @@
     "axios": "^0.18.0",
     "commander": "^2.19.0",
     "nunjucks": "^3.1.7",
-    "typescript": "^3.2.2",
     "prettier": "^1.15.3",
     "typescript-eslint-parser": "^21.0.2"
   },
@@ -34,7 +34,11 @@
     "eslint": "^5.12.0",
     "eslint-plugin-typescript": "^0.14.0",
     "jest": "^23.6.0",
-    "ts-jest": "^23.10.5"
+    "ts-jest": "^23.10.5",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.2.2",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
   },
   "bin": {
     "kintone-typlify": "dist/index.js"

@@ -1,3 +1,4 @@
+/// <reference types="es6-promise" />
 declare namespace kintone {
 
     namespace events {
@@ -12,6 +13,8 @@ declare namespace kintone {
             params: any,
             detectGuestSpace: boolean | null
         ): string;
+
+        function getConcurrencyLimit(): Promise<{limit: number, running:number}>;
     }
 
     function api(
@@ -46,6 +49,18 @@ declare namespace kintone {
         errback: (err: any) => void
     ) : void;
 
+    class Promise<T1, T2> {
+        constructor(init: (resolve: (onResolve:T1) => void, reject?: (onReject:T2) => void) => void);
+        then(callback: (resolved:T1) => any): Promise<any, any>;
+        catch(callback: (rejected: T2)=> any): Promise<any, any>;
+    }
+
+    namespace Promise {
+        function resolve<T1>(onResolve:T1): Promise<T1>;
+        function reject<T2>(onReject:T2): Promise<T2>;
+        function all(listOfPromise: Promise<any>[]): Promise<any[]>;
+    }
+
     namespace proxy {
         function upload(
             url : string,
@@ -65,32 +80,43 @@ declare namespace kintone {
     }
 
     namespace app {
+        function getFieldElements(fieldCode: string): HTMLElement[] | null;
+        function getHeaderMenuSpaceElement(): HTMLElement | null;
+        function getHeaderSpaceElement(): HTMLElement | null;
+        function getId() : number | null;
+        function getLookupTargetAppId(fieldCode: string) : string | null;
+        function getQuery(): string | null;
+        function getQueryCondition(): string | null;
+        function getRelatedRecordsTargetAppId(fieldCode: string) : string | null;
+
+
         namespace record {
-            function getId() : number | null;
+            function getId(): number | null;
             function get() : any | null;
             function getFieldElement(fieldCode: string) : HTMLElement | null;
             function set(record: any) : void;
-            function getHeaderMenuSpaceElement(): HTMLElement | null;
             function getSpaceElement(id : string): HTMLElement | null;
-            function getRelatedRecordsTargetAppId(fieldCode: string) : string | null;
-            function getLookupTargetAppId(fieldCode: string) : string | null;
             function setFieldShown(fieldCode: string, isShwon: boolean): void;
-            
-            function getFieldElements(fieldCode: string): HTMLElement[] | null;
+            function setGroupFieldOpen(fieldCode: string, isOpen:boolean): void;
         }
     }
 
     namespace mobile {
         namespace app {
+            function getHeaderSpaceElement(): HTMLElement | null;
+            function getId() : number | null;
+            function getLookupTargetAppId(fieldCode: string) : string | null;
+            function getQuery(): string | null;
+            function getQueryCondition(): string | null;
+            function getRelatedRecordsTargetAppId(fieldCode: string) : string | null;
+
             namespace record {
-                function getId() : number | null;
+                function getId(): number | null;
                 function get() : any | null;
                 function set(record: any) : void;
-                function getHeaderSpaceElement(): HTMLElement | null;
-                function getSpaceElement(id: string) : HTMLElement | null;
-                function getRelatedRecordsTargetAppId(fieldCode: string) : string | null;
-                function getLookupTargetAppId(fieldCode: string) : string | null;
+                function getSpaceElement(id : string): HTMLElement | null;
                 function setFieldShown(fieldCode: string, isShwon: boolean): void;
+                function setGroupFieldOpen(fieldCode: string, isOpen:boolean): void;
             }
         }
     }
