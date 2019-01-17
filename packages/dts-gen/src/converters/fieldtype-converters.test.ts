@@ -116,7 +116,7 @@ describe("FileFieldTypeConverter", () => {
         const output = VisibleForTesting.convertSubTableFields(subTables);
         expect(Object.keys(output)).toEqual(["subTable"]);
 
-        const expectedSimpleFileds = [
+        const expectedSimpleFields = [
             {
                 code: "singleLineText",
                 type: "SINGLE_LINE_TEXT",
@@ -162,7 +162,7 @@ describe("FileFieldTypeConverter", () => {
                 type: "NUMBER",
             },
         ];
-        expect(output.subTable.simpleFields).toEqual(expectedSimpleFileds);
+        expect(output.subTable.simpleFields).toEqual(expectedSimpleFields);
 
         const expectedFieldFields = [
             {

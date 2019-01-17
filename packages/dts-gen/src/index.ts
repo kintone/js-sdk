@@ -7,6 +7,8 @@ import { TypeDefinitionTemplate } from "./templates/template";
 
 program
     .version("0.0.1")
+    .option("--demo", "Generate Type definition from demo data.", null, false)
+
     .option("--host [host]")
     .option("-u, --username [username]")
     .option("-p, --password [password]")
@@ -23,7 +25,6 @@ program
         "namespace of type to be generated",
         "kintone.types"
     )
-    .option("--demo", "Generate Type definition from demo data.", null, false)
     .option("--proxy-host [proxyHost]", "proxy host", null)
     .option("--proxy-port [proxyPort]", "proxy port", null)
     .option(
@@ -48,9 +49,11 @@ const newClientInput = {
     basicAuthUsername: program.basicAuthUsername,
     basicAuthPassword: program.basicAuthPassword,
 };
+
 const client = program.demo
     ? new DemoClient()
-    : FormsClientImpl.newClient(newClientInput);
+    : new FormsClientImpl(newClientInput);
+
 const fetchFormPropertiesInput = {
     appId: program.appId,
     guestSpaceId: program.guestSpaceId,

@@ -24,9 +24,6 @@ interface NewInstanceInput {
 
 export class FormsClientImpl implements FormsClient {
     readonly client: AxiosInstance;
-    static newClient(input: NewInstanceInput): FormsClientImpl {
-        return new FormsClientImpl(input);
-    }
 
     constructor(input: NewInstanceInput) {
         let proxy: AxiosProxyConfig | false = false;
@@ -47,9 +44,9 @@ export class FormsClientImpl implements FormsClient {
                 "Basic " +
                 Buffer.from(
                     `${input.basicAuthUsername}:${input.basicAuthPassword}`
-                );
+                ).toString("base64");
         }
-        this.client = axios.create({
+        this.client = VisibleForTesting.newAxiosInstance({
             baseURL: input.host,
             headers,
             proxy,
@@ -61,7 +58,7 @@ export class FormsClientImpl implements FormsClient {
     ): Promise<{ [key: string]: FieldType | SubTableFieldType }> {
         const config: AxiosRequestConfig = {
             method: "GET",
-            url: this.constructUrl(input),
+            url: constructUrl(input),
             data: {
                 app: input.appId,
             },
@@ -73,18 +70,27 @@ export class FormsClientImpl implements FormsClient {
             [key: string]: FieldType | SubTableFieldType;
         }>;
     }
+}
 
-    private constructUrl(input: FetchFormPropertiesInput): string {
-        if (input.guestSpaceId !== null && input.preview) {
-            return `/k/guest/${
-                input.guestSpaceId
+function constructUrl(input: FetchFormPropertiesInput): string {
+    if (input.guestSpaceId !== null && input.preview) {
+        return `/k/guest/${
+            input.guestSpaceId
             }/v1/preview/app/form/fields.json`;
-        } else if (input.guestSpaceId !== null) {
-            return `/k/guest/${input.guestSpaceId}/v1/app/form/fields.json`;
-        } else if (input.preview) {
-            return `/k/v1/preview/app/form/fields.json`;
-        } else {
-            return `/k/v1/app/form/fields.json`;
-        }
+    } else if (input.guestSpaceId !== null) {
+        return `/k/guest/${input.guestSpaceId}/v1/app/form/fields.json`;
+    } else if (input.preview) {
+        return `/k/v1/preview/app/form/fields.json`;
+    } else {
+        return `/k/v1/app/form/fields.json`;
     }
 }
+
+function newAxiosInstance(config: AxiosRequestConfig) : AxiosInstance {
+    return axios.create(config);
+}
+
+export const VisibleForTesting = {
+    constructUrl,
+    newAxiosInstance,
+};
