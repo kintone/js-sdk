@@ -1,21 +1,22 @@
-
 export interface FetchFormPropertiesInput {
-    appId: string,
-    preview: boolean | false,
-    guestSpaceId: string | null
+    appId: string;
+    preview: boolean | false;
+    guestSpaceId: string | null;
 }
 
 export interface FieldType {
-    type: string,
-    code: string,
+    type: string;
+    code: string;
 }
 
 export interface SubTableFieldType {
-    type: "SUBTABLE",
-    code: string,
-    fields: {[key:string]: FieldType}
+    type: "SUBTABLE";
+    code: string;
+    fields: { [key: string]: FieldType };
 }
 
 export interface FormsClient {
-    fetchFormProperties(input: FetchFormPropertiesInput) : Promise<{[key:string]: FieldType|SubTableFieldType}>;
+    fetchFormProperties(
+        input: FetchFormPropertiesInput
+    ): Promise<{ [key: string]: FieldType | SubTableFieldType }>;
 }

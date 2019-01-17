@@ -11,7 +11,10 @@
     "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",
     "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
     "help": "node index.js --help",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "prettier:base": "prettier --parser typescript",
+    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\""
   },
   "author": "Tomoya Yokota",
   "license": "MIT",
