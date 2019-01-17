@@ -16,10 +16,10 @@ interface NewInstanceInput {
     host: string;
     username: string;
     password: string;
-    proxyHost: string | null;
-    proxyPort: string | null;
-    basicAuthPassword: string | null;
-    basicAuthUsername: string | null;
+    proxyHost?: string | null;
+    proxyPort?: string | null;
+    basicAuthPassword?: string | null;
+    basicAuthUsername?: string | null;
 }
 
 export class FormsClientImpl implements FormsClient {
@@ -74,9 +74,7 @@ export class FormsClientImpl implements FormsClient {
 
 function constructUrl(input: FetchFormPropertiesInput): string {
     if (input.guestSpaceId !== null && input.preview) {
-        return `/k/guest/${
-            input.guestSpaceId
-            }/v1/preview/app/form/fields.json`;
+        return `/k/guest/${input.guestSpaceId}/v1/preview/app/form/fields.json`;
     } else if (input.guestSpaceId !== null) {
         return `/k/guest/${input.guestSpaceId}/v1/app/form/fields.json`;
     } else if (input.preview) {
@@ -86,7 +84,7 @@ function constructUrl(input: FetchFormPropertiesInput): string {
     }
 }
 
-function newAxiosInstance(config: AxiosRequestConfig) : AxiosInstance {
+function newAxiosInstance(config: AxiosRequestConfig): AxiosInstance {
     return axios.create(config);
 }
 
