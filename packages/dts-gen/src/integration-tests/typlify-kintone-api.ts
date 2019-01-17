@@ -12,20 +12,22 @@ import * as assert from "assert";
 
             // assert function exists in kintone.Promise
             assertFunction(kintone.Promise);
-            const okPromise = new kintone.Promise<
-                number,
-                any
-            >(resolve => resolve(1));
+            assertFunction(kintone.Promise.all);
+            assertFunction(kintone.Promise.resolve);
+            assertFunction(kintone.Promise.reject);
+
+            const okPromise = new kintone.Promise<number>(
+                resolve => resolve(1)
+            );
 
             assert.ok(okPromise);
             okPromise.then(resolved => {
                 assert.ok(resolved === 1);
             });
 
-            const ngPromise = new kintone.Promise<
-                any,
-                number
-            >((_, reject) => reject(1));
+            const ngPromise = new kintone.Promise<any>(
+                (_, reject) => reject(1)
+            );
             ngPromise.catch(rejected =>
                 assert.ok(rejected === 1)
             );
@@ -37,10 +39,6 @@ import * as assert from "assert";
             kintone.Promise.reject("reject").catch(reject =>
                 assert.ok(reject === "reject")
             );
-
-            assertFunction(kintone.Promise.all);
-            assertFunction(kintone.Promise.resolve);
-            assertFunction(kintone.Promise.reject);
 
             // assert function exists in kintone.events
             const e = kintone.events;

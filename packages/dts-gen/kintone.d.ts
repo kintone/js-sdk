@@ -1,4 +1,3 @@
-/// <reference types="es6-promise" />
 declare namespace kintone {
 
     namespace events {
@@ -49,17 +48,23 @@ declare namespace kintone {
         errback: (err: any) => void
     ) : void;
 
-    class Promise<T1, T2> {
-        constructor(init: (resolve: (onResolve:T1) => void, reject?: (onReject:T2) => void) => void);
-        then(callback: (resolved:T1) => any): Promise<any, any>;
-        catch(callback: (rejected: T2)=> any): Promise<any, any>;
+    class Promise<T> {
+        constructor(
+            callback: (
+                resolve: (resolved: T) => any,
+                reject: (rejected: any) => any,
+            ) => void
+        );
+
+        then(callback:(resolved: T) => any);
+        catch(callback:(rejected: any) => any);
+
+        static resolve(resolved: any): Promise<any>;
+        static reject(rejected: any): Promise<any>;
+        static all(listOfPromise: Promise<any>[]): Promise<any>;
     }
 
-    namespace Promise {
-        function resolve<T1>(onResolve:T1): Promise<T1>;
-        function reject<T2>(onReject:T2): Promise<T2>;
-        function all(listOfPromise: Promise<any>[]): Promise<any[]>;
-    }
+
 
     namespace proxy {
         function upload(
