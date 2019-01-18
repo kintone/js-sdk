@@ -85,18 +85,15 @@ export class FormsClientImpl implements FormsClient {
 function constructUrl(
     input: FetchFormPropertiesInput
 ): string {
-    if (input.guestSpaceId !== null && input.preview) {
-        return `/k/guest/${
-            input.guestSpaceId
-        }/v1/preview/app/form/fields.json`;
+    const guest = input.guestSpaceId;
+    if (guest !== null && input.preview) {
+        return `/k/guest/${guest}/v1/preview/form.json`;
     } else if (input.guestSpaceId !== null) {
-        return `/k/guest/${
-            input.guestSpaceId
-        }/v1/app/form/fields.json`;
+        return `/k/guest/${guest}/v1/form.json`;
     } else if (input.preview) {
-        return `/k/v1/preview/app/form/fields.json`;
+        return "/k/v1/preview/form.json";
     } else {
-        return `/k/v1/app/form/fields.json`;
+        return "/k/v1/form.json";
     }
 }
 

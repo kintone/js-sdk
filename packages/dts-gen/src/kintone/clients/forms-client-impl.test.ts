@@ -10,23 +10,23 @@ describe("VisibleForTesting.constructUrl", () => {
         {
             preview: false,
             guestSpaceId: "1",
-            expected: "/k/guest/1/v1/app/form/fields.json",
+            expected: "/k/guest/1/v1/form.json",
         },
         {
             preview: false,
             guestSpaceId: null,
-            expected: "/k/v1/app/form/fields.json",
+            expected: "/k/v1/form.json",
         },
         {
             preview: true,
             guestSpaceId: "1",
             expected:
-                "/k/guest/1/v1/preview/app/form/fields.json",
+                "/k/guest/1/v1/preview/form.json",
         },
         {
             preview: true,
             guestSpaceId: null,
-            expected: "/k/v1/preview/app/form/fields.json",
+            expected: "/k/v1/preview/form.json",
         },
     ];
     test.each(testCases)(
@@ -146,7 +146,7 @@ describe("FormsClientImpl#fetchFormProperties", () => {
     test("", () => {
         const mockConstructUrl = jest.fn();
         mockConstructUrl.mockReturnValue(
-            "/k/v1/app/form/fields.json"
+            "/k/v1/form.json"
         );
         VisibleForTesting.constructUrl = mockConstructUrl;
 
@@ -181,7 +181,7 @@ describe("FormsClientImpl#fetchFormProperties", () => {
 
         const expectedRequestConfig = {
             method: "GET",
-            url: "/k/v1/app/form/fields.json",
+            url: "/k/v1/form.json",
             data: {
                 app: "1",
             },
