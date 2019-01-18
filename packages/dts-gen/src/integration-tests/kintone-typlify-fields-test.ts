@@ -130,10 +130,6 @@ function assertFieldTypes(record: SavedTestFields) {
             ref: record.Table_1,
         },
     ].forEach(({ ref }) => assertSubTable(ref));
-    assertType(record.Table, "SUBTABLE");
-    assertNotUndefined(record.Table.value.length);
-    assertType(record.Table_0, "SUBTABLE");
-    assertType(record.Table_1, "SUBTABLE");
 }
 
 function assertSubTable(ref: {
