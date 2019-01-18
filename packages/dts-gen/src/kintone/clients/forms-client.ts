@@ -7,6 +7,7 @@ export interface FetchFormPropertiesInput {
 export interface FieldType {
     type: string;
     code: string;
+    relatedApp?: string;
 }
 
 export interface SubTableFieldType {

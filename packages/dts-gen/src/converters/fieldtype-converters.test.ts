@@ -75,6 +75,17 @@ describe("FileFieldTypeConverter", () => {
             type: "MODIFIER",
             code: "modifier",
         },
+        // Lookup field and Related App record should be excluded
+        {
+            type: "FILE",
+            code: "relatedApp",
+            relatedApp: "12",
+        },
+        {
+            type: "CHECK_BOX",
+            code: "lookupApp",
+            relatedApp: "13",
+        },
     ];
 
     test("selectFieldsTypesEquals returns lists of values which is selected if fieldType is same", () => {

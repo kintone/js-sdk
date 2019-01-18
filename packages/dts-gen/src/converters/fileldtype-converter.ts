@@ -50,22 +50,38 @@ interface SubTableFieldTypeGroups {
     fields: FieldTypeGroups;
 }
 
+function excludeLookupOrRelatedRecord(
+    field: FieldType | SubTableFieldType
+) {
+    return Object.keys(field).indexOf("relatedApp") < 0;
+}
+
 function selectFieldsTypesIn(
     types: string[],
     fieldsToBeSelected: FieldTypesOrSubTableFieldTypes
 ): FieldTypesOrSubTableFieldTypes {
-    return fieldsToBeSelected.filter(
-        fieldToTest => types.indexOf(fieldToTest.type) >= 0
-    );
+    const fields = fieldsToBeSelected as Array<
+        FieldType | SubTableFieldType
+    >;
+    const typeIncludes = fieldToTest =>
+        types.indexOf(fieldToTest.type) >= 0;
+
+    return fields
+        .filter(typeIncludes)
+        .filter(excludeLookupOrRelatedRecord);
 }
 
 function selectFieldsTypesEquals(
     type: string,
     fieldsToBeSelected: FieldTypesOrSubTableFieldTypes
 ): FieldTypesOrSubTableFieldTypes {
-    return fieldsToBeSelected.filter(
-        fieldToTest => fieldToTest.type === type
-    );
+    const fields = fieldsToBeSelected as Array<
+        FieldType | SubTableFieldType
+    >;
+
+    return fields
+        .filter(field => field.type === type)
+        .filter(excludeLookupOrRelatedRecord);
 }
 
 function convertSubTableFields(
