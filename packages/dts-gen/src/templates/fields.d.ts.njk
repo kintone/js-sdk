@@ -73,13 +73,17 @@ declare namespace {{namespace}} {
         {{flatTypes(simpleFields, userFields, stringListFields, userListFields, fileTypeFields) }}
         {{";" if subTableFields | length }}
 
-        {% for rowcode, row in subTableFields %}
-        {{rowcode}} : {
-            type: "SUBTABLE";
+        {% for subTableField in subTableFields %}
+        {{subTableField.code}} : {
+            type: "{{subTableField.type}}";
             value: {
                 id: string;
                 value: {                  
-                    {{ flatTypes(row.simpleFields, row.userFields, row.stringListFields, row.userListFields, row.fileTypeFields) }}
+                    {{ flatTypes(subTableField.fields.simpleFields,
+                                 subTableField.fields.userFields,
+                                 subTableField.fields.stringListFields,
+                                 subTableField.fields.userListFields,
+                                 subTableField.fields.fileTypeFields) }}
                 };
             }[];
         }{{";" if not loop.last}}
