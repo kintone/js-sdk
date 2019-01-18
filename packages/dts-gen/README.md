@@ -68,9 +68,17 @@ Options:
 /// <reference types="kintone-typlify/kintone" />
 /// <reference path="./demo-fields.d.ts" />
 
+interface Event {
+    appId: number;
+    recordId: number;
+    record: kintone.types.SavedDemoFields;
+}
+
 (() => {
-    kintone.events.on("app.record.create.show", (event: com.cybozu.kintone.types.events.record.create.show.Event) => {
-        const type = event.record.テーブル.value[0].value.文字列__1行_テーブル;
+    kintone.events.on("app.record.create.show", (event: Event) => {
+        const appId = event.appId;
+        const recordId = event.recordId;
+        const type = event.record.Record_number.value;
     });    
 })();
 ```
@@ -93,11 +101,21 @@ This is JavaScript coding sample:
 /// <reference types="kintone-typlify/kintone" />
 /// <reference path="./demo-fields.d.ts" />
 
+/**
+ * @typedef {Object} DemoEvent
+ * @property {number} recordId
+ * @property {number} appId
+ * @property {kintone.types.SavedDemoFields} record
+ */
 (function() {
     kintone.events.on("test", function(/* this argument is not type safe */ ev){
-        /** @type {kintone.types.events.record.create.show.Event} */
-        const event =  ev;
-        const type = event.record.テーブル.value[0].value.文字列__1行_テーブル;
+        /**
+         * @type {DemoEvent}
+         */
+        const event = ev;
+        const appId = event.appId;
+        const recordId = event.recordId;
+        event.record.Text.value;
     });
 })();
 ```
