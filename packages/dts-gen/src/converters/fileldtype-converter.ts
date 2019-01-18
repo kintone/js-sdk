@@ -1,5 +1,6 @@
 import {
     FieldType,
+    FieldTypesOrSubTableFieldTypes,
     SubTableFieldType,
 } from "../kintone/clients/forms-client";
 
@@ -16,13 +17,19 @@ const SIMPLE_VALUE_TYPES = [
     "RECORD_NUMBER",
     "DROP_DOWN",
     "LINK",
+    "CALC",
+    "RADIO_BUTTON",
 ];
 
 const USER_TYPES = ["CREATOR", "MODIFIER"];
 
 const STRING_LIST_TYPES = ["CHECK_BOX", "MULTI_SELECT"];
 
-const USER_SELECT_TYPE = "USER_SELECT";
+const ENTITY_LIST_TYPE = [
+    "USER_SELECT",
+    "GROUP_SELECT",
+    "ORGANIZATION_SELECT",
+];
 
 const FILE_TYPE = "FILE";
 
@@ -34,67 +41,50 @@ export interface FieldTypeGroups {
     stringListFields: FieldType[];
     userListFields: FieldType[];
     fileTypeFields: FieldType[];
-    subTableFields: { [key: string]: FieldTypeGroups };
+    subTableFields: SubTableFieldTypeGroups[];
+}
+
+interface SubTableFieldTypeGroups {
+    code: string;
+    type: string;
+    fields: FieldTypeGroups;
 }
 
 function selectFieldsTypesIn(
     types: string[],
-    codeAndFieldType: {
-        [key: string]: FieldType | SubTableFieldType;
-    }
-): FieldType[] {
-    const fields = [];
-    Object.keys(codeAndFieldType)
-        .filter(
-            key =>
-                types.indexOf(codeAndFieldType[key].type) >=
-                0
-        )
-        .forEach(key => fields.push(codeAndFieldType[key]));
-
-    return fields;
+    fieldsToBeSelected: FieldTypesOrSubTableFieldTypes
+): FieldTypesOrSubTableFieldTypes {
+    return fieldsToBeSelected.filter(
+        fieldToTest => types.indexOf(fieldToTest.type) >= 0
+    );
 }
 
 function selectFieldsTypesEquals(
     type: string,
-    codeAndFieldType: {
-        [key: string]: FieldType | SubTableFieldType;
-    }
-): FieldType[] {
-    const fields = [];
-    Object.keys(codeAndFieldType)
-        .filter(key => codeAndFieldType[key].type === type)
-        .forEach(key => fields.push(codeAndFieldType[key]));
-
-    return fields;
+    fieldsToBeSelected: FieldTypesOrSubTableFieldTypes
+): FieldTypesOrSubTableFieldTypes {
+    return fieldsToBeSelected.filter(
+        fieldToTest => fieldToTest.type === type
+    );
 }
 
 function convertSubTableFields(
     subTableFields: SubTableFieldType[]
-): { [key: string]: FieldTypeGroups } {
-    const fieldAndFieldTypes = {};
-    subTableFields
-        .map(field => {
-            const fields = field.fields as {
-                [key: string]: FieldType;
-            };
-            return {
-                code: field.code,
-                fields: convertFieldTypesToFieldTypeGroups(
-                    fields
-                ),
-            };
-        })
-        .forEach(
-            ({ code, fields }) =>
-                (fieldAndFieldTypes[code] = fields)
-        );
-    return fieldAndFieldTypes;
+): SubTableFieldTypeGroups[] {
+    return subTableFields.map(subTableField => {
+        return {
+            code: subTableField.code,
+            type: subTableField.type,
+            fields: convertFieldTypesToFieldTypeGroups(
+                subTableField.fields
+            ),
+        };
+    });
 }
 
-function convertFieldTypesToFieldTypeGroups(properties: {
-    [key: string]: FieldType | SubTableFieldType;
-}): FieldTypeGroups {
+function convertFieldTypesToFieldTypeGroups(
+    properties: FieldTypesOrSubTableFieldTypes
+): FieldTypeGroups {
     const simpleFields = selectFieldsTypesIn(
         SIMPLE_VALUE_TYPES,
         properties
@@ -107,8 +97,8 @@ function convertFieldTypesToFieldTypeGroups(properties: {
         STRING_LIST_TYPES,
         properties
     );
-    const userListFields = selectFieldsTypesEquals(
-        USER_SELECT_TYPE,
+    const userListFields = selectFieldsTypesIn(
+        ENTITY_LIST_TYPE,
         properties
     );
     const fileTypeFields = selectFieldsTypesEquals(
@@ -142,6 +132,6 @@ export const VisibleForTesting = {
     convertSubTableFields,
     constants: {
         STRING_LIST_TYPES,
-        USER_SELECT_TYPE,
+        FILE_TYPE,
     },
 };

@@ -2,96 +2,91 @@ import { VisibleForTesting } from "./fileldtype-converter";
 import { SubTableFieldType } from "../kintone/clients/forms-client";
 
 describe("FileFieldTypeConverter", () => {
-    const input = {
-        userSelect: {
+    const input = [
+        {
             type: "USER_SELECT",
             code: "userSelect",
         },
-        userSelect2: {
+        {
             type: "USER_SELECT",
             code: "userSelect2",
         },
-        singleLineText: {
+        {
             type: "SINGLE_LINE_TEXT",
             code: "singleLineText",
         },
-        multiLineText: {
+        {
             type: "MULTI_LINE_TEXT",
             code: "multiLineText",
         },
-        richText: {
+        {
             type: "RICH_TEXT",
             code: "richText",
         },
-        date: {
+        {
             type: "DATE",
             code: "date",
         },
-        time: {
+        {
             type: "TIME",
             code: "time",
         },
-        createdTime: {
+        {
             type: "CREATED_TIME",
             code: "createdTime",
         },
-        updatedTime: {
+        {
             type: "UPDATED_TIME",
             code: "updatedTime",
         },
-        recordNumber: {
+        {
             type: "RECORD_NUMBER",
             code: "recordNumber",
         },
-        dropDown: {
+        {
             type: "DROP_DOWN",
             code: "dropDown",
         },
-        link: {
+        {
             type: "LINK",
             code: "link",
         },
-        number: {
+        {
             type: "NUMBER",
             code: "number",
         },
-        file: {
+        {
             type: "FILE",
             code: "file",
         },
-        checkbox: {
+        {
             type: "CHECK_BOX",
             code: "checkbox",
         },
-        multiSelect: {
+        {
             type: "MULTI_SELECT",
             code: "multiSelect",
         },
-        creator: {
+        {
             type: "CREATOR",
             code: "creator",
         },
-        modifier: {
+        {
             type: "MODIFIER",
             code: "modifier",
         },
-    };
+    ];
 
     test("selectFieldsTypesEquals returns lists of values which is selected if fieldType is same", () => {
-        const type =
-            VisibleForTesting.constants.USER_SELECT_TYPE;
+        const type = VisibleForTesting.constants.FILE_TYPE;
         const output = VisibleForTesting.selectFieldsTypesEquals(
             type,
             input
         );
         const expected = [
             {
-                type: "USER_SELECT",
-                code: "userSelect",
-            },
-            {
-                type: "USER_SELECT",
-                code: "userSelect2",
+                type: "FILE",
+                code: "file",
             },
         ];
         expect(output).toEqual(expected);
@@ -128,8 +123,6 @@ describe("FileFieldTypeConverter", () => {
         const output = VisibleForTesting.convertSubTableFields(
             subTables
         );
-        expect(Object.keys(output)).toEqual(["subTable"]);
-
         const expectedSimpleFields = [
             {
                 code: "singleLineText",
@@ -176,7 +169,7 @@ describe("FileFieldTypeConverter", () => {
                 type: "NUMBER",
             },
         ];
-        expect(output.subTable.simpleFields).toEqual(
+        expect(output[0].fields.simpleFields).toEqual(
             expectedSimpleFields
         );
 
@@ -186,7 +179,7 @@ describe("FileFieldTypeConverter", () => {
                 type: "FILE",
             },
         ];
-        expect(output.subTable.fileTypeFields).toEqual(
+        expect(output[0].fields.fileTypeFields).toEqual(
             expectedFieldFields
         );
 
@@ -200,7 +193,7 @@ describe("FileFieldTypeConverter", () => {
                 type: "MULTI_SELECT",
             },
         ];
-        expect(output.subTable.stringListFields).toEqual(
+        expect(output[0].fields.stringListFields).toEqual(
             expectedStringListFields
         );
 
@@ -214,9 +207,9 @@ describe("FileFieldTypeConverter", () => {
                 type: "MODIFIER",
             },
         ];
-        expect(output.subTable.userFields).toEqual(
+        expect(output[0].fields.userFields).toEqual(
             expectedUserFields
         );
-        expect(output.subTable.subTableFields).toEqual({});
+        expect(output[0].fields.subTableFields).toEqual([]);
     });
 });
