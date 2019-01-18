@@ -10,15 +10,17 @@ export interface FieldType {
 }
 
 export interface SubTableFieldType {
-    type: "SUBTABLE";
     code: string;
-    fields: { [key: string]: FieldType };
+    type: string;
+    fields: FieldType[];
 }
+
+export type FieldTypesOrSubTableFieldTypes =
+    | FieldType[]
+    | SubTableFieldType[];
 
 export interface FormsClient {
     fetchFormProperties(
         input: FetchFormPropertiesInput
-    ): Promise<{
-        [key: string]: FieldType | SubTableFieldType;
-    }>;
+    ): Promise<FieldTypesOrSubTableFieldTypes>;
 }

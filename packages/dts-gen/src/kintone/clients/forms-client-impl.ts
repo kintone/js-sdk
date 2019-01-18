@@ -10,6 +10,7 @@ import {
     FetchFormPropertiesInput,
     FieldType,
     SubTableFieldType,
+    FieldTypesOrSubTableFieldTypes,
 } from "./forms-client";
 
 interface NewInstanceInput {
@@ -63,9 +64,7 @@ export class FormsClientImpl implements FormsClient {
 
     fetchFormProperties(
         input: FetchFormPropertiesInput
-    ): Promise<{
-        [key: string]: FieldType | SubTableFieldType;
-    }> {
+    ): Promise<FieldTypesOrSubTableFieldTypes> {
         const config: AxiosRequestConfig = {
             method: "GET",
             url: constructUrl(input),
@@ -76,9 +75,9 @@ export class FormsClientImpl implements FormsClient {
 
         return this.client
             .request(config)
-            .then(resp => resp.data.properties) as Promise<{
-            [key: string]: FieldType | SubTableFieldType;
-        }>;
+            .then(resp => resp.data.properties) as Promise<
+            FieldTypesOrSubTableFieldTypes
+        >;
     }
 }
 

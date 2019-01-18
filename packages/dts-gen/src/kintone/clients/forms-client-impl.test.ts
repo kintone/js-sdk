@@ -20,8 +20,7 @@ describe("VisibleForTesting.constructUrl", () => {
         {
             preview: true,
             guestSpaceId: "1",
-            expected:
-                "/k/guest/1/v1/preview/form.json",
+            expected: "/k/guest/1/v1/preview/form.json",
         },
         {
             preview: true,
@@ -145,9 +144,7 @@ describe("FormsClientImpl#constructor", () => {
 describe("FormsClientImpl#fetchFormProperties", () => {
     test("", () => {
         const mockConstructUrl = jest.fn();
-        mockConstructUrl.mockReturnValue(
-            "/k/v1/form.json"
-        );
+        mockConstructUrl.mockReturnValue("/k/v1/form.json");
         VisibleForTesting.constructUrl = mockConstructUrl;
 
         const mockRequest = jest.fn();
