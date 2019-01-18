@@ -1,9 +1,15 @@
 /// <reference types="../../kintone" />
 import * as assert from "assert";
 
+/**
+ * 1. Build this typescript by webpack
+ * 2. Upload as a kintone JavaScript customize
+ * 3. Open kintone recod list page,
+ *    test will run, and then checks api exists in kintone.
+ */
 (() => {
     kintone.events.on(
-        "app.record.create.show",
+        "app.record.index.show",
         (event: any) => {
             // assert function exists in kintone top-level
             assertFunction(kintone.getRequestToken);
@@ -21,24 +27,49 @@ import * as assert from "assert";
             );
 
             assert.ok(okPromise);
-            okPromise.then(resolved => {
-                assert.ok(resolved === 1);
-            });
+            okPromise
+                .then(resolved => {
+                    assert.ok(resolved === 1);
+                })
+                .catch(_ => {
+                    assert.fail("should not be called");
+                });
 
             const ngPromise = new kintone.Promise<any>(
                 (_, reject) => reject(1)
             );
-            ngPromise.catch(rejected =>
-                assert.ok(rejected === 1)
-            );
+            ngPromise
+                .then(_ => {
+                    assert.fail("should not be called");
+                })
+                .catch(rejected =>
+                    assert.ok(rejected === 1)
+                );
 
-            kintone.Promise.resolve(1).then(resolved =>
-                assert.ok(resolved === 1)
-            );
+            kintone.Promise.resolve(1)
+                .then(resolved => assert.ok(resolved === 1))
+                .catch(_ =>
+                    assert.fail("should not be called")
+                );
 
-            kintone.Promise.reject("reject").catch(reject =>
-                assert.ok(reject === "reject")
-            );
+            kintone.Promise.reject("reject")
+                .then(_ =>
+                    assert.fail("should not be called")
+                )
+                .catch(reject =>
+                    assert.ok(reject === "reject")
+                );
+
+            kintone.Promise.all([
+                kintone.Promise.resolve(1),
+                kintone.Promise.resolve(2),
+                kintone.Promise.resolve(3),
+            ]).then(resolved => {
+                assert.ok(resolved.length === 3);
+                assert.ok(resolved[0] === 1);
+                assert.ok(resolved[1] === 2);
+                assert.ok(resolved[2] === 3);
+            });
 
             // assert function exists in kintone.events
             const e = kintone.events;

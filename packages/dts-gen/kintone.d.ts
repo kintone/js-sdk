@@ -56,8 +56,8 @@ declare namespace kintone {
             ) => void
         );
 
-        then(callback:(resolved: T) => any);
-        catch(callback:(rejected: any) => any);
+        then(callback:(resolved: T) => any) : Promise<any>;
+        catch(callback:(rejected: any) => any): Promise<any>;
 
         static resolve(resolved: any): Promise<any>;
         static reject(rejected: any): Promise<any>;
