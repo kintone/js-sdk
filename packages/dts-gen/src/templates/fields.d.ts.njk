@@ -105,7 +105,7 @@ declare namespace {{namespace}} {
 
         namespace record.create.show {
             interface Event {
-                appId: Number;
+                appId: number;
                 record: {{fqdnTypeName}};
                 reuse: boolean;
                 type: string;
@@ -115,22 +115,22 @@ declare namespace {{namespace}} {
 
         namespace record.create.submit {
             interface Event {
-                appId: Number;
+                appId: number;
                 record: {{fqdnTypeName}};
             }
         }
 
         namespace record.create.submit.success {
             interface Event {
-                appId: Number;
-                recordId: Number;
+                appId: number;
+                recordId: number;
                 record: {{savedFqdnTypeName}};
             }
         }
 
         namespace record.create.change {
             interface Event {
-                appId: Number;
+                appId: number;
                 record: {{fqdnTypeName}};
                 changes: {
                     field: any;
@@ -141,8 +141,8 @@ declare namespace {{namespace}} {
 
         namespace record.edit.show {
             interface Event {
-                appId: Number;
-                recordId: Number;
+                appId: number;
+                recordId: number;
                 record: {{savedFqdnTypeName}};
             }
         }
@@ -158,12 +158,25 @@ declare namespace {{namespace}} {
         namespace record.index.edit.show {
             interface Event extends record.edit.show.Event {};
         }
+
+        namespace record.index.index.show {
+            interface Event {
+                appId: number;
+                viewType: "list" | "calendar" | "custom";
+                viewId: number;
+                viewName: string;
+                records: {{saveFqdnTypeName}}[];
+                offset: number;
+                size: number;
+                date: string;
+            }
+        }
         
         namespace record.edit.submit.change {
             interface Event {
-                appId: Number;
+                appId: number;
                 record: {{savedFqdnTypeName}};
-                recordId: Number;
+                recordId: number;
                 changes: {
                     field: any;
                     row: any;
@@ -173,9 +186,9 @@ declare namespace {{namespace}} {
 
         namespace record.index.edit.change {
             interface Event {
-                appId: Number;
+                appId: number;
                 record: {{savedFqdnTypeName}};
-                recordId: Number;
+                recordId: number;
                 changes: {
                     field: any;
                 };
@@ -184,17 +197,17 @@ declare namespace {{namespace}} {
 
         namespace record.detail.deleteSubmit {
             interface Event {
-                appId: Number;
-                recordId: Number;
+                appId: number;
+                recordId: number;
                 record: {{savedFqdnTypeName}};
             }
         }
 
         namespace record.index.deleteSubmit {
             interface Event {
-                appId: Number;
+                appId: number;
                 record: {{savedFqdnTypeName}};
-                recordId: Number;
+                recordId: number;
             }
         }
 
