@@ -9,7 +9,7 @@ import { KintoneTyplifyFieldsTest } from "./kintone-typlify-fields-test";
     kintone.events.on(
         "app.record.index.show",
         (
-            ev: kinotne.types.events.record.index.index.show.Event
+            ev: kintone.types.events.record.index.index.show.Event
         ) => {
             KintoneTyplifyApiTest.assertKintoneBuiltinFunctions();
             KintoneTyplifyFieldsTest.assertFieldTypes(

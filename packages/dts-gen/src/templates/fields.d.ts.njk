@@ -43,7 +43,7 @@
         fileKey: string;
         name: string;
         size: string;
-    }
+    }[];
 }{{";" if not loop.last}}
 {% endfor %}
 {%endmacro%}
@@ -165,7 +165,7 @@ declare namespace {{namespace}} {
                 viewType: "list" | "calendar" | "custom";
                 viewId: number;
                 viewName: string;
-                records: {{saveFqdnTypeName}}[];
+                records: {{savedFqdnTypeName}}[];
                 offset: number;
                 size: number;
                 date: string;

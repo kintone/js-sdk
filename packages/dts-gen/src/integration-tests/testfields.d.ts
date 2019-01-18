@@ -116,7 +116,7 @@ declare namespace kintone.types {
                 fileKey: string;
                 name: string;
                 size: string;
-            };
+            }[];
         };
 
         Table: {
@@ -236,7 +236,7 @@ declare namespace kintone.types {
                             fileKey: string;
                             name: string;
                             size: string;
-                        };
+                        }[];
                     };
                 };
             }[];
@@ -319,7 +319,7 @@ declare namespace kintone.types {
                 viewType: "list" | "calendar" | "custom";
                 viewId: number;
                 viewName: string;
-                records: [];
+                records: kintone.types.SavedTestFields[];
                 offset: number;
                 size: number;
                 date: string;
