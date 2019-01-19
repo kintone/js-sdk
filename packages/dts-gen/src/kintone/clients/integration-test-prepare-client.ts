@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
-import { Promise } from "es6-promise";
+
 import {
     NewInstanceInput,
     AxiosUtils,
@@ -77,13 +77,9 @@ export class IntegrationTestPrepareClient {
             method: "POST",
             data: input,
         };
-        return new Promise(resolve => {
-            this.client
-                .request(config)
-                .then(resp =>
-                    resolve(resp.data as CreateAppOutput)
-                );
-        });
+        return this.client
+            .request(config)
+            .then(resp => resp.data as CreateAppOutput);
     }
 
     requestAddFormField(
@@ -94,13 +90,9 @@ export class IntegrationTestPrepareClient {
             method: "PUT",
             data: input,
         };
-        return new Promise(resolve => {
-            this.client
-                .request(config)
-                .then(resp =>
-                    resolve(resp.data as AddFormFieldOutput)
-                );
-        });
+        return this.client
+            .request(config)
+            .then(resp => resp.data as AddFormFieldOutput);
     }
 
     requestUploadFile(
@@ -113,13 +105,9 @@ export class IntegrationTestPrepareClient {
             method: "POST",
             data,
         };
-        return new Promise(resolve => {
-            this.client
-                .request(config)
-                .then(resp =>
-                    resolve(resp.data as UploadFileOutput)
-                );
-        });
+        return this.client
+            .request(config)
+            .then(resp => resp.data as UploadFileOutput);
     }
 
     requestJsCustomizeUpdate(
@@ -130,13 +118,9 @@ export class IntegrationTestPrepareClient {
             method: "POST",
             data: input,
         };
-        return new Promise(resolve => {
-            this.client
-                .request(config)
-                .then(resp =>
-                    resolve(resp.data as JsCustomizeOutput)
-                );
-        });
+        return this.client
+            .request(config)
+            .then(resp => resp.data as JsCustomizeOutput);
     }
 
     requestDepoy(input: DeployInput): Promise<any> {
@@ -145,11 +129,9 @@ export class IntegrationTestPrepareClient {
             method: "POST",
             data: input,
         };
-        return new Promise(resolve => {
-            this.client
-                .request(config)
-                .then(resp => resolve(resp.data));
-        });
+        return this.client
+            .request(config)
+            .then(resp => resp.data);
     }
 
     requestGetDeployStatus(
@@ -160,12 +142,8 @@ export class IntegrationTestPrepareClient {
             method: "GET",
             data: input,
         };
-        return new Promise(resolve => {
-            this.client
-                .request(config)
-                .then(resp =>
-                    resolve(resp.data as DeployStatusOutput)
-                );
-        });
+        return this.client
+            .request(config)
+            .then(resp => resp.data as DeployStatusOutput);
     }
 }

@@ -109,27 +109,31 @@ Promise.all([newAppPromise, deployPromise]).then(
     ([newAppResp, _1]) => {
         let noRetry = false;
         for (let i = 0; i < 10 && noRetry; i++) {
-            client
+            const deployStatusPromise = client
                 .requestGetDeployStatus({
                     apps: [newAppResp.app],
                 })
-                .catch(err => {
-                    throw err;
-                })
-                .finally(resp => {
-                    const deployStatusList = resp.apps.filter(
-                        ({ app, status }) =>
-                            app === newAppResp.app &&
-                            status === "SUCCESS"
+                .then(resp => {
+                    return (
+                        resp.apps.filter(
+                            ({ app, status }) =>
+                                app === newAppResp.app &&
+                                status === "SUCCESS"
+                        ).length === 1
                     );
-                    noRetry = deployStatusList.length === 1;
-                    if (!noRetry) {
-                        return new Promise(resolve => {
-                            setTimeout(resolve, 1000);
-                        });
+                });
+            Promise.all([deployStatusPromise]).then(
+                ([deploySuccess]) => {
+                    noRetry = deploySuccess;
+                    if (noRetry) {
+                        Promise.all([
+                            new Promise(resolve =>
+                                setTimeout(resolve, 1000)
+                            ),
+                        ]);
                     }
-                })
-                .finally(() => {});
+                }
+            );
         }
         throw new Error();
     }
