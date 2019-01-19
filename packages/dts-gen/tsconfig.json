@@ -1,7 +1,8 @@
 {
     "files": [
         "src/index.ts",
-        "kintone.d.ts"
+        "kintone.d.ts",
+        "src/integration-tests/test-tools.ts"
     ],
     "compilerOptions": {
         "outDir": "dist",
