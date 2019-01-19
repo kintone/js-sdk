@@ -1,65 +1,22 @@
-import axios, {
-    AxiosInstance,
-    AxiosProxyConfig,
-    AxiosRequestConfig,
-} from "axios";
 import { Promise } from "es6-promise";
 
 import {
     FormsClient,
     FetchFormPropertiesInput,
-    FieldType,
-    SubTableFieldType,
     FieldTypesOrSubTableFieldTypes,
 } from "./forms-client";
 
-interface NewInstanceInput {
-    host: string;
-    username: string;
-    password: string;
-    proxyHost?: string | null;
-    proxyPort?: string | null;
-    basicAuthPassword?: string | null;
-    basicAuthUsername?: string | null;
-}
+import {
+    AxiosUtils,
+    NewInstanceInput,
+} from "./axios-utils";
+import { AxiosInstance, AxiosRequestConfig } from "axios";
 
 export class FormsClientImpl implements FormsClient {
     readonly client: AxiosInstance;
 
     constructor(input: NewInstanceInput) {
-        let proxy: AxiosProxyConfig | false = false;
-        if (
-            input.proxyHost !== null &&
-            input.proxyPort !== null
-        ) {
-            proxy = {
-                host: input.proxyHost,
-                port: parseInt(input.proxyPort),
-            };
-        }
-
-        const headers = {
-            "X-Cybozu-Authorization": Buffer.from(
-                `${input.username}:${input.password}`
-            ).toString("base64"),
-        };
-        if (
-            input.basicAuthPassword &&
-            input.basicAuthPassword
-        ) {
-            headers["Authorization"] =
-                "Basic " +
-                Buffer.from(
-                    `${input.basicAuthUsername}:${
-                        input.basicAuthPassword
-                    }`
-                ).toString("base64");
-        }
-        this.client = VisibleForTesting.newAxiosInstance({
-            baseURL: input.host,
-            headers,
-            proxy,
-        });
+        this.client = AxiosUtils.newAxiosInstance(input);
     }
 
     fetchFormProperties(
@@ -96,13 +53,6 @@ function constructUrl(
     }
 }
 
-function newAxiosInstance(
-    config: AxiosRequestConfig
-): AxiosInstance {
-    return axios.create(config);
-}
-
 export const VisibleForTesting = {
     constructUrl,
-    newAxiosInstance,
 };
