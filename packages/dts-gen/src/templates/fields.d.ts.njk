@@ -25,7 +25,7 @@
 {% endfor %}
 {%endmacro%}
 
-{%macro userListFieldType(userListFields) %}
+{%macro entityListFieldType(userListFields) %}
 {% for u in userListFields %}
 {{u.code}} : {
     type: "{{u.type}}";
@@ -48,7 +48,7 @@
 {% endfor %}
 {%endmacro%}
 
-{%macro flatTypes(simpleFields, userFields, stringListFields, userListFields, fileTypeFields) %}
+{%macro flatTypes(simpleFields, userFields, stringListFields, entityListFields, fileTypeFields) %}
 {{simpleTypes(simpleFields) }}
 
 {{ ";" if stringListFields | length }}
@@ -57,8 +57,8 @@
 {{ ";" if userFields | length }}
 {{userFieldTypes(userFields) }}
 
-{{ ";" if userListFields | length }}
-{{userListFieldType(userListFields) }}
+{{ ";" if entityListFields | length }}
+{{entityListFieldType(entityListFields) }}
 
 {{ ";" if fileTypeFields | length }}
 {{fileFieldTypes(fileTypeFields) }}
@@ -70,7 +70,7 @@
 declare namespace {{namespace}} {
     interface {{typeName}} {
 
-        {{flatTypes(simpleFields, userFields, stringListFields, userListFields, fileTypeFields) }}
+        {{flatTypes(simpleFields, userFields, stringListFields, entityListFields, fileTypeFields) }}
         {{";" if subTableFields | length }}
 
         {% for subTableField in subTableFields %}
@@ -82,7 +82,7 @@ declare namespace {{namespace}} {
                     {{ flatTypes(subTableField.fields.simpleFields,
                                  subTableField.fields.userFields,
                                  subTableField.fields.stringListFields,
-                                 subTableField.fields.userListFields,
+                                 subTableField.fields.entityListFields,
                                  subTableField.fields.fileTypeFields) }}
                 };
             }[];

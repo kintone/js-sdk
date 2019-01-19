@@ -39,7 +39,7 @@ export interface FieldTypeGroups {
     simpleFields: FieldType[];
     userFields: FieldType[];
     stringListFields: FieldType[];
-    userListFields: FieldType[];
+    entityListFields: FieldType[];
     fileTypeFields: FieldType[];
     subTableFields: SubTableFieldTypeGroups[];
 }
@@ -113,7 +113,7 @@ function convertFieldTypesToFieldTypeGroups(
         STRING_LIST_TYPES,
         properties
     );
-    const userListFields = selectFieldsTypesIn(
+    const entityListFields = selectFieldsTypesIn(
         ENTITY_LIST_TYPE,
         properties
     );
@@ -130,7 +130,7 @@ function convertFieldTypesToFieldTypeGroups(
 
     return {
         simpleFields,
-        userListFields,
+        entityListFields,
         userFields,
         stringListFields,
         fileTypeFields,
