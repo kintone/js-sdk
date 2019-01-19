@@ -10,12 +10,12 @@
     "lint": "eslint --fix **/*.ts",
     "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",
     "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
-    "help": "node index.js --help",
+    "help": "node dist/index.js --help",
     "test": "jest",
     "prettier:base": "prettier --parser typescript",
     "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
     "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
-    "build:integration": "webpack --config webpack.config.js"
+    "build:integration": "webpack --mode development --config webpack.config.js"
   },
   "author": "Tomoya Yokota",
   "license": "MIT",
