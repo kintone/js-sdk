@@ -157,7 +157,7 @@ describe("import", () => {
       assert.deepStrictEqual(mockKintoneApiClient.logs, expected);
     };
 
-    it("should success generate customize-manifest.json and download uploaded js/css files", () => {
+    it("should success updating customize-manifest.json and downloading uploaded js/css files", () => {
       const getAppCustomizeResponse = JSON.parse(
         fs
           .readFileSync("test/fixtures/get-appcustomize-response.json")

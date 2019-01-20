@@ -9,33 +9,52 @@ A kintone customize uploader
 ## Usage
 ```
 % npm install @kintone/customize-uploader
-% ./node_modules/.bin/kintone-customize-uploader
---domain ${yourDomain} \
---username ${yourLoginName} \
---password ${yourPassword} \
-${manifestFile}
+
+% ./node_modules/.bin/kintone-customize-uploader init
+? Input your app id: {appId}
+? Select the scope of customization: "ALL" | "ADMIN" | "NONE"
+
+dest/customize-manifest.json file has been created
+
+% ./node_modules/.bin/kintone-customize-uploader import dest/customize-manifest.json
+? Input your kintone's domain (example.cybozu.com): {yourDomain}
+? Input your username: {userLoginName}
+? Input your password: [input is hidden] {yourPassword}
+
+Generate customize-manifest.json from kintone app customize
+Download Uploaded files on kintone app customize
+Finish importing from kintone app customize
+
+% ./node_modules/.bin/kintone-customize-uploader dest/customize-manifest.json
 ```
 
 or
 
 ```
 % npm install -g @kintone/customize-uploader
-% kintone-customize-uploader \
---domain ${yourDomain} \
---username ${yourLoginName} \
---password ${yourPassword} \
-${manifestFile}
+
+% kintone-customize-uploader init
+? Input your app id: {appId}
+? Select the scope of customization: "ALL" | "ADMIN" | "NONE"
+
+dest/customize-manifest.json file has been created
+
+% kintone-customize-uploader import dest/customize-manifest.json
+? Input your kintone's domain (example.cybozu.com): {yourDomain}
+? Input your username: {userLoginName}
+? Input your password: [input is hidden] {yourPassword}
+
+Generate customize-manifest.json from kintone app customize
+Download Uploaded files on kintone app customize
+Finish importing from kintone app customize
+
+% kintone-customize-uploader dest/customize-manifest.json
 ```
 
 If you want to upload the customize files automatically when a file is updated, you can use `--watch` option.
 
 ```
-% kintone-customize-uploader \
---domain ${yourDomain} \
---username ${yourLoginName} \
---password ${yourPassword} \
---watch \
-${manifestFile}
+% kintone-customize-uploader --watch dest/customize-manifest.json
 ```
 
 ## Options
@@ -50,8 +69,17 @@ ${manifestFile}
     --basic-auth-password Basic Authentication password
     --proxy Proxy server
     --watch Watch the changes of customize files and re-run
+    --dest-dir -d option for subcommands
+                  this option stands for output directory
+                  default value is dest/
     --lang Using language (en or ja)
     --guest-space-id Guest space ID for uploading files
+
+  SubCommands
+    init   generate customize-manifest.json
+
+    import download js/css files and update customize-manifest.json
+
     You can set the values through environment variables
     domain: KINTONE_DOMAIN
     username: KINTONE_USERNAME
@@ -63,7 +91,7 @@ ${manifestFile}
 
 If you omit the options, you can input the options interactively.
 ```
-% kintone-customize-uploader customize-manifest.json
+% kintone-customize-uploader dest/customize-manifest.json
 ? Input your domain: example.cybozu.com
 ? Input your username: sato
 ? Input your password: [hidden]
@@ -96,9 +124,9 @@ This is an example of `customize-manifest.json` .
 - `desktop`: The customize files applied in PC view  (`"js": []` || `"css": []`)
 - `mobile`: The customize files applied in mobile view (`"js": []`)
 
-To upload files, run the `kintone-customize-uploader` .
+To upload files, run `kintone-customize-uploader <manifestFile>`.
 ```
-% kintone-customize-uploader
+% kintone-customize-uploader dest/customize-manifest.json
 ? Input your domain: example.cybozu.com
 ? Input your username: sato
 ? Input your password: [hidden]

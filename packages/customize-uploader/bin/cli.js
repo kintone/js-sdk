@@ -3,7 +3,9 @@
 const osLocale = require('os-locale');
 const meow = require('meow');
 const { run } = require('../dist/src/index');
+const { runInit } = require('../dist/src/init');
 const { runImport } = require('../dist/src/import');
+const { inquireInitParams } = require('../dist/src/initParams');
 const { inquireParams } = require('../dist/src/params');
 const { getDefaultLang } = require('../dist/src/lang');
 const { getMessage } = require('../dist/src/messages');
@@ -17,6 +19,7 @@ const {
   KINTONE_BASIC_AUTH_USERNAME,
   KINTONE_BASIC_AUTH_PASSWORD
 } = process.env;
+
 const cli = meow(
   `
   Usage
@@ -29,15 +32,16 @@ const cli = meow(
     --basic-auth-password Basic Authentication password
     --proxy Proxy server
     --watch Watch the changes of customize files and re-run
-    --dest-dir -d option for subcommand import. 
+    --dest-dir -d option for subcommands 
                   this option stands for output directory
                   default value is dest/
     --lang Using language (en or ja)
     --guest-space-id Guest space ID for uploading files
 
-   SubCommands
-    import generate customize-manifest.json and 
-           download js/css files from existing app customization  
+  SubCommands
+    init   generate customize-manifest.json
+    
+    import download js/css files and update customize-manifest.json
     
     You can set the values through environment variables
     domain: KINTONE_DOMAIN
@@ -85,7 +89,7 @@ const cli = meow(
         type: 'number',
         default: 0
       },
-      // Optional option for import subcommand
+      // Optional option for subcommands
       destDir: {
         type: 'string',
         default: 'dest',
@@ -95,9 +99,10 @@ const cli = meow(
   }
 );
 
-const subCommands = ["import"];
+const subCommands = ["init", "import"];
 const hasSubCommand = subCommands.indexOf(cli.input[0]) >= 0;
 const subCommand = hasSubCommand ? cli.input[0] : null;
+const isInitCommand = subCommand === "init";
 const isImportCommand = subCommand === "import";
 
 const manifestFile =  hasSubCommand ? cli.input[1] : cli.input[0];
@@ -120,23 +125,31 @@ if (guestSpaceId) {
   options.guestSpaceId = guestSpaceId;
 }
 
-if(isImportCommand) {
+if(subCommand) {
   options.destDir = destDir;
 }
 
-if (!manifestFile) {
+if (!isInitCommand && !manifestFile) {
   console.error(getMessage(lang, 'E_requiredManifestFile'));
   cli.showHelp();
   process.exit(1);
 }
 
-inquireParams({ username, password, domain, lang })
-  .then(({ username, password, domain }) => {
-    if(isImportCommand) {
-      runImport(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
-    } else {
-      run(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
-    }
-  })
-  .catch(error => console.log(error.message));
 
+if(isInitCommand) {
+  inquireInitParams(lang)
+    .then(({ appId, scope, lang }) => {
+      runInit(appId, scope, lang, options.destDir);
+    })
+    .catch(error => console.log(error.message));
+} else {
+  inquireParams({ username, password, domain, lang })
+    .then(({ username, password, domain }) => {
+      if (isImportCommand) {
+        runImport(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
+      } else {
+        run(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
+      }
+    })
+    .catch(error => console.log(error.message));
+  }

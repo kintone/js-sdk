@@ -20,8 +20,16 @@ const messages = {
     en: "Input your password:",
     ja: "パスワードを入力してください:"
   },
+  Q_AppId: {
+    en: "Input your app id:",
+    ja: "アプリIDを入力してください:"
+  },
+  Q_Scope: {
+    en: "Select the scope of customization:",
+    ja: "カスタマイズの適用範囲を選択してください:"
+  },
   M_StartUploading: {
-    en: "Start uploading customize files",
+    en: "Start uploading customization files",
     ja: "カスタマイズのアップロードを開始します"
   },
   M_FileUploaded: {
@@ -40,18 +48,24 @@ const messages = {
     en: "Customize setting has been updated!",
     ja: "JavaScript/CSS カスタマイズの設定を変更しました!"
   },
-  M_GenerateManifestFile: {
-    en: "Generate customize-manifest.json from kintone app customize",
-    ja: "kintoneのアプリから customize-manifest.jsonを生成しています"
+  M_UpdateManifestFile: {
+    en:
+      "Update manifest file based on the current customization setting on kintone app",
+    ja:
+      "kintoneのアプリのカスタマイズ設定を元にマニフェストファイルを更新しています"
   },
   M_DownloadUploadedFile: {
-    en: "Download Uploaded files on kintone app customize",
+    en: "Download the current customization files on kintone app",
     ja:
       "kintoneのアプリからカスタマイズ設定されたファイルをダウンロードしています"
   },
+  M_CommandInitFinish: {
+    en: "customize-manifest.json file has been created",
+    ja: "customize-manifest.json を生成しました"
+  },
   M_CommandImportFinish: {
-    en: "Fisnish importing from kintone app customize",
-    ja: "kintoneのアプリカスタマイズからインポートが完了しました"
+    en: "Finish importing customization files from kintone app",
+    ja: "kintoneのアプリからカスタマイズのインポートが完了しました"
   },
   E_Updated: {
     en: "Failed to update customize setting",
