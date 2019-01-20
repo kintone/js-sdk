@@ -74,27 +74,25 @@ const fileUploadPromise = new Promise(
 const jsCustomizePromise = Promise.all([
     newAppPromise,
     fileUploadPromise,
-])
-    .then(([newAppResp, fileKey]) => {
-        const app = newAppResp.app;
-        const scope = "ALL";
-        const desktop = {
-            js: [
-                {
-                    type: "FILE",
-                    file: {
-                        fileKey,
-                    },
+]).then(([newAppResp, fileKey]) => {
+    const app = newAppResp.app;
+    const scope = "ALL";
+    const desktop = {
+        js: [
+            {
+                type: "FILE",
+                file: {
+                    fileKey,
                 },
-            ],
-        };
-        return client.requestJsCustomizeUpdate({
-            app,
-            scope,
-            desktop,
-        });
-    })
-    .then(() => {});
+            },
+        ],
+    };
+    return client.requestJsCustomizeUpdate({
+        app,
+        scope,
+        desktop,
+    });
+});
 
 const deployPromise = Promise.all([
     newAppPromise,
@@ -128,13 +126,15 @@ Promise.all([newAppPromise, deployPromise]).then(
                     if (noRetry) {
                         Promise.all([
                             new Promise(resolve =>
-                                setTimeout(resolve, 1000)
+                                setTimeout(resolve, 3000)
                             ),
                         ]);
                     }
                 }
             );
         }
-        throw new Error();
+        if (!noRetry) {
+            throw new Error();
+        }
     }
 );
