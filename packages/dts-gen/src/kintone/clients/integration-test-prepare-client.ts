@@ -1,5 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
 import * as FormData from "form-data";
+import * as fs from "fs";
 
 import {
     NewInstanceInput,
@@ -44,7 +45,8 @@ interface DeployStatusOutput {
 }
 
 interface UploadFileInput {
-    data: string;
+    data: fs.ReadStream;
+    fileName: string;
 }
 
 interface UploadFileOutput {
@@ -92,7 +94,6 @@ export class IntegrationTestPrepareClient {
             data: input,
         };
         return this.client.request(config).then(resp => {
-            console.log(resp.data.errros);
             return resp.data as AddFormFieldOutput;
         });
     }
@@ -101,16 +102,21 @@ export class IntegrationTestPrepareClient {
         input: UploadFileInput
     ): Promise<UploadFileOutput> {
         const data = new FormData();
-        data.append("file", input.data);
 
+        data.append("file", input.data, {
+            filename: input.fileName,
+            contentType: "text/javascript",
+        });
+        const headers = data.getHeaders();
         const config: AxiosRequestConfig = {
             url: "/k/v1/file.json",
+            headers,
             method: "POST",
             data,
         };
-        return this.client
-            .request(config)
-            .then(resp => resp.data as UploadFileOutput);
+        return this.client.request(config).then(resp => {
+            return resp.data as UploadFileOutput;
+        });
     }
 
     requestJsCustomizeUpdate(
@@ -118,12 +124,12 @@ export class IntegrationTestPrepareClient {
     ): Promise<JsCustomizeOutput> {
         const config: AxiosRequestConfig = {
             url: "/k/v1/preview/app/customize.json",
-            method: "POST",
+            method: "PUT",
             data: input,
         };
-        return this.client
-            .request(config)
-            .then(resp => resp.data as JsCustomizeOutput);
+        return this.client.request(config).then(resp => {
+            return resp.data as JsCustomizeOutput;
+        });
     }
 
     requestDepoy(input: DeployInput): Promise<any> {
@@ -145,8 +151,8 @@ export class IntegrationTestPrepareClient {
             method: "GET",
             data: input,
         };
-        return this.client
-            .request(config)
-            .then(resp => resp.data as DeployStatusOutput);
+        return this.client.request(config).then(resp => {
+            return resp.data as DeployStatusOutput;
+        });
     }
 }

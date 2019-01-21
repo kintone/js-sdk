@@ -124,27 +124,27 @@ declare namespace kintone.types {
             value: {
                 id: string;
                 value: {
-                    Text_0: {
+                    Text_Table: {
                         type: "SINGLE_LINE_TEXT";
                         value: string;
                     };
 
-                    Rich_text_1: {
+                    Rich_text_Table: {
                         type: "RICH_TEXT";
                         value: string;
                     };
 
-                    Text_area_1: {
+                    Text_area_Table: {
                         type: "MULTI_LINE_TEXT";
                         value: string;
                     };
 
-                    Number_1: {
+                    Number_Table: {
                         type: "NUMBER";
                         value: string;
                     };
 
-                    Calculated_1: {
+                    Calculated_Table: {
                         type: "CALC";
                         value: string;
                     };
@@ -157,79 +157,47 @@ declare namespace kintone.types {
             value: {
                 id: string;
                 value: {
-                    Radio_button_0: {
+                    Radio_button_Table: {
                         type: "RADIO_BUTTON";
                         value: string;
                     };
 
-                    Drop_down_1: {
+                    Drop_down_Table: {
                         type: "DROP_DOWN";
                         value: string;
                     };
 
-                    Date_1: {
+                    Date_Table: {
                         type: "DATE";
                         value: string;
                     };
 
-                    Time_1: {
+                    Time_Table: {
                         type: "TIME";
                         value: string;
                     };
 
-                    Date_and_time_1: {
+                    Date_and_time_Table: {
                         type: "DATETIME";
                         value: string;
                     };
 
-                    Check_box_1: {
-                        type: "CHECK_BOX";
-                        value: string[];
-                    };
-
-                    Multi_choice_1: {
-                        type: "MULTI_SELECT";
-                        value: string[];
-                    };
-                };
-            }[];
-        };
-
-        Table_1: {
-            type: "SUBTABLE";
-            value: {
-                id: string;
-                value: {
-                    Link_1: {
+                    Link_Table: {
                         type: "LINK";
                         value: string;
                     };
 
-                    User_selection_1: {
-                        type: "USER_SELECT";
-                        value: {
-                            code: string;
-                            name: string;
-                        }[];
+                    Check_box_Table: {
+                        type: "CHECK_BOX";
+                        value: string[];
                     };
 
-                    Department_selection_1: {
-                        type: "ORGANIZATION_SELECT";
-                        value: {
-                            code: string;
-                            name: string;
-                        }[];
+                    Multi_choice_Table: {
+                        type: "MULTI_SELECT";
+                        value: string[];
                     };
 
-                    Group_selection_1: {
-                        type: "GROUP_SELECT";
-                        value: {
-                            code: string;
-                            name: string;
-                        }[];
-                    };
-
-                    Attachment_1: {
+                    Attachment_Table: {
                         type: "FILE";
                         value: {
                             contentType: string;

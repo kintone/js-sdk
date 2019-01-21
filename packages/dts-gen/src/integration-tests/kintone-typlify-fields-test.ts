@@ -126,10 +126,25 @@ function assertFieldTypes(record: SavedTestFields) {
         {
             ref: record.Table_0,
         },
-        {
-            ref: record.Table_1,
-        },
     ].forEach(({ ref }) => assertSubTable(ref));
+
+    const tv = record.Table.value[0].value;
+    assert.ok(tv.Calculated_Table.value);
+    assert.ok(tv.Number_Table.value);
+    assert.ok(tv.Rich_text_Table.value);
+    assert.ok(tv.Text_Table.value);
+    assert.ok(tv.Text_area_Table.value);
+
+    const tv0 = record.Table_0.value[0].value;
+    assert.ok(tv0.Attachment_Table.value);
+    assert.ok(tv0.Check_box_Table.value);
+    assert.ok(tv0.Date_Table.value);
+    assert.ok(tv0.Date_and_time_Table.value);
+    assert.ok(tv0.Drop_down_Table.value);
+    assert.ok(tv0.Link_Table.value);
+    assert.ok(tv0.Multi_choice_Table.value);
+    assert.ok(tv0.Radio_button_Table.value);
+    assert.ok(tv0.Time_Table.value);
 }
 
 function assertSubTable(ref: {
