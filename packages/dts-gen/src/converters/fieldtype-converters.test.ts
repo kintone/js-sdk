@@ -2,97 +2,97 @@ import { VisibleForTesting } from "./fileldtype-converter";
 import { SubTableFieldType } from "../kintone/clients/forms-client";
 
 describe("FileFieldTypeConverter", () => {
-    const input = [
-        {
+    const input = {
+        userSelect: {
             type: "USER_SELECT",
             code: "userSelect",
         },
-        {
+        userSelect2: {
             type: "USER_SELECT",
             code: "userSelect2",
         },
-        {
+        singleLineText: {
             type: "SINGLE_LINE_TEXT",
             code: "singleLineText",
         },
-        {
+        multiLineText: {
             type: "MULTI_LINE_TEXT",
             code: "multiLineText",
         },
-        {
+        richText: {
             type: "RICH_TEXT",
             code: "richText",
         },
-        {
+        date: {
             type: "DATE",
             code: "date",
         },
-        {
+        time: {
             type: "TIME",
             code: "time",
         },
-        {
+        createdTime: {
             type: "CREATED_TIME",
             code: "createdTime",
         },
-        {
+        updatedTime: {
             type: "UPDATED_TIME",
             code: "updatedTime",
         },
-        {
+        recordNumber: {
             type: "RECORD_NUMBER",
             code: "recordNumber",
         },
-        {
+        dropDown: {
             type: "DROP_DOWN",
             code: "dropDown",
         },
-        {
+        link: {
             type: "LINK",
             code: "link",
         },
-        {
+        number: {
             type: "NUMBER",
             code: "number",
         },
-        {
+        file: {
             type: "FILE",
             code: "file",
         },
-        {
+        checkbox: {
             type: "CHECK_BOX",
             code: "checkbox",
         },
-        {
+        multiSelect: {
             type: "MULTI_SELECT",
             code: "multiSelect",
         },
-        {
+        creator: {
             type: "CREATOR",
             code: "creator",
         },
-        {
+        modifier: {
             type: "MODIFIER",
             code: "modifier",
         },
         // Lookup field and Related App record should be excluded
-        {
+        relatedApp: {
             type: "FILE",
             code: "relatedApp",
             relatedApp: "12",
         },
-        {
+        lookupApp: {
             type: "CHECK_BOX",
             code: "lookupApp",
             relatedApp: "13",
         },
-    ];
+    };
 
     test("selectFieldsTypesEquals returns lists of values which is selected if fieldType is same", () => {
         const type = VisibleForTesting.constants.FILE_TYPE;
         const output = VisibleForTesting.selectFieldsTypesEquals(
             type,
-            input
+            Object.values(input)
         );
         const expected = [
             {
@@ -108,7 +108,7 @@ describe("FileFieldTypeConverter", () => {
             VisibleForTesting.constants.STRING_LIST_TYPES;
         const output = VisibleForTesting.selectFieldsTypesIn(
             types,
-            input
+            Object.values(input)
         );
         const expected = [
             {
@@ -123,7 +123,7 @@ describe("FileFieldTypeConverter", () => {
         expect(output).toEqual(expected);
     });
 
-    test("", () => {
+    test("convertSubTableFields", () => {
         const subTables = [
             {
                 type: "SUBTABLE",

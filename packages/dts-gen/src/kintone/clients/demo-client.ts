@@ -1,22 +1,20 @@
-import { Promise } from "es6-promise";
-
 import {
     FetchFormPropertiesInput,
     FormsClient,
-    FieldTypesOrSubTableFieldTypes,
+    FieldNameAndFieldOrSubTableField,
 } from "./forms-client";
 import { DemoDatas } from "./demo-datas";
 
 export class DemoClient implements FormsClient {
     fetchFormProperties(
         _: FetchFormPropertiesInput
-    ): Promise<FieldTypesOrSubTableFieldTypes> {
+    ): Promise<FieldNameAndFieldOrSubTableField> {
         const demoResp = {
             properties:
                 DemoDatas.DemoDataIncludingBuiltinFields,
         };
         return Promise.resolve(
-            demoResp.properties as FieldTypesOrSubTableFieldTypes
+            demoResp.properties as FieldNameAndFieldOrSubTableField
         );
     }
 }

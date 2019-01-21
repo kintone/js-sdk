@@ -1,9 +1,7 @@
-import { Promise } from "es6-promise";
-
 import {
     FormsClient,
     FetchFormPropertiesInput,
-    FieldTypesOrSubTableFieldTypes,
+    FieldNameAndFieldOrSubTableField,
 } from "./forms-client";
 
 import {
@@ -21,7 +19,7 @@ export class FormsClientImpl implements FormsClient {
 
     fetchFormProperties(
         input: FetchFormPropertiesInput
-    ): Promise<FieldTypesOrSubTableFieldTypes> {
+    ): Promise<FieldNameAndFieldOrSubTableField> {
         const config: AxiosRequestConfig = {
             method: "GET",
             url: constructUrl(input),
@@ -32,9 +30,11 @@ export class FormsClientImpl implements FormsClient {
 
         return this.client
             .request(config)
-            .then(resp => resp.data.properties) as Promise<
-            FieldTypesOrSubTableFieldTypes
-        >;
+            .then(
+                resp =>
+                    resp.data
+                        .properties as FieldNameAndFieldOrSubTableField
+            );
     }
 }
 
@@ -43,13 +43,13 @@ function constructUrl(
 ): string {
     const guest = input.guestSpaceId;
     if (guest !== null && input.preview) {
-        return `/k/guest/${guest}/v1/preview/form.json`;
+        return `/k/guest/${guest}/v1/preview/app/form/fields.json`;
     } else if (input.guestSpaceId !== null) {
-        return `/k/guest/${guest}/v1/form.json`;
+        return `/k/guest/${guest}/v1/app/form/fields.json`;
     } else if (input.preview) {
-        return "/k/v1/preview/form.json";
+        return "/k/v1/preview/app/form/fields.json";
     } else {
-        return "/k/v1/form.json";
+        return "/k/v1/app/form/fields.json";
     }
 }
 

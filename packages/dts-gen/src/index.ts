@@ -75,8 +75,10 @@ const fetchFormPropertiesInput = {
 
 client
     .fetchFormProperties(fetchFormPropertiesInput)
-    .then(
-        FieldTypeConverter.convertFieldTypesToFieldTypeGroups
+    .then(properties =>
+        FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
+            Object.values(properties)
+        )
     )
     .then(fields => {
         const typeName = program.typeName;

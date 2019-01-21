@@ -1,9 +1,12 @@
 import {
     FieldType,
-    FieldTypesOrSubTableFieldTypes,
     SubTableFieldType,
+    FieldNameAndFieldOrSubTableField,
 } from "../kintone/clients/forms-client";
 
+type FieldTypesOrSubTableFieldTypes =
+    | FieldType[]
+    | SubTableFieldType[];
 const SIMPLE_VALUE_TYPES = [
     "SINGLE_LINE_TEXT",
     "MULTI_LINE_TEXT",
@@ -92,7 +95,7 @@ function convertSubTableFields(
             code: subTableField.code,
             type: subTableField.type,
             fields: convertFieldTypesToFieldTypeGroups(
-                subTableField.fields
+                Object.values(subTableField.fields)
             ),
         };
     });
@@ -101,30 +104,31 @@ function convertSubTableFields(
 function convertFieldTypesToFieldTypeGroups(
     properties: FieldTypesOrSubTableFieldTypes
 ): FieldTypeGroups {
+    const fieldTypes = Object.values(properties);
     const simpleFields = selectFieldsTypesIn(
         SIMPLE_VALUE_TYPES,
-        properties
+        fieldTypes
     );
     const userFields = selectFieldsTypesIn(
         USER_TYPES,
-        properties
+        fieldTypes
     );
     const stringListFields = selectFieldsTypesIn(
         STRING_LIST_TYPES,
-        properties
+        fieldTypes
     );
     const entityListFields = selectFieldsTypesIn(
         ENTITY_LIST_TYPE,
-        properties
+        fieldTypes
     );
     const fileTypeFields = selectFieldsTypesEquals(
         FILE_TYPE,
-        properties
+        fieldTypes
     );
     const subTableFields = convertSubTableFields(
         selectFieldsTypesEquals(
             SUB_TABLE_TYPE,
-            properties
+            fieldTypes
         ) as SubTableFieldType[]
     );
 

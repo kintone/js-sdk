@@ -1,4 +1,5 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
+import * as FormData from "form-data";
 
 import {
     NewInstanceInput,
@@ -87,12 +88,13 @@ export class IntegrationTestPrepareClient {
     ): Promise<AddFormFieldOutput> {
         const config: AxiosRequestConfig = {
             url: "/k/v1/preview/app/form/fields.json",
-            method: "PUT",
+            method: "POST",
             data: input,
         };
-        return this.client
-            .request(config)
-            .then(resp => resp.data as AddFormFieldOutput);
+        return this.client.request(config).then(resp => {
+            console.log(resp.data.errros);
+            return resp.data as AddFormFieldOutput;
+        });
     }
 
     requestUploadFile(
@@ -100,6 +102,7 @@ export class IntegrationTestPrepareClient {
     ): Promise<UploadFileOutput> {
         const data = new FormData();
         data.append("file", input.data);
+
         const config: AxiosRequestConfig = {
             url: "/k/v1/file.json",
             method: "POST",

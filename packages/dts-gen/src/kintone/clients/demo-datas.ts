@@ -1,5 +1,5 @@
-const DemoDataFields: any[] = [
-    {
+const DemoDataFields: any = {
+    Text: {
         type: "SINGLE_LINE_TEXT",
         label: "Text",
         noLabel: "false",
@@ -12,7 +12,8 @@ const DemoDataFields: any[] = [
         unique: "false",
         defaultValue: "",
     },
-    {
+
+    Rich_text: {
         type: "RICH_TEXT",
         label: "Rich text",
         noLabel: "false",
@@ -20,7 +21,8 @@ const DemoDataFields: any[] = [
         required: "false",
         defaultValue: "",
     },
-    {
+
+    Text_area: {
         type: "MULTI_LINE_TEXT",
         label: "Text area",
         noLabel: "false",
@@ -28,7 +30,8 @@ const DemoDataFields: any[] = [
         required: "false",
         defaultValue: "",
     },
-    {
+
+    Number: {
         type: "NUMBER",
         label: "Number",
         noLabel: "false",
@@ -43,7 +46,8 @@ const DemoDataFields: any[] = [
         unit: null,
         unitPosition: "BEFORE",
     },
-    {
+
+    Calculated: {
         type: "CALC",
         label: "Calculated",
         noLabel: "false",
@@ -56,48 +60,85 @@ const DemoDataFields: any[] = [
         unit: null,
         unitPosition: "BEFORE",
     },
-    {
+
+    Radio_button: {
         type: "RADIO_BUTTON",
-        label: "Radio button",
-        noLabel: "false",
         code: "Radio_button",
-        required: "true",
-        options: ["sample1", "sample2"],
+        label: "Radio button",
+        noLabel: false,
+        required: true,
+        options: {
+            sample1: {
+                label: "sample1",
+                index: "0",
+            },
+            sample2: {
+                label: "sample2",
+                index: "1",
+            },
+        },
         defaultValue: "sample1",
+        align: "HORIZONTAL",
     },
-    {
+    Check_box: {
         type: "CHECK_BOX",
-        label: "Check box",
-        noLabel: "false",
         code: "Check_box",
-        required: "false",
-        options: ["sample1", "sample2"],
+        label: "Check box",
+        noLabel: false,
+        required: false,
+        options: {
+            sample1: {
+                label: "sample1",
+                index: "0",
+            },
+            sample2: {
+                label: "sample2",
+                index: "1",
+            },
+        },
         defaultValue: [],
+        align: "HORIZONTAL",
     },
-    {
+
+    Multi_choice: {
         type: "MULTI_SELECT",
-        label: "Multi-choice",
-        noLabel: "false",
         code: "Multi_choice",
-        required: "false",
-        options: [
-            "sample1",
-            "sample2",
-            "sample3",
-            "sample4",
-        ],
+        label: "Multi choice",
+        noLabel: false,
+        required: false,
+        options: {
+            sample1: {
+                label: "sample1",
+                index: "0",
+            },
+            sample2: {
+                label: "sample2",
+                index: "1",
+            },
+        },
         defaultValue: [],
     },
-    {
+
+    Drop_down: {
         type: "DROP_DOWN",
-        label: "Drop-down",
-        noLabel: "false",
         code: "Drop_down",
-        required: "false",
-        options: ["sample1", "sample2"],
-        defaultValue: null,
+        label: "Drop down",
+        noLabel: false,
+        required: false,
+        options: {
+            sample1: {
+                label: "sample1",
+                index: "0",
+            },
+            sample2: {
+                label: "sample2",
+                index: "1",
+            },
+        },
+        defaultValue: "",
     },
-    {
+
+    Date: {
         type: "DATE",
         label: "Date",
         noLabel: "false",
@@ -107,7 +148,8 @@ const DemoDataFields: any[] = [
         defaultValue: null,
         defaultExpression: "NOW",
     },
-    {
+
+    Time: {
         type: "TIME",
         label: "Time",
         noLabel: "false",
@@ -116,7 +158,7 @@ const DemoDataFields: any[] = [
         defaultValue: null,
         defaultExpression: "NOW",
     },
-    {
+    Date_and_time: {
         type: "DATETIME",
         label: "Date and time",
         noLabel: "false",
@@ -126,14 +168,15 @@ const DemoDataFields: any[] = [
         defaultValue: null,
         defaultExpression: "NOW",
     },
-    {
+
+    Attachment: {
         type: "FILE",
         label: "Attachment",
         noLabel: "false",
         code: "Attachment",
         required: "false",
     },
-    {
+    Link: {
         type: "LINK",
         label: "Link",
         noLabel: "false",
@@ -145,32 +188,34 @@ const DemoDataFields: any[] = [
         unique: "false",
         defaultValue: "",
     },
-    {
+
+    User_selection: {
         type: "USER_SELECT",
         label: "User selection",
         noLabel: "false",
         code: "User_selection",
         required: "false",
     },
-    {
+    Department_selection: {
         type: "ORGANIZATION_SELECT",
         label: "Department selection",
         noLabel: "false",
         code: "Department_selection",
         required: "false",
     },
-    {
+    Group_selection: {
         type: "GROUP_SELECT",
         label: "Group selection",
         noLabel: "false",
         code: "Group_selection",
         required: "false",
     },
-    {
+
+    Table: {
         type: "SUBTABLE",
         code: "Table",
-        fields: [
-            {
+        fields: {
+            Text_Table: {
                 type: "SINGLE_LINE_TEXT",
                 label: "Text",
                 noLabel: "false",
@@ -183,7 +228,7 @@ const DemoDataFields: any[] = [
                 unique: "false",
                 defaultValue: "",
             },
-            {
+            Rich_text_Table: {
                 type: "RICH_TEXT",
                 label: "Rich text",
                 noLabel: "false",
@@ -191,7 +236,7 @@ const DemoDataFields: any[] = [
                 required: "false",
                 defaultValue: "",
             },
-            {
+            Text_area_Table: {
                 type: "MULTI_LINE_TEXT",
                 label: "Text area",
                 noLabel: "false",
@@ -199,7 +244,7 @@ const DemoDataFields: any[] = [
                 required: "false",
                 defaultValue: "",
             },
-            {
+            Number_Table: {
                 type: "NUMBER",
                 label: "Number",
                 noLabel: "false",
@@ -214,7 +259,7 @@ const DemoDataFields: any[] = [
                 unit: null,
                 unitPosition: "BEFORE",
             },
-            {
+            Calculated_Table: {
                 type: "CALC",
                 label: "Calculated",
                 noLabel: "false",
@@ -227,54 +272,86 @@ const DemoDataFields: any[] = [
                 unit: null,
                 unitPosition: "BEFORE",
             },
-        ],
+        },
     },
-    {
+
+    Table_0: {
         type: "SUBTABLE",
         code: "Table_0",
-        fields: [
-            {
+        fields: {
+            Radio_button_Table: {
                 type: "RADIO_BUTTON",
                 label: "Radio button",
                 noLabel: "false",
                 code: "Radio_button_Table",
                 required: "true",
-                options: ["sample1", "sample2"],
+                options: {
+                    sample1: {
+                        label: "sample1",
+                        index: "0",
+                    },
+                    sample2: {
+                        label: "sample2",
+                        index: "1",
+                    },
+                },
                 defaultValue: "sample1",
             },
-            {
+            Check_box_Table: {
                 type: "CHECK_BOX",
                 label: "Check box",
                 noLabel: "false",
                 code: "Check_box_Table",
                 required: "false",
-                options: ["sample1", "sample2"],
+                options: {
+                    sample1: {
+                        label: "sample1",
+                        index: "0",
+                    },
+                    sample2: {
+                        label: "sample2",
+                        index: "1",
+                    },
+                },
                 defaultValue: [],
             },
-            {
+            Multi_choice_Table: {
                 type: "MULTI_SELECT",
                 label: "Multi-choice",
                 noLabel: "false",
                 code: "Multi_choice_Table",
                 required: "false",
-                options: [
-                    "sample1",
-                    "sample2",
-                    "sample3",
-                    "sample4",
-                ],
+                options: {
+                    sample1: {
+                        label: "sample1",
+                        index: "0",
+                    },
+                    sample2: {
+                        label: "sample2",
+                        index: "1",
+                    },
+                },
                 defaultValue: [],
             },
-            {
+            Drop_down_Table: {
                 type: "DROP_DOWN",
                 label: "Drop-down",
                 noLabel: "false",
                 code: "Drop_down_Table",
                 required: "false",
-                options: ["sample1", "sample2"],
+                options: {
+                    sample1: {
+                        label: "sample1",
+                        index: "0",
+                    },
+                    sample2: {
+                        label: "sample2",
+                        index: "1",
+                    },
+                },
                 defaultValue: null,
             },
-            {
+            Date_Table: {
                 type: "DATE",
                 label: "Date",
                 noLabel: "false",
@@ -284,7 +361,7 @@ const DemoDataFields: any[] = [
                 defaultValue: null,
                 defaultExpression: "NOW",
             },
-            {
+            Time_Table: {
                 type: "TIME",
                 label: "Time",
                 noLabel: "false",
@@ -293,7 +370,7 @@ const DemoDataFields: any[] = [
                 defaultValue: null,
                 defaultExpression: "NOW",
             },
-            {
+            Date_and_time_Table: {
                 type: "DATETIME",
                 label: "Date and time",
                 noLabel: "false",
@@ -303,14 +380,14 @@ const DemoDataFields: any[] = [
                 defaultValue: null,
                 defaultExpression: "NOW",
             },
-            {
+            Attachment_Table: {
                 type: "FILE",
                 label: "Attachment",
                 noLabel: "false",
                 code: "Attachment_Table",
                 required: "false",
             },
-            {
+            Link_Table: {
                 type: "LINK",
                 label: "Link",
                 noLabel: "false",
@@ -322,44 +399,47 @@ const DemoDataFields: any[] = [
                 unique: "false",
                 defaultValue: "",
             },
-        ],
+        },
     },
-];
+};
 
-const DemoDataIncludingBuiltinFields: any[] = [
-    {
+const DemoDataBuiltinFields: any = {
+    Record_number: {
         type: "RECORD_NUMBER",
         label: "Record number",
         noLabel: "false",
         code: "Record_number",
     },
-    {
+    Updated_by: {
         type: "MODIFIER",
         label: "Updated by",
         noLabel: "false",
         code: "Updated_by",
     },
-    {
+    Created_by: {
         type: "CREATOR",
         label: "Created by",
         noLabel: "false",
         code: "Created_by",
     },
-    {
+    Updated_datetime: {
         type: "UPDATED_TIME",
         label: "Updated datetime",
         noLabel: "false",
         code: "Updated_datetime",
     },
-    {
+    Created_datetime: {
         type: "CREATED_TIME",
         label: "Created datetime",
         noLabel: "false",
         code: "Created_datetime",
     },
-].concat(DemoDataFields);
+};
 
 export const DemoDatas = {
     DemoDataFields,
-    DemoDataIncludingBuiltinFields,
+    DemoDataIncludingBuiltinFields: Object.assign(
+        DemoDataBuiltinFields,
+        DemoDataFields
+    ),
 };

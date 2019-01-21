@@ -23,7 +23,7 @@ program
         null
     )
     .option(
-        "--interation-test-js-file [integrationTestJsFile]",
+        "--integration-test-js-file [integrationTestJsFile]",
         "path to integration js file which will be uploaded to test kintone app"
     )
     .parse(process.argv);
@@ -37,20 +37,41 @@ const newClientInput = {
     basicAuthUsername: program.basicAuthUsername,
     basicAuthPassword: program.basicAuthPassword,
 };
-
 const client = new IntegrationTestPrepareClient(
     newClientInput
 );
 const input = {
     name: "kintone-typlify-integration-test",
 };
-const newAppPromise = client.requestCreateNewApp(input);
-const addFieldsPromise = newAppPromise.then(resp => {
-    const app = resp.app;
-    const properties = DemoDatas.DemoDataFields;
-    return client.requestAddFormField({ app, properties });
-});
 
+const newAppPromise = client.requestCreateNewApp(input)
+    .then(resp => Number(resp.app))
+    .catch(err => {
+        if(err) {
+            throw err;
+        }
+        return err;
+    });
+
+const rethrow = err => {
+    if (err) {
+        throw err;
+    }
+};
+
+const addFieldsPromise = newAppPromise
+    .then(app => {
+        const properties = DemoDatas.DemoDataFields;
+        return client
+            .requestAddFormField({
+                app,
+                properties,
+            })
+            .catch(rethrow);
+    })
+    .catch(rethrow);
+// process.exit(0);
+/** 
 const fileUploadPromise = new Promise(
     (resolve: (resolved: string) => void, reject) => {
         fs.readFile(
@@ -65,63 +86,77 @@ const fileUploadPromise = new Promise(
                     })
                     .then(resp => {
                         resolve(resp.fileKey);
-                    });
+                    }).catch(err => reject(err));
             }
         );
     }
-);
+).catch(err => {
+    if(err) {
+        console.log(err);
+        throw err;
+    }
+    return "";
+})
 
 const jsCustomizePromise = Promise.all([
     newAppPromise,
     fileUploadPromise,
-]).then(([newAppResp, fileKey]) => {
-    const app = newAppResp.app;
-    const scope = "ALL";
-    const desktop = {
-        js: [
-            {
-                type: "FILE",
-                file: {
-                    fileKey,
+])
+    .then(([app, fileKey]) => {
+        const scope = "ALL";
+        const desktop = {
+            js: [
+                {
+                    type: "FILE",
+                    file: {
+                        fileKey,
+                    },
                 },
-            },
-        ],
-    };
-    return client.requestJsCustomizeUpdate({
-        app,
-        scope,
-        desktop,
+            ],
+        };
+        return client.requestJsCustomizeUpdate({
+            app,
+            scope,
+            desktop,
+        });
+    })
+    .catch(err => {
+        if (err) throw err;
     });
-});
 
 const deployPromise = Promise.all([
     newAppPromise,
     addFieldsPromise,
     jsCustomizePromise,
-]).then(([newAppResp, _1, _2]) => {
-    const apps = [{ app: newAppResp.app }];
-    return client.requestDepoy({ apps });
-});
+])
+    .then(([app, _1, _2]) => {
+        const apps = [{ app }];
+        return client.requestDepoy({ apps });
+    })
+    .catch(err => {
+        if (err) throw err;
+    });
 
-Promise.all([newAppPromise, deployPromise]).then(
-    ([newAppResp, _1]) => {
+Promise.all([newAppPromise, deployPromise])
+    .then(([app, _1]) => {
         let noRetry = false;
         for (let i = 0; i < 10 && noRetry; i++) {
             const deployStatusPromise = client
                 .requestGetDeployStatus({
-                    apps: [newAppResp.app],
+                    apps: [app],
                 })
                 .then(resp => {
                     return (
                         resp.apps.filter(
                             ({ app, status }) =>
-                                app === newAppResp.app &&
+                                app === app &&
                                 status === "SUCCESS"
                         ).length === 1
                     );
-                });
-            Promise.all([deployStatusPromise]).then(
-                ([deploySuccess]) => {
+                })
+                .catch(err => false);
+            Promise.all([deployStatusPromise])
+                .then(([deploySuccess]) => {
                     noRetry = deploySuccess;
                     if (noRetry) {
                         Promise.all([
@@ -130,11 +165,16 @@ Promise.all([newAppPromise, deployPromise]).then(
                             ),
                         ]);
                     }
-                }
-            );
+                })
+                .catch(err => {
+                    if (err) throw err;
+                });
         }
         if (!noRetry) {
             throw new Error();
         }
-    }
-);
+    })
+    .catch(err => {
+        if (err) throw err;
+    });
+*/
