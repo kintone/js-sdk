@@ -3,18 +3,16 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 <a name="1.5.0"></a>
-# [1.5.0](https://github.com/kintone/customize-uploader/compare/v1.2.0...v1.5.0) (2019-01-21)
+# [1.5.0](https://github.com/kintone/customize-uploader/compare/v1.4.0...v1.5.0) (2019-01-21)
 
 
 ### Bug Fixes
 
-* **deps:** update dependency inquirer to ^6.2.1 ([dc1efc5](https://github.com/kintone/customize-uploader/commit/dc1efc5))
 * **deps:** update dependency rimraf to ^2.6.3 ([d79eeb1](https://github.com/kintone/customize-uploader/commit/d79eeb1))
 
 
 ### Features
 
-* add import subcommand to import a customize setting from an existing app ([#56](https://github.com/kintone/customize-uploader/issues/56)) ([f2c931c](https://github.com/kintone/customize-uploader/commit/f2c931c)), closes [#24](https://github.com/kintone/customize-uploader/issues/24) [#Issue-24](https://github.com/kintone/customize-uploader/issues/Issue-24)
 * add init sub-command ([#68](https://github.com/kintone/customize-uploader/issues/68)) ([6daa811](https://github.com/kintone/customize-uploader/commit/6daa811))
 
 
@@ -35,9 +33,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* add import subcommand to import a customize setting from an existing app ([#56](https://github.com/kintone/customize-uploader/issues/56)) ([f2c931c](https://github.com/kintone/customize-uploader/commit/f2c931c)), closes [#24](https://github.com/kintone/customize-uploader/issues/24) [#Issue-24](https://github.com/kintone/customize-uploader/issues/Issue-24) [@yokotaso](https://github.com/yokotaso)
+* add import subcommand to import a customize setting from an existing app ([#56](https://github.com/kintone/customize-uploader/issues/56)) ([f2c931c](https://github.com/kintone/customize-uploader/commit/f2c931c)), closes [#24](https://github.com/kintone/customize-uploader/issues/24) [#Issue-24](https://github.com/kintone/customize-uploader/issues/Issue-24)
 
+### Contributors
 
+* [@yokotaso](https://github.com/yokotaso)
 
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/kintone/customize-uploader/compare/v1.1.2...v1.2.0) (2018-11-20)
