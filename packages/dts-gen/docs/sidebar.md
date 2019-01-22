@@ -1,3 +1,3 @@
-- [How to Use](how-to-user.md)
+- [How to Use](how-to-use.md)
 - [Field Type Definition Guide](field-type-definition-guide.md)
 - [Maintainance Guide](maintainace-guide.md)
