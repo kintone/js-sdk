@@ -118,6 +118,7 @@ function assertFieldTypes(record: SavedTestFields) {
 
     assertType(record.Attachment.type, "FILE");
     assert.ok(record.Attachment.value.length);
+    assertFileField(record.Attachment);
 
     [
         {
@@ -129,22 +130,74 @@ function assertFieldTypes(record: SavedTestFields) {
     ].forEach(({ ref }) => assertSubTable(ref));
 
     const tv = record.Table.value[0].value;
+    [
+        {
+            ref: tv.Calculated_Table,
+            type: "CALC",
+        },
+        {
+            ref: tv.Number_Table,
+            type: "NUMBER",
+        },
+        {
+            ref: tv.Text_Table,
+            type: "SINGLE_LINE_TEXT",
+        },
+        {
+            ref: tv.Rich_text_Table,
+            type: "RICH_TEXT",
+        },
+        {
+            ref: tv.Text_area_Table,
+            type: "MULTI_LINE_TEXT",
+        },
+    ].forEach(({ ref, type }) =>
+        assertSimpleField(ref, type)
+    );
     assert.ok(tv.Calculated_Table.value);
     assert.ok(tv.Number_Table.value);
-    assert.ok(tv.Rich_text_Table.value);
     assert.ok(tv.Text_Table.value);
     assert.ok(tv.Text_area_Table.value);
 
     const tv0 = record.Table_0.value[0].value;
-    assert.ok(tv0.Attachment_Table.value);
-    assert.ok(tv0.Check_box_Table.value);
-    assert.ok(tv0.Date_Table.value);
-    assert.ok(tv0.Date_and_time_Table.value);
-    assert.ok(tv0.Drop_down_Table.value);
-    assert.ok(tv0.Link_Table.value);
-    assert.ok(tv0.Multi_choice_Table.value);
-    assert.ok(tv0.Radio_button_Table.value);
-    assert.ok(tv0.Time_Table.value);
+    assertFileField(tv0.Attachment_Table);
+    [
+        {
+            ref: tv0.Check_box_Table,
+            type: "CHECK_BOX",
+        },
+        {
+            ref: tv0.Date_Table,
+            type: "DATE",
+        },
+        {
+            ref: tv0.Date_and_time_Table,
+            type: "DATETIME",
+        },
+        {
+            ref: tv0.Link_Table,
+            type: "LINK",
+        },
+        {
+            ref: tv0.Time_Table,
+            type: "TIME",
+        },
+    ].forEach(({ ref, type }) =>
+        assertSimpleField(ref, type)
+    );
+
+    [
+        {
+            ref: tv0.Check_box_Table,
+            type: "CHECK_BOX",
+        },
+        {
+            ref: tv0.Multi_choice_Table,
+            type: "MULTI_SELECT",
+        },
+    ].forEach(({ ref, type }) =>
+        assertStringListField(ref, type)
+    );
 }
 
 function assertSubTable(ref: {
@@ -193,6 +246,8 @@ function assertEntityListField(
 ) {
     assertType(ref.type, expectedType);
     assertNotUndefined(ref.value.length);
+    assertNotUndefined(ref.value[0].code);
+    assertNotUndefined(ref.value[0].name);
 }
 
 function assertType(type, expectedType) {
@@ -205,6 +260,22 @@ function assertType(type, expectedType) {
 
 function assertNotUndefined(ref) {
     assert.ok(ref !== undefined);
+}
+
+interface FileFieldValue {
+    type: "FILE";
+    value: {
+        name: string;
+        contentType: string;
+        fileKey: string;
+    }[];
+}
+function assertFileField(ref: FileFieldValue) {
+    assert.ok(ref.type, "FILE");
+    assert.ok(ref.value.length);
+    assert.ok(ref.value[0].name);
+    assert.ok(ref.value[0].contentType);
+    assert.ok(ref.value[0].fileKey);
 }
 
 export const KintoneTyplifyFieldsTest = {

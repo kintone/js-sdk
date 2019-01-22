@@ -403,6 +403,167 @@ const DemoDataFields: any = {
     },
 };
 
+const DemoRecord: any = {
+    Text: {
+        type: "SINGLE_LINE_TEXT",
+        value: "Sample Sample",
+    },
+
+    Rich_text: {
+        type: "RICH_TEXT",
+        value: "<span>Sample Sample</span>",
+    },
+
+    Text_area: {
+        type: "MULTI_LINE_TEXT",
+        value: "Sample\nSample",
+    },
+
+    Number: {
+        type: "NUMBER",
+        value: "1",
+    },
+
+    Calculated: {
+        type: "CALC",
+        value: "",
+    },
+    Radio_button: {
+        type: "RADIO_BUTTON",
+        value: "sample1",
+    },
+    Check_box: {
+        type: "CHECK_BOX",
+        value: ["sample1", "sample2"],
+    },
+
+    Multi_choice: {
+        type: "MULTI_SELECT",
+        code: "Multi_choice",
+        value: ["sample1", "sample2"],
+    },
+
+    Drop_down: {
+        type: "DROP_DOWN",
+        value: "sample1",
+    },
+
+    Date: {
+        type: "DATE",
+        value: "2019-01-31",
+    },
+
+    Time: {
+        type: "TIME",
+        value: "12:31",
+    },
+    Date_and_time: {
+        type: "DATETIME",
+        value: "2012-01-11T11:30:00Z",
+    },
+
+    Attachment: {
+        type: "FILE",
+        value: [],
+    },
+    Link: {
+        type: "LINK",
+        value: "exmale@example.com",
+    },
+
+    User_selection: {
+        type: "USER_SELECT",
+        value: [],
+    },
+    Department_selection: {
+        type: "ORGANIZATION_SELECT",
+        value: [],
+    },
+    Group_selection: {
+        type: "GROUP_SELECT",
+        value: [],
+    },
+
+    Table: {
+        type: "SUBTABLE",
+        code: "Table",
+
+        value: [
+            {
+                value: {
+                    Text_Table: {
+                        type: "SINGLE_LINE_TEXT",
+                        value: "Table Text",
+                    },
+                    Rich_text_Table: {
+                        type: "RICH_TEXT",
+                        value: "<div> Table Text</div>",
+                    },
+                    Text_area_Table: {
+                        type: "MULTI_LINE_TEXT",
+                        value: "Table\nText",
+                    },
+                    Number_Table: {
+                        type: "NUMBER",
+                        value: "1",
+                    },
+                    Calculated_Table: {
+                        type: "CALC",
+                        value: null,
+                    },
+                },
+            },
+        ],
+    },
+
+    Table_0: {
+        type: "SUBTABLE",
+        code: "Table_0",
+        value: [
+            {
+                value: {
+                    Radio_button_Table: {
+                        type: "RADIO_BUTTON",
+                        value: "sample1",
+                    },
+                    Check_box_Table: {
+                        type: "CHECK_BOX",
+                        value: ["sample1", "sample2"],
+                    },
+                    Multi_choice_Table: {
+                        type: "MULTI_SELECT",
+                        value: ["sample1", "sample2"],
+                    },
+                    Drop_down_Table: {
+                        type: "DROP_DOWN",
+                        value: "sample1",
+                    },
+                    Date_Table: {
+                        type: "DATE",
+                        value: "2018-12-01",
+                    },
+                    Time_Table: {
+                        type: "TIME",
+                        value: "12:00",
+                    },
+                    Date_and_time_Table: {
+                        type: "DATETIME",
+                        value: "2012-01-11T11:30:00Z",
+                    },
+                    Attachment_Table: {
+                        type: "FILE",
+                        value: [],
+                    },
+                    Link_Table: {
+                        type: "LINK",
+                        value: "https://example.com",
+                    },
+                },
+            },
+        ],
+    },
+};
+
 const DemoDataBuiltinFields: any = {
     Record_number: {
         type: "RECORD_NUMBER",
@@ -442,4 +603,5 @@ export const DemoDatas = {
         DemoDataBuiltinFields,
         DemoDataFields
     ),
+    DemoRecord,
 };

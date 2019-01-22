@@ -1,8 +1,8 @@
 import * as program from "commander";
 import * as fs from "fs";
 
-import { IntegrationTestPrepareClient } from "../kintone/clients/integration-test-prepare-client";
-import { SetupTestApp } from "./setup-test-app-utils";
+import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client";
+import { SetupTestApp } from "./setup-test-utils";
 
 program
     .version("0.0.1")
@@ -42,9 +42,7 @@ async function handleSetupApp(command) {
         basicAuthPassword: command.basicAuthPassword,
     };
 
-    const client = new IntegrationTestPrepareClient(
-        newClientInput
-    );
+    const client = new SetUpTestAppClient(newClientInput);
     const app = await SetupTestApp.createKintoneApp(
         client,
         "kintone-typlify-integration-test"
@@ -57,7 +55,10 @@ async function handleSetupApp(command) {
     const fileKey = await SetupTestApp.uploadFile(
         client,
         data,
-        "kintone-typlify-integration-test.js"
+        {
+            name: "kintone-typlify-integration-test.js",
+            contentType: "text/javascript",
+        }
     );
     await SetupTestApp.updateJsCustomize(
         client,
@@ -65,4 +66,10 @@ async function handleSetupApp(command) {
         fileKey
     );
     await SetupTestApp.deployApp(client, app);
+    console.log("Adding Demo Record");
+    await SetupTestApp.addDemoRecord(
+        client,
+        app,
+        command.integrationTestJsFile
+    );
 }

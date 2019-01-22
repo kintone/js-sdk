@@ -47,6 +47,7 @@ interface DeployStatusOutput {
 interface UploadFileInput {
     data: fs.ReadStream;
     fileName: string;
+    contentType: string;
 }
 
 interface UploadFileOutput {
@@ -65,7 +66,16 @@ interface JsCustomizeOutput {
     revision: string;
 }
 
-export class IntegrationTestPrepareClient {
+interface AddRecordInput {
+    app: string;
+    record: any;
+}
+
+interface AddRecordOutput {
+    id: string;
+    revision: string;
+}
+export class SetUpTestAppClient {
     readonly client: AxiosInstance;
 
     constructor(input: NewInstanceInput) {
@@ -105,7 +115,7 @@ export class IntegrationTestPrepareClient {
 
         data.append("file", input.data, {
             filename: input.fileName,
-            contentType: "text/javascript",
+            contentType: input.contentType,
         });
         const headers = data.getHeaders();
         const config: AxiosRequestConfig = {
@@ -153,6 +163,19 @@ export class IntegrationTestPrepareClient {
         };
         return this.client.request(config).then(resp => {
             return resp.data as DeployStatusOutput;
+        });
+    }
+
+    requestAddRecord(
+        input: AddRecordInput
+    ): Promise<AddRecordOutput> {
+        const config: AxiosRequestConfig = {
+            url: "/k/v1/record.json",
+            method: "POST",
+            data: input,
+        };
+        return this.client.request(config).then(resp => {
+            return resp.data as AddRecordOutput;
         });
     }
 }

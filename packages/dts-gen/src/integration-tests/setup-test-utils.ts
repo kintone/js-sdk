@@ -1,9 +1,9 @@
 import * as fs from "fs";
 
-import { IntegrationTestPrepareClient } from "../kintone/clients/integration-test-prepare-client";
+import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client";
 import { DemoDatas } from "../kintone/clients/demo-datas";
 
-type Client = IntegrationTestPrepareClient;
+type Client = SetUpTestAppClient;
 
 const rethrow = err => {
     if (err) {
@@ -39,17 +39,21 @@ async function addDemoField(client: Client, app: string) {
 async function uploadFile(
     client: Client,
     data: fs.ReadStream,
-    jsCutomizeFileName: string
+    metadata: {
+        name: string;
+        contentType: string;
+    }
 ) {
-    console.log(`Uploading ${jsCutomizeFileName}`);
+    console.log(`Uploading ${metadata.name}`);
     return client
         .requestUploadFile({
             data,
-            fileName: jsCutomizeFileName,
+            fileName: metadata.name,
+            contentType: metadata.contentType,
         })
         .then(resp => {
             console.log(
-                `Finish Uploading ${jsCutomizeFileName}(${
+                `Finish Uploading ${metadata.name}(${
                     resp.fileKey
                 })`
             );
@@ -103,11 +107,46 @@ async function deployApp(client: Client, app: string) {
                     app => app.status === "SUCCESS"
                 );
             });
-        if (successApps.length === 1) {
+        if (successApps.length !== 1) {
             console.log("Waiting for Deploy complete...");
-            sleep(3000);
+            await sleep(3000);
         }
     }
+}
+
+async function addDemoRecord(
+    client: Client,
+    app: string,
+    fileName: string
+) {
+    const DemoRecord = DemoDatas.DemoRecord;
+    const record = Object.assign(DemoRecord);
+
+    const upload1 = await client.requestUploadFile({
+        data: fs.createReadStream(fileName),
+        fileName: "sampleText",
+        contentType: "plain/text",
+    });
+    record.Attachment.value.push({
+        contentType: "plain/text",
+        fileKey: upload1.fileKey,
+        name: "text1",
+    });
+
+    const upload2 = await client.requestUploadFile({
+        data: fs.createReadStream(fileName),
+        fileName: "sampleText",
+        contentType: "plain/text",
+    });
+    record.Table_0.value[0].value.Attachment_Table.value.push(
+        {
+            contentType: "plain/text",
+            fileKey: upload2.fileKey,
+            name: "text2",
+        }
+    );
+
+    return client.requestAddRecord({ app, record });
 }
 
 export const SetupTestApp = {
@@ -116,4 +155,5 @@ export const SetupTestApp = {
     uploadFile,
     updateJsCustomize,
     deployApp,
+    addDemoRecord,
 };
