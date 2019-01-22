@@ -83,17 +83,11 @@ async function updateJsCustomize(
             },
         ],
     };
-    return client
-        .requestJsCustomizeUpdate({
-            app,
-            scope,
-            desktop,
-        })
-        .then(resp => {
-            console.log(resp);
-            return resp;
-        })
-        .catch(rethrow);
+    return client.requestJsCustomizeUpdate({
+        app,
+        scope,
+        desktop,
+    });
 }
 
 async function deployApp(client: Client, app: string) {
