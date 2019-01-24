@@ -5,11 +5,7 @@ import { DemoDatas } from "../kintone/clients/demo-datas";
 
 type Client = SetUpTestAppClient;
 
-const rethrow = err => {
-    if (err) {
-        throw err;
-    }
-};
+const rethrow = err => Promise.reject(err);
 
 async function createKintoneApp(
     client: Client,
@@ -22,7 +18,8 @@ async function createKintoneApp(
                 `Preparing for App(ID:${resp.app})`
             );
             return resp.app;
-        });
+        })
+        .catch(rethrow);
 }
 
 async function addDemoField(client: Client, app: string) {
@@ -58,7 +55,8 @@ async function uploadFile(
                 })`
             );
             return resp.fileKey;
-        });
+        })
+        .catch(rethrow);
 }
 
 async function sleep(msec) {
@@ -87,7 +85,8 @@ async function updateJsCustomize(
         app,
         scope,
         desktop,
-    });
+    })
+    .catch(rethrow);
 }
 
 async function deployApp(client: Client, app: string) {
@@ -100,7 +99,8 @@ async function deployApp(client: Client, app: string) {
                 return resp.apps.filter(
                     app => app.status === "SUCCESS"
                 );
-            });
+            })
+            .catch(rethrow);
         if (successApps.length !== 1) {
             console.log("Waiting for Deploy complete...");
             await sleep(3000);

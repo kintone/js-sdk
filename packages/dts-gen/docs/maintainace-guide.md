@@ -5,25 +5,31 @@ Just run `npm run build`.
 
 You can artifact in `dist` directory.
 
-After build process finished, `dist/kintone-typlify-integration-test.js` would be generated from `src/integration-tests/kintone-typlify-integration-test.ts`
+After build process finished, build artifact are below:
 
-this code has assertion checks for kintone builtin function exists,
-And for field defenition.
+- `dist/index.js` : entry point of kintone-typlify command line tool
+- `dist/integration-tests/setup-test-app.js`: command-line utilify tool for integration test
+- `dist/kintone-typlify-integration-test.js`: test code which will be uploaded as kintone js customize
 
-## Half automated testing tool
 
-With testing tool, you can prepare test kintone app.
-Testing tool try to settting app
-which has JavaScript and field defenition, sample record.
+`dist/kintone-typlify-integration-test.js` is build by webpack.
+and this code includes some assertions: 
 
-```
-node ./dist/integration-tests/setup-test-app.js \
-    -u *** \
-    -p *** \
-    --host https://****.cybozu.com \
-    --integration-test-js-file ./dist/kintone-typlify-integration-test.js
-```
+- assert reference for kintone builtin function(see: `src/integration-tests/kintone-typlify-api-test.ts`)
+- assert reference for field reference(see: `src/integration-tests/kintone-typlify-fields-test.ts`)
 
+### setup-test-app
+with this command-line utilify tool, you can prepare test kintone app.
+
+this command-line utilify will do:
+
+1. create kintone app app for testing 
+2. set field setting to (1) app.
+3. upload file of `--integration-test-js-file`
+4. deploy (1) app
+5. add demo record for integration test.
+
+Command line output like below:
 ```
 Preparing for App(ID:93)
 Preparing for field settings(ID:93)
@@ -33,18 +39,46 @@ Waiting for Deploy complete...
 Adding Demo Record
 ```
 
-At this output, this tool generate App(ID:93) and field settings corrsponsds to `src/integration-test/testfields.d.ts` ,upload JavaScript customize file(`dist/kintone-typlify-integration-test.js`) and add sample record to kintone test app.
+After execute this tool, 
 
-After Having prepared kintone test app, you should modify added record to 
-set user select, organization select, group select fields.
+1. Access kintone app(at this example, ID:93), this app includes 1 demo record data.
+2. Edit demo record, and you must set value to userSelect, groupSelect, titleSelect.
+3. Open app recod list page, and open web console
+4. Confirm No AssertionError happend.
 
-With opening kintone record list page, Test code will run.
-And if there are no `AssertionError`, Integration tests success.
+
+You can execute this tools like below:
+
+```
+node ./dist/integration-tests/setup-test-app.js \
+    -u *** \
+    -p *** \
+    --host https://****.cybozu.com \
+    --integration-test-js-file ./dist/kintone-typlify-integration-test.js
+```
+
+`--integration-test-js-file` :
+
+path of integration test which will be uploaded as kintone js customize file.
+you can run test code as a kintone customize js customize code.
+
+`-u, --p, --host`: 
+
+username, password, host of kintone.
+
+## Half automated testing tool
+
+With testing tool, you can prepare test kintone app.
+Testing tool try to settting app
+which has JavaScript and field defenition, sample record.
 
 ## How to run unit tests
+
 Just run `npm run test`
 
 ## Write document
 
-I use `docsify`. See Reference: [Quick Start](https://docsify.js.org/#/quickstart)
+this document written by `docsify`. 
+
+See Reference: [Quick Start](https://docsify.js.org/#/quickstart)
 
