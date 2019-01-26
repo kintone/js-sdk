@@ -66,12 +66,6 @@ you can run test code as a kintone customize js customize code.
 
 username, password, host of kintone.
 
-## Half automated testing tool
-
-With testing tool, you can prepare test kintone app.
-Testing tool try to settting app
-which has JavaScript and field defenition, sample record.
-
 ## How to run unit tests
 
 Just run `npm run test`
