@@ -4,6 +4,7 @@ import { FormsClientImpl } from "./kintone/clients/forms-client-impl";
 import { DemoClient } from "./kintone/clients/demo-client";
 import { FieldTypeConverter } from "./converters/fileldtype-converter";
 import { TypeDefinitionTemplate } from "./templates/template";
+import { objectValues } from "./utils//objectvalues";
 
 program
     .version("0.0.1")
@@ -77,7 +78,7 @@ client
     .fetchFormProperties(fetchFormPropertiesInput)
     .then(properties =>
         FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
-            Object.values(properties)
+            objectValues(properties)
         )
     )
     .then(fields => {

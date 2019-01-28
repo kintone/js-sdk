@@ -81,12 +81,13 @@ async function updateJsCustomize(
             },
         ],
     };
-    return client.requestJsCustomizeUpdate({
-        app,
-        scope,
-        desktop,
-    })
-    .catch(rethrow);
+    return client
+        .requestJsCustomizeUpdate({
+            app,
+            scope,
+            desktop,
+        })
+        .catch(rethrow);
 }
 
 async function deployApp(client: Client, app: string) {

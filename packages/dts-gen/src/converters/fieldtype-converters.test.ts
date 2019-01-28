@@ -1,5 +1,6 @@
 import { VisibleForTesting } from "./fileldtype-converter";
 import { SubTableFieldType } from "../kintone/clients/forms-client";
+import { objectValues } from "../utils/objectvalues";
 
 describe("FileFieldTypeConverter", () => {
     const input = {
@@ -92,7 +93,7 @@ describe("FileFieldTypeConverter", () => {
         const type = VisibleForTesting.constants.FILE_TYPE;
         const output = VisibleForTesting.selectFieldsTypesEquals(
             type,
-            Object.values(input)
+            objectValues(input)
         );
         const expected = [
             {
@@ -108,7 +109,7 @@ describe("FileFieldTypeConverter", () => {
             VisibleForTesting.constants.STRING_LIST_TYPES;
         const output = VisibleForTesting.selectFieldsTypesIn(
             types,
-            Object.values(input)
+            objectValues(input)
         );
         const expected = [
             {
