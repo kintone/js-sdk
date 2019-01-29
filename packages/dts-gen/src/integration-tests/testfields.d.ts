@@ -9,16 +9,6 @@ declare namespace kintone.types {
             value: string;
         };
 
-        Updated_datetime: {
-            type: "UPDATED_TIME";
-            value: string;
-        };
-
-        Created_datetime: {
-            type: "CREATED_TIME";
-            value: string;
-        };
-
         Text: {
             type: "SINGLE_LINE_TEXT";
             value: string;
@@ -82,16 +72,6 @@ declare namespace kintone.types {
         Multi_choice: {
             type: "MULTI_SELECT";
             value: string[];
-        };
-
-        Updated_by: {
-            type: "MODIFIER";
-            value: { code: string; name: string };
-        };
-
-        Created_by: {
-            type: "CREATOR";
-            value: { code: string; name: string };
         };
 
         User_selection: {
@@ -218,6 +198,26 @@ declare namespace kintone.types {
         };
         $revision: {
             type: "__REVISION__";
+            value: string;
+        };
+
+        Updated_by: {
+            type: "MODIFIER";
+            value: { code: string; name: string };
+        };
+
+        Created_by: {
+            type: "CREATOR";
+            value: { code: string; name: string };
+        };
+
+        Updated_datetime: {
+            type: "UPDATED_TIME";
+            value: string;
+        };
+
+        Created_datetime: {
+            type: "CREATED_TIME";
             value: string;
         };
     }
