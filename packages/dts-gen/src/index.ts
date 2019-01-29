@@ -7,7 +7,6 @@ import { TypeDefinitionTemplate } from "./templates/template";
 import { objectValues } from "./utils//objectvalues";
 
 program
-    .version("0.0.1")
     .option(
         "--demo",
         "Generate Type definition from demo data.",
