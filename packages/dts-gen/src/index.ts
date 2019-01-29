@@ -18,8 +18,16 @@ program
     .option("--host [host]")
     .option("-u, --username [username]")
     .option("-p, --password [password]")
-    .option("--app-id [appId]")
-    .option("--guest-space-id [guestSpaceId]")
+    .option(
+        "--app-id [appId]",
+        "id of kintone app",
+        null,
+        )
+    .option(
+        "--guest-space-id [guestSpaceId]",
+        "id of kintone guest space id",
+        null,
+    )
     .option(
         "--preview",
         "set this option if kintone app is in preview mode",
