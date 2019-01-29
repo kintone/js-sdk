@@ -1,6 +1,6 @@
 {
   "name": "@yokotaso/kintone-typlify",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
   "scripts": {
