@@ -48,14 +48,11 @@
 {% endfor %}
 {%endmacro%}
 
-{%macro flatTypes(simpleFields, userFields, stringListFields, entityListFields, fileTypeFields) %}
+{%macro flatTypes(simpleFields, stringListFields, entityListFields, fileTypeFields) %}
 {{simpleTypes(simpleFields) }}
 
 {{ ";" if stringListFields | length }}
 {{ stringListTypes(stringListFields) }}
-
-{{ ";" if userFields | length }}
-{{userFieldTypes(userFields) }}
 
 {{ ";" if entityListFields | length }}
 {{entityListFieldType(entityListFields) }}
@@ -67,30 +64,29 @@
  * This type definition is auto-generated.
  * If you update kintone form settings, Please regenerate this type definition
  */
-declare namespace {{namespace}} {
-    interface {{typeName}} {
+declare namespace {{ namespace }} {
+    interface {{ typeName }} {
 
-        {{flatTypes(simpleFields, userFields, stringListFields, entityListFields, fileTypeFields) }}
-        {{";" if subTableFields | length }}
+        {{ flatTypes(simpleFields, stringListFields, entityListFields, fileTypeFields) }}
+        {{ ";" if subTableFields | length }}
 
         {% for subTableField in subTableFields %}
-        {{subTableField.code}} : {
-            type: "{{subTableField.type}}";
+        {{ subTableField.code }} : {
+            type: "{{ subTableField.type }}";
             value: {
                 id: string;
                 value: {                  
                     {{ flatTypes(subTableField.fields.simpleFields,
-                                 subTableField.fields.userFields,
                                  subTableField.fields.stringListFields,
                                  subTableField.fields.entityListFields,
                                  subTableField.fields.fileTypeFields) }}
                 };
             }[];
-        }{{";" if not loop.last}}
+        }{{ ";" if not loop.last }}
         {% endfor %}
     }
 
-    interface {{savedTypeName}} extends {{typeName}} {
+    interface {{ savedTypeName }} extends {{ typeName }} {
         $id : {
             type: "__ID__";
             value: string;
@@ -99,5 +95,11 @@ declare namespace {{namespace}} {
             type: "__REVISION__";
             value: string;
         };
+
+        {{ userFieldTypes(userFieldsInSavedRecord) }}
+        {{ ";" if userFieldsInSavedRecord | length }}
+
+        {{ simpleTypes(simpleFieldsInSavedRecord) }}
+        {{ ";" if simpleFieldsInSavedRecord | length }}
     }
 };

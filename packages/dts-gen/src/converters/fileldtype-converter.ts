@@ -15,8 +15,6 @@ const SIMPLE_VALUE_TYPES = [
     "NUMBER",
     "DATETIME",
     "TIME",
-    "CREATED_TIME",
-    "UPDATED_TIME",
     "RECORD_NUMBER",
     "DROP_DOWN",
     "LINK",
@@ -24,7 +22,12 @@ const SIMPLE_VALUE_TYPES = [
     "RADIO_BUTTON",
 ];
 
-const USER_TYPES = ["CREATOR", "MODIFIER"];
+const SIMPLE_VALUE_IN_SAVED_RECORD = [
+    "CREATED_TIME",
+    "UPDATED_TIME",
+];
+
+const USER_TYPES_IN_SAVED_RECORD = ["CREATOR", "MODIFIER"];
 
 const STRING_LIST_TYPES = ["CHECK_BOX", "MULTI_SELECT"];
 
@@ -40,7 +43,8 @@ const SUB_TABLE_TYPE = "SUBTABLE";
 
 export interface FieldTypeGroups {
     simpleFields: FieldType[];
-    userFields: FieldType[];
+    simpleFieldsInSavedRecord: FieldType[];
+    userFieldsInSavedRecord: FieldType[];
     stringListFields: FieldType[];
     entityListFields: FieldType[];
     fileTypeFields: FieldType[];
@@ -109,8 +113,12 @@ function convertFieldTypesToFieldTypeGroups(
         SIMPLE_VALUE_TYPES,
         fieldTypes
     );
-    const userFields = selectFieldsTypesIn(
-        USER_TYPES,
+    const simpleFieldsInSavedRecord = selectFieldsTypesIn(
+        SIMPLE_VALUE_IN_SAVED_RECORD,
+        fieldTypes
+    );
+    const userFieldsInSavedRecord = selectFieldsTypesIn(
+        USER_TYPES_IN_SAVED_RECORD,
         fieldTypes
     );
     const stringListFields = selectFieldsTypesIn(
@@ -134,8 +142,9 @@ function convertFieldTypesToFieldTypeGroups(
 
     return {
         simpleFields,
+        simpleFieldsInSavedRecord,
         entityListFields,
-        userFields,
+        userFieldsInSavedRecord,
         stringListFields,
         fileTypeFields,
         subTableFields,

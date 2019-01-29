@@ -157,14 +157,6 @@ describe("FileFieldTypeConverter", () => {
                 type: "TIME",
             },
             {
-                code: "createdTime",
-                type: "CREATED_TIME",
-            },
-            {
-                code: "updatedTime",
-                type: "UPDATED_TIME",
-            },
-            {
                 code: "recordNumber",
                 type: "RECORD_NUMBER",
             },
@@ -219,9 +211,24 @@ describe("FileFieldTypeConverter", () => {
                 type: "MODIFIER",
             },
         ];
-        expect(output[0].fields.userFields).toEqual(
-            expectedUserFields
-        );
+        expect(
+            output[0].fields.userFieldsInSavedRecord
+        ).toEqual(expectedUserFields);
+
+        const expectedSimpleValueInSavedRecord = [
+            {
+                code: "createdTime",
+                type: "CREATED_TIME",
+            },
+            {
+                code: "updatedTime",
+                type: "UPDATED_TIME",
+            },
+        ];
+        expect(
+            output[0].fields.simpleFieldsInSavedRecord
+        ).toEqual(expectedSimpleValueInSavedRecord);
+
         expect(output[0].fields.subTableFields).toEqual([]);
     });
 });
