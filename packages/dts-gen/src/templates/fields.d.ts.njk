@@ -3,6 +3,7 @@
 {{f.code}} : {
     type: "{{f.type}}";
     value: string;
+    error?: string;
 }{{";" if not loop.last}}
 {% endfor %}
 {%endmacro%}
@@ -12,6 +13,7 @@
 {{s.code}} : {
     type: "{{s.type}}";
     value : string[];
+    error?: string;
 }{{";" if not loop.last}}
 {% endfor %}
 {% endmacro %}
@@ -30,6 +32,7 @@
 {{u.code}} : {
     type: "{{u.type}}";
     value: {code: string, name: string}[];
+    error?: string;
 }{{";" if not loop.last}}
 {% endfor %}
 {%endmacro%}
@@ -44,6 +47,7 @@
         name: string;
         size: string;
     }[];
+    error?: string;
 }{{";" if not loop.last}}
 {% endfor %}
 {%endmacro%}
