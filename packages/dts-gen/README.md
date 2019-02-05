@@ -1,4 +1,4 @@
-# kintone-typlify
+# kintone-typedef-generator
 
 Type definition for kintone customize and 
 Type definition generation tool from kintone form settings.
@@ -6,10 +6,10 @@ Type definition generation tool from kintone form settings.
 ## Install
 
 ```
-npm install -D kintone-typlify
+npm install -D @kintone/typedef-generator
 ```
 
 Documents:
-- [How To Use](https://yokotaso.github.io/kintone-typlify/docs/#/README)
-- [Field Type Definition Guide](https://yokotaso.github.io/kintone-typlify/docs/#/field-type-definition-guide)
-- [Maintaince Guide](https://yokotaso.github.io/kintone-typlify/docs/#/maintainace-guide)
+- [How To Use](https://yokotaso.github.io/typedef-generator/docs/#/README)
+- [Field Type Definition Guide](https://yokotaso.github.io/typedef-generator/docs/#/field-type-definition-guide)
+- [Maintaince Guide](https://yokotaso.github.io/typedef-generator/docs/#/maintainace-guide)

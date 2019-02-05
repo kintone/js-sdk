@@ -2,8 +2,8 @@
 /// <reference path="./testfields.d.ts" />
 import * as assert from "assert";
 
-import { KintoneTyplifyApiTest } from "./kintone-typlify-api-test";
-import { KintoneTyplifyFieldsTest } from "./kintone-typlify-fields-test";
+import { KintoneTyplifyApiTest } from "./typedef-generator-api-test";
+import { KintoneTyplifyFieldsTest } from "./typedef-generator-fields-test";
 
 interface Event {
     appId: number;

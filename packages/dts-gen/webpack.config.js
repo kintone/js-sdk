@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-      'kintone-typlify-integration-test' : './src/integration-tests/kintone-typlify-integration-test.ts'
+      'typedef-generator-integration-test' : './src/integration-tests/typedef-generator-integration-test.ts'
   },
   module: {
     rules: [

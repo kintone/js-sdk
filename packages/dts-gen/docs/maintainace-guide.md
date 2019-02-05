@@ -7,16 +7,16 @@ You can artifact in `dist` directory.
 
 After build process finished, build artifact are below:
 
-- `dist/index.js` : entry point of kintone-typlify command line tool
+- `dist/index.js` : entry point of typedef-generator command line tool
 - `dist/integration-tests/setup-test-app.js`: command-line utilify tool for integration test
-- `dist/kintone-typlify-integration-test.js`: test code which will be uploaded as kintone js customize
+- `dist/typedef-generator-integration-test.js`: test code which will be uploaded as kintone js customize
 
 
-`dist/kintone-typlify-integration-test.js` is build by webpack.
+`dist/typedef-generator-integration-test.js` is build by webpack.
 and this code includes some assertions: 
 
-- assert reference for kintone builtin function(see: `src/integration-tests/kintone-typlify-api-test.ts`)
-- assert reference for field reference(see: `src/integration-tests/kintone-typlify-fields-test.ts`)
+- assert reference for kintone builtin function(see: `src/integration-tests/typedef-generator-api-test.ts`)
+- assert reference for field reference(see: `src/integration-tests/typedef-generator-fields-test.ts`)
 
 ### setup-test-app
 with this command-line utilify tool, you can prepare test kintone app.
@@ -33,8 +33,8 @@ Command line output like below:
 ```
 Preparing for App(ID:93)
 Preparing for field settings(ID:93)
-Uploading kintone-typlify-integration-test.js
-Finish Uploading kintone-typlify-integration-test.js(1b71b877-61ae-4ac1-9333-a00a97ff0db0)
+Uploading typedef-generator-integration-test.js
+Finish Uploading typedef-generator-integration-test.js(1b71b877-61ae-4ac1-9333-a00a97ff0db0)
 Waiting for Deploy complete...
 Adding Demo Record
 ```
@@ -54,7 +54,7 @@ node ./dist/integration-tests/setup-test-app.js \
     -u *** \
     -p *** \
     --host https://****.cybozu.com \
-    --integration-test-js-file ./dist/kintone-typlify-integration-test.js
+    --integration-test-js-file ./dist/typedef-generator-integration-test.js
 ```
 
 `--integration-test-js-file` :

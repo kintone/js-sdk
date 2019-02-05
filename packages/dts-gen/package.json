@@ -1,5 +1,5 @@
 {
-  "name": "@yokotaso/kintone-typlify",
+  "name": "@yokotaso/typedef-generator",
   "version": "0.0.6",
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
@@ -44,7 +44,7 @@
     "webpack-cli": "^3.2.1"
   },
   "bin": {
-    "kintone-typlify": "dist/index.js"
+    "typedef-generator": "dist/index.js"
   },
   "files": [
     "dist",
