@@ -116,6 +116,6 @@ function assertFunction(ref) {
     assert.ok(typeof ref === "function");
 }
 
-export const KintoneTyplifyApiTest = {
+export const TypedefGeneratorApiTest = {
     assertKintoneBuiltinFunctions,
 };

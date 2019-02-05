@@ -1,3 +1,4 @@
+/// <reference types="../../kintone" />
 /**
  * This type definition is auto-generated.
  * If you update kintone form settings, Please regenerate this type definition

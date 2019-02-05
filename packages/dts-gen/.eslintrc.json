@@ -3,6 +3,9 @@
         "node":true,
         "es6": true
     },
+    "globals": {
+        "kintone": "kintone"
+    },
     "parser": "typescript-eslint-parser",
     "plugins": ["typescript"],
     "extends": [
