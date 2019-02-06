@@ -1,6 +1,6 @@
-# typedef-generator
+# dts-gen
 
-Type definition for kintone customize and 
+Type definition for kintone customize and
 Type definition generation tool from kintone form settings.
 
 
@@ -11,15 +11,15 @@ When user try to write JavaScript customize, there are no definitions on typescr
 
 So This tools has `kintone.d.ts` files which has a global function definition in TypeScript syntax manner. And then, you can write JavaScripot customize with TypeScript.
 
-And This tools also contains command-line tool for type definition generator which 
+And This tools also contains command-line tool for type definition generator which
 uses kintone form settings api.
 
-## How to generate kintone-typelify
+## How to generate kintone-dts-gen
 
 you can generate `sample-field.d.ts` like below:
 
 ```bash
-kintone-typelify --host http://***.cybozu.com \
+kintone-dts-gen --host http://***.cybozu.com \
                  -u username \
                  -p password \
                  --app-id 12 \
@@ -28,30 +28,30 @@ kintone-typelify --host http://***.cybozu.com \
                  -o sample-fields.d.ts
 ```
 
-kintone-typelify generates record field definition from kintone form settings.
-And from this command line option, record field type definition(`company.name.types.SampleFields`) 
+kintone-dts-gen generates record field definition from kintone form settings.
+And from this command line option, record field type definition(`company.name.types.SampleFields`)
 is defined in `sample-fields.d.ts`.
 
 **If you change form settings in kintone, Please re-generate type definition files**
 
 ### demo mode
-If you won't have a kintone, you can try with demo mode. 
+If you won't have a kintone, you can try with demo mode.
 you can generate demo type definition like below:
 
 ```bash
-typedef-generator --demo
+kintone-dts-gen --demo
 ```
 
-kintone-typelify generates demo record field definition from demo data.
+kintone-dts-gen generates demo record field definition from demo data.
 record field type definition(`kintone.types.Fields`)  is defined in `fields.d.ts`
 
 ### command line options
-You can confirm command line options with `typedef-generator --help`
+You can confirm command line options with `kintone-dts-gen --help`
 
 ### Write kintone JavaScript customize with TypeScript
 
 ```typescript
-/// <reference types="typedef-generator/kintone" /> // TODO fix path
+/// <reference types="./node_modules/@kintone/dts-gen/kintone" /> // TODO fix path
 /// <reference path="./demo-fields.d.ts" />
 
 interface Event {
@@ -65,7 +65,7 @@ interface Event {
         const appId = event.appId;
         const recordId = event.recordId;
         const type = event.record.Record_number.value;
-    });    
+    });
 })();
 ```
 
@@ -74,13 +74,13 @@ interface Event {
 typdef-generator has defenition of kintone builtin functions.
 So you can refer type defenition in `.ts` files like below:
 
-`/// <reference types="typdef-generator/kintone" />`
+`/// <reference types="./node_modules/@kintone/dts-gen/kintone" />`
 
 2. Write a comment which indicaste field type defenition of kintone app record fields at your TypeScript file header.
 
 Using typdef-generator, You can generate Field Type Definition file.
 
-If you generate field type defition from kintone form setttings api, you can write type safe code as to kintone app fields. 
+If you generate field type defition from kintone form setttings api, you can write type safe code as to kintone app fields.
 
 For example, you generate `demo-fields.d.ts`,
 And You can write comment as a field type definition.
@@ -100,7 +100,7 @@ This is JavaScript coding sample:
 
 ```javascript
 
-/// <reference types="typdef-generator/kintone" />
+/// <reference types="./node_modules/@kintone/dts-gen/kintone" />
 /// <reference path="./demo-fields.d.ts" />
 
 

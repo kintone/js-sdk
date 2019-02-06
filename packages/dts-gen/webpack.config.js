@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-      'typedef-generator-integration-test' : './src/integration-tests/typedef-generator-integration-test.ts'
+      'dts-gen-integration-test' : './src/integration-tests/dts-gen-integration-test.ts'
   },
   module: {
     rules: [

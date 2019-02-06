@@ -45,7 +45,7 @@ async function handleSetupApp(command) {
     const client = new SetUpTestAppClient(newClientInput);
     const app = await SetupTestApp.createKintoneApp(
         client,
-        "typedef-generator-integration-test"
+        "dts-gen-integration-test"
     );
     await SetupTestApp.addDemoField(client, app);
 
@@ -56,7 +56,7 @@ async function handleSetupApp(command) {
         client,
         data,
         {
-            name: "typedef-generator-integration-test.js",
+            name: "dts-gen-integration-test.js",
             contentType: "text/javascript",
         }
     );

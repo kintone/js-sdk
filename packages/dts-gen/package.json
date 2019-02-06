@@ -1,5 +1,5 @@
 {
-  "name": "@yokotaso/typedef-generator",
+  "name": "@kintone/dts-gen",
   "version": "0.0.6",
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
@@ -44,7 +44,7 @@
     "webpack-cli": "^3.2.1"
   },
   "bin": {
-    "typedef-generator": "dist/index.js"
+    "kintone-dts-gen": "dist/index.js"
   },
   "files": [
     "dist",

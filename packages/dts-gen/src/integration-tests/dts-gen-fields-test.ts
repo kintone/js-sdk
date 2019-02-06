@@ -278,6 +278,6 @@ function assertFileField(ref: FileFieldValue) {
     assert.ok(ref.value[0].fileKey);
 }
 
-export const TypedefGeneratorFieldsTest = {
+export const DTSGenFieldsTest = {
     assertFieldTypes,
 };

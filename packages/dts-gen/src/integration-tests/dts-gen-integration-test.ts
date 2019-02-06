@@ -2,8 +2,8 @@
 /// <reference path="./testfields.d.ts" />
 import * as assert from "assert";
 
-import { TypedefGeneratorApiTest } from "./typedef-generator-api-test";
-import { TypedefGeneratorFieldsTest } from "./typedef-generator-fields-test";
+import { DTSGenApiTest } from "./dts-gen-api-test";
+import { DTSGenFieldsTest } from "./dts-gen-fields-test";
 
 interface Event {
     appId: number;
@@ -19,8 +19,8 @@ interface Event {
     kintone.events.on(
         "app.record.index.show",
         (ev: Event) => {
-            TypedefGeneratorApiTest.assertKintoneBuiltinFunctions();
-            TypedefGeneratorFieldsTest.assertFieldTypes(
+            DTSGenApiTest.assertKintoneBuiltinFunctions();
+            DTSGenFieldsTest.assertFieldTypes(
                 ev.records[0]
             );
 

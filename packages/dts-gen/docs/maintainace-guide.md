@@ -7,23 +7,23 @@ You can artifact in `dist` directory.
 
 After build process finished, build artifact are below:
 
-- `dist/index.js` : entry point of typedef-generator command line tool
+- `dist/index.js` : entry point of dts-gen command line tool
 - `dist/integration-tests/setup-test-app.js`: command-line utilify tool for integration test
-- `dist/typedef-generator-integration-test.js`: test code which will be uploaded as kintone js customize
+- `dist/dts-gen-integration-test.js`: test code which will be uploaded as kintone js customize
 
 
-`dist/typedef-generator-integration-test.js` is build by webpack.
-and this code includes some assertions: 
+`dist/dts-gen-integration-test.js` is build by webpack.
+and this code includes some assertions:
 
-- assert reference for kintone builtin function(see: `src/integration-tests/typedef-generator-api-test.ts`)
-- assert reference for field reference(see: `src/integration-tests/typedef-generator-fields-test.ts`)
+- assert reference for kintone builtin function(see: `src/integration-tests/dts-gen-api-test.ts`)
+- assert reference for field reference(see: `src/integration-tests/dts-gen-fields-test.ts`)
 
 ### setup-test-app
 with this command-line utilify tool, you can prepare test kintone app.
 
 this command-line utilify will do:
 
-1. create kintone app app for testing 
+1. create kintone app app for testing
 2. set field setting to (1) app.
 3. upload file of `--integration-test-js-file`
 4. deploy (1) app
@@ -33,13 +33,13 @@ Command line output like below:
 ```
 Preparing for App(ID:93)
 Preparing for field settings(ID:93)
-Uploading typedef-generator-integration-test.js
-Finish Uploading typedef-generator-integration-test.js(1b71b877-61ae-4ac1-9333-a00a97ff0db0)
+Uploading dts-gen-integration-test.js
+Finish Uploading dts-gen-integration-test.js(1b71b877-61ae-4ac1-9333-a00a97ff0db0)
 Waiting for Deploy complete...
 Adding Demo Record
 ```
 
-After execute this tool, 
+After execute this tool,
 
 1. Access kintone app(at this example, ID:93), this app includes 1 demo record data.
 2. Edit demo record, and you must set value to userSelect, groupSelect, titleSelect.
@@ -54,7 +54,7 @@ node ./dist/integration-tests/setup-test-app.js \
     -u *** \
     -p *** \
     --host https://****.cybozu.com \
-    --integration-test-js-file ./dist/typedef-generator-integration-test.js
+    --integration-test-js-file ./dist/dts-gen-integration-test.js
 ```
 
 `--integration-test-js-file` :
@@ -62,7 +62,7 @@ node ./dist/integration-tests/setup-test-app.js \
 path of integration test which will be uploaded as kintone js customize file.
 you can run test code as a kintone customize js customize code.
 
-`-u, --p, --host`: 
+`-u, --p, --host`:
 
 username, password, host of kintone.
 
@@ -72,7 +72,7 @@ Just run `npm run test`
 
 ## Write document
 
-this document written by `docsify`. 
+this document written by `docsify`.
 
 See Reference: [Quick Start](https://docsify.js.org/#/quickstart)
 
