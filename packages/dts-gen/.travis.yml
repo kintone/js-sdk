@@ -1,0 +1,11 @@
+language: node_js
+os:
+  - windows
+node_js:
+  - "6"
+  - "8"
+  - "10"
+# running tests only when pushing a commit in master except PRs
+branches:
+  only:
+  - master
