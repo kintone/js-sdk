@@ -1,5 +1,7 @@
 # kintone-dts-gen
 
+[![CircleCI](https://circleci.com/gh/kintone/dts-gen/tree/master.svg?style=svg)](https://circleci.com/gh/kintone/dts-gen/tree/master)
+
 Type definition for kintone customize and
 Type definition generation tool from kintone form settings.
 
