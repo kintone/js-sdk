@@ -29,8 +29,7 @@
     "form-data": "^2.3.3",
     "lodash": "^4.17.11",
     "nunjucks": "^3.1.7",
-    "prettier": "^1.16.4",
-    "typescript-eslint-parser": "^21.0.2"
+    "prettier": "^1.16.4"
   },
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
@@ -46,6 +45,7 @@
     "ts-jest": "^23.10.5",
     "ts-loader": "^5.3.3",
     "typescript": "^3.2.2",
+    "typescript-eslint-parser": "^21.0.2",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3"
   },
