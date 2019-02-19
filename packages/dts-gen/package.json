@@ -21,6 +21,9 @@
     "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
     "build:integration": "webpack --mode development --config webpack.config.js"
   },
+  "engines": {
+    "node": ">=6"
+  },
   "author": "Tomoya Yokota",
   "license": "MIT",
   "dependencies": {
@@ -55,5 +58,14 @@
   "files": [
     "dist",
     "kintone.d.ts"
+  ],
+  "homepage": "https://github.com/kintone/dts-gen",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/kintone/dts-gen.git"
+  },
+  "bugs": "https://github.com/kintone/dts-gen/issues",
+  "keywords": [
+    "kintone"
   ]
 }
