@@ -44,6 +44,6 @@
     "standard-version": "^4.4.0",
     "tslint": "^5.12.1",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.3.3"
+    "typescript": "^3.3.3333"
   }
 }
