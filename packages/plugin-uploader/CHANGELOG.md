@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.6](https://github.com/kintone/plugin-uploader/compare/v2.4.5...v2.4.6) (2019-02-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to ^2.4.2 ([68c5ad3](https://github.com/kintone/plugin-uploader/commit/68c5ad3))
+* **deps:** update dependency inquirer to ^6.2.2 ([51ec652](https://github.com/kintone/plugin-uploader/commit/51ec652))
+* **deps:** update dependency os-locale to ^3.1.0 ([#151](https://github.com/kintone/plugin-uploader/issues/151)) ([ed64687](https://github.com/kintone/plugin-uploader/commit/ed64687))
+* **deps:** update dependency puppeteer to ^1.12.2 ([#162](https://github.com/kintone/plugin-uploader/issues/162)) ([ee4031d](https://github.com/kintone/plugin-uploader/commit/ee4031d))
+
+
+
 <a name="2.4.5"></a>
 ## [2.4.5](https://github.com/kintone/plugin-uploader/compare/v2.4.4...v2.4.5) (2018-12-26)
 
