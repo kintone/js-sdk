@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.1](https://github.com/kintone/customize-uploader/compare/v1.5.0...v1.5.1) (2019-02-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^6.2.2 ([1e3508d](https://github.com/kintone/customize-uploader/commit/1e3508d))
+* **deps:** update dependency os-locale to ^3.1.0 ([#72](https://github.com/kintone/customize-uploader/issues/72)) ([3a985e6](https://github.com/kintone/customize-uploader/commit/3a985e6))
+* **deps:** update dependency request-promise to ^4.2.4 ([f63e1a7](https://github.com/kintone/customize-uploader/commit/f63e1a7))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/kintone/customize-uploader/compare/v1.4.0...v1.5.0) (2019-01-21)
 
