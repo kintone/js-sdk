@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.1](https://github.com/kintone/create-plugin/compare/v1.4.0...v1.4.1) (2019-02-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to ^2.4.2 ([acadb34](https://github.com/kintone/create-plugin/commit/acadb34))
+* **deps:** update dependency inquirer to ^6.2.2 ([4aab963](https://github.com/kintone/create-plugin/commit/4aab963))
+* **deps:** update dependency node-rsa to ^1.0.3 ([3d288e9](https://github.com/kintone/create-plugin/commit/3d288e9))
+* **deps:** update dependency os-locale to ^3.1.0 ([#242](https://github.com/kintone/create-plugin/issues/242)) ([f2f1e9c](https://github.com/kintone/create-plugin/commit/f2f1e9c))
+* **deps:** update dependency rimraf to ^2.6.3 ([3ef3ffd](https://github.com/kintone/create-plugin/commit/3ef3ffd))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/kintone/create-plugin/compare/v1.3.5...v1.4.0) (2018-12-26)
 
