@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.6](https://github.com/kintone/plugin-manifest-validator/compare/v1.0.5...v1.0.6) (2019-02-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to ^6.8.1 ([#128](https://github.com/kintone/plugin-manifest-validator/issues/128)) ([c3b2cd6](https://github.com/kintone/plugin-manifest-validator/commit/c3b2cd6))
+* **deps:** update dependency bytes to ^3.1.0 ([#130](https://github.com/kintone/plugin-manifest-validator/issues/130)) ([bc06f36](https://github.com/kintone/plugin-manifest-validator/commit/bc06f36))
+
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/kintone/plugin-manifest-validator/compare/v1.0.4...v1.0.5) (2018-12-26)
 
