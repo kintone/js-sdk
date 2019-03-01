@@ -6,20 +6,20 @@ Type definition generation tool from kintone form settings.
 
 ## Write kintone customize with TypeScript
 
-In kintone JavaScript customize, there are functions which is defined in kintone.
-When user try to write JavaScript customize, there are no definitions on typescript compile context.
+In kintone JavaScript customize, there are functions which are defined in kintone.
+When a user tries to write JavaScript customize, there are no definitions on typescript compile context.
 
-So This tools has `kintone.d.ts` files which has a global function definition in TypeScript syntax manner. And then, you can write JavaScripot customize with TypeScript.
+So This tools has `kintone.d.ts` files which has a global function definition in TypeScript syntax manner. And then, you can write JavaScript customize with TypeScript.
 
-And This tools also contains command-line tool for type definition generator which
-uses kintone form settings api.
+And This tools also contains a command-line tool for type definition generator which
+uses kintone form settings API.
 
 ## How to generate kintone-dts-gen
 
 you can generate `sample-field.d.ts` like below:
 
 ```bash
-kintone-dts-gen --host http://***.cybozu.com \
+$ kintone-dts-gen --host http://***.cybozu.com \
                  -u username \
                  -p password \
                  --app-id 12 \
@@ -39,7 +39,7 @@ If you won't have a kintone, you can try with demo mode.
 you can generate demo type definition like below:
 
 ```bash
-kintone-dts-gen --demo
+$ kintone-dts-gen --demo
 ```
 
 kintone-dts-gen generates demo record field definition from demo data.
@@ -69,37 +69,40 @@ interface Event {
 })();
 ```
 
-1. Write a comment which indicate type definition of kintone built-in functions at your TypeScript file header.
+1. Write a comment which indicates type definition of kintone built-in functions at your TypeScript file header.
 
-typdef-generator has defenition of kintone builtin functions.
-So you can refer type defenition in `.ts` files like below:
+typdef-generator has type definitions of kintone builtin functions.
+So you can refer type definition in `.ts` files like below:
 
-`/// <reference types="./node_modules/@kintone/dts-gen/kintone" />`
+```typescript
+/// <reference types="./node_modules/@kintone/dts-gen/kintone" />
+```
 
-2. Write a comment which indicaste field type defenition of kintone app record fields at your TypeScript file header.
+2. Write a comment which indicates field type definition of kintone app record fields at your TypeScript file header.
 
 Using typdef-generator, You can generate Field Type Definition file.
 
-If you generate field type defition from kintone form setttings api, you can write type safe code as to kintone app fields.
+If you generate field type definition from kintone form settings API, you can write type-safe code as to kintone app fields.
 
 For example, you generate `demo-fields.d.ts`,
-And You can write comment as a field type definition.
+and you can write a comment as a field type definition.
 
-`/// <reference path="./demo-fields.d.ts" />`
+```typescript
+/// <reference path="./demo-fields.d.ts" />
+```
 
-3. Comiple With TypeScript
+3. Compile With TypeScript
 And then, You can compile with `tsc` command!
 Welcome to TypeSafe kintone coding world!
 
 ### Write kintone JavaScript customize with JavaScript
 
-If there are some reasons why you can't use TypeScript, you can use Type Definition as a types in jsdoc.
-If you work with VSCode, webstorm IDE or some IDE,you can gain power of code completion!
+If there are some reasons why you can't use TypeScript, you can use the Type Definition as a type in jsdoc.
+If you work with VSCode, WebStorm IDE or some editor, you can gain the power of code completion!
 
-This is JavaScript coding sample:
+This is a JavaScript coding sample:
 
 ```javascript
-
 /// <reference types="./node_modules/@kintone/dts-gen/kintone" />
 /// <reference path="./demo-fields.d.ts" />
 
@@ -109,7 +112,7 @@ This is JavaScript coding sample:
         /**
          * @type {DemoEvent}
          */
-        const record = ev.record;
+        const record = event.record;
     });
 })();
 ```
