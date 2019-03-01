@@ -35,7 +35,7 @@
     "mocha": "^5.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.16.4",
-    "standard-version": "^5.0.0",
+    "standard-version": "^5.0.1",
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
     "tslint-plugin-prettier": "^2.0.1",
