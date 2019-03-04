@@ -1,8 +1,8 @@
-/// <reference types="../../kintone" />
 /**
  * This type definition is auto-generated.
  * If you update kintone form settings, Please regenerate this type definition
  */
+// eslint-disable-next-line no-unused-vars
 declare namespace kintone.types {
     interface TestFields {
         Record_number: {

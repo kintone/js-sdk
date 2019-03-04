@@ -1,4 +1,5 @@
 import { VisibleForTesting } from "./fileldtype-converter";
+// eslint-disable-next-line no-unused-vars
 import { SubTableFieldType } from "../kintone/clients/forms-client";
 import { objectValues } from "../utils/objectvalues";
 
@@ -173,7 +174,7 @@ describe("FileFieldTypeConverter", () => {
                 type: "NUMBER",
             },
         ];
-        expect(output[0].fields.simpleFields).toEqual(
+        expect(output[0].fields.stringFields).toEqual(
             expectedSimpleFields
         );
 
@@ -226,7 +227,7 @@ describe("FileFieldTypeConverter", () => {
             },
         ];
         expect(
-            output[0].fields.simpleFieldsInSavedRecord
+            output[0].fields.stringFieldsInSavedRecord
         ).toEqual(expectedSimpleValueInSavedRecord);
 
         expect(output[0].fields.subTableFields).toEqual([]);

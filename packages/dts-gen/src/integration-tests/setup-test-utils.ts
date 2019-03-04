@@ -1,7 +1,8 @@
 import * as fs from "fs";
-
+// eslint-disable-next-line no-unused-vars
 import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client";
 import { DemoDatas } from "../kintone/clients/demo-datas";
+import { log } from "../utils/logger";
 
 type Client = SetUpTestAppClient;
 
@@ -14,16 +15,14 @@ async function createKintoneApp(
     return client
         .requestCreateNewApp({ name })
         .then(resp => {
-            console.log(
-                `Preparing for App(ID:${resp.app})`
-            );
+            log(`Preparing for App(ID:${resp.app})`);
             return resp.app;
         })
         .catch(rethrow);
 }
 
 async function addDemoField(client: Client, app: string) {
-    console.log(`Preparing for field settings(ID:${app})`);
+    log(`Preparing for field settings(ID:${app})`);
     const properties = DemoDatas.DemoDataFields;
     return client
         .requestAddFormField({
@@ -41,7 +40,7 @@ async function uploadFile(
         contentType: string;
     }
 ) {
-    console.log(`Uploading ${metadata.name}`);
+    log(`Uploading ${metadata.name}`);
     return client
         .requestUploadFile({
             data,
@@ -49,7 +48,7 @@ async function uploadFile(
             contentType: metadata.contentType,
         })
         .then(resp => {
-            console.log(
+            log(
                 `Finish Uploading ${metadata.name}(${
                     resp.fileKey
                 })`
@@ -103,7 +102,9 @@ async function deployApp(client: Client, app: string) {
             })
             .catch(rethrow);
         if (successApps.length !== 1) {
-            console.log("Waiting for Deploy complete...");
+            log(
+                `Waiting for Deploy complete... ${i} times`
+            );
             await sleep(3000);
         }
     }

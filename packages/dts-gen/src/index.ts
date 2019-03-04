@@ -84,13 +84,13 @@ client
             objectValues(properties)
         )
     )
-    .then(fields => {
+    .then(fieldTypeGroups => {
         const typeName = program.typeName;
         const namespace = program.namespace;
         const input = {
             typeName,
             namespace,
-            fields,
+            fieldTypeGroups,
         };
         TypeDefinitionTemplate.renderAsFile(
             program.output,

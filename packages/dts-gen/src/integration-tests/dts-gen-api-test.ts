@@ -1,4 +1,3 @@
-/// <reference types="../../kintone" />
 import * as assert from "assert";
 
 function assertKintoneBuiltinFunctions() {
@@ -22,7 +21,7 @@ function assertKintoneBuiltinFunctions() {
         .then(resolved => {
             assert.ok(resolved === 1);
         })
-        .catch(_ => {
+        .catch(() => {
             assert.fail("should not be called");
         });
 
@@ -30,17 +29,17 @@ function assertKintoneBuiltinFunctions() {
         (_, reject) => reject(1)
     );
     ngPromise
-        .then(_ => {
+        .then(() => {
             assert.fail("should not be called");
         })
         .catch(rejected => assert.ok(rejected === 1));
 
     kintone.Promise.resolve(1)
         .then(resolved => assert.ok(resolved === 1))
-        .catch(_ => assert.fail("should not be called"));
+        .catch(() => assert.fail("should not be called"));
 
     kintone.Promise.reject("reject")
-        .then(_ => assert.fail("should not be called"))
+        .then(() => assert.fail("should not be called"))
         .catch(reject => assert.ok(reject === "reject"));
 
     kintone.Promise.all([

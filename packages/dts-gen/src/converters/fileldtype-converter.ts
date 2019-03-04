@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import {
     FieldType,
     SubTableFieldType,
 } from "../kintone/clients/forms-client";
+/* eslint-enable no-unused-vars */
 import { objectValues } from "../utils/objectvalues";
 
 type FieldTypesOrSubTableFieldTypes =
@@ -42,8 +44,8 @@ const FILE_TYPE = "FILE";
 const SUB_TABLE_TYPE = "SUBTABLE";
 
 export interface FieldTypeGroups {
-    simpleFields: FieldType[];
-    simpleFieldsInSavedRecord: FieldType[];
+    stringFields: FieldType[];
+    stringFieldsInSavedRecord: FieldType[];
     userFieldsInSavedRecord: FieldType[];
     stringListFields: FieldType[];
     entityListFields: FieldType[];
@@ -109,11 +111,11 @@ function convertFieldTypesToFieldTypeGroups(
     properties: FieldTypesOrSubTableFieldTypes
 ): FieldTypeGroups {
     const fieldTypes = objectValues(properties);
-    const simpleFields = selectFieldsTypesIn(
+    const stringFields = selectFieldsTypesIn(
         SIMPLE_VALUE_TYPES,
         fieldTypes
     );
-    const simpleFieldsInSavedRecord = selectFieldsTypesIn(
+    const stringFieldsInSavedRecord = selectFieldsTypesIn(
         SIMPLE_VALUE_IN_SAVED_RECORD,
         fieldTypes
     );
@@ -141,8 +143,8 @@ function convertFieldTypesToFieldTypeGroups(
     );
 
     return {
-        simpleFields,
-        simpleFieldsInSavedRecord,
+        stringFields,
+        stringFieldsInSavedRecord,
         entityListFields,
         userFieldsInSavedRecord,
         stringListFields,

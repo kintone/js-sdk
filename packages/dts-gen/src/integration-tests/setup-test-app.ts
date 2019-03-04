@@ -3,6 +3,7 @@ import * as fs from "fs";
 
 import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client";
 import { SetupTestApp } from "./setup-test-utils";
+import { log } from "../utils/logger";
 
 program
     .version("0.0.1")
@@ -66,7 +67,7 @@ async function handleSetupApp(command) {
         fileKey
     );
     await SetupTestApp.deployApp(client, app);
-    console.log("Adding Demo Record");
+    log("Adding Demo Record");
     await SetupTestApp.addDemoRecord(
         client,
         app,
