@@ -27,7 +27,7 @@
     "@kintone/plugin-packer": "^1.0.6",
     "@types/glob": "^7.1.1",
     "@types/inquirer": "^0.0.44",
-    "@types/lodash": "^4.14.121",
+    "@types/lodash": "^4.14.122",
     "@types/mocha": "^5.2.6",
     "@types/node": "^9.6.44",
     "@types/node-rsa": "^1.0.0",
