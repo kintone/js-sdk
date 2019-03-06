@@ -39,7 +39,7 @@
     "@types/lodash": "^4.14.122",
     "@types/node": "^10.12.29",
     "@types/nunjucks": "^3.1.1",
-    "eslint": "^5.15.0",
+    "eslint": "^5.15.1",
     "eslint-plugin-jest": "^22.3.0",
     "eslint-plugin-typescript": "^0.14.0",
     "jest": "^23.6.0",
