@@ -61,7 +61,7 @@
     "rimraf": "^2.6.3",
     "setimmediate": "^1.0.5",
     "sinon": "^7.2.7",
-    "standard-version": "^5.0.1",
+    "standard-version": "^5.0.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
