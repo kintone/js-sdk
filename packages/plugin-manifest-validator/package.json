@@ -17,7 +17,7 @@
     "lint": "eslint index.js src test script",
     "mocha": "mocha test --require intelli-espower-loader",
     "release": "run-s test gen-dts standard-version",
-    "standard-version": "standard-version",
+    "release:dryrun": "standard-version --dry-run",
     "test": "run-s lint mocha test:dts",
     "test:dts": "tsc -p test/tsconfig.json"
   },
