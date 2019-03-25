@@ -23,10 +23,10 @@
     "js:dev": "webpack-dev-server --mode development",
     "mocha": "mocha --require intelli-espower-loader --timeout 10000",
     "release": "run-s test standard-version",
+    "release:dryrun": "standard-version --dry-run",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
     "site:test": "mocha site/test --require site/test/setup.js",
-    "standard-version": "standard-version",
     "test": "run-s eslint mocha site:test"
   },
   "dependencies": {
