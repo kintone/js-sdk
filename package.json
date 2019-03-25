@@ -15,8 +15,8 @@
     "lint": "run-p tsc tslint",
     "tsc": "tsc --noEmit",
     "tslint": "tslint -c tslint.json src/**/*.ts test/**/*.ts",
-    "standard-version": "standard-version",
     "release": "run-s lint build standard-version",
+    "release:dryrun": "standard-version --dry-run",
     "test": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts"
   },
   "files": [
