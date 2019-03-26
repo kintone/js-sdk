@@ -1,6 +1,6 @@
 {
   "name": "@kintone/create-plugin",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": {
     "create-plugin": "bin/cli.js",
@@ -50,7 +50,7 @@
     "start": "tsc -w",
     "build": "tsc",
     "lint": "tslint -c tslint.json src/**/*.ts test/**/*.ts",
-    "release": "run-s build lint test:all standard-version",
+    "release": "run-s build lint test:all && standard-version",
     "release:dryrun": "standard-version --dry-run",
     "unittest": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts",
     "test": "npm-run-all -s build -p lint unittest",
