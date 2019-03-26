@@ -10,7 +10,7 @@
     "start": "tsc -w",
     "build": "tsc",
     "lint": "tslint -c tslint.json src/**/*.ts test/**/*.ts",
-    "release": "run-s build lint test standard-version",
+    "release": "run-s build lint test && standard-version",
     "release:dryrun": "standard-version --dry-run",
     "unittest": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts",
     "test": "run-s build unittest"
