@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.11](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v1.0.10...v1.0.11) (2019-03-26)
+
+
+### Bug Fixes
+
+* **deps:** Fix  script ([79243ae](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/79243ae))
+* **deps:** update dependency @kintone/plugin-packer to ^1.0.6 ([03921a9](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/03921a9))
+
+
+
 ## [1.0.10](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v1.0.9...v1.0.10) (2019-02-26)
 
 
