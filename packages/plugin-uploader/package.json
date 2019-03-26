@@ -13,7 +13,7 @@
     "start": "tsc -w",
     "build": "tsc",
     "lint": "tslint -c tslint.json src/**/*.ts",
-    "release": "run-s build lint standard-version",
+    "release": "run-s build lint && standard-version",
     "release:dryrun": "standard-version --dry-run"
   },
   "files": [
