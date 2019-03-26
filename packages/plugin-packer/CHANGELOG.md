@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.7](https://github.com/kintone/plugin-packer/compare/v1.0.6...v1.0.7) (2019-03-26)
+
+
+### Bug Fixes
+
+* **deps:** Fix `release` script ([c1be1e7](https://github.com/kintone/plugin-packer/commit/c1be1e7))
+* **deps:** update dependency @kintone/plugin-manifest-validator to ^1.0.6 ([#309](https://github.com/kintone/plugin-packer/issues/309)) ([8abb4e0](https://github.com/kintone/plugin-packer/commit/8abb4e0))
+* **deps:** update dependency chokidar to ^2.1.2 ([#300](https://github.com/kintone/plugin-packer/issues/300)) ([6bd7a11](https://github.com/kintone/plugin-packer/commit/6bd7a11))
+* **deps:** update dependency chokidar to ^2.1.5 ([#327](https://github.com/kintone/plugin-packer/issues/327)) ([bbb5dd7](https://github.com/kintone/plugin-packer/commit/bbb5dd7))
+* **deps:** update dependency node-rsa to ~1.0.5 ([#318](https://github.com/kintone/plugin-packer/issues/318)) ([9b0b964](https://github.com/kintone/plugin-packer/commit/9b0b964))
+
+
+
 ## [1.0.6](https://github.com/kintone/plugin-packer/compare/v1.0.5...v1.0.6) (2019-02-26)
 
 
