@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.7](https://github.com/kintone/plugin-uploader/compare/v2.4.6...v2.4.7) (2019-03-26)
+
+
+### Bug Fixes
+
+* **deps:** Fix  script ([86284ee](https://github.com/kintone/plugin-uploader/commit/86284ee))
+
+
+
 ## [2.4.6](https://github.com/kintone/plugin-uploader/compare/v2.4.5...v2.4.6) (2019-02-26)
 
 
