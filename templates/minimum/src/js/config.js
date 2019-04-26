@@ -17,7 +17,7 @@ jQuery.noConflict();
     $form.on('submit', function(e) {
         e.preventDefault();
         kintone.plugin.app.setConfig({message: $message.val()}, function() {
-            alert('Please update the app!');
+            alert('The plug-in settings have been saved. Please update the app!');
             window.location.href = getSettingsUrl();
         });
     });
