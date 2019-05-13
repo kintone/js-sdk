@@ -84,6 +84,7 @@ function assertKintoneBuiltinFunctions() {
     // assert function exists in kintone.app.record
     const r = kintone.app.record;
     assertFunction(r.get);
+    assertFunction(r.getHeaderMenuSpaceElement);
     assertFunction(r.getFieldElement);
     assertFunction(r.getId);
     assertFunction(r.getSpaceElement);
