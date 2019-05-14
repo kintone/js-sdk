@@ -31,6 +31,7 @@ function sourceList(manifest: Manifest): string[] {
     ["desktop", "js"],
     ["desktop", "css"],
     ["mobile", "js"],
+    ["mobile", "css"],
     ["config", "js"],
     ["config", "css"]
   ];
@@ -53,9 +54,9 @@ function sourceList(manifest: Manifest): string[] {
  */
 export function getAssetPaths(manifestJSONPath: string): string[] {
   const manifest = JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8"));
-  return sourceList(manifest)
-    .map((file: string) => path.resolve(path.dirname(manifestJSONPath), file))
-    .concat(manifestJSONPath);
+  return sourceList(manifest).map((file: string) =>
+    path.resolve(path.dirname(manifestJSONPath), file)
+  );
 }
 /**
  * Generate a plugin zip

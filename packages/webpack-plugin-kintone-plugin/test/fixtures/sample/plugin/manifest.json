@@ -19,6 +19,11 @@
     "zh": "https://example.com/zn"
   },
   "desktop": {
-    "js": ["js/customize.js"]
+    "js": ["js/customize.js"],
+    "css": ["css/desktop.css"]
+  },
+  "mobile": {
+    "js": ["js/customize.js"],
+    "css": ["css/mobile.css"]
   }
 }
