@@ -178,6 +178,7 @@ describe("cli", () => {
             [
               "css/config.css",
               "css/desktop.css",
+              "css/mobile.css",
               "html/config.html",
               "image/icon.png",
               "js/config.js",

@@ -11,6 +11,7 @@ function sourceList(manifest) {
     ["desktop", "js"],
     ["desktop", "css"],
     ["mobile", "js"],
+    ["mobile", "css"],
     ["config", "js"],
     ["config", "css"]
   ];

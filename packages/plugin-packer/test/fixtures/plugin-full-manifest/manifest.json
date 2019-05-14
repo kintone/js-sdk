@@ -32,6 +32,10 @@
     "js": [
       "js/mobile.js",
       "https://example.com/js/mobile.js"
+    ],
+    "css": [
+      "https://example.com/css/mobile.css",
+      "css/mobile.css"
     ]
   },
   "config": {
