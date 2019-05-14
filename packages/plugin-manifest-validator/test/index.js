@@ -3,6 +3,9 @@
 const assert = require("assert");
 const validator = require("../");
 
+// 20MB
+const MAX_FILE_SIZE = 20 * 1024 * 1024;
+
 describe("validator", () => {
   it("is a function", () => {
     assert(typeof validator === "function");
@@ -142,7 +145,7 @@ describe("validator", () => {
       let called = 0;
       const actual = validator(json({}), {
         maxFileSize(maxFileSizeInBytes, path) {
-          assert(maxFileSizeInBytes === 524288);
+          assert(maxFileSizeInBytes === MAX_FILE_SIZE);
           assert(path === "image/icon.png");
           called++;
           return true;
@@ -152,7 +155,7 @@ describe("validator", () => {
       assert(actual.valid === true);
     });
 
-    it("invalid file size", () => {
+    it("invalid icon file size", () => {
       const actual = validator(json({}), {
         maxFileSize(maxFileSizeInBytes, path) {
           return false;
@@ -163,11 +166,63 @@ describe("validator", () => {
       assert.deepStrictEqual(actual.errors[0], {
         dataPath: ".icon",
         keyword: "maxFileSize",
-        message: "file size should be <= 512KB",
+        message: "file size should be <= 20MB",
         params: {
-          limit: 524288
+          limit: MAX_FILE_SIZE
         },
         schemaPath: "#/properties/icon/maxFileSize"
+      });
+    });
+
+    it("invalid js file size", () => {
+      const actual = validator(
+        json({
+          desktop: {
+            js: ["./foo.js"]
+          }
+        }),
+        {
+          maxFileSize(maxFileSizeInBytes, path) {
+            return path.indexOf("foo.js") === -1;
+          }
+        }
+      );
+      assert(actual.valid === false);
+      assert(actual.errors.length === 3);
+      assert.deepStrictEqual(actual.errors[1], {
+        dataPath: ".desktop.js[0]",
+        keyword: "maxFileSize",
+        message: "file size should be <= 20MB",
+        params: {
+          limit: MAX_FILE_SIZE
+        },
+        schemaPath: "#/definitions/resources/items/anyOf/1/maxFileSize"
+      });
+    });
+
+    it("invalid css file size", () => {
+      const actual = validator(
+        json({
+          desktop: {
+            css: ["./foo.css"]
+          }
+        }),
+        {
+          maxFileSize(maxFileSizeInBytes, path) {
+            return path.indexOf("foo.css") === -1;
+          }
+        }
+      );
+      assert(actual.valid === false);
+      assert(actual.errors.length === 3);
+      assert.deepStrictEqual(actual.errors[1], {
+        dataPath: ".desktop.css[0]",
+        keyword: "maxFileSize",
+        message: "file size should be <= 20MB",
+        params: {
+          limit: MAX_FILE_SIZE
+        },
+        schemaPath: "#/definitions/resources/items/anyOf/1/maxFileSize"
       });
     });
 
