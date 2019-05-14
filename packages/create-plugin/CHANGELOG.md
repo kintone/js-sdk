@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.5.0-alpha.0](https://github.com/kintone/create-plugin/compare/v1.4.4...v1.5.0-alpha.0) (2019-05-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to ^7.1.4 ([da41f44](https://github.com/kintone/create-plugin/commit/da41f44))
+
+
+### Features
+
+* Changed alert phrase. ([#301](https://github.com/kintone/create-plugin/issues/301)) ([31263b0](https://github.com/kintone/create-plugin/commit/31263b0))
+* update plugin-packer version to 1.1.0-alpha.0 ([#311](https://github.com/kintone/create-plugin/issues/311)) ([2e151bf](https://github.com/kintone/create-plugin/commit/2e151bf))
+
+
+
 ## [1.4.4](https://github.com/kintone/create-plugin/compare/v1.4.3...v1.4.4) (2019-04-23)
 
 
