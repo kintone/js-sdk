@@ -16,7 +16,8 @@ export const getInitCustomizeManifest = (
       css: []
     },
     mobile: {
-      js: []
+      js: [],
+      css: []
     }
   };
 };

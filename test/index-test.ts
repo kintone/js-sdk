@@ -32,7 +32,8 @@ describe("index", () => {
           css: ["test/fixtures/a.css"]
         },
         mobile: {
-          js: ["test/fixtures/c.js"]
+          js: ["test/fixtures/c.js"],
+          css: ["test/fixtures/d.css"]
         }
       };
       status = {
@@ -62,6 +63,7 @@ describe("index", () => {
           path
         })),
         [
+          { method: "POST", path: "/k/v1/file.json" },
           { method: "POST", path: "/k/v1/file.json" },
           { method: "POST", path: "/k/v1/file.json" },
           { method: "POST", path: "/k/v1/file.json" },

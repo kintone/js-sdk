@@ -81,6 +81,11 @@ describe("import", () => {
             "https://js.cybozu.com/jqueryui/1.12.1/jquery-ui.min.js",
             `${testDestDir}/mobile/js/bootstrap.js`,
             `${testDestDir}/mobile/js/b.js`
+          ],
+          css: [
+            `${testDestDir}/mobile/css/bootstrap.min.css`,
+            `${testDestDir}/mobile/css/bootstrap-reboot.min.css`,
+            `${testDestDir}/mobile/css/bootstrap-grid.min.css`
           ]
         }
       };
@@ -149,6 +154,27 @@ describe("import", () => {
         {
           body: {
             fileKey: "201811160956535E4F00740689488C9ABE7DCF3E794B34315"
+          },
+          method: "GET",
+          path: "/k/v1/file.json"
+        },
+        {
+          body: {
+            fileKey: "201811160956531AFF9246D7CB40938A91EAC14A0622C9250"
+          },
+          method: "GET",
+          path: "/k/v1/file.json"
+        },
+        {
+          body: {
+            fileKey: "201811160956531DCC5DA8C6E0480C8F3BD8A92EEFF584123"
+          },
+          method: "GET",
+          path: "/k/v1/file.json"
+        },
+        {
+          body: {
+            fileKey: "20181116095653A6A52415705D403A9B1AB36E1448B32E191"
           },
           method: "GET",
           path: "/k/v1/file.json"
