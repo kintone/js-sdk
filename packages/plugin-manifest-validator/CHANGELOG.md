@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.1.0-alpha.0](https://github.com/kintone/plugin-manifest-validator/compare/v1.0.8...v1.1.0-alpha.0) (2019-05-14)
+
+
+### Features
+
+* support mobile css ([6a90db8](https://github.com/kintone/plugin-manifest-validator/commit/6a90db8))
+* update file size limit to 20MB ([dc6adb2](https://github.com/kintone/plugin-manifest-validator/commit/dc6adb2))
+
+
+
 ## [1.0.8](https://github.com/kintone/plugin-manifest-validator/compare/v1.0.7...v1.0.8) (2019-04-23)
 
 
