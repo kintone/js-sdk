@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.6.0-alpha.0](https://github.com/kintone/customize-uploader/compare/v1.5.3...v1.6.0-alpha.0) (2019-05-14)
+
+
+### Features
+
+* support mobile css ([#139](https://github.com/kintone/customize-uploader/issues/139)) ([80d64b7](https://github.com/kintone/customize-uploader/commit/80d64b7))
+
+
+
 ## [1.5.3](https://github.com/kintone/customize-uploader/compare/v1.5.2...v1.5.3) (2019-04-23)
 
 
