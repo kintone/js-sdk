@@ -41,6 +41,7 @@ interface GetAppCustomizeResp {
   };
   mobile: {
     js: CustomizeFile[];
+    css: CustomizeFile[];
   };
 }
 
@@ -108,6 +109,7 @@ function exportAsManifestFile(
   const desktopJs: CustomizeFile[] = resp.desktop.js;
   const desktopCss: CustomizeFile[] = resp.desktop.css;
   const mobileJs: CustomizeFile[] = resp.mobile.js;
+  const mobileCss: CustomizeFile[] = resp.mobile.css;
 
   const customizeJson: CustomizeManifest = {
     app: appId,
@@ -117,7 +119,8 @@ function exportAsManifestFile(
       css: desktopCss.map(toNameOrUrl(`${destRootDir}/desktop/css`))
     },
     mobile: {
-      js: mobileJs.map(toNameOrUrl(`${destRootDir}/mobile/js`))
+      js: mobileJs.map(toNameOrUrl(`${destRootDir}/mobile/js`)),
+      css: mobileCss.map(toNameOrUrl(`${destRootDir}/mobile/css`))
     }
   };
 
@@ -140,11 +143,12 @@ async function downloadCustomizeFiles(
   const desktopJs: CustomizeFile[] = desktop.js;
   const desktopCss: CustomizeFile[] = desktop.css;
   const mobileJs: CustomizeFile[] = mobile.js;
-
+  const mobileCss: CustomizeFile[] = mobile.css;
   [
     `${destDir}${sep}desktop${sep}js${sep}`,
     `${destDir}${sep}desktop${sep}css${sep}`,
-    `${destDir}${sep}mobile${sep}js${sep}`
+    `${destDir}${sep}mobile${sep}js${sep}`,
+    `${destDir}${sep}mobile${sep}css${sep}`
   ].forEach(path => mkdirp.sync(path));
 
   const desktopJsPromise = desktopJs.map(
@@ -156,7 +160,15 @@ async function downloadCustomizeFiles(
   const mobileJsPromise = mobileJs.map(
     downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}mobile${sep}js`)
   );
-  return [...desktopJsPromise, ...desktopCssPromise, ...mobileJsPromise];
+  const mobileCssPromise = mobileCss.map(
+    downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}mobile${sep}css`)
+  );
+  return [
+    ...desktopJsPromise,
+    ...desktopCssPromise,
+    ...mobileJsPromise,
+    ...mobileCssPromise
+  ];
 }
 
 function downloadAndWriteFile(

@@ -27,6 +27,7 @@ export interface CustomizeManifest {
   };
   mobile: {
     js: string[];
+    css: string[];
   };
 }
 
@@ -50,11 +51,12 @@ export async function upload(
     if (!updateBody) {
       console.log(m("M_StartUploading"));
       try {
-        const [desktopJS, desktopCSS, mobileJS] = await Promise.all(
+        const [desktopJS, desktopCSS, mobileJS, mobileCSS] = await Promise.all(
           [
             { files: manifest.desktop.js, type: "text/javascript" },
             { files: manifest.desktop.css, type: "text/css" },
-            { files: manifest.mobile.js, type: "text/javascript" }
+            { files: manifest.mobile.js, type: "text/javascript" },
+            { files: manifest.mobile.css, type: "text/css" }
           ].map(({ files, type }) =>
             Promise.all(
               files.map((file: string) =>
@@ -76,7 +78,8 @@ export async function upload(
             css: desktopCSS
           },
           mobile: {
-            js: mobileJS
+            js: mobileJS,
+            css: mobileCSS
           }
         });
         console.log(m("M_FileUploaded"));
@@ -148,7 +151,7 @@ export const run = async (
   };
 
   const files = manifest.desktop.js
-    .concat(manifest.desktop.css, manifest.mobile.js)
+    .concat(manifest.desktop.css, manifest.mobile.js, manifest.mobile.css)
     .filter((fileOrPath: string) => !isUrlString(fileOrPath));
 
   const kintoneApiClient = new KintoneApiClient(

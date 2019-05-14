@@ -87,6 +87,35 @@
           "size": "33"
         }
       }
+    ],
+    "css": [
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "201811160956531AFF9246D7CB40938A91EAC14A0622C9250",
+          "name": "bootstrap.min.css",
+          "contentType": "text/css",
+          "size": "140936"
+        }
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "201811160956531DCC5DA8C6E0480C8F3BD8A92EEFF584123",
+          "name": "bootstrap-reboot.min.css",
+          "contentType": "text/css",
+          "size": "4019"
+        }
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "20181116095653A6A52415705D403A9B1AB36E1448B32E191",
+          "name": "bootstrap-grid.min.css",
+          "contentType": "text/css",
+          "size": "28977"
+        }
+      }
     ]
   },
   "revision": "5"
