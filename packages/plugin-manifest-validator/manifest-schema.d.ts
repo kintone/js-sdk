@@ -35,6 +35,7 @@ export interface KintonePluginManifestJson {
   };
   mobile?: {
     js?: Resources;
+    css?: Resources;
   };
   config?: {
     /**

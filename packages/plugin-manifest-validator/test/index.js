@@ -170,6 +170,19 @@ describe("validator", () => {
         schemaPath: "#/properties/icon/maxFileSize"
       });
     });
+
+    it("mobile", () => {
+      const actual = validator(
+        json({
+          mobile: {
+            js: ["https://example.com/foo.js"],
+            css: ["https://example.com/foo.css"]
+          }
+        })
+      );
+      assert(actual.valid === true);
+      assert(actual.errors === null);
+    });
   });
 });
 

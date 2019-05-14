@@ -110,6 +110,9 @@
       "properties": {
         "js": {
           "$ref": "#/definitions/resources"
+        },
+        "css":{
+          "$ref": "#/definitions/resources"
         }
       }
     },
