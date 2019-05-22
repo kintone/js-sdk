@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.0.0-alpha.0](https://github.com/kintone/create-plugin/compare/v1.5.0-alpha.0...v2.0.0-alpha.0) (2019-05-22)
+
+
+### Features
+
+* add a mobile css into the minimum templates ([#319](https://github.com/kintone/create-plugin/issues/319)) ([5660e92](https://github.com/kintone/create-plugin/commit/5660e92))
+* add cancel button in setting page ([#318](https://github.com/kintone/create-plugin/issues/318)) ([9c60d18](https://github.com/kintone/create-plugin/commit/9c60d18))
+* generate mobile template by default ([#320](https://github.com/kintone/create-plugin/issues/320)) ([66ab7eb](https://github.com/kintone/create-plugin/commit/66ab7eb))
+* use @cybozu/eslint-config instead of eslint-config-kintone ([#314](https://github.com/kintone/create-plugin/issues/314)) ([507b357](https://github.com/kintone/create-plugin/commit/507b357))
+
+
+### BREAKING CHANGES
+
+* this generates a mobile template by default
+
+
+
 # [1.5.0-alpha.0](https://github.com/kintone/create-plugin/compare/v1.4.4...v1.5.0-alpha.0) (2019-05-14)
 
 
