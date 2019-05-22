@@ -115,7 +115,7 @@ export function buildQuestions(outputDir: string, lang: Lang): Question[] {
     {
       type: "confirm",
       name: "mobile",
-      default: false,
+      default: true,
       message: m("Q_MobileSupport")
     },
     {
