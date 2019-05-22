@@ -4,12 +4,9 @@ jQuery.noConflict();
   'use strict';
 
   var $form = $('.js-submit-settings');
+  var $cancelButton = $('.js-cancel-button');
   var $message = $('.js-text-message');
   var config = kintone.plugin.app.getConfig(PLUGIN_ID);
-
-  function getSettingsUrl() {
-    return '/k/admin/app/flow?app=' + kintone.app.getId();
-  }
 
   if (config.message) {
     $message.val(config.message);
@@ -18,7 +15,10 @@ jQuery.noConflict();
     e.preventDefault();
     kintone.plugin.app.setConfig({message: $message.val()}, function() {
       alert('The plug-in settings have been saved. Please update the app!');
-      window.location.href = getSettingsUrl();
+      window.location.href = '/k/admin/app/flow?app=' + kintone.app.getId();
     });
+  });
+  $cancelButton.on('click', function() {
+    window.location.href = '/k/admin/app/' + kintone.app.getId() + '/plugin/';
   });
 })(jQuery, kintone.$PLUGIN_ID);
