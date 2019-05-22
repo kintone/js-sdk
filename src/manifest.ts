@@ -48,6 +48,7 @@ export interface Manifest {
   };
   mobile?: {
     js?: string[];
+    css?: string[];
   };
   config?: {
     html?: string;
@@ -96,7 +97,8 @@ export function buildManifest(answers: UserAnswers): Manifest {
       ...manifest,
       ...{
         mobile: {
-          js: [jQueryURL, "js/mobile.js"]
+          js: [jQueryURL, "js/mobile.js"],
+          css: ["css/mobile.css"]
         }
       }
     };
