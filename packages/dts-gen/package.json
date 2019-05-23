@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
-    "@types/jest": "^23.3.14",
+    "@types/jest": "^24.0.13",
     "@types/lodash": "^4.14.123",
     "@types/node": "^10.12.30",
     "@types/nunjucks": "^3.1.1",
