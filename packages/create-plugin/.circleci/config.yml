@@ -19,11 +19,6 @@ commands:
       - run: npm run lint
       - run: npm run test:all
 jobs:
-  node-v6:
-    docker:
-      - image: circleci/node:6@sha256:52506adf0ce82ccdf8b652e07741c6796bf6730e305c0b6fb6068044dfb47035
-    steps:
-      - run-npm-test
   node-v8:
     docker:
       - image: circleci/node:8@sha256:75b7b01076edeb8c7f35ae7b14815f0d675ba6ddb4ace70d902338d3875809b5
@@ -34,10 +29,15 @@ jobs:
       - image: circleci/node:10@sha256:e1b4253059533d5a842d22e170e873cf177c4a454ad756c29148572d837039c8
     steps:
       - run-npm-test
+  node-v12:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - run-npm-test
 
 workflows:
   multiple_builds:
     jobs:
-      - node-v6
       - node-v8
       - node-v10
+      - node-v12
