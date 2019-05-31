@@ -32,7 +32,7 @@
     "@types/chokidar": "^1.7.5",
     "@types/lodash": "^4.14.132",
     "@types/mkdirp": "^0.5.2",
-    "@types/mocha": "^5.2.6",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^9.6.48",
     "@types/rimraf": "^2.0.2",
     "@types/webpack": "^4.4.32",
