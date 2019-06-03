@@ -23,7 +23,7 @@ export class FormsClientImpl implements FormsClient {
         const config: AxiosRequestConfig = {
             method: "GET",
             url: constructUrl(input),
-            data: {
+            params: {
                 app: input.appId,
             },
         };

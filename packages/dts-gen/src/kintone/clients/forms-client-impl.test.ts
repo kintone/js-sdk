@@ -85,7 +85,7 @@ describe("FormsClientImpl#fetchFormProperties", () => {
         const expectedRequestConfig = {
             method: "GET",
             url: "/k/v1/app/form/fields.json",
-            data: {
+            params: {
                 app: "1",
             },
         };
