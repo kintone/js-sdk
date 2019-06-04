@@ -22,7 +22,7 @@
     "build:integration": "webpack --mode development --config webpack.config.js"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "author": "Tomoya Yokota",
   "license": "MIT",
