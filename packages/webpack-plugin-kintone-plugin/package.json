@@ -4,7 +4,7 @@
   "description": "A webpack plugin to generate a plugin zip",
   "main": "dist/src/index.js",
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "scripts": {
     "start": "tsc -w",
