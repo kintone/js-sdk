@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.3](https://github.com/kintone/dts-gen/compare/v1.0.2...v1.0.3) (2019-06-04)
+
+
+### Bug Fixes
+
+* add a type definition for kintone.app.record.getHeaderMenuSpaceElement ([#63](https://github.com/kintone/dts-gen/issues/63)) ([c015d92](https://github.com/kintone/dts-gen/commit/c015d92))
+* Use option 'params' instead of 'data' at axios request ([#70](https://github.com/kintone/dts-gen/issues/70)) ([80c46a2](https://github.com/kintone/dts-gen/commit/80c46a2))
+* **deps:** update dependency axios to ^0.19.0 [security] ([#68](https://github.com/kintone/dts-gen/issues/68)) ([039ffe3](https://github.com/kintone/dts-gen/commit/039ffe3))
+
+
+
 ## [1.0.2](https://github.com/kintone/dts-gen/compare/v1.0.1...v1.0.2) (2019-04-23)
 
 
