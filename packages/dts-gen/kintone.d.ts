@@ -6,7 +6,7 @@ declare namespace kintone {
     }
 
     namespace api {
-        function url(path : string): string;
+        function url(path : string, detectGuestSpace? : boolean): string;
         function urlForGet(
             path : string,
             params: any,
