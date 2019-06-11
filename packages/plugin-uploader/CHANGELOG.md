@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.0.0](https://github.com/kintone/plugin-uploader/compare/v2.4.8...v3.0.0) (2019-06-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^6.3.1 ([#189](https://github.com/kintone/plugin-uploader/issues/189)) ([a6af6c3](https://github.com/kintone/plugin-uploader/commit/a6af6c3))
+* missing a type annotation ([bb4797f](https://github.com/kintone/plugin-uploader/commit/bb4797f))
+
+
+### Continuous Integration
+
+* drop Node v6 and add Node v12 as supporting versions ([#201](https://github.com/kintone/plugin-uploader/issues/201)) ([5a813b6](https://github.com/kintone/plugin-uploader/commit/5a813b6))
+
+
+### BREAKING CHANGES
+
+* drop Node v6 support
+
+
+
 ## [2.4.8](https://github.com/kintone/plugin-uploader/compare/v2.4.7...v2.4.8) (2019-04-23)
 
 
