@@ -11,7 +11,7 @@ interface Params {
 
 export const inquireParams = ({ username, password, domain, lang }: Params) => {
   const m = getBoundMessage(lang);
-  const questions = [
+  const questions: inquirer.Question[] = [
     {
       type: "input",
       message: m("Q_Domain"),
