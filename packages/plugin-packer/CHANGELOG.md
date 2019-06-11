@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.0.0](https://github.com/kintone/plugin-packer/compare/v1.1.0-alpha.0...v2.0.0) (2019-06-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^2.1.6 ([#354](https://github.com/kintone/plugin-packer/issues/354)) ([08cb678](https://github.com/kintone/plugin-packer/commit/08cb678))
+
+
+### Continuous Integration
+
+* drop Node v6 and add Node v12 as supporting versions ([#358](https://github.com/kintone/plugin-packer/issues/358)) ([9bdbbf9](https://github.com/kintone/plugin-packer/commit/9bdbbf9))
+
+
+### BREAKING CHANGES
+
+* drop Node v6 support
+
+
+
 # [1.1.0-alpha.0](https://github.com/kintone/plugin-packer/compare/v1.0.8...v1.1.0-alpha.0) (2019-05-14)
 
 
