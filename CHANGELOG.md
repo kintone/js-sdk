@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.0.0](https://github.com/kintone/customize-uploader/compare/v1.6.0-alpha.0...v2.0.0) (2019-06-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^2.1.6 ([62bb84c](https://github.com/kintone/customize-uploader/commit/62bb84c))
+
+
+### Continuous Integration
+
+* drop Node v6 and add Node v12 as supporting versions ([#154](https://github.com/kintone/customize-uploader/issues/154)) ([5673a7d](https://github.com/kintone/customize-uploader/commit/5673a7d))
+
+
+### BREAKING CHANGES
+
+* drop Node v6 support
+
+
+
 # [1.6.0-alpha.0](https://github.com/kintone/customize-uploader/compare/v1.5.3...v1.6.0-alpha.0) (2019-05-14)
 
 
