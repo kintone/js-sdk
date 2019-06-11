@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.0.0](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v1.1.0-alpha.0...v2.0.0) (2019-06-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^2.1.6 ([7fd026a](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/7fd026a))
+
+
+### Continuous Integration
+
+* drop Node v6 and add Node v12 as supporting versions ([#360](https://github.com/kintone/webpack-plugin-kintone-plugin/issues/360)) ([3e5452a](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/3e5452a))
+
+
+### BREAKING CHANGES
+
+* drop Node v6 support
+
+
+
 # [1.1.0-alpha.0](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v1.0.12...v1.1.0-alpha.0) (2019-05-14)
 
 
