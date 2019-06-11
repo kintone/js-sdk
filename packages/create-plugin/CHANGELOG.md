@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.0.0](https://github.com/kintone/create-plugin/compare/v2.0.0-alpha.0...v2.0.0) (2019-06-11)
+
+
+### Continuous Integration
+
+* drop Node v6 and add Node v12 as supporting versions ([#325](https://github.com/kintone/create-plugin/issues/325)) ([2b9cdb0](https://github.com/kintone/create-plugin/commit/2b9cdb0))
+
+
+### BREAKING CHANGES
+
+* drop Node v6 support
+
+
+
 # [2.0.0-alpha.0](https://github.com/kintone/create-plugin/compare/v1.5.0-alpha.0...v2.0.0-alpha.0) (2019-05-22)
 
 
