@@ -53,7 +53,7 @@
     "webpack": "^4.0.0"
   },
   "dependencies": {
-    "@kintone/plugin-packer": "^1.1.0-alpha.0",
+    "@kintone/plugin-packer": "^2.0.0",
     "chokidar": "^2.1.6",
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1"
