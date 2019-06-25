@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.1](https://github.com/kintone/plugin-packer/compare/v2.0.0...v2.0.1) (2019-06-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-manifest-validator to v2 ([#361](https://github.com/kintone/plugin-packer/issues/361)) ([0779dee](https://github.com/kintone/plugin-packer/commit/0779dee))
+
+
+
 # [2.0.0](https://github.com/kintone/plugin-packer/compare/v1.1.0-alpha.0...v2.0.0) (2019-06-11)
 
 
