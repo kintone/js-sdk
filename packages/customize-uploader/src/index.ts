@@ -150,6 +150,9 @@ export const run = async (
     updated: false
   };
 
+  // support an old format for customize-manifest.json that doesn't have mobile.css
+  manifest.mobile.css = manifest.mobile.css || [];
+
   const files = manifest.desktop.js
     .concat(manifest.desktop.css, manifest.mobile.js, manifest.mobile.css)
     .filter((fileOrPath: string) => !isUrlString(fileOrPath));
