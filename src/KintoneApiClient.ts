@@ -204,7 +204,7 @@ export default class KintoneApiClient {
     username: string,
     password: string
   ): string {
-    const buffer = new Buffer(username + ":" + password);
+    const buffer = Buffer.from(username + ":" + password);
     return buffer.toString("base64");
   }
 
