@@ -33,7 +33,7 @@
     "inquirer": "^6.3.1",
     "meow": "^5.0.0",
     "os-locale": "^3.1.0",
-    "puppeteer": "^1.14.0"
+    "puppeteer": "^1.18.1"
   },
   "devDependencies": {
     "@types/inquirer": "6.0.3",
