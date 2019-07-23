@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.0.0](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v1.1.0-alpha.0...v3.0.0) (2019-07-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-packer to ^2.0.1 ([a91b770](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/a91b770))
+* **deps:** update dependency @kintone/plugin-packer to v2 ([#364](https://github.com/kintone/webpack-plugin-kintone-plugin/issues/364)) ([fed216a](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/fed216a))
+* **deps:** update dependency chokidar to ^2.1.6 ([7fd026a](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/7fd026a))
+* **deps:** update dependency lodash to ^4.17.14 ([bd0b938](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/bd0b938))
+* **deps:** update dependency lodash to ^4.17.15 ([91d8e67](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/91d8e67))
+* **deps:** update dependency lodash to v4.17.13 [security] ([dc1a5a6](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/dc1a5a6))
+
+
+### Continuous Integration
+
+* drop Node v6 and add Node v12 as supporting versions ([#360](https://github.com/kintone/webpack-plugin-kintone-plugin/issues/360)) ([3e5452a](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/3e5452a))
+
+
+### BREAKING CHANGES
+
+* drop Node v6 support
+
+
+
 ## [2.0.1](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v2.0.0...v2.0.1) (2019-06-25)
 
 
