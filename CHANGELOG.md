@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.3](https://github.com/kintone/customize-uploader/compare/v2.0.2...v2.0.3) (2019-07-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^6.4.1 ([#122](https://github.com/kintone/customize-uploader/issues/122)) ([ac300db](https://github.com/kintone/customize-uploader/commit/ac300db))
+
+
+
 ## [2.0.2](https://github.com/kintone/customize-uploader/compare/v2.0.1...v2.0.2) (2019-07-03)
 
 
