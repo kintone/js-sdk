@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.2](https://github.com/kintone/create-plugin/compare/v2.0.1...v2.0.2) (2019-07-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^6.4.1 ([#292](https://github.com/kintone/create-plugin/issues/292)) ([0aba3fc](https://github.com/kintone/create-plugin/commit/0aba3fc))
+* **deps:** update dependency lodash to ^4.17.14 ([3db0b2d](https://github.com/kintone/create-plugin/commit/3db0b2d))
+* **deps:** update dependency lodash to ^4.17.15 ([589ff3d](https://github.com/kintone/create-plugin/commit/589ff3d))
+* **deps:** update dependency lodash to v4.17.13 [security] ([758de48](https://github.com/kintone/create-plugin/commit/758de48))
+
+
+
 ## [2.0.1](https://github.com/kintone/create-plugin/compare/v2.0.0...v2.0.1) (2019-06-25)
 
 
