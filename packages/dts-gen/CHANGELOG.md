@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.0.0](https://github.com/kintone/dts-gen/compare/v1.0.3...v2.0.0) (2019-07-23)
+
+
+### Bug Fixes
+
+* Add optional argument type 'detectGuestSpace' to kintone.api.url ([#73](https://github.com/kintone/dts-gen/issues/73)) ([18e4655](https://github.com/kintone/dts-gen/commit/18e4655))
+* failed integration-tests ([927d269](https://github.com/kintone/dts-gen/commit/927d269))
+* **deps:** update dependency lodash to v4.17.13 [security] ([9f66913](https://github.com/kintone/dts-gen/commit/9f66913))
+
+
+### Continuous Integration
+
+* drop Node v6 and add Node v12 as supporting versions ([#72](https://github.com/kintone/dts-gen/issues/72)) ([0d65797](https://github.com/kintone/dts-gen/commit/0d65797))
+
+
+### BREAKING CHANGES
+
+* drop Node v6 support
+
+
+
 ## [1.0.3](https://github.com/kintone/dts-gen/compare/v1.0.2...v1.0.3) (2019-06-04)
 
 
