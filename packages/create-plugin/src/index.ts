@@ -2,17 +2,14 @@
 
 import chalk from "chalk";
 import * as fs from "fs";
-import { Answers, Questions } from "inquirer";
+import * as inquirer from "inquirer";
 import * as rimraf from "rimraf";
 import { generatePlugin } from "./generator";
 import { Lang } from "./lang";
 import { printError, printLog } from "./logger";
-import { buildManifest, Manifest } from "./manifest";
+import { buildManifest } from "./manifest";
 import { getBoundMessage, getMessage } from "./messages";
-import { buildQuestions, UserAnswers } from "./qa";
-
-const util = require("util");
-const inquirer = require("inquirer");
+import { buildQuestions } from "./qa";
 
 /**
  * Verify whether the output directory is valid
@@ -42,12 +39,12 @@ function run(outputDir: string, lang: Lang) {
 
   inquirer
     .prompt(buildQuestions(outputDir, lang))
-    .then((answers: UserAnswers) => {
+    .then(answers => {
       const manifest = buildManifest(answers);
       generatePlugin(outputDir, manifest, lang, answers.pluginUploader);
       return [manifest, answers.pluginUploader];
     })
-    .then(([manifest, enablePluginUploader]: [Manifest, boolean]) => {
+    .then(([manifest, enablePluginUploader]) => {
       printLog(`
 
 Success! Created ${manifest.name.en} at ${outputDir}
