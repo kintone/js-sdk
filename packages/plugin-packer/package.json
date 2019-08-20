@@ -63,7 +63,7 @@
     "sinon": "^7.4.1",
     "standard-version": "^5.0.2",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.6",
+    "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0"
   },
   "homepage": "https://github.com/kintone/plugin-packer",
