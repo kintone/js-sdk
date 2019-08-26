@@ -55,7 +55,7 @@
   "dependencies": {
     "@types/rimraf": "^2.0.2",
     "chokidar": "^3.0.2",
-    "inquirer": "^6.5.1",
+    "inquirer": "^7.0.0",
     "meow": "^5.0.0",
     "mkdirp": "^0.5.1",
     "os-locale": "^4.0.0",
