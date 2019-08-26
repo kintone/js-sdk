@@ -6,6 +6,7 @@
   "scripts": {
     "build": "bin/npm-build.sh",
     "tsc": "tsc",
+    "tsc:check": "tsc --noEmit",
     "clean": "rm -rfv dist",
     "lint:fix": "eslint --fix src/**/*.ts",
     "lint": "eslint src/**/*.ts",

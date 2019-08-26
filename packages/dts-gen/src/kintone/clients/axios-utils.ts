@@ -40,9 +40,7 @@ function newAxiosInstance(
         headers["Authorization"] =
             "Basic " +
             Buffer.from(
-                `${input.basicAuthUsername}:${
-                    input.basicAuthPassword
-                }`
+                `${input.basicAuthUsername}:${input.basicAuthPassword}`
             ).toString("base64");
     }
     return VisibleForTesting.newAxiosInstanceInternal({

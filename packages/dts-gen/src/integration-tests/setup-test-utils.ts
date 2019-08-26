@@ -49,9 +49,7 @@ async function uploadFile(
         })
         .then(resp => {
             log(
-                `Finish Uploading ${metadata.name}(${
-                    resp.fileKey
-                })`
+                `Finish Uploading ${metadata.name}(${resp.fileKey})`
             );
             return resp.fileKey;
         })

@@ -16,7 +16,10 @@ commands:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
       # run tests!
+      - run: npm run tsc:check
       - run: npm run lint
+      - run: npm run prettier:check
+      - run: npm run build:integration
       - run: npm test
 jobs:
   node-v8:
