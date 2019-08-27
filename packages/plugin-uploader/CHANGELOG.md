@@ -1,6 +1,15 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [3.0.3](https://github.com/kintone/plugin-uploader/compare/v3.0.2...v3.0.3) (2019-08-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to v7 ([#223](https://github.com/kintone/plugin-uploader/issues/223)) ([12fee60](https://github.com/kintone/plugin-uploader/commit/12fee60))
+* **deps:** update dependency os-locale to v4 ([#207](https://github.com/kintone/plugin-uploader/issues/207)) ([529f867](https://github.com/kintone/plugin-uploader/commit/529f867))
+* **deps:** update dependency puppeteer to ^1.19.0 ([#215](https://github.com/kintone/plugin-uploader/issues/215)) ([6feee46](https://github.com/kintone/plugin-uploader/commit/6feee46))
 
 ## [3.0.2](https://github.com/kintone/plugin-uploader/compare/v3.0.1...v3.0.2) (2019-07-23)
 
