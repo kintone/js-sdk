@@ -1,6 +1,17 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [2.0.4](https://github.com/kintone/customize-uploader/compare/v2.0.3...v2.0.4) (2019-08-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to v3 ([1b040cc](https://github.com/kintone/customize-uploader/commit/1b040cc))
+* **deps:** update dependency inquirer to ^6.5.1 ([#171](https://github.com/kintone/customize-uploader/issues/171)) ([bd5dcf4](https://github.com/kintone/customize-uploader/commit/bd5dcf4))
+* **deps:** update dependency inquirer to v7 ([#190](https://github.com/kintone/customize-uploader/issues/190)) ([8454623](https://github.com/kintone/customize-uploader/commit/8454623))
+* **deps:** update dependency os-locale to v4 ([#157](https://github.com/kintone/customize-uploader/issues/157)) ([58fef17](https://github.com/kintone/customize-uploader/commit/58fef17))
+* **deps:** update dependency rimraf to v3 ([522ab9b](https://github.com/kintone/customize-uploader/commit/522ab9b))
 
 ## [2.0.3](https://github.com/kintone/customize-uploader/compare/v2.0.2...v2.0.3) (2019-07-23)
 
