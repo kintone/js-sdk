@@ -29,7 +29,7 @@ export class StringField implements TsExpression {
 
     tsExpression(): string {
         return `
-${this.fieldName} : {
+"${this.fieldName}" : {
     type: "${this.fieldType}";
     value: string;
     error?: string;
@@ -44,7 +44,7 @@ export class StringListField implements TsExpression {
     ) {}
     tsExpression(): string {
         return `
-${this.fieldName} : {
+"${this.fieldName}" : {
     type: "${this.fieldType}";
     value: string[];
     error?: string;
@@ -63,7 +63,7 @@ export class UserField implements TsExpression {
      */
     tsExpression(): string {
         return `
-${this.fieldName} : {
+"${this.fieldName}" : {
     type: "${this.fieldType}";
     value: {code: string, name: string}; 
 };`.trim();
@@ -77,7 +77,7 @@ export class EntityListField implements TsExpression {
     ) {}
     tsExpression(): string {
         return `
-${this.fieldName} : {
+"${this.fieldName}" : {
     type: "${this.fieldType}";
     value: {code: string, name: string}[];
     error?: string;
@@ -92,7 +92,7 @@ export class FileField implements TsExpression {
     ) {}
     tsExpression(): string {
         return `
-${this.fieldName} : {
+"${this.fieldName}" : {
     type: "${this.fieldType}";
     value: {
         contentType: string;
@@ -113,7 +113,7 @@ export class SubTableField implements TsExpression {
     ) {}
     tsExpression(): string {
         return `
-${this.fieldName} : {
+"${this.fieldName}" : {
     type: "${this.fieldType}";
     value: {
         id: string;
