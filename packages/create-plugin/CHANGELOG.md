@@ -1,6 +1,17 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [2.0.3](https://github.com/kintone/create-plugin/compare/v2.0.2...v2.0.3) (2019-08-27)
+
+
+### Bug Fixes
+
+* desktop.css ([aac5d1b](https://github.com/kintone/create-plugin/commit/aac5d1b))
+* **deps:** update dependency inquirer to ^6.5.1 ([#346](https://github.com/kintone/create-plugin/issues/346)) ([5479d0b](https://github.com/kintone/create-plugin/commit/5479d0b))
+* **deps:** update dependency inquirer to v7 ([#365](https://github.com/kintone/create-plugin/issues/365)) ([07a4051](https://github.com/kintone/create-plugin/commit/07a4051))
+* **deps:** update dependency os-locale to v4 ([#335](https://github.com/kintone/create-plugin/issues/335)) ([c887af0](https://github.com/kintone/create-plugin/commit/c887af0))
+* **deps:** update dependency rimraf to v3 ([934b9f9](https://github.com/kintone/create-plugin/commit/934b9f9))
 
 ## [2.0.2](https://github.com/kintone/create-plugin/compare/v2.0.1...v2.0.2) (2019-07-23)
 
