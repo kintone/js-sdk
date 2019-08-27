@@ -1,6 +1,16 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [2.0.1](https://github.com/kintone/dts-gen/compare/v2.0.0...v2.0.1) (2019-08-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency form-data to ^2.5.0 ([ac7817e](https://github.com/kintone/dts-gen/commit/ac7817e))
+* **deps:** update dependency lodash to ^4.17.15 ([8b7ab13](https://github.com/kintone/dts-gen/commit/8b7ab13))
+* crash with Full Width Symbol in FieldCode ([#86](https://github.com/kintone/dts-gen/issues/86)) by [@cloneko](https://github.com/cloneko) ([2f01931](https://github.com/kintone/dts-gen/commit/2f01931))
+* invalid a value in global ([0742e4d](https://github.com/kintone/dts-gen/commit/0742e4d))
 
 # [2.0.0](https://github.com/kintone/dts-gen/compare/v1.0.3...v2.0.0) (2019-07-23)
 

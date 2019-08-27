@@ -1,6 +1,6 @@
 {
   "name": "@kintone/dts-gen",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
   "scripts": {
