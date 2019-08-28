@@ -12,6 +12,7 @@
   "scripts": {
     "start": "tsc -w",
     "build": "tsc",
+    "tsc:check": "tsc --noEmit",
     "lint": "tslint -c tslint.json src/**/*.ts",
     "release": "run-s build lint && standard-version",
     "release:dryrun": "standard-version --dry-run"
