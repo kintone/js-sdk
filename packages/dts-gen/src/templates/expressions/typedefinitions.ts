@@ -2,7 +2,7 @@ import {
     FieldGroup,
     SubTableField,
     UserField,
-    StringField,
+    StringFieldInSavedRecord,
 } from "./fields";
 import {
     TsExpression,
@@ -28,7 +28,7 @@ export class SavedTypeDefinition implements TsExpression {
     constructor(
         private typeName: string,
         private userFields: UserField[],
-        private stringFields: StringField[]
+        private stringFieldsInSavedRecord: StringFieldInSavedRecord[]
     ) {}
 
     tsExpression(): string {
@@ -43,7 +43,7 @@ interface Saved${this.typeName} extends ${this.typeName} {
         value: string;
     };
     ${toTsExpressions(this.userFields)}
-    ${toTsExpressions(this.stringFields)}
+    ${toTsExpressions(this.stringFieldsInSavedRecord)}
 }`.trim();
     }
 }

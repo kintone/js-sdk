@@ -33,6 +33,10 @@ describe("FileFieldTypeConverter", () => {
             type: "TIME",
             code: "time",
         },
+        recordNumber: {
+            type: "RECORD_NUMBER",
+            code: "recordNumber",
+        },
         createdTime: {
             type: "CREATED_TIME",
             code: "createdTime",
@@ -40,10 +44,6 @@ describe("FileFieldTypeConverter", () => {
         updatedTime: {
             type: "UPDATED_TIME",
             code: "updatedTime",
-        },
-        recordNumber: {
-            type: "RECORD_NUMBER",
-            code: "recordNumber",
         },
         dropDown: {
             type: "DROP_DOWN",
@@ -158,10 +158,6 @@ describe("FileFieldTypeConverter", () => {
                 type: "TIME",
             },
             {
-                code: "recordNumber",
-                type: "RECORD_NUMBER",
-            },
-            {
                 code: "dropDown",
                 type: "DROP_DOWN",
             },
@@ -217,6 +213,10 @@ describe("FileFieldTypeConverter", () => {
         ).toEqual(expectedUserFields);
 
         const expectedSimpleValueInSavedRecord = [
+            {
+                code: "recordNumber",
+                type: "RECORD_NUMBER",
+            },
             {
                 code: "createdTime",
                 type: "CREATED_TIME",

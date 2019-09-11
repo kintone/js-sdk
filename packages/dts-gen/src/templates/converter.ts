@@ -39,7 +39,7 @@ export function convertToTsExpression({
     );
 
     const stringFieldsInSavedRecord = fieldTypeGroups.stringFieldsInSavedRecord.map(
-        f => new F.StringField(f.code, f.type)
+        f => new F.StringFieldInSavedRecord(f.code, f.type)
     );
 
     const savedTypeDefenition = new SavedTypeDefinition(
@@ -57,6 +57,8 @@ export function convertToTsExpression({
 
 interface ConvertToFieldGroupInput {
     stringFields: FieldType[];
+    calculatedFields: FieldType[];
+    stringFieldsInSavedRecord: FieldType[];
     stringListFields: FieldType[];
     entityListFields: FieldType[];
     fileTypeFields: FieldType[];
@@ -66,6 +68,10 @@ function convertToFieldGroup(
 ): F.FieldGroup {
     const stringFields = input.stringFields.map(
         f => new F.StringField(f.code, f.type)
+    );
+
+    const calculatedFields = input.calculatedFields.map(
+        f => new F.CalculatedField(f.code, f.type)
     );
 
     const stringListFields = input.stringListFields.map(
@@ -82,6 +88,7 @@ function convertToFieldGroup(
 
     return new F.FieldGroup(
         stringFields,
+        calculatedFields,
         stringListFields,
         entityFields,
         fileFields

@@ -5,6 +5,7 @@ import {
     SubTableField,
     FileField,
     FieldGroup,
+    CalculatedField,
 } from "./fields";
 
 describe("StringField", () => {
@@ -18,6 +19,7 @@ describe("StringField", () => {
 "fieldName" : {
     type: "SINGLE_LINE";
     value: string;
+    disabled?: boolean;
     error?: string;
 };`.trim()
         );
@@ -35,6 +37,7 @@ describe("StringField with Full Width Symbol FieldCode", () => {
 "・" : {
     type: "SINGLE_LINE";
     value: string;
+    disabled?: boolean;
     error?: string;
 };`.trim()
         );
@@ -49,6 +52,7 @@ describe("StringField with Full Width Symbol FieldCode", () => {
 "￥" : {
     type: "SINGLE_LINE";
     value: string;
+    disabled?: boolean;
     error?: string;
 };`.trim()
         );
@@ -63,6 +67,7 @@ describe("StringField with Full Width Symbol FieldCode", () => {
 "＿" : {
     type: "SINGLE_LINE";
     value: string;
+    disabled?: boolean;
     error?: string;
 };`.trim()
         );
@@ -77,6 +82,7 @@ describe("StringField with Full Width Symbol FieldCode", () => {
 "＄" : {
     type: "SINGLE_LINE";
     value: string;
+    disabled?: boolean;
     error?: string;
 };`.trim()
         );
@@ -94,6 +100,7 @@ describe("StringListField", () => {
 "fieldName" : {
     type: "CHECK_BOX";
     value: string[];
+    disabled?: boolean;
     error?: string;
 };`.trim()
         );
@@ -111,6 +118,7 @@ describe("EntityListField", () => {
 "fieldName" : {
     type: "USER_SELECT";
     value: {code: string, name: string}[];
+    disabled?: boolean;
     error?: string;
 };`.trim()
         );
@@ -119,7 +127,13 @@ describe("EntityListField", () => {
 
 describe("SubTableField", () => {
     test("toTsExpression()", () => {
-        const fieldGroup = new FieldGroup([], [], [], []);
+        const fieldGroup = new FieldGroup(
+            [],
+            [],
+            [],
+            [],
+            []
+        );
         expect(
             new SubTableField(
                 "fieldName",
@@ -159,6 +173,7 @@ describe("FileField", () => {
         name: string;
         size: string;
     }[];
+    disabled?: boolean;
     error?: string;
 };`.trim()
         );
@@ -179,19 +194,20 @@ describe("FieldGroup", () => {
                         "SINGLE_STRING_LINE"
                     ),
                 ],
+                [new CalculatedField("fieldName3", "CALC")],
                 [
                     new StringListField(
-                        "fieldName3",
+                        "fieldName4",
                         "MULTI_CHECK"
                     ),
                 ],
                 [
                     new EntityListField(
-                        "fieldName4",
+                        "fieldName5",
                         "USER_SELECT"
                     ),
                 ],
-                [new FileField("fieldName5", "FILE")]
+                [new FileField("fieldName6", "FILE")]
             )
                 .tsExpression()
                 .trim()
@@ -200,24 +216,33 @@ describe("FieldGroup", () => {
 "fieldName1" : {
     type: "SINGLE_STRING_LINE";
     value: string;
+    disabled?: boolean;
     error?: string;
 };
 "fieldName2" : {
     type: "SINGLE_STRING_LINE";
     value: string;
+    disabled?: boolean;
     error?: string;
 };
 "fieldName3" : {
-    type: "MULTI_CHECK";
-    value: string[];
+    type: "CALC";
+    value: string;
     error?: string;
 };
 "fieldName4" : {
-    type: "USER_SELECT";
-    value: {code: string, name: string}[];
+    type: "MULTI_CHECK";
+    value: string[];
+    disabled?: boolean;
     error?: string;
 };
 "fieldName5" : {
+    type: "USER_SELECT";
+    value: {code: string, name: string}[];
+    disabled?: boolean;
+    error?: string;
+};
+"fieldName6" : {
     type: "FILE";
     value: {
         contentType: string;
@@ -225,6 +250,7 @@ describe("FieldGroup", () => {
         name: string;
         size: string;
     }[];
+    disabled?: boolean;
     error?: string;
 };`.trim()
         );

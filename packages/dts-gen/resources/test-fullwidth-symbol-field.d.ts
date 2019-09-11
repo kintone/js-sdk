@@ -1,28 +1,27 @@
 declare namespace kintone.types {
   interface TestFields {
-    Record_number: {
-      type: "RECORD_NUMBER";
-      value: string;
-      error?: string;
-    };
     "・": {
       type: "SINGLE_LINE_TEXT";
       value: string;
+      disabled?: boolean;
       error?: string;
     };
     "＄": {
       type: "SINGLE_LINE_TEXT";
       value: string;
+      disabled?: boolean;
       error?: string;
     };
     "￥": {
       type: "SINGLE_LINE_TEXT";
       value: string;
+      disabled?: boolean;
       error?: string;
     };
     "＿": {
       type: "SINGLE_LINE_TEXT";
       value: string;
+      disabled?: boolean;
       error?: string;
     };
   }
@@ -42,6 +41,11 @@ declare namespace kintone.types {
     Created_by: {
       type: "CREATOR";
       value: { code: string; name: string };
+    };
+    Record_number: {
+      type: "RECORD_NUMBER";
+      value: string;
+      error?: string;
     };
     Updated_datetime: {
       type: "UPDATED_TIME";

@@ -9,6 +9,7 @@ import { objectValues } from "../utils/objectvalues";
 type FieldTypesOrSubTableFieldTypes =
     | FieldType[]
     | SubTableFieldType[];
+
 const SIMPLE_VALUE_TYPES = [
     "SINGLE_LINE_TEXT",
     "MULTI_LINE_TEXT",
@@ -17,14 +18,15 @@ const SIMPLE_VALUE_TYPES = [
     "NUMBER",
     "DATETIME",
     "TIME",
-    "RECORD_NUMBER",
     "DROP_DOWN",
     "LINK",
-    "CALC",
     "RADIO_BUTTON",
 ];
 
+const CALCULATED_VALUE_TYPES = ["CALC"];
+
 const SIMPLE_VALUE_IN_SAVED_RECORD = [
+    "RECORD_NUMBER",
     "CREATED_TIME",
     "UPDATED_TIME",
 ];
@@ -45,6 +47,7 @@ const SUB_TABLE_TYPE = "SUBTABLE";
 
 export interface FieldTypeGroups {
     stringFields: FieldType[];
+    calculatedFields: FieldType[];
     stringFieldsInSavedRecord: FieldType[];
     userFieldsInSavedRecord: FieldType[];
     stringListFields: FieldType[];
@@ -115,6 +118,10 @@ function convertFieldTypesToFieldTypeGroups(
         SIMPLE_VALUE_TYPES,
         fieldTypes
     );
+    const calculatedFields = selectFieldsTypesIn(
+        CALCULATED_VALUE_TYPES,
+        fieldTypes
+    );
     const stringFieldsInSavedRecord = selectFieldsTypesIn(
         SIMPLE_VALUE_IN_SAVED_RECORD,
         fieldTypes
@@ -144,6 +151,7 @@ function convertFieldTypesToFieldTypeGroups(
 
     return {
         stringFields,
+        calculatedFields,
         stringFieldsInSavedRecord,
         entityListFields,
         userFieldsInSavedRecord,
