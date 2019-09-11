@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/kintone/dts-gen/compare/v2.0.1...v2.0.2) (2019-09-11)
+
+
+### Bug Fixes
+
+* add disabled property in fields types ([#111](https://github.com/kintone/dts-gen/issues/111))  by [@mura-](https://github.com/mura-) ([ba31708](https://github.com/kintone/dts-gen/commit/ba31708))
+* **deps:** update dependency commander to v3 ([#91](https://github.com/kintone/dts-gen/issues/91)) ([b395e3a](https://github.com/kintone/dts-gen/commit/b395e3a))
+* **deps:** update dependency form-data to ^2.5.1 ([132ca0f](https://github.com/kintone/dts-gen/commit/132ca0f))
+
 ### [2.0.1](https://github.com/kintone/dts-gen/compare/v2.0.0...v2.0.1) (2019-08-27)
 
 
