@@ -12,6 +12,15 @@ function assertKintoneBuiltinFunctions() {
     assertFunction(kintone.Promise.resolve);
     assertFunction(kintone.Promise.reject);
 
+    // kintone.api.url
+    assert.ok(
+        kintone.api
+            .url("/k/v1/records")
+            .endsWith("/k/v1/records.json")
+    );
+    // only to check to compile success
+    kintone.api.url("/k/v1/records", true);
+
     const okPromise = new kintone.Promise<number>(resolve =>
         resolve(1)
     );
@@ -109,6 +118,12 @@ function assertKintoneBuiltinFunctions() {
     assertFunction(mr.set);
     assertFunction(mr.setFieldShown);
     assertFunction(mr.setGroupFieldOpen);
+
+    // Portal API
+    assertFunction(kintone.portal.getContentSpaceElement);
+    assertFunction(
+        kintone.mobile.portal.getContentSpaceElement
+    );
 }
 
 function assertFunction(ref) {

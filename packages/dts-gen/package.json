@@ -17,9 +17,8 @@
     "release": "run-s lint test clean build && standard-version && npm run gh-pages",
     "release:dryrun": "standard-version --dry-run",
     "test": "jest",
-    "prettier:base": "prettier --parser typescript",
-    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
-    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
+    "prettier:check": "prettier --parser typescript --check \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
+    "fmt": "prettier --parser typescript --write \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "build:integration": "webpack --mode development --config webpack.config.js"
   },
   "engines": {
