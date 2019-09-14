@@ -62,7 +62,7 @@
     "setimmediate": "^1.0.5",
     "sinon": "^7.4.2",
     "standard-version": "^7.0.0",
-    "webpack": "^4.39.3",
+    "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.0"
   },
