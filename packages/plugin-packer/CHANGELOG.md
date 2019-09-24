@@ -1,6 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [2.0.4](https://github.com/kintone/plugin-packer/compare/v2.0.3...v2.0.4) (2019-09-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-manifest-validator to ^2.0.4 ([#390](https://github.com/kintone/plugin-packer/issues/390)) ([15be9b4](https://github.com/kintone/plugin-packer/commit/15be9b4))
+* **deps:** update dependency node-rsa to ~1.0.6 ([#405](https://github.com/kintone/plugin-packer/issues/405)) ([ec05414](https://github.com/kintone/plugin-packer/commit/ec05414))
 
 ## [2.0.3](https://github.com/kintone/plugin-packer/compare/v2.0.2...v2.0.3) (2019-08-27)
 
