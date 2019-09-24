@@ -60,7 +60,7 @@
     "redux-thunk": "^2.3.0",
     "rimraf": "^3.0.0",
     "setimmediate": "^1.0.5",
-    "sinon": "^7.4.2",
+    "sinon": "^7.5.0",
     "standard-version": "^7.0.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
