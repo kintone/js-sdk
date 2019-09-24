@@ -204,30 +204,32 @@ declare namespace kintone {
                 data: any,
                 callback: () => void
             ): void;
+
+            function getProxyConfig(
+                url: string,
+                method: string
+            ): any;
+
+            namespace proxy {
+                function upload(
+                    pluginId: any,
+                    url: string,
+                    method: string,
+                    headers: any,
+                    data: any
+                ): Promise<any>;
+
+                function upload(
+                    pluginId: any,
+                    url: string,
+                    method: string,
+                    headers: any,
+                    data: any,
+                    callback: (resp: any) => void,
+                    error: (err: any) => void
+                ): void;
+            }
         }
-
-        function getProxyCondig(
-            url: string,
-            method: string
-        ): any;
-
-        function upload(
-            pluginId: any,
-            url: string,
-            method: string,
-            headers: any,
-            data: any
-        ): Promise<any>;
-
-        function upload(
-            pluginId: any,
-            url: string,
-            method: string,
-            headers: any,
-            data: any,
-            callback: (resp: any) => void,
-            error: (err: any) => void
-        ): void;
     }
 
     namespace portal {
