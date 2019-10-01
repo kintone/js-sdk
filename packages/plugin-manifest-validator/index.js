@@ -21,7 +21,7 @@ module.exports = function(json, options = {}) {
     maxFileSize = options.maxFileSize;
   }
   const ajv = new Ajv({
-    schemaId: "id", // for draft-04
+    schemaId: "auto", // for draft-04
     meta: false, // don't load draft-07 meta schema
     allErrors: true,
     unknownFormats: true,
