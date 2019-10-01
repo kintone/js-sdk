@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.6](https://github.com/kintone/plugin-manifest-validator/compare/v2.0.5...v2.0.6) (2019-10-01)
+
+
+### Bug Fixes
+
+* Suppress `schema $id ignored ...` log ([#228](https://github.com/kintone/plugin-manifest-validator/issues/228)) ([7a6e095](https://github.com/kintone/plugin-manifest-validator/commit/7a6e095))
+
 ### [2.0.5](https://github.com/kintone/plugin-manifest-validator/compare/v2.0.4...v2.0.5) (2019-09-24)
 
 ### [2.0.4](https://github.com/kintone/plugin-manifest-validator/compare/v2.0.3...v2.0.4) (2019-08-27)
