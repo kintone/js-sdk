@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^7.1.0",
-    "eslint": "^6.3.0",
+    "eslint": "^6.5.1",
     "intelli-espower-loader": "^1.0.1",
     "json-schema-to-typescript": "^7.1.0",
     "mocha": "^6.2.1",
