@@ -38,7 +38,7 @@
     "ts-node": "^8.3.0",
     "tslint": "^5.20.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.4"
   },
   "files": [
     "bin",
