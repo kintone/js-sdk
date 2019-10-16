@@ -8,6 +8,8 @@ declare namespace kintone {
             event: string | string[],
             handler: (event: any) => any
         ): boolean;
+        function off(event: string | string[]): boolean;
+        function off(): boolean;
     }
 
     namespace api {
@@ -18,7 +20,7 @@ declare namespace kintone {
         function urlForGet(
             path: string,
             params: any,
-            detectGuestSpace: boolean | null
+            detectGuestSpace?: boolean
         ): string;
 
         function getConcurrencyLimit(): Promise<{
@@ -176,7 +178,7 @@ declare namespace kintone {
             function getConfig(pluginId: string): any;
             function setConfig(
                 config: any,
-                callback: () => void
+                callback?: () => void
             ): void;
 
             function proxy(
@@ -202,7 +204,7 @@ declare namespace kintone {
                 method: string,
                 headers: any,
                 data: any,
-                callback: () => void
+                callback?: () => void
             ): void;
 
             function getProxyConfig(
@@ -248,7 +250,7 @@ declare namespace kintone {
         extensionNumber: string;
         timezone: string;
         isGuest: boolean;
-        language: "ja" | "en" | "zh";
+        language: string;
     }
 
     function getLoginUser(): LoginUser;
