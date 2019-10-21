@@ -6,7 +6,7 @@ type Auth = {
 type AppID = string | number
 type RecordID = string | number
 
-class KintoneAPIClient {
+export class KintoneAPIClient {
   private subdomain: string
   private auth: Auth
   constructor({subdomain, auth}: {subdomain: string, auth: Auth}) {

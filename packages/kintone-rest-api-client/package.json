@@ -21,8 +21,10 @@
   "devDependencies": {
     "@cybozu/eslint-config": "^7.1.0",
     "@types/axios": "^0.14.0",
+    "@types/node": "^12.11.1",
     "eslint": "^6.5.1",
     "prettier": "^1.18.2",
+    "ts-node": "^8.4.1",
     "typescript": "^3.6.4"
   },
   "dependencies": {
