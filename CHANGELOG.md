@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.6](https://github.com/kintone/customize-uploader/compare/v2.0.5...v2.0.6) (2019-10-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^3.1.1 ([#202](https://github.com/kintone/customize-uploader/issues/202)) ([1027b3c](https://github.com/kintone/customize-uploader/commit/1027b3c))
+* **deps:** update dependency chokidar to ^3.2.1 ([#208](https://github.com/kintone/customize-uploader/issues/208)) ([b5243be](https://github.com/kintone/customize-uploader/commit/b5243be))
+* **deps:** update dependency chokidar to ^3.2.2 ([61d27a9](https://github.com/kintone/customize-uploader/commit/61d27a9))
+
 ### [2.0.5](https://github.com/kintone/customize-uploader/compare/v2.0.4...v2.0.5) (2019-09-24)
 
 ### [2.0.4](https://github.com/kintone/customize-uploader/compare/v2.0.3...v2.0.4) (2019-08-27)
