@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/kintone/dts-gen/compare/v2.1.0...v2.1.1) (2019-10-23)
+
+
+### Bug Fixes
+
+* kintone.d.ts ([#149](https://github.com/kintone/dts-gen/issues/149)) ([2f75c24](https://github.com/kintone/dts-gen/commit/2f75c24))
+* **deps:** update dependency commander to ^3.0.2 ([9863794](https://github.com/kintone/dts-gen/commit/9863794))
+* function name typo and namespace around kintone.plugin.app ([#129](https://github.com/kintone/dts-gen/issues/129)) ([899fd45](https://github.com/kintone/dts-gen/commit/899fd45))
+
 ## [2.1.0](https://github.com/kintone/dts-gen/compare/v2.0.1...v2.1.0) (2019-09-24)
 
 
