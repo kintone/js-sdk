@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.6](https://github.com/kintone/plugin-packer/compare/v2.0.5...v2.0.6) (2019-10-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^3.2.1 ([#419](https://github.com/kintone/plugin-packer/issues/419)) ([3508ac9](https://github.com/kintone/plugin-packer/commit/3508ac9))
+* **deps:** update dependency chokidar to ^3.2.2 ([#428](https://github.com/kintone/plugin-packer/issues/428)) ([7462fee](https://github.com/kintone/plugin-packer/commit/7462fee))
+
 ### [2.0.5](https://github.com/kintone/plugin-packer/compare/v2.0.4...v2.0.5) (2019-10-02)
 
 
