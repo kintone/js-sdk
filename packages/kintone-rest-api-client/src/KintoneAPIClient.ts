@@ -1,4 +1,5 @@
 import axios from "axios";
+import { RecordClient } from "./client/RecordClient";
 
 type Auth = {
   apiToken: string;
@@ -6,19 +7,36 @@ type Auth = {
 type AppID = string | number;
 type RecordID = string | number;
 
-export class KintoneAPIClient {
+export interface HttpClient {
+  request: (path: string, params: object) => any;
+}
+
+export class AxiosClient implements HttpClient {
   private subdomain: string;
-  private auth: Auth;
+  private headers: object;
+
+  // FIXME: Change the interface to accept `baseUrl` and `headers`
   constructor({ subdomain, auth }: { subdomain: string; auth: Auth }) {
     this.subdomain = subdomain;
-    this.auth = auth;
+    this.headers = { "X-Cybozu-API-Token": auth.apiToken };
   }
 
-  public async getRecord(app: AppID, id: RecordID) {
-    const path = "/k/v1/record.json";
-    const headers = { "X-Cybozu-API-Token": this.auth.apiToken };
-    const requestURL = `https://${this.subdomain}.cybozu.com${path}?app=${app}&id=${id}`;
-    const { data } = await axios.get(requestURL, { headers });
+  async request(path: string, params: any) {
+    const requestURL = `https://${this.subdomain}.cybozu.com${path}?app=${params.app}&id=${params.id}`;
+    console.log(requestURL);
+    console.log(this.headers);
+    const { data } = await axios.get(requestURL, { headers: this.headers });
     return data;
+  }
+}
+
+export class KintoneAPIClient {
+  private httpClient: HttpClient;
+  record: RecordClient;
+
+  constructor({ subdomain, auth }: { subdomain: string; auth: Auth }) {
+    this.httpClient = new AxiosClient({ subdomain, auth });
+
+    this.record = new RecordClient(this.httpClient);
   }
 }

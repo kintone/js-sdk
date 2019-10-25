@@ -9,5 +9,5 @@ import { KintoneAPIClient } from "../src/index";
       apiToken: process.env.KINTONE_API_TOKEN || ""
     }
   });
-  console.log(await client.getRecord(APP_ID, RECORD_ID));
+  console.log(await client.record.getRecord(APP_ID, RECORD_ID));
 })();
