@@ -21,6 +21,7 @@ export class AxiosClient implements HttpClient {
     this.headers = { "X-Cybozu-API-Token": auth.apiToken };
   }
 
+  // TODO: Divide the method into `get`, `post`, etc.
   async request(path: string, params: any) {
     const requestURL = `https://${this.subdomain}.cybozu.com${path}?app=${params.app}&id=${params.id}`;
     console.log(requestURL);
