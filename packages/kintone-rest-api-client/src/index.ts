@@ -1,1 +1,1 @@
-export { KintoneAPIClient } from './KintoneAPIClient';
+export { KintoneAPIClient } from "./KintoneAPIClient";
