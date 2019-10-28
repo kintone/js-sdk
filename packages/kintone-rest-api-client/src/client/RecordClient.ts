@@ -1,4 +1,4 @@
-import { HttpClient } from "./../KintoneAPIClient";
+import { HttpClient } from "./../HttpClientInterface";
 
 type AppID = string | number;
 type RecordID = string | number;
