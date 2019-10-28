@@ -11,7 +11,9 @@ export class KintoneAPIClient {
   record: RecordClient;
 
   constructor({ subdomain, auth }: { subdomain: string; auth: Auth }) {
-    this.httpClient = new AxiosClient({ subdomain, auth });
+    const headers = { "X-Cybozu-API-Token": auth.apiToken };
+    const url = `https://${subdomain}.cybozu.com/`;
+    this.httpClient = new AxiosClient({ url, headers });
 
     this.record = new RecordClient(this.httpClient);
   }
