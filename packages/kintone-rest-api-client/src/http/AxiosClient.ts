@@ -34,4 +34,12 @@ export class AxiosClient implements HttpClient {
     });
     return data;
   }
+
+  async delete(path: string, params: any) {
+    const requestURL = `${this.url}${path}?${qs.stringify(params)}`;
+    const { data } = await Axios.delete(requestURL, {
+      headers: this.headers
+    });
+    return data;
+  }
 }

@@ -30,4 +30,13 @@ export class RecordClient {
     const path = "/k/v1/record.json";
     return this.client.put(path, { app, ...params });
   }
+
+  public async deleteRecords(
+    app: AppID,
+    ids: RecordID[],
+    revisions?: Revision[]
+  ) {
+    const path = "/k/v1/records.json";
+    return this.client.delete(path, { app, ids, revisions });
+  }
 }
