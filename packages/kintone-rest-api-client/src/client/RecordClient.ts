@@ -12,6 +12,6 @@ export class RecordClient {
 
   public async getRecord(app: AppID, id: RecordID) {
     const path = "/k/v1/record.json";
-    return this.client.request(path, { app, id });
+    return this.client.get(path, { app, id });
   }
 }

@@ -1,3 +1,3 @@
 export interface HttpClient {
-  request: (path: string, params: object) => any;
+  get: <T extends object>(path: string, params: object) => Promise<T>;
 }
