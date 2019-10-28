@@ -1,6 +1,6 @@
 import Axios from "axios";
 import qs from "qs";
-import { HttpClient } from "../HttpClientInterface";
+import { HttpClient } from "./HttpClientInterface";
 
 type Headers = object;
 

@@ -1,4 +1,4 @@
-import { HttpClient } from "./../HttpClientInterface";
+import { HttpClient } from "./../http/";
 
 type AppID = string | number;
 type RecordID = string | number;
