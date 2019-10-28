@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint 'src/**/*.ts' 'scripts/**/*.ts'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fix:lint": "npm run lint:eslint -- --fix",
+    "lint:eslint": "eslint 'src/**/*.ts' 'scripts/**/*.ts'",
+    "lint:ts": "tsc --noEmit",
+    "lint": "run-p lint:*",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
