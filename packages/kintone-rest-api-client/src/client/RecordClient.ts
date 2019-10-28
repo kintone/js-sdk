@@ -2,6 +2,7 @@ import { HttpClient } from "./../HttpClientInterface";
 
 type AppID = string | number;
 type RecordID = string | number;
+type Revision = string | number;
 
 export class RecordClient {
   private client: HttpClient;
@@ -18,5 +19,15 @@ export class RecordClient {
   public async addRecord(app: AppID, record?: object) {
     const path = "/k/v1/record.json";
     return this.client.post(path, { app, record });
+  }
+
+  public async updateRecord(
+    app: AppID,
+    params:
+      | { id: RecordID; record?: object; revision?: Revision }
+      | { updateKey: object; record?: object; revision?: Revision }
+  ) {
+    const path = "/k/v1/record.json";
+    return this.client.put(path, { app, ...params });
   }
 }

@@ -26,4 +26,12 @@ export class AxiosClient implements HttpClient {
     });
     return data;
   }
+
+  async put(path: string, params: any) {
+    const requestURL = `${this.url}${path}`;
+    const { data } = await Axios.put(requestURL, params, {
+      headers: this.headers
+    });
+    return data;
+  }
 }
