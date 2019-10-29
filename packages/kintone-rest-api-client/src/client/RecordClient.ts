@@ -15,12 +15,12 @@ export class RecordClient {
     this.client = client;
   }
 
-  public async getRecord<T extends { record: Record }>(
+  public async getRecord<T extends Record>(
     app: AppID,
     id: RecordID
-  ) {
+  ): Promise<{ record: T }> {
     const path = "/k/v1/record.json";
-    return this.client.get<T>(path, { app, id });
+    return this.client.get(path, { app, id });
   }
 
   public async addRecord(
