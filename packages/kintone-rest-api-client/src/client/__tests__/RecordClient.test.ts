@@ -23,6 +23,9 @@ describe("RecordClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
     });
+    it("should send a get request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("get");
+    });
     it("should pass app and id as a param to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual({
         app: APP_ID,
@@ -38,7 +41,10 @@ describe("RecordClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
     });
-    it("should pass app and id as a param to the http client", () => {
+    it("should send a post request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass app and record object as a param to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual({ app: APP_ID, record });
     });
   });
@@ -55,7 +61,10 @@ describe("RecordClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
     });
-    it("should pass app and id as a param to the http client", () => {
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app, id, record, and revision to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual({
         app: APP_ID,
         ...params
@@ -72,7 +81,10 @@ describe("RecordClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
     });
-    it("should pass app and id as a param to the http client", () => {
+    it("should send a delete request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("delete");
+    });
+    it("should pass app, ids, and revisions to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual({
         app: APP_ID,
         ids,
