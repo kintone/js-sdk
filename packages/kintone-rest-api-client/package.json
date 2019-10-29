@@ -1,8 +1,9 @@
 {
-  "name": "kintone-rest-api-client",
-  "version": "1.0.0",
+  "name": "@cybozu-private/kintone-rest-api-client",
+  "version": "0.0.1",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "description": "",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "build": "run-s clean compile",
     "clean": "rimraf lib",
@@ -17,6 +18,9 @@
     "type": "git",
     "url": "git+https://github.com/cybozu-private/kintone-rest-api-client.git"
   },
+  "files": [
+    "lib"
+  ],
   "keywords": [],
   "author": "",
   "license": "MIT",
