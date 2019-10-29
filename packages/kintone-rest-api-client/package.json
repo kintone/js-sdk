@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "run-s clean compile",
+    "clean": "rimraf lib",
     "fix:lint": "npm run lint:eslint -- --fix",
     "lint:eslint": "eslint 'src/**/*.ts' 'scripts/**/*.ts'",
     "lint:ts": "tsc --noEmit",
     "lint": "run-p lint:*",
-    "test": "jest"
+    "test": "jest",
+    "compile": "tsc"
   },
   "repository": {
     "type": "git",
