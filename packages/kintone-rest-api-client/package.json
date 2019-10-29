@@ -10,7 +10,7 @@
     "lint:eslint": "eslint 'src/**/*.ts' 'scripts/**/*.ts'",
     "lint:ts": "tsc --noEmit",
     "lint": "run-p lint:*",
-    "test": "jest",
+    "test": "jest src",
     "compile": "tsc"
   },
   "repository": {
