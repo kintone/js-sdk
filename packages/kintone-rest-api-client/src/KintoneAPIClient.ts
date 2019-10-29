@@ -1,6 +1,5 @@
 import { RecordClient } from "./client/RecordClient";
 import { DefaultHttpClient } from "./http/";
-import { buildChildren } from "@babel/types";
 
 export type Auth = ApiTokenAuth | PasswordAuth | SessionAuth;
 
