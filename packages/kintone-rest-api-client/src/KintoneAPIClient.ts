@@ -29,6 +29,7 @@ export class KintoneAPIClient {
   private buildAuthHeaders(auth: Auth) {
     if ("username" in auth) {
       const { username, password } = auth;
+      // TODO: Support browser environment
       return {
         "X-Cybozu-Authorization": Buffer.from(
           `${username}:${password}`
