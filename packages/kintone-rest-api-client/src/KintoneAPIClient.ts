@@ -14,18 +14,34 @@ type PasswordAuth = {
 
 type SessionAuth = {};
 
+type KintoneAuthHeader =
+  | {
+      "X-Cybozu-Authorization": string;
+    }
+  | {
+      "X-Cybozu-API-Token": string;
+    }
+  | {
+      "X-Requested-With": "XMLHttpRequest";
+    };
+
 export class KintoneAPIClient {
   record: RecordClient;
+  private headers: KintoneAuthHeader;
 
   constructor({ subdomain, auth }: { subdomain: string; auth: Auth }) {
-    const headers = this.buildAuthHeaders(auth);
+    this.headers = this.buildAuthHeaders(auth);
     const url = `https://${subdomain}.cybozu.com/`;
-    const httpClient = new DefaultHttpClient({ url, headers });
+    const httpClient = new DefaultHttpClient({ url, headers: this.headers });
 
     this.record = new RecordClient(httpClient);
   }
 
-  private buildAuthHeaders(auth: Auth) {
+  public getHeaders() {
+    return this.headers;
+  }
+
+  private buildAuthHeaders(auth: Auth): KintoneAuthHeader {
     if ("username" in auth) {
       const { username, password } = auth;
       // TODO: Support browser environment
