@@ -11,7 +11,6 @@ describe("KintoneAPIClient", () => {
     };
   });
   afterEach(() => {
-    // @ts-ignore
     global.kintone = originalKintone;
   });
   describe("constructor", () => {
