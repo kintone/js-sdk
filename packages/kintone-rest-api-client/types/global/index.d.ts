@@ -7,3 +7,7 @@ declare namespace process {
 declare const kintone: {
   getRequestToken(): string;
 };
+
+declare namespace console {
+  function log(...args: any[]): void;
+}
