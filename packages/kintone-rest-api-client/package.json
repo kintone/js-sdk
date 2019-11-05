@@ -1,7 +1,9 @@
 {
   "name": "@cybozu-private/kintone-rest-api-client",
   "version": "0.0.1",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "description": "",
   "main": "./lib/index.js",
   "scripts": {
@@ -36,7 +38,6 @@
     "@types/axios": "^0.14.0",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.20",
-    "@types/node": "^12.11.1",
     "@types/qs": "^6.5.3",
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
