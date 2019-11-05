@@ -1,5 +1,6 @@
 import { RecordClient } from "./client/RecordClient";
 import { DefaultHttpClient } from "./http/";
+import { Base64 } from "js-base64";
 
 export type Auth = ApiTokenAuth | PasswordAuth | SessionAuth;
 
@@ -46,9 +47,7 @@ export class KintoneAPIClient {
       const { username, password } = auth;
       // TODO: Support browser environment
       return {
-        "X-Cybozu-Authorization": Buffer.from(
-          `${username}:${password}`
-        ).toString("base64")
+        "X-Cybozu-Authorization": Base64.encode(`${username}:${password}`)
       };
     }
     if ("apiToken" in auth) {
