@@ -1,4 +1,5 @@
 import { KintoneAPIClient } from "../KintoneAPIClient";
+import { Base64 } from "js-base64";
 
 describe("KintoneAPIClient", () => {
   describe("constructor", () => {
@@ -23,9 +24,7 @@ describe("KintoneAPIClient", () => {
         };
         const client = new KintoneAPIClient({ subdomain, auth });
         expect(client.getHeaders()).toEqual({
-          "X-Cybozu-Authorization": Buffer.from(
-            `${USERNAME}:${PASSWORD}`
-          ).toString("base64")
+          "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`)
         });
       });
       it("Session auth", () => {
