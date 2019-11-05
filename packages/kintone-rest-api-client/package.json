@@ -9,12 +9,15 @@
   "scripts": {
     "build": "run-s clean compile",
     "clean": "rimraf lib",
+    "compile": "tsc",
+    "deploy": "rimraf scripts/dist && run-s webpack upload",
     "fix:lint": "npm run lint:eslint -- --fix",
     "lint:eslint": "eslint 'src/**/*.ts' 'scripts/**/*.ts'",
     "lint:ts": "tsc --noEmit",
     "lint": "run-p lint:*",
     "test": "jest src",
-    "compile": "tsc"
+    "upload": "kintone-customize-uploader scripts/customize-manifest.json",
+    "webpack": "webpack --config scripts/webpack.config"
   },
   "repository": {
     "type": "git",
@@ -35,6 +38,7 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-typescript": "^7.6.0",
     "@cybozu/eslint-config": "^7.1.0",
+    "@kintone/customize-uploader": "^2.0.6",
     "@types/axios": "^0.14.0",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.20",
@@ -44,8 +48,11 @@
     "jest": "^24.9.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
+    "ts-loader": "^6.2.1",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   },
   "dependencies": {
     "axios": "^0.19.0",
