@@ -34,6 +34,7 @@
     "@babel/preset-typescript": "^7.6.0",
     "@cybozu/eslint-config": "^7.1.0",
     "@types/axios": "^0.14.0",
+    "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.20",
     "@types/node": "^12.11.1",
     "@types/qs": "^6.5.3",
@@ -46,6 +47,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "core-js": "^3.3.6",
     "qs": "^6.9.0"
   }
 }
