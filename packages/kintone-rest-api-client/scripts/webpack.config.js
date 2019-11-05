@@ -27,7 +27,9 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.KINTONE_SUBDOMAIN': JSON.stringify(process.env.KINTONE_SUBDOMAIN)
+      "process.env.KINTONE_SUBDOMAIN": JSON.stringify(
+        process.env.KINTONE_SUBDOMAIN
+      )
     })
   ],
   devtool: "inline-cheap-source-map"
