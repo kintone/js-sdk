@@ -2,18 +2,27 @@ import { RecordClient } from "./client/RecordClient";
 import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
 
+export type PartialAuth =
+  | Omit<ApiTokenAuth, "type">
+  | Omit<PasswordAuth, "type">
+  | Omit<SessionAuth, "type">;
+
 export type Auth = ApiTokenAuth | PasswordAuth | SessionAuth;
 
 type ApiTokenAuth = {
+  type: "apiToken";
   apiToken: string;
 };
 
 type PasswordAuth = {
+  type: "password";
   username: string;
   password: string;
 };
 
-type SessionAuth = {};
+type SessionAuth = {
+  type: "session";
+};
 
 type KintoneAuthHeader =
   | {
@@ -30,10 +39,37 @@ export class KintoneAPIClient {
   record: RecordClient;
   private headers: KintoneAuthHeader;
 
-  constructor({ subdomain, auth }: { subdomain: string; auth: Auth }) {
+  constructor({
+    subdomain,
+    auth: partialAuth
+  }: {
+    subdomain: string;
+    auth: PartialAuth;
+  }) {
+    const auth = this.buildAuth(partialAuth);
     this.headers = this.buildAuthHeaders(auth);
     const url = `https://${subdomain}.cybozu.com/`;
-    const httpClient = new DefaultHttpClient({ url, headers: this.headers });
+    let requestToken;
+    if (auth.type === "session") {
+      if (
+        typeof kintone === "undefined" ||
+        typeof kintone.getRequestToken !== "function"
+      ) {
+        throw new Error("session authentication must specify a request token");
+      }
+      requestToken = kintone.getRequestToken();
+    }
+    // This params are always sent as a request body.
+    const params = requestToken
+      ? {
+          __REQUEST_TOKEN__: requestToken
+        }
+      : {};
+    const httpClient = new DefaultHttpClient({
+      url,
+      headers: this.headers,
+      params
+    });
 
     this.record = new RecordClient(httpClient);
   }
@@ -42,17 +78,33 @@ export class KintoneAPIClient {
     return this.headers;
   }
 
+  private buildAuth(partialAuth: PartialAuth): Auth {
+    if ("username" in partialAuth) {
+      return { type: "password", ...partialAuth };
+    }
+    if ("apiToken" in partialAuth) {
+      return { type: "apiToken", ...partialAuth };
+    }
+    return {
+      type: "session"
+    };
+  }
+
   private buildAuthHeaders(auth: Auth): KintoneAuthHeader {
-    if ("username" in auth) {
-      const { username, password } = auth;
-      // TODO: Support browser environment
-      return {
-        "X-Cybozu-Authorization": Base64.encode(`${username}:${password}`)
-      };
+    switch (auth.type) {
+      case "password": {
+        return {
+          "X-Cybozu-Authorization": Base64.encode(
+            `${auth.username}:${auth.password}`
+          )
+        };
+      }
+      case "apiToken": {
+        return { "X-Cybozu-API-Token": auth.apiToken };
+      }
+      default: {
+        return { "X-Requested-With": "XMLHttpRequest" };
+      }
     }
-    if ("apiToken" in auth) {
-      return { "X-Cybozu-API-Token": auth.apiToken };
-    }
-    return { "X-Requested-With": "XMLHttpRequest" };
   }
 }
