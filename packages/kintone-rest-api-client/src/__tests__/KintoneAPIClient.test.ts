@@ -2,6 +2,17 @@ import { KintoneAPIClient } from "../KintoneAPIClient";
 import { Base64 } from "js-base64";
 
 describe("KintoneAPIClient", () => {
+  let originalKintone: any;
+  beforeEach(() => {
+    originalKintone =
+      typeof global.kintone !== "undefined" ? global.kintone : undefined;
+    global.kintone = {
+      getRequestToken: () => "duymmy request token"
+    };
+  });
+  afterEach(() => {
+    global.kintone = originalKintone;
+  });
   describe("constructor", () => {
     describe("Header", () => {
       const subdomain = "example";

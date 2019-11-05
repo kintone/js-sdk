@@ -4,6 +4,8 @@ declare namespace process {
   };
 }
 
+declare const global: any;
+
 declare const kintone: {
   getRequestToken(): string;
 };
