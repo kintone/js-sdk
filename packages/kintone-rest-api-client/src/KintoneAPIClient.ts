@@ -1,6 +1,7 @@
 import { RecordClient } from "./client/RecordClient";
 import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
+import { HTTPClientParams } from "./http/HttpClientInterface";
 
 export type PartialAuth =
   | Omit<ApiTokenAuth, "type">
@@ -46,25 +47,12 @@ export class KintoneAPIClient {
     subdomain: string;
     auth: PartialAuth;
   }) {
-    const auth = this.buildAuth(partialAuth);
-    this.headers = this.buildAuthHeaders(auth);
     const url = `https://${subdomain}.cybozu.com/`;
-    let requestToken;
-    if (auth.type === "session") {
-      if (
-        typeof kintone === "undefined" ||
-        typeof kintone.getRequestToken !== "function"
-      ) {
-        throw new Error("session authentication must specify a request token");
-      }
-      requestToken = kintone.getRequestToken();
-    }
-    // This params are always sent as a request body.
-    const params = requestToken
-      ? {
-          __REQUEST_TOKEN__: requestToken
-        }
-      : {};
+
+    const auth = this.buildAuth(partialAuth);
+    const params = this.buildParams(auth);
+    this.headers = this.buildHeaders(auth);
+
     const httpClient = new DefaultHttpClient({
       url,
       headers: this.headers,
@@ -90,7 +78,7 @@ export class KintoneAPIClient {
     };
   }
 
-  private buildAuthHeaders(auth: Auth): KintoneAuthHeader {
+  private buildHeaders(auth: Auth): KintoneAuthHeader {
     switch (auth.type) {
       case "password": {
         return {
@@ -106,5 +94,24 @@ export class KintoneAPIClient {
         return { "X-Requested-With": "XMLHttpRequest" };
       }
     }
+  }
+
+  private buildParams(auth: Auth): HTTPClientParams {
+    let requestToken;
+    if (auth.type === "session") {
+      if (
+        typeof kintone === "undefined" ||
+        typeof kintone.getRequestToken !== "function"
+      ) {
+        throw new Error("session authentication must specify a request token");
+      }
+      requestToken = kintone.getRequestToken();
+    }
+    // This params are always sent as a request body.
+    return requestToken
+      ? {
+          __REQUEST_TOKEN__: requestToken
+        }
+      : {};
   }
 }
