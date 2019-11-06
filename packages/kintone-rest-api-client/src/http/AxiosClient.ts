@@ -33,7 +33,6 @@ export class AxiosClient implements HttpClient {
       data = response.data;
     } catch (error) {
       // console.log(error.response);
-
       throw new KintoneAPIError(error.response);
     }
     return data;
@@ -41,25 +40,37 @@ export class AxiosClient implements HttpClient {
 
   async post(path: string, params: any) {
     const requestURL = `${this.url}${path}`;
-    const { data } = await Axios.post(
-      requestURL,
-      { ...params, ...this.params },
-      {
-        headers: this.headers
-      }
-    );
+    let data;
+    try {
+      const response = await Axios.post(
+        requestURL,
+        { ...params, ...this.params },
+        {
+          headers: this.headers
+        }
+      );
+      data = response.data;
+    } catch (error) {
+      throw new KintoneAPIError(error.response);
+    }
     return data;
   }
 
   async put(path: string, params: any) {
     const requestURL = `${this.url}${path}`;
-    const { data } = await Axios.put(
-      requestURL,
-      { ...params, ...this.params },
-      {
-        headers: this.headers
-      }
-    );
+    let data;
+    try {
+      const response = await Axios.put(
+        requestURL,
+        { ...params, ...this.params },
+        {
+          headers: this.headers
+        }
+      );
+      data = response.data;
+    } catch (error) {
+      throw new KintoneAPIError(error.response);
+    }
     return data;
   }
 
@@ -68,9 +79,15 @@ export class AxiosClient implements HttpClient {
       ...params,
       ...this.params
     })}`;
-    const { data } = await Axios.delete(requestURL, {
-      headers: this.headers
-    });
+    let data;
+    try {
+      const response = await Axios.delete(requestURL, {
+        headers: this.headers
+      });
+      data = response.data;
+    } catch (error) {
+      throw new KintoneAPIError(error.response);
+    }
     return data;
   }
 }

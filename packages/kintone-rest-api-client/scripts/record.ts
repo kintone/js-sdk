@@ -15,6 +15,13 @@ export class Record {
       console.log(error);
     }
   }
+  public async getRecordWithError() {
+    try {
+      console.log(await this.client.record.getRecord(99999, RECORD_ID));
+    } catch (error) {
+      console.log(error);
+    }
+  }
   public async deleteRecord() {
     const ids = [21];
     const revisions = ["1"];
