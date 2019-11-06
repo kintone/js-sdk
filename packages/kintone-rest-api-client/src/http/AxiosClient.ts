@@ -1,13 +1,14 @@
 import Axios from "axios";
 import qs from "qs";
-import { HttpClient, HTTPClientParams } from "./HttpClientInterface";
+import { HttpClient } from "./HttpClientInterface";
 
 type Headers = object;
+type Params = { [key: string]: unknown };
 
 export class AxiosClient implements HttpClient {
   private url: string;
   private headers: Headers;
-  params: HTTPClientParams;
+  private params: Params;
 
   constructor({
     url,
@@ -16,7 +17,7 @@ export class AxiosClient implements HttpClient {
   }: {
     url: string;
     headers: Headers;
-    params: HTTPClientParams;
+    params: Params;
   }) {
     this.url = url;
     this.headers = headers;

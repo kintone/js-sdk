@@ -1,7 +1,10 @@
 import { RecordClient } from "./client/RecordClient";
 import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
-import { HTTPClientParams } from "./http/HttpClientInterface";
+
+type HTTPClientParams = {
+  __REQUEST_TOKEN__?: string;
+};
 
 export type PartialAuth =
   | Omit<ApiTokenAuth, "type">
