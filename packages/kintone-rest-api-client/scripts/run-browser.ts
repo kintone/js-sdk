@@ -2,7 +2,7 @@ import { KintoneAPIClient } from "../src/index";
 import { Record } from "./record";
 
 declare const window: {
-  KintoneAPIClient: any;
+  KintoneAPIClientDemo: any;
 };
 
 const client = new KintoneAPIClient({
@@ -10,6 +10,6 @@ const client = new KintoneAPIClient({
   auth: {}
 });
 
-window.KintoneAPIClient = {
+window.KintoneAPIClientDemo = {
   record: new Record(client)
 };
