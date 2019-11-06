@@ -6,7 +6,6 @@ type ErrorResponse = {
 };
 
 export class KintoneAPIError extends Error {
-  name = "KintoneAPIError";
   id: string;
   code: string;
   status: string;
@@ -14,6 +13,8 @@ export class KintoneAPIError extends Error {
 
   constructor(error: ErrorResponse) {
     super(error.data.message);
+
+    this.name = "KintoneAPIError";
     this.id = error.data.id;
     this.code = error.data.code;
     this.status = error.status;
