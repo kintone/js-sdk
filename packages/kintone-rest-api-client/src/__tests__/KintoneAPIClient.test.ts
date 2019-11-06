@@ -7,7 +7,7 @@ describe("KintoneAPIClient", () => {
     originalKintone =
       typeof global.kintone !== "undefined" ? global.kintone : undefined;
     global.kintone = {
-      getRequestToken: () => "duymmy request token"
+      getRequestToken: () => "dummy request token"
     };
   });
   afterEach(() => {
