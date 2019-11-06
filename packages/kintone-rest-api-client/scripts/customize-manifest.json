@@ -6,7 +6,7 @@
       "css": []
   },
   "mobile": {
-      "js": [],
+      "js": ["scripts/dist/run-browser.js"],
       "css": []
   }
 }
