@@ -9,7 +9,11 @@ export class Record {
     this.client = client;
   }
   public async getRecord() {
-    console.log(await this.client.record.getRecord(APP_ID, RECORD_ID));
+    try {
+      console.log(await this.client.record.getRecord(APP_ID, RECORD_ID));
+    } catch (error) {
+      console.log(error);
+    }
   }
   public async deleteRecord() {
     const ids = [21];

@@ -1,3 +1,4 @@
+import { KintoneAPIError } from "./../KintoneAPIError";
 import Axios from "axios";
 import qs from "qs";
 import { HttpClient } from "./HttpClientInterface";
@@ -26,7 +27,15 @@ export class AxiosClient implements HttpClient {
 
   async get(path: string, params: any) {
     const requestURL = `${this.url}${path}?${qs.stringify(params)}`;
-    const { data } = await Axios.get(requestURL, { headers: this.headers });
+    let data;
+    try {
+      const response = await Axios.get(requestURL, { headers: this.headers });
+      data = response.data;
+    } catch (error) {
+      // console.log(error.response);
+
+      throw new KintoneAPIError(error.response);
+    }
     return data;
   }
 
