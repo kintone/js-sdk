@@ -1,3 +1,4 @@
+import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
 import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
@@ -41,6 +42,7 @@ type KintoneAuthHeader =
 
 export class KintoneAPIClient {
   record: RecordClient;
+  app: AppClient;
   private headers: KintoneAuthHeader;
 
   constructor({
@@ -63,6 +65,7 @@ export class KintoneAPIClient {
     });
 
     this.record = new RecordClient(httpClient);
+    this.app = new AppClient(httpClient);
   }
 
   public getHeaders() {
