@@ -22,4 +22,19 @@ export class App {
       console.log(error);
     }
   }
+
+  public async addFormFields() {
+    const properties = {
+      fieldCode: {
+        type: "SINGLE_LINE_TEXT",
+        code: "fieldCode",
+        label: "Text Field"
+      }
+    };
+    try {
+      console.log(await this.client.app.addFormFields(APP_ID, properties));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

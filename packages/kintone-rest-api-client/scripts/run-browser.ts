@@ -1,5 +1,6 @@
 import { KintoneAPIClient } from "../src/index";
 import { Record } from "./record";
+import { App } from "./app";
 
 declare const window: {
   KintoneAPIClientDemo: any;
@@ -11,5 +12,6 @@ const client = new KintoneAPIClient({
 });
 
 window.KintoneAPIClientDemo = {
-  record: new Record(client)
+  record: new Record(client),
+  app: new App(client)
 };
