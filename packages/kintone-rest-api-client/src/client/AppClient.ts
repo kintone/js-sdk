@@ -22,4 +22,13 @@ export class AppClient {
     const path = `/k/v1${preview ? "/preview" : ""}/app/form/fields.json`;
     return this.client.get(path, { app, lang });
   }
+
+  public async addFormFields(
+    app: AppID,
+    properties: object,
+    revision?: number
+  ): Promise<{ revision: string }> {
+    const path = "/k/v1/preview/app/form/fields.json";
+    return this.client.post(path, { app, properties, revision });
+  }
 }
