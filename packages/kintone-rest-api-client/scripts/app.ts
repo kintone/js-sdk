@@ -37,4 +37,18 @@ export class App {
       console.log(error);
     }
   }
+
+  public async updateFormFields() {
+    const properties = {
+      fieldCode: {
+        type: "SINGLE_LINE_TEXT",
+        label: "Text Field 2"
+      }
+    };
+    try {
+      console.log(await this.client.app.updateFormFields(APP_ID, properties));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
