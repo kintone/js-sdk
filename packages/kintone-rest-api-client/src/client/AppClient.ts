@@ -40,4 +40,13 @@ export class AppClient {
     const path = "/k/v1/preview/app/form/fields.json";
     return this.client.put(path, { app, properties, revision });
   }
+
+  public async deleteFormFields(
+    app: AppID,
+    fields: string[],
+    revision?: number
+  ) {
+    const path = "/k/v1/preview/app/form/fields.json";
+    return this.client.delete(path, { app, fields, revision });
+  }
 }
