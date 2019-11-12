@@ -20,9 +20,10 @@ describe("AppClient", () => {
   });
   describe("getFormFields", () => {
     const lang = "default";
+    const params = { app: APP_ID, lang } as const;
     describe("without preview", () => {
       beforeEach(() => {
-        appClient.getFormFields(APP_ID, lang);
+        appClient.getFormFields(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/form/fields.json");
@@ -31,15 +32,12 @@ describe("AppClient", () => {
         expect(mockClient.getLogs()[0].method).toBe("get");
       });
       it("should pass app and lang as a param to the http client", () => {
-        expect(mockClient.getLogs()[0].params).toEqual({
-          app: APP_ID,
-          lang
-        });
+        expect(mockClient.getLogs()[0].params).toEqual(params);
       });
     });
     describe("preview: true", () => {
       beforeEach(() => {
-        appClient.getFormFields(APP_ID, lang, true);
+        appClient.getFormFields({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -50,17 +48,15 @@ describe("AppClient", () => {
         expect(mockClient.getLogs()[0].method).toBe("get");
       });
       it("should pass app and lang as a param to the http client", () => {
-        expect(mockClient.getLogs()[0].params).toEqual({
-          app: APP_ID,
-          lang
-        });
+        expect(mockClient.getLogs()[0].params).toEqual(params);
       });
     });
   });
 
   describe("addFormFields", () => {
+    const params = { app: APP_ID, properties, revision: REVISION };
     beforeEach(() => {
-      appClient.addFormFields(APP_ID, properties, REVISION);
+      appClient.addFormFields(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -71,17 +67,14 @@ describe("AppClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("post");
     });
     it("should pass app, properties and revision as a param to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual({
-        app: APP_ID,
-        properties,
-        revision: REVISION
-      });
+      expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
 
   describe("updateFormFields", () => {
+    const params = { app: APP_ID, properties, revision: REVISION };
     beforeEach(() => {
-      appClient.updateFormFields(APP_ID, properties, REVISION);
+      appClient.updateFormFields(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -92,18 +85,15 @@ describe("AppClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
     it("should pass app, properties and revision to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual({
-        app: APP_ID,
-        properties,
-        revision: REVISION
-      });
+      expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
 
   describe("deleteRecords", () => {
     const fields = ["fieldCode1", "fieldCode2"];
+    const params = { app: APP_ID, fields, revision: REVISION };
     beforeEach(() => {
-      appClient.deleteFormFields(APP_ID, fields, REVISION);
+      appClient.deleteFormFields(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -114,11 +104,7 @@ describe("AppClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("delete");
     });
     it("should pass app, fields, and revision to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual({
-        app: APP_ID,
-        fields,
-        revision: REVISION
-      });
+      expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
 });

@@ -9,7 +9,7 @@ export class App {
   }
   public async getFormFields() {
     try {
-      console.log(await this.client.app.getFormFields(APP_ID));
+      console.log(await this.client.app.getFormFields({ app: APP_ID }));
     } catch (error) {
       console.log(error);
     }
@@ -17,7 +17,9 @@ export class App {
 
   public async getFormFieldsPreview() {
     try {
-      console.log(await this.client.app.getFormFields(APP_ID, "default", true));
+      console.log(
+        await this.client.app.getFormFields({ app: APP_ID, preview: true })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -32,7 +34,9 @@ export class App {
       }
     };
     try {
-      console.log(await this.client.app.addFormFields(APP_ID, properties));
+      console.log(
+        await this.client.app.addFormFields({ app: APP_ID, properties })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +50,9 @@ export class App {
       }
     };
     try {
-      console.log(await this.client.app.updateFormFields(APP_ID, properties));
+      console.log(
+        await this.client.app.updateFormFields({ app: APP_ID, properties })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +62,9 @@ export class App {
     const fields = ["fieldCode"];
 
     try {
-      console.log(await this.client.app.deleteFormFields(APP_ID, fields));
+      console.log(
+        await this.client.app.deleteFormFields({ app: APP_ID, fields })
+      );
     } catch (error) {
       console.log(error);
     }

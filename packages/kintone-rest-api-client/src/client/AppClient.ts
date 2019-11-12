@@ -14,39 +14,40 @@ export class AppClient {
     this.client = client;
   }
 
-  public async getFormFields<T extends Properties>(
-    app: AppID,
-    lang?: Lang,
-    preview?: boolean
-  ): Promise<{ properties: T; revision: string }> {
+  public async getFormFields<T extends Properties>(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{ properties: T; revision: string }> {
+    const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/app/form/fields.json`;
-    return this.client.get(path, { app, lang });
+    return this.client.get(path, { ...rest });
   }
 
-  public async addFormFields(
-    app: AppID,
-    properties: object,
-    revision?: number
-  ): Promise<{ revision: string }> {
+  public async addFormFields(params: {
+    app: AppID;
+    properties: object;
+    revision?: number;
+  }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/app/form/fields.json";
-    return this.client.post(path, { app, properties, revision });
+    return this.client.post(path, params);
   }
 
-  public async updateFormFields(
-    app: AppID,
-    properties: object,
-    revision?: number
-  ): Promise<{ revision: string }> {
+  public async updateFormFields(params: {
+    app: AppID;
+    properties: object;
+    revision?: number;
+  }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/app/form/fields.json";
-    return this.client.put(path, { app, properties, revision });
+    return this.client.put(path, params);
   }
 
-  public async deleteFormFields(
-    app: AppID,
-    fields: string[],
-    revision?: number
-  ) {
+  public async deleteFormFields(params: {
+    app: AppID;
+    fields: string[];
+    revision?: number;
+  }) {
     const path = "/k/v1/preview/app/form/fields.json";
-    return this.client.delete(path, { app, fields, revision });
+    return this.client.delete(path, params);
   }
 }
