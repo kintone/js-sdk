@@ -51,4 +51,14 @@ export class App {
       console.log(error);
     }
   }
+
+  public async deleteFormFields() {
+    const fields = ["fieldCode"];
+
+    try {
+      console.log(await this.client.app.deleteFormFields(APP_ID, fields));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
