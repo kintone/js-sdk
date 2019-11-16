@@ -66,13 +66,11 @@ export function processTemplateFile(
         })
       )
     );
+  } else if (fs.statSync(filePath).isDirectory()) {
+    fs.mkdirSync(destFilePath);
   } else {
-    if (fs.statSync(filePath).isDirectory()) {
-      fs.mkdirSync(destFilePath);
-    } else {
-      // fs.copyFileSync is only available <= v8.5.0
-      // fs.copyFileSync(filePath, destFilePath);
-      fs.writeFileSync(destFilePath, fs.readFileSync(filePath));
-    }
+    // fs.copyFileSync is only available <= v8.5.0
+    // fs.copyFileSync(filePath, destFilePath);
+    fs.writeFileSync(destFilePath, fs.readFileSync(filePath));
   }
 }
