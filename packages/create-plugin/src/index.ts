@@ -17,10 +17,9 @@ import { buildQuestions } from "./qa";
  */
 function verifyOutputDirectory(outputDirectory: string, lang: Lang): void {
   if (fs.existsSync(outputDirectory)) {
-    console.error(
+    throw new Error(
       `${outputDirectory} ${getMessage(lang, "Error_alreadyExists")}`
     );
-    process.exit(1);
   }
 }
 
