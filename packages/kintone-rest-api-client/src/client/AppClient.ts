@@ -7,6 +7,8 @@ type Properties = {
   [fieldCode: string]: any;
 };
 
+type Layout = object[];
+
 export class AppClient {
   private client: HttpClient;
 
@@ -51,10 +53,10 @@ export class AppClient {
     return this.client.delete(path, params);
   }
 
-  public async getFormLayout(params: {
+  public async getFormLayout<T extends Layout>(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ layout: object[]; revision: string }> {
+  }): Promise<{ layout: T; revision: string }> {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/app/form/layout.json`;
     return this.client.get(path, { ...rest });
