@@ -50,4 +50,13 @@ export class AppClient {
     const path = "/k/v1/preview/app/form/fields.json";
     return this.client.delete(path, params);
   }
+
+  public async getFormLayout(params: {
+    app: AppID;
+    preview?: boolean;
+  }): Promise<{ layout: object[]; revision: string }> {
+    const { preview, ...rest } = params;
+    const path = `/k/v1${preview ? "/preview" : ""}/app/form/layout.json`;
+    return this.client.get(path, { ...rest });
+  }
 }
