@@ -69,4 +69,22 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getFormLayout() {
+    try {
+      console.log(await this.client.app.getFormLayout({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getFormLayoutPreview() {
+    try {
+      console.log(
+        await this.client.app.getFormLayout({ app: APP_ID, preview: true })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
