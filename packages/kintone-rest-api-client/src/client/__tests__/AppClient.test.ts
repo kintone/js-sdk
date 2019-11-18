@@ -14,6 +14,30 @@ describe("AppClient", () => {
     }
   };
 
+  const layout = [
+    {
+      type: "ROW",
+      fields: [
+        {
+          type: "SINGLE_LINE_TEXT",
+          code: "fieldCode1",
+          size: { width: "100" }
+        }
+      ]
+    },
+    {
+      type: "SUBTABLE",
+      code: "tableFieldCode",
+      fields: [
+        {
+          type: "MULTI_LINE_TEXT",
+          code: "fieldCode2",
+          size: { width: "150", innerHeight: "200" }
+        }
+      ]
+    }
+  ];
+
   beforeEach(() => {
     mockClient = new MockClient();
     appClient = new AppClient(mockClient);
@@ -104,6 +128,59 @@ describe("AppClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("delete");
     });
     it("should pass app, fields, and revision to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("getFormLayout", () => {
+    const params = { app: APP_ID };
+    describe("without preview", () => {
+      beforeEach(() => {
+        appClient.getFormLayout(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/form/layout.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+    describe("preview: true", () => {
+      beforeEach(() => {
+        appClient.getFormLayout({ ...params, preview: true });
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/preview/app/form/layout.json"
+        );
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+  });
+
+  describe("updateFormLayout", () => {
+    const params = { app: APP_ID, layout, revision: REVISION };
+
+    beforeEach(() => {
+      appClient.updateFormLayout(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/preview/app/form/layout.json"
+      );
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app, layout and revision to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
