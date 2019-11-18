@@ -15,38 +15,37 @@ export class RecordClient {
     this.client = client;
   }
 
-  public async getRecord<T extends Record>(
-    app: AppID,
-    id: RecordID
-  ): Promise<{ record: T }> {
+  public async getRecord<T extends Record>(params: {
+    app: AppID;
+    id: RecordID;
+  }): Promise<{ record: T }> {
     const path = "/k/v1/record.json";
-    return this.client.get(path, { app, id });
+    return this.client.get(path, params);
   }
 
-  public async addRecord(
-    app: AppID,
-    record?: object
-  ): Promise<{ id: RecordID; revision: string }> {
+  public async addRecord(params: {
+    app: AppID;
+    record?: object;
+  }): Promise<{ id: RecordID; revision: Revision }> {
     const path = "/k/v1/record.json";
-    return this.client.post(path, { app, record });
+    return this.client.post(path, params);
   }
 
   public async updateRecord(
-    app: AppID,
     params:
-      | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
-  ): Promise<{ revision: string }> {
+      | { app: AppID; id: RecordID; record?: object; revision?: Revision }
+      | { app: AppID; updateKey: object; record?: object; revision?: Revision }
+  ): Promise<{ revision: Revision }> {
     const path = "/k/v1/record.json";
-    return this.client.put(path, { app, ...params });
+    return this.client.put(path, params);
   }
 
-  public async deleteRecords(
-    app: AppID,
-    ids: RecordID[],
-    revisions?: Revision[]
-  ): Promise<{}> {
+  public async deleteRecords(params: {
+    app: AppID;
+    ids: RecordID[];
+    revisions?: Revision[];
+  }): Promise<{}> {
     const path = "/k/v1/records.json";
-    return this.client.delete(path, { app, ids, revisions });
+    return this.client.delete(path, params);
   }
 }

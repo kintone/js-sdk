@@ -10,14 +10,18 @@ export class Record {
   }
   public async getRecord() {
     try {
-      console.log(await this.client.record.getRecord(APP_ID, RECORD_ID));
+      console.log(
+        await this.client.record.getRecord({ app: APP_ID, id: RECORD_ID })
+      );
     } catch (error) {
       console.log(error);
     }
   }
   public async getRecordWithError() {
     try {
-      console.log(await this.client.record.getRecord(99999, RECORD_ID));
+      console.log(
+        await this.client.record.getRecord({ app: 99999, id: RECORD_ID })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -25,7 +29,9 @@ export class Record {
   public async deleteRecord() {
     const ids = [21];
     const revisions = ["1"];
-    console.log(await this.client.record.deleteRecords(APP_ID, ids, revisions));
+    console.log(
+      await this.client.record.deleteRecords({ app: APP_ID, ids, revisions })
+    );
   }
   public async addRecord() {
     // const code = "field code"
@@ -35,10 +41,13 @@ export class Record {
     //     value: "field value"
     //   }
     // };
-    console.log(await this.client.record.addRecord(APP_ID /* , record*/));
+    console.log(
+      await this.client.record.addRecord({ app: APP_ID /* , record*/ })
+    );
   }
   public async updateRecord() {
     const params = {
+      app: APP_ID,
       id: 22,
       record: {
         Customer: {
@@ -46,6 +55,6 @@ export class Record {
         }
       }
     };
-    console.log(await this.client.record.updateRecord(APP_ID, params));
+    console.log(await this.client.record.updateRecord(params));
   }
 }

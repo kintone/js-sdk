@@ -17,8 +17,9 @@ describe("RecordClient", () => {
     recordClient = new RecordClient(mockClient);
   });
   describe("getRecord", () => {
+    const params = { app: APP_ID, id: RECORD_ID };
     beforeEach(() => {
-      recordClient.getRecord(APP_ID, RECORD_ID);
+      recordClient.getRecord(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
@@ -27,16 +28,14 @@ describe("RecordClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("get");
     });
     it("should pass app and id as a param to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual({
-        app: APP_ID,
-        id: RECORD_ID
-      });
+      expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
 
   describe("addRecord", () => {
+    const params = { app: APP_ID, record };
     beforeEach(() => {
-      recordClient.addRecord(APP_ID, record);
+      recordClient.addRecord(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
@@ -45,18 +44,19 @@ describe("RecordClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("post");
     });
     it("should pass app and record object as a param to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual({ app: APP_ID, record });
+      expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
 
   describe("updateRecord", () => {
     const params = {
+      app: APP_ID,
       id: RECORD_ID,
       record,
       revision: 5
     };
     beforeEach(() => {
-      recordClient.updateRecord(APP_ID, params);
+      recordClient.updateRecord(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
@@ -65,18 +65,20 @@ describe("RecordClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
     it("should pass app, id, record, and revision to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual({
-        app: APP_ID,
-        ...params
-      });
+      expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
 
   describe("deleteRecords", () => {
     const ids = [10, 20, 30];
     const revisions = [1, 2, 3];
+    const params = {
+      app: APP_ID,
+      ids,
+      revisions
+    };
     beforeEach(() => {
-      recordClient.deleteRecords(APP_ID, ids, revisions);
+      recordClient.deleteRecords(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
@@ -85,11 +87,7 @@ describe("RecordClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("delete");
     });
     it("should pass app, ids, and revisions to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual({
-        app: APP_ID,
-        ids,
-        revisions
-      });
+      expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
 });
