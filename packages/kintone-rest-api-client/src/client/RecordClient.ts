@@ -26,7 +26,7 @@ export class RecordClient {
   public async addRecord(
     app: AppID,
     record?: object
-  ): Promise<{ id: RecordID; revision: Revision }> {
+  ): Promise<{ id: RecordID; revision: string }> {
     const path = "/k/v1/record.json";
     return this.client.post(path, { app, record });
   }
@@ -36,7 +36,7 @@ export class RecordClient {
     params:
       | { id: RecordID; record?: object; revision?: Revision }
       | { updateKey: object; record?: object; revision?: Revision }
-  ): Promise<{ revision: Revision }> {
+  ): Promise<{ revision: string }> {
     const path = "/k/v1/record.json";
     return this.client.put(path, { app, ...params });
   }

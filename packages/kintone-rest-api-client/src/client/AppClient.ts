@@ -1,6 +1,8 @@
 import { HttpClient } from "../http";
 
 type AppID = string | number;
+type Revision = string | number;
+
 type Lang = "ja" | "en" | "zh" | "user" | "default";
 
 type Properties = {
@@ -29,7 +31,7 @@ export class AppClient {
   public async addFormFields(params: {
     app: AppID;
     properties: object;
-    revision?: number;
+    revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/app/form/fields.json";
     return this.client.post(path, params);
@@ -38,7 +40,7 @@ export class AppClient {
   public async updateFormFields(params: {
     app: AppID;
     properties: object;
-    revision?: number;
+    revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/app/form/fields.json";
     return this.client.put(path, params);
@@ -47,7 +49,7 @@ export class AppClient {
   public async deleteFormFields(params: {
     app: AppID;
     fields: string[];
-    revision?: number;
+    revision?: Revision;
   }) {
     const path = "/k/v1/preview/app/form/fields.json";
     return this.client.delete(path, params);
@@ -65,7 +67,7 @@ export class AppClient {
   public async updateFormLayout(params: {
     app: AppID;
     layout: object[];
-    revision?: number;
+    revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/app/form/layout.json";
     return this.client.put(path, params);
