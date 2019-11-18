@@ -87,4 +87,26 @@ export class App {
       console.log(error);
     }
   }
+
+  public async updateFormLayout() {
+    try {
+      const { layout } = await this.client.app.getFormLayout({
+        app: APP_ID,
+        preview: true
+      });
+      const lastRow = layout.pop();
+      if (lastRow) {
+        const newLayout = [lastRow, ...layout];
+
+        console.log(
+          await this.client.app.updateFormLayout({
+            app: APP_ID,
+            layout: newLayout
+          })
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
