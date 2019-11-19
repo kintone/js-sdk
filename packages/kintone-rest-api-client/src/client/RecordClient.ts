@@ -1,8 +1,5 @@
+import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
-
-type AppID = string | number;
-type RecordID = string | number;
-type Revision = string | number;
 
 type Record = {
   [fieldCode: string]: any;

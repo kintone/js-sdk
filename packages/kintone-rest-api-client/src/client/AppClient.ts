@@ -1,7 +1,5 @@
+import { AppID, Revision } from "../KintoneTypes";
 import { HttpClient } from "../http";
-
-type AppID = string | number;
-type Revision = string | number;
 
 type Lang = "ja" | "en" | "zh" | "user" | "default";
 
