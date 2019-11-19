@@ -109,4 +109,41 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getDeployStatus() {
+    try {
+      console.log(
+        await this.client.app.getDeployStatus({
+          apps: [APP_ID]
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async deployApp() {
+    try {
+      console.log(
+        await this.client.app.deployApp({
+          apps: [{ app: APP_ID }]
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async revertApp() {
+    try {
+      console.log(
+        await this.client.app.deployApp({
+          apps: [{ app: APP_ID }],
+          revert: true
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
