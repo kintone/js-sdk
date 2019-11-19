@@ -9,6 +9,8 @@ type Properties = {
 
 type Layout = object[];
 
+type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
+
 export class AppClient {
   private client: HttpClient;
 
@@ -69,5 +71,20 @@ export class AppClient {
   }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/app/form/layout.json";
     return this.client.put(path, params);
+  }
+
+  public async getDeployStatus(params: {
+    apps: AppID[];
+  }): Promise<{ apps: Array<{ app: string; status: DeployStatus }> }> {
+    const path = "/k/v1/preview/app/deploy.json";
+    return this.client.get(path, params);
+  }
+
+  public async deployApp(params: {
+    apps: Array<{ app: AppID; revision?: Revision }>;
+    revert?: boolean;
+  }): Promise<{}> {
+    const path = "/k/v1/preview/app/deploy.json";
+    return this.client.post(path, params);
   }
 }
