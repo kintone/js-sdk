@@ -37,6 +37,17 @@ export class RecordClient {
     return this.client.put(path, params);
   }
 
+  // TODO: `records` type in return type should be filtered by `fields`.
+  public async getRecords<T extends Record>(params: {
+    app: AppID;
+    fields?: string[];
+    query?: string;
+    totalCount?: boolean;
+  }): Promise<{ records: T[]; totalCount: string | null }> {
+    const path = "/k/v1/records.json";
+    return this.client.get(path, params);
+  }
+
   public async deleteRecords(params: {
     app: AppID;
     ids: RecordID[];

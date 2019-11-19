@@ -27,6 +27,7 @@ export class AxiosClient implements HttpClient {
 
   async get(path: string, params: any) {
     const requestURL = `${this.url}${path}?${qs.stringify(params)}`;
+    // console.log(requestURL);
     let data;
     try {
       const response = await Axios.get(requestURL, { headers: this.headers });
