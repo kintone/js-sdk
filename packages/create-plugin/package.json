@@ -27,7 +27,7 @@
     "@cybozu/eslint-config": "^8.0.0",
     "@types/glob": "^7.1.1",
     "@types/inquirer": "^6.5.0",
-    "@types/lodash": "^4.14.148",
+    "@types/lodash": "^4.14.149",
     "@types/mocha": "^5.2.7",
     "@types/node": "^9.6.55",
     "@types/node-rsa": "^1.0.0",
