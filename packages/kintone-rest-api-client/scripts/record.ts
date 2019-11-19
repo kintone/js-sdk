@@ -57,4 +57,14 @@ export class Record {
     };
     console.log(await this.client.record.updateRecord(params));
   }
+
+  public async getRecords() {
+    console.log(
+      await this.client.record.getRecords({
+        app: APP_ID,
+        fields: [],
+        totalCount: true
+      })
+    );
+  }
 }
