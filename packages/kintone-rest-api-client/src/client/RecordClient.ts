@@ -48,12 +48,23 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
-  public async addRecords<T extends Record>(params: {
+  public async addRecords(params: {
     app: AppID;
     records: Record[];
-  }): Promise<{ ids: RecordID[]; revisions: string[] }> {
+  }): Promise<{ ids: string[]; revisions: string[] }> {
     const path = "/k/v1/records.json";
     return this.client.post(path, params);
+  }
+
+  public async updateRecords(params: {
+    app: AppID;
+    records: Array<
+      | { id: RecordID; record?: object; revision?: Revision }
+      | { updateKey: object; record?: object; revision?: Revision }
+    >;
+  }): Promise<Array<{ id: string; revision: string }>> {
+    const path = "/k/v1/records.json";
+    return this.client.put(path, params);
   }
 
   public async deleteRecords(params: {
