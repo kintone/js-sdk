@@ -76,4 +76,33 @@ export class Record {
       })
     );
   }
+
+  public async updateRecords() {
+    const params = {
+      app: APP_ID,
+      records: [
+        {
+          id: 8,
+          record: {
+            Customer: {
+              value: "example"
+            }
+          }
+        },
+        {
+          updateKey: {
+            field: "Code",
+            value: "Case1"
+          },
+          record: {
+            Customer: {
+              value: "example2"
+            }
+          }
+        }
+      ]
+    };
+
+    console.log(await this.client.record.updateRecords(params));
+  }
 }
