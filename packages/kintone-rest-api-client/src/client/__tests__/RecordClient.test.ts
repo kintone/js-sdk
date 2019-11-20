@@ -6,8 +6,9 @@ describe("RecordClient", () => {
   let recordClient: RecordClient;
   const APP_ID = 1;
   const RECORD_ID = 2;
+  const fieldCode = "Customer";
   const record = {
-    Customer: {
+    [fieldCode]: {
       value: "ABC Corporation"
     }
   };
@@ -27,7 +28,7 @@ describe("RecordClient", () => {
     it("should send a get request", () => {
       expect(mockClient.getLogs()[0].method).toBe("get");
     });
-    it("should pass app and id as a param to the http client", () => {
+    it("should pass app and id to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
@@ -43,7 +44,7 @@ describe("RecordClient", () => {
     it("should send a post request", () => {
       expect(mockClient.getLogs()[0].method).toBe("post");
     });
-    it("should pass app and record object as a param to the http client", () => {
+    it("should pass app and record object to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
@@ -60,6 +61,62 @@ describe("RecordClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app, id, record, and revision to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("getRecords", () => {
+    const params = {
+      app: APP_ID,
+      fields: [fieldCode],
+      query: `${fieldCode} = "foo"`,
+      totalCount: true
+    };
+    beforeEach(() => {
+      recordClient.getRecords(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
+    });
+    it("should send a get request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("get");
+    });
+    it("should pass app, fields, query and totalCount to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("addRecords", () => {
+    const params = { app: APP_ID, records: [record] };
+    beforeEach(() => {
+      recordClient.addRecords(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
+    });
+    it("should send a post request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass app and records to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("updateRecords", () => {
+    const params = {
+      app: APP_ID,
+      records: [{ id: RECORD_ID, record, revision: 5 }]
+    };
+    beforeEach(() => {
+      recordClient.updateRecords(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
     });
     it("should send a put request", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
