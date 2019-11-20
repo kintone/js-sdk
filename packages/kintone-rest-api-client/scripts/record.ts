@@ -67,4 +67,13 @@ export class Record {
       })
     );
   }
+
+  public async addRecords() {
+    console.log(
+      await this.client.record.addRecords({
+        app: APP_ID,
+        records: [{}, {}, {}]
+      })
+    );
+  }
 }
