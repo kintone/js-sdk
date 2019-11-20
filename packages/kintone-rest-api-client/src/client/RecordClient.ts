@@ -48,6 +48,14 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
+  public async addRecords<T extends Record>(params: {
+    app: AppID;
+    records: Record[];
+  }): Promise<{ ids: RecordID[]; revisions: string[] }> {
+    const path = "/k/v1/records.json";
+    return this.client.post(path, params);
+  }
+
   public async deleteRecords(params: {
     app: AppID;
     ids: RecordID[];
