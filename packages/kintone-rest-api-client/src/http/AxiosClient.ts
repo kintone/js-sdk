@@ -7,26 +7,26 @@ type Headers = object;
 type Params = { [key: string]: unknown };
 
 export class AxiosClient implements HttpClient {
-  private url: string;
+  private host: string;
   private headers: Headers;
   private params: Params;
 
   constructor({
-    url,
+    host,
     headers,
     params
   }: {
-    url: string;
+    host: string;
     headers: Headers;
     params: Params;
   }) {
-    this.url = url;
+    this.host = host;
     this.headers = headers;
     this.params = params;
   }
 
   async get(path: string, params: any) {
-    const requestURL = `${this.url}${path}?${qs.stringify(params)}`;
+    const requestURL = `${this.host}${path}?${qs.stringify(params)}`;
     // console.log(requestURL);
     let data;
     try {
@@ -40,7 +40,7 @@ export class AxiosClient implements HttpClient {
   }
 
   async post(path: string, params: any) {
-    const requestURL = `${this.url}${path}`;
+    const requestURL = `${this.host}${path}`;
     let data;
     try {
       const response = await Axios.post(
@@ -58,7 +58,7 @@ export class AxiosClient implements HttpClient {
   }
 
   async put(path: string, params: any) {
-    const requestURL = `${this.url}${path}`;
+    const requestURL = `${this.host}${path}`;
     let data;
     try {
       const response = await Axios.put(
@@ -76,7 +76,7 @@ export class AxiosClient implements HttpClient {
   }
 
   async delete(path: string, params: any) {
-    const requestURL = `${this.url}${path}?${qs.stringify({
+    const requestURL = `${this.host}${path}?${qs.stringify({
       ...params,
       ...this.params
     })}`;
