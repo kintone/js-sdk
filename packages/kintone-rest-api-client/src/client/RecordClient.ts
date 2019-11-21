@@ -75,4 +75,29 @@ export class RecordClient {
     const path = "/k/v1/records.json";
     return this.client.delete(path, params);
   }
+
+  public async createCursor(params: {
+    app: AppID;
+    fields?: string[];
+    query?: string;
+    size?: number | string;
+  }): Promise<{ id: string; totalCount: string }> {
+    const path = "/k/v1/records/cursor.json";
+    return this.client.post(path, params);
+  }
+
+  public async getRecordsByCursor(params: {
+    id: string;
+  }): Promise<{
+    records: Record[];
+    next: boolean;
+  }> {
+    const path = "/k/v1/records/cursor.json";
+    return this.client.get(path, params);
+  }
+
+  public async deleteCursor(params: { id: string }): Promise<{}> {
+    const path = "/k/v1/records/cursor.json";
+    return this.client.delete(path, params);
+  }
 }
