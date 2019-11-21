@@ -46,20 +46,18 @@ export class KintoneAPIClient {
   private headers: KintoneAuthHeader;
 
   constructor({
-    subdomain,
+    host,
     auth: partialAuth
   }: {
-    subdomain: string;
+    host: string;
     auth: PartialAuth;
   }) {
-    const url = `https://${subdomain}.cybozu.com/`;
-
     const auth = this.buildAuth(partialAuth);
     const params = this.buildParams(auth);
     this.headers = this.buildHeaders(auth);
 
     const httpClient = new DefaultHttpClient({
-      url,
+      host,
       headers: this.headers,
       params
     });
