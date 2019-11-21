@@ -105,4 +105,24 @@ export class Record {
 
     console.log(await this.client.record.updateRecords(params));
   }
+
+  public async createCursor() {
+    console.log(
+      await this.client.record.createCursor({
+        app: APP_ID,
+        fields: ["Customer", "Person"],
+        size: 10
+      })
+    );
+  }
+
+  public async getRecordsByCursor() {
+    const cursorId = "<shuld set a cursor id>";
+    console.log(await this.client.record.getRecordsByCursor({ id: cursorId }));
+  }
+
+  public async deleteCursor() {
+    const cursorId = "<shuld set a cursor id>";
+    console.log(await this.client.record.deleteCursor({ id: cursorId }));
+  }
 }
