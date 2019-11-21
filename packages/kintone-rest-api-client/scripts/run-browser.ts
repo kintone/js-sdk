@@ -7,7 +7,7 @@ declare const window: {
 };
 
 const client = new KintoneAPIClient({
-  subdomain: process.env.KINTONE_SUBDOMAIN || "",
+  host: process.env.KINTONE_HOST || "",
   auth: {}
 });
 

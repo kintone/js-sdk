@@ -3,7 +3,7 @@ import { Record } from "./record";
 import { App } from "./app";
 
 const client = new KintoneAPIClient({
-  subdomain: process.env.KINTONE_SUBDOMAIN || "",
+  host: process.env.KINTONE_HOST || "",
   auth: {
     apiToken: process.env.KINTONE_API_TOKEN || "",
     username: process.env.KINTONE_USERNAME || "",
