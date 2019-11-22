@@ -117,12 +117,12 @@ export class Record {
   }
 
   public async getRecordsByCursor() {
-    const cursorId = "<shuld set a cursor id>";
+    const cursorId = "<should set a cursor id>";
     console.log(await this.client.record.getRecordsByCursor({ id: cursorId }));
   }
 
   public async deleteCursor() {
-    const cursorId = "<shuld set a cursor id>";
+    const cursorId = "<should set a cursor id>";
     console.log(await this.client.record.deleteCursor({ id: cursorId }));
   }
 }
