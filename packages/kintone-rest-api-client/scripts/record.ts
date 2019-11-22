@@ -125,4 +125,21 @@ export class Record {
     const cursorId = "<should set a cursor id>";
     console.log(await this.client.record.deleteCursor({ id: cursorId }));
   }
+
+  public async addComment() {
+    const params = {
+      app: APP_ID,
+      record: RECORD_ID,
+      comment: {
+        text: "Hello",
+        mentions: [
+          {
+            code: "Administrator",
+            type: "USER" as const
+          }
+        ]
+      }
+    };
+    console.log(await this.client.record.addComment(params));
+  }
 }
