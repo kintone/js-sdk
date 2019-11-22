@@ -142,4 +142,13 @@ export class Record {
     };
     console.log(await this.client.record.addComment(params));
   }
+
+  public async deleteComment() {
+    const params = {
+      app: APP_ID,
+      record: RECORD_ID,
+      comment: 1
+    };
+    console.log(await this.client.record.deleteComment(params));
+  }
 }
