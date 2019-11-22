@@ -15,7 +15,7 @@ describe("KintoneAPIClient", () => {
   });
   describe("constructor", () => {
     describe("Header", () => {
-      const host = "example.cybozu.com";
+      const host = "https://example.com";
       it("ApiToken auth", () => {
         const API_TOKEN = "ApiToken";
         const auth = {
