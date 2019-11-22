@@ -5,6 +5,16 @@ type Record = {
   [fieldCode: string]: any;
 };
 
+type Mention = {
+  code: string;
+  type: "USER" | "GROUP" | "ORGANIZATION";
+};
+
+type Comment = {
+  text: string;
+  mentions?: Mention[];
+};
+
 export class RecordClient {
   private client: HttpClient;
 
@@ -99,5 +109,14 @@ export class RecordClient {
   public async deleteCursor(params: { id: string }): Promise<{}> {
     const path = "/k/v1/records/cursor.json";
     return this.client.delete(path, params);
+  }
+
+  public async addComment(params: {
+    app: AppID;
+    record: RecordID;
+    comment: Comment;
+  }): Promise<{ id: string }> {
+    const path = "/k/v1/record/comment.json";
+    return this.client.post(path, params);
   }
 }
