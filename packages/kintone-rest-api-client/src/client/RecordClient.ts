@@ -15,6 +15,8 @@ type Comment = {
   mentions?: Mention[];
 };
 
+type CommentID = string | number;
+
 export class RecordClient {
   private client: HttpClient;
 
@@ -118,5 +120,14 @@ export class RecordClient {
   }): Promise<{ id: string }> {
     const path = "/k/v1/record/comment.json";
     return this.client.post(path, params);
+  }
+
+  public async deleteComment(params: {
+    app: AppID;
+    record: RecordID;
+    comment: CommentID;
+  }): Promise<{}> {
+    const path = "/k/v1/record/comment.json";
+    return this.client.delete(path, params);
   }
 }
