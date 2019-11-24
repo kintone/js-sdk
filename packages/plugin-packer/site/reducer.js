@@ -39,6 +39,7 @@ const getInitialState = () => ({
  * @param {{type: string, payload: *}} action
  * @return {Object}
  */
+// eslint-disable-next-line default-param-last
 const reducer = (state = getInitialState(), action) => {
   switch (action.type) {
     case UPLOAD_PPK_START: {
