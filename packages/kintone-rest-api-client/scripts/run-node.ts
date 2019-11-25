@@ -1,6 +1,7 @@
 import { KintoneAPIClient } from "../src/index";
 import { Record } from "./record";
 import { App } from "./app";
+import { BulkRequest } from "./bulkRequest";
 
 const client = new KintoneAPIClient({
   host: process.env.KINTONE_HOST || "",
@@ -11,8 +12,14 @@ const client = new KintoneAPIClient({
   }
 });
 
-// @ts-ignore
-({
-  record: new Record(client),
-  app: new App(client)
-}[process.argv[2]][process.argv[3]]());
+switch (process.argv[2]) {
+  case "bulkRequest":
+    new BulkRequest(client).run();
+    break;
+  default:
+    // @ts-ignore
+    ({
+      record: new Record(client),
+      app: new App(client)
+    }[process.argv[2]][process.argv[3]]());
+}
