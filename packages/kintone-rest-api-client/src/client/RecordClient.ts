@@ -18,9 +18,7 @@ type Comment = {
     code: string;
     name: string;
   };
-  mentions?: Mention[];
-  older: boolean;
-  newer: boolean;
+  mentions: Mention[];
 };
 
 type CommentID = string | number;
@@ -148,7 +146,7 @@ export class RecordClient {
     order?: "asc" | "desc";
     offset?: number;
     limit?: number;
-  }): Promise<{ comments: Comment[] }> {
+  }): Promise<{ comments: Comment[]; older: boolean; newer: boolean }> {
     const path = "/k/v1/record/comments.json";
     return this.client.get(path, params);
   }
