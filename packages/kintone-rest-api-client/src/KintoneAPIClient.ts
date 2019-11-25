@@ -1,3 +1,4 @@
+import { BulkRequestClient } from "./client/BulkRequestClient";
 import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
 import { DefaultHttpClient } from "./http/";
@@ -43,6 +44,7 @@ type KintoneAuthHeader =
 export class KintoneAPIClient {
   record: RecordClient;
   app: AppClient;
+  private bulkRequest_: BulkRequestClient;
   private headers: KintoneAuthHeader;
 
   constructor({
@@ -62,6 +64,7 @@ export class KintoneAPIClient {
       params
     });
 
+    this.bulkRequest_ = new BulkRequestClient(httpClient);
     this.record = new RecordClient(httpClient);
     this.app = new AppClient(httpClient);
   }
@@ -117,5 +120,15 @@ export class KintoneAPIClient {
           __REQUEST_TOKEN__: requestToken
         }
       : {};
+  }
+
+  public bulkRequest(params: {
+    requests: Array<{
+      method: string;
+      api: string;
+      payload: object;
+    }>;
+  }): Promise<object[]> {
+    return this.bulkRequest_.request(params);
   }
 }
