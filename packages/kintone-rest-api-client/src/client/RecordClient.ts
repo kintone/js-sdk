@@ -11,8 +11,16 @@ type Mention = {
 };
 
 type Comment = {
+  id: number;
   text: string;
+  createdAt: string;
+  creator: {
+    code: string;
+    name: string;
+  };
   mentions?: Mention[];
+  older: boolean;
+  newer: boolean;
 };
 
 type CommentID = string | number;
@@ -116,7 +124,10 @@ export class RecordClient {
   public async addComment(params: {
     app: AppID;
     record: RecordID;
-    comment: Comment;
+    comment: {
+      text: string;
+      mentions?: Mention[];
+    };
   }): Promise<{ id: string }> {
     const path = "/k/v1/record/comment.json";
     return this.client.post(path, params);
@@ -129,5 +140,16 @@ export class RecordClient {
   }): Promise<{}> {
     const path = "/k/v1/record/comment.json";
     return this.client.delete(path, params);
+  }
+
+  public async getComments(params: {
+    app: AppID;
+    record: RecordID;
+    order?: "asc" | "desc";
+    offset?: number;
+    limit?: number;
+  }): Promise<{ comments: Comment[] }> {
+    const path = "/k/v1/record/comments.json";
+    return this.client.get(path, params);
   }
 }
