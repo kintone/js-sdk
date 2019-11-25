@@ -151,4 +151,15 @@ export class Record {
     };
     console.log(await this.client.record.deleteComment(params));
   }
+
+  public async getComments() {
+    const params = {
+      app: APP_ID,
+      record: RECORD_ID,
+      order: "desc" as const,
+      offset: 5,
+      limit: 5
+    };
+    console.log(await this.client.record.getComments(params));
+  }
 }
