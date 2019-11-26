@@ -162,4 +162,30 @@ export class Record {
     };
     console.log(await this.client.record.getComments(params));
   }
+
+  public async updateAssignee() {
+    const params = {
+      app: APP_ID,
+      id: RECORD_ID,
+      assignees: []
+    };
+    console.log(await this.client.record.updateAssignees(params));
+  }
+
+  public async updateStatus() {
+    const params = {
+      action: "action1to2",
+      app: APP_ID,
+      id: RECORD_ID
+    };
+    console.log(await this.client.record.updateStatus(params));
+  }
+
+  public async updateStatuses() {
+    const params = {
+      app: APP_ID,
+      records: [{ id: RECORD_ID, action: "action1to2" }]
+    };
+    console.log(await this.client.record.updateStatuses(params));
+  }
 }
