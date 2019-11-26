@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.7](https://github.com/kintone/customize-uploader/compare/v2.0.6...v2.0.7) (2019-11-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/rimraf to ^2.0.3 ([6e728b2](https://github.com/kintone/customize-uploader/commit/6e728b2a48393f4854ec468f281755826b35b275))
+* **deps:** update dependency chokidar to ^3.2.3 ([cc0902d](https://github.com/kintone/customize-uploader/commit/cc0902d502d1207f4dd4d4292fffdf2a31ce06f5))
+* **deps:** update dependency chokidar to ^3.3.0 ([#219](https://github.com/kintone/customize-uploader/issues/219)) ([c9ec93c](https://github.com/kintone/customize-uploader/commit/c9ec93c0d81c773a6c589cde5d53764a108a1bc4))
+* **deps:** update dependency request-promise to ^4.2.5 ([4880002](https://github.com/kintone/customize-uploader/commit/48800023a1903a18634d658fb104ac88648f81a8))
+* move @types/rimraf from deps to devDeps ([#221](https://github.com/kintone/customize-uploader/issues/221)) ([6218af9](https://github.com/kintone/customize-uploader/commit/6218af9049b349e8b93454f914729280d87417a9))
+
 ### [2.0.6](https://github.com/kintone/customize-uploader/compare/v2.0.5...v2.0.6) (2019-10-23)
 
 
