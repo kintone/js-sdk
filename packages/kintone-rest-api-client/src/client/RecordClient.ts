@@ -150,4 +150,38 @@ export class RecordClient {
     const path = "/k/v1/record/comments.json";
     return this.client.get(path, params);
   }
+
+  public async updateAssignees(params: {
+    app: AppID;
+    id: RecordID;
+    assignees: string[];
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = "/k/v1/record/assignees.json";
+    return this.client.put(path, params);
+  }
+
+  public async updateStatus(params: {
+    action: string;
+    app: AppID;
+    assignee?: string;
+    id: RecordID;
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = "/k/v1/record/status.json";
+    return this.client.put(path, params);
+  }
+
+  public updateStatuses(params: {
+    app: AppID;
+    records: Array<{
+      action: string;
+      assignee?: string;
+      id: RecordID;
+      revision?: Revision;
+    }>;
+  }): Promise<{ records: Array<{ id: string; revision: string }> }> {
+    const path = "/k/v1/records/status.json";
+    return this.client.put(path, params);
+  }
 }
