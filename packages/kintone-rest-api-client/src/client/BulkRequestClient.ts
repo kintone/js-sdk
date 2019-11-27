@@ -7,7 +7,7 @@ export class BulkRequestClient {
     this.client = client;
   }
 
-  request(params: {
+  send(params: {
     requests: Array<{
       method: string;
       api: string;

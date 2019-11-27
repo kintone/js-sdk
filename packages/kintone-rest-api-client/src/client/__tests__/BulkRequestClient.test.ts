@@ -17,7 +17,7 @@ describe("BulkRequestClient", () => {
     mockClient = new MockClient();
     bulkRequestClient = new BulkRequestClient(mockClient);
   });
-  describe("request", () => {
+  describe("send", () => {
     const params = {
       requests: [
         {
@@ -39,7 +39,7 @@ describe("BulkRequestClient", () => {
       ]
     };
     beforeEach(() => {
-      bulkRequestClient.request(params);
+      bulkRequestClient.send(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/bulkRequest.json");

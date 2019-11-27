@@ -129,6 +129,6 @@ export class KintoneAPIClient {
       payload: object;
     }>;
   }): Promise<object[]> {
-    return this.bulkRequest_.request(params);
+    return this.bulkRequest_.send(params);
   }
 }
