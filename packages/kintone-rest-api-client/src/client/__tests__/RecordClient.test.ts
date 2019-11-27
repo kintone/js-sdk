@@ -291,7 +291,7 @@ describe("RecordClient", () => {
     it("should send a put request", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
-    it("should pass  to the http client", () => {
+    it("should pass app, id, assignees, and revision to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
@@ -313,7 +313,7 @@ describe("RecordClient", () => {
     it("should send a put request", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
-    it("should pass  to the http client", () => {
+    it("should pass action, app, assignee, id, and revision to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
@@ -339,7 +339,7 @@ describe("RecordClient", () => {
     it("should send a put request", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
-    it("should pass  to the http client", () => {
+    it("should pass app and records to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
