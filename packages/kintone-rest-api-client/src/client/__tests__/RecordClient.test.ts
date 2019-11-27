@@ -274,4 +274,73 @@ describe("RecordClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("updateAssignees", () => {
+    const params = {
+      app: APP_ID,
+      id: RECORD_ID,
+      assignees: ["user1"],
+      revision: 10
+    };
+    beforeEach(() => {
+      recordClient.updateAssignees(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/assignees.json");
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass  to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("updateStatus", () => {
+    const params = {
+      action: "Action1",
+      app: APP_ID,
+      assignee: "user1",
+      id: RECORD_ID,
+      revision: 10
+    };
+    beforeEach(() => {
+      recordClient.updateStatus(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/status.json");
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass  to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("updateStatuses", () => {
+    const params = {
+      app: APP_ID,
+      records: [
+        {
+          action: "Action1",
+          assignee: "user1",
+          id: RECORD_ID,
+          revision: 10
+        }
+      ]
+    };
+    beforeEach(() => {
+      recordClient.updateStatuses(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/records/status.json");
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass  to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
