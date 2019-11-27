@@ -5,7 +5,8 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "description": "",
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "run-s clean compile",
     "clean": "rimraf lib",
