@@ -25,7 +25,7 @@ export class AxiosClient implements HttpClient {
     this.params = params;
   }
 
-  async get(path: string, params: any) {
+  public async get(path: string, params: any) {
     const requestURL = `${this.host}${path}?${qs.stringify(params)}`;
     // console.log(requestURL);
     let data;
@@ -39,7 +39,7 @@ export class AxiosClient implements HttpClient {
     return data;
   }
 
-  async post(path: string, params: any) {
+  public async post(path: string, params: any) {
     const requestURL = `${this.host}${path}`;
     let data;
     try {
@@ -57,7 +57,7 @@ export class AxiosClient implements HttpClient {
     return data;
   }
 
-  async put(path: string, params: any) {
+  public async put(path: string, params: any) {
     const requestURL = `${this.host}${path}`;
     let data;
     try {
@@ -75,7 +75,7 @@ export class AxiosClient implements HttpClient {
     return data;
   }
 
-  async delete(path: string, params: any) {
+  public async delete(path: string, params: any) {
     const requestURL = `${this.host}${path}?${qs.stringify({
       ...params,
       ...this.params
