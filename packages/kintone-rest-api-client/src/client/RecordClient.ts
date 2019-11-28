@@ -104,10 +104,10 @@ export class RecordClient {
     return this.client.post(path, params);
   }
 
-  public getRecordsByCursor(params: {
+  public getRecordsByCursor<T extends Record>(params: {
     id: string;
   }): Promise<{
-    records: Record[];
+    records: T[];
     next: boolean;
   }> {
     const path = "/k/v1/records/cursor.json";
@@ -117,6 +117,23 @@ export class RecordClient {
   public deleteCursor(params: { id: string }): Promise<{}> {
     const path = "/k/v1/records/cursor.json";
     return this.client.delete(path, params);
+  }
+
+  public async getAllRecordsWithCursor<T extends Record>(params: {
+    app: AppID;
+    fields?: string[];
+    query?: string;
+    size?: number | string;
+  }): Promise<{ records: T[]; totalCount: string }> {
+    const { id, totalCount } = await this.createCursor(params);
+    let allRecords: T[] = [];
+    let next = true;
+    while (next) {
+      const result = await this.getRecordsByCursor<T>({ id });
+      allRecords = allRecords.concat(result.records);
+      next = result.next;
+    }
+    return { records: allRecords, totalCount };
   }
 
   public addComment(params: {

@@ -126,6 +126,16 @@ export class Record {
     console.log(await this.client.record.deleteCursor({ id: cursorId }));
   }
 
+  public async getAllRecordsWithCursor() {
+    console.log(
+      await this.client.record.getAllRecordsWithCursor({
+        app: APP_ID,
+        fields: ["Customer", "Person"],
+        size: 10
+      })
+    );
+  }
+
   public async addComment() {
     const params = {
       app: APP_ID,
