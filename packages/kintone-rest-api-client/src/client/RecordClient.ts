@@ -125,19 +125,25 @@ export class RecordClient {
     query?: string;
   }): Promise<{ records: T[]; totalCount: string }> {
     const { id, totalCount } = await this.createCursor(params);
-    let allRecords: T[] = [];
-    let next = true;
     try {
-      while (next) {
-        const result = await this.getRecordsByCursor<T>({ id });
-        allRecords = allRecords.concat(result.records);
-        next = result.next;
-      }
+      const allRecords = await this.getAllRecordsRecursiveByCursor<T>(id, []);
       return { records: allRecords, totalCount };
     } catch (error) {
       this.deleteCursor({ id });
       throw error;
     }
+  }
+
+  private async getAllRecordsRecursiveByCursor<T extends Record>(
+    id: string,
+    records: T[]
+  ): Promise<T[]> {
+    const result = await this.getRecordsByCursor<T>({ id });
+    const allRecords = records.concat(result.records);
+    if (result.next) {
+      return this.getAllRecordsRecursiveByCursor(id, allRecords);
+    }
+    return allRecords;
   }
 
   public addComment(params: {
