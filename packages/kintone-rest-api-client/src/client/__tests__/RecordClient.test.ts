@@ -205,6 +205,26 @@ describe("RecordClient", () => {
     });
   });
 
+  describe("getAllRecordsWithCursor", () => {
+    const params = {
+      app: APP_ID,
+      fields: [fieldCode],
+      query: `${fieldCode} = "foo"`
+    };
+    beforeEach(() => {
+      recordClient.getAllRecordsWithCursor(params);
+    });
+    describe("success", () => {
+      it("should create a cursor", () => {
+        expect(mockClient.getLogs()[0]).toEqual({
+          path: "/k/v1/records/cursor.json",
+          method: "post",
+          params
+        });
+      });
+    });
+  });
+
   describe("addComment", () => {
     const params = {
       app: APP_ID,
