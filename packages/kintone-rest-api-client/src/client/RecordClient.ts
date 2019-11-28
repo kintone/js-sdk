@@ -123,7 +123,6 @@ export class RecordClient {
     app: AppID;
     fields?: string[];
     query?: string;
-    size?: number | string;
   }): Promise<{ records: T[]; totalCount: string }> {
     const { id, totalCount } = await this.createCursor(params);
     let allRecords: T[] = [];

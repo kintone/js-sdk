@@ -130,8 +130,7 @@ export class Record {
     console.log(
       await this.client.record.getAllRecordsWithCursor({
         app: APP_ID,
-        fields: ["Customer", "Person"],
-        size: 10
+        fields: ["Customer", "Person"]
       })
     );
   }
