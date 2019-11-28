@@ -128,12 +128,17 @@ export class RecordClient {
     const { id, totalCount } = await this.createCursor(params);
     let allRecords: T[] = [];
     let next = true;
-    while (next) {
-      const result = await this.getRecordsByCursor<T>({ id });
-      allRecords = allRecords.concat(result.records);
-      next = result.next;
+    try {
+      while (next) {
+        const result = await this.getRecordsByCursor<T>({ id });
+        allRecords = allRecords.concat(result.records);
+        next = result.next;
+      }
+      return { records: allRecords, totalCount };
+    } catch (error) {
+      this.deleteCursor({ id });
+      throw error;
     }
-    return { records: allRecords, totalCount };
   }
 
   public addComment(params: {
