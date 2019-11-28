@@ -30,7 +30,7 @@ export class RecordClient {
     this.client = client;
   }
 
-  public async getRecord<T extends Record>(params: {
+  public getRecord<T extends Record>(params: {
     app: AppID;
     id: RecordID;
   }): Promise<{ record: T }> {
@@ -38,7 +38,7 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
-  public async addRecord(params: {
+  public addRecord(params: {
     app: AppID;
     record?: object;
   }): Promise<{ id: RecordID; revision: Revision }> {
@@ -46,7 +46,7 @@ export class RecordClient {
     return this.client.post(path, params);
   }
 
-  public async updateRecord(
+  public updateRecord(
     params:
       | { app: AppID; id: RecordID; record?: object; revision?: Revision }
       | { app: AppID; updateKey: object; record?: object; revision?: Revision }
@@ -56,7 +56,7 @@ export class RecordClient {
   }
 
   // TODO: `records` type in return type should be filtered by `fields`.
-  public async getRecords<T extends Record>(params: {
+  public getRecords<T extends Record>(params: {
     app: AppID;
     fields?: string[];
     query?: string;
@@ -66,7 +66,7 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
-  public async addRecords(params: {
+  public addRecords(params: {
     app: AppID;
     records: Record[];
   }): Promise<{ ids: string[]; revisions: string[] }> {
@@ -74,7 +74,7 @@ export class RecordClient {
     return this.client.post(path, params);
   }
 
-  public async updateRecords(params: {
+  public updateRecords(params: {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
@@ -85,7 +85,7 @@ export class RecordClient {
     return this.client.put(path, params);
   }
 
-  public async deleteRecords(params: {
+  public deleteRecords(params: {
     app: AppID;
     ids: RecordID[];
     revisions?: Revision[];
@@ -94,7 +94,7 @@ export class RecordClient {
     return this.client.delete(path, params);
   }
 
-  public async createCursor(params: {
+  public createCursor(params: {
     app: AppID;
     fields?: string[];
     query?: string;
@@ -104,7 +104,7 @@ export class RecordClient {
     return this.client.post(path, params);
   }
 
-  public async getRecordsByCursor(params: {
+  public getRecordsByCursor(params: {
     id: string;
   }): Promise<{
     records: Record[];
@@ -114,12 +114,12 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
-  public async deleteCursor(params: { id: string }): Promise<{}> {
+  public deleteCursor(params: { id: string }): Promise<{}> {
     const path = "/k/v1/records/cursor.json";
     return this.client.delete(path, params);
   }
 
-  public async addComment(params: {
+  public addComment(params: {
     app: AppID;
     record: RecordID;
     comment: {
@@ -131,7 +131,7 @@ export class RecordClient {
     return this.client.post(path, params);
   }
 
-  public async deleteComment(params: {
+  public deleteComment(params: {
     app: AppID;
     record: RecordID;
     comment: CommentID;
@@ -140,7 +140,7 @@ export class RecordClient {
     return this.client.delete(path, params);
   }
 
-  public async getComments(params: {
+  public getComments(params: {
     app: AppID;
     record: RecordID;
     order?: "asc" | "desc";
@@ -151,7 +151,7 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
-  public async updateAssignees(params: {
+  public updateAssignees(params: {
     app: AppID;
     id: RecordID;
     assignees: string[];
@@ -161,7 +161,7 @@ export class RecordClient {
     return this.client.put(path, params);
   }
 
-  public async updateStatus(params: {
+  public updateStatus(params: {
     action: string;
     app: AppID;
     assignee?: string;

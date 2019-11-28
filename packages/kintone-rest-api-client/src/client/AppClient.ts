@@ -18,7 +18,7 @@ export class AppClient {
     this.client = client;
   }
 
-  public async getFormFields<T extends Properties>(params: {
+  public getFormFields<T extends Properties>(params: {
     app: AppID;
     lang?: Lang;
     preview?: boolean;
@@ -28,7 +28,7 @@ export class AppClient {
     return this.client.get(path, { ...rest });
   }
 
-  public async addFormFields(params: {
+  public addFormFields(params: {
     app: AppID;
     properties: object;
     revision?: Revision;
@@ -37,7 +37,7 @@ export class AppClient {
     return this.client.post(path, params);
   }
 
-  public async updateFormFields(params: {
+  public updateFormFields(params: {
     app: AppID;
     properties: object;
     revision?: Revision;
@@ -46,7 +46,7 @@ export class AppClient {
     return this.client.put(path, params);
   }
 
-  public async deleteFormFields(params: {
+  public deleteFormFields(params: {
     app: AppID;
     fields: string[];
     revision?: Revision;
@@ -55,7 +55,7 @@ export class AppClient {
     return this.client.delete(path, params);
   }
 
-  public async getFormLayout<T extends Layout>(params: {
+  public getFormLayout<T extends Layout>(params: {
     app: AppID;
     preview?: boolean;
   }): Promise<{ layout: T; revision: string }> {
@@ -64,7 +64,7 @@ export class AppClient {
     return this.client.get(path, { ...rest });
   }
 
-  public async updateFormLayout(params: {
+  public updateFormLayout(params: {
     app: AppID;
     layout: object[];
     revision?: Revision;
@@ -73,14 +73,14 @@ export class AppClient {
     return this.client.put(path, params);
   }
 
-  public async getDeployStatus(params: {
+  public getDeployStatus(params: {
     apps: AppID[];
   }): Promise<{ apps: Array<{ app: string; status: DeployStatus }> }> {
     const path = "/k/v1/preview/app/deploy.json";
     return this.client.get(path, params);
   }
 
-  public async deployApp(params: {
+  public deployApp(params: {
     apps: Array<{ app: AppID; revision?: Revision }>;
     revert?: boolean;
   }): Promise<{}> {
