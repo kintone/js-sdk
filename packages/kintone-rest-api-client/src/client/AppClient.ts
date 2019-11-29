@@ -11,6 +11,19 @@ type Layout = object[];
 
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
+type Entity = {
+  accessibility: "READ" | "WRITE" | "NONE";
+  includeSubs: boolean;
+  entity: {
+    code: string;
+    type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
+  };
+};
+
+type Right = {
+  code: string;
+  entities: Entity[];
+};
 export class AppClient {
   private client: HttpClient;
 
@@ -86,5 +99,14 @@ export class AppClient {
   }): Promise<{}> {
     const path = "/k/v1/preview/app/deploy.json";
     return this.client.post(path, params);
+  }
+
+  public getFieldAcl(params: {
+    app: AppID;
+    preview?: boolean;
+  }): Promise<{ rights: Right[]; revision: string }> {
+    const { preview, ...rest } = params;
+    const path = `/k/v1${preview ? "/preview" : ""}/field/acl.json`;
+    return this.client.get(path, { ...rest });
   }
 }
