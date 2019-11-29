@@ -146,4 +146,22 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getFieldAcl() {
+    try {
+      console.log(await this.client.app.getFieldAcl({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getFieldAclPreview() {
+    try {
+      console.log(
+        await this.client.app.getFieldAcl({ app: APP_ID, preview: true })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
