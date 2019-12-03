@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.9](https://github.com/kintone/plugin-manifest-validator/compare/v2.0.8...v2.0.9) (2019-12-03)
+
+
+### Bug Fixes
+
+* change validateHttpsUrl logic ([#237](https://github.com/kintone/plugin-manifest-validator/issues/237)) ([58e3bc9](https://github.com/kintone/plugin-manifest-validator/commit/58e3bc91605f9c06f4f1030b367d67f9f04b8f6c)), closes [#175](https://github.com/kintone/plugin-manifest-validator/issues/175)
+
 ### [2.0.8](https://github.com/kintone/plugin-manifest-validator/compare/v2.0.7...v2.0.8) (2019-11-26)
 
 ### [2.0.7](https://github.com/kintone/plugin-manifest-validator/compare/v2.0.6...v2.0.7) (2019-10-23)
