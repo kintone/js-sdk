@@ -7,6 +7,8 @@ describe("validate-https-url", () => {
   context("valid", () => {
     [
       "https://example.com/path/to?foo=bar&baz=piyo#hash",
+      "https://localhost:8080",
+      "https://127.0.0.1:8000",
       "https://user:pass@example.com/"
     ].forEach(url => {
       it(url, () => {

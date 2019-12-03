@@ -1,20 +1,12 @@
 "use strict";
 
-const formats = require("ajv/lib/compile/formats");
-
 /**
  * @param {string} str
  * @param {boolean=} opt_allowHttp
  * @return {boolean}
  */
 function validateHttpsUrl(str, opt_allowHttp) {
-  if (formats.full.url.test(str)) {
-    if (opt_allowHttp) {
-      return /^https?:/.test(str);
-    }
-    return /^https:/.test(str);
-  }
-  return false;
+  return opt_allowHttp ? /^https?:/.test(str) : /^https:/.test(str);
 }
 
 module.exports = validateHttpsUrl;
