@@ -8,30 +8,45 @@ type Log = {
 
 export class MockClient implements HttpClient {
   logs: Log[];
+  responses: object[];
+
   constructor() {
     this.logs = [];
+    this.responses = [];
   }
+
+  public mockResponse(mock: object) {
+    this.responses.push(mock);
+  }
+  private createResponse<T extends object>(): T {
+    const response = this.responses.shift() || {};
+    if (response instanceof Error) {
+      throw response;
+    }
+    return response as T;
+  }
+
   public async get<T extends object>(path: string, params: object): Promise<T> {
     this.logs.push({ method: "get", path, params });
-    return {} as T;
+    return this.createResponse<T>();
   }
   public async post<T extends object>(
     path: string,
     params: object
   ): Promise<T> {
     this.logs.push({ method: "post", path, params });
-    return {} as T;
+    return this.createResponse<T>();
   }
   public async put<T extends object>(path: string, params: object): Promise<T> {
     this.logs.push({ method: "put", path, params });
-    return {} as T;
+    return this.createResponse<T>();
   }
   public async delete<T extends object>(
     path: string,
     params: object
   ): Promise<T> {
     this.logs.push({ method: "delete", path, params });
-    return {} as T;
+    return this.createResponse<T>();
   }
   public getLogs(): Log[] {
     return this.logs;

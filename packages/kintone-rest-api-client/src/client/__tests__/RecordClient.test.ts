@@ -1,4 +1,4 @@
-import { RecordClient } from "../RecordClient";
+import { RecordClient, Record } from "../RecordClient";
 import { MockClient } from "../../http/MockClient";
 
 describe("RecordClient", () => {
@@ -211,10 +211,25 @@ describe("RecordClient", () => {
       fields: [fieldCode],
       query: `${fieldCode} = "foo"`
     };
-    beforeEach(() => {
-      recordClient.getAllRecordsWithCursor(params);
-    });
+    const CURSOR_ID = "1";
+    let result: { records: Record[]; totalCount: string };
+
     describe("success", () => {
+      beforeEach(async () => {
+        // response from createCursor
+        mockClient.mockResponse({ id: CURSOR_ID, totalCount: "4" });
+        // response from getRecordsByCursor
+        mockClient.mockResponse({
+          records: [{ id: 1 }, { id: 2 }],
+          next: true
+        });
+        mockClient.mockResponse({
+          records: [{ id: 3 }, { id: 4 }],
+          next: false
+        });
+        result = await recordClient.getAllRecordsWithCursor<Record>(params);
+      });
+
       it("should create a cursor", () => {
         expect(mockClient.getLogs()[0]).toEqual({
           path: "/k/v1/records/cursor.json",
@@ -222,7 +237,33 @@ describe("RecordClient", () => {
           params
         });
       });
+
+      it("should return all records", () => {
+        expect(mockClient.getLogs()[1]).toEqual({
+          path: "/k/v1/records/cursor.json",
+          method: "get",
+          params: { id: CURSOR_ID }
+        });
+        expect(mockClient.getLogs()[2]).toEqual({
+          path: "/k/v1/records/cursor.json",
+          method: "get",
+          params: { id: CURSOR_ID }
+        });
+        expect(result.records).toStrictEqual([
+          { id: 1 },
+          { id: 2 },
+          { id: 3 },
+          { id: 4 }
+        ]);
+        expect(result.totalCount).toBe("4");
+      });
+
+      it("should not call deleteCursor", () => {
+        expect(mockClient.getLogs().length).toEqual(3);
+      });
     });
+
+    describe("success", () => {});
   });
 
   describe("addComment", () => {

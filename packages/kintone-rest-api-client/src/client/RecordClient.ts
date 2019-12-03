@@ -1,7 +1,7 @@
 import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
 
-type Record = {
+export type Record = {
   [fieldCode: string]: any;
 };
 
