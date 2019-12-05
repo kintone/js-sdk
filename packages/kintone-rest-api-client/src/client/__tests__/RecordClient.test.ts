@@ -263,7 +263,24 @@ describe("RecordClient", () => {
       });
     });
 
-    describe("success", () => {});
+    describe("failure", () => {
+      beforeEach(async () => {
+        // response from createCursor
+        mockClient.mockResponse({ id: CURSOR_ID, totalCount: "4" });
+        // response from getRecordsByCursor
+        mockClient.mockResponse({
+          records: [{ id: 1 }, { id: 2 }],
+          next: true
+        });
+        mockClient.mockResponse(new Error("fail getting"));
+      });
+
+      it("should raise error", () => {
+        expect(
+          recordClient.getAllRecordsWithCursor<Record>(params)
+        ).rejects.toThrow("fail getting");
+      });
+    });
   });
 
   describe("addComment", () => {
