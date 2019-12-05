@@ -24,6 +24,16 @@ type Right = {
   code: string;
   entities: Entity[];
 };
+type Rights = {
+  id: string;
+  record: {
+    viewable: boolean;
+    editable: boolean;
+    deletable: boolean;
+  };
+  fields: object;
+};
+
 export class AppClient {
   private client: HttpClient;
 
@@ -110,7 +120,10 @@ export class AppClient {
     return this.client.get(path, { ...rest });
   }
 
-  public evaluateRecordsAcl(params: { app: AppID; ids: RecordID[] }) {
+  public evaluateRecordsAcl(params: {
+    app: AppID;
+    ids: RecordID[];
+  }): Promise<{ rights: Rights }> {
     const path = "/k/v1/records/acl/evaluate.json";
     return this.client.get(path, params);
   }
