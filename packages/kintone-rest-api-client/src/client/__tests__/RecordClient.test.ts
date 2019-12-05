@@ -264,7 +264,7 @@ describe("RecordClient", () => {
     });
 
     describe("failure", () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         // response from createCursor
         mockClient.mockResponse({ id: CURSOR_ID, totalCount: "4" });
         // response from getRecordsByCursor
@@ -275,10 +275,15 @@ describe("RecordClient", () => {
         mockClient.mockResponse(new Error("fail getting"));
       });
 
-      it("should raise error", () => {
-        expect(
+      it("should raise error", async () => {
+        await expect(
           recordClient.getAllRecordsWithCursor<Record>(params)
         ).rejects.toThrow("fail getting");
+        expect(mockClient.getLogs()[3]).toEqual({
+          path: "/k/v1/records/cursor.json",
+          method: "delete",
+          params: { id: CURSOR_ID }
+        });
       });
     });
   });
