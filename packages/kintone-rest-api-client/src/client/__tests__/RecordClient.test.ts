@@ -279,7 +279,7 @@ describe("RecordClient", () => {
         await expect(
           recordClient.getAllRecordsWithCursor<Record>(params)
         ).rejects.toThrow("fail getting");
-        expect(mockClient.getLogs()[3]).toEqual({
+        expect(mockClient.getLogs()[3]).toStrictEqual({
           path: "/k/v1/records/cursor.json",
           method: "delete",
           params: { id: CURSOR_ID }
