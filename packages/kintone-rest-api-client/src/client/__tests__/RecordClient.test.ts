@@ -272,13 +272,13 @@ describe("RecordClient", () => {
           records: [{ id: 1 }, { id: 2 }],
           next: true
         });
-        mockClient.mockResponse(new Error("fail getting"));
+        mockClient.mockResponse(new Error("failed"));
       });
 
       it("should raise error", async () => {
         await expect(
           recordClient.getAllRecordsWithCursor<Record>(params)
-        ).rejects.toThrow("fail getting");
+        ).rejects.toThrow("failed");
         expect(mockClient.getLogs()[3]).toStrictEqual({
           path: "/k/v1/records/cursor.json",
           method: "delete",
