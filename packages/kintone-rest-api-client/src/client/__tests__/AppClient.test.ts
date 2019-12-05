@@ -6,6 +6,7 @@ describe("AppClient", () => {
   let appClient: AppClient;
   const APP_ID = 1;
   const REVISION = 5;
+  const RECORD_ID = 3;
   const properties = {
     fieldCode: {
       type: "SINGLE_LINE_TEXT",
@@ -222,6 +223,26 @@ describe("AppClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("post");
     });
     it("should pass apps and revert as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+  describe("evaluateRecordsAcl", () => {
+    const params = {
+      app: APP_ID,
+      ids: [RECORD_ID]
+    };
+    beforeEach(() => {
+      appClient.evaluateRecordsAcl(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/records/acl/evaluate.json"
+      );
+    });
+    it("should send a get request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("get");
+    });
+    it("should pass app and ids as a param to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
