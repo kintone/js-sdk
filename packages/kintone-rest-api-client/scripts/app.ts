@@ -1,6 +1,7 @@
 import { KintoneAPIClient } from "../src/index";
 
 const APP_ID = 8;
+const RECORD_ID = 3;
 
 export class App {
   private client: KintoneAPIClient;
@@ -163,5 +164,15 @@ export class App {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  public async evaluateRecordsAcl() {
+    const params = {
+      app: APP_ID,
+      ids: [RECORD_ID]
+    };
+    console.log(
+      JSON.stringify(await this.client.app.evaluateRecordsAcl(params))
+    );
   }
 }

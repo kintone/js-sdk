@@ -1,4 +1,4 @@
-import { AppID, Revision } from "../KintoneTypes";
+import { AppID, RecordID, Revision } from "../KintoneTypes";
 import { HttpClient } from "../http";
 
 type Lang = "ja" | "en" | "zh" | "user" | "default";
@@ -108,5 +108,10 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/field/acl.json`;
     return this.client.get(path, { ...rest });
+  }
+
+  public evaluateRecordsAcl(params: { app: AppID; ids: RecordID[] }) {
+    const path = "/k/v1/records/acl/evaluate.json";
+    return this.client.get(path, params);
   }
 }
