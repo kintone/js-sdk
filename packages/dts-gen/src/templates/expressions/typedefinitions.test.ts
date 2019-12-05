@@ -5,8 +5,7 @@ import {
 import {
     FieldGroup,
     SubTableField,
-    UserField,
-    StringFieldInSavedRecord,
+    TsDefinedField,
 } from "./fields";
 
 describe("TypeDefinition", () => {
@@ -52,7 +51,7 @@ interface TestType {
 });
 
 describe("SavedTypeDefinition", () => {
-    class TestStringFieldInSavedRecord extends StringFieldInSavedRecord {
+    class TestStringFieldInSavedRecord extends TsDefinedField {
         constructor() {
             super(null, null);
         }
@@ -60,7 +59,7 @@ describe("SavedTypeDefinition", () => {
             return "// StringFieldInSavedRecord";
         }
     }
-    class TestUserField extends UserField {
+    class TestUserField extends TsDefinedField {
         constructor() {
             super(null, null);
         }
@@ -80,14 +79,8 @@ describe("SavedTypeDefinition", () => {
         ).toEqual(
             `
 interface SavedTestType extends TestType {
-    $id : {
-        type: \"__ID__\";
-        value: string;
-    };
-    $revision: {
-        type: \"__REVISION__\";
-        value: string;
-    };
+    $id : kintone.fieldTypes.Id;
+    $revision: kintone.fieldTypes.Revision;
     // UserField
     // StringFieldInSavedRecord
 }`.trim()

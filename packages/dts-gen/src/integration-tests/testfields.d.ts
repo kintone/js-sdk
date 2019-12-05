@@ -1,277 +1,63 @@
-/**
- * This type definition is auto-generated.
- * If you update kintone form settings, Please regenerate this type definition
- */
 // eslint-disable-next-line no-unused-vars
 declare namespace kintone.types {
-    interface TestFields {
-        Text: {
-            type: "SINGLE_LINE_TEXT";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Rich_text: {
-            type: "RICH_TEXT";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Text_area: {
-            type: "MULTI_LINE_TEXT";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Number: {
-            type: "NUMBER";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Calculated: {
-            type: "CALC";
-            value: string;
-            error?: string;
-        };
-
-        Radio_button: {
-            type: "RADIO_BUTTON";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Drop_down: {
-            type: "DROP_DOWN";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Date: {
-            type: "DATE";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Time: {
-            type: "TIME";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Date_and_time: {
-            type: "DATETIME";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Link: {
-            type: "LINK";
-            value: string;
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Check_box: {
-            type: "CHECK_BOX";
-            value: string[];
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Multi_choice: {
-            type: "MULTI_SELECT";
-            value: string[];
-            disabled?: boolean;
-            error?: string;
-        };
-
-        User_selection: {
-            type: "USER_SELECT";
-            value: { code: string; name: string }[];
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Department_selection: {
-            type: "ORGANIZATION_SELECT";
-            value: { code: string; name: string }[];
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Group_selection: {
-            type: "GROUP_SELECT";
-            value: { code: string; name: string }[];
-            disabled?: boolean;
-            error?: string;
-        };
-
-        Attachment: {
-            type: "FILE";
-            value: {
-                contentType: string;
-                fileKey: string;
-                name: string;
-                size: string;
-            }[];
-            disabled?: boolean;
-            error?: string;
-        };
-
+    interface Fields {
+        Text: kintone.fieldTypes.SingleLineText;
+        Rich_text: kintone.fieldTypes.RichText;
+        Text_area: kintone.fieldTypes.MultiLineText;
+        Number: kintone.fieldTypes.Number;
+        Radio_button: kintone.fieldTypes.RadioButton;
+        Drop_down: kintone.fieldTypes.DropDown;
+        Date: kintone.fieldTypes.Date;
+        Time: kintone.fieldTypes.Time;
+        Date_and_time: kintone.fieldTypes.DateTime;
+        Link: kintone.fieldTypes.Link;
+        Calculated: kintone.fieldTypes.Calc;
+        Check_box: kintone.fieldTypes.CheckBox;
+        Multi_choice: kintone.fieldTypes.MultiSelect;
+        User_selection: kintone.fieldTypes.UserSelect;
+        Department_selection: kintone.fieldTypes.OrganizationSelect;
+        Group_selection: kintone.fieldTypes.GroupSelect;
+        Attachment: kintone.fieldTypes.File;
         Table: {
             type: "SUBTABLE";
             value: {
                 id: string;
                 value: {
-                    Text_Table: {
-                        type: "SINGLE_LINE_TEXT";
-                        value: string;
-                        error?: string;
-                    };
-
-                    Rich_text_Table: {
-                        type: "RICH_TEXT";
-                        value: string;
-                        error?: string;
-                    };
-
-                    Text_area_Table: {
-                        type: "MULTI_LINE_TEXT";
-                        value: string;
-                        error?: string;
-                    };
-
-                    Number_Table: {
-                        type: "NUMBER";
-                        value: string;
-                        error?: string;
-                    };
-
-                    Calculated_Table: {
-                        type: "CALC";
-                        value: string;
-                        error?: string;
-                    };
+                    Text_Table: kintone.fieldTypes.SingleLineText;
+                    Rich_text_Table: kintone.fieldTypes.RichText;
+                    Text_area_Table: kintone.fieldTypes.MultiLineText;
+                    Number_Table: kintone.fieldTypes.Number;
+                    Calculated_Table: kintone.fieldTypes.Calc;
                 };
             }[];
-            disabled?: boolean;
         };
-
         Table_0: {
             type: "SUBTABLE";
             value: {
                 id: string;
                 value: {
-                    Radio_button_Table: {
-                        type: "RADIO_BUTTON";
-                        value: string;
-                        error?: string;
-                    };
+                    Radio_button_Table: kintone.fieldTypes.RadioButton;
+                    Drop_down_Table: kintone.fieldTypes.DropDown;
+                    Date_Table: kintone.fieldTypes.Date;
+                    Time_Table: kintone.fieldTypes.Time;
+                    Date_and_time_Table: kintone.fieldTypes.DateTime;
+                    Link_Table: kintone.fieldTypes.Link;
 
-                    Drop_down_Table: {
-                        type: "DROP_DOWN";
-                        value: string;
-                        error?: string;
-                    };
+                    Check_box_Table: kintone.fieldTypes.CheckBox;
+                    Multi_choice_Table: kintone.fieldTypes.MultiSelect;
 
-                    Date_Table: {
-                        type: "DATE";
-                        value: string;
-                        error?: string;
-                    };
-
-                    Time_Table: {
-                        type: "TIME";
-                        value: string;
-                        error?: string;
-                    };
-
-                    Date_and_time_Table: {
-                        type: "DATETIME";
-                        value: string;
-                        error?: string;
-                    };
-
-                    Link_Table: {
-                        type: "LINK";
-                        value: string;
-                        error?: string;
-                    };
-
-                    Check_box_Table: {
-                        type: "CHECK_BOX";
-                        value: string[];
-                        error?: string;
-                    };
-
-                    Multi_choice_Table: {
-                        type: "MULTI_SELECT";
-                        value: string[];
-                        error?: string;
-                    };
-
-                    Attachment_Table: {
-                        type: "FILE";
-                        value: {
-                            contentType: string;
-                            fileKey: string;
-                            name: string;
-                            size: string;
-                        }[];
-                        error?: string;
-                    };
+                    Attachment_Table: kintone.fieldTypes.File;
                 };
             }[];
-            disabled?: boolean;
         };
     }
-
-    interface SavedTestFields extends TestFields {
-        $id: {
-            type: "__ID__";
-            value: string;
-        };
-        $revision: {
-            type: "__REVISION__";
-            value: string;
-        };
-
-        Updated_by: {
-            type: "MODIFIER";
-            value: { code: string; name: string };
-        };
-
-        Created_by: {
-            type: "CREATOR";
-            value: { code: string; name: string };
-        };
-
-        Record_number: {
-            type: "RECORD_NUMBER";
-            value: string;
-            error?: string;
-        };
-
-        Updated_datetime: {
-            type: "UPDATED_TIME";
-            value: string;
-            error?: string;
-        };
-
-        Created_datetime: {
-            type: "CREATED_TIME";
-            value: string;
-            error?: string;
-        };
+    interface SavedFields extends Fields {
+        $id: kintone.fieldTypes.Id;
+        $revision: kintone.fieldTypes.Revision;
+        Updated_by: kintone.fieldTypes.Modifier;
+        Created_by: kintone.fieldTypes.Creator;
+        Record_number: kintone.fieldTypes.RecordNumber;
+        Updated_datetime: kintone.fieldTypes.UpdatedTime;
+        Created_datetime: kintone.fieldTypes.CreatedTime;
     }
 }

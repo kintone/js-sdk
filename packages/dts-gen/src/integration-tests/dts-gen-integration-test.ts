@@ -13,7 +13,7 @@ interface Event {
     offset: number;
     size: number;
     date: string;
-    records: kintone.types.SavedTestFields[];
+    records: kintone.types.SavedFields[];
 }
 (() => {
     kintone.events.on(

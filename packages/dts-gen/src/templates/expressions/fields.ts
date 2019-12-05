@@ -2,14 +2,15 @@ import {
     TsExpression,
     toTsExpressions,
 } from "./expression";
+import { Converter as FieldTypeConverter } from "./typescriptfieldtypeconverter";
 
 export class FieldGroup implements TsExpression {
     constructor(
-        private stringFields: StringField[],
-        private calculatedFields: CalculatedField[],
-        private stringListFields: StringListField[],
-        private entityListFields: EntityListField[],
-        private fileFields: FileField[]
+        private stringFields: TsDefinedField[],
+        private calculatedFields: TsDefinedField[],
+        private stringListFields: TsDefinedField[],
+        private entityListFields: TsDefinedField[],
+        private fileFields: TsDefinedField[]
     ) {}
 
     tsExpression(): string {
@@ -23,124 +24,21 @@ ${toTsExpressions(this.fileFields)}
     }
 }
 
-export class StringField implements TsExpression {
-    constructor(
-        private fieldName: string,
-        private fieldType: string
-    ) {}
+export class TsDefinedField implements TsExpression {
+    private readonly fieldName: string;
+    private readonly fieldType: string;
 
-    tsExpression(): string {
-        return `
-"${this.fieldName}" : {
-    type: "${this.fieldType}";
-    value: string;
-    disabled?: boolean;
-    error?: string;
-};`.trim();
+    constructor(fieldName: string, fieldType: string) {
+        this.fieldName = fieldName;
+        this.fieldType = fieldType;
     }
-}
-
-export class CalculatedField implements TsExpression {
-    constructor(
-        private fieldName: string,
-        private fieldType: string
-    ) {}
 
     tsExpression(): string {
-        return `
-"${this.fieldName}" : {
-    type: "${this.fieldType}";
-    value: string;
-    error?: string;
-};`.trim();
-    }
-}
-
-export class StringListField implements TsExpression {
-    constructor(
-        private fieldName: string,
-        private fieldType: string
-    ) {}
-    tsExpression(): string {
-        return `
-"${this.fieldName}" : {
-    type: "${this.fieldType}";
-    value: string[];
-    disabled?: boolean;
-    error?: string;
-};`.trim();
-    }
-}
-
-export class StringFieldInSavedRecord
-    implements TsExpression {
-    constructor(
-        private fieldName: string,
-        private fieldType: string
-    ) {}
-
-    tsExpression(): string {
-        return `
-"${this.fieldName}" : {
-    type: "${this.fieldType}";
-    value: string;
-    error?: string;
-};`.trim();
-    }
-}
-
-export class UserField implements TsExpression {
-    constructor(
-        private fieldName: string,
-        private fieldType: string
-    ) {}
-    /**
-     * field type of UserField is CREATOR,MODIFIER.
-     * So error property not exists.
-     */
-    tsExpression(): string {
-        return `
-"${this.fieldName}" : {
-    type: "${this.fieldType}";
-    value: {code: string, name: string}; 
-};`.trim();
-    }
-}
-
-export class EntityListField implements TsExpression {
-    constructor(
-        private fieldName: string,
-        private fieldType: string
-    ) {}
-    tsExpression(): string {
-        return `
-"${this.fieldName}" : {
-    type: "${this.fieldType}";
-    value: {code: string, name: string}[];
-    disabled?: boolean;
-    error?: string;
-};`.trim();
-    }
-}
-
-export class FileField implements TsExpression {
-    constructor(
-        private fieldName: string,
-        private fieldType: string
-    ) {}
-    tsExpression(): string {
-        return `
-"${this.fieldName}" : {
-    type: "${this.fieldType}";
-    value: {
-        contentType: string;
-        fileKey: string;
-        name: string;
-        size: string;
-    }[];
-    disabled?: boolean;
-    error?: string;
-};`.trim();
+        return `"${
+            this.fieldName
+        }" : ${FieldTypeConverter.convert(
+            this.fieldType
+        )};`.trim();
     }
 }
 

@@ -5,7 +5,7 @@ import { FieldTypeConverter } from "../converters/fileldtype-converter";
 import { objectValues } from "../utils/objectvalues";
 import * as fs from "fs";
 describe("renderAsFile", () => {
-    const TEMP_TEST_TYPEDEF = "tmp.testfield.d.ts";
+    const TEMP_TEST_TYPEDEF = "tmp.testfields.d.ts";
     test("generate typedefinition file", async () => {
         const client = new DemoClient();
         const fieldTypeGroups = await client
@@ -27,7 +27,7 @@ describe("renderAsFile", () => {
         t.renderAsFile(TEMP_TEST_TYPEDEF, input);
 
         const expected = fs
-            .readFileSync("./resources/testfield.d.ts")
+            .readFileSync("./resources/testfields.d.ts")
             .toString()
             .trim()
             .replace(/\r?\n/g, "");
@@ -53,8 +53,8 @@ describe("renderAsFile", () => {
 });
 
 describe("fullWidthSymbol Test", () => {
-    const TEMP_TEST_TYPEDEF = "tmp.testfield.d.ts";
-    test("generate typedefinition file", async () => {
+    const TEMP_TEST_TYPEDEF = "tmp.testfields.d.ts";
+    test("generate type definition file", async () => {
         const client = new DemoFullWidthSymbolClient();
         const fieldTypeGroups = await client
             .fetchFormProperties({

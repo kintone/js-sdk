@@ -1,8 +1,7 @@
 import {
     FieldGroup,
     SubTableField,
-    UserField,
-    StringFieldInSavedRecord,
+    TsDefinedField,
 } from "./fields";
 import {
     TsExpression,
@@ -27,21 +26,15 @@ interface ${this.typeName} {
 export class SavedTypeDefinition implements TsExpression {
     constructor(
         private typeName: string,
-        private userFields: UserField[],
-        private stringFieldsInSavedRecord: StringFieldInSavedRecord[]
+        private userFields: TsDefinedField[],
+        private stringFieldsInSavedRecord: TsDefinedField[]
     ) {}
 
     tsExpression(): string {
         return `
 interface Saved${this.typeName} extends ${this.typeName} {
-    $id : {
-        type: "__ID__";
-        value: string;
-    };
-    $revision: {
-        type: "__REVISION__";
-        value: string;
-    };
+    $id : kintone.fieldTypes.Id;
+    $revision: kintone.fieldTypes.Revision;
     ${toTsExpressions(this.userFields)}
     ${toTsExpressions(this.stringFieldsInSavedRecord)}
 }`.trim();

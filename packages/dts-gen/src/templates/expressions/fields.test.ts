@@ -1,126 +1,83 @@
 import {
-    StringField,
-    StringListField,
-    EntityListField,
+    TsDefinedField,
     SubTableField,
-    FileField,
     FieldGroup,
-    CalculatedField,
 } from "./fields";
 
-describe("StringField", () => {
+describe("TsDefinedField with SINGLE_LINE_TEXT", () => {
     test("toTsExpression()", () => {
         expect(
-            new StringField("fieldName", "SINGLE_LINE")
+            new TsDefinedField(
+                "fieldName",
+                "SINGLE_LINE_TEXT"
+            )
                 .tsExpression()
                 .trim()
         ).toEqual(
-            `
-"fieldName" : {
-    type: "SINGLE_LINE";
-    value: string;
-    disabled?: boolean;
-    error?: string;
-};`.trim()
+            `"fieldName" : kintone.fieldTypes.SingleLineText;`.trim()
         );
     });
 });
 
-describe("StringField with Full Width Symbol FieldCode", () => {
+describe("TsDefinedField with Full Width Symbol FieldCode", () => {
     test("toTsExpression() with ・", () => {
         expect(
-            new StringField("・", "SINGLE_LINE")
+            new TsDefinedField("・", "SINGLE_LINE_TEXT")
                 .tsExpression()
                 .trim()
         ).toEqual(
-            `
-"・" : {
-    type: "SINGLE_LINE";
-    value: string;
-    disabled?: boolean;
-    error?: string;
-};`.trim()
+            `"・" : kintone.fieldTypes.SingleLineText;`.trim()
         );
     });
     test("toTsExpression() with ￥", () => {
         expect(
-            new StringField("￥", "SINGLE_LINE")
+            new TsDefinedField("￥", "SINGLE_LINE_TEXT")
                 .tsExpression()
                 .trim()
         ).toEqual(
-            `
-"￥" : {
-    type: "SINGLE_LINE";
-    value: string;
-    disabled?: boolean;
-    error?: string;
-};`.trim()
+            `"￥" : kintone.fieldTypes.SingleLineText;`.trim()
         );
     });
     test("toTsExpression() with ＿", () => {
         expect(
-            new StringField("＿", "SINGLE_LINE")
+            new TsDefinedField("＿", "SINGLE_LINE_TEXT")
                 .tsExpression()
                 .trim()
         ).toEqual(
-            `
-"＿" : {
-    type: "SINGLE_LINE";
-    value: string;
-    disabled?: boolean;
-    error?: string;
-};`.trim()
+            `"＿" : kintone.fieldTypes.SingleLineText;`.trim()
         );
     });
     test("toTsExpression() with ＄", () => {
         expect(
-            new StringField("＄", "SINGLE_LINE")
+            new TsDefinedField("＄", "SINGLE_LINE_TEXT")
                 .tsExpression()
                 .trim()
         ).toEqual(
-            `
-"＄" : {
-    type: "SINGLE_LINE";
-    value: string;
-    disabled?: boolean;
-    error?: string;
-};`.trim()
+            `"＄" : kintone.fieldTypes.SingleLineText;`.trim()
         );
     });
 });
 
-describe("StringListField", () => {
+describe("TsDefinedField with CHECK_BOX", () => {
     test("toTsExpression()", () => {
         expect(
-            new StringListField("fieldName", "CHECK_BOX")
+            new TsDefinedField("fieldName", "CHECK_BOX")
                 .tsExpression()
                 .trim()
         ).toEqual(
-            `
-"fieldName" : {
-    type: "CHECK_BOX";
-    value: string[];
-    disabled?: boolean;
-    error?: string;
-};`.trim()
+            `"fieldName" : kintone.fieldTypes.CheckBox;`.trim()
         );
     });
 });
 
-describe("EntityListField", () => {
+describe("TsDefinedField with USER_SELECT", () => {
     test("toTsExpression()", () => {
         expect(
-            new EntityListField("fieldName", "USER_SELECT")
+            new TsDefinedField("fieldName", "USER_SELECT")
                 .tsExpression()
                 .trim()
         ).toEqual(
-            `
-"fieldName" : {
-    type: "USER_SELECT";
-    value: {code: string, name: string}[];
-    disabled?: boolean;
-    error?: string;
-};`.trim()
+            `"fieldName" : kintone.fieldTypes.UserSelect;`.trim()
         );
     });
 });
@@ -160,22 +117,11 @@ describe("SubTableField", () => {
 describe("FileField", () => {
     test("toTsExpression()", () => {
         expect(
-            new FileField("fieldName", "FILE")
+            new TsDefinedField("fieldName", "FILE")
                 .tsExpression()
                 .trim()
         ).toEqual(
-            `
-"fieldName" : {
-    type: "FILE";
-    value: {
-        contentType: string;
-        fileKey: string;
-        name: string;
-        size: string;
-    }[];
-    disabled?: boolean;
-    error?: string;
-};`.trim()
+            `"fieldName" : kintone.fieldTypes.File;`.trim()
         );
     });
 });
@@ -185,74 +131,40 @@ describe("FieldGroup", () => {
         expect(
             new FieldGroup(
                 [
-                    new StringField(
+                    new TsDefinedField(
                         "fieldName1",
-                        "SINGLE_STRING_LINE"
+                        "SINGLE_LINE_TEXT"
                     ),
-                    new StringField(
+                    new TsDefinedField(
                         "fieldName2",
-                        "SINGLE_STRING_LINE"
+                        "SINGLE_LINE_TEXT"
                     ),
                 ],
-                [new CalculatedField("fieldName3", "CALC")],
+                [new TsDefinedField("fieldName3", "CALC")],
                 [
-                    new StringListField(
+                    new TsDefinedField(
                         "fieldName4",
-                        "MULTI_CHECK"
+                        "MULTI_SELECT"
                     ),
                 ],
                 [
-                    new EntityListField(
+                    new TsDefinedField(
                         "fieldName5",
                         "USER_SELECT"
                     ),
                 ],
-                [new FileField("fieldName6", "FILE")]
+                [new TsDefinedField("fieldName6", "FILE")]
             )
                 .tsExpression()
                 .trim()
         ).toEqual(
             `
-"fieldName1" : {
-    type: "SINGLE_STRING_LINE";
-    value: string;
-    disabled?: boolean;
-    error?: string;
-};
-"fieldName2" : {
-    type: "SINGLE_STRING_LINE";
-    value: string;
-    disabled?: boolean;
-    error?: string;
-};
-"fieldName3" : {
-    type: "CALC";
-    value: string;
-    error?: string;
-};
-"fieldName4" : {
-    type: "MULTI_CHECK";
-    value: string[];
-    disabled?: boolean;
-    error?: string;
-};
-"fieldName5" : {
-    type: "USER_SELECT";
-    value: {code: string, name: string}[];
-    disabled?: boolean;
-    error?: string;
-};
-"fieldName6" : {
-    type: "FILE";
-    value: {
-        contentType: string;
-        fileKey: string;
-        name: string;
-        size: string;
-    }[];
-    disabled?: boolean;
-    error?: string;
-};`.trim()
+"fieldName1" : kintone.fieldTypes.SingleLineText;
+"fieldName2" : kintone.fieldTypes.SingleLineText;
+"fieldName3" : kintone.fieldTypes.Calc;
+"fieldName4" : kintone.fieldTypes.MultiSelect;
+"fieldName5" : kintone.fieldTypes.UserSelect;
+"fieldName6" : kintone.fieldTypes.File;`.trim()
         );
     });
 });

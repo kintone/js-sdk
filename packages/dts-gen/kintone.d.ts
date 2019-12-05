@@ -255,4 +255,175 @@ declare namespace kintone {
 
     function getLoginUser(): LoginUser;
     function getUiVersion(): 1 | 2;
+
+    namespace fieldTypes {
+        interface SingleLineText {
+            type?: "SINGLE_LINE_TEXT";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface RichText {
+            type?: "RICH_TEXT";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface MultiLineText {
+            type?: "MULTI_LINE_TEXT";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface Number {
+            type?: "NUMBER";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface Calc {
+            type: "CALC";
+            value: string;
+            disabled?: boolean;
+        }
+
+        interface RadioButton {
+            type?: "RADIO_BUTTON";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface DropDown {
+            type?: "DROP_DOWN";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface Date {
+            type?: "DATE";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface Time {
+            type?: "TIME";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface DateTime {
+            type?: "DATETIME";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface Link {
+            type?: "LINK";
+            value: string;
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface CheckBox {
+            type?: "CHECK_BOX";
+            value: string[];
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface MultiSelect {
+            type?: "MULTI_SELECT";
+            value: string[];
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface UserSelect {
+            type?: "USER_SELECT";
+            value: { code: string; name: string }[];
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface OrganizationSelect {
+            type?: "ORGANIZATION_SELECT";
+            value: { code: string; name: string }[];
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface GroupSelect {
+            type?: "GROUP_SELECT";
+            value: { code: string; name: string }[];
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface File {
+            type: "FILE";
+            value: {
+                contentType: string;
+                fileKey: string;
+                name: string;
+                size: string;
+            }[];
+            disabled?: boolean;
+            error?: string;
+        }
+
+        interface Id {
+            type: "__ID__";
+            value: string;
+        }
+
+        interface Revision {
+            type: "__REVISION__";
+            value: string;
+        }
+
+        /**
+         * field type of UserField is MODIFIER.
+         * So error property not exists.
+         */
+        interface Modifier {
+            type: "MODIFIER";
+            value: { code: string; name: string };
+        }
+
+        /**
+         * field type of UserField is CREATOR.
+         * So error property not exists.
+         */
+        interface Creator {
+            type: "CREATOR";
+            value: { code: string; name: string };
+        }
+
+        interface RecordNumber {
+            type: "RECORD_NUMBER";
+            value: string;
+            error?: string;
+        }
+
+        interface UpdatedTime {
+            type: "UPDATED_TIME";
+            value: string;
+            error?: string;
+        }
+
+        interface CreatedTime {
+            type: "CREATED_TIME";
+            value: string;
+            error?: string;
+        }
+    }
 }
