@@ -137,7 +137,8 @@ export class RecordClient {
     records: T[]
   ): Promise<T[]> {
     const { condition, ...rest } = params;
-    const query = `${condition || ""} and $id > ${id} order by $id asc`;
+    const conditionQuery = condition ? `${condition} and ` : "";
+    const query = `${conditionQuery}$id > ${id} order by $id asc`;
     const result = await this.getRecords<T>({ ...rest, query });
     const MAX_RECORDS_COUNT = 500;
     const allRecords = records.concat(result.records);
