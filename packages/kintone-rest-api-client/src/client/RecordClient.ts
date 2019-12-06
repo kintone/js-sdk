@@ -123,7 +123,7 @@ export class RecordClient {
     app: AppID;
     fields?: string[];
     condition?: string;
-  }) {
+  }): Promise<T[]> {
     return this.getAllRecordsRecursiveWithId(params, 0, []);
   }
 
