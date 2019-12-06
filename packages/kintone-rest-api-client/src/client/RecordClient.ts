@@ -124,11 +124,28 @@ export class RecordClient {
     fields?: string[];
     conditions?: string;
   }) {
+    return this.getAllRecordsRecursiveWithId(params, 0, []);
+  }
+
+  private async getAllRecordsRecursiveWithId<T extends Record>(
+    params: {
+      app: AppID;
+      fields?: string[];
+      conditions?: string;
+    },
+    id: number,
+    records: T[]
+  ): Promise<T[]> {
     const { conditions, ...rest } = params;
-    // TODO: build a query string from conditions
-    // TODO: add order by query
-    const query = `${conditions || ""} order by $id asc`;
-    return this.getRecords({ ...rest, query });
+    const query = `${conditions || ""} and $id > ${id} order by $id asc`;
+    const result = await this.getRecords<T>({ ...rest, query });
+    const MAX_RECORDS_COUNT = 500;
+    const allRecords = records.concat(result.records);
+    if (result.records.length < MAX_RECORDS_COUNT) {
+      return allRecords;
+    }
+    const lastId = result.records[result.records.length - 1].$id.value;
+    return this.getAllRecordsRecursiveWithId(params, lastId, allRecords);
   }
 
   public async getAllRecordsWithCursor<T extends Record>(params: {
