@@ -206,14 +206,14 @@ describe("RecordClient", () => {
   });
 
   describe("getAllRecordsWithId", () => {
-    const params = {
-      app: APP_ID,
-      fields: [fieldCode],
-      condition: `${fieldCode} = "foo"`
-    };
-    let result: Record[];
+    describe("success with condition", () => {
+      const params = {
+        app: APP_ID,
+        fields: [fieldCode],
+        condition: `${fieldCode} = "foo"`
+      };
+      let result: Record[];
 
-    describe("success", () => {
       beforeEach(async () => {
         const records = [];
         for (let i = 1; i <= 500; i++) {
@@ -245,6 +245,52 @@ describe("RecordClient", () => {
             app: params.app,
             fields: params.fields,
             query: `${params.condition || ""} and $id > 500 order by $id asc`
+          }
+        });
+
+        expect(result.length).toBe(501);
+        expect(result[500]).toStrictEqual({ $id: { value: "501" } });
+      });
+    });
+
+    describe("success without condition", () => {
+      const params = {
+        app: APP_ID,
+        fields: [fieldCode]
+      };
+      let result: Record[];
+
+      beforeEach(async () => {
+        const records = [];
+        for (let i = 1; i <= 500; i++) {
+          records.push({
+            $id: {
+              value: i.toString()
+            }
+          });
+        }
+        mockClient.mockResponse({ records });
+        mockClient.mockResponse({ records: [{ $id: { value: "501" } }] });
+        result = await recordClient.getAllRecordsWithId<Record>(params);
+      });
+
+      it("should return all records", () => {
+        expect(mockClient.getLogs()[0]).toEqual({
+          path: "/k/v1/records.json",
+          method: "get",
+          params: {
+            app: params.app,
+            fields: params.fields,
+            query: "$id > 0 order by $id asc"
+          }
+        });
+        expect(mockClient.getLogs()[1]).toEqual({
+          path: "/k/v1/records.json",
+          method: "get",
+          params: {
+            app: params.app,
+            fields: params.fields,
+            query: "$id > 500 order by $id asc"
           }
         });
 
