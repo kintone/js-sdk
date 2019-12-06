@@ -122,7 +122,7 @@ export class RecordClient {
   public async getAllRecordsWithId<T extends Record>(params: {
     app: AppID;
     fields?: string[];
-    conditions?: string;
+    condition?: string;
   }) {
     return this.getAllRecordsRecursiveWithId(params, 0, []);
   }
@@ -131,13 +131,13 @@ export class RecordClient {
     params: {
       app: AppID;
       fields?: string[];
-      conditions?: string;
+      condition?: string;
     },
     id: number,
     records: T[]
   ): Promise<T[]> {
-    const { conditions, ...rest } = params;
-    const query = `${conditions || ""} and $id > ${id} order by $id asc`;
+    const { condition, ...rest } = params;
+    const query = `${condition || ""} and $id > ${id} order by $id asc`;
     const result = await this.getRecords<T>({ ...rest, query });
     const MAX_RECORDS_COUNT = 500;
     const allRecords = records.concat(result.records);

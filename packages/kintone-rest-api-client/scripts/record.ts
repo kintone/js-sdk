@@ -131,7 +131,7 @@ export class Record {
       await this.client.record.getAllRecordsWithId({
         app: APP_ID,
         fields: [],
-        conditions: 'Customer != "hoge"'
+        condition: 'Customer != "hoge"'
       })
     );
   }
