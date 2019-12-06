@@ -235,7 +235,8 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: `${params.condition || ""} and $id > 0 order by $id asc`
+            query: `${params.condition ||
+              ""} and $id > 0 order by $id asc limit 500`
           }
         });
         expect(mockClient.getLogs()[1]).toEqual({
@@ -244,7 +245,8 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: `${params.condition || ""} and $id > 500 order by $id asc`
+            query: `${params.condition ||
+              ""} and $id > 500 order by $id asc limit 500`
           }
         });
 
@@ -281,7 +283,7 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: "$id > 0 order by $id asc"
+            query: "$id > 0 order by $id asc limit 500"
           }
         });
         expect(mockClient.getLogs()[1]).toEqual({
@@ -290,7 +292,7 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: "$id > 500 order by $id asc"
+            query: "$id > 500 order by $id asc limit 500"
           }
         });
 
