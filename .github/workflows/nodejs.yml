@@ -22,4 +22,5 @@ jobs:
     - run: node --version 
     - run: npm --version
     - run: npm ci
+    - run: npm run lint
     - run: npm run test:all
