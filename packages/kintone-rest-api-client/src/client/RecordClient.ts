@@ -119,6 +119,18 @@ export class RecordClient {
     return this.client.delete(path, params);
   }
 
+  public async getAllRecordsWithId<T extends Record>(params: {
+    app: AppID;
+    fields?: string[];
+    conditions?: string;
+  }) {
+    const { conditions, ...rest } = params;
+    // TODO: build a query string from conditions
+    // TODO: add order by query
+    const query = `${conditions || ""} order by $id asc`;
+    return this.getRecords({ ...rest, query });
+  }
+
   public async getAllRecordsWithCursor<T extends Record>(params: {
     app: AppID;
     fields?: string[];
