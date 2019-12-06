@@ -207,6 +207,18 @@ describe("RecordClient", () => {
 
   describe("getAllRecordsWithId", () => {
     describe("success with condition", () => {
+      it.todo("should do nothing if `fields` is not specified");
+
+      it.todo("should do nothing if `fields` is empty");
+
+      it.todo(
+        "should append `$id` if `fields` is specified and doesn't contain `$id`"
+      );
+
+      it.todo("should do nothing if `fields` is specified and contains `$id`");
+    });
+
+    describe("success with condition", () => {
       const params = {
         app: APP_ID,
         fields: [fieldCode],
