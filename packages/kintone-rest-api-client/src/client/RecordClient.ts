@@ -124,7 +124,13 @@ export class RecordClient {
     fields?: string[];
     condition?: string;
   }): Promise<T[]> {
-    return this.getAllRecordsRecursiveWithId(params, 0, []);
+    const { fields: originalFields, ...rest } = params;
+    let fields = originalFields;
+    // Append $id if $id doesn't exist in fields
+    if (fields && fields.length > 0 && fields.indexOf("$id") === -1) {
+      fields = [...fields, "$id"];
+    }
+    return this.getAllRecordsRecursiveWithId({ ...rest, fields }, 0, []);
   }
 
   private async getAllRecordsRecursiveWithId<T extends Record>(

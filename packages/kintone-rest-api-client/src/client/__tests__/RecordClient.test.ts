@@ -228,7 +228,7 @@ describe("RecordClient", () => {
         expect(mockClient.getLogs()[0].params.fields).toEqual([]);
       });
 
-      it.skip("should append `$id` if `fields` is specified and doesn't contain `$id`", async () => {
+      it("should append `$id` if `fields` is specified and doesn't contain `$id`", async () => {
         const params = {
           app: APP_ID,
           fields: [fieldCode],
@@ -305,7 +305,7 @@ describe("RecordClient", () => {
     describe("success without condition", () => {
       const params = {
         app: APP_ID,
-        fields: [fieldCode]
+        fields: ["$id"]
       };
       let result: Record[];
 
