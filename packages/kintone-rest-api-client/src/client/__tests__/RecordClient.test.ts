@@ -207,7 +207,23 @@ describe("RecordClient", () => {
 
   describe("getAllRecordsWithId", () => {
     describe("success with condition", () => {
-      it.todo("should do nothing if `fields` is not specified");
+      it("should do nothing if `fields` is not specified", async () => {
+        const params = {
+          app: APP_ID,
+          condition: `${fieldCode} = "foo"`
+        };
+        mockClient.mockResponse({ records: [] });
+        const result = await recordClient.getAllRecordsWithId<Record>(params);
+        expect(mockClient.getLogs()[0]).toEqual({
+          path: "/k/v1/records.json",
+          method: "get",
+          params: {
+            app: params.app,
+            query: `${params.condition ||
+              ""} and $id > 0 order by $id asc limit 500`
+          }
+        });
+      });
 
       it.todo("should do nothing if `fields` is empty");
 
