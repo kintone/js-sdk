@@ -213,7 +213,7 @@ describe("RecordClient", () => {
           condition: `${fieldCode} = "foo"`
         };
         mockClient.mockResponse({ records: [] });
-        const result = await recordClient.getAllRecordsWithId<Record>(params);
+        await recordClient.getAllRecordsWithId<Record>(params);
         expect(mockClient.getLogs()[0]).toEqual({
           path: "/k/v1/records.json",
           method: "get",
@@ -225,7 +225,25 @@ describe("RecordClient", () => {
         });
       });
 
-      it.todo("should do nothing if `fields` is empty");
+      it("should do nothing if `fields` is empty", async () => {
+        const params = {
+          app: APP_ID,
+          fields: [],
+          condition: `${fieldCode} = "foo"`
+        };
+        mockClient.mockResponse({ records: [] });
+        await recordClient.getAllRecordsWithId<Record>(params);
+        expect(mockClient.getLogs()[0]).toEqual({
+          path: "/k/v1/records.json",
+          method: "get",
+          params: {
+            app: params.app,
+            fields: [],
+            query: `${params.condition ||
+              ""} and $id > 0 order by $id asc limit 500`
+          }
+        });
+      });
 
       it.todo(
         "should append `$id` if `fields` is specified and doesn't contain `$id`"
@@ -237,7 +255,7 @@ describe("RecordClient", () => {
     describe("success with condition", () => {
       const params = {
         app: APP_ID,
-        fields: [fieldCode],
+        fields: ["$id"],
         condition: `${fieldCode} = "foo"`
       };
       let result: Record[];
