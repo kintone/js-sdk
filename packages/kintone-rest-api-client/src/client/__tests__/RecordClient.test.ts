@@ -214,15 +214,7 @@ describe("RecordClient", () => {
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithId<Record>(params);
-        expect(mockClient.getLogs()[0]).toEqual({
-          path: "/k/v1/records.json",
-          method: "get",
-          params: {
-            app: params.app,
-            query: `${params.condition ||
-              ""} and $id > 0 order by $id asc limit 500`
-          }
-        });
+        expect(mockClient.getLogs()[0].params.fields).toBe(undefined);
       });
 
       it("should do nothing if `fields` is empty", async () => {
@@ -233,16 +225,7 @@ describe("RecordClient", () => {
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithId<Record>(params);
-        expect(mockClient.getLogs()[0]).toEqual({
-          path: "/k/v1/records.json",
-          method: "get",
-          params: {
-            app: params.app,
-            fields: [],
-            query: `${params.condition ||
-              ""} and $id > 0 order by $id asc limit 500`
-          }
-        });
+        expect(mockClient.getLogs()[0].params.fields).toEqual([]);
       });
 
       it.todo(

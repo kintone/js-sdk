@@ -3,7 +3,9 @@ import { HttpClient } from "./HttpClientInterface";
 type Log = {
   method: "get" | "post" | "put" | "delete";
   path: string;
-  params: object;
+  params: {
+    [key: string]: any;
+  };
 };
 
 export class MockClient implements HttpClient {
