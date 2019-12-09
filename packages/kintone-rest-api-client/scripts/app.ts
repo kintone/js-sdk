@@ -112,6 +112,30 @@ export class App {
     }
   }
 
+  public async getApp() {
+    try {
+      console.log(await this.client.app.getApp({ id: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getApps() {
+    try {
+      console.log(await this.client.app.getApps({}));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async addApp() {
+    try {
+      console.log(await this.client.app.addApp({ name: "TEST_APP" }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async getDeployStatus() {
     try {
       console.log(
