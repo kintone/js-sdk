@@ -117,6 +117,18 @@ export class AppClient {
     return this.client.get(path, params);
   }
 
+  public getApps(params: {
+    ids?: AppID[] | null;
+    codes?: string[] | null;
+    name?: string | null;
+    spaceIds?: Array<string | number> | null;
+    limit?: string | number;
+    offset?: string | number;
+  }): Promise<{ apps: App[] }> {
+    const path = "/k/v1/apps.json";
+    return this.client.get(path, params);
+  }
+
   public getDeployStatus(params: {
     apps: AppID[];
   }): Promise<{ apps: Array<{ app: string; status: DeployStatus }> }> {
