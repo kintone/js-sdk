@@ -186,6 +186,67 @@ describe("AppClient", () => {
     });
   });
 
+  describe("getApp", () => {
+    const params = {
+      id: APP_ID
+    };
+    beforeEach(() => {
+      appClient.getApp(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/app.json");
+    });
+    it("should send a get request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("get");
+    });
+    it("should pass id as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("getApps", () => {
+    const params = {
+      ids: [APP_ID],
+      codes: ["APP"],
+      name: "app",
+      spaceIds: [1, 2],
+      limit: 100,
+      offset: 30
+    };
+    beforeEach(() => {
+      appClient.getApps(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/apps.json");
+    });
+    it("should send a get request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("get");
+    });
+    it("should pass ids, codes, name, spaceIds, limit, and offset as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("addApp", () => {
+    const params = {
+      name: "app",
+      space: 10,
+      thread: 20
+    };
+    beforeEach(() => {
+      appClient.addApp(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/app.json");
+    });
+    it("should send a post request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass name, space, and thread as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
   describe("getDeployStatus", () => {
     const params = {
       apps: [APP_ID]
