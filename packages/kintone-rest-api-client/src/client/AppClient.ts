@@ -129,6 +129,15 @@ export class AppClient {
     return this.client.get(path, params);
   }
 
+  public addApp(
+    params:
+      | { name: string }
+      | { name: string; space: string | number; thread: string | number }
+  ): Promise<{ app: string; revision: string }> {
+    const path = "/k/v1/preview/app.json";
+    return this.client.post(path, params);
+  }
+
   public getDeployStatus(params: {
     apps: AppID[];
   }): Promise<{ apps: Array<{ app: string; status: DeployStatus }> }> {
