@@ -9,6 +9,22 @@ type Properties = {
 
 type Layout = object[];
 
+type App = {
+  appId: string;
+  code: string;
+  name: string;
+  description: string;
+  spaceId: string | null;
+  threadId: string | null;
+  createdAt: string;
+  creator: { code: string; name: string };
+  modifiedAt: string;
+  modifier: {
+    code: string;
+    name: string;
+  };
+};
+
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
 type Entity = {
@@ -94,6 +110,11 @@ export class AppClient {
   }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/app/form/layout.json";
     return this.client.put(path, params);
+  }
+
+  public getApp(params: { id: AppID }): Promise<App> {
+    const path = "/k/v1/app.json";
+    return this.client.get(path, params);
   }
 
   public getDeployStatus(params: {
