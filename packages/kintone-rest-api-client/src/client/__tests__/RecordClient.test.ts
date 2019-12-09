@@ -228,11 +228,29 @@ describe("RecordClient", () => {
         expect(mockClient.getLogs()[0].params.fields).toEqual([]);
       });
 
-      it.todo(
-        "should append `$id` if `fields` is specified and doesn't contain `$id`"
-      );
+      it.skip("should append `$id` if `fields` is specified and doesn't contain `$id`", async () => {
+        const params = {
+          app: APP_ID,
+          fields: [fieldCode],
+          condition: `${fieldCode} = "foo"`
+        };
+        mockClient.mockResponse({ records: [] });
+        await recordClient.getAllRecordsWithId<Record>(params);
+        expect(mockClient.getLogs()[0].params.fields.sort()).toEqual(
+          [...params.fields, "$id"].sort()
+        );
+      });
 
-      it.todo("should do nothing if `fields` is specified and contains `$id`");
+      it("should do nothing if `fields` is specified and contains `$id`", async () => {
+        const params = {
+          app: APP_ID,
+          fields: ["$id", fieldCode],
+          condition: `${fieldCode} = "foo"`
+        };
+        mockClient.mockResponse({ records: [] });
+        await recordClient.getAllRecordsWithId<Record>(params);
+        expect(mockClient.getLogs()[0].params.fields).toEqual(params.fields);
+      });
     });
 
     describe("success with condition", () => {
