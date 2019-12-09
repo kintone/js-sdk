@@ -1,4 +1,5 @@
 import { KintoneAPIClient } from "../src/index";
+import { Right } from "../src/client/AppClient";
 
 const APP_ID = 8;
 const RECORD_ID = 3;
@@ -174,5 +175,36 @@ export class App {
     console.log(
       JSON.stringify(await this.client.app.evaluateRecordsAcl(params))
     );
+  }
+
+  public async updateFieldAcl() {
+    const rights: Right[] = [
+      {
+        code: "Customer",
+        entities: [
+          {
+            accessibility: "WRITE",
+            entity: {
+              code: "Administrator",
+              type: "USER"
+            }
+          },
+          {
+            accessibility: "READ",
+            entity: {
+              code: "everyone",
+              type: "GROUP"
+            }
+          }
+        ]
+      }
+    ];
+    try {
+      console.log(
+        await this.client.app.updateFieldAcl({ app: APP_ID, rights })
+      );
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
