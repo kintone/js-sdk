@@ -13,14 +13,14 @@ type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
 type Entity = {
   accessibility: "READ" | "WRITE" | "NONE";
-  includeSubs: boolean;
+  includeSubs?: boolean;
   entity: {
     code: string;
     type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
   };
 };
 
-type Right = {
+export type Right = {
   code: string;
   entities: Entity[];
 };
@@ -126,5 +126,16 @@ export class AppClient {
   }): Promise<{ rights: Rights }> {
     const path = "/k/v1/records/acl/evaluate.json";
     return this.client.get(path, params);
+  }
+
+  public updateFieldAcl(params: {
+    app?: AppID;
+    id?: AppID;
+    rights: Right[];
+    revision?: Revision;
+    preview?: boolean;
+  }): Promise<{ revision: string }> {
+    const path = "/k/v1/preview/field/acl.json";
+    return this.client.put(path, params);
   }
 }
