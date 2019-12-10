@@ -25,6 +25,41 @@ type App = {
   };
 };
 
+type View =
+  | {
+      type: "LIST";
+      builtinType?: "ASSIGNEE";
+      name: string;
+      id: string;
+      fields: string[];
+      filterCond: string;
+      sort: string;
+      index: string;
+    }
+  | {
+      type: "CALENDAR";
+      builtinType?: "ASSIGNEE";
+      name: string;
+      id: string;
+      date: string;
+      title: string;
+      filterCond: string;
+      sort: string;
+      index: string;
+    }
+  | {
+      type: "CUSTOM";
+      builtinType?: "ASSIGNEE";
+      name: string;
+      id: string;
+      html: string;
+      pager: boolean;
+      device: "DESKTOP" | "ANY";
+      filterCond: string;
+      sort: string;
+      index: string;
+    };
+
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
 type Entity = {
@@ -110,6 +145,16 @@ export class AppClient {
   }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/app/form/layout.json";
     return this.client.put(path, params);
+  }
+
+  public getViews(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{ views: { [viewName: string]: View }; revision: string }> {
+    const { preview, ...rest } = params;
+    const path = `/k/v1${preview ? "/preview" : ""}/app/views.json`;
+    return this.client.get(path, rest);
   }
 
   public getApp(params: { id: AppID }): Promise<App> {
