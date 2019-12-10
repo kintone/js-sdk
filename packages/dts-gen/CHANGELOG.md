@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/kintone/dts-gen/compare/v2.1.2...v2.2.0) (2019-12-10)
+
+
+### Features
+
+* add general type definition ([#116](https://github.com/kintone/dts-gen/issues/116)) ([353ac95](https://github.com/kintone/dts-gen/commit/353ac959a38844f23e4f8fc0f928c9d0263fbd42))
+
 ### [2.1.2](https://github.com/kintone/dts-gen/compare/v2.1.1...v2.1.2) (2019-11-26)
 
 
