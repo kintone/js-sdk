@@ -126,6 +126,18 @@ export class Record {
     console.log(await this.client.record.deleteCursor({ id: cursorId }));
   }
 
+  public async getAllRecords() {
+    console.log(
+      await this.client.record.getAllRecords({
+        app: APP_ID,
+        fields: ["Customer"],
+        condition: 'Customer != "hoge"',
+        orderBy: "Customer desc",
+        withCursor: false
+      })
+    );
+  }
+
   public async getAllRecordsWithId() {
     console.log(
       await this.client.record.getAllRecordsWithId({

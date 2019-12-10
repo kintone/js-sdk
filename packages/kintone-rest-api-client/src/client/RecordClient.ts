@@ -119,6 +119,25 @@ export class RecordClient {
     return this.client.delete(path, params);
   }
 
+  public async getAllRecords<T extends Record>(params: {
+    app: AppID;
+    fields?: string[];
+    condition?: string;
+    orderBy?: string;
+    withCursor?: boolean;
+  }): Promise<T[]> {
+    const { condition, orderBy, withCursor = true, ...rest } = params;
+    if (!orderBy) {
+      return this.getAllRecordsWithId({ ...rest, condition });
+    }
+    if (withCursor) {
+      const conditionQuery = condition ? `${condition} ` : "";
+      const query = `${conditionQuery}${orderBy ? `order by ${orderBy} ` : ""}`;
+      return this.getAllRecordsWithCursor({ ...rest, query });
+    }
+    return this.getAllRecordsWithOffset({ ...rest, orderBy, condition });
+  }
+
   public async getAllRecordsWithId<T extends Record>(params: {
     app: AppID;
     fields?: string[];
