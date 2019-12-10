@@ -31,9 +31,10 @@ function rezip(contentsZip) {
  * @return {!Promise<*>}
  */
 function validateContentsZip(contentsZip) {
-  return preprocessToRezip(contentsZip).then(
-    ({ entries, manifestJson, manifestPath }) =>
-      validateManifest(entries, manifestJson, manifestPath)
+  return preprocessToRezip(
+    contentsZip
+  ).then(({ entries, manifestJson, manifestPath }) =>
+    validateManifest(entries, manifestJson, manifestPath)
   );
 }
 
