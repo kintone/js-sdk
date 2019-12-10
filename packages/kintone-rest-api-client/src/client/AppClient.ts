@@ -60,6 +60,35 @@ type View =
       index: string;
     };
 
+type ViewParam =
+  | {
+      type: "LIST";
+      index: string | number;
+      name?: string;
+      fields?: string[];
+      filterCond?: string;
+      sort?: string;
+    }
+  | {
+      type: "CALENDAR";
+      index: string | number;
+      name?: string;
+      date?: string;
+      title?: string;
+      filterCond?: string;
+      sort?: string;
+    }
+  | {
+      type: "CUSTOM";
+      index: string | number;
+      name?: string;
+      html?: string;
+      pager?: boolean;
+      device?: "DESKTOP" | "ANY";
+      filterCond?: string;
+      sort?: string;
+    };
+
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
 type Entity = {
@@ -155,6 +184,18 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/app/views.json`;
     return this.client.get(path, rest);
+  }
+
+  public updateViews(params: {
+    app: AppID;
+    views: { [viewName: string]: ViewParam };
+    revision?: Revision;
+  }): Promise<{
+    views: { [viewName: string]: { id: string } };
+    revision: string;
+  }> {
+    const path = `/k/v1/preview/app/views.json`;
+    return this.client.put(path, params);
   }
 
   public getApp(params: { id: AppID }): Promise<App> {
