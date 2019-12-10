@@ -156,6 +156,45 @@ export class RecordClient {
     return this.getAllRecordsRecursiveWithId(params, lastId, allRecords);
   }
 
+  public async getAllRecordsWithOffset<T extends Record>(params: {
+    app: AppID;
+    fields?: string[];
+    condition?: string;
+    orderBy?: string;
+  }): Promise<T[]> {
+    return this.getAllRecordsRecursiveWithOffset(params, 0, []);
+  }
+
+  public async getAllRecordsRecursiveWithOffset<T extends Record>(
+    params: {
+      app: AppID;
+      fields?: string[];
+      condition?: string;
+      orderBy?: string;
+    },
+    offset: number,
+    records: T[]
+  ): Promise<T[]> {
+    const GET_RECORDS_LIMIT = 500;
+
+    const { condition, orderBy, ...rest } = params;
+    const conditionQuery = condition ? `${condition} ` : "";
+    const query = `${conditionQuery}${
+      orderBy ? `order by ${orderBy}` : ""
+    } limit ${GET_RECORDS_LIMIT} offset ${offset}`;
+    const result = await this.getRecords<T>({ ...rest, query });
+    const allRecords = records.concat(result.records);
+    if (result.records.length < GET_RECORDS_LIMIT) {
+      return allRecords;
+    }
+
+    return this.getAllRecordsRecursiveWithOffset(
+      params,
+      offset + GET_RECORDS_LIMIT,
+      allRecords
+    );
+  }
+
   public async getAllRecordsWithCursor<T extends Record>(params: {
     app: AppID;
     fields?: string[];
