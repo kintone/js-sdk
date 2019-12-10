@@ -453,7 +453,7 @@ describe("RecordClient", () => {
       query: `${fieldCode} = "foo"`
     };
     const CURSOR_ID = "1";
-    let result: { records: Record[]; totalCount: string };
+    let result: Record[];
 
     describe("success", () => {
       beforeEach(async () => {
@@ -490,13 +490,12 @@ describe("RecordClient", () => {
           method: "get",
           params: { id: CURSOR_ID }
         });
-        expect(result.records).toStrictEqual([
+        expect(result).toStrictEqual([
           { id: 1 },
           { id: 2 },
           { id: 3 },
           { id: 4 }
         ]);
-        expect(result.totalCount).toBe("4");
       });
 
       it("should not call deleteCursor", () => {
