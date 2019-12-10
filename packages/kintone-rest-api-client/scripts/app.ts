@@ -3,6 +3,7 @@ import { Right } from "../src/client/AppClient";
 
 const APP_ID = 8;
 const RECORD_ID = 3;
+const SPACE_ID = 3;
 
 export class App {
   private client: KintoneAPIClient;
@@ -160,7 +161,9 @@ export class App {
 
   public async addApp() {
     try {
-      console.log(await this.client.app.addApp({ name: "TEST_APP" }));
+      console.log(
+        await this.client.app.addApp({ name: "TEST_APP", space: SPACE_ID })
+      );
     } catch (error) {
       console.log(error);
     }
