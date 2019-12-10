@@ -120,6 +120,28 @@ export class App {
     }
   }
 
+  public async getViewsPreview() {
+    try {
+      console.log(
+        await this.client.app.getViews({ app: APP_ID, preview: true })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateViews() {
+    try {
+      const { views } = await this.client.app.getViews({ app: APP_ID });
+      const newViews = views;
+      console.log(
+        await this.client.app.updateViews({ app: APP_ID, views: newViews })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async getApp() {
     try {
       console.log(await this.client.app.getApp({ id: APP_ID }));
