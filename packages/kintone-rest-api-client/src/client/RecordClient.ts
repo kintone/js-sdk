@@ -180,8 +180,8 @@ export class RecordClient {
     const { condition, orderBy, ...rest } = params;
     const conditionQuery = condition ? `${condition} ` : "";
     const query = `${conditionQuery}${
-      orderBy ? `order by ${orderBy}` : ""
-    } limit ${GET_RECORDS_LIMIT} offset ${offset}`;
+      orderBy ? `order by ${orderBy} ` : ""
+    }limit ${GET_RECORDS_LIMIT} offset ${offset}`;
     const result = await this.getRecords<T>({ ...rest, query });
     const allRecords = records.concat(result.records);
     if (result.records.length < GET_RECORDS_LIMIT) {

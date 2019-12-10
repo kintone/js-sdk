@@ -349,6 +349,103 @@ describe("RecordClient", () => {
     });
   });
 
+  describe("getAllRecordsWithOffset", () => {
+    describe("condition and orderBy parameters", () => {
+      it("with condition and orderBy", async () => {
+        const params = {
+          app: APP_ID,
+          condition: `${fieldCode} = "foo"`,
+          orderBy: `${fieldCode}`
+        };
+        mockClient.mockResponse({ records: [] });
+        await recordClient.getAllRecordsWithOffset<Record>(params);
+        expect(mockClient.getLogs()[0].params.query).toBe(
+          `${fieldCode} = "foo" order by ${fieldCode} limit 500 offset 0`
+        );
+      });
+
+      it("with condition, without orderBy", async () => {
+        const params = {
+          app: APP_ID,
+          condition: `${fieldCode} = "foo"`
+        };
+        mockClient.mockResponse({ records: [] });
+        await recordClient.getAllRecordsWithOffset<Record>(params);
+        expect(mockClient.getLogs()[0].params.query).toBe(
+          `${fieldCode} = "foo" limit 500 offset 0`
+        );
+      });
+
+      it("without condition, with orderBy", async () => {
+        const params = {
+          app: APP_ID,
+          orderBy: `${fieldCode}`
+        };
+        mockClient.mockResponse({ records: [] });
+        await recordClient.getAllRecordsWithOffset<Record>(params);
+        expect(mockClient.getLogs()[0].params.query).toBe(
+          `order by ${fieldCode} limit 500 offset 0`
+        );
+      });
+
+      it("neither condition nor orderBy", async () => {
+        const params = {
+          app: APP_ID
+        };
+        mockClient.mockResponse({ records: [] });
+        await recordClient.getAllRecordsWithOffset<Record>(params);
+        expect(mockClient.getLogs()[0].params.query).toBe("limit 500 offset 0");
+      });
+    });
+
+    describe("success", () => {
+      const params = {
+        app: APP_ID,
+        fields: ["$id"],
+        condition: `${fieldCode} = "foo"`
+      };
+      let result: Record[];
+
+      beforeEach(async () => {
+        const records = [];
+        for (let i = 1; i <= 500; i++) {
+          records.push({
+            $id: {
+              value: i.toString()
+            }
+          });
+        }
+        mockClient.mockResponse({ records });
+        mockClient.mockResponse({ records: [{ $id: { value: "501" } }] });
+        result = await recordClient.getAllRecordsWithOffset<Record>(params);
+      });
+
+      it("should return all records", () => {
+        expect(mockClient.getLogs()[0]).toEqual({
+          path: "/k/v1/records.json",
+          method: "get",
+          params: {
+            app: params.app,
+            fields: params.fields,
+            query: `${params.condition || ""} limit 500 offset 0`
+          }
+        });
+        expect(mockClient.getLogs()[1]).toEqual({
+          path: "/k/v1/records.json",
+          method: "get",
+          params: {
+            app: params.app,
+            fields: params.fields,
+            query: `${params.condition || ""} limit 500 offset 500`
+          }
+        });
+
+        expect(result.length).toBe(501);
+        expect(result[500]).toStrictEqual({ $id: { value: "501" } });
+      });
+    });
+  });
+
   describe("getAllRecordsWithCursor", () => {
     const params = {
       app: APP_ID,
