@@ -215,13 +215,20 @@ export class AppClient {
     return this.client.get(path, params);
   }
 
-  public addApp(
-    params:
-      | { name: string }
-      | { name: string; space: string | number; thread: string | number }
-  ): Promise<{ app: string; revision: string }> {
+  public async addApp(params: {
+    name: string;
+    space?: string | number;
+  }): Promise<{ app: string; revision: string }> {
+    const { name, space } = params;
     const path = "/k/v1/preview/app.json";
-    return this.client.post(path, params);
+    if (space) {
+      const spacePath = "/k/v1/space.json";
+      const { defaultThread } = await this.client.get(spacePath, {
+        id: space
+      });
+      return this.client.post(path, { ...params, thread: defaultThread });
+    }
+    return this.client.post(path, { name });
   }
 
   public getDeployStatus(params: {

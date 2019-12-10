@@ -307,22 +307,46 @@ describe("AppClient", () => {
   });
 
   describe("addApp", () => {
-    const params = {
-      name: "app",
-      space: 10,
-      thread: 20
-    };
-    beforeEach(() => {
-      appClient.addApp(params);
+    describe("without space", () => {
+      const params = {
+        name: "app"
+      };
+      beforeEach(() => {
+        appClient.addApp(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/app.json");
+      });
+      it("should send a post request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("post");
+      });
+      it("should pass name, space, and thread as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
     });
-    it("should pass the path to the http client", () => {
-      expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/app.json");
-    });
-    it("should send a post request", () => {
-      expect(mockClient.getLogs()[0].method).toBe("post");
-    });
-    it("should pass name, space, and thread as a param to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual(params);
+    describe("with space", () => {
+      const params = {
+        name: "app",
+        space: 10
+      };
+      const defaultThread = 20;
+      beforeEach(() => {
+        mockClient.mockResponse({ defaultThread });
+        appClient.addApp(params);
+      });
+      it("should fetch the default thread of the space", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/space.json");
+        expect(mockClient.getLogs()[0].method).toBe("get");
+        expect(mockClient.getLogs()[0].params).toEqual({ id: params.space });
+      });
+      it("should add new app into the default thread", () => {
+        expect(mockClient.getLogs()[1].path).toBe("/k/v1/preview/app.json");
+        expect(mockClient.getLogs()[1].method).toBe("post");
+        expect(mockClient.getLogs()[1].params).toEqual({
+          ...params,
+          thread: defaultThread
+        });
+      });
     });
   });
 
