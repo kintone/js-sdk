@@ -136,6 +136,16 @@ export class Record {
     );
   }
 
+  public async getAllRecordsWithOffset() {
+    console.log(
+      await this.client.record.getAllRecordsWithOffset({
+        app: APP_ID,
+        fields: [],
+        condition: 'Customer != "hoge"'
+      })
+    );
+  }
+
   public async getAllRecordsWithCursor() {
     console.log(
       await this.client.record.getAllRecordsWithCursor({
