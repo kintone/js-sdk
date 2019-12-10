@@ -112,6 +112,14 @@ export class App {
     }
   }
 
+  public async getViews() {
+    try {
+      console.log(await this.client.app.getViews({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async getApp() {
     try {
       console.log(await this.client.app.getApp({ id: APP_ID }));
