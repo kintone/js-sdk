@@ -55,27 +55,27 @@ const cli = meow(
     flags: {
       domain: {
         type: 'string',
-        default: KINTONE_DOMAIN
+        default: KINTONE_DOMAIN || ''
       },
       username: {
         type: 'string',
-        default: KINTONE_USERNAME
+        default: KINTONE_USERNAME || ''
       },
       password: {
         type: 'string',
-        default: KINTONE_PASSWORD
+        default: KINTONE_PASSWORD || ''
       },
       basicAuthUsername: {
         type: 'string',
-        default: KINTONE_BASIC_AUTH_USERNAME
+        default: KINTONE_BASIC_AUTH_USERNAME || ''
       },
       basicAuthPassword: {
         type: 'string',
-        default: KINTONE_BASIC_AUTH_PASSWORD
+        default: KINTONE_BASIC_AUTH_PASSWORD || ''
       },
       proxy: {
         type: 'string',
-        default: HTTPS_PROXY || HTTP_PROXY
+        default: HTTPS_PROXY || HTTP_PROXY || ''
       },
       watch: {
         type: 'boolean',
