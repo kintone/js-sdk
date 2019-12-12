@@ -355,12 +355,12 @@ describe("RecordClient", () => {
         const params = {
           app: APP_ID,
           condition: `${fieldCode} = "foo"`,
-          orderBy: `${fieldCode}`
+          orderBy: `${fieldCode} asc`
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithOffset<Record>(params);
         expect(mockClient.getLogs()[0].params.query).toBe(
-          `${fieldCode} = "foo" order by ${fieldCode} limit 500 offset 0`
+          `${fieldCode} = "foo" order by ${fieldCode} asc limit 500 offset 0`
         );
       });
 
@@ -379,12 +379,12 @@ describe("RecordClient", () => {
       it("without condition, with orderBy", async () => {
         const params = {
           app: APP_ID,
-          orderBy: `${fieldCode}`
+          orderBy: `${fieldCode} asc`
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithOffset<Record>(params);
         expect(mockClient.getLogs()[0].params.query).toBe(
-          `order by ${fieldCode} limit 500 offset 0`
+          `order by ${fieldCode} asc limit 500 offset 0`
         );
       });
 
