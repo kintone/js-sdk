@@ -132,7 +132,7 @@ export class RecordClient {
     }
     if (withCursor) {
       const conditionQuery = condition ? `${condition} ` : "";
-      const query = `${conditionQuery}${orderBy ? `order by ${orderBy} ` : ""}`;
+      const query = `${conditionQuery}${orderBy ? `order by ${orderBy}` : ""}`;
       return this.getAllRecordsWithCursor({ ...rest, query });
     }
     return this.getAllRecordsWithOffset({ ...rest, orderBy, condition });
