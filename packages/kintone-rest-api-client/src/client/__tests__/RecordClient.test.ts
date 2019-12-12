@@ -446,6 +446,100 @@ describe("RecordClient", () => {
     });
   });
 
+  describe("getAllRecords", () => {
+    describe("`orderBy` is specified", () => {
+      const params = {
+        app: APP_ID,
+        condition: `${fieldCode} = "foo"`,
+        orderBy: `${fieldCode} asc`
+      };
+      let withCursorMockFn: jest.Mock;
+      let withOffsetMockFn: jest.Mock;
+      beforeEach(() => {
+        withCursorMockFn = jest.fn();
+        withOffsetMockFn = jest.fn();
+        recordClient.getAllRecordsWithCursor = withCursorMockFn;
+        recordClient.getAllRecordsWithOffset = withOffsetMockFn;
+      });
+      it("should call `getAllRecordsWithCursor` if `withCursor` is not specified", () => {
+        recordClient.getAllRecords({ ...params });
+        expect(withCursorMockFn.mock.calls.length).toBe(1);
+        expect(withCursorMockFn.mock.calls[0][0]).toStrictEqual({
+          app: params.app,
+          query: `${params.condition} order by ${params.orderBy}`
+        });
+      });
+      it("should call `getAllRecordsWithCursor` if `withCursor` is true", () => {
+        recordClient.getAllRecords({ ...params, withCursor: true });
+        expect(withCursorMockFn.mock.calls.length).toBe(1);
+        expect(withCursorMockFn.mock.calls[0][0]).toStrictEqual({
+          app: params.app,
+          query: `${params.condition} order by ${params.orderBy}`
+        });
+      });
+      it("should call `getAllRecordsWithOffset` if `withCursor` is false", () => {
+        recordClient.getAllRecords({ ...params, withCursor: false });
+        expect(withOffsetMockFn.mock.calls.length).toBe(1);
+        expect(withOffsetMockFn.mock.calls[0][0]).toStrictEqual(params);
+      });
+    });
+
+    describe("`orderBy` is an empty string", () => {
+      const params = {
+        app: APP_ID,
+        condition: `${fieldCode} = "foo"`,
+        orderBy: ""
+      };
+      const { orderBy, ...expected } = params;
+      let mockFn: jest.Mock;
+      beforeEach(() => {
+        mockFn = jest.fn();
+        recordClient.getAllRecordsWithId = mockFn;
+      });
+      it("should call `getAllRecordsWithId` if `withCursor` is not specified", () => {
+        recordClient.getAllRecords(params);
+        expect(mockFn.mock.calls.length).toBe(1);
+        expect(mockFn.mock.calls[0][0]).toStrictEqual(expected);
+      });
+      it("should call `getAllRecordsWithId` if `withCursor` is true", () => {
+        recordClient.getAllRecords({ ...params, withCursor: true });
+        expect(mockFn.mock.calls.length).toBe(1);
+        expect(mockFn.mock.calls[0][0]).toStrictEqual(expected);
+      });
+      it("should call `getAllRecordsWithId` if `withCursor` is false", () => {
+        recordClient.getAllRecords({ ...params, withCursor: false });
+        expect(mockFn.mock.calls.length).toBe(1);
+        expect(mockFn.mock.calls[0][0]).toStrictEqual(expected);
+      });
+    });
+    describe("`orderBy` is not specified", () => {
+      const params = {
+        app: APP_ID,
+        condition: `${fieldCode} = "foo"`
+      };
+      let mockFn: jest.Mock;
+      beforeEach(() => {
+        mockFn = jest.fn();
+        recordClient.getAllRecordsWithId = mockFn;
+      });
+      it("should call `getAllRecordsWithId` if `withCursor` is not specified", () => {
+        recordClient.getAllRecords(params);
+        expect(mockFn.mock.calls.length).toBe(1);
+        expect(mockFn.mock.calls[0][0]).toStrictEqual(params);
+      });
+      it("should call `getAllRecordsWithId` if `withCursor` is true", () => {
+        recordClient.getAllRecords({ ...params, withCursor: true });
+        expect(mockFn.mock.calls.length).toBe(1);
+        expect(mockFn.mock.calls[0][0]).toStrictEqual(params);
+      });
+      it("should call `getAllRecordsWithId` if `withCursor` is false", () => {
+        recordClient.getAllRecords({ ...params, withCursor: false });
+        expect(mockFn.mock.calls.length).toBe(1);
+        expect(mockFn.mock.calls[0][0]).toStrictEqual(params);
+      });
+    });
+  });
+
   describe("getAllRecordsWithCursor", () => {
     const params = {
       app: APP_ID,
