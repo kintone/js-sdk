@@ -219,7 +219,7 @@ export class RecordClient {
     fields?: string[];
     query?: string;
   }): Promise<T[]> {
-    const { id, totalCount } = await this.createCursor(params);
+    const { id } = await this.createCursor(params);
     try {
       return await this.getAllRecordsRecursiveByCursor<T>(id, []);
     } catch (error) {
