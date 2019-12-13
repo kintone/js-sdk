@@ -2,6 +2,7 @@ import { KintoneAPIError } from "./../KintoneAPIError";
 import Axios from "axios";
 import qs from "qs";
 import { HttpClient } from "./HttpClientInterface";
+import FormData from "form-data";
 
 type Headers = object;
 type Params = { [key: string]: unknown };
@@ -39,6 +40,21 @@ export class AxiosClient implements HttpClient {
     return data;
   }
 
+  public async getData(path: string, params: any) {
+    const requestURL = `${this.host}${path}?${qs.stringify(params)}`;
+    let data;
+    try {
+      const response = await Axios.get(requestURL, {
+        headers: this.headers,
+        responseType: "arraybuffer"
+      });
+      data = response.data;
+    } catch (error) {
+      throw new KintoneAPIError(error.response);
+    }
+    return data;
+  }
+
   public async post(path: string, params: any) {
     const requestURL = `${this.host}${path}`;
     let data;
@@ -50,6 +66,23 @@ export class AxiosClient implements HttpClient {
           headers: this.headers
         }
       );
+      data = response.data;
+    } catch (error) {
+      throw new KintoneAPIError(error.response);
+    }
+    return data;
+  }
+
+  public async postData(path: string, formData: FormData) {
+    const requestURL = `${this.host}${path}`;
+    let data;
+    try {
+      Object.keys(this.params).forEach(key => {
+        formData.append(key, this.params[key]);
+      });
+      const response = await Axios.post(requestURL, formData, {
+        headers: { ...this.headers, ...formData.getHeaders() }
+      });
       data = response.data;
     } catch (error) {
       throw new KintoneAPIError(error.response);
