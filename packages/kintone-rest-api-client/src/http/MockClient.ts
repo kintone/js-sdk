@@ -1,5 +1,5 @@
 import { HttpClient } from "./HttpClientInterface";
-import FormData = require("form-data");
+import FormData from "form-data";
 
 type Log = {
   method: "get" | "post" | "put" | "delete";
