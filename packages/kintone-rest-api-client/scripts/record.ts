@@ -131,7 +131,7 @@ export class Record {
       await this.client.record.getAllRecords({
         app: APP_ID,
         fields: ["Customer"],
-        condition: 'Customer != "hoge"',
+        condition: 'Customer != "foo"',
         orderBy: "Customer desc",
         withCursor: false
       })
@@ -143,7 +143,7 @@ export class Record {
       await this.client.record.getAllRecordsWithId({
         app: APP_ID,
         fields: [],
-        condition: 'Customer != "hoge"'
+        condition: 'Customer != "foo"'
       })
     );
   }
@@ -153,7 +153,7 @@ export class Record {
       await this.client.record.getAllRecordsWithOffset({
         app: APP_ID,
         fields: [],
-        condition: 'Customer != "hoge"'
+        condition: 'Customer != "foo"'
       })
     );
   }
