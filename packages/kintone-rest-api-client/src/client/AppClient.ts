@@ -241,6 +241,49 @@ export class AppClient {
     return this.client.post(path, { name });
   }
 
+  public getProcessManagement(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{
+    enable: boolean;
+    states: {
+      [statesName: string]: {
+        name: string;
+        index: string;
+        assignee: { type: "ONE" | "ALL" | "ANY" };
+        entities: Array<{
+          entity:
+            | {
+                type:
+                  | "USER"
+                  | "GROUP"
+                  | "ORGANIZATION"
+                  | "FIELD_ENTITY"
+                  | "CUSTOM_FIELD";
+                code: string;
+              }
+            | {
+                type: "CREATOR";
+                code: null;
+              };
+          includeSubs: boolean;
+        }>;
+      };
+    };
+    actions: Array<{
+      name: string;
+      from: string;
+      to: string;
+      filterCond: string;
+    }>;
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = `/k/v1${preview ? "/preview" : ""}/app/status.json`;
+    return this.client.get(path, rest);
+  }
+
   public getDeployStatus(params: {
     apps: AppID[];
   }): Promise<{ apps: Array<{ app: string; status: DeployStatus }> }> {
