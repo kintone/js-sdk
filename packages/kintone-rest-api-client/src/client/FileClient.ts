@@ -8,16 +8,18 @@ export class FileClient {
     this.client = client;
   }
 
-  public uploadFile(params: { file: { name: string; data: any } }) {
+  public uploadFile(params: {
+    file: { name: string; data: any };
+  }): Promise<{ fileKey: string }> {
     const path = "/k/v1/file.json";
     const { name, data } = params.file;
     const formData = new FormData();
     formData.append("file", data, name);
-    return this.client.post(path, formData);
+    return this.client.postData(path, formData);
   }
 
-  public downloadFile(params: { fileKey: string }) {
+  public downloadFile(params: { fileKey: string }): Promise<ArrayBuffer> {
     const path = "/k/v1/file.json";
-    return this.client.get(path, params);
+    return this.client.getData(path, params);
   }
 }
