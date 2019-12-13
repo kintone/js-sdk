@@ -1,6 +1,7 @@
 import { KintoneAPIClient } from "../src/index";
 import { Record } from "./record";
 import { App } from "./app";
+import { File } from "./file";
 import { BulkRequest } from "./bulkRequest";
 
 const client = new KintoneAPIClient({
@@ -20,6 +21,7 @@ switch (process.argv[2]) {
     // @ts-ignore
     ({
       record: new Record(client),
-      app: new App(client)
+      app: new App(client),
+      file: new File(client)
     }[process.argv[2]][process.argv[3]]());
 }

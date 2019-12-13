@@ -1,8 +1,10 @@
 import { BulkRequestClient } from "./client/BulkRequestClient";
 import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
+import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
+import { isThisExpression } from "@babel/types";
 
 type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
@@ -44,6 +46,7 @@ type KintoneAuthHeader =
 export class KintoneAPIClient {
   record: RecordClient;
   app: AppClient;
+  file: FileClient;
   private bulkRequest_: BulkRequestClient;
   private headers: KintoneAuthHeader;
 
@@ -67,6 +70,7 @@ export class KintoneAPIClient {
     this.bulkRequest_ = new BulkRequestClient(httpClient);
     this.record = new RecordClient(httpClient);
     this.app = new AppClient(httpClient);
+    this.file = new FileClient(httpClient);
   }
 
   public getHeaders() {
