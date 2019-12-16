@@ -91,7 +91,7 @@ type ViewParam =
 
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
-type Entity = {
+type FieldRightEntity = {
   accessibility: "READ" | "WRITE" | "NONE";
   includeSubs?: boolean;
   entity: {
@@ -100,9 +100,9 @@ type Entity = {
   };
 };
 
-export type Right = {
+export type FieldRight = {
   code: string;
-  entities: Entity[];
+  entities: FieldRightEntity[];
 };
 type Rights = {
   id: string;
@@ -249,7 +249,7 @@ export class AppClient {
   public getFieldAcl(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ rights: Right[]; revision: string }> {
+  }): Promise<{ rights: FieldRight[]; revision: string }> {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/field/acl.json`;
     return this.client.get(path, { ...rest });
@@ -266,7 +266,7 @@ export class AppClient {
   public updateFieldAcl(params: {
     app?: AppID;
     id?: AppID;
-    rights: Right[];
+    rights: FieldRight[];
     revision?: Revision;
     preview?: boolean;
   }): Promise<{ revision: string }> {
