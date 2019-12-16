@@ -91,19 +91,34 @@ type ViewParam =
 
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
+type Overwrite<T1, T2> = {
+  [P in Exclude<keyof T1, keyof T2>]: T1[P];
+} &
+  T2;
+
 type FieldRightEntity = {
   accessibility: "READ" | "WRITE" | "NONE";
-  includeSubs?: boolean;
+  includeSubs: boolean;
   entity: {
     code: string;
     type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
   };
 };
+type FieldRightEntityForUpdate = Overwrite<
+  FieldRightEntity,
+  { includeSubs?: boolean }
+>;
 
-export type FieldRight = {
+type FieldRight = {
   code: string;
   entities: FieldRightEntity[];
 };
+
+type FieldRightForUpdate = Overwrite<
+  FieldRight,
+  { entities: FieldRightEntityForUpdate[] }
+>;
+
 type Rights = {
   id: string;
   record: {
@@ -266,7 +281,7 @@ export class AppClient {
   public updateFieldAcl(params: {
     app?: AppID;
     id?: AppID;
-    rights: FieldRight[];
+    rights: FieldRightForUpdate[];
     revision?: Revision;
     preview?: boolean;
   }): Promise<{ revision: string }> {

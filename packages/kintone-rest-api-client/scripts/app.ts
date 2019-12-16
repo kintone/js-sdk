@@ -1,5 +1,5 @@
 import { KintoneAPIClient } from "../src/index";
-import { Right } from "../src/client/AppClient";
+import { FieldRight } from "../src/client/AppClient";
 
 const APP_ID = 8;
 const RECORD_ID = 3;
@@ -235,22 +235,22 @@ export class App {
   }
 
   public async updateFieldAcl() {
-    const rights: Right[] = [
+    const rights = [
       {
         code: "Customer",
         entities: [
           {
-            accessibility: "WRITE",
+            accessibility: "WRITE" as const,
             entity: {
               code: "Administrator",
-              type: "USER"
+              type: "USER" as const
             }
           },
           {
-            accessibility: "READ",
+            accessibility: "READ" as const,
             entity: {
               code: "everyone",
-              type: "GROUP"
+              type: "GROUP" as const
             }
           }
         ]
