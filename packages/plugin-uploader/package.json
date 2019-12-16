@@ -31,7 +31,7 @@
   "bugs": "https://github.com/kintone/plugin-uploader/issues",
   "dependencies": {
     "chalk": "^3.0.0",
-    "inquirer": "^7.0.0",
+    "inquirer": "^7.0.1",
     "meow": "^6.0.0",
     "os-locale": "^4.0.0",
     "puppeteer": "^2.0.0"
