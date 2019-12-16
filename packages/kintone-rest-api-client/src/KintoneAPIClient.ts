@@ -4,7 +4,6 @@ import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
-import { isThisExpression } from "@babel/types";
 
 type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
