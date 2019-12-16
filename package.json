@@ -1,0 +1,22 @@
+{
+  "name": "@kintone/js-sdk",
+  "version": "1.0.0",
+  "description": "packages for kintone customizations",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kintone/js-sdk.git"
+  },
+  "keywords": ["kintone"],
+  "author": "kintone",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.19.0"
+  }
+}
