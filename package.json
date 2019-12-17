@@ -7,7 +7,11 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "lerna run build --stream",
+    "lint": "lerna run lint --stream",
+    "initial:release": "lerna publish from-package --conventional-commits",
+    "release": "lerna publish --conventional-commits",
+    "test": "lerna run test --stream"
   },
   "repository": {
     "type": "git",
