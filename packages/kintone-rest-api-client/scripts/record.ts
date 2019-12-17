@@ -45,6 +45,17 @@ export class Record {
       await this.client.record.addRecord({ app: APP_ID /* , record*/ })
     );
   }
+  public async addRecordUsingMultipleApiTokens() {
+    const params = {
+      app: APP_ID,
+      record: {
+        Lookup: {
+          value: "example"
+        }
+      }
+    };
+    console.log(await this.client.record.addRecord(params));
+  }
   public async updateRecord() {
     const params = {
       app: APP_ID,
