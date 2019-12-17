@@ -26,6 +26,28 @@ describe("KintoneAPIClient", () => {
           "X-Cybozu-API-Token": API_TOKEN
         });
       });
+      it("ApiToken auth using multiple tokens as comma-separated string", () => {
+        const API_TOKEN1 = "ApiToken1";
+        const API_TOKEN2 = "ApiToken2";
+        const auth = {
+          apiToken: `${API_TOKEN1},${API_TOKEN2}`
+        };
+        const client = new KintoneAPIClient({ host, auth });
+        expect(client.getHeaders()).toEqual({
+          "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
+        });
+      });
+      it("ApiToken auth using multiple tokens as array", () => {
+        const API_TOKEN1 = "ApiToken1";
+        const API_TOKEN2 = "ApiToken2";
+        const auth = {
+          apiToken: [API_TOKEN1, API_TOKEN2]
+        };
+        const client = new KintoneAPIClient({ host, auth });
+        expect(client.getHeaders()).toEqual({
+          "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
+        });
+      });
       it("Password  auth", () => {
         const USERNAME = "user";
         const PASSWORD = "password";
