@@ -284,6 +284,10 @@ export class AppClient {
     rights: FieldRightForUpdate[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
+    // NOTE: When executing this API without `preview`,
+    // all pre-live app's settings will be deployed to live app.
+    // This behavior may not be what the users expected,
+    // so we disable it temporarily.
     const path = "/k/v1/preview/field/acl.json";
     return this.client.put(path, params);
   }
