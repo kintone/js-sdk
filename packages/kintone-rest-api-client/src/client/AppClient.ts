@@ -84,6 +84,37 @@ type ViewForUpdate =
   | CalendarViewForUpdate
   | CustomViewForUpdate;
 
+type State = {
+  name: string;
+  index: string;
+  assignee: {
+    type: "ONE" | "ALL" | "ANY";
+    entities: Array<{
+      entity:
+        | {
+            type:
+              | "USER"
+              | "GROUP"
+              | "ORGANIZATION"
+              | "FIELD_ENTITY"
+              | "CUSTOM_FIELD";
+            code: string;
+          }
+        | {
+            type: "CREATOR";
+            code: null;
+          };
+      includeSubs: boolean;
+    }>;
+  };
+};
+
+type Action = {
+  name: string;
+  from: string;
+  to: string;
+  filterCond: string;
+};
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
 type Overwrite<T1, T2> = {
@@ -248,35 +279,9 @@ export class AppClient {
   }): Promise<{
     enable: boolean;
     states: {
-      [statesName: string]: {
-        name: string;
-        index: string;
-        assignee: { type: "ONE" | "ALL" | "ANY" };
-        entities: Array<{
-          entity:
-            | {
-                type:
-                  | "USER"
-                  | "GROUP"
-                  | "ORGANIZATION"
-                  | "FIELD_ENTITY"
-                  | "CUSTOM_FIELD";
-                code: string;
-              }
-            | {
-                type: "CREATOR";
-                code: null;
-              };
-          includeSubs: boolean;
-        }>;
-      };
+      [statesName: string]: State;
     };
-    actions: Array<{
-      name: string;
-      from: string;
-      to: string;
-      filterCond: string;
-    }>;
+    actions: Action[];
     revision: string;
   }> {
     const { preview, ...rest } = params;
