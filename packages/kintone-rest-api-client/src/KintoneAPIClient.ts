@@ -18,7 +18,7 @@ export type Auth = ApiTokenAuth | PasswordAuth | SessionAuth;
 
 type ApiTokenAuth = {
   type: "apiToken";
-  apiToken: string;
+  apiToken: string | string[];
 };
 
 type PasswordAuth = {
@@ -98,6 +98,9 @@ export class KintoneAPIClient {
         };
       }
       case "apiToken": {
+        if (Array.isArray(auth.apiToken)) {
+          return { "X-Cybozu-API-Token": auth.apiToken.join(",") };
+        }
         return { "X-Cybozu-API-Token": auth.apiToken };
       }
       default: {
