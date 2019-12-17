@@ -25,69 +25,64 @@ type App = {
   };
 };
 
-type View =
-  | {
-      type: "LIST";
-      builtinType?: "ASSIGNEE";
-      name: string;
-      id: string;
-      fields: string[];
-      filterCond: string;
-      sort: string;
-      index: string;
-    }
-  | {
-      type: "CALENDAR";
-      builtinType?: "ASSIGNEE";
-      name: string;
-      id: string;
-      date: string;
-      title: string;
-      filterCond: string;
-      sort: string;
-      index: string;
-    }
-  | {
-      type: "CUSTOM";
-      builtinType?: "ASSIGNEE";
-      name: string;
-      id: string;
-      html: string;
-      pager: boolean;
-      device: "DESKTOP" | "ANY";
-      filterCond: string;
-      sort: string;
-      index: string;
-    };
+type ViewBase = {
+  builtinType?: "ASSIGNEE";
+  name: string;
+  id: string;
+  filterCond: string;
+  sort: string;
+  index: string;
+};
 
-type ViewParam =
-  | {
-      type: "LIST";
-      index: string | number;
-      name?: string;
-      fields?: string[];
-      filterCond?: string;
-      sort?: string;
-    }
-  | {
-      type: "CALENDAR";
-      index: string | number;
-      name?: string;
-      date?: string;
-      title?: string;
-      filterCond?: string;
-      sort?: string;
-    }
-  | {
-      type: "CUSTOM";
-      index: string | number;
-      name?: string;
-      html?: string;
-      pager?: boolean;
-      device?: "DESKTOP" | "ANY";
-      filterCond?: string;
-      sort?: string;
-    };
+type ListView = ViewBase & {
+  type: "LIST";
+  fields: string[];
+};
+
+type CalendarView = ViewBase & {
+  type: "CALENDAR";
+  date: string;
+  title: string;
+};
+
+type CustomView = ViewBase & {
+  type: "CUSTOM";
+  html: string;
+  pager: boolean;
+  device: "DESKTOP" | "ANY";
+};
+
+type View = ListView | CalendarView | CustomView;
+
+type ViewBaseForUpdate = {
+  index: string | number;
+  name?: string;
+  filterCond?: string;
+  sort?: string;
+};
+
+type ListViewForUpdate = ViewBaseForUpdate & {
+  type: "LIST";
+  fields?: string[];
+};
+
+type CalendarViewForUpdate = ViewBaseForUpdate & {
+  type: "CALENDAR";
+  date?: string;
+  title?: string;
+};
+
+type CustomViewForUpdate = ViewBaseForUpdate & {
+  type: "CUSTOM";
+  html?: string;
+  pager?: boolean;
+  device?: "DESKTOP" | "ANY";
+};
+
+type ViewForUpdate =
+  | ListViewForUpdate
+  | CalendarViewForUpdate
+  | CustomViewForUpdate;
 
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
@@ -203,7 +198,7 @@ export class AppClient {
 
   public updateViews(params: {
     app: AppID;
-    views: { [viewName: string]: ViewParam };
+    views: { [viewName: string]: ViewForUpdate };
     revision?: Revision;
   }): Promise<{
     views: { [viewName: string]: { id: string } };
