@@ -9,7 +9,7 @@ export class FileClient {
   }
 
   public uploadFile(params: {
-    file: { name: string; data: any };
+    file: { name: string; data: unknown };
   }): Promise<{ fileKey: string }> {
     const path = "/k/v1/file.json";
     const { name, data } = params.file;
