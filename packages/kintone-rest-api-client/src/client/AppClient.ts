@@ -283,7 +283,6 @@ export class AppClient {
     id?: AppID;
     rights: FieldRightForUpdate[];
     revision?: Revision;
-    preview?: boolean;
   }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/field/acl.json";
     return this.client.put(path, params);
