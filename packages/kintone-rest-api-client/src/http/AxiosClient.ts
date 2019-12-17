@@ -76,13 +76,15 @@ export class AxiosClient implements HttpClient {
   public async postData(path: string, formData: FormData) {
     const requestURL = `${this.host}${path}`;
     let data;
+    const headers =
+      typeof formData.getHeaders === "function"
+        ? { ...this.headers, ...formData.getHeaders() }
+        : this.headers;
     try {
       Object.keys(this.params).forEach(key => {
         formData.append(key, this.params[key]);
       });
-      const response = await Axios.post(requestURL, formData, {
-        headers: { ...this.headers, ...formData.getHeaders() }
-      });
+      const response = await Axios.post(requestURL, formData, { headers });
       data = response.data;
     } catch (error) {
       throw new KintoneAPIError(error.response);
