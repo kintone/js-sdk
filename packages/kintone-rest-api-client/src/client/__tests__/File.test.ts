@@ -29,8 +29,8 @@ describe("FileClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("post");
     });
     it("should pass file object includes name and data as a param to the http client", () => {
-      const mockFormData = (FormData as jest.Mock<FormData>).mock.instances[0];
-      expect(mockFormData.append.mock.calls[0]).toEqual([
+      const MockFormData = FormData as jest.MockedClass<typeof FormData>;
+      expect(MockFormData.prototype.append.mock.calls[0]).toEqual([
         "file",
         params.file.data,
         params.file.name
