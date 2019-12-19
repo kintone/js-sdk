@@ -552,6 +552,39 @@ describe("AppClient", () => {
     });
   });
 
+  describe("updateAppAcl", () => {
+    const params = {
+      app: APP_ID,
+      rights: [
+        {
+          entity: {
+            type: "USER" as const,
+            code: "foo"
+          },
+          appEditable: true,
+          recordViewable: true,
+          recordAddable: true,
+          recordEditable: true,
+          recordDeletable: true,
+          recordImportable: true,
+          recordExportable: true
+        }
+      ]
+    };
+    beforeEach(() => {
+      appClient.updateAppAcl(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/app/acl.json");
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app and rights as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
   describe("evaluateRecordsAcl", () => {
     const params = {
       app: APP_ID,
