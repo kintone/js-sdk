@@ -219,6 +219,20 @@ type AppRight = {
   recordExportable: boolean;
 };
 
+type AppRightForUpdate = Overwrite<
+  AppRight,
+  {
+    includeSubs?: boolean;
+    appEditable?: boolean;
+    recordViewable?: boolean;
+    recordAddable?: boolean;
+    recordEditable?: boolean;
+    recordDeletable?: boolean;
+    recordImportable?: boolean;
+    recordExportable?: boolean;
+  }
+>;
+
 type Rights = {
   id: string;
   record: {
@@ -419,6 +433,19 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/app/acl.json`;
     return this.client.get(path, { ...rest });
+  }
+
+  public updateAppAcl(params: {
+    app: AppID;
+    rights: AppRightForUpdate[];
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    // NOTE: When executing this API without `preview`,
+    // all pre-live app's settings will be deployed to live app.
+    // This behavior may not be what the users expected,
+    // so we disable it temporarily.
+    const path = "/k/v1/preview/app/acl.json";
+    return this.client.put(path, params);
   }
 
   public evaluateRecordsAcl(params: {
