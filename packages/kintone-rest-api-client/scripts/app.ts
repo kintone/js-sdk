@@ -280,6 +280,14 @@ export class App {
     }
   }
 
+  public async getAppAcl() {
+    try {
+      console.log(await this.client.app.getAppAcl({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async evaluateRecordsAcl() {
     const params = {
       app: APP_ID,
