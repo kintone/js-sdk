@@ -1,6 +1,11 @@
 import { AppID, RecordID, Revision } from "../KintoneTypes";
 import { HttpClient } from "../http";
 
+type Overwrite<T1, T2> = {
+  [P in Exclude<keyof T1, keyof T2>]: T1[P];
+} &
+  T2;
+
 type Lang = "ja" | "en" | "zh" | "user" | "default";
 
 type Properties = {
@@ -84,28 +89,56 @@ type ViewForUpdate =
   | CalendarViewForUpdate
   | CustomViewForUpdate;
 
+type AssigneeEntity = {
+  entity:
+    | {
+        type:
+          | "USER"
+          | "GROUP"
+          | "ORGANIZATION"
+          | "FIELD_ENTITY"
+          | "CUSTOM_FIELD";
+        code: string;
+      }
+    | {
+        type: "CREATOR";
+        code: null;
+      };
+  includeSubs: boolean;
+};
+
 type State = {
   name: string;
   index: string;
   assignee: {
     type: "ONE" | "ALL" | "ANY";
-    entities: Array<{
-      entity:
-        | {
-            type:
-              | "USER"
-              | "GROUP"
-              | "ORGANIZATION"
-              | "FIELD_ENTITY"
-              | "CUSTOM_FIELD";
-            code: string;
-          }
-        | {
-            type: "CREATOR";
-            code: null;
-          };
-      includeSubs: boolean;
-    }>;
+    entities: AssigneeEntity[];
+  };
+};
+
+type AssigneeEntityForUpdate = {
+  entity:
+    | {
+        type:
+          | "USER"
+          | "GROUP"
+          | "ORGANIZATION"
+          | "FIELD_ENTITY"
+          | "CUSTOM_FIELD";
+        code: string;
+      }
+    | {
+        type: "CREATOR";
+      };
+  includeSubs?: boolean;
+};
+
+type StateForUpdate = {
+  name?: string;
+  index: string | number;
+  assignee?: {
+    type: "ONE" | "ALL" | "ANY";
+    entities: AssigneeEntityForUpdate[];
   };
 };
 
@@ -115,12 +148,9 @@ type Action = {
   to: string;
   filterCond: string;
 };
-type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
-type Overwrite<T1, T2> = {
-  [P in Exclude<keyof T1, keyof T2>]: T1[P];
-} &
-  T2;
+export type ActionForUpdate = Overwrite<Action, { filterCond?: string }>;
+type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
 type FieldRightEntity = {
   accessibility: "READ" | "WRITE" | "NONE";
@@ -316,6 +346,17 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/app/status.json`;
     return this.client.get(path, rest);
+  }
+
+  public updateProcessManagement(params: {
+    app: AppID;
+    enable?: boolean;
+    states?: { [statesName: string]: StateForUpdate };
+    actions?: ActionForUpdate[];
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = "/k/v1/preview/app/status.json";
+    return this.client.put(path, params);
   }
 
   public getDeployStatus(params: {
