@@ -223,6 +223,14 @@ export class App {
     }
   }
 
+  public async getRecordAcl() {
+    try {
+      console.log(await this.client.app.getFieldAcl({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async evaluateRecordsAcl() {
     const params = {
       app: APP_ID,
