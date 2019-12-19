@@ -518,6 +518,40 @@ describe("AppClient", () => {
     });
   });
 
+  describe("getAppAcl", () => {
+    const params = {
+      app: APP_ID
+    };
+    describe("without preview", () => {
+      beforeEach(() => {
+        appClient.getAppAcl(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/acl.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+    describe("preview: true", () => {
+      beforeEach(() => {
+        appClient.getAppAcl({ ...params, preview: true });
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/app/acl.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app and preview as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+  });
+
   describe("evaluateRecordsAcl", () => {
     const params = {
       app: APP_ID,
