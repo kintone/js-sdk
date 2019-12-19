@@ -155,10 +155,23 @@ type RecordRightEntity = {
   deletable: boolean;
   includeSubs: boolean;
 };
+type RecordRightEntityForUpdate = Overwrite<
+  RecordRightEntity,
+  {
+    viewable?: boolean;
+    editable?: boolean;
+    deletable?: boolean;
+    includeSubs?: boolean;
+  }
+>;
 
 type RecordRight = {
   filterCond: string;
   entities: RecordRightEntity[];
+};
+type RecordRightForUpdate = {
+  filterCond?: string;
+  entities: RecordRightEntityForUpdate[];
 };
 
 type Rights = {
@@ -327,6 +340,20 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/field/acl.json`;
     return this.client.get(path, { ...rest });
+  }
+
+  public updateRecordAcl(params: {
+    app?: AppID;
+    id?: RecordID;
+    rights: RecordRightForUpdate[];
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    // NOTE: When executing this API without `preview`,
+    // all pre-live app's settings will be deployed to live app.
+    // This behavior may not be what the users expected,
+    // so we disable it temporarily.
+    const path = "/k/v1/preview/record/acl.json";
+    return this.client.put(path, params);
   }
 
   public evaluateRecordsAcl(params: {
