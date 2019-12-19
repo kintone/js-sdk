@@ -1,4 +1,5 @@
 import { KintoneAPIClient } from "../src/index";
+import { ActionForUpdate } from "../src/client/AppClient";
 
 const APP_ID = 8;
 const RECORD_ID = 3;
@@ -136,6 +137,24 @@ export class App {
       const newViews = views;
       console.log(
         await this.client.app.updateViews({ app: APP_ID, views: newViews })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getProcessManagement() {
+    try {
+      console.log(await this.client.app.getProcessManagement({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateProcessManagement() {
+    try {
+      console.log(
+        await this.client.app.updateProcessManagement({ app: APP_ID })
       );
     } catch (error) {
       console.log(error);
