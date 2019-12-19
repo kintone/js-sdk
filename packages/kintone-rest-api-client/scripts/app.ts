@@ -250,6 +250,36 @@ export class App {
     }
   }
 
+  public async updateRecordAcl() {
+    const rights = [
+      {
+        filterCond: 'Customer = "foo"',
+        entities: [
+          {
+            entity: {
+              code: "everyone",
+              type: "GROUP" as const
+            },
+            viewable: true,
+            editable: true,
+            deletable: false,
+            includeSubs: true
+          }
+        ]
+      }
+    ];
+    try {
+      console.log(
+        await this.client.app.updateRecordAcl({
+          app: APP_ID,
+          rights
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async evaluateRecordsAcl() {
     const params = {
       app: APP_ID,
