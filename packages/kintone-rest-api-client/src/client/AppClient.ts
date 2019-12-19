@@ -204,6 +204,21 @@ type RecordRightForUpdate = {
   entities: RecordRightEntityForUpdate[];
 };
 
+type AppRight = {
+  entity: {
+    code: string;
+    type: "USER" | "GROUP" | "ORGANIZATION" | "CREATOR";
+  };
+  includeSubs: boolean;
+  appEditable: boolean;
+  recordViewable: boolean;
+  recordAddable: boolean;
+  recordEditable: boolean;
+  recordDeletable: boolean;
+  recordImportable: boolean;
+  recordExportable: boolean;
+};
+
 type Rights = {
   id: string;
   record: {
@@ -395,6 +410,15 @@ export class AppClient {
     // so we disable it temporarily.
     const path = "/k/v1/preview/record/acl.json";
     return this.client.put(path, params);
+  }
+
+  public getAppAcl(params: {
+    app: AppID;
+    preview?: boolean;
+  }): Promise<{ rights: AppRight[]; revision: string }> {
+    const { preview, ...rest } = params;
+    const path = `/k/v1${preview ? "/preview" : ""}/app/acl.json`;
+    return this.client.get(path, { ...rest });
   }
 
   public evaluateRecordsAcl(params: {
