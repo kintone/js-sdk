@@ -145,6 +145,22 @@ type FieldRightForUpdate = Overwrite<
   { entities: FieldRightEntityForUpdate[] }
 >;
 
+type RecordRightEntity = {
+  entity: {
+    code: string;
+    type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
+  };
+  viewable: boolean;
+  editable: boolean;
+  deletable: boolean;
+  includeSubs: boolean;
+};
+
+type RecordRight = {
+  filterCond: string;
+  entities: RecordRightEntity[];
+};
+
 type Rights = {
   id: string;
   record: {
@@ -333,5 +349,15 @@ export class AppClient {
     // so we disable it temporarily.
     const path = "/k/v1/preview/field/acl.json";
     return this.client.put(path, params);
+  }
+
+  public getRecordAcl(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{ rights: RecordRight[]; revision: string }> {
+    const { preview, ...rest } = params;
+    const path = `/k/v1${preview ? "/preview" : ""}/record/acl.json`;
+    return this.client.get(path, { ...rest });
   }
 }
