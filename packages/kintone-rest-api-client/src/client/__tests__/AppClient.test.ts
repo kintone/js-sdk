@@ -480,6 +480,44 @@ describe("AppClient", () => {
     });
   });
 
+  describe("updateRecordAcl", () => {
+    const params = {
+      app: 1,
+      rights: [
+        {
+          filterCond: 'field = "foo"',
+          entities: [
+            {
+              entity: {
+                code: "bar",
+                type: "USER" as const
+              },
+              viewable: false,
+              editable: false,
+              deletable: false,
+              includeSubs: true
+            }
+          ]
+        }
+      ],
+      revision: REVISION
+    };
+    beforeEach(() => {
+      appClient.updateRecordAcl(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/preview/record/acl.json"
+      );
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app, right and revision as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
   describe("evaluateRecordsAcl", () => {
     const params = {
       app: APP_ID,
