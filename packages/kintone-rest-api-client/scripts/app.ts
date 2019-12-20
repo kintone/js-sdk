@@ -288,6 +288,37 @@ export class App {
     }
   }
 
+  public async updateAppAcl() {
+    const rights = [
+      {
+        entity: {
+          code: "Administrator",
+          type: "USER" as const
+        },
+        appEditable: true,
+        recordViewable: true,
+        recordAddable: true,
+        recordEditable: true,
+        recordDeletable: true,
+        recordImportable: true,
+        recordExportable: true
+      },
+      {
+        entity: {
+          code: "everyone",
+          type: "GROUP" as const
+        },
+        appEditable: true,
+        recordViewable: true
+      }
+    ];
+    try {
+      console.log(await this.client.app.updateAppAcl({ app: APP_ID, rights }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async evaluateRecordsAcl() {
     const params = {
       app: APP_ID,
