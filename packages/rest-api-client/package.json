@@ -1,9 +1,6 @@
 {
-  "name": "@cybozu-private/kintone-rest-api-client",
+  "name": "@kintone/rest-api-client",
   "version": "0.0.1",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "description": "",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -25,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cybozu-private/kintone-rest-api-client.git"
+    "url": "git+https://github.com/kintone/js-sdk.git"
   },
   "files": [
     "lib"
@@ -34,9 +31,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cybozu-private/kintone-rest-api-client/issues"
+    "url": "https://github.com/kintone/js-sdk/issues"
   },
-  "homepage": "https://github.com/cybozu-private/kintone-rest-api-client#readme",
+  "homepage": "https://github.com/kintone/js-sdk/packages/rest-api-client#readme",
   "devDependencies": {
     "@kintone/customize-uploader": "^2.0.6",
     "@types/core-js": "^2.5.2",
