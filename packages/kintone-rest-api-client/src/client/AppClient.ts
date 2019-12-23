@@ -367,7 +367,7 @@ export class AppClient {
   }): Promise<{
     enable: boolean;
     states: {
-      [statesName: string]: State;
+      [statusName: string]: State;
     };
     actions: Action[];
     revision: string;
@@ -380,7 +380,7 @@ export class AppClient {
   public updateProcessManagement(params: {
     app: AppID;
     enable?: boolean;
-    states?: { [statesName: string]: StateForUpdate };
+    states?: { [statusName: string]: StateForUpdate };
     actions?: ActionForUpdate[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
