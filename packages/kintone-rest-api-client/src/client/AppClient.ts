@@ -176,6 +176,45 @@ type FieldRightForUpdate = Overwrite<
   { entities: FieldRightEntityForUpdate[] }
 >;
 
+type AppRight = {
+  entity:
+    | {
+        code: string;
+        type: "USER" | "GROUP" | "ORGANIZATION";
+      }
+    | {
+        type: "CREATOR";
+        code: null;
+      };
+  includeSubs: boolean;
+  appEditable: boolean;
+  recordViewable: boolean;
+  recordAddable: boolean;
+  recordEditable: boolean;
+  recordDeletable: boolean;
+  recordImportable: boolean;
+  recordExportable: boolean;
+};
+
+type AppRightForUpdate = {
+  entity:
+    | {
+        code: string;
+        type: "USER" | "GROUP" | "ORGANIZATION";
+      }
+    | {
+        type: "CREATOR";
+      };
+  includeSubs?: boolean;
+  appEditable?: boolean;
+  recordViewable?: boolean;
+  recordAddable?: boolean;
+  recordEditable?: boolean;
+  recordDeletable?: boolean;
+  recordImportable?: boolean;
+  recordExportable?: boolean;
+};
+
 type RecordRightEntity = {
   entity: {
     code: string;
@@ -204,35 +243,6 @@ type RecordRightForUpdate = {
   filterCond?: string;
   entities: RecordRightEntityForUpdate[];
 };
-
-type AppRight = {
-  entity: {
-    code: string;
-    type: "USER" | "GROUP" | "ORGANIZATION" | "CREATOR";
-  };
-  includeSubs: boolean;
-  appEditable: boolean;
-  recordViewable: boolean;
-  recordAddable: boolean;
-  recordEditable: boolean;
-  recordDeletable: boolean;
-  recordImportable: boolean;
-  recordExportable: boolean;
-};
-
-type AppRightForUpdate = Overwrite<
-  AppRight,
-  {
-    includeSubs?: boolean;
-    appEditable?: boolean;
-    recordViewable?: boolean;
-    recordAddable?: boolean;
-    recordEditable?: boolean;
-    recordDeletable?: boolean;
-    recordImportable?: boolean;
-    recordExportable?: boolean;
-  }
->;
 
 type Rights = {
   id: string;
