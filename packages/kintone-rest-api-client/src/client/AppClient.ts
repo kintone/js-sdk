@@ -176,7 +176,7 @@ type FieldRightForUpdate = Overwrite<
   { entities: FieldRightEntityForUpdate[] }
 >;
 
-type AppRight = {
+type AppRightEntity = {
   entity:
     | {
         code: string;
@@ -196,7 +196,7 @@ type AppRight = {
   recordExportable: boolean;
 };
 
-type AppRightForUpdate = {
+type AppRightEntityForUpdate = {
   entity:
     | {
         code: string;
@@ -440,7 +440,7 @@ export class AppClient {
   public getAppAcl(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ rights: AppRight[]; revision: string }> {
+  }): Promise<{ rights: AppRightEntity[]; revision: string }> {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/app/acl.json`;
     return this.client.get(path, { ...rest });
@@ -448,7 +448,7 @@ export class AppClient {
 
   public updateAppAcl(params: {
     app: AppID;
-    rights: AppRightForUpdate[];
+    rights: AppRightEntityForUpdate[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
