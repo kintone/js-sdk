@@ -1,5 +1,4 @@
 import { KintoneAPIClient } from "../src/index";
-import { ActionForUpdate } from "../src/client/AppClient";
 
 const APP_ID = 8;
 const RECORD_ID = 3;

@@ -149,7 +149,8 @@ type Action = {
   filterCond: string;
 };
 
-export type ActionForUpdate = Overwrite<Action, { filterCond?: string }>;
+type ActionForUpdate = Overwrite<Action, { filterCond?: string }>;
+
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
 type FieldRightEntity = {
