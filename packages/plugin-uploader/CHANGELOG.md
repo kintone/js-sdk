@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.7](https://github.com/kintone/plugin-uploader/compare/v3.0.6...v3.0.7) (2019-12-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^7.0.1 ([76021cf](https://github.com/kintone/plugin-uploader/commit/76021cff40abfd1a26b30b1a323051eec8394819))
+* avoid validation error of minimist-options ([#252](https://github.com/kintone/plugin-uploader/issues/252)) ([1b5aff1](https://github.com/kintone/plugin-uploader/commit/1b5aff1cc087ac1154266e685b4446b7ea5c7174))
+* **deps:** update dependency chalk to v3 ([#245](https://github.com/kintone/plugin-uploader/issues/245)) ([cc26d53](https://github.com/kintone/plugin-uploader/commit/cc26d537a0d2092d29ef5378c72c9cf3795a416d))
+* **deps:** update dependency meow to v6 ([#251](https://github.com/kintone/plugin-uploader/issues/251)) ([555356e](https://github.com/kintone/plugin-uploader/commit/555356eb3de82ffb851ec1480567984b43ff8b37))
+
 ### [3.0.6](https://github.com/kintone/plugin-uploader/compare/v3.0.5...v3.0.6) (2019-11-26)
 
 
