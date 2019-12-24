@@ -254,6 +254,28 @@ type Rights = {
   fields: object;
 };
 
+type CustomizeScope = "ALL" | "ADMIN" | "NONE";
+
+type CustomizeResource =
+  | {
+      type: "URL";
+      url: string;
+    }
+  | {
+      type: "FILE";
+      file: {
+        name: string;
+        fileKey: string;
+        contentType: string;
+        size: string;
+      };
+    };
+
+type Customize = {
+  js: CustomizeResource[];
+  css: CustomizeResource[];
+};
+
 export class AppClient {
   private client: HttpClient;
 
@@ -488,6 +510,20 @@ export class AppClient {
   }): Promise<{ rights: RecordRight[]; revision: string }> {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/record/acl.json`;
+    return this.client.get(path, { ...rest });
+  }
+
+  public getCustomize(params: {
+    app: AppID;
+    preview?: boolean;
+  }): Promise<{
+    scope: CustomizeScope;
+    desktop: Customize;
+    mobile: Customize;
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = `/k/v1${preview ? "/preview" : ""}/app/customize.json`;
     return this.client.get(path, { ...rest });
   }
 }
