@@ -358,4 +358,14 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getCustomize() {
+    try {
+      console.log(
+        JSON.stringify(await this.client.app.getCustomize({ app: APP_ID }))
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
