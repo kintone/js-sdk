@@ -28,7 +28,9 @@
     "url": "git+https://github.com/kintone/js-sdk.git"
   },
   "files": [
-    "lib"
+    "esm",
+    "lib",
+    "umd"
   ],
   "keywords": [],
   "author": "",
