@@ -582,7 +582,7 @@ describe("AppClient", () => {
 
   describe("updateRecordAcl", () => {
     const params = {
-      app: 1,
+      app: APP_ID,
       rights: [
         {
           filterCond: 'field = "foo"',
