@@ -7,7 +7,9 @@ module.exports = (_, argv) => ({
     libraryTarget: "umd",
     libraryExport: "KintoneAPIClient",
     library: "KintoneRestApiClient",
-    filename: `KintoneRestApiClient${argv.mode === "production" ? ".min" : ""}.js`
+    filename: `KintoneRestApiClient${
+      argv.mode === "production" ? ".min" : ""
+    }.js`
   },
   resolve: {
     extensions: [".ts", ".js"]
