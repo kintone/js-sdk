@@ -270,10 +270,25 @@ type CustomizeResource =
         size: string;
       };
     };
+type CustomizeResourceForUpdate =
+  | {
+      type: "URL";
+      url: string;
+    }
+  | {
+      type: "FILE";
+      file: {
+        fileKey: string;
+      };
+    };
 
 type Customize = {
   js: CustomizeResource[];
   css: CustomizeResource[];
+};
+type CustomizeForUpdate = {
+  js?: CustomizeResourceForUpdate[];
+  css?: CustomizeResourceForUpdate[];
 };
 
 export class AppClient {
@@ -525,5 +540,16 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/app/customize.json`;
     return this.client.get(path, { ...rest });
+  }
+
+  public updateCustomize(params: {
+    app: AppID;
+    scope?: CustomizeScope;
+    desktop?: CustomizeForUpdate;
+    mobile?: CustomizeForUpdate;
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = "/k/v1/preview/app/customize.json";
+    return this.client.put(path, params);
   }
 }
