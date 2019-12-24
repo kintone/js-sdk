@@ -424,8 +424,7 @@ export class AppClient {
   }
 
   public updateRecordAcl(params: {
-    app?: AppID;
-    id?: RecordID;
+    app: AppID;
     rights: RecordRightForUpdate[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
@@ -468,8 +467,7 @@ export class AppClient {
   }
 
   public updateFieldAcl(params: {
-    app?: AppID;
-    id?: AppID;
+    app: AppID;
     rights: FieldRightForUpdate[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
