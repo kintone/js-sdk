@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.5](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v3.0.4...v3.0.5) (2019-12-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-packer to ^2.0.7 ([b0f1378](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/b0f1378e5ec1870dc10d0dbf589604915d823f9d))
+* **deps:** update dependency chokidar to ^3.3.1 ([e2623a1](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/e2623a1401919b645c474cbb641ecfdb72e6ba09))
+
 ### [3.0.4](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v3.0.3...v3.0.4) (2019-11-26)
 
 
