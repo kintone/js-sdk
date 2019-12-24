@@ -358,4 +358,65 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getCustomize() {
+    try {
+      console.log(
+        JSON.stringify(await this.client.app.getCustomize({ app: APP_ID }))
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateCustomize() {
+    const resource = {
+      js: [
+        {
+          type: "URL" as const,
+          url: "https://www.example.com/example.js"
+        }
+      ]
+    };
+    try {
+      console.log(
+        await this.client.app.updateCustomize({
+          app: APP_ID,
+          scope: "ALL",
+          desktop: resource,
+          mobile: resource
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateCustomizeWithFile() {
+    const { fileKey } = await this.client.file.uploadFile({
+      file: { name: "Hello.js", data: "console.log('Hello');" }
+    });
+
+    const resource = {
+      js: [
+        {
+          type: "FILE" as const,
+          file: {
+            fileKey
+          }
+        }
+      ]
+    };
+    try {
+      console.log(
+        await this.client.app.updateCustomize({
+          app: APP_ID,
+          scope: "ALL",
+          desktop: resource
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

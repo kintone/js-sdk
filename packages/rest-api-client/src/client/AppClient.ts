@@ -254,6 +254,43 @@ type Rights = {
   fields: object;
 };
 
+type CustomizeScope = "ALL" | "ADMIN" | "NONE";
+
+type CustomizeResource =
+  | {
+      type: "URL";
+      url: string;
+    }
+  | {
+      type: "FILE";
+      file: {
+        name: string;
+        fileKey: string;
+        contentType: string;
+        size: string;
+      };
+    };
+type CustomizeResourceForUpdate =
+  | {
+      type: "URL";
+      url: string;
+    }
+  | {
+      type: "FILE";
+      file: {
+        fileKey: string;
+      };
+    };
+
+type Customize = {
+  js: CustomizeResource[];
+  css: CustomizeResource[];
+};
+type CustomizeForUpdate = {
+  js?: CustomizeResourceForUpdate[];
+  css?: CustomizeResourceForUpdate[];
+};
+
 export class AppClient {
   private client: HttpClient;
 
@@ -489,5 +526,30 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = `/k/v1${preview ? "/preview" : ""}/record/acl.json`;
     return this.client.get(path, { ...rest });
+  }
+
+  public getCustomize(params: {
+    app: AppID;
+    preview?: boolean;
+  }): Promise<{
+    scope: CustomizeScope;
+    desktop: Customize;
+    mobile: Customize;
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = `/k/v1${preview ? "/preview" : ""}/app/customize.json`;
+    return this.client.get(path, { ...rest });
+  }
+
+  public updateCustomize(params: {
+    app: AppID;
+    scope?: CustomizeScope;
+    desktop?: CustomizeForUpdate;
+    mobile?: CustomizeForUpdate;
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = "/k/v1/preview/app/customize.json";
+    return this.client.put(path, params);
   }
 }
