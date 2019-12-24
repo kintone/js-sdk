@@ -26,5 +26,5 @@ module.exports = (_, argv) => ({
       }
     ]
   },
-  devtool: "inline-cheap-source-map"
-})
+  devtool: argv.mode === "production" ? "" : "inline-cheap-source-map"
+});
