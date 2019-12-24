@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.7](https://github.com/kintone/create-plugin/compare/v2.0.6...v2.0.7) (2019-12-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^7.0.1 ([a2cc036](https://github.com/kintone/create-plugin/commit/a2cc036e6c8b49351b6eda6fb7050fdc61a35448))
+* **deps:** update dependency meow to v6 ([#414](https://github.com/kintone/create-plugin/issues/414)) ([230b2ad](https://github.com/kintone/create-plugin/commit/230b2adb6422443f16e704a97ca4d79f243b86ed))
+* **deps:** update dependency node-rsa to ^1.0.7 ([fa86146](https://github.com/kintone/create-plugin/commit/fa86146a1361803f262ee873c441f91941f985e4))
+
 ### [2.0.6](https://github.com/kintone/create-plugin/compare/v2.0.5...v2.0.6) (2019-11-16)
 
 
