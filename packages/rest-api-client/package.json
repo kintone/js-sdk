@@ -6,16 +6,19 @@
   "module": "esm/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "run-s clean compile",
-    "clean": "rimraf lib esm",
-    "compile": "run-p compile:*",
+    "build:umd_dev": "webpack --mode development --config webpack.umd.config.js",
+    "build:umd_prod": "webpack --mode production --config webpack.umd.config.js",
+    "build:compile": "run-p compile",
+    "build": "npm-run-all -l -s clean -p build:*",
+    "clean": "rimraf lib esm umd",
+    "compile": "run-p -l compile:*",
     "compile:esm": "tsc -p tsconfig.esm.json",
     "compile:cjs": "tsc -p tsconfig.json",
     "deploy": "rimraf scripts/dist && run-s webpack upload",
     "fix:lint": "npm run lint:eslint -- --fix",
     "lint:eslint": "eslint 'src/**/*.ts' 'scripts/**/*.ts'",
     "lint:ts": "tsc --noEmit",
-    "lint": "run-p lint:*",
+    "lint": "run-p -l lint:*",
     "test": "jest src",
     "upload": "kintone-customize-uploader scripts/customize-manifest.json",
     "webpack": "webpack --config scripts/webpack.config"
@@ -25,7 +28,9 @@
     "url": "git+https://github.com/kintone/js-sdk.git"
   },
   "files": [
-    "lib"
+    "esm",
+    "lib",
+    "umd"
   ],
   "keywords": [],
   "author": "",
