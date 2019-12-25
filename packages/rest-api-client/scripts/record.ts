@@ -1,11 +1,11 @@
-import { KintoneAPIClient } from "../src/index";
+import { KintoneRestAPIClient } from "../src/index";
 
 const APP_ID = 8;
 const RECORD_ID = 3;
 
 export class Record {
-  private client: KintoneAPIClient;
-  constructor(client: KintoneAPIClient) {
+  private client: KintoneRestAPIClient;
+  constructor(client: KintoneRestAPIClient) {
     this.client = client;
   }
   public async getRecord() {

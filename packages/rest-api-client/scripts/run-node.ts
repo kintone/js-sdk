@@ -1,4 +1,4 @@
-import { KintoneAPIClient } from "../src/index";
+import { KintoneRestAPIClient } from "../src/index";
 import { Record } from "./record";
 import { App } from "./app";
 import { File } from "./file";
@@ -15,7 +15,7 @@ const password = process.env.KINTONE_PASSWORD || "";
 
 const auth = authType === "apiToken" ? { apiToken } : { username, password };
 
-const client = new KintoneAPIClient({
+const client = new KintoneRestAPIClient({
   host: process.env.KINTONE_HOST || "",
   auth
 });

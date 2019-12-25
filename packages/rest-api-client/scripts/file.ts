@@ -1,10 +1,10 @@
-import { KintoneAPIClient } from "../src";
+import { KintoneRestAPIClient } from "../src";
 
 const APP_ID = 8;
 
 export class File {
-  private client: KintoneAPIClient;
-  constructor(client: KintoneAPIClient) {
+  private client: KintoneRestAPIClient;
+  constructor(client: KintoneRestAPIClient) {
     this.client = client;
   }
 

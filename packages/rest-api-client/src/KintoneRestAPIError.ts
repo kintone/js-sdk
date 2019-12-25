@@ -5,7 +5,7 @@ type ErrorResponse = {
   message: string;
 };
 
-export class KintoneAPIError extends Error {
+export class KintoneRestAPIError extends Error {
   id: string;
   code: string;
   status: string;
@@ -14,7 +14,7 @@ export class KintoneAPIError extends Error {
   constructor(error: ErrorResponse) {
     super(error.data.message);
 
-    this.name = "KintoneAPIError";
+    this.name = "KintoneRestAPIError";
     this.id = error.data.id;
     this.code = error.data.code;
     this.status = error.status;
@@ -24,7 +24,7 @@ export class KintoneAPIError extends Error {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error#Custom_Error_Types
     // Maintains proper stack trace for where our error was thrown (only available on V8)
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, KintoneAPIError);
+      Error.captureStackTrace(this, KintoneRestAPIError);
     }
   }
 }
