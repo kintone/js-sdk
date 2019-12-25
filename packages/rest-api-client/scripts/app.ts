@@ -1,12 +1,12 @@
-import { KintoneAPIClient } from "../src/index";
+import { KintoneRestAPIClient } from "../src/index";
 
 const APP_ID = 8;
 const RECORD_ID = 3;
 const SPACE_ID = 3;
 
 export class App {
-  private client: KintoneAPIClient;
-  constructor(client: KintoneAPIClient) {
+  private client: KintoneRestAPIClient;
+  constructor(client: KintoneRestAPIClient) {
     this.client = client;
   }
   public async getFormFields() {

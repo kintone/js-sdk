@@ -1,11 +1,11 @@
-import { KintoneAPIClient } from "../src";
+import { KintoneRestAPIClient } from "../src";
 
 const APP_ID = 8;
 const RECORD_ID = 3;
 
 export class BulkRequest {
-  private client: KintoneAPIClient;
-  constructor(client: KintoneAPIClient) {
+  private client: KintoneRestAPIClient;
+  constructor(client: KintoneRestAPIClient) {
     this.client = client;
   }
 

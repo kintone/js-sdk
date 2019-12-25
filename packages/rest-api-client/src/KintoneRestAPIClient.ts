@@ -42,7 +42,7 @@ type KintoneAuthHeader =
       "X-Requested-With": "XMLHttpRequest";
     };
 
-export class KintoneAPIClient {
+export class KintoneRestAPIClient {
   record: RecordClient;
   app: AppClient;
   file: FileClient;

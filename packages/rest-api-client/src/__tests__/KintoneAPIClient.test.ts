@@ -1,7 +1,7 @@
-import { KintoneAPIClient } from "../KintoneAPIClient";
+import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
 import { Base64 } from "js-base64";
 
-describe("KintoneAPIClient", () => {
+describe("KintoneRestAPIClient", () => {
   let originalKintone: any;
   beforeEach(() => {
     originalKintone =
@@ -21,7 +21,7 @@ describe("KintoneAPIClient", () => {
         const auth = {
           apiToken: API_TOKEN
         };
-        const client = new KintoneAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ host, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-API-Token": API_TOKEN
         });
@@ -32,7 +32,7 @@ describe("KintoneAPIClient", () => {
         const auth = {
           apiToken: `${API_TOKEN1},${API_TOKEN2}`
         };
-        const client = new KintoneAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ host, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
         });
@@ -43,7 +43,7 @@ describe("KintoneAPIClient", () => {
         const auth = {
           apiToken: [API_TOKEN1, API_TOKEN2]
         };
-        const client = new KintoneAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ host, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
         });
@@ -55,14 +55,14 @@ describe("KintoneAPIClient", () => {
           username: USERNAME,
           password: PASSWORD
         };
-        const client = new KintoneAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ host, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`)
         });
       });
       it("Session auth", () => {
         const auth = {};
-        const client = new KintoneAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ host, auth });
         expect(client.getHeaders()).toEqual({
           "X-Requested-With": "XMLHttpRequest"
         });

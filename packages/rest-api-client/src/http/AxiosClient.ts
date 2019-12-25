@@ -1,4 +1,4 @@
-import { KintoneAPIError } from "./../KintoneAPIError";
+import { KintoneRestAPIError } from "../KintoneRestAPIError";
 import Axios from "axios";
 import qs from "qs";
 import { HttpClient } from "./HttpClientInterface";
@@ -35,7 +35,7 @@ export class AxiosClient implements HttpClient {
       data = response.data;
     } catch (error) {
       // console.log(error.response);
-      throw new KintoneAPIError(error.response);
+      throw new KintoneRestAPIError(error.response);
     }
     return data;
   }
@@ -50,7 +50,7 @@ export class AxiosClient implements HttpClient {
       });
       data = response.data;
     } catch (error) {
-      throw new KintoneAPIError(error.response);
+      throw new KintoneRestAPIError(error.response);
     }
     return data;
   }
@@ -68,7 +68,7 @@ export class AxiosClient implements HttpClient {
       );
       data = response.data;
     } catch (error) {
-      throw new KintoneAPIError(error.response);
+      throw new KintoneRestAPIError(error.response);
     }
     return data;
   }
@@ -87,7 +87,7 @@ export class AxiosClient implements HttpClient {
       const response = await Axios.post(requestURL, formData, { headers });
       data = response.data;
     } catch (error) {
-      throw new KintoneAPIError(error.response);
+      throw new KintoneRestAPIError(error.response);
     }
     return data;
   }
@@ -105,7 +105,7 @@ export class AxiosClient implements HttpClient {
       );
       data = response.data;
     } catch (error) {
-      throw new KintoneAPIError(error.response);
+      throw new KintoneRestAPIError(error.response);
     }
     return data;
   }
@@ -122,7 +122,7 @@ export class AxiosClient implements HttpClient {
       });
       data = response.data;
     } catch (error) {
-      throw new KintoneAPIError(error.response);
+      throw new KintoneRestAPIError(error.response);
     }
     return data;
   }

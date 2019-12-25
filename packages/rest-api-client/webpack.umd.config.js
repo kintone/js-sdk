@@ -5,9 +5,9 @@ module.exports = (_, argv) => ({
   output: {
     path: path.resolve(__dirname, "umd"),
     libraryTarget: "umd",
-    libraryExport: "KintoneAPIClient",
-    library: "KintoneRestApiClient",
-    filename: `KintoneRestApiClient${
+    libraryExport: "KintoneRestAPIClient",
+    library: "KintoneRestAPIClient",
+    filename: `KintoneRestAPIClient${
       argv.mode === "production" ? ".min" : ""
     }.js`
   },
