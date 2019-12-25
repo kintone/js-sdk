@@ -2,11 +2,33 @@
 [![](https://github.com/kintone/js-sdk/workflows/test/badge.svg)](https://github.com/kintone/js-sdk/actions?workflow=test)
 [![](https://github.com/kintone/js-sdk/workflows/lint/badge.svg)](https://github.com/kintone/js-sdk/actions?workflow=lint)
 
-## Test & Lint
+## Installation
 
-```
-npm test
-npm run lint
+```shell
+npm install @kintone/rest-api-client
 ```
 
-To fix ESLint errors that are fixable, please run `npm run fix:lint` command.
+## Usage
+
+```js
+const { KintoneRestAPIClient } = require("@kintone/rest-api-client");
+
+const client = new KintoneRestAPIClient({
+  host: "https://example.cybozu.com",
+  // Use password authentication
+  auth: { username: "username", password: "password" }
+  // Use API Token authentication
+  // auth: { apiToken: "API_TOKEN" }
+  // Use session authentication (in browser only)
+  // auth: {}
+});
+
+client.record
+  .getRecords({ app: "1" })
+  .then(resp => {
+    console.log(resp.records);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+```
