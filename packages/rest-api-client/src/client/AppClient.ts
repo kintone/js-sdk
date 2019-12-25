@@ -456,7 +456,17 @@ export class AppClient {
           };
         }
       | { type: "PRESET"; key: "string" };
-    theme?: "WHITE" | "RED" | "BLUE" | "GREEN" | "YELLOW" | "BLACK";
+    theme?:
+      | "WHITE"
+      | "CLIPBOARD"
+      | "BINDER"
+      | "PENCIL"
+      | "CLIPS"
+      | "RED"
+      | "BLUE"
+      | "GREEN"
+      | "YELLOW"
+      | "BLACK";
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = `/k/v1/preview/app/settings.json`;
