@@ -37,8 +37,11 @@
     "lib",
     "umd"
   ],
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "kintone",
+    "rest",
+    "api-client"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
