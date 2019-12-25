@@ -1,6 +1,9 @@
 {
   "name": "@kintone/rest-api-client",
   "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
     "name": "Cybozu, Inc.",
     "email": "",
