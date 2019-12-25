@@ -1,7 +1,7 @@
 {
   "name": "@kintone/rest-api-client",
   "version": "0.0.1",
-  "description": "",
+  "description": "Kintone REST API client for JavaScript",
   "main": "lib/index.js",
   "module": "esm/index.js",
   "types": "lib/index.d.ts",
