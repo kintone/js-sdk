@@ -1,7 +1,12 @@
 {
   "name": "@kintone/rest-api-client",
   "version": "0.0.1",
-  "description": "",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "email": "",
+    "url": "https://cybozu.co.jp"
+  },
+  "description": "Kintone REST API client for JavaScript",
   "main": "lib/index.js",
   "module": "esm/index.js",
   "types": "lib/index.d.ts",
@@ -32,8 +37,11 @@
     "lib",
     "umd"
   ],
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "kintone",
+    "rest",
+    "api-client"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
