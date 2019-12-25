@@ -1,6 +1,11 @@
 {
   "name": "@kintone/rest-api-client",
   "version": "0.0.1",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "email": "",
+    "url": "https://cybozu.co.jp"
+  },
   "description": "Kintone REST API client for JavaScript",
   "main": "lib/index.js",
   "module": "esm/index.js",
