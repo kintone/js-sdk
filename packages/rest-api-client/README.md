@@ -1,4 +1,6 @@
 # kintone-rest-api-client
+
+[![npm version](https://badge.fury.io/js/%40kintone%2Frest-api-client.svg)](https://badge.fury.io/js/%40kintone%2Frest-api-client)
 [![](https://github.com/kintone/js-sdk/workflows/test/badge.svg)](https://github.com/kintone/js-sdk/actions?workflow=test)
 [![](https://github.com/kintone/js-sdk/workflows/lint/badge.svg)](https://github.com/kintone/js-sdk/actions?workflow=lint)
 
