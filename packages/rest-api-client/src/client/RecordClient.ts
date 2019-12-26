@@ -240,7 +240,7 @@ export class RecordClient {
     return allRecords;
   }
 
-  public addComment(params: {
+  public addRecordComment(params: {
     app: AppID;
     record: RecordID;
     comment: {
@@ -252,7 +252,7 @@ export class RecordClient {
     return this.client.post(path, params);
   }
 
-  public deleteComment(params: {
+  public deleteRecordComment(params: {
     app: AppID;
     record: RecordID;
     comment: CommentID;
@@ -261,7 +261,7 @@ export class RecordClient {
     return this.client.delete(path, params);
   }
 
-  public getComments(params: {
+  public getRecordComments(params: {
     app: AppID;
     record: RecordID;
     order?: "asc" | "desc";

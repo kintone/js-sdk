@@ -178,7 +178,7 @@ export class Record {
     );
   }
 
-  public async addComment() {
+  public async addRecordComment() {
     const params = {
       app: APP_ID,
       record: RECORD_ID,
@@ -192,19 +192,19 @@ export class Record {
         ]
       }
     };
-    console.log(await this.client.record.addComment(params));
+    console.log(await this.client.record.addRecordComment(params));
   }
 
-  public async deleteComment() {
+  public async deleteRecordComment() {
     const params = {
       app: APP_ID,
       record: RECORD_ID,
       comment: 1
     };
-    console.log(await this.client.record.deleteComment(params));
+    console.log(await this.client.record.deleteRecordComment(params));
   }
 
-  public async getComments() {
+  public async getRecordComments() {
     const params = {
       app: APP_ID,
       record: RECORD_ID,
@@ -212,7 +212,7 @@ export class Record {
       offset: 5,
       limit: 5
     };
-    console.log(await this.client.record.getComments(params));
+    console.log(await this.client.record.getRecordComments(params));
   }
 
   public async updateAssignee() {
