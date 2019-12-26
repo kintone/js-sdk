@@ -224,13 +224,13 @@ export class Record {
     console.log(await this.client.record.updateRecordAssignees(params));
   }
 
-  public async updateStatus() {
+  public async updateRecordStatus() {
     const params = {
       action: "action1to2",
       app: APP_ID,
       id: RECORD_ID
     };
-    console.log(await this.client.record.updateStatus(params));
+    console.log(await this.client.record.updateRecordStatus(params));
   }
 
   public async updateRecordsStatus() {

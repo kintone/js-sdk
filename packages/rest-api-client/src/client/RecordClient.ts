@@ -282,7 +282,7 @@ export class RecordClient {
     return this.client.put(path, params);
   }
 
-  public updateStatus(params: {
+  public updateRecordStatus(params: {
     action: string;
     app: AppID;
     assignee?: string;
