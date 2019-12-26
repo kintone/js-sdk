@@ -51,10 +51,10 @@ export class KintoneRestAPIClient {
 
   constructor({
     host,
-    auth: partialAuth
+    auth: partialAuth = {}
   }: {
     host: string;
-    auth: PartialAuth;
+    auth?: PartialAuth;
   }) {
     const auth = this.buildAuth(partialAuth);
     const params = this.buildParams(auth);
