@@ -359,17 +359,17 @@ export class App {
     }
   }
 
-  public async getCustomize() {
+  public async getAppCustomize() {
     try {
       console.log(
-        JSON.stringify(await this.client.app.getCustomize({ app: APP_ID }))
+        JSON.stringify(await this.client.app.getAppCustomize({ app: APP_ID }))
       );
     } catch (error) {
       console.log(error);
     }
   }
 
-  public async updateCustomize() {
+  public async updateAppCustomize() {
     const resource = {
       js: [
         {
@@ -380,7 +380,7 @@ export class App {
     };
     try {
       console.log(
-        await this.client.app.updateCustomize({
+        await this.client.app.updateAppCustomize({
           app: APP_ID,
           scope: "ALL",
           desktop: resource,
@@ -392,7 +392,7 @@ export class App {
     }
   }
 
-  public async updateCustomizeWithFile() {
+  public async updateAppCustomizeWithFile() {
     const { fileKey } = await this.client.file.uploadFile({
       file: { name: "Hello.js", data: "console.log('Hello');" }
     });
@@ -409,7 +409,7 @@ export class App {
     };
     try {
       console.log(
-        await this.client.app.updateCustomize({
+        await this.client.app.updateAppCustomize({
           app: APP_ID,
           scope: "ALL",
           desktop: resource

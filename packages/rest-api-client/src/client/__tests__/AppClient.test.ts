@@ -706,11 +706,11 @@ describe("AppClient", () => {
     });
   });
 
-  describe("getCustomize", () => {
+  describe("getAppCustomize", () => {
     const params = { app: APP_ID };
     describe("without preview", () => {
       beforeEach(() => {
-        appClient.getCustomize(params);
+        appClient.getAppCustomize(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/customize.json");
@@ -724,7 +724,7 @@ describe("AppClient", () => {
     });
     describe("preview: true", () => {
       beforeEach(() => {
-        appClient.getCustomize({ ...params, preview: true });
+        appClient.getAppCustomize({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -740,7 +740,7 @@ describe("AppClient", () => {
     });
   });
 
-  describe("updatetCustomize", () => {
+  describe("updateAppCustomize", () => {
     const resource = {
       js: [
         {
@@ -766,7 +766,7 @@ describe("AppClient", () => {
     };
     describe("customize resources are specified", () => {
       beforeEach(() => {
-        appClient.updateCustomize(params);
+        appClient.updateAppCustomize(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
