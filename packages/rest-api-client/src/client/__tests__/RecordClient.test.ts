@@ -735,7 +735,7 @@ describe("RecordClient", () => {
     });
   });
 
-  describe("updateStatuses", () => {
+  describe("updateRecordsStatus", () => {
     const params = {
       app: APP_ID,
       records: [
@@ -748,7 +748,7 @@ describe("RecordClient", () => {
       ]
     };
     beforeEach(() => {
-      recordClient.updateStatuses(params);
+      recordClient.updateRecordsStatus(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records/status.json");

@@ -233,11 +233,11 @@ export class Record {
     console.log(await this.client.record.updateStatus(params));
   }
 
-  public async updateStatuses() {
+  public async updateRecordsStatus() {
     const params = {
       app: APP_ID,
       records: [{ id: RECORD_ID, action: "action1to2" }]
     };
-    console.log(await this.client.record.updateStatuses(params));
+    console.log(await this.client.record.updateRecordsStatus(params));
   }
 }
