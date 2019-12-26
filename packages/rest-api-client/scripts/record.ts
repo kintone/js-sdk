@@ -215,13 +215,13 @@ export class Record {
     console.log(await this.client.record.getRecordComments(params));
   }
 
-  public async updateAssignee() {
+  public async updateRecordAssignees() {
     const params = {
       app: APP_ID,
       id: RECORD_ID,
       assignees: []
     };
-    console.log(await this.client.record.updateAssignees(params));
+    console.log(await this.client.record.updateRecordAssignees(params));
   }
 
   public async updateStatus() {

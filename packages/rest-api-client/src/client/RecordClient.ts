@@ -272,7 +272,7 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
-  public updateAssignees(params: {
+  public updateRecordAssignees(params: {
     app: AppID;
     id: RecordID;
     assignees: string[];

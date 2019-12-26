@@ -692,7 +692,7 @@ describe("RecordClient", () => {
     });
   });
 
-  describe("updateAssignees", () => {
+  describe("updateRecordAssignees", () => {
     const params = {
       app: APP_ID,
       id: RECORD_ID,
@@ -700,7 +700,7 @@ describe("RecordClient", () => {
       revision: 10
     };
     beforeEach(() => {
-      recordClient.updateAssignees(params);
+      recordClient.updateRecordAssignees(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/assignees.json");
