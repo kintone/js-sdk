@@ -9,8 +9,8 @@
   "scripts": {
     "build": "lerna run build --stream",
     "lint": "lerna run lint --stream",
-    "initial:release": "lerna publish from-package --conventional-commits",
-    "release": "lerna publish --conventional-commits",
+    "initial:release": "run-s lint build && lerna publish from-package --conventional-commits",
+    "release": "run-s lint build && lerna publish --conventional-commits",
     "test": "lerna run test --stream"
   },
   "repository": {
