@@ -21,8 +21,8 @@ const client = new KintoneRestAPIClient({
   auth: { username: "username", password: "password" }
   // Use API Token authentication
   // auth: { apiToken: "API_TOKEN" }
-  // Use session authentication (in browser only)
-  // auth: {}
+
+  // Use session authentication if `auth` is omitted (in browser only)
 });
 
 client.record
