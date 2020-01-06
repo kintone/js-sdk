@@ -408,6 +408,71 @@ export class AppClient {
     return this.client.post(path, { name });
   }
 
+  public getAppSettings(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{
+    name: string;
+    description: string;
+    icon:
+      | {
+          type: "FILE";
+          file: {
+            contentType: string;
+            fileKey: string;
+            name: string;
+            size: string;
+          };
+        }
+      | { type: "PRESET"; key: "string" };
+    theme:
+      | "WHITE"
+      | "CLIPBOARD"
+      | "BINDER"
+      | "PENCIL"
+      | "CLIPS"
+      | "RED"
+      | "BLUE"
+      | "GREEN"
+      | "YELLOW"
+      | "BLACK";
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = `/k/v1${preview ? "/preview" : ""}/app/settings.json`;
+    return this.client.get(path, rest);
+  }
+
+  public updateAppSettings(params: {
+    app: AppID;
+    name?: string;
+    description?: string;
+    icon?:
+      | {
+          type: "FILE";
+          file: {
+            fileKey: string;
+          };
+        }
+      | { type: "PRESET"; key: "string" };
+    theme?:
+      | "WHITE"
+      | "CLIPBOARD"
+      | "BINDER"
+      | "PENCIL"
+      | "CLIPS"
+      | "RED"
+      | "BLUE"
+      | "GREEN"
+      | "YELLOW"
+      | "BLACK";
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = `/k/v1/preview/app/settings.json`;
+    return this.client.put(path, params);
+  }
+
   public getProcessManagement(params: {
     app: AppID;
     lang?: Lang;

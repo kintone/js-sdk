@@ -450,6 +450,71 @@ describe("AppClient", () => {
     });
   });
 
+  describe("getAppSettings", () => {
+    const lang = "default";
+    const params = { app: APP_ID, lang } as const;
+    describe("without preview", () => {
+      beforeEach(() => {
+        appClient.getAppSettings(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/settings.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app and lang to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+    describe("preview: true", () => {
+      beforeEach(() => {
+        appClient.getAppSettings({ ...params, preview: true });
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/preview/app/settings.json"
+        );
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app and lang to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+  });
+
+  describe("updateAppSettings", () => {
+    const params = {
+      app: APP_ID,
+      revision: REVISION,
+      name: "test app",
+      description: "<div>Description</div>",
+      icon: {
+        type: "FILE" as const,
+        file: {
+          fileKey: "file key"
+        }
+      },
+      theme: "WHITE" as const
+    };
+    beforeEach(() => {
+      appClient.updateAppSettings(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/preview/app/settings.json"
+      );
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app, name, description, icon, theme and revision to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
   describe("getDeployStatus", () => {
     const params = {
       apps: [APP_ID]

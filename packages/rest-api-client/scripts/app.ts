@@ -142,6 +142,32 @@ export class App {
     }
   }
 
+  public async getAppSettings() {
+    try {
+      console.log(await this.client.app.getAppSettings({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getAppSettingsPreview() {
+    try {
+      console.log(
+        await this.client.app.getAppSettings({ app: APP_ID, preview: true })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateAppSettings() {
+    try {
+      console.log(await this.client.app.updateAppSettings({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async getProcessManagement() {
     try {
       console.log(await this.client.app.getProcessManagement({ app: APP_ID }));
