@@ -67,6 +67,12 @@ describe("KintoneRestAPIClient", () => {
           "X-Requested-With": "XMLHttpRequest"
         });
       });
+      it("should use Session auth if auth param is not specified", () => {
+        const client = new KintoneRestAPIClient({ host });
+        expect(client.getHeaders()).toEqual({
+          "X-Requested-With": "XMLHttpRequest"
+        });
+      });
     });
   });
 });
