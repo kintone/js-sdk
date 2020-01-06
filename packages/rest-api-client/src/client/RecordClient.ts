@@ -240,7 +240,7 @@ export class RecordClient {
     return allRecords;
   }
 
-  public addComment(params: {
+  public addRecordComment(params: {
     app: AppID;
     record: RecordID;
     comment: {
@@ -252,7 +252,7 @@ export class RecordClient {
     return this.client.post(path, params);
   }
 
-  public deleteComment(params: {
+  public deleteRecordComment(params: {
     app: AppID;
     record: RecordID;
     comment: CommentID;
@@ -261,7 +261,7 @@ export class RecordClient {
     return this.client.delete(path, params);
   }
 
-  public getComments(params: {
+  public getRecordComments(params: {
     app: AppID;
     record: RecordID;
     order?: "asc" | "desc";
@@ -272,7 +272,7 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
-  public updateAssignees(params: {
+  public updateRecordAssignees(params: {
     app: AppID;
     id: RecordID;
     assignees: string[];
@@ -282,7 +282,7 @@ export class RecordClient {
     return this.client.put(path, params);
   }
 
-  public updateStatus(params: {
+  public updateRecordStatus(params: {
     action: string;
     app: AppID;
     assignee?: string;
@@ -293,7 +293,7 @@ export class RecordClient {
     return this.client.put(path, params);
   }
 
-  public updateStatuses(params: {
+  public updateRecordsStatus(params: {
     app: AppID;
     records: Array<{
       action: string;

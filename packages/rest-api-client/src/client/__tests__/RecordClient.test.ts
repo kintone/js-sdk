@@ -622,7 +622,7 @@ describe("RecordClient", () => {
     });
   });
 
-  describe("addComment", () => {
+  describe("addRecordComment", () => {
     const params = {
       app: APP_ID,
       record: RECORD_ID,
@@ -637,7 +637,7 @@ describe("RecordClient", () => {
       }
     };
     beforeEach(() => {
-      recordClient.addComment(params);
+      recordClient.addRecordComment(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/comment.json");
@@ -650,14 +650,14 @@ describe("RecordClient", () => {
     });
   });
 
-  describe("deleteComment", () => {
+  describe("deleteRecordComment", () => {
     const params = {
       app: APP_ID,
       record: RECORD_ID,
       comment: "1"
     };
     beforeEach(() => {
-      recordClient.deleteComment(params);
+      recordClient.deleteRecordComment(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/comment.json");
@@ -670,7 +670,7 @@ describe("RecordClient", () => {
     });
   });
 
-  describe("getComments", () => {
+  describe("getRecordComments", () => {
     const params = {
       app: APP_ID,
       record: RECORD_ID,
@@ -679,7 +679,7 @@ describe("RecordClient", () => {
       limit: 5
     };
     beforeEach(() => {
-      recordClient.getComments(params);
+      recordClient.getRecordComments(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/comments.json");
@@ -692,7 +692,7 @@ describe("RecordClient", () => {
     });
   });
 
-  describe("updateAssignees", () => {
+  describe("updateRecordAssignees", () => {
     const params = {
       app: APP_ID,
       id: RECORD_ID,
@@ -700,7 +700,7 @@ describe("RecordClient", () => {
       revision: 10
     };
     beforeEach(() => {
-      recordClient.updateAssignees(params);
+      recordClient.updateRecordAssignees(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/assignees.json");
@@ -713,7 +713,7 @@ describe("RecordClient", () => {
     });
   });
 
-  describe("updateStatus", () => {
+  describe("updateRecordStatus", () => {
     const params = {
       action: "Action1",
       app: APP_ID,
@@ -722,7 +722,7 @@ describe("RecordClient", () => {
       revision: 10
     };
     beforeEach(() => {
-      recordClient.updateStatus(params);
+      recordClient.updateRecordStatus(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/status.json");
@@ -735,7 +735,7 @@ describe("RecordClient", () => {
     });
   });
 
-  describe("updateStatuses", () => {
+  describe("updateRecordsStatus", () => {
     const params = {
       app: APP_ID,
       records: [
@@ -748,7 +748,7 @@ describe("RecordClient", () => {
       ]
     };
     beforeEach(() => {
-      recordClient.updateStatuses(params);
+      recordClient.updateRecordsStatus(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records/status.json");

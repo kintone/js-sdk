@@ -254,9 +254,9 @@ type Rights = {
   fields: object;
 };
 
-type CustomizeScope = "ALL" | "ADMIN" | "NONE";
+type AppCustomizeScope = "ALL" | "ADMIN" | "NONE";
 
-type CustomizeResource =
+type AppCustomizeResource =
   | {
       type: "URL";
       url: string;
@@ -270,7 +270,7 @@ type CustomizeResource =
         size: string;
       };
     };
-type CustomizeResourceForUpdate =
+type AppCustomizeResourceForUpdate =
   | {
       type: "URL";
       url: string;
@@ -282,13 +282,13 @@ type CustomizeResourceForUpdate =
       };
     };
 
-type Customize = {
-  js: CustomizeResource[];
-  css: CustomizeResource[];
+type AppCustomize = {
+  js: AppCustomizeResource[];
+  css: AppCustomizeResource[];
 };
-type CustomizeForUpdate = {
-  js?: CustomizeResourceForUpdate[];
-  css?: CustomizeResourceForUpdate[];
+type AppCustomizeForUpdate = {
+  js?: AppCustomizeResourceForUpdate[];
+  css?: AppCustomizeResourceForUpdate[];
 };
 
 export class AppClient {
@@ -526,13 +526,13 @@ export class AppClient {
     return this.client.get(path, { ...rest });
   }
 
-  public getCustomize(params: {
+  public getAppCustomize(params: {
     app: AppID;
     preview?: boolean;
   }): Promise<{
-    scope: CustomizeScope;
-    desktop: Customize;
-    mobile: Customize;
+    scope: AppCustomizeScope;
+    desktop: AppCustomize;
+    mobile: AppCustomize;
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -540,11 +540,11 @@ export class AppClient {
     return this.client.get(path, { ...rest });
   }
 
-  public updateCustomize(params: {
+  public updateAppCustomize(params: {
     app: AppID;
-    scope?: CustomizeScope;
-    desktop?: CustomizeForUpdate;
-    mobile?: CustomizeForUpdate;
+    scope?: AppCustomizeScope;
+    desktop?: AppCustomizeForUpdate;
+    mobile?: AppCustomizeForUpdate;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = "/k/v1/preview/app/customize.json";
