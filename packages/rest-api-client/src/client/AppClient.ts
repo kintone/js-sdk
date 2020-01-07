@@ -1,5 +1,6 @@
 import { AppID, RecordID, Revision } from "../KintoneTypes";
 import { HttpClient } from "../http";
+import { buildPath } from "../url";
 
 type Overwrite<T1, T2> = {
   [P in Exclude<keyof T1, keyof T2>]: T1[P];
@@ -293,9 +294,11 @@ type AppCustomizeForUpdate = {
 
 export class AppClient {
   private client: HttpClient;
+  private guestSpaceId?: number | string;
 
-  constructor(client: HttpClient) {
+  constructor(client: HttpClient, guestSpaceId?: number | string) {
     this.client = client;
+    this.guestSpaceId = guestSpaceId;
   }
 
   public getFormFields<T extends Properties>(params: {
@@ -304,7 +307,10 @@ export class AppClient {
     preview?: boolean;
   }): Promise<{ properties: T; revision: string }> {
     const { preview, ...rest } = params;
-    const path = `/k/v1${preview ? "/preview" : ""}/app/form/fields.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/form/fields",
+      preview
+    });
     return this.client.get(path, { ...rest });
   }
 
@@ -313,7 +319,10 @@ export class AppClient {
     properties: object;
     revision?: Revision;
   }): Promise<{ revision: string }> {
-    const path = "/k/v1/preview/app/form/fields.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/form/fields",
+      preview: true
+    });
     return this.client.post(path, params);
   }
 
@@ -322,7 +331,10 @@ export class AppClient {
     properties: object;
     revision?: Revision;
   }): Promise<{ revision: string }> {
-    const path = "/k/v1/preview/app/form/fields.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/form/fields",
+      preview: true
+    });
     return this.client.put(path, params);
   }
 
@@ -331,7 +343,10 @@ export class AppClient {
     fields: string[];
     revision?: Revision;
   }) {
-    const path = "/k/v1/preview/app/form/fields.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/form/fields",
+      preview: true
+    });
     return this.client.delete(path, params);
   }
 
@@ -340,7 +355,10 @@ export class AppClient {
     preview?: boolean;
   }): Promise<{ layout: T; revision: string }> {
     const { preview, ...rest } = params;
-    const path = `/k/v1${preview ? "/preview" : ""}/app/form/layout.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/form/layout",
+      preview
+    });
     return this.client.get(path, { ...rest });
   }
 
@@ -349,7 +367,10 @@ export class AppClient {
     layout: object[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
-    const path = "/k/v1/preview/app/form/layout.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/form/layout",
+      preview: true
+    });
     return this.client.put(path, params);
   }
 
@@ -359,7 +380,10 @@ export class AppClient {
     preview?: boolean;
   }): Promise<{ views: { [viewName: string]: View }; revision: string }> {
     const { preview, ...rest } = params;
-    const path = `/k/v1${preview ? "/preview" : ""}/app/views.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/views",
+      preview
+    });
     return this.client.get(path, rest);
   }
 
@@ -371,12 +395,17 @@ export class AppClient {
     views: { [viewName: string]: { id: string } };
     revision: string;
   }> {
-    const path = `/k/v1/preview/app/views.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/views",
+      preview: true
+    });
     return this.client.put(path, params);
   }
 
   public getApp(params: { id: AppID }): Promise<App> {
-    const path = "/k/v1/app.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app"
+    });
     return this.client.get(path, params);
   }
 
@@ -388,7 +417,9 @@ export class AppClient {
     limit?: string | number;
     offset?: string | number;
   }): Promise<{ apps: App[] }> {
-    const path = "/k/v1/apps.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "apps"
+    });
     return this.client.get(path, params);
   }
 
@@ -397,9 +428,14 @@ export class AppClient {
     space?: string | number;
   }): Promise<{ app: string; revision: string }> {
     const { name, space } = params;
-    const path = "/k/v1/preview/app.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app",
+      preview: true
+    });
     if (space) {
-      const spacePath = "/k/v1/space.json";
+      const spacePath = this.buildPathWithGuestSpaceId({
+        endpointName: "space"
+      });
       const { defaultThread } = await this.client.get(spacePath, {
         id: space
       });
@@ -440,7 +476,10 @@ export class AppClient {
     revision: string;
   }> {
     const { preview, ...rest } = params;
-    const path = `/k/v1${preview ? "/preview" : ""}/app/settings.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/settings",
+      preview
+    });
     return this.client.get(path, rest);
   }
 
@@ -469,7 +508,10 @@ export class AppClient {
       | "BLACK";
     revision?: Revision;
   }): Promise<{ revision: string }> {
-    const path = `/k/v1/preview/app/settings.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/settings",
+      preview: true
+    });
     return this.client.put(path, params);
   }
 
@@ -486,7 +528,10 @@ export class AppClient {
     revision: string;
   }> {
     const { preview, ...rest } = params;
-    const path = `/k/v1${preview ? "/preview" : ""}/app/status.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/status",
+      preview
+    });
     return this.client.get(path, rest);
   }
 
@@ -497,14 +542,20 @@ export class AppClient {
     actions?: ActionForUpdate[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
-    const path = "/k/v1/preview/app/status.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/status",
+      preview: true
+    });
     return this.client.put(path, params);
   }
 
   public getDeployStatus(params: {
     apps: AppID[];
   }): Promise<{ apps: Array<{ app: string; status: DeployStatus }> }> {
-    const path = "/k/v1/preview/app/deploy.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/deploy",
+      preview: true
+    });
     return this.client.get(path, params);
   }
 
@@ -512,7 +563,10 @@ export class AppClient {
     apps: Array<{ app: AppID; revision?: Revision }>;
     revert?: boolean;
   }): Promise<{}> {
-    const path = "/k/v1/preview/app/deploy.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/deploy",
+      preview: true
+    });
     return this.client.post(path, params);
   }
 
@@ -521,7 +575,10 @@ export class AppClient {
     preview?: boolean;
   }): Promise<{ rights: FieldRight[]; revision: string }> {
     const { preview, ...rest } = params;
-    const path = `/k/v1${preview ? "/preview" : ""}/field/acl.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "field/acl",
+      preview
+    });
     return this.client.get(path, { ...rest });
   }
 
@@ -534,7 +591,10 @@ export class AppClient {
     // all pre-live app's settings will be deployed to live app.
     // This behavior may not be what the users expected,
     // so we disable it temporarily.
-    const path = "/k/v1/preview/record/acl.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record/acl",
+      preview: true
+    });
     return this.client.put(path, params);
   }
 
@@ -543,7 +603,10 @@ export class AppClient {
     preview?: boolean;
   }): Promise<{ rights: AppRightEntity[]; revision: string }> {
     const { preview, ...rest } = params;
-    const path = `/k/v1${preview ? "/preview" : ""}/app/acl.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/acl",
+      preview
+    });
     return this.client.get(path, { ...rest });
   }
 
@@ -556,7 +619,10 @@ export class AppClient {
     // all pre-live app's settings will be deployed to live app.
     // This behavior may not be what the users expected,
     // so we disable it temporarily.
-    const path = "/k/v1/preview/app/acl.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/acl",
+      preview: true
+    });
     return this.client.put(path, params);
   }
 
@@ -564,7 +630,9 @@ export class AppClient {
     app: AppID;
     ids: RecordID[];
   }): Promise<{ rights: Rights }> {
-    const path = "/k/v1/records/acl/evaluate.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "records/acl/evaluate"
+    });
     return this.client.get(path, params);
   }
 
@@ -577,7 +645,10 @@ export class AppClient {
     // all pre-live app's settings will be deployed to live app.
     // This behavior may not be what the users expected,
     // so we disable it temporarily.
-    const path = "/k/v1/preview/field/acl.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "field/acl",
+      preview: true
+    });
     return this.client.put(path, params);
   }
 
@@ -587,7 +658,10 @@ export class AppClient {
     preview?: boolean;
   }): Promise<{ rights: RecordRight[]; revision: string }> {
     const { preview, ...rest } = params;
-    const path = `/k/v1${preview ? "/preview" : ""}/record/acl.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record/acl",
+      preview
+    });
     return this.client.get(path, { ...rest });
   }
 
@@ -601,7 +675,10 @@ export class AppClient {
     revision: string;
   }> {
     const { preview, ...rest } = params;
-    const path = `/k/v1${preview ? "/preview" : ""}/app/customize.json`;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/customize",
+      preview
+    });
     return this.client.get(path, { ...rest });
   }
 
@@ -612,7 +689,20 @@ export class AppClient {
     mobile?: AppCustomizeForUpdate;
     revision?: Revision;
   }): Promise<{ revision: string }> {
-    const path = "/k/v1/preview/app/customize.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/customize",
+      preview: true
+    });
     return this.client.put(path, params);
+  }
+
+  private buildPathWithGuestSpaceId(params: {
+    endpointName: string;
+    preview?: boolean;
+  }) {
+    return buildPath({
+      ...params,
+      guestSpaceId: this.guestSpaceId
+    });
   }
 }
