@@ -848,7 +848,7 @@ describe("AppClient", () => {
   });
 });
 
-describe("getFormFields with guestSpaceId", () => {
+describe("AppClient with guestSpaceId", () => {
   it("should pass the path to the http client", () => {
     const APP_ID = 1;
     const GUEST_SPACE_ID = 2;
