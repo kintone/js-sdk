@@ -7,7 +7,6 @@ jest.mock("form-data");
 describe("FileClient", () => {
   let mockClient: MockClient;
   let fileClient: FileClient;
-  const APP_ID = 1;
   beforeEach(() => {
     mockClient = new MockClient();
     fileClient = new FileClient(mockClient);
