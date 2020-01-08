@@ -184,7 +184,7 @@ export class RecordClient {
     return this.getAllRecordsRecursiveWithOffset(params, 0, []);
   }
 
-  public async getAllRecordsRecursiveWithOffset<T extends Record>(
+  private async getAllRecordsRecursiveWithOffset<T extends Record>(
     params: {
       app: AppID;
       fields?: string[];
