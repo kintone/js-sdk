@@ -54,3 +54,19 @@ describe("FileClient", () => {
     });
   });
 });
+
+describe("FileClient  with guestSpaceId", () => {
+  const GUEST_SPACE_ID = 1;
+  const params = {
+    file: {
+      name: "text.text",
+      data: "Hello!"
+    }
+  };
+  const mockClient = new MockClient();
+  const fileClient = new FileClient(mockClient, GUEST_SPACE_ID);
+  fileClient.uploadFile(params);
+  it("should pass the path to the http client", () => {
+    expect(mockClient.getLogs()[0].path).toBe("/k/guest/1/v1/file.json");
+  });
+});
