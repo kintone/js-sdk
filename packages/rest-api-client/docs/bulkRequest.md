@@ -10,6 +10,7 @@ const client = new KintoneRestAPIClient({
 (async () => {
   const APP_ID = "1";
   const RECORD_ID = "10";
+  const FIELD_CODE = "foo";
   const params = {
     requests: [
       {
@@ -18,7 +19,7 @@ const client = new KintoneRestAPIClient({
         payload: {
           app: APP_ID,
           record: {
-            Customer: {
+            [FIELD_CODE]: {
               value: "example"
             }
           }
@@ -31,7 +32,7 @@ const client = new KintoneRestAPIClient({
           app: APP_ID,
           id: RECORD_ID,
           record: {
-            Customer: {
+            [FIELD_CODE]: {
               value: "example2"
             }
           }
