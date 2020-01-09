@@ -58,17 +58,17 @@ Runs multiple API requests sequentially to multiple Apps.
 
 #### Parameters
 
-| Name               |  Type  | Required | Description                                                    |
-| :----------------: | :----: | :------: | -------------------------------------------------------------- |
-| requests           | Array  |   Yes    | An array of requests. The maximum number of requests is 20.    |
-| requests[].method  | String |   Yes    | The API method for the request.                                |
-| requests[].api     | String |   Yes    | The path of the API for the request.                           |
+| Name               |  Type  | Required | Description                                                                                                     |
+| ------------------ | :----: | :------: | --------------------------------------------------------------------------------------------------------------- |
+| requests           | Array  |   Yes    | An array of requests. The maximum number of requests is 20.                                                     |
+| requests[].method  | String |   Yes    | The API method for the request.                                                                                 |
+| requests[].api     | String |   Yes    | The path of the API for the request.                                                                            |
 | requests[].payload | Object |   Yes    | The parameters to be passed onto the API of the request. Contents and formats will change depending on the API. |
 
 #### Returns
 
-|  Name  |  Type  | Description                                                                                             |
-| :----: | :----: | ------------------------------------------------------------------------------------------------------- |
+| Name    | Type  | Description                                                                                             |
+| ------- | :---: | ------------------------------------------------------------------------------------------------------- |
 | results | Array | The response from each API request. The order of the response is the same as the order of the requests. |
 
 #### Reference
