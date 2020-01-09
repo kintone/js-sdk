@@ -46,7 +46,7 @@ export class RecordClient {
   public addRecord(params: {
     app: AppID;
     record?: object;
-  }): Promise<{ id: RecordID; revision: Revision }> {
+  }): Promise<{ id: string; revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record"
     });
@@ -57,7 +57,7 @@ export class RecordClient {
     params:
       | { app: AppID; id: RecordID; record?: object; revision?: Revision }
       | { app: AppID; updateKey: object; record?: object; revision?: Revision }
-  ): Promise<{ revision: Revision }> {
+  ): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record"
     });
@@ -207,7 +207,7 @@ export class RecordClient {
     return this.getAllRecordsRecursiveWithOffset(params, 0, []);
   }
 
-  public async getAllRecordsRecursiveWithOffset<T extends Record>(
+  private async getAllRecordsRecursiveWithOffset<T extends Record>(
     params: {
       app: AppID;
       fields?: string[];
