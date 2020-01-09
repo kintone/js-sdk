@@ -761,3 +761,19 @@ describe("RecordClient", () => {
     });
   });
 });
+
+describe("RecordClient with guestSpaceId", () => {
+  it("should pass the path to the http client", () => {
+    const APP_ID = 1;
+    const RECORD_ID = 2;
+    const GUEST_SPACE_ID = 3;
+
+    const mockClient = new MockClient();
+    const recordClient = new RecordClient(mockClient, GUEST_SPACE_ID);
+    const params = { app: APP_ID, id: RECORD_ID };
+    recordClient.getRecord(params);
+    expect(mockClient.getLogs()[0].path).toBe(
+      `/k/guest/${GUEST_SPACE_ID}/v1/record.json`
+    );
+  });
+});

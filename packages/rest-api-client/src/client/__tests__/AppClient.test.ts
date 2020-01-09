@@ -847,3 +847,18 @@ describe("AppClient", () => {
     });
   });
 });
+
+describe("AppClient with guestSpaceId", () => {
+  it("should pass the path to the http client", () => {
+    const APP_ID = 1;
+    const GUEST_SPACE_ID = 2;
+    const lang = "default";
+    const params = { app: APP_ID, lang } as const;
+    const mockClient = new MockClient();
+    const appClient = new AppClient(mockClient, GUEST_SPACE_ID);
+    appClient.getFormFields(params);
+    expect(mockClient.getLogs()[0].path).toBe(
+      `/k/guest/${GUEST_SPACE_ID}/v1/app/form/fields.json`
+    );
+  });
+});

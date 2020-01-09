@@ -51,10 +51,12 @@ export class KintoneRestAPIClient {
 
   constructor({
     host,
-    auth: partialAuth = {}
+    auth: partialAuth = {},
+    guestSpaceId
   }: {
     host: string;
     auth?: PartialAuth;
+    guestSpaceId?: number | string;
   }) {
     const auth = this.buildAuth(partialAuth);
     const params = this.buildParams(auth);
@@ -66,10 +68,10 @@ export class KintoneRestAPIClient {
       params
     });
 
-    this.bulkRequest_ = new BulkRequestClient(httpClient);
-    this.record = new RecordClient(httpClient);
-    this.app = new AppClient(httpClient);
-    this.file = new FileClient(httpClient);
+    this.bulkRequest_ = new BulkRequestClient(httpClient, guestSpaceId);
+    this.record = new RecordClient(httpClient, guestSpaceId);
+    this.app = new AppClient(httpClient, guestSpaceId);
+    this.file = new FileClient(httpClient, guestSpaceId);
   }
 
   public getHeaders() {

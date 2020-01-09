@@ -7,7 +7,6 @@ jest.mock("form-data");
 describe("FileClient", () => {
   let mockClient: MockClient;
   let fileClient: FileClient;
-  const APP_ID = 1;
   beforeEach(() => {
     mockClient = new MockClient();
     fileClient = new FileClient(mockClient);
@@ -52,5 +51,23 @@ describe("FileClient", () => {
     it("should pass fileKey as a param to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
+  });
+});
+
+describe("FileClient with guestSpaceId", () => {
+  const GUEST_SPACE_ID = 1;
+  const params = {
+    file: {
+      name: "text.text",
+      data: "Hello!"
+    }
+  };
+  const mockClient = new MockClient();
+  const fileClient = new FileClient(mockClient, GUEST_SPACE_ID);
+  fileClient.uploadFile(params);
+  it("should pass the path to the http client", () => {
+    expect(mockClient.getLogs()[0].path).toBe(
+      `/k/guest/${GUEST_SPACE_ID}/v1/file.json`
+    );
   });
 });

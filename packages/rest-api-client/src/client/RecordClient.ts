@@ -1,3 +1,4 @@
+import { buildPath } from "./../url";
 import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
 
@@ -25,16 +26,20 @@ type CommentID = string | number;
 
 export class RecordClient {
   private client: HttpClient;
+  private guestSpaceId?: number | string;
 
-  constructor(client: HttpClient) {
+  constructor(client: HttpClient, guestSpaceId?: number | string) {
     this.client = client;
+    this.guestSpaceId = guestSpaceId;
   }
 
   public getRecord<T extends Record>(params: {
     app: AppID;
     id: RecordID;
   }): Promise<{ record: T }> {
-    const path = "/k/v1/record.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record"
+    });
     return this.client.get(path, params);
   }
 
@@ -42,7 +47,9 @@ export class RecordClient {
     app: AppID;
     record?: object;
   }): Promise<{ id: string; revision: string }> {
-    const path = "/k/v1/record.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record"
+    });
     return this.client.post(path, params);
   }
 
@@ -51,7 +58,9 @@ export class RecordClient {
       | { app: AppID; id: RecordID; record?: object; revision?: Revision }
       | { app: AppID; updateKey: object; record?: object; revision?: Revision }
   ): Promise<{ revision: string }> {
-    const path = "/k/v1/record.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record"
+    });
     return this.client.put(path, params);
   }
 
@@ -62,7 +71,9 @@ export class RecordClient {
     query?: string;
     totalCount?: boolean;
   }): Promise<{ records: T[]; totalCount: string | null }> {
-    const path = "/k/v1/records.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "records"
+    });
     return this.client.get(path, params);
   }
 
@@ -70,7 +81,9 @@ export class RecordClient {
     app: AppID;
     records: Record[];
   }): Promise<{ ids: string[]; revisions: string[] }> {
-    const path = "/k/v1/records.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "records"
+    });
     return this.client.post(path, params);
   }
 
@@ -81,7 +94,9 @@ export class RecordClient {
       | { updateKey: object; record?: object; revision?: Revision }
     >;
   }): Promise<Array<{ id: string; revision: string }>> {
-    const path = "/k/v1/records.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "records"
+    });
     return this.client.put(path, params);
   }
 
@@ -90,7 +105,9 @@ export class RecordClient {
     ids: RecordID[];
     revisions?: Revision[];
   }): Promise<{}> {
-    const path = "/k/v1/records.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "records"
+    });
     return this.client.delete(path, params);
   }
 
@@ -100,7 +117,9 @@ export class RecordClient {
     query?: string;
     size?: number | string;
   }): Promise<{ id: string; totalCount: string }> {
-    const path = "/k/v1/records/cursor.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "records/cursor"
+    });
     return this.client.post(path, params);
   }
 
@@ -110,12 +129,16 @@ export class RecordClient {
     records: T[];
     next: boolean;
   }> {
-    const path = "/k/v1/records/cursor.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "records/cursor"
+    });
     return this.client.get(path, params);
   }
 
   public deleteCursor(params: { id: string }): Promise<{}> {
-    const path = "/k/v1/records/cursor.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "records/cursor"
+    });
     return this.client.delete(path, params);
   }
 
@@ -248,7 +271,9 @@ export class RecordClient {
       mentions?: Mention[];
     };
   }): Promise<{ id: string }> {
-    const path = "/k/v1/record/comment.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record/comment"
+    });
     return this.client.post(path, params);
   }
 
@@ -257,7 +282,9 @@ export class RecordClient {
     record: RecordID;
     comment: CommentID;
   }): Promise<{}> {
-    const path = "/k/v1/record/comment.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record/comment"
+    });
     return this.client.delete(path, params);
   }
 
@@ -268,7 +295,9 @@ export class RecordClient {
     offset?: number;
     limit?: number;
   }): Promise<{ comments: Comment[]; older: boolean; newer: boolean }> {
-    const path = "/k/v1/record/comments.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record/comments"
+    });
     return this.client.get(path, params);
   }
 
@@ -278,7 +307,9 @@ export class RecordClient {
     assignees: string[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
-    const path = "/k/v1/record/assignees.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record/assignees"
+    });
     return this.client.put(path, params);
   }
 
@@ -289,7 +320,9 @@ export class RecordClient {
     id: RecordID;
     revision?: Revision;
   }): Promise<{ revision: string }> {
-    const path = "/k/v1/record/status.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record/status"
+    });
     return this.client.put(path, params);
   }
 
@@ -302,7 +335,16 @@ export class RecordClient {
       revision?: Revision;
     }>;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
-    const path = "/k/v1/records/status.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "records/status"
+    });
     return this.client.put(path, params);
+  }
+
+  private buildPathWithGuestSpaceId(params: { endpointName: string }) {
+    return buildPath({
+      ...params,
+      guestSpaceId: this.guestSpaceId
+    });
   }
 }

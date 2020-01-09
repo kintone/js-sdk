@@ -1,10 +1,13 @@
 import { HttpClient } from "../http";
+import { buildPath } from "../url";
 
 export class BulkRequestClient {
   private client: HttpClient;
+  private guestSpaceId?: number | string;
 
-  constructor(client: HttpClient) {
+  constructor(client: HttpClient, guestSpaceId?: number | string) {
     this.client = client;
+    this.guestSpaceId = guestSpaceId;
   }
 
   public send(params: {
@@ -14,7 +17,16 @@ export class BulkRequestClient {
       payload: object;
     }>;
   }): Promise<object[]> {
-    const path = "/k/v1/bulkRequest.json";
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "bulkRequest"
+    });
     return this.client.post(path, params);
+  }
+
+  private buildPathWithGuestSpaceId(params: { endpointName: string }) {
+    return buildPath({
+      ...params,
+      guestSpaceId: this.guestSpaceId
+    });
   }
 }
