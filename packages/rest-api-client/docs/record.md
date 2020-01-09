@@ -30,14 +30,14 @@ Retrieves details of 1 record from an App by specifying the App ID and Record ID
 #### Parameters
 
 | Name |       Type       | Required | Description    |
-| :--: | :--------------: | :------: | -------------- |
+| ---- | :--------------: | :------: | -------------- |
 | app  | Number or String |   Yes    | The App ID.    |
-|  id  | Number or String |   Yes    | The Record ID. |
+| id   | Number or String |   Yes    | The Record ID. |
 
 #### Returns
 
-|  Name  |  Type  | Description                                                                    |
-| :----: | :----: | ------------------------------------------------------------------------------ |
+| Name   |  Type  | Description                                                                    |
+| ------ | :----: | ------------------------------------------------------------------------------ |
 | record | Object | The type and value of all fields within the record are included in the object. |
 
 #### Reference
