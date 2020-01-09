@@ -66,6 +66,8 @@ describe("FileClient with guestSpaceId", () => {
   const fileClient = new FileClient(mockClient, GUEST_SPACE_ID);
   fileClient.uploadFile(params);
   it("should pass the path to the http client", () => {
-    expect(mockClient.getLogs()[0].path).toBe("/k/guest/1/v1/file.json");
+    expect(mockClient.getLogs()[0].path).toBe(
+      `/k/guest/${GUEST_SPACE_ID}/v1/file.json`
+    );
   });
 });

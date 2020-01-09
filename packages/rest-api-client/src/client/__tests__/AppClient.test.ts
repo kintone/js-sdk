@@ -858,7 +858,7 @@ describe("AppClient with guestSpaceId", () => {
     const appClient = new AppClient(mockClient, GUEST_SPACE_ID);
     appClient.getFormFields(params);
     expect(mockClient.getLogs()[0].path).toBe(
-      "/k/guest/2/v1/app/form/fields.json"
+      `/k/guest/${GUEST_SPACE_ID}/v1/app/form/fields.json`
     );
   });
 });
