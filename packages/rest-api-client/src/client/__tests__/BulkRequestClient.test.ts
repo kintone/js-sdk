@@ -52,3 +52,33 @@ describe("BulkRequestClient", () => {
     });
   });
 });
+
+describe("BulkRequestClient with guestSpaceId", () => {
+  it("should pass the path to the http client", () => {
+    const APP_ID = 1;
+    const GUEST_SPACE_ID = 2;
+
+    const mockClient = new MockClient();
+    const bulkRequestClient = new BulkRequestClient(mockClient, GUEST_SPACE_ID);
+    const params = {
+      requests: [
+        {
+          method: "POST",
+          api: "/k/v1/record.json",
+          payload: {
+            app: APP_ID,
+            record: {
+              Customer: {
+                value: "ABC Corporation"
+              }
+            }
+          }
+        }
+      ]
+    };
+    bulkRequestClient.send(params);
+    expect(mockClient.getLogs()[0].path).toBe(
+      `/k/guest/${GUEST_SPACE_ID}/v1/bulkRequest.json`
+    );
+  });
+});
