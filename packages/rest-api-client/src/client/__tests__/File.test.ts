@@ -54,7 +54,7 @@ describe("FileClient", () => {
   });
 });
 
-describe("FileClient  with guestSpaceId", () => {
+describe("FileClient with guestSpaceId", () => {
   const GUEST_SPACE_ID = 1;
   const params = {
     file: {
