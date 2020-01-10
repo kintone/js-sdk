@@ -15,13 +15,13 @@ describe("KintoneRestAPIClient", () => {
   });
   describe("constructor", () => {
     describe("Header", () => {
-      const host = "https://example.com";
+      const baseUrl = "https://example.com";
       it("ApiToken auth", () => {
         const API_TOKEN = "ApiToken";
         const auth = {
           apiToken: API_TOKEN
         };
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-API-Token": API_TOKEN
         });
@@ -32,7 +32,7 @@ describe("KintoneRestAPIClient", () => {
         const auth = {
           apiToken: `${API_TOKEN1},${API_TOKEN2}`
         };
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
         });
@@ -43,7 +43,7 @@ describe("KintoneRestAPIClient", () => {
         const auth = {
           apiToken: [API_TOKEN1, API_TOKEN2]
         };
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
         });
@@ -55,20 +55,20 @@ describe("KintoneRestAPIClient", () => {
           username: USERNAME,
           password: PASSWORD
         };
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`)
         });
       });
       it("Session auth", () => {
         const auth = {};
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Requested-With": "XMLHttpRequest"
         });
       });
       it("should use Session auth if auth param is not specified", () => {
-        const client = new KintoneRestAPIClient({ host });
+        const client = new KintoneRestAPIClient({ baseUrl });
         expect(client.getHeaders()).toEqual({
           "X-Requested-With": "XMLHttpRequest"
         });
