@@ -8,7 +8,7 @@ declare const window: {
 };
 
 const client = new KintoneRestAPIClient({
-  host: process.env.KINTONE_HOST || "",
+  baseUrl: process.env.KINTONE_BASE_URL || "",
   auth: {}
 });
 
