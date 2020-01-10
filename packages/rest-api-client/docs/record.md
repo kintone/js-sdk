@@ -1,6 +1,7 @@
 # Record
 
 - [getRecord](#getRecord)
+- [addRecord](#addRecord)
 
 ## Overview
 
@@ -43,3 +44,25 @@ Retrieves details of 1 record from an App by specifying the App ID and Record ID
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/213149287
+
+### addRecord
+
+Adds 1 record to an App.
+
+#### Parameters
+
+| Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                    |
+| ------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app    | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                    |
+| record |      Object      |   Yes    | Field codes and values are specified in this object. <br /> If ignored, the record will be added with default field values. <br /> If field codes that don't exist are specified, these will be ignored. <br /> For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+
+#### Returns
+
+| Name     |  Type  | Description                          |
+| -------- | :----: | ------------------------------------ |
+| id       | String | The Record ID of the created Record. |
+| revision | String | The revision number of the Record.   |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/212494628
