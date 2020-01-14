@@ -73,6 +73,15 @@ describe("KintoneRestAPIClient", () => {
           "X-Requested-With": "XMLHttpRequest"
         });
       });
+
+      it("should use location.origin in browser environment if baseUrl param is not specified", () => {
+        const client = new KintoneRestAPIClient();
+        expect(client.getBaseUrl()).toBe("http://localhost");
+      });
+
+      it.todo(
+        "should raise an error in Node environment if baseUrl param is not specified"
+      );
     });
   });
 });
