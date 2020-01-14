@@ -61,8 +61,8 @@ Adds 1 record to an App.
 
 | Name     |  Type  | Description                          |
 | -------- | :----: | ------------------------------------ |
-| id       | String | The Record ID of the created Record. |
-| revision | String | The revision number of the Record.   |
+| id       | String | The Record ID of the created record. |
+| revision | String | The revision number of the record.   |
 
 #### Reference
 
