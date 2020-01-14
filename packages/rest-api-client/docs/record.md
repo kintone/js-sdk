@@ -5,6 +5,7 @@
 - [updateRecord](#updateRecord)
 - [createCursor](#createCursor)
 - [getRecordsByCursor](#getRecordsByCursor)
+- [deleteCursor](#deleteCursor)
 
 ## Overview
 
@@ -141,3 +142,22 @@ Retrieves multiple records from an App by specifying the cursor ID.
 
 - https://developer.kintone.io/hc/en-us/articles/360000280502
 
+### deleteCursor
+
+Deletes a cursor by specifying the cursor ID.
+
+#### Parameters
+
+| Name |  Type  | Required | Description    |
+| ---- | :----: | :------: | -------------- |
+| id   | String |   Yes    | The cursor ID. |
+
+#### Returns
+
+| Name | Type | Description |
+| ---- | :--: | ----------- |
+
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/360000280522
