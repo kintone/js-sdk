@@ -49,11 +49,13 @@ export class KintoneRestAPIClient {
   private bulkRequest_: BulkRequestClient;
   private headers: KintoneAuthHeader;
 
-  constructor(options: {
-    baseUrl?: string;
-    auth?: PartialAuth;
-    guestSpaceId?: number | string;
-  }) {
+  constructor(
+    options: {
+      baseUrl?: string;
+      auth?: PartialAuth;
+      guestSpaceId?: number | string;
+    } = {}
+  ) {
     const auth = this.buildAuth(options.auth ?? {});
     const params = this.buildParams(auth);
     this.headers = this.buildHeaders(auth);
