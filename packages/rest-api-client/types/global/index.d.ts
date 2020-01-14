@@ -7,3 +7,9 @@ declare module NodeJS {
     kintone: typeof kintone;
   }
 }
+
+declare const location:
+  | {
+      origin: string;
+    }
+  | undefined;

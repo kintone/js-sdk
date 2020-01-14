@@ -49,24 +49,25 @@ export class KintoneRestAPIClient {
   private bulkRequest_: BulkRequestClient;
   private headers: KintoneAuthHeader;
 
-  constructor({
-    baseUrl,
-    auth: partialAuth = {},
-    guestSpaceId
-  }: {
-    baseUrl: string;
+  constructor(options: {
+    baseUrl?: string;
     auth?: PartialAuth;
     guestSpaceId?: number | string;
   }) {
-    const auth = this.buildAuth(partialAuth);
+    const auth = this.buildAuth(options.auth ?? {});
     const params = this.buildParams(auth);
     this.headers = this.buildHeaders(auth);
 
+    const baseUrl = options.baseUrl ?? location?.origin;
+    if (typeof baseUrl === "undefined") {
+      throw new Error("in Node environment, baseUrl is required");
+    }
     const httpClient = new DefaultHttpClient({
       baseUrl,
       headers: this.headers,
       params
     });
+    const { guestSpaceId } = options;
 
     this.bulkRequest_ = new BulkRequestClient(httpClient, guestSpaceId);
     this.record = new RecordClient(httpClient, guestSpaceId);
