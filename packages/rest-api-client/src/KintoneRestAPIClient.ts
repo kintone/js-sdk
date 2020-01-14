@@ -50,11 +50,11 @@ export class KintoneRestAPIClient {
   private headers: KintoneAuthHeader;
 
   constructor({
-    host,
+    baseUrl,
     auth: partialAuth = {},
     guestSpaceId
   }: {
-    host: string;
+    baseUrl: string;
     auth?: PartialAuth;
     guestSpaceId?: number | string;
   }) {
@@ -63,7 +63,7 @@ export class KintoneRestAPIClient {
     this.headers = this.buildHeaders(auth);
 
     const httpClient = new DefaultHttpClient({
-      host,
+      baseUrl,
       headers: this.headers,
       params
     });

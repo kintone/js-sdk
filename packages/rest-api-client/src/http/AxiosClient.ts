@@ -8,26 +8,26 @@ type Headers = object;
 type Params = { [key: string]: unknown };
 
 export class AxiosClient implements HttpClient {
-  private host: string;
+  private baseUrl: string;
   private headers: Headers;
   private params: Params;
 
   constructor({
-    host,
+    baseUrl,
     headers,
     params
   }: {
-    host: string;
+    baseUrl: string;
     headers: Headers;
     params: Params;
   }) {
-    this.host = host;
+    this.baseUrl = baseUrl;
     this.headers = headers;
     this.params = params;
   }
 
   public async get(path: string, params: any) {
-    const requestURL = `${this.host}${path}?${qs.stringify(params)}`;
+    const requestURL = `${this.baseUrl}${path}?${qs.stringify(params)}`;
     // console.log(requestURL);
     let data;
     try {
@@ -41,7 +41,7 @@ export class AxiosClient implements HttpClient {
   }
 
   public async getData(path: string, params: any) {
-    const requestURL = `${this.host}${path}?${qs.stringify(params)}`;
+    const requestURL = `${this.baseUrl}${path}?${qs.stringify(params)}`;
     let data;
     try {
       const response = await Axios.get(requestURL, {
@@ -56,7 +56,7 @@ export class AxiosClient implements HttpClient {
   }
 
   public async post(path: string, params: any) {
-    const requestURL = `${this.host}${path}`;
+    const requestURL = `${this.baseUrl}${path}`;
     let data;
     try {
       const response = await Axios.post(
@@ -74,7 +74,7 @@ export class AxiosClient implements HttpClient {
   }
 
   public async postData(path: string, formData: FormData) {
-    const requestURL = `${this.host}${path}`;
+    const requestURL = `${this.baseUrl}${path}`;
     let data;
     const headers =
       typeof formData.getHeaders === "function"
@@ -93,7 +93,7 @@ export class AxiosClient implements HttpClient {
   }
 
   public async put(path: string, params: any) {
-    const requestURL = `${this.host}${path}`;
+    const requestURL = `${this.baseUrl}${path}`;
     let data;
     try {
       const response = await Axios.put(
@@ -111,7 +111,7 @@ export class AxiosClient implements HttpClient {
   }
 
   public async delete(path: string, params: any) {
-    const requestURL = `${this.host}${path}?${qs.stringify({
+    const requestURL = `${this.baseUrl}${path}?${qs.stringify({
       ...params,
       ...this.params
     })}`;

@@ -4,7 +4,7 @@
 
 ```ts
 const client = new KintoneRestAPIClient({
-  host: location.origin
+  baseUrl: location.origin
 });
 
 (async () => {
