@@ -5,6 +5,7 @@ declare const kintone: {
 declare module NodeJS {
   interface Global {
     kintone: typeof kintone;
+    location: typeof location;
   }
 }
 
