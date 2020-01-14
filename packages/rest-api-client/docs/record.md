@@ -4,6 +4,7 @@
 - [addRecord](#addRecord)
 - [updateRecord](#updateRecord)
 - [createCursor](#createCursor)
+- [getRecordsByCursor](#getRecordsByCursor)
 
 ## Overview
 
@@ -118,4 +119,25 @@ Adds a cursor so that large amount of records can be obtained from an App.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/360000280322
+
+### getRecordsByCursor
+
+Retrieves multiple records from an App by specifying the cursor ID.
+
+#### Parameters
+
+| Name |  Type  | Required | Description    |
+| ---- | :----: | :------: | -------------- |
+| id   | String |   Yes    | The cursor ID. |
+
+#### Returns
+
+| Name    |  Type   | Description                                                                                                                                                                                                                                                                                                                                                          |
+| ------- | :-----: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| records |  Array  | An array of objects that includes field data of records that match the query. <br /> The response is the same as the response for the [Get Records API](https://developer.kintone.io/hc/en-us/articles/213149287/#getrecords).                                                                                                                                       |
+| next    | Boolean | States whether there are more records that can be acquired from the cursor. <ul><li>`true`: There are still records to be acquired. </li><li> `false`: There are no more records to be acquired. </li></ul> Run this API again with the same parameters to obtain the next set of records. <br /> The cursor will remain valid until all records have been obtained. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/360000280502
 
