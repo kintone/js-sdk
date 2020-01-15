@@ -30,7 +30,7 @@
     "lint:md": "prettier --check README.md 'docs/**/*.md'",
     "lint:ts": "tsc --noEmit",
     "lint": "run-p -l lint:*",
-    "test": "jest src",
+    "test": "jest --rootDir src",
     "upload": "kintone-customize-uploader scripts/customize-manifest.json",
     "webpack": "webpack --config scripts/webpack.config"
   },
