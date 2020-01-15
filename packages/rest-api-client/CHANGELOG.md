@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@0.2.0...@kintone/rest-api-client@0.3.0) (2020-01-15)
+
+
+### chore
+
+* drop support Node v8 ([4c2d9f7](https://github.com/kintone/js-sdk/commit/4c2d9f7f4b39b66d65f13487d85b31ef82c65596))
+
+
+### Features
+
+* enable to omit the `baseUrl` parameter in the browser environment ([680e383](https://github.com/kintone/js-sdk/commit/680e383ece2d09a16752a8739dbe4b55c14b7de7))
+* make options optional ([ae52d02](https://github.com/kintone/js-sdk/commit/ae52d02dba4791e4d6bb4098d60cce24c1e2170e))
+* rename the `host` parameter of KintoneRestAPIClient to `baseUrl` ([efe62cf](https://github.com/kintone/js-sdk/commit/efe62cf76f6e082f5c0db6fb18e87906c256d3a9))
+
+
+### BREAKING CHANGES
+
+* no longer support Node v8
+
+
+
+
+
 # [0.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@0.1.0...@kintone/rest-api-client@0.2.0) (2020-01-09)
 
 
