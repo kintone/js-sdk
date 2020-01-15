@@ -73,6 +73,14 @@ describe("KintoneRestAPIClient", () => {
           "X-Requested-With": "XMLHttpRequest"
         });
       });
+      it("Basic auth", () => {
+        const basicAuth = { username: "user", password: "password" };
+        const client = new KintoneRestAPIClient({ baseUrl, basicAuth });
+        expect(client.getHeaders()).toEqual({
+          Authorization: `Basic ${Base64.encode("user:password")}`,
+          "X-Requested-With": "XMLHttpRequest"
+        });
+      });
       it("should use Session auth if auth param is not specified", () => {
         const client = new KintoneRestAPIClient({ baseUrl });
         expect(client.getHeaders()).toEqual({
