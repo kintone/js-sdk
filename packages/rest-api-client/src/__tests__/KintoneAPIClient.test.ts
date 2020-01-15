@@ -3,15 +3,21 @@ import { Base64 } from "js-base64";
 
 describe("KintoneRestAPIClient", () => {
   let originalKintone: any;
+  let originalLocation: any;
   beforeEach(() => {
-    originalKintone =
-      typeof global.kintone !== "undefined" ? global.kintone : undefined;
+    originalKintone = global.kintone;
+    originalLocation = Object.getOwnPropertyDescriptor(global, "location");
+    Object.defineProperty(global, "location", {
+      writable: true
+    });
     global.kintone = {
       getRequestToken: () => "dummy request token"
     };
   });
   afterEach(() => {
     global.kintone = originalKintone;
+    // Enable to update the location object to mock
+    Object.defineProperty(global, "location", originalLocation);
   });
   describe("constructor", () => {
     describe("Header", () => {
@@ -72,6 +78,21 @@ describe("KintoneRestAPIClient", () => {
         expect(client.getHeaders()).toEqual({
           "X-Requested-With": "XMLHttpRequest"
         });
+      });
+
+      it("should use location.origin in browser environment if baseUrl param is not specified", () => {
+        global.location = {
+          origin: "https://example.com"
+        };
+        const client = new KintoneRestAPIClient();
+        expect(client.getBaseUrl()).toBe("https://example.com");
+      });
+
+      it("should raise an error in Node environment if baseUrl param is not specified", () => {
+        global.location = undefined;
+        expect(() => new KintoneRestAPIClient()).toThrow(
+          "in Node environment, baseUrl is required"
+        );
       });
     });
   });

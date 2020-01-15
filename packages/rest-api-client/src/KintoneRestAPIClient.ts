@@ -48,30 +48,38 @@ export class KintoneRestAPIClient {
   file: FileClient;
   private bulkRequest_: BulkRequestClient;
   private headers: KintoneAuthHeader;
+  private baseUrl?: string;
 
-  constructor({
-    baseUrl,
-    auth: partialAuth = {},
-    guestSpaceId
-  }: {
-    baseUrl: string;
-    auth?: PartialAuth;
-    guestSpaceId?: number | string;
-  }) {
-    const auth = this.buildAuth(partialAuth);
+  constructor(
+    options: {
+      baseUrl?: string;
+      auth?: PartialAuth;
+      guestSpaceId?: number | string;
+    } = {}
+  ) {
+    const auth = this.buildAuth(options.auth ?? {});
     const params = this.buildParams(auth);
     this.headers = this.buildHeaders(auth);
 
+    this.baseUrl = options.baseUrl ?? location?.origin;
+    if (typeof this.baseUrl === "undefined") {
+      throw new Error("in Node environment, baseUrl is required");
+    }
     const httpClient = new DefaultHttpClient({
-      baseUrl,
+      baseUrl: this.baseUrl,
       headers: this.headers,
       params
     });
+    const { guestSpaceId } = options;
 
     this.bulkRequest_ = new BulkRequestClient(httpClient, guestSpaceId);
     this.record = new RecordClient(httpClient, guestSpaceId);
     this.app = new AppClient(httpClient, guestSpaceId);
     this.file = new FileClient(httpClient, guestSpaceId);
+  }
+
+  public getBaseUrl() {
+    return this.baseUrl;
   }
 
   public getHeaders() {
