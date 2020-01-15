@@ -154,9 +154,7 @@ Deletes a cursor by specifying the cursor ID.
 
 #### Returns
 
-| Name | Type | Description |
-| ---- | :--: | ----------- |
-
+An empty object.
 
 #### Reference
 
