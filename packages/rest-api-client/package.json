@@ -36,7 +36,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kintone/js-sdk.git"
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/rest-api-client"
   },
   "files": [
     "esm",
