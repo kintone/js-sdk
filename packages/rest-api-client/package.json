@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publishConfig": {
     "access": "public"
   },
@@ -24,10 +24,13 @@
     "compile:cjs": "tsc -p tsconfig.json",
     "deploy": "rimraf scripts/dist && run-s webpack upload",
     "fix:lint": "npm run lint:eslint -- --fix",
+    "fix:md": "prettier --write README.md 'docs/**/*.md'",
+    "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts' 'scripts/**/*.ts'",
+    "lint:md": "prettier --check README.md 'docs/**/*.md'",
     "lint:ts": "tsc --noEmit",
     "lint": "run-p -l lint:*",
-    "test": "jest src",
+    "test": "jest --rootDir src",
     "upload": "kintone-customize-uploader scripts/customize-manifest.json",
     "webpack": "webpack --config scripts/webpack.config"
   },
@@ -50,6 +53,9 @@
     "url": "https://github.com/kintone/js-sdk/issues"
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client#readme",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "devDependencies": {
     "@kintone/customize-uploader": "^2.0.6",
     "@types/core-js": "^2.5.2",

@@ -31,15 +31,23 @@ type SessionAuth = {
   type: "session";
 };
 
+type BasicAuth = {
+  username: string;
+  password: string;
+};
+
 type KintoneAuthHeader =
   | {
       "X-Cybozu-Authorization": string;
+      Authorization?: string;
     }
   | {
       "X-Cybozu-API-Token": string;
+      Authorization?: string;
     }
   | {
       "X-Requested-With": "XMLHttpRequest";
+      Authorization?: string;
     };
 
 export class KintoneRestAPIClient {
@@ -48,30 +56,39 @@ export class KintoneRestAPIClient {
   file: FileClient;
   private bulkRequest_: BulkRequestClient;
   private headers: KintoneAuthHeader;
+  private baseUrl?: string;
 
-  constructor({
-    host,
-    auth: partialAuth = {},
-    guestSpaceId
-  }: {
-    host: string;
-    auth?: PartialAuth;
-    guestSpaceId?: number | string;
-  }) {
-    const auth = this.buildAuth(partialAuth);
+  constructor(
+    options: {
+      baseUrl?: string;
+      auth?: PartialAuth;
+      guestSpaceId?: number | string;
+      basicAuth?: BasicAuth;
+    } = {}
+  ) {
+    const auth = this.buildAuth(options.auth ?? {});
     const params = this.buildParams(auth);
-    this.headers = this.buildHeaders(auth);
+    this.headers = this.buildHeaders(auth, options.basicAuth);
 
+    this.baseUrl = options.baseUrl ?? location?.origin;
+    if (typeof this.baseUrl === "undefined") {
+      throw new Error("in Node environment, baseUrl is required");
+    }
     const httpClient = new DefaultHttpClient({
-      host,
+      baseUrl: this.baseUrl,
       headers: this.headers,
       params
     });
+    const { guestSpaceId } = options;
 
     this.bulkRequest_ = new BulkRequestClient(httpClient, guestSpaceId);
     this.record = new RecordClient(httpClient, guestSpaceId);
     this.app = new AppClient(httpClient, guestSpaceId);
     this.file = new FileClient(httpClient, guestSpaceId);
+  }
+
+  public getBaseUrl() {
+    return this.baseUrl;
   }
 
   public getHeaders() {
@@ -90,10 +107,19 @@ export class KintoneRestAPIClient {
     };
   }
 
-  private buildHeaders(auth: Auth): KintoneAuthHeader {
+  private buildHeaders(auth: Auth, basicAuth?: BasicAuth): KintoneAuthHeader {
+    const headers = basicAuth
+      ? {
+          Authorization: `Basic ${Base64.encode(
+            `${basicAuth.username}:${basicAuth.password}`
+          )}`
+        }
+      : {};
+
     switch (auth.type) {
       case "password": {
         return {
+          ...headers,
           "X-Cybozu-Authorization": Base64.encode(
             `${auth.username}:${auth.password}`
           )
@@ -101,12 +127,12 @@ export class KintoneRestAPIClient {
       }
       case "apiToken": {
         if (Array.isArray(auth.apiToken)) {
-          return { "X-Cybozu-API-Token": auth.apiToken.join(",") };
+          return { ...headers, "X-Cybozu-API-Token": auth.apiToken.join(",") };
         }
-        return { "X-Cybozu-API-Token": auth.apiToken };
+        return { ...headers, "X-Cybozu-API-Token": auth.apiToken };
       }
       default: {
-        return { "X-Requested-With": "XMLHttpRequest" };
+        return { ...headers, "X-Requested-With": "XMLHttpRequest" };
       }
     }
   }

@@ -3,25 +3,31 @@ import { Base64 } from "js-base64";
 
 describe("KintoneRestAPIClient", () => {
   let originalKintone: any;
+  let originalLocation: any;
   beforeEach(() => {
-    originalKintone =
-      typeof global.kintone !== "undefined" ? global.kintone : undefined;
+    originalKintone = global.kintone;
+    originalLocation = Object.getOwnPropertyDescriptor(global, "location");
+    Object.defineProperty(global, "location", {
+      writable: true
+    });
     global.kintone = {
       getRequestToken: () => "dummy request token"
     };
   });
   afterEach(() => {
     global.kintone = originalKintone;
+    // Enable to update the location object to mock
+    Object.defineProperty(global, "location", originalLocation);
   });
   describe("constructor", () => {
     describe("Header", () => {
-      const host = "https://example.com";
+      const baseUrl = "https://example.com";
       it("ApiToken auth", () => {
         const API_TOKEN = "ApiToken";
         const auth = {
           apiToken: API_TOKEN
         };
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-API-Token": API_TOKEN
         });
@@ -32,7 +38,7 @@ describe("KintoneRestAPIClient", () => {
         const auth = {
           apiToken: `${API_TOKEN1},${API_TOKEN2}`
         };
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
         });
@@ -43,7 +49,7 @@ describe("KintoneRestAPIClient", () => {
         const auth = {
           apiToken: [API_TOKEN1, API_TOKEN2]
         };
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
         });
@@ -55,23 +61,46 @@ describe("KintoneRestAPIClient", () => {
           username: USERNAME,
           password: PASSWORD
         };
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`)
         });
       });
       it("Session auth", () => {
         const auth = {};
-        const client = new KintoneRestAPIClient({ host, auth });
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
           "X-Requested-With": "XMLHttpRequest"
         });
       });
+      it("Basic auth", () => {
+        const basicAuth = { username: "user", password: "password" };
+        const client = new KintoneRestAPIClient({ baseUrl, basicAuth });
+        expect(client.getHeaders()).toEqual({
+          Authorization: `Basic ${Base64.encode("user:password")}`,
+          "X-Requested-With": "XMLHttpRequest"
+        });
+      });
       it("should use Session auth if auth param is not specified", () => {
-        const client = new KintoneRestAPIClient({ host });
+        const client = new KintoneRestAPIClient({ baseUrl });
         expect(client.getHeaders()).toEqual({
           "X-Requested-With": "XMLHttpRequest"
         });
+      });
+
+      it("should use location.origin in browser environment if baseUrl param is not specified", () => {
+        global.location = {
+          origin: "https://example.com"
+        };
+        const client = new KintoneRestAPIClient();
+        expect(client.getBaseUrl()).toBe("https://example.com");
+      });
+
+      it("should raise an error in Node environment if baseUrl param is not specified", () => {
+        global.location = undefined;
+        expect(() => new KintoneRestAPIClient()).toThrow(
+          "in Node environment, baseUrl is required"
+        );
       });
     });
   });

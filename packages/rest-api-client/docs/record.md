@@ -5,12 +5,15 @@
 - [updateRecord](#updateRecord)
 - [getRecords](#getRecords)
 - [addRecords](#addRecords)
+- [createCursor](#createCursor)
+- [getRecordsByCursor](#getRecordsByCursor)
+- [deleteCursor](#deleteCursor)
 
 ## Overview
 
 ```ts
 const client = new KintoneRestAPIClient({
-  host: location.origin
+  baseUrl: location.origin
 });
 
 (async () => {
@@ -57,14 +60,14 @@ Adds 1 record to an App.
 | Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                    |
 | ------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | app    | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                    |
-| record |      Object      |   Yes    | Field codes and values are specified in this object. <br /> If ignored, the record will be added with default field values. <br /> If field codes that don't exist are specified, these will be ignored. <br /> For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+| record |      Object      |          | Field codes and values are specified in this object. <br /> If ignored, the record will be added with default field values. <br /> If field codes that don't exist are specified, these will be ignored. <br /> For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
 
 #### Returns
 
 | Name     |  Type  | Description                          |
 | -------- | :----: | ------------------------------------ |
-| id       | String | The Record ID of the created Record. |
-| revision | String | The revision number of the Record.   |
+| id       | String | The Record ID of the created record. |
+| revision | String | The revision number of the record.   |
 
 #### Reference
 
@@ -141,3 +144,66 @@ Adds multiple records to an App.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/360000313321
+
+### createCursor
+
+Adds a cursor so that large amount of records can be obtained from an App.
+
+#### Parameters
+
+| Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app    | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| fields | Array\<String\>  |          | The field codes to be included in the response when using the [Get Cursor API](https://developer.kintone.io/hc/en-us/articles/360000280502). <br /> If ignored, all accessible fields in the app will be returned.                                                                                                                                                                                                                    |
+| query  |      String      |          | The query string that will specify what records will be responded when using the [Get Cursor API](https://developer.kintone.io/hc/en-us/articles/360000280502). <br /> Refer to the [Get Records API](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the App will be returned. |
+| size   | Number or String |          | The maximum number of records the [Get Cursor API](https://developer.kintone.io/hc/en-us/articles/360000280502) can retrieve from this cursor with one request. <br /> The maximum number is 500 records. If ignored, the default number of records to be retrieved is 100.                                                                                                                                                           |
+
+#### Returns
+
+| Name       |  Type  | Description                                                 |
+| ---------- | :----: | ----------------------------------------------------------- |
+| id         | String | The cursor ID.                                              |
+| totalCount | String | The total count of records that match the query conditions. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/360000280322
+
+### getRecordsByCursor
+
+Retrieves multiple records from an App by specifying the cursor ID.
+
+#### Parameters
+
+| Name |  Type  | Required | Description    |
+| ---- | :----: | :------: | -------------- |
+| id   | String |   Yes    | The cursor ID. |
+
+#### Returns
+
+| Name    |  Type   | Description                                                                                                                                                                                                                                                                                                                                                          |
+| ------- | :-----: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| records |  Array  | An array of objects that includes field data of records that match the query. <br /> The response is the same as the response for the [Get Records API](https://developer.kintone.io/hc/en-us/articles/213149287/#getrecords).                                                                                                                                       |
+| next    | Boolean | States whether there are more records that can be acquired from the cursor. <ul><li>`true`: There are still records to be acquired. </li><li> `false`: There are no more records to be acquired. </li></ul> Run this API again with the same parameters to obtain the next set of records. <br /> The cursor will remain valid until all records have been obtained. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/360000280502
+
+### deleteCursor
+
+Deletes a cursor by specifying the cursor ID.
+
+#### Parameters
+
+| Name |  Type  | Required | Description    |
+| ---- | :----: | :------: | -------------- |
+| id   | String |   Yes    | The cursor ID. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/360000280522

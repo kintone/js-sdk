@@ -16,7 +16,7 @@ const password = process.env.KINTONE_PASSWORD || "";
 const auth = authType === "apiToken" ? { apiToken } : { username, password };
 
 const client = new KintoneRestAPIClient({
-  host: process.env.KINTONE_HOST || "",
+  baseUrl: process.env.KINTONE_BASE_URL || "",
   auth
 });
 

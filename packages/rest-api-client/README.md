@@ -16,7 +16,7 @@ npm install @kintone/rest-api-client
 const { KintoneRestAPIClient } = require("@kintone/rest-api-client");
 
 const client = new KintoneRestAPIClient({
-  host: "https://example.cybozu.com",
+  baseUrl: "https://example.cybozu.com",
   // Use password authentication
   auth: { username: "username", password: "password" }
   // Use API Token authentication
