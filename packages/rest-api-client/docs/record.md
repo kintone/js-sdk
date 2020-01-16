@@ -105,11 +105,11 @@ Retrieves details of multiple records from an App by specifying the App ID and a
 
 #### Parameters
 
-| Name       |       Type       | Required | Description                                                                                                                                                                  |
-| ---------- | :--------------: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app        | Number or String |   Yes    | The App ID.                                                                                                                                                                  |
-| fields     |  Array\<String\>   |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the App.                                             |
-| query      |      String      |          | The query string that specifies what records to include in the response. <br />Ignoring this parameter will return all accessible records from the App.                      |
+| Name       |       Type       | Required | Description                                                                                                                                                                    |
+| ---------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app        | Number or String |   Yes    | The App ID.                                                                                                                                                                    |
+| fields     | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the App.                                               |
+| query      |      String      |          | The query string that specifies what records to include in the response. <br />Ignoring this parameter will return all accessible records from the App.                        |
 | totalCount |     Boolean      |          | If set to `true`, the total count of records that match the query conditions will be included in the response.<br />If ignored, `null` is returned for the `totalCount` value. |
 
 #### Returns
@@ -129,17 +129,17 @@ Adds multiple records to an App.
 
 #### Parameters
 
-| Name       |       Type       | Required | Description                                                                                                                                                                  |
-| ---------- | :--------------: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app        | Number or String |   Yes    | The App ID.                                                                                                                                                                  |
-| records |      Array |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page.
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                     |
+| ------- | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                     |
+| records |      Array       |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
 
 #### Returns
 
-| Name       |  Type  | Description                                                                                                                                                        |
-| ---------- | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ids | Array\<String\>| The Record IDs of the created records.
-| revisions| Array\<String\>| The revision numbers of the records.
+| Name      |      Type       | Description                            |
+| --------- | :-------------: | -------------------------------------- |
+| ids       | Array\<String\> | The Record IDs of the created records. |
+| revisions | Array\<String\> | The revision numbers of the records.   |
 
 #### Reference
 
