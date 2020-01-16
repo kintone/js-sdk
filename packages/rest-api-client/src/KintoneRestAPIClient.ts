@@ -31,15 +31,23 @@ type SessionAuth = {
   type: "session";
 };
 
+type BasicAuth = {
+  username: string;
+  password: string;
+};
+
 type KintoneAuthHeader =
   | {
       "X-Cybozu-Authorization": string;
+      Authorization?: string;
     }
   | {
       "X-Cybozu-API-Token": string;
+      Authorization?: string;
     }
   | {
       "X-Requested-With": "XMLHttpRequest";
+      Authorization?: string;
     };
 
 export class KintoneRestAPIClient {
@@ -55,11 +63,12 @@ export class KintoneRestAPIClient {
       baseUrl?: string;
       auth?: PartialAuth;
       guestSpaceId?: number | string;
+      basicAuth?: BasicAuth;
     } = {}
   ) {
     const auth = this.buildAuth(options.auth ?? {});
     const params = this.buildParams(auth);
-    this.headers = this.buildHeaders(auth);
+    this.headers = this.buildHeaders(auth, options.basicAuth);
 
     this.baseUrl = options.baseUrl ?? location?.origin;
     if (typeof this.baseUrl === "undefined") {
@@ -98,10 +107,19 @@ export class KintoneRestAPIClient {
     };
   }
 
-  private buildHeaders(auth: Auth): KintoneAuthHeader {
+  private buildHeaders(auth: Auth, basicAuth?: BasicAuth): KintoneAuthHeader {
+    const headers = basicAuth
+      ? {
+          Authorization: `Basic ${Base64.encode(
+            `${basicAuth.username}:${basicAuth.password}`
+          )}`
+        }
+      : {};
+
     switch (auth.type) {
       case "password": {
         return {
+          ...headers,
           "X-Cybozu-Authorization": Base64.encode(
             `${auth.username}:${auth.password}`
           )
@@ -109,12 +127,12 @@ export class KintoneRestAPIClient {
       }
       case "apiToken": {
         if (Array.isArray(auth.apiToken)) {
-          return { "X-Cybozu-API-Token": auth.apiToken.join(",") };
+          return { ...headers, "X-Cybozu-API-Token": auth.apiToken.join(",") };
         }
-        return { "X-Cybozu-API-Token": auth.apiToken };
+        return { ...headers, "X-Cybozu-API-Token": auth.apiToken };
       }
       default: {
-        return { "X-Requested-With": "XMLHttpRequest" };
+        return { ...headers, "X-Requested-With": "XMLHttpRequest" };
       }
     }
   }
