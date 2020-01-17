@@ -38,7 +38,7 @@
     "prettier": "^1.19.1",
     "standard-version": "^7.0.1",
     "ts-node": "^8.6.2",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   },
   "files": [
     "bin",
