@@ -17,4 +17,4 @@ This repository is a monorepo for kintone development!
 
 ## License
 
-- [LICENSE](LICENSE)
+- [MIT](LICENSE)
