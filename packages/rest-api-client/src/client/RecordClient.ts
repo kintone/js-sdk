@@ -3,8 +3,27 @@ import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
 
 export type Record = {
-  [fieldCode: string]: any;
+  [fieldCode: string]: Field;
 };
+
+type Field = {
+  type: string;
+  value: any;
+};
+
+type FetchedRecord<
+  T extends Record,
+  U extends readonly string[]
+> = string extends U[number]
+  ? T
+  : U[number] extends never
+  ? T
+  : { [K in U[number]]?: Field };
+
+type TotalCount<T> =
+  | (true extends T ? string : never)
+  | (false extends T ? null : never)
+  | (undefined extends T ? null : never);
 
 type Mention = {
   code: string;
@@ -64,13 +83,19 @@ export class RecordClient {
     return this.client.put(path, params);
   }
 
-  // TODO: `records` type in return type should be filtered by `fields`.
-  public getRecords<T extends Record>(params: {
+  public getRecords<
+    T extends Record,
+    U extends readonly string[] = readonly string[],
+    V extends boolean | undefined = undefined
+  >(params: {
     app: AppID;
-    fields?: string[];
+    fields?: U;
     query?: string;
-    totalCount?: boolean;
-  }): Promise<{ records: T[]; totalCount: string | null }> {
+    totalCount?: V;
+  }): Promise<{
+    records: Array<FetchedRecord<T, U>>;
+    totalCount: TotalCount<V>;
+  }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records"
     });
@@ -79,7 +104,7 @@ export class RecordClient {
 
   public addRecords(params: {
     app: AppID;
-    records: Record[];
+    records: object[];
   }): Promise<{ ids: string[]; revisions: string[] }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records"
