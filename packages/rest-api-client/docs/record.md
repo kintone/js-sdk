@@ -6,6 +6,7 @@
 - [getRecords](#getRecords)
 - [addRecords](#addRecords)
 - [updateRecords](#updateRecords)
+- [deleteRecords](#deleteRecords)
 - [createCursor](#createCursor)
 - [getRecordsByCursor](#getRecordsByCursor)
 - [deleteCursor](#deleteCursor)
@@ -174,6 +175,26 @@ Updates details of multiple records in an App, by specifying their record number
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/360000313622
+
+### deleteRecords
+
+Deletes multiple records in an app.
+
+#### Parameters
+
+| Name      |           Type            | Required | Description                                                                                                                                                                                                                                                                                                                                                                                            |
+| --------- | :-----------------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app       |     Number or String      |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                                                                            |
+| ids       | Array\<Number or String\> |   Yes    | Array of record IDs that will be deleted.<br />Up to 100 records can be specified.                                                                                                                                                                                                                                                                                                                     |
+| revisions | Array\<Number or String\> |          | The Expected revision number.<br />The first id number will correspond to the first revision number in the array, the second id to the second revision number, and so on.<br />If the revision number does not match, an error will occur and no records will be deleted.<br />If the revision number is left blank or is -1, the revision number will not be checked for the corresponding record ID. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/212494558
 
 ### createCursor
 
