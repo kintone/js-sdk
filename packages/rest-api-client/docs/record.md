@@ -8,6 +8,7 @@
 - [updateRecords](#updateRecords)
 - [deleteRecords](#deleteRecords)
 - [getRecordComments](#getRecordComments)
+- [addRecordComment](#addRecordComment)
 - [createCursor](#createCursor)
 - [getRecordsByCursor](#getRecordsByCursor)
 - [deleteCursor](#deleteCursor)
@@ -231,6 +232,32 @@ Retrieves multiple comments from a record in an app.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/219105188
+
+### addRecordComment
+
+Add a comment to a record in an app.
+
+#### Parameters
+
+| Name                    |       Type       | Required | Description                                                                                                                                                                                   |
+| ----------------------- | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app                     | Number or String |   Yes    | The App ID.                                                                                                                                                                                   |
+| record                  | Number or String |   Yes    | The Record ID.                                                                                                                                                                                |
+| comment                 |      Object      |   Yes    | An object including comment details.                                                                                                                                                          |
+| comment.text            |      String      |   Yes    | The comment text. The maximum characters of the comment is 65535.                                                                                                                             |
+| comment.mentions        |      Array       |          | An array including information to mention other users.                                                                                                                                        |
+| comment.mentions[].code |      String      |          | The code the user, group or organization that will be mentioned. The maximum number of mentions is 10. The mentioned users will be placed in front of the comment text when the API succeeds. |
+| comment.mentions[].type |      String      |          | The type of the mentioned target.<br />- `USER`: User<br />- `GROUP`: Group<br />- `ORGANIZATION`: Department                                                                                 |
+
+#### Returns
+
+| Name |  Type  | Description     |
+| ---- | :----: | --------------- |
+| id   | String | The Comment ID. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/219501367
 
 ### createCursor
 
