@@ -9,6 +9,7 @@
 - [deleteRecords](#deleteRecords)
 - [getRecordComments](#getRecordComments)
 - [addRecordComment](#addRecordComment)
+- [deleteRecordComment](#deleteRecordComment)
 - [createCursor](#createCursor)
 - [getRecordsByCursor](#getRecordsByCursor)
 - [deleteCursor](#deleteCursor)
@@ -258,6 +259,26 @@ Add a comment to a record in an app.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/219501367
+
+### deleteRecordComment
+
+Delete a comment in a record in an app.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description     |
+| ------- | :--------------: | :------: | --------------- |
+| app     | Number or String |   Yes    | The App ID.     |
+| record  | Number or String |   Yes    | The Record ID.  |
+| comment | Number or String |   Yes    | The Comment ID. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/219562607
 
 ### createCursor
 
