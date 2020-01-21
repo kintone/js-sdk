@@ -1,14 +1,13 @@
 type ErrorResponse = {
   data: any;
-  status: string;
-  headers: object;
-  message: string;
+  status: number;
+  headers: any;
 };
 
 export class KintoneRestAPIError extends Error {
   id: string;
   code: string;
-  status: string;
+  status: number;
   headers: object;
 
   constructor(error: ErrorResponse) {
