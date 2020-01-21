@@ -7,6 +7,9 @@
 - [addRecords](#addRecords)
 - [updateRecords](#updateRecords)
 - [deleteRecords](#deleteRecords)
+- [getRecordComments](#getRecordComments)
+- [addRecordComment](#addRecordComment)
+- [deleteRecordComment](#deleteRecordComment)
 - [createCursor](#createCursor)
 - [getRecordsByCursor](#getRecordsByCursor)
 - [deleteCursor](#deleteCursor)
@@ -195,6 +198,87 @@ An empty object.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/212494558
+
+### getRecordComments
+
+Retrieves multiple comments from a record in an app.
+
+#### Parameters
+
+| Name   |       Type       | Required | Description                                                                                                                                                                       |
+| ------ | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app    | Number or String |   Yes    | The App ID.                                                                                                                                                                       |
+| record | Number or String |   Yes    | The Record ID.                                                                                                                                                                    |
+| order  |      String      |          | The sort order of the Comment ID. Specifying "asc" will sort the comments in ascending order, and "desc" will sort the comments in descending order.                              |
+| offset |      Number      |          | This skips the retrieval of the first number of comments.<br />"offset": 30 skips the first 30 comments, and retrieves from the 31st comment. There is no maximum for this value. |
+| limit  |      Number      |          | The number of records to retrieve.<br />"limit": 5 will retrieve the first 5 comments. The default and maximum is 10 comments.                                                    |
+
+#### Returns
+
+| Name                       |  Type   | Description                                                                                                                              |
+| -------------------------- | :-----: | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| comments                   |  Array  | An array of comments. An empty array is returned if no conditions are met.                                                               |
+| comments[].id              | String  | The Comment ID.                                                                                                                          |
+| comments[].text            | String  | The comment including the line feed codes.<br />If a user is mentioned within a comment, the "@" symbol will be omitted from the String. |
+| comments[].createdAt       | String  | The created date and time of the comment.                                                                                                |
+| comments[].creator         | Object  | An object including information of the comment creator.                                                                                  |
+| comments[].creator.code    | String  | The comment creator's user code (log in name).                                                                                           |
+| comments[].creator.name    | String  | The comment creator's user name (display name).                                                                                          |
+| comments[].mentions        |  Array  | An array including information of mentioned users.                                                                                       |
+| comments[].mentions[].code | String  | The code of the mentioned user, group or organization.                                                                                   |
+| comments[].mentions[].type | String  | The type of the mention.<br />- `USER`: User<br />- `GROUP`: Group<br />- `ORGANIZATION`: Department                                     |
+| older                      | Boolean | Information of older comments:<br />- `true`: Older comments exist.<br />- `false`: Older comments do not exist (i.e. the first comment) |
+| newer                      | Boolean | Information of newer comments:<br />- `true`: Newer comments exist.<br />- `false`: Newer comments do not exist (i.e. the last comment). |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/219105188
+
+### addRecordComment
+
+Add a comment to a record in an app.
+
+#### Parameters
+
+| Name                    |       Type       | Required | Description                                                                                                                                                                                   |
+| ----------------------- | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app                     | Number or String |   Yes    | The App ID.                                                                                                                                                                                   |
+| record                  | Number or String |   Yes    | The Record ID.                                                                                                                                                                                |
+| comment                 |      Object      |   Yes    | An object including comment details.                                                                                                                                                          |
+| comment.text            |      String      |   Yes    | The comment text. The maximum characters of the comment is 65535.                                                                                                                             |
+| comment.mentions        |      Array       |          | An array including information to mention other users.                                                                                                                                        |
+| comment.mentions[].code |      String      |          | The code the user, group or organization that will be mentioned. The maximum number of mentions is 10. The mentioned users will be placed in front of the comment text when the API succeeds. |
+| comment.mentions[].type |      String      |          | The type of the mentioned target.<br />- `USER`: User<br />- `GROUP`: Group<br />- `ORGANIZATION`: Department                                                                                 |
+
+#### Returns
+
+| Name |  Type  | Description     |
+| ---- | :----: | --------------- |
+| id   | String | The Comment ID. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/219501367
+
+### deleteRecordComment
+
+Delete a comment in a record in an app.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description     |
+| ------- | :--------------: | :------: | --------------- |
+| app     | Number or String |   Yes    | The App ID.     |
+| record  | Number or String |   Yes    | The Record ID.  |
+| comment | Number or String |   Yes    | The Comment ID. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/219562607
 
 ### createCursor
 
