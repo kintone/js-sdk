@@ -97,7 +97,7 @@ You can get the file key from the following place.
 
 | Name |                                                    Type                                                     | Description                             |
 | ---- | :---------------------------------------------------------------------------------------------------------: | --------------------------------------- |
-| data | [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) | The data corresponding to the file key. |
+| data | [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) | The corresponding data to the file key. |
 
 #### Reference
 
