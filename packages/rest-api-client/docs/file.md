@@ -57,11 +57,11 @@ You can use the file key at the following place.
 
 #### Parameters
 
-| Name      |  Type   | Required | Description                            |
-| --------- | :-----: | :------: | -------------------------------------- |
-| file      | Object  |   Yes    | An object includes file name and data. |
-| file.name | String  |   Yes    | The name for the file.                 |
-| file.data | unknown |   Yes    | The data for the file.                 |
+| Name      |                                     Type                                     | Required | Description                            |
+| --------- | :--------------------------------------------------------------------------: | :------: | -------------------------------------- |
+| file      |                                    Object                                    |   Yes    | An object includes file name and data. |
+| file.name |                                    String                                    |   Yes    | The name for the file.                 |
+| file.data | String or<br />[Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) |   Yes    | The data for the file.                 |
 
 #### Returns
 
