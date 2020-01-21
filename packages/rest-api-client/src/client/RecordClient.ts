@@ -12,7 +12,7 @@ type Mention = {
 };
 
 type Comment = {
-  id: number;
+  id: string;
   text: string;
   createdAt: string;
   creator: {
