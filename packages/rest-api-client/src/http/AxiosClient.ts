@@ -1,5 +1,5 @@
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
-import Axios from "axios";
+import Axios, { AxiosError } from "axios";
 import qs from "qs";
 import { HttpClient } from "./HttpClientInterface";
 import FormData from "form-data";
@@ -34,8 +34,7 @@ export class AxiosClient implements HttpClient {
       const response = await Axios.get(requestURL, { headers: this.headers });
       data = response.data;
     } catch (error) {
-      // console.log(error.response);
-      throw new KintoneRestAPIError(error.response);
+      this.handleError(error);
     }
     return data;
   }
@@ -50,7 +49,7 @@ export class AxiosClient implements HttpClient {
       });
       data = response.data;
     } catch (error) {
-      throw new KintoneRestAPIError(error.response);
+      this.handleError(error);
     }
     return data;
   }
@@ -68,7 +67,7 @@ export class AxiosClient implements HttpClient {
       );
       data = response.data;
     } catch (error) {
-      throw new KintoneRestAPIError(error.response);
+      this.handleError(error);
     }
     return data;
   }
@@ -87,7 +86,7 @@ export class AxiosClient implements HttpClient {
       const response = await Axios.post(requestURL, formData, { headers });
       data = response.data;
     } catch (error) {
-      throw new KintoneRestAPIError(error.response);
+      this.handleError(error);
     }
     return data;
   }
@@ -105,7 +104,7 @@ export class AxiosClient implements HttpClient {
       );
       data = response.data;
     } catch (error) {
-      throw new KintoneRestAPIError(error.response);
+      this.handleError(error);
     }
     return data;
   }
@@ -122,8 +121,15 @@ export class AxiosClient implements HttpClient {
       });
       data = response.data;
     } catch (error) {
-      throw new KintoneRestAPIError(error.response);
+      this.handleError(error);
     }
     return data;
+  }
+
+  private handleError(error: AxiosError) {
+    if (error.response) {
+      throw new KintoneRestAPIError(error.response);
+    }
+    throw new Error(error.toString());
   }
 }
