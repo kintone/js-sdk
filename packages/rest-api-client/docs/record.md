@@ -218,7 +218,7 @@ Retrieves multiple comments from a record in an app.
 | Name                       |  Type   | Description                                                                                                                              |
 | -------------------------- | :-----: | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | comments                   |  Array  | An array of comments. An empty array is returned if no conditions are met.                                                               |
-| comments[].id              | Number  | The Comment ID.                                                                                                                          |
+| comments[].id              | String  | The Comment ID.                                                                                                                          |
 | comments[].text            | String  | The comment including the line feed codes.<br />If a user is mentioned within a comment, the "@" symbol will be omitted from the String. |
 | comments[].createdAt       | String  | The created date and time of the comment.                                                                                                |
 | comments[].creator         | Object  | An object including information of the comment creator.                                                                                  |
