@@ -1,5 +1,8 @@
 # App
 
+- [getAppCustomize](#getAppCustomize)
+- [updateAppCustomize](#updateAppCustomize)
+
 ## Overview
 
 ```ts
