@@ -1,5 +1,10 @@
 type ErrorResponse = {
-  data: any;
+  data: {
+    id: string;
+    code: string;
+    message: string;
+    errors?: any;
+  };
   status: number;
   headers: any;
 };
@@ -8,7 +13,7 @@ export class KintoneRestAPIError extends Error {
   id: string;
   code: string;
   status: number;
-  headers: object;
+  headers: any;
 
   constructor(error: ErrorResponse) {
     super(error.data.message);
