@@ -87,17 +87,17 @@ You can get the file key from the following place.
 
 #### Parameters
 
-| Name 　    |  Type  | Required | Description    |
-| ---------- | :----: | :------: | -------------- |
-| fileKey 　 | String |   Yes    | The Record ID. |
+| Name 　    |  Type  | Required | Description                          |
+| ---------- | :----: | :------: | ------------------------------------ |
+| fileKey 　 | String |   Yes    | The file key of the downloaded file. |
 
 #### Returns
 
 `downloadFile` returns a Promise object that is resolved with the following value.
 
-| Name |                                                    Type                                                     | Description                          |
-| ---- | :---------------------------------------------------------------------------------------------------------: | ------------------------------------ |
-| data | [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) | The Record ID of the created record. |
+| Name |                                                    Type                                                     | Description                             |
+| ---- | :---------------------------------------------------------------------------------------------------------: | --------------------------------------- |
+| data | [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) | The data corresponding to the file key. |
 
 #### Reference
 
