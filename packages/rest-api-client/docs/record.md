@@ -13,6 +13,7 @@
 - [createCursor](#createCursor)
 - [getRecordsByCursor](#getRecordsByCursor)
 - [deleteCursor](#deleteCursor)
+- [updateRecordAssignees](#updateRecordAssignees)
 
 ## Overview
 
@@ -342,3 +343,27 @@ An empty object.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/360000280522
+
+### updateRecordAssignees
+
+Updates the Assignees of a Record status, that was set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
+
+#### Parameters
+
+| Name      |       Type       | Required | Description                                                                                                                                                                                                                                    |
+| --------- | :--------------: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app       | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                    |
+| id        | Number or String |   Yes    | The Record ID.                                                                                                                                                                                                                                 |
+| assignees | Array\<string\>  |   Yes    | The user code(s) (log in names) of the Assignee(s). If empty, no users will be assigned. The maximum number of Assignees is 100.                                                                                                               |
+| revision  | Number or String |          | The revision number of the record before updating the Assignees. If the specified revision is not the latest revision, the request will result in an error. The revision will not be checked if this parameter is ignored, or -1 is specified. |
+
+#### Returns
+
+| Name     |  Type  | Description                                                     |
+| -------- | :----: | --------------------------------------------------------------- |
+| revision | String | The revision number of the record after updating the Assignees. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/219563427
+
