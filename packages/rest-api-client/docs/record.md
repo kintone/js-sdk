@@ -15,6 +15,7 @@
 - [deleteCursor](#deleteCursor)
 - [updateRecordAssignees](#updateRecordAssignees)
 - [updateRecordStatus](#updateRecordStatus)
+- [updateRecordsStatus](#updateRecordsStatus)
 
 ## Overview
 
@@ -392,3 +393,29 @@ Updates the Status of a record of an App, that was set with the [Process Managem
 
 - https://developer.kintone.io/hc/en-us/articles/213149747
 
+### ️updateRecordsStatus
+
+Updates the Statuses of Multiple records of an App, that were set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
+
+#### Parameters
+
+| Name               |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app                |      String      |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| records            |      Array       |   Yes    | An array including information of the record to be updated. Up to 100 records can be specified.                                                                                                                                                                                                                                                                                                                                 |
+| records[].action   |      String      |   Yes    | The Action name of the action to run. <br /> If the localization feature has been used to apply multiple translations of the Action name, specify the name of the Action in the language settings of the user that will run the API. API Tokens follow the language settings set in the [Localization page](https://get.kintone.help/hc/en-us/articles/115001461367-Localization) of the User & System Administration settings. |
+| records[].assignee |      String      |          | The next Assignee. Specify the Assignee's log in name.                                                                                                                                                                                                                                                                                                                                                                          |
+| records[].id       | Number or String |   Yes    | The Record ID.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| records[].revision | Number or String |          | The revision number of the record before updating the status. <br /> If the specified revision is not the latest revision, the request will result in an error. <br /> The revision will not be checked if this parameter is ignored, or -1 is specified.                                                                                                                                                                       |
+
+#### Returns
+
+| Name               |  Type  | Description                                                                                                                                                                                |
+| ------------------ | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| records            | Array  | An array including information of the updated records.                                                                                                                                     |
+| records[].id       | String | The Record ID                                                                                                                                                                              |
+| records[].revision | String | The revision number of the record after updating the status. <br /> The revision number will increase by 2, as two operations are preformed - running the action, and updating the status. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/360000334541
