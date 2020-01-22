@@ -13,6 +13,7 @@ const client = new KintoneRestAPIClient();
 })();
 ```
 
+- All methods are defined on the `app` property.
 - This method returns a Promise object that is resolved with an object having properties in each `Returns` section.
 
 ## Methods
@@ -34,10 +35,10 @@ Gets the JavaScript and CSS Customization settings of an App.
 | ----------- | :------------------------: | ------------------------------------------------------------------------------------------------------------------------------------- |
 | desktop     |           Object           | An object containing data of JavaScript and CSS files for the desktop.                                                                |
 | desktop.css | Array\<CustomizationFile\> | An array listing data of CSS files for desktop.                                                                                       |
-| desktop.js  | Array\<CustomizationFile\> | An array listing data of JavaScript files.                                                                                            |
+| desktop.js  | Array\<CustomizationFile\> | An array listing data of JavaScript files for desktop.                                                                                |
 | mobile      |           Object           | An object containing data of JavaScript and CSS files for the mobile.                                                                 |
 | mobile.css  | Array\<CustomizationFile\> | An array listing data of CSS files for mobile.                                                                                        |
-| mobile.js   | Array\<CustomizationFile\> | An array listing data of JavaScript files.                                                                                            |  |
+| mobile.js   | Array\<CustomizationFile\> | An array listing data of JavaScript files for mobile.                                                                                 |  |
 | revision    |           String           | The revision number of the app settings.                                                                                              |
 | scope       |           String           | The scope of customization<ul><li>ALL: Affect all users</li><li>ADMIN: Affect only app administrators</li><li>NONE: Disable</li></ul> |
 
@@ -68,10 +69,10 @@ Updates the JavaScript and CSS Customization settings of an App.
 | app         |          Number or String           |   Yes    | The App ID.                                                                                                                                                                                                                    |
 | desktop     |               Object                |          | An object containing data of JavaScript and CSS files for the desktop.                                                                                                                                                         |
 | desktop.css | Array\<CustomizationFileForUpdate\> |          | An array listing data of CSS files for desktop.                                                                                                                                                                                |
-| desktop.js  | Array\<CustomizationFileForUpdate\> |          | An array listing data of JavaScript files.                                                                                                                                                                                     |
+| desktop.js  | Array\<CustomizationFileForUpdate\> |          | An array listing data of JavaScript files for desktop.                                                                                                                                                                         |
 | mobile      |               Object                |          | An object containing data of JavaScript and CSS files for the mobile.                                                                                                                                                          |
 | mobile.css  | Array\<CustomizationFileForUpdate\> |          | An array listing data of CSS files for mobile.                                                                                                                                                                                 |
-| mobile.js   | Array\<CustomizationFileForUpdate\> |          | An array listing data of JavaScript files.                                                                                                                                                                                     |
+| mobile.js   | Array\<CustomizationFileForUpdate\> |          | An array listing data of JavaScript files for mobile.                                                                                                                                                                          |
 | revision    |          Number or String           |          | Specify the revision number of the settings that will be deployed. The request will fail if the revision number is not the latest revision. The revision will not be checked if this parameter is ignored, or -1 is specified. |
 | scope       |               String                |          | The scope of customization<ul><li>ALL: Affect all users</li><li>ADMIN: Affect only App administrators</li><li>NONE: Disable</li></ul>                                                                                          |
 
