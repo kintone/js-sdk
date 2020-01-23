@@ -3,6 +3,7 @@
 - [getFormFields](#getFormFields)
 - [addFormFields](#addFormFields)
 - [updateFormFields](#updateFormFields)
+- [deleteFormFields](#deleteFormFields)
 
 ## Overview
 
@@ -241,6 +242,28 @@ Updates the field settings of fields in a form of an App.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115005507788
+
+### deleteFormFields
+
+Deletes fields from a form of an App.
+
+#### Parameters
+
+| Name     |       Type       | Required | Description                                                                                                                                                                                                                              |
+| -------- | :--------------: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app      | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                              |
+| fields   | Array\<String\>  |   Yes    | The list of field codes of the fields to delete.<br />Up to 100 field codes can be specified.                                                                                                                                            |
+| revision | Number or String |   Yes    | Specify the revision number of the settings that will be deployed.<br />The request will fail if the revision number is not the latest revision.<br />The revision will not be checked if this parameter is ignored, or -1 is specified. |
+
+#### Returns
+
+| Name     |  Type  | Description                              |
+| -------- | :----: | ---------------------------------------- |
+| revision | String | The revision number of the App settings. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005341187
 
 ### getAppCustomize
 
