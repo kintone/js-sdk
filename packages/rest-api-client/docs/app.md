@@ -2,6 +2,7 @@
 
 - [getAppCustomize](#getAppCustomize)
 - [updateAppCustomize](#updateAppCustomize)
+- [getAppAcl](#getAppAcl)
 
 ## Overview
 
@@ -94,3 +95,37 @@ A `CustomizationFileForUpdate` object has the following properties:
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115004873968
+
+### getAppAcl
+
+Gets the App permissions of an app.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                        |
+| ------- | :--------------: | :------: | ------------------------------------------------------------------ |
+| app     | Number or String |   Yes    | The App ID                                                         |
+| preview |     Boolean      |          | A flag whether to get the App permissions for pre-live environment |
+
+#### Returns
+
+| Name                      |  Type   | Description                                                                                                                                                                                      |
+| ------------------------- | :-----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| rights                    |  Array  | An array of objects that contain data of App permissions, in order of priority.                                                                                                                  |
+| rights[].entity           | Object  | An object containing data of the entity the permission is granted to.                                                                                                                            |
+| rights[].entity.type      | String  | The type of the entity the permission is granted to. <ul><li>USER: User</li><li>GROUP： Group</li><li>ORGANIZATION： Department</li><li>CREATOR： The creator of the App</li></ul>               |
+| rights[].entity.code      | String  | The code of the entity the permission is granted to.                                                                                                                                             |
+| rights[].includeSubs      | Boolean | The permission inheritance settings of the department the permission is granted to. <br /> It indicates whether Permissions are inherited.                                                       |
+| rights[].appEditable      | Boolean | The App management permission of the entity. <br /> Entities with this permission are able to access and edit the App's settings. <br /> It indicates whether The App's settings are accessible. |
+| rights[].recordViewable   | Boolean | The record view permission of the entity. <br /> It indicates whether Records are viewable.                                                                                                      |
+| rights[].recordAddable    | Boolean | The record add permission of the entity. <br /> It indicates whether Records can be added.                                                                                                       |
+| rights[].recordEditable   | Boolean | The record edit permission of the entity. <br /> It indicates whether Records are editable.                                                                                                      |
+| rights[].recordDeletable  | Boolean | The record delete permission of the entity. <br /> It indicates whether Records are deletable.                                                                                                   |
+| rights[].recordImportable | Boolean | The file import permission of the entity. <br /> It indicates whether Files are importable.                                                                                                      |
+| rights[].recordExportable | Boolean | The file export permission of the entity. <br /> It indicates whether Files are exportable.                                                                                                      |
+| revision                  | String  | The revision number of the App settings.                                                                                                                                                         |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005336327
+
