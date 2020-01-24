@@ -45,7 +45,7 @@
     "@cybozu/eslint-config": "^9.0.1",
     "array-flatten": "^3.0.0",
     "cssnano-cli": "^1.0.5",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "execa": "^3.4.0",
     "glob": "^7.1.6",
     "husky": "^3.1.0",
