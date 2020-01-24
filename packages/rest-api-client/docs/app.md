@@ -3,6 +3,7 @@
 - [getAppCustomize](#getAppCustomize)
 - [updateAppCustomize](#updateAppCustomize)
 - [getAppAcl](#getAppAcl)
+- [updateAppAcl](#updateAppAcl)
 
 ## Overview
 
@@ -129,3 +130,35 @@ Gets the App permissions of an app.
 
 - https://developer.kintone.io/hc/en-us/articles/115005336327
 
+### updateAppAcl
+
+Updates the App permissions of an App.
+
+#### Parameters
+
+| Name                      |       Type       |          Required           | Description                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------------- | :--------------: | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app                       | Number or String |             Yes             | The App ID.                                                                                                                                                                                                                                                                                                                                                                                                      |
+| rights                    |      Array       |             Yes             | An array listing data of App permissions, in order of priority. <br /> The "Everyone" group will be treated with the lowest priority, wherever it is placed in the list.                                                                                                                                                                                                                                         |
+| rights[].entity           |      Object      |             Yes             | An object containing data of the entity the permission is granted to.                                                                                                                                                                                                                                                                                                                                            |
+| rights[].entity.type      |      String      |             Yes             | The type of the entity the permission will be granted to. <ul><li>USER: User</li><li>GROUP： Group</li><li>ORGANIZATION： Department</li><li>CREATOR： The creator of the App</li></ul>                                                                                                                                                                                                                          |
+| rights[].entity.code      |      String      | Conditionally<br />Required | The code of the entity the permission is granted to. <br /> To specify guest space users, add the string "guest/" before the guest's log in name. <br /> If the "Everyone" group is not specified, the "Everyone" group will have no permissions to view/edit/delete. <br /> If "CREATOR" is specified for **the rights[].entity.type** parameter, ignore this parameter. Otherwise, this parameter is required. |
+| rights[].includeSubs      |     Boolean      |                             | The permission inheritance settings of the department the permission is granted to. This parameter is available if "ORGANIZATION" is specified for the **rights[].entity.type** parameter. <br /> It indicates whether Permissions are inherited. <br /> If ignored, this value is false.                                                                                                                        |
+| rights[].appEditable      |     Boolean      |                             | The App management permission of the entity. <br /> It indicates whether The App's settings are accessible. <br /> If ignored, this value is false.                                                                                                                                                                                                                                                              |
+| rights[].recordViewable   |     Boolean      |                             | The record view permission of the entity. <br /> It indicates whether Records are viewable. <br /> If ignored, this value is false.                                                                                                                                                                                                                                                                              |
+| rights[].recordAddable    |     Boolean      |                             | The record add permission of the entity. <br /> It indicates whether Records can be added. <br /> If ignored, this value is false.                                                                                                                                                                                                                                                                               |
+| rights[].recordEditable   |     Boolean      |                             | The record edit permission of the entity. <br /> The record view permissions must also be enabled to set this value as **true**. <br /> It indicates whether Records are editable. <br /> If ignored, this value is false.                                                                                                                                                                                       |
+| rights[].recordDeletable  |     Boolean      |                             | The record delete permission of the entity. <br /> The record view permissions must also be enabled to set this value as **true**. <br /> It indicates whether Records are deletable. <br /> If ignored, this value is false.                                                                                                                                                                                    |
+| rights[].recordImportable |     Boolean      |                             | The file import permission of the entity. <br /> The record add permissions must also be enabled to set this value as **true**. <br /> It indicates whether Files are importable. <br /> If ignored, this value is false.                                                                                                                                                                                        |
+| rights[].recordExportable |     Boolean      |                             | The file export permission of the entity. <br /> It indicates whether Files are exportable. <br /> If ignored, this value is false.                                                                                                                                                                                                                                                                              |
+| revision                  | Number or String |                             | Specify the revision number of the settings that will be deployed. <br /> The request will fail if the revision number is not the latest revision. <br /> The revision will not be checked if this parameter is ignored, or -1 is specified.                                                                                                                                                                     |
+
+#### Returns
+
+| Name     |  Type  | Description                              |
+| -------- | :----: | ---------------------------------------- |
+| revision | String | The revision number of the App settings. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005445908
