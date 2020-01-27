@@ -1,13 +1,4 @@
-type ErrorResponse = {
-  data: {
-    id: string;
-    code: string;
-    message: string;
-    errors?: any;
-  };
-  status: number;
-  headers: any;
-};
+import { ErrorResponse } from "./http/HttpClientInterface";
 
 export class KintoneRestAPIError extends Error {
   id: string;

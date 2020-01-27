@@ -4,6 +4,8 @@ import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
+import { KintoneRestAPIError } from "./KintoneRestAPIError";
+import { ErrorResponse } from "./http/HttpClientInterface";
 
 type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
@@ -74,10 +76,16 @@ export class KintoneRestAPIClient {
     if (typeof this.baseUrl === "undefined") {
       throw new Error("in Node environment, baseUrl is required");
     }
+
+    const errorResponseHandler = (errorResponse: ErrorResponse) => {
+      throw new KintoneRestAPIError(errorResponse);
+    };
+
     const httpClient = new DefaultHttpClient({
       baseUrl: this.baseUrl,
       headers: this.headers,
-      params
+      params,
+      errorResponseHandler
     });
     const { guestSpaceId } = options;
 

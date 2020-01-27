@@ -8,3 +8,14 @@ export interface HttpClient {
   put: <T extends object>(path: string, params: object) => Promise<T>;
   delete: <T extends object>(path: string, params: object) => Promise<T>;
 }
+
+export type ErrorResponse = {
+  data: {
+    id: string;
+    code: string;
+    message: string;
+    errors?: any;
+  };
+  status: number;
+  headers: any;
+};
