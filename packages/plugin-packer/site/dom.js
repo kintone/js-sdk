@@ -1,6 +1,6 @@
 "use strict";
 
-const flatten = require("array-flatten");
+const { flatten } = require("array-flatten");
 const yazl = require("yazl");
 const streamBuffers = require("stream-buffers");
 
