@@ -4,6 +4,7 @@
 - [updateAppCustomize](#updateAppCustomize)
 - [getAppSettings](#getAppSettings)
 - [updateAppSettings](#updateAppSettings)
+- [getProcessManagement](#getProcessManagement)
 
 ## Overview
 
@@ -160,3 +161,41 @@ Updates the description, name, icon, revision and color theme of an App.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115004868628
+
+### getProcessManagement
+
+Gets the process management settings of an App.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| lang    |      String      |          | The localized language to retrieve the data in:<ul><li>`default`: retrieves the default names</li><li>`en`: retrieves the localized English names</li><li>`zh`: retrieves the localized Chinese names</li><li>`ja`: retrieves the localized Japanese names</li><li>`user`: retrieves the localized names, in the same language as the language setting set on the user used for the authentication.</li></ul>If ignored, the default names will be retrieved. |
+| preview |     Boolean      |          | A flag whether to get the customization settings for pre-live environment                                                                                                                                                                                                                                                                                                                                                                                     |
+
+#### Returns
+
+| Name                                                |  Type   | Description                                                                                                                                                                                                                                                                                             |
+| --------------------------------------------------- | :-----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| enable                                              | Boolean | It indicates whether the process management settings is enabled.                                                                                                                                                                                                                                        |
+| states                                              | Object  | An object containing data of the process management statuses.<br />`null` is returned for Apps that have never enabled the process management settings before.                                                                                                                                          |
+| states.{statusName}.name                            | String  | The status name.                                                                                                                                                                                                                                                                                        |
+| states.{statusName}.index                           | String  | The display order (ascending) of the status, when listed with the other statuses.                                                                                                                                                                                                                       |
+| states.{statusName}.assignee                        | Object  | An object containing data of the assignee settings.                                                                                                                                                                                                                                                     |
+| states.{statusName}.assignee.type                   | String  | The assignee List type of the status.<br /><ul><li>`ONE`: User chooses one assignee from the list to take action</li><li>`ALL`: All assignees in the list must take action</li><li>`ANY`: One assignee in the list must take action</li></ul>The status with the lowest index will always return `ONE`. |
+| states.{statusName}.assignee.entities               |  Array  | An array listing data of the assignees. They are listed in the same order as in the GUI.                                                                                                                                                                                                                |
+| states.{statusName}.assignee.entities[].entity      | Object  | An object containing user data of the assignees.<br />Inactive users, deleted users/departments/groups and deleted Custom Fields will not be included in the response.                                                                                                                                  |
+| states.{statusName}.assignee.entities[].entity.type | String  | The entity type of the assignee.<br /><ul><li>`USER`: User</li><li>`GROUP`: Group</li><li>`ORGANIZATION`: Department</li><li>`FIELD_ENTITY`: User/Group/Department selection field</li><li>`CREATOR`: Created by field</li><li>`CUSTOM_FIELD`: Custom Field</li></ul>                                   |
+| states.{statusName}.assignee.entities[].entity.code | String  | The code of the assignee.<br />The following entities will return the following values:<ul><li>`FIELD_ENTITY`: The field code of the field</li><li>`CREATOR`: `null`</li><li>`CUSTOM_FIELD`: The field code of the Custom Field</li></ul>                                                               |
+| states.{statusName}.assignee.entities[].includeSubs | Boolean | It indicates whether affiliated departments are included as assignees                                                                                                                                                                                                                                   |
+| actions                                             |  Array  | An array containing data of the actions. They are listed in the same order as in the GUI.<br />`null` is returned for Apps that have never enabled the process management settings before.                                                                                                              |
+| actions[].name                                      | String  | The action name.                                                                                                                                                                                                                                                                                        |
+| actions[].from                                      | String  | The status before taking action.                                                                                                                                                                                                                                                                        |
+| actions[].to                                        | String  | The status after taking action.                                                                                                                                                                                                                                                                         |
+| actions[].filterCond                                | String  | The branch criteria of the action.                                                                                                                                                                                                                                                                      |
+| revision                                            | String  | The revision number of the App settings.                                                                                                                                                                                                                                                                |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005238087
