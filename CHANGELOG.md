@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/kintone/customize-uploader/compare/v2.0.8...v3.0.0) (2020-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop 8 node support
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^7.0.2 ([d6ae558](https://github.com/kintone/customize-uploader/commit/d6ae5583a3ef228e0b39384cab1a5ee37f22d26c))
+* **deps:** update dependency inquirer to ^7.0.3 ([c47decf](https://github.com/kintone/customize-uploader/commit/c47decf37a8bee9e8e5ae05678db618e91ca86b6))
+* **deps:** update dependency inquirer to ^7.0.4 ([c7a3a2f](https://github.com/kintone/customize-uploader/commit/c7a3a2f77aee6e8396dc334bdef7b48421d075c3))
+
+
+* drop 8 node support ([#252](https://github.com/kintone/customize-uploader/issues/252)) ([4bf2b48](https://github.com/kintone/customize-uploader/commit/4bf2b48d196adc97bcfe4c054b1e1d76661739ab))
+
 ### [2.0.8](https://github.com/kintone/customize-uploader/compare/v2.0.7...v2.0.8) (2019-12-24)
 
 
