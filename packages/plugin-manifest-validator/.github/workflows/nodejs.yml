@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.16, 10, 12]
+        node-version: [10, 12]
 
     steps:
     - uses: actions/checkout@v1
@@ -19,7 +19,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     # can not use multi-line step run
     # https://github.community/t5/GitHub-Actions/Windows-multi-line-step-run/td-p/30428
-    - run: node --version 
+    - run: node --version
     - run: npm --version
     - run: npm ci
     - run: npm test

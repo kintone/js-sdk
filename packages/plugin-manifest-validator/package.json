@@ -3,7 +3,7 @@
   "version": "2.0.10",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "main": "index.js",
   "files": [
