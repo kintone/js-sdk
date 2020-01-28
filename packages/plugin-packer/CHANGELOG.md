@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/kintone/plugin-packer/compare/v2.0.8...v3.0.0) (2020-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop Node v8 support
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-manifest-validator to ^2.0.10 ([#462](https://github.com/kintone/plugin-packer/issues/462)) ([4697b7d](https://github.com/kintone/plugin-packer/commit/4697b7dc1a3ac46f2a6884e21e54fadb0d32fe0d))
+* **deps:** update dependency meow to v6 ([#452](https://github.com/kintone/plugin-packer/issues/452)) ([eb904cc](https://github.com/kintone/plugin-packer/commit/eb904cc48d59132085a330e1877381fca5786cf4))
+
+
+* drop Node v8 support ([#470](https://github.com/kintone/plugin-packer/issues/470)) ([33a1790](https://github.com/kintone/plugin-packer/commit/33a1790c0875fab1dcdcb4a716ba5ebc37567882))
+
 ### [2.0.8](https://github.com/kintone/plugin-packer/compare/v2.0.7...v2.0.8) (2019-12-24)
 
 
