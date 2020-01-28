@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/kintone/plugin-manifest-validator/compare/v2.0.10...v3.0.0) (2020-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop Node v8 support
+
+* drop Node v8 support ([#252](https://github.com/kintone/plugin-manifest-validator/issues/252)) ([3fee857](https://github.com/kintone/plugin-manifest-validator/commit/3fee8574921960d8a5ad30fcf0217190f69ab6b1))
+
 ### [2.0.10](https://github.com/kintone/plugin-manifest-validator/compare/v2.0.9...v2.0.10) (2019-12-24)
 
 ### [2.0.9](https://github.com/kintone/plugin-manifest-validator/compare/v2.0.8...v2.0.9) (2019-12-03)
