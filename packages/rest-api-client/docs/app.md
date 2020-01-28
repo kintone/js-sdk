@@ -3,6 +3,7 @@
 - [getAppCustomize](#getAppCustomize)
 - [updateAppCustomize](#updateAppCustomize)
 - [getAppSettings](#getAppSettings)
+- [updateAppSettings](#updateAppSettings)
 
 ## Overview
 
@@ -130,3 +131,32 @@ Gets the description, name, icon, revision and color theme of an App.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115004811668
+
+### updateAppSettings
+
+Updates the description, name, icon, revision and color theme of an App.
+
+#### Parameters
+
+| Name              |       Type       |          Required           | Description                                                                                                                                                                                                                                                                                                            |
+| ----------------- | :--------------: | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app               | Number or String |             Yes             | The App ID.                                                                                                                                                                                                                                                                                                            |
+| name              |      String      |                             | The App name.                                                                                                                                                                                                                                                                                                          |
+| description       |      String      |                             | The App description. The maximum character limit is 10,000. HTML tags can be used.                                                                                                                                                                                                                                     |
+| icon              |      Object      |                             | An object containing information of the App icon.                                                                                                                                                                                                                                                                      |
+| icon.type         |      String      | Conditionally<br />Required | The icon type. Specify one of the following:<br />- `FILE`: An uploaded image.<br />- `PRESET`: A preset icon within kintone.<br />Required, if the "icon" parameter will be set.                                                                                                                                      |
+| icon.key          |      String      | Conditionally<br />Required | The key identifier of the icon.<br />Required, if the `icon.type` parameter is set as `PRESET`.<br />(Preset icons have key identifiers that can be obtained using the [getAppSettings()](#getAppSettings)                                                                                                             |
+| icon.file         |      Object      | Conditionally<br />Required | An object containing data of uploaded icon files.<br />Required, if the `icon.type` parameter is set as `FILE`.                                                                                                                                                                                                        |
+| icon.file.fileKey |      String      | Conditionally<br />Required | The fileKey of the icon.<br />To attach a file, specify the fileKey responded when using [File#uploadFile()](https://github.com/kintone/js-sdk/blob/master/packages/rest-api-client/docs/file.md#uploadFile).<br />The maximum file size limit is 800KB.<br />Required, if the `icon.type` parameter is set as `FILE`. |
+| theme             |      String      |                             | The color theme.<br />The following can be specified: `WHITE`, `RED`, `BLUE`, `GREEN`, `YELLOW`, `BLACK`<br /><br />If you specify values correspond to classic themes(`CLIPBOARD`, `BINDER`, `PENCIL`, `CLIPS`), the app is displayed as `WHITE` theme.                                                               |
+| revision          |      String      |                             | Specify the revision number of the settings that will be deployed. The request will fail if the revision number is not the latest revision. The revision will not be checked if this parameter is ignored, or -1 is specified.                                                                                         |
+
+#### Returns
+
+| Name     |  Type  | Description                              |
+| -------- | :----: | ---------------------------------------- |
+| revision | String | The revision number of the App settings. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115004868628
