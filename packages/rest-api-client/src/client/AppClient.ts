@@ -461,7 +461,7 @@ export class AppClient {
             size: string;
           };
         }
-      | { type: "PRESET"; key: "string" };
+      | { type: "PRESET"; key: string };
     theme:
       | "WHITE"
       | "CLIPBOARD"
@@ -494,7 +494,7 @@ export class AppClient {
             fileKey: string;
           };
         }
-      | { type: "PRESET"; key: "string" };
+      | { type: "PRESET"; key: string };
     theme?:
       | "WHITE"
       | "CLIPBOARD"
