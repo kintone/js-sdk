@@ -346,10 +346,10 @@ Gets the field layout info of a form in an App.
 
 #### Parameters
 
-| Name    |       Type       | Required | Description                                                               |
-| ------- | :--------------: | :------: | ------------------------------------------------------------------------- |
-| app     | Number or String |   Yes    | The app ID.                                                               |
-| preview |     Boolean      |          | A flag whether to get the customization settings for pre-live environment |
+| Name    |       Type       | Required | Description                                                                    |
+| ------- | :--------------: | :------: | ------------------------------------------------------------------------------ |
+| app     | Number or String |   Yes    | The app ID.                                                                    |
+| preview |     Boolean      |          | A flag whether to get the field layout info of a form for pre-live environment |
 
 #### Returns
 
