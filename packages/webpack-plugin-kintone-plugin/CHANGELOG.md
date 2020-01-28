@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v3.0.5...v4.0.0) (2020-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop node 8 support
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-packer to ^2.0.8 ([83da617](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/83da617145f899d3ba41b46050be5a87d891c057))
+
+
+* drop node 8 support ([#486](https://github.com/kintone/webpack-plugin-kintone-plugin/issues/486)) ([033dd3f](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/033dd3f807302d171395590d5e7f64cc55f8199a))
+
 ### [3.0.5](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v3.0.4...v3.0.5) (2019-12-24)
 
 
