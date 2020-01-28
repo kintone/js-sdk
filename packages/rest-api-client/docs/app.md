@@ -32,7 +32,7 @@ Gets the list of fields and field settings of an App.
 | ------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | lang    |      String      |          | The localized language to retrieve the data in: <ul><li>**default**: retrieves the default names</li><li>**en**: retrieves the localized English names</li><li>**zh**: retrieves the localized Chinese names</li><li>**ja**: retrieves the localized Japanese names</li><li>**user**: retrieves the localized names, in the same language as the language setting set on the user used for the authentication.</li></ul>If ignored, the default names will be retrieved. |
-| preview |     Boolean      |          | A flag whether to get the customization settings for pre-live environment.                                                                                                                                                                                                                                                                                                                                                                                               |
+| preview |     Boolean      |          | A flag whether to get the list of fields and field settings for pre-live environment.                                                                                                                                                                                                                                                                                                                                                                                               |
 
 #### Returns
 
@@ -270,7 +270,7 @@ Deletes fields from a form of an App.
 
 ### getAppCustomize
 
-Gets the JavaScript and CSS Customization settings of an App.
+Gets the JavaScript and CSS customization settings of an App.
 
 #### Parameters
 
