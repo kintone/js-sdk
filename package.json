@@ -8,7 +8,7 @@
   },
   "main": "dist/src/index.js",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "repository": "kintone/create-plugin",
   "homepage": "https://github.com/kintone/create-plugin",
