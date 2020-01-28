@@ -1,5 +1,6 @@
 # App
 
+- [deployApp](#deployApp)
 - [getDeployStatus](#getDeployStatus)
 - [getFormFields](#getFormFields)
 - [addFormFields](#addFormFields)
@@ -26,6 +27,27 @@ const client = new KintoneRestAPIClient();
 - This method returns a Promise object that is resolved with an object having properties in each `Returns` section.
 
 ## Methods
+
+### deployApp
+
+Updates the settings of a pre-live App to the live App.
+
+#### Parameters
+
+| Name            |       Type       | Required | Description                                                                                                                                                                                                                             |
+| --------------- | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| apps            |      Array       |   Yes    | The list of Apps to deploy the pre-live settings to the live Apps. The maximum limit is 300.<br />If Apps are being deployed to Guest spaces, Apps can only be deployed to the same Guest space.                                        |
+| apps[].app      | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                             |
+| apps[].revision | Number or String |          | Specify the revision number of the settings that will be deployed.<br />The request will fail if the revision number is not the latest revision.<br />The revision will not be checked if this parameter is ignored, or -1 is specified |
+| revert          |     Boolean      |          | Specify true to cancel all changes made to the pre-live settings. The pre-live settings will be reverted back to the current settings of the live app.                                                                                  |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115004881348
 
 ### getDeployStatus
 
