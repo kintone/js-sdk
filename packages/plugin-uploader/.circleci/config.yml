@@ -19,11 +19,6 @@ commands:
       - run: npm run tsc:check
       - run: npm run lint
 jobs:
-  node-v8:
-    docker:
-      - image: circleci/node:8@sha256:44c6136b6b55003fa12321aa1eb790a5a6482edb461227cb56daf488178d04dc
-    steps:
-      - run-npm-test
   node-v10:
     docker:
       - image: circleci/node:10@sha256:5e4e5ca02096bbeb87af1fae7b42d20ff11223da7558db9cc1a31fc0f6b0ad12
@@ -38,6 +33,5 @@ jobs:
 workflows:
   multiple_builds:
     jobs:
-      - node-v8
       - node-v10
       - node-v12
