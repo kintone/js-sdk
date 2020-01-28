@@ -8,6 +8,7 @@
 - [updateAppCustomize](#updateAppCustomize)
 - [getAppAcl](#getAppAcl)
 - [updateAppAcl](#updateAppAcl)
+- [getFieldAcl](#getFieldAcl)
 - [getAppSettings](#getAppSettings)
 - [updateAppSettings](#updateAppSettings)
 
@@ -414,6 +415,35 @@ Updates the App permissions of an App.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115005445908
+
+### getFieldAcl
+
+Gets the list of fields and field settings of an app.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                           |
+| ------- | :--------------: | :------: | ------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The app ID.                                                                           |
+| preview |     Boolean      |          | A flag whether to get the list of fields and field settings for pre-live environment. |
+
+#### Returns
+
+| Name                              |  Type   | Description                                                                                                                                                                             |
+| --------------------------------- | :-----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| revision                          | String  | The revision number of the app settings.                                                                                                                                                |
+| rights                            |  Array  | An array of objects that contain data of permission settings.                                                                                                                           |
+| rights[].code                     | String  | The field code of a field that has permission settings.                                                                                                                                 |
+| rights[].entities                 |  Array  | An array listing the entities the permissions are granted to, in order of priority.                                                                                                     |
+| rights[].entities[].accessibility | String  | The permission granted to the entity.<ul><li>`READ`: Permissions to view only.</li><li>`WRITE`: Permissions to view and edit.</li><li>`NONE`: No permissions to view or edit.</li></ul> |
+| rights[].entities[].entity        | Object  | An object containing data of the entity the permission is granted to.                                                                                                                   |
+| rights[].entities[].entity.code   | String  | The code of the entity the permission is granted to.                                                                                                                                    |
+| rights[].entities[].entity.type   | String  | The type of the entity the permission is granted to.<ul><li>`USER`: User</li><li>`GROUP`: Group</li><li>`ORGANIZATION`: Department</li><li>`FIELD_ENTITY`: User field</li></ul>         |
+| rights[].entities[].includeSubs   | Boolean | The permission inheritance settings of the department the permission is granted to.<br />It indicates whether permissions are inherited.                                                |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005362108
 
 ### getAppSettings
 
