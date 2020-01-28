@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/kintone/create-plugin/compare/v2.0.7...v3.0.0) (2020-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop node 8 support
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^7.0.2 ([c0d987c](https://github.com/kintone/create-plugin/commit/c0d987c6f3a4ccaf764deef95838de3f61dce2a9))
+* **deps:** update dependency inquirer to ^7.0.3 ([d1a0cf4](https://github.com/kintone/create-plugin/commit/d1a0cf415cf5ca0b5505a7d81371492c01268f2a))
+* **deps:** update dependency inquirer to ^7.0.4 ([cf7a8f7](https://github.com/kintone/create-plugin/commit/cf7a8f7d3d4fca24d93e50ff52c709d3299c831a))
+
+
+* drop node 8 support ([#429](https://github.com/kintone/create-plugin/issues/429)) ([df4a616](https://github.com/kintone/create-plugin/commit/df4a6162c6c9616f075b1b189e55db6d0fee43fb))
+
 ### [2.0.7](https://github.com/kintone/create-plugin/compare/v2.0.6...v2.0.7) (2019-12-24)
 
 
