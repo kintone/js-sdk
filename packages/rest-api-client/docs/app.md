@@ -1,5 +1,6 @@
 # App
 
+- [getDeployStatus](#getDeployStatus)
 - [getFormFields](#getFormFields)
 - [addFormFields](#addFormFields)
 - [updateFormFields](#updateFormFields)
@@ -25,6 +26,28 @@ const client = new KintoneRestAPIClient();
 - This method returns a Promise object that is resolved with an object having properties in each `Returns` section.
 
 ## Methods
+
+### getDeployStatus
+
+Gets the deployment status of the app settings for multiple apps.
+
+#### Parameters
+
+| Name |           Type            | Required | Description                                                                                                                                                                                |
+| ---- | :-----------------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app  | Array\<Number or String\> |   Yes    | The list of apps to check the deploy statuses of. The maximum limit is 300.<br />If apps in guest spaces are specified, all apps specified in the request must belong to that guest space. |
+
+#### Returns
+
+| Name          |  Type  | Description                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------- | :----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| apps          | Array  | A list of objects with data of deploy statuses.                                                                                                                                                                                                                                                                                                                             |
+| apps[].app    | String | The app ID.                                                                                                                                                                                                                                                                                                                                                                 |
+| apps[].status | String | The status of the deployment of app settings.<ul><li>`PROCESSING`: The app settings are being deployed.</li><li>`SUCCESS`: The app settings have been deployed.</li><li>`FAIL`: An error occurred, and the deployment of app settings failed.</li><li>`CANCEL`: The deployment of app settings was canceled, due to the deployment of other app settings failing.</li></ul> |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115004890947
 
 ### getFormFields
 
