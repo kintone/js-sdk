@@ -494,7 +494,7 @@ export class AppClient {
             fileKey: string;
           };
         }
-      | { type: "PRESET"; key: "string" };
+      | { type: "PRESET"; key: string };
     theme?:
       | "WHITE"
       | "CLIPBOARD"
