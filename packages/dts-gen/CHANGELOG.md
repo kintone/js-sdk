@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/kintone/dts-gen/compare/v2.2.1...v3.0.0) (2020-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop Node v8 support
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.19.1 ([9da3806](https://github.com/kintone/dts-gen/commit/9da380690b15ab32eb60f0f1cad478c7203049df))
+* **deps:** update dependency axios to ^0.19.2 ([9192f97](https://github.com/kintone/dts-gen/commit/9192f971d5bcad7a3f92cae61670251b7a7e2764))
+* **deps:** update dependency commander to ^4.1.0 ([#206](https://github.com/kintone/dts-gen/issues/206)) ([66dc116](https://github.com/kintone/dts-gen/commit/66dc116f0006ec09685c6a3b1550d09e7b6ab845))
+
+
+* drop Node v8 support ([#219](https://github.com/kintone/dts-gen/issues/219)) ([3d888e0](https://github.com/kintone/dts-gen/commit/3d888e0f12d0b805e1e7603d73b4bd08ef3c9f5c))
+
 ### [2.2.1](https://github.com/kintone/dts-gen/compare/v2.2.0...v2.2.1) (2019-12-24)
 
 ## [2.2.0](https://github.com/kintone/dts-gen/compare/v2.1.2...v2.2.0) (2019-12-10)
