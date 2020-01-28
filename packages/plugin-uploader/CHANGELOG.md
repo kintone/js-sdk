@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/kintone/plugin-uploader/compare/v3.0.7...v4.0.0) (2020-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop node 8 support
+
+* chore: drop node 8 support
+* fix: format
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^7.0.2 ([e261241](https://github.com/kintone/plugin-uploader/commit/e2612413cd582fb745164f6a002e6bc52456b701))
+* **deps:** update dependency inquirer to ^7.0.3 ([8e5378c](https://github.com/kintone/plugin-uploader/commit/8e5378c1e816f1746f0eb5d55f3da839fc279995))
+* **deps:** update dependency inquirer to ^7.0.4 ([3597441](https://github.com/kintone/plugin-uploader/commit/3597441ce19391edd3cccd67a11a1f5a3a48e005))
+
+
+* drop node 8 support ([#262](https://github.com/kintone/plugin-uploader/issues/262)) ([fa1ea43](https://github.com/kintone/plugin-uploader/commit/fa1ea431c00e0604e467329eded19c1498986391))
+
 ### [3.0.7](https://github.com/kintone/plugin-uploader/compare/v3.0.6...v3.0.7) (2019-12-24)
 
 
