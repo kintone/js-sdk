@@ -7,6 +7,7 @@
 - [getAppCustomize](#getAppCustomize)
 - [updateAppCustomize](#updateAppCustomize)
 - [getViews](#getViews)
+- [updateViews](#updateViews)
 - [getAppAcl](#getAppAcl)
 - [updateAppAcl](#updateAppAcl)
 - [getAppSettings](#getAppSettings)
@@ -385,6 +386,42 @@ Gets the View settings of an App.
 #### Reference
 
 https://developer.kintone.io/hc/en-us/articles/115004401787
+
+### updateViews
+
+Updates the View settings of an App.
+
+#### Parameters
+
+| Name                        |  Type   |         Required          | Description                                                                                                                                                                                                                                                                                                              |
+| --------------------------- | :-----: | :-----------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app                         | Number |            Yes            | The App ID.                                                                                                                                                                                                                                                                                                              |
+| views                       | Object  |            Yes            | An object of data of Views.                                                                                                                                                                                                                                                                                              |
+| views.{viewname}            | Object  |            Yes            | The View name of the View to add changes to.<br />If a View name that does exist is specified, a new View with this name will be created.                                                                                                                                                                                |
+| views.{viewname}.index      | String  |            Yes            | The display order of the View, in the list of views, specified with a number. The list of views will be displayed in ascending order.                                                                                                                                                                                    |
+| views.{viewname}.type       | String  |            Yes            | The type of View.<br /><ul><li>**LIST**: List View</li><li>**CALENDAR**: Calendar View</li><li>**CUSTOM**: Custom View</li></ul>                                                                                                                                                                                         |
+| views.{viewname}.name       | String  | Conditionally<br />Required | The name of the View.<br />The maximum character limit is 64.<br />Required, if **views.{viewname}** is a new View. In this case, specify the same new View name for this parameter.                                                                                                                                     |
+| views.{viewname}.fields     |  Array  |                           | Used for List Views.<br />The list of fields to be displayed in the list.<br />Specify fields by their field codes.                                                                                                                                                                                                     |
+| views.{viewname}.date       | String  |                           | Used for Calendar Views.<br />The field to be used as the "Date Field" of the Calendar View.<br />Specify a date type field by their field code.<br />If ignored, the Created datetime field will be set.                                                                                                                |
+| views.{viewname}.title      | String  |                           | Used for Calendar views.<br />The field to be used as the "Title Field" of the Calendar View.<br />Specify a text type field by their fieldcode.<br />If ignored, the Record number field will be set.                                                                                                                   |
+| views.{viewname}.html       | String  |                           | Used for Custom Views.<br />The HTML code to set for the Custom View.                                                                                                                                                                                                                                                    |
+| views.{viewname}.pager      | Boolean |                           | A flag whether to enable the pagination settings or not. the default is `true`.                                                                                                                                                                                    |
+| views.{viewname}.device     | String  |                           | The scope of where the view is displayed.<br />If this parameter is not specified, the default is **DESKTOP**. If view settings are updated without specifying this parameter, this parameter does not change.<ul><li>**DESKTOP**: Display only on desktop</li><li>**ANY**: Display on both desktop and mobile</li></ul> |
+| views.{viewname}.filterCond | String  |                           | The filter condition in a query format.<br />[Check here](https://developer.kintone.io/hc/en-us/articles/213149287/#getrecords) for more data on query formats.                                                                                                                                                          |
+| views.{viewname}.sort       | String  |                           | The sort order in a query format.<br />[Check here](https://developer.kintone.io/hc/en-us/articles/213149287/#getrecords) for more data on query formats.                                                                                                                                                                |
+| revision                    | Number  |                           | Specify the revision number of the settings that will be deployed.<br />The request will fail if the revision number is not the latest revision.<br />The revision will not be checked if this parameter is ignored, or -1 is specified.                                                                                 |
+
+#### Returns
+
+| Name                |  Type  | Description                              |
+| ------------------- | :----: | ---------------------------------------- |
+| revision            | String | The revision number of the App settings. |
+| views               | Object | An object containing data of the Views.  |
+| views.{viewname}.id | String | The View ID.                             |
+
+#### Reference
+
+https://developer.kintone.io/hc/en-us/articles/115004880588
 
 ### getAppAcl
 
