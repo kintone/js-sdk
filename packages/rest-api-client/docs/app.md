@@ -10,6 +10,7 @@
 - [updateViews](#updateViews)
 - [getApp](#getApp)
 - [getApps](#getApps)
+- [addApp](#addApp)
 - [getAppAcl](#getAppAcl)
 - [updateAppAcl](#updateAppAcl)
 - [getAppSettings](#getAppSettings)
@@ -495,6 +496,30 @@ Gets general information of multiple Apps, including the name, description, rela
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115005336727
+
+### addApp
+
+Creates a preview App.
+[The Deploy App Settings](https://developer.kintone.io/hc/en-us/articles/115004881348) API must be used on the created preview App for the App to become live.
+
+#### Parameters
+
+| Name   |  Type  | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ------ | :----: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name   | String | Required | The App name.<br />The maximum length is 64 characters.                                                                                                                                                                                                                                                                                                                                                                            |
+| space  | Number |          | The Space ID of where the App will be created.                                                                                                                                                                                                                                                                                                                                                                                     |
+| thread | Number |          | The Thread ID of the thread in the Space where the App will be created.<br />\*It is recommended to ignore this parameter so that Apps are created in the default thread. There is currently no helpful reason to create Apps in threads other than the default thread, as there are no visual representations in Kintone of Apps being related to threads. There are only visual representations of Apps being related to Spaces. |
+
+#### Returns
+
+| Name                |  Type  | Description                              |
+| ------------------- | :----: | ---------------------------------------- |
+| app | String | The App ID of the created preview App. |
+| revision | String | The revision number of the App settings. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115004712547
 
 ### getAppAcl
 
