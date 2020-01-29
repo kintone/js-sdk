@@ -8,6 +8,7 @@
 - [updateAppCustomize](#updateAppCustomize)
 - [getViews](#getViews)
 - [updateViews](#updateViews)
+- [getApp](#getApp)
 - [getAppAcl](#getAppAcl)
 - [updateAppAcl](#updateAppAcl)
 - [getAppSettings](#getAppSettings)
@@ -422,6 +423,39 @@ Updates the View settings of an App.
 #### Reference
 
 https://developer.kintone.io/hc/en-us/articles/115004880588
+
+### getApp
+
+Gets general information of an App, including the name, description, related Space, creator and updater information.
+
+#### Parameters
+
+| Name |         Type          | Required | Description |
+| ---- | :-------------------: | :------: | ----------- |
+| id   | Number or<br />String |   Yes    | The App ID. |
+
+#### Returns
+
+| Name          |  Type  | Description                                                                                                                                                                                                                                                                               |
+| ------------- | :----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| appId         | String | The App ID.                                                                                                                                                                                                                                                                               |
+| code          | String | The App Code of the App.<br />An empty string is returned if an App Code is not set in the App's settings.                                                                                                                                                                                |
+| name          | String | The name of the App.<br />If Localization settings are enabled, the localized name will be returned. The localization language will be dependent on the language settings of the Kintone user authenticating this API.                                                                    |
+| description   | String | The description of the App.<br />If Localization settings are enabled, the localized name will be returned. The localization language will be dependent on the language settings of the Kintone user authenticating this API.                                                             |
+| spaceId       | String | If the App was created inside a Space, it will return the Space ID. If not, null is returned.                                                                                                                                                                                             |
+| threadId      | String | If the App was created inside a Space, it will return the Thread ID of the Thread of the space it belongs to.<br />Apps that are created inside Spaces using the GUI will be automatically allocated to the default Thread.<br />If the App was not created in a Space, null is returned. |
+| createdAt     | String | The date of when the App was created.                                                                                                                                                                                                                                                     |
+| creator       | Object | The information of the user who created the App.                                                                                                                                                                                                                                          |
+| creator.code  | String | The log in name of the creator.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                                    |
+| creator.name  | String | The display name of the creator.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                                   |
+| modifiedAt    | String | The date of when the App was last modified.                                                                                                                                                                                                                                               |
+| modifier      | Object | The information of the user who last updated the App.                                                                                                                                                                                                                                     |
+| modifier.code | String | The log in name of the last updater.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                               |
+| modifier.name | String | The display name of the last updater.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                              |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/212494888
 
 ### getAppAcl
 
