@@ -6,6 +6,7 @@
 - [deleteFormFields](#deleteFormFields)
 - [getAppCustomize](#getAppCustomize)
 - [updateAppCustomize](#updateAppCustomize)
+- [getViews](#getViews)
 - [getAppAcl](#getAppAcl)
 - [updateAppAcl](#updateAppAcl)
 - [getAppSettings](#getAppSettings)
@@ -348,6 +349,42 @@ A `CustomizationFileForUpdate` object has the following properties:
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115004873968
+
+### getViews
+
+Gets the View settings of an App.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| lang    |      String      |          | The localized language to retrieve the data in:<br />- `default`: retrieves the default names<br />- `en`: retrieves the localized English names<br />- `zh`: retrieves the localized Chinese names<br />- `ja`: retrieves the localized Japanese names<br />- `user`: retrieves the localized names, in the same language as the language setting set on the user used for the authentication.<br /><br />If ignored, the default names will be retrieved. |
+| preview |     Boolean      |          | A flag whether to get the View settings for pre-live environment                                                                                                                                                                                                                                                                                                                                                                                     |
+
+#### Returns
+
+| Name                         |  Type   | Description                                                                                                                                                                                                                                           |
+| ---------------------------- | :-----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| revision                     | String  | The revision number of the App settings.                                                                                                                                                                                                              |
+| views                        | Object  | An object listing View information.                                                                                                                                                                                                                   |
+| views.{viewname}.builtinType | String  | The type of the built-in View.<ul><li>**ASSIGNEE**: The "Assigned to me" View.<br />(This list is automatically created if the Process Management settings have been enabled in the app.)<br />Currently, there are no other types of built-in Views. |
+| views.{viewname}.date        | String  | The field code set for the Date Field.<br />Responded for Calendar Views.                                                                                                                                                                             |
+| views.{viewname}.fields      |  Array  | The list of field codes for the fields displayed in the View.<br />Responded for List Views.                                                                                                                                                          |
+| views.{viewname}.filterCond  | String  | The filter condition as a query.<br />[Check here](https://developer.kintone.io/hc/en-us/articles/213149287/#getrecords) for more information on query formats.                                                                                       |
+| views.{viewname}.html        | String  | The HTML code set for the View.<br />Responded for Custom Views.                                                                                                                                                                                      |
+| views.{viewname}.id          | String  | The View ID.                                                                                                                                                                                                                                          |
+| views.{viewname}.index       | String  | The display order (ascending) of the View, when listed with other views.                                                                                                                                                                              |
+| views.{viewname}.name        | String  | The name of the View.                                                                                                                                                                                                                                 |
+| views.{viewname}.pager       | Boolean | A flag whether to enable the pagination settings or not.<br />Responded for Custom Views.                                                                        |
+| views.{viewname}.device      | String  | The scope of where the view is displayed.<ul><li>**DESKTOP**: Display only on desktop</li><li>**ANY**: Display on both desktop and mobile</li></ul>                                                                                                   |
+| views.{viewname}.sort        | String  | The sort order as a query.<br />[Check here](https://developer.kintone.io/hc/en-us/articles/213149287/#getrecords) for more information on query formats.                                                                                             |
+| views.{viewname}.title       | String  | The field code set for the Title Field.<br />Responded for Calendar Views.                                                                                                                                                                            |
+| views.{viewname}.type        | String  | The type of View.<ul><li>**LIST**: List View</li><li>**CALENDAR**: Calendar View</li><li>**CUSTOM**: Custom View</li></ul>                                                                                                                            |
+
+#### Reference
+
+https://developer.kintone.io/hc/en-us/articles/115004401787
 
 ### getAppAcl
 
