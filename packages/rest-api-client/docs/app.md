@@ -1,5 +1,7 @@
 # App
 
+- [deployApp](#deployApp)
+- [getDeployStatus](#getDeployStatus)
 - [getFormFields](#getFormFields)
 - [addFormFields](#addFormFields)
 - [updateFormFields](#updateFormFields)
@@ -25,6 +27,49 @@ const client = new KintoneRestAPIClient();
 - This method returns a Promise object that is resolved with an object having properties in each `Returns` section.
 
 ## Methods
+
+### deployApp
+
+Updates the settings of a pre-live app to the live app.
+
+#### Parameters
+
+| Name            |       Type       | Required | Description                                                                                                                                                                                                                               |
+| --------------- | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| apps            |      Array       |   Yes    | The list of apps to deploy the pre-live settings to the live apps. The maximum limit is 300.<br />If apps are being deployed to guest spaces, apps can only be deployed to the same guest space.                                          |
+| apps[].app      | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                               |
+| apps[].revision | Number or String |          | Specify the revision number of the settings that will be deployed.<br />The request will fail if the revision number is not the latest revision.<br />The revision will not be checked if this parameter is ignored, or `-1` is specified |
+| revert          |     Boolean      |          | Specify `true` to cancel all changes made to the pre-live settings. The pre-live settings will be reverted back to the current settings of the live app.                                                                                  |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115004881348
+
+### getDeployStatus
+
+Gets the deployment status of the app settings for multiple apps.
+
+#### Parameters
+
+| Name |           Type            | Required | Description                                                                                                                                                                                |
+| ---- | :-----------------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app  | Array\<Number or String\> |   Yes    | The list of apps to check the deploy statuses of. The maximum limit is 300.<br />If apps in guest spaces are specified, all apps specified in the request must belong to that guest space. |
+
+#### Returns
+
+| Name          |  Type  | Description                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------- | :----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| apps          | Array  | A list of objects with data of deploy statuses.                                                                                                                                                                                                                                                                                                                             |
+| apps[].app    | String | The app ID.                                                                                                                                                                                                                                                                                                                                                                 |
+| apps[].status | String | The status of the deployment of app settings.<ul><li>`PROCESSING`: The app settings are being deployed.</li><li>`SUCCESS`: The app settings have been deployed.</li><li>`FAIL`: An error occurred, and the deployment of app settings failed.</li><li>`CANCEL`: The deployment of app settings was canceled, due to the deployment of other app settings failing.</li></ul> |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115004890947
 
 ### getFormFields
 
