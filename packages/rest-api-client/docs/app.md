@@ -419,14 +419,14 @@ Updates the App permissions of an App.
 
 ### getFieldAcl
 
-Gets the list of fields and field settings of an app.
+Gets the field permission settings of an app.
 
 #### Parameters
 
-| Name    |       Type       | Required | Description                                                                           |
-| ------- | :--------------: | :------: | ------------------------------------------------------------------------------------- |
-| app     | Number or String |   Yes    | The app ID.                                                                           |
-| preview |     Boolean      |          | A flag whether to get the list of fields and field settings for pre-live environment. |
+| Name    |       Type       | Required | Description                                                                   |
+| ------- | :--------------: | :------: | ----------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The app ID.                                                                   |
+| preview |     Boolean      |          | A flag whether to get the field permission settings for pre-live environment. |
 
 #### Returns
 
@@ -448,7 +448,7 @@ Gets the list of fields and field settings of an app.
 
 ### updateFieldAcl
 
-Updates the Field permission settings of an app.
+Updates the field permission settings of an app.
 
 #### Parameters
 
@@ -462,7 +462,7 @@ Updates the Field permission settings of an app.
 | rights[].entities[].entity        |      Object      |   Yes    | An object containing data of the entity the permission is granted to.                                                                                                                                                                                             |
 | rights[].entities[].entity.type   |      String      |   Yes    | The type of the entity the permission is granted to.<ul><li>`USER`: User</li><li>`GROUP`: Group</li><li>`ORGANIZATION`: Department</li><li>`FIELD_ENTITY`: User field</li></ul>                                                                                   |
 | rights[].entities[].entity.code   |      String      |   Yes    | The code of the entity the permission is granted to.<br />If the "Everyone" group is not specified, the "Everyone" group will have no permissions to view/edit/delete.<br />To specify guest space users, add the string "guest/" before the guest's log in name. |
-| rights[].entities[].includeSubs   |     Boolean      |          | The permission inheritance settings of the department the permissions are granted to.<br />It indicates whether permissions are inherited.<br />If ignored, this value is false.                                                                                  |
+| rights[].entities[].includeSubs   |     Boolean      |          | The permission inheritance settings of the department the permissions are granted to.<br />It indicates whether permissions are inherited.<br />If ignored, this value is `false`.                                                                                |
 | revision                          | Number or String |          | Specify the revision number of the settings that will be deployed.<br />The request will fail if the revision number is not the latest revision.<br />The revision will not be checked if this parameter is ignored, or `-1` is specified.                        |
 
 #### Returns
