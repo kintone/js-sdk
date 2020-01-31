@@ -30,16 +30,16 @@ const client = new KintoneRestAPIClient();
 
 ### deployApp
 
-Updates the settings of a pre-live App to the live App.
+Updates the settings of a pre-live app to the live app.
 
 #### Parameters
 
-| Name            |       Type       | Required | Description                                                                                                                                                                                                                             |
-| --------------- | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| apps            |      Array       |   Yes    | The list of Apps to deploy the pre-live settings to the live Apps. The maximum limit is 300.<br />If Apps are being deployed to Guest spaces, Apps can only be deployed to the same Guest space.                                        |
-| apps[].app      | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                             |
-| apps[].revision | Number or String |          | Specify the revision number of the settings that will be deployed.<br />The request will fail if the revision number is not the latest revision.<br />The revision will not be checked if this parameter is ignored, or -1 is specified |
-| revert          |     Boolean      |          | Specify true to cancel all changes made to the pre-live settings. The pre-live settings will be reverted back to the current settings of the live app.                                                                                  |
+| Name            |       Type       | Required | Description                                                                                                                                                                                                                               |
+| --------------- | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| apps            |      Array       |   Yes    | The list of apps to deploy the pre-live settings to the live apps. The maximum limit is 300.<br />If apps are being deployed to guest spaces, apps can only be deployed to the same guest space.                                          |
+| apps[].app      | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                               |
+| apps[].revision | Number or String |          | Specify the revision number of the settings that will be deployed.<br />The request will fail if the revision number is not the latest revision.<br />The revision will not be checked if this parameter is ignored, or `-1` is specified |
+| revert          |     Boolean      |          | Specify `true` to cancel all changes made to the pre-live settings. The pre-live settings will be reverted back to the current settings of the live app.                                                                                  |
 
 #### Returns
 
