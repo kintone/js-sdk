@@ -8,6 +8,7 @@
 - [updateAppCustomize](#updateAppCustomize)
 - [getAppAcl](#getAppAcl)
 - [updateAppAcl](#updateAppAcl)
+- [evaluateRecordsAcl](#evaluateRecordsAcl)
 - [getAppSettings](#getAppSettings)
 - [updateAppSettings](#updateAppSettings)
 
@@ -414,6 +415,35 @@ Updates the App permissions of an App.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115005445908
+
+### evaluateRecordsAcl
+
+Evaluates the API user's permissions for records and fields within an App.
+
+#### Parameters
+
+| Name |           Type            | Required | Description                                                                         |
+| ---- | :-----------------------: | :------: | ----------------------------------------------------------------------------------- |
+| app  |     Number or String      |   Yes    | The app ID.                                                                         |
+| ids  | Array\<Number or String\> |   Yes    | An array of record IDs that will be evaluated. <br /> The maximum limit is 100 IDs. |
+
+#### Returns
+
+| Name                                 |  Type   | Description                                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------ | :-----: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| rights                               |  Array  | An array of objects that contain permission settings of the specified records.                                                                                                                                                                                                                                                                       |
+| rights[].id                          | String  | The record ID.                                                                                                                                                                                                                                                                                                                                       |
+| rights[].record                      | Object  | An object consisting of record permissions of the specified record ID.                                                                                                                                                                                                                                                                               |
+| rights[].record.viewable             | Boolean | The view permissions of the specified record ID.                                                                                                                                                                                                                                                                                                     |
+| rights[].record.editable             | Boolean | The edit permissions of the specified record ID.                                                                                                                                                                                                                                                                                                     |
+| rights[].record.deletable            | Boolean | The delete permissions of the specified record ID.                                                                                                                                                                                                                                                                                                   |
+| rights[].fields                      | Object  | An object consisting of field permissions of the specified record ID. <br /> The following are also included in the response: <ul><li>fields that the user has no permissions to view</li><li>fields that have no permission settings set on them</li><li>fields that have no permission settings set on them</li><li>fields set in tables</li></ul> |
+| rights[].fields.{fieldCode}.viewable | Boolean | The view permissions of the field of the specified record ID. If the user has no view permissions of the record, all the values are set as `false`.                                                                                                                                                                                                  |
+| rights[].fields.{fieldCode}.editable | Boolean | The edit permissions of the field of the specified record ID.                                                                                                                                                                                                                                                                                        |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/360005496913
 
 ### getAppSettings
 
