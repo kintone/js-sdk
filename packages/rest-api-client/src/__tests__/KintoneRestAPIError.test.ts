@@ -26,6 +26,7 @@ describe("KintoneRestAPIError", () => {
       expect(kintoneRestAPIError.code).toBe(errorResponse.data.code);
       expect(kintoneRestAPIError.errors).toEqual(errorResponse.data.errors);
       expect(kintoneRestAPIError.status).toBe(errorResponse.status);
+      expect(kintoneRestAPIError.bulkRequestIndex).toBe(undefined);
       expect(kintoneRestAPIError.headers).toEqual(errorResponse.headers);
       expect(kintoneRestAPIError.message).toBe(
         `[${errorResponse.status}] [${errorResponse.data.code}] ${errorResponse.data.message} (${errorResponse.data.id})`
