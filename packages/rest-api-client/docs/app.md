@@ -9,6 +9,7 @@
 - [getAppAcl](#getAppAcl)
 - [updateAppAcl](#updateAppAcl)
 - [evaluateRecordsAcl](#evaluateRecordsAcl)
+- [getRecordAcl](#getRecordAcl)
 - [getAppSettings](#getAppSettings)
 - [updateAppSettings](#updateAppSettings)
 
@@ -444,6 +445,38 @@ Evaluates the API user's permissions for records and fields within an App.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/360005496913
+
+### getRecordAcl
+
+Gets the record permission settings of an app.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| lang    |      String      |          | The localized language to retrieve the data in: <ul><li>`default`: retrieves the default names</li><li>`en`: retrieves the localized English names</li><li>`zh`: retrieves the localized Chinese names</li><li>`ja`: retrieves the localized Japanese names</li><li>`user`: retrieves the localized names, in the same language as the language setting set on the user used for the authentication.</li></ul>If ignored, the default names will be retrieved. |
+| preview |     Boolean      |          | A flag whether to get the record permission settings for pre-live environment                                                                                                                                                                                                                                                                                                                                                                                  |
+
+#### Returns
+
+| Name                            |  Type   | Description                                                                                                                                                                      |
+| ------------------------------- | :-----: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| rights                          |  Array  | An array of objects that contain data of record permissions, in order of priority.                                                                                               |
+| rights[].filterCond             | String  | The filter condition of the record permission. <br /> [Check here](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) for more information on query formats.   |
+| rights[].entities               |  Array  | An array listing the entities the permissions are granted to, in order of priority.                                                                                              |
+| rights[].entities[].entity      | Object  | An object containing data of the entity the permission is granted to.                                                                                                            |
+| rights[].entities[].entity.type | String  | The type of the entity the permission is granted to. <ul><li>`USER`: User</li><li>`GROUP`: Group</li><li>`ORGANIZATION`: Department</li><li>`FIELD_ENTITY`: User field</li></ul> |
+| rights[].entities[].entity.code | String  | The code of the entity the permission is granted to.                                                                                                                             |
+| rights[].entities[].viewable    | Boolean | The view permission of the entity. It indicates whether the record is viewable.                                                                                                  |
+| rights[].entities[].editable    | Boolean | The edit permission of the entity. It indicates whether the record is editable.                                                                                                  |
+| rights[].entities[].deletable   | Boolean | The delete permission of the entity. It indicates whether the record is deletable.                                                                                               |
+| rights[].entities[].includeSubs | Boolean | The permission inheritance settings of the department the permission is granted to. It indecates whether permissions are inherited.                                              |
+| revision                        | String  | The revision number of the app settings.                                                                                                                                         |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005192867
 
 ### getAppSettings
 
