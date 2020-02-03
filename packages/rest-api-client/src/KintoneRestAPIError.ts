@@ -33,7 +33,7 @@ export class KintoneRestAPIError extends Error {
     this.errors = data.errors;
     this.status = error.status;
     this.headers = error.headers;
-    this.message = `[${error.status}] [${this.code}] ${this.message} (${this.id}) `;
+    this.message = `[${error.status}] [${this.code}] ${this.message} (${this.id})`;
 
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error#Custom_Error_Types
     // Maintains proper stack trace for where our error was thrown (only available on V8)
