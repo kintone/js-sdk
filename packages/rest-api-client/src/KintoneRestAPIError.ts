@@ -12,7 +12,7 @@ export class KintoneRestAPIError extends Error {
   ): ErrorResponseData {
     for (const result of results) {
       if (Object.keys(result).length !== 0) {
-        return result;
+        return result as ErrorResponseData;
       }
     }
 
