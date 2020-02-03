@@ -20,7 +20,7 @@ export type ErrorResponse = {
   data:
     | ErrorResponseData
     | {
-        results: ErrorResponseData[];
+        results: Array<ErrorResponseData | {}>;
       };
   status: number;
   headers: any;

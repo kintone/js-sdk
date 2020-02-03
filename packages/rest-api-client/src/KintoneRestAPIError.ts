@@ -7,7 +7,9 @@ export class KintoneRestAPIError extends Error {
   headers: any;
   errors?: any;
 
-  static buildDataFromBulkRequestResults(results: ErrorResponseData[]) {
+  static buildDataFromBulkRequestResults(
+    results: Array<ErrorResponseData | {}>
+  ): ErrorResponseData {
     for (const result of results) {
       if (Object.keys(result).length !== 0) {
         return result;
