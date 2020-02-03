@@ -8,7 +8,7 @@ export class KintoneRestAPIError extends Error {
   headers: any;
   errors?: any;
 
-  static findBulkRequestIndex(results: Array<ErrorResponseData | {}>) {
+  private static findBulkRequestIndex(results: Array<ErrorResponseData | {}>) {
     for (let i = 0; i < results.length; i++) {
       if (Object.keys(results[i]).length !== 0) {
         return i;
@@ -20,17 +20,22 @@ export class KintoneRestAPIError extends Error {
     );
   }
 
-  constructor(error: ErrorResponse) {
-    let data;
-    let bulkRequestIndex;
+  private static buildErrorResponseDateWithIndex(error: ErrorResponse) {
     if ("results" in error.data) {
-      bulkRequestIndex = KintoneRestAPIError.findBulkRequestIndex(
+      const bulkRequestIndex = KintoneRestAPIError.findBulkRequestIndex(
         error.data.results
       );
-      data = error.data.results[bulkRequestIndex] as ErrorResponseData;
-    } else {
-      data = error.data;
+      const data = error.data.results[bulkRequestIndex] as ErrorResponseData;
+      return { data, bulkRequestIndex };
     }
+    return { data: error.data };
+  }
+
+  constructor(error: ErrorResponse) {
+    const {
+      data,
+      bulkRequestIndex
+    } = KintoneRestAPIError.buildErrorResponseDateWithIndex(error);
 
     super(data.message);
 
