@@ -1,20 +1,39 @@
-import { ErrorResponse } from "./http/HttpClientInterface";
+import { ErrorResponse, ErrorResponseData } from "./http/HttpClientInterface";
 
 export class KintoneRestAPIError extends Error {
   id: string;
   code: string;
   status: number;
   headers: any;
+  errors?: any;
+
+  static buildDataFromBulkRequestResults(results: ErrorResponseData[]) {
+    for (const result of results) {
+      if (Object.keys(result).length !== 0) {
+        return result;
+      }
+    }
+
+    throw Error("Something went wrong.");
+  }
 
   constructor(error: ErrorResponse) {
-    super(error.data.message);
+    const data =
+      "results" in error.data
+        ? KintoneRestAPIError.buildDataFromBulkRequestResults(
+            error.data.results
+          )
+        : error.data;
+
+    super(data.message);
 
     this.name = "KintoneRestAPIError";
-    this.id = error.data.id;
-    this.code = error.data.code;
+    this.id = data.id;
+    this.code = data.code;
+    this.errors = data.errors;
     this.status = error.status;
     this.headers = error.headers;
-    this.message = `[${error.status}] [${error.data.code}] ${error.data.message} (${error.data.id}) `;
+    this.message = `[${error.status}] [${this.code}] ${this.message} (${this.id}) `;
 
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error#Custom_Error_Types
     // Maintains proper stack trace for where our error was thrown (only available on V8)
