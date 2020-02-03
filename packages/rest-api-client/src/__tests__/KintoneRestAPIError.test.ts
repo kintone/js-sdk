@@ -76,7 +76,9 @@ describe("KintoneRestAPIError", () => {
       };
       expect(() => {
         new KintoneRestAPIError(errorResponse);
-      }).toThrow("Something went wrong");
+      }).toThrow(
+        "Missing response data in `results`. This error is likely caused by a bug in Kintone REST API Client. Please file an issue."
+      );
     });
   });
 });

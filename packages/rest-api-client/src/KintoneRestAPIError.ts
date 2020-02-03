@@ -16,7 +16,9 @@ export class KintoneRestAPIError extends Error {
       }
     }
 
-    throw Error("Something went wrong.");
+    throw Error(
+      "Missing response data in `results`. This error is likely caused by a bug in Kintone REST API Client. Please file an issue."
+    );
   }
 
   constructor(error: ErrorResponse) {
