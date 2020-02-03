@@ -10,6 +10,7 @@
 - [updateAppAcl](#updateAppAcl)
 - [evaluateRecordsAcl](#evaluateRecordsAcl)
 - [getRecordAcl](#getRecordAcl)
+- [updateRecordAcl](#updateRecordAcl)
 - [getAppSettings](#getAppSettings)
 - [updateAppSettings](#updateAppSettings)
 
@@ -477,6 +478,37 @@ Gets the record permission settings of an app.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115005192867
+
+### updateRecordAcl
+
+Updates the record permission settings of an app.
+
+#### Parameters
+
+| Name                            |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app                             | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                |
+| rights                          |      Array       |   Yes    | An array listing data of record permissions. List in order of priority.                                                                                                                                                                                                                                                                                                                    |
+| rights[].filterCond             |      String      |          | The filter condition in a query format. <br /> [Check here](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) for more data on query formats. Some [limitations](https://developer.kintone.io/hc/en-us/articles/115005364008#limitations) exist when specifying the filter conditions. <br /> If this parameter is ignored, the filter condition will be "All records". |
+| rights[].entities               |      Array       |   Yes    | An array listing the entities the permissions are granted to. List in order of priority. <br /> The "Everyone" group will be treated with the lowest priority, wherever it is placed in the list.                                                                                                                                                                                          |
+| rights[].entities[].entity      |      Object      |   Yes    | An object containing data of the entity the permissions are granted to.                                                                                                                                                                                                                                                                                                                    |
+| rights[].entities[].entity.type |      String      |   Yes    | The type of the entity the permissions are granted to. <ul><li>`USER`: User</li><li>`GROUP`: Group</li><li>`ORGANIZATION`: Department</li><li>`FIELD_ENTITY`: User field</li></ul>                                                                                                                                                                                                         |
+| rights[].entities[].entity.code |      String      |   Yes    | The code of the entity the permissions are granted to. <br /> If the "Everyone" group is not specified, the "Everyone" group will have no permissions to view/edit/delete. <br /> To specify guest space users, add the string "guest/" before the guest's login name.                                                                                                                     |
+| rights[].entities[].viewable    |     Boolean      |          | The view permission of the entity. <br /> It indicates whether the record is viewable. <br /> If ignored, the value is false.                                                                                                                                                                                                                                                              |
+| rights[].entities[].editable    |     Boolean      |          | The edit permission of the entity. <br /> It indicates whether the record is editable. <br /> If ignored, the value is false. <br /> If the entity has no permission to view the record, this value is false.                                                                                                                                                                              |
+| rights[].entities[].deletable   |     Boolean      |          | The delete permission of the entity. <br /> It indicates whether the record is deletable. <br /> If ignored, the value is false. <br /> If the entity has no permission to view the record, this value is false.                                                                                                                                                                           |
+| rights[].entities[].includeSubs |     Boolean      |          | The permission inheritance settings of the department the permissions are granted to. <br /> It indecates whether permissions are inherited. <br /> If ignored, this value is false.                                                                                                                                                                                                       |
+| revision                        | Number or String |          | Specify the revision number of the settings that will be deployed. <br /> The request will fail if the revision number is not the latest revision. <br /> The revision will not be checked if this parameter is ignored, or -1 is specified.                                                                                                                                               |
+
+#### Returns
+
+| Name     |  Type  | Description                              |
+| -------- | :----: | ---------------------------------------- |
+| revision | String | The revision number of the app settings. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005364008
 
 ### getAppSettings
 
