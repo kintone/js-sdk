@@ -4,15 +4,14 @@ export class KintoneRestAPIError extends Error {
   id: string;
   code: string;
   status: number;
+  bulkRequestIndex?: number;
   headers: any;
   errors?: any;
 
-  static buildDataFromBulkRequestResults(
-    results: Array<ErrorResponseData | {}>
-  ): ErrorResponseData {
-    for (const result of results) {
-      if (Object.keys(result).length !== 0) {
-        return result as ErrorResponseData;
+  static findBulkRequestIndex(results: Array<ErrorResponseData | {}>) {
+    for (let i = 0; i < results.length; i++) {
+      if (Object.keys(results[i]).length !== 0) {
+        return i;
       }
     }
 
@@ -22,12 +21,16 @@ export class KintoneRestAPIError extends Error {
   }
 
   constructor(error: ErrorResponse) {
-    const data =
-      "results" in error.data
-        ? KintoneRestAPIError.buildDataFromBulkRequestResults(
-            error.data.results
-          )
-        : error.data;
+    let data;
+    let bulkRequestIndex;
+    if ("results" in error.data) {
+      bulkRequestIndex = KintoneRestAPIError.findBulkRequestIndex(
+        error.data.results
+      );
+      data = error.data.results[bulkRequestIndex] as ErrorResponseData;
+    } else {
+      data = error.data;
+    }
 
     super(data.message);
 
@@ -36,6 +39,7 @@ export class KintoneRestAPIError extends Error {
     this.code = data.code;
     this.errors = data.errors;
     this.status = error.status;
+    this.bulkRequestIndex = bulkRequestIndex;
     this.headers = error.headers;
     this.message = `[${error.status}] [${this.code}] ${this.message} (${this.id})`;
 
