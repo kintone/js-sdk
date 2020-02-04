@@ -16,9 +16,12 @@ const { KintoneRestAPIClient } = require("@kintone/rest-api-client");
 const client = new KintoneRestAPIClient({
   baseUrl: "https://example.cybozu.com",
   // Use password authentication
-  auth: { username: "username", password: "password" }
+  auth: {
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD
+  }
   // Use API Token authentication
-  // auth: { apiToken: "API_TOKEN" }
+  // auth: { apiToken: process.env.KINTONE_API_TOKEN }
 
   // Use session authentication if `auth` is omitted (in browser only)
 });
