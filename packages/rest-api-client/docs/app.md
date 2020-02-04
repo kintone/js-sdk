@@ -41,6 +41,8 @@ const client = new KintoneRestAPIClient();
 
 - All methods are defined on the `app` property.
 - This method returns a Promise object that is resolved with an object having properties in each `Returns` section.
+- All methods that start with `add`/`update`/`delete` are applied to pre-live settings.<br />
+  Use [`deployApp()`](#deployApp) to deploy the pre-live settings to the live app.
 
 ## Methods
 
