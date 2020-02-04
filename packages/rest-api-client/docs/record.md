@@ -4,6 +4,7 @@
 - [addRecord](#addRecord)
 - [updateRecord](#updateRecord)
 - [getRecords](#getRecords)
+- [getAllRecordsWithId](#getAllRecordsWithId)
 - [addRecords](#addRecords)
 - [updateRecords](#updateRecords)
 - [deleteRecords](#deleteRecords)
@@ -128,6 +129,24 @@ Retrieves details of multiple records from an App by specifying the App ID and a
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/360019245194
+
+### getAllRecordsWithId
+
+Retrieves details of all records from an app by specifying the app ID, fields, and condition.
+This method can retrieve the records exceeding the [REST API limitation](https://developer.kintone.io/hc/en-us/articles/212495188#limitations).
+
+#### Parameters
+
+| Name      |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
+| --------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app       | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| fields    | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                                                                                     |
+| condition |      String      |          | The query string that will specify what records will be responded. <br /> Refer to the [Get Records API](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned.<br />`order by`, `limit`, and `offset` can not be used in the query string. |
+
+#### Returns
+
+An array of objects, including field types and field values within the matching records.
+The returned array is sorted by `id` in ascending order.
 
 ### addRecords
 
