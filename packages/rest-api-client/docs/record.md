@@ -20,9 +20,7 @@
 ## Overview
 
 ```ts
-const client = new KintoneRestAPIClient({
-  baseUrl: location.origin
-});
+const client = new KintoneRestAPIClient();
 
 (async () => {
   try {
