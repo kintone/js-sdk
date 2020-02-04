@@ -433,6 +433,10 @@ export class AppClient {
       preview: true
     });
     if (space) {
+      // NOTE: Although `thread` parameter is required in REST API,
+      // there are no visual representations of apps being related to threads.
+      // Moreover, there is currently no helpful reason to create apps in threads other than the default thread,
+      // so the API Client sets the default thread id here.
       const spacePath = this.buildPathWithGuestSpaceId({
         endpointName: "space"
       });
