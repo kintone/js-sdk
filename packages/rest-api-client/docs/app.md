@@ -567,6 +567,9 @@ Creates a preview App.
 | name  |      String      |   Yes    | The App name.<br />The maximum length is 64 characters. |
 | space | Number or String |          | The Space ID of where the App will be created.          |
 
+Although `thread` parameter is required in [Add Preview App API](https://developer.kintone.io/hc/en-us/articles/115004712547), there are no visual representations of apps being related to threads.  
+Moreover, there is currently no helpful reason to create apps in threads other than the default thread, so the API Client sets the default thread id here.
+
 #### Returns
 
 | Name     |  Type  | Description                              |
