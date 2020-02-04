@@ -31,7 +31,11 @@
 const client = new KintoneRestAPIClient();
 
 (async () => {
-  // TODO
+  try {
+    console.log(await client.app.getFormFields({ app: "1" }));
+  } catch (error) {
+    console.log(error);
+  }
 })();
 ```
 
