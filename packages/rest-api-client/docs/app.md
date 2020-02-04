@@ -8,6 +8,11 @@
 - [deleteFormFields](#deleteFormFields)
 - [getAppCustomize](#getAppCustomize)
 - [updateAppCustomize](#updateAppCustomize)
+- [getViews](#getViews)
+- [updateViews](#updateViews)
+- [getApp](#getApp)
+- [getApps](#getApps)
+- [addApp](#addApp)
 - [getAppAcl](#getAppAcl)
 - [updateAppAcl](#updateAppAcl)
 - [getFieldAcl](#getFieldAcl)
@@ -397,6 +402,172 @@ A `CustomizationFileForUpdate` object has the following properties:
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115004873968
+
+### getViews
+
+Gets the view settings of an app.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| lang    |      String      |          | The localized language to retrieve the data in:<ul><li>`default`: retrieves the default names</li><li>`en`: retrieves the localized English names</li><li>`zh`: retrieves the localized Chinese names</li><li>`ja`: retrieves the localized Japanese names</li><li>`user`: retrieves the localized names, in the same language as the language setting set on the user used for the authentication.</li></ul>If ignored, the default names will be retrieved. |
+| preview |     Boolean      |          | A flag whether to get the view settings for pre-live environment                                                                                                                                                                                                                                                                                                                                                                                              |
+
+#### Returns
+
+| Name                         |  Type   | Description                                                                                                                                                                                                                                         |
+| ---------------------------- | :-----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| views                        | Object  | An object listing view information.                                                                                                                                                                                                                 |
+| views.{viewName}.type        | String  | The type of view.<ul><li>`LIST`: List View</li><li>`CALENDAR`: Calendar View</li><li>`CUSTOM`: Custom View</li></ul>                                                                                                                                |
+| views.{viewName}.builtinType | String  | The type of the built-in view.<ul><li>`ASSIGNEE`: The "Assigned to me" view.<br />(This list is automatically created if the Process Management settings have been enabled in the app.)<br />Currently, there are no other types of built-in views. |
+| views.{viewName}.date        | String  | The field code set for the Date Field.<br />Responded for Calendar views.                                                                                                                                                                           |
+| views.{viewName}.fields      |  Array  | The list of field codes for the fields displayed in the view.<br />Responded for List views.                                                                                                                                                        |
+| views.{viewName}.filterCond  | String  | The filter condition as a query.<br />[Check here](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) for more information on query formats.                                                                                      |
+| views.{viewName}.html        | String  | The HTML code set for the view.<br />Responded for Custom Views.                                                                                                                                                                                    |
+| views.{viewName}.id          | String  | The view ID.                                                                                                                                                                                                                                        |
+| views.{viewName}.index       | String  | The display order (ascending) of the view, when listed with other views.                                                                                                                                                                            |
+| views.{viewName}.name        | String  | The name of the view.                                                                                                                                                                                                                               |
+| views.{viewName}.pager       | Boolean | It indicates whether the pagination settings is enabled.<br />Responded for Custom Views.                                                                                                                                                           |
+| views.{viewName}.device      | String  | The scope of where the view is displayed.<ul><li>`DESKTOP`: Display only on desktop</li><li>`ANY`: Display on both desktop and mobile</li></ul>                                                                                                     |
+| views.{viewName}.sort        | String  | The sort order as a query.<br />[Check here](https://developer.kintone.io/hc/en-us/articles/360019245194#options) for more information on query formats.                                                                                            |
+| views.{viewName}.title       | String  | The field code set for the Title Field.<br />Responded for Calendar Views.                                                                                                                                                                          |
+| revision                     | String  | The revision number of the app settings.                                                                                                                                                                                                            |
+
+#### Reference
+
+https://developer.kintone.io/hc/en-us/articles/115004401787
+
+### updateViews
+
+Updates the view settings of an app.
+
+#### Parameters
+
+| Name                        |       Type       |          Required           | Description                                                                                                                                                                                                                                                                                                        |
+| --------------------------- | :--------------: | :-------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app                         | Number or String |             Yes             | The App ID.                                                                                                                                                                                                                                                                                                        |
+| views                       |      Object      |             Yes             | An object of data of views.                                                                                                                                                                                                                                                                                        |
+| views.{viewName}            |      Object      |             Yes             | The view name of the view to add changes to.<br />If a view name that does exist is specified, a new view with this name will be created.                                                                                                                                                                          |
+| views.{viewName}.index      |      String      |             Yes             | The display order of the view, in the list of views, specified with a number. The list of views will be displayed in ascending order.                                                                                                                                                                              |
+| views.{viewName}.type       |      String      |             Yes             | The type of view.<br /><ul><li>`LIST`: List View</li><li>`CALENDAR`: Calendar View</li><li>`CUSTOM`: Custom View</li></ul>                                                                                                                                                                                         |
+| views.{viewName}.name       |      String      | Conditionally<br />Required | The name of the view.<br />The maximum character limit is 64.<br />Required, if `views.{viewName}` is a new view. In this case, specify the same new view name for this parameter.                                                                                                                                 |
+| views.{viewName}.fields     | Array\<String\>  |                             | Used for List Views.<br />The list of fields to be displayed in the list.<br />Specify fields by their field codes.                                                                                                                                                                                                |
+| views.{viewName}.date       |      String      |                             | Used for Calendar Views.<br />The field to be used as the "Date Field" of the Calendar View.<br />Specify a date type field by their field code.<br />If ignored, the created datetime field will be set.                                                                                                          |
+| views.{viewName}.title      |      String      |                             | Used for Calendar Views.<br />The field to be used as the "Title Field" of the Calendar View.<br />Specify a text type field by their fieldcode.<br />If ignored, the record number field will be set.                                                                                                             |
+| views.{viewName}.html       |      String      |                             | Used for Custom Views.<br />The HTML code to set for the Custom View.                                                                                                                                                                                                                                              |
+| views.{viewName}.pager      |     Boolean      |                             | It indicates whether the pagination settings is enabled. the default is `true`.                                                                                                                                                                                                                                    |
+| views.{viewName}.device     |      String      |                             | The scope of where the view is displayed.<br />If this parameter is not specified, the default is `DESKTOP`. If view settings are updated without specifying this parameter, this parameter does not change.<ul><li>`DESKTOP`: Display only on desktop</li><li>`ANY`: Display on both desktop and mobile</li></ul> |
+| views.{viewName}.filterCond |      String      |                             | The filter condition in a query format.<br />[Check here](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) for more data on query formats.                                                                                                                                                     |
+| views.{viewName}.sort       |      String      |                             | The sort order in a query format.<br />[Check here](https://developer.kintone.io/hc/en-us/articles/360019245194#options) for more data on query formats.                                                                                                                                                           |
+| revision                    | Number or String |                             | Specify the revision number of the settings that will be deployed.<br />The request will fail if the revision number is not the latest revision.<br />The revision will not be checked if this parameter is ignored, or `-1` is specified.                                                                         |
+
+#### Returns
+
+| Name                |  Type  | Description                              |
+| ------------------- | :----: | ---------------------------------------- |
+| revision            | String | The revision number of the App settings. |
+| views               | Object | An object containing data of the views.  |
+| views.{viewName}.id | String | The view ID.                             |
+
+#### Reference
+
+https://developer.kintone.io/hc/en-us/articles/115004880588
+
+### getApp
+
+Gets general information of an app, including the name, description, related space, creator and updater information.
+
+#### Parameters
+
+| Name |         Type          | Required | Description |
+| ---- | :-------------------: | :------: | ----------- |
+| id   | Number or<br />String |   Yes    | The app ID. |
+
+#### Returns
+
+| Name          |  Type  | Description                                                                                                                                                                                                                                                                               |
+| ------------- | :----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| appId         | String | The app ID.                                                                                                                                                                                                                                                                               |
+| code          | String | The App Code of the app.<br />An empty string is returned if an App Code is not set in the app's settings.                                                                                                                                                                                |
+| name          | String | The name of the app.<br />If localization settings are enabled, the localized name will be returned. The localization language will be dependent on the language settings of the Kintone user authenticating this API.                                                                    |
+| description   | String | The description of the app.<br />If localization settings are enabled, the localized name will be returned. The localization language will be dependent on the language settings of the Kintone user authenticating this API.                                                             |
+| spaceId       | String | If the app is created inside a space, it will return the space ID. If not, `null` is returned.                                                                                                                                                                                            |
+| threadId      | String | If the app is created inside a space, it will return the thread ID of the thread of the space it belongs to.<br />Apps that are created inside spaces using the GUI will be automatically allocated to the default thread.<br />If the app is not created in a space, `null` is returned. |
+| createdAt     | String | The date of when the app was created.                                                                                                                                                                                                                                                     |
+| creator       | Object | The information of the user who created the app.                                                                                                                                                                                                                                          |
+| creator.code  | String | The login name of the creator.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                                     |
+| creator.name  | String | The display name of the creator.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                                   |
+| modifiedAt    | String | The date of when the app was last modified.                                                                                                                                                                                                                                               |
+| modifier      | Object | The information of the user who last modified the app.                                                                                                                                                                                                                                    |
+| modifier.code | String | The login name of the modifier.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                                    |
+| modifier.name | String | The display name of the modifier.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                                  |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/212494888
+
+### getApps
+
+Gets general information of multiple Apps, including the name, description, related Space, creator and updater information.
+
+#### Parameters
+
+| Name     |           Type            | Required | Description                                                                                                                                                                             |
+| -------- | :-----------------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ids      | Array\<Number or String\> |          | The App IDs.<br />Up to 100 IDs can be specified.                                                                                                                                       |
+| codes    |      Array\<String\>      |          | The App Code.<br />Up to 100 App Codes can be specified.<br />Each App Code must be between 1 to 64 characters. An exact match search will be used, and will be case sensitive.         |
+| name     |          String           |          | The App Name.<br />A partial search will be used, and the search will be case insensitive.<br />The localized name of the App in the user's locale will also be included in the search. |
+| spaceIds | Array\<Number or String\> |          | The Space ID of where the App resides in.<br />Up to 100 IDs can be specified.                                                                                                          |
+| limit    |     Number or String      |          | The number of Apps to retrieve.<br />Must be between 1 and 100.<br />If nothing is specified, it will default to 100.                                                                   |
+| offset   |     Number or String      |          | The number of retrievals that will be skipped.<br />Must be between 0 and 2147483647. If nothing is specified, it will default to 0.                                                    |
+
+#### Returns
+
+| Name          |  Type  | Description                                                                                                                                                                                                                                                                                 |
+| ------------- | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| appId         | String | The App ID.                                                                                                                                                                                                                                                                                 |
+| code          | String | The App Code of the App.<br />An empty string is returned if an App Code is not set in the App's settings.                                                                                                                                                                                  |
+| name          | String | The name of the App.<br />If Localization settings are enabled, the localized name will be returned. The localization language will be dependent on the language settings of the Kintone user authenticating this API.                                                                      |
+| description   | String | The description of the App.<br />If Localization settings are enabled, the localized name will be returned. The localization language will be dependent on the language settings of the Kintone user authenticating this API.                                                               |
+| spaceId       | String | If the App was created inside a Space, it will return the Space ID. If not, null is returned.                                                                                                                                                                                               |
+| threadId      | String | If the App was created inside a Space, it will return the Thread ID of the Thread of the space it belongs to.<br />Apps that are created inside Spaces using the GUI will be automatically allocated to the default Thread.<br />If the App was not created in a Space, `null` is returned. |
+| createdAt     | String | The date of when the App was created.                                                                                                                                                                                                                                                       |
+| creator       | Object | The information of the user who created the App.                                                                                                                                                                                                                                            |
+| creator.code  | String | The log in name of the creator.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                                      |
+| creator.name  | String | The display name of the creator.<br />An empty string is returned for inactive users and deleted users.                                                                                                                                                                                     |
+| modifiedAt    | String | The date of when the App was last modified.                                                                                                                                                                                                                                                 |
+| modifier      | Object | The information of the user who last updated the App.                                                                                                                                                                                                                                       |
+| modifier.code | String | The login name of the last updater. An empty string is returned for inactive users and deleted users.                                                                                                                                                                                       |
+| modifier.name | String | The display name of the last updater. An empty string is returned for inactive users and deleted users.                                                                                                                                                                                     |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005336727
+
+### addApp
+
+Creates a preview App.
+[The Deploy App Settings](https://developer.kintone.io/hc/en-us/articles/115004881348) API must be used on the created preview App for the App to become live.
+
+#### Parameters
+
+| Name  |       Type       | Required | Description                                             |
+| ----- | :--------------: | :------: | ------------------------------------------------------- |
+| name  |      String      |   Yes    | The App name.<br />The maximum length is 64 characters. |
+| space | Number or String |          | The Space ID of where the App will be created.          |
+
+#### Returns
+
+| Name     |  Type  | Description                              |
+| -------- | :----: | ---------------------------------------- |
+| app      | String | The App ID of the created preview App.   |
+| revision | String | The revision number of the App settings. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115004712547
 
 ### getAppAcl
 
