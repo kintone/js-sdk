@@ -15,6 +15,9 @@
 - [addApp](#addApp)
 - [getAppAcl](#getAppAcl)
 - [updateAppAcl](#updateAppAcl)
+- [evaluateRecordsAcl](#evaluateRecordsAcl)
+- [getRecordAcl](#getRecordAcl)
+- [updateRecordAcl](#updateRecordAcl)
 - [getFieldAcl](#getFieldAcl)
 - [updateFieldAcl](#updateFieldAcl)
 - [getAppSettings](#getAppSettings)
@@ -634,6 +637,98 @@ Updates the App permissions of an App.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115005445908
+
+### evaluateRecordsAcl
+
+Evaluates the API user's permissions for records and fields within an App.
+
+#### Parameters
+
+| Name |           Type            | Required | Description                                                                         |
+| ---- | :-----------------------: | :------: | ----------------------------------------------------------------------------------- |
+| app  |     Number or String      |   Yes    | The app ID.                                                                         |
+| ids  | Array\<Number or String\> |   Yes    | An array of record IDs that will be evaluated. <br /> The maximum limit is 100 IDs. |
+
+#### Returns
+
+| Name                                 |  Type   | Description                                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------ | :-----: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| rights                               |  Array  | An array of objects that contain permission settings of the specified records.                                                                                                                                                                                                                                                                       |
+| rights[].id                          | String  | The record ID.                                                                                                                                                                                                                                                                                                                                       |
+| rights[].record                      | Object  | An object consisting of record permissions of the specified record ID.                                                                                                                                                                                                                                                                               |
+| rights[].record.viewable             | Boolean | The view permissions of the specified record ID.                                                                                                                                                                                                                                                                                                     |
+| rights[].record.editable             | Boolean | The edit permissions of the specified record ID.                                                                                                                                                                                                                                                                                                     |
+| rights[].record.deletable            | Boolean | The delete permissions of the specified record ID.                                                                                                                                                                                                                                                                                                   |
+| rights[].fields                      | Object  | An object consisting of field permissions of the specified record ID. <br /> The following are also included in the response: <ul><li>fields that the user has no permissions to view</li><li>fields that have no permission settings set on them</li><li>fields that have no permission settings set on them</li><li>fields set in tables</li></ul> |
+| rights[].fields.{fieldCode}.viewable | Boolean | The view permissions of the field of the specified record ID. If the user has no view permissions of the record, all the values are set as `false`.                                                                                                                                                                                                  |
+| rights[].fields.{fieldCode}.editable | Boolean | The edit permissions of the field of the specified record ID.                                                                                                                                                                                                                                                                                        |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/360005496913
+
+### getRecordAcl
+
+Gets the record permission settings of an app.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| lang    |      String      |          | The localized language to retrieve the data in: <ul><li>`default`: retrieves the default names</li><li>`en`: retrieves the localized English names</li><li>`zh`: retrieves the localized Chinese names</li><li>`ja`: retrieves the localized Japanese names</li><li>`user`: retrieves the localized names, in the same language as the language setting set on the user used for the authentication.</li></ul>If ignored, the default names will be retrieved. |
+| preview |     Boolean      |          | A flag whether to get the record permission settings for pre-live environment                                                                                                                                                                                                                                                                                                                                                                                  |
+
+#### Returns
+
+| Name                            |  Type   | Description                                                                                                                                                                      |
+| ------------------------------- | :-----: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| rights                          |  Array  | An array of objects that contain data of record permissions, in order of priority.                                                                                               |
+| rights[].filterCond             | String  | The filter condition of the record permission. <br /> [Check here](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) for more information on query formats.   |
+| rights[].entities               |  Array  | An array listing the entities the permissions are granted to, in order of priority.                                                                                              |
+| rights[].entities[].entity      | Object  | An object containing data of the entity the permission is granted to.                                                                                                            |
+| rights[].entities[].entity.type | String  | The type of the entity the permission is granted to. <ul><li>`USER`: User</li><li>`GROUP`: Group</li><li>`ORGANIZATION`: Department</li><li>`FIELD_ENTITY`: User field</li></ul> |
+| rights[].entities[].entity.code | String  | The code of the entity the permission is granted to.                                                                                                                             |
+| rights[].entities[].viewable    | Boolean | The view permission of the entity. It indicates whether the record is viewable.                                                                                                  |
+| rights[].entities[].editable    | Boolean | The edit permission of the entity. It indicates whether the record is editable.                                                                                                  |
+| rights[].entities[].deletable   | Boolean | The delete permission of the entity. It indicates whether the record is deletable.                                                                                               |
+| rights[].entities[].includeSubs | Boolean | The permission inheritance settings of the department the permission is granted to. It indecates whether permissions are inherited.                                              |
+| revision                        | String  | The revision number of the app settings.                                                                                                                                         |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005192867
+
+### updateRecordAcl
+
+Updates the record permission settings of an app.
+
+#### Parameters
+
+| Name                            |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app                             | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                |
+| rights                          |      Array       |   Yes    | An array listing data of record permissions. List in order of priority.                                                                                                                                                                                                                                                                                                                    |
+| rights[].filterCond             |      String      |          | The filter condition in a query format. <br /> [Check here](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) for more data on query formats. Some [limitations](https://developer.kintone.io/hc/en-us/articles/115005364008#limitations) exist when specifying the filter conditions. <br /> If this parameter is ignored, the filter condition will be "All records". |
+| rights[].entities               |      Array       |   Yes    | An array listing the entities the permissions are granted to. List in order of priority. <br /> The "Everyone" group will be treated with the lowest priority, wherever it is placed in the list.                                                                                                                                                                                          |
+| rights[].entities[].entity      |      Object      |   Yes    | An object containing data of the entity the permissions are granted to.                                                                                                                                                                                                                                                                                                                    |
+| rights[].entities[].entity.type |      String      |   Yes    | The type of the entity the permissions are granted to. <ul><li>`USER`: User</li><li>`GROUP`: Group</li><li>`ORGANIZATION`: Department</li><li>`FIELD_ENTITY`: User field</li></ul>                                                                                                                                                                                                         |
+| rights[].entities[].entity.code |      String      |   Yes    | The code of the entity the permissions are granted to. <br /> If the "Everyone" group is not specified, the "Everyone" group will have no permissions to view/edit/delete. <br /> To specify guest space users, add the string "guest/" before the guest's login name.                                                                                                                     |
+| rights[].entities[].viewable    |     Boolean      |          | The view permission of the entity. <br /> It indicates whether the record is viewable. <br /> If ignored, the value is `false`.                                                                                                                                                                                                                                                            |
+| rights[].entities[].editable    |     Boolean      |          | The edit permission of the entity. <br /> It indicates whether the record is editable. <br /> If ignored, the value is `false`. <br /> If the entity has no permission to view the record, this value is `false`.                                                                                                                                                                          |
+| rights[].entities[].deletable   |     Boolean      |          | The delete permission of the entity. <br /> It indicates whether the record is deletable. <br /> If ignored, the value is `false`. <br /> If the entity has no permission to view the record, this value is `false`.                                                                                                                                                                       |
+| rights[].entities[].includeSubs |     Boolean      |          | The permission inheritance settings of the department the permissions are granted to. <br /> It indecates whether permissions are inherited. <br /> If ignored, this value is `false`.                                                                                                                                                                                                     |
+| revision                        | Number or String |          | Specify the revision number of the settings that will be deployed. <br /> The request will fail if the revision number is not the latest revision. <br /> The revision will not be checked if this parameter is ignored, or `-1` is specified.                                                                                                                                             |
+
+#### Returns
+
+| Name     |  Type  | Description                              |
+| -------- | :----: | ---------------------------------------- |
+| revision | String | The revision number of the app settings. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/115005364008
 
 ### getFieldAcl
 
