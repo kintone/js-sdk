@@ -171,7 +171,8 @@ An array of objects, including field types and field values within the matching 
 ### getAllRecordsWithCursor
 
 Retrieves details of all records from an app by specifying the app ID, fields, and query.
-This method can retrieve the records exceeding the [REST API limitation](https://developer.kintone.io/hc/en-us/articles/212495188#limitations).
+This method uses [`createCursor()`](#createCursor) internally, so an error can be raised by the limitation of the maximum valid cursors per domain.
+However, this method can retrieve the records exceeding the limitation of `size` parameter in [`createCursor()`](#createCursor)
 
 #### Parameters
 
