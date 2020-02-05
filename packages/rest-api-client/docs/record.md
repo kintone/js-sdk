@@ -227,9 +227,9 @@ Retrieves multiple comments from a record in an app.
 | comments[].creator.name    | String  | The comment creator's user name (display name).                                                                                          |
 | comments[].mentions        |  Array  | An array including information of mentioned users.                                                                                       |
 | comments[].mentions[].code | String  | The code of the mentioned user, group or organization.                                                                                   |
-| comments[].mentions[].type | String  | The type of the mention.<br />- `USER`: User<br />- `GROUP`: Group<br />- `ORGANIZATION`: Department                                     |
-| older                      | Boolean | Information of older comments:<br />- `true`: Older comments exist.<br />- `false`: Older comments do not exist (i.e. the first comment) |
-| newer                      | Boolean | Information of newer comments:<br />- `true`: Newer comments exist.<br />- `false`: Newer comments do not exist (i.e. the last comment). |
+| comments[].mentions[].type | String  | The type of the mention.<ul><li>`USER`: User</li><li>`GROUP`: Group</li><li> `ORGANIZATION`: Department</li></ul>                                     |
+| older                      | Boolean | It indicates whether older comments exist. |
+| newer                      | Boolean | It indicates whether newer comments exist. |
 
 #### Reference
 
@@ -249,7 +249,7 @@ Add a comment to a record in an app.
 | comment.text            |      String      |   Yes    | The comment text. The maximum characters of the comment is 65535.                                                                                                                             |
 | comment.mentions        |      Array       |          | An array including information to mention other users.                                                                                                                                        |
 | comment.mentions[].code |      String      |          | The code the user, group or organization that will be mentioned. The maximum number of mentions is 10. The mentioned users will be placed in front of the comment text when the API succeeds. |
-| comment.mentions[].type |      String      |          | The type of the mentioned target.<br />- `USER`: User<br />- `GROUP`: Group<br />- `ORGANIZATION`: Department                                                                                 |
+| comment.mentions[].type |      String      |          | The type of the mentioned target.<ul><li>`USER`: User</li><li>`GROUP`: Group</li><li> `ORGANIZATION`: Department</li></ul>               |
 
 #### Returns
 
@@ -320,7 +320,7 @@ Retrieves multiple records from an App by specifying the cursor ID.
 | Name    |  Type   | Description                                                                                                                                                                                                                                                                                                                                                          |
 | ------- | :-----: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | records |  Array  | An array of objects that includes field data of records that match the query. <br /> The response is the same as the response for the [Get Records API](https://developer.kintone.io/hc/en-us/articles/213149287/#getrecords).                                                                                                                                       |
-| next    | Boolean | States whether there are more records that can be acquired from the cursor. <ul><li>`true`: There are still records to be acquired. </li><li> `false`: There are no more records to be acquired. </li></ul> Run this API again with the same parameters to obtain the next set of records. <br /> The cursor will remain valid until all records have been obtained. |
+| next    | Boolean | States whether there are more records that can be acquired from the cursor. <br /> It indicates whether records to be acquired are still exist. <br /> Run this API again with the same parameters to obtain the next set of records. <br /> The cursor will remain valid until all records have been obtained. |
 
 #### Reference
 
