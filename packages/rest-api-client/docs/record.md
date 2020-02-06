@@ -4,6 +4,7 @@
 - [addRecord](#addRecord)
 - [updateRecord](#updateRecord)
 - [getRecords](#getRecords)
+- [getAllRecords](#getAllRecords)
 - [getAllRecordsWithId](#getAllRecordsWithId)
 - [getAllRecordsWithOffset](#getAllRecordsWithOffset)
 - [getAllRecordsWithCursor](#getAllRecordsWithCursor)
@@ -131,6 +132,27 @@ Retrieves details of multiple records from an App by specifying the App ID and a
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/360019245194
+
+### getAllRecords
+
+Retrieves details of all records from an app by specifying the app ID, fields, and condition.
+This method can retrieve the records exceeding the [REST API limitation](https://developer.kintone.io/hc/en-us/articles/212495188#limitations).
+
+If you specify `orderBy` parameter, this method uses [`createCursor()`](#createCursor) and [`getRecordsByCursor()`](#getRecordsByCursor) API internally unless you specify `withCursor = false`.
+
+#### Parameters
+
+| Name       |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ---------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app        | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| fields     | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                                                                                     |
+| condition  |      String      |          | The query that will specify what records will be responded. <br /> Refer to the [Query Operators and Functions](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned.<br />`order by`, `limit`, and `offset` can not be used in the query. |
+| orderBy    |      String      |          | The sort order as a query.<br />[Check here](https://developer.kintone.io/hc/en-us/articles/360019245194#options) for more information on query formats.                                                                                                                                                                                                                                                             |
+| withCursor |     Boolean      |          | It indicates whether to use [`createCursor()`](#createCursor) and [`getRecordsByCursor()`](#getRecordsByCursor) internally. The default is `true`.                                                                                                                                                                                                                                                                   |
+
+#### Returns
+
+An array of objects, including field types and field values within the matching records.
 
 ### getAllRecordsWithId
 
