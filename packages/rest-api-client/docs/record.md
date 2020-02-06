@@ -135,7 +135,7 @@ Retrieves details of multiple records from an App by specifying the App ID and a
 
 ### getAllRecords
 
-Retrieves details of all records from an app by specifying the app ID, fields, and condition.
+Retrieves details of all records from an app by specifying the app ID, fields, condition, and sort order.
 This method can retrieve the records exceeding the [REST API limitation](https://developer.kintone.io/hc/en-us/articles/212495188#limitations).
 
 If you specify `orderBy` parameter, this method uses [`createCursor()`](#createCursor) and [`getRecordsByCursor()`](#getRecordsByCursor) API internally unless you specify `withCursor = false`.
