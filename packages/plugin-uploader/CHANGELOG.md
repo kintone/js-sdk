@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/kintone/plugin-uploader/compare/v4.0.0...v4.0.1) (2020-02-10)
+
+
+### Bug Fixes
+
+* pinned puppeteer version v1 ([#266](https://github.com/kintone/plugin-uploader/issues/266)) ([620712f](https://github.com/kintone/plugin-uploader/commit/620712fcf83a94c15ff33ee6bc0ac1a9809c0b99))
+
 ## [4.0.0](https://github.com/kintone/plugin-uploader/compare/v3.0.7...v4.0.0) (2020-01-28)
 
 
