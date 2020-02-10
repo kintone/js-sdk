@@ -38,6 +38,14 @@ client.record
 
 ## KintoneRestAPIClient
 
+| Name               |       Type       |          Required           | Description                                                                                                                                                                                                                  |
+| ------------------ | :--------------: | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| baseUrl            |      String      | Conditionally<br />Required | The base URL for your Kintone environment.<br />It must start with `https`. (e.g. https://example.kintone.com) <br />Required in Node.js environment. If you omit it in browser environment, `location.origin` will be used. |
+| auth               |      Object      | Conditionally<br />Required |                                                                                                                                                                                                                              |
+| guestSpaceId       | Number or String |                             | The guest space ID. If you operate apps made inside a guest space, please specify this.                                                                                                                                      |
+| basicAuth          |      Object      |                             | If your Kintone environment uses [Basic authentication](https://developer.kintone.io/hc/en-us/articles/212495188#basicauthentication), please specify its username and password.                                             |
+| basicAuth.username |      String      |                             | The username of Basic authentication.                                                                                                                                                                                        |
+| basicAuth.password |      String      |                             | The password of Basic authentication.                                                                                                                                                                                        |
 ## KintoneRestAPIError
 
 ## References
