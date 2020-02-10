@@ -38,6 +38,8 @@ client.record
 
 ## KintoneRestAPIClient
 
+> TODO: Better section name?
+
 | Name               |       Type       |          Required           | Description                                                                                                                                                                                                                  |
 | ------------------ | :--------------: | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | baseUrl            |      String      | Conditionally<br />Required | The base URL for your Kintone environment.<br />It must start with `https`. (e.g. https://example.kintone.com) <br />Required in Node.js environment. If you omit it in browser environment, `location.origin` will be used. |
