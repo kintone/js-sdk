@@ -46,6 +46,35 @@ client.record
 | basicAuth          |      Object      |                             | If your Kintone environment uses [Basic authentication](https://developer.kintone.io/hc/en-us/articles/212495188#basicauthentication), please specify its username and password.                                             |
 | basicAuth.username |      String      |                             | The username of Basic authentication.                                                                                                                                                                                        |
 | basicAuth.password |      String      |                             | The password of Basic authentication.                                                                                                                                                                                        |
+
+### Authentication
+
+This client supports three authentication methods:
+
+1. [Password authentication](https://developer.kintone.io/hc/en-us/articles/212495188#passwordAuth)
+2. [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
+3. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
+
+> _TODO: Something like: "The required parameters are different by the methods. The client judges which method to use by passed parameters"_
+
+#### 1. Parameters for [Password authentication](https://developer.kintone.io/hc/en-us/articles/212495188#passwordAuth)
+
+| Name     |  Type  | Required | Description |
+| -------- | :----: | :------: | ----------- |
+| username | String |   Yes    |
+| password | String |   Yes    |
+
+#### 2. Parameters for [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
+
+| Name     |        Type        | Required | Description                                             |
+| -------- | :----------------: | :------: | ------------------------------------------------------- |
+| apiToken | String or String[] |   Yes    | You can pass multiple api tokens as an array of string. |
+
+#### 3. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
+
+Supported in browser environment only.  
+If you omit `auth` parameter, the client uses Session authentication.
+
 ## KintoneRestAPIError
 
 ## References
