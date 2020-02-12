@@ -2,9 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Frest-api-client.svg)](https://badge.fury.io/js/%40kintone%2Frest-api-client)
 
-## Getting Started
+## Installation
 
-### Installation
+### 1. Install with `npm`
 
 This library is distributed on `npm`.
 
@@ -12,11 +12,32 @@ This library is distributed on `npm`.
 npm install @kintone/rest-api-client
 ```
 
-### Usage
+You can then use `require` or `import` to import the library.
+
+```javascript
+// CommonJS
+const { KintoneRestAPIClient } = require("@kintone/rest-api-client");
+// ES modules
+import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+```
+
+### 2. UMD files (for browser environment)
+
+This library also provides two Universal Module Definition (UMD) files:
+
+- https://unpkg.com/@kintone/rest-api-client@latest/umd/KintoneRestAPIClient.js
+- minified one: https://unpkg.com/@kintone/rest-api-client@latest/umd/KintoneRestAPIClient.min.js
+
+After loading this, you can use `KintoneRestAPIClient` directly.  
+In Kintone customization, please add this URL in "JavaScript and CSS Customization" setting of your app.
+
+NOTE: The UMD links are using the `latest` tag to point to the latest version of the library. This pointer is unstable, it shifts as we release new versions. You should consider pointing to a specific version, such as [`1.0.0`](https://unpkg.com/@kintone/rest-api-client@1.0.0/umd/KintoneRestAPIClient.js).
+
+## Usage
+
+Here is a sample code that retrieves records of an app.
 
 ```js
-const { KintoneRestAPIClient } = require("@kintone/rest-api-client");
-
 const client = new KintoneRestAPIClient({
   baseUrl: "https://example.cybozu.com",
   // Use password authentication
@@ -39,17 +60,6 @@ client.record
     console.log(err);
   });
 ```
-
-### UMD files for browser environment
-
-This library also provides two Universal Module Definition (UMD) files:
-
-- https://unpkg.com/@kintone/rest-api-client@latest/umd/KintoneRestAPIClient.js
-- minified one: https://unpkg.com/@kintone/rest-api-client@latest/umd/KintoneRestAPIClient.min.js
-
-After loading this, you can use `KintoneRestAPIClient` directly.
-
-NOTE: The UMD links are using the `latest` tag to point to the latest version of the library. This pointer is unstable, it shifts as we release new versions. You should consider pointing to a specific version, such as `v1.0.0`.
 
 ## Parameters for `KintoneRestAPIClient`
 
