@@ -2,6 +2,14 @@
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Frest-api-client.svg)](https://badge.fury.io/js/%40kintone%2Frest-api-client)
 
+- [Installation](#installation)
+- [Usage](#usage)
+- [Parameters for `KintoneRestAPIClient`](#parameters-for-kintonerestapiclient)
+- [Error Handling](#error-handling)
+- [References](#references)
+- [Contribution Guide](#contribution-guide)
+- [License](#license)
+
 ## Installation
 
 ### 1. Install with `npm`
