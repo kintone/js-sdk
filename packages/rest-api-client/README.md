@@ -43,21 +43,22 @@ client.record
 | Name               |       Type       |          Required           | Description                                                                                                                                                                                                                  |
 | ------------------ | :--------------: | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | baseUrl            |      String      | Conditionally<br />Required | The base URL for your Kintone environment.<br />It must start with `https`. (e.g. https://example.kintone.com) <br />Required in Node.js environment. If you omit it in browser environment, `location.origin` will be used. |
-| auth               |      Object      | Conditionally<br />Required |                                                                                                                                                                                                                              |
-| guestSpaceId       | Number or String |                             | The guest space ID. If you operate apps made inside a guest space, please specify this.                                                                                                                                      |
-| basicAuth          |      Object      |                             | If your Kintone environment uses [Basic authentication](https://developer.kintone.io/hc/en-us/articles/212495188#basicauthentication), please specify its username and password.                                             |
+| auth               |      Object      | Conditionally<br />Required | The object for authentication. See [Authentication](#Authentication).                                                                                                                                                        |
+| guestSpaceId       | Number or String |                             | The guest space ID. If you are dealing with apps that are in guest spaces, please specify this.                                                                                                                              |
+| basicAuth          |      Object      |                             | If your Kintone environment uses Basic authentication, please specify its username and password.                                                                                                                             |
 | basicAuth.username |      String      |                             | The username of Basic authentication.                                                                                                                                                                                        |
 | basicAuth.password |      String      |                             | The password of Basic authentication.                                                                                                                                                                                        |
 
 ### Authentication
 
-This client supports three authentication methods:
+The client supports three authentication methods:
 
 1. [Password authentication](https://developer.kintone.io/hc/en-us/articles/212495188#passwordAuth)
 2. [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
 3. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
 
-> _TODO: Something like: "The required parameters are different by the methods. The client judges which method to use by passed parameters"_
+The required parameters inside `auth` are different by the methods.  
+The client determines which method to use by passed parameters.
 
 #### 1. Parameters for [Password authentication](https://developer.kintone.io/hc/en-us/articles/212495188#passwordAuth)
 
