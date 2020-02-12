@@ -51,9 +51,7 @@ After loading this, you can use `KintoneRestAPIClient` directly.
 
 NOTE: The UMD links are using the `latest` tag to point to the latest version of the library. This pointer is unstable, it shifts as we release new versions. You should consider pointing to a specific version, such as `v1.0.0`.
 
-## KintoneRestAPIClient
-
-> TODO: Better section name?
+## Parameters for `KintoneRestAPIClient`
 
 | Name               |       Type       |          Required           | Description                                                                                                                                                                                                                  |
 | ------------------ | :--------------: | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
