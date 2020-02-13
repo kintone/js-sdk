@@ -289,7 +289,7 @@ Retrieves multiple comments from a record in an app.
 | ------ | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app    | Number or String |   Yes    | The app ID.                                                                                                                                                                       |
 | record | Number or String |   Yes    | The record ID.                                                                                                                                                                    |
-| order  |      String      |          | The sort order of the Comment ID. Specifying "asc" will sort the comments in ascending order, and "desc" will sort the comments in descending order.                              |
+| order  |      String      |          | The sort order of the comment ID. Specifying "asc" will sort the comments in ascending order, and "desc" will sort the comments in descending order.                              |
 | offset |      Number      |          | This skips the retrieval of the first number of comments.<br />"offset": 30 skips the first 30 comments, and retrieves from the 31st comment. There is no maximum for this value. |
 | limit  |      Number      |          | The number of records to retrieve.<br />"limit": 5 will retrieve the first 5 comments. The default and maximum is 10 comments.                                                    |
 
@@ -298,7 +298,7 @@ Retrieves multiple comments from a record in an app.
 | Name                       |  Type   | Description                                                                                                                              |
 | -------------------------- | :-----: | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | comments                   |  Array  | An array of comments. An empty array is returned if no conditions are met.                                                               |
-| comments[].id              | String  | The Comment ID.                                                                                                                          |
+| comments[].id              | String  | The comment ID.                                                                                                                          |
 | comments[].text            | String  | The comment including the line feed codes.<br />If a user is mentioned within a comment, the "@" symbol will be omitted from the String. |
 | comments[].createdAt       | String  | The created date and time of the comment.                                                                                                |
 | comments[].creator         | Object  | An object including information of the comment creator.                                                                                  |
@@ -334,7 +334,7 @@ Add a comment to a record in an app.
 
 | Name |  Type  | Description     |
 | ---- | :----: | --------------- |
-| id   | String | The Comment ID. |
+| id   | String | The comment ID. |
 
 #### Reference
 
@@ -350,7 +350,7 @@ Delete a comment in a record in an app.
 | ------- | :--------------: | :------: | --------------- |
 | app     | Number or String |   Yes    | The app ID.     |
 | record  | Number or String |   Yes    | The record ID.  |
-| comment | Number or String |   Yes    | The Comment ID. |
+| comment | Number or String |   Yes    | The comment ID. |
 
 #### Returns
 
