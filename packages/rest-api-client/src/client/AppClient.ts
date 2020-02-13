@@ -7,6 +7,9 @@ type Overwrite<T1, T2> = {
 } &
   T2;
 
+type ConditionalStrict<T, U, V extends object> = T extends U ? V : Partial<V>;
+type ConditionalExist<T, U, V extends object> = T extends U ? V : {};
+
 type Lang = "ja" | "en" | "zh" | "user" | "default";
 
 type Properties = {
