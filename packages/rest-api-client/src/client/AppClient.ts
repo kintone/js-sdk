@@ -34,64 +34,56 @@ type App = {
   };
 };
 
-type ViewBase = {
-  builtinType?: "ASSIGNEE";
-  name: string;
-  id: string;
-  filterCond: string;
-  sort: string;
-  index: string;
-};
+type ViewBase<T extends "response" | "parameter"> = {
+  index: T extends "response"
+    ? string
+    : T extends "parameter"
+    ? string | number
+    : never;
+} & ConditionalExist<T, "response", { builtinType?: "ASSIGNEE"; id: string }> &
+  ConditionalStrict<
+    T,
+    "response",
+    { name: string; filterCond: string; sort: string }
+  >;
 
-type ListView = ViewBase & {
+type ListView<T extends "response" | "parameter"> = ViewBase<T> & {
   type: "LIST";
-  fields: string[];
-};
+} & ConditionalStrict<
+    T,
+    "response",
+    {
+      fields: string[];
+    }
+  >;
 
-type CalendarView = ViewBase & {
+type CalendarView<T extends "response" | "parameter"> = ViewBase<T> & {
   type: "CALENDAR";
-  date: string;
-  title: string;
-};
+} & ConditionalStrict<
+    T,
+    "response",
+    {
+      date: string;
+      title: string;
+    }
+  >;
 
-type CustomView = ViewBase & {
+type CustomView<T extends "response" | "parameter"> = ViewBase<T> & {
   type: "CUSTOM";
-  html: string;
-  pager: boolean;
-  device: "DESKTOP" | "ANY";
-};
+} & ConditionalStrict<
+    T,
+    "response",
+    {
+      html: string;
+      pager: boolean;
+      device: "DESKTOP" | "ANY";
+    }
+  >;
 
-type View = ListView | CalendarView | CustomView;
-
-type ViewBaseForUpdate = {
-  index: string | number;
-  name?: string;
-  filterCond?: string;
-  sort?: string;
-};
-
-type ListViewForUpdate = ViewBaseForUpdate & {
-  type: "LIST";
-  fields?: string[];
-};
-
-type CalendarViewForUpdate = ViewBaseForUpdate & {
-  type: "CALENDAR";
-  date?: string;
-  title?: string;
-};
-
-type CustomViewForUpdate = ViewBaseForUpdate & {
-  type: "CUSTOM";
-  html?: string;
-  pager?: boolean;
-  device?: "DESKTOP" | "ANY";
-};
-
-type ViewForUpdate =
-  | ListViewForUpdate
-  | CalendarViewForUpdate
-  | CustomViewForUpdate;
+type View<T extends "response" | "parameter"> =
+  | ListView<T>
+  | CalendarView<T>
+  | CustomView<T>;
 
 type AssigneeEntity = {
   entity:
@@ -381,7 +373,10 @@ export class AppClient {
     app: AppID;
     lang?: Lang;
     preview?: boolean;
-  }): Promise<{ views: { [viewName: string]: View }; revision: string }> {
+  }): Promise<{
+    views: { [viewName: string]: View<"response"> };
+    revision: string;
+  }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/views",
@@ -392,7 +387,7 @@ export class AppClient {
 
   public updateViews(params: {
     app: AppID;
-    views: { [viewName: string]: ViewForUpdate };
+    views: { [viewName: string]: View<"parameter"> };
     revision?: Revision;
   }): Promise<{
     views: { [viewName: string]: { id: string } };
