@@ -111,7 +111,8 @@ Updates details of 1 record in an App by specifying its record number, or a diff
 
 ### getRecords
 
-Retrieves details of multiple records from an App by specifying the App ID and a query string.
+Retrieves details of multiple records from an App by specifying the App ID and a query string.  
+The number of records that can be retrieved at once is 500.
 
 #### Parameters
 
@@ -210,14 +211,15 @@ An array of objects, including field types and field values within the matching 
 
 ### addRecords
 
-Adds multiple records to an App.
+Adds multiple records to an App.  
+The number of records that can be created at once is 100.
 
 #### Parameters
 
-| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                     |
-| ------- | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app     | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                     |
-| records |      Array       |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                              |
+| ------- | :--------------: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                                                              |
+| records |      Array       |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Up to 500 records can be specified.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
 
 #### Returns
 
@@ -239,7 +241,7 @@ Updates details of multiple records in an App, by specifying their record number
 | Name                      |       Type       |          Required           | Description                                                                                                                                                                                                     |
 | ------------------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app                       | Number or String |             Yes             | The App ID.                                                                                                                                                                                                     |
-| records                   |      Array       |             Yes             | Holds an array of objects that include `id`/`updateKey`, `revision` and `record` objects.                                                                                                                       |
+| records                   |      Array       |             Yes             | Holds an array of objects that include `id`/`updateKey`, `revision` and `record` objects.<br />Up to 500 records can be specified.                                                                              |
 | records[].id              | Number or String | Conditionally<br />Required | The Record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
 | records[].updateKey       |      Object      | Conditionally<br />Required | The unique key of the record to be updated. Required, if `id` will not be specified. To specify this field, the field must have the "Prohibit duplicate values" option turned on.                               |
 | records[].updateKey.field |      String      | Conditionally<br />Required | The field code of the unique key. Required, if `updateKey` will be specified.                                                                                                                                   |
