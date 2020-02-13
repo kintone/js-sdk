@@ -42,14 +42,14 @@ const client = new KintoneRestAPIClient();
 
 ### getRecord
 
-Retrieves details of 1 record from an app by specifying the app ID and Record ID.
+Retrieves details of 1 record from an app by specifying the app ID and record ID.
 
 #### Parameters
 
 | Name |       Type       | Required | Description    |
 | ---- | :--------------: | :------: | -------------- |
 | app  | Number or String |   Yes    | The app ID.    |
-| id   | Number or String |   Yes    | The Record ID. |
+| id   | Number or String |   Yes    | The record ID. |
 
 #### Returns
 
@@ -76,7 +76,7 @@ Adds 1 record to an app.
 
 | Name     |  Type  | Description                          |
 | -------- | :----: | ------------------------------------ |
-| id       | String | The Record ID of the created record. |
+| id       | String | The record ID of the created record. |
 | revision | String | The revision number of the record.   |
 
 #### Reference
@@ -92,7 +92,7 @@ Updates details of 1 record in an app by specifying its record number, or a diff
 | Name            |       Type       |          Required           | Description                                                                                                                                                                                                     |
 | --------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app             | Number or String |             Yes             | The app ID.                                                                                                                                                                                                     |
-| id              | Number or String | Conditionally<br />Required | The Record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
+| id              | Number or String | Conditionally<br />Required | The record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
 | updateKey       |      Object      | Conditionally<br />Required | The unique key of the record to be updated. Required, if `id` will not be specified. To specify this field, the field must have the "Prohibit duplicate values" option turned on.                               |
 | updateKey.field |      String      | Conditionally<br />Required | The field code of the unique key.<br />Required, if `updateKey` will be specified.                                                                                                                              |
 | updateKey.value | Number or String | Conditionally<br />Required | The value of the unique key.<br />Required, if `updateKey` will be specified.                                                                                                                                   |
@@ -223,7 +223,7 @@ Adds multiple records to an app.
 
 | Name      |      Type       | Description                            |
 | --------- | :-------------: | -------------------------------------- |
-| ids       | Array\<String\> | The Record IDs of the created records. |
+| ids       | Array\<String\> | The record IDs of the created records. |
 | revisions | Array\<String\> | The revision numbers of the records.   |
 
 #### Reference
@@ -240,7 +240,7 @@ Updates details of multiple records in an app, by specifying their record number
 | ------------------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app                       | Number or String |             Yes             | The app ID.                                                                                                                                                                                                     |
 | records                   |      Array       |             Yes             | Holds an array of objects that include `id`/`updateKey`, `revision` and `record` objects.                                                                                                                       |
-| records[].id              | Number or String | Conditionally<br />Required | The Record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
+| records[].id              | Number or String | Conditionally<br />Required | The record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
 | records[].updateKey       |      Object      | Conditionally<br />Required | The unique key of the record to be updated. Required, if `id` will not be specified. To specify this field, the field must have the "Prohibit duplicate values" option turned on.                               |
 | records[].updateKey.field |      String      | Conditionally<br />Required | The field code of the unique key. Required, if `updateKey` will be specified.                                                                                                                                   |
 | records[].updateKey.value | Number or String | Conditionally<br />Required | The value of the unique key. Required, if `updateKey` will be specified.                                                                                                                                        |
@@ -268,7 +268,7 @@ Deletes multiple records in an app.
 | Name      |           Type            | Required | Description                                                                                                                                                                                                                                                                                                                                                                                              |
 | --------- | :-----------------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app       |     Number or String      |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                              |
-| ids       | Array\<Number or String\> |   Yes    | Array of Record IDs that will be deleted.<br />Up to 100 records can be specified.                                                                                                                                                                                                                                                                                                                       |
+| ids       | Array\<Number or String\> |   Yes    | Array of record IDs that will be deleted.<br />Up to 100 records can be specified.                                                                                                                                                                                                                                                                                                                       |
 | revisions | Array\<Number or String\> |          | The Expected revision number.<br />The first id number will correspond to the first revision number in the array, the second id to the second revision number, and so on.<br />If the revision number does not match, an error will occur and no records will be deleted.<br />If the revision number is left blank or is `-1`, the revision number will not be checked for the corresponding record ID. |
 
 #### Returns
@@ -288,7 +288,7 @@ Retrieves multiple comments from a record in an app.
 | Name   |       Type       | Required | Description                                                                                                                                                                       |
 | ------ | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app    | Number or String |   Yes    | The app ID.                                                                                                                                                                       |
-| record | Number or String |   Yes    | The Record ID.                                                                                                                                                                    |
+| record | Number or String |   Yes    | The record ID.                                                                                                                                                                    |
 | order  |      String      |          | The sort order of the Comment ID. Specifying "asc" will sort the comments in ascending order, and "desc" will sort the comments in descending order.                              |
 | offset |      Number      |          | This skips the retrieval of the first number of comments.<br />"offset": 30 skips the first 30 comments, and retrieves from the 31st comment. There is no maximum for this value. |
 | limit  |      Number      |          | The number of records to retrieve.<br />"limit": 5 will retrieve the first 5 comments. The default and maximum is 10 comments.                                                    |
@@ -323,7 +323,7 @@ Add a comment to a record in an app.
 | Name                    |       Type       | Required | Description                                                                                                                                                                                   |
 | ----------------------- | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app                     | Number or String |   Yes    | The app ID.                                                                                                                                                                                   |
-| record                  | Number or String |   Yes    | The Record ID.                                                                                                                                                                                |
+| record                  | Number or String |   Yes    | The record ID.                                                                                                                                                                                |
 | comment                 |      Object      |   Yes    | An object including comment details.                                                                                                                                                          |
 | comment.text            |      String      |   Yes    | The comment text. The maximum characters of the comment is 65535.                                                                                                                             |
 | comment.mentions        |      Array       |          | An array including information to mention other users.                                                                                                                                        |
@@ -349,7 +349,7 @@ Delete a comment in a record in an app.
 | Name    |       Type       | Required | Description     |
 | ------- | :--------------: | :------: | --------------- |
 | app     | Number or String |   Yes    | The app ID.     |
-| record  | Number or String |   Yes    | The Record ID.  |
+| record  | Number or String |   Yes    | The record ID.  |
 | comment | Number or String |   Yes    | The Comment ID. |
 
 #### Returns
@@ -425,14 +425,14 @@ An empty object.
 
 ### updateRecordAssignees
 
-Updates the Assignees of a Record status, that was set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
+Updates the Assignees of a record status, that was set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
 
 #### Parameters
 
 | Name      |       Type       | Required | Description                                                                                                                                                                                                                                      |
 | --------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | app       | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                      |
-| id        | Number or String |   Yes    | The Record ID.                                                                                                                                                                                                                                   |
+| id        | Number or String |   Yes    | The record ID.                                                                                                                                                                                                                                   |
 | assignees | Array\<string\>  |   Yes    | The user code(s) (log in names) of the Assignee(s). If empty, no users will be assigned. The maximum number of Assignees is 100.                                                                                                                 |
 | revision  | Number or String |          | The revision number of the record before updating the Assignees. If the specified revision is not the latest revision, the request will result in an error. The revision will not be checked if this parameter is ignored, or `-1` is specified. |
 
@@ -482,7 +482,7 @@ Updates the Statuses of Multiple records of an app, that were set with the [Proc
 | records            |      Array       |   Yes    | An array including information of the record to be updated. Up to 100 records can be specified.                                                                                                                                                                                                                                                                                                                                 |
 | records[].action   |      String      |   Yes    | The Action name of the action to run. <br /> If the localization feature has been used to apply multiple translations of the Action name, specify the name of the Action in the language settings of the user that will run the API. API Tokens follow the language settings set in the [Localization page](https://get.kintone.help/hc/en-us/articles/115001461367-Localization) of the User & System Administration settings. |
 | records[].assignee |      String      |          | The next Assignee. Specify the Assignee's log in name.                                                                                                                                                                                                                                                                                                                                                                          |
-| records[].id       | Number or String |   Yes    | The Record ID.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| records[].id       | Number or String |   Yes    | The record ID.                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | records[].revision | Number or String |          | The revision number of the record before updating the status. <br /> If the specified revision is not the latest revision, the request will result in an error. <br /> The revision will not be checked if this parameter is ignored, or `-1` is specified.                                                                                                                                                                     |
 
 #### Returns
@@ -490,7 +490,7 @@ Updates the Statuses of Multiple records of an app, that were set with the [Proc
 | Name               |  Type  | Description                                                                                                                                                                                |
 | ------------------ | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | records            | Array  | An array including information of the updated records.                                                                                                                                     |
-| records[].id       | String | The Record ID                                                                                                                                                                              |
+| records[].id       | String | The record ID                                                                                                                                                                              |
 | records[].revision | String | The revision number of the record after updating the status. <br /> The revision number will increase by 2, as two operations are preformed - running the action, and updating the status. |
 
 #### Reference
