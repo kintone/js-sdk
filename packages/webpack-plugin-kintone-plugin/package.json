@@ -31,7 +31,7 @@
     "@types/adm-zip": "^0.4.32",
     "@types/chokidar": "^1.7.5",
     "@types/lodash": "^4.14.149",
-    "@types/mkdirp": "^0.5.2",
+    "@types/mkdirp": "^1.0.0",
     "@types/mocha": "^7.0.1",
     "@types/node": "^9.6.55",
     "@types/rimraf": "^2.0.3",
@@ -56,6 +56,6 @@
     "@kintone/plugin-packer": "^3.0.0",
     "chokidar": "^3.3.1",
     "lodash": "^4.17.15",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^1.0.3"
   }
 }
