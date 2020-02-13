@@ -85,7 +85,7 @@ type View<T extends "response" | "parameter"> =
   | CalendarView<T>
   | CustomView<T>;
 
-type AssigneeEntity = {
+type AssigneeEntity<T extends "response" | "parameter"> = {
   entity:
     | {
         type:
@@ -96,56 +96,34 @@ type AssigneeEntity = {
           | "CUSTOM_FIELD";
         code: string;
       }
-    | {
+    | ({
         type: "CREATOR";
-        code: null;
-      };
-  includeSubs: boolean;
-};
+      } & ConditionalExist<T, "response", { code: null }>);
+} & ConditionalStrict<T, "response", { includeSubs: boolean }>;
 
-type State = {
-  name: string;
-  index: string;
-  assignee: {
-    type: "ONE" | "ALL" | "ANY";
-    entities: AssigneeEntity[];
-  };
-};
+type State<T extends "response" | "parameter"> = {
+  index: T extends "response"
+    ? string
+    : T extends "parameter"
+    ? string | number
+    : never;
+} & ConditionalStrict<
+  T,
+  "response",
+  {
+    name: string;
+    assignee: {
+      type: "ONE" | "ALL" | "ANY";
+      entities: Array<AssigneeEntity<T>>;
+    };
+  }
+>;
 
-type AssigneeEntityForUpdate = {
-  entity:
-    | {
-        type:
-          | "USER"
-          | "GROUP"
-          | "ORGANIZATION"
-          | "FIELD_ENTITY"
-          | "CUSTOM_FIELD";
-        code: string;
-      }
-    | {
-        type: "CREATOR";
-      };
-  includeSubs?: boolean;
-};
-
-type StateForUpdate = {
-  name?: string;
-  index: string | number;
-  assignee?: {
-    type: "ONE" | "ALL" | "ANY";
-    entities: AssigneeEntityForUpdate[];
-  };
-};
-
-type Action = {
+type Action<T extends "response" | "parameter"> = {
   name: string;
   from: string;
   to: string;
-  filterCond: string;
-};
-
-type ActionForUpdate = Overwrite<Action, { filterCond?: string }>;
+} & ConditionalStrict<T, "response", { filterCond: string }>;
 
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
@@ -524,9 +502,9 @@ export class AppClient {
   }): Promise<{
     enable: boolean;
     states: {
-      [statusName: string]: State;
+      [statusName: string]: State<"response">;
     };
-    actions: Action[];
+    actions: Array<Action<"response">>;
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -540,8 +518,8 @@ export class AppClient {
   public updateProcessManagement(params: {
     app: AppID;
     enable?: boolean;
-    states?: { [statusName: string]: StateForUpdate };
-    actions?: ActionForUpdate[];
+    states?: { [statusName: string]: State<"parameter"> };
+    actions?: Array<Action<"parameter">>;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
