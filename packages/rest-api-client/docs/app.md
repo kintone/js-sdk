@@ -447,7 +447,7 @@ A `CustomizationFile` object has the following properties:
 
 ### updateAppCustomize
 
-Updates the JavaScript and CSS Customization settings of an app.
+Updates the JavaScript and CSS customization settings of an app.
 
 #### Parameters
 
