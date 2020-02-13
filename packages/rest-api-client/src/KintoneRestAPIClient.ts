@@ -11,12 +11,12 @@ type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
 };
 
-export type PartialAuth =
+export type Auth =
   | Omit<ApiTokenAuth, "type">
   | Omit<PasswordAuth, "type">
   | Omit<SessionAuth, "type">;
 
-export type Auth = ApiTokenAuth | PasswordAuth | SessionAuth;
+type DiscriminatedAuth = ApiTokenAuth | PasswordAuth | SessionAuth;
 
 type ApiTokenAuth = {
   type: "apiToken";
@@ -63,7 +63,7 @@ export class KintoneRestAPIClient {
   constructor(
     options: {
       baseUrl?: string;
-      auth?: PartialAuth;
+      auth?: Auth;
       guestSpaceId?: number | string;
       basicAuth?: BasicAuth;
     } = {}
@@ -103,19 +103,22 @@ export class KintoneRestAPIClient {
     return this.headers;
   }
 
-  private buildAuth(partialAuth: PartialAuth): Auth {
-    if ("username" in partialAuth) {
-      return { type: "password", ...partialAuth };
+  private buildAuth(auth: Auth): DiscriminatedAuth {
+    if ("username" in auth) {
+      return { type: "password", ...auth };
     }
-    if ("apiToken" in partialAuth) {
-      return { type: "apiToken", ...partialAuth };
+    if ("apiToken" in auth) {
+      return { type: "apiToken", ...auth };
     }
     return {
       type: "session"
     };
   }
 
-  private buildHeaders(auth: Auth, basicAuth?: BasicAuth): KintoneAuthHeader {
+  private buildHeaders(
+    auth: DiscriminatedAuth,
+    basicAuth?: BasicAuth
+  ): KintoneAuthHeader {
     const headers = basicAuth
       ? {
           Authorization: `Basic ${Base64.encode(
@@ -145,7 +148,7 @@ export class KintoneRestAPIClient {
     }
   }
 
-  private buildParams(auth: Auth): HTTPClientParams {
+  private buildParams(auth: DiscriminatedAuth): HTTPClientParams {
     let requestToken;
     if (auth.type === "session") {
       if (
