@@ -47,7 +47,7 @@ const client = new KintoneRestAPIClient();
 
 ### uploadFile
 
-Uploads a file to kintone.
+Uploads a file to Kintone.
 
 `uploadFile` returns a file key for the uploaded file.
 You can use the file key at the following place.
