@@ -448,7 +448,7 @@ Updates the assignees of a record status, that was set with the [Process Managem
 
 ### updateRecordStatus
 
-Updates the Status of a record of an app, that was set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
+Updates the status of a record of an app, that was set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
 
 #### Parameters
 
@@ -472,7 +472,7 @@ Updates the Status of a record of an app, that was set with the [Process Managem
 
 ### ️updateRecordsStatus
 
-Updates the Statuses of Multiple records of an app, that were set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
+Updates the statuses of Multiple records of an app, that were set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
 
 #### Parameters
 
