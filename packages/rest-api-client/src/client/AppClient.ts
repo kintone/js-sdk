@@ -10,6 +10,8 @@ type Overwrite<T1, T2> = {
 type ConditionalStrict<T, U, V extends object> = T extends U ? V : Partial<V>;
 type ConditionalExist<T, U, V extends object> = T extends U ? V : {};
 
+type Apperance = "response" | "parameter";
+
 type Lang = "ja" | "en" | "zh" | "user" | "default";
 
 type Properties = {
@@ -34,7 +36,7 @@ type App = {
   };
 };
 
-type ViewBase<T extends "response" | "parameter"> = {
+type ViewBase<T extends Apperance> = {
   index: T extends "response"
     ? string
     : T extends "parameter"
@@ -47,7 +49,7 @@ type ViewBase<T extends "response" | "parameter"> = {
     { name: string; filterCond: string; sort: string }
   >;
 
-type ListView<T extends "response" | "parameter"> = ViewBase<T> & {
+type ListView<T extends Apperance> = ViewBase<T> & {
   type: "LIST";
 } & ConditionalStrict<
     T,
@@ -57,7 +59,7 @@ type ListView<T extends "response" | "parameter"> = ViewBase<T> & {
     }
   >;
 
-type CalendarView<T extends "response" | "parameter"> = ViewBase<T> & {
+type CalendarView<T extends Apperance> = ViewBase<T> & {
   type: "CALENDAR";
 } & ConditionalStrict<
     T,
@@ -68,7 +70,7 @@ type CalendarView<T extends "response" | "parameter"> = ViewBase<T> & {
     }
   >;
 
-type CustomView<T extends "response" | "parameter"> = ViewBase<T> & {
+type CustomView<T extends Apperance> = ViewBase<T> & {
   type: "CUSTOM";
 } & ConditionalStrict<
     T,
@@ -80,12 +82,9 @@ type CustomView<T extends "response" | "parameter"> = ViewBase<T> & {
     }
   >;
 
-type View<T extends "response" | "parameter"> =
-  | ListView<T>
-  | CalendarView<T>
-  | CustomView<T>;
+type View<T extends Apperance> = ListView<T> | CalendarView<T> | CustomView<T>;
 
-type AssigneeEntity<T extends "response" | "parameter"> = {
+type AssigneeEntity<T extends Apperance> = {
   entity:
     | {
         type:
@@ -101,7 +100,7 @@ type AssigneeEntity<T extends "response" | "parameter"> = {
       } & ConditionalExist<T, "response", { code: null }>);
 } & ConditionalStrict<T, "response", { includeSubs: boolean }>;
 
-type State<T extends "response" | "parameter"> = {
+type State<T extends Apperance> = {
   index: T extends "response"
     ? string
     : T extends "parameter"
@@ -119,7 +118,7 @@ type State<T extends "response" | "parameter"> = {
   }
 >;
 
-type Action<T extends "response" | "parameter"> = {
+type Action<T extends Apperance> = {
   name: string;
   from: string;
   to: string;
@@ -127,69 +126,44 @@ type Action<T extends "response" | "parameter"> = {
 
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
-type FieldRightEntity = {
+type FieldRightEntity<T extends Apperance> = {
   accessibility: "READ" | "WRITE" | "NONE";
-  includeSubs: boolean;
   entity: {
     code: string;
     type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
   };
-};
-type FieldRightEntityForUpdate = Overwrite<
-  FieldRightEntity,
-  { includeSubs?: boolean }
->;
+} & ConditionalStrict<T, "response", { includeSubs: boolean }>;
 
-type FieldRight = {
+type FieldRight<T extends Apperance> = {
   code: string;
-  entities: FieldRightEntity[];
+  entities: Array<FieldRightEntity<T>>;
 };
 
-type FieldRightForUpdate = Overwrite<
-  FieldRight,
-  { entities: FieldRightEntityForUpdate[] }
+type AppRightEntity<T extends Apperance> = {
+  entity:
+    | {
+        code: string;
+        type: "USER" | "GROUP" | "ORGANIZATION";
+      }
+    | ({
+        type: "CREATOR";
+      } & ConditionalExist<T, "response", { code: null }>);
+} & ConditionalStrict<
+  T,
+  "response",
+  {
+    includeSubs: boolean;
+    appEditable: boolean;
+    recordViewable: boolean;
+    recordAddable: boolean;
+    recordEditable: boolean;
+    recordDeletable: boolean;
+    recordImportable: boolean;
+    recordExportable: boolean;
+  }
 >;
 
-type AppRightEntity = {
-  entity:
-    | {
-        code: string;
-        type: "USER" | "GROUP" | "ORGANIZATION";
-      }
-    | {
-        type: "CREATOR";
-        code: null;
-      };
-  includeSubs: boolean;
-  appEditable: boolean;
-  recordViewable: boolean;
-  recordAddable: boolean;
-  recordEditable: boolean;
-  recordDeletable: boolean;
-  recordImportable: boolean;
-  recordExportable: boolean;
-};
-
-type AppRightEntityForUpdate = {
-  entity:
-    | {
-        code: string;
-        type: "USER" | "GROUP" | "ORGANIZATION";
-      }
-    | {
-        type: "CREATOR";
-      };
-  includeSubs?: boolean;
-  appEditable?: boolean;
-  recordViewable?: boolean;
-  recordAddable?: boolean;
-  recordEditable?: boolean;
-  recordDeletable?: boolean;
-  recordImportable?: boolean;
-  recordExportable?: boolean;
-};
-
-type RecordRightEntity = {
+type RecordRightEntity<T extends Apperance> = {
   entity: {
     code: string;
     type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
@@ -198,25 +172,20 @@ type RecordRightEntity = {
   editable: boolean;
   deletable: boolean;
   includeSubs: boolean;
-};
-type RecordRightEntityForUpdate = Overwrite<
-  RecordRightEntity,
+} & ConditionalStrict<
+  T,
+  "response",
   {
-    viewable?: boolean;
-    editable?: boolean;
-    deletable?: boolean;
-    includeSubs?: boolean;
+    viewable: boolean;
+    editable: boolean;
+    deletable: boolean;
+    includeSubs: boolean;
   }
 >;
 
-type RecordRight = {
-  filterCond: string;
-  entities: RecordRightEntity[];
-};
-type RecordRightForUpdate = {
-  filterCond?: string;
-  entities: RecordRightEntityForUpdate[];
-};
+type RecordRight<T extends Apperance> = {
+  entities: Array<RecordRightEntity<T>>;
+} & ConditionalStrict<T, "response", { filterCond: string }>;
 
 type Rights = {
   id: string;
@@ -553,7 +522,7 @@ export class AppClient {
   public getFieldAcl(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ rights: FieldRight[]; revision: string }> {
+  }): Promise<{ rights: Array<FieldRight<"response">>; revision: string }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "field/acl",
@@ -562,9 +531,9 @@ export class AppClient {
     return this.client.get(path, { ...rest });
   }
 
-  public updateRecordAcl(params: {
+  public updateFieldAcl(params: {
     app: AppID;
-    rights: RecordRightForUpdate[];
+    rights: Array<FieldRight<"parameter">>;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
@@ -572,7 +541,7 @@ export class AppClient {
     // This behavior may not be what the users expected,
     // so we disable it temporarily.
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record/acl",
+      endpointName: "field/acl",
       preview: true
     });
     return this.client.put(path, params);
@@ -581,7 +550,7 @@ export class AppClient {
   public getAppAcl(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ rights: AppRightEntity[]; revision: string }> {
+  }): Promise<{ rights: Array<AppRightEntity<"response">>; revision: string }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/acl",
@@ -592,7 +561,7 @@ export class AppClient {
 
   public updateAppAcl(params: {
     app: AppID;
-    rights: AppRightEntityForUpdate[];
+    rights: Array<AppRightEntity<"parameter">>;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
@@ -616,9 +585,22 @@ export class AppClient {
     return this.client.get(path, params);
   }
 
-  public updateFieldAcl(params: {
+  public getRecordAcl(params: {
     app: AppID;
-    rights: FieldRightForUpdate[];
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{ rights: Array<RecordRight<"response">>; revision: string }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record/acl",
+      preview
+    });
+    return this.client.get(path, { ...rest });
+  }
+
+  public updateRecordAcl(params: {
+    app: AppID;
+    rights: Array<RecordRight<"parameter">>;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
@@ -626,23 +608,10 @@ export class AppClient {
     // This behavior may not be what the users expected,
     // so we disable it temporarily.
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "field/acl",
+      endpointName: "record/acl",
       preview: true
     });
     return this.client.put(path, params);
-  }
-
-  public getRecordAcl(params: {
-    app: AppID;
-    lang?: Lang;
-    preview?: boolean;
-  }): Promise<{ rights: RecordRight[]; revision: string }> {
-    const { preview, ...rest } = params;
-    const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record/acl",
-      preview
-    });
-    return this.client.get(path, { ...rest });
   }
 
   public getAppCustomize(params: {
