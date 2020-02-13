@@ -2,11 +2,6 @@ import { AppID, RecordID, Revision } from "../KintoneTypes";
 import { HttpClient } from "../http";
 import { buildPath } from "../url";
 
-type Overwrite<T1, T2> = {
-  [P in Exclude<keyof T1, keyof T2>]: T1[P];
-} &
-  T2;
-
 type ConditionalStrict<T, U, V extends object> = T extends U ? V : Partial<V>;
 type ConditionalExist<T, U, V extends object> = T extends U ? V : {};
 
