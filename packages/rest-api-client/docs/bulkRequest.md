@@ -55,7 +55,7 @@ const client = new KintoneRestAPIClient({
 
 ### bulkRequest
 
-Runs multiple API requests sequentially to multiple Apps.
+Runs multiple API requests sequentially to multiple apps.
 
 #### Parameters
 

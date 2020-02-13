@@ -42,13 +42,13 @@ const client = new KintoneRestAPIClient();
 
 ### getRecord
 
-Retrieves details of 1 record from an App by specifying the App ID and Record ID.
+Retrieves details of 1 record from an app by specifying the app ID and Record ID.
 
 #### Parameters
 
 | Name |       Type       | Required | Description    |
 | ---- | :--------------: | :------: | -------------- |
-| app  | Number or String |   Yes    | The App ID.    |
+| app  | Number or String |   Yes    | The app ID.    |
 | id   | Number or String |   Yes    | The Record ID. |
 
 #### Returns
@@ -63,13 +63,13 @@ Retrieves details of 1 record from an App by specifying the App ID and Record ID
 
 ### addRecord
 
-Adds 1 record to an App.
+Adds 1 record to an app.
 
 #### Parameters
 
 | Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                    |
 | ------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| app    | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                    |
+| app    | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                    |
 | record |      Object      |          | Field codes and values are specified in this object. <br /> If ignored, the record will be added with default field values. <br /> If field codes that don't exist are specified, these will be ignored. <br /> For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
 
 #### Returns
@@ -85,13 +85,13 @@ Adds 1 record to an App.
 
 ### updateRecord
 
-Updates details of 1 record in an App by specifying its record number, or a different unique key.
+Updates details of 1 record in an app by specifying its record number, or a different unique key.
 
 #### Parameters
 
 | Name            |       Type       |          Required           | Description                                                                                                                                                                                                     |
 | --------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app             | Number or String |             Yes             | The App ID.                                                                                                                                                                                                     |
+| app             | Number or String |             Yes             | The app ID.                                                                                                                                                                                                     |
 | id              | Number or String | Conditionally<br />Required | The Record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
 | updateKey       |      Object      | Conditionally<br />Required | The unique key of the record to be updated. Required, if `id` will not be specified. To specify this field, the field must have the "Prohibit duplicate values" option turned on.                               |
 | updateKey.field |      String      | Conditionally<br />Required | The field code of the unique key.<br />Required, if `updateKey` will be specified.                                                                                                                              |
@@ -111,15 +111,15 @@ Updates details of 1 record in an App by specifying its record number, or a diff
 
 ### getRecords
 
-Retrieves details of multiple records from an App by specifying the App ID and a query string.
+Retrieves details of multiple records from an app by specifying the app ID and a query string.
 
 #### Parameters
 
 | Name       |       Type       | Required | Description                                                                                                                                                                    |
 | ---------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| app        | Number or String |   Yes    | The App ID.                                                                                                                                                                    |
-| fields     | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the App.                                               |
-| query      |      String      |          | The query string that specifies what records to include in the response. <br />Ignoring this parameter will return all accessible records from the App.                        |
+| app        | Number or String |   Yes    | The app ID.                                                                                                                                                                    |
+| fields     | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                               |
+| query      |      String      |          | The query string that specifies what records to include in the response. <br />Ignoring this parameter will return all accessible records from the app.                        |
 | totalCount |     Boolean      |          | If set to `true`, the total count of records that match the query conditions will be included in the response.<br />If ignored, `null` is returned for the `totalCount` value. |
 
 #### Returns
@@ -210,13 +210,13 @@ An array of objects, including field types and field values within the matching 
 
 ### addRecords
 
-Adds multiple records to an App.
+Adds multiple records to an app.
 
 #### Parameters
 
 | Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                     |
 | ------- | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app     | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                     |
+| app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                     |
 | records |      Array       |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
 
 #### Returns
@@ -232,13 +232,13 @@ Adds multiple records to an App.
 
 ### updateRecords
 
-Updates details of multiple records in an App, by specifying their record numbers, or their unique keys.
+Updates details of multiple records in an app, by specifying their record numbers, or their unique keys.
 
 #### Parameters
 
 | Name                      |       Type       |          Required           | Description                                                                                                                                                                                                     |
 | ------------------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app                       | Number or String |             Yes             | The App ID.                                                                                                                                                                                                     |
+| app                       | Number or String |             Yes             | The app ID.                                                                                                                                                                                                     |
 | records                   |      Array       |             Yes             | Holds an array of objects that include `id`/`updateKey`, `revision` and `record` objects.                                                                                                                       |
 | records[].id              | Number or String | Conditionally<br />Required | The Record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
 | records[].updateKey       |      Object      | Conditionally<br />Required | The unique key of the record to be updated. Required, if `id` will not be specified. To specify this field, the field must have the "Prohibit duplicate values" option turned on.                               |
@@ -267,7 +267,7 @@ Deletes multiple records in an app.
 
 | Name      |           Type            | Required | Description                                                                                                                                                                                                                                                                                                                                                                                              |
 | --------- | :-----------------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app       |     Number or String      |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                                                                              |
+| app       |     Number or String      |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                              |
 | ids       | Array\<Number or String\> |   Yes    | Array of Record IDs that will be deleted.<br />Up to 100 records can be specified.                                                                                                                                                                                                                                                                                                                       |
 | revisions | Array\<Number or String\> |          | The Expected revision number.<br />The first id number will correspond to the first revision number in the array, the second id to the second revision number, and so on.<br />If the revision number does not match, an error will occur and no records will be deleted.<br />If the revision number is left blank or is `-1`, the revision number will not be checked for the corresponding record ID. |
 
@@ -287,7 +287,7 @@ Retrieves multiple comments from a record in an app.
 
 | Name   |       Type       | Required | Description                                                                                                                                                                       |
 | ------ | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app    | Number or String |   Yes    | The App ID.                                                                                                                                                                       |
+| app    | Number or String |   Yes    | The app ID.                                                                                                                                                                       |
 | record | Number or String |   Yes    | The Record ID.                                                                                                                                                                    |
 | order  |      String      |          | The sort order of the Comment ID. Specifying "asc" will sort the comments in ascending order, and "desc" will sort the comments in descending order.                              |
 | offset |      Number      |          | This skips the retrieval of the first number of comments.<br />"offset": 30 skips the first 30 comments, and retrieves from the 31st comment. There is no maximum for this value. |
@@ -322,7 +322,7 @@ Add a comment to a record in an app.
 
 | Name                    |       Type       | Required | Description                                                                                                                                                                                   |
 | ----------------------- | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app                     | Number or String |   Yes    | The App ID.                                                                                                                                                                                   |
+| app                     | Number or String |   Yes    | The app ID.                                                                                                                                                                                   |
 | record                  | Number or String |   Yes    | The Record ID.                                                                                                                                                                                |
 | comment                 |      Object      |   Yes    | An object including comment details.                                                                                                                                                          |
 | comment.text            |      String      |   Yes    | The comment text. The maximum characters of the comment is 65535.                                                                                                                             |
@@ -348,7 +348,7 @@ Delete a comment in a record in an app.
 
 | Name    |       Type       | Required | Description     |
 | ------- | :--------------: | :------: | --------------- |
-| app     | Number or String |   Yes    | The App ID.     |
+| app     | Number or String |   Yes    | The app ID.     |
 | record  | Number or String |   Yes    | The Record ID.  |
 | comment | Number or String |   Yes    | The Comment ID. |
 
@@ -362,15 +362,15 @@ An empty object.
 
 ### createCursor
 
-Adds a cursor so that large amount of records can be obtained from an App.
+Adds a cursor so that large amount of records can be obtained from an app.
 
 #### Parameters
 
 | Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                         |
 | ------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app    | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| app    | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                         |
 | fields | Array\<String\>  |          | The field codes to be included in the response when using the [`getRecordsByCursor()`](#getRecordsByCursor). <br /> If ignored, all accessible fields in the app will be returned.                                                                                                                                                                                                                                  |
-| query  |      String      |          | The query string that will specify what records will be responded when using the [`getRecordsByCursor()`](#getRecordsByCursor). <br /> Refer to the [Query Operators and Functions](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the App will be returned. |
+| query  |      String      |          | The query string that will specify what records will be responded when using the [`getRecordsByCursor()`](#getRecordsByCursor). <br /> Refer to the [Query Operators and Functions](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned. |
 | size   | Number or String |          | The maximum number of records the [`getRecordsByCursor()`](#getRecordsByCursor) can retrieve from this cursor with one request. <br /> The maximum number is 500 records. If ignored, the default number of records to be retrieved is 100.                                                                                                                                                                         |
 
 #### Returns
@@ -386,7 +386,7 @@ Adds a cursor so that large amount of records can be obtained from an App.
 
 ### getRecordsByCursor
 
-Retrieves multiple records from an App by specifying the cursor ID.
+Retrieves multiple records from an app by specifying the cursor ID.
 
 #### Parameters
 
@@ -431,7 +431,7 @@ Updates the Assignees of a Record status, that was set with the [Process Managem
 
 | Name      |       Type       | Required | Description                                                                                                                                                                                                                                      |
 | --------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| app       | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                      |
+| app       | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                      |
 | id        | Number or String |   Yes    | The Record ID.                                                                                                                                                                                                                                   |
 | assignees | Array\<string\>  |   Yes    | The user code(s) (log in names) of the Assignee(s). If empty, no users will be assigned. The maximum number of Assignees is 100.                                                                                                                 |
 | revision  | Number or String |          | The revision number of the record before updating the Assignees. If the specified revision is not the latest revision, the request will result in an error. The revision will not be checked if this parameter is ignored, or `-1` is specified. |
@@ -448,14 +448,14 @@ Updates the Assignees of a Record status, that was set with the [Process Managem
 
 ### updateRecordStatus
 
-Updates the Status of a record of an App, that was set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
+Updates the Status of a record of an app, that was set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
 
 #### Parameters
 
 | Name     |       Type       |          Required           | Description                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | -------- | :--------------: | :-------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | action   |      String      |             Yes             | The Action name of the action to run. <br /> If the localization feature has been used to apply multiple translations of the Action name, specify the name of the Action in the language settings of the user that will run the API. API Tokens follow the language settings set in the [Localization page](https://get.kintone.help/hc/en-us/articles/115001461367-Localization) of the User & System Administration settings. |
-| app      | Number or String |             Yes             | The App ID.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| app      | Number or String |             Yes             | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | assignee |      String      | Conditionally<br />Required | The next Assignee. Specify the Assignee's log in name. <br /> Required, if the "_Assignee List_" of the current status is set to "_User chooses one assignee from the list to take action_", and a selectable assignee exists.                                                                                                                                                                                                  |
 | id       | Number or String |             Yes             | The record ID.                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | revision | Number or String |                             | The revision number of the record before updating the status. <br /> If the specified revision is not the latest revision, the request will result in an error. <br /> The revision will not be checked if this parameter is ignored, or `-1` is specified.                                                                                                                                                                     |
@@ -472,13 +472,13 @@ Updates the Status of a record of an App, that was set with the [Process Managem
 
 ### ️updateRecordsStatus
 
-Updates the Statuses of Multiple records of an App, that were set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
+Updates the Statuses of Multiple records of an app, that were set with the [Process Management feature](https://get.kintone.help/hc/en-us/articles/115001510908-Configuring-Process-Management).
 
 #### Parameters
 
 | Name               |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ------------------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app                |      String      |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| app                |      String      |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | records            |      Array       |   Yes    | An array including information of the record to be updated. Up to 100 records can be specified.                                                                                                                                                                                                                                                                                                                                 |
 | records[].action   |      String      |   Yes    | The Action name of the action to run. <br /> If the localization feature has been used to apply multiple translations of the Action name, specify the name of the Action in the language settings of the user that will run the API. API Tokens follow the language settings set in the [Localization page](https://get.kintone.help/hc/en-us/articles/115001461367-Localization) of the User & System Administration settings. |
 | records[].assignee |      String      |          | The next Assignee. Specify the Assignee's log in name.                                                                                                                                                                                                                                                                                                                                                                          |
