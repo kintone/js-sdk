@@ -199,21 +199,7 @@ type Rights = {
 
 type AppCustomizeScope = "ALL" | "ADMIN" | "NONE";
 
-type AppCustomizeResource =
-  | {
-      type: "URL";
-      url: string;
-    }
-  | {
-      type: "FILE";
-      file: {
-        name: string;
-        fileKey: string;
-        contentType: string;
-        size: string;
-      };
-    };
-type AppCustomizeResourceForUpdate =
+type AppCustomizeResource<T extends Apperance> =
   | {
       type: "URL";
       url: string;
@@ -222,17 +208,21 @@ type AppCustomizeResourceForUpdate =
       type: "FILE";
       file: {
         fileKey: string;
-      };
+      } & ConditionalExist<
+        T,
+        "response",
+        { name: string; contentType: string; size: string }
+      >;
     };
 
-type AppCustomize = {
-  js: AppCustomizeResource[];
-  css: AppCustomizeResource[];
-};
-type AppCustomizeForUpdate = {
-  js?: AppCustomizeResourceForUpdate[];
-  css?: AppCustomizeResourceForUpdate[];
-};
+type AppCustomize<T extends Apperance> = ConditionalStrict<
+  T,
+  "response",
+  {
+    js: Array<AppCustomizeResource<T>>;
+    css: Array<AppCustomizeResource<T>>;
+  }
+>;
 
 export class AppClient {
   private client: HttpClient;
@@ -619,8 +609,8 @@ export class AppClient {
     preview?: boolean;
   }): Promise<{
     scope: AppCustomizeScope;
-    desktop: AppCustomize;
-    mobile: AppCustomize;
+    desktop: AppCustomize<"response">;
+    mobile: AppCustomize<"response">;
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -634,8 +624,8 @@ export class AppClient {
   public updateAppCustomize(params: {
     app: AppID;
     scope?: AppCustomizeScope;
-    desktop?: AppCustomizeForUpdate;
-    mobile?: AppCustomizeForUpdate;
+    desktop?: AppCustomize<"parameter">;
+    mobile?: AppCustomize<"parameter">;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
