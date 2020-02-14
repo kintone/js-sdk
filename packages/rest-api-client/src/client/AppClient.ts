@@ -163,10 +163,6 @@ type RecordRightEntity<T extends Apperance> = {
     code: string;
     type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
   };
-  viewable: boolean;
-  editable: boolean;
-  deletable: boolean;
-  includeSubs: boolean;
 } & ConditionalStrict<
   T,
   "response",
