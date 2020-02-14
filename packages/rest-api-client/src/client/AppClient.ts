@@ -5,7 +5,7 @@ import { buildPath } from "../url";
 type ConditionalStrict<T, U, V extends object> = T extends U ? V : Partial<V>;
 type ConditionalExist<T, U, V extends object> = T extends U ? V : {};
 
-type Apperance = "response" | "parameter";
+type Appearance = "response" | "parameter";
 
 type Lang = "ja" | "en" | "zh" | "user" | "default";
 
@@ -31,7 +31,7 @@ type App = {
   };
 };
 
-type ViewBase<T extends Apperance> = {
+type ViewBase<T extends Appearance> = {
   index: T extends "response"
     ? string
     : T extends "parameter"
@@ -44,7 +44,7 @@ type ViewBase<T extends Apperance> = {
     { name: string; filterCond: string; sort: string }
   >;
 
-type ListView<T extends Apperance> = ViewBase<T> & {
+type ListView<T extends Appearance> = ViewBase<T> & {
   type: "LIST";
 } & ConditionalStrict<
     T,
@@ -54,7 +54,7 @@ type ListView<T extends Apperance> = ViewBase<T> & {
     }
   >;
 
-type CalendarView<T extends Apperance> = ViewBase<T> & {
+type CalendarView<T extends Appearance> = ViewBase<T> & {
   type: "CALENDAR";
 } & ConditionalStrict<
     T,
@@ -65,7 +65,7 @@ type CalendarView<T extends Apperance> = ViewBase<T> & {
     }
   >;
 
-type CustomView<T extends Apperance> = ViewBase<T> & {
+type CustomView<T extends Appearance> = ViewBase<T> & {
   type: "CUSTOM";
 } & ConditionalStrict<
     T,
@@ -77,9 +77,9 @@ type CustomView<T extends Apperance> = ViewBase<T> & {
     }
   >;
 
-type View<T extends Apperance> = ListView<T> | CalendarView<T> | CustomView<T>;
+type View<T extends Appearance> = ListView<T> | CalendarView<T> | CustomView<T>;
 
-type AssigneeEntity<T extends Apperance> = {
+type AssigneeEntity<T extends Appearance> = {
   entity:
     | {
         type:
@@ -95,7 +95,7 @@ type AssigneeEntity<T extends Apperance> = {
       } & ConditionalExist<T, "response", { code: null }>);
 } & ConditionalStrict<T, "response", { includeSubs: boolean }>;
 
-type State<T extends Apperance> = {
+type State<T extends Appearance> = {
   index: T extends "response"
     ? string
     : T extends "parameter"
@@ -113,7 +113,7 @@ type State<T extends Apperance> = {
   }
 >;
 
-type Action<T extends Apperance> = {
+type Action<T extends Appearance> = {
   name: string;
   from: string;
   to: string;
@@ -121,7 +121,7 @@ type Action<T extends Apperance> = {
 
 type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
-type FieldRightEntity<T extends Apperance> = {
+type FieldRightEntity<T extends Appearance> = {
   accessibility: "READ" | "WRITE" | "NONE";
   entity: {
     code: string;
@@ -129,12 +129,12 @@ type FieldRightEntity<T extends Apperance> = {
   };
 } & ConditionalStrict<T, "response", { includeSubs: boolean }>;
 
-type FieldRight<T extends Apperance> = {
+type FieldRight<T extends Appearance> = {
   code: string;
   entities: Array<FieldRightEntity<T>>;
 };
 
-type AppRightEntity<T extends Apperance> = {
+type AppRightEntity<T extends Appearance> = {
   entity:
     | {
         code: string;
@@ -158,7 +158,7 @@ type AppRightEntity<T extends Apperance> = {
   }
 >;
 
-type RecordRightEntity<T extends Apperance> = {
+type RecordRightEntity<T extends Appearance> = {
   entity: {
     code: string;
     type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
@@ -174,7 +174,7 @@ type RecordRightEntity<T extends Apperance> = {
   }
 >;
 
-type RecordRight<T extends Apperance> = {
+type RecordRight<T extends Appearance> = {
   entities: Array<RecordRightEntity<T>>;
 } & ConditionalStrict<T, "response", { filterCond: string }>;
 
@@ -190,7 +190,7 @@ type Rights = {
 
 type AppCustomizeScope = "ALL" | "ADMIN" | "NONE";
 
-type AppCustomizeResource<T extends Apperance> =
+type AppCustomizeResource<T extends Appearance> =
   | {
       type: "URL";
       url: string;
@@ -206,7 +206,7 @@ type AppCustomizeResource<T extends Apperance> =
       >;
     };
 
-type AppCustomize<T extends Apperance> = ConditionalStrict<
+type AppCustomize<T extends Appearance> = ConditionalStrict<
   T,
   "response",
   {
