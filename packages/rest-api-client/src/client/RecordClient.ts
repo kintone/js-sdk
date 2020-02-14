@@ -74,6 +74,15 @@ export class RecordClient {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records"
     });
+    if (params.query) {
+      const regexp = /offset\s+(\d+)/i;
+      const result = params.query.match(regexp);
+      if (result && Number(result[1]) > 10000) {
+        console.warn(
+          "Warning: The maximum offset value will be limited to 10,000 in the future. Please use `createCursor()` and `getRecordsByCursor()` instead."
+        );
+      }
+    }
     return this.client.get(path, params);
   }
 
