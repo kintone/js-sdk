@@ -36,7 +36,7 @@ This library also provides two Universal Module Definition (UMD) files:
 - https://unpkg.com/@kintone/rest-api-client@latest/umd/KintoneRestAPIClient.js
 - minified one: https://unpkg.com/@kintone/rest-api-client@latest/umd/KintoneRestAPIClient.min.js
 
-After loading this, you can use `KintoneRestAPIClient` directly.  
+After loading this, you can use `KintoneRestAPIClient` directly.
 In Kintone customization, please add this URL in "JavaScript and CSS Customization" setting of your app.
 
 NOTE: The UMD links are using the `latest` tag to point to the latest version of the library. This pointer is unstable, it shifts as we release new versions. You should consider pointing to a specific version, such as [`1.0.0`](https://unpkg.com/@kintone/rest-api-client@1.0.0/umd/KintoneRestAPIClient.js).
@@ -53,7 +53,7 @@ const client = new KintoneRestAPIClient({
     username: process.env.KINTONE_USERNAME,
     password: process.env.KINTONE_PASSWORD
   }
-  // Use API Token authentication
+  // Use API token authentication
   // auth: { apiToken: process.env.KINTONE_API_TOKEN }
 
   // Use session authentication if `auth` is omitted (in browser only)
@@ -88,7 +88,7 @@ The client supports three authentication methods:
 2. [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
 3. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
 
-The required parameters inside `auth` are different by the methods.  
+The required parameters inside `auth` are different by the methods.
 The client determines which method to use by passed parameters.
 
 #### 1. Parameters for [Password authentication](https://developer.kintone.io/hc/en-us/articles/212495188#passwordAuth)
@@ -106,7 +106,7 @@ The client determines which method to use by passed parameters.
 
 #### 3. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
 
-Supported in browser environment only.  
+Supported in browser environment only.
 If you omit `auth` parameter, the client uses Session authentication.
 
 ## Error Handling

@@ -47,13 +47,13 @@ const client = new KintoneRestAPIClient();
 
 ### uploadFile
 
-Uploads a file to kintone.
+Uploads a file to Kintone.
 
 `uploadFile` returns a file key for the uploaded file.
 You can use the file key at the following place.
 
 - Attachment field in an app
-- JavaScript and CSS Customization settings of an app
+- JavaScript and CSS customization settings of an app
 
 #### Parameters
 
@@ -83,7 +83,7 @@ This is **NOT** the file key `uploadFile` returns.
 You can get the file key from the following place.
 
 - Attachment field in an app
-- JavaScript and CSS Customization settings of an app
+- JavaScript and CSS customization settings of an app
 
 #### Parameters
 
