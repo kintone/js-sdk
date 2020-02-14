@@ -10,7 +10,7 @@ type Appearance = "response" | "parameter";
 type Lang = "ja" | "en" | "zh" | "user" | "default";
 
 type Properties = {
-  [fieldCode: string]: any;
+  [fieldCode: string]: object;
 };
 
 type Layout = object[];
