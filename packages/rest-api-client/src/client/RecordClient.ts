@@ -27,10 +27,12 @@ type CommentID = string | number;
 export class RecordClient {
   private client: HttpClient;
   private guestSpaceId?: number | string;
+  private didWarnMaximumOffsetValue: boolean;
 
   constructor(client: HttpClient, guestSpaceId?: number | string) {
     this.client = client;
     this.guestSpaceId = guestSpaceId;
+    this.didWarnMaximumOffsetValue = false;
   }
 
   public getRecord<T extends Record>(params: {
@@ -74,6 +76,20 @@ export class RecordClient {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records"
     });
+    if (params.query) {
+      const regexp = /offset\s+(\d+)/i;
+      const result = params.query.match(regexp);
+      if (
+        !this.didWarnMaximumOffsetValue &&
+        result &&
+        Number(result[1]) > 10000
+      ) {
+        this.didWarnMaximumOffsetValue = true;
+        console.warn(
+          "Warning: The maximum offset value will be limited to 10,000 in the future. Please use `createCursor()` and `getRecordsByCursor()` instead."
+        );
+      }
+    }
     return this.client.get(path, params);
   }
 
