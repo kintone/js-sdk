@@ -7,6 +7,8 @@ type Headers = object;
 type Params = { [key: string]: unknown };
 type ErrorResponseHandler = (errorResponse: ErrorResponse) => void;
 
+const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
+
 export class AxiosClient implements HttpClient {
   private baseUrl: string;
   private headers: Headers;
@@ -32,13 +34,8 @@ export class AxiosClient implements HttpClient {
 
   public async get(path: string, params: any) {
     const requestURL = `${this.baseUrl}${path}?${qs.stringify(params)}`;
-    if (requestURL.length > 4096) {
-      return this._post(path, params, {
-        query: {
-          _method: "GET"
-        },
-        headers: { "X-HTTP-Method-Override": "GET" }
-      });
+    if (requestURL.length > THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE) {
+      return this.postUsingGetMethod(path, params);
     }
     // console.log(requestURL);
     let data;
@@ -67,26 +64,32 @@ export class AxiosClient implements HttpClient {
   }
 
   public async post(path: string, params: any) {
-    return this._post(path, params);
-  }
-
-  private async _post(
-    path: string,
-    params: any,
-    options = { headers: {}, query: {} }
-  ) {
-    const requestURL = `${this.baseUrl}${
-      Object.keys(options.query).length > 0
-        ? `?${qs.stringify(options.query)}`
-        : ""
-    }${path}`;
+    const requestURL = `${this.baseUrl}${path}`;
     let data;
     try {
       const response = await Axios.post(
         requestURL,
         { ...params, ...this.params },
         {
-          headers: { ...this.headers, ...options.headers }
+          headers: this.headers
+        }
+      );
+      data = response.data;
+    } catch (error) {
+      this.handleError(error);
+    }
+    return data;
+  }
+
+  private async postUsingGetMethod(path: string, params: any) {
+    const requestURL = `${this.baseUrl}${path}?_method=GET`;
+    let data;
+    try {
+      const response = await Axios.post(
+        requestURL,
+        { ...params, ...this.params },
+        {
+          headers: { ...this.headers, "X-HTTP-Method-Override": "GET" }
         }
       );
       data = response.data;
