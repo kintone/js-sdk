@@ -32,6 +32,14 @@ export class AxiosClient implements HttpClient {
 
   public async get(path: string, params: any) {
     const requestURL = `${this.baseUrl}${path}?${qs.stringify(params)}`;
+    if (requestURL.length > 4096) {
+      return this._post(path, params, {
+        query: {
+          _method: "GET"
+        },
+        headers: { "X-HTTP-Method-Override": "GET" }
+      });
+    }
     // console.log(requestURL);
     let data;
     try {
@@ -59,14 +67,26 @@ export class AxiosClient implements HttpClient {
   }
 
   public async post(path: string, params: any) {
-    const requestURL = `${this.baseUrl}${path}`;
+    return this._post(path, params);
+  }
+
+  private async _post(
+    path: string,
+    params: any,
+    options = { headers: {}, query: {} }
+  ) {
+    const requestURL = `${this.baseUrl}${
+      Object.keys(options.query).length > 0
+        ? `?${qs.stringify(options.query)}`
+        : ""
+    }${path}`;
     let data;
     try {
       const response = await Axios.post(
         requestURL,
         { ...params, ...this.params },
         {
-          headers: this.headers
+          headers: { ...this.headers, ...options.headers }
         }
       );
       data = response.data;
