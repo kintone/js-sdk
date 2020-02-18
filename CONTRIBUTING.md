@@ -1,8 +1,10 @@
 # Contributing Guide
 
+## For Contributors
+
 Thank you for your contribution!
 
-## Setup
+### Setup
 
 This repository is a monorepo using Lerna and Yarn Workspaces.
 
@@ -11,14 +13,7 @@ This repository is a monorepo using Lerna and Yarn Workspaces.
 % yarn install
 ```
 
-## Development
-
-We use conventional commits for our commit messages.
-So if you are not familiar with it, please see the following resource.
-
-https://www.conventionalcommits.org/
-
-## Test
+### Test
 
 ```sh
 % cd js-sdk
@@ -26,7 +21,13 @@ https://www.conventionalcommits.org/
 % yarn lint
 ```
 
-## Release (for maintainers)
+## For Maintainers
+
+### Merge
+
+After you have approved a PR, please merge the PR using **Squash and merge** with [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
+
+### Release
 
 ```
 % cd js-sdk
