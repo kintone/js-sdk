@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@0.3.0...@kintone/rest-api-client@1.0.0) (2020-02-18)
+
+
+### Bug Fixes
+
+* better error message ([0b9c2c5](https://github.com/kintone/js-sdk/commit/0b9c2c590ea63f1dd75ca2f00be22e80951ed046))
+* incorrect return type of app.getAppSettings ([12a7512](https://github.com/kintone/js-sdk/commit/12a751200e838f5318458305a94e6c931df531ae))
+* incorrect return type of app.updateAppSettings ([d59b0ee](https://github.com/kintone/js-sdk/commit/d59b0ee978cb71eebdb2adb165035f4b7410a69d))
+* print an appropriate error message when an error response doesn't exist ([f177bb4](https://github.com/kintone/js-sdk/commit/f177bb4025dafc240e56045d66d3b0982862ec69))
+* remove unnecessary whitespace ([1608c4e](https://github.com/kintone/js-sdk/commit/1608c4e32c1511bd6704609418cc5aa0a9da5aa1))
+* return type of buildDataFromBulkRequestResults ([5c2fb95](https://github.com/kintone/js-sdk/commit/5c2fb95465d1219fdb05f05e0a17a157044efac5))
+* type definition of Comment.id ([1d8e28a](https://github.com/kintone/js-sdk/commit/1d8e28a7eb233fb69864f87fddf7d10bd60e0ea8))
+* type definition of ErrorResponse ([3ed4846](https://github.com/kintone/js-sdk/commit/3ed484653a1e635bd062bd81f95c4fea80d8ce40))
+* type of ErrorResponseData array ([21aaad3](https://github.com/kintone/js-sdk/commit/21aaad3fee29411ea2e42a909a0393fbfdcd652a))
+
+
+### Features
+
+* add basicAuth to KintoneRestAPIClient ([4a354d0](https://github.com/kintone/js-sdk/commit/4a354d064a27235708dbe0465da87c06d8402420))
+* display warning when using getRecords with large offset ([#58](https://github.com/kintone/js-sdk/issues/58)) ([b3a4711](https://github.com/kintone/js-sdk/commit/b3a47118d8fb109e5d27b5d7a1e5f1a39059c9da))
+* handle error response of bulkRequest API ([8ade572](https://github.com/kintone/js-sdk/commit/8ade5724417237ec105a9a97819693470c3a5a73))
+* improve error message format ([aa76409](https://github.com/kintone/js-sdk/commit/aa76409900a533669ac36faaa761fa211843e648))
+* improve the type definition of ErrorResponse.data ([78f48ca](https://github.com/kintone/js-sdk/commit/78f48caa019467a197e62f00c9d4d5b788c01703))
+* set bulkRequestIndex in KintoneRestAPIError ([6dd83f1](https://github.com/kintone/js-sdk/commit/6dd83f18b5e091c8ca7c534b2987409d83271145))
+
+
+
+
+
 # [0.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@0.2.0...@kintone/rest-api-client@0.3.0) (2020-01-15)
 
 
