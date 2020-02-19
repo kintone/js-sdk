@@ -1,11 +1,20 @@
-import Axios, { AxiosError } from "axios";
+import Axios, { AxiosError, AxiosRequestConfig } from "axios";
 import qs from "qs";
 import { HttpClient, ErrorResponse } from "./HttpClientInterface";
 import FormData from "form-data";
 
+export type HttpMethod = "get" | "post" | "put" | "delete";
 type Headers = object;
-type Params = { [key: string]: unknown };
+export type Params = { [key: string]: unknown };
 type ErrorResponseHandler = (errorResponse: ErrorResponse) => void;
+
+export interface RequestHandler {
+  build: (
+    method: HttpMethod,
+    path: string,
+    params: Params
+  ) => AxiosRequestConfig;
+}
 
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 
@@ -14,22 +23,26 @@ export class AxiosClient implements HttpClient {
   private headers: Headers;
   private params: Params;
   private errorResponseHandler: ErrorResponseHandler;
+  private requestHandler: RequestHandler;
 
   constructor({
     baseUrl,
     headers,
     params,
-    errorResponseHandler
+    errorResponseHandler,
+    requestHandler
   }: {
     baseUrl: string;
     headers: Headers;
     params: Params;
     errorResponseHandler: ErrorResponseHandler;
+    requestHandler: RequestHandler;
   }) {
     this.baseUrl = baseUrl;
     this.headers = headers;
     this.params = params;
     this.errorResponseHandler = errorResponseHandler;
+    this.requestHandler = requestHandler;
   }
 
   public async get(path: string, params: any) {
@@ -64,21 +77,31 @@ export class AxiosClient implements HttpClient {
   }
 
   public async post(path: string, params: any) {
-    const requestURL = `${this.baseUrl}${path}`;
+    const requestConfig = this.requestHandler.build("post", path, params);
     let data;
     try {
-      const response = await Axios.post(
-        requestURL,
-        { ...params, ...this.params },
-        {
-          headers: this.headers
-        }
-      );
+      const response = await Axios(requestConfig);
       data = response.data;
     } catch (error) {
       this.handleError(error);
     }
     return data;
+
+    // const requestURL = `${this.baseUrl}${path}`;
+    // let data;
+    // try {
+    //   const response = await Axios.post(
+    //     requestURL,
+    //     { ...params, ...this.params },
+    //     {
+    //       headers: this.headers
+    //     }
+    //   );
+    //   data = response.data;
+    // } catch (error) {
+    //   this.handleError(error);
+    // }
+    // return data;
   }
 
   private async postUsingGetMethod(path: string, params: any) {

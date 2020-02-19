@@ -6,6 +6,7 @@ import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
 import { KintoneRestAPIError } from "./KintoneRestAPIError";
 import { ErrorResponse } from "./http/HttpClientInterface";
+import { RequestHandler, HttpMethod, Params } from "./http/AxiosClient";
 
 type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
@@ -85,7 +86,12 @@ export class KintoneRestAPIClient {
       baseUrl: this.baseUrl,
       headers: this.headers,
       params,
-      errorResponseHandler
+      errorResponseHandler,
+      requestHandler: new KintoneRequestHandler(
+        this.baseUrl,
+        this.headers,
+        params
+      )
     });
     const { guestSpaceId } = options;
 
@@ -175,5 +181,28 @@ export class KintoneRestAPIClient {
     }>;
   }): Promise<object[]> {
     return this.bulkRequest_.send(params);
+  }
+}
+
+class KintoneRequestHandler implements RequestHandler {
+  private baseUrl: string;
+  private headers: KintoneAuthHeader;
+  private params: HTTPClientParams;
+  constructor(
+    baseUrl: string,
+    headers: KintoneAuthHeader,
+    params: HTTPClientParams
+  ) {
+    this.baseUrl = baseUrl;
+    this.headers = headers;
+    this.params = params;
+  }
+  public build(method: HttpMethod, path: string, params: Params) {
+    return {
+      method,
+      url: `${this.baseUrl}${path}`,
+      data: { ...this.params, ...params },
+      headers: this.headers
+    };
   }
 }
