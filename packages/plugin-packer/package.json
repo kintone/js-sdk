@@ -30,7 +30,7 @@
     "test": "run-s eslint mocha site:test"
   },
   "dependencies": {
-    "@kintone/plugin-manifest-validator": "^2.0.10",
+    "@kintone/plugin-manifest-validator": "^3.0.0",
     "chokidar": "^3.3.1",
     "debug": "^4.1.1",
     "denodeify": "^1.2.1",
