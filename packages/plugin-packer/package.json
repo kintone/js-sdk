@@ -35,7 +35,7 @@
     "debug": "^4.1.1",
     "denodeify": "^1.2.1",
     "meow": "^6.0.1",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.3",
     "node-rsa": "~1.0.7",
     "stream-buffers": "^3.0.2",
     "yauzl": "^2.10.0",

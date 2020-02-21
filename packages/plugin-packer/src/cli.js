@@ -7,7 +7,7 @@ const chokidar = require("chokidar");
 const denodeify = require("denodeify");
 
 const writeFile = denodeify(fs.writeFile);
-const mkdirp = denodeify(require("mkdirp"));
+const mkdirp = require("mkdirp");
 const debug = require("debug")("cli");
 const validate = require("@kintone/plugin-manifest-validator");
 
