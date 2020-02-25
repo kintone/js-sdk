@@ -3,6 +3,7 @@ import {
   KintoneRequestHandler
 } from "../KintoneRestAPIClient";
 import { Base64 } from "js-base64";
+import FormData from "form-data";
 
 describe("KintoneRestAPIClient", () => {
   let originalKintone: any;
@@ -166,7 +167,25 @@ describe("KintoneRequestHandler", () => {
       headers
     });
   });
-  it.todo("should build post method requestConfig for data");
+  it("should build post method requestConfig for data", () => {
+    const formData = new FormData();
+    formData.append("key", "value");
+    const requestConfig = kintoneRequestHandler.build(
+      "post",
+      "/k/v1/record.json",
+      formData
+    );
+    const { data, ...config } = requestConfig;
+    expect(config).toEqual({
+      method: "post",
+      url: `${baseUrl}/k/v1/record.json`,
+      headers: {
+        ...headers,
+        ...formData.getHeaders()
+      }
+    });
+    expect(data).toBeInstanceOf(FormData);
+  });
   it("should build put method requestConfig", () => {
     const requestConfig = kintoneRequestHandler.build(
       "put",

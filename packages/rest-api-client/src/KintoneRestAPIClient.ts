@@ -9,6 +9,8 @@ import { Base64 } from "js-base64";
 import { KintoneRestAPIError } from "./KintoneRestAPIError";
 import { ErrorResponse } from "./http/HttpClientInterface";
 import { RequestHandler, HttpMethod, Params } from "./http/AxiosClient";
+import FormData from "form-data";
+import { AxiosRequestConfig } from "axios";
 
 type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
@@ -203,27 +205,40 @@ export class KintoneRequestHandler implements RequestHandler {
   public build(
     method: HttpMethod,
     path: string,
-    params: Params,
+    params: Params | FormData,
     options = { formData: false }
   ) {
-    if (method === "delete" || method === "get") {
-      return {
-        method,
-        // FIXME: this doesn't add this.params on the query
-        // because this.params is for __REQUEST_TOKEN__.
-        // But it depends on what this.params includes.
-        // we should consider to rename this.params.
-        url: `${this.baseUrl}${path}?${qs.stringify(params)}`,
-        headers: this.headers,
-        ...(options.formData ? { responseType: "arraybuffer" as const } : {})
-      };
-    }
-    return {
+    const requesConfig: AxiosRequestConfig = {
       method,
-      url: `${this.baseUrl}${path}`,
-      data: { ...this.params, ...params },
       headers: this.headers,
+      url: `${this.baseUrl}${path}`,
       ...(options.formData ? { responseType: "arraybuffer" as const } : {})
     };
+
+    // send params as a query string
+    if (method === "delete" || method === "get") {
+      // FIXME: this doesn't add this.params on the query
+      // because this.params is for __REQUEST_TOKEN__.
+      // But it depends on what this.params includes.
+      // we should consider to rename this.params.
+      return {
+        ...requesConfig,
+        url: `${this.baseUrl}${path}?${qs.stringify(params)}`
+      };
+      // send params as a FormData
+    } else if (method === "post" && params instanceof FormData) {
+      Object.keys(this.params).forEach(key => {
+        params.append(key, (this.params as any)[key]);
+      });
+      return {
+        ...requesConfig,
+        headers:
+          typeof params.getHeaders === "function"
+            ? { ...this.headers, ...params.getHeaders() }
+            : this.headers,
+        data: params
+      };
+    }
+    return { ...requesConfig, data: { ...this.params, ...params } };
   }
 }
