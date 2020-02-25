@@ -184,7 +184,8 @@ export class KintoneRestAPIClient {
   }
 }
 
-class KintoneRequestHandler implements RequestHandler {
+// TODO: create KintoneRequestHandler.ts
+export class KintoneRequestHandler implements RequestHandler {
   private baseUrl: string;
   private headers: KintoneAuthHeader;
   private params: HTTPClientParams;

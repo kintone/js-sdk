@@ -1,4 +1,7 @@
-import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
+import {
+  KintoneRestAPIClient,
+  KintoneRequestHandler
+} from "../KintoneRestAPIClient";
 import { Base64 } from "js-base64";
 
 describe("KintoneRestAPIClient", () => {
@@ -104,4 +107,28 @@ describe("KintoneRestAPIClient", () => {
       });
     });
   });
+});
+
+describe("KintoneRequestHandler", () => {
+  let kintoneRequestHandler: KintoneRequestHandler;
+  beforeEach(() => {
+    kintoneRequestHandler = new KintoneRequestHandler(
+      "https://example.kintone.com/",
+      {
+        "X-Cybozu-API-Token": "foo"
+      },
+      {
+        __REQUEST_TOKEN__: "foo-bar"
+      }
+    );
+  });
+  it.todo("should build get method requestConfig");
+  it.todo(
+    "should build post method requestConfig if the request URL is over the threshold"
+  );
+  it.todo("should build get method requestConfig for data");
+  it.todo("should build post method requestConfig");
+  it.todo("should build post method requestConfig for data");
+  it.todo("should build put method requestConfig");
+  it.todo("should build delete method requestConfig");
 });
