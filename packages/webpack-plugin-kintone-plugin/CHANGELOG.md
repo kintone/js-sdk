@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v4.0.0...v4.0.1) (2020-02-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-packer to v3 ([#488](https://github.com/kintone/webpack-plugin-kintone-plugin/issues/488)) ([b6c26b4](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/b6c26b45bfd61c6508db038a223a6b7acfe3097e))
+* **deps:** update dependency mkdirp to v1 ([#484](https://github.com/kintone/webpack-plugin-kintone-plugin/issues/484)) ([2517530](https://github.com/kintone/webpack-plugin-kintone-plugin/commit/2517530413b8c8d33752f07e9f2127918bf1c79b))
+
 ## [4.0.0](https://github.com/kintone/webpack-plugin-kintone-plugin/compare/v3.0.5...v4.0.0) (2020-01-28)
 
 
