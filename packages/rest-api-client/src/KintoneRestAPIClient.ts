@@ -57,6 +57,8 @@ type KintoneAuthHeader =
       Authorization?: string;
     };
 
+const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
+
 export class KintoneRestAPIClient {
   record: RecordClient;
   app: AppClient;
@@ -215,42 +217,65 @@ export class KintoneRequestHandler implements RequestHandler {
       ...(options ? options : {})
     };
 
-    // send params as a query string
-    if (method === "delete" || method === "get") {
-      if (
-        method === "get" &&
-        `${this.baseUrl}${path}?${qs.stringify(params)}`.length > 4096
-      ) {
+    switch (method) {
+      case "get": {
+        const requestUrl = this.buildRequestUrl(path, params);
+        if (requestUrl.length > THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE) {
+          return {
+            ...requesConfig,
+            method: "post" as const,
+            headers: { ...this.headers, "X-HTTP-Method-Override": "GET" },
+            data: { ...this.params, ...params }
+          };
+        }
         return {
           ...requesConfig,
-          method: "post" as const,
-          headers: { ...this.headers, "X-HTTP-Method-Override": "GET" },
+          url: requestUrl
+        };
+      }
+      case "post": {
+        if (params instanceof FormData) {
+          const formData = params;
+          Object.keys(this.params).forEach(key => {
+            formData.append(key, (this.params as any)[key]);
+          });
+          return {
+            ...requesConfig,
+            headers:
+              typeof formData.getHeaders === "function"
+                ? { ...this.headers, ...formData.getHeaders() }
+                : this.headers,
+            data: formData
+          };
+        }
+        return {
+          ...requesConfig,
           data: { ...this.params, ...params }
         };
       }
-
-      // FIXME: this doesn't add this.params on the query
-      // because this.params is for __REQUEST_TOKEN__.
-      // But it depends on what this.params includes.
-      // we should consider to rename this.params.
-      return {
-        ...requesConfig,
-        url: `${this.baseUrl}${path}?${qs.stringify(params)}`
-      };
-      // send params as a FormData
-    } else if (method === "post" && params instanceof FormData) {
-      Object.keys(this.params).forEach(key => {
-        params.append(key, (this.params as any)[key]);
-      });
-      return {
-        ...requesConfig,
-        headers:
-          typeof params.getHeaders === "function"
-            ? { ...this.headers, ...params.getHeaders() }
-            : this.headers,
-        data: params
-      };
+      case "put": {
+        return {
+          ...requesConfig,
+          data: { ...this.params, ...params }
+        };
+      }
+      case "delete": {
+        const requestUrl = this.buildRequestUrl(path, params);
+        return {
+          ...requesConfig,
+          url: requestUrl
+        };
+      }
+      default: {
+        throw new Error(`${method} method is not supported`);
+      }
     }
-    return { ...requesConfig, data: { ...this.params, ...params } };
+  }
+  // FIXME: this doesn't add this.params on the query
+  // because this.params is for __REQUEST_TOKEN__.
+  // But it depends on what this.params includes.
+  // we should consider to rename this.params.
+  private buildRequestUrl(path: string, params: Params | FormData): string {
+    return `${this.baseUrl}${path}?${qs.stringify(params)}`;
   }
 }
