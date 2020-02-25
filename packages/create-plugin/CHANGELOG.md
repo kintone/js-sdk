@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/kintone/create-plugin/compare/v3.0.0...v3.0.1) (2020-02-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to ^6.0.1 ([4ce5653](https://github.com/kintone/create-plugin/commit/4ce5653cd7c0ae31e9d72675141a7d39922d2c90))
+* **deps:** update dependency rimraf to ^3.0.1 ([86b2c9f](https://github.com/kintone/create-plugin/commit/86b2c9fe147617ea1bcc09924858be98926aa1b2))
+* **deps:** update dependency rimraf to ^3.0.2 ([996960e](https://github.com/kintone/create-plugin/commit/996960e84e043905d723eebb74d74355adf77b21))
+
 ## [3.0.0](https://github.com/kintone/create-plugin/compare/v2.0.7...v3.0.0) (2020-01-28)
 
 
