@@ -1,3 +1,5 @@
+import qs from "qs";
+
 import { BulkRequestClient } from "./client/BulkRequestClient";
 import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
@@ -198,12 +200,30 @@ export class KintoneRequestHandler implements RequestHandler {
     this.headers = headers;
     this.params = params;
   }
-  public build(method: HttpMethod, path: string, params: Params) {
+  public build(
+    method: HttpMethod,
+    path: string,
+    params: Params,
+    options = { formData: false }
+  ) {
+    if (method === "delete" || method === "get") {
+      return {
+        method,
+        // FIXME: this doesn't add this.params on the query
+        // because this.params is for __REQUEST_TOKEN__.
+        // But it depends on what this.params includes.
+        // we should consider to rename this.params.
+        url: `${this.baseUrl}${path}?${qs.stringify(params)}`,
+        headers: this.headers,
+        ...(options.formData ? { responseType: "arraybuffer" as const } : {})
+      };
+    }
     return {
       method,
       url: `${this.baseUrl}${path}`,
       data: { ...this.params, ...params },
-      headers: this.headers
+      headers: this.headers,
+      ...(options.formData ? { responseType: "arraybuffer" as const } : {})
     };
   }
 }

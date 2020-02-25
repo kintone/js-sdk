@@ -110,25 +110,89 @@ describe("KintoneRestAPIClient", () => {
 });
 
 describe("KintoneRequestHandler", () => {
+  const baseUrl = "https://example.kintone.com";
+  const headers = {
+    "X-Cybozu-API-Token": "foo"
+  };
+  const params = {
+    __REQUEST_TOKEN__: "foo-bar"
+  };
   let kintoneRequestHandler: KintoneRequestHandler;
   beforeEach(() => {
-    kintoneRequestHandler = new KintoneRequestHandler(
-      "https://example.kintone.com/",
-      {
-        "X-Cybozu-API-Token": "foo"
-      },
-      {
-        __REQUEST_TOKEN__: "foo-bar"
-      }
-    );
+    kintoneRequestHandler = new KintoneRequestHandler(baseUrl, headers, params);
   });
-  it.todo("should build get method requestConfig");
+  it("should build get method requestConfig", () => {
+    const requestConfig = kintoneRequestHandler.build(
+      "get",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toEqual({
+      method: "get",
+      url: `${baseUrl}/k/v1/record.json?key=value`,
+      headers
+    });
+  });
   it.todo(
     "should build post method requestConfig if the request URL is over the threshold"
   );
-  it.todo("should build get method requestConfig for data");
-  it.todo("should build post method requestConfig");
+  it("should build get method requestConfig for data", () => {
+    const requestConfig = kintoneRequestHandler.build(
+      "get",
+      "/k/v1/record.json",
+      { key: "value" },
+      { formData: true }
+    );
+    expect(requestConfig).toEqual({
+      method: "get",
+      url: `${baseUrl}/k/v1/record.json?key=value`,
+      headers,
+      responseType: "arraybuffer"
+    });
+  });
+  it("should build post method requestConfig", () => {
+    const requestConfig = kintoneRequestHandler.build(
+      "post",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toEqual({
+      method: "post",
+      url: `${baseUrl}/k/v1/record.json`,
+      data: {
+        ...params,
+        key: "value"
+      },
+      headers
+    });
+  });
   it.todo("should build post method requestConfig for data");
-  it.todo("should build put method requestConfig");
-  it.todo("should build delete method requestConfig");
+  it("should build put method requestConfig", () => {
+    const requestConfig = kintoneRequestHandler.build(
+      "put",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toEqual({
+      method: "put",
+      url: `${baseUrl}/k/v1/record.json`,
+      data: {
+        ...params,
+        key: "value"
+      },
+      headers
+    });
+  });
+  it("should build delete method requestConfig", () => {
+    const requestConfig = kintoneRequestHandler.build(
+      "delete",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toEqual({
+      method: "delete",
+      url: `${baseUrl}/k/v1/record.json?key=value`,
+      headers
+    });
+  });
 });

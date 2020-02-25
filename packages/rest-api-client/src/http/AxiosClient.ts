@@ -12,7 +12,8 @@ export interface RequestHandler {
   build: (
     method: HttpMethod,
     path: string,
-    params: Params
+    params: Params,
+    options?: { formData: boolean }
   ) => AxiosRequestConfig;
 }
 
