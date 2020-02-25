@@ -153,7 +153,7 @@ describe("KintoneRequestHandler", () => {
       "get",
       "/k/v1/record.json",
       { key: "value" },
-      { formData: true }
+      { responseType: "arraybuffer" }
     );
     expect(requestConfig).toEqual({
       method: "get",

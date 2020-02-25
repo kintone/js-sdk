@@ -206,13 +206,13 @@ export class KintoneRequestHandler implements RequestHandler {
     method: HttpMethod,
     path: string,
     params: Params | FormData,
-    options = { formData: false }
+    options?: { responseType: "arraybuffer" }
   ) {
     const requesConfig: AxiosRequestConfig = {
       method,
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
-      ...(options.formData ? { responseType: "arraybuffer" as const } : {})
+      ...(options ? options : {})
     };
 
     // send params as a query string

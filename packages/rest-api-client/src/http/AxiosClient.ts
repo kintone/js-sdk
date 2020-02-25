@@ -13,7 +13,7 @@ export interface RequestHandler {
     method: HttpMethod,
     path: string,
     params: Params,
-    options?: { formData: boolean }
+    options?: { responseType: "arraybuffer" }
   ) => AxiosRequestConfig;
 }
 
