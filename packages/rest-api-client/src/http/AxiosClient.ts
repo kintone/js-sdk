@@ -80,6 +80,7 @@ export class AxiosClient implements HttpClient {
     const requestConfig = this.requestHandler.build("post", path, params);
     let data;
     try {
+      // eslint-disable-next-line new-cap
       const response = await Axios(requestConfig);
       data = response.data;
     } catch (error) {
@@ -145,6 +146,7 @@ export class AxiosClient implements HttpClient {
     const requestConfig = this.requestHandler.build("put", path, params);
     let data;
     try {
+      // eslint-disable-next-line new-cap
       const response = await Axios(requestConfig);
       data = response.data;
     } catch (error) {
