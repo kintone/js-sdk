@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/kintone/customize-uploader/compare/v3.0.0...v3.0.1) (2020-02-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to ^6.0.1 ([ee1601b](https://github.com/kintone/customize-uploader/commit/ee1601bdc5921641a58080182656d534d3572651))
+* **deps:** update dependency meow to v6 ([#232](https://github.com/kintone/customize-uploader/issues/232)) ([f180316](https://github.com/kintone/customize-uploader/commit/f1803168f0fc86ee8689bac5bf4af86346c56657))
+* **deps:** update dependency mkdirp to v1 ([#249](https://github.com/kintone/customize-uploader/issues/249)) ([db10275](https://github.com/kintone/customize-uploader/commit/db102754cbef04caf918febfcd1d45f9495ce5c2))
+* **deps:** update dependency request to ^2.88.2 ([6c90d89](https://github.com/kintone/customize-uploader/commit/6c90d894e1026880d61c9686c65134e4978aea5c))
+* **deps:** update dependency rimraf to ^3.0.1 ([3c6232a](https://github.com/kintone/customize-uploader/commit/3c6232ab06b1542be409df3f3c9425b6ea7cf8c0))
+* **deps:** update dependency rimraf to ^3.0.2 ([95bf923](https://github.com/kintone/customize-uploader/commit/95bf923b540542e8af7766ed03f25fab5bb2610f))
+
 ## [3.0.0](https://github.com/kintone/customize-uploader/compare/v2.0.8...v3.0.0) (2020-01-28)
 
 
