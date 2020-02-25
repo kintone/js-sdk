@@ -142,16 +142,10 @@ export class AxiosClient implements HttpClient {
   }
 
   public async put(path: string, params: any) {
-    const requestURL = `${this.baseUrl}${path}`;
+    const requestConfig = this.requestHandler.build("put", path, params);
     let data;
     try {
-      const response = await Axios.put(
-        requestURL,
-        { ...params, ...this.params },
-        {
-          headers: this.headers
-        }
-      );
+      const response = await Axios(requestConfig);
       data = response.data;
     } catch (error) {
       this.handleError(error);
