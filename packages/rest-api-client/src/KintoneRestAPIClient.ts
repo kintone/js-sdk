@@ -217,6 +217,18 @@ export class KintoneRequestHandler implements RequestHandler {
 
     // send params as a query string
     if (method === "delete" || method === "get") {
+      if (
+        method === "get" &&
+        `${this.baseUrl}${path}?${qs.stringify(params)}`.length > 4096
+      ) {
+        return {
+          ...requesConfig,
+          method: "post" as const,
+          headers: { ...this.headers, "X-HTTP-Method-Override": "GET" },
+          data: { ...this.params, ...params }
+        };
+      }
+
       // FIXME: this doesn't add this.params on the query
       // because this.params is for __REQUEST_TOKEN__.
       // But it depends on what this.params includes.

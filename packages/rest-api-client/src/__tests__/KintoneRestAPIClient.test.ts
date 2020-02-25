@@ -134,9 +134,20 @@ describe("KintoneRequestHandler", () => {
       headers
     });
   });
-  it.todo(
-    "should build post method requestConfig if the request URL is over the threshold"
-  );
+  it("should build post method requestConfig if the request URL is over the threshold", () => {
+    const value = "a".repeat(4096);
+    const requestConfig = kintoneRequestHandler.build(
+      "get",
+      "/k/v1/record.json",
+      { key: value }
+    );
+    expect(requestConfig).toEqual({
+      method: "post",
+      url: `${baseUrl}/k/v1/record.json`,
+      headers: { ...headers, "X-HTTP-Method-Override": "GET" },
+      data: { ...params, key: value }
+    });
+  });
   it("should build get method requestConfig for data", () => {
     const requestConfig = kintoneRequestHandler.build(
       "get",
