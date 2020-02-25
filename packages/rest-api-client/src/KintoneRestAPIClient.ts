@@ -89,9 +89,6 @@ export class KintoneRestAPIClient {
     };
 
     const httpClient = new DefaultHttpClient({
-      baseUrl: this.baseUrl,
-      headers: this.headers,
-      params,
       errorResponseHandler,
       requestHandler: new KintoneRequestHandler(
         this.baseUrl,
