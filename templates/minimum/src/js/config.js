@@ -15,10 +15,10 @@ jQuery.noConflict();
     e.preventDefault();
     kintone.plugin.app.setConfig({message: $message.val()}, function() {
       alert('The plug-in settings have been saved. Please update the app!');
-      window.location.href = '/k/admin/app/flow?app=' + kintone.app.getId();
+      window.location.href = '../../flow?app=' + kintone.app.getId();
     });
   });
   $cancelButton.on('click', function() {
-    window.location.href = '/k/admin/app/' + kintone.app.getId() + '/plugin/';
+    window.location.href = '../../' + kintone.app.getId() + '/plugin/';
   });
 })(jQuery, kintone.$PLUGIN_ID);
