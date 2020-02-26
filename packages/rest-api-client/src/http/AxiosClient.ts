@@ -1,4 +1,4 @@
-import Axios, { AxiosError, AxiosRequestConfig } from "axios";
+import Axios, { AxiosError } from "axios";
 import { HttpClient, ErrorResponse } from "./HttpClientInterface";
 import FormData from "form-data";
 
@@ -6,13 +6,20 @@ export type HttpMethod = "get" | "post" | "put" | "delete";
 export type Params = { [key: string]: unknown };
 type ErrorResponseHandler = (errorResponse: ErrorResponse) => void;
 
+export type RequestConfig = {
+  method: HttpMethod;
+  url: string;
+  headers: any;
+  data?: any;
+};
+
 export interface RequestHandler {
   build: (
     method: HttpMethod,
     path: string,
     params: Params | FormData,
     options?: { responseType: "arraybuffer" }
-  ) => AxiosRequestConfig;
+  ) => RequestConfig;
 }
 
 export class AxiosClient implements HttpClient {
@@ -62,7 +69,7 @@ export class AxiosClient implements HttpClient {
     return this.sendRequest(requestConfig);
   }
 
-  private async sendRequest(requestConfig: AxiosRequestConfig) {
+  private async sendRequest(requestConfig: RequestConfig) {
     let data;
     try {
       // eslint-disable-next-line new-cap
