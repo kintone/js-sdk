@@ -80,7 +80,10 @@ export class KintoneRequestHandler implements RequestHandler {
         };
       }
       case "delete": {
-        const requestUrl = this.buildRequestUrl(path, params);
+        const requestUrl = this.buildRequestUrl(path, {
+          ...this.params,
+          ...params
+        });
         return {
           ...requesConfig,
           url: requestUrl
