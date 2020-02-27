@@ -30,7 +30,7 @@ export class KintoneRequestHandler implements RequestHandler {
     params: Params | FormData,
     options?: { responseType: "arraybuffer" }
   ) {
-    const requesConfig: RequestConfig = {
+    const requestConfig: RequestConfig = {
       method,
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
@@ -42,14 +42,14 @@ export class KintoneRequestHandler implements RequestHandler {
         const requestUrl = this.buildRequestUrl(path, params);
         if (requestUrl.length > THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE) {
           return {
-            ...requesConfig,
+            ...requestConfig,
             method: "post" as const,
             headers: { ...this.headers, "X-HTTP-Method-Override": "GET" },
             data: { ...this.params, ...params }
           };
         }
         return {
-          ...requesConfig,
+          ...requestConfig,
           url: requestUrl
         };
       }
@@ -60,7 +60,7 @@ export class KintoneRequestHandler implements RequestHandler {
             formData.append(key, (this.params as any)[key]);
           });
           return {
-            ...requesConfig,
+            ...requestConfig,
             headers:
               typeof formData.getHeaders === "function"
                 ? { ...this.headers, ...formData.getHeaders() }
@@ -69,13 +69,13 @@ export class KintoneRequestHandler implements RequestHandler {
           };
         }
         return {
-          ...requesConfig,
+          ...requestConfig,
           data: { ...this.params, ...params }
         };
       }
       case "put": {
         return {
-          ...requesConfig,
+          ...requestConfig,
           data: { ...this.params, ...params }
         };
       }
@@ -85,7 +85,7 @@ export class KintoneRequestHandler implements RequestHandler {
           ...params
         });
         return {
-          ...requesConfig,
+          ...requestConfig,
           url: requestUrl
         };
       }
