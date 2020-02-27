@@ -1,6 +1,6 @@
 "use strict";
 
-import chalk from "chalk";
+import chalk = require("chalk");
 import * as fs from "fs";
 import * as inquirer from "inquirer";
 import * as rimraf from "rimraf";
