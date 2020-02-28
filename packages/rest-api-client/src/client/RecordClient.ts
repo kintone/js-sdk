@@ -1,6 +1,7 @@
 import { buildPath } from "./../url";
 import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
+import { BulkRequestClient } from "./BulkRequestClient";
 
 export type Record = {
   [fieldCode: string]: any;
@@ -289,6 +290,34 @@ export class RecordClient {
       return this.getAllRecordsRecursiveByCursor(id, allRecords);
     }
     return allRecords;
+  }
+
+  public addAllRecords(params: { app: AppID; records: Record[] }) {
+    const bulkRequestClient = new BulkRequestClient(
+      this.client,
+      this.guestSpaceId
+    );
+    const requestRecords = params.records.slice(0, 2000);
+    const separateArrayRecursive = <T>(separated: T[][], array: T[]): T[][] => {
+      const chunk = array.slice(0, 100);
+      if (chunk.length === 0) {
+        return separated;
+      } else if (chunk.length < 100) {
+        return [...separated, chunk];
+      }
+      return separateArrayRecursive([...separated, chunk], array.slice(100));
+    };
+    const separatedRecords = separateArrayRecursive([], requestRecords);
+    const requests = separatedRecords.map(records => ({
+      method: "POST",
+      api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
+      payload: {
+        app: params.app,
+        records
+      }
+    }));
+    return requests;
+    // return bulkRequestClient.send({ requests });
   }
 
   public addRecordComment(params: {
