@@ -116,7 +116,7 @@ describe("KintoneRequestHandler", () => {
     );
     expect(requestConfig).toEqual({
       method: "delete",
-      url: `${baseUrl}/k/v1/record.json?key=value`,
+      url: `${baseUrl}/k/v1/record.json?__REQUEST_TOKEN__=foo-bar&key=value`,
       headers
     });
   });
