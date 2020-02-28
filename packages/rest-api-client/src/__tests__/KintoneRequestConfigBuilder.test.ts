@@ -1,7 +1,7 @@
 import { KintoneRequestConfigBuilder } from "../KintoneRequestConfigBuilder";
 import FormData from "form-data";
 
-describe("KintoneRequestHandler", () => {
+describe("KintoneRequestConfigBuilder", () => {
   const baseUrl = "https://example.kintone.com";
   const headers = {
     "X-Cybozu-API-Token": "foo"
@@ -9,16 +9,16 @@ describe("KintoneRequestHandler", () => {
   const params = {
     __REQUEST_TOKEN__: "foo-bar"
   };
-  let kintoneRequestHandler: KintoneRequestConfigBuilder;
+  let kintoneRequestConfigBuilder: KintoneRequestConfigBuilder;
   beforeEach(() => {
-    kintoneRequestHandler = new KintoneRequestConfigBuilder(
+    kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder(
       baseUrl,
       headers,
       params
     );
   });
   it("should build get method requestConfig", () => {
-    const requestConfig = kintoneRequestHandler.build(
+    const requestConfig = kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: "value" }
@@ -31,7 +31,7 @@ describe("KintoneRequestHandler", () => {
   });
   it("should build post method requestConfig if the request URL is over the threshold", () => {
     const value = "a".repeat(4096);
-    const requestConfig = kintoneRequestHandler.build(
+    const requestConfig = kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: value }
@@ -44,7 +44,7 @@ describe("KintoneRequestHandler", () => {
     });
   });
   it("should build get method requestConfig for data", () => {
-    const requestConfig = kintoneRequestHandler.build(
+    const requestConfig = kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: "value" },
@@ -58,7 +58,7 @@ describe("KintoneRequestHandler", () => {
     });
   });
   it("should build post method requestConfig", () => {
-    const requestConfig = kintoneRequestHandler.build(
+    const requestConfig = kintoneRequestConfigBuilder.build(
       "post",
       "/k/v1/record.json",
       { key: "value" }
@@ -76,7 +76,7 @@ describe("KintoneRequestHandler", () => {
   it("should build post method requestConfig for data", () => {
     const formData = new FormData();
     formData.append("key", "value");
-    const requestConfig = kintoneRequestHandler.build(
+    const requestConfig = kintoneRequestConfigBuilder.build(
       "post",
       "/k/v1/record.json",
       formData
@@ -93,7 +93,7 @@ describe("KintoneRequestHandler", () => {
     expect(data).toBeInstanceOf(FormData);
   });
   it("should build put method requestConfig", () => {
-    const requestConfig = kintoneRequestHandler.build(
+    const requestConfig = kintoneRequestConfigBuilder.build(
       "put",
       "/k/v1/record.json",
       { key: "value" }
@@ -109,7 +109,7 @@ describe("KintoneRequestHandler", () => {
     });
   });
   it("should build delete method requestConfig", () => {
-    const requestConfig = kintoneRequestHandler.build(
+    const requestConfig = kintoneRequestConfigBuilder.build(
       "delete",
       "/k/v1/record.json",
       { key: "value" }
