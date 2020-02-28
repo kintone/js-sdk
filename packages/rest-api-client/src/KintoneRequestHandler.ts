@@ -6,7 +6,7 @@ import {
   RequestConfig,
   HttpMethod,
   Params
-} from "./http/AxiosClient";
+} from "./http/HttpClientInterface";
 import { KintoneAuthHeader, HTTPClientParams } from "./KintoneRestAPIClient";
 
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
