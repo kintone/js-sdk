@@ -25,3 +25,23 @@ export type ErrorResponse = {
   status: number;
   headers: any;
 };
+
+export type HttpMethod = "get" | "post" | "put" | "delete";
+export type Params = { [key: string]: unknown };
+export type ErrorResponseHandler = (errorResponse: ErrorResponse) => void;
+
+export type RequestConfig = {
+  method: HttpMethod;
+  url: string;
+  headers: any;
+  data?: any;
+};
+
+export interface RequestConfigBuilder {
+  build: (
+    method: HttpMethod,
+    path: string,
+    params: Params | FormData,
+    options?: { responseType: "arraybuffer" }
+  ) => RequestConfig;
+}

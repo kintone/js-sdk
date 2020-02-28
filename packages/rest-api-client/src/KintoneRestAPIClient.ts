@@ -6,8 +6,9 @@ import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
 import { KintoneRestAPIError } from "./KintoneRestAPIError";
 import { ErrorResponse } from "./http/HttpClientInterface";
+import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 
-type HTTPClientParams = {
+export type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
 };
 
@@ -38,7 +39,7 @@ type BasicAuth = {
   password: string;
 };
 
-type KintoneAuthHeader =
+export type KintoneAuthHeader =
   | {
       "X-Cybozu-Authorization": string;
       Authorization?: string;
@@ -82,10 +83,12 @@ export class KintoneRestAPIClient {
     };
 
     const httpClient = new DefaultHttpClient({
-      baseUrl: this.baseUrl,
-      headers: this.headers,
-      params,
-      errorResponseHandler
+      errorResponseHandler,
+      requestConfigBuilder: new KintoneRequestConfigBuilder(
+        this.baseUrl,
+        this.headers,
+        params
+      )
     });
     const { guestSpaceId } = options;
 
