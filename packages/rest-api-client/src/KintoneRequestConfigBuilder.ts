@@ -2,7 +2,7 @@ import FormData from "form-data";
 import qs from "qs";
 
 import {
-  RequestHandler,
+  RequestConfigBuilder,
   RequestConfig,
   HttpMethod,
   Params
@@ -11,7 +11,7 @@ import { KintoneAuthHeader, HTTPClientParams } from "./KintoneRestAPIClient";
 
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 
-export class KintoneRequestHandler implements RequestHandler {
+export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   private baseUrl: string;
   private headers: KintoneAuthHeader;
   private params: HTTPClientParams;

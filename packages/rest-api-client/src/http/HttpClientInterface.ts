@@ -37,7 +37,7 @@ export type RequestConfig = {
   data?: any;
 };
 
-export interface RequestHandler {
+export interface RequestConfigBuilder {
   build: (
     method: HttpMethod,
     path: string,

@@ -2,55 +2,63 @@ import Axios, { AxiosError } from "axios";
 import {
   HttpClient,
   ErrorResponseHandler,
-  RequestHandler,
+  RequestConfigBuilder,
   RequestConfig
 } from "./HttpClientInterface";
 import FormData from "form-data";
 
 export class AxiosClient implements HttpClient {
   private errorResponseHandler: ErrorResponseHandler;
-  private requestHandler: RequestHandler;
+  private requestConfigBuilder: RequestConfigBuilder;
 
   constructor({
     errorResponseHandler,
-    requestHandler
+    requestConfigBuilder
   }: {
     errorResponseHandler: ErrorResponseHandler;
-    requestHandler: RequestHandler;
+    requestConfigBuilder: RequestConfigBuilder;
   }) {
     this.errorResponseHandler = errorResponseHandler;
-    this.requestHandler = requestHandler;
+    this.requestConfigBuilder = requestConfigBuilder;
   }
 
   public async get(path: string, params: any) {
-    const requestConfig = this.requestHandler.build("get", path, params);
+    const requestConfig = this.requestConfigBuilder.build("get", path, params);
     return this.sendRequest(requestConfig);
   }
 
   public async getData(path: string, params: any) {
-    const requestConfig = this.requestHandler.build("get", path, params, {
+    const requestConfig = this.requestConfigBuilder.build("get", path, params, {
       responseType: "arraybuffer"
     });
     return this.sendRequest(requestConfig);
   }
 
   public async post(path: string, params: any) {
-    const requestConfig = this.requestHandler.build("post", path, params);
+    const requestConfig = this.requestConfigBuilder.build("post", path, params);
     return this.sendRequest(requestConfig);
   }
 
   public async postData(path: string, formData: FormData) {
-    const requestConfig = this.requestHandler.build("post", path, formData);
+    const requestConfig = this.requestConfigBuilder.build(
+      "post",
+      path,
+      formData
+    );
     return this.sendRequest(requestConfig);
   }
 
   public async put(path: string, params: any) {
-    const requestConfig = this.requestHandler.build("put", path, params);
+    const requestConfig = this.requestConfigBuilder.build("put", path, params);
     return this.sendRequest(requestConfig);
   }
 
   public async delete(path: string, params: any) {
-    const requestConfig = this.requestHandler.build("delete", path, params);
+    const requestConfig = this.requestConfigBuilder.build(
+      "delete",
+      path,
+      params
+    );
     return this.sendRequest(requestConfig);
   }
 

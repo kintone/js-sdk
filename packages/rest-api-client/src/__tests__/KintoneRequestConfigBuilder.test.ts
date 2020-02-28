@@ -1,4 +1,4 @@
-import { KintoneRequestHandler } from "../KintoneRequestHandler";
+import { KintoneRequestConfigBuilder } from "../KintoneRequestConfigBuilder";
 import FormData from "form-data";
 
 describe("KintoneRequestHandler", () => {
@@ -9,9 +9,13 @@ describe("KintoneRequestHandler", () => {
   const params = {
     __REQUEST_TOKEN__: "foo-bar"
   };
-  let kintoneRequestHandler: KintoneRequestHandler;
+  let kintoneRequestHandler: KintoneRequestConfigBuilder;
   beforeEach(() => {
-    kintoneRequestHandler = new KintoneRequestHandler(baseUrl, headers, params);
+    kintoneRequestHandler = new KintoneRequestConfigBuilder(
+      baseUrl,
+      headers,
+      params
+    );
   });
   it("should build get method requestConfig", () => {
     const requestConfig = kintoneRequestHandler.build(

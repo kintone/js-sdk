@@ -6,7 +6,7 @@ import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
 import { KintoneRestAPIError } from "./KintoneRestAPIError";
 import { ErrorResponse } from "./http/HttpClientInterface";
-import { KintoneRequestHandler } from "./KintoneRequestHandler";
+import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 
 export type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
@@ -84,7 +84,7 @@ export class KintoneRestAPIClient {
 
     const httpClient = new DefaultHttpClient({
       errorResponseHandler,
-      requestHandler: new KintoneRequestHandler(
+      requestConfigBuilder: new KintoneRequestConfigBuilder(
         this.baseUrl,
         this.headers,
         params
