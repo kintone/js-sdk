@@ -223,10 +223,13 @@ The number of records that can be created at once is 100.
 
 #### Returns
 
-| Name      |      Type       | Description                            |
-| --------- | :-------------: | -------------------------------------- |
-| ids       | Array\<String\> | The record IDs of the created records. |
-| revisions | Array\<String\> | The revision numbers of the records.   |
+| Name               |      Type       | Description                                                                                                                  |
+| ------------------ | :-------------: | ---------------------------------------------------------------------------------------------------------------------------- |
+| ids                | Array\<String\> | The record IDs of the created records.<br />This property is for backward compatibility. We might remove this in the future. |
+| revisions          | Array\<String\> | The revision numbers of the records.<br />This property is for backward compatibility. We might remove this in the future.   |
+| records            |      Array      | Holds an array of objects that include `id` and `revision` of created records.                                               |
+| records[].id       |     String      | The ID of the record.                                                                                                        |
+| records[].revision |     String      | The revision number of the record.                                                                                           |
 
 #### Reference
 
