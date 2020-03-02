@@ -58,7 +58,7 @@
     "node": ">=10.0.0"
   },
   "devDependencies": {
-    "@kintone/customize-uploader": "^2.0.6",
+    "@kintone/customize-uploader": "^2.0.8",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.24",
     "@types/js-base64": "^2.3.1",
