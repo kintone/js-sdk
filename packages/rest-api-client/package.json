@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@kintone/customize-uploader": "^2.0.8",
-    "@types/core-js": "^2.5.2",
+    "@types/core-js": "^2.5.3",
     "@types/jest": "^24.0.24",
     "@types/js-base64": "^2.3.1",
     "@types/node": "^12.12.29",
