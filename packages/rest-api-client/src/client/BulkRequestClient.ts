@@ -16,7 +16,7 @@ export class BulkRequestClient {
       api: string;
       payload: object;
     }>;
-  }): Promise<object[]> {
+  }): Promise<{ results: object[] }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "bulkRequest"
     });
