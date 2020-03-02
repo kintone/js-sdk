@@ -109,7 +109,7 @@ export class RecordClient {
       | { id: RecordID; record?: object; revision?: Revision }
       | { updateKey: object; record?: object; revision?: Revision }
     >;
-  }): Promise<Array<{ id: string; revision: string }>> {
+  }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records"
     });
