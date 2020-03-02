@@ -93,14 +93,26 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
-  public addRecords(params: {
+  public async addRecords(params: {
     app: AppID;
     records: Record[];
-  }): Promise<{ ids: string[]; revisions: string[] }> {
+  }): Promise<{
+    ids: string[];
+    revisions: string[];
+    records: Array<{ id: string; revision: string }>;
+  }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records"
     });
-    return this.client.post(path, params);
+    const { ids, revisions } = await this.client.post<{
+      ids: string[];
+      revisions: string[];
+    }>(path, params);
+    return {
+      ids,
+      revisions,
+      records: ids.map((id, i) => ({ id, revision: revisions[i] }))
+    };
   }
 
   public updateRecords(params: {

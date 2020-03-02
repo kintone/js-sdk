@@ -93,8 +93,14 @@ describe("RecordClient", () => {
 
   describe("addRecords", () => {
     const params = { app: APP_ID, records: [record] };
-    beforeEach(() => {
-      recordClient.addRecords(params);
+    const mockResponse = {
+      ids: ["10", "20", "30"],
+      revisions: ["1", "2", "3"]
+    };
+    let response: any;
+    beforeEach(async () => {
+      mockClient.mockResponse(mockResponse);
+      response = await recordClient.addRecords(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
@@ -104,6 +110,16 @@ describe("RecordClient", () => {
     });
     it("should pass app and records to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+    it("should return a response having ids, revisions, and records", () => {
+      expect(response).toEqual({
+        ...mockResponse,
+        records: [
+          { id: "10", revision: "1" },
+          { id: "20", revision: "2" },
+          { id: "30", revision: "3" }
+        ]
+      });
     });
   });
 
