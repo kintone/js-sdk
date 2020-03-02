@@ -62,7 +62,7 @@
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.24",
     "@types/js-base64": "^2.3.1",
-    "@types/node": "^12.12.5",
+    "@types/node": "^12.12.29",
     "@types/qs": "^6.5.3",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.4.1",
