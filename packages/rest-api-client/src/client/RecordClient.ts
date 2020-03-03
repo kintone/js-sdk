@@ -27,6 +27,7 @@ type CommentID = string | number;
 
 export class RecordClient {
   private client: HttpClient;
+  private bulkRequestClient?: BulkRequestClient;
   private guestSpaceId?: number | string;
   private didWarnMaximumOffsetValue: boolean;
 
@@ -292,22 +293,43 @@ export class RecordClient {
     return allRecords;
   }
 
-  public addAllRecords(params: { app: AppID; records: Record[] }) {
-    const bulkRequestClient = new BulkRequestClient(
-      this.client,
-      this.guestSpaceId
+  public async addAllRecords(params: { app: AppID; records: Record[] }) {
+    if (!this.bulkRequestClient) {
+      this.bulkRequestClient = new BulkRequestClient(
+        this.client,
+        this.guestSpaceId
+      );
+    }
+    const bulkRequestClient = this.bulkRequestClient;
+    const separatedRecords = this.separateArrayRecursive(
+      2000,
+      [],
+      params.records
     );
-    const requestRecords = params.records.slice(0, 2000);
-    const separateArrayRecursive = <T>(separated: T[][], array: T[]): T[][] => {
-      const chunk = array.slice(0, 100);
-      if (chunk.length === 0) {
-        return separated;
-      } else if (chunk.length < 100) {
-        return [...separated, chunk];
-      }
-      return separateArrayRecursive([...separated, chunk], array.slice(100));
-    };
-    const separatedRecords = separateArrayRecursive([], requestRecords);
+    const result = [];
+    for (const records of separatedRecords) {
+      result.push(
+        await this.addAllRecordsWithBulkRequet(
+          { app: params.app, records },
+          bulkRequestClient
+        )
+      );
+    }
+    return result;
+  }
+
+  private addAllRecordsWithBulkRequet(
+    params: {
+      app: AppID;
+      records: Record[];
+    },
+    bulkRequestClient: BulkRequestClient
+  ) {
+    const separatedRecords = this.separateArrayRecursive(
+      100,
+      [],
+      params.records
+    );
     const requests = separatedRecords.map(records => ({
       method: "POST",
       api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
@@ -316,8 +338,25 @@ export class RecordClient {
         records
       }
     }));
-    return requests;
-    // return bulkRequestClient.send({ requests });
+    return bulkRequestClient.send({ requests });
+  }
+
+  private separateArrayRecursive<T>(
+    size: number,
+    separated: T[][],
+    array: T[]
+  ): T[][] {
+    const chunk = array.slice(0, size);
+    if (chunk.length === 0) {
+      return separated;
+    } else if (chunk.length < size) {
+      return [...separated, chunk];
+    }
+    return this.separateArrayRecursive(
+      size,
+      [...separated, chunk],
+      array.slice(size)
+    );
   }
 
   public addRecordComment(params: {

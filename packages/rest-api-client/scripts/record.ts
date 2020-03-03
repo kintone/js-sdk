@@ -179,7 +179,7 @@ export class Record {
   }
 
   public async addAllRecords() {
-    const records = Array.from({ length: 1 }, (_, index) => index + 1).map(
+    const records = Array.from({ length: 10000 }, (_, index) => index + 1).map(
       value => ({
         Customer: {
           value
