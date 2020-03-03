@@ -364,8 +364,6 @@ export class RecordClient {
     const chunk = array.slice(0, size);
     if (chunk.length === 0) {
       return separated;
-    } else if (chunk.length < size) {
-      return [...separated, chunk];
     }
     return this.separateArrayRecursive(
       size,
