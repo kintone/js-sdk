@@ -310,7 +310,7 @@ export class RecordClient {
     let result: Array<{ id: string; revision: string }> = [];
     for (const records of separatedRecords) {
       result = result.concat(
-        await this.addAllRecordsWithBulkRequet(
+        await this.addAllRecordsWithBulkRequest(
           { app: params.app, records },
           bulkRequestClient
         )
@@ -319,7 +319,7 @@ export class RecordClient {
     return result;
   }
 
-  private async addAllRecordsWithBulkRequet(
+  private async addAllRecordsWithBulkRequest(
     params: {
       app: AppID;
       records: Record[];
