@@ -2,7 +2,6 @@ import { buildPath } from "./../url";
 import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
 import { BulkRequestClient } from "./BulkRequestClient";
-import { isDate } from "util";
 
 export type Record = {
   [fieldCode: string]: any;
