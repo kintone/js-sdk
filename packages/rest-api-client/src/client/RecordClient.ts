@@ -2,6 +2,7 @@ import { buildPath } from "./../url";
 import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
 import { BulkRequestClient } from "./BulkRequestClient";
+import { isDate } from "util";
 
 export type Record = {
   [fieldCode: string]: any;
@@ -306,9 +307,9 @@ export class RecordClient {
       [],
       params.records
     );
-    const result = [];
+    let result: Array<{ id: string; revision: string }> = [];
     for (const records of separatedRecords) {
-      result.push(
+      result = result.concat(
         await this.addAllRecordsWithBulkRequet(
           { app: params.app, records },
           bulkRequestClient
@@ -318,7 +319,7 @@ export class RecordClient {
     return result;
   }
 
-  private addAllRecordsWithBulkRequet(
+  private async addAllRecordsWithBulkRequet(
     params: {
       app: AppID;
       records: Record[];
@@ -338,7 +339,16 @@ export class RecordClient {
         records
       }
     }));
-    return bulkRequestClient.send({ requests });
+    const results = (await bulkRequestClient.send({ requests }))
+      .results as Array<{ ids: string[]; revisions: string[] }>;
+    return results
+      .map(result => {
+        const { ids, revisions } = result;
+        return ids.map((id, i) => ({ id, revision: revisions[i] }));
+      })
+      .reduce((acc, records) => {
+        return acc.concat(records);
+      }, []);
   }
 
   private separateArrayRecursive<T>(
