@@ -39,7 +39,7 @@
   "devDependencies": {
     "@types/chokidar": "^1.7.5",
     "@types/inquirer": "6.5.0",
-    "@types/mocha": "^7.0.1",
+    "@types/mocha": "^7.0.2",
     "@types/mkdirp": "^1.0.0",
     "@types/rimraf": "^2.0.3",
     "@types/node": "^10.17.17",
