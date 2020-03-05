@@ -102,7 +102,7 @@ export class RecordClient {
 
   public async addRecords(params: {
     app: AppID;
-    records: Record[];
+    records: object[];
   }): Promise<{
     ids: string[];
     revisions: string[];
