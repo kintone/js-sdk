@@ -57,6 +57,12 @@ export class KintoneRestAPIError extends Error {
 }
 
 export class KintoneAllRecordsError extends KintoneRestAPIError {
-  processedRecordsResult: object[] = [];
-  unprocessedRecords: object[] = [];
+  processedRecordsResult: object[];
+  unprocessedRecords: object[];
+
+  constructor(error: ErrorResponse) {
+    super(error);
+    this.processedRecordsResult = [];
+    this.unprocessedRecords = [];
+  }
 }
