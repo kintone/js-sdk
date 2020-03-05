@@ -2,6 +2,7 @@ import { buildPath } from "./../url";
 import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
 import { BulkRequestClient } from "./BulkRequestClient";
+import { KintoneAllRecordsError } from "../KintoneRestAPIError";
 
 export type Record = {
   [fieldCode: string]: any;
@@ -319,10 +320,14 @@ export class RecordClient {
       app,
       records: recordsChunk
     });
-    return this.addAllRecordsRecursive(
-      { app, records: records.slice(2000) },
-      results.concat(newResults)
-    );
+    try {
+      return this.addAllRecordsRecursive(
+        { app, records: records.slice(2000) },
+        results.concat(newResults)
+      );
+    } catch (e) {
+      throw new KintoneAllRecordsError(results, records, e);
+    }
   }
 
   private async addAllRecordsWithBulkRequest(params: {

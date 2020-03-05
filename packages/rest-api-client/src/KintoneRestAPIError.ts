@@ -56,13 +56,19 @@ export class KintoneRestAPIError extends Error {
   }
 }
 
-export class KintoneAllRecordsError extends KintoneRestAPIError {
+export class KintoneAllRecordsError extends Error {
   processedRecordsResult: object[];
   unprocessedRecords: object[];
+  error: KintoneRestAPIError;
 
-  constructor(error: ErrorResponse) {
-    super(error);
-    this.processedRecordsResult = [];
-    this.unprocessedRecords = [];
+  constructor(
+    processedRecordsResult: object[],
+    unprocessedRecords: object[],
+    error: KintoneRestAPIError
+  ) {
+    super("foobar");
+    this.processedRecordsResult = processedRecordsResult;
+    this.unprocessedRecords = unprocessedRecords;
+    this.error = error;
   }
 }
