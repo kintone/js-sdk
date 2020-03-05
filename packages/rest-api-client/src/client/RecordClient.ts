@@ -303,6 +303,13 @@ export class RecordClient {
     app: AppID;
     records: object[];
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
+    if (
+      !params.records.every(
+        record => !Array.isArray(record) && record instanceof Object
+      )
+    ) {
+      throw new Error("the `records` parameter must be an array of object.");
+    }
     const records = await this.addAllRecordsRecursive(params, []);
     return { records };
   }
@@ -316,18 +323,19 @@ export class RecordClient {
     if (recordsChunk.length === 0) {
       return results;
     }
-    const newResults = await this.addAllRecordsWithBulkRequest({
-      app,
-      records: recordsChunk
-    });
+    let newResults;
     try {
-      return this.addAllRecordsRecursive(
-        { app, records: records.slice(2000) },
-        results.concat(newResults)
-      );
+      newResults = await this.addAllRecordsWithBulkRequest({
+        app,
+        records: recordsChunk
+      });
     } catch (e) {
       throw new KintoneAllRecordsError(results, records, e);
     }
+    return this.addAllRecordsRecursive(
+      { app, records: records.slice(2000) },
+      results.concat(newResults)
+    );
   }
 
   private async addAllRecordsWithBulkRequest(params: {
