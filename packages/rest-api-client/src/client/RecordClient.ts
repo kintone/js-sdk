@@ -300,22 +300,28 @@ export class RecordClient {
         this.guestSpaceId
       );
     }
-    const bulkRequestClient = this.bulkRequestClient;
-    const separatedRecords = this.separateArrayRecursive(
-      2000,
-      [],
-      params.records
-    );
-    let result: Array<{ id: string; revision: string }> = [];
-    for (const records of separatedRecords) {
-      result = result.concat(
-        await this.addAllRecordsWithBulkRequest(
-          { app: params.app, records },
-          bulkRequestClient
-        )
-      );
+    return this.addAllRecordsRecursive(params, [], this.bulkRequestClient);
+  }
+
+  private async addAllRecordsRecursive(
+    params: { app: AppID; records: Record[] },
+    results: Array<{ id: string; revision: string }>,
+    bulkRequestClient: BulkRequestClient
+  ): Promise<Array<{ id: string; revision: string }>> {
+    const { app, records } = params;
+    const recordsChunk = records.slice(0, 2000);
+    if (recordsChunk.length === 0) {
+      return results;
     }
-    return result;
+    const newResults = await this.addAllRecordsWithBulkRequest(
+      { app, records: recordsChunk },
+      bulkRequestClient
+    );
+    return this.addAllRecordsRecursive(
+      { app, records: records.slice(2000) },
+      results.concat(newResults),
+      bulkRequestClient
+    );
   }
 
   private async addAllRecordsWithBulkRequest(
@@ -358,8 +364,6 @@ export class RecordClient {
     const chunk = array.slice(0, size);
     if (chunk.length === 0) {
       return separated;
-    } else if (chunk.length < size) {
-      return [...separated, chunk];
     }
     return this.separateArrayRecursive(
       size,
