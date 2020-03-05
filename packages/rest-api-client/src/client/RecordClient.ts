@@ -27,12 +27,17 @@ type CommentID = string | number;
 
 export class RecordClient {
   private client: HttpClient;
-  private bulkRequestClient?: BulkRequestClient;
+  private bulkRequestClient: BulkRequestClient;
   private guestSpaceId?: number | string;
   private didWarnMaximumOffsetValue: boolean;
 
-  constructor(client: HttpClient, guestSpaceId?: number | string) {
+  constructor(
+    client: HttpClient,
+    bulkRequestClient: BulkRequestClient,
+    guestSpaceId?: number | string
+  ) {
     this.client = client;
+    this.bulkRequestClient = bulkRequestClient;
     this.guestSpaceId = guestSpaceId;
     this.didWarnMaximumOffsetValue = false;
   }
@@ -293,44 +298,37 @@ export class RecordClient {
     return allRecords;
   }
 
-  public async addAllRecords(params: { app: AppID; records: Record[] }) {
-    if (!this.bulkRequestClient) {
-      this.bulkRequestClient = new BulkRequestClient(
-        this.client,
-        this.guestSpaceId
-      );
-    }
-    return this.addAllRecordsRecursive(params, [], this.bulkRequestClient);
+  public async addAllRecords(params: {
+    app: AppID;
+    records: object[];
+  }): Promise<{ records: Array<{ id: string; revision: string }> }> {
+    const records = await this.addAllRecordsRecursive(params, []);
+    return { records };
   }
 
   private async addAllRecordsRecursive(
-    params: { app: AppID; records: Record[] },
-    results: Array<{ id: string; revision: string }>,
-    bulkRequestClient: BulkRequestClient
+    params: { app: AppID; records: object[] },
+    results: Array<{ id: string; revision: string }>
   ): Promise<Array<{ id: string; revision: string }>> {
     const { app, records } = params;
     const recordsChunk = records.slice(0, 2000);
     if (recordsChunk.length === 0) {
       return results;
     }
-    const newResults = await this.addAllRecordsWithBulkRequest(
-      { app, records: recordsChunk },
-      bulkRequestClient
-    );
+    const newResults = await this.addAllRecordsWithBulkRequest({
+      app,
+      records: recordsChunk
+    });
     return this.addAllRecordsRecursive(
       { app, records: records.slice(2000) },
-      results.concat(newResults),
-      bulkRequestClient
+      results.concat(newResults)
     );
   }
 
-  private async addAllRecordsWithBulkRequest(
-    params: {
-      app: AppID;
-      records: Record[];
-    },
-    bulkRequestClient: BulkRequestClient
-  ) {
+  private async addAllRecordsWithBulkRequest(params: {
+    app: AppID;
+    records: object[];
+  }) {
     const separatedRecords = this.separateArrayRecursive(
       100,
       [],
@@ -344,7 +342,7 @@ export class RecordClient {
         records
       }
     }));
-    const results = (await bulkRequestClient.send({ requests }))
+    const results = (await this.bulkRequestClient.send({ requests }))
       .results as Array<{ ids: string[]; revisions: string[] }>;
     return results
       .map(result => {

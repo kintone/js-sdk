@@ -1,4 +1,5 @@
 import { RecordClient, Record } from "../RecordClient";
+import { BulkRequestClient } from "../BulkRequestClient";
 import { MockClient } from "../../http/MockClient";
 
 describe("RecordClient", () => {
@@ -15,7 +16,8 @@ describe("RecordClient", () => {
 
   beforeEach(() => {
     mockClient = new MockClient();
-    recordClient = new RecordClient(mockClient);
+    const bulkRequestClient = new BulkRequestClient(mockClient);
+    recordClient = new RecordClient(mockClient, bulkRequestClient);
   });
   describe("getRecord", () => {
     const params = { app: APP_ID, id: RECORD_ID };
@@ -785,7 +787,12 @@ describe("RecordClient with guestSpaceId", () => {
     const GUEST_SPACE_ID = 3;
 
     const mockClient = new MockClient();
-    const recordClient = new RecordClient(mockClient, GUEST_SPACE_ID);
+    const bulkRequestClient = new BulkRequestClient(mockClient);
+    const recordClient = new RecordClient(
+      mockClient,
+      bulkRequestClient,
+      GUEST_SPACE_ID
+    );
     const params = { app: APP_ID, id: RECORD_ID };
     recordClient.getRecord(params);
     expect(mockClient.getLogs()[0].path).toBe(
