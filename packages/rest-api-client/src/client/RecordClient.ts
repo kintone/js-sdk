@@ -2,7 +2,7 @@ import { buildPath } from "./../url";
 import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
 import { BulkRequestClient } from "./BulkRequestClient";
-import { KintoneAllRecordsError } from "../KintoneRestAPIError";
+import { KintoneAllRecordsError } from "../KintoneAllRecordsError";
 
 export type Record = {
   [fieldCode: string]: any;
