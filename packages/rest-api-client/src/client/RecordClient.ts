@@ -26,6 +26,8 @@ type Comment = {
 
 type CommentID = string | number;
 
+const ADD_RECORDS_LIMIT = 100;
+
 export class RecordClient {
   private client: HttpClient;
   private bulkRequestClient: BulkRequestClient;
@@ -318,8 +320,10 @@ export class RecordClient {
     params: { app: AppID; records: object[] },
     results: Array<{ id: string; revision: string }>
   ): Promise<Array<{ id: string; revision: string }>> {
+    const CHUNK_LENGTH =
+      this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * ADD_RECORDS_LIMIT;
     const { app, records } = params;
-    const recordsChunk = records.slice(0, 2000);
+    const recordsChunk = records.slice(0, CHUNK_LENGTH);
     if (recordsChunk.length === 0) {
       return results;
     }
@@ -330,10 +334,13 @@ export class RecordClient {
         records: recordsChunk
       });
     } catch (e) {
-      throw new KintoneAllRecordsError(results, records, e);
+      throw new KintoneAllRecordsError(results, records, e, ADD_RECORDS_LIMIT);
     }
     return this.addAllRecordsRecursive(
-      { app, records: records.slice(2000) },
+      {
+        app,
+        records: records.slice(CHUNK_LENGTH)
+      },
       results.concat(newResults)
     );
   }
@@ -343,7 +350,7 @@ export class RecordClient {
     records: object[];
   }) {
     const separatedRecords = this.separateArrayRecursive(
-      100,
+      ADD_RECORDS_LIMIT,
       [],
       params.records
     );

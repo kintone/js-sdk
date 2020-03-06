@@ -15,7 +15,8 @@ export class KintoneAllRecordsError extends Error {
   constructor(
     processedRecordsResult: object[],
     unprocessedRecords: object[],
-    error: KintoneRestAPIError
+    error: KintoneRestAPIError,
+    chunkLength: number
   ) {
     super(error.message);
     this.processedRecordsResult = processedRecordsResult;
@@ -28,7 +29,7 @@ export class KintoneAllRecordsError extends Error {
       if (errorParseResult !== null) {
         this.errorIndex =
           processedRecordsResult.length +
-          error.bulkRequestIndex * 100 +
+          error.bulkRequestIndex * chunkLength +
           errorParseResult;
       }
     }
