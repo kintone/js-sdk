@@ -17,18 +17,20 @@ export class KintoneAllRecordsError extends Error {
     unprocessedRecords: object[],
     error: KintoneRestAPIError
   ) {
-    super("foobar");
+    super(error.message);
     this.processedRecordsResult = processedRecordsResult;
     this.unprocessedRecords = unprocessedRecords;
     this.error = error;
-    const errorParseResult = KintoneAllRecordsError.parseErrorIndex(
-      error.errors
-    );
-    if (error.bulkRequestIndex && error.errors && errorParseResult) {
-      this.errorIndex =
-        processedRecordsResult.length +
-        error.bulkRequestIndex * 100 +
-        errorParseResult;
+    if (error.bulkRequestIndex && error.errors) {
+      const errorParseResult = KintoneAllRecordsError.parseErrorIndex(
+        error.errors
+      );
+      if (errorParseResult !== null) {
+        this.errorIndex =
+          processedRecordsResult.length +
+          error.bulkRequestIndex * 100 +
+          errorParseResult;
+      }
     }
   }
 }
