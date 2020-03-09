@@ -51,9 +51,15 @@ describe("KintoneAllRecordsError", () => {
           errorParseResult
       );
     });
-    it.todo(
-      "should set processedRecordsResult, unprocessedRecords, and error properties"
-    );
+    it("should set processedRecordsResult, unprocessedRecords, and error properties", () => {
+      expect(kintoneAllRecordsError.processedRecordsResult).toStrictEqual(
+        processedRecordsResult
+      );
+      expect(kintoneAllRecordsError.unprocessedRecords).toStrictEqual(
+        unprocessedRecords
+      );
+      expect(kintoneAllRecordsError.error).toStrictEqual(kintoneRestApiError);
+    });
     it.todo(
       "should set a message that includes an error index if error.errros exisits"
     );
