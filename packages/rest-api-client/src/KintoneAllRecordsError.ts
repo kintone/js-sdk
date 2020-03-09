@@ -71,6 +71,7 @@ export class KintoneAllRecordsError extends Error {
     this.processedRecordsResult = processedRecordsResult;
     this.unprocessedRecords = unprocessedRecords;
     this.error = error;
+    this.errorIndex = errorIndex;
     this.message = message;
   }
 }
