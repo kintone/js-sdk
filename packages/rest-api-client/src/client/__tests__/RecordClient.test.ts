@@ -640,6 +640,74 @@ describe("RecordClient", () => {
     });
   });
 
+  describe("addAllRecords", () => {
+    const params = {
+      app: APP_ID,
+      records: Array.from({ length: 3000 }, (_, index) => index + 1).map(
+        value => ({
+          [fieldCode]: {
+            value
+          }
+        })
+      )
+    };
+    const mockResponse = {
+      results: Array.from({ length: 20 }, (_, index) => index + 1).map(
+        value => ({
+          ids: Array.from({ length: 100 }, (_, index) => index + 1),
+          revisions: Array.from({ length: 100 }, () => 1)
+        })
+      )
+    };
+    const mockResponse2 = {
+      results: Array.from({ length: 10 }, (_, index) => index + 1).map(
+        value => ({
+          ids: Array.from({ length: 100 }, (_, index) => index + 1),
+          revisions: Array.from({ length: 100 }, () => 1)
+        })
+      )
+    };
+    let response: any;
+    beforeEach(async () => {
+      // response from first call of bulkRequest.send
+      mockClient.mockResponse(mockResponse);
+      // response from second call of bulkRequest.send
+      mockClient.mockResponse(mockResponse2);
+      response = await recordClient.addAllRecords(params);
+    });
+    it("should call bulkRequest multiple times", () => {
+      expect(mockClient.getLogs().length).toBe(2);
+    });
+
+    it("should return merged result of each bulkRequest's result", () => {
+      let expected = mockResponse.results.reduce((acc, { ids, revisions }) => {
+        return acc.concat(
+          ids.map((id, index) => ({
+            id,
+            revision: revisions[index]
+          }))
+        );
+      }, [] as Array<{ id: number; revision: number }>);
+      expected = expected.concat(
+        mockResponse2.results.reduce((acc, { ids, revisions }) => {
+          return acc.concat(
+            ids.map((id, index) => ({
+              id,
+              revision: revisions[index]
+            }))
+          );
+        }, [] as Array<{ id: number; revision: number }>)
+      );
+      expect(response.records).toStrictEqual(expected);
+    });
+
+    it.todo("should raise an Error if `records` parameter is not an array");
+
+    it.todo(
+      "should raise an KintoneAllRecordsError if an error occurs during bulkRequest"
+    );
+  });
+
   describe("addRecordComment", () => {
     const params = {
       app: APP_ID,
