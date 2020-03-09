@@ -3,8 +3,8 @@ import { KintoneRestAPIError } from "../KintoneRestAPIError";
 import { ErrorResponse } from "../http/HttpClientInterface";
 
 describe("KintoneAllRecordsError", () => {
-  let kintoneAllRecordsError;
-  let kintoneRestApiError;
+  let kintoneAllRecordsError: KintoneAllRecordsError;
+  let kintoneRestApiError: KintoneRestAPIError;
   let errorResponse: ErrorResponse;
   const processedRecordsResult = [{}, {}, {}, {}, {}];
   const unprocessedRecords = [{}, {}, {}];
