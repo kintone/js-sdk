@@ -683,27 +683,21 @@ describe("RecordClient", () => {
       });
 
       it("should return merged result of each bulkRequest's result", () => {
-        let expected = mockResponse.results.reduce(
-          (acc, { ids, revisions }) => {
-            return acc.concat(
-              ids.map((id, index) => ({
-                id,
-                revision: revisions[index]
-              }))
-            );
-          },
-          [] as Array<{ id: number; revision: number }>
-        );
-        expected = expected.concat(
-          mockResponse2.results.reduce((acc, { ids, revisions }) => {
-            return acc.concat(
-              ids.map((id, index) => ({
-                id,
-                revision: revisions[index]
-              }))
-            );
-          }, [] as Array<{ id: number; revision: number }>)
-        );
+        const convertResponse = (
+          acc: Array<{ id: number; revision: number }>,
+          { ids, revisions }: { ids: number[]; revisions: number[] }
+        ) =>
+          acc.concat(
+            ids.map((id, index) => ({
+              id,
+              revision: revisions[index]
+            }))
+          );
+
+        const expected = [
+          ...mockResponse.results.reduce(convertResponse, []),
+          ...mockResponse2.results.reduce(convertResponse, [])
+        ];
         expect(response.records).toStrictEqual(expected);
       });
     });
