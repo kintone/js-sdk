@@ -12,26 +12,65 @@ export class KintoneAllRecordsError extends Error {
     return result ? Number(result[1]) : null;
   }
 
+  private static extractErrorIndex(
+    error: KintoneRestAPIError,
+    processedRecordsResult: object[],
+    chunkLength: number
+  ) {
+    if (error.bulkRequestIndex && error.errors) {
+      const errorParseResult = KintoneAllRecordsError.parseErrorIndex(
+        error.errors
+      );
+      if (errorParseResult !== null) {
+        return (
+          processedRecordsResult.length +
+          error.bulkRequestIndex * chunkLength +
+          errorParseResult
+        );
+      }
+    }
+    return undefined;
+  }
+
+  private static buildErrorMessage(
+    processedRecordsResult: object[],
+    unprocessedRecords: object[],
+    errorIndex: number | undefined
+  ) {
+    let message = "";
+    if (errorIndex !== undefined) {
+      message = `An error occurred at records[${errorIndex}]. `;
+    }
+    message += `${
+      processedRecordsResult.length
+    }/${processedRecordsResult.length +
+      unprocessedRecords.length} records are processed successfully`;
+
+    return message;
+  }
+
   constructor(
     processedRecordsResult: object[],
     unprocessedRecords: object[],
     error: KintoneRestAPIError,
     chunkLength: number
   ) {
-    super(error.message);
+    const errorIndex = KintoneAllRecordsError.extractErrorIndex(
+      error,
+      processedRecordsResult,
+      chunkLength
+    );
+
+    const message = KintoneAllRecordsError.buildErrorMessage(
+      processedRecordsResult,
+      unprocessedRecords,
+      errorIndex
+    );
+    super(message);
+
     this.processedRecordsResult = processedRecordsResult;
     this.unprocessedRecords = unprocessedRecords;
     this.error = error;
-    if (error.bulkRequestIndex && error.errors) {
-      const errorParseResult = KintoneAllRecordsError.parseErrorIndex(
-        error.errors
-      );
-      if (errorParseResult !== null) {
-        this.errorIndex =
-          processedRecordsResult.length +
-          error.bulkRequestIndex * chunkLength +
-          errorParseResult;
-      }
-    }
+    this.message = message;
   }
 }
