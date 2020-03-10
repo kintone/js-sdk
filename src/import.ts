@@ -81,7 +81,7 @@ export async function importCustomizeSetting(
     } else if (retryCount < Constans.MAX_RETRY_COUNT) {
       await wait(1000);
       console.log(m("E_Retry"));
-      await importCustomizeSetting(
+      return importCustomizeSetting(
         kintoneApiClient,
         manifest,
         { retryCount },
@@ -101,9 +101,8 @@ function exportAsManifestFile(
   const toNameOrUrl = (destDir: string) => (f: CustomizeFile) => {
     if (f.type === "FILE") {
       return `${destDir}/${f.file.name}`;
-    } else {
-      return f.url;
     }
+    return f.url;
   };
 
   const desktopJs: CustomizeFile[] = resp.desktop.js;
@@ -176,12 +175,10 @@ function downloadAndWriteFile(
   destDir: string
 ): (f: CustomizeFile) => void {
   return async f => {
-    if (f.type === "URL") {
-      return;
+    if (f.type !== "URL") {
+      const resp = await kintoneApiClient.downloadFile(f.file.fileKey);
+      fs.writeFileSync(`${destDir}${sep}${f.file.name}`, resp);
     }
-    return kintoneApiClient
-      .downloadFile(f.file.fileKey)
-      .then(resp => fs.writeFileSync(`${destDir}${sep}${f.file.name}`, resp));
   };
 }
 
