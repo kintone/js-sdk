@@ -265,8 +265,8 @@ This method could throw `KintoneAllRecordsError`.
 
 | Name                   |                        Type                        | Description                                             |
 | ---------------------- | :------------------------------------------------: | ------------------------------------------------------- |
-| processedRecordsResult |                  Array\<Object\>                   | The results of records has been processed successfully. |
-| unprocessedRecords     |                  Array\<Object\>                   | Records has not been processed.                         |
+| processedRecordsResult |                  Array                   | The result of the records that have been processed successfully. This is the same type of `records` specified in the **Returns** section.  |
+| unprocessedRecords     |                  Array                   | The records that have not been processed. This is a part of `records` passed as an argument.                           |
 | error                  | [KintoneRestAPIError](../README.md#error-handling) | The instance of `KintoneRestAPIError`                   |
 | errorIndex             |             Number or<br />`undefined`             | The index that an error ocurred.                        |
 
