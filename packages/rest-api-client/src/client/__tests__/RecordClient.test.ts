@@ -683,7 +683,7 @@ describe("RecordClient", () => {
       });
 
       it("should return merged result of each bulkRequest's result", () => {
-        const convertResponse = (
+        const accumulateResponse = (
           acc: Array<{ id: number; revision: number }>,
           { ids, revisions }: { ids: number[]; revisions: number[] }
         ) =>
@@ -695,8 +695,8 @@ describe("RecordClient", () => {
           );
 
         const expected = [
-          ...mockResponse.results.reduce(convertResponse, []),
-          ...mockResponse2.results.reduce(convertResponse, [])
+          ...mockResponse.results.reduce(accumulateResponse, []),
+          ...mockResponse2.results.reduce(accumulateResponse, [])
         ];
         expect(response.records).toStrictEqual(expected);
       });
