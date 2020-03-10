@@ -214,6 +214,7 @@ An array of objects, including field types and field values within the matching 
 
 Adds multiple records to an app.
 The number of records that can be created at once is 100.
+If you'd like to add over 100 records, please consider using [addAllRecords](#addAllRecords) instead.
 
 #### Parameters
 
