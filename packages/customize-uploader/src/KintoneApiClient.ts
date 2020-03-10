@@ -72,15 +72,14 @@ export default class KintoneApiClient {
         type: "URL",
         url: fileOrUrl
       };
-    } else {
-      const { fileKey } = await this.uploadFile(fileOrUrl, contentType);
-      return {
-        type: "FILE",
-        file: {
-          fileKey
-        }
-      };
     }
+    const { fileKey } = await this.uploadFile(fileOrUrl, contentType);
+    return {
+      type: "FILE",
+      file: {
+        fileKey
+      }
+    };
   }
 
   public updateCustomizeSetting(setting: any) {
@@ -148,9 +147,8 @@ export default class KintoneApiClient {
         const contentType = response.headers["content-type"];
         if (contentType && contentType.startsWith("application/json")) {
           return JSON.parse(response.body);
-        } else {
-          return response.body;
         }
+        return response.body;
       });
     } catch (e) {
       if (e.statusCode === 520) {
@@ -219,5 +217,4 @@ export default class KintoneApiClient {
   }
 }
 
-/* tslint:disable max-classes-per-file */
 export class AuthenticationError extends Error {}
