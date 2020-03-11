@@ -70,6 +70,94 @@ describe("RecordClient", () => {
     });
   });
 
+  describe("upsertRecord", () => {
+    describe("update", () => {
+      const params = {
+        app: APP_ID,
+        updateKey: {
+          field: "Customer",
+          value: "foo"
+        },
+        record,
+        revision: 5
+      };
+      let getRecordsMockFn: jest.Mock;
+      let updateRecordMockFn: jest.Mock;
+      let addRecordMockFn: jest.Mock;
+      beforeEach(() => {
+        getRecordsMockFn = jest.fn().mockResolvedValue({
+          records: [{}]
+        });
+        updateRecordMockFn = jest.fn();
+        addRecordMockFn = jest.fn();
+        recordClient = new RecordClient(mockClient);
+        recordClient.getRecords = getRecordsMockFn;
+        recordClient.updateRecord = updateRecordMockFn;
+        recordClient.addRecord = addRecordMockFn;
+        recordClient.upsertRecord(params);
+      });
+
+      it("should call getRecords with a query built with udpateKey", () => {
+        expect(getRecordsMockFn.mock.calls.length).toBe(1);
+        expect(getRecordsMockFn.mock.calls[0][0]).toEqual({
+          app: params.app,
+          query: `${params.updateKey.field} = "${params.updateKey.value}"`
+        });
+      });
+      it("should call updateRecord with the params", () => {
+        expect(updateRecordMockFn.mock.calls.length).toBe(1);
+        expect(updateRecordMockFn.mock.calls[0][0]).toEqual(params);
+      });
+      it("should not call addRecord", () => {
+        expect(addRecordMockFn.mock.calls.length).toBe(0);
+      });
+    });
+    describe("insert", () => {
+      const params = {
+        app: APP_ID,
+        updateKey: {
+          field: "Customer",
+          value: "foo"
+        },
+        record,
+        revision: 5
+      };
+      let getRecordsMockFn: jest.Mock;
+      let updateRecordMockFn: jest.Mock;
+      let addRecordMockFn: jest.Mock;
+      beforeEach(() => {
+        getRecordsMockFn = jest.fn().mockResolvedValue({
+          records: []
+        });
+        updateRecordMockFn = jest.fn();
+        addRecordMockFn = jest.fn();
+        recordClient = new RecordClient(mockClient);
+        recordClient.getRecords = getRecordsMockFn;
+        recordClient.updateRecord = updateRecordMockFn;
+        recordClient.addRecord = addRecordMockFn;
+        recordClient.upsertRecord(params);
+      });
+
+      it("should call getRecords with a query built with udpateKey", () => {
+        expect(getRecordsMockFn.mock.calls.length).toBe(1);
+        expect(getRecordsMockFn.mock.calls[0][0]).toEqual({
+          app: params.app,
+          query: `${params.updateKey.field} = "${params.updateKey.value}"`
+        });
+      });
+      it("should call updateRecord with the params", () => {
+        expect(addRecordMockFn.mock.calls.length).toBe(1);
+        expect(addRecordMockFn.mock.calls[0][0]).toEqual({
+          app: params.app,
+          record: params.record
+        });
+      });
+      it("should not call updateRecord", () => {
+        expect(updateRecordMockFn.mock.calls.length).toBe(0);
+      });
+    });
+  });
+
   describe("getRecords", () => {
     const params = {
       app: APP_ID,
