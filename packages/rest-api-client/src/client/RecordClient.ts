@@ -82,7 +82,6 @@ export class RecordClient {
       query: `${updateKey.field} = "${updateKey.value}"`
     });
     if (records.length > 0) {
-      console.log(params);
       return this.updateRecord(params);
     }
     return this.addRecord({ app, record });
