@@ -84,32 +84,49 @@ describe("RecordClient", () => {
       let getRecordsMockFn: jest.Mock;
       let updateRecordMockFn: jest.Mock;
       let addRecordMockFn: jest.Mock;
-      beforeEach(() => {
+      beforeEach(async () => {
         getRecordsMockFn = jest.fn().mockResolvedValue({
-          records: [{}]
+          records: [
+            {
+              $id: {
+                value: "foo-id"
+              }
+            }
+          ]
         });
-        updateRecordMockFn = jest.fn();
+        updateRecordMockFn = jest.fn().mockResolvedValue({
+          revision: "2"
+        });
         addRecordMockFn = jest.fn();
         recordClient = new RecordClient(mockClient);
         recordClient.getRecords = getRecordsMockFn;
         recordClient.updateRecord = updateRecordMockFn;
         recordClient.addRecord = addRecordMockFn;
-        recordClient.upsertRecord(params);
       });
 
-      it("should call getRecords with a query built with udpateKey", () => {
+      it("should call getRecords with a query built with udpateKey", async () => {
+        await recordClient.upsertRecord(params);
         expect(getRecordsMockFn.mock.calls.length).toBe(1);
         expect(getRecordsMockFn.mock.calls[0][0]).toEqual({
           app: params.app,
           query: `${params.updateKey.field} = "${params.updateKey.value}"`
         });
       });
-      it("should call updateRecord with the params", () => {
+      it("should call updateRecord with the params", async () => {
+        await recordClient.upsertRecord(params);
         expect(updateRecordMockFn.mock.calls.length).toBe(1);
         expect(updateRecordMockFn.mock.calls[0][0]).toEqual(params);
       });
-      it("should not call addRecord", () => {
+      it("should not call addRecord", async () => {
+        await recordClient.upsertRecord(params);
         expect(addRecordMockFn.mock.calls.length).toBe(0);
+      });
+      it("should return id and revision properties", async () => {
+        const result = await recordClient.upsertRecord(params);
+        expect(result).toEqual({
+          id: "foo-id",
+          revision: "2"
+        });
       });
     });
     describe("insert", () => {
@@ -130,30 +147,42 @@ describe("RecordClient", () => {
           records: []
         });
         updateRecordMockFn = jest.fn();
-        addRecordMockFn = jest.fn();
+        addRecordMockFn = jest.fn().mockResolvedValue({
+          id: "bar-id",
+          revision: "1"
+        });
         recordClient = new RecordClient(mockClient);
         recordClient.getRecords = getRecordsMockFn;
         recordClient.updateRecord = updateRecordMockFn;
         recordClient.addRecord = addRecordMockFn;
-        recordClient.upsertRecord(params);
       });
 
-      it("should call getRecords with a query built with udpateKey", () => {
+      it("should call getRecords with a query built with udpateKey", async () => {
+        await recordClient.upsertRecord(params);
         expect(getRecordsMockFn.mock.calls.length).toBe(1);
         expect(getRecordsMockFn.mock.calls[0][0]).toEqual({
           app: params.app,
           query: `${params.updateKey.field} = "${params.updateKey.value}"`
         });
       });
-      it("should call updateRecord with the params", () => {
+      it("should call updateRecord with the params", async () => {
+        await recordClient.upsertRecord(params);
         expect(addRecordMockFn.mock.calls.length).toBe(1);
         expect(addRecordMockFn.mock.calls[0][0]).toEqual({
           app: params.app,
           record: params.record
         });
       });
-      it("should not call updateRecord", () => {
+      it("should not call updateRecord", async () => {
+        await recordClient.upsertRecord(params);
         expect(updateRecordMockFn.mock.calls.length).toBe(0);
+      });
+      it("should return id and revision properties", async () => {
+        const result = await recordClient.upsertRecord(params);
+        expect(result).toEqual({
+          id: "bar-id",
+          revision: "1"
+        });
       });
     });
   });

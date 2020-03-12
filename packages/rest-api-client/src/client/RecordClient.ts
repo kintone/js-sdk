@@ -74,7 +74,7 @@ export class RecordClient {
     };
     record?: object;
     revision?: Revision;
-  }) {
+  }): Promise<{ id: string; revision: string }> {
     const { app, updateKey, record } = params;
     // if the client can't get a record matches `updateKey`, use `addRecord`
     const { records } = await this.getRecords({
@@ -82,7 +82,8 @@ export class RecordClient {
       query: `${updateKey.field} = "${updateKey.value}"`
     });
     if (records.length > 0) {
-      return this.updateRecord(params);
+      const { revision } = await this.updateRecord(params);
+      return { id: records[0].$id.value, revision };
     }
     return this.addRecord({ app, record });
   }
