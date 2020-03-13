@@ -194,6 +194,23 @@ export class Record {
     );
   }
 
+  public async addAllRecords() {
+    const records = Array.from({ length: 3000 }, (_, index) => index + 1).map(
+      value => ({
+        Customer: {
+          value
+        }
+      })
+    );
+    console.dir(
+      await this.client.record.addAllRecords({
+        app: APP_ID,
+        records
+      }),
+      { depth: 5 }
+    );
+  }
+
   public async addRecordComment() {
     const params = {
       app: APP_ID,

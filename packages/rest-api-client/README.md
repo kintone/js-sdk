@@ -111,18 +111,7 @@ If you omit `auth` parameter, the client uses Session authentication.
 
 ## Error Handling
 
-When the API request responds with a status code other than 200, the client raises [`KintoneRestAPIError`](src/KintoneRestAPIError.ts).
-
-[`KintoneRestAPIError`](src/KintoneRestAPIError.ts) has the following properties:
-
-| Name             |         Type          | Description                                                                                                                                                |
-| ---------------- | :-------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id               |        String         | The ID of the error.                                                                                                                                       |
-| code             |        String         | The code of the error, to specify the type of error it is.                                                                                                 |
-| status           |        Number         | The HTTP status of the response.                                                                                                                           |
-| headers          |        Object         | The HTTP headers of the response.                                                                                                                          |
-| message          |        String         | The error message.                                                                                                                                         |
-| bulkRequestIndex | Number or `undefined` | The index of the failed request when executing [bulkRequest](docs/bulkRequest.md) and one of the requests fails.<br />This value is `undefined` otherwise. |
+See [Error Handling](docs/errorHandling.md)
 
 ## References
 

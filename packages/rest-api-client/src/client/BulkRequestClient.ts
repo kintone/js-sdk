@@ -4,10 +4,12 @@ import { buildPath } from "../url";
 export class BulkRequestClient {
   private client: HttpClient;
   private guestSpaceId?: number | string;
+  public readonly REQUESTS_LENGTH_LIMIT: number;
 
   constructor(client: HttpClient, guestSpaceId?: number | string) {
     this.client = client;
     this.guestSpaceId = guestSpaceId;
+    this.REQUESTS_LENGTH_LIMIT = 20;
   }
 
   public send(params: {

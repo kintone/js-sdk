@@ -93,7 +93,7 @@ export class KintoneRestAPIClient {
     const { guestSpaceId } = options;
 
     this.bulkRequest_ = new BulkRequestClient(httpClient, guestSpaceId);
-    this.record = new RecordClient(httpClient, guestSpaceId);
+    this.record = new RecordClient(httpClient, this.bulkRequest_, guestSpaceId);
     this.app = new AppClient(httpClient, guestSpaceId);
     this.file = new FileClient(httpClient, guestSpaceId);
   }

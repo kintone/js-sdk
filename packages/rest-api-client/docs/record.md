@@ -10,6 +10,7 @@
 - [getAllRecordsWithOffset](#getAllRecordsWithOffset)
 - [getAllRecordsWithCursor](#getAllRecordsWithCursor)
 - [addRecords](#addRecords)
+- [addAllRecords](#addAllRecords)
 - [updateRecords](#updateRecords)
 - [deleteRecords](#deleteRecords)
 - [getRecordComments](#getRecordComments)
@@ -237,6 +238,7 @@ An array of objects, including field types and field values within the matching 
 
 Adds multiple records to an app.
 The number of records that can be created at once is 100.
+If you'd like to add over 100 records, please consider using [addAllRecords](#addAllRecords) instead.
 
 #### Parameters
 
@@ -258,6 +260,27 @@ The number of records that can be created at once is 100.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/360000313321
+
+### addAllRecords
+
+Adds multiple records to an app.
+This method can add unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
+:warning: **Rollback can be performed on each block of 2000 records.**
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                             |
+| ------- | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                             |
+| records |      Array       |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Over 100 records can be specified.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+
+#### Returns
+
+| Name               |  Type  | Description                                                                    |
+| ------------------ | :----: | ------------------------------------------------------------------------------ |
+| records            | Array  | Holds an array of objects that include `id` and `revision` of created records. |
+| records[].id       | String | The ID of the record.                                                          |
+| records[].revision | String | The revision number of the record.                                             |
 
 ### updateRecords
 

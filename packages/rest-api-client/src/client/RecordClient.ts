@@ -1,6 +1,8 @@
 import { buildPath } from "./../url";
 import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
+import { BulkRequestClient } from "./BulkRequestClient";
+import { KintoneAllRecordsError } from "../KintoneAllRecordsError";
 
 export type Record = {
   [fieldCode: string]: any;
@@ -24,13 +26,21 @@ type Comment = {
 
 type CommentID = string | number;
 
+const ADD_RECORDS_LIMIT = 100;
+
 export class RecordClient {
   private client: HttpClient;
+  private bulkRequestClient: BulkRequestClient;
   private guestSpaceId?: number | string;
   private didWarnMaximumOffsetValue: boolean;
 
-  constructor(client: HttpClient, guestSpaceId?: number | string) {
+  constructor(
+    client: HttpClient,
+    bulkRequestClient: BulkRequestClient,
+    guestSpaceId?: number | string
+  ) {
     this.client = client;
+    this.bulkRequestClient = bulkRequestClient;
     this.guestSpaceId = guestSpaceId;
     this.didWarnMaximumOffsetValue = false;
   }
@@ -117,7 +127,7 @@ export class RecordClient {
 
   public async addRecords(params: {
     app: AppID;
-    records: Record[];
+    records: object[];
   }): Promise<{
     ids: string[];
     revisions: string[];
@@ -311,6 +321,100 @@ export class RecordClient {
       return this.getAllRecordsRecursiveByCursor(id, allRecords);
     }
     return allRecords;
+  }
+
+  public async addAllRecords(params: {
+    app: AppID;
+    records: object[];
+  }): Promise<{ records: Array<{ id: string; revision: string }> }> {
+    if (
+      !params.records.every(
+        record => !Array.isArray(record) && record instanceof Object
+      )
+    ) {
+      throw new Error("the `records` parameter must be an array of object.");
+    }
+    const records = await this.addAllRecordsRecursive(params, []);
+    return { records };
+  }
+
+  private async addAllRecordsRecursive(
+    params: { app: AppID; records: object[] },
+    results: Array<{ id: string; revision: string }>
+  ): Promise<Array<{ id: string; revision: string }>> {
+    const CHUNK_LENGTH =
+      this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * ADD_RECORDS_LIMIT;
+    const { app, records } = params;
+    const recordsChunk = records.slice(0, CHUNK_LENGTH);
+    if (recordsChunk.length === 0) {
+      return results;
+    }
+    let newResults;
+    try {
+      newResults = await this.addAllRecordsWithBulkRequest({
+        app,
+        records: recordsChunk
+      });
+    } catch (e) {
+      throw new KintoneAllRecordsError(results, records, e, ADD_RECORDS_LIMIT);
+    }
+    return this.addAllRecordsRecursive(
+      {
+        app,
+        records: records.slice(CHUNK_LENGTH)
+      },
+      results.concat(newResults)
+    );
+  }
+
+  private async addAllRecordsWithBulkRequest(params: {
+    app: AppID;
+    records: object[];
+  }): Promise<
+    Array<{
+      id: string;
+      revision: string;
+    }>
+  > {
+    const separatedRecords = this.separateArrayRecursive(
+      ADD_RECORDS_LIMIT,
+      [],
+      params.records
+    );
+    const requests = separatedRecords.map(records => ({
+      method: "POST",
+      api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
+      payload: {
+        app: params.app,
+        records
+      }
+    }));
+    const results = (await this.bulkRequestClient.send({ requests }))
+      .results as Array<{ ids: string[]; revisions: string[] }>;
+    return results
+      .map(result => {
+        const { ids, revisions } = result;
+        return ids.map((id, i) => ({ id, revision: revisions[i] }));
+      })
+      .reduce((acc, records) => {
+        return acc.concat(records);
+      }, []);
+  }
+
+  private separateArrayRecursive<T>(
+    size: number,
+    separated: T[][],
+    array: T[]
+  ): T[][] {
+    const chunk = array.slice(0, size);
+    if (chunk.length === 0) {
+      return separated;
+    }
+    return this.separateArrayRecursive(
+      size,
+      [...separated, chunk],
+      array.slice(size)
+    );
   }
 
   public addRecordComment(params: {
