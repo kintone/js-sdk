@@ -70,6 +70,123 @@ describe("RecordClient", () => {
     });
   });
 
+  describe("upsertRecord", () => {
+    describe("update", () => {
+      const params = {
+        app: APP_ID,
+        updateKey: {
+          field: "Customer",
+          value: "foo"
+        },
+        record,
+        revision: 5
+      };
+      let getRecordsMockFn: jest.Mock;
+      let updateRecordMockFn: jest.Mock;
+      let addRecordMockFn: jest.Mock;
+      beforeEach(async () => {
+        getRecordsMockFn = jest.fn().mockResolvedValue({
+          records: [
+            {
+              $id: {
+                value: "10"
+              }
+            }
+          ]
+        });
+        updateRecordMockFn = jest.fn().mockResolvedValue({
+          revision: "2"
+        });
+        addRecordMockFn = jest.fn();
+        recordClient = new RecordClient(mockClient);
+        recordClient.getRecords = getRecordsMockFn;
+        recordClient.updateRecord = updateRecordMockFn;
+        recordClient.addRecord = addRecordMockFn;
+      });
+
+      it("should call getRecords with a query built with udpateKey", async () => {
+        await recordClient.upsertRecord(params);
+        expect(getRecordsMockFn.mock.calls.length).toBe(1);
+        expect(getRecordsMockFn.mock.calls[0][0]).toEqual({
+          app: params.app,
+          query: `${params.updateKey.field} = "${params.updateKey.value}"`
+        });
+      });
+      it("should call updateRecord with the params", async () => {
+        await recordClient.upsertRecord(params);
+        expect(updateRecordMockFn.mock.calls.length).toBe(1);
+        expect(updateRecordMockFn.mock.calls[0][0]).toEqual(params);
+      });
+      it("should not call addRecord", async () => {
+        await recordClient.upsertRecord(params);
+        expect(addRecordMockFn.mock.calls.length).toBe(0);
+      });
+      it("should return id and revision properties", async () => {
+        const result = await recordClient.upsertRecord(params);
+        expect(result).toEqual({
+          id: "10",
+          revision: "2"
+        });
+      });
+    });
+    describe("insert", () => {
+      const params = {
+        app: APP_ID,
+        updateKey: {
+          field: "Customer",
+          value: "foo"
+        },
+        record,
+        revision: 5
+      };
+      let getRecordsMockFn: jest.Mock;
+      let updateRecordMockFn: jest.Mock;
+      let addRecordMockFn: jest.Mock;
+      beforeEach(() => {
+        getRecordsMockFn = jest.fn().mockResolvedValue({
+          records: []
+        });
+        updateRecordMockFn = jest.fn();
+        addRecordMockFn = jest.fn().mockResolvedValue({
+          id: "10",
+          revision: "1"
+        });
+        recordClient = new RecordClient(mockClient);
+        recordClient.getRecords = getRecordsMockFn;
+        recordClient.updateRecord = updateRecordMockFn;
+        recordClient.addRecord = addRecordMockFn;
+      });
+
+      it("should call getRecords with a query built with udpateKey", async () => {
+        await recordClient.upsertRecord(params);
+        expect(getRecordsMockFn.mock.calls.length).toBe(1);
+        expect(getRecordsMockFn.mock.calls[0][0]).toEqual({
+          app: params.app,
+          query: `${params.updateKey.field} = "${params.updateKey.value}"`
+        });
+      });
+      it("should call addRecord with the params", async () => {
+        await recordClient.upsertRecord(params);
+        expect(addRecordMockFn.mock.calls.length).toBe(1);
+        expect(addRecordMockFn.mock.calls[0][0]).toEqual({
+          app: params.app,
+          record: params.record
+        });
+      });
+      it("should not call updateRecord", async () => {
+        await recordClient.upsertRecord(params);
+        expect(updateRecordMockFn.mock.calls.length).toBe(0);
+      });
+      it("should return id and revision properties", async () => {
+        const result = await recordClient.upsertRecord(params);
+        expect(result).toEqual({
+          id: "10",
+          revision: "1"
+        });
+      });
+    });
+  });
+
   describe("getRecords", () => {
     const params = {
       app: APP_ID,

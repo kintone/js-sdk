@@ -69,6 +69,22 @@ export class Record {
     console.log(await this.client.record.updateRecord(params));
   }
 
+  public async upsertRecord() {
+    const params = {
+      app: APP_ID,
+      updateKey: {
+        field: "Code",
+        value: 300
+      },
+      record: {
+        Customer: {
+          value: "upsertTest"
+        }
+      }
+    };
+    console.log(await this.client.record.upsertRecord(params));
+  }
+
   public async getRecords() {
     console.log(
       await this.client.record.getRecords({

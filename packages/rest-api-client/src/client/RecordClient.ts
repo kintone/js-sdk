@@ -66,6 +66,28 @@ export class RecordClient {
     return this.client.put(path, params);
   }
 
+  public async upsertRecord(params: {
+    app: AppID;
+    updateKey: {
+      field: string;
+      value: string | number;
+    };
+    record?: object;
+    revision?: Revision;
+  }): Promise<{ id: string; revision: string }> {
+    const { app, updateKey, record } = params;
+    // if the client can't get a record matches `updateKey`, use `addRecord`
+    const { records } = await this.getRecords({
+      app,
+      query: `${updateKey.field} = "${updateKey.value}"`
+    });
+    if (records.length > 0) {
+      const { revision } = await this.updateRecord(params);
+      return { id: records[0].$id.value, revision };
+    }
+    return this.addRecord({ app, record });
+  }
+
   // TODO: `records` type in return type should be filtered by `fields`.
   public getRecords<T extends Record>(params: {
     app: AppID;
