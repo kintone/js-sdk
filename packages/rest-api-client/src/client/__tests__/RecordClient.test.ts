@@ -89,7 +89,7 @@ describe("RecordClient", () => {
           records: [
             {
               $id: {
-                value: "foo-id"
+                value: "10"
               }
             }
           ]
@@ -124,7 +124,7 @@ describe("RecordClient", () => {
       it("should return id and revision properties", async () => {
         const result = await recordClient.upsertRecord(params);
         expect(result).toEqual({
-          id: "foo-id",
+          id: "10",
           revision: "2"
         });
       });
@@ -148,7 +148,7 @@ describe("RecordClient", () => {
         });
         updateRecordMockFn = jest.fn();
         addRecordMockFn = jest.fn().mockResolvedValue({
-          id: "bar-id",
+          id: "10",
           revision: "1"
         });
         recordClient = new RecordClient(mockClient);
@@ -180,7 +180,7 @@ describe("RecordClient", () => {
       it("should return id and revision properties", async () => {
         const result = await recordClient.upsertRecord(params);
         expect(result).toEqual({
-          id: "bar-id",
+          id: "10",
           revision: "1"
         });
       });
