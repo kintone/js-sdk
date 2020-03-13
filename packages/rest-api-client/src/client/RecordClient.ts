@@ -348,7 +348,12 @@ export class RecordClient {
   private async addAllRecordsWithBulkRequest(params: {
     app: AppID;
     records: object[];
-  }) {
+  }): Promise<
+    Array<{
+      id: string;
+      revision: string;
+    }>
+  > {
     const separatedRecords = this.separateArrayRecursive(
       ADD_RECORDS_LIMIT,
       [],
