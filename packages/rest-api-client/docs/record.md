@@ -113,7 +113,7 @@ Updates details of 1 record in an app by specifying its record number, or a diff
 ### upsertRecord
 
 Updates or inserts details of 1 record in an app.
-Update a record if the unique key specifying by `uniqueKey` has matched any record, otherwise processed as an insert.
+This method updates a record if the unique key specified by `updateKey` has matched any record, otherwise processed as an insert.
 
 #### Parameters
 

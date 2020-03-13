@@ -165,7 +165,7 @@ describe("RecordClient", () => {
           query: `${params.updateKey.field} = "${params.updateKey.value}"`
         });
       });
-      it("should call updateRecord with the params", async () => {
+      it("should call addRecord with the params", async () => {
         await recordClient.upsertRecord(params);
         expect(addRecordMockFn.mock.calls.length).toBe(1);
         expect(addRecordMockFn.mock.calls[0][0]).toEqual({
