@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "circleci": "run-s test",
-    "css": "cssnano node_modules/normalize.css/normalize.css --safe > docs/dist/normalize.min.css",
+    "css": "postcss node_modules/normalize.css/normalize.css > docs/dist/normalize.min.css",
     "eslint": "eslint *.js bin src site test",
     "js": "webpack --mode production",
     "js:dev": "webpack-dev-server --mode development",
@@ -44,7 +44,7 @@
   "devDependencies": {
     "@cybozu/eslint-config": "^10.0.1",
     "array-flatten": "^3.0.0",
-    "cssnano-cli": "^1.0.5",
+    "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
     "execa": "^4.0.0",
     "glob": "^7.1.6",
@@ -53,6 +53,7 @@
     "mocha": "^7.1.0",
     "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.0",
     "power-assert": "^1.6.1",
     "prettier": "1.19.1",
     "redux": "^4.0.5",
