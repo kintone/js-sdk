@@ -240,7 +240,8 @@ If you'd like to add over 100 records, please consider using [addAllRecords](#ad
 ### addAllRecords
 
 Adds multiple records to an app.
-This method can add over 100 records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
+This method can add unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
+:warning: **Rollback can be performed on each block of 2000 records.**
 
 #### Parameters
 
