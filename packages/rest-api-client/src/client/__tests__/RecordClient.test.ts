@@ -102,7 +102,8 @@ describe("RecordClient", () => {
           revision: "2"
         });
         addRecordMockFn = jest.fn();
-        recordClient = new RecordClient(mockClient);
+        const bulkRequestClient = new BulkRequestClient(mockClient);
+        recordClient = new RecordClient(mockClient, bulkRequestClient);
         recordClient.getRecords = getRecordsMockFn;
         recordClient.updateRecord = updateRecordMockFn;
         recordClient.addRecord = addRecordMockFn;
@@ -155,7 +156,8 @@ describe("RecordClient", () => {
           id: "10",
           revision: "1"
         });
-        recordClient = new RecordClient(mockClient);
+        const bulkRequestClient = new BulkRequestClient(mockClient);
+        recordClient = new RecordClient(mockClient, bulkRequestClient);
         recordClient.getRecords = getRecordsMockFn;
         recordClient.updateRecord = updateRecordMockFn;
         recordClient.addRecord = addRecordMockFn;
