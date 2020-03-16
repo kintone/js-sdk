@@ -1,7 +1,7 @@
 import { MockClient } from "../../http/MockClient";
 import { FileClient } from "../FileClient";
 import FormData from "form-data";
-import { injectPlatformDependencies } from "../../platform/platformDependencies";
+import { injectPlatformDeps } from "../../platform";
 
 jest.mock("form-data");
 
@@ -46,7 +46,7 @@ describe("FileClient", () => {
         }
       };
       it("should pass file object includes name and data as a param to the http client", async () => {
-        injectPlatformDependencies({
+        injectPlatformDeps({
           readFileFromPath: async (filePath: string) => ({
             name: filePath,
             data: "Hello!"

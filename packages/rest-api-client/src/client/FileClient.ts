@@ -1,7 +1,7 @@
 import { HttpClient } from "../http";
 import { buildPath } from "../url";
 import FormData from "form-data";
-import { platformDependencies } from "../platform/platformDependencies";
+import { platformDeps } from "../platform";
 
 export class FileClient {
   private client: HttpClient;
@@ -22,7 +22,7 @@ export class FileClient {
     const formData = new FormData();
     if ("path" in params.file) {
       try {
-        const { name, data } = await platformDependencies.readFileFromPath(
+        const { name, data } = await platformDeps.readFileFromPath(
           params.file.path
         );
         formData.append("file", data, name);

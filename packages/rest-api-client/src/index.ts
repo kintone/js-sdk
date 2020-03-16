@@ -1,10 +1,8 @@
 import "core-js/features/promise";
-import { readFileFromPath } from "./platform/node";
 
-import { injectPlatformDependencies } from "./platform/platformDependencies";
+import { injectPlatformDeps } from "./platform/";
+import * as nodeDeps from "./platform/node";
 
-injectPlatformDependencies({
-  readFileFromPath
-});
+injectPlatformDeps(nodeDeps);
 
 export { KintoneRestAPIClient } from "./KintoneRestAPIClient";
