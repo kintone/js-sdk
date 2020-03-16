@@ -12,6 +12,7 @@
 - [addRecords](#addRecords)
 - [addAllRecords](#addAllRecords)
 - [updateRecords](#updateRecords)
+- [updateAllRecords](#updateAllRecords)
 - [deleteRecords](#deleteRecords)
 - [getRecordComments](#getRecordComments)
 - [addRecordComment](#addRecordComment)
@@ -285,6 +286,8 @@ This method can add unlimited number of records. This method could throw `Kinton
 ### updateRecords
 
 Updates details of multiple records in an app, by specifying their record numbers, or their unique keys.
+The number of records that can be updated at once is 100.
+If you'd like to update over 100 records, please consider using [updateAllRecords](#updateAllRecords) instead.
 
 #### Parameters
 
@@ -310,6 +313,33 @@ Updates details of multiple records in an app, by specifying their record number
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/360000313622
+
+### updateAllRecords
+
+Updates multiple records to an app.
+This method can update unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
+:warning: **Rollback can be performed on each block of 2000 records.**
+
+#### Parameters
+
+| Name                      |       Type       |          Required           | Description                                                                                                                                                                                                     |
+| ------------------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app                       | Number or String |             Yes             | The app ID.                                                                                                                                                                                                     |
+| records                   |      Array       |             Yes             | Holds an array of objects that include `id`/`updateKey`, `revision` and `record` objects.<br />Over 100 records can be specified.                                                                               |
+| records[].id              | Number or String | Conditionally<br />Required | The record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
+| records[].updateKey       |      Object      | Conditionally<br />Required | The unique key of the record to be updated. Required, if `id` will not be specified. To specify this field, the field must have the "Prohibit duplicate values" option turned on.                               |
+| records[].updateKey.field |      String      | Conditionally<br />Required | The field code of the unique key. Required, if `updateKey` will be specified.                                                                                                                                   |
+| records[].updateKey.value | Number or String | Conditionally<br />Required | The value of the unique key. Required, if `updateKey` will be specified.                                                                                                                                        |
+| records[].revision        | Number or String |                             | The expected revision number. If the value does not match, an error will occur and all records will not be updated. If the value is not specified or is `-1`, the revision number will not be checked.          |
+| records[].record          |      Object      |                             | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+
+#### Returns
+
+| Name               |  Type  | Description                                                                    |
+| ------------------ | :----: | ------------------------------------------------------------------------------ |
+| records            | Array  | Holds an array of objects that include `id` and `revision` of updated records. |
+| records[].id       | String | The ID of the record.                                                          |
+| records[].revision | String | The revision number of the record.                                             |
 
 ### deleteRecords
 
