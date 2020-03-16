@@ -27,7 +27,6 @@ export class FileClient {
         );
         formData.append("file", data, name);
       } catch (e) {
-        console.log(e);
         throw new Error(
           "uploadFile doesn't allow to accept a file path on a browser environment."
         );
