@@ -1,17 +1,10 @@
 import "core-js/features/promise";
-import fs from "fs";
-import { promisify } from "util";
-import { basename } from "path";
+import { readFileFromPath } from "./platform/node";
 
-import { injectPlatformDependencies } from "./platformDependencies";
+import { injectPlatformDependencies } from "./platform/platformDependencies";
 
-const readFile = promisify(fs.readFile);
 injectPlatformDependencies({
-  readFileFromPath: async (filePath: string) => {
-    const data = await readFile(filePath);
-    const name = basename(filePath);
-    return { data, name };
-  }
+  readFileFromPath
 });
 
 export { KintoneRestAPIClient } from "./KintoneRestAPIClient";

@@ -1,7 +1,7 @@
 import { HttpClient } from "../http";
 import { buildPath } from "../url";
 import FormData from "form-data";
-import { platformDependencies } from "../platformDependencies";
+import { platformDependencies } from "../platform/platformDependencies";
 
 export class FileClient {
   private client: HttpClient;

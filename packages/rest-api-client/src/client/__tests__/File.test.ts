@@ -1,7 +1,7 @@
 import { MockClient } from "../../http/MockClient";
 import { FileClient } from "../FileClient";
 import FormData from "form-data";
-import { injectPlatformDependencies } from "../../platformDependencies";
+import { injectPlatformDependencies } from "../../platform/platformDependencies";
 
 jest.mock("form-data");
 
