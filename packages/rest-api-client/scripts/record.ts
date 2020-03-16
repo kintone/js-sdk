@@ -211,6 +211,21 @@ export class Record {
     );
   }
 
+  public async updateAllRecords() {
+    const records = await this.client.record.getAllRecords({
+      app: APP_ID,
+      condition: 'Customer = "foo"'
+    });
+    const result = await this.client.record.updateAllRecords({
+      app: APP_ID,
+      records: records.map(record => ({
+        id: record.$id.value,
+        record: { Customer: { value: "bar" } }
+      }))
+    });
+    console.log(result);
+  }
+
   public async addRecordComment() {
     const params = {
       app: APP_ID,
