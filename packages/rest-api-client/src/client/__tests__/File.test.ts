@@ -1,6 +1,7 @@
 import { MockClient } from "../../http/MockClient";
 import { FileClient } from "../FileClient";
 import FormData from "form-data";
+import { injectPlatformDependencies } from "../../platformDependencies";
 
 jest.mock("form-data");
 
@@ -12,28 +13,53 @@ describe("FileClient", () => {
     fileClient = new FileClient(mockClient);
   });
   describe("uploadFile", () => {
-    const params = {
-      file: {
-        name: "text.text",
-        data: "Hello!"
-      }
-    };
-    beforeEach(() => {
-      fileClient.uploadFile(params);
+    describe("with name & data", () => {
+      const params = {
+        file: {
+          name: "text.text",
+          data: "Hello!"
+        }
+      };
+      beforeEach(() => {
+        fileClient.uploadFile(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/file.json");
+      });
+      it("should send a post request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("post");
+      });
+      it("should pass file object includes name and data as a param to the http client", () => {
+        const MockFormData = FormData as jest.MockedClass<typeof FormData>;
+        expect(MockFormData.prototype.append.mock.calls[0]).toEqual([
+          "file",
+          params.file.data,
+          params.file.name
+        ]);
+      });
     });
-    it("should pass the path to the http client", () => {
-      expect(mockClient.getLogs()[0].path).toBe("/k/v1/file.json");
-    });
-    it("should send a post request", () => {
-      expect(mockClient.getLogs()[0].method).toBe("post");
-    });
-    it("should pass file object includes name and data as a param to the http client", () => {
-      const MockFormData = FormData as jest.MockedClass<typeof FormData>;
-      expect(MockFormData.prototype.append.mock.calls[0]).toEqual([
-        "file",
-        params.file.data,
-        params.file.name
-      ]);
+
+    describe("with file path", () => {
+      const params = {
+        file: {
+          path: "foo/bar/baz.txt"
+        }
+      };
+      it("should pass file object includes name and data as a param to the http client", async () => {
+        injectPlatformDependencies({
+          readFileFromPath: async (filePath: string) => ({
+            name: filePath,
+            data: "Hello!"
+          })
+        });
+        await fileClient.uploadFile(params);
+        const MockFormData = FormData as jest.MockedClass<typeof FormData>;
+        expect(MockFormData.prototype.append.mock.calls[0]).toEqual([
+          "file",
+          "Hello!",
+          params.file.path
+        ]);
+      });
     });
   });
 
