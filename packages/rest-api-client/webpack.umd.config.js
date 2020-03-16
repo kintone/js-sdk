@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = (_, argv) => ({
-  entry: "./src/index.ts",
+  entry: "./src/index.browser.ts",
   output: {
     path: path.resolve(__dirname, "umd"),
     libraryTarget: "umd",
