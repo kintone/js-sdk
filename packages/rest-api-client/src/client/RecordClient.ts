@@ -409,13 +409,6 @@ export class RecordClient {
       | { updateKey: object; record?: object; revision?: Revision }
     >;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
-    if (
-      !params.records.every(
-        record => !Array.isArray(record) && record instanceof Object
-      )
-    ) {
-      throw new Error("the `records` parameter must be an array of object.");
-    }
     const records = await this.updateAllRecordsRecursive(params, []);
     return { records };
   }
