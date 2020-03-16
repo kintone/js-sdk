@@ -61,6 +61,24 @@ describe("FileClient", () => {
         ]);
       });
     });
+
+    describe("on a browser environment", () => {
+      const params = {
+        file: {
+          path: "foo/bar/baz.txt"
+        }
+      };
+      it("should raise an error on a browser environment", () => {
+        injectPlatformDeps({
+          readFileFromPath: () => {
+            throw new Error("not implemented");
+          }
+        });
+        expect(fileClient.uploadFile(params)).rejects.toThrow(
+          "uploadFile doesn't allow to accept a file path on a browser environment."
+        );
+      });
+    });
   });
 
   describe("downloadFile", () => {
