@@ -57,11 +57,12 @@ You can use the file key at the following place.
 
 #### Parameters
 
-| Name      |                                     Type                                     | Required | Description                            |
-| --------- | :--------------------------------------------------------------------------: | :------: | -------------------------------------- |
-| file      |                                    Object                                    |   Yes    | An object includes file name and data. |
-| file.name |                                    String                                    |   Yes    | The name for the file.                 |
-| file.data | String or<br />[Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) |   Yes    | The data for the file.                 |
+| Name      |                                     Type                                     |          Required           | Description                                                                                                                                         |
+| --------- | :--------------------------------------------------------------------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| file      |                                    Object                                    |             Yes             | An object includes file name and data.                                                                                                              |
+| file.name |                                    String                                    | Conditionally<br />Required | The name for the file. Required, unless you specify `file.path`.                                                                                    |
+| file.data | String or<br />[Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) | Conditionally<br />Required | The data for the file. Required, unless you specify `file.path`.                                                                                    |
+| file.path |                                    String                                    | Conditionally<br />Required | **This parameter is available only in Node.js environment.** <br /> The path to the file. Required, unless you specify `file.name` and `file.data`. |
 
 #### Returns
 
