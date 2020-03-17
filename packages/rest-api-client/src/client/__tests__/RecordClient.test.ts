@@ -79,7 +79,7 @@ describe("RecordClient", () => {
       const params = {
         app: APP_ID,
         updateKey: {
-          field: "Customer",
+          field: "Code",
           value: "foo"
         },
         record,
@@ -176,7 +176,10 @@ describe("RecordClient", () => {
         expect(addRecordMockFn.mock.calls.length).toBe(1);
         expect(addRecordMockFn.mock.calls[0][0]).toEqual({
           app: params.app,
-          record: params.record
+          record: {
+            ...params.record,
+            [params.updateKey.field]: { value: params.updateKey.value }
+          }
         });
       });
       it("should not call updateRecord", async () => {
