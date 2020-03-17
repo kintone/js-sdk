@@ -14,5 +14,9 @@ export class UnsupportedPlatformError extends Error {
     }
 
     this.platform = platform;
+
+    // https://github.com/Microsoft/TypeScript/wiki/Breaking-Changes#extending-built-ins-like-error-array-and-map-may-no-longer-work
+    // Set the prototype explicitly.
+    Object.setPrototypeOf(this, UnsupportedPlatformError.prototype);
   }
 }
