@@ -2,6 +2,7 @@ import { MockClient } from "../../http/MockClient";
 import { FileClient } from "../FileClient";
 import FormData from "form-data";
 import { injectPlatformDeps } from "../../platform";
+import * as browserDeps from "../../platform/browser";
 
 jest.mock("form-data");
 
@@ -69,13 +70,9 @@ describe("FileClient", () => {
         }
       };
       it("should raise an error on a browser environment", () => {
-        injectPlatformDeps({
-          readFileFromPath: () => {
-            throw new Error("not implemented");
-          }
-        });
+        injectPlatformDeps(browserDeps);
         expect(fileClient.uploadFile(params)).rejects.toThrow(
-          "uploadFile doesn't allow to accept a file path on a browser environment."
+          "uploadFile doesn't allow to accept a file path on a Browser environment."
         );
       });
     });
