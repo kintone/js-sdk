@@ -2,6 +2,7 @@ import { HttpClient } from "../http";
 import { buildPath } from "../url";
 import FormData from "form-data";
 import { platformDeps } from "../platform";
+import { UnsupportedPlatformError } from "../platform/UnsupportedPlatformError";
 
 export class FileClient {
   private client: HttpClient;
@@ -27,9 +28,13 @@ export class FileClient {
         );
         formData.append("file", data, name);
       } catch (e) {
-        throw new Error(
-          "uploadFile doesn't allow to accept a file path on a browser environment."
-        );
+        if (e instanceof UnsupportedPlatformError) {
+          throw new Error(
+            `uploadFile doesn't allow to accept a file path on a ${e.platform} environment.`
+          );
+        }
+
+        throw e;
       }
     } else {
       const { name, data } = params.file;
