@@ -68,6 +68,7 @@ export class KintoneAllRecordsError extends Error {
     );
     super(message);
 
+    this.name = "KintoneAllRecordsError";
     this.processedRecordsResult = processedRecordsResult;
     this.unprocessedRecords = unprocessedRecords;
     this.error = error;

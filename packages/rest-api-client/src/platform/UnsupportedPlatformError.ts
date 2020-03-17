@@ -13,6 +13,7 @@ export class UnsupportedPlatformError extends Error {
       Error.captureStackTrace(this, UnsupportedPlatformError);
     }
 
+    this.name = "UnsupportedPlatformError";
     this.platform = platform;
 
     // https://github.com/Microsoft/TypeScript/wiki/Breaking-Changes#extending-built-ins-like-error-array-and-map-may-no-longer-work
