@@ -12,7 +12,7 @@ export const platformDeps: PlatformDeps = {
 
 export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   Object.keys(deps).forEach(key => {
-    // we can assume taht key is a key of PlatformDeps
+    // we can assume that key is a key of PlatformDeps
     const name = key as keyof PlatformDeps;
     platformDeps[name] = deps[name]!;
   });
