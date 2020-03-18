@@ -24,7 +24,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kintone/customize-uploader.git"
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/customize-uploader"
   },
   "keywords": [
     "kintone"
@@ -32,9 +33,9 @@
   "author": "kintone",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kintone/customize-uploader/issues"
+    "url": "https://github.com/kintone/js-sdk/issues"
   },
-  "homepage": "https://github.com/kintone/customize-uploader#readme",
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/customize-uploader#readme",
   "devDependencies": {
     "@types/chokidar": "^1.7.5",
     "@types/inquirer": "6.5.0",
