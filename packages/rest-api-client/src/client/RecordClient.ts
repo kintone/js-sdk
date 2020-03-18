@@ -96,7 +96,10 @@ export class RecordClient {
       const { revision } = await this.updateRecord(params);
       return { id: records[0].$id.value, revision };
     }
-    return this.addRecord({ app, record });
+    return this.addRecord({
+      app,
+      record: { ...record, [updateKey.field]: { value: updateKey.value } }
+    });
   }
 
   // TODO: `records` type in return type should be filtered by `fields`.
