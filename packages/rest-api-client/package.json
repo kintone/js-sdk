@@ -12,6 +12,7 @@
   "description": "Kintone REST API client for JavaScript",
   "main": "lib/index.js",
   "module": "esm/index.js",
+  "browser": "lib/index.browser.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build:umd_dev": "webpack --mode development --config webpack.umd.config.js",
