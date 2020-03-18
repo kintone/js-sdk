@@ -1,11 +1,8 @@
 import assert from "assert";
 import fs from "fs";
 import rimraf from "rimraf";
-import { CustomizeManifest } from "../src/index";
-import {
-  generateCustomizeManifest,
-  getInitCustomizeManifest
-} from "../src/init";
+import { CustomizeManifest } from "../index";
+import { generateCustomizeManifest, getInitCustomizeManifest } from "../init";
 
 describe("init", () => {
   const testDestDir = "testDestDir";
@@ -17,7 +14,9 @@ describe("init", () => {
 
     const assertManifestContent = (buffer: Buffer) => {
       const appCustomize = JSON.parse(
-        fs.readFileSync("test/fixtures/get-appcustomize-init.json").toString()
+        fs
+          .readFileSync("src/__tests__/fixtures/get-appcustomize-init.json")
+          .toString()
       );
       assert.deepStrictEqual(JSON.parse(buffer.toString()), appCustomize);
     };

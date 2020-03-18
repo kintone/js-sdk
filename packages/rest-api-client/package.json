@@ -32,6 +32,7 @@
     "lint:ts": "tsc --noEmit",
     "lint": "run-p -l lint:*",
     "test": "jest --rootDir src",
+    "test:ci": "jest --rootDir src --runInBand",
     "upload": "kintone-customize-uploader scripts/customize-manifest.json",
     "webpack": "webpack --config scripts/webpack.config"
   },
