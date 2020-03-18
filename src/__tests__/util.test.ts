@@ -1,5 +1,5 @@
 import assert from "assert";
-import { isUrlString, wait } from "../src/util";
+import { isUrlString, wait } from "../util";
 
 describe("util", () => {
   describe("isUrlString", () => {

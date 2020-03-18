@@ -1,5 +1,5 @@
 import assert from "assert";
-import { CustomizeManifest, Option, Status, upload } from "../src/index";
+import { CustomizeManifest, Option, Status, upload } from "../index";
 import MockKintoneApiClient from "./MockKintoneApiClient";
 
 describe("index", () => {
@@ -25,15 +25,15 @@ describe("index", () => {
         scope: "ALL",
         desktop: {
           js: [
-            "test/fixtures/a.js",
-            "test/fixtures/b.js",
+            "src/__tests__/fixtures/a.js",
+            "src/__tests__/fixtures/b.js",
             "https://js.cybozu.com/jquery/3.3.1/jquery.min.js"
           ],
-          css: ["test/fixtures/a.css"]
+          css: ["src/__tests__/fixtures/a.css"]
         },
         mobile: {
-          js: ["test/fixtures/c.js"],
-          css: ["test/fixtures/d.css"]
+          js: ["src/__tests__/fixtures/c.js"],
+          css: ["src/__tests__/fixtures/d.css"]
         }
       };
       status = {

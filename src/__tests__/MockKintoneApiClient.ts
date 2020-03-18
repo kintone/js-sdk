@@ -1,7 +1,7 @@
 import KintoneApiClient, {
   Option as ApiClientOption,
   RequestParams
-} from "../src/KintoneApiClient";
+} from "../KintoneApiClient";
 
 export default class MockKintoneApiClient extends KintoneApiClient {
   public logs: RequestParams[];

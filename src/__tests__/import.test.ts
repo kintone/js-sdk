@@ -6,7 +6,7 @@ import {
   ImportCustomizeManifest,
   importCustomizeSetting,
   Option
-} from "../src/import";
+} from "../import";
 import MockKintoneApiClient from "./MockKintoneApiClient";
 
 describe("import", () => {
@@ -186,7 +186,7 @@ describe("import", () => {
     it("should success updating customize-manifest.json and downloading uploaded js/css files", () => {
       const getAppCustomizeResponse = JSON.parse(
         fs
-          .readFileSync("test/fixtures/get-appcustomize-response.json")
+          .readFileSync("src/__tests__/fixtures/get-appcustomize-response.json")
           .toString()
       );
 
