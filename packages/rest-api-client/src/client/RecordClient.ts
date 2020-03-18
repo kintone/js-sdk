@@ -27,6 +27,7 @@ type Comment = {
 type CommentID = string | number;
 
 const ADD_RECORDS_LIMIT = 100;
+const UPDATE_RECORDS_LIMIT = 100;
 
 export class RecordClient {
   private client: HttpClient;
@@ -396,6 +397,86 @@ export class RecordClient {
         const { ids, revisions } = result;
         return ids.map((id, i) => ({ id, revision: revisions[i] }));
       })
+      .reduce((acc, records) => {
+        return acc.concat(records);
+      }, []);
+  }
+
+  public async updateAllRecords(params: {
+    app: AppID;
+    records: Array<
+      | { id: RecordID; record?: object; revision?: Revision }
+      | { updateKey: object; record?: object; revision?: Revision }
+    >;
+  }): Promise<{ records: Array<{ id: string; revision: string }> }> {
+    const records = await this.updateAllRecordsRecursive(params, []);
+    return { records };
+  }
+
+  private async updateAllRecordsRecursive(
+    params: {
+      app: AppID;
+      records: Array<
+        | { id: RecordID; record?: object; revision?: Revision }
+        | { updateKey: object; record?: object; revision?: Revision }
+      >;
+    },
+    results: Array<{ id: string; revision: string }>
+  ): Promise<Array<{ id: string; revision: string }>> {
+    const CHUNK_LENGTH =
+      this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * UPDATE_RECORDS_LIMIT;
+    const { app, records } = params;
+    const recordsChunk = records.slice(0, CHUNK_LENGTH);
+    if (recordsChunk.length === 0) {
+      return results;
+    }
+    let newResults;
+    try {
+      newResults = await this.updateAllRecordsWithBulkRequest({
+        app,
+        records: recordsChunk
+      });
+    } catch (e) {
+      throw new KintoneAllRecordsError(
+        results,
+        records,
+        e,
+        UPDATE_RECORDS_LIMIT
+      );
+    }
+    return this.updateAllRecordsRecursive(
+      {
+        app,
+        records: records.slice(CHUNK_LENGTH)
+      },
+      results.concat(newResults)
+    );
+  }
+
+  private async updateAllRecordsWithBulkRequest(params: {
+    app: AppID;
+    records: Array<
+      | { id: RecordID; record?: object; revision?: Revision }
+      | { updateKey: object; record?: object; revision?: Revision }
+    >;
+  }): Promise<Array<{ id: string; revision: string }>> {
+    const separatedRecords = this.separateArrayRecursive(
+      UPDATE_RECORDS_LIMIT,
+      [],
+      params.records
+    );
+    const requests = separatedRecords.map(records => ({
+      method: "PUT",
+      api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
+      payload: {
+        app: params.app,
+        records
+      }
+    }));
+    const results = (await this.bulkRequestClient.send({ requests }))
+      .results as Array<{ records: Array<{ id: string; revision: string }> }>;
+    return results
+      .map(result => result.records)
       .reduce((acc, records) => {
         return acc.concat(records);
       }, []);

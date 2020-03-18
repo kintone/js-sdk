@@ -888,6 +888,124 @@ describe("RecordClient", () => {
     });
   });
 
+  describe("updateAllRecords", () => {
+    const params = {
+      app: APP_ID,
+      records: Array.from({ length: 3000 }, (_, index) => index + 1).map(
+        value => ({
+          id: value,
+          record: {
+            [fieldCode]: {
+              value: `${fieldCode}-${value}`
+            }
+          },
+          revision: 1
+        })
+      )
+    };
+    let response: any;
+    describe("success", () => {
+      const mockResponse = {
+        results: Array.from({ length: 20 }, (_, index) => index).map(value => ({
+          records: Array.from({ length: 100 }, (_, index) =>
+            String(value * 100 + index + 1)
+          ).map(id => ({
+            id,
+            revision: "2"
+          }))
+        }))
+      };
+      const mockResponse2 = {
+        results: Array.from({ length: 10 }, (_, index) => index).map(value => ({
+          records: Array.from({ length: 100 }, (_, index) =>
+            String(2000 + value * 100 + index + 1)
+          ).map(id => ({
+            id,
+            revision: "2"
+          }))
+        }))
+      };
+      beforeEach(async () => {
+        // response from first call of bulkRequest.send
+        mockClient.mockResponse(mockResponse);
+        // response from second call of bulkRequest.send
+        mockClient.mockResponse(mockResponse2);
+        response = await recordClient.updateAllRecords(params);
+      });
+      it("should call bulkRequest multiple times", () => {
+        expect(mockClient.getLogs().length).toBe(2);
+      });
+
+      it("should return merged result of each bulkRequest's result", () => {
+        const accumulateResponse = (
+          acc: Array<{ id: string; revision: string }>,
+          result: { records: Array<{ id: string; revision: string }> }
+        ) => {
+          return acc.concat(result.records);
+        };
+
+        const expected = [
+          ...mockResponse.results,
+          ...mockResponse2.results
+        ].reduce(accumulateResponse, []);
+        expect(response.records).toStrictEqual(expected);
+      });
+    });
+
+    describe("response error", () => {
+      // success
+      const mockResponse = {
+        results: Array.from({ length: 20 }, (_, index) => index).map(value => ({
+          records: Array.from({ length: 100 }, (_, index) =>
+            String(value * 100 + index + 1)
+          ).map(id => ({
+            id,
+            revision: "2"
+          }))
+        }))
+      };
+      // failed
+      const errorResponse = {
+        data: {
+          results: [
+            {},
+            {},
+            {
+              id: "some id",
+              code: "some code",
+              message: "some error message",
+              errors: {
+                [`records[2].Customer`]: {
+                  messages: ["key is missing"]
+                }
+              }
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        status: 500,
+        headers: {
+          "X-Some-Header": "error"
+        }
+      };
+      beforeEach(async () => {
+        mockClient.mockResponse(mockResponse);
+        mockClient.mockResponse(new KintoneRestAPIError(errorResponse));
+      });
+      it("should raise an KintoneAllRecordsError if an error occurs during bulkRequest", async () => {
+        await expect(recordClient.addAllRecords(params)).rejects.toBeInstanceOf(
+          KintoneAllRecordsError
+        );
+      });
+    });
+  });
+
   describe("addRecordComment", () => {
     const params = {
       app: APP_ID,
