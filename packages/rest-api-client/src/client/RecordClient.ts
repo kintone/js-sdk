@@ -28,6 +28,7 @@ type CommentID = string | number;
 
 const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
+const DELETE_RECORDS_LIMIT = 100;
 
 export class RecordClient {
   private client: HttpClient;
@@ -483,6 +484,81 @@ export class RecordClient {
       .reduce((acc, records) => {
         return acc.concat(records);
       }, []);
+  }
+
+  public deleteAllRecords(params: {
+    app: AppID;
+    records: Array<{
+      id: RecordID;
+      revision: Revision;
+    }>;
+  }): Promise<{}> {
+    return this.deleteAllRecordsRecursive(params, []);
+  }
+
+  private async deleteAllRecordsRecursive(
+    params: {
+      app: AppID;
+      records: Array<{
+        id: RecordID;
+        revision: Revision;
+      }>;
+    },
+    results: Array<{ id: string }>
+  ): Promise<{}> {
+    const CHUNK_LENGTH =
+      this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * DELETE_RECORDS_LIMIT;
+    const { app, records } = params;
+    const recordsChunk = records.slice(0, CHUNK_LENGTH);
+    if (recordsChunk.length === 0) {
+      return {};
+    }
+    let newResults;
+    try {
+      newResults = await this.deleteAllRecordsWithBulkRequest({
+        app,
+        records: recordsChunk
+      });
+    } catch (e) {
+      throw new KintoneAllRecordsError(
+        results,
+        records,
+        e,
+        DELETE_RECORDS_LIMIT
+      );
+    }
+    return this.deleteAllRecordsRecursive(
+      {
+        app,
+        records: records.slice(CHUNK_LENGTH)
+      },
+      results.concat(newResults)
+    );
+  }
+
+  private async deleteAllRecordsWithBulkRequest(params: {
+    app: AppID;
+    records: Array<{
+      id: RecordID;
+      revision: Revision;
+    }>;
+  }): Promise<Array<{ id: string }>> {
+    const separatedRecords = this.separateArrayRecursive(
+      DELETE_RECORDS_LIMIT,
+      [],
+      params.records
+    );
+    const requests = separatedRecords.map(records => ({
+      method: "DELETE",
+      api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
+      payload: {
+        app: params.app,
+        ids: records.map(record => record.id),
+        revisions: records.map(record => record.revision)
+      }
+    }));
+    await this.bulkRequestClient.send({ requests });
+    return params.records.map(record => ({ id: String(record.id) }));
   }
 
   private separateArrayRecursive<T>(
