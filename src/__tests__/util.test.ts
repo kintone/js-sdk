@@ -16,8 +16,8 @@ describe("util", () => {
   describe("wait", () => {
     it("should wait the specific ms", () => {
       const start = Date.now();
-      return wait(50).then(() => {
-        assert(Date.now() >= start + 50);
+      return wait(100).then(() => {
+        assert(Date.now() >= start + 90);
       });
     });
   });
