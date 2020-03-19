@@ -10,13 +10,14 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsc -w",
     "build": "tsc",
     "lint": "run-p lint:*",
-    "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint --ext .ts src",
+    "prerelease": "npm-run-all -p lint test -s build",
     "test": "jest --rootDir src",
-    "test:ci": "jest --rootDir src --runInBand"
+    "test:ci": "jest --rootDir src --runInBand",
+    "start": "tsc -w",
+    "lint:tsc": "tsc --noEmit",
+    "lint:eslint": "eslint --ext .ts src"
   },
   "files": [
     "bin",
