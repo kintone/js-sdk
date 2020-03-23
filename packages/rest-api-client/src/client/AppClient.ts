@@ -9,11 +9,17 @@ type Appearance = "response" | "parameter";
 
 type Lang = "ja" | "en" | "zh" | "user" | "default";
 
+// TODO: Make this type more specific
 type Properties = {
-  [fieldCode: string]: object;
+  [fieldCode: string]: {
+    [k: string]: any;
+  };
 };
 
-type Layout = object[];
+// TODO: Make this type more specific
+type Layout = Array<{
+  [k: string]: any;
+}>;
 
 type App = {
   appId: string;
