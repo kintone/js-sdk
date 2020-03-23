@@ -65,7 +65,7 @@
     "@types/js-base64": "^2.3.1",
     "@types/node": "^12.12.30",
     "@types/qs": "^6.9.1",
-    "ts-loader": "^6.2.1",
+    "ts-loader": "^6.2.2",
     "ts-node": "^8.6.2",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
