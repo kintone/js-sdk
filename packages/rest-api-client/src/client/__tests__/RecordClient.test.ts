@@ -867,11 +867,18 @@ describe("RecordClient", () => {
               code: "some code",
               message: "some error message",
               errors: {
-                [`records[3].Customer`]: {
+                [`records[5].Customer`]: {
                   messages: ["key is missing"]
                 }
               }
-            }
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
           ]
         },
         status: 500,
@@ -978,7 +985,7 @@ describe("RecordClient", () => {
               code: "some code",
               message: "some error message",
               errors: {
-                [`records[2].Customer`]: {
+                [`records[5].Customer`]: {
                   messages: ["key is missing"]
                 }
               }
