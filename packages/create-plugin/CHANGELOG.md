@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.3](https://github.com/kintone/create-plugin/compare/v3.0.2...v3.0.3) (2020-03-24)
+
+
+### Bug Fixes
+
+* Support app on Guest space ([#435](https://github.com/kintone/create-plugin/issues/435)) ([0a4854e](https://github.com/kintone/create-plugin/commit/0a4854ee3c4c696276625c2e9ec27c0f20ff765a))
+* **deps:** update dependency chalk to v3 ([#399](https://github.com/kintone/create-plugin/issues/399)) ([6d283fa](https://github.com/kintone/create-plugin/commit/6d283fa8490be3597f75746371e49147e40750e0))
+* **deps:** update dependency inquirer to ^7.0.5 ([aa67e25](https://github.com/kintone/create-plugin/commit/aa67e256286fb9ea5b10e7f5d122ce9e6fca1a1f))
+* **deps:** update dependency inquirer to ^7.0.6 ([c579e9d](https://github.com/kintone/create-plugin/commit/c579e9dd8b93ddc198ce14abfe8be2f7bec15d51))
+* **deps:** update dependency inquirer to ^7.1.0 ([#446](https://github.com/kintone/create-plugin/issues/446)) ([6fed9dd](https://github.com/kintone/create-plugin/commit/6fed9dd28cc4ca52b3e40dbd733b26f88c06afe8))
+* **deps:** update dependency meow to ^6.1.0 ([#451](https://github.com/kintone/create-plugin/issues/451)) ([925ae0e](https://github.com/kintone/create-plugin/commit/925ae0efe4be154be368cebd44be225713afc5bb))
+* **deps:** update dependency os-locale to v5 ([#454](https://github.com/kintone/create-plugin/issues/454)) ([166ea68](https://github.com/kintone/create-plugin/commit/166ea681f9cb2bfd78ff76bbc1543872eacc91ac))
+
 ### [3.0.2](https://github.com/kintone/create-plugin/compare/v3.0.1...v3.0.2) (2020-02-25)
 
 ### [3.0.1](https://github.com/kintone/create-plugin/compare/v3.0.0...v3.0.1) (2020-02-25)
