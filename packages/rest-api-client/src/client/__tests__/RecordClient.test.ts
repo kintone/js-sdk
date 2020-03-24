@@ -1009,9 +1009,9 @@ describe("RecordClient", () => {
         mockClient.mockResponse(new KintoneRestAPIError(errorResponse));
       });
       it("should raise an KintoneAllRecordsError if an error occurs during bulkRequest", async () => {
-        await expect(recordClient.addAllRecords(params)).rejects.toBeInstanceOf(
-          KintoneAllRecordsError
-        );
+        await expect(
+          recordClient.updateAllRecords(params)
+        ).rejects.toBeInstanceOf(KintoneAllRecordsError);
       });
     });
   });
