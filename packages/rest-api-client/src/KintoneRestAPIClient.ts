@@ -7,6 +7,7 @@ import { Base64 } from "js-base64";
 import { KintoneRestAPIError } from "./KintoneRestAPIError";
 import { ErrorResponse } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
+import https from "https";
 
 export type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
@@ -67,6 +68,10 @@ export class KintoneRestAPIClient {
       auth?: Auth;
       guestSpaceId?: number | string;
       basicAuth?: BasicAuth;
+      clientCertAuth?: {
+        pfx: Buffer;
+        passphrase: string;
+      };
     } = {}
   ) {
     const auth = this.buildAuth(options.auth ?? {});
@@ -87,7 +92,8 @@ export class KintoneRestAPIClient {
       requestConfigBuilder: new KintoneRequestConfigBuilder(
         this.baseUrl,
         this.headers,
-        params
+        params,
+        options.clientCertAuth
       )
     });
     const { guestSpaceId } = options;

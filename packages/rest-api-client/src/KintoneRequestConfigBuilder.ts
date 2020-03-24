@@ -1,5 +1,7 @@
 import FormData from "form-data";
 import qs from "qs";
+import https from "https";
+import fs from "fs";
 
 import {
   RequestConfigBuilder,
@@ -15,14 +17,22 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   private baseUrl: string;
   private headers: KintoneAuthHeader;
   private params: HTTPClientParams;
+  private httpsAgent?: https.Agent;
   constructor(
     baseUrl: string,
     headers: KintoneAuthHeader,
-    params: HTTPClientParams
+    params: HTTPClientParams,
+    clientCertAuth?: {
+      pfx: Buffer;
+      passphrase: string;
+    }
   ) {
     this.baseUrl = baseUrl;
     this.headers = headers;
     this.params = params;
+    if (clientCertAuth) {
+      this.httpsAgent = new https.Agent(clientCertAuth);
+    }
   }
   public build(
     method: HttpMethod,
@@ -34,6 +44,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       method,
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
+      httpsAgent: this.httpsAgent,
       ...(options ? options : {})
     };
 
