@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.2](https://github.com/kintone/plugin-uploader/compare/v4.0.1...v4.0.2) (2020-03-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^7.0.5 ([3f4c514](https://github.com/kintone/plugin-uploader/commit/3f4c514b09990f56ece2b76c4fea2cfcaa89a86a))
+* **deps:** update dependency inquirer to ^7.0.6 ([575227a](https://github.com/kintone/plugin-uploader/commit/575227a89df9ca3b8d1c1b41c52884e269281de3))
+* **deps:** update dependency inquirer to ^7.1.0 ([#275](https://github.com/kintone/plugin-uploader/issues/275)) ([a75cb39](https://github.com/kintone/plugin-uploader/commit/a75cb39e6b96f4f81e400a11228ce710e8beb0b0))
+* **deps:** update dependency meow to ^6.0.1 ([09dda7a](https://github.com/kintone/plugin-uploader/commit/09dda7aeb5703486ee6782a3aea792857c1cbd94))
+* **deps:** update dependency os-locale to v5 ([#281](https://github.com/kintone/plugin-uploader/issues/281)) ([b73c4e4](https://github.com/kintone/plugin-uploader/commit/b73c4e43fdf71478ff9cefcb7c6845ce4355f2b9))
+
 ### [4.0.1](https://github.com/kintone/plugin-uploader/compare/v4.0.0...v4.0.1) (2020-02-10)
 
 
