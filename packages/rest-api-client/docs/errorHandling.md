@@ -53,4 +53,4 @@ Then the properties of `KintoneAllRecordsError` is:
 | processedRecordsResult | Returned values of `records[0] - records[1999]` |
 | unprocessedRecords     | `records[2000] - records[4999]`                 |
 | error                  | An instance of `KintoneRestAPIError`            |
-| errorIndex             | `2499`                                          |
+| errorIndex             | `2499` (If Kintone returns) or `undefined`      |
