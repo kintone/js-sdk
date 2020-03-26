@@ -318,7 +318,7 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 
 ### updateAllRecords
 
-Updates multiple records to an app.
+Updates multiple records in an app.
 This method can update unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
 :warning: **Rollback can be performed on each block of 2000 records.**
 
