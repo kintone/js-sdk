@@ -32,3 +32,25 @@ The following methods could throw `KintoneAllRecordsError`.
 | unprocessedRecords     |                    Array                    | The records that have not been processed. This is a part of `records` passed as an argument.                                                             |
 | error                  | [KintoneRestAPIError](#KintoneRestAPIError) | The instance of `KintoneRestAPIError`                                                                                                                    |
 | errorIndex             |         Number or<br />`undefined`          | The index that an error ocurred.                                                                                                                         |
+
+### Example of KintoneAllRecordsError
+
+Suppose we want to add 5000 records by using [addAllRecords](record.md#addAllRecords),  
+and there's an invalid parameter at 2500th record (`records[2499]`) that raised an error.
+
+In this case, rest-api-client split the `records` into 3 chunks of records, and the result of each chunk is the following:
+
+1. `records[0] - records[1999]` (2000 records) ... Success. All records are added to Kintone.
+2. `records[2000] - records[3999]` (2000 records) ... Fail. All records are **not** added to Kintone.
+3. `records[4000] - records[4999]` (1000 records) ... Unprocessed. All records are **not** added to Kintone.
+
+![example of KintoneAllRecordsError](./images/example-of-KintoneAllRecordsError.png)
+
+Then the properties of `KintoneAllRecordsError` is:
+
+| Name                   | Content                                         |
+| ---------------------- | ----------------------------------------------- |
+| processedRecordsResult | Returned values of `records[0] - records[1999]` |
+| unprocessedRecords     | `records[2000] - records[4999]`                 |
+| error                  | An instance of `KintoneRestAPIError`            |
+| errorIndex             | `2499` (If Kintone returns) or `undefined`      |
