@@ -363,6 +363,25 @@ An empty object.
 
 - https://developer.kintone.io/hc/en-us/articles/212494558
 
+### deleteRecords
+
+Deletes multiple records in an app.
+This method can delete unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
+:warning: **Rollback can be performed on each block of 2000 records.**
+
+#### Parameters
+
+| Name               |       Type       |          Required           | Description                                                                                                                                                        |
+| ------------------ | :--------------: | :-------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app                | Number or String |             Yes             | The app ID.                                                                                                                                                        |
+| records            |      Array       |             Yes             | Holds an array of objects that include `id` and `revision`.<br />Over 100 records can be specified.                                  |
+| records[].id       | Number or String | Conditionally<br />Required | The record ID of the record to be deleted.                                                                                                                         |
+| records[].revision | Number or String |                             | The expected revision number. If the value does not match, an error will occur. If the value is not specified or is `-1`, the revision number will not be checked. |
+
+#### Returns
+
+An empty object.
+
 ### getRecordComments
 
 Retrieves multiple comments from a record in an app.
