@@ -14,6 +14,7 @@
 - [updateRecords](#updateRecords)
 - [updateAllRecords](#updateAllRecords)
 - [deleteRecords](#deleteRecords)
+- [deleteAllRecords](#deleteAllRecords)
 - [getRecordComments](#getRecordComments)
 - [addRecordComment](#addRecordComment)
 - [deleteRecordComment](#deleteRecordComment)
@@ -363,7 +364,7 @@ An empty object.
 
 - https://developer.kintone.io/hc/en-us/articles/212494558
 
-### deleteRecords
+### deleteAllRecords
 
 Deletes multiple records in an app.
 This method can delete unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
