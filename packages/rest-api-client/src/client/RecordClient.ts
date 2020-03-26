@@ -490,7 +490,7 @@ export class RecordClient {
     app: AppID;
     records: Array<{
       id: RecordID;
-      revision: Revision;
+      revision?: Revision;
     }>;
   }): Promise<{}> {
     return this.deleteAllRecordsRecursive(params, []);
@@ -501,7 +501,7 @@ export class RecordClient {
       app: AppID;
       records: Array<{
         id: RecordID;
-        revision: Revision;
+        revision?: Revision;
       }>;
     },
     results: Array<{ id: string }>
@@ -540,7 +540,7 @@ export class RecordClient {
     app: AppID;
     records: Array<{
       id: RecordID;
-      revision: Revision;
+      revision?: Revision;
     }>;
   }): Promise<Array<{ id: string }>> {
     const separatedRecords = this.separateArrayRecursive(
