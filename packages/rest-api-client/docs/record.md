@@ -372,12 +372,12 @@ This method can delete unlimited number of records. This method could throw `Kin
 
 #### Parameters
 
-| Name               |       Type       |          Required           | Description                                                                                                                                                        |
-| ------------------ | :--------------: | :-------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| app                | Number or String |             Yes             | The app ID.                                                                                                                                                        |
-| records            |      Array       |             Yes             | Holds an array of objects that include `id` and `revision`.<br />Over 100 records can be specified.                                  |
-| records[].id       | Number or String | Conditionally<br />Required | The record ID of the record to be deleted.                                                                                                                         |
-| records[].revision | Number or String |                             | The expected revision number. If the value does not match, an error will occur. If the value is not specified or is `-1`, the revision number will not be checked. |
+| Name               |       Type       | Required | Description                                                                                                                                                        |
+| ------------------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app                | Number or String |   Yes    | The app ID.                                                                                                                                                        |
+| records            |      Array       |   Yes    | Holds an array of objects that include `id` and `revision`.<br />Over 100 records can be specified.                                                                |
+| records[].id       | Number or String |   Yes    | The record ID of the record to be deleted.                                                                                                                         |
+| records[].revision | Number or String |          | The expected revision number. If the value does not match, an error will occur. If the value is not specified or is `-1`, the revision number will not be checked. |
 
 #### Returns
 
