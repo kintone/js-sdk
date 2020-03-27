@@ -56,13 +56,13 @@ export async function upload(
             { files: manifest.desktop.js, type: "text/javascript" },
             { files: manifest.desktop.css, type: "text/css" },
             { files: manifest.mobile.js, type: "text/javascript" },
-            { files: manifest.mobile.css, type: "text/css" }
+            { files: manifest.mobile.css, type: "text/css" },
           ].map(({ files, type }) =>
             Promise.all(
               files.map((file: string) =>
                 kintoneApiClient
                   .prepareCustomizeFile(file, type)
-                  .then(result => {
+                  .then((result) => {
                     if (result.type === "FILE") {
                       console.log(`${file} ` + m("M_Uploaded"));
                     }
@@ -75,12 +75,12 @@ export async function upload(
         updateBody = Object.assign({}, manifest, {
           desktop: {
             js: desktopJS,
-            css: desktopCSS
+            css: desktopCSS,
           },
           mobile: {
             js: mobileJS,
-            css: mobileCSS
-          }
+            css: mobileCSS,
+          },
         });
         console.log(m("M_FileUploaded"));
       } catch (e) {
@@ -147,7 +147,7 @@ export const run = async (
   const status = {
     retryCount: 0,
     updateBody: null,
-    updated: false
+    updated: false,
   };
 
   // support an old format for customize-manifest.json that doesn't have mobile.css
@@ -173,8 +173,8 @@ export const run = async (
       // Note that there would be higher possibility to get errors if you set smaller value of 'stabilityThreshold'
       awaitWriteFinish: {
         stabilityThreshold: 2000,
-        pollInterval: 100
-      }
+        pollInterval: 100,
+      },
     });
     console.log(m("M_Watching"));
     watcher.on("change", () =>
