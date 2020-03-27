@@ -44,7 +44,7 @@
     "@types/mkdirp": "^1.0.0",
     "@types/node": "^10.17.17",
     "@types/request-promise": "^4.1.46",
-    "@types/rimraf": "^2.0.3",
+    "@types/rimraf": "^2.0.4",
     "ts-node": "^8.6.2"
   },
   "dependencies": {
