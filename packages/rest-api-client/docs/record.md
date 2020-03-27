@@ -321,7 +321,9 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 
 Updates multiple records to an app.
 This method can update unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
-:warning: **Rollback can be performed on each block of 2000 records.**
+
+:warning: **This method split the records into chunks of 2000 records and processes each chunk sequentially. Rollback can be performed on each chunk of 2000 records.
+For more information, please see [an example of KintoneAllRecordsError](errorHandling.md#Example-of-KintoneAllRecordsError).**
 
 #### Parameters
 
@@ -368,7 +370,9 @@ An empty object.
 
 Deletes multiple records in an app.
 This method can delete unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
-:warning: **Rollback can be performed on each block of 2000 records.**
+
+:warning: **This method split the records into chunks of 2000 records and processes each chunk sequentially. Rollback can be performed on each chunk of 2000 records.
+For more information, please see [an example of KintoneAllRecordsError](errorHandling.md#Example-of-KintoneAllRecordsError).**
 
 #### Parameters
 

@@ -23,15 +23,17 @@ When the API request responds with a status code other than 200, the client rais
 The following methods could throw `KintoneAllRecordsError`.
 
 - [addAllRecords](record.md#addAllRecords)
+- [updateAllRecords](record.md#updateAllRecords)
+- [deleteAllRecords](record.md#deleteAllRecords)
 
 `KintoneAllRecordsError` has the following properties.
 
-| Name                   |                    Type                     | Description                                                                                                                                              |
-| ---------------------- | :-----------------------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| processedRecordsResult |                    Array                    | The result of the records that have been processed successfully. This is the same type of `records` specified in the **Returns** section of each method. |
-| unprocessedRecords     |                    Array                    | The records that have not been processed. This is a part of `records` passed as an argument.                                                             |
-| error                  | [KintoneRestAPIError](#KintoneRestAPIError) | The instance of `KintoneRestAPIError`                                                                                                                    |
-| errorIndex             |         Number or<br />`undefined`          | The index that an error ocurred.                                                                                                                         |
+| Name                   |                    Type                     | Description                                                                                                                                                                                                               |
+| ---------------------- | :-----------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| processedRecordsResult |            Array or<br />Object             | The result of the records that have been processed successfully. This is the same type of `records` specified in the **Returns** section of each method. When using `deleteAllRecords`, this property is an empty object. |
+| unprocessedRecords     |                    Array                    | The records that have not been processed. This is a part of `records` passed as an argument.                                                                                                                              |
+| error                  | [KintoneRestAPIError](#KintoneRestAPIError) | The instance of `KintoneRestAPIError`                                                                                                                                                                                     |
+| errorIndex             |         Number or<br />`undefined`          | The index that an error ocurred.                                                                                                                                                                                          |
 
 ### Example of KintoneAllRecordsError
 
