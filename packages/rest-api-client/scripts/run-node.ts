@@ -17,7 +17,7 @@ const auth = authType === "apiToken" ? { apiToken } : { username, password };
 
 const client = new KintoneRestAPIClient({
   baseUrl: process.env.KINTONE_BASE_URL || "",
-  auth
+  auth,
 });
 
 switch (process.argv[2]) {
@@ -29,6 +29,6 @@ switch (process.argv[2]) {
     ({
       record: new Record(client),
       app: new App(client),
-      file: new File(client)
+      file: new File(client),
     }[process.argv[2]][process.argv[3]]());
 }

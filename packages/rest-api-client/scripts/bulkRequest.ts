@@ -19,10 +19,10 @@ export class BulkRequest {
             app: APP_ID,
             record: {
               Customer: {
-                value: "example"
-              }
-            }
-          }
+                value: "example",
+              },
+            },
+          },
         },
         {
           method: "PUT",
@@ -32,20 +32,20 @@ export class BulkRequest {
             id: RECORD_ID,
             record: {
               Customer: {
-                value: "example2"
-              }
-            }
-          }
+                value: "example2",
+              },
+            },
+          },
         },
         {
           method: "DELETE",
           api: "/k/v1/records.json",
           payload: {
             app: APP_ID,
-            ids: [10, 11]
-          }
-        }
-      ]
+            ids: [10, 11],
+          },
+        },
+      ],
     };
     try {
       console.log(await this.client.bulkRequest(params));

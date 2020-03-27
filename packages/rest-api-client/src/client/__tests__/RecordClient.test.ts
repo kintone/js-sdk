@@ -12,8 +12,8 @@ describe("RecordClient", () => {
   const fieldCode = "Customer";
   const record = {
     [fieldCode]: {
-      value: "ABC Corporation"
-    }
+      value: "ABC Corporation",
+    },
   };
 
   beforeEach(() => {
@@ -58,7 +58,7 @@ describe("RecordClient", () => {
       app: APP_ID,
       id: RECORD_ID,
       record,
-      revision: 5
+      revision: 5,
     };
     beforeEach(() => {
       recordClient.updateRecord(params);
@@ -80,10 +80,10 @@ describe("RecordClient", () => {
         app: APP_ID,
         updateKey: {
           field: "Code",
-          value: "foo"
+          value: "foo",
         },
         record,
-        revision: 5
+        revision: 5,
       };
       let getRecordsMockFn: jest.Mock;
       let updateRecordMockFn: jest.Mock;
@@ -93,13 +93,13 @@ describe("RecordClient", () => {
           records: [
             {
               $id: {
-                value: "10"
-              }
-            }
-          ]
+                value: "10",
+              },
+            },
+          ],
         });
         updateRecordMockFn = jest.fn().mockResolvedValue({
-          revision: "2"
+          revision: "2",
         });
         addRecordMockFn = jest.fn();
         const bulkRequestClient = new BulkRequestClient(mockClient);
@@ -114,7 +114,7 @@ describe("RecordClient", () => {
         expect(getRecordsMockFn.mock.calls.length).toBe(1);
         expect(getRecordsMockFn.mock.calls[0][0]).toEqual({
           app: params.app,
-          query: `${params.updateKey.field} = "${params.updateKey.value}"`
+          query: `${params.updateKey.field} = "${params.updateKey.value}"`,
         });
       });
       it("should call updateRecord with the params", async () => {
@@ -130,7 +130,7 @@ describe("RecordClient", () => {
         const result = await recordClient.upsertRecord(params);
         expect(result).toEqual({
           id: "10",
-          revision: "2"
+          revision: "2",
         });
       });
     });
@@ -139,22 +139,22 @@ describe("RecordClient", () => {
         app: APP_ID,
         updateKey: {
           field: "Customer",
-          value: "foo"
+          value: "foo",
         },
         record,
-        revision: 5
+        revision: 5,
       };
       let getRecordsMockFn: jest.Mock;
       let updateRecordMockFn: jest.Mock;
       let addRecordMockFn: jest.Mock;
       beforeEach(() => {
         getRecordsMockFn = jest.fn().mockResolvedValue({
-          records: []
+          records: [],
         });
         updateRecordMockFn = jest.fn();
         addRecordMockFn = jest.fn().mockResolvedValue({
           id: "10",
-          revision: "1"
+          revision: "1",
         });
         const bulkRequestClient = new BulkRequestClient(mockClient);
         recordClient = new RecordClient(mockClient, bulkRequestClient);
@@ -168,7 +168,7 @@ describe("RecordClient", () => {
         expect(getRecordsMockFn.mock.calls.length).toBe(1);
         expect(getRecordsMockFn.mock.calls[0][0]).toEqual({
           app: params.app,
-          query: `${params.updateKey.field} = "${params.updateKey.value}"`
+          query: `${params.updateKey.field} = "${params.updateKey.value}"`,
         });
       });
       it("should call addRecord with the params", async () => {
@@ -178,8 +178,8 @@ describe("RecordClient", () => {
           app: params.app,
           record: {
             ...params.record,
-            [params.updateKey.field]: { value: params.updateKey.value }
-          }
+            [params.updateKey.field]: { value: params.updateKey.value },
+          },
         });
       });
       it("should not call updateRecord", async () => {
@@ -190,7 +190,7 @@ describe("RecordClient", () => {
         const result = await recordClient.upsertRecord(params);
         expect(result).toEqual({
           id: "10",
-          revision: "1"
+          revision: "1",
         });
       });
     });
@@ -201,7 +201,7 @@ describe("RecordClient", () => {
       app: APP_ID,
       fields: [fieldCode],
       query: `${fieldCode} = "foo"`,
-      totalCount: true
+      totalCount: true,
     };
     beforeEach(() => {
       recordClient.getRecords(params);
@@ -221,7 +221,7 @@ describe("RecordClient", () => {
     const params = { app: APP_ID, records: [record] };
     const mockResponse = {
       ids: ["10", "20", "30"],
-      revisions: ["1", "2", "3"]
+      revisions: ["1", "2", "3"],
     };
     let response: any;
     beforeEach(async () => {
@@ -243,8 +243,8 @@ describe("RecordClient", () => {
         records: [
           { id: "10", revision: "1" },
           { id: "20", revision: "2" },
-          { id: "30", revision: "3" }
-        ]
+          { id: "30", revision: "3" },
+        ],
       });
     });
   });
@@ -252,7 +252,7 @@ describe("RecordClient", () => {
   describe("updateRecords", () => {
     const params = {
       app: APP_ID,
-      records: [{ id: RECORD_ID, record, revision: 5 }]
+      records: [{ id: RECORD_ID, record, revision: 5 }],
     };
     beforeEach(() => {
       recordClient.updateRecords(params);
@@ -274,7 +274,7 @@ describe("RecordClient", () => {
     const params = {
       app: APP_ID,
       ids,
-      revisions
+      revisions,
     };
     beforeEach(() => {
       recordClient.deleteRecords(params);
@@ -295,7 +295,7 @@ describe("RecordClient", () => {
       app: APP_ID,
       fields: [fieldCode],
       query: `${fieldCode} = "foo"`,
-      size: 10
+      size: 10,
     };
     beforeEach(() => {
       recordClient.createCursor(params);
@@ -313,7 +313,7 @@ describe("RecordClient", () => {
 
   describe("getRecordsByCursor", () => {
     const params = {
-      id: "cursor id"
+      id: "cursor id",
     };
     beforeEach(() => {
       recordClient.getRecordsByCursor(params);
@@ -331,7 +331,7 @@ describe("RecordClient", () => {
 
   describe("deleteCursor", () => {
     const params = {
-      id: "cursor id"
+      id: "cursor id",
     };
     beforeEach(() => {
       recordClient.deleteCursor(params);
@@ -352,7 +352,7 @@ describe("RecordClient", () => {
       it("should do nothing if `fields` is not specified", async () => {
         const params = {
           app: APP_ID,
-          condition: `${fieldCode} = "foo"`
+          condition: `${fieldCode} = "foo"`,
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithId<Record>(params);
@@ -363,7 +363,7 @@ describe("RecordClient", () => {
         const params = {
           app: APP_ID,
           fields: [],
-          condition: `${fieldCode} = "foo"`
+          condition: `${fieldCode} = "foo"`,
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithId<Record>(params);
@@ -374,7 +374,7 @@ describe("RecordClient", () => {
         const params = {
           app: APP_ID,
           fields: [fieldCode],
-          condition: `${fieldCode} = "foo"`
+          condition: `${fieldCode} = "foo"`,
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithId<Record>(params);
@@ -387,7 +387,7 @@ describe("RecordClient", () => {
         const params = {
           app: APP_ID,
           fields: ["$id", fieldCode],
-          condition: `${fieldCode} = "foo"`
+          condition: `${fieldCode} = "foo"`,
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithId<Record>(params);
@@ -399,7 +399,7 @@ describe("RecordClient", () => {
       const params = {
         app: APP_ID,
         fields: ["$id"],
-        condition: `${fieldCode} = "foo"`
+        condition: `${fieldCode} = "foo"`,
       };
       let result: Record[];
 
@@ -408,8 +408,8 @@ describe("RecordClient", () => {
         for (let i = 1; i <= 500; i++) {
           records.push({
             $id: {
-              value: i.toString()
-            }
+              value: i.toString(),
+            },
           });
         }
         mockClient.mockResponse({ records });
@@ -424,9 +424,10 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: `${params.condition ||
-              ""} and $id > 0 order by $id asc limit 500`
-          }
+            query: `${
+              params.condition || ""
+            } and $id > 0 order by $id asc limit 500`,
+          },
         });
         expect(mockClient.getLogs()[1]).toEqual({
           path: "/k/v1/records.json",
@@ -434,9 +435,10 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: `${params.condition ||
-              ""} and $id > 500 order by $id asc limit 500`
-          }
+            query: `${
+              params.condition || ""
+            } and $id > 500 order by $id asc limit 500`,
+          },
         });
 
         expect(result.length).toBe(501);
@@ -447,7 +449,7 @@ describe("RecordClient", () => {
     describe("success without condition", () => {
       const params = {
         app: APP_ID,
-        fields: ["$id"]
+        fields: ["$id"],
       };
       let result: Record[];
 
@@ -456,8 +458,8 @@ describe("RecordClient", () => {
         for (let i = 1; i <= 500; i++) {
           records.push({
             $id: {
-              value: i.toString()
-            }
+              value: i.toString(),
+            },
           });
         }
         mockClient.mockResponse({ records });
@@ -472,8 +474,8 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: "$id > 0 order by $id asc limit 500"
-          }
+            query: "$id > 0 order by $id asc limit 500",
+          },
         });
         expect(mockClient.getLogs()[1]).toEqual({
           path: "/k/v1/records.json",
@@ -481,8 +483,8 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: "$id > 500 order by $id asc limit 500"
-          }
+            query: "$id > 500 order by $id asc limit 500",
+          },
         });
 
         expect(result.length).toBe(501);
@@ -497,7 +499,7 @@ describe("RecordClient", () => {
         const params = {
           app: APP_ID,
           condition: `${fieldCode} = "foo"`,
-          orderBy: `${fieldCode} asc`
+          orderBy: `${fieldCode} asc`,
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithOffset<Record>(params);
@@ -509,7 +511,7 @@ describe("RecordClient", () => {
       it("with condition, without orderBy", async () => {
         const params = {
           app: APP_ID,
-          condition: `${fieldCode} = "foo"`
+          condition: `${fieldCode} = "foo"`,
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithOffset<Record>(params);
@@ -521,7 +523,7 @@ describe("RecordClient", () => {
       it("without condition, with orderBy", async () => {
         const params = {
           app: APP_ID,
-          orderBy: `${fieldCode} asc`
+          orderBy: `${fieldCode} asc`,
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithOffset<Record>(params);
@@ -532,7 +534,7 @@ describe("RecordClient", () => {
 
       it("neither condition nor orderBy", async () => {
         const params = {
-          app: APP_ID
+          app: APP_ID,
         };
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithOffset<Record>(params);
@@ -544,7 +546,7 @@ describe("RecordClient", () => {
       const params = {
         app: APP_ID,
         fields: ["$id"],
-        condition: `${fieldCode} = "foo"`
+        condition: `${fieldCode} = "foo"`,
       };
       let result: Record[];
 
@@ -553,8 +555,8 @@ describe("RecordClient", () => {
         for (let i = 1; i <= 500; i++) {
           records.push({
             $id: {
-              value: i.toString()
-            }
+              value: i.toString(),
+            },
           });
         }
         mockClient.mockResponse({ records });
@@ -569,8 +571,8 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: `${params.condition || ""} limit 500 offset 0`
-          }
+            query: `${params.condition || ""} limit 500 offset 0`,
+          },
         });
         expect(mockClient.getLogs()[1]).toEqual({
           path: "/k/v1/records.json",
@@ -578,8 +580,8 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: `${params.condition || ""} limit 500 offset 500`
-          }
+            query: `${params.condition || ""} limit 500 offset 500`,
+          },
         });
 
         expect(result.length).toBe(501);
@@ -593,7 +595,7 @@ describe("RecordClient", () => {
       const params = {
         app: APP_ID,
         condition: `${fieldCode} = "foo"`,
-        orderBy: `${fieldCode} asc`
+        orderBy: `${fieldCode} asc`,
       };
       let withCursorMockFn: jest.Mock;
       let withOffsetMockFn: jest.Mock;
@@ -608,7 +610,7 @@ describe("RecordClient", () => {
         expect(withCursorMockFn.mock.calls.length).toBe(1);
         expect(withCursorMockFn.mock.calls[0][0]).toStrictEqual({
           app: params.app,
-          query: `${params.condition} order by ${params.orderBy}`
+          query: `${params.condition} order by ${params.orderBy}`,
         });
       });
       it("should call `getAllRecordsWithCursor` if `withCursor` is true", () => {
@@ -616,7 +618,7 @@ describe("RecordClient", () => {
         expect(withCursorMockFn.mock.calls.length).toBe(1);
         expect(withCursorMockFn.mock.calls[0][0]).toStrictEqual({
           app: params.app,
-          query: `${params.condition} order by ${params.orderBy}`
+          query: `${params.condition} order by ${params.orderBy}`,
         });
       });
       it("should call `getAllRecordsWithOffset` if `withCursor` is false", () => {
@@ -630,7 +632,7 @@ describe("RecordClient", () => {
       const params = {
         app: APP_ID,
         condition: `${fieldCode} = "foo"`,
-        orderBy: ""
+        orderBy: "",
       };
       const { orderBy, ...expected } = params;
       let mockFn: jest.Mock;
@@ -657,7 +659,7 @@ describe("RecordClient", () => {
     describe("`orderBy` is not specified", () => {
       const params = {
         app: APP_ID,
-        condition: `${fieldCode} = "foo"`
+        condition: `${fieldCode} = "foo"`,
       };
       let mockFn: jest.Mock;
       beforeEach(() => {
@@ -686,7 +688,7 @@ describe("RecordClient", () => {
     const params = {
       app: APP_ID,
       fields: [fieldCode],
-      query: `${fieldCode} = "foo"`
+      query: `${fieldCode} = "foo"`,
     };
     const CURSOR_ID = "1";
     let result: Record[];
@@ -698,11 +700,11 @@ describe("RecordClient", () => {
         // response from getRecordsByCursor
         mockClient.mockResponse({
           records: [{ id: 1 }, { id: 2 }],
-          next: true
+          next: true,
         });
         mockClient.mockResponse({
           records: [{ id: 3 }, { id: 4 }],
-          next: false
+          next: false,
         });
         result = await recordClient.getAllRecordsWithCursor<Record>(params);
       });
@@ -711,7 +713,7 @@ describe("RecordClient", () => {
         expect(mockClient.getLogs()[0]).toEqual({
           path: "/k/v1/records/cursor.json",
           method: "post",
-          params
+          params,
         });
       });
 
@@ -719,18 +721,18 @@ describe("RecordClient", () => {
         expect(mockClient.getLogs()[1]).toEqual({
           path: "/k/v1/records/cursor.json",
           method: "get",
-          params: { id: CURSOR_ID }
+          params: { id: CURSOR_ID },
         });
         expect(mockClient.getLogs()[2]).toEqual({
           path: "/k/v1/records/cursor.json",
           method: "get",
-          params: { id: CURSOR_ID }
+          params: { id: CURSOR_ID },
         });
         expect(result).toStrictEqual([
           { id: 1 },
           { id: 2 },
           { id: 3 },
-          { id: 4 }
+          { id: 4 },
         ]);
       });
 
@@ -746,7 +748,7 @@ describe("RecordClient", () => {
         // response from getRecordsByCursor
         mockClient.mockResponse({
           records: [{ id: 1 }, { id: 2 }],
-          next: true
+          next: true,
         });
         mockClient.mockResponse(new Error("failed"));
       });
@@ -758,7 +760,7 @@ describe("RecordClient", () => {
         expect(mockClient.getLogs()[3]).toStrictEqual({
           path: "/k/v1/records/cursor.json",
           method: "delete",
-          params: { id: CURSOR_ID }
+          params: { id: CURSOR_ID },
         });
       });
     });
@@ -768,30 +770,30 @@ describe("RecordClient", () => {
     const params = {
       app: APP_ID,
       records: Array.from({ length: 3000 }, (_, index) => index + 1).map(
-        value => ({
+        (value) => ({
           [fieldCode]: {
-            value
-          }
+            value,
+          },
         })
-      )
+      ),
     };
     let response: any;
     describe("success", () => {
       const mockResponse = {
         results: Array.from({ length: 20 }, (_, index) => index + 1).map(
-          value => ({
+          (value) => ({
             ids: Array.from({ length: 100 }, (_, index) => index + 1),
-            revisions: Array.from({ length: 100 }, () => 1)
+            revisions: Array.from({ length: 100 }, () => 1),
           })
-        )
+        ),
       };
       const mockResponse2 = {
         results: Array.from({ length: 10 }, (_, index) => index + 1).map(
-          value => ({
+          (value) => ({
             ids: Array.from({ length: 100 }, (_, index) => index + 1),
-            revisions: Array.from({ length: 100 }, () => 1)
+            revisions: Array.from({ length: 100 }, () => 1),
           })
-        )
+        ),
       };
       beforeEach(async () => {
         // response from first call of bulkRequest.send
@@ -812,13 +814,13 @@ describe("RecordClient", () => {
           acc.concat(
             ids.map((id, index) => ({
               id,
-              revision: revisions[index]
+              revision: revisions[index],
             }))
           );
 
         const expected = [
           ...mockResponse.results.reduce(accumulateResponse, []),
-          ...mockResponse2.results.reduce(accumulateResponse, [])
+          ...mockResponse2.results.reduce(accumulateResponse, []),
         ];
         expect(response.records).toStrictEqual(expected);
       });
@@ -829,17 +831,17 @@ describe("RecordClient", () => {
         const invalidParams: any = {
           app: APP_ID,
           records: Array.from({ length: 3000 }, (_, index) => index + 1).map(
-            value => {
+            (value) => {
               if (value === 1000) {
                 return value;
               }
               return {
                 [fieldCode]: {
-                  value
-                }
+                  value,
+                },
               };
             }
-          )
+          ),
         };
         expect(recordClient.addAllRecords(invalidParams)).rejects.toThrow(
           "the `records` parameter must be an array of object."
@@ -850,11 +852,11 @@ describe("RecordClient", () => {
       // success
       const mockResponse = {
         results: Array.from({ length: 20 }, (_, index) => index + 1).map(
-          value => ({
+          (value) => ({
             ids: Array.from({ length: 100 }, (_, index) => index + 1),
-            revisions: Array.from({ length: 100 }, () => 1)
+            revisions: Array.from({ length: 100 }, () => 1),
           })
-        )
+        ),
       };
       // failed
       const errorResponse = {
@@ -868,9 +870,9 @@ describe("RecordClient", () => {
               message: "some error message",
               errors: {
                 [`records[5].Customer`]: {
-                  messages: ["key is missing"]
-                }
-              }
+                  messages: ["key is missing"],
+                },
+              },
             },
             {},
             {},
@@ -878,13 +880,13 @@ describe("RecordClient", () => {
             {},
             {},
             {},
-            {}
-          ]
+            {},
+          ],
         },
         status: 500,
         headers: {
-          "X-Some-Header": "error"
-        }
+          "X-Some-Header": "error",
+        },
       };
       beforeEach(async () => {
         mockClient.mockResponse(mockResponse);
@@ -902,38 +904,42 @@ describe("RecordClient", () => {
     const params = {
       app: APP_ID,
       records: Array.from({ length: 3000 }, (_, index) => index + 1).map(
-        value => ({
+        (value) => ({
           id: value,
           record: {
             [fieldCode]: {
-              value: `${fieldCode}-${value}`
-            }
+              value: `${fieldCode}-${value}`,
+            },
           },
-          revision: 1
+          revision: 1,
         })
-      )
+      ),
     };
     let response: any;
     describe("success", () => {
       const mockResponse = {
-        results: Array.from({ length: 20 }, (_, index) => index).map(value => ({
-          records: Array.from({ length: 100 }, (_, index) =>
-            String(value * 100 + index + 1)
-          ).map(id => ({
-            id,
-            revision: "2"
-          }))
-        }))
+        results: Array.from({ length: 20 }, (_, index) => index).map(
+          (value) => ({
+            records: Array.from({ length: 100 }, (_, index) =>
+              String(value * 100 + index + 1)
+            ).map((id) => ({
+              id,
+              revision: "2",
+            })),
+          })
+        ),
       };
       const mockResponse2 = {
-        results: Array.from({ length: 10 }, (_, index) => index).map(value => ({
-          records: Array.from({ length: 100 }, (_, index) =>
-            String(2000 + value * 100 + index + 1)
-          ).map(id => ({
-            id,
-            revision: "2"
-          }))
-        }))
+        results: Array.from({ length: 10 }, (_, index) => index).map(
+          (value) => ({
+            records: Array.from({ length: 100 }, (_, index) =>
+              String(2000 + value * 100 + index + 1)
+            ).map((id) => ({
+              id,
+              revision: "2",
+            })),
+          })
+        ),
       };
       beforeEach(async () => {
         // response from first call of bulkRequest.send
@@ -956,7 +962,7 @@ describe("RecordClient", () => {
 
         const expected = [
           ...mockResponse.results,
-          ...mockResponse2.results
+          ...mockResponse2.results,
         ].reduce(accumulateResponse, []);
         expect(response.records).toStrictEqual(expected);
       });
@@ -965,14 +971,16 @@ describe("RecordClient", () => {
     describe("response error", () => {
       // success
       const mockResponse = {
-        results: Array.from({ length: 20 }, (_, index) => index).map(value => ({
-          records: Array.from({ length: 100 }, (_, index) =>
-            String(value * 100 + index + 1)
-          ).map(id => ({
-            id,
-            revision: "2"
-          }))
-        }))
+        results: Array.from({ length: 20 }, (_, index) => index).map(
+          (value) => ({
+            records: Array.from({ length: 100 }, (_, index) =>
+              String(value * 100 + index + 1)
+            ).map((id) => ({
+              id,
+              revision: "2",
+            })),
+          })
+        ),
       };
       // failed
       const errorResponse = {
@@ -986,9 +994,9 @@ describe("RecordClient", () => {
               message: "some error message",
               errors: {
                 [`records[5].Customer`]: {
-                  messages: ["key is missing"]
-                }
-              }
+                  messages: ["key is missing"],
+                },
+              },
             },
             {},
             {},
@@ -996,13 +1004,13 @@ describe("RecordClient", () => {
             {},
             {},
             {},
-            {}
-          ]
+            {},
+          ],
         },
         status: 500,
         headers: {
-          "X-Some-Header": "error"
-        }
+          "X-Some-Header": "error",
+        },
       };
       beforeEach(async () => {
         mockClient.mockResponse(mockResponse);
@@ -1025,10 +1033,10 @@ describe("RecordClient", () => {
         mentions: [
           {
             code: "Administrator",
-            type: "USER" as const
-          }
-        ]
-      }
+            type: "USER" as const,
+          },
+        ],
+      },
     };
     beforeEach(() => {
       recordClient.addRecordComment(params);
@@ -1048,7 +1056,7 @@ describe("RecordClient", () => {
     const params = {
       app: APP_ID,
       record: RECORD_ID,
-      comment: "1"
+      comment: "1",
     };
     beforeEach(() => {
       recordClient.deleteRecordComment(params);
@@ -1070,7 +1078,7 @@ describe("RecordClient", () => {
       record: RECORD_ID,
       order: "desc" as const,
       offset: 5,
-      limit: 5
+      limit: 5,
     };
     beforeEach(() => {
       recordClient.getRecordComments(params);
@@ -1091,7 +1099,7 @@ describe("RecordClient", () => {
       app: APP_ID,
       id: RECORD_ID,
       assignees: ["user1"],
-      revision: 10
+      revision: 10,
     };
     beforeEach(() => {
       recordClient.updateRecordAssignees(params);
@@ -1113,7 +1121,7 @@ describe("RecordClient", () => {
       app: APP_ID,
       assignee: "user1",
       id: RECORD_ID,
-      revision: 10
+      revision: 10,
     };
     beforeEach(() => {
       recordClient.updateRecordStatus(params);
@@ -1137,9 +1145,9 @@ describe("RecordClient", () => {
           action: "Action1",
           assignee: "user1",
           id: RECORD_ID,
-          revision: 10
-        }
-      ]
+          revision: 10,
+        },
+      ],
     };
     beforeEach(() => {
       recordClient.updateRecordsStatus(params);

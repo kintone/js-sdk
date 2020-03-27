@@ -24,16 +24,16 @@ describe("KintoneAllRecordsError", () => {
             message: "some error message",
             errors: {
               [`records[${errorParseResult}].Customer`]: {
-                messages: ["key is missing"]
-              }
-            }
-          }
-        ]
+                messages: ["key is missing"],
+              },
+            },
+          },
+        ],
       },
       status: 500,
       headers: {
-        "X-Some-Header": "error"
-      }
+        "X-Some-Header": "error",
+      },
     };
     kintoneRestApiError = new KintoneRestAPIError(errorResponse);
     kintoneAllRecordsError = new KintoneAllRecordsError(
@@ -64,8 +64,9 @@ describe("KintoneAllRecordsError", () => {
       expect(kintoneAllRecordsError.message).toBe(
         `An error occurred at records[${kintoneAllRecordsError.errorIndex}]. ${
           processedRecordsResult.length
-        }/${processedRecordsResult.length +
-          unprocessedRecords.length} records are processed successfully`
+        }/${
+          processedRecordsResult.length + unprocessedRecords.length
+        } records are processed successfully`
       );
     });
     it("should set a message that includes the succeeded count", () => {
@@ -80,16 +81,16 @@ describe("KintoneAllRecordsError", () => {
               message: "some error message",
               errors: {
                 unexpectedKey: {
-                  messages: ["key is missing"]
-                }
-              }
-            }
-          ]
+                  messages: ["key is missing"],
+                },
+              },
+            },
+          ],
         },
         status: 500,
         headers: {
-          "X-Some-Header": "error"
-        }
+          "X-Some-Header": "error",
+        },
       };
       kintoneRestApiError = new KintoneRestAPIError(errorResponse);
       kintoneAllRecordsError = new KintoneAllRecordsError(
@@ -100,8 +101,9 @@ describe("KintoneAllRecordsError", () => {
       );
 
       expect(kintoneAllRecordsError.message).toBe(
-        `${processedRecordsResult.length}/${processedRecordsResult.length +
-          unprocessedRecords.length} records are processed successfully`
+        `${processedRecordsResult.length}/${
+          processedRecordsResult.length + unprocessedRecords.length
+        } records are processed successfully`
       );
     });
     it("should set errorIndex even if bulkRequestIndex = 0", () => {
@@ -114,18 +116,18 @@ describe("KintoneAllRecordsError", () => {
               message: "some error message",
               errors: {
                 [`records[${errorParseResult}].Customer`]: {
-                  messages: ["key is missing"]
-                }
-              }
+                  messages: ["key is missing"],
+                },
+              },
             },
             {},
-            {}
-          ]
+            {},
+          ],
         },
         status: 500,
         headers: {
-          "X-Some-Header": "error"
-        }
+          "X-Some-Header": "error",
+        },
       };
       kintoneRestApiError = new KintoneRestAPIError(errorResponse);
       kintoneAllRecordsError = new KintoneAllRecordsError(

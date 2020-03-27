@@ -34,7 +34,7 @@ export class KintoneRestAPIError extends Error {
   constructor(error: ErrorResponse) {
     const {
       data,
-      bulkRequestIndex
+      bulkRequestIndex,
     } = KintoneRestAPIError.buildErrorResponseDateWithIndex(error);
 
     super(data.message);

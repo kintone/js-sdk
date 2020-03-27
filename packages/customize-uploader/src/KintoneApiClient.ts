@@ -55,10 +55,10 @@ export default class KintoneApiClient {
       body: {
         file: {
           value: fs.createReadStream(filePath, "utf8"),
-          options: { contentType }
-        }
+          options: { contentType },
+        },
       },
-      contentType: "multipart/form-data"
+      contentType: "multipart/form-data",
     });
   }
 
@@ -70,15 +70,15 @@ export default class KintoneApiClient {
     if (isUrl) {
       return {
         type: "URL",
-        url: fileOrUrl
+        url: fileOrUrl,
       };
     }
     const { fileKey } = await this.uploadFile(fileOrUrl, contentType);
     return {
       type: "FILE",
       file: {
-        fileKey
-      }
+        fileKey,
+      },
     };
   }
 
@@ -86,7 +86,7 @@ export default class KintoneApiClient {
     return this.sendRequest({
       method: "PUT",
       path: "/k/v1/preview/app/customize.json",
-      body: setting
+      body: setting,
     });
   }
 
@@ -94,7 +94,7 @@ export default class KintoneApiClient {
     return this.sendRequest({
       method: "POST",
       path: "/k/v1/preview/app/deploy.json",
-      body: { apps: [{ app: appId }] }
+      body: { apps: [{ app: appId }] },
     });
   }
 
@@ -104,10 +104,10 @@ export default class KintoneApiClient {
       const resp = await this.sendRequest({
         method: "GET",
         path: "/k/v1/preview/app/deploy.json",
-        body: { apps: [appId] }
+        body: { apps: [appId] },
       });
       const successedApps: [any] = resp.apps;
-      const successedAppsLength = successedApps.filter(r => {
+      const successedAppsLength = successedApps.filter((r) => {
         return r.status === "SUCCESS";
       }).length;
       deployed = successedAppsLength === resp.apps.length;
@@ -123,7 +123,7 @@ export default class KintoneApiClient {
     return this.sendRequest({
       method: "GET",
       path: "/k/v1/file.json",
-      body: { fileKey }
+      body: { fileKey },
     });
   }
 
@@ -131,14 +131,14 @@ export default class KintoneApiClient {
     return this.sendRequest({
       method: "GET",
       path: "/k/v1/app/customize.json",
-      body: { app: appId }
+      body: { app: appId },
     });
   }
 
   public async sendRequest(params: RequestParams) {
     const requestOptions = this.buildRequestOptions(params);
     try {
-      return request(requestOptions).then(response => {
+      return request(requestOptions).then((response) => {
         if (response.statusCode !== 200) {
           throw new Error(
             `Failed to Request(StatusCode:${response.statusCode}`
@@ -166,7 +166,7 @@ export default class KintoneApiClient {
     method,
     path,
     body,
-    contentType
+    contentType,
   }: RequestParams): RequestOption {
     const isFormData = contentType && contentType === "multipart/form-data";
     const requestOptions: RequestOption = Object.assign(
@@ -179,9 +179,9 @@ export default class KintoneApiClient {
           : this.kintoneUrl + path,
         headers: {
           "X-Cybozu-Authorization": this.auth,
-          "Content-Type": contentType || "application/json"
+          "Content-Type": contentType || "application/json",
         },
-        resolveWithFullResponse: true
+        resolveWithFullResponse: true,
       },
       isFormData
         ? { formData: body, body: null }

@@ -115,12 +115,12 @@ function exportAsManifestFile(
     scope: resp.scope,
     desktop: {
       js: desktopJs.map(toNameOrUrl(`${destRootDir}/desktop/js`)),
-      css: desktopCss.map(toNameOrUrl(`${destRootDir}/desktop/css`))
+      css: desktopCss.map(toNameOrUrl(`${destRootDir}/desktop/css`)),
     },
     mobile: {
       js: mobileJs.map(toNameOrUrl(`${destRootDir}/mobile/js`)),
-      css: mobileCss.map(toNameOrUrl(`${destRootDir}/mobile/css`))
-    }
+      css: mobileCss.map(toNameOrUrl(`${destRootDir}/mobile/css`)),
+    },
   };
 
   if (!fs.existsSync(`${destRootDir}`)) {
@@ -147,8 +147,8 @@ async function downloadCustomizeFiles(
     `${destDir}${sep}desktop${sep}js${sep}`,
     `${destDir}${sep}desktop${sep}css${sep}`,
     `${destDir}${sep}mobile${sep}js${sep}`,
-    `${destDir}${sep}mobile${sep}css${sep}`
-  ].forEach(path => mkdirp.sync(path));
+    `${destDir}${sep}mobile${sep}css${sep}`,
+  ].forEach((path) => mkdirp.sync(path));
 
   const desktopJsPromise = desktopJs.map(
     downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}desktop${sep}js`)
@@ -166,7 +166,7 @@ async function downloadCustomizeFiles(
     ...desktopJsPromise,
     ...desktopCssPromise,
     ...mobileJsPromise,
-    ...mobileCssPromise
+    ...mobileCssPromise,
   ];
 }
 
@@ -174,7 +174,7 @@ function downloadAndWriteFile(
   kintoneApiClient: KintoneApiClient,
   destDir: string
 ): (f: CustomizeFile) => void {
-  return async f => {
+  return async (f) => {
     if (f.type !== "URL") {
       const resp = await kintoneApiClient.downloadFile(f.file.fileKey);
       fs.writeFileSync(`${destDir}${sep}${f.file.name}`, resp);
@@ -196,7 +196,7 @@ export const runImport = async (
     fs.readFileSync(manifestFile, "utf8")
   );
   const status = {
-    retryCount: 0
+    retryCount: 0,
   };
 
   const kintoneApiClient = new KintoneApiClient(

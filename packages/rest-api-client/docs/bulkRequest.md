@@ -4,7 +4,7 @@
 
 ```ts
 const client = new KintoneRestAPIClient({
-  baseUrl: location.origin
+  baseUrl: location.origin,
 });
 
 (async () => {
@@ -20,10 +20,10 @@ const client = new KintoneRestAPIClient({
           app: APP_ID,
           record: {
             [FIELD_CODE]: {
-              value: "example"
-            }
-          }
-        }
+              value: "example",
+            },
+          },
+        },
       },
       {
         method: "PUT",
@@ -33,12 +33,12 @@ const client = new KintoneRestAPIClient({
           id: RECORD_ID,
           record: {
             [FIELD_CODE]: {
-              value: "example2"
-            }
-          }
-        }
-      }
-    ]
+              value: "example2",
+            },
+          },
+        },
+      },
+    ],
   };
   try {
     const res = await client.bulkRequest(params);
