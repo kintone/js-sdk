@@ -1,0 +1,60 @@
+{
+  "name": "@kintone/customize-uploader",
+  "version": "3.0.1",
+  "description": "A kintone customize uploader",
+  "bin": {
+    "kintone-customize-uploader": "bin/cli.js"
+  },
+  "main": "dist/src/index.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "run-p lint:*",
+    "prerelease": "npm-run-all -p lint test -s build",
+    "test": "jest --rootDir src",
+    "test:ci": "jest --rootDir src --runInBand",
+    "start": "tsc -w",
+    "lint:tsc": "tsc --noEmit",
+    "lint:eslint": "eslint --ext .ts src"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/customize-uploader"
+  },
+  "keywords": [
+    "kintone"
+  ],
+  "author": "kintone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/customize-uploader#readme",
+  "devDependencies": {
+    "@types/chokidar": "^1.7.5",
+    "@types/inquirer": "6.5.0",
+    "@types/jest": "^25.1.4",
+    "@types/mkdirp": "^1.0.0",
+    "@types/node": "^10.17.17",
+    "@types/request-promise": "^4.1.45",
+    "@types/rimraf": "^2.0.3",
+    "ts-node": "^8.6.2"
+  },
+  "dependencies": {
+    "chokidar": "^3.3.1",
+    "inquirer": "^7.0.6",
+    "meow": "^6.0.1",
+    "mkdirp": "^1.0.3",
+    "os-locale": "^4.0.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
+    "rimraf": "^3.0.2"
+  }
+}
