@@ -13,12 +13,12 @@ export const getInitCustomizeManifest = (
     scope,
     desktop: {
       js: [],
-      css: []
+      css: [],
     },
     mobile: {
       js: [],
-      css: []
-    }
+      css: [],
+    },
   };
 };
 
@@ -33,7 +33,7 @@ export const generateCustomizeManifest = (
     return fs.writeFile(
       `${destDir}/customize-manifest.json`,
       JSON.stringify(customizeManifest, null, 4),
-      err => {
+      (err) => {
         if (err) {
           reject(err);
         } else {

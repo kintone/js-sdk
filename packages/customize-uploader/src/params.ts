@@ -18,7 +18,7 @@ export const inquireParams = ({ username, password, domain, lang }: Params) => {
       name: "domain",
       default: domain,
       when: () => !domain,
-      validate: (v: string) => !!v
+      validate: (v: string) => !!v,
     },
     {
       type: "input",
@@ -26,7 +26,7 @@ export const inquireParams = ({ username, password, domain, lang }: Params) => {
       message: m("Q_UserName"),
       default: username,
       when: () => !username,
-      validate: (v: string) => !!v
+      validate: (v: string) => !!v,
     },
     {
       type: "password",
@@ -34,11 +34,11 @@ export const inquireParams = ({ username, password, domain, lang }: Params) => {
       message: m("Q_Password"),
       default: password,
       when: () => !password,
-      validate: (v: string) => !!v
-    }
+      validate: (v: string) => !!v,
+    },
   ];
 
   return inquirer
     .prompt(questions)
-    .then(answers => Object.assign({ username, password, domain }, answers));
+    .then((answers) => Object.assign({ username, password, domain }, answers));
 };

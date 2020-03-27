@@ -11,17 +11,17 @@ export const inquireInitParams = (lang: Lang) => {
       type: "input",
       message: m("Q_AppId"),
       name: "appId",
-      validate: (v: string) => !!v
+      validate: (v: string) => !!v,
     },
     {
       type: "list",
       message: m("Q_Scope"),
       name: "scope",
-      choices: ["ALL", "ADMIN", "NONE"]
-    }
+      choices: ["ALL", "ADMIN", "NONE"],
+    },
   ];
 
   return inquirer
     .prompt(questions)
-    .then(answers => Object.assign({ appId, scope, lang }, answers));
+    .then((answers) => Object.assign({ appId, scope, lang }, answers));
 };

@@ -50,9 +50,9 @@ export class Record {
       app: APP_ID,
       record: {
         Lookup: {
-          value: "example"
-        }
-      }
+          value: "example",
+        },
+      },
     };
     console.log(await this.client.record.addRecord(params));
   }
@@ -62,9 +62,9 @@ export class Record {
       id: 22,
       record: {
         Customer: {
-          value: "example"
-        }
-      }
+          value: "example",
+        },
+      },
     };
     console.log(await this.client.record.updateRecord(params));
   }
@@ -74,13 +74,13 @@ export class Record {
       app: APP_ID,
       updateKey: {
         field: "Code",
-        value: 300
+        value: 300,
       },
       record: {
         Customer: {
-          value: "upsertTest"
-        }
-      }
+          value: "upsertTest",
+        },
+      },
     };
     console.log(await this.client.record.upsertRecord(params));
   }
@@ -90,7 +90,7 @@ export class Record {
       await this.client.record.getRecords({
         app: APP_ID,
         fields: [],
-        totalCount: true
+        totalCount: true,
       })
     );
   }
@@ -99,7 +99,7 @@ export class Record {
     console.log(
       await this.client.record.addRecords({
         app: APP_ID,
-        records: [{}, {}, {}]
+        records: [{}, {}, {}],
       })
     );
   }
@@ -112,22 +112,22 @@ export class Record {
           id: 8,
           record: {
             Customer: {
-              value: "example"
-            }
-          }
+              value: "example",
+            },
+          },
         },
         {
           updateKey: {
             field: "Code",
-            value: "Case1"
+            value: "Case1",
           },
           record: {
             Customer: {
-              value: "example2"
-            }
-          }
-        }
-      ]
+              value: "example2",
+            },
+          },
+        },
+      ],
     };
 
     console.log(await this.client.record.updateRecords(params));
@@ -138,7 +138,7 @@ export class Record {
       await this.client.record.createCursor({
         app: APP_ID,
         fields: ["Customer", "Person"],
-        size: 10
+        size: 10,
       })
     );
   }
@@ -160,7 +160,7 @@ export class Record {
         fields: ["Customer"],
         condition: 'Customer != "foo"',
         orderBy: "Customer desc",
-        withCursor: false
+        withCursor: false,
       })
     );
   }
@@ -170,7 +170,7 @@ export class Record {
       await this.client.record.getAllRecordsWithId({
         app: APP_ID,
         fields: [],
-        condition: 'Customer != "foo"'
+        condition: 'Customer != "foo"',
       })
     );
   }
@@ -180,7 +180,7 @@ export class Record {
       await this.client.record.getAllRecordsWithOffset({
         app: APP_ID,
         fields: [],
-        condition: 'Customer != "foo"'
+        condition: 'Customer != "foo"',
       })
     );
   }
@@ -189,23 +189,23 @@ export class Record {
     console.log(
       await this.client.record.getAllRecordsWithCursor({
         app: APP_ID,
-        fields: ["Customer", "Person"]
+        fields: ["Customer", "Person"],
       })
     );
   }
 
   public async addAllRecords() {
     const records = Array.from({ length: 3000 }, (_, index) => index + 1).map(
-      value => ({
+      (value) => ({
         Customer: {
-          value
-        }
+          value,
+        },
       })
     );
     console.dir(
       await this.client.record.addAllRecords({
         app: APP_ID,
-        records
+        records,
       }),
       { depth: 5 }
     );
@@ -214,14 +214,14 @@ export class Record {
   public async updateAllRecords() {
     const records = await this.client.record.getAllRecords({
       app: APP_ID,
-      condition: 'Customer = "foo"'
+      condition: 'Customer = "foo"',
     });
     const result = await this.client.record.updateAllRecords({
       app: APP_ID,
-      records: records.map(record => ({
+      records: records.map((record) => ({
         id: record.$id.value,
-        record: { Customer: { value: "bar" } }
-      }))
+        record: { Customer: { value: "bar" } },
+      })),
     });
     console.log(result);
   }
@@ -235,10 +235,10 @@ export class Record {
         mentions: [
           {
             code: "Administrator",
-            type: "USER" as const
-          }
-        ]
-      }
+            type: "USER" as const,
+          },
+        ],
+      },
     };
     console.log(await this.client.record.addRecordComment(params));
   }
@@ -247,7 +247,7 @@ export class Record {
     const params = {
       app: APP_ID,
       record: RECORD_ID,
-      comment: 1
+      comment: 1,
     };
     console.log(await this.client.record.deleteRecordComment(params));
   }
@@ -258,7 +258,7 @@ export class Record {
       record: RECORD_ID,
       order: "desc" as const,
       offset: 5,
-      limit: 5
+      limit: 5,
     };
     console.log(await this.client.record.getRecordComments(params));
   }
@@ -267,7 +267,7 @@ export class Record {
     const params = {
       app: APP_ID,
       id: RECORD_ID,
-      assignees: []
+      assignees: [],
     };
     console.log(await this.client.record.updateRecordAssignees(params));
   }
@@ -276,7 +276,7 @@ export class Record {
     const params = {
       action: "action1to2",
       app: APP_ID,
-      id: RECORD_ID
+      id: RECORD_ID,
     };
     console.log(await this.client.record.updateRecordStatus(params));
   }
@@ -284,7 +284,7 @@ export class Record {
   public async updateRecordsStatus() {
     const params = {
       app: APP_ID,
-      records: [{ id: RECORD_ID, action: "action1to2" }]
+      records: [{ id: RECORD_ID, action: "action1to2" }],
     };
     console.log(await this.client.record.updateRecordsStatus(params));
   }

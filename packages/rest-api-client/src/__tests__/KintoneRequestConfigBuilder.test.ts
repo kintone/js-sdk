@@ -4,10 +4,10 @@ import FormData from "form-data";
 describe("KintoneRequestConfigBuilder", () => {
   const baseUrl = "https://example.kintone.com";
   const headers = {
-    "X-Cybozu-API-Token": "foo"
+    "X-Cybozu-API-Token": "foo",
   };
   const params = {
-    __REQUEST_TOKEN__: "foo-bar"
+    __REQUEST_TOKEN__: "foo-bar",
   };
   let kintoneRequestConfigBuilder: KintoneRequestConfigBuilder;
   beforeEach(() => {
@@ -26,7 +26,7 @@ describe("KintoneRequestConfigBuilder", () => {
     expect(requestConfig).toEqual({
       method: "get",
       url: `${baseUrl}/k/v1/record.json?key=value`,
-      headers
+      headers,
     });
   });
   it("should build post method requestConfig if the request URL is over the threshold", () => {
@@ -40,7 +40,7 @@ describe("KintoneRequestConfigBuilder", () => {
       method: "post",
       url: `${baseUrl}/k/v1/record.json`,
       headers: { ...headers, "X-HTTP-Method-Override": "GET" },
-      data: { ...params, key: value }
+      data: { ...params, key: value },
     });
   });
   it("should build get method requestConfig for data", () => {
@@ -54,7 +54,7 @@ describe("KintoneRequestConfigBuilder", () => {
       method: "get",
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers,
-      responseType: "arraybuffer"
+      responseType: "arraybuffer",
     });
   });
   it("should build post method requestConfig", () => {
@@ -68,9 +68,9 @@ describe("KintoneRequestConfigBuilder", () => {
       url: `${baseUrl}/k/v1/record.json`,
       data: {
         ...params,
-        key: "value"
+        key: "value",
       },
-      headers
+      headers,
     });
   });
   it("should build post method requestConfig for data", () => {
@@ -87,8 +87,8 @@ describe("KintoneRequestConfigBuilder", () => {
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
         ...headers,
-        ...formData.getHeaders()
-      }
+        ...formData.getHeaders(),
+      },
     });
     expect(data).toBeInstanceOf(FormData);
   });
@@ -103,9 +103,9 @@ describe("KintoneRequestConfigBuilder", () => {
       url: `${baseUrl}/k/v1/record.json`,
       data: {
         ...params,
-        key: "value"
+        key: "value",
       },
-      headers
+      headers,
     });
   });
   it("should build delete method requestConfig", () => {
@@ -117,7 +117,7 @@ describe("KintoneRequestConfigBuilder", () => {
     expect(requestConfig).toEqual({
       method: "delete",
       url: `${baseUrl}/k/v1/record.json?__REQUEST_TOKEN__=foo-bar&key=value`,
-      headers
+      headers,
     });
   });
 });

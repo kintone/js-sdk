@@ -17,7 +17,7 @@ export class FileClient {
     file: { name: string; data: unknown } | { path: string };
   }): Promise<{ fileKey: string }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "file"
+      endpointName: "file",
     });
 
     const formData = new FormData();
@@ -45,7 +45,7 @@ export class FileClient {
 
   public downloadFile(params: { fileKey: string }): Promise<ArrayBuffer> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "file"
+      endpointName: "file",
     });
     return this.client.getData(path, params);
   }
@@ -53,7 +53,7 @@ export class FileClient {
   private buildPathWithGuestSpaceId(params: { endpointName: string }) {
     return buildPath({
       ...params,
-      guestSpaceId: this.guestSpaceId
+      guestSpaceId: this.guestSpaceId,
     });
   }
 }

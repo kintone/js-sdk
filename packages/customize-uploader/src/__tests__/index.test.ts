@@ -17,7 +17,7 @@ describe("index", () => {
         "example.com",
         {
           proxy: "",
-          guestSpaceId: 0
+          guestSpaceId: 0,
         }
       );
       manifest = {
@@ -27,24 +27,24 @@ describe("index", () => {
           js: [
             "src/__tests__/fixtures/a.js",
             "src/__tests__/fixtures/b.js",
-            "https://js.cybozu.com/jquery/3.3.1/jquery.min.js"
+            "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
           ],
-          css: ["src/__tests__/fixtures/a.css"]
+          css: ["src/__tests__/fixtures/a.css"],
         },
         mobile: {
           js: ["src/__tests__/fixtures/c.js"],
-          css: ["src/__tests__/fixtures/d.css"]
-        }
+          css: ["src/__tests__/fixtures/d.css"],
+        },
       };
       status = {
         retryCount: 0,
         updateBody: null,
-        updated: false
+        updated: false,
       };
       options = {
         lang: "en",
         proxy: "",
-        guestSpaceId: 0
+        guestSpaceId: 0,
       };
     });
     it("should succeed the uploading", async () => {
@@ -60,7 +60,7 @@ describe("index", () => {
       assert.deepStrictEqual(
         kintoneApiClient.logs.map(({ method, path }) => ({
           method,
-          path
+          path,
         })),
         [
           { method: "POST", path: "/k/v1/file.json" },
@@ -70,7 +70,7 @@ describe("index", () => {
           { method: "POST", path: "/k/v1/file.json" },
           { method: "PUT", path: "/k/v1/preview/app/customize.json" },
           { method: "POST", path: "/k/v1/preview/app/deploy.json" },
-          { method: "GET", path: "/k/v1/preview/app/deploy.json" }
+          { method: "GET", path: "/k/v1/preview/app/deploy.json" },
         ]
       );
     });

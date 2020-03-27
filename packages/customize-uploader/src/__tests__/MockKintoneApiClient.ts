@@ -1,6 +1,6 @@
 import KintoneApiClient, {
   Option as ApiClientOption,
-  RequestParams
+  RequestParams,
 } from "../KintoneApiClient";
 
 export default class MockKintoneApiClient extends KintoneApiClient {
@@ -13,7 +13,7 @@ export default class MockKintoneApiClient extends KintoneApiClient {
     this.logs = [];
     this.willBeReturnResponse = {};
     const appDeployResp = {
-      apps: [{ status: "SUCCESS" }]
+      apps: [{ status: "SUCCESS" }],
     };
     this.willBeReturn("/k/v1/preview/app/deploy.json", "GET", appDeployResp)
       .willBeReturn("/k/v1/preview/app/deploy.json", "POST", appDeployResp)

@@ -32,8 +32,8 @@ export class App {
       fieldCode: {
         type: "SINGLE_LINE_TEXT",
         code: "fieldCode",
-        label: "Text Field"
-      }
+        label: "Text Field",
+      },
     };
     try {
       console.log(
@@ -48,8 +48,8 @@ export class App {
     const properties = {
       fieldCode: {
         type: "SINGLE_LINE_TEXT",
-        label: "Text Field 2"
-      }
+        label: "Text Field 2",
+      },
     };
     try {
       console.log(
@@ -94,7 +94,7 @@ export class App {
     try {
       const { layout } = await this.client.app.getFormLayout({
         app: APP_ID,
-        preview: true
+        preview: true,
       });
       const lastRow = layout.pop();
       if (lastRow) {
@@ -103,7 +103,7 @@ export class App {
         console.log(
           await this.client.app.updateFormLayout({
             app: APP_ID,
-            layout: newLayout
+            layout: newLayout,
           })
         );
       }
@@ -216,7 +216,7 @@ export class App {
     try {
       console.log(
         await this.client.app.getDeployStatus({
-          apps: [APP_ID]
+          apps: [APP_ID],
         })
       );
     } catch (error) {
@@ -228,7 +228,7 @@ export class App {
     try {
       console.log(
         await this.client.app.deployApp({
-          apps: [{ app: APP_ID }]
+          apps: [{ app: APP_ID }],
         })
       );
     } catch (error) {
@@ -241,7 +241,7 @@ export class App {
       console.log(
         await this.client.app.deployApp({
           apps: [{ app: APP_ID }],
-          revert: true
+          revert: true,
         })
       );
     } catch (error) {
@@ -283,21 +283,21 @@ export class App {
           {
             entity: {
               code: "everyone",
-              type: "GROUP" as const
+              type: "GROUP" as const,
             },
             viewable: true,
             editable: true,
             deletable: false,
-            includeSubs: true
-          }
-        ]
-      }
+            includeSubs: true,
+          },
+        ],
+      },
     ];
     try {
       console.log(
         await this.client.app.updateRecordAcl({
           app: APP_ID,
-          rights
+          rights,
         })
       );
     } catch (error) {
@@ -318,7 +318,7 @@ export class App {
       {
         entity: {
           code: "Administrator",
-          type: "USER" as const
+          type: "USER" as const,
         },
         appEditable: true,
         recordViewable: true,
@@ -326,16 +326,16 @@ export class App {
         recordEditable: true,
         recordDeletable: true,
         recordImportable: true,
-        recordExportable: true
+        recordExportable: true,
       },
       {
         entity: {
           code: "everyone",
-          type: "GROUP" as const
+          type: "GROUP" as const,
         },
         appEditable: true,
-        recordViewable: true
-      }
+        recordViewable: true,
+      },
     ];
     try {
       console.log(await this.client.app.updateAppAcl({ app: APP_ID, rights }));
@@ -347,7 +347,7 @@ export class App {
   public async evaluateRecordsAcl() {
     const params = {
       app: APP_ID,
-      ids: [RECORD_ID]
+      ids: [RECORD_ID],
     };
     console.log(
       JSON.stringify(await this.client.app.evaluateRecordsAcl(params))
@@ -363,18 +363,18 @@ export class App {
             accessibility: "WRITE" as const,
             entity: {
               code: "Administrator",
-              type: "USER" as const
-            }
+              type: "USER" as const,
+            },
           },
           {
             accessibility: "READ" as const,
             entity: {
               code: "everyone",
-              type: "GROUP" as const
-            }
-          }
-        ]
-      }
+              type: "GROUP" as const,
+            },
+          },
+        ],
+      },
     ];
     try {
       console.log(
@@ -400,9 +400,9 @@ export class App {
       js: [
         {
           type: "URL" as const,
-          url: "https://www.example.com/example.js"
-        }
-      ]
+          url: "https://www.example.com/example.js",
+        },
+      ],
     };
     try {
       console.log(
@@ -410,7 +410,7 @@ export class App {
           app: APP_ID,
           scope: "ALL",
           desktop: resource,
-          mobile: resource
+          mobile: resource,
         })
       );
     } catch (error) {
@@ -420,7 +420,7 @@ export class App {
 
   public async updateAppCustomizeWithFile() {
     const { fileKey } = await this.client.file.uploadFile({
-      file: { name: "Hello.js", data: "console.log('Hello');" }
+      file: { name: "Hello.js", data: "console.log('Hello');" },
     });
 
     const resource = {
@@ -428,17 +428,17 @@ export class App {
         {
           type: "FILE" as const,
           file: {
-            fileKey
-          }
-        }
-      ]
+            fileKey,
+          },
+        },
+      ],
     };
     try {
       console.log(
         await this.client.app.updateAppCustomize({
           app: APP_ID,
           scope: "ALL",
-          desktop: resource
+          desktop: resource,
         })
       );
     } catch (error) {

@@ -11,15 +11,15 @@ describe("KintoneRestAPIError", () => {
           errors: [
             {
               key: {
-                messages: ["key is missing"]
-              }
-            }
-          ]
+                messages: ["key is missing"],
+              },
+            },
+          ],
         },
         status: 500,
         headers: {
-          "X-Some-Header": "error"
-        }
+          "X-Some-Header": "error",
+        },
       };
       const kintoneRestAPIError = new KintoneRestAPIError(errorResponse);
       expect(kintoneRestAPIError.name).toBe("KintoneRestAPIError");
@@ -40,20 +40,20 @@ describe("KintoneRestAPIError", () => {
         errors: [
           {
             key: {
-              messages: ["key is missing"]
-            }
-          }
-        ]
+              messages: ["key is missing"],
+            },
+          },
+        ],
       };
 
       const errorResponse = {
         data: {
-          results: [{}, {}, errorResponseData, {}]
+          results: [{}, {}, errorResponseData, {}],
         },
         status: 500,
         headers: {
-          "X-Some-Header": "error"
-        }
+          "X-Some-Header": "error",
+        },
       };
       const kintoneRestAPIError = new KintoneRestAPIError(errorResponse);
       expect(kintoneRestAPIError.name).toBe("KintoneRestAPIError");
@@ -69,12 +69,12 @@ describe("KintoneRestAPIError", () => {
     it("should throw an error if there is no error object in the results", () => {
       const errorResponse = {
         data: {
-          results: [{}, {}, {}]
+          results: [{}, {}, {}],
         },
         status: 500,
         headers: {
-          "X-Some-Header": "error"
-        }
+          "X-Some-Header": "error",
+        },
       };
       expect(() => {
         new KintoneRestAPIError(errorResponse);

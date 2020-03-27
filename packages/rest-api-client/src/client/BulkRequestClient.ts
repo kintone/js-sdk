@@ -20,7 +20,7 @@ export class BulkRequestClient {
     }>;
   }): Promise<{ results: object[] }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "bulkRequest"
+      endpointName: "bulkRequest",
     });
     return this.client.post(path, params);
   }
@@ -28,7 +28,7 @@ export class BulkRequestClient {
   private buildPathWithGuestSpaceId(params: { endpointName: string }) {
     return buildPath({
       ...params,
-      guestSpaceId: this.guestSpaceId
+      guestSpaceId: this.guestSpaceId,
     });
   }
 }

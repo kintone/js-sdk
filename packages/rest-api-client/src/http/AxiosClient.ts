@@ -3,7 +3,7 @@ import {
   HttpClient,
   ErrorResponseHandler,
   RequestConfigBuilder,
-  RequestConfig
+  RequestConfig,
 } from "./HttpClientInterface";
 import FormData from "form-data";
 
@@ -13,7 +13,7 @@ export class AxiosClient implements HttpClient {
 
   constructor({
     errorResponseHandler,
-    requestConfigBuilder
+    requestConfigBuilder,
   }: {
     errorResponseHandler: ErrorResponseHandler;
     requestConfigBuilder: RequestConfigBuilder;
@@ -29,7 +29,7 @@ export class AxiosClient implements HttpClient {
 
   public async getData(path: string, params: any) {
     const requestConfig = this.requestConfigBuilder.build("get", path, params, {
-      responseType: "arraybuffer"
+      responseType: "arraybuffer",
     });
     return this.sendRequest(requestConfig);
   }

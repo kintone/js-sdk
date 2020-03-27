@@ -88,7 +88,7 @@ export class KintoneRestAPIClient {
         this.baseUrl,
         this.headers,
         params
-      )
+      ),
     });
     const { guestSpaceId } = options;
 
@@ -114,7 +114,7 @@ export class KintoneRestAPIClient {
       return { type: "apiToken", ...auth };
     }
     return {
-      type: "session"
+      type: "session",
     };
   }
 
@@ -126,7 +126,7 @@ export class KintoneRestAPIClient {
       ? {
           Authorization: `Basic ${Base64.encode(
             `${basicAuth.username}:${basicAuth.password}`
-          )}`
+          )}`,
         }
       : {};
 
@@ -136,7 +136,7 @@ export class KintoneRestAPIClient {
           ...headers,
           "X-Cybozu-Authorization": Base64.encode(
             `${auth.username}:${auth.password}`
-          )
+          ),
         };
       }
       case "apiToken": {
@@ -165,7 +165,7 @@ export class KintoneRestAPIClient {
     // This params are always sent as a request body.
     return requestToken
       ? {
-          __REQUEST_TOKEN__: requestToken
+          __REQUEST_TOKEN__: requestToken,
         }
       : {};
   }
