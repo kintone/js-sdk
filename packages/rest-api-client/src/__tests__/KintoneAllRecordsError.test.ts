@@ -104,5 +104,40 @@ describe("KintoneAllRecordsError", () => {
           unprocessedRecords.length} records are processed successfully`
       );
     });
+    it("should set errorIndex even if bulkRequestIndex = 0", () => {
+      errorResponse = {
+        data: {
+          results: [
+            {
+              id: "some id",
+              code: "some code",
+              message: "some error message",
+              errors: {
+                [`records[${errorParseResult}].Customer`]: {
+                  messages: ["key is missing"]
+                }
+              }
+            },
+            {},
+            {}
+          ]
+        },
+        status: 500,
+        headers: {
+          "X-Some-Header": "error"
+        }
+      };
+      kintoneRestApiError = new KintoneRestAPIError(errorResponse);
+      kintoneAllRecordsError = new KintoneAllRecordsError(
+        processedRecordsResult,
+        unprocessedRecords,
+        kintoneRestApiError,
+        chunkLength
+      );
+
+      expect(kintoneAllRecordsError.errorIndex).toBe(
+        processedRecordsResult.length + errorParseResult
+      );
+    });
   });
 });

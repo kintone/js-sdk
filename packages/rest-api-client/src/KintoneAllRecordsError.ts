@@ -17,7 +17,7 @@ export class KintoneAllRecordsError extends Error {
     processedRecordsResult: object[],
     chunkLength: number
   ) {
-    if (error.bulkRequestIndex && error.errors) {
+    if (error.bulkRequestIndex !== undefined && error.errors) {
       const errorParseResult = KintoneAllRecordsError.parseErrorIndex(
         error.errors
       );
