@@ -21,7 +21,7 @@ commands:
 jobs:
   node-v10:
     docker:
-      - image: circleci/node:10@sha256:75bb5eaff36802c8be23ff4a4ff9975b3821370c65bcf33f09812ac1da6ecab1
+      - image: circleci/node:10@sha256:76cd094aa8ec08b7c7b476432b8a736e532d88342403b53158bbe5b7407769c1
     steps:
       - run-npm-test
   node-v12:
