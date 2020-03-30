@@ -1,7 +1,7 @@
 import { KintoneRestAPIError } from "./KintoneRestAPIError";
 
 export class KintoneAllRecordsError extends Error {
-  processedRecordsResult: object[];
+  processedRecordsResult: object[] | {};
   unprocessedRecords: object[];
   error: KintoneRestAPIError;
   errorIndex?: number;
@@ -13,8 +13,8 @@ export class KintoneAllRecordsError extends Error {
   }
 
   private static extractErrorIndex(
+    numOfProcessedRecords: number,
     error: KintoneRestAPIError,
-    processedRecordsResult: object[],
     chunkLength: number
   ) {
     if (error.bulkRequestIndex !== undefined && error.errors) {
@@ -23,7 +23,7 @@ export class KintoneAllRecordsError extends Error {
       );
       if (errorParseResult !== null) {
         return (
-          processedRecordsResult.length +
+          numOfProcessedRecords +
           error.bulkRequestIndex * chunkLength +
           errorParseResult
         );
@@ -33,36 +33,37 @@ export class KintoneAllRecordsError extends Error {
   }
 
   private static buildErrorMessage(
-    processedRecordsResult: object[],
-    unprocessedRecords: object[],
+    numOfProcessedRecords: number,
+    numOfAllRecords: number,
     errorIndex: number | undefined
   ) {
     let message = "";
     if (errorIndex !== undefined) {
       message = `An error occurred at records[${errorIndex}]. `;
     }
-    message += `${processedRecordsResult.length}/${
-      processedRecordsResult.length + unprocessedRecords.length
-    } records are processed successfully`;
+    message += `${numOfProcessedRecords}/${numOfAllRecords} records are processed successfully`;
 
     return message;
   }
 
   constructor(
-    processedRecordsResult: object[],
+    processedRecordsResult: object[] | {},
     unprocessedRecords: object[],
+    numOfAllRecords: number,
     error: KintoneRestAPIError,
     chunkLength: number
   ) {
+    const numOfProcessedRecords = numOfAllRecords - unprocessedRecords.length;
+
     const errorIndex = KintoneAllRecordsError.extractErrorIndex(
+      numOfProcessedRecords,
       error,
-      processedRecordsResult,
       chunkLength
     );
 
     const message = KintoneAllRecordsError.buildErrorMessage(
-      processedRecordsResult,
-      unprocessedRecords,
+      numOfProcessedRecords,
+      numOfAllRecords,
       errorIndex
     );
     super(message);

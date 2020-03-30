@@ -1024,6 +1024,82 @@ describe("RecordClient", () => {
     });
   });
 
+  describe("deleteAllRecords", () => {
+    const params = {
+      app: APP_ID,
+      records: Array.from({ length: 3000 }, (_, index) => index + 1).map(
+        (value) => ({
+          id: value,
+          revision: 1,
+        })
+      ),
+    };
+    let response: any;
+    describe("success", () => {
+      const mockResponse = {
+        results: Array.from({ length: 20 }, () => ({})),
+      };
+      const mockResponse2 = {
+        results: Array.from({ length: 10 }, () => ({})),
+      };
+      beforeEach(async () => {
+        // response from first call of bulkRequest.send
+        mockClient.mockResponse(mockResponse);
+        // response from second call of bulkRequest.send
+        mockClient.mockResponse(mockResponse2);
+        response = await recordClient.deleteAllRecords(params);
+      });
+      it("should call bulkRequest multiple times", () => {
+        expect(mockClient.getLogs().length).toBe(2);
+      });
+
+      it("should return an empty object", () => {
+        expect(response).toStrictEqual({});
+      });
+    });
+
+    describe("response error", () => {
+      // success
+      const mockResponse = {
+        results: Array.from({ length: 20 }, () => ({})),
+      };
+      // failed
+      const errorResponse = {
+        data: {
+          results: [
+            {},
+            {},
+            {
+              id: "some id",
+              code: "some code",
+              message: "some error message",
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+          ],
+        },
+        status: 500,
+        headers: {
+          "X-Some-Header": "error",
+        },
+      };
+      beforeEach(async () => {
+        mockClient.mockResponse(mockResponse);
+        mockClient.mockResponse(new KintoneRestAPIError(errorResponse));
+      });
+      it("should raise an KintoneAllRecordsError if an error occurs during bulkRequest", async () => {
+        await expect(
+          recordClient.deleteAllRecords(params)
+        ).rejects.toBeInstanceOf(KintoneAllRecordsError);
+      });
+    });
+  });
+
   describe("addRecordComment", () => {
     const params = {
       app: APP_ID,
