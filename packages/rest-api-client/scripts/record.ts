@@ -231,10 +231,10 @@ export class Record {
     try {
       const result = await this.client.record.deleteAllRecords({
         app: APP_ID,
-        records: records.map(record => ({
+        records: records.map((record) => ({
           id: record.$id.value,
-          revision: record.$revision.value
-        }))
+          revision: record.$revision.value,
+        })),
       });
       console.log(result);
     } catch (e) {

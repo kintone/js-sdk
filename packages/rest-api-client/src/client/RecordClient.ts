@@ -540,7 +540,7 @@ export class RecordClient {
     try {
       newResults = await this.deleteAllRecordsWithBulkRequest({
         app,
-        records: recordsChunk
+        records: recordsChunk,
       });
     } catch (e) {
       throw new KintoneAllRecordsError(
@@ -553,7 +553,7 @@ export class RecordClient {
     return this.deleteAllRecordsRecursive(
       {
         app,
-        records: records.slice(CHUNK_LENGTH)
+        records: records.slice(CHUNK_LENGTH),
       },
       results.concat(newResults)
     );
@@ -571,17 +571,17 @@ export class RecordClient {
       [],
       params.records
     );
-    const requests = separatedRecords.map(records => ({
+    const requests = separatedRecords.map((records) => ({
       method: "DELETE",
       api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
       payload: {
         app: params.app,
-        ids: records.map(record => record.id),
-        revisions: records.map(record => record.revision)
-      }
+        ids: records.map((record) => record.id),
+        revisions: records.map((record) => record.revision),
+      },
     }));
     await this.bulkRequestClient.send({ requests });
-    return params.records.map(record => ({ id: String(record.id) }));
+    return params.records.map((record) => ({ id: String(record.id) }));
   }
 
   private separateArrayRecursive<T>(

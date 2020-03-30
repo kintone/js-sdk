@@ -1028,19 +1028,19 @@ describe("RecordClient", () => {
     const params = {
       app: APP_ID,
       records: Array.from({ length: 3000 }, (_, index) => index + 1).map(
-        value => ({
+        (value) => ({
           id: value,
-          revision: 1
+          revision: 1,
         })
-      )
+      ),
     };
     let response: any;
     describe("success", () => {
       const mockResponse = {
-        results: Array.from({ length: 20 }, () => ({}))
+        results: Array.from({ length: 20 }, () => ({})),
       };
       const mockResponse2 = {
-        results: Array.from({ length: 10 }, () => ({}))
+        results: Array.from({ length: 10 }, () => ({})),
       };
       beforeEach(async () => {
         // response from first call of bulkRequest.send
@@ -1061,7 +1061,7 @@ describe("RecordClient", () => {
     describe("response error", () => {
       // success
       const mockResponse = {
-        results: Array.from({ length: 20 }, () => ({}))
+        results: Array.from({ length: 20 }, () => ({})),
       };
       // failed
       const errorResponse = {
@@ -1072,7 +1072,7 @@ describe("RecordClient", () => {
             {
               id: "some id",
               code: "some code",
-              message: "some error message"
+              message: "some error message",
             },
             {},
             {},
@@ -1080,13 +1080,13 @@ describe("RecordClient", () => {
             {},
             {},
             {},
-            {}
-          ]
+            {},
+          ],
         },
         status: 500,
         headers: {
-          "X-Some-Header": "error"
-        }
+          "X-Some-Header": "error",
+        },
       };
       beforeEach(async () => {
         mockClient.mockResponse(mockResponse);
