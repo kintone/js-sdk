@@ -51,8 +51,8 @@ const client = new KintoneRestAPIClient({
   // Use password authentication
   auth: {
     username: process.env.KINTONE_USERNAME,
-    password: process.env.KINTONE_PASSWORD
-  }
+    password: process.env.KINTONE_PASSWORD,
+  },
   // Use API token authentication
   // auth: { apiToken: process.env.KINTONE_API_TOKEN }
 
@@ -61,10 +61,10 @@ const client = new KintoneRestAPIClient({
 
 client.record
   .getRecords({ app: "1" })
-  .then(resp => {
+  .then((resp) => {
     console.log(resp.records);
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
 ```

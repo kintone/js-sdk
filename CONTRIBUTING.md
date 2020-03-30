@@ -41,3 +41,19 @@ If you'd like to release a new package.
 % yarn initial:release
 ```
 
+## Create a new package
+
+When you create a new package, you must define the following npm-scripts, otherwise CI would be failed.
+
+- `build`
+- `lint`
+- `test`
+- `test:ci`
+- `prerelease`
+
+## Import a package into `kintone/js-sdk`
+
+You can import an exsiting package with `lerna import path/to/package`.
+
+After the PR has been merged, you have to create a tag at the last commit where the package had been released.
+The tag format is `package-name@version`

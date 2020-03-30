@@ -17,7 +17,7 @@ export class KintoneAllRecordsError extends Error {
     processedRecordsResult: object[],
     chunkLength: number
   ) {
-    if (error.bulkRequestIndex && error.errors) {
+    if (error.bulkRequestIndex !== undefined && error.errors) {
       const errorParseResult = KintoneAllRecordsError.parseErrorIndex(
         error.errors
       );
@@ -41,10 +41,9 @@ export class KintoneAllRecordsError extends Error {
     if (errorIndex !== undefined) {
       message = `An error occurred at records[${errorIndex}]. `;
     }
-    message += `${
-      processedRecordsResult.length
-    }/${processedRecordsResult.length +
-      unprocessedRecords.length} records are processed successfully`;
+    message += `${processedRecordsResult.length}/${
+      processedRecordsResult.length + unprocessedRecords.length
+    } records are processed successfully`;
 
     return message;
   }

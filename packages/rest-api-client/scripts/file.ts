@@ -10,30 +10,30 @@ export class File {
 
   public async uploadFile() {
     const { fileKey } = await this.client.file.uploadFile({
-      file: { name: "Hello.text", data: "Hello World!" }
+      file: { name: "Hello.text", data: "Hello World!" },
     });
     console.log(fileKey);
     this.client.record.addRecord({
       app: APP_ID,
       record: {
         Customer: {
-          value: `fileKey: ${fileKey}`
+          value: `fileKey: ${fileKey}`,
         },
         Attachment: {
-          value: [{ fileKey }]
-        }
-      }
+          value: [{ fileKey }],
+        },
+      },
     });
   }
 
   public async downloadFile() {
     const { record } = await this.client.record.getRecord({
       app: APP_ID,
-      id: 537
+      id: 537,
     });
 
     const data = await this.client.file.downloadFile({
-      fileKey: record.Attachment.value[0].fileKey
+      fileKey: record.Attachment.value[0].fileKey,
     });
     console.log(data.toString());
   }

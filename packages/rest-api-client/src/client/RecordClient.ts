@@ -8,6 +8,11 @@ export type Record = {
   [fieldCode: string]: any;
 };
 
+type UpdateKey = {
+  field: string;
+  value: string | number;
+};
+
 type Mention = {
   code: string;
   type: "USER" | "GROUP" | "ORGANIZATION";
@@ -52,7 +57,7 @@ export class RecordClient {
     id: RecordID;
   }): Promise<{ record: T }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record"
+      endpointName: "record",
     });
     return this.client.get(path, params);
   }
@@ -62,7 +67,7 @@ export class RecordClient {
     record?: object;
   }): Promise<{ id: string; revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record"
+      endpointName: "record",
     });
     return this.client.post(path, params);
   }
@@ -70,20 +75,22 @@ export class RecordClient {
   public updateRecord(
     params:
       | { app: AppID; id: RecordID; record?: object; revision?: Revision }
-      | { app: AppID; updateKey: object; record?: object; revision?: Revision }
+      | {
+          app: AppID;
+          updateKey: UpdateKey;
+          record?: object;
+          revision?: Revision;
+        }
   ): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record"
+      endpointName: "record",
     });
     return this.client.put(path, params);
   }
 
   public async upsertRecord(params: {
     app: AppID;
-    updateKey: {
-      field: string;
-      value: string | number;
-    };
+    updateKey: UpdateKey;
     record?: object;
     revision?: Revision;
   }): Promise<{ id: string; revision: string }> {
@@ -91,7 +98,7 @@ export class RecordClient {
     // if the client can't get a record matches `updateKey`, use `addRecord`
     const { records } = await this.getRecords({
       app,
-      query: `${updateKey.field} = "${updateKey.value}"`
+      query: `${updateKey.field} = "${updateKey.value}"`,
     });
     if (records.length > 0) {
       const { revision } = await this.updateRecord(params);
@@ -99,7 +106,7 @@ export class RecordClient {
     }
     return this.addRecord({
       app,
-      record: { ...record, [updateKey.field]: { value: updateKey.value } }
+      record: { ...record, [updateKey.field]: { value: updateKey.value } },
     });
   }
 
@@ -111,7 +118,7 @@ export class RecordClient {
     totalCount?: boolean;
   }): Promise<{ records: T[]; totalCount: string | null }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "records"
+      endpointName: "records",
     });
     if (params.query) {
       const regexp = /offset\s+(\d+)/i;
@@ -139,7 +146,7 @@ export class RecordClient {
     records: Array<{ id: string; revision: string }>;
   }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "records"
+      endpointName: "records",
     });
     const { ids, revisions } = await this.client.post<{
       ids: string[];
@@ -148,7 +155,7 @@ export class RecordClient {
     return {
       ids,
       revisions,
-      records: ids.map((id, i) => ({ id, revision: revisions[i] }))
+      records: ids.map((id, i) => ({ id, revision: revisions[i] })),
     };
   }
 
@@ -156,11 +163,15 @@ export class RecordClient {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
+      | {
+          updateKey: UpdateKey;
+          record?: object;
+          revision?: Revision;
+        }
     >;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "records"
+      endpointName: "records",
     });
     return this.client.put(path, params);
   }
@@ -171,7 +182,7 @@ export class RecordClient {
     revisions?: Revision[];
   }): Promise<{}> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "records"
+      endpointName: "records",
     });
     return this.client.delete(path, params);
   }
@@ -183,7 +194,7 @@ export class RecordClient {
     size?: number | string;
   }): Promise<{ id: string; totalCount: string }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "records/cursor"
+      endpointName: "records/cursor",
     });
     return this.client.post(path, params);
   }
@@ -195,14 +206,14 @@ export class RecordClient {
     next: boolean;
   }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "records/cursor"
+      endpointName: "records/cursor",
     });
     return this.client.get(path, params);
   }
 
   public deleteCursor(params: { id: string }): Promise<{}> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "records/cursor"
+      endpointName: "records/cursor",
     });
     return this.client.delete(path, params);
   }
@@ -334,7 +345,7 @@ export class RecordClient {
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     if (
       !params.records.every(
-        record => !Array.isArray(record) && record instanceof Object
+        (record) => !Array.isArray(record) && record instanceof Object
       )
     ) {
       throw new Error("the `records` parameter must be an array of object.");
@@ -358,7 +369,7 @@ export class RecordClient {
     try {
       newResults = await this.addAllRecordsWithBulkRequest({
         app,
-        records: recordsChunk
+        records: recordsChunk,
       });
     } catch (e) {
       throw new KintoneAllRecordsError(results, records, e, ADD_RECORDS_LIMIT);
@@ -366,7 +377,7 @@ export class RecordClient {
     return this.addAllRecordsRecursive(
       {
         app,
-        records: records.slice(CHUNK_LENGTH)
+        records: records.slice(CHUNK_LENGTH),
       },
       results.concat(newResults)
     );
@@ -386,18 +397,18 @@ export class RecordClient {
       [],
       params.records
     );
-    const requests = separatedRecords.map(records => ({
+    const requests = separatedRecords.map((records) => ({
       method: "POST",
       api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
       payload: {
         app: params.app,
-        records
-      }
+        records,
+      },
     }));
     const results = (await this.bulkRequestClient.send({ requests }))
       .results as Array<{ ids: string[]; revisions: string[] }>;
     return results
-      .map(result => {
+      .map((result) => {
         const { ids, revisions } = result;
         return ids.map((id, i) => ({ id, revision: revisions[i] }));
       })
@@ -410,7 +421,11 @@ export class RecordClient {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
+      | {
+          updateKey: UpdateKey;
+          record?: object;
+          revision?: Revision;
+        }
     >;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const records = await this.updateAllRecordsRecursive(params, []);
@@ -422,7 +437,11 @@ export class RecordClient {
       app: AppID;
       records: Array<
         | { id: RecordID; record?: object; revision?: Revision }
-        | { updateKey: object; record?: object; revision?: Revision }
+        | {
+            updateKey: UpdateKey;
+            record?: object;
+            revision?: Revision;
+          }
       >;
     },
     results: Array<{ id: string; revision: string }>
@@ -438,7 +457,7 @@ export class RecordClient {
     try {
       newResults = await this.updateAllRecordsWithBulkRequest({
         app,
-        records: recordsChunk
+        records: recordsChunk,
       });
     } catch (e) {
       throw new KintoneAllRecordsError(
@@ -451,7 +470,7 @@ export class RecordClient {
     return this.updateAllRecordsRecursive(
       {
         app,
-        records: records.slice(CHUNK_LENGTH)
+        records: records.slice(CHUNK_LENGTH),
       },
       results.concat(newResults)
     );
@@ -461,7 +480,11 @@ export class RecordClient {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
+      | {
+          updateKey: UpdateKey;
+          record?: object;
+          revision?: Revision;
+        }
     >;
   }): Promise<Array<{ id: string; revision: string }>> {
     const separatedRecords = this.separateArrayRecursive(
@@ -469,18 +492,18 @@ export class RecordClient {
       [],
       params.records
     );
-    const requests = separatedRecords.map(records => ({
+    const requests = separatedRecords.map((records) => ({
       method: "PUT",
       api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
       payload: {
         app: params.app,
-        records
-      }
+        records,
+      },
     }));
     const results = (await this.bulkRequestClient.send({ requests }))
       .results as Array<{ records: Array<{ id: string; revision: string }> }>;
     return results
-      .map(result => result.records)
+      .map((result) => result.records)
       .reduce((acc, records) => {
         return acc.concat(records);
       }, []);
@@ -586,7 +609,7 @@ export class RecordClient {
     };
   }): Promise<{ id: string }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record/comment"
+      endpointName: "record/comment",
     });
     return this.client.post(path, params);
   }
@@ -597,7 +620,7 @@ export class RecordClient {
     comment: CommentID;
   }): Promise<{}> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record/comment"
+      endpointName: "record/comment",
     });
     return this.client.delete(path, params);
   }
@@ -610,7 +633,7 @@ export class RecordClient {
     limit?: number;
   }): Promise<{ comments: Comment[]; older: boolean; newer: boolean }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record/comments"
+      endpointName: "record/comments",
     });
     return this.client.get(path, params);
   }
@@ -622,7 +645,7 @@ export class RecordClient {
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record/assignees"
+      endpointName: "record/assignees",
     });
     return this.client.put(path, params);
   }
@@ -635,7 +658,7 @@ export class RecordClient {
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record/status"
+      endpointName: "record/status",
     });
     return this.client.put(path, params);
   }
@@ -650,7 +673,7 @@ export class RecordClient {
     }>;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "records/status"
+      endpointName: "records/status",
     });
     return this.client.put(path, params);
   }
@@ -658,7 +681,7 @@ export class RecordClient {
   private buildPathWithGuestSpaceId(params: { endpointName: string }) {
     return buildPath({
       ...params,
-      guestSpaceId: this.guestSpaceId
+      guestSpaceId: this.guestSpaceId,
     });
   }
 }

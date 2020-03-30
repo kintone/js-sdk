@@ -8,10 +8,10 @@ describe("KintoneRestAPIClient", () => {
     originalKintone = global.kintone;
     originalLocation = Object.getOwnPropertyDescriptor(global, "location");
     Object.defineProperty(global, "location", {
-      writable: true
+      writable: true,
     });
     global.kintone = {
-      getRequestToken: () => "dummy request token"
+      getRequestToken: () => "dummy request token",
     };
   });
   afterEach(() => {
@@ -25,33 +25,33 @@ describe("KintoneRestAPIClient", () => {
       it("ApiToken auth", () => {
         const API_TOKEN = "ApiToken";
         const auth = {
-          apiToken: API_TOKEN
+          apiToken: API_TOKEN,
         };
         const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
-          "X-Cybozu-API-Token": API_TOKEN
+          "X-Cybozu-API-Token": API_TOKEN,
         });
       });
       it("ApiToken auth using multiple tokens as comma-separated string", () => {
         const API_TOKEN1 = "ApiToken1";
         const API_TOKEN2 = "ApiToken2";
         const auth = {
-          apiToken: `${API_TOKEN1},${API_TOKEN2}`
+          apiToken: `${API_TOKEN1},${API_TOKEN2}`,
         };
         const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
-          "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
+          "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
         });
       });
       it("ApiToken auth using multiple tokens as array", () => {
         const API_TOKEN1 = "ApiToken1";
         const API_TOKEN2 = "ApiToken2";
         const auth = {
-          apiToken: [API_TOKEN1, API_TOKEN2]
+          apiToken: [API_TOKEN1, API_TOKEN2],
         };
         const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
-          "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`
+          "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
         });
       });
       it("Password  auth", () => {
@@ -59,18 +59,18 @@ describe("KintoneRestAPIClient", () => {
         const PASSWORD = "password";
         const auth = {
           username: USERNAME,
-          password: PASSWORD
+          password: PASSWORD,
         };
         const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
-          "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`)
+          "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`),
         });
       });
       it("Session auth", () => {
         const auth = {};
         const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
-          "X-Requested-With": "XMLHttpRequest"
+          "X-Requested-With": "XMLHttpRequest",
         });
       });
       it("Basic auth", () => {
@@ -78,19 +78,19 @@ describe("KintoneRestAPIClient", () => {
         const client = new KintoneRestAPIClient({ baseUrl, basicAuth });
         expect(client.getHeaders()).toEqual({
           Authorization: `Basic ${Base64.encode("user:password")}`,
-          "X-Requested-With": "XMLHttpRequest"
+          "X-Requested-With": "XMLHttpRequest",
         });
       });
       it("should use Session auth if auth param is not specified", () => {
         const client = new KintoneRestAPIClient({ baseUrl });
         expect(client.getHeaders()).toEqual({
-          "X-Requested-With": "XMLHttpRequest"
+          "X-Requested-With": "XMLHttpRequest",
         });
       });
 
       it("should use location.origin in browser environment if baseUrl param is not specified", () => {
         global.location = {
-          origin: "https://example.com"
+          origin: "https://example.com",
         };
         const client = new KintoneRestAPIClient();
         expect(client.getBaseUrl()).toBe("https://example.com");
