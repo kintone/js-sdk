@@ -69,7 +69,15 @@ export class RecordClient {
   public updateRecord(
     params:
       | { app: AppID; id: RecordID; record?: object; revision?: Revision }
-      | { app: AppID; updateKey: object; record?: object; revision?: Revision }
+      | {
+          app: AppID;
+          updateKey: {
+            field: string;
+            value: string | number;
+          };
+          record?: object;
+          revision?: Revision;
+        }
   ): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record",
@@ -155,7 +163,14 @@ export class RecordClient {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
+      | {
+          updateKey: {
+            field: string;
+            value: string | number;
+          };
+          record?: object;
+          revision?: Revision;
+        }
     >;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const path = this.buildPathWithGuestSpaceId({
@@ -409,7 +424,14 @@ export class RecordClient {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
+      | {
+          updateKey: {
+            field: string;
+            value: string | number;
+          };
+          record?: object;
+          revision?: Revision;
+        }
     >;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const records = await this.updateAllRecordsRecursive(params, []);
@@ -421,7 +443,14 @@ export class RecordClient {
       app: AppID;
       records: Array<
         | { id: RecordID; record?: object; revision?: Revision }
-        | { updateKey: object; record?: object; revision?: Revision }
+        | {
+            updateKey: {
+              field: string;
+              value: string | number;
+            };
+            record?: object;
+            revision?: Revision;
+          }
       >;
     },
     results: Array<{ id: string; revision: string }>
@@ -460,7 +489,14 @@ export class RecordClient {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
+      | {
+          updateKey: {
+            field: string;
+            value: string | number;
+          };
+          record?: object;
+          revision?: Revision;
+        }
     >;
   }): Promise<Array<{ id: string; revision: string }>> {
     const separatedRecords = this.separateArrayRecursive(
