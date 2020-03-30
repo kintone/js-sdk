@@ -8,6 +8,11 @@ export type Record = {
   [fieldCode: string]: any;
 };
 
+type UpdateKey = {
+  field: string;
+  value: string | number;
+};
+
 type Mention = {
   code: string;
   type: "USER" | "GROUP" | "ORGANIZATION";
@@ -71,10 +76,7 @@ export class RecordClient {
       | { app: AppID; id: RecordID; record?: object; revision?: Revision }
       | {
           app: AppID;
-          updateKey: {
-            field: string;
-            value: string | number;
-          };
+          updateKey: UpdateKey;
           record?: object;
           revision?: Revision;
         }
@@ -87,10 +89,7 @@ export class RecordClient {
 
   public async upsertRecord(params: {
     app: AppID;
-    updateKey: {
-      field: string;
-      value: string | number;
-    };
+    updateKey: UpdateKey;
     record?: object;
     revision?: Revision;
   }): Promise<{ id: string; revision: string }> {
@@ -164,10 +163,7 @@ export class RecordClient {
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
       | {
-          updateKey: {
-            field: string;
-            value: string | number;
-          };
+          updateKey: UpdateKey;
           record?: object;
           revision?: Revision;
         }
@@ -425,10 +421,7 @@ export class RecordClient {
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
       | {
-          updateKey: {
-            field: string;
-            value: string | number;
-          };
+          updateKey: UpdateKey;
           record?: object;
           revision?: Revision;
         }
@@ -444,10 +437,7 @@ export class RecordClient {
       records: Array<
         | { id: RecordID; record?: object; revision?: Revision }
         | {
-            updateKey: {
-              field: string;
-              value: string | number;
-            };
+            updateKey: UpdateKey;
             record?: object;
             revision?: Revision;
           }
@@ -490,10 +480,7 @@ export class RecordClient {
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
       | {
-          updateKey: {
-            field: string;
-            value: string | number;
-          };
+          updateKey: UpdateKey;
           record?: object;
           revision?: Revision;
         }
