@@ -350,12 +350,17 @@ export class RecordClient {
     ) {
       throw new Error("the `records` parameter must be an array of object.");
     }
-    const records = await this.addAllRecordsRecursive(params, []);
+    const records = await this.addAllRecordsRecursive(
+      params,
+      params.records.length,
+      []
+    );
     return { records };
   }
 
   private async addAllRecordsRecursive(
     params: { app: AppID; records: object[] },
+    numOfAllRecords: number,
     results: Array<{ id: string; revision: string }>
   ): Promise<Array<{ id: string; revision: string }>> {
     const CHUNK_LENGTH =
@@ -372,13 +377,20 @@ export class RecordClient {
         records: recordsChunk,
       });
     } catch (e) {
-      throw new KintoneAllRecordsError(results, records, e, ADD_RECORDS_LIMIT);
+      throw new KintoneAllRecordsError(
+        results,
+        records,
+        numOfAllRecords,
+        e,
+        ADD_RECORDS_LIMIT
+      );
     }
     return this.addAllRecordsRecursive(
       {
         app,
         records: records.slice(CHUNK_LENGTH),
       },
+      numOfAllRecords,
       results.concat(newResults)
     );
   }
@@ -428,7 +440,11 @@ export class RecordClient {
         }
     >;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
-    const records = await this.updateAllRecordsRecursive(params, []);
+    const records = await this.updateAllRecordsRecursive(
+      params,
+      params.records.length,
+      []
+    );
     return { records };
   }
 
@@ -444,6 +460,7 @@ export class RecordClient {
           }
       >;
     },
+    numOfAllRecords: number,
     results: Array<{ id: string; revision: string }>
   ): Promise<Array<{ id: string; revision: string }>> {
     const CHUNK_LENGTH =
@@ -463,6 +480,7 @@ export class RecordClient {
       throw new KintoneAllRecordsError(
         results,
         records,
+        numOfAllRecords,
         e,
         UPDATE_RECORDS_LIMIT
       );
@@ -472,6 +490,7 @@ export class RecordClient {
         app,
         records: records.slice(CHUNK_LENGTH),
       },
+      numOfAllRecords,
       results.concat(newResults)
     );
   }
@@ -516,7 +535,7 @@ export class RecordClient {
       revision?: Revision;
     }>;
   }): Promise<{}> {
-    return this.deleteAllRecordsRecursive(params, []);
+    return this.deleteAllRecordsRecursive(params, params.records.length);
   }
 
   private async deleteAllRecordsRecursive(
@@ -527,7 +546,7 @@ export class RecordClient {
         revision?: Revision;
       }>;
     },
-    results: Array<{ id: string }>
+    numOfAllRecords: number
   ): Promise<{}> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * DELETE_RECORDS_LIMIT;
@@ -536,16 +555,16 @@ export class RecordClient {
     if (recordsChunk.length === 0) {
       return {};
     }
-    let newResults;
     try {
-      newResults = await this.deleteAllRecordsWithBulkRequest({
+      await this.deleteAllRecordsWithBulkRequest({
         app,
         records: recordsChunk,
       });
     } catch (e) {
       throw new KintoneAllRecordsError(
-        results,
+        {},
         records,
+        numOfAllRecords,
         e,
         DELETE_RECORDS_LIMIT
       );
@@ -555,7 +574,7 @@ export class RecordClient {
         app,
         records: records.slice(CHUNK_LENGTH),
       },
-      results.concat(newResults)
+      numOfAllRecords
     );
   }
 
@@ -565,7 +584,7 @@ export class RecordClient {
       id: RecordID;
       revision?: Revision;
     }>;
-  }): Promise<Array<{ id: string }>> {
+  }): Promise<void> {
     const separatedRecords = this.separateArrayRecursive(
       DELETE_RECORDS_LIMIT,
       [],
@@ -581,7 +600,6 @@ export class RecordClient {
       },
     }));
     await this.bulkRequestClient.send({ requests });
-    return params.records.map((record) => ({ id: String(record.id) }));
   }
 
   private separateArrayRecursive<T>(
