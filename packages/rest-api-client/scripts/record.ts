@@ -226,6 +226,22 @@ export class Record {
     console.log(result);
   }
 
+  public async deleteAllRecords() {
+    const records = await this.client.record.getAllRecords({ app: APP_ID });
+    try {
+      const result = await this.client.record.deleteAllRecords({
+        app: APP_ID,
+        records: records.map((record) => ({
+          id: record.$id.value,
+          revision: record.$revision.value,
+        })),
+      });
+      console.log(result);
+    } catch (e) {
+      console.dir(e, { depth: 5 });
+    }
+  }
+
   public async addRecordComment() {
     const params = {
       app: APP_ID,

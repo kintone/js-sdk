@@ -14,6 +14,7 @@
 - [updateRecords](#updateRecords)
 - [updateAllRecords](#updateAllRecords)
 - [deleteRecords](#deleteRecords)
+- [deleteAllRecords](#deleteAllRecords)
 - [getRecordComments](#getRecordComments)
 - [addRecordComment](#addRecordComment)
 - [deleteRecordComment](#deleteRecordComment)
@@ -320,7 +321,9 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 
 Updates multiple records in an app.
 This method can update unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
-:warning: **Rollback can be performed on each block of 2000 records.**
+
+:warning: **This method split the records into chunks of 2000 records and processes each chunk sequentially. Rollback can be performed on each chunk of 2000 records.
+For more information, please see [an example of KintoneAllRecordsError](errorHandling.md#Example-of-KintoneAllRecordsError).**
 
 #### Parameters
 
@@ -362,6 +365,27 @@ An empty object.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/212494558
+
+### deleteAllRecords
+
+Deletes multiple records in an app.
+This method can delete unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
+
+:warning: **This method split the records into chunks of 2000 records and processes each chunk sequentially. Rollback can be performed on each chunk of 2000 records.
+For more information, please see [an example of KintoneAllRecordsError](errorHandling.md#Example-of-KintoneAllRecordsError).**
+
+#### Parameters
+
+| Name               |       Type       | Required | Description                                                                                                                                                        |
+| ------------------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app                | Number or String |   Yes    | The app ID.                                                                                                                                                        |
+| records            |      Array       |   Yes    | Holds an array of objects that include `id` and `revision`.<br />Over 100 records can be specified.                                                                |
+| records[].id       | Number or String |   Yes    | The record ID of the record to be deleted.                                                                                                                         |
+| records[].revision | Number or String |          | The expected revision number. If the value does not match, an error will occur. If the value is not specified or is `-1`, the revision number will not be checked. |
+
+#### Returns
+
+An empty object.
 
 ### getRecordComments
 
