@@ -6,7 +6,7 @@ describe("KintoneAllRecordsError", () => {
   let kintoneAllRecordsError: KintoneAllRecordsError;
   let kintoneRestApiError: KintoneRestAPIError;
   let errorResponse: ErrorResponse;
-  const processedRecordsResult = [{}, {}, {}, {}, {}];
+  const processedRecordsResult = { records: [{}, {}, {}, {}, {}] };
   const unprocessedRecords = [{}, {}, {}];
   const numOfAllRecords = 8;
   const numOfProcessedRecords = numOfAllRecords - unprocessedRecords.length;
