@@ -7,6 +7,8 @@ import { Base64 } from "js-base64";
 import { KintoneRestAPIError } from "./KintoneRestAPIError";
 import { ErrorResponse } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
+import { platformDeps } from "./platform";
+import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
 
 export type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
@@ -154,13 +156,16 @@ export class KintoneRestAPIClient {
   private buildParams(auth: DiscriminatedAuth): HTTPClientParams {
     let requestToken;
     if (auth.type === "session") {
-      if (
-        typeof kintone === "undefined" ||
-        typeof kintone.getRequestToken !== "function"
-      ) {
-        throw new Error("session authentication must specify a request token");
+      try {
+        requestToken = platformDeps.getRequestToken();
+      } catch (e) {
+        if (e instanceof UnsupportedPlatformError) {
+          throw new Error(
+            `session authorization doesn't allow on a ${e.platform} environment.`
+          );
+        }
+        throw e;
       }
-      requestToken = kintone.getRequestToken();
     }
     // This params are always sent as a request body.
     return requestToken
