@@ -47,7 +47,7 @@ export class KintoneAllRecordsError extends Error {
   }
 
   constructor(
-    processedRecordsResult: object[] | {},
+    processedRecordsResult: object,
     unprocessedRecords: object[],
     numOfAllRecords: number,
     error: KintoneRestAPIError,

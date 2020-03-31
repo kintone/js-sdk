@@ -378,7 +378,7 @@ export class RecordClient {
       });
     } catch (e) {
       throw new KintoneAllRecordsError(
-        results,
+        { records: results },
         records,
         numOfAllRecords,
         e,
@@ -478,7 +478,7 @@ export class RecordClient {
       });
     } catch (e) {
       throw new KintoneAllRecordsError(
-        results,
+        { records: results },
         records,
         numOfAllRecords,
         e,
