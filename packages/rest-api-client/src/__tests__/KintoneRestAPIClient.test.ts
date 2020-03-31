@@ -1,5 +1,7 @@
 import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
 import { Base64 } from "js-base64";
+import { injectPlatformDeps } from "../platform";
+import * as browserDeps from "../platform/browser";
 
 describe("KintoneRestAPIClient", () => {
   let originalKintone: any;
@@ -67,6 +69,7 @@ describe("KintoneRestAPIClient", () => {
         });
       });
       it("Session auth", () => {
+        injectPlatformDeps(browserDeps);
         const auth = {};
         const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
