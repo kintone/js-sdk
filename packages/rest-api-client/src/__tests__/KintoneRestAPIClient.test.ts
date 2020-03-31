@@ -2,6 +2,7 @@ import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
 import { Base64 } from "js-base64";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
+import * as nodeDeps from "../platform/node";
 
 describe("KintoneRestAPIClient", () => {
   let originalKintone: any;
@@ -103,6 +104,12 @@ describe("KintoneRestAPIClient", () => {
         global.location = undefined;
         expect(() => new KintoneRestAPIClient()).toThrow(
           "in Node environment, baseUrl is required"
+        );
+      });
+      it("should raise an error in Node enviroment if use session auth", () => {
+        injectPlatformDeps(nodeDeps);
+        expect(() => new KintoneRestAPIClient()).toThrow(
+          "session authorization doesn't allow on a Node.js environment."
         );
       });
     });
