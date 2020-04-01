@@ -1,8 +1,8 @@
 import { KintoneRestAPIError } from "./KintoneRestAPIError";
 
 export class KintoneAllRecordsError extends Error {
-  processedRecordsResult: object[] | {};
-  unprocessedRecords: object[];
+  processedRecordsResult: any;
+  unprocessedRecords: any[];
   error: KintoneRestAPIError;
   errorIndex?: number;
 
@@ -47,8 +47,8 @@ export class KintoneAllRecordsError extends Error {
   }
 
   constructor(
-    processedRecordsResult: object[] | {},
-    unprocessedRecords: object[],
+    processedRecordsResult: any,
+    unprocessedRecords: any[],
     numOfAllRecords: number,
     error: KintoneRestAPIError,
     chunkLength: number

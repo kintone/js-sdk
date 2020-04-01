@@ -28,12 +28,12 @@ The following methods could throw `KintoneAllRecordsError`.
 
 `KintoneAllRecordsError` has the following properties.
 
-| Name                   |                    Type                     | Description                                                                                                                                                                                                               |
-| ---------------------- | :-----------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| processedRecordsResult |            Array or<br />Object             | The result of the records that have been processed successfully. This is the same type of `records` specified in the **Returns** section of each method. When using `deleteAllRecords`, this property is an empty object. |
-| unprocessedRecords     |                    Array                    | The records that have not been processed. This is a part of `records` passed as an argument.                                                                                                                              |
-| error                  | [KintoneRestAPIError](#KintoneRestAPIError) | The instance of `KintoneRestAPIError`                                                                                                                                                                                     |
-| errorIndex             |         Number or<br />`undefined`          | The index that an error ocurred.                                                                                                                                                                                          |
+| Name                   |                    Type                     | Description                                                                                                                                 |
+| ---------------------- | :-----------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| processedRecordsResult |                   Object                    | The result of the records that have been processed successfully. This is the same type specified in the **Returns** section of each method. |
+| unprocessedRecords     |                    Array                    | The records that have not been processed. This is a part of `records` passed as an argument.                                                |
+| error                  | [KintoneRestAPIError](#KintoneRestAPIError) | The instance of `KintoneRestAPIError`                                                                                                       |
+| errorIndex             |         Number or<br />`undefined`          | The index that an error ocurred.                                                                                                            |
 
 ### Example of KintoneAllRecordsError
 
@@ -50,9 +50,9 @@ In this case, rest-api-client split the `records` into 3 chunks of records, and 
 
 Then the properties of `KintoneAllRecordsError` is:
 
-| Name                   | Content                                         |
-| ---------------------- | ----------------------------------------------- |
-| processedRecordsResult | Returned values of `records[0] - records[1999]` |
-| unprocessedRecords     | `records[2000] - records[4999]`                 |
-| error                  | An instance of `KintoneRestAPIError`            |
-| errorIndex             | `2499` (If Kintone returns) or `undefined`      |
+| Name                   | Content                                    |
+| ---------------------- | ------------------------------------------ |
+| processedRecordsResult | `{ records: results[0] - results[1999] }`  |
+| unprocessedRecords     | `records[2000] - records[4999]`            |
+| error                  | An instance of `KintoneRestAPIError`       |
+| errorIndex             | `2499` (If Kintone returns) or `undefined` |

@@ -350,25 +350,20 @@ export class RecordClient {
     ) {
       throw new Error("the `records` parameter must be an array of object.");
     }
-    const records = await this.addAllRecordsRecursive(
-      params,
-      params.records.length,
-      []
-    );
-    return { records };
+    return this.addAllRecordsRecursive(params, params.records.length, []);
   }
 
   private async addAllRecordsRecursive(
     params: { app: AppID; records: object[] },
     numOfAllRecords: number,
     results: Array<{ id: string; revision: string }>
-  ): Promise<Array<{ id: string; revision: string }>> {
+  ): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * ADD_RECORDS_LIMIT;
     const { app, records } = params;
     const recordsChunk = records.slice(0, CHUNK_LENGTH);
     if (recordsChunk.length === 0) {
-      return results;
+      return { records: results };
     }
     let newResults;
     try {
@@ -378,7 +373,7 @@ export class RecordClient {
       });
     } catch (e) {
       throw new KintoneAllRecordsError(
-        results,
+        { records: results },
         records,
         numOfAllRecords,
         e,
@@ -440,12 +435,7 @@ export class RecordClient {
         }
     >;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
-    const records = await this.updateAllRecordsRecursive(
-      params,
-      params.records.length,
-      []
-    );
-    return { records };
+    return this.updateAllRecordsRecursive(params, params.records.length, []);
   }
 
   private async updateAllRecordsRecursive(
@@ -462,13 +452,13 @@ export class RecordClient {
     },
     numOfAllRecords: number,
     results: Array<{ id: string; revision: string }>
-  ): Promise<Array<{ id: string; revision: string }>> {
+  ): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * UPDATE_RECORDS_LIMIT;
     const { app, records } = params;
     const recordsChunk = records.slice(0, CHUNK_LENGTH);
     if (recordsChunk.length === 0) {
-      return results;
+      return { records: results };
     }
     let newResults;
     try {
@@ -478,7 +468,7 @@ export class RecordClient {
       });
     } catch (e) {
       throw new KintoneAllRecordsError(
-        results,
+        { records: results },
         records,
         numOfAllRecords,
         e,
