@@ -15,9 +15,14 @@ export type HTTPClientParams = {
 export type Auth =
   | Omit<ApiTokenAuth, "type">
   | Omit<PasswordAuth, "type">
-  | Omit<SessionAuth, "type">;
+  | Omit<SessionAuth, "type">
+  | Omit<OAuthTokenAuth, "type">;
 
-type DiscriminatedAuth = ApiTokenAuth | PasswordAuth | SessionAuth;
+type DiscriminatedAuth =
+  | ApiTokenAuth
+  | PasswordAuth
+  | SessionAuth
+  | OAuthTokenAuth;
 
 type ApiTokenAuth = {
   type: "apiToken";
@@ -32,6 +37,11 @@ type PasswordAuth = {
 
 type SessionAuth = {
   type: "session";
+};
+
+type OAuthTokenAuth = {
+  type: "oAuthToken";
+  oAuthToken: string;
 };
 
 type BasicAuth = {
@@ -51,6 +61,9 @@ export type KintoneAuthHeader =
   | {
       "X-Requested-With": "XMLHttpRequest";
       Authorization?: string;
+    }
+  | {
+      Authorization: string;
     };
 
 export class KintoneRestAPIClient {
@@ -113,6 +126,9 @@ export class KintoneRestAPIClient {
     if ("apiToken" in auth) {
       return { type: "apiToken", ...auth };
     }
+    if ("oAuthToken" in auth) {
+      return { type: "oAuthToken", ...auth };
+    }
     return {
       type: "session",
     };
@@ -144,6 +160,9 @@ export class KintoneRestAPIClient {
           return { ...headers, "X-Cybozu-API-Token": auth.apiToken.join(",") };
         }
         return { ...headers, "X-Cybozu-API-Token": auth.apiToken };
+      }
+      case "oAuthToken": {
+        return { ...headers, Authorization: `Bearer ${auth.oAuthToken}` };
       }
       default: {
         return { ...headers, "X-Requested-With": "XMLHttpRequest" };
