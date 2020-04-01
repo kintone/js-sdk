@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.0.0...@kintone/rest-api-client@1.1.0) (2020-04-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.19.2 ([a9366e3](https://github.com/kintone/js-sdk/commit/a9366e35e18c19deb0eba469b747b68660254524))
+* **deps:** update dependency core-js to ^3.6.4 ([#89](https://github.com/kintone/js-sdk/issues/89)) ([e0df15a](https://github.com/kintone/js-sdk/commit/e0df15a4559f15ae7a1091a8291749125778041e))
+* **deps:** update dependency js-base64 to ^2.5.2 ([d621c86](https://github.com/kintone/js-sdk/commit/d621c86efb7731fe8d8b1366669f8909d43161bb))
+* **deps:** update dependency qs to ^6.9.1 ([b8ad488](https://github.com/kintone/js-sdk/commit/b8ad488fcdc87aa0fe3594b5aeac028d3fc55b5f))
+* **deps:** update dependency qs to ^6.9.2 ([c1b51c3](https://github.com/kintone/js-sdk/commit/c1b51c37aa6cc264e297cbdde582dbaade339942))
+* **deps:** update dependency qs to ^6.9.3 ([80597a2](https://github.com/kintone/js-sdk/commit/80597a28dc70a162f368afa5e9fcead51a3f8d94))
+* consider when error.bulkRequestIndex = 0 ([#126](https://github.com/kintone/js-sdk/issues/126)) ([4f29b27](https://github.com/kintone/js-sdk/commit/4f29b27f2ab51d45111d5dce28de0f7185b9552d))
+* make the type of form fields & layout have properties ([#123](https://github.com/kintone/js-sdk/issues/123)) ([1ac0e72](https://github.com/kintone/js-sdk/commit/1ac0e7232868b48660c8c206c21984dd3219c943))
+* response types of RecordClient.updateRecords & BulkRequestClient.send ([#72](https://github.com/kintone/js-sdk/issues/72)) ([1b37c0a](https://github.com/kintone/js-sdk/commit/1b37c0aa79758a32c7f1fcb26a03e0a8bdbba1c8))
+* upsertRecord adds a record with the updateKey field ([#117](https://github.com/kintone/js-sdk/issues/117)) ([cf17607](https://github.com/kintone/js-sdk/commit/cf17607abd1507165d2acef3d34c550c2b816d19))
+
+
+### Features
+
+* add records property into addRecords response ([#73](https://github.com/kintone/js-sdk/issues/73)) ([00f67e3](https://github.com/kintone/js-sdk/commit/00f67e3930a55b44f42298b317af5f9069128b7c))
+* deleteAllRecords ([#120](https://github.com/kintone/js-sdk/issues/120)) ([634b9d7](https://github.com/kintone/js-sdk/commit/634b9d78d1b81808488ff6f023ed2568e24b1e4a))
+* implement updateAllRecords ([#109](https://github.com/kintone/js-sdk/issues/109)) ([132ccbd](https://github.com/kintone/js-sdk/commit/132ccbd12bde85b156363638c4c4dd2bad9d9ff9))
+* implement upsertRecord ([#101](https://github.com/kintone/js-sdk/issues/101)) ([72a17b6](https://github.com/kintone/js-sdk/commit/72a17b63d68a1674bf3f6dc053d0ba9c4650d8ce))
+* implements addAllRecords. ([#70](https://github.com/kintone/js-sdk/issues/70)) ([6c7006b](https://github.com/kintone/js-sdk/commit/6c7006b05ef6763b0ceeb8baaf51541e4c8a8375)), closes [#92](https://github.com/kintone/js-sdk/issues/92)
+* make the type of `updateKey` more specific ([#144](https://github.com/kintone/js-sdk/issues/144)) ([af69d3f](https://github.com/kintone/js-sdk/commit/af69d3f572f75861bcb96a7128c6fc2250862d05))
+* support upload file with file path ([#116](https://github.com/kintone/js-sdk/issues/116)) ([bffc827](https://github.com/kintone/js-sdk/commit/bffc82739d76c60bbb4328f3428a33451d8a89e2))
+* Support X-HTTP-Method-Override ([#63](https://github.com/kintone/js-sdk/issues/63)) ([8b4f7c3](https://github.com/kintone/js-sdk/commit/8b4f7c34072e0c932b94f2cac689670c178af1b0))
+
+
+
+
+
 # [1.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@0.3.0...@kintone/rest-api-client@1.0.0) (2020-02-18)
 
 
