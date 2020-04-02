@@ -1,5 +1,4 @@
 import FormData from "form-data";
-import https from "https";
 export interface HttpClient {
   get: <T extends object>(path: string, params: object) => Promise<T>;
   getData: (path: string, params: object) => Promise<ArrayBuffer>;
@@ -34,7 +33,7 @@ export type RequestConfig = {
   method: HttpMethod;
   url: string;
   headers: any;
-  httpsAgent?: https.Agent;
+  httpsAgent?: any;
   data?: any;
 };
 
