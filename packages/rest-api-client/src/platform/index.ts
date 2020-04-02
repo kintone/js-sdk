@@ -1,20 +1,22 @@
+import { RequestConfig } from "../http/HttpClientInterface";
+
 type PlatformDeps = {
   readFileFromPath: (
     filePath: string
   ) => Promise<{ name: string; data: unknown }>;
-  createHttpsAgent: (pfx: Buffer, password: string) => any;
+  buildPlatformDependentConfig: (params: object) => object;
 };
 
 export const platformDeps: PlatformDeps = {
   readFileFromPath: () => {
     throw new Error("not implemented");
   },
-  createHttpsAgent: () => {
+  buildPlatformDependentConfig: () => {
     throw new Error("not implemented");
   },
 };
 
 export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   platformDeps.readFileFromPath = deps.readFileFromPath!;
-  platformDeps.createHttpsAgent = deps.createHttpsAgent!;
+  platformDeps.buildPlatformDependentConfig = deps.buildPlatformDependentConfig!;
 };

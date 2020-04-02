@@ -16,7 +16,10 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   private baseUrl: string;
   private headers: KintoneAuthHeader;
   private params: HTTPClientParams;
-  private httpsAgent?: any;
+  private clientCertAuth?: {
+    pfx: Buffer;
+    password: string;
+  };
   constructor(
     baseUrl: string,
     headers: KintoneAuthHeader,
@@ -29,12 +32,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     this.baseUrl = baseUrl;
     this.headers = headers;
     this.params = params;
-    if (clientCertAuth) {
-      this.httpsAgent = platformDeps.createHttpsAgent(
-        clientCertAuth.pfx,
-        clientCertAuth.password
-      );
-    }
+    this.clientCertAuth = clientCertAuth;
   }
   public build(
     method: HttpMethod,
@@ -46,8 +44,10 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       method,
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
-      httpsAgent: this.httpsAgent,
       ...(options ? options : {}),
+      ...platformDeps.buildPlatformDependentConfig({
+        clientCertAuth: this.clientCertAuth,
+      }),
     };
 
     switch (method) {

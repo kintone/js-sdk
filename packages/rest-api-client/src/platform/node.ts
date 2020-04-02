@@ -11,9 +11,18 @@ export const readFileFromPath = async (filePath: string) => {
   return { data, name };
 };
 
-export const createHttpsAgent = (pfx: Buffer, password: string) => {
-  return new https.Agent({
-    pfx,
-    passphrase: password,
-  });
+export const buildPlatformDependentConfig = (params: {
+  clientCertAuth?: {
+    pfx: Buffer;
+    password: string;
+  };
+}) => {
+  if (params.clientCertAuth) {
+    const httpsAgent = new https.Agent({
+      pfx: params.clientCertAuth.pfx,
+      passphrase: params.clientCertAuth.password,
+    });
+    return { httpsAgent };
+  }
+  return {};
 };
