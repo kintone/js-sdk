@@ -32,7 +32,7 @@ class KintonePlugin implements Plugin {
       {
         manifestJSONPath: "./plugin/manifest.json",
         privateKeyPath: "./private.ppk",
-        pluginZipPath: "./dist/plugin.zip"
+        pluginZipPath: "./dist/plugin.zip",
       },
       options
     );
@@ -50,7 +50,7 @@ class KintonePlugin implements Plugin {
       if (compiler.options.watch) {
         this.watchAssets();
       } else {
-        compiler.hooks.afterEmit.tapPromise(this.name, compilation =>
+        compiler.hooks.afterEmit.tapPromise(this.name, (compilation) =>
           this.generatePlugin()
         );
       }
@@ -86,7 +86,7 @@ class KintonePlugin implements Plugin {
    */
   private generatePlugin(): Promise<void> {
     const { manifestJSONPath, pluginZipPath } = this.options;
-    return generatePlugin(manifestJSONPath, this.privateKey).then(result => {
+    return generatePlugin(manifestJSONPath, this.privateKey).then((result) => {
       const zipPath =
         // You can customize the zip file name using the plugin id and manifest
         typeof pluginZipPath === "function"

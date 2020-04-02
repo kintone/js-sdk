@@ -35,7 +35,7 @@ const runWebpack = (config = "webpack.config.js") => {
     webpackCommand,
     ["--config", config, "--mode", "production"],
     {
-      cwd: pluginDir
+      cwd: pluginDir,
     }
   );
 };
@@ -53,7 +53,7 @@ describe("KintonePlugin", () => {
   afterEach(() => {
     // Cleanup the zip
     [pluginZipPath, customNamePluginZipPath, pluginJSPath].forEach(
-      generatedFilePath => {
+      (generatedFilePath) => {
         try {
           fs.unlinkSync(generatedFilePath);
         } catch (e) {

@@ -14,7 +14,7 @@ describe("plugin", () => {
         path.resolve(SAMPLE_PLUGIN_PATH, "js/customize.js"),
         path.resolve(SAMPLE_PLUGIN_PATH, "css/mobile.css"),
         MANIFEST_JSON_FILE,
-        path.resolve(SAMPLE_PLUGIN_PATH, "image/icon.png")
+        path.resolve(SAMPLE_PLUGIN_PATH, "image/icon.png"),
       ]);
     });
   });

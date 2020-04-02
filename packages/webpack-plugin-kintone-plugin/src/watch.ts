@@ -18,13 +18,13 @@ export function watchFiles(
       ? {
           awaitWriteFinish: {
             stabilityThreshold: 1000,
-            pollInterval: 250
-          }
+            pollInterval: 250,
+          },
         }
       : {};
   const watcher = chokidar.watch(files, watchOptions);
-  watcher.on("change", file => {
+  watcher.on("change", (file) => {
     cb(file);
   });
-  return () => files.map(f => watcher.unwatch(f));
+  return () => files.map((f) => watcher.unwatch(f));
 }

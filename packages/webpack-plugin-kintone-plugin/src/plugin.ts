@@ -33,11 +33,11 @@ function sourceList(manifest: Manifest): string[] {
     ["mobile", "js"],
     ["mobile", "css"],
     ["config", "js"],
-    ["config", "css"]
+    ["config", "css"],
   ];
   const list = sourceTypes
     // @ts-ignore
-    .map(t => manifest[t[0]] && manifest[t[0]][t[1]])
+    .map((t) => manifest[t[0]] && manifest[t[0]][t[1]])
     .filter((i: string[] | void) => !!i)
     .reduce((a: string[], b: string[]) => a.concat(b), [])
     .filter((file: string) => !/^https?:\/\//.test(file));
