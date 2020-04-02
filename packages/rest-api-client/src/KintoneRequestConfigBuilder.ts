@@ -1,6 +1,5 @@
 import FormData from "form-data";
 import qs from "qs";
-import https from "https";
 
 import {
   RequestConfigBuilder,
@@ -9,6 +8,7 @@ import {
   Params,
 } from "./http/HttpClientInterface";
 import { KintoneAuthHeader, HTTPClientParams } from "./KintoneRestAPIClient";
+import { platformDeps } from "./platform/";
 
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 
@@ -16,7 +16,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   private baseUrl: string;
   private headers: KintoneAuthHeader;
   private params: HTTPClientParams;
-  private httpsAgent?: https.Agent;
+  private httpsAgent?: any;
   constructor(
     baseUrl: string,
     headers: KintoneAuthHeader,
@@ -30,10 +30,10 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     this.headers = headers;
     this.params = params;
     if (clientCertAuth) {
-      this.httpsAgent = new https.Agent({
-        pfx: clientCertAuth.pfx,
-        passphrase: clientCertAuth.password,
-      });
+      this.httpsAgent = platformDeps.createHttpsAgent(
+        clientCertAuth.pfx,
+        clientCertAuth.password
+      );
     }
   }
   public build(
