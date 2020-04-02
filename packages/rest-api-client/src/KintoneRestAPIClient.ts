@@ -7,7 +7,6 @@ import { Base64 } from "js-base64";
 import { KintoneRestAPIError } from "./KintoneRestAPIError";
 import { ErrorResponse } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
-import https from "https";
 
 export type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;

@@ -1,7 +1,6 @@
 import FormData from "form-data";
 import qs from "qs";
 import https from "https";
-import fs from "fs";
 
 import {
   RequestConfigBuilder,
