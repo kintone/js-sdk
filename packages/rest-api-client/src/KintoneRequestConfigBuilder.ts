@@ -23,14 +23,17 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     params: HTTPClientParams,
     clientCertAuth?: {
       pfx: Buffer;
-      passphrase: string;
+      password: string;
     }
   ) {
     this.baseUrl = baseUrl;
     this.headers = headers;
     this.params = params;
     if (clientCertAuth) {
-      this.httpsAgent = new https.Agent(clientCertAuth);
+      this.httpsAgent = new https.Agent({
+        pfx: clientCertAuth.pfx,
+        passphrase: clientCertAuth.password,
+      });
     }
   }
   public build(

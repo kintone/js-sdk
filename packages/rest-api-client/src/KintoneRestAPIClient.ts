@@ -69,7 +69,7 @@ export class KintoneRestAPIClient {
       basicAuth?: BasicAuth;
       clientCertAuth?: {
         pfx: Buffer;
-        passphrase: string;
+        password: string;
       };
     } = {}
   ) {
