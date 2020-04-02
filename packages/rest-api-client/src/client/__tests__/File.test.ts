@@ -18,8 +18,8 @@ describe("FileClient", () => {
       const params = {
         file: {
           name: "text.text",
-          data: "Hello!"
-        }
+          data: "Hello!",
+        },
       };
       beforeEach(() => {
         fileClient.uploadFile(params);
@@ -35,7 +35,7 @@ describe("FileClient", () => {
         expect(MockFormData.prototype.append.mock.calls[0]).toEqual([
           "file",
           params.file.data,
-          params.file.name
+          params.file.name,
         ]);
       });
     });
@@ -43,22 +43,22 @@ describe("FileClient", () => {
     describe("with file path", () => {
       const params = {
         file: {
-          path: "foo/bar/baz.txt"
-        }
+          path: "foo/bar/baz.txt",
+        },
       };
       it("should pass file object includes name and data as a param to the http client", async () => {
         injectPlatformDeps({
           readFileFromPath: async (filePath: string) => ({
             name: filePath,
-            data: "Hello!"
-          })
+            data: "Hello!",
+          }),
         });
         await fileClient.uploadFile(params);
         const MockFormData = FormData as jest.MockedClass<typeof FormData>;
         expect(MockFormData.prototype.append.mock.calls[0]).toEqual([
           "file",
           "Hello!",
-          params.file.path
+          params.file.path,
         ]);
       });
     });
@@ -66,8 +66,8 @@ describe("FileClient", () => {
     describe("on a browser environment", () => {
       const params = {
         file: {
-          path: "foo/bar/baz.txt"
-        }
+          path: "foo/bar/baz.txt",
+        },
       };
       it("should raise an error on a browser environment", () => {
         injectPlatformDeps(browserDeps);
@@ -100,8 +100,8 @@ describe("FileClient with guestSpaceId", () => {
   const params = {
     file: {
       name: "text.text",
-      data: "Hello!"
-    }
+      data: "Hello!",
+    },
   };
   const mockClient = new MockClient();
   const fileClient = new FileClient(mockClient, GUEST_SPACE_ID);

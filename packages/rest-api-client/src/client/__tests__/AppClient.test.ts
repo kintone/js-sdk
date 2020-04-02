@@ -11,8 +11,8 @@ describe("AppClient", () => {
     fieldCode: {
       type: "SINGLE_LINE_TEXT",
       code: "fieldCode",
-      label: "Text Field"
-    }
+      label: "Text Field",
+    },
   };
 
   const layout = [
@@ -22,9 +22,9 @@ describe("AppClient", () => {
         {
           type: "SINGLE_LINE_TEXT",
           code: "fieldCode1",
-          size: { width: "100" }
-        }
-      ]
+          size: { width: "100" },
+        },
+      ],
     },
     {
       type: "SUBTABLE",
@@ -33,10 +33,10 @@ describe("AppClient", () => {
         {
           type: "MULTI_LINE_TEXT",
           code: "fieldCode2",
-          size: { width: "150", innerHeight: "200" }
-        }
-      ]
-    }
+          size: { width: "150", innerHeight: "200" },
+        },
+      ],
+    },
   ];
 
   const views = {
@@ -46,7 +46,7 @@ describe("AppClient", () => {
       name: "view1",
       fields: ["field"],
       filterCond: 'field = "foo"',
-      sort: "sortField desc"
+      sort: "sortField desc",
     },
     view2: {
       type: "CALENDAR" as const,
@@ -55,7 +55,7 @@ describe("AppClient", () => {
       date: "dateField",
       title: "titleField",
       filterCond: 'field = "bar"',
-      sort: "sortField asc"
+      sort: "sortField asc",
     },
     view3: {
       type: "CUSTOM" as const,
@@ -63,8 +63,8 @@ describe("AppClient", () => {
       name: "view3",
       html: "<div>Hello!</div>",
       pager: true,
-      device: "DESKTOP" as const
-    }
+      device: "DESKTOP" as const,
+    },
   };
 
   const states = {
@@ -74,17 +74,17 @@ describe("AppClient", () => {
       assignee: {
         type: "ONE" as const,
         entities: [
-          { entity: { type: "FIELD_ENTITY" as const, code: "creator" } }
-        ]
-      }
+          { entity: { type: "FIELD_ENTITY" as const, code: "creator" } },
+        ],
+      },
     },
     status2: {
       name: "status2",
       index: 1,
       assignee: {
         type: "ANY" as const,
-        entities: [{ entity: { type: "CREATOR" as const } }]
-      }
+        entities: [{ entity: { type: "CREATOR" as const } }],
+      },
     },
     status3: {
       name: "status3",
@@ -93,10 +93,10 @@ describe("AppClient", () => {
         type: "ALL" as const,
         entities: [
           { entity: { type: "USER" as const, code: "user1" } },
-          { entity: { type: "USER" as const, code: "user2" } }
-        ]
-      }
-    }
+          { entity: { type: "USER" as const, code: "user2" } },
+        ],
+      },
+    },
   };
   const actions = [
     { name: "action1to2", from: "status1", to: "status2" },
@@ -104,8 +104,8 @@ describe("AppClient", () => {
       name: "action2to3",
       from: "status2",
       to: "status3",
-      filterCond: 'field = "foo"'
-    }
+      filterCond: 'field = "foo"',
+    },
   ];
 
   beforeEach(() => {
@@ -308,7 +308,7 @@ describe("AppClient", () => {
 
   describe("getApp", () => {
     const params = {
-      id: APP_ID
+      id: APP_ID,
     };
     beforeEach(() => {
       appClient.getApp(params);
@@ -331,7 +331,7 @@ describe("AppClient", () => {
       name: "app",
       spaceIds: [1, 2],
       limit: 100,
-      offset: 30
+      offset: 30,
     };
     beforeEach(() => {
       appClient.getApps(params);
@@ -350,7 +350,7 @@ describe("AppClient", () => {
   describe("addApp", () => {
     describe("without space", () => {
       const params = {
-        name: "app"
+        name: "app",
       };
       beforeEach(() => {
         appClient.addApp(params);
@@ -368,7 +368,7 @@ describe("AppClient", () => {
     describe("with space", () => {
       const params = {
         name: "app",
-        space: 10
+        space: 10,
       };
       const defaultThread = 20;
       beforeEach(() => {
@@ -385,7 +385,7 @@ describe("AppClient", () => {
         expect(mockClient.getLogs()[1].method).toBe("post");
         expect(mockClient.getLogs()[1].params).toEqual({
           ...params,
-          thread: defaultThread
+          thread: defaultThread,
         });
       });
     });
@@ -432,7 +432,7 @@ describe("AppClient", () => {
       revision: REVISION,
       enable: true,
       states,
-      actions
+      actions,
     };
     beforeEach(() => {
       appClient.updateProcessManagement(params);
@@ -494,10 +494,10 @@ describe("AppClient", () => {
       icon: {
         type: "FILE" as const,
         file: {
-          fileKey: "file key"
-        }
+          fileKey: "file key",
+        },
       },
-      theme: "WHITE" as const
+      theme: "WHITE" as const,
     };
     beforeEach(() => {
       appClient.updateAppSettings(params);
@@ -517,7 +517,7 @@ describe("AppClient", () => {
 
   describe("getDeployStatus", () => {
     const params = {
-      apps: [APP_ID]
+      apps: [APP_ID],
     };
     beforeEach(() => {
       appClient.getDeployStatus(params);
@@ -538,7 +538,7 @@ describe("AppClient", () => {
   describe("deployApp", () => {
     const params = {
       apps: [{ app: APP_ID, revision: REVISION }],
-      revert: true
+      revert: true,
     };
     beforeEach(() => {
       appClient.deployApp(params);
@@ -558,7 +558,7 @@ describe("AppClient", () => {
 
   describe("getFieldAcl", () => {
     const params = {
-      app: APP_ID
+      app: APP_ID,
     };
     beforeEach(() => {
       appClient.getFieldAcl(params);
@@ -585,12 +585,12 @@ describe("AppClient", () => {
               accessibility: "READ" as const,
               entity: {
                 code: "bar",
-                type: "USER" as const
-              }
-            }
-          ]
-        }
-      ]
+                type: "USER" as const,
+              },
+            },
+          ],
+        },
+      ],
     };
 
     beforeEach(() => {
@@ -611,7 +611,7 @@ describe("AppClient", () => {
     const lang = "default";
     const params = {
       app: APP_ID,
-      lang
+      lang,
     } as const;
     describe("without preview", () => {
       beforeEach(() => {
@@ -655,17 +655,17 @@ describe("AppClient", () => {
             {
               entity: {
                 code: "bar",
-                type: "USER" as const
+                type: "USER" as const,
               },
               viewable: false,
               editable: false,
               deletable: false,
-              includeSubs: true
-            }
-          ]
-        }
+              includeSubs: true,
+            },
+          ],
+        },
       ],
-      revision: REVISION
+      revision: REVISION,
     };
     beforeEach(() => {
       appClient.updateRecordAcl(params);
@@ -685,7 +685,7 @@ describe("AppClient", () => {
 
   describe("getAppAcl", () => {
     const params = {
-      app: APP_ID
+      app: APP_ID,
     };
     describe("without preview", () => {
       beforeEach(() => {
@@ -724,7 +724,7 @@ describe("AppClient", () => {
         {
           entity: {
             type: "USER" as const,
-            code: "foo"
+            code: "foo",
           },
           appEditable: true,
           recordViewable: true,
@@ -732,9 +732,9 @@ describe("AppClient", () => {
           recordEditable: true,
           recordDeletable: true,
           recordImportable: true,
-          recordExportable: true
-        }
-      ]
+          recordExportable: true,
+        },
+      ],
     };
     beforeEach(() => {
       appClient.updateAppAcl(params);
@@ -753,7 +753,7 @@ describe("AppClient", () => {
   describe("evaluateRecordsAcl", () => {
     const params = {
       app: APP_ID,
-      ids: [RECORD_ID]
+      ids: [RECORD_ID],
     };
     beforeEach(() => {
       appClient.evaluateRecordsAcl(params);
@@ -810,24 +810,24 @@ describe("AppClient", () => {
       js: [
         {
           type: "URL" as const,
-          url: "https://www.example.com/example-mobile.js"
-        }
+          url: "https://www.example.com/example-mobile.js",
+        },
       ],
       css: [
         {
           type: "FILE" as const,
           file: {
-            fileKey: "ddfc8e89-7aa3-4350-b9ab-3a75c9cf46b3"
-          }
-        }
-      ]
+            fileKey: "ddfc8e89-7aa3-4350-b9ab-3a75c9cf46b3",
+          },
+        },
+      ],
     };
     const params = {
       app: APP_ID,
       scope: "ALL" as const,
       desktop: resource,
       mobile: resource,
-      revision: REVISION
+      revision: REVISION,
     };
     describe("customize resources are specified", () => {
       beforeEach(() => {

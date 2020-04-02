@@ -1,0 +1,122 @@
+{
+  "scope": "ALL",
+  "desktop": {
+    "js": [
+      {
+        "type": "URL",
+        "url": "https://js.cybozu.com/vuejs/v2.5.17/vue.min.js"
+      },
+      {
+        "type": "URL",
+        "url": "https://js.cybozu.com/lodash/4.17.11/lodash.min.js"
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "20181116095653774F24C632AF46E69BDC8F5EF04C8E24014",
+          "name": "bootstrap.min.js",
+          "contentType": "text/javascript",
+          "size": "51039"
+        }
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "20181116095653FF8D40EE4B364FD89A2B3A382EDCB259286",
+          "name": "a.js",
+          "contentType": "text/javascript",
+          "size": "33"
+        }
+      }
+    ],
+    "css": [
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "201811160956531AFF9246D7CB40938A91EAC14A0622C9250",
+          "name": "bootstrap.min.css",
+          "contentType": "text/css",
+          "size": "140936"
+        }
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "201811160956531DCC5DA8C6E0480C8F3BD8A92EEFF584123",
+          "name": "bootstrap-reboot.min.css",
+          "contentType": "text/css",
+          "size": "4019"
+        }
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "20181116095653A6A52415705D403A9B1AB36E1448B32E191",
+          "name": "bootstrap-grid.min.css",
+          "contentType": "text/css",
+          "size": "28977"
+        }
+      }
+    ]
+  },
+  "mobile": {
+    "js": [
+      {
+        "type": "URL",
+        "url": "https://js.cybozu.com/jquery/3.3.1/jquery.min.js"
+      },
+      {
+        "type": "URL",
+        "url": "https://js.cybozu.com/jqueryui/1.12.1/jquery-ui.min.js"
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "20181116095653C06A1FE34CFD43D6B21BE7F55D3B6ECB031",
+          "name": "bootstrap.js",
+          "contentType": "text/javascript",
+          "size": "123765"
+        }
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "201811160956535E4F00740689488C9ABE7DCF3E794B34315",
+          "name": "b.js",
+          "contentType": "text/javascript",
+          "size": "33"
+        }
+      }
+    ],
+    "css": [
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "201811160956531AFF9246D7CB40938A91EAC14A0622C9250",
+          "name": "bootstrap.min.css",
+          "contentType": "text/css",
+          "size": "140936"
+        }
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "201811160956531DCC5DA8C6E0480C8F3BD8A92EEFF584123",
+          "name": "bootstrap-reboot.min.css",
+          "contentType": "text/css",
+          "size": "4019"
+        }
+      },
+      {
+        "type": "FILE",
+        "file": {
+          "fileKey": "20181116095653A6A52415705D403A9B1AB36E1448B32E191",
+          "name": "bootstrap-grid.min.css",
+          "contentType": "text/css",
+          "size": "28977"
+        }
+      }
+    ]
+  },
+  "revision": "5"
+}

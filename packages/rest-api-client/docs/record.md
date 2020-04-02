@@ -14,6 +14,7 @@
 - [updateRecords](#updateRecords)
 - [updateAllRecords](#updateAllRecords)
 - [deleteRecords](#deleteRecords)
+- [deleteAllRecords](#deleteAllRecords)
 - [getRecordComments](#getRecordComments)
 - [addRecordComment](#addRecordComment)
 - [deleteRecordComment](#deleteRecordComment)
@@ -266,7 +267,9 @@ If you'd like to add over 100 records, please consider using [addAllRecords](#ad
 
 Adds multiple records to an app.
 This method can add unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
-:warning: **Rollback can be performed on each block of 2000 records.**
+
+:warning: **This method split the records into chunks of 2000 records and processes each chunk sequentially. Rollback can be performed on each chunk of 2000 records.  
+For more information, please see [an example of KintoneAllRecordsError](errorHandling.md#Example-of-KintoneAllRecordsError).**
 
 #### Parameters
 
@@ -316,9 +319,11 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 
 ### updateAllRecords
 
-Updates multiple records to an app.
+Updates multiple records in an app.
 This method can update unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
-:warning: **Rollback can be performed on each block of 2000 records.**
+
+:warning: **This method split the records into chunks of 2000 records and processes each chunk sequentially. Rollback can be performed on each chunk of 2000 records.
+For more information, please see [an example of KintoneAllRecordsError](errorHandling.md#Example-of-KintoneAllRecordsError).**
 
 #### Parameters
 
@@ -330,7 +335,7 @@ This method can update unlimited number of records. This method could throw `Kin
 | records[].updateKey       |      Object      | Conditionally<br />Required | The unique key of the record to be updated. Required, if `id` will not be specified. To specify this field, the field must have the "Prohibit duplicate values" option turned on.                               |
 | records[].updateKey.field |      String      | Conditionally<br />Required | The field code of the unique key. Required, if `updateKey` will be specified.                                                                                                                                   |
 | records[].updateKey.value | Number or String | Conditionally<br />Required | The value of the unique key. Required, if `updateKey` will be specified.                                                                                                                                        |
-| records[].revision        | Number or String |                             | The expected revision number. If the value does not match, an error will occur and all records will not be updated. If the value is not specified or is `-1`, the revision number will not be checked.          |
+| records[].revision        | Number or String |                             | The expected revision number. If the value does not match, an error will occur. If the value is not specified or is `-1`, the revision number will not be checked.                                              |
 | records[].record          |      Object      |                             | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
 
 #### Returns
@@ -360,6 +365,27 @@ An empty object.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/212494558
+
+### deleteAllRecords
+
+Deletes multiple records in an app.
+This method can delete unlimited number of records. This method could throw `KintoneAllRecordsError` if an error occurred. Please see [KintoneAllRecordsError](errorHandling.md#KintoneAllRecordsError).
+
+:warning: **This method split the records into chunks of 2000 records and processes each chunk sequentially. Rollback can be performed on each chunk of 2000 records.
+For more information, please see [an example of KintoneAllRecordsError](errorHandling.md#Example-of-KintoneAllRecordsError).**
+
+#### Parameters
+
+| Name               |       Type       | Required | Description                                                                                                                                                        |
+| ------------------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app                | Number or String |   Yes    | The app ID.                                                                                                                                                        |
+| records            |      Array       |   Yes    | Holds an array of objects that include `id` and `revision`.<br />Over 100 records can be specified.                                                                |
+| records[].id       | Number or String |   Yes    | The record ID of the record to be deleted.                                                                                                                         |
+| records[].revision | Number or String |          | The expected revision number. If the value does not match, an error will occur. If the value is not specified or is `-1`, the revision number will not be checked. |
+
+#### Returns
+
+An empty object.
 
 ### getRecordComments
 

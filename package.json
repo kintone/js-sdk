@@ -9,9 +9,13 @@
   "scripts": {
     "build": "lerna run build --stream",
     "lint": "lerna run lint --stream",
-    "initial:release": "run-s lint build && lerna publish from-package --conventional-commits",
-    "release": "run-s lint build && lerna publish --conventional-commits",
-    "test": "lerna run test --stream"
+    "preinitial:release": "yarn prerelease",
+    "initial:release": "lerna publish from-package --conventional-commits",
+    "prerelease": "lerna run prerelease --stream",
+    "release": "lerna publish --conventional-commits",
+    "pretest": "jest --rootDir __tests__",
+    "test": "lerna run test --stream",
+    "test:ci": "lerna run test:ci --stream"
   },
   "repository": {
     "type": "git",
@@ -23,15 +27,15 @@
   "author": "kintone",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-typescript": "^7.8.3",
-    "@cybozu/eslint-config": "^10.0.1",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@cybozu/eslint-config": "^10.0.2",
     "eslint": "^6.8.0",
-    "jest": "^25.1.0",
+    "jest": "^25.2.4",
     "lerna": "^3.20.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.2",
     "typescript": "^3.8.3"
   }
 }

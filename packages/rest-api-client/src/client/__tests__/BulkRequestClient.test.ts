@@ -9,8 +9,8 @@ describe("BulkRequestClient", () => {
   const fieldCode = "Customer";
   const record = {
     [fieldCode]: {
-      value: "ABC Corporation"
-    }
+      value: "ABC Corporation",
+    },
   };
 
   beforeEach(() => {
@@ -25,18 +25,18 @@ describe("BulkRequestClient", () => {
           api: "/k/v1/record.json",
           payload: {
             app: APP_ID,
-            record
-          }
+            record,
+          },
         },
         {
           method: "DELETE",
           api: "/k/v1/records.json",
           payload: {
             app: APP_ID,
-            ids: [RECORD_ID]
-          }
-        }
-      ]
+            ids: [RECORD_ID],
+          },
+        },
+      ],
     };
     beforeEach(() => {
       bulkRequestClient.send(params);
@@ -69,12 +69,12 @@ describe("BulkRequestClient with guestSpaceId", () => {
             app: APP_ID,
             record: {
               Customer: {
-                value: "ABC Corporation"
-              }
-            }
-          }
-        }
-      ]
+                value: "ABC Corporation",
+              },
+            },
+          },
+        },
+      ],
     };
     bulkRequestClient.send(params);
     expect(mockClient.getLogs()[0].path).toBe(

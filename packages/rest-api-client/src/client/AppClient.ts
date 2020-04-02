@@ -238,7 +238,7 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/form/fields",
-      preview
+      preview,
     });
     return this.client.get(path, { ...rest });
   }
@@ -250,7 +250,7 @@ export class AppClient {
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/form/fields",
-      preview: true
+      preview: true,
     });
     return this.client.post(path, params);
   }
@@ -262,7 +262,7 @@ export class AppClient {
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/form/fields",
-      preview: true
+      preview: true,
     });
     return this.client.put(path, params);
   }
@@ -274,7 +274,7 @@ export class AppClient {
   }) {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/form/fields",
-      preview: true
+      preview: true,
     });
     return this.client.delete(path, params);
   }
@@ -286,7 +286,7 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/form/layout",
-      preview
+      preview,
     });
     return this.client.get(path, { ...rest });
   }
@@ -298,7 +298,7 @@ export class AppClient {
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/form/layout",
-      preview: true
+      preview: true,
     });
     return this.client.put(path, params);
   }
@@ -314,7 +314,7 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/views",
-      preview
+      preview,
     });
     return this.client.get(path, rest);
   }
@@ -329,14 +329,14 @@ export class AppClient {
   }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/views",
-      preview: true
+      preview: true,
     });
     return this.client.put(path, params);
   }
 
   public getApp(params: { id: AppID }): Promise<App> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "app"
+      endpointName: "app",
     });
     return this.client.get(path, params);
   }
@@ -350,7 +350,7 @@ export class AppClient {
     offset?: string | number;
   }): Promise<{ apps: App[] }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "apps"
+      endpointName: "apps",
     });
     return this.client.get(path, params);
   }
@@ -362,7 +362,7 @@ export class AppClient {
     const { name, space } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app",
-      preview: true
+      preview: true,
     });
     if (space) {
       // NOTE: Although `thread` parameter is required in REST API,
@@ -370,10 +370,10 @@ export class AppClient {
       // Moreover, there is currently no helpful reason to create apps in threads other than the default thread,
       // so the API Client sets the default thread id here.
       const spacePath = this.buildPathWithGuestSpaceId({
-        endpointName: "space"
+        endpointName: "space",
       });
       const { defaultThread } = await this.client.get(spacePath, {
-        id: space
+        id: space,
       });
       return this.client.post(path, { ...params, thread: defaultThread });
     }
@@ -414,7 +414,7 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/settings",
-      preview
+      preview,
     });
     return this.client.get(path, rest);
   }
@@ -446,7 +446,7 @@ export class AppClient {
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/settings",
-      preview: true
+      preview: true,
     });
     return this.client.put(path, params);
   }
@@ -466,7 +466,7 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/status",
-      preview
+      preview,
     });
     return this.client.get(path, rest);
   }
@@ -480,7 +480,7 @@ export class AppClient {
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/status",
-      preview: true
+      preview: true,
     });
     return this.client.put(path, params);
   }
@@ -490,7 +490,7 @@ export class AppClient {
   }): Promise<{ apps: Array<{ app: string; status: DeployStatus }> }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/deploy",
-      preview: true
+      preview: true,
     });
     return this.client.get(path, params);
   }
@@ -501,7 +501,7 @@ export class AppClient {
   }): Promise<{}> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/deploy",
-      preview: true
+      preview: true,
     });
     return this.client.post(path, params);
   }
@@ -513,7 +513,7 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "field/acl",
-      preview
+      preview,
     });
     return this.client.get(path, { ...rest });
   }
@@ -529,7 +529,7 @@ export class AppClient {
     // so we disable it temporarily.
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "field/acl",
-      preview: true
+      preview: true,
     });
     return this.client.put(path, params);
   }
@@ -541,7 +541,7 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/acl",
-      preview
+      preview,
     });
     return this.client.get(path, { ...rest });
   }
@@ -557,7 +557,7 @@ export class AppClient {
     // so we disable it temporarily.
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/acl",
-      preview: true
+      preview: true,
     });
     return this.client.put(path, params);
   }
@@ -567,7 +567,7 @@ export class AppClient {
     ids: RecordID[];
   }): Promise<{ rights: Rights }> {
     const path = this.buildPathWithGuestSpaceId({
-      endpointName: "records/acl/evaluate"
+      endpointName: "records/acl/evaluate",
     });
     return this.client.get(path, params);
   }
@@ -580,7 +580,7 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record/acl",
-      preview
+      preview,
     });
     return this.client.get(path, { ...rest });
   }
@@ -596,7 +596,7 @@ export class AppClient {
     // so we disable it temporarily.
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record/acl",
-      preview: true
+      preview: true,
     });
     return this.client.put(path, params);
   }
@@ -613,7 +613,7 @@ export class AppClient {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/customize",
-      preview
+      preview,
     });
     return this.client.get(path, { ...rest });
   }
@@ -627,7 +627,7 @@ export class AppClient {
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/customize",
-      preview: true
+      preview: true,
     });
     return this.client.put(path, params);
   }
@@ -638,7 +638,7 @@ export class AppClient {
   }) {
     return buildPath({
       ...params,
-      guestSpaceId: this.guestSpaceId
+      guestSpaceId: this.guestSpaceId,
     });
   }
 }

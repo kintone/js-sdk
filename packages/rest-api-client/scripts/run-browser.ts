@@ -9,11 +9,11 @@ declare const window: {
 
 const client = new KintoneRestAPIClient({
   baseUrl: process.env.KINTONE_BASE_URL || "",
-  auth: {}
+  auth: {},
 });
 
 window.KintoneRestAPIClientDemo = {
   record: new Record(client),
   app: new App(client),
-  file: new File(client)
+  file: new File(client),
 };

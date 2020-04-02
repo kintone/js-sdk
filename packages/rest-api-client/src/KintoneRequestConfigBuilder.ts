@@ -7,7 +7,7 @@ import {
   RequestConfigBuilder,
   RequestConfig,
   HttpMethod,
-  Params
+  Params,
 } from "./http/HttpClientInterface";
 import { KintoneAuthHeader, HTTPClientParams } from "./KintoneRestAPIClient";
 
@@ -45,7 +45,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
       httpsAgent: this.httpsAgent,
-      ...(options ? options : {})
+      ...(options ? options : {}),
     };
 
     switch (method) {
@@ -56,18 +56,18 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
             ...requestConfig,
             method: "post" as const,
             headers: { ...this.headers, "X-HTTP-Method-Override": "GET" },
-            data: { ...this.params, ...params }
+            data: { ...this.params, ...params },
           };
         }
         return {
           ...requestConfig,
-          url: requestUrl
+          url: requestUrl,
         };
       }
       case "post": {
         if (params instanceof FormData) {
           const formData = params;
-          Object.keys(this.params).forEach(key => {
+          Object.keys(this.params).forEach((key) => {
             formData.append(key, (this.params as any)[key]);
           });
           return {
@@ -76,28 +76,28 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
               typeof formData.getHeaders === "function"
                 ? { ...this.headers, ...formData.getHeaders() }
                 : this.headers,
-            data: formData
+            data: formData,
           };
         }
         return {
           ...requestConfig,
-          data: { ...this.params, ...params }
+          data: { ...this.params, ...params },
         };
       }
       case "put": {
         return {
           ...requestConfig,
-          data: { ...this.params, ...params }
+          data: { ...this.params, ...params },
         };
       }
       case "delete": {
         const requestUrl = this.buildRequestUrl(path, {
           ...this.params,
-          ...params
+          ...params,
         });
         return {
           ...requestConfig,
-          url: requestUrl
+          url: requestUrl,
         };
       }
       default: {
