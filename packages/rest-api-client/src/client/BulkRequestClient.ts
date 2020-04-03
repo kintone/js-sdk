@@ -13,16 +13,36 @@ export class BulkRequestClient {
   }
 
   public send(params: {
-    requests: Array<{
-      method: string;
-      api: string;
-      payload: object;
-    }>;
+    requests: Array<
+      | {
+          method: string;
+          api: string;
+          payload: object;
+        }
+      | {
+          method: string;
+          endpointName: string;
+          payload: object;
+        }
+    >;
   }): Promise<{ results: object[] }> {
+    const { requests: requestsParam } = params;
+
+    const requests = requestsParam.map((request) => {
+      if ("endpointName" in request) {
+        const { endpointName, ...rest } = request;
+        return {
+          api: this.buildPathWithGuestSpaceId({ endpointName }),
+          ...rest,
+        };
+      }
+      return request;
+    });
+
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "bulkRequest",
     });
-    return this.client.post(path, params);
+    return this.client.post(path, { requests });
   }
 
   private buildPathWithGuestSpaceId(params: { endpointName: string }) {

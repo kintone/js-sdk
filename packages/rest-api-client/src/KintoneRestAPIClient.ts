@@ -204,11 +204,18 @@ export class KintoneRestAPIClient {
   }
 
   public bulkRequest(params: {
-    requests: Array<{
-      method: string;
-      api: string;
-      payload: object;
-    }>;
+    requests: Array<
+      | {
+          method: string;
+          api: string;
+          payload: object;
+        }
+      | {
+          method: string;
+          endpointName: string;
+          payload: object;
+        }
+    >;
   }): Promise<{ results: object[] }> {
     return this.bulkRequest_.send(params);
   }
