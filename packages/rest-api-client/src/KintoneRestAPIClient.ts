@@ -82,8 +82,14 @@ export class KintoneRestAPIClient {
       throw new Error("in Node environment, baseUrl is required");
     }
 
-    const errorResponseHandler = (errorResponse: ErrorResponse) => {
-      throw new KintoneRestAPIError(errorResponse);
+    const errorResponseHandler = (
+      errorResponse: ErrorResponse | { data: string }
+    ) => {
+      if (typeof errorResponse.data !== "object") {
+        // TODO: decide what to pass as an error message.
+        throw new Error(errorResponse.data);
+      }
+      throw new KintoneRestAPIError(errorResponse as ErrorResponse);
     };
 
     const httpClient = new DefaultHttpClient({
