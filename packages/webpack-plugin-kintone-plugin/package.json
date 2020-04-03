@@ -43,7 +43,7 @@
     "rimraf": "^3.0.2",
     "standard-version": "^7.1.0",
     "ts-node": "^8.6.2",
-    "tslint": "^6.1.0",
+    "tslint": "^6.1.1",
     "tslint-plugin-prettier": "^2.3.0",
     "typescript": "^3.7.5",
     "webpack": "^4.42.1",
