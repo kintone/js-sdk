@@ -4,7 +4,10 @@ import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
-import { KintoneRestAPIError } from "./KintoneRestAPIError";
+import {
+  KintoneRestAPIError,
+  KintoneErrorResponse,
+} from "./KintoneRestAPIError";
 import { ErrorResponse } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 
@@ -83,13 +86,14 @@ export class KintoneRestAPIClient {
     }
 
     const errorResponseHandler = (
-      errorResponse: ErrorResponse | { data: string }
+      errorResponse: ErrorResponse<string> | KintoneErrorResponse
     ) => {
-      if (typeof errorResponse.data !== "object") {
+      const { data, ...rest } = errorResponse;
+      if (typeof data === "string") {
         // TODO: decide what to pass as an error message.
-        throw new Error(errorResponse.data);
+        throw new Error(data);
       }
-      throw new KintoneRestAPIError(errorResponse as ErrorResponse);
+      throw new KintoneRestAPIError({ data, ...rest });
     };
 
     const httpClient = new DefaultHttpClient({
