@@ -7,6 +7,12 @@ type SingleErrorResponseData = {
   errors?: any;
 };
 
+const isSingleErrorResponseData = (
+  object: object
+): object is SingleErrorResponseData => {
+  return "id" in object && "code" in object && "message" in object;
+};
+
 type BulkRequestErrorResponseData = {
   results: Array<SingleErrorResponseData | {}>;
 };
@@ -29,8 +35,9 @@ export class KintoneRestAPIError extends Error {
     results: BulkRequestErrorResponseData["results"]
   ) {
     for (let i = 0; i < results.length; i++) {
-      if (Object.keys(results[i]).length !== 0) {
-        const data = results[i] as SingleErrorResponseData;
+      const result = results[i];
+      if (isSingleErrorResponseData(result)) {
+        const data = result;
         return { data, bulkRequestIndex: i };
       }
     }
