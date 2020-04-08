@@ -16,18 +16,28 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   private baseUrl: string;
   private headers: KintoneAuthHeader;
   private params: HTTPClientParams;
-  private clientCertAuth?: {
-    pfx: Buffer;
-    password: string;
-  };
+  private clientCertAuth?:
+    | {
+        pfx: Buffer;
+        password: string;
+      }
+    | {
+        pfxFilePath: string;
+        password: string;
+      };
   constructor(
     baseUrl: string,
     headers: KintoneAuthHeader,
     params: HTTPClientParams,
-    clientCertAuth?: {
-      pfx: Buffer;
-      password: string;
-    }
+    clientCertAuth?:
+      | {
+          pfx: Buffer;
+          password: string;
+        }
+      | {
+          pfxFilePath: string;
+          password: string;
+        }
   ) {
     this.baseUrl = baseUrl;
     this.headers = headers;

@@ -70,10 +70,15 @@ export class KintoneRestAPIClient {
       auth?: Auth;
       guestSpaceId?: number | string;
       basicAuth?: BasicAuth;
-      clientCertAuth?: {
-        pfx: Buffer;
-        password: string;
-      };
+      clientCertAuth?:
+        | {
+            pfx: Buffer;
+            password: string;
+          }
+        | {
+            pfxFilePath: string;
+            password: string;
+          };
     } = {}
   ) {
     const auth = this.buildAuth(options.auth ?? {});

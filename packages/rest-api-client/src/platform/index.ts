@@ -1,5 +1,3 @@
-import { RequestConfig } from "../http/HttpClientInterface";
-
 type PlatformDeps = {
   readFileFromPath: (
     filePath: string

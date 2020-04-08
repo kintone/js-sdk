@@ -12,15 +12,26 @@ export const readFileFromPath = async (filePath: string) => {
 };
 
 export const buildPlatformDependentConfig = (params: {
-  clientCertAuth?: {
-    pfx: Buffer;
-    password: string;
-  };
+  clientCertAuth?:
+    | {
+        pfx: Buffer;
+        password: string;
+      }
+    | {
+        pfxFilePath: string;
+        password: string;
+      };
 }) => {
-  if (params.clientCertAuth) {
+  const clientCertAuth = params.clientCertAuth;
+
+  if (clientCertAuth) {
+    const pfx =
+      "pfx" in clientCertAuth
+        ? clientCertAuth.pfx
+        : fs.readFileSync(clientCertAuth.pfxFilePath);
     const httpsAgent = new https.Agent({
-      pfx: params.clientCertAuth.pfx,
-      passphrase: params.clientCertAuth.password,
+      pfx,
+      passphrase: clientCertAuth.password,
     });
     return { httpsAgent };
   }
