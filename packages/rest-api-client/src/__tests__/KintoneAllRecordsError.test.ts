@@ -33,6 +33,7 @@ describe("KintoneAllRecordsError", () => {
         ],
       },
       status: 500,
+      statusText: "Internal Server Error",
       headers: {
         "X-Some-Header": "error",
       },
@@ -87,6 +88,7 @@ describe("KintoneAllRecordsError", () => {
           ],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },
@@ -123,6 +125,7 @@ describe("KintoneAllRecordsError", () => {
           ],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },

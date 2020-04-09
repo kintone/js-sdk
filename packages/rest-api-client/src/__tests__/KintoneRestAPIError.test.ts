@@ -17,6 +17,7 @@ describe("KintoneRestAPIError", () => {
           ],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },
@@ -51,6 +52,7 @@ describe("KintoneRestAPIError", () => {
           results: [{}, {}, errorResponseData, {}],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },
@@ -72,6 +74,7 @@ describe("KintoneRestAPIError", () => {
           results: [{}, {}, {}],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },
