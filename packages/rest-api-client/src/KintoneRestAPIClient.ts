@@ -90,8 +90,7 @@ export class KintoneRestAPIClient {
     ) => {
       const { data, ...rest } = errorResponse;
       if (typeof data === "string") {
-        // TODO: decide what to pass as an error message.
-        throw new Error(data);
+        throw new Error(`${rest.status}: ${rest.statusText}`);
       }
       throw new KintoneRestAPIError({ data, ...rest });
     };
