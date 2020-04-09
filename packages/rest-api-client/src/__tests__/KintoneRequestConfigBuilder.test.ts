@@ -1,6 +1,4 @@
 import { KintoneRequestConfigBuilder } from "../KintoneRequestConfigBuilder";
-import { injectPlatformDeps } from "../platform/";
-import * as nodeDeps from "../platform/node";
 import FormData from "form-data";
 
 describe("KintoneRequestConfigBuilder", () => {
@@ -13,7 +11,6 @@ describe("KintoneRequestConfigBuilder", () => {
   };
   let kintoneRequestConfigBuilder: KintoneRequestConfigBuilder;
   beforeEach(() => {
-    injectPlatformDeps(nodeDeps);
     kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder(
       baseUrl,
       headers,
