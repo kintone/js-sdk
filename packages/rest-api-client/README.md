@@ -107,16 +107,16 @@ The client determines which method to use by passed parameters.
 | -------- | :----------------: | :------: | ------------------------------------------------------- |
 | apiToken | String or String[] |   Yes    | You can pass multiple api tokens as an array of string. |
 
-#### 3. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
-
-Supported in browser environment only.
-If you omit `auth` parameter, the client uses Session authentication.
-
-#### 4. Parameters for [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
+#### 3. Parameters for [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
 
 | Name       |  Type  | Required | Description                                                                                                                                           |
 | ---------- | :----: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | oAuthToken | String |   Yes    | An OAuth access token you get through the [OAuth process flow](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients). |
+
+#### 4. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
+
+Supported in browser environment only.
+If you omit `auth` parameter, the client uses Session authentication.
 
 ## Error Handling
 
