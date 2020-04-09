@@ -17,7 +17,9 @@ export type ErrorResponse<T = any> = {
 
 export type HttpMethod = "get" | "post" | "put" | "delete";
 export type Params = { [key: string]: unknown };
-export type ErrorResponseHandler = (errorResponse: ErrorResponse) => void;
+export type ErrorResponseHandler = (error: {
+  response?: ErrorResponse;
+}) => void;
 
 export type RequestConfig = {
   method: HttpMethod;

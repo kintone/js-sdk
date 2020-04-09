@@ -85,9 +85,18 @@ export class KintoneRestAPIClient {
       throw new Error("in Node environment, baseUrl is required");
     }
 
-    const errorResponseHandler = (
-      errorResponse: ErrorResponse<string> | KintoneErrorResponse
-    ) => {
+    const errorResponseHandler = (error: {
+      response?: ErrorResponse<string> | KintoneErrorResponse;
+    }) => {
+      if (!error.response) {
+        // FIXME: find a better way to hanle this error
+        if (/mac verify failure/.test(error.toString())) {
+          throw new Error("invalid clientCertAuth setting");
+        }
+        throw error;
+      }
+      const errorResponse = error.response;
+
       const { data, ...rest } = errorResponse;
       if (typeof data === "string") {
         throw new Error(`${rest.status}: ${rest.statusText}`);

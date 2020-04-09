@@ -75,9 +75,6 @@ export class AxiosClient implements HttpClient {
   }
 
   private handleError(error: AxiosError) {
-    if (error.response) {
-      this.errorResponseHandler(error.response);
-    }
-    throw new Error(error.toString());
+    this.errorResponseHandler(error);
   }
 }
