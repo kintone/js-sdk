@@ -62,10 +62,10 @@ function cli(pluginDir, options_) {
       // 5. package plugin.zip
       return Promise.all([
         mkdirp(outputDir),
-        createContentsZip(pluginDir, manifest).then(contentsZip =>
+        createContentsZip(pluginDir, manifest).then((contentsZip) =>
           packerLocal(contentsZip, privateKey)
-        )
-      ]).then(result => {
+        ),
+      ]).then((result) => {
         const output = result[1];
         const ppkFilePath = path.join(outputDir, `${output.id}.ppk`);
         if (!ppkFile) {
@@ -81,8 +81,8 @@ function cli(pluginDir, options_) {
               ? {
                   awaitWriteFinish: {
                     stabilityThreshold: 1000,
-                    pollInterval: 250
-                  }
+                    pollInterval: 250,
+                  },
                 }
               : {};
           const watcher = chokidar.watch(pluginDir, watchOptions);
@@ -91,7 +91,7 @@ function cli(pluginDir, options_) {
               pluginDir,
               Object.assign({}, options, {
                 watch: false,
-                ppk: options.ppk || ppkFilePath
+                ppk: options.ppk || ppkFilePath,
               })
             );
           });
@@ -99,11 +99,11 @@ function cli(pluginDir, options_) {
         return outputPlugin(outputFile, output.plugin);
       });
     })
-    .then(outputFile => {
+    .then((outputFile) => {
       console.log("Succeeded:", outputFile);
       return outputFile;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Failed:", error.message);
       return Promise.reject(error);
     });
@@ -118,14 +118,14 @@ module.exports = cli;
 function throwIfInvalidManifest(manifest, pluginDir) {
   const result = validate(manifest, {
     relativePath: validateRelativePath(pluginDir),
-    maxFileSize: validateMaxFileSize(pluginDir)
+    maxFileSize: validateMaxFileSize(pluginDir),
   });
   debug(result);
 
   if (!result.valid) {
     const msgs = generateErrorMessages(result.errors);
     console.error("Invalid manifest.json:");
-    msgs.forEach(msg => {
+    msgs.forEach((msg) => {
       console.error(`- ${msg}`);
     });
     throw new Error("Invalid manifest.json");
@@ -140,7 +140,7 @@ function throwIfInvalidManifest(manifest, pluginDir) {
  * @return {!Promise<string>} The value is output path of plugin.zip.
  */
 function outputPlugin(outputPath, plugin) {
-  return writeFile(outputPath, plugin).then(arg => outputPath);
+  return writeFile(outputPath, plugin).then((arg) => outputPath);
 }
 
 /**
@@ -161,7 +161,7 @@ function loadJson(jsonPath) {
  * @return {function(string): boolean}
  */
 function validateRelativePath(pluginDir) {
-  return str => {
+  return (str) => {
     try {
       const stat = fs.statSync(path.join(pluginDir, str));
       return stat.isFile();

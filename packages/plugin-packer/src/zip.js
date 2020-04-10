@@ -45,9 +45,9 @@ function validateContentsZip(contentsZip) {
  * @return {Promise<PreprocessedContentsZip>}
  */
 function preprocessToRezip(contentsZip) {
-  return zipEntriesFromBuffer(contentsZip).then(result => {
+  return zipEntriesFromBuffer(contentsZip).then((result) => {
     const manifestList = Array.from(result.entries.keys()).filter(
-      file => path.basename(file) === "manifest.json"
+      (file) => path.basename(file) === "manifest.json"
     );
     if (manifestList.length === 0) {
       throw new Error("The zip file has no manifest.json");
@@ -56,9 +56,10 @@ function preprocessToRezip(contentsZip) {
     }
     result.manifestPath = manifestList[0];
     const manifestEntry = result.entries.get(result.manifestPath);
-    return getManifestJsonFromEntry(result.zipFile, manifestEntry).then(json =>
-      Object.assign(result, { manifestJson: json })
-    );
+    return getManifestJsonFromEntry(
+      result.zipFile,
+      manifestEntry
+    ).then((json) => Object.assign(result, { manifestJson: json }));
   });
 }
 
@@ -68,14 +69,14 @@ function preprocessToRezip(contentsZip) {
  */
 function zipEntriesFromBuffer(contentsZip) {
   return denodeify(yauzl.fromBuffer)(contentsZip).then(
-    zipFile =>
+    (zipFile) =>
       new Promise((res, rej) => {
         const entries = new Map();
         const result = {
           zipFile: zipFile,
-          entries: entries
+          entries: entries,
         };
-        zipFile.on("entry", entry => {
+        zipFile.on("entry", (entry) => {
           entries.set(entry.fileName, entry);
         });
         zipFile.on("end", () => {
@@ -113,7 +114,7 @@ function zipEntryToString(zipFile, zipEntry) {
  * @return {!Promise<string>}
  */
 function getManifestJsonFromEntry(zipFile, zipEntry) {
-  return zipEntryToString(zipFile, zipEntry).then(str => JSON.parse(str));
+  return zipEntryToString(zipFile, zipEntry).then((str) => JSON.parse(str));
 }
 
 /**
@@ -124,19 +125,19 @@ function getManifestJsonFromEntry(zipFile, zipEntry) {
  */
 function validateManifest(entries, manifestJson, manifestPath) {
   // entry.fileName is a relative path separated by posix style(/) so this makes separators always posix style.
-  const getEntryKey = filePath =>
+  const getEntryKey = (filePath) =>
     path
       .join(path.dirname(manifestPath), filePath)
       .replace(new RegExp(`\\${path.sep}`, "g"), "/");
   const result = validate(manifestJson, {
-    relativePath: filePath => entries.has(getEntryKey(filePath)),
+    relativePath: (filePath) => entries.has(getEntryKey(filePath)),
     maxFileSize(maxBytes, filePath) {
       const entry = entries.get(getEntryKey(filePath));
       if (entry) {
         return entry.uncompressedSize <= maxBytes;
       }
       return false;
-    }
+    },
   });
   if (!result.valid) {
     const errors = genErrorMsg(result.errors);
@@ -166,11 +167,11 @@ function rezipContents(zipFile, entries, manifestJson, manifestPath) {
     newZipFile.outputStream.pipe(output);
     const openReadStream = denodeify(zipFile.openReadStream.bind(zipFile));
     Promise.all(
-      sourceList(manifestJson).map(src => {
+      sourceList(manifestJson).map((src) => {
         const entry = entries.get(path.join(manifestPrefix, src));
-        return openReadStream(entry).then(stream => {
+        return openReadStream(entry).then((stream) => {
           newZipFile.addReadStream(stream, src, {
-            size: entry.uncompressedSize
+            size: entry.uncompressedSize,
           });
         });
       })
@@ -182,5 +183,5 @@ function rezipContents(zipFile, entries, manifestJson, manifestPath) {
 
 module.exports = {
   rezip,
-  validateContentsZip
+  validateContentsZip,
 };

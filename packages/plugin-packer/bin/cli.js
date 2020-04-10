@@ -9,15 +9,15 @@ const USAGE = "$ kintone-plugin-packer [options] PLUGIN_DIR";
 
 const flagSpec = {
   ppk: {
-    type: "string"
+    type: "string",
   },
   out: {
-    type: "string"
+    type: "string",
   },
   watch: {
     type: "boolean",
-    alias: "w"
-  }
+    alias: "w",
+  },
 };
 
 const cli = meow(
@@ -31,7 +31,7 @@ Options
   --watch: Watch PLUGIN_DIR for the changes.
 `,
   {
-    flags: flagSpec
+    flags: flagSpec,
   }
 );
 

@@ -10,27 +10,27 @@ const {
   CREATE_PLUGIN_ZIP,
   CREATE_PLUGIN_ZIP_START,
   CREATE_PLUGIN_ZIP_FAILURE,
-  RESET
+  RESET,
 } = require("./action");
 
 const getInitialState = () => ({
   contents: {
     data: null,
-    name: null
+    name: null,
   },
   ppk: {
     data: null,
-    name: null
+    name: null,
   },
   plugin: {
     id: null,
     url: {
       contents: null,
-      ppk: null
-    }
+      ppk: null,
+    },
   },
   error: null,
-  loading: false
+  loading: false,
 });
 
 /**
@@ -47,48 +47,48 @@ const reducer = (state = getInitialState(), action) => {
       return Object.assign({}, state, {
         ppk,
         plugin,
-        error: null
+        error: null,
       });
     }
     case UPLOAD_PPK:
       return Object.assign({}, state, {
-        ppk: action.payload
+        ppk: action.payload,
       });
     case UPLOAD_PLUGIN_START: {
       const { contents, plugin } = getInitialState();
       return Object.assign({}, state, {
         contents,
         plugin,
-        error: null
+        error: null,
       });
     }
     case UPLOAD_PLUGIN:
       return Object.assign({}, state, {
-        contents: action.payload
+        contents: action.payload,
       });
     case CREATE_PLUGIN_ZIP_START:
       return Object.assign({}, state, {
         plugin: getInitialState().plugin,
         error: null,
-        loading: true
+        loading: true,
       });
     case CREATE_PLUGIN_ZIP:
       return Object.assign({}, state, {
         ppk: {
           data: action.payload.privateKey,
-          name: state.ppk.name || `${action.payload.id}.ppk`
+          name: state.ppk.name || `${action.payload.id}.ppk`,
         },
         plugin: {
           id: action.payload.id,
-          url: createDownloadUrls(action.payload)
+          url: createDownloadUrls(action.payload),
         },
-        loading: false
+        loading: false,
       });
     case UPLOAD_FAILURE:
     case CREATE_PLUGIN_ZIP_FAILURE:
       return Object.assign({}, state, {
         error: action.payload,
-        loading: false
+        loading: false,
       });
     case RESET:
       return getInitialState();
@@ -102,7 +102,7 @@ const reducer = (state = getInitialState(), action) => {
  * @param {Object} state
  * @return {string}
  */
-const getPluginBaseName = state =>
+const getPluginBaseName = (state) =>
   `${state.contents.name.replace(/\.\w+$/, "")}.${state.plugin.id}`;
 
 /**
@@ -110,7 +110,7 @@ const getPluginBaseName = state =>
  * @param {Object} state
  * @return {string}
  */
-const getDownloadPluginZipName = state =>
+const getDownloadPluginZipName = (state) =>
   `${getPluginBaseName(state)}.plugin.zip`;
 
 /**
@@ -118,11 +118,11 @@ const getDownloadPluginZipName = state =>
  * @param {Object} state
  * @return {string}
  */
-const getDownloadPPKFileName = state =>
+const getDownloadPPKFileName = (state) =>
   `${getPluginBaseName(state)}.private.ppk`;
 
 module.exports = {
   reducer,
   getDownloadPluginZipName,
-  getDownloadPPKFileName
+  getDownloadPPKFileName,
 };

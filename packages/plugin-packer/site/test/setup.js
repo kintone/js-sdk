@@ -5,10 +5,10 @@
 global.document = {
   querySelector() {},
   querySelectorAll() {},
-  createElement() {}
+  createElement() {},
 };
 global.URL = {
-  createObjectURL: data => data
+  createObjectURL: (data) => data,
 };
 class Blob {
   constructor(...args) {

@@ -2,7 +2,7 @@
 
 const {
   getDownloadPluginZipName,
-  getDownloadPPKFileName
+  getDownloadPPKFileName,
 } = require("./reducer");
 
 /**
@@ -152,7 +152,7 @@ class View {
     }
     const ul = this.$.errorMessages;
     ul.innerHTML = "";
-    errors.forEach(error => {
+    errors.forEach((error) => {
       const li = document.createElement("li");
       li.textContent = error;
       ul.appendChild(li);

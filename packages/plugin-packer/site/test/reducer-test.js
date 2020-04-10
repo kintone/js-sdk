@@ -5,7 +5,7 @@ const assert = require("assert");
 const {
   reducer,
   getDownloadPluginZipName,
-  getDownloadPPKFileName
+  getDownloadPPKFileName,
 } = require("../reducer");
 const {
   UPLOAD_FAILURE,
@@ -16,27 +16,27 @@ const {
   CREATE_PLUGIN_ZIP_START,
   CREATE_PLUGIN_ZIP,
   CREATE_PLUGIN_ZIP_FAILURE,
-  RESET
+  RESET,
 } = require("../action");
 
 const expectedInitialState = {
   contents: {
     data: null,
-    name: null
+    name: null,
   },
   ppk: {
     data: null,
-    name: null
+    name: null,
   },
   plugin: {
     id: null,
     url: {
       contents: null,
-      ppk: null
-    }
+      ppk: null,
+    },
   },
   error: null,
-  loading: false
+  loading: false,
 };
 
 describe("reducer", () => {
@@ -53,47 +53,47 @@ describe("reducer", () => {
       const state = {
         contents: {
           data: "hoge",
-          name: "bar"
+          name: "bar",
         },
         ppk: {
           data: "ok",
-          name: "okok"
+          name: "okok",
         },
         plugin: {
-          id: "hoge"
+          id: "hoge",
         },
-        error: "hoge"
+        error: "hoge",
       };
       assert.deepStrictEqual(reducer(state, { type: UPLOAD_PPK_START }), {
         contents: {
           data: "hoge",
-          name: "bar"
+          name: "bar",
         },
         ppk: {
           data: null,
-          name: null
+          name: null,
         },
         plugin: {
           id: null,
           url: {
             contents: null,
-            ppk: null
-          }
+            ppk: null,
+          },
         },
-        error: null
+        error: null,
       });
     });
   });
   describe("UPLOAD_PPK", () => {
     it("should update state.ppk with the payload", () => {
       const state = {
-        ppk: null
+        ppk: null,
       };
       const ppk = { data: [], name: "hgoe.ppk" };
       assert.deepStrictEqual(
         reducer(state, { type: UPLOAD_PPK, payload: ppk }),
         {
-          ppk
+          ppk,
         }
       );
     });
@@ -103,47 +103,47 @@ describe("reducer", () => {
       const state = {
         contents: {
           data: "hoge",
-          name: "bar"
+          name: "bar",
         },
         ppk: {
           data: "ok",
-          name: "okok"
+          name: "okok",
         },
         plugin: {
-          id: "hoge"
+          id: "hoge",
         },
-        error: "hoge"
+        error: "hoge",
       };
       assert.deepStrictEqual(reducer(state, { type: UPLOAD_PLUGIN_START }), {
         contents: {
           data: null,
-          name: null
+          name: null,
         },
         ppk: {
           data: "ok",
-          name: "okok"
+          name: "okok",
         },
         plugin: {
           id: null,
           url: {
             contents: null,
-            ppk: null
-          }
+            ppk: null,
+          },
         },
-        error: null
+        error: null,
       });
     });
   });
   describe("UPLOAD_PLUGIN", () => {
     it("should update satte.contents with payload", () => {
       const state = {
-        contents: null
+        contents: null,
       };
       const contents = { data: [], name: "hoge.zip" };
       assert.deepStrictEqual(
         reducer(state, { type: UPLOAD_PLUGIN, payload: contents }),
         {
-          contents
+          contents,
         }
       );
     });
@@ -157,11 +157,11 @@ describe("reducer", () => {
           id: "hoge",
           url: {
             contents: "hogehoge",
-            ppk: "foo"
-          }
+            ppk: "foo",
+          },
         },
         error: "error",
-        loading: false
+        loading: false,
       };
       assert.deepStrictEqual(
         reducer(state, { type: CREATE_PLUGIN_ZIP_START }),
@@ -170,7 +170,7 @@ describe("reducer", () => {
           ppk: "ppk",
           plugin: expectedInitialState.plugin,
           error: null,
-          loading: true
+          loading: true,
         }
       );
     });
@@ -180,38 +180,38 @@ describe("reducer", () => {
       const state = {
         ppk: {
           data: null,
-          name: null
+          name: null,
         },
         plugin: {
           id: null,
           url: {
             contents: null,
-            ppk: null
+            ppk: null,
           },
-          loading: true
-        }
+          loading: true,
+        },
       };
       const action = {
         type: CREATE_PLUGIN_ZIP,
         payload: {
           privateKey: "secret",
           plugin: "plugin data",
-          id: "abcd"
-        }
+          id: "abcd",
+        },
       };
       assert.deepStrictEqual(reducer(state, action), {
         ppk: {
           data: "secret",
-          name: "abcd.ppk"
+          name: "abcd.ppk",
         },
         plugin: {
           id: "abcd",
           url: {
             contents: [["plugin data"], { type: "application/zip" }],
-            ppk: [["secret"], { type: "text/plain" }]
-          }
+            ppk: [["secret"], { type: "text/plain" }],
+          },
         },
-        loading: false
+        loading: false,
       });
     });
   });
@@ -219,20 +219,20 @@ describe("reducer", () => {
     it("should update state.error and update state.loding false", () => {
       const state = {
         error: null,
-        loading: true
+        loading: true,
       };
       assert.deepStrictEqual(
         reducer(state, { type: UPLOAD_FAILURE, payload: "error" }),
         {
           error: "error",
-          loading: false
+          loading: false,
         }
       );
       assert.deepStrictEqual(
         reducer(state, { type: CREATE_PLUGIN_ZIP_FAILURE, payload: "error" }),
         {
           error: "error",
-          loading: false
+          loading: false,
         }
       );
     });
@@ -251,11 +251,11 @@ describe("reducer", () => {
       assert.equal(
         getDownloadPluginZipName({
           contents: {
-            name: "awesome-plugin.zip"
+            name: "awesome-plugin.zip",
           },
           plugin: {
-            id: "abcd"
-          }
+            id: "abcd",
+          },
         }),
         "awesome-plugin.abcd.plugin.zip"
       );
@@ -266,14 +266,14 @@ describe("reducer", () => {
       assert.equal(
         getDownloadPPKFileName({
           contents: {
-            name: "awesome-plugin.zip"
+            name: "awesome-plugin.zip",
           },
           ppk: {
-            name: "secret.ppk"
+            name: "secret.ppk",
           },
           plugin: {
-            id: "abcd"
-          }
+            id: "abcd",
+          },
         }),
         "awesome-plugin.abcd.private.ppk"
       );

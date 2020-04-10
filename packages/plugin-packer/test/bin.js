@@ -7,7 +7,7 @@ const pkg = require("../package.json");
 
 describe("bin", () => {
   it("should output version with --version", () =>
-    exec("--version").then(result => {
+    exec("--version").then((result) => {
       assert(result.stdout === pkg.version);
     }));
 
@@ -16,56 +16,56 @@ describe("bin", () => {
       () => {
         assert.fail("should be rejected");
       },
-      result => {
+      (result) => {
         assert(/An argument `PLUGIN_DIR` is required/.test(result.stderr));
       }
     ));
 
   it("should recieve 1st arg as PLUGIN_DIR", () =>
-    exec("foo").then(result => {
+    exec("foo").then((result) => {
       assert.deepStrictEqual(JSON.parse(result.stdout), {
         pluginDir: "foo",
-        flags: { watch: false }
+        flags: { watch: false },
       });
     }));
 
   it("should recieve --ppk", () =>
-    exec("foo", "--ppk", "bar").then(result => {
+    exec("foo", "--ppk", "bar").then((result) => {
       assert.deepStrictEqual(JSON.parse(result.stdout), {
         pluginDir: "foo",
-        flags: { watch: false, ppk: "bar" }
+        flags: { watch: false, ppk: "bar" },
       });
     }));
 
   it("should recieve --out", () =>
-    exec("foo", "--out", "bar").then(result => {
+    exec("foo", "--out", "bar").then((result) => {
       assert.deepStrictEqual(JSON.parse(result.stdout), {
         pluginDir: "foo",
-        flags: { watch: false, out: "bar" }
+        flags: { watch: false, out: "bar" },
       });
     }));
 
   it("should recieve --watch", () =>
-    exec("foo", "--watch").then(result => {
+    exec("foo", "--watch").then((result) => {
       assert.deepStrictEqual(JSON.parse(result.stdout), {
         pluginDir: "foo",
-        flags: { watch: true }
+        flags: { watch: true },
       });
     }));
 
   it("should recieve -w as an alias of --watch", () =>
-    exec("foo", "-w").then(result => {
+    exec("foo", "-w").then((result) => {
       assert.deepStrictEqual(JSON.parse(result.stdout), {
         pluginDir: "foo",
-        flags: { watch: true }
+        flags: { watch: true },
       });
     }));
 
   it("should filter unexpected option", () =>
-    exec("foo", "--bar").then(result => {
+    exec("foo", "--bar").then((result) => {
       assert.deepStrictEqual(JSON.parse(result.stdout), {
         pluginDir: "foo",
-        flags: { watch: false }
+        flags: { watch: false },
       });
     }));
 });

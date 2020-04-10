@@ -13,13 +13,13 @@ function sourceList(manifest) {
     ["mobile", "js"],
     ["mobile", "css"],
     ["config", "js"],
-    ["config", "css"]
+    ["config", "css"],
   ];
   const list = sourceTypes
-    .map(t => manifest[t[0]] && manifest[t[0]][t[1]])
-    .filter(i => !!i)
+    .map((t) => manifest[t[0]] && manifest[t[0]][t[1]])
+    .filter((i) => !!i)
     .reduce((a, b) => a.concat(b), [])
-    .filter(file => !/^https?:\/\//.test(file));
+    .filter((file) => !/^https?:\/\//.test(file));
   if (manifest.config && manifest.config.html) {
     list.push(manifest.config.html);
   }

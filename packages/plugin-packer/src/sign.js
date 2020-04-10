@@ -9,7 +9,7 @@ const RSA = require("node-rsa");
  */
 function sign(contents, privateKey) {
   const key = new RSA(privateKey, "pkcs1-private-pem", {
-    signingScheme: "pkcs1-sha1"
+    signingScheme: "pkcs1-sha1",
   });
   return key.sign(contents);
 }

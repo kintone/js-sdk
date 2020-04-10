@@ -25,10 +25,10 @@ function createContentsZip(pluginDir, manifest) {
       res(output.getContents());
     });
     zipFile.outputStream.pipe(output);
-    sourceList(manifest).forEach(src => {
+    sourceList(manifest).forEach((src) => {
       zipFile.addFile(path.join(pluginDir, src), src);
     });
-    zipFile.end(finalSize => {
+    zipFile.end((finalSize) => {
       size = finalSize;
     });
   });

@@ -19,10 +19,10 @@ function packPluginFromManifest(manifestJSONPath, privateKey) {
       reject(e);
     }
   })
-    .then(manifest =>
+    .then((manifest) =>
       createContentsZip(path.dirname(manifestJSONPath), manifest)
     )
-    .then(buffer => packer(buffer, privateKey));
+    .then((buffer) => packer(buffer, privateKey));
 }
 
 module.exports = packPluginFromManifest;

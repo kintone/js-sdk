@@ -10,16 +10,16 @@ describe("sourcelist", () => {
       icon: "image/icon.png",
       desktop: {
         js: ["js/desktop.js", "js/lib.js"],
-        css: ["css/desktop.css", "css/lib.css"]
+        css: ["css/desktop.css", "css/lib.css"],
       },
       mobile: {
-        js: ["js/mobile.js"]
+        js: ["js/mobile.js"],
       },
       config: {
         js: ["js/config.js"],
         css: ["css/config.css"],
-        html: "html/config.html"
-      }
+        html: "html/config.html",
+      },
     };
   });
   it("should return a file list including the manifest", () => {
@@ -33,7 +33,7 @@ describe("sourcelist", () => {
       "css/config.css",
       "html/config.html",
       "manifest.json",
-      "image/icon.png"
+      "image/icon.png",
     ]);
   });
   it("should filter http(s) path", () => {
@@ -55,7 +55,7 @@ describe("sourcelist", () => {
       "css/config.css",
       "html/config.html",
       "manifest.json",
-      "image/icon.png"
+      "image/icon.png",
     ]);
   });
   it("should make the file list unique", () => {
@@ -77,7 +77,7 @@ describe("sourcelist", () => {
       "css/config.css",
       "html/config.html",
       "manifest.json",
-      "image/icon.png"
+      "image/icon.png",
     ]);
   });
 });

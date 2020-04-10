@@ -9,7 +9,7 @@ const streamBuffers = require("stream-buffers");
  * @param {string} url
  * @return {void}
  */
-const revokeDownloadUrl = url => URL.revokeObjectURL(url);
+const revokeDownloadUrl = (url) => URL.revokeObjectURL(url);
 
 /**
  * Create an object URL for the data
@@ -20,7 +20,7 @@ const revokeDownloadUrl = url => URL.revokeObjectURL(url);
 const createDownloadUrl = (data, type) =>
   URL.createObjectURL(new Blob([data], { type }));
 
-const isDropEvent = e => e.type === "drop";
+const isDropEvent = (e) => e.type === "drop";
 
 /**
  *  Read files from FileSystemEntry
@@ -28,17 +28,17 @@ const isDropEvent = e => e.type === "drop";
  * @param {FileSystemEntry} entry
  * @return {Promise<FileEntry | FileEntry[]>}
  * */
-const readEntries = entry =>
+const readEntries = (entry) =>
   new Promise((resolve, reject) => {
     if (entry.isFile) {
       // Convert the fullPath to the relative path from the plugin directory
-      entry.file(file =>
+      entry.file((file) =>
         resolve({ path: entry.fullPath.replace(/^\/[^/]+?\//, ""), file })
       );
     } else if (entry.isDirectory) {
-      entry.createReader().readEntries(childEntries => {
+      entry.createReader().readEntries((childEntries) => {
         Promise.all(
-          childEntries.map(childEntry => readEntries(childEntry))
+          childEntries.map((childEntry) => readEntries(childEntry))
         ).then(resolve);
       });
     } else {
@@ -51,7 +51,7 @@ const readEntries = entry =>
  * @param {Event} e
  * @return {Promise<File | {name: string, entries: Map<string, File>}>}
  */
-const getFileFromEvent = e => {
+const getFileFromEvent = (e) => {
   if (!isDropEvent(e)) {
     const files = e.target.files;
     if (files.length === 1) {
@@ -62,8 +62,8 @@ const getFileFromEvent = e => {
       // Get a uploaded directory name from webkitRelativePath
       name: files[0].webkitRelativePath.replace(/\/.*/, ""),
       entries: new Map(
-        Array.from(files).map(file => [file.webkitRelativePath, file])
-      )
+        Array.from(files).map((file) => [file.webkitRelativePath, file])
+      ),
     });
   }
   if (
@@ -93,13 +93,13 @@ const getFileFromEvent = e => {
     if (entry.isFile) {
       entry.file(resolve);
     } else if (entry.isDirectory) {
-      readEntries(entry).then(entries => {
+      readEntries(entry).then((entries) => {
         resolve({
           name: entry.name,
           // Create a Map<path, File>
           entries: new Map(
             flatten(entries).map(({ path, file }) => [path, file])
-          )
+          ),
         });
       });
     } else {
@@ -113,7 +113,7 @@ const getFileFromEvent = e => {
  * @param {function(promise: Promise<File>): void} cb
  * @return {function(e: Event)}
  */
-const createFileHanlder = cb => e => {
+const createFileHanlder = (cb) => (e) => {
   if (isDropEvent(e)) {
     e.preventDefault();
   }
@@ -125,8 +125,8 @@ const createFileHanlder = cb => e => {
  * @param {File} file
  * @return {Promise<string>}
  */
-const readText = file =>
-  new Promise(resolve => {
+const readText = (file) =>
+  new Promise((resolve) => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result);
     reader.readAsText(file);
@@ -137,7 +137,7 @@ const readText = file =>
  * @param {File} file
  * @return {Promise<ArrayBuffer>}
  */
-const readArrayBuffer = file =>
+const readArrayBuffer = (file) =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result);
@@ -154,7 +154,7 @@ const $$ = document.querySelectorAll.bind(document);
  */
 const listen = (el, ...args) => {
   if (el instanceof NodeList) {
-    el.forEach(e => listen(...[e, ...args]));
+    el.forEach((e) => listen(...[e, ...args]));
     return;
   }
   el.addEventListener(...args);
@@ -169,20 +169,20 @@ const listen = (el, ...args) => {
 function fileMapToBuffer(fileMap) {
   return Promise.all(
     Array.from(fileMap.entries()).map(([path, file]) =>
-      readArrayBuffer(file).then(buffer => ({ buffer, path }))
+      readArrayBuffer(file).then((buffer) => ({ buffer, path }))
     )
   )
-    .then(results => {
+    .then((results) => {
       const zipFile = new yazl.ZipFile();
-      results.forEach(result => {
+      results.forEach((result) => {
         zipFile.addBuffer(Buffer.from(result.buffer), result.path);
       });
       zipFile.end();
       return zipFile;
     })
     .then(
-      zipFile =>
-        new Promise(resolve => {
+      (zipFile) =>
+        new Promise((resolve) => {
           const output = new streamBuffers.WritableStreamBuffer();
           output.on("finish", () => {
             resolve(output.getContents());
@@ -201,5 +201,5 @@ module.exports = {
   createDownloadUrl,
   createFileHanlder,
   readText,
-  readArrayBuffer
+  readArrayBuffer,
 };

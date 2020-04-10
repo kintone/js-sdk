@@ -13,7 +13,7 @@ const {
   listen,
   readText,
   readArrayBuffer,
-  createFileHanlder
+  createFileHanlder,
 } = require("./dom");
 const View = require("./view");
 
@@ -23,12 +23,12 @@ const {
   uploadPlugin,
   createPluginZip,
   reset,
-  uploadFailure
+  uploadFailure,
 } = require("./action");
 const {
   generatePluginZip,
   validatePlugin,
-  revokePluginUrls
+  revokePluginUrls,
 } = require("./plugin");
 
 const $ppkFileUploader = $(".js-upload-ppk .js-file-upload");
@@ -76,7 +76,7 @@ const view = new View({
   errorMessages: $errorMessages,
   zipOkIcon: $zipOkIcon,
   zipFileName: $zipFileName,
-  ppkFileName: $ppkFileName
+  ppkFileName: $ppkFileName,
 });
 
 const middlewares = [thunk];
@@ -90,9 +90,9 @@ store.subscribe(() => {
   view.render(store.getState());
 });
 
-const uploadPluginZipHandler = createFileHanlder(promise => {
+const uploadPluginZipHandler = createFileHanlder((promise) => {
   promise
-    .then(result => {
+    .then((result) => {
       if (result instanceof File) {
         store.dispatch(
           uploadPlugin(
@@ -103,7 +103,7 @@ const uploadPluginZipHandler = createFileHanlder(promise => {
         );
         // Uploading a directory
       } else if (result.entries instanceof Map) {
-        fileMapToBuffer(result.entries).then(buffer => {
+        fileMapToBuffer(result.entries).then((buffer) => {
           store.dispatch(
             uploadPlugin(
               result.name,
@@ -116,14 +116,14 @@ const uploadPluginZipHandler = createFileHanlder(promise => {
         throw new Error("Something went wrong.");
       }
     })
-    .catch(error => {
+    .catch((error) => {
       store.dispatch(uploadFailure(error));
     });
 });
 
-const uploadPPKHanlder = createFileHanlder(promise => {
+const uploadPPKHanlder = createFileHanlder((promise) => {
   promise
-    .then(result => {
+    .then((result) => {
       if (result instanceof File) {
         store.dispatch(uploadPPK(result.name, () => readText(result)));
         // Uploading a directory
@@ -135,7 +135,7 @@ const uploadPPKHanlder = createFileHanlder(promise => {
         throw new Error("Something went wrong.");
       }
     })
-    .catch(error => {
+    .catch((error) => {
       store.dispatch(uploadFailure(error));
     });
 });
@@ -146,7 +146,7 @@ listen($ppkFileUploader, "change", uploadPPKHanlder);
 listen($zipDropArea, "drop", uploadPluginZipHandler);
 listen($ppkDropArea, "drop", uploadPPKHanlder);
 // Hack to allow us to reupload the same file
-listen($$fileUploader, "click", e => {
+listen($$fileUploader, "click", (e) => {
   e.target.value = null;
 });
 
@@ -160,28 +160,28 @@ listen($createBtn, "click", () => {
   store.dispatch(createPluginZip(generatePluginZip));
 });
 listen($clearBtn, "click", () => {
-  $$fileUploaders.forEach(el => {
+  $$fileUploaders.forEach((el) => {
     el.value = null;
   });
   store.dispatch(reset());
 });
 
 // Handle a click for a select file
-listen($uploadZipLink, "click", e => {
+listen($uploadZipLink, "click", (e) => {
   e.preventDefault();
   $zipFileUploader.click();
 });
-listen($uploadPPKLink, "click", e => {
+listen($uploadPPKLink, "click", (e) => {
   e.preventDefault();
   $ppkFileUploader.click();
 });
 
 // Hanlde a drag and drop
-listen($$UploadArea, "dragover", e => {
+listen($$UploadArea, "dragover", (e) => {
   e.preventDefault();
   view.decorateDragOver(e.currentTarget);
 });
-listen($$UploadArea, "dragleave", e => {
+listen($$UploadArea, "dragleave", (e) => {
   view.decorateDragLeave(e.currentTarget);
 });
 

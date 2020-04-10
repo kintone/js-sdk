@@ -1,6 +1,6 @@
 "use strict";
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const UPLOAD_PPK_START = "UPLOAD_PPK_START";
 const UPLOAD_PPK = "UPLOAD_PPK";
@@ -17,9 +17,9 @@ const RESET = "RESET";
  * @param {Error} error
  * @return {{type: string, payload: Error}}
  */
-const uploadFailure = error => ({
+const uploadFailure = (error) => ({
   type: UPLOAD_FAILURE,
-  payload: error
+  payload: error,
 });
 
 /**
@@ -28,19 +28,19 @@ const uploadFailure = error => ({
  * @param {function(): Promise<string>} fileReader
  * @return {function(dispatch: function)}
  */
-const uploadPPK = (fileName, fileReader) => dispatch => {
+const uploadPPK = (fileName, fileReader) => (dispatch) => {
   dispatch({ type: UPLOAD_PPK_START });
   fileReader().then(
-    text => {
+    (text) => {
       dispatch({
         type: UPLOAD_PPK,
         payload: {
           data: text,
-          name: fileName
-        }
+          name: fileName,
+        },
       });
     },
-    error => {
+    (error) => {
       dispatch(uploadFailure(error));
     }
   );
@@ -53,21 +53,21 @@ const uploadPPK = (fileName, fileReader) => dispatch => {
  * @param {function(): Promise<void>} validateManifest
  * @return {function(dispatch: function)}
  */
-const uploadPlugin = (fileName, fileReader, validateManifest) => dispatch => {
+const uploadPlugin = (fileName, fileReader, validateManifest) => (dispatch) => {
   dispatch({ type: UPLOAD_PLUGIN_START });
   fileReader()
-    .then(buffer => validateManifest(buffer).then(() => buffer))
+    .then((buffer) => validateManifest(buffer).then(() => buffer))
     .then(
-      buffer => {
+      (buffer) => {
         dispatch({
           type: UPLOAD_PLUGIN,
           payload: {
             data: buffer,
-            name: fileName
-          }
+            name: fileName,
+          },
         });
       },
-      error => {
+      (error) => {
         dispatch(uploadFailure(error));
       }
     );
@@ -78,26 +78,26 @@ const uploadPlugin = (fileName, fileReader, validateManifest) => dispatch => {
  * @param {function(contents: ArrayBuffer, ppk: string): Promise<*>} generatePluginZip
  * @return {function(dispatch: function, getState: function)}
  */
-const createPluginZip = generatePluginZip => (dispatch, getState) => {
+const createPluginZip = (generatePluginZip) => (dispatch, getState) => {
   dispatch({
-    type: CREATE_PLUGIN_ZIP_START
+    type: CREATE_PLUGIN_ZIP_START,
   });
   const state = getState();
   Promise.all([
     generatePluginZip(state.contents.data, state.ppk.data),
     // It's to guarantee to wait 300ms to recognize creating a plugin zip an user
-    delay(300)
+    delay(300),
   ]).then(
     ([result]) => {
       dispatch({
         type: CREATE_PLUGIN_ZIP,
-        payload: result
+        payload: result,
       });
     },
-    error => {
+    (error) => {
       dispatch({
         type: CREATE_PLUGIN_ZIP_FAILURE,
-        payload: error
+        payload: error,
       });
     }
   );
@@ -108,7 +108,7 @@ const createPluginZip = generatePluginZip => (dispatch, getState) => {
  * @return {{type: string}}
  */
 const reset = () => ({
-  type: RESET
+  type: RESET,
 });
 
 module.exports = {
@@ -125,5 +125,5 @@ module.exports = {
   uploadPPK,
   uploadPlugin,
   reset,
-  createPluginZip
+  createPluginZip,
 };

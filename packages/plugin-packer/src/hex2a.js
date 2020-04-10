@@ -11,7 +11,7 @@ const A_TO_K = "k".charCodeAt(0) - "a".charCodeAt(0);
  */
 function hex2a(hex) {
   return Array.from(hex)
-    .map(s => {
+    .map((s) => {
       if (s >= "0" && s <= "9") {
         return String.fromCharCode(s.charCodeAt(0) + N_TO_A);
       } else if (s >= "a" && s <= "f") {

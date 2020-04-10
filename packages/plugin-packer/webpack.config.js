@@ -6,15 +6,15 @@ module.exports = {
   entry: "./site/index.js",
   output: {
     path: path.resolve(__dirname, "docs", "dist"),
-    filename: "bundle.js"
+    filename: "bundle.js",
   },
   node: {
-    fs: "empty"
+    fs: "empty",
   },
   devServer: {
     contentBase: path.resolve(__dirname, "docs"),
     publicPath: "/dist/",
     watchContentBase: true,
-    open: true
-  }
+    open: true,
+  },
 };

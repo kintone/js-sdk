@@ -28,7 +28,7 @@ describe("packer", () => {
     let output;
     beforeEach(() => {
       const contentsZip = fs.readFileSync(contentsZipPath);
-      return packer(contentsZip).then(o => {
+      return packer(contentsZip).then((o) => {
         output = o;
       });
     });
@@ -43,8 +43,8 @@ describe("packer", () => {
       assert(/^-----BEGIN RSA PRIVATE KEY-----/.test(output.privateKey));
     });
 
-    it("the zip contains 3 files", done => {
-      readZipContentsNames(output.plugin).then(files => {
+    it("the zip contains 3 files", (done) => {
+      readZipContentsNames(output.plugin).then((files) => {
         assert.deepStrictEqual(
           files.sort(),
           ["contents.zip", "PUBKEY", "SIGNATURE"].sort()
@@ -64,7 +64,7 @@ describe("packer", () => {
     beforeEach(() => {
       const contentsZip = fs.readFileSync(contentsZipPath);
       privateKey = fs.readFileSync(privateKeyPath, "utf8");
-      return packer(contentsZip, privateKey).then(o => {
+      return packer(contentsZip, privateKey).then((o) => {
         output = o;
       });
     });
@@ -83,9 +83,9 @@ describe("packer", () => {
   });
 
   context("invalid contents.zip", () => {
-    it("throws an error if the contents.zip is invalid", done => {
+    it("throws an error if the contents.zip is invalid", (done) => {
       const contentsZip = fs.readFileSync(invalidMaxFileSizeContentsZipPath);
-      packer(contentsZip).catch(error => {
+      packer(contentsZip).catch((error) => {
         assert(
           error.message.indexOf('".icon" file size should be <= 20MB') !== -1
         );
@@ -98,7 +98,7 @@ describe("packer", () => {
 function streamToBuffer(stream) {
   return new Promise((resolve, reject) => {
     const buffers = [];
-    stream.on("data", data => buffers.push(data));
+    stream.on("data", (data) => buffers.push(data));
     stream.on("end", () => resolve(Buffer.concat(buffers)));
     stream.on("error", reject);
   });
@@ -108,11 +108,11 @@ function readZipContents(zipEntry) {
   const zipContentsMap = new Map();
   const streamToBufferPromises = [];
   return new Promise((resolve, reject) => {
-    zipEntry.on("entry", entry => {
+    zipEntry.on("entry", (entry) => {
       zipEntry.openReadStream(entry, (err, stream) => {
         if (err) reject(err);
         streamToBufferPromises.push(
-          streamToBuffer(stream).then(buffer => {
+          streamToBuffer(stream).then((buffer) => {
             zipContentsMap.set(entry.fileName, buffer);
           })
         );
@@ -128,7 +128,7 @@ function verifyPlugin(plugin) {
   return new Promise((resolve, reject) => {
     yauzl.fromBuffer(plugin, (err, zipEntry) => {
       if (err) reject(err);
-      readZipContents(zipEntry).then(zipContentsMap => {
+      readZipContents(zipEntry).then((zipContentsMap) => {
         const verifier = crypto.createVerify("RSA-SHA1");
         verifier.update(zipContentsMap.get("contents.zip"));
         const publicKey = zipContentsMap.get("PUBKEY");

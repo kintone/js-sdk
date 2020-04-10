@@ -44,41 +44,41 @@ describe("cli", () => {
       packer = sinon.stub().returns({
         id: ID,
         privateKey: PRIVATE_KEY,
-        plugin: PLUGIN_BUFFER
+        plugin: PLUGIN_BUFFER,
       });
     });
 
-    it("invalid `url`", done => {
+    it("invalid `url`", (done) => {
       cli(path.join(fixturesDir, "plugin-invalid-url"), {
-        packerMock_: packer
-      }).catch(error => {
+        packerMock_: packer,
+      }).catch((error) => {
         assert(/Invalid manifest.json/.test(error.message));
         done();
       });
     });
 
-    it("invalid `https-url`", done => {
+    it("invalid `https-url`", (done) => {
       cli(path.join(fixturesDir, "plugin-invalid-https-url"), {
-        packerMock_: packer
-      }).catch(error => {
+        packerMock_: packer,
+      }).catch((error) => {
         assert(/Invalid manifest.json/.test(error.message));
         done();
       });
     });
 
-    it("invalid `relative-path`", done => {
+    it("invalid `relative-path`", (done) => {
       cli(path.join(fixturesDir, "plugin-invalid-relative-path"), {
-        packerMock_: packer
-      }).catch(error => {
+        packerMock_: packer,
+      }).catch((error) => {
         assert(/Invalid manifest.json/.test(error.message));
         done();
       });
     });
 
-    it("invalid `maxFileSize`", done => {
+    it("invalid `maxFileSize`", (done) => {
       cli(path.join(fixturesDir, "plugin-invalid-maxFileSize"), {
-        packerMock_: packer
-      }).catch(error => {
+        packerMock_: packer,
+      }).catch((error) => {
         assert(/Invalid manifest.json/.test(error.message));
         done();
       });
@@ -93,20 +93,20 @@ describe("cli", () => {
       packer = sinon.stub().returns({
         id: ID,
         privateKey: PRIVATE_KEY,
-        plugin: PLUGIN_BUFFER
+        plugin: PLUGIN_BUFFER,
       });
 
       return rimraf(`${sampleDir}/*.*(ppk|zip)`)
         .then(() => cli(pluginDir, { packerMock_: packer }))
-        .then(filePath => {
+        .then((filePath) => {
           resultPluginPath = filePath;
         });
     });
 
-    it("calles `packer` with contents.zip as the 1st argument", done => {
+    it("calles `packer` with contents.zip as the 1st argument", (done) => {
       assert(packer.calledOnce);
       assert(packer.args[0][0]);
-      readZipContentsNames(packer.args[0][0]).then(files => {
+      readZipContentsNames(packer.args[0][0]).then((files) => {
         assert.deepStrictEqual(
           files.sort(),
           ["image/icon.png", "manifest.json"].sort()
@@ -141,7 +141,7 @@ describe("cli", () => {
       packer = sinon.stub().returns({
         id: ID,
         privateKey: PRIVATE_KEY,
-        plugin: PLUGIN_BUFFER
+        plugin: PLUGIN_BUFFER,
       });
 
       return rimraf(`${sampleDir}/*.*(ppk|zip)`).then(() =>
@@ -166,13 +166,13 @@ describe("cli", () => {
     const packer = sinon.stub().returns({
       id: ID,
       privateKey: PRIVATE_KEY,
-      plugin: PLUGIN_BUFFER
+      plugin: PLUGIN_BUFFER,
     });
 
     return rimraf(`${sampleDir}/*.*(ppk|zip)`)
       .then(() => cli(pluginDir, { packerMock_: packer }))
       .then(() => {
-        return readZipContentsNames(packer.args[0][0]).then(files => {
+        return readZipContentsNames(packer.args[0][0]).then((files) => {
           assert.deepStrictEqual(
             files.sort(),
             [
@@ -184,7 +184,7 @@ describe("cli", () => {
               "js/config.js",
               "js/desktop.js",
               "js/mobile.js",
-              "manifest.json"
+              "manifest.json",
             ].sort()
           );
         });
@@ -198,14 +198,14 @@ describe("cli", () => {
     const packer = sinon.stub().returns({
       id: ID,
       privateKey: PRIVATE_KEY,
-      plugin: PLUGIN_BUFFER
+      plugin: PLUGIN_BUFFER,
     });
 
     return rimraf(outputDir)
       .then(() =>
         cli(pluginDir, { packerMock_: packer, out: outputPluginPath })
       )
-      .then(resultPluginPath => {
+      .then((resultPluginPath) => {
         assert.strictEqual(resultPluginPath, outputPluginPath);
         const pluginBuffer = fs.readFileSync(outputPluginPath);
         assert(PLUGIN_BUFFER.equals(pluginBuffer));

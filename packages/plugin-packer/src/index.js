@@ -31,10 +31,10 @@ function packer(contentsZip, privateKey_) {
   debug(`id : ${id}`);
   return validateContentsZip(contentsZip)
     .then(() => zip(contentsZip, publicKey, signature))
-    .then(plugin => ({
+    .then((plugin) => ({
       plugin: plugin,
       privateKey: privateKey,
-      id: id
+      id: id,
     }));
 }
 
@@ -59,7 +59,7 @@ function zip(contentsZip, publicKey, signature) {
     zipFile.addBuffer(contentsZip, "contents.zip");
     zipFile.addBuffer(publicKey, "PUBKEY");
     zipFile.addBuffer(signature, "SIGNATURE");
-    zipFile.end(finalSize => {
+    zipFile.end((finalSize) => {
       debug(`zip(): ZipFile end event: finalSize ${finalSize} bytes`);
     });
   });
