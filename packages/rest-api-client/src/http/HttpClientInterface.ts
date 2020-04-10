@@ -17,9 +17,16 @@ export type ErrorResponse<T = any> = {
 
 export type HttpMethod = "get" | "post" | "put" | "delete";
 export type Params = { [key: string]: unknown };
-export type ErrorResponseHandler = (error: {
-  response?: ErrorResponse;
-}) => void;
+
+export class HttpError<T = ErrorResponse> extends Error {
+  public response?: T;
+
+  constructor(message: string, response?: T) {
+    super(message);
+    this.response = response;
+  }
+}
+export type ErrorResponseHandler = (error: HttpError) => void;
 
 export type RequestConfig = {
   method: HttpMethod;

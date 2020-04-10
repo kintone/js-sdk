@@ -8,7 +8,7 @@ import {
   KintoneRestAPIError,
   KintoneErrorResponse,
 } from "./KintoneRestAPIError";
-import { ErrorResponse } from "./http/HttpClientInterface";
+import { ErrorResponse, HttpError } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 
 export type HTTPClientParams = {
@@ -56,9 +56,9 @@ export type KintoneAuthHeader =
       Authorization?: string;
     };
 
-export const errorResponseHandler = (error: {
-  response?: ErrorResponse<string> | KintoneErrorResponse;
-}) => {
+export const errorResponseHandler = (
+  error: HttpError<ErrorResponse<string> | KintoneErrorResponse>
+) => {
   if (!error.response) {
     // FIXME: find a better way to hanle this error
     if (/mac verify failure/.test(error.toString())) {
