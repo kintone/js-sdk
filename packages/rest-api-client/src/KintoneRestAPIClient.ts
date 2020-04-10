@@ -56,6 +56,25 @@ export type KintoneAuthHeader =
       Authorization?: string;
     };
 
+export const errorResponseHandler = (error: {
+  response?: ErrorResponse<string> | KintoneErrorResponse;
+}) => {
+  if (!error.response) {
+    // FIXME: find a better way to hanle this error
+    if (/mac verify failure/.test(error.toString())) {
+      throw new Error("invalid clientCertAuth setting");
+    }
+    throw error;
+  }
+  const errorResponse = error.response;
+
+  const { data, ...rest } = errorResponse;
+  if (typeof data === "string") {
+    throw new Error(`${rest.status}: ${rest.statusText}`);
+  }
+  throw new KintoneRestAPIError({ data, ...rest });
+};
+
 export class KintoneRestAPIClient {
   record: RecordClient;
   app: AppClient;
@@ -89,25 +108,6 @@ export class KintoneRestAPIClient {
     if (typeof this.baseUrl === "undefined") {
       throw new Error("in Node environment, baseUrl is required");
     }
-
-    const errorResponseHandler = (error: {
-      response?: ErrorResponse<string> | KintoneErrorResponse;
-    }) => {
-      if (!error.response) {
-        // FIXME: find a better way to hanle this error
-        if (/mac verify failure/.test(error.toString())) {
-          throw new Error("invalid clientCertAuth setting");
-        }
-        throw error;
-      }
-      const errorResponse = error.response;
-
-      const { data, ...rest } = errorResponse;
-      if (typeof data === "string") {
-        throw new Error(`${rest.status}: ${rest.statusText}`);
-      }
-      throw new KintoneRestAPIError({ data, ...rest });
-    };
 
     const httpClient = new DefaultHttpClient({
       errorResponseHandler,
