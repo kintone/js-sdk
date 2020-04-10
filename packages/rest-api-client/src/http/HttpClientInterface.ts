@@ -21,7 +21,7 @@ export type Params = { [key: string]: unknown };
 export interface HttpClientError<T = ErrorResponse> extends Error {
   response?: T;
 }
-export type ErrorResponseHandler = (error: HttpError) => void;
+export type ErrorResponseHandler = (error: HttpClientError) => void;
 
 export type RequestConfig = {
   method: HttpMethod;

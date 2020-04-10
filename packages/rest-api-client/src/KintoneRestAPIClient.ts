@@ -8,7 +8,7 @@ import {
   KintoneRestAPIError,
   KintoneErrorResponse,
 } from "./KintoneRestAPIError";
-import { ErrorResponse, HttpError } from "./http/HttpClientInterface";
+import { ErrorResponse, HttpClientError } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 
 export type HTTPClientParams = {
@@ -57,7 +57,7 @@ export type KintoneAuthHeader =
     };
 
 export const errorResponseHandler = (
-  error: HttpError<ErrorResponse<string> | KintoneErrorResponse>
+  error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
 ) => {
   if (!error.response) {
     // FIXME: find a better way to hanle this error
