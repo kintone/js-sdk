@@ -4,7 +4,7 @@ import {
 } from "../KintoneRestAPIClient";
 import { Base64 } from "js-base64";
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
-import { ErrorResponse, HttpError } from "../http/HttpClientInterface";
+import { ErrorResponse, HttpClientError } from "../http/HttpClientInterface";
 
 describe("KintoneRestAPIClient", () => {
   describe("constructor", () => {
@@ -110,6 +110,14 @@ describe("KintoneRestAPIClient", () => {
     });
   });
   describe("errorResponseHandler", () => {
+    class HttpClientErrorImpl<T> extends Error implements HttpClientError<T> {
+      public response?: T;
+
+      constructor(message: string, response?: T) {
+        super(message);
+        this.response = response;
+      }
+    }
     it("should raise a KintoneRestAPIError", () => {
       const errorResponse: ErrorResponse = {
         data: {},
@@ -118,7 +126,7 @@ describe("KintoneRestAPIClient", () => {
         headers: {},
       };
       expect(() => {
-        errorResponseHandler({ response: errorResponse });
+        errorResponseHandler(new HttpClientErrorImpl("", errorResponse));
       }).toThrow(KintoneRestAPIError);
     });
     it("should raise an Error if error.response.data is a string", () => {
@@ -129,17 +137,17 @@ describe("KintoneRestAPIClient", () => {
         headers: {},
       };
       expect(() => {
-        errorResponseHandler({ response: errorResponse });
+        errorResponseHandler(new HttpClientErrorImpl("", errorResponse));
       }).toThrow(`${errorResponse.status}: ${errorResponse.statusText}`);
     });
     it("should raise an error if error.response is undefined", () => {
       expect(() => {
-        errorResponseHandler(new HttpError("unknown error"));
+        errorResponseHandler(new HttpClientErrorImpl("unknown error"));
       }).toThrow("unknown error");
     });
     it("should raise an error with appropriate message if the error is 'mac verify failure'", () => {
       expect(() => {
-        errorResponseHandler(new HttpError("mac verify failure"));
+        errorResponseHandler(new HttpClientErrorImpl("mac verify failure"));
       }).toThrow("invalid clientCertAuth setting");
     });
   });
