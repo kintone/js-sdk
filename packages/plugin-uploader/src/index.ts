@@ -39,7 +39,7 @@ async function readyForUpload(
   try {
     await page.waitForNavigation({
       timeout: TIMEOUT_MS,
-      waitUntil: "domcontentloaded"
+      waitUntil: "domcontentloaded",
     });
   } catch (e) {
     console.log(chalk.red(m("Error_failedLogin")));
@@ -51,7 +51,7 @@ async function readyForUpload(
   await page.goto(pluginUrl);
   try {
     await page.waitForSelector("#page-admin-system-plugin-index-addplugin", {
-      timeout: TIMEOUT_MS
+      timeout: TIMEOUT_MS,
     });
   } catch (e) {
     console.log(chalk.red(m("Error_adminPrivilege")));
@@ -77,7 +77,7 @@ async function upload(
   await page.click('button[name="ok"]');
   await page.waitForSelector(".ocean-ui-dialog", {
     hidden: true,
-    timeout: TIMEOUT_MS
+    timeout: TIMEOUT_MS,
   });
   console.log(`${pluginPath} ${m("Uploaded")}`);
 }
