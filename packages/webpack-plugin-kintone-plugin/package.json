@@ -28,7 +28,7 @@
   "homepage": "https://github.com/kintone/webpack-plugin-kintone-plugin",
   "bugs": "https://github.com/kintone/webpack-plugin-kintone-plugin/issues",
   "devDependencies": {
-    "@types/adm-zip": "^0.4.32",
+    "@types/adm-zip": "^0.4.33",
     "@types/chokidar": "^1.7.5",
     "@types/lodash": "^4.14.149",
     "@types/mkdirp": "^1.0.0",
