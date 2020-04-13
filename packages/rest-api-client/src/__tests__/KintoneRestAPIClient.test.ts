@@ -3,6 +3,9 @@ import {
   errorResponseHandler,
 } from "../KintoneRestAPIClient";
 import { Base64 } from "js-base64";
+import { injectPlatformDeps } from "../platform";
+import * as browserDeps from "../platform/browser";
+import * as nodeDeps from "../platform/node";
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
 import { ErrorResponse, HttpClientError } from "../http/HttpClientInterface";
 
@@ -27,6 +30,9 @@ describe("KintoneRestAPIClient", () => {
     });
     describe("Header", () => {
       const baseUrl = "https://example.com";
+      beforeEach(() => {
+        injectPlatformDeps(browserDeps);
+      });
       it("ApiToken auth", () => {
         const API_TOKEN = "ApiToken";
         const auth = {
@@ -103,8 +109,20 @@ describe("KintoneRestAPIClient", () => {
 
       it("should raise an error in Node environment if baseUrl param is not specified", () => {
         global.location = undefined;
-        expect(() => new KintoneRestAPIClient()).toThrow(
+        const USERNAME = "user";
+        const PASSWORD = "password";
+        const auth = {
+          username: USERNAME,
+          password: PASSWORD,
+        };
+        expect(() => new KintoneRestAPIClient({ auth })).toThrow(
           "in Node environment, baseUrl is required"
+        );
+      });
+      it("should raise an error in Node enviroment if use session auth", () => {
+        injectPlatformDeps(nodeDeps);
+        expect(() => new KintoneRestAPIClient({ baseUrl })).toThrow(
+          "session authorization doesn't allow on a Node.js environment."
         );
       });
     });
