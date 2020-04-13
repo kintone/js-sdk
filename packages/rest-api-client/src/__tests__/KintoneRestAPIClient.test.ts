@@ -12,21 +12,14 @@ import { ErrorResponse, HttpClientError } from "../http/HttpClientInterface";
 describe("KintoneRestAPIClient", () => {
   describe("constructor", () => {
     let originalKintone: any;
-    let originalLocation: any;
     beforeEach(() => {
       originalKintone = global.kintone;
-      originalLocation = Object.getOwnPropertyDescriptor(global, "location");
-      Object.defineProperty(global, "location", {
-        writable: true,
-      });
       global.kintone = {
         getRequestToken: () => "dummy request token",
       };
     });
     afterEach(() => {
       global.kintone = originalKintone;
-      // Enable to update the location object to mock
-      Object.defineProperty(global, "location", originalLocation);
     });
     describe("Header", () => {
       const baseUrl = "https://example.com";
