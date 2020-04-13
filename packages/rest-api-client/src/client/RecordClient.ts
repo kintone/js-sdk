@@ -8,6 +8,11 @@ export type Record = {
   [fieldCode: string]: any;
 };
 
+type UpdateKey = {
+  field: string;
+  value: string | number;
+};
+
 type Mention = {
   code: string;
   type: "USER" | "GROUP" | "ORGANIZATION";
@@ -28,6 +33,7 @@ type CommentID = string | number;
 
 const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
+const DELETE_RECORDS_LIMIT = 100;
 
 export class RecordClient {
   private client: HttpClient;
@@ -69,7 +75,12 @@ export class RecordClient {
   public updateRecord(
     params:
       | { app: AppID; id: RecordID; record?: object; revision?: Revision }
-      | { app: AppID; updateKey: object; record?: object; revision?: Revision }
+      | {
+          app: AppID;
+          updateKey: UpdateKey;
+          record?: object;
+          revision?: Revision;
+        }
   ): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record",
@@ -79,10 +90,7 @@ export class RecordClient {
 
   public async upsertRecord(params: {
     app: AppID;
-    updateKey: {
-      field: string;
-      value: string | number;
-    };
+    updateKey: UpdateKey;
     record?: object;
     revision?: Revision;
   }): Promise<{ id: string; revision: string }> {
@@ -155,7 +163,11 @@ export class RecordClient {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
+      | {
+          updateKey: UpdateKey;
+          record?: object;
+          revision?: Revision;
+        }
     >;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const path = this.buildPathWithGuestSpaceId({
@@ -338,20 +350,20 @@ export class RecordClient {
     ) {
       throw new Error("the `records` parameter must be an array of object.");
     }
-    const records = await this.addAllRecordsRecursive(params, []);
-    return { records };
+    return this.addAllRecordsRecursive(params, params.records.length, []);
   }
 
   private async addAllRecordsRecursive(
     params: { app: AppID; records: object[] },
+    numOfAllRecords: number,
     results: Array<{ id: string; revision: string }>
-  ): Promise<Array<{ id: string; revision: string }>> {
+  ): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * ADD_RECORDS_LIMIT;
     const { app, records } = params;
     const recordsChunk = records.slice(0, CHUNK_LENGTH);
     if (recordsChunk.length === 0) {
-      return results;
+      return { records: results };
     }
     let newResults;
     try {
@@ -360,13 +372,20 @@ export class RecordClient {
         records: recordsChunk,
       });
     } catch (e) {
-      throw new KintoneAllRecordsError(results, records, e, ADD_RECORDS_LIMIT);
+      throw new KintoneAllRecordsError(
+        { records: results },
+        records,
+        numOfAllRecords,
+        e,
+        ADD_RECORDS_LIMIT
+      );
     }
     return this.addAllRecordsRecursive(
       {
         app,
         records: records.slice(CHUNK_LENGTH),
       },
+      numOfAllRecords,
       results.concat(newResults)
     );
   }
@@ -409,11 +428,14 @@ export class RecordClient {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
+      | {
+          updateKey: UpdateKey;
+          record?: object;
+          revision?: Revision;
+        }
     >;
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
-    const records = await this.updateAllRecordsRecursive(params, []);
-    return { records };
+    return this.updateAllRecordsRecursive(params, params.records.length, []);
   }
 
   private async updateAllRecordsRecursive(
@@ -421,17 +443,22 @@ export class RecordClient {
       app: AppID;
       records: Array<
         | { id: RecordID; record?: object; revision?: Revision }
-        | { updateKey: object; record?: object; revision?: Revision }
+        | {
+            updateKey: UpdateKey;
+            record?: object;
+            revision?: Revision;
+          }
       >;
     },
+    numOfAllRecords: number,
     results: Array<{ id: string; revision: string }>
-  ): Promise<Array<{ id: string; revision: string }>> {
+  ): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * UPDATE_RECORDS_LIMIT;
     const { app, records } = params;
     const recordsChunk = records.slice(0, CHUNK_LENGTH);
     if (recordsChunk.length === 0) {
-      return results;
+      return { records: results };
     }
     let newResults;
     try {
@@ -441,8 +468,9 @@ export class RecordClient {
       });
     } catch (e) {
       throw new KintoneAllRecordsError(
-        results,
+        { records: results },
         records,
+        numOfAllRecords,
         e,
         UPDATE_RECORDS_LIMIT
       );
@@ -452,6 +480,7 @@ export class RecordClient {
         app,
         records: records.slice(CHUNK_LENGTH),
       },
+      numOfAllRecords,
       results.concat(newResults)
     );
   }
@@ -460,7 +489,11 @@ export class RecordClient {
     app: AppID;
     records: Array<
       | { id: RecordID; record?: object; revision?: Revision }
-      | { updateKey: object; record?: object; revision?: Revision }
+      | {
+          updateKey: UpdateKey;
+          record?: object;
+          revision?: Revision;
+        }
     >;
   }): Promise<Array<{ id: string; revision: string }>> {
     const separatedRecords = this.separateArrayRecursive(
@@ -483,6 +516,80 @@ export class RecordClient {
       .reduce((acc, records) => {
         return acc.concat(records);
       }, []);
+  }
+
+  public deleteAllRecords(params: {
+    app: AppID;
+    records: Array<{
+      id: RecordID;
+      revision?: Revision;
+    }>;
+  }): Promise<{}> {
+    return this.deleteAllRecordsRecursive(params, params.records.length);
+  }
+
+  private async deleteAllRecordsRecursive(
+    params: {
+      app: AppID;
+      records: Array<{
+        id: RecordID;
+        revision?: Revision;
+      }>;
+    },
+    numOfAllRecords: number
+  ): Promise<{}> {
+    const CHUNK_LENGTH =
+      this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * DELETE_RECORDS_LIMIT;
+    const { app, records } = params;
+    const recordsChunk = records.slice(0, CHUNK_LENGTH);
+    if (recordsChunk.length === 0) {
+      return {};
+    }
+    try {
+      await this.deleteAllRecordsWithBulkRequest({
+        app,
+        records: recordsChunk,
+      });
+    } catch (e) {
+      throw new KintoneAllRecordsError(
+        {},
+        records,
+        numOfAllRecords,
+        e,
+        DELETE_RECORDS_LIMIT
+      );
+    }
+    return this.deleteAllRecordsRecursive(
+      {
+        app,
+        records: records.slice(CHUNK_LENGTH),
+      },
+      numOfAllRecords
+    );
+  }
+
+  private async deleteAllRecordsWithBulkRequest(params: {
+    app: AppID;
+    records: Array<{
+      id: RecordID;
+      revision?: Revision;
+    }>;
+  }): Promise<void> {
+    const separatedRecords = this.separateArrayRecursive(
+      DELETE_RECORDS_LIMIT,
+      [],
+      params.records
+    );
+    const requests = separatedRecords.map((records) => ({
+      method: "DELETE",
+      api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
+      payload: {
+        app: params.app,
+        ids: records.map((record) => record.id),
+        revisions: records.map((record) => record.revision),
+      },
+    }));
+    await this.bulkRequestClient.send({ requests });
   }
 
   private separateArrayRecursive<T>(

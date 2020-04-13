@@ -13,3 +13,7 @@ export const getRequestToken = () => {
   }
   return kintone.getRequestToken();
 };
+
+export const buildPlatformDependentConfig = () => {
+  return {};
+};

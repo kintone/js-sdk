@@ -8,6 +8,7 @@ import {
   Params,
 } from "./http/HttpClientInterface";
 import { KintoneAuthHeader, HTTPClientParams } from "./KintoneRestAPIClient";
+import { platformDeps } from "./platform/";
 
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 
@@ -15,14 +16,33 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   private baseUrl: string;
   private headers: KintoneAuthHeader;
   private params: HTTPClientParams;
+  private clientCertAuth?:
+    | {
+        pfx: Buffer;
+        password: string;
+      }
+    | {
+        pfxFilePath: string;
+        password: string;
+      };
   constructor(
     baseUrl: string,
     headers: KintoneAuthHeader,
-    params: HTTPClientParams
+    params: HTTPClientParams,
+    clientCertAuth?:
+      | {
+          pfx: Buffer;
+          password: string;
+        }
+      | {
+          pfxFilePath: string;
+          password: string;
+        }
   ) {
     this.baseUrl = baseUrl;
     this.headers = headers;
     this.params = params;
+    this.clientCertAuth = clientCertAuth;
   }
   public build(
     method: HttpMethod,
@@ -35,6 +55,9 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
       ...(options ? options : {}),
+      ...platformDeps.buildPlatformDependentConfig({
+        clientCertAuth: this.clientCertAuth,
+      }),
     };
 
     switch (method) {

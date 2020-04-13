@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publishConfig": {
     "access": "public"
   },
@@ -18,8 +18,8 @@
     "build": "npm-run-all -l -s clean -p build:*",
     "lint": "run-p -l lint:*",
     "prerelease": "npm-run-all -p lint test -s build",
-    "test": "jest --rootDir src",
-    "test:ci": "jest --rootDir src --runInBand",
+    "test": "jest",
+    "test:ci": "jest --runInBand",
     "build:umd_dev": "webpack --mode development --config webpack.umd.config.js",
     "build:umd_prod": "webpack --mode production --config webpack.umd.config.js",
     "build:compile": "run-p compile",
@@ -61,20 +61,20 @@
     "node": ">=10.0.0"
   },
   "devDependencies": {
-    "@kintone/customize-uploader": "^3.0.1",
+    "@kintone/customize-uploader": "^3.0.2",
     "@types/core-js": "^2.5.3",
-    "@types/jest": "^25.1.4",
+    "@types/jest": "^25.2.1",
     "@types/js-base64": "^2.3.1",
-    "@types/node": "^12.12.32",
+    "@types/node": "^12.12.35",
     "@types/qs": "^6.9.1",
     "ts-loader": "^6.2.2",
-    "ts-node": "^8.8.1",
+    "ts-node": "^8.8.2",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "core-js": "^3.6.4",
+    "core-js": "^3.6.5",
     "form-data": "^3.0.0",
     "js-base64": "^2.5.2",
     "qs": "^6.9.3"

@@ -6,8 +6,10 @@ describe("KintoneAllRecordsError", () => {
   let kintoneAllRecordsError: KintoneAllRecordsError;
   let kintoneRestApiError: KintoneRestAPIError;
   let errorResponse: ErrorResponse;
-  const processedRecordsResult = [{}, {}, {}, {}, {}];
+  const processedRecordsResult = { records: [{}, {}, {}, {}, {}] };
   const unprocessedRecords = [{}, {}, {}];
+  const numOfAllRecords = 8;
+  const numOfProcessedRecords = numOfAllRecords - unprocessedRecords.length;
   const chunkLength = 100;
   // ref. errorResponse.data.results
   const bulkRequestIndex = 2;
@@ -31,6 +33,7 @@ describe("KintoneAllRecordsError", () => {
         ],
       },
       status: 500,
+      statusText: "Internal Server Error",
       headers: {
         "X-Some-Header": "error",
       },
@@ -39,6 +42,7 @@ describe("KintoneAllRecordsError", () => {
     kintoneAllRecordsError = new KintoneAllRecordsError(
       processedRecordsResult,
       unprocessedRecords,
+      numOfAllRecords,
       kintoneRestApiError,
       chunkLength
     );
@@ -46,7 +50,7 @@ describe("KintoneAllRecordsError", () => {
   describe("constructor", () => {
     it("should set errorIndex from an error", () => {
       expect(kintoneAllRecordsError.errorIndex).toBe(
-        processedRecordsResult.length +
+        numOfProcessedRecords +
           bulkRequestIndex * chunkLength +
           errorParseResult
       );
@@ -62,11 +66,7 @@ describe("KintoneAllRecordsError", () => {
     });
     it("should set a message that includes an error index if error.errors exists", () => {
       expect(kintoneAllRecordsError.message).toBe(
-        `An error occurred at records[${kintoneAllRecordsError.errorIndex}]. ${
-          processedRecordsResult.length
-        }/${
-          processedRecordsResult.length + unprocessedRecords.length
-        } records are processed successfully`
+        `An error occurred at records[${kintoneAllRecordsError.errorIndex}]. ${numOfProcessedRecords}/${numOfAllRecords} records are processed successfully`
       );
     });
     it("should set a message that includes the succeeded count", () => {
@@ -88,6 +88,7 @@ describe("KintoneAllRecordsError", () => {
           ],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },
@@ -96,14 +97,13 @@ describe("KintoneAllRecordsError", () => {
       kintoneAllRecordsError = new KintoneAllRecordsError(
         processedRecordsResult,
         unprocessedRecords,
+        numOfAllRecords,
         kintoneRestApiError,
         chunkLength
       );
 
       expect(kintoneAllRecordsError.message).toBe(
-        `${processedRecordsResult.length}/${
-          processedRecordsResult.length + unprocessedRecords.length
-        } records are processed successfully`
+        `${numOfProcessedRecords}/${numOfAllRecords} records are processed successfully`
       );
     });
     it("should set errorIndex even if bulkRequestIndex = 0", () => {
@@ -125,6 +125,7 @@ describe("KintoneAllRecordsError", () => {
           ],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },
@@ -133,12 +134,13 @@ describe("KintoneAllRecordsError", () => {
       kintoneAllRecordsError = new KintoneAllRecordsError(
         processedRecordsResult,
         unprocessedRecords,
+        numOfAllRecords,
         kintoneRestApiError,
         chunkLength
       );
 
       expect(kintoneAllRecordsError.errorIndex).toBe(
-        processedRecordsResult.length + errorParseResult
+        numOfProcessedRecords + errorParseResult
       );
     });
   });

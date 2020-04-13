@@ -1,30 +1,38 @@
-import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
+import {
+  KintoneRestAPIClient,
+  errorResponseHandler,
+} from "../KintoneRestAPIClient";
 import { Base64 } from "js-base64";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
 import * as nodeDeps from "../platform/node";
+import { KintoneRestAPIError } from "../KintoneRestAPIError";
+import { ErrorResponse, HttpClientError } from "../http/HttpClientInterface";
 
 describe("KintoneRestAPIClient", () => {
-  let originalKintone: any;
-  let originalLocation: any;
-  beforeEach(() => {
-    originalKintone = global.kintone;
-    originalLocation = Object.getOwnPropertyDescriptor(global, "location");
-    Object.defineProperty(global, "location", {
-      writable: true,
-    });
-    global.kintone = {
-      getRequestToken: () => "dummy request token",
-    };
-  });
-  afterEach(() => {
-    global.kintone = originalKintone;
-    // Enable to update the location object to mock
-    Object.defineProperty(global, "location", originalLocation);
-  });
   describe("constructor", () => {
+    let originalKintone: any;
+    let originalLocation: any;
+    beforeEach(() => {
+      originalKintone = global.kintone;
+      originalLocation = Object.getOwnPropertyDescriptor(global, "location");
+      Object.defineProperty(global, "location", {
+        writable: true,
+      });
+      global.kintone = {
+        getRequestToken: () => "dummy request token",
+      };
+    });
+    afterEach(() => {
+      global.kintone = originalKintone;
+      // Enable to update the location object to mock
+      Object.defineProperty(global, "location", originalLocation);
+    });
     describe("Header", () => {
       const baseUrl = "https://example.com";
+      beforeEach(() => {
+        injectPlatformDeps(browserDeps);
+      });
       it("ApiToken auth", () => {
         const API_TOKEN = "ApiToken";
         const auth = {
@@ -70,7 +78,6 @@ describe("KintoneRestAPIClient", () => {
         });
       });
       it("Session auth", () => {
-        injectPlatformDeps(browserDeps);
         const auth = {};
         const client = new KintoneRestAPIClient({ baseUrl, auth });
         expect(client.getHeaders()).toEqual({
@@ -102,16 +109,64 @@ describe("KintoneRestAPIClient", () => {
 
       it("should raise an error in Node environment if baseUrl param is not specified", () => {
         global.location = undefined;
-        expect(() => new KintoneRestAPIClient()).toThrow(
+        const USERNAME = "user";
+        const PASSWORD = "password";
+        const auth = {
+          username: USERNAME,
+          password: PASSWORD,
+        };
+        expect(() => new KintoneRestAPIClient({ auth })).toThrow(
           "in Node environment, baseUrl is required"
         );
       });
       it("should raise an error in Node enviroment if use session auth", () => {
         injectPlatformDeps(nodeDeps);
-        expect(() => new KintoneRestAPIClient()).toThrow(
+        expect(() => new KintoneRestAPIClient({ baseUrl })).toThrow(
           "session authorization doesn't allow on a Node.js environment."
         );
       });
+    });
+  });
+  describe("errorResponseHandler", () => {
+    class HttpClientErrorImpl<T> extends Error implements HttpClientError<T> {
+      public response?: T;
+
+      constructor(message: string, response?: T) {
+        super(message);
+        this.response = response;
+      }
+    }
+    it("should raise a KintoneRestAPIError", () => {
+      const errorResponse: ErrorResponse = {
+        data: {},
+        status: 500,
+        statusText: "Internal Server Error",
+        headers: {},
+      };
+      expect(() => {
+        errorResponseHandler(new HttpClientErrorImpl("", errorResponse));
+      }).toThrow(KintoneRestAPIError);
+    });
+    it("should raise an Error if error.response.data is a string", () => {
+      const errorResponse: ErrorResponse = {
+        data: "unexpected error",
+        status: 500,
+        statusText: "Internal Server Error",
+        headers: {},
+      };
+      expect(() => {
+        errorResponseHandler(new HttpClientErrorImpl("", errorResponse));
+      }).toThrow(`${errorResponse.status}: ${errorResponse.statusText}`);
+    });
+    it("should raise an error if error.response is undefined", () => {
+      expect(() => {
+        errorResponseHandler(new HttpClientErrorImpl("unknown error"));
+      }).toThrow("unknown error");
+    });
+    it("should raise an error with appropriate message if the error is 'mac verify failure'", () => {
+      expect(() => {
+        errorResponseHandler(new HttpClientErrorImpl("mac verify failure"));
+      }).toThrow("invalid clientCertAuth setting");
     });
   });
 });

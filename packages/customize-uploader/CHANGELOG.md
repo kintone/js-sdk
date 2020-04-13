@@ -1,3 +1,23 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [3.0.2](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.0.1...@kintone/customize-uploader@3.0.2) (2020-04-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^7.0.5 ([#268](https://github.com/kintone/js-sdk/issues/268)) ([a6d49db](https://github.com/kintone/js-sdk/commit/a6d49db674e1d7ebc89fa20689bdf8a005c1882a))
+* **deps:** update dependency inquirer to ^7.0.6 ([443434c](https://github.com/kintone/js-sdk/commit/443434cdee52d89abf67ec05ca2dd91228c6931f))
+* **deps:** update dependency inquirer to ^7.1.0 ([#138](https://github.com/kintone/js-sdk/issues/138)) ([559a942](https://github.com/kintone/js-sdk/commit/559a942af64bc701416d573bb919ec9c5a4135fb))
+* **deps:** update dependency meow to ^6.1.0 ([#139](https://github.com/kintone/js-sdk/issues/139)) ([13e4826](https://github.com/kintone/js-sdk/commit/13e48262cc8898681150c9ecf000c5e9ec884715))
+* **deps:** update dependency os-locale to v5 ([#141](https://github.com/kintone/js-sdk/issues/141)) ([ca74f7f](https://github.com/kintone/js-sdk/commit/ca74f7f302b18a578680736cd88311d807cf4c01))
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.

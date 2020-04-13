@@ -1,5 +1,4 @@
 import FormData from "form-data";
-
 export interface HttpClient {
   get: <T extends object>(path: string, params: object) => Promise<T>;
   getData: (path: string, params: object) => Promise<ArrayBuffer>;
@@ -9,31 +8,26 @@ export interface HttpClient {
   delete: <T extends object>(path: string, params: object) => Promise<T>;
 }
 
-export type ErrorResponseData = {
-  id: string;
-  code: string;
-  message: string;
-  errors?: any;
-};
-
-export type ErrorResponse = {
-  data:
-    | ErrorResponseData
-    | {
-        results: Array<ErrorResponseData | {}>;
-      };
+export type ErrorResponse<T = any> = {
+  data: T;
   status: number;
+  statusText: string;
   headers: any;
 };
 
 export type HttpMethod = "get" | "post" | "put" | "delete";
 export type Params = { [key: string]: unknown };
-export type ErrorResponseHandler = (errorResponse: ErrorResponse) => void;
+
+export interface HttpClientError<T = ErrorResponse> extends Error {
+  response?: T;
+}
+export type ErrorResponseHandler = (error: HttpClientError) => void;
 
 export type RequestConfig = {
   method: HttpMethod;
   url: string;
   headers: any;
+  httpsAgent?: any;
   data?: any;
 };
 
