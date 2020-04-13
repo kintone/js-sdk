@@ -4,8 +4,11 @@ import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
 import { Base64 } from "js-base64";
-import { KintoneRestAPIError } from "./KintoneRestAPIError";
-import { ErrorResponse } from "./http/HttpClientInterface";
+import {
+  KintoneRestAPIError,
+  KintoneErrorResponse,
+} from "./KintoneRestAPIError";
+import { ErrorResponse, HttpClientError } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 
 export type HTTPClientParams = {
@@ -53,6 +56,25 @@ export type KintoneAuthHeader =
       Authorization?: string;
     };
 
+export const errorResponseHandler = (
+  error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
+) => {
+  if (!error.response) {
+    // FIXME: find a better way to hanle this error
+    if (/mac verify failure/.test(error.toString())) {
+      throw new Error("invalid clientCertAuth setting");
+    }
+    throw error;
+  }
+  const errorResponse = error.response;
+
+  const { data, ...rest } = errorResponse;
+  if (typeof data === "string") {
+    throw new Error(`${rest.status}: ${rest.statusText}`);
+  }
+  throw new KintoneRestAPIError({ data, ...rest });
+};
+
 export class KintoneRestAPIClient {
   record: RecordClient;
   app: AppClient;
@@ -67,6 +89,15 @@ export class KintoneRestAPIClient {
       auth?: Auth;
       guestSpaceId?: number | string;
       basicAuth?: BasicAuth;
+      clientCertAuth?:
+        | {
+            pfx: Buffer;
+            password: string;
+          }
+        | {
+            pfxFilePath: string;
+            password: string;
+          };
     } = {}
   ) {
     const auth = this.buildAuth(options.auth ?? {});
@@ -78,16 +109,13 @@ export class KintoneRestAPIClient {
       throw new Error("in Node environment, baseUrl is required");
     }
 
-    const errorResponseHandler = (errorResponse: ErrorResponse) => {
-      throw new KintoneRestAPIError(errorResponse);
-    };
-
     const httpClient = new DefaultHttpClient({
       errorResponseHandler,
       requestConfigBuilder: new KintoneRequestConfigBuilder(
         this.baseUrl,
         this.headers,
-        params
+        params,
+        options.clientCertAuth
       ),
     });
     const { guestSpaceId } = options;

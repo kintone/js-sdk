@@ -884,6 +884,7 @@ describe("RecordClient", () => {
           ],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },
@@ -1008,6 +1009,7 @@ describe("RecordClient", () => {
           ],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },
@@ -1084,6 +1086,7 @@ describe("RecordClient", () => {
           ],
         },
         status: 500,
+        statusText: "Internal Server Error",
         headers: {
           "X-Some-Header": "error",
         },
