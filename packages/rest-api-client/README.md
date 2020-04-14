@@ -107,7 +107,7 @@ The client determines which method to use by passed parameters.
 | -------- | :----------------: | :------: | ------------------------------------------------------- |
 | apiToken | String or String[] |   Yes    | You can pass multiple api tokens as an array of string. |
 
-#### 3. Parameters for [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
+#### 3. Parameters for [OAuth authentication](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients)
 
 | Name       |  Type  | Required | Description                                                                                                                                           |
 | ---------- | :----: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
