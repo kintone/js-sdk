@@ -1,4 +1,4 @@
-import { BulkRequestClient } from "./client/BulkRequestClient";
+import { BulkRequestClient, EndpointName } from "./client/BulkRequestClient";
 import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
@@ -212,7 +212,7 @@ export class KintoneRestAPIClient {
         }
       | {
           method: string;
-          endpointName: string;
+          endpointName: EndpointName;
           payload: object;
         }
     >;

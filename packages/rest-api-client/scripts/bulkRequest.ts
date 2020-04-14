@@ -59,7 +59,7 @@ export class BulkRequest {
       requests: [
         {
           method: "POST",
-          endpointName: "record",
+          endpointName: "record" as const,
           payload: {
             app: APP_ID,
             record: {
@@ -71,7 +71,7 @@ export class BulkRequest {
         },
         {
           method: "POST",
-          endpointName: "record",
+          endpointName: "record" as const,
           payload: {
             app: APP_ID,
             record: {
@@ -83,7 +83,7 @@ export class BulkRequest {
         },
         {
           method: "POST",
-          endpointName: "record",
+          endpointName: "record" as const,
           payload: {
             app: APP_ID,
             Customer: {

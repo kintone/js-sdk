@@ -57,7 +57,7 @@ describe("BulkRequestClient", () => {
       requests: [
         {
           method: "POST",
-          endpointName: "record",
+          endpointName: "record" as const,
           payload: {
             app: APP_ID,
             record,
@@ -65,7 +65,7 @@ describe("BulkRequestClient", () => {
         },
         {
           method: "DELETE",
-          endpointName: "records",
+          endpointName: "records" as const,
           payload: {
             app: APP_ID,
             ids: [RECORD_ID],
@@ -145,7 +145,7 @@ describe("BulkRequestClient with guestSpaceId", () => {
       requests: [
         {
           method: "POST",
-          endpointName: "record",
+          endpointName: "record" as const,
           payload: {
             app: APP_ID,
             record: {

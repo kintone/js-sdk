@@ -1,6 +1,13 @@
 import { HttpClient } from "../http";
 import { buildPath } from "../url";
 
+export type EndpointName =
+  | "record"
+  | "records"
+  | "record/status"
+  | "records/status"
+  | "record/assignees";
+
 export class BulkRequestClient {
   private client: HttpClient;
   private guestSpaceId?: number | string;
@@ -21,7 +28,7 @@ export class BulkRequestClient {
         }
       | {
           method: string;
-          endpointName: string;
+          endpointName: EndpointName;
           payload: object;
         }
     >;
