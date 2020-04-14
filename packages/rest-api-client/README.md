@@ -55,6 +55,8 @@ const client = new KintoneRestAPIClient({
   },
   // Use API token authentication
   // auth: { apiToken: process.env.KINTONE_API_TOKEN }
+  // Use OAuth token authentication
+  // auth: { oAuthToken: process.env.KINTONE_OAUTH_TOKEN }
 
   // Use session authentication if `auth` is omitted (in browser only)
 });
@@ -90,7 +92,8 @@ The client supports three authentication methods:
 
 1. [Password authentication](https://developer.kintone.io/hc/en-us/articles/212495188#passwordAuth)
 2. [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
-3. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
+3. [OAuth authentication](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients)
+4. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
 
 The required parameters inside `auth` are different by the methods.
 The client determines which method to use by passed parameters.
@@ -108,7 +111,13 @@ The client determines which method to use by passed parameters.
 | -------- | :----------------: | :------: | ------------------------------------------------------- |
 | apiToken | String or String[] |   Yes    | You can pass multiple api tokens as an array of string. |
 
-#### 3. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
+#### 3. Parameters for [OAuth authentication](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients)
+
+| Name       |  Type  | Required | Description                                                                                                                                           |
+| ---------- | :----: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| oAuthToken | String |   Yes    | An OAuth access token you get through the [OAuth process flow](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients). |
+
+#### 4. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
 
 Supported in browser environment only.
 If you omit `auth` parameter, the client uses Session authentication.

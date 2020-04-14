@@ -77,6 +77,13 @@ describe("KintoneRestAPIClient", () => {
           "X-Requested-With": "XMLHttpRequest",
         });
       });
+      it("OAuth token auth", () => {
+        const auth = { oAuthToken: "oauth-token" };
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
+        expect(client.getHeaders()).toEqual({
+          Authorization: `Bearer ${auth.oAuthToken}`,
+        });
+      });
       it("Basic auth", () => {
         const basicAuth = { username: "user", password: "password" };
         const client = new KintoneRestAPIClient({ baseUrl, basicAuth });
