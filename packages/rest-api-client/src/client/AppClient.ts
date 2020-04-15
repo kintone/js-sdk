@@ -1,4 +1,4 @@
-import { AppID, RecordID, Revision } from "../KintoneTypes";
+import { AppID, RecordID, Revision } from "../types";
 import { HttpClient } from "../http";
 import { buildPath } from "../url";
 
