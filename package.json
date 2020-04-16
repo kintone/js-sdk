@@ -4,7 +4,8 @@
   "description": "packages for kintone customizations",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "scripts": {
     "build": "lerna run build --stream",
