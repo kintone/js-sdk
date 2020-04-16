@@ -32,7 +32,7 @@ export class BulkRequestClient {
           payload: object;
         }
     >;
-  }): Promise<{ results: object[] }> {
+  }): Promise<{ results: Array<{ [K: string]: any }> }> {
     const { requests: requestsParam } = params;
 
     const requests = requestsParam.map((request) => {
