@@ -13,6 +13,9 @@ describe("npmScripts", () => {
   it("should define all required npm-scripts in all pacakges", () => {
     const packageInfo = JSON.parse(spawnSync("yarn", ["workspaces", "info"]).stdout.toString());
     Object.entries<{ location: string }>(packageInfo).forEach(([name, {location}]) => {
+      if (location.indexOf("examples/") === 0) {
+        return;
+      }
       const npmScripts = require(path.resolve(location, "package.json")).scripts;
       REQUIRED_NPMSCRIPTS.forEach(script => {
         try {

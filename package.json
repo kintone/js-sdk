@@ -9,13 +9,15 @@
   ],
   "scripts": {
     "build": "lerna run build --stream",
+    "prelint": "yarn build",
     "lint": "lerna run lint --stream",
     "preinitial:release": "yarn prerelease",
     "initial:release": "lerna publish from-package --conventional-commits",
     "prerelease": "lerna run prerelease --stream",
     "release": "lerna publish --conventional-commits",
-    "pretest": "jest --rootDir __tests__",
+    "pretest": "yarn build && jest --rootDir __tests__",
     "test": "lerna run test --stream",
+    "pretest:ci": "yarn pretest",
     "test:ci": "lerna run test:ci --stream"
   },
   "repository": {
