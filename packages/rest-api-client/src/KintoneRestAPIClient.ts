@@ -121,7 +121,7 @@ export class KintoneRestAPIClient {
 
     this.baseUrl = options.baseUrl ?? location?.origin;
     if (typeof this.baseUrl === "undefined") {
-      throw new Error("in Node environment, baseUrl is required");
+      throw new Error("in Node.js environment, baseUrl is required");
     }
 
     const httpClient = new DefaultHttpClient({
