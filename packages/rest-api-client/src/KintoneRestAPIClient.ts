@@ -75,7 +75,7 @@ export const errorResponseHandler = (
   error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
 ) => {
   if (!error.response) {
-    // FIXME: find a better way to hanle this error
+    // FIXME: find a better way to handle this error
     if (/mac verify failure/.test(error.toString())) {
       throw new Error("invalid clientCertAuth setting");
     }
@@ -121,7 +121,7 @@ export class KintoneRestAPIClient {
 
     this.baseUrl = options.baseUrl ?? location?.origin;
     if (typeof this.baseUrl === "undefined") {
-      throw new Error("in Node environment, baseUrl is required");
+      throw new Error("in Node.js environment, baseUrl is required");
     }
 
     const httpClient = new DefaultHttpClient({
@@ -208,7 +208,7 @@ export class KintoneRestAPIClient {
       } catch (e) {
         if (e instanceof UnsupportedPlatformError) {
           throw new Error(
-            `session authorization doesn't allow on a ${e.platform} environment.`
+            `session authentication is not supported in ${e.platform} environment.`
           );
         }
         throw e;

@@ -30,7 +30,7 @@ export class FileClient {
       } catch (e) {
         if (e instanceof UnsupportedPlatformError) {
           throw new Error(
-            `uploadFile doesn't allow to accept a file path on a ${e.platform} environment.`
+            `uploadFile doesn't allow to accept a file path in ${e.platform} environment.`
           );
         }
 

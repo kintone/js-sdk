@@ -107,7 +107,7 @@ describe("KintoneRestAPIClient", () => {
         expect(client.getBaseUrl()).toBe("https://example.com");
       });
 
-      it("should raise an error in Node environment if baseUrl param is not specified", () => {
+      it("should raise an error in Node.js environment if baseUrl param is not specified", () => {
         global.location = undefined;
         const USERNAME = "user";
         const PASSWORD = "password";
@@ -116,13 +116,13 @@ describe("KintoneRestAPIClient", () => {
           password: PASSWORD,
         };
         expect(() => new KintoneRestAPIClient({ auth })).toThrow(
-          "in Node environment, baseUrl is required"
+          "in Node.js environment, baseUrl is required"
         );
       });
-      it("should raise an error in Node enviroment if use session auth", () => {
+      it("should raise an error in Node.js enviroment if use session auth", () => {
         injectPlatformDeps(nodeDeps);
         expect(() => new KintoneRestAPIClient({ baseUrl })).toThrow(
-          "session authorization doesn't allow on a Node.js environment."
+          "session authentication is not supported in Node.js environment."
         );
       });
     });

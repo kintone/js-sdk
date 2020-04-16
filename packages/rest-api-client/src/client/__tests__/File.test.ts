@@ -72,7 +72,7 @@ describe("FileClient", () => {
       it("should raise an error on a browser environment", () => {
         injectPlatformDeps(browserDeps);
         expect(fileClient.uploadFile(params)).rejects.toThrow(
-          "uploadFile doesn't allow to accept a file path on a Browser environment."
+          "uploadFile doesn't allow to accept a file path in Browser environment."
         );
       });
     });
