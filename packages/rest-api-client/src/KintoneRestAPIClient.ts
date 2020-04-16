@@ -75,7 +75,7 @@ export const errorResponseHandler = (
   error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
 ) => {
   if (!error.response) {
-    // FIXME: find a better way to hanle this error
+    // FIXME: find a better way to handle this error
     if (/mac verify failure/.test(error.toString())) {
       throw new Error("invalid clientCertAuth setting");
     }
