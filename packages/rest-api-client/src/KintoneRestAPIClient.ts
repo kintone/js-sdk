@@ -208,7 +208,7 @@ export class KintoneRestAPIClient {
       } catch (e) {
         if (e instanceof UnsupportedPlatformError) {
           throw new Error(
-            `session authorization doesn't allow on a ${e.platform} environment.`
+            `session authentication doesn't allow on a ${e.platform} environment.`
           );
         }
         throw e;
