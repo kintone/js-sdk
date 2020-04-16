@@ -34,15 +34,10 @@ const client = new KintoneRestAPIClient({
   auth,
 });
 
-switch (process.argv[2]) {
-  case "bulkRequest":
-    new BulkRequest(client).run();
-    break;
-  default:
-    // @ts-ignore
-    ({
-      record: new Record(client),
-      app: new App(client),
-      file: new File(client),
-    }[process.argv[2]][process.argv[3]]());
-}
+// @ts-ignore
+({
+  record: new Record(client),
+  app: new App(client),
+  file: new File(client),
+  bulkRequest: new BulkRequest(client),
+}[process.argv[2]][process.argv[3]]());

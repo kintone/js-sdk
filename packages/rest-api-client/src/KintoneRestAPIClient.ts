@@ -1,4 +1,4 @@
-import { BulkRequestClient } from "./client/BulkRequestClient";
+import { BulkRequestClient, EndpointName } from "./client/BulkRequestClient";
 import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
@@ -223,11 +223,18 @@ export class KintoneRestAPIClient {
   }
 
   public bulkRequest(params: {
-    requests: Array<{
-      method: string;
-      api: string;
-      payload: object;
-    }>;
+    requests: Array<
+      | {
+          method: string;
+          api: string;
+          payload: object;
+        }
+      | {
+          method: string;
+          endpointName: EndpointName;
+          payload: object;
+        }
+    >;
   }): Promise<{ results: object[] }> {
     return this.bulkRequest_.send(params);
   }

@@ -53,4 +53,50 @@ export class BulkRequest {
       console.log(error);
     }
   }
+
+  public async runWithEndpointName() {
+    const params = {
+      requests: [
+        {
+          method: "POST",
+          endpointName: "record" as const,
+          payload: {
+            app: APP_ID,
+            record: {
+              Customer: {
+                value: "example1",
+              },
+            },
+          },
+        },
+        {
+          method: "POST",
+          endpointName: "record" as const,
+          payload: {
+            app: APP_ID,
+            record: {
+              Customer: {
+                value: "example2",
+              },
+            },
+          },
+        },
+        {
+          method: "POST",
+          endpointName: "record" as const,
+          payload: {
+            app: APP_ID,
+            Customer: {
+              value: "example3",
+            },
+          },
+        },
+      ],
+    };
+    try {
+      console.log(await this.client.bulkRequest(params));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
