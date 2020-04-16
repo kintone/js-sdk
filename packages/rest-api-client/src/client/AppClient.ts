@@ -191,7 +191,12 @@ type EvaluatedRecordRight = {
     editable: boolean;
     deletable: boolean;
   };
-  fields: object;
+  fields: {
+    [fieldCode: string]: {
+      viewable: boolean;
+      editable: boolean;
+    };
+  };
 };
 
 type AppCustomizeScope = "ALL" | "ADMIN" | "NONE";
