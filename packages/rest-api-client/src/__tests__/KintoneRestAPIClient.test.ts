@@ -122,7 +122,7 @@ describe("KintoneRestAPIClient", () => {
       it("should raise an error in Node.js enviroment if use session auth", () => {
         injectPlatformDeps(nodeDeps);
         expect(() => new KintoneRestAPIClient({ baseUrl })).toThrow(
-          "session authentication doesn't allow on a Node.js environment."
+          "session authentication is not supported in Node.js environment."
         );
       });
     });
