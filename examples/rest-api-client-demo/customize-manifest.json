@@ -2,11 +2,11 @@
   "app": "8",
   "scope": "ALL",
   "desktop": {
-      "js": ["scripts/dist/run-browser.js"],
+      "js": ["dist/run-browser.js"],
       "css": []
   },
   "mobile": {
-      "js": ["scripts/dist/run-browser.js"],
+      "js": ["dist/run-browser.js"],
       "css": []
   }
 }
