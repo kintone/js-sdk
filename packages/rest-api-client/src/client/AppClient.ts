@@ -18,7 +18,7 @@ import {
   RecordRight,
   AppCustomizeScope,
   AppCustomize,
-} from "../types";
+} from "./types";
 
 export class AppClient {
   private client: HttpClient;

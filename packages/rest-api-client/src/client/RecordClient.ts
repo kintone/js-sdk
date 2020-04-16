@@ -11,7 +11,7 @@ import {
   CommentID,
   Comment,
   Mention,
-} from "../types";
+} from "./types";
 
 const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;

@@ -3,7 +3,7 @@ import { BulkRequestClient } from "../BulkRequestClient";
 import { MockClient } from "../../http/MockClient";
 import { KintoneAllRecordsError } from "../../KintoneAllRecordsError";
 import { KintoneRestAPIError } from "../../KintoneRestAPIError";
-import { Record } from "../../types";
+import { Record } from "../types";
 
 describe("RecordClient", () => {
   let mockClient: MockClient;
