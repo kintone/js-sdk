@@ -184,14 +184,19 @@ type RecordRight<T extends Appearance> = {
   entities: Array<RecordRightEntity<T>>;
 } & ConditionalStrict<T, "response", { filterCond: string }>;
 
-type Rights = {
+type EvaluatedRecordRight = {
   id: string;
   record: {
     viewable: boolean;
     editable: boolean;
     deletable: boolean;
   };
-  fields: object;
+  fields: {
+    [fieldCode: string]: {
+      viewable: boolean;
+      editable: boolean;
+    };
+  };
 };
 
 type AppCustomizeScope = "ALL" | "ADMIN" | "NONE";
@@ -565,7 +570,7 @@ export class AppClient {
   public evaluateRecordsAcl(params: {
     app: AppID;
     ids: RecordID[];
-  }): Promise<{ rights: Rights }> {
+  }): Promise<{ rights: EvaluatedRecordRight[] }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records/acl/evaluate",
     });
