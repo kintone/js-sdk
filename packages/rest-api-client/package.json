@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publishConfig": {
     "access": "public"
   },
@@ -61,7 +61,7 @@
     "node": ">=10.0.0"
   },
   "devDependencies": {
-    "@kintone/customize-uploader": "^3.0.2",
+    "@kintone/customize-uploader": "^3.0.3",
     "@types/core-js": "^2.5.3",
     "@types/js-base64": "^2.3.1",
     "@types/qs": "^6.9.1",

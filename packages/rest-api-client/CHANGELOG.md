@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.1.0...@kintone/rest-api-client@1.2.0) (2020-04-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.6.5 ([daff728](https://github.com/kintone/js-sdk/commit/daff7281e0b4a06b6f7ecce6e2013f3206f8863f))
+* incorrect response type of `evaluateRecordAcl` ([#173](https://github.com/kintone/js-sdk/issues/173)) ([2425ac8](https://github.com/kintone/js-sdk/commit/2425ac8758e234663eabffce5bf52d0635d8df22))
+* the response type of bulkRequest ([#175](https://github.com/kintone/js-sdk/issues/175)) ([1f5c3cc](https://github.com/kintone/js-sdk/commit/1f5c3cc7090ed4c83b31d4790666443bbfab2903))
+
+
+### Features
+
+* add an endpointName parameter to bulkRequest ([#152](https://github.com/kintone/js-sdk/issues/152)) ([6ccfb0e](https://github.com/kintone/js-sdk/commit/6ccfb0e97caac549759a8ae4232aff9c379e13f0))
+* support client certificate ([#128](https://github.com/kintone/js-sdk/issues/128)) ([683a4dc](https://github.com/kintone/js-sdk/commit/683a4dc28e015e2c478895f061f5df00b28706c4)), closes [#161](https://github.com/kintone/js-sdk/issues/161)
+* support OAuth token ([#149](https://github.com/kintone/js-sdk/issues/149)) ([064717c](https://github.com/kintone/js-sdk/commit/064717c7e24b7c6eb61c68e101a2a791ed03b610))
+
+
+
+
+
 # [1.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.0.0...@kintone/rest-api-client@1.1.0) (2020-04-01)
 
 
