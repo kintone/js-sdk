@@ -235,7 +235,7 @@ export class KintoneRestAPIClient {
           payload: object;
         }
     >;
-  }): Promise<{ results: object[] }> {
+  }): Promise<{ results: Array<{ [K: string]: any }> }> {
     return this.bulkRequest_.send(params);
   }
 }
