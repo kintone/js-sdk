@@ -2,13 +2,13 @@
 
 const osLocale = require('os-locale');
 const meow = require('meow');
-const { run } = require('../dist/src/index');
-const { runInit } = require('../dist/src/init');
-const { runImport } = require('../dist/src/import');
-const { inquireInitParams } = require('../dist/src/initParams');
-const { inquireParams } = require('../dist/src/params');
-const { getDefaultLang } = require('../dist/src/lang');
-const { getMessage } = require('../dist/src/messages');
+const { run } = require('../dist/index');
+const { runInit } = require('../dist/init');
+const { runImport } = require('../dist/import');
+const { inquireInitParams } = require('../dist/initParams');
+const { inquireParams } = require('../dist/params');
+const { getDefaultLang } = require('../dist/lang');
+const { getMessage } = require('../dist/messages');
 
 const {
   HTTP_PROXY,

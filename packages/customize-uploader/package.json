@@ -5,7 +5,7 @@
   "bin": {
     "kintone-customize-uploader": "bin/cli.js"
   },
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "engines": {
     "node": ">=10"
   },
