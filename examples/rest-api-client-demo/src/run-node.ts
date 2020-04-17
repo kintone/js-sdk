@@ -1,4 +1,4 @@
-import { KintoneRestAPIClient } from "../src/index";
+import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { Record } from "./record";
 import { App } from "./app";
 import { File } from "./file";

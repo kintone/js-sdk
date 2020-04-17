@@ -1,4 +1,4 @@
-import { KintoneRestAPIClient } from "../src";
+import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 const APP_ID = 8;
 

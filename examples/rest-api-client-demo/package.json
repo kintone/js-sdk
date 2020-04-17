@@ -1,0 +1,41 @@
+{
+  "name": "@kintone/rest-api-client-demo",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "examples/rest-api-client-demo"
+  },
+  "scripts": {
+    "fix:lint": "npm run lint:eslint -- --fix",
+    "fix:md": "prettier --write README.md",
+    "fix": "run-p fix:*",
+    "lint:eslint": "eslint 'src/**/*.ts'",
+    "lint:md": "prettier --check README.md",
+    "lint": "run-p -l lint:*",
+    "deploy": "rimraf scripts/dist && run-s webpack upload",
+    "upload": "kintone-customize-uploader customize-manifest.json",
+    "webpack": "webpack"
+  },
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "dependencies": {
+    "@kintone/rest-api-client": "^1.2.0"
+  },
+  "devDependencies": {
+    "@kintone/customize-uploader": "3.0.3",
+    "ts-node": "^8.8.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}

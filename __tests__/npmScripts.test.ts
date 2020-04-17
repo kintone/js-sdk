@@ -9,10 +9,15 @@ const REQUIRED_NPMSCRIPTS = [
   "test:ci"
 ]
 
+const yarnCommand = process.platform === 'win32' ? 'yarn.cmd' : 'yarn';
+
 describe("npmScripts", () => {
   it("should define all required npm-scripts in all pacakges", () => {
-    const packageInfo = JSON.parse(spawnSync("yarn", ["workspaces", "info"]).stdout.toString());
+    const packageInfo = JSON.parse(spawnSync(yarnCommand, ["workspaces", "info"]).stdout.toString());
     Object.entries<{ location: string }>(packageInfo).forEach(([name, {location}]) => {
+      if (location.indexOf("examples/") === 0) {
+        return;
+      }
       const npmScripts = require(path.resolve(location, "package.json")).scripts;
       REQUIRED_NPMSCRIPTS.forEach(script => {
         try {
