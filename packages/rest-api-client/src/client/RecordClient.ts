@@ -1,35 +1,17 @@
 import { buildPath } from "./../url";
-import { AppID, RecordID, Revision } from "./../KintoneTypes";
 import { HttpClient } from "./../http/";
 import { BulkRequestClient } from "./BulkRequestClient";
 import { KintoneAllRecordsError } from "../KintoneAllRecordsError";
-
-export type Record = {
-  [fieldCode: string]: any;
-};
-
-type UpdateKey = {
-  field: string;
-  value: string | number;
-};
-
-type Mention = {
-  code: string;
-  type: "USER" | "GROUP" | "ORGANIZATION";
-};
-
-type Comment = {
-  id: string;
-  text: string;
-  createdAt: string;
-  creator: {
-    code: string;
-    name: string;
-  };
-  mentions: Mention[];
-};
-
-type CommentID = string | number;
+import {
+  AppID,
+  RecordID,
+  Revision,
+  Record,
+  UpdateKey,
+  CommentID,
+  Comment,
+  Mention,
+} from "./types";
 
 const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
