@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.0.2...@kintone/customize-uploader@3.0.3) (2020-04-17)
+
+
+### Bug Fixes
+
+* **customize-uploader:** wrong require file paths in bin/cli.js ([#176](https://github.com/kintone/js-sdk/issues/176)) ([b4eac2e](https://github.com/kintone/js-sdk/commit/b4eac2e688a182011ffae572b1b146622f510fe9))
+* **deps:** update dependency mkdirp to ^1.0.4 ([e803811](https://github.com/kintone/js-sdk/commit/e803811f03469b7555a5f2d6d22d919ebd15e165))
+
+
+
+
+
 ## [3.0.2](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.0.1...@kintone/customize-uploader@3.0.2) (2020-04-01)
 
 
