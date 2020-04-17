@@ -21,6 +21,10 @@ export type Params = { [key: string]: unknown };
 export type ProxyConfig = {
   host: string;
   port: number;
+  auth?: {
+    username: string;
+    password: string;
+  };
 };
 
 export interface HttpClientError<T = ErrorResponse> extends Error {
