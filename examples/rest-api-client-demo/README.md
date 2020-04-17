@@ -23,7 +23,7 @@ This is not a published package.
   - Required if you upload scripts to your Kintone environment using `@kintone/customize-uploader`.
   - This will be migrated to `KINTONE_BASE_URL` in the future.
 
-### Modifiy hard-coded IDs
+### Modify hard-coded IDs
 
 Currently, we have hard-coded IDs in files that are in `src/` like `app.ts`, `bulkRequest.ts`, `file.ts`, and `record.ts`.
 We are going to fix the problem, but currently, you have to modify the IDs your self.
