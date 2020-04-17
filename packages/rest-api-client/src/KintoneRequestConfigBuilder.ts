@@ -6,6 +6,7 @@ import {
   RequestConfig,
   HttpMethod,
   Params,
+  ProxyConfig,
 } from "./http/HttpClientInterface";
 import { KintoneAuthHeader, HTTPClientParams } from "./KintoneRestAPIClient";
 import { platformDeps } from "./platform/";
@@ -25,6 +26,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         pfxFilePath: string;
         password: string;
       };
+  private proxy?: ProxyConfig;
   constructor(
     baseUrl: string,
     headers: KintoneAuthHeader,
@@ -37,12 +39,14 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       | {
           pfxFilePath: string;
           password: string;
-        }
+        },
+    proxy?: ProxyConfig
   ) {
     this.baseUrl = baseUrl;
     this.headers = headers;
     this.params = params;
     this.clientCertAuth = clientCertAuth;
+    this.proxy = proxy;
   }
   public build(
     method: HttpMethod,
