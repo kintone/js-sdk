@@ -62,6 +62,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       ...platformDeps.buildPlatformDependentConfig({
         clientCertAuth: this.clientCertAuth,
       }),
+      proxy: this.proxy,
     };
 
     switch (method) {
