@@ -33,7 +33,7 @@ We have an app ID in `customize-manifest.json`, so you have to update the app ID
 ### Run a script with `ts-node`
 
 ```
-% npx ts-node src/run-node.ts record getRecord
+% yarn run-script record getRecord
 ```
 
 ### Upload scripts to your Kintone environment
