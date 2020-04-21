@@ -123,7 +123,7 @@ describe("KintoneRequestConfigBuilder", () => {
 });
 
 describe("options", () => {
-  it("should return `proxy` parameter", () => {
+  it("should build `requestConfig` having `proxy` property", () => {
     const baseUrl = "https://example.kintone.com";
     const headers = {
       "X-Cybozu-API-Token": "foo",
