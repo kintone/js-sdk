@@ -159,4 +159,32 @@ describe("options", () => {
       proxy,
     });
   });
+
+  it("should build `requestConfig` having `httpsAgent` property", () => {
+    const baseUrl = "https://example.kintone.com";
+    const headers = {
+      "X-Cybozu-API-Token": "foo",
+    };
+    const params = {
+      __REQUEST_TOKEN__: "foo-bar",
+    };
+    const clientCertAuth = {
+      pfx: Buffer.alloc(0),
+      password: "password",
+    };
+
+    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder(
+      baseUrl,
+      headers,
+      params,
+      { clientCertAuth }
+    );
+
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toHaveProperty("httpsAgent");
+  });
 });
