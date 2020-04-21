@@ -6,7 +6,7 @@ import { log } from "../utils/logger";
 
 type Client = SetUpTestAppClient;
 
-const rethrow = err => Promise.reject(err);
+const rethrow = (err) => Promise.reject(err);
 
 async function createKintoneApp(
     client: Client,
@@ -14,7 +14,7 @@ async function createKintoneApp(
 ): Promise<string> {
     return client
         .requestCreateNewApp({ name })
-        .then(resp => {
+        .then((resp) => {
             log(`Preparing for App(ID:${resp.app})`);
             return resp.app;
         })
@@ -47,7 +47,7 @@ async function uploadFile(
             fileName: metadata.name,
             contentType: metadata.contentType,
         })
-        .then(resp => {
+        .then((resp) => {
             log(
                 `Finish Uploading ${metadata.name}(${resp.fileKey})`
             );
@@ -57,7 +57,7 @@ async function uploadFile(
 }
 
 async function sleep(msec) {
-    return new Promise(resolve =>
+    return new Promise((resolve) =>
         setTimeout(resolve, msec)
     );
 }
@@ -93,9 +93,9 @@ async function deployApp(client: Client, app: string) {
     for (const i of [1, 2, 3, 4, 5]) {
         const successApps = await client
             .requestGetDeployStatus({ apps: [app] })
-            .then(resp => {
+            .then((resp) => {
                 return resp.apps.filter(
-                    app => app.status === "SUCCESS"
+                    (app) => app.status === "SUCCESS"
                 );
             })
             .catch(rethrow);

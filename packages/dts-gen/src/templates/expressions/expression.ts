@@ -6,6 +6,6 @@ export function toTsExpressions(
     expressions: TsExpression[]
 ): string {
     return expressions
-        .map(e => e.tsExpression())
+        .map((e) => e.tsExpression())
         .join("\n");
 }

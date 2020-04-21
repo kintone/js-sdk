@@ -21,13 +21,13 @@ function assertKintoneBuiltinFunctions() {
     // only to check to compile success
     kintone.api.url("/k/v1/records", true);
 
-    const okPromise = new kintone.Promise<number>(resolve =>
-        resolve(1)
+    const okPromise = new kintone.Promise<number>(
+        (resolve) => resolve(1)
     );
 
     assert.ok(okPromise);
     okPromise
-        .then(resolved => {
+        .then((resolved) => {
             assert.ok(resolved === 1);
         })
         .catch(() => {
@@ -41,21 +41,21 @@ function assertKintoneBuiltinFunctions() {
         .then(() => {
             assert.fail("should not be called");
         })
-        .catch(rejected => assert.ok(rejected === 1));
+        .catch((rejected) => assert.ok(rejected === 1));
 
     kintone.Promise.resolve(1)
-        .then(resolved => assert.ok(resolved === 1))
+        .then((resolved) => assert.ok(resolved === 1))
         .catch(() => assert.fail("should not be called"));
 
     kintone.Promise.reject("reject")
         .then(() => assert.fail("should not be called"))
-        .catch(reject => assert.ok(reject === "reject"));
+        .catch((reject) => assert.ok(reject === "reject"));
 
     kintone.Promise.all([
         kintone.Promise.resolve(1),
         kintone.Promise.resolve(2),
         kintone.Promise.resolve(3),
-    ]).then(resolved => {
+    ]).then((resolved) => {
         assert.ok(resolved.length === 3);
         assert.ok(resolved[0] === 1);
         assert.ok(resolved[1] === 2);

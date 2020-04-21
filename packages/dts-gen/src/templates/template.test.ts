@@ -14,7 +14,7 @@ describe("renderAsFile", () => {
                 preview: false,
                 guestSpaceId: null,
             })
-            .then(properties =>
+            .then((properties) =>
                 FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
                     objectValues(properties)
                 )
@@ -44,7 +44,7 @@ describe("renderAsFile", () => {
     });
 
     afterEach(() => {
-        fs.unlink(TEMP_TEST_TYPEDEF, err => {
+        fs.unlink(TEMP_TEST_TYPEDEF, (err) => {
             if (err) {
                 throw err;
             }
@@ -62,7 +62,7 @@ describe("fullWidthSymbol Test", () => {
                 preview: false,
                 guestSpaceId: null,
             })
-            .then(properties =>
+            .then((properties) =>
                 FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
                     objectValues(properties)
                 )
@@ -94,7 +94,7 @@ describe("fullWidthSymbol Test", () => {
     });
 
     afterEach(() => {
-        fs.unlink(TEMP_TEST_TYPEDEF, err => {
+        fs.unlink(TEMP_TEST_TYPEDEF, (err) => {
             if (err) {
                 throw err;
             }

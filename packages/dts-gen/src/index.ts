@@ -30,12 +30,12 @@ const fetchFormPropertiesInput = {
 
 client
     .fetchFormProperties(fetchFormPropertiesInput)
-    .then(properties =>
+    .then((properties) =>
         FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
             objectValues(properties)
         )
     )
-    .then(fieldTypeGroups => {
+    .then((fieldTypeGroups) => {
         const typeName = program.typeName;
         const namespace = program.namespace;
         const input = {
@@ -49,4 +49,4 @@ client
         );
     })
     // eslint-disable-next-line no-console
-    .catch(err => console.error(err));
+    .catch((err) => console.error(err));

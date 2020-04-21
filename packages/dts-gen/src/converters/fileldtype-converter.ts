@@ -75,7 +75,7 @@ function selectFieldsTypesIn(
     const fields = fieldsToBeSelected as Array<
         FieldType | SubTableFieldType
     >;
-    const typeIncludes = fieldToTest =>
+    const typeIncludes = (fieldToTest) =>
         types.indexOf(fieldToTest.type) >= 0;
 
     return fields
@@ -92,14 +92,14 @@ function selectFieldsTypesEquals(
     >;
 
     return fields
-        .filter(field => field.type === type)
+        .filter((field) => field.type === type)
         .filter(excludeLookupOrRelatedRecord);
 }
 
 function convertSubTableFields(
     subTableFields: SubTableFieldType[]
 ): SubTableFieldTypeGroups[] {
-    return subTableFields.map(subTableField => {
+    return subTableFields.map((subTableField) => {
         return {
             code: subTableField.code,
             type: subTableField.type,

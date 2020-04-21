@@ -92,7 +92,7 @@ export class SetUpTestAppClient {
         };
         return this.client
             .request(config)
-            .then(resp => resp.data as CreateAppOutput);
+            .then((resp) => resp.data as CreateAppOutput);
     }
 
     requestAddFormField(
@@ -103,7 +103,7 @@ export class SetUpTestAppClient {
             method: "POST",
             data: input,
         };
-        return this.client.request(config).then(resp => {
+        return this.client.request(config).then((resp) => {
             return resp.data as AddFormFieldOutput;
         });
     }
@@ -124,7 +124,7 @@ export class SetUpTestAppClient {
             method: "POST",
             data,
         };
-        return this.client.request(config).then(resp => {
+        return this.client.request(config).then((resp) => {
             return resp.data as UploadFileOutput;
         });
     }
@@ -137,7 +137,7 @@ export class SetUpTestAppClient {
             method: "PUT",
             data: input,
         };
-        return this.client.request(config).then(resp => {
+        return this.client.request(config).then((resp) => {
             return resp.data as JsCustomizeOutput;
         });
     }
@@ -150,7 +150,7 @@ export class SetUpTestAppClient {
         };
         return this.client
             .request(config)
-            .then(resp => resp.data);
+            .then((resp) => resp.data);
     }
 
     requestGetDeployStatus(
@@ -161,7 +161,7 @@ export class SetUpTestAppClient {
             method: "GET",
             data: input,
         };
-        return this.client.request(config).then(resp => {
+        return this.client.request(config).then((resp) => {
             return resp.data as DeployStatusOutput;
         });
     }
@@ -174,7 +174,7 @@ export class SetUpTestAppClient {
             method: "POST",
             data: input,
         };
-        return this.client.request(config).then(resp => {
+        return this.client.request(config).then((resp) => {
             return resp.data as AddRecordOutput;
         });
     }
