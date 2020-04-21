@@ -1,8 +1,8 @@
-import { Command } from "commander"; // eslint-disable-line no-unused-vars
+import * as commander from "commander"; // eslint-disable-line no-unused-vars
 import { createCommanderProgram } from "./createCommanderProgram";
 
 describe("createCommanderProgram", () => {
-    let program: Command;
+    let program: commander.Command;
     beforeEach(() => {
         program = createCommanderProgram();
     });
