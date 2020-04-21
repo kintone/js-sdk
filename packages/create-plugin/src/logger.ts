@@ -5,7 +5,7 @@
  * @param texts
  */
 export function printLog(...texts: string[]) {
-  texts.forEach(t => console.log(t));
+  texts.forEach((t) => console.log(t));
 }
 
 /**
@@ -13,5 +13,5 @@ export function printLog(...texts: string[]) {
  * @param errors
  */
 export function printError(...errors: string[]) {
-  errors.forEach(e => console.error(e));
+  errors.forEach((e) => console.error(e));
 }
