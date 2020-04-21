@@ -31,22 +31,24 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     baseUrl: string,
     headers: KintoneAuthHeader,
     params: HTTPClientParams,
-    clientCertAuth?:
-      | {
-          pfx: Buffer;
-          password: string;
-        }
-      | {
-          pfxFilePath: string;
-          password: string;
-        },
-    proxy?: ProxyConfig
+    options?: {
+      clientCertAuth?:
+        | {
+            pfx: Buffer;
+            password: string;
+          }
+        | {
+            pfxFilePath: string;
+            password: string;
+          };
+      proxy?: ProxyConfig;
+    }
   ) {
     this.baseUrl = baseUrl;
     this.headers = headers;
     this.params = params;
-    this.clientCertAuth = clientCertAuth;
-    this.proxy = proxy;
+    this.clientCertAuth = options?.clientCertAuth;
+    this.proxy = options?.proxy;
   }
   public build(
     method: HttpMethod,

@@ -135,8 +135,10 @@ export class KintoneRestAPIClient {
         this.baseUrl,
         this.headers,
         params,
-        options.clientCertAuth,
-        options.proxy
+        {
+          clientCertAuth: options.clientCertAuth,
+          proxy: options.proxy,
+        }
       ),
     });
     const { guestSpaceId } = options;
