@@ -15,7 +15,7 @@ export function installDependencies(outputDirectory: string, lang: Lang): void {
   const spawnOption = {
     cwd: outputDirectory,
     stdio: "inherit",
-    shell: true
+    shell: true,
   };
 
   const result = spawnSync("npm", ["install"], spawnOption);

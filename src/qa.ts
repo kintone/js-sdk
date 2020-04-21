@@ -19,101 +19,101 @@ export function buildQuestions(outputDir: string, lang: Lang): Question[] {
       name: "name.en",
       message: m("Q_NameEn"),
       default: outputDir.replace(/.*\//, ""),
-      validate: value =>
+      validate: (value) =>
         value.length > 0 && value.length <= NAME_MAX_LENGTH
           ? true
-          : m("Q_NameEnError")
+          : m("Q_NameEnError"),
     },
     {
       type: "input",
       name: "description.en",
       message: m("Q_DescriptionEn"),
       default: (answers: Answers) => answers.name.en,
-      validate: value =>
+      validate: (value) =>
         value.length > 0 && value.length <= DESCRIPTION_MAX_LENGTH
           ? true
-          : m("Q_DescriptionEnError")
+          : m("Q_DescriptionEnError"),
     },
     {
       type: "confirm",
       name: "ja",
       default: lang === "ja",
-      message: m("Q_SupportJa")
+      message: m("Q_SupportJa"),
     },
     {
       type: "input",
       name: "name.ja",
-      when: answers => answers.ja,
+      when: (answers) => answers.ja,
       message: m("Q_NameJa"),
-      validate: value =>
+      validate: (value) =>
         value.length === 0 || value.length <= NAME_MAX_LENGTH
           ? true
-          : m("Q_NameJaError")
+          : m("Q_NameJaError"),
     },
     {
       type: "input",
       name: "description.ja",
-      when: answers => answers.ja,
+      when: (answers) => answers.ja,
       message: m("Q_DescriptionJa"),
-      validate: value =>
+      validate: (value) =>
         value.length === 0 || value.length <= DESCRIPTION_MAX_LENGTH
           ? true
-          : m("Q_DescriptionJaError")
+          : m("Q_DescriptionJaError"),
     },
     {
       type: "confirm",
       name: "zh",
       default: false,
-      message: m("Q_SupportZh")
+      message: m("Q_SupportZh"),
     },
     {
       type: "input",
       name: "name.zh",
-      when: answers => answers.zh,
+      when: (answers) => answers.zh,
       message: m("Q_NameZh"),
-      validate: value =>
+      validate: (value) =>
         value.length === 0 || value.length <= NAME_MAX_LENGTH
           ? true
-          : m("Q_NameZhError")
+          : m("Q_NameZhError"),
     },
     {
       type: "input",
       name: "description.zh",
-      when: answers => answers.zh,
+      when: (answers) => answers.zh,
       message: m("Q_DescriptionZh"),
-      validate: value =>
+      validate: (value) =>
         value.length === 0 || value.length <= DESCRIPTION_MAX_LENGTH
           ? true
-          : m("Q_DescriptionZhError")
+          : m("Q_DescriptionZhError"),
     },
     {
       type: "input",
       name: "homepage_url.en",
-      message: m("Q_websiteUrlEn")
+      message: m("Q_websiteUrlEn"),
     },
     {
       type: "input",
       name: "homepage_url.ja",
-      when: answers => answers.ja,
-      message: m("Q_websiteUrlJa")
+      when: (answers) => answers.ja,
+      message: m("Q_websiteUrlJa"),
     },
     {
       type: "input",
       name: "homepage_url.zh",
-      when: answers => answers.zh,
-      message: m("Q_websiteUrlZh")
+      when: (answers) => answers.zh,
+      message: m("Q_websiteUrlZh"),
     },
     {
       type: "confirm",
       name: "mobile",
       default: true,
-      message: m("Q_MobileSupport")
+      message: m("Q_MobileSupport"),
     },
     {
       type: "confirm",
       name: "pluginUploader",
       default: true,
-      message: m("Q_enablePluginUploader")
-    }
+      message: m("Q_enablePluginUploader"),
+    },
   ];
 }

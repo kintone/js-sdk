@@ -62,7 +62,7 @@ export function processTemplateFile(
         Object.assign({}, manifest, {
           enablePluginUploader,
           // It's a function to remove whitespaces for pacakge.json's name field
-          normalizePackageName: (name: string) => name.replace(/\s/g, "-")
+          normalizePackageName: (name: string) => name.replace(/\s/g, "-"),
         })
       )
     );
