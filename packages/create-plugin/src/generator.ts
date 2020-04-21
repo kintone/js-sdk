@@ -12,7 +12,7 @@ import {
   filterTemplateFile,
   getTemplateType,
   processTemplateFile,
-  TemplateType
+  TemplateType,
 } from "./template";
 
 /**
@@ -52,7 +52,7 @@ function buildProject(
       : path.join(__dirname, "..", "..", "templates", templateType);
   glob
     .sync(path.resolve(templatePath, "**", "*"), {
-      dot: true
+      dot: true,
     })
     .filter(filterTemplateFile.bind(null, manifest))
     .forEach((file: string) =>

@@ -38,7 +38,7 @@ function run(outputDir: string, lang: Lang) {
 
   inquirer
     .prompt(buildQuestions(outputDir, lang))
-    .then(answers => {
+    .then((answers) => {
       const manifest = buildManifest(answers);
       generatePlugin(outputDir, manifest, lang, answers.pluginUploader);
       return [manifest, answers.pluginUploader];
