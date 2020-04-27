@@ -1,0 +1,5 @@
+username = "jim"
+password = "foo"
+baseUrl = "https://foo.kintone.com"
+apiToken = "api_token_config"
+oAuthToken = "oauth_token_config"

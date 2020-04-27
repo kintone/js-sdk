@@ -46,5 +46,8 @@
     "lint:md": "prettier --check README.md",
     "lint:ts": "tsc --noEmit",
     "start": "npm run compile -- --watch"
+  },
+  "dependencies": {
+    "toml": "^3.0.0"
   }
 }
