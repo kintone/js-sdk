@@ -83,8 +83,13 @@ export class RecordClient {
       query: `${updateKey.field} = "${updateKey.value}"`,
     });
     if (records.length > 0) {
-      const { revision } = await this.updateRecord(params);
-      return { id: records[0].$id.value, revision };
+      if (records[0].$id.type === "__ID__") {
+        const { revision } = await this.updateRecord(params);
+        return { id: records[0].$id.value, revision };
+      }
+      throw new Error(
+        "Missing `$id` in `getRecords` response. This error is likely caused by a bug in Kintone REST API Client. Please file an issue."
+      );
     }
     return this.addRecord({
       app,
@@ -230,7 +235,7 @@ export class RecordClient {
     if (fields && fields.length > 0 && fields.indexOf("$id") === -1) {
       fields = [...fields, "$id"];
     }
-    return this.getAllRecordsRecursiveWithId({ ...rest, fields }, 0, []);
+    return this.getAllRecordsRecursiveWithId({ ...rest, fields }, "0", []);
   }
 
   private async getAllRecordsRecursiveWithId<T extends Record>(
@@ -239,7 +244,7 @@ export class RecordClient {
       fields?: string[];
       condition?: string;
     },
-    id: number,
+    id: string,
     records: T[]
   ): Promise<T[]> {
     const GET_RECORDS_LIMIT = 500;
@@ -252,8 +257,14 @@ export class RecordClient {
     if (result.records.length < GET_RECORDS_LIMIT) {
       return allRecords;
     }
-    const lastId = result.records[result.records.length - 1].$id.value;
-    return this.getAllRecordsRecursiveWithId(params, lastId, allRecords);
+    const lastRecord = result.records[result.records.length - 1];
+    if (lastRecord.$id.type === "__ID__") {
+      const lastId = lastRecord.$id.value;
+      return this.getAllRecordsRecursiveWithId(params, lastId, allRecords);
+    }
+    throw new Error(
+      "Missing `$id` in `getRecords` response. This error is likely caused by a bug in Kintone REST API Client. Please file an issue."
+    );
   }
 
   public async getAllRecordsWithOffset<T extends Record>(params: {

@@ -1,5 +1,7 @@
+import { Field } from "./fields";
+
 export type Record = {
-  [fieldCode: string]: any;
+  [fieldCode: string]: Field;
 };
 
 export type UpdateKey = {
