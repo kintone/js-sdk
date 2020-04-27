@@ -1,4 +1,5 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import { loadProfile } from "@kintone/profile-loader";
 import { Record } from "./record";
 import { App } from "./app";
 import { File } from "./file";
@@ -6,13 +7,8 @@ import { BulkRequest } from "./bulkRequest";
 
 const authType = process.argv[4] || "password";
 
-const apiToken =
-  process.env.KINTONE_API_TOKEN1 && process.env.KINTONE_API_TOKEN2
-    ? [process.env.KINTONE_API_TOKEN1, process.env.KINTONE_API_TOKEN2]
-    : process.env.KINTONE_API_TOKEN || "";
-const username = process.env.KINTONE_USERNAME || "";
-const password = process.env.KINTONE_PASSWORD || "";
-const oAuthToken = process.env.KINTONE_OAUTH_TOKEN;
+const { apiToken, username, password, oAuthToken, baseUrl } = loadProfile();
+console.log(loadProfile());
 
 let auth;
 switch (authType) {
@@ -30,7 +26,7 @@ switch (authType) {
 }
 
 const client = new KintoneRestAPIClient({
-  baseUrl: process.env.KINTONE_BASE_URL || "",
+  baseUrl: baseUrl || undefined,
   auth,
 });
 
