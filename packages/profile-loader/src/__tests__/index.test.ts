@@ -72,5 +72,17 @@ describe("index", () => {
         oAuthToken: "staging-oauth_token_config",
       });
     });
+    it("should override settings in a config file by environment variable settings", () => {
+      process.env.KINTONE_USERNAME = "admin";
+      expect(
+        loadProfile(undefined, path.resolve(__dirname, "fixtures", "config"))
+      ).toEqual({
+        username: "admin",
+        password: "foo",
+        baseUrl: "https://foo.kintone.com",
+        apiToken: "api_token_config",
+        oAuthToken: "oauth_token_config",
+      });
+    });
   });
 });
