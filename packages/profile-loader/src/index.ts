@@ -10,7 +10,10 @@ type Profile = {
   oAuthToken: string | null;
 };
 
-export const loadProfile = (configFilePath = getConfigFilePath()): Profile => {
+export const loadProfile = (
+  profile = "default",
+  configFilePath = getConfigFilePath()
+): Profile => {
   return {
     username: null,
     password: null,
@@ -18,7 +21,7 @@ export const loadProfile = (configFilePath = getConfigFilePath()): Profile => {
     apiToken: null,
     oAuthToken: null,
     ...loadEnvironmentVariable(),
-    ...loadConfig(configFilePath),
+    ...loadConfig(profile, configFilePath),
   };
 };
 
@@ -30,12 +33,16 @@ const loadEnvironmentVariable = (): Partial<Profile> => ({
   oAuthToken: process.env.KINTONE_OAUTH_TOKEN || null,
 });
 
-const loadConfig = (filePath: string | null): Partial<Profile> => {
+const loadConfig = (
+  profile: string,
+  filePath: string | null
+): Partial<Profile> => {
   if (!filePath) {
     return {};
   }
   const tomlString = fs.readFileSync(filePath).toString();
-  return toml.parse(tomlString);
+  const config = toml.parse(tomlString);
+  return config[profile];
 };
 
 const getConfigFilePath = (): string | null => {

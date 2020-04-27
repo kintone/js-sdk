@@ -32,7 +32,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "build": "npm-run-all -l -s clean build",
+    "build": "npm-run-all -l -s clean compile",
     "lint": "run-p -l lint:*",
     "prerelease": "npm-run-all -p lint test -s build",
     "test": "jest",
