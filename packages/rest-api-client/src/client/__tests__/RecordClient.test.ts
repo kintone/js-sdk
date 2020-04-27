@@ -94,6 +94,7 @@ describe("RecordClient", () => {
           records: [
             {
               $id: {
+                type: "__ID__",
                 value: "10",
               },
             },
@@ -409,12 +410,15 @@ describe("RecordClient", () => {
         for (let i = 1; i <= 500; i++) {
           records.push({
             $id: {
+              type: "__ID__",
               value: i.toString(),
             },
           });
         }
         mockClient.mockResponse({ records });
-        mockClient.mockResponse({ records: [{ $id: { value: "501" } }] });
+        mockClient.mockResponse({
+          records: [{ $id: { type: "__ID__", value: "501" } }],
+        });
         result = await recordClient.getAllRecordsWithId<Record>(params);
       });
 
@@ -443,7 +447,9 @@ describe("RecordClient", () => {
         });
 
         expect(result.length).toBe(501);
-        expect(result[500]).toStrictEqual({ $id: { value: "501" } });
+        expect(result[500]).toStrictEqual({
+          $id: { type: "__ID__", value: "501" },
+        });
       });
     });
 
@@ -459,12 +465,15 @@ describe("RecordClient", () => {
         for (let i = 1; i <= 500; i++) {
           records.push({
             $id: {
+              type: "__ID__",
               value: i.toString(),
             },
           });
         }
         mockClient.mockResponse({ records });
-        mockClient.mockResponse({ records: [{ $id: { value: "501" } }] });
+        mockClient.mockResponse({
+          records: [{ $id: { type: "__ID__", value: "501" } }],
+        });
         result = await recordClient.getAllRecordsWithId<Record>(params);
       });
 
@@ -489,7 +498,9 @@ describe("RecordClient", () => {
         });
 
         expect(result.length).toBe(501);
-        expect(result[500]).toStrictEqual({ $id: { value: "501" } });
+        expect(result[500]).toStrictEqual({
+          $id: { type: "__ID__", value: "501" },
+        });
       });
     });
   });
@@ -556,12 +567,15 @@ describe("RecordClient", () => {
         for (let i = 1; i <= 500; i++) {
           records.push({
             $id: {
+              type: "__ID__",
               value: i.toString(),
             },
           });
         }
         mockClient.mockResponse({ records });
-        mockClient.mockResponse({ records: [{ $id: { value: "501" } }] });
+        mockClient.mockResponse({
+          records: [{ $id: { type: "__ID__", value: "501" } }],
+        });
         result = await recordClient.getAllRecordsWithOffset<Record>(params);
       });
 
@@ -586,7 +600,9 @@ describe("RecordClient", () => {
         });
 
         expect(result.length).toBe(501);
-        expect(result[500]).toStrictEqual({ $id: { value: "501" } });
+        expect(result[500]).toStrictEqual({
+          $id: { type: "__ID__", value: "501" },
+        });
       });
     });
   });
