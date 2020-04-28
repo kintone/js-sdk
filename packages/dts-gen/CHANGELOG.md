@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.3](https://github.com/kintone/dts-gen/compare/v3.0.2...v3.0.3) (2020-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v5 ([c360de2](https://github.com/kintone/dts-gen/commit/c360de293920fc89c56cc7fdaada0228153c9932))
+* **deps:** update dependency commander to v5 ([f1d7ff7](https://github.com/kintone/dts-gen/commit/f1d7ff7c3e58b39c454385d2455bd49d85e9216c))
+* **deps:** update dependency prettier to ^2.0.5 ([6fc9c48](https://github.com/kintone/dts-gen/commit/6fc9c480dafa607d86257dff44d934c214d20929))
+* **deps:** update dependency prettier to v2 ([#249](https://github.com/kintone/dts-gen/issues/249)) ([06b38e9](https://github.com/kintone/dts-gen/commit/06b38e9a955cba781d0abbdd54fc8787a3ccfd07))
+* **test:** fix a type error in commander test ([0a0c05a](https://github.com/kintone/dts-gen/commit/0a0c05a83358830eeeea467495a6bfda16a40890))
+
 ### [3.0.2](https://github.com/kintone/dts-gen/compare/v3.0.1...v3.0.2) (2020-03-24)
 
 ### [3.0.1](https://github.com/kintone/dts-gen/compare/v3.0.0...v3.0.1) (2020-02-25)
