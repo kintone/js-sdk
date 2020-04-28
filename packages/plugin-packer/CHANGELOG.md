@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.3](https://github.com/kintone/plugin-packer/compare/v3.0.2...v3.0.3) (2020-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^3.4.0 ([#508](https://github.com/kintone/plugin-packer/issues/508)) ([010ae33](https://github.com/kintone/plugin-packer/commit/010ae3383f76a6978c73048983be65938c9eb5ae))
+* **deps:** update dependency mkdirp to ^1.0.4 ([#502](https://github.com/kintone/plugin-packer/issues/502)) ([fed38fe](https://github.com/kintone/plugin-packer/commit/fed38fe180a5ac03b6d70252a93cf8f397ad3211))
+* package.json & package-lock.json to reduce vulnerabilities ([#494](https://github.com/kintone/plugin-packer/issues/494)) ([7629f53](https://github.com/kintone/plugin-packer/commit/7629f53be0ebca46f8b2fb2238be97c36621727b))
+* **deps:** update dependency @kintone/plugin-manifest-validator to ^3.0.2 ([#498](https://github.com/kintone/plugin-packer/issues/498)) ([16841b5](https://github.com/kintone/plugin-packer/commit/16841b5006fd71d2c7d6a157e23d1f72fed47351))
+* **deps:** update dependency node-rsa to ~1.0.8 ([#500](https://github.com/kintone/plugin-packer/issues/500)) ([3b7b253](https://github.com/kintone/plugin-packer/commit/3b7b25331cb1c03d6227a3534856e7726babcfd8))
+
 ### [3.0.2](https://github.com/kintone/plugin-packer/compare/v3.0.1...v3.0.2) (2020-03-24)
 
 
