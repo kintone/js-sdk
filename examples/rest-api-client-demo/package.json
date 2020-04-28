@@ -21,6 +21,7 @@
     "lint": "run-p -l lint:*",
     "deploy": "rimraf scripts/dist && run-s webpack upload",
     "upload": "kintone-customize-uploader customize-manifest.json",
+    "run-script": "ts-node -r tsconfig-paths/register src/run-node.ts",
     "webpack": "webpack"
   },
   "bugs": {
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@kintone/customize-uploader": "3.0.3",
     "ts-node": "^8.8.2",
+    "tsconfig-paths": "^3.9.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   }
