@@ -46,8 +46,8 @@ type MultiSelectField<T extends string = string> = FieldWith<
 
 type FileField = FieldWith<"FILE", FileInformation[]>;
 
-type DateField = FieldWith<"DATE", string>;
-type TimeField = FieldWith<"TIME", string>;
+type DateField = FieldWith<"DATE", string | null>;
+type TimeField = FieldWith<"TIME", string | null>;
 type DateTimeField = FieldWith<"DATETIME", string>;
 
 type UserSelectField = FieldWith<"USER_SELECT", Entity[]>;
