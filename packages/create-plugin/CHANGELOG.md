@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.4](https://github.com/kintone/create-plugin/compare/v3.0.3...v3.0.4) (2020-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to v4 ([#459](https://github.com/kintone/create-plugin/issues/459)) ([eaf6a90](https://github.com/kintone/create-plugin/commit/eaf6a90847c193d869b463f0eb45589bf414d848))
+* **deps:** update dependency node-rsa to ^1.0.8 ([eef24c5](https://github.com/kintone/create-plugin/commit/eef24c589c95a1a3870936f7ad7cbb3201af1c88))
+
 ### [3.0.3](https://github.com/kintone/create-plugin/compare/v3.0.2...v3.0.3) (2020-03-24)
 
 
