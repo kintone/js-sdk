@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.3](https://github.com/kintone/plugin-uploader/compare/v4.0.2...v4.0.3) (2020-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to v4 ([#285](https://github.com/kintone/plugin-uploader/issues/285)) ([39f8fcd](https://github.com/kintone/plugin-uploader/commit/39f8fcdff179c6437e7f2c8b336c1d7d3136c6c9))
+
 ### [4.0.2](https://github.com/kintone/plugin-uploader/compare/v4.0.1...v4.0.2) (2020-03-24)
 
 
