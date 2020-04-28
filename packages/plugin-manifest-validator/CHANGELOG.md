@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.3](https://github.com/kintone/plugin-manifest-validator/compare/v3.0.2...v3.0.3) (2020-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to ^6.12.2 ([86dbf90](https://github.com/kintone/plugin-manifest-validator/commit/86dbf90bc35514d0517a418bb14876f92cec0660))
+
 ### [3.0.2](https://github.com/kintone/plugin-manifest-validator/compare/v3.0.1...v3.0.2) (2020-03-24)
 
 ### [3.0.1](https://github.com/kintone/plugin-manifest-validator/compare/v3.0.0...v3.0.1) (2020-02-25)
