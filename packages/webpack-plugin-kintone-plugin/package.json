@@ -28,7 +28,7 @@
   "homepage": "https://github.com/kintone/webpack-plugin-kintone-plugin",
   "bugs": "https://github.com/kintone/webpack-plugin-kintone-plugin/issues",
   "devDependencies": {
-    "@cybozu/eslint-config": "^10.0.2",
+    "@cybozu/eslint-config": "^10.0.3",
     "@types/adm-zip": "^0.4.33",
     "@types/chokidar": "^1.7.5",
     "@types/lodash": "^4.14.150",
