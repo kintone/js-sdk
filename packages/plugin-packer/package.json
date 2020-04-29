@@ -42,7 +42,7 @@
     "yazl": "^2.5.1"
   },
   "devDependencies": {
-    "@cybozu/eslint-config": "^10.0.2",
+    "@cybozu/eslint-config": "^10.0.3",
     "array-flatten": "^3.0.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
