@@ -121,3 +121,70 @@ describe("KintoneRequestConfigBuilder", () => {
     });
   });
 });
+
+describe("options", () => {
+  it("should build `requestConfig` having `proxy` property", () => {
+    const baseUrl = "https://example.kintone.com";
+    const headers = {
+      "X-Cybozu-API-Token": "foo",
+    };
+    const params = {
+      __REQUEST_TOKEN__: "foo-bar",
+    };
+    const proxy = {
+      host: "localhost",
+      port: 8000,
+      auth: {
+        username: "admin",
+        password: "password",
+      },
+    };
+
+    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder(
+      baseUrl,
+      headers,
+      params,
+      { proxy }
+    );
+
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toEqual({
+      method: "get",
+      url: `${baseUrl}/k/v1/record.json?key=value`,
+      headers,
+      proxy,
+    });
+  });
+
+  it("should build `requestConfig` having `httpsAgent` property", () => {
+    const baseUrl = "https://example.kintone.com";
+    const headers = {
+      "X-Cybozu-API-Token": "foo",
+    };
+    const params = {
+      __REQUEST_TOKEN__: "foo-bar",
+    };
+    const clientCertAuth = {
+      pfx: Buffer.alloc(0),
+      password: "password",
+    };
+
+    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder(
+      baseUrl,
+      headers,
+      params,
+      { clientCertAuth }
+    );
+
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toHaveProperty("httpsAgent");
+  });
+});

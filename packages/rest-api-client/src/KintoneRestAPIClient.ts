@@ -8,7 +8,11 @@ import {
   KintoneRestAPIError,
   KintoneErrorResponse,
 } from "./KintoneRestAPIError";
-import { ErrorResponse, HttpClientError } from "./http/HttpClientInterface";
+import {
+  ErrorResponse,
+  HttpClientError,
+  ProxyConfig,
+} from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 import { platformDeps } from "./platform";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
@@ -113,6 +117,7 @@ export class KintoneRestAPIClient {
             pfxFilePath: string;
             password: string;
           };
+      proxy?: ProxyConfig;
     } = {}
   ) {
     const auth = this.buildAuth(options.auth ?? {});
@@ -130,7 +135,10 @@ export class KintoneRestAPIClient {
         this.baseUrl,
         this.headers,
         params,
-        options.clientCertAuth
+        {
+          clientCertAuth: options.clientCertAuth,
+          proxy: options.proxy,
+        }
       ),
     });
     const { guestSpaceId } = options;

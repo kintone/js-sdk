@@ -18,6 +18,15 @@ export type ErrorResponse<T = any> = {
 export type HttpMethod = "get" | "post" | "put" | "delete";
 export type Params = { [key: string]: unknown };
 
+export type ProxyConfig = {
+  host: string;
+  port: number;
+  auth?: {
+    username: string;
+    password: string;
+  };
+};
+
 export interface HttpClientError<T = ErrorResponse> extends Error {
   response?: T;
 }
@@ -29,6 +38,7 @@ export type RequestConfig = {
   headers: any;
   httpsAgent?: any;
   data?: any;
+  proxy?: ProxyConfig;
 };
 
 export interface RequestConfigBuilder {
