@@ -399,7 +399,7 @@ export class RecordClient {
     );
     const requests = separatedRecords.map((records) => ({
       method: "POST",
-      api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
+      endpointName: "records" as const,
       payload: {
         app: params.app,
         records,
@@ -496,7 +496,7 @@ export class RecordClient {
     );
     const requests = separatedRecords.map((records) => ({
       method: "PUT",
-      api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
+      endpointName: "records" as const,
       payload: {
         app: params.app,
         records,
@@ -575,7 +575,7 @@ export class RecordClient {
     );
     const requests = separatedRecords.map((records) => ({
       method: "DELETE",
-      api: this.buildPathWithGuestSpaceId({ endpointName: "records" }),
+      endpointName: "records" as const,
       payload: {
         app: params.app,
         ids: records.map((record) => record.id),
