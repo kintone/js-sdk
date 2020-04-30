@@ -1,6 +1,5 @@
 import { Field } from "./properties";
 
-// TODO: Make this type more specific
 export type Properties = {
   [fieldCode: string]: Field;
 };
