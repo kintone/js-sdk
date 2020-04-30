@@ -15,7 +15,7 @@ type FileInformation = {
   size: string;
 };
 
-type IdField = FieldWith<"__ID__", string>;
+type IDField = FieldWith<"__ID__", string>;
 type RevisionField = FieldWith<"__REVISION__", string>;
 type RecordNumberField = FieldWith<"RECORD_NUMBER", string>;
 type CreatorField = FieldWith<"CREATOR", Entity>;
@@ -84,7 +84,7 @@ type SubtableRow = {
 type SubtableField = FieldWith<"SUBTABLE", SubtableRow[]>;
 
 export type Field =
-  | IdField
+  | IDField
   | RevisionField
   | RecordNumberField
   | CreatorField
