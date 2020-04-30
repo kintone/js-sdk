@@ -1,8 +1,8 @@
+import { Field } from "./properties";
+
 // TODO: Make this type more specific
 export type Properties = {
-  [fieldCode: string]: {
-    [k: string]: any;
-  };
+  [fieldCode: string]: Field;
 };
 
 // TODO: Make this type more specific
