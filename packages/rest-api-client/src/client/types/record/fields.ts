@@ -31,10 +31,7 @@ type RichTextField = FieldWith<"RICH_TEXT", string>;
 type LinkField = FieldWith<"LINK", string>;
 
 type CheckBoxField<T extends string = string> = FieldWith<"CHECK_BOX", T[]>;
-type RadioButtonField<T extends string | null = string | null> = FieldWith<
-  "RADIO_BUTTON",
-  T
->;
+type RadioButtonField<T extends string = string> = FieldWith<"RADIO_BUTTON", T>;
 type DropDownField<T extends string | null = string | null> = FieldWith<
   "DROP_DOWN",
   T
