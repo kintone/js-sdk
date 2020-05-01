@@ -186,7 +186,9 @@ describe("import", () => {
     it("should success updating customize-manifest.json and downloading uploaded js/css files", () => {
       const getAppCustomizeResponse = JSON.parse(
         fs
-          .readFileSync("src/__tests__/fixtures/get-appcustomize-response.json")
+          .readFileSync(
+            "src/commands/__tests__/fixtures/get-appcustomize-response.json"
+          )
           .toString()
       );
 

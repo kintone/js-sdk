@@ -2,11 +2,8 @@
 
 const osLocale = require("os-locale");
 const meow = require("meow");
-const { run } = require("../dist/index");
-const { runInit } = require("../dist/init");
-const { runImport } = require("../dist/import");
-const { inquireInitParams } = require("../dist/initParams");
-const { inquireParams } = require("../dist/params");
+const { run, runInit, runImport } = require("../dist/commands");
+const { inquireParams, inquireInitParams } = require("../dist/params");
 const { getDefaultLang } = require("../dist/lang");
 const { getMessage } = require("../dist/messages");
 
