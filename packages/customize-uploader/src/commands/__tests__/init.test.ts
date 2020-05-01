@@ -16,7 +16,7 @@ describe("init", () => {
       const appCustomize = JSON.parse(
         fs
           .readFileSync(
-            "src/runtime/__tests__/fixtures/get-appcustomize-init.json"
+            "src/commands/__tests__/fixtures/get-appcustomize-init.json"
           )
           .toString()
       );

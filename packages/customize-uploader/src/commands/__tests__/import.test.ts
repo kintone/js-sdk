@@ -187,7 +187,7 @@ describe("import", () => {
       const getAppCustomizeResponse = JSON.parse(
         fs
           .readFileSync(
-            "src/runtime/__tests__/fixtures/get-appcustomize-response.json"
+            "src/commands/__tests__/fixtures/get-appcustomize-response.json"
           )
           .toString()
       );
