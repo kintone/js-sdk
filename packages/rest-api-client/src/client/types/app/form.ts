@@ -1,7 +1,7 @@
-import { Field } from "./properties";
+import { FieldProperty } from "./properties";
 
 export type Properties = {
-  [fieldCode: string]: Field;
+  [fieldCode: string]: FieldProperty;
 };
 
 // TODO: Make this type more specific

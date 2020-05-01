@@ -1,60 +1,60 @@
-type RecordNumberField = {
+type RecordNumberFieldProperty = {
   type: "RECORD_NUMBER";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-type CreatorField = {
+type CreatorFieldProperty = {
   type: "CREATOR";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-type CreatedTimeField = {
+type CreatedTimeFieldProperty = {
   type: "CREATED_TIME";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-type ModifierField = {
+type ModifierFieldProperty = {
   type: "MODIFIER";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-type UpdatedTimeField = {
+type UpdatedTimeFieldProperty = {
   type: "UPDATED_TIME";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-type CategoryField = {
+type CategoryFieldProperty = {
   type: "CATEGORY";
   code: string;
   label: string;
   enabled: boolean;
 };
 
-type StatusField = {
+type StatusFieldProperty = {
   type: "STATUS";
   code: string;
   label: string;
   enabled: boolean;
 };
 
-type StatusAssigneeField = {
+type StatusAssigneeFieldProperty = {
   type: "STATUS_ASSIGNEE";
   code: string;
   label: string;
   enabled: boolean;
 };
 
-type SingleLineTextField = {
+type SingleLineTextFieldProperty = {
   type: "SINGLE_LINE_TEXT";
   code: string;
   label: string;
@@ -68,7 +68,7 @@ type SingleLineTextField = {
   hideExpression: boolean;
 };
 
-type NumberField = {
+type NumberFieldProperty = {
   type: "NUMBER";
   code: string;
   label: string;
@@ -84,7 +84,7 @@ type NumberField = {
   unitPosition: "BEFORE" | "AFTER";
 };
 
-type CalcField = {
+type CalcFieldProperty = {
   type: "CALC";
   code: string;
   label: string;
@@ -105,7 +105,7 @@ type CalcField = {
   unitPosition: "BEFORE" | "AFTER";
 };
 
-type MultiLineTextField = {
+type MultiLineTextFieldProperty = {
   type: "MULTI_LINE_TEXT";
   code: string;
   label: string;
@@ -114,7 +114,7 @@ type MultiLineTextField = {
   defaultValue: string;
 };
 
-type RichTextField = {
+type RichTextFieldProperty = {
   type: "RICH_TEXT";
   code: string;
   label: string;
@@ -123,7 +123,7 @@ type RichTextField = {
   defaultValue: string;
 };
 
-type LinkField = {
+type LinkFieldProperty = {
   type: "LINK";
   code: string;
   label: string;
@@ -143,7 +143,7 @@ type Options = {
   };
 };
 
-type CheckBoxField = {
+type CheckBoxFieldProperty = {
   type: "CHECK_BOX";
   code: string;
   label: string;
@@ -154,7 +154,7 @@ type CheckBoxField = {
   align: "HORIZONTAL" | "VERTICAL";
 };
 
-type RadioButtonField = {
+type RadioButtonFieldProperty = {
   type: "RADIO_BUTTON";
   code: string;
   label: string;
@@ -165,7 +165,7 @@ type RadioButtonField = {
   align: "HORIZONTAL" | "VERTICAL";
 };
 
-type DropDownField = {
+type DropDownFieldProperty = {
   type: "DROP_DOWN";
   code: string;
   label: string;
@@ -175,7 +175,7 @@ type DropDownField = {
   options: Options;
 };
 
-type MultiSelectField = {
+type MultiSelectFieldProperty = {
   type: "MULTI_SELECT";
   code: string;
   label: string;
@@ -185,7 +185,7 @@ type MultiSelectField = {
   options: Options;
 };
 
-type FileField = {
+type FileFieldProperty = {
   type: "FILE";
   code: string;
   label: string;
@@ -194,7 +194,7 @@ type FileField = {
   thumbnailSize: "50" | "150" | "250" | "500";
 };
 
-type DateField = {
+type DateFieldProperty = {
   type: "DATE";
   code: string;
   label: string;
@@ -205,7 +205,7 @@ type DateField = {
   defaultNowValue: boolean;
 };
 
-type TimeField = {
+type TimeFieldProperty = {
   type: "TIME";
   code: string;
   label: string;
@@ -215,7 +215,7 @@ type TimeField = {
   defaultNowValue: boolean;
 };
 
-type DateTimeField = {
+type DateTimeFieldProperty = {
   type: "DATETIME";
   code: string;
   label: string;
@@ -226,7 +226,7 @@ type DateTimeField = {
   defaultNowValue: boolean;
 };
 
-type UserSelectField = {
+type UserSelectFieldProperty = {
   type: "USER_SELECT";
   code: string;
   label: string;
@@ -242,7 +242,7 @@ type UserSelectField = {
   entities: Array<{ code: string; type: "USER" | "GROUP" | "ORGANIZATION" }>;
 };
 
-type OrganizationSelectField = {
+type OrganizationSelectFieldProperty = {
   type: "ORGANIZATION_SELECT";
   code: string;
   label: string;
@@ -255,7 +255,7 @@ type OrganizationSelectField = {
   entities: Array<{ code: string; type: "ORGANIZATION" }>;
 };
 
-type GroupSelectField = {
+type GroupSelectFieldProperty = {
   type: "GROUP_SELECT";
   code: string;
   label: string;
@@ -265,7 +265,7 @@ type GroupSelectField = {
   entities: Array<{ code: string; type: "GROUP" }>;
 };
 
-type GroupField = {
+type GroupFieldProperty = {
   type: "GROUP";
   code: string;
   label: string;
@@ -273,7 +273,7 @@ type GroupField = {
   openGroup: boolean;
 };
 
-type ReferenceTableField = {
+type ReferenceTableFieldProperty = {
   type: "REFERENCE_TABLE";
   code: string;
   label: string;
@@ -294,7 +294,7 @@ type ReferenceTableField = {
   };
 };
 
-type LookupField = {
+type LookupFieldProperty = {
   type: "NUMBER" | "SINGLE_LINE_TEXT";
   code: string;
   label: string;
@@ -313,63 +313,63 @@ type LookupField = {
   };
 };
 
-type FieldInSubtable =
-  | SingleLineTextField
-  | NumberField
-  | CalcField
-  | MultiLineTextField
-  | RichTextField
-  | LinkField
-  | CheckBoxField
-  | RadioButtonField
-  | DropDownField
-  | MultiSelectField
-  | FileField
-  | DateField
-  | TimeField
-  | DateTimeField
-  | UserSelectField
-  | OrganizationSelectField
-  | GroupSelectField
-  | LookupField;
+type FieldPropertyInSubtable =
+  | SingleLineTextFieldProperty
+  | NumberFieldProperty
+  | CalcFieldProperty
+  | MultiLineTextFieldProperty
+  | RichTextFieldProperty
+  | LinkFieldProperty
+  | CheckBoxFieldProperty
+  | RadioButtonFieldProperty
+  | DropDownFieldProperty
+  | MultiSelectFieldProperty
+  | FileFieldProperty
+  | DateFieldProperty
+  | TimeFieldProperty
+  | DateTimeFieldProperty
+  | UserSelectFieldProperty
+  | OrganizationSelectFieldProperty
+  | GroupSelectFieldProperty
+  | LookupFieldProperty;
 
-type SubtableField = {
+type SubtableFieldProperty = {
   type: "SUBTABLE";
   code: string;
   label: string;
   noLabel: boolean;
   fields: {
-    [fieldCode: string]: FieldInSubtable;
+    [fieldCode: string]: FieldPropertyInSubtable;
   };
 };
 
-export type Field =
-  | RecordNumberField
-  | CreatorField
-  | CreatedTimeField
-  | ModifierField
-  | UpdatedTimeField
-  | CategoryField
-  | StatusField
-  | StatusAssigneeField
-  | SingleLineTextField
-  | NumberField
-  | CalcField
-  | MultiLineTextField
-  | RichTextField
-  | LinkField
-  | CheckBoxField
-  | RadioButtonField
-  | DropDownField
-  | MultiSelectField
-  | FileField
-  | DateField
-  | TimeField
-  | DateTimeField
-  | UserSelectField
-  | OrganizationSelectField
-  | GroupSelectField
-  | GroupField
-  | ReferenceTableField
-  | LookupField
-  | SubtableField;
+export type FieldProperty =
+  | RecordNumberFieldProperty
+  | CreatorFieldProperty
+  | CreatedTimeFieldProperty
+  | ModifierFieldProperty
+  | UpdatedTimeFieldProperty
+  | CategoryFieldProperty
+  | StatusFieldProperty
+  | StatusAssigneeFieldProperty
+  | SingleLineTextFieldProperty
+  | NumberFieldProperty
+  | CalcFieldProperty
+  | MultiLineTextFieldProperty
+  | RichTextFieldProperty
+  | LinkFieldProperty
+  | CheckBoxFieldProperty
+  | RadioButtonFieldProperty
+  | DropDownFieldProperty
+  | MultiSelectFieldProperty
+  | FileFieldProperty
+  | DateFieldProperty
+  | TimeFieldProperty
+  | DateTimeFieldProperty
+  | UserSelectFieldProperty
+  | OrganizationSelectFieldProperty
+  | GroupSelectFieldProperty
+  | GroupFieldProperty
+  | ReferenceTableFieldProperty
+  | LookupFieldProperty
+  | SubtableFieldProperty;
