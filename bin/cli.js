@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-const osLocale = require('os-locale');
-const meow = require('meow');
-const { run } = require('../dist/index');
-const { runInit } = require('../dist/init');
-const { runImport } = require('../dist/import');
-const { inquireInitParams } = require('../dist/initParams');
-const { inquireParams } = require('../dist/params');
-const { getDefaultLang } = require('../dist/lang');
-const { getMessage } = require('../dist/messages');
+const osLocale = require("os-locale");
+const meow = require("meow");
+const { run } = require("../dist/index");
+const { runInit } = require("../dist/init");
+const { runImport } = require("../dist/import");
+const { inquireInitParams } = require("../dist/initParams");
+const { inquireParams } = require("../dist/params");
+const { getDefaultLang } = require("../dist/lang");
+const { getMessage } = require("../dist/messages");
 
 const {
   HTTP_PROXY,
@@ -17,7 +17,7 @@ const {
   KINTONE_USERNAME,
   KINTONE_PASSWORD,
   KINTONE_BASIC_AUTH_USERNAME,
-  KINTONE_BASIC_AUTH_PASSWORD
+  KINTONE_BASIC_AUTH_PASSWORD,
 } = process.env;
 
 const cli = meow(
@@ -54,48 +54,48 @@ const cli = meow(
   {
     flags: {
       domain: {
-        type: 'string',
-        default: KINTONE_DOMAIN || ''
+        type: "string",
+        default: KINTONE_DOMAIN || "",
       },
       username: {
-        type: 'string',
-        default: KINTONE_USERNAME || ''
+        type: "string",
+        default: KINTONE_USERNAME || "",
       },
       password: {
-        type: 'string',
-        default: KINTONE_PASSWORD || ''
+        type: "string",
+        default: KINTONE_PASSWORD || "",
       },
       basicAuthUsername: {
-        type: 'string',
-        default: KINTONE_BASIC_AUTH_USERNAME || ''
+        type: "string",
+        default: KINTONE_BASIC_AUTH_USERNAME || "",
       },
       basicAuthPassword: {
-        type: 'string',
-        default: KINTONE_BASIC_AUTH_PASSWORD || ''
+        type: "string",
+        default: KINTONE_BASIC_AUTH_PASSWORD || "",
       },
       proxy: {
-        type: 'string',
-        default: HTTPS_PROXY || HTTP_PROXY || ''
+        type: "string",
+        default: HTTPS_PROXY || HTTP_PROXY || "",
       },
       watch: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
       },
       lang: {
-        type: 'string',
-        default: getDefaultLang(osLocale.sync())
+        type: "string",
+        default: getDefaultLang(osLocale.sync()),
       },
       guestSpaceId: {
-        type: 'number',
-        default: 0
+        type: "number",
+        default: 0,
       },
       // Optional option for subcommands
       destDir: {
-        type: 'string',
-        default: 'dest',
-        alias: 'd'
-      }
-    }
+        type: "string",
+        default: "dest",
+        alias: "d",
+      },
+    },
   }
 );
 
@@ -105,7 +105,7 @@ const subCommand = hasSubCommand ? cli.input[0] : null;
 const isInitCommand = subCommand === "init";
 const isImportCommand = subCommand === "import";
 
-const manifestFile =  hasSubCommand ? cli.input[1] : cli.input[0];
+const manifestFile = hasSubCommand ? cli.input[1] : cli.input[0];
 
 const {
   username,
@@ -125,31 +125,46 @@ if (guestSpaceId) {
   options.guestSpaceId = guestSpaceId;
 }
 
-if(subCommand) {
+if (subCommand) {
   options.destDir = destDir;
 }
 
 if (!isInitCommand && !manifestFile) {
-  console.error(getMessage(lang, 'E_requiredManifestFile'));
+  console.error(getMessage(lang, "E_requiredManifestFile"));
   cli.showHelp();
   process.exit(1);
 }
 
-
-if(isInitCommand) {
+if (isInitCommand) {
   inquireInitParams(lang)
-    .then(({ appId, scope, lang }) => {
-      runInit(appId, scope, lang, options.destDir);
+    .then((initParams) => {
+      runInit(initParams.appId, initParams.scope, lang, options.destDir);
     })
-    .catch(error => console.log(error.message));
+    .catch((error) => console.log(error.message));
 } else {
   inquireParams({ username, password, domain, lang })
-    .then(({ username, password, domain }) => {
+    .then((params) => {
       if (isImportCommand) {
-        runImport(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
+        runImport(
+          params.domain,
+          params.username,
+          params.password,
+          basicAuthUsername,
+          basicAuthPassword,
+          manifestFile,
+          options
+        );
       } else {
-        run(domain, username, password, basicAuthUsername, basicAuthPassword, manifestFile, options)
+        run(
+          params.domain,
+          params.username,
+          params.password,
+          basicAuthUsername,
+          basicAuthPassword,
+          manifestFile,
+          options
+        );
       }
     })
-    .catch(error => console.log(error.message));
-  }
+    .catch((error) => console.log(error.message));
+}
