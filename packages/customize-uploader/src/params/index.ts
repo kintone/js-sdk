@@ -1,6 +1,6 @@
 import * as inquirer from "inquirer";
-import { Lang } from "./lang";
-import { getBoundMessage } from "./messages";
+import { Lang } from "../lang";
+import { getBoundMessage } from "../messages";
 
 interface Params {
   username?: string;
@@ -42,3 +42,5 @@ export const inquireParams = ({ username, password, domain, lang }: Params) => {
     .prompt(questions)
     .then((answers) => Object.assign({ username, password, domain }, answers));
 };
+
+export * from "./init";

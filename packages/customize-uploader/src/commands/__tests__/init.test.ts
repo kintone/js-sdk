@@ -15,7 +15,9 @@ describe("init", () => {
     const assertManifestContent = (buffer: Buffer) => {
       const appCustomize = JSON.parse(
         fs
-          .readFileSync("src/__tests__/fixtures/get-appcustomize-init.json")
+          .readFileSync(
+            "src/commands/__tests__/fixtures/get-appcustomize-init.json"
+          )
           .toString()
       );
       assert.deepStrictEqual(JSON.parse(buffer.toString()), appCustomize);

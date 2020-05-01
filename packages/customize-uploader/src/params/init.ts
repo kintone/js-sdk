@@ -1,6 +1,6 @@
 import * as inquirer from "inquirer";
-import { Lang } from "./lang";
-import { getBoundMessage } from "./messages";
+import { Lang } from "../lang";
+import { getBoundMessage } from "../messages";
 
 export const inquireInitParams = (lang: Lang) => {
   const appId: string = "";

@@ -1,8 +1,8 @@
 import fs from "fs";
 import mkdirp from "mkdirp";
 import { CustomizeManifest } from "./index";
-import { Lang } from "./lang";
-import { getBoundMessage } from "./messages";
+import { Lang } from "../lang";
+import { getBoundMessage } from "../messages";
 
 export const getInitCustomizeManifest = (
   appId: string,

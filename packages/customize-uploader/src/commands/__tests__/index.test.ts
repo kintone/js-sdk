@@ -25,15 +25,15 @@ describe("index", () => {
         scope: "ALL",
         desktop: {
           js: [
-            "src/__tests__/fixtures/a.js",
-            "src/__tests__/fixtures/b.js",
+            "src/commands/__tests__/fixtures/a.js",
+            "src/commands/__tests__/fixtures/b.js",
             "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
           ],
-          css: ["src/__tests__/fixtures/a.css"],
+          css: ["src/commands/__tests__/fixtures/a.css"],
         },
         mobile: {
-          js: ["src/__tests__/fixtures/c.js"],
-          css: ["src/__tests__/fixtures/d.css"],
+          js: ["src/commands/__tests__/fixtures/c.js"],
+          css: ["src/commands/__tests__/fixtures/d.css"],
         },
       };
       status = {
