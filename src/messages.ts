@@ -1,8 +1,5 @@
 import { Lang } from "./lang";
 
-type LangMap = { [lang in Lang]: string };
-type MessageMap = { [key in keyof typeof messages]: LangMap };
-
 const messages = {
   E_requiredManifestFile: {
     en: "Please specify manifest file",
@@ -103,14 +100,14 @@ const messages = {
     ja:
       "エラーが発生しました。引数の値と、マニフェストファイルに正しい値が入力されているか確認してください",
   },
-};
+} as const;
 
 /**
  * Returns a message for the passed lang and key
  * @param lang
  * @param key
  */
-export function getMessage(lang: keyof LangMap, key: keyof MessageMap): string {
+export function getMessage(lang: Lang, key: keyof typeof messages) {
   return messages[key][lang];
 }
 
@@ -119,7 +116,7 @@ export function getMessage(lang: keyof LangMap, key: keyof MessageMap): string {
  * @param lang
  */
 export function getBoundMessage(
-  lang: keyof LangMap
-): (key: keyof MessageMap) => string {
-  return getMessage.bind(null, lang);
+  lang: Lang
+): (key: keyof typeof messages) => string {
+  return (key) => getMessage(lang, key);
 }
