@@ -71,5 +71,11 @@
     "form-data": "^3.0.0",
     "js-base64": "^2.5.2",
     "qs": "^6.9.4"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./lib/index.js"
+    }
   }
 }
