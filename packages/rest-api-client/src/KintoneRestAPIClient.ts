@@ -176,13 +176,14 @@ export class KintoneRestAPIClient {
     auth: DiscriminatedAuth,
     basicAuth?: BasicAuth
   ): KintoneAuthHeader {
-    const headers = basicAuth
+    const authHeaders = basicAuth
       ? {
           Authorization: `Basic ${Base64.encode(
             `${basicAuth.username}:${basicAuth.password}`
           )}`,
         }
       : {};
+    const headers = { ...platformDeps.buildHeaders(), ...authHeaders };
 
     switch (auth.type) {
       case "password": {
