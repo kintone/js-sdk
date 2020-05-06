@@ -6,13 +6,7 @@ const client = new KintoneRestAPIClient({
   auth: {
     username: KINTONE_USERNAME,
     password: KINTONE_PASSWORD,
-  },
-  // Use API token authentication
-  // auth: { apiToken: process.env.KINTONE_API_TOKEN }
-  // Use OAuth token authentication
-  // auth: { oAuthToken: process.env.KINTONE_OAUTH_TOKEN }
-
-  // Use session authentication if `auth` is omitted (in browser only)
+  }
 });
 
 client.record
