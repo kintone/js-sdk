@@ -6,16 +6,18 @@ describe("KintoneRequestConfigBuilder", () => {
   const headers = {
     "X-Cybozu-API-Token": "foo",
   };
+  const requestToken = "foo-bar";
   const params = {
-    __REQUEST_TOKEN__: "foo-bar",
+    __REQUEST_TOKEN__: requestToken,
   };
   let kintoneRequestConfigBuilder: KintoneRequestConfigBuilder;
   beforeEach(() => {
-    kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder(
+    kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      headers,
-      params
-    );
+      ...params,
+    });
+    kintoneRequestConfigBuilder.setHeaders(headers);
+    kintoneRequestConfigBuilder.setRequestToken(requestToken);
   });
   it("should build get method requestConfig", () => {
     const requestConfig = kintoneRequestConfigBuilder.build(
@@ -128,9 +130,7 @@ describe("options", () => {
     const headers = {
       "X-Cybozu-API-Token": "foo",
     };
-    const params = {
-      __REQUEST_TOKEN__: "foo-bar",
-    };
+    const requestToken = "foo-bar";
     const proxy = {
       host: "localhost",
       port: 8000,
@@ -140,12 +140,12 @@ describe("options", () => {
       },
     };
 
-    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder(
+    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      headers,
-      params,
-      { proxy }
-    );
+      proxy,
+    });
+    kintoneRequestConfigBuilder.setHeaders(headers);
+    kintoneRequestConfigBuilder.setRequestToken(requestToken);
 
     const requestConfig = kintoneRequestConfigBuilder.build(
       "get",
@@ -162,23 +162,16 @@ describe("options", () => {
 
   it("should build `requestConfig` having `httpsAgent` property", () => {
     const baseUrl = "https://example.kintone.com";
-    const headers = {
-      "X-Cybozu-API-Token": "foo",
-    };
-    const params = {
-      __REQUEST_TOKEN__: "foo-bar",
-    };
     const clientCertAuth = {
       pfx: Buffer.alloc(0),
       password: "password",
     };
 
-    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder(
+    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      headers,
-      params,
-      { clientCertAuth }
-    );
+      clientCertAuth,
+    });
+    kintoneRequestConfigBuilder.setRequestToken("foo-bar");
 
     const requestConfig = kintoneRequestConfigBuilder.build(
       "get",

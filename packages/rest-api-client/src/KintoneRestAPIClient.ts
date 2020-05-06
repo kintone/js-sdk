@@ -1,9 +1,9 @@
+import { SetRequired } from "type-fest";
 import { BulkRequestClient, EndpointName } from "./client/BulkRequestClient";
 import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
-import { Base64 } from "js-base64";
 import {
   KintoneRestAPIError,
   KintoneErrorResponse,
@@ -14,8 +14,6 @@ import {
   ProxyConfig,
 } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
-import { platformDeps } from "./platform";
-import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
 
 export type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
@@ -27,33 +25,27 @@ export type Auth =
   | Omit<SessionAuth, "type">
   | Omit<OAuthTokenAuth, "type">;
 
-type DiscriminatedAuth =
-  | ApiTokenAuth
-  | PasswordAuth
-  | SessionAuth
-  | OAuthTokenAuth;
-
-type ApiTokenAuth = {
+export type ApiTokenAuth = {
   type: "apiToken";
   apiToken: string | string[];
 };
 
-type PasswordAuth = {
+export type PasswordAuth = {
   type: "password";
   username: string;
   password: string;
 };
 
-type SessionAuth = {
+export type SessionAuth = {
   type: "session";
 };
 
-type OAuthTokenAuth = {
+export type OAuthTokenAuth = {
   type: "oAuthToken";
   oAuthToken: string;
 };
 
-type BasicAuth = {
+export type BasicAuth = {
   username: string;
   password: string;
 };
@@ -74,6 +66,23 @@ export type KintoneAuthHeader =
   | {
       Authorization: string;
     };
+
+type Options = {
+  baseUrl?: string;
+  auth?: Auth;
+  guestSpaceId?: number | string;
+  basicAuth?: BasicAuth;
+  clientCertAuth?:
+    | {
+        pfx: Buffer;
+        password: string;
+      }
+    | {
+        pfxFilePath: string;
+        password: string;
+      };
+  proxy?: ProxyConfig;
+};
 
 export const errorResponseHandler = (
   error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
@@ -102,45 +111,15 @@ export class KintoneRestAPIClient {
   private headers: KintoneAuthHeader;
   private baseUrl?: string;
 
-  constructor(
-    options: {
-      baseUrl?: string;
-      auth?: Auth;
-      guestSpaceId?: number | string;
-      basicAuth?: BasicAuth;
-      clientCertAuth?:
-        | {
-            pfx: Buffer;
-            password: string;
-          }
-        | {
-            pfxFilePath: string;
-            password: string;
-          };
-      proxy?: ProxyConfig;
-    } = {}
-  ) {
-    const auth = this.buildAuth(options.auth ?? {});
-    const params = this.buildParams(auth);
-    this.headers = this.buildHeaders(auth, options.basicAuth);
-
-    this.baseUrl = options.baseUrl ?? location?.origin;
-    if (typeof this.baseUrl === "undefined") {
-      throw new Error("in Node.js environment, baseUrl is required");
-    }
-
+  constructor(options: Options = {}) {
+    options.baseUrl = this.baseUrl = options.baseUrl ?? location?.origin;
+    assertsOptions(options);
+    const requestConfigBuilder = new KintoneRequestConfigBuilder(options);
     const httpClient = new DefaultHttpClient({
       errorResponseHandler,
-      requestConfigBuilder: new KintoneRequestConfigBuilder(
-        this.baseUrl,
-        this.headers,
-        params,
-        {
-          clientCertAuth: options.clientCertAuth,
-          proxy: options.proxy,
-        }
-      ),
+      requestConfigBuilder,
     });
+    this.headers = requestConfigBuilder.getHeaders();
     const { guestSpaceId } = options;
 
     this.bulkRequest_ = new BulkRequestClient(httpClient, guestSpaceId);
@@ -155,85 +134,6 @@ export class KintoneRestAPIClient {
 
   public getHeaders() {
     return this.headers;
-  }
-
-  private buildAuth(auth: Auth): DiscriminatedAuth {
-    if ("username" in auth) {
-      return { type: "password", ...auth };
-    }
-    if ("apiToken" in auth) {
-      return { type: "apiToken", ...auth };
-    }
-    if ("oAuthToken" in auth) {
-      return { type: "oAuthToken", ...auth };
-    }
-    return {
-      type: "session",
-    };
-  }
-
-  private buildHeaders(
-    auth: DiscriminatedAuth,
-    basicAuth?: BasicAuth
-  ): KintoneAuthHeader {
-    const basicAuthHeaders = basicAuth
-      ? {
-          Authorization: `Basic ${Base64.encode(
-            `${basicAuth.username}:${basicAuth.password}`
-          )}`,
-        }
-      : {};
-    const platformDepsHeaders = platformDeps.buildHeaders();
-
-    const commonHeaders = { ...platformDepsHeaders, ...basicAuthHeaders };
-
-    switch (auth.type) {
-      case "password": {
-        return {
-          ...commonHeaders,
-          "X-Cybozu-Authorization": Base64.encode(
-            `${auth.username}:${auth.password}`
-          ),
-        };
-      }
-      case "apiToken": {
-        if (Array.isArray(auth.apiToken)) {
-          return {
-            ...commonHeaders,
-            "X-Cybozu-API-Token": auth.apiToken.join(","),
-          };
-        }
-        return { ...commonHeaders, "X-Cybozu-API-Token": auth.apiToken };
-      }
-      case "oAuthToken": {
-        return { ...commonHeaders, Authorization: `Bearer ${auth.oAuthToken}` };
-      }
-      default: {
-        return { ...commonHeaders, "X-Requested-With": "XMLHttpRequest" };
-      }
-    }
-  }
-
-  private buildParams(auth: DiscriminatedAuth): HTTPClientParams {
-    let requestToken;
-    if (auth.type === "session") {
-      try {
-        requestToken = platformDeps.getRequestToken();
-      } catch (e) {
-        if (e instanceof UnsupportedPlatformError) {
-          throw new Error(
-            `session authentication is not supported in ${e.platform} environment.`
-          );
-        }
-        throw e;
-      }
-    }
-    // This params are always sent as a request body.
-    return requestToken
-      ? {
-          __REQUEST_TOKEN__: requestToken,
-        }
-      : {};
   }
 
   public bulkRequest(params: {
@@ -251,5 +151,13 @@ export class KintoneRestAPIClient {
     >;
   }): Promise<{ results: Array<{ [K: string]: any }> }> {
     return this.bulkRequest_.send(params);
+  }
+}
+
+function assertsOptions(
+  options: Options
+): asserts options is SetRequired<Options, "baseUrl"> {
+  if (typeof options.baseUrl !== "string") {
+    throw new Error("in Node.js environment, baseUrl is required");
   }
 }
