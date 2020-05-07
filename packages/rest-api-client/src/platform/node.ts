@@ -47,8 +47,8 @@ export const buildPlatformDependentConfig = (params: {
 
 export const buildHeaders = () => {
   return {
-    "User-Agent": `Node.js/${process.version}(${os.type()}) rest-api-client v${
-      packageJson.version
-    }`,
+    "User-Agent": `Node.js/${process.version}(${os.type()}) ${
+      packageJson.name
+    }@${packageJson.version}`,
   };
 };
