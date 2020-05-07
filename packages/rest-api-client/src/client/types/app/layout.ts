@@ -110,7 +110,7 @@ type SubTableLayout = {
 type GroupLayout = {
   type: "GROUP";
   code: string;
-  layout: Array<{ type: "ROW"; fields: FieldLayout[] }>;
+  layout: RowLayout[];
 };
 
 export type Layout = Array<RowLayout | SubTableLayout | GroupLayout>;
