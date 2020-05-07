@@ -176,19 +176,21 @@ export class KintoneRestAPIClient {
     auth: DiscriminatedAuth,
     basicAuth?: BasicAuth
   ): KintoneAuthHeader {
-    const authHeaders = basicAuth
+    const basicAuthHeaders = basicAuth
       ? {
           Authorization: `Basic ${Base64.encode(
             `${basicAuth.username}:${basicAuth.password}`
           )}`,
         }
       : {};
-    const headers = { ...platformDeps.buildHeaders(), ...authHeaders };
+    const platformDepsHeaders = platformDeps.buildHeaders();
+
+    const commonHeaders = { ...platformDepsHeaders, ...basicAuthHeaders };
 
     switch (auth.type) {
       case "password": {
         return {
-          ...headers,
+          ...commonHeaders,
           "X-Cybozu-Authorization": Base64.encode(
             `${auth.username}:${auth.password}`
           ),
@@ -196,15 +198,18 @@ export class KintoneRestAPIClient {
       }
       case "apiToken": {
         if (Array.isArray(auth.apiToken)) {
-          return { ...headers, "X-Cybozu-API-Token": auth.apiToken.join(",") };
+          return {
+            ...commonHeaders,
+            "X-Cybozu-API-Token": auth.apiToken.join(","),
+          };
         }
-        return { ...headers, "X-Cybozu-API-Token": auth.apiToken };
+        return { ...commonHeaders, "X-Cybozu-API-Token": auth.apiToken };
       }
       case "oAuthToken": {
-        return { ...headers, Authorization: `Bearer ${auth.oAuthToken}` };
+        return { ...commonHeaders, Authorization: `Bearer ${auth.oAuthToken}` };
       }
       default: {
-        return { ...headers, "X-Requested-With": "XMLHttpRequest" };
+        return { ...commonHeaders, "X-Requested-With": "XMLHttpRequest" };
       }
     }
   }
