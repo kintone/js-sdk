@@ -18,6 +18,7 @@
     "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md",
+    "lint:ts": "tsc --noEmit",
     "lint": "run-p -l lint:*",
     "deploy": "rimraf scripts/dist && run-s webpack upload",
     "upload": "kintone-customize-uploader customize-manifest.json",

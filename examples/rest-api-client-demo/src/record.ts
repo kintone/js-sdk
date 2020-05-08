@@ -218,10 +218,15 @@ export class Record {
     });
     const result = await this.client.record.updateAllRecords({
       app: APP_ID,
-      records: records.map((record) => ({
-        id: record.$id.value,
-        record: { Customer: { value: "bar" } },
-      })),
+      records: records.map((record) => {
+        if (record.$id.type === "__ID__") {
+          return {
+            id: record.$id.value,
+            record: { Customer: { value: "bar" } },
+          };
+        }
+        throw new Error();
+      }),
     });
     console.log(result);
   }
@@ -231,10 +236,18 @@ export class Record {
     try {
       const result = await this.client.record.deleteAllRecords({
         app: APP_ID,
-        records: records.map((record) => ({
-          id: record.$id.value,
-          revision: record.$revision.value,
-        })),
+        records: records.map((record) => {
+          if (
+            record.$id.type === "__ID__" &&
+            record.$revision.type === "__REVISION__"
+          ) {
+            return {
+              id: record.$id.value,
+              revision: record.$revision.value,
+            };
+          }
+          throw new Error();
+        }),
       });
       console.log(result);
     } catch (e) {

@@ -32,9 +32,12 @@ export class File {
       id: 537,
     });
 
-    const data = await this.client.file.downloadFile({
-      fileKey: record.Attachment.value[0].fileKey,
-    });
-    console.log(data.toString());
+    const fileField = record.Attachment;
+    if (fileField.type === "FILE") {
+      const data = await this.client.file.downloadFile({
+        fileKey: fileField.value[0].fileKey,
+      });
+      console.log(data.toString());
+    }
   }
 }
