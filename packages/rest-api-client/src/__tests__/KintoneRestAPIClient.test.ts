@@ -98,6 +98,21 @@ describe("KintoneRestAPIClient", () => {
           "X-Requested-With": "XMLHttpRequest",
         });
       });
+      it("User-Agent in Node.js enviroment", () => {
+        injectPlatformDeps(nodeDeps);
+        const USERNAME = "user";
+        const PASSWORD = "password";
+        const auth = {
+          username: USERNAME,
+          password: PASSWORD,
+        };
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
+        const headers = client.getHeaders() as Record<string, string>;
+        const ua = headers["User-Agent"];
+        expect(ua).toMatch(
+          /^Node\.js\/v\d+\.\d+\.\d+\(\w+\)\s@kintone\/rest-api-client@\d+\.\d+\.\d+$/
+        );
+      });
 
       it("should use location.origin in browser environment if baseUrl param is not specified", () => {
         global.location = {
