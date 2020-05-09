@@ -46,7 +46,7 @@
     "array-flatten": "^3.0.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
-    "execa": "^4.0.0",
+    "execa": "^4.0.1",
     "glob": "^7.1.6",
     "husky": "^4.2.5",
     "intelli-espower-loader": "^1.0.1",
