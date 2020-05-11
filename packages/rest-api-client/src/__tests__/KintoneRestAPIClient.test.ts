@@ -8,6 +8,9 @@ import * as browserDeps from "../platform/browser";
 import * as nodeDeps from "../platform/node";
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
 import { ErrorResponse, HttpClientError } from "../http/HttpClientInterface";
+import os from "os";
+
+const packageJson = require("../../package.json");
 
 describe("KintoneRestAPIClient", () => {
   describe("constructor", () => {
@@ -98,7 +101,7 @@ describe("KintoneRestAPIClient", () => {
           "X-Requested-With": "XMLHttpRequest",
         });
       });
-      it("User-Agent in Node.js enviroment", () => {
+      it("should include OS name, OS version, package name, and pacakge version in User-Agent for Node.js enviroment", () => {
         injectPlatformDeps(nodeDeps);
         const USERNAME = "user";
         const PASSWORD = "password";
@@ -109,8 +112,14 @@ describe("KintoneRestAPIClient", () => {
         const client = new KintoneRestAPIClient({ baseUrl, auth });
         const headers = client.getHeaders() as Record<string, string>;
         const ua = headers["User-Agent"];
-        expect(ua).toMatch(
-          /^Node\.js\/v\d+\.\d+\.\d+\(\w+\)\s@kintone\/rest-api-client@\d+\.\d+\.\d+$/
+
+        const nodeVersion = process.version;
+        const osName = os.type();
+        const packageName = packageJson.name;
+        const packageVersion = packageJson.version;
+
+        expect(ua).toBe(
+          `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`
         );
       });
 
