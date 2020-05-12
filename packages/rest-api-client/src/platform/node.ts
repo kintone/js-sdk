@@ -3,6 +3,8 @@ import { promisify } from "util";
 import { basename } from "path";
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import https from "https";
+import os from "os";
+const packageJson = require("../../package.json");
 
 const readFile = promisify(fs.readFile);
 
@@ -41,4 +43,12 @@ export const buildPlatformDependentConfig = (params: {
     return { httpsAgent };
   }
   return {};
+};
+
+export const buildHeaders = () => {
+  return {
+    "User-Agent": `Node.js/${process.version}(${os.type()}) ${
+      packageJson.name
+    }@${packageJson.version}`,
+  };
 };

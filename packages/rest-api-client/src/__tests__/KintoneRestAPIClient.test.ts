@@ -8,6 +8,9 @@ import * as browserDeps from "../platform/browser";
 import * as nodeDeps from "../platform/node";
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
 import { ErrorResponse, HttpClientError } from "../http/HttpClientInterface";
+import os from "os";
+
+const packageJson = require("../../package.json");
 
 describe("KintoneRestAPIClient", () => {
   describe("constructor", () => {
@@ -97,6 +100,37 @@ describe("KintoneRestAPIClient", () => {
         expect(client.getHeaders()).toEqual({
           "X-Requested-With": "XMLHttpRequest",
         });
+      });
+      it("should include OS name, OS version, package name, and pacakge version in User-Agent for Node.js enviroment", () => {
+        injectPlatformDeps(nodeDeps);
+        const USERNAME = "user";
+        const PASSWORD = "password";
+        const auth = {
+          username: USERNAME,
+          password: PASSWORD,
+        };
+        const client = new KintoneRestAPIClient({ baseUrl, auth });
+        const headers = client.getHeaders() as Record<string, string>;
+        const ua = headers["User-Agent"];
+
+        const nodeVersion = process.version;
+        const osName = os.type();
+        const packageName = packageJson.name;
+        const packageVersion = packageJson.version;
+
+        expect(ua).toBe(
+          `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`
+        );
+      });
+
+      it("should not include User-Agent for browser enviroment", () => {
+        global.location = {
+          origin: "https://example.com",
+        };
+        const client = new KintoneRestAPIClient();
+        const headers = client.getHeaders() as Record<string, string>;
+        const ua = headers["User-Agent"];
+        expect(ua).toBeUndefined();
       });
 
       it("should use location.origin in browser environment if baseUrl param is not specified", () => {
