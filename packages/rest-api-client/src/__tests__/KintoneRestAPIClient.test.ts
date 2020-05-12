@@ -123,6 +123,16 @@ describe("KintoneRestAPIClient", () => {
         );
       });
 
+      it("should not include User-Agent for browser enviroment", () => {
+        global.location = {
+          origin: "https://example.com",
+        };
+        const client = new KintoneRestAPIClient();
+        const headers = client.getHeaders() as Record<string, string>;
+        const ua = headers["User-Agent"];
+        expect(ua).toBeUndefined();
+      });
+
       it("should use location.origin in browser environment if baseUrl param is not specified", () => {
         global.location = {
           origin: "https://example.com",
