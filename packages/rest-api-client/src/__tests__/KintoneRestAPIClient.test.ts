@@ -29,109 +29,6 @@ describe("KintoneRestAPIClient", () => {
       beforeEach(() => {
         injectPlatformDeps(browserDeps);
       });
-      it("ApiToken auth", () => {
-        const API_TOKEN = "ApiToken";
-        const auth = {
-          apiToken: API_TOKEN,
-        };
-        const client = new KintoneRestAPIClient({ baseUrl, auth });
-        expect(client.getHeaders()).toEqual({
-          "X-Cybozu-API-Token": API_TOKEN,
-        });
-      });
-      it("ApiToken auth using multiple tokens as comma-separated string", () => {
-        const API_TOKEN1 = "ApiToken1";
-        const API_TOKEN2 = "ApiToken2";
-        const auth = {
-          apiToken: `${API_TOKEN1},${API_TOKEN2}`,
-        };
-        const client = new KintoneRestAPIClient({ baseUrl, auth });
-        expect(client.getHeaders()).toEqual({
-          "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
-        });
-      });
-      it("ApiToken auth using multiple tokens as array", () => {
-        const API_TOKEN1 = "ApiToken1";
-        const API_TOKEN2 = "ApiToken2";
-        const auth = {
-          apiToken: [API_TOKEN1, API_TOKEN2],
-        };
-        const client = new KintoneRestAPIClient({ baseUrl, auth });
-        expect(client.getHeaders()).toEqual({
-          "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
-        });
-      });
-      it("Password  auth", () => {
-        const USERNAME = "user";
-        const PASSWORD = "password";
-        const auth = {
-          username: USERNAME,
-          password: PASSWORD,
-        };
-        const client = new KintoneRestAPIClient({ baseUrl, auth });
-        expect(client.getHeaders()).toEqual({
-          "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`),
-        });
-      });
-      it("Session auth", () => {
-        const auth = {};
-        const client = new KintoneRestAPIClient({ baseUrl, auth });
-        expect(client.getHeaders()).toEqual({
-          "X-Requested-With": "XMLHttpRequest",
-        });
-      });
-      it("OAuth token auth", () => {
-        const auth = { oAuthToken: "oauth-token" };
-        const client = new KintoneRestAPIClient({ baseUrl, auth });
-        expect(client.getHeaders()).toEqual({
-          Authorization: `Bearer ${auth.oAuthToken}`,
-        });
-      });
-      it("Basic auth", () => {
-        const basicAuth = { username: "user", password: "password" };
-        const client = new KintoneRestAPIClient({ baseUrl, basicAuth });
-        expect(client.getHeaders()).toEqual({
-          Authorization: `Basic ${Base64.encode("user:password")}`,
-          "X-Requested-With": "XMLHttpRequest",
-        });
-      });
-      it("should use Session auth if auth param is not specified", () => {
-        const client = new KintoneRestAPIClient({ baseUrl });
-        expect(client.getHeaders()).toEqual({
-          "X-Requested-With": "XMLHttpRequest",
-        });
-      });
-      it("should include OS name, OS version, package name, and pacakge version in User-Agent for Node.js enviroment", () => {
-        injectPlatformDeps(nodeDeps);
-        const USERNAME = "user";
-        const PASSWORD = "password";
-        const auth = {
-          username: USERNAME,
-          password: PASSWORD,
-        };
-        const client = new KintoneRestAPIClient({ baseUrl, auth });
-        const headers = client.getHeaders() as Record<string, string>;
-        const ua = headers["User-Agent"];
-
-        const nodeVersion = process.version;
-        const osName = os.type();
-        const packageName = packageJson.name;
-        const packageVersion = packageJson.version;
-
-        expect(ua).toBe(
-          `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`
-        );
-      });
-
-      it("should not include User-Agent for browser enviroment", () => {
-        global.location = {
-          origin: "https://example.com",
-        };
-        const client = new KintoneRestAPIClient();
-        const headers = client.getHeaders() as Record<string, string>;
-        const ua = headers["User-Agent"];
-        expect(ua).toBeUndefined();
-      });
 
       it("should use location.origin in browser environment if baseUrl param is not specified", () => {
         global.location = {
@@ -151,12 +48,6 @@ describe("KintoneRestAPIClient", () => {
         };
         expect(() => new KintoneRestAPIClient({ auth })).toThrow(
           "in Node.js environment, baseUrl is required"
-        );
-      });
-      it("should raise an error in Node.js enviroment if use session auth", () => {
-        injectPlatformDeps(nodeDeps);
-        expect(() => new KintoneRestAPIClient({ baseUrl })).toThrow(
-          "session authentication is not supported in Node.js environment."
         );
       });
     });
