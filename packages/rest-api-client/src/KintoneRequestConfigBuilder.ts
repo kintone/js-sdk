@@ -11,7 +11,6 @@ import {
 } from "./http/HttpClientInterface";
 import {
   KintoneAuthHeader,
-  HTTPClientParams,
   Auth,
   ApiTokenAuth,
   PasswordAuth,
@@ -145,17 +144,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     }
   }
 
-  getHeaders() {
-    return this.headers;
-  }
-
-  setHeaders(headers: KintoneAuthHeader) {
-    this.headers = headers;
-  }
-
-  setRequestToken(requestToken: string) {
-    this.requestToken = requestToken;
-  }
   // FIXME: this doesn't add this.params on the query
   // because this.params is for __REQUEST_TOKEN__.
   // But it depends on what this.params includes.

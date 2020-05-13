@@ -108,7 +108,6 @@ export class KintoneRestAPIClient {
   app: AppClient;
   file: FileClient;
   private bulkRequest_: BulkRequestClient;
-  private headers: KintoneAuthHeader;
   private baseUrl?: string;
 
   constructor(options: Options = {}) {
@@ -119,7 +118,6 @@ export class KintoneRestAPIClient {
       errorResponseHandler,
       requestConfigBuilder,
     });
-    this.headers = requestConfigBuilder.getHeaders();
     const { guestSpaceId } = options;
 
     this.bulkRequest_ = new BulkRequestClient(httpClient, guestSpaceId);
@@ -130,10 +128,6 @@ export class KintoneRestAPIClient {
 
   public getBaseUrl() {
     return this.baseUrl;
-  }
-
-  public getHeaders() {
-    return this.headers;
   }
 
   public bulkRequest(params: {
