@@ -35,21 +35,22 @@ describe("KintoneRequestConfigBuilder", () => {
       },
     });
   });
-  it.skip("should build post method requestConfig if the request URL is over the threshold", () => {
+  it("should build post method requestConfig if the request URL is over the threshold", () => {
     const value = "a".repeat(4096);
     const requestConfig = kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: value }
     );
-    expect(requestConfig).toEqual({
+    expect(requestConfig).toStrictEqual({
       method: "post",
+      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
         "X-Cybozu-API-Token": apiToken,
         "X-HTTP-Method-Override": "GET",
       },
-      data: { ...params, key: value },
+      data: { key: value },
     });
   });
   it("should build get method requestConfig for data", () => {
@@ -68,20 +69,20 @@ describe("KintoneRequestConfigBuilder", () => {
       responseType: "arraybuffer",
     });
   });
-  it.skip("should build post method requestConfig", () => {
+  it("should build post method requestConfig", () => {
     const requestConfig = kintoneRequestConfigBuilder.build(
       "post",
       "/k/v1/record.json",
       { key: "value" }
     );
-    expect(requestConfig).toEqual({
+    expect(requestConfig).toStrictEqual({
       method: "post",
+      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
         "X-Cybozu-API-Token": apiToken,
       },
       data: {
-        ...params,
         key: "value",
       },
     });
@@ -105,33 +106,34 @@ describe("KintoneRequestConfigBuilder", () => {
     });
     expect(data).toBeInstanceOf(FormData);
   });
-  it.skip("should build put method requestConfig", () => {
+  it("should build put method requestConfig", () => {
     const requestConfig = kintoneRequestConfigBuilder.build(
       "put",
       "/k/v1/record.json",
       { key: "value" }
     );
-    expect(requestConfig).toEqual({
+    expect(requestConfig).toStrictEqual({
       method: "put",
+      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
         "X-Cybozu-API-Token": apiToken,
       },
       data: {
-        ...params,
         key: "value",
       },
     });
   });
-  it.skip("should build delete method requestConfig", () => {
+  it("should build delete method requestConfig", () => {
     const requestConfig = kintoneRequestConfigBuilder.build(
       "delete",
       "/k/v1/record.json",
       { key: "value" }
     );
-    expect(requestConfig).toEqual({
+    expect(requestConfig).toStrictEqual({
       method: "delete",
-      url: `${baseUrl}/k/v1/record.json?__REQUEST_TOKEN__=foo-bar&key=value`,
+      proxy: undefined,
+      url: `${baseUrl}/k/v1/record.json?key=value`,
       headers: {
         "X-Cybozu-API-Token": apiToken,
       },
@@ -298,9 +300,9 @@ describe("Headers", () => {
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
     });
-    expect(
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {})
-    ).toThrow(
+    expect(() => {
+      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {});
+    }).toThrow(
       "session authentication is not supported in Node.js environment."
     );
   });

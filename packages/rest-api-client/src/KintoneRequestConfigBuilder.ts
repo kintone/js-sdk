@@ -27,12 +27,13 @@ type DiscriminatedAuth =
   | SessionAuth
   | OAuthTokenAuth;
 
+type Data = Params | FormData;
+
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 
 export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   private baseUrl: string;
   private headers: KintoneAuthHeader;
-  private requestToken?: string;
   private auth: DiscriminatedAuth;
   private clientCertAuth?:
     | {
@@ -74,7 +75,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   public build(
     method: HttpMethod,
     path: string,
-    params: Params | FormData,
+    params: Data,
     options?: { responseType: "arraybuffer" }
   ) {
     const requestConfig: RequestConfig = {
@@ -96,7 +97,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
             ...requestConfig,
             method: "post" as const,
             headers: { ...this.headers, "X-HTTP-Method-Override": "GET" },
-            data: this.buildParams(params),
+            data: this.buildData(params),
           };
         }
         return {
@@ -106,14 +107,11 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       }
       case "post": {
         if (params instanceof FormData) {
-          const formData = params;
-          const paramObject = this.buildParams();
-          Object.keys(paramObject).forEach((key) => {
-            formData.append(key, (paramObject as any)[key]);
-          });
+          const formData = this.buildData(params);
           return {
             ...requestConfig,
             headers:
+              // NOTE: formData.getHeaders does not exist in a browser environment.
               typeof formData.getHeaders === "function"
                 ? { ...this.headers, ...formData.getHeaders() }
                 : this.headers,
@@ -122,17 +120,17 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         }
         return {
           ...requestConfig,
-          data: this.buildParams(params),
+          data: this.buildData(params),
         };
       }
       case "put": {
         return {
           ...requestConfig,
-          data: this.buildParams(params),
+          data: this.buildData(params),
         };
       }
       case "delete": {
-        const requestUrl = this.buildRequestUrl(path, this.buildParams(params));
+        const requestUrl = this.buildRequestUrl(path, this.buildData(params));
         return {
           ...requestConfig,
           url: requestUrl,
@@ -148,16 +146,20 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   // because this.params is for __REQUEST_TOKEN__.
   // But it depends on what this.params includes.
   // we should consider to rename this.params.
-  private buildRequestUrl(path: string, params: Params | FormData): string {
+  private buildRequestUrl(path: string, params: Data): string {
     return `${this.baseUrl}${path}?${qs.stringify(params)}`;
   }
 
-  private buildParams(params?: Params | FormData) {
+  private buildData<T extends Data>(params: T): T {
     if (this.auth.type === "session") {
       try {
+        const requestToken = platformDeps.getRequestToken();
+        if (params instanceof FormData) {
+          params.append("__REQUEST_TOKEN__", requestToken);
+          return params;
+        }
         return {
-          __REQUEST_TOKEN__:
-            this.requestToken ?? platformDeps.getRequestToken(),
+          __REQUEST_TOKEN__: requestToken,
           ...params,
         };
       } catch (e) {
@@ -170,7 +172,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       }
     }
     // This params are always sent as a request body.
-    return {};
+    return params;
   }
 
   private buildHeaders(basicAuth?: BasicAuth): KintoneAuthHeader {
