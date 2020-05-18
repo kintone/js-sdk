@@ -1,4 +1,3 @@
-import { SetRequired } from "type-fest";
 import { BulkRequestClient, EndpointName } from "./client/BulkRequestClient";
 import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
@@ -163,7 +162,9 @@ export class KintoneRestAPIClient {
 
 function assertsOptions(
   options: Options
-): asserts options is SetRequired<Options, "baseUrl"> {
+): asserts options is Options & {
+  baseUrl: string;
+} {
   if (typeof options.baseUrl !== "string") {
     throw new Error("in Node.js environment, baseUrl is required");
   }
