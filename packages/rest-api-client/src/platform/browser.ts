@@ -1,4 +1,5 @@
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
+import { DiscriminatedAuth } from "../KintoneRestAPIClient";
 
 export const readFileFromPath = (filePath: string) => {
   throw new UnsupportedPlatformError("Browser");
@@ -14,7 +15,7 @@ export const getRequestToken = () => {
   return kintone.getRequestToken();
 };
 
-export const getDefaultAuth = () => {
+export const getDefaultAuth = (): DiscriminatedAuth => {
   return {
     type: "session",
   };

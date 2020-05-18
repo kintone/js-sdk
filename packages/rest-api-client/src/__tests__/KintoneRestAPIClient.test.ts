@@ -2,7 +2,6 @@ import {
   KintoneRestAPIClient,
   errorResponseHandler,
 } from "../KintoneRestAPIClient";
-import { Base64 } from "js-base64";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
 import * as nodeDeps from "../platform/node";
@@ -48,6 +47,16 @@ describe("KintoneRestAPIClient", () => {
         };
         expect(() => new KintoneRestAPIClient({ auth })).toThrow(
           "in Node.js environment, baseUrl is required"
+        );
+      });
+      it("should raise an error if trying to use session auth in Node.js environment", () => {
+        injectPlatformDeps(nodeDeps);
+        expect(() => {
+          new KintoneRestAPIClient({
+            baseUrl,
+          });
+        }).toThrow(
+          "session authentication is not supported in Node.js environment."
         );
       });
     });

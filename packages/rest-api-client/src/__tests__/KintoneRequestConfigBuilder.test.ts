@@ -16,6 +16,7 @@ describe("KintoneRequestConfigBuilder", () => {
     kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
       auth: {
+        type: "apiToken",
         apiToken,
       },
       ...params,
@@ -161,6 +162,7 @@ describe("options", () => {
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
       auth: {
+        type: "apiToken",
         apiToken,
       },
       proxy,
@@ -181,6 +183,7 @@ describe("options", () => {
 
   it("should build `requestConfig` having `httpsAgent` property", () => {
     const baseUrl = "https://example.kintone.com";
+    const apiToken = "apiToken";
     const clientCertAuth = {
       pfx: Buffer.alloc(0),
       password: "password",
@@ -189,6 +192,10 @@ describe("options", () => {
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
       clientCertAuth,
+      auth: {
+        type: "apiToken",
+        apiToken,
+      },
     });
 
     const requestConfig = kintoneRequestConfigBuilder.build(
@@ -206,13 +213,13 @@ describe("Headers", () => {
   it("Password auth", () => {
     const USERNAME = "user";
     const PASSWORD = "password";
-    const auth = {
-      username: USERNAME,
-      password: PASSWORD,
-    };
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      auth,
+      auth: {
+        type: "password",
+        username: USERNAME,
+        password: PASSWORD,
+      },
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
@@ -223,12 +230,12 @@ describe("Headers", () => {
 
   it("ApiToken auth", () => {
     const API_TOKEN = "ApiToken";
-    const auth = {
-      apiToken: API_TOKEN,
-    };
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      auth,
+      auth: {
+        type: "apiToken",
+        apiToken: API_TOKEN,
+      },
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
@@ -240,12 +247,12 @@ describe("Headers", () => {
   it("ApiToken auth using multiple tokens as comma-separated string", () => {
     const API_TOKEN1 = "ApiToken1";
     const API_TOKEN2 = "ApiToken2";
-    const auth = {
-      apiToken: `${API_TOKEN1},${API_TOKEN2}`,
-    };
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      auth,
+      auth: {
+        type: "apiToken",
+        apiToken: `${API_TOKEN1},${API_TOKEN2}`,
+      },
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
@@ -257,12 +264,12 @@ describe("Headers", () => {
   it("ApiToken auth using multiple tokens as array", () => {
     const API_TOKEN1 = "ApiToken1";
     const API_TOKEN2 = "ApiToken2";
-    const auth = {
-      apiToken: [API_TOKEN1, API_TOKEN2],
-    };
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      auth,
+      auth: {
+        type: "apiToken",
+        apiToken: [API_TOKEN1, API_TOKEN2],
+      },
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
@@ -272,51 +279,32 @@ describe("Headers", () => {
   });
 
   it("Session auth", () => {
-    const auth = {};
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      auth,
+      auth: {
+        type: "session",
+      },
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
     ).toEqual({
       "X-Requested-With": "XMLHttpRequest",
     });
-  });
-
-  it("should use Session auth if auth param is not specified", () => {
-    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
-      baseUrl,
-    });
-    expect(
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toEqual({
-      "X-Requested-With": "XMLHttpRequest",
-    });
-  });
-
-  it.skip("should raise an error if trying to use session auth in Node.js environment", () => {
-    injectPlatformDeps(nodeDeps);
-    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
-      baseUrl,
-    });
-    expect(() => {
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {});
-    }).toThrow(
-      "session authentication is not supported in Node.js environment."
-    );
   });
 
   it("OAuth token auth", () => {
-    const auth = { oAuthToken: "oauth-token" };
+    const oAuthToken = "oauth-token";
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      auth,
+      auth: {
+        type: "oAuthToken",
+        oAuthToken,
+      },
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
     ).toEqual({
-      Authorization: `Bearer ${auth.oAuthToken}`,
+      Authorization: `Bearer ${oAuthToken}`,
     });
   });
 
@@ -325,6 +313,9 @@ describe("Headers", () => {
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
       basicAuth,
+      auth: {
+        type: "session",
+      },
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers

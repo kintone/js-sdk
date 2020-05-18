@@ -143,24 +143,15 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
 
   private buildData<T extends Data>(params: T): T {
     if (this.auth.type === "session") {
-      try {
-        const requestToken = platformDeps.getRequestToken();
-        if (params instanceof FormData) {
-          params.append("__REQUEST_TOKEN__", requestToken);
-          return params;
-        }
-        return {
-          __REQUEST_TOKEN__: requestToken,
-          ...params,
-        };
-      } catch (e) {
-        if (e instanceof UnsupportedPlatformError) {
-          throw new Error(
-            `session authentication is not supported in ${e.platform} environment.`
-          );
-        }
-        throw e;
+      const requestToken = platformDeps.getRequestToken();
+      if (params instanceof FormData) {
+        params.append("__REQUEST_TOKEN__", requestToken);
+        return params;
       }
+      return {
+        __REQUEST_TOKEN__: requestToken,
+        ...params,
+      };
     }
     // This params are always sent as a request body.
     return params;
