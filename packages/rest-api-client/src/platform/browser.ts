@@ -14,6 +14,12 @@ export const getRequestToken = () => {
   return kintone.getRequestToken();
 };
 
+export const getDefaultAuth = () => {
+  return {
+    type: "session",
+  };
+};
+
 export const buildPlatformDependentConfig = () => {
   return {};
 };

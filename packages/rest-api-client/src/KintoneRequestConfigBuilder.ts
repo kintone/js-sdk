@@ -11,21 +11,11 @@ import {
 } from "./http/HttpClientInterface";
 import {
   KintoneAuthHeader,
-  Auth,
-  ApiTokenAuth,
-  PasswordAuth,
-  SessionAuth,
-  OAuthTokenAuth,
   BasicAuth,
+  DiscriminatedAuth,
 } from "./KintoneRestAPIClient";
 import { platformDeps } from "./platform/";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
-
-type DiscriminatedAuth =
-  | ApiTokenAuth
-  | PasswordAuth
-  | SessionAuth
-  | OAuthTokenAuth;
 
 type Data = Params | FormData;
 
@@ -53,7 +43,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     proxy,
   }: {
     baseUrl: string;
-    auth?: Auth;
+    auth: DiscriminatedAuth;
     basicAuth?: BasicAuth;
     clientCertAuth?:
       | {
@@ -67,11 +57,12 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     proxy?: ProxyConfig;
   }) {
     this.baseUrl = baseUrl;
-    this.auth = buildDiscriminatedAuth(auth ?? {});
+    this.auth = auth;
     this.headers = this.buildHeaders(basicAuth);
     this.clientCertAuth = clientCertAuth;
     this.proxy = proxy;
   }
+
   public build(
     method: HttpMethod,
     path: string,
@@ -207,19 +198,4 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       }
     }
   }
-}
-
-function buildDiscriminatedAuth(auth: Auth): DiscriminatedAuth {
-  if ("username" in auth) {
-    return { type: "password", ...auth };
-  }
-  if ("apiToken" in auth) {
-    return { type: "apiToken", ...auth };
-  }
-  if ("oAuthToken" in auth) {
-    return { type: "oAuthToken", ...auth };
-  }
-  return {
-    type: "session",
-  };
 }

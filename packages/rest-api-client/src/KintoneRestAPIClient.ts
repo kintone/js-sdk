@@ -14,10 +14,18 @@ import {
   ProxyConfig,
 } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
+import { platformDeps } from "./platform/index";
+import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
 
 export type HTTPClientParams = {
   __REQUEST_TOKEN__?: string;
 };
+
+export type DiscriminatedAuth =
+  | ApiTokenAuth
+  | PasswordAuth
+  | SessionAuth
+  | OAuthTokenAuth;
 
 export type Auth =
   | Omit<ApiTokenAuth, "type">
@@ -113,7 +121,12 @@ export class KintoneRestAPIClient {
   constructor(options: Options = {}) {
     options.baseUrl = this.baseUrl = options.baseUrl ?? location?.origin;
     assertsOptions(options);
-    const requestConfigBuilder = new KintoneRequestConfigBuilder(options);
+
+    const auth = buildDiscriminatedAuth(options.auth ?? {});
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      ...options,
+      auth,
+    });
     const httpClient = new DefaultHttpClient({
       errorResponseHandler,
       requestConfigBuilder,
@@ -153,5 +166,27 @@ function assertsOptions(
 ): asserts options is SetRequired<Options, "baseUrl"> {
   if (typeof options.baseUrl !== "string") {
     throw new Error("in Node.js environment, baseUrl is required");
+  }
+}
+
+function buildDiscriminatedAuth(auth: Auth): DiscriminatedAuth {
+  if ("username" in auth) {
+    return { type: "password", ...auth };
+  }
+  if ("apiToken" in auth) {
+    return { type: "apiToken", ...auth };
+  }
+  if ("oAuthToken" in auth) {
+    return { type: "oAuthToken", ...auth };
+  }
+  try {
+    return platformDeps.getDefaultAuth();
+  } catch (e) {
+    if (e instanceof UnsupportedPlatformError) {
+      throw new Error(
+        `session authentication is not supported in ${e.platform} environment.`
+      );
+    }
+    throw e;
   }
 }

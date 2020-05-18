@@ -18,6 +18,10 @@ export const getRequestToken = () => {
   throw new UnsupportedPlatformError("Node.js");
 };
 
+export const getDefaultAuth = () => {
+  throw new UnsupportedPlatformError("Node.js");
+};
+
 export const buildPlatformDependentConfig = (params: {
   clientCertAuth?:
     | {
