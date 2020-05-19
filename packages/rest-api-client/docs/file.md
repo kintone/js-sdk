@@ -19,8 +19,8 @@ const client = new KintoneRestAPIClient();
 
   // Upload a file and attach it to a record
   const { fileKey } = await client.file.uploadFile({
-　  file: FILE
-　});
+    file: FILE
+  });
   const { id } = await client.record.addRecord({
     app: APP_ID,
     record: {
@@ -88,9 +88,9 @@ You can get the file key from the following place.
 
 #### Parameters
 
-| Name 　    |  Type  | Required | Description                          |
-| ---------- | :----: | :------: | ------------------------------------ |
-| fileKey 　 | String |   Yes    | The file key of the downloaded file. |
+| Name    |  Type  | Required | Description                          |
+| ------- | :----: | :------: | ------------------------------------ |
+| fileKey | String |   Yes    | The file key of the downloaded file. |
 
 #### Returns
 
