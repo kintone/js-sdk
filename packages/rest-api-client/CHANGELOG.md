@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.2.0...@kintone/rest-api-client@1.3.0) (2020-05-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency qs to ^6.9.4 ([c2e8c8f](https://github.com/kintone/js-sdk/commit/c2e8c8ffc3d38ccadd51a7605a4664df69a9b2ec))
+
+
+### Features
+
+* Add proxy option ([#181](https://github.com/kintone/js-sdk/issues/181)) ([ecfa2da](https://github.com/kintone/js-sdk/commit/ecfa2da1e0934ec13beaf455d822ffa20a7a9bde))
+* add type definitions for field layout ([#221](https://github.com/kintone/js-sdk/issues/221)) ([b135e72](https://github.com/kintone/js-sdk/commit/b135e72f3cb92ea68f264e3f109446334936a9ce))
+* add type definitions for field properties ([#199](https://github.com/kintone/js-sdk/issues/199)) ([4ddc6ea](https://github.com/kintone/js-sdk/commit/4ddc6ea068d136586ac90f77d6bdb058f52dab41))
+* add type definitions for fields ([#193](https://github.com/kintone/js-sdk/issues/193)) ([6abb480](https://github.com/kintone/js-sdk/commit/6abb480daff3ef5308b51ef98a9fa6ff28c829f0))
+* Add User-Agent header for Node.js ([#213](https://github.com/kintone/js-sdk/issues/213)) ([a859fdb](https://github.com/kintone/js-sdk/commit/a859fdb74e225ef58d65baaff1ad094819414f5d))
+
+
+
+
+
 # [1.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.1.0...@kintone/rest-api-client@1.2.0) (2020-04-17)
 
 
