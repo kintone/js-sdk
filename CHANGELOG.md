@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.4](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.0.3...@kintone/customize-uploader@3.0.4) (2020-05-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^3.4.0 ([#195](https://github.com/kintone/js-sdk/issues/195)) ([05f90e1](https://github.com/kintone/js-sdk/commit/05f90e1e611117911e063962ab72ecb99ed41347))
+* **deps:** update dependency meow to ^6.1.1 ([6c8987c](https://github.com/kintone/js-sdk/commit/6c8987c0c5ec7326e819461ca028ea52a20866ab))
+* **deps:** update dependency meow to v7 ([#224](https://github.com/kintone/js-sdk/issues/224)) ([71eab05](https://github.com/kintone/js-sdk/commit/71eab055c0db1aaaaa03e402f1e8f8a20d9356fd))
+
+
+
+
+
 ## [3.0.3](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.0.2...@kintone/customize-uploader@3.0.3) (2020-04-17)
 
 
