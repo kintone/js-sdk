@@ -32,22 +32,22 @@ export type Auth =
   | Omit<SessionAuth, "type">
   | Omit<OAuthTokenAuth, "type">;
 
-export type ApiTokenAuth = {
+type ApiTokenAuth = {
   type: "apiToken";
   apiToken: string | string[];
 };
 
-export type PasswordAuth = {
+type PasswordAuth = {
   type: "password";
   username: string;
   password: string;
 };
 
-export type SessionAuth = {
+type SessionAuth = {
   type: "session";
 };
 
-export type OAuthTokenAuth = {
+type OAuthTokenAuth = {
   type: "oAuthToken";
   oAuthToken: string;
 };
