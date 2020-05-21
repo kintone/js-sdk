@@ -16,10 +16,6 @@ import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 import { platformDeps } from "./platform/index";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
 
-export type HTTPClientParams = {
-  __REQUEST_TOKEN__?: string;
-};
-
 export type DiscriminatedAuth =
   | ApiTokenAuth
   | PasswordAuth
