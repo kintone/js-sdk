@@ -132,10 +132,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     }
   }
 
-  // FIXME: this doesn't add this.params on the query
-  // because this.params is for __REQUEST_TOKEN__.
-  // But it depends on what this.params includes.
-  // we should consider to rename this.params.
   private buildRequestUrl(path: string, params: Data): string {
     return `${this.baseUrl}${path}?${qs.stringify(params)}`;
   }
@@ -152,7 +148,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         ...params,
       };
     }
-    // This params are always sent as a request body.
     return params;
   }
 
