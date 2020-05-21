@@ -11,14 +11,16 @@ assignees: ''
 
 ## Package
 
-<!-- Please update the following package name you want to add the feature -->
+<!-- Which package do you want to add a feature to? -->
 
 - @kintone/xxx
 
 ## Why
 
-<!-- Please describe why you want the feature and why it makes sense for the package -->
+<!-- Why do you want the feature and why does it make sense for the package? -->
+
 
 ## What
 
-<!-- Please describe a solution you want to add -->
+<!-- What is a solution you want to add? -->
+

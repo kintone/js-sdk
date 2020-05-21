@@ -9,14 +9,15 @@ assignees: ''
 
 <!-- Thank you for reporting a bug! -->
 
-## Package
+## Target Package
 
-<!-- Please update the following package information you tested -->
+<!-- Which package do you want to report a bug to? -->
 
 - @kintone/xxx 0.0.0
 
-
 ## Environment
+
+<!-- What environment did you test? -->
 
 - Operating System:
 - Browser:
@@ -24,5 +25,10 @@ assignees: ''
 
 ## Current Behavior
 
+<!-- What is the current behavior you saw?  -->
+
 
 ## Expected Behavior
+
+<!-- What is the behavior you expected?  -->
+
