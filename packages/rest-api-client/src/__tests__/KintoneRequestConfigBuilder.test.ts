@@ -4,10 +4,6 @@ import FormData from "form-data";
 describe("KintoneRequestConfigBuilder", () => {
   const baseUrl = "https://example.kintone.com";
   const apiToken = "apiToken";
-  const requestToken = "foo-bar";
-  const params = {
-    __REQUEST_TOKEN__: requestToken,
-  };
   let kintoneRequestConfigBuilder: KintoneRequestConfigBuilder;
   beforeEach(() => {
     kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
@@ -16,7 +12,6 @@ describe("KintoneRequestConfigBuilder", () => {
         type: "apiToken",
         apiToken,
       },
-      ...params,
     });
   });
   it("should build get method requestConfig", () => {
@@ -146,7 +141,6 @@ describe("options", () => {
     const headers = {
       "X-Cybozu-API-Token": apiToken,
     };
-    const requestToken = "foo-bar";
     const proxy = {
       host: "localhost",
       port: 8000,
