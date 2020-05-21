@@ -164,7 +164,7 @@ describe("options", () => {
       "/k/v1/record.json",
       { key: "value" }
     );
-    expect(requestConfig).toEqual({
+    expect(requestConfig).toStrictEqual({
       method: "get",
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers,
@@ -214,7 +214,7 @@ describe("Headers", () => {
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toEqual({
+    ).toStrictEqual({
       "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`),
     });
   });
@@ -230,7 +230,7 @@ describe("Headers", () => {
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toEqual({
+    ).toStrictEqual({
       "X-Cybozu-API-Token": API_TOKEN,
     });
   });
@@ -247,7 +247,7 @@ describe("Headers", () => {
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toEqual({
+    ).toStrictEqual({
       "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
     });
   });
@@ -264,7 +264,7 @@ describe("Headers", () => {
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toEqual({
+    ).toStrictEqual({
       "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
     });
   });
@@ -278,7 +278,7 @@ describe("Headers", () => {
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toEqual({
+    ).toStrictEqual({
       "X-Requested-With": "XMLHttpRequest",
     });
   });
@@ -294,7 +294,7 @@ describe("Headers", () => {
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toEqual({
+    ).toStrictEqual({
       Authorization: `Bearer ${oAuthToken}`,
     });
   });
@@ -310,7 +310,7 @@ describe("Headers", () => {
     });
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toEqual({
+    ).toStrictEqual({
       Authorization: `Basic ${Base64.encode("user:password")}`,
       "X-Requested-With": "XMLHttpRequest",
     });
