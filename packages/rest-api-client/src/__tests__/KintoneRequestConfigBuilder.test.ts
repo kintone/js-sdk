@@ -1,7 +1,9 @@
 import { KintoneRequestConfigBuilder } from "../KintoneRequestConfigBuilder";
 import FormData from "form-data";
+import { injectPlatformDeps } from "../platform";
+import * as browserDeps from "../platform/browser";
 
-describe("KintoneRequestConfigBuilder", () => {
+describe("KintoneRequestConfigBuilder in Node.js environment", () => {
   const baseUrl = "https://example.kintone.com";
   const apiToken = "apiToken";
   let kintoneRequestConfigBuilder: KintoneRequestConfigBuilder;
@@ -20,8 +22,9 @@ describe("KintoneRequestConfigBuilder", () => {
       "/k/v1/record.json",
       { key: "value" }
     );
-    expect(requestConfig).toEqual({
+    expect(requestConfig).toStrictEqual({
       method: "get",
+      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers: {
         "X-Cybozu-API-Token": apiToken,
@@ -53,8 +56,9 @@ describe("KintoneRequestConfigBuilder", () => {
       { key: "value" },
       { responseType: "arraybuffer" }
     );
-    expect(requestConfig).toEqual({
+    expect(requestConfig).toStrictEqual({
       method: "get",
+      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers: {
         "X-Cybozu-API-Token": apiToken,
@@ -89,8 +93,9 @@ describe("KintoneRequestConfigBuilder", () => {
       formData
     );
     const { data, ...config } = requestConfig;
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       method: "post",
+      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
         "X-Cybozu-API-Token": apiToken,
@@ -129,6 +134,148 @@ describe("KintoneRequestConfigBuilder", () => {
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers: {
         "X-Cybozu-API-Token": apiToken,
+      },
+    });
+  });
+});
+
+describe("KintoneRequestConfigBuilder in Browser environment", () => {
+  const baseUrl = "https://example.kintone.com";
+  const requestToken = "requestToken";
+  let kintoneRequestConfigBuilder: KintoneRequestConfigBuilder;
+  beforeEach(() => {
+    injectPlatformDeps({
+      ...browserDeps,
+      getRequestToken: () => requestToken,
+    });
+
+    kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl,
+      auth: {
+        type: "session",
+      },
+    });
+  });
+  it("should build get method requestConfig", () => {
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toStrictEqual({
+      method: "get",
+      proxy: undefined,
+      url: `${baseUrl}/k/v1/record.json?key=value`,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    });
+  });
+  it("should build post method requestConfig if the request URL is over the threshold", () => {
+    const value = "a".repeat(4096);
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      { key: value }
+    );
+    expect(requestConfig).toStrictEqual({
+      method: "post",
+      proxy: undefined,
+      url: `${baseUrl}/k/v1/record.json`,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        "X-HTTP-Method-Override": "GET",
+      },
+      data: { key: value, __REQUEST_TOKEN__: requestToken },
+    });
+  });
+  it("should build get method requestConfig for data", () => {
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      { key: "value" },
+      { responseType: "arraybuffer" }
+    );
+    expect(requestConfig).toStrictEqual({
+      method: "get",
+      proxy: undefined,
+      url: `${baseUrl}/k/v1/record.json?key=value`,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+      responseType: "arraybuffer",
+    });
+  });
+  it("should build post method requestConfig", () => {
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "post",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toStrictEqual({
+      method: "post",
+      proxy: undefined,
+      url: `${baseUrl}/k/v1/record.json`,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+      data: {
+        key: "value",
+        __REQUEST_TOKEN__: requestToken,
+      },
+    });
+  });
+  it("should build post method requestConfig for data", () => {
+    const formData = new FormData();
+    formData.append("key", "value");
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "post",
+      "/k/v1/record.json",
+      formData
+    );
+    const { data, ...config } = requestConfig;
+    expect(config).toStrictEqual({
+      method: "post",
+      proxy: undefined,
+      url: `${baseUrl}/k/v1/record.json`,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        ...formData.getHeaders(),
+      },
+    });
+    expect(data).toBeInstanceOf(FormData);
+  });
+  it("should build put method requestConfig", () => {
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "put",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toStrictEqual({
+      method: "put",
+      proxy: undefined,
+      url: `${baseUrl}/k/v1/record.json`,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+      data: {
+        key: "value",
+        __REQUEST_TOKEN__: requestToken,
+      },
+    });
+  });
+  it("should build delete method requestConfig", () => {
+    const requestConfig = kintoneRequestConfigBuilder.build(
+      "delete",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toStrictEqual({
+      method: "delete",
+      proxy: undefined,
+      url: `${baseUrl}/k/v1/record.json?__REQUEST_TOKEN__=${requestToken}&key=value`,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
       },
     });
   });
