@@ -11,7 +11,7 @@ assignees: ''
 
 ## Package
 
-<!-- Which package do you want to add a feature to? -->
+<!-- Which package do you want to add a feature for? -->
 
 - @kintone/xxx
 

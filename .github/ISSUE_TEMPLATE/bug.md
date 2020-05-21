@@ -11,7 +11,7 @@ assignees: ''
 
 ## Target Package
 
-<!-- Which package do you want to report a bug to? -->
+<!-- Which package do you want to report a bug for? -->
 
 - @kintone/xxx 0.0.0
 
