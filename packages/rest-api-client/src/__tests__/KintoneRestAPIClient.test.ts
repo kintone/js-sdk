@@ -7,9 +7,6 @@ import * as browserDeps from "../platform/browser";
 import * as nodeDeps from "../platform/node";
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
 import { ErrorResponse, HttpClientError } from "../http/HttpClientInterface";
-import os from "os";
-
-const packageJson = require("../../package.json");
 
 describe("KintoneRestAPIClient", () => {
   describe("constructor", () => {

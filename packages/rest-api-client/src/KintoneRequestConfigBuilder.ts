@@ -152,17 +152,21 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   }
 
   private buildHeaders(basicAuth?: BasicAuth): KintoneAuthHeader {
-    const headers = basicAuth
+    const basicAuthHeaders = basicAuth
       ? {
           Authorization: `Basic ${Base64.encode(
             `${basicAuth.username}:${basicAuth.password}`
           )}`,
         }
       : {};
+    const platformDepsHeaders = platformDeps.buildHeaders();
+
+    const commonHeaders = { ...platformDepsHeaders, ...basicAuthHeaders };
+
     switch (this.auth.type) {
       case "password": {
         return {
-          ...headers,
+          ...commonHeaders,
           "X-Cybozu-Authorization": Base64.encode(
             `${this.auth.username}:${this.auth.password}`
           ),
@@ -171,15 +175,18 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       case "apiToken": {
         const apiToken = this.auth.apiToken;
         if (Array.isArray(apiToken)) {
-          return { ...headers, "X-Cybozu-API-Token": apiToken.join(",") };
+          return { ...commonHeaders, "X-Cybozu-API-Token": apiToken.join(",") };
         }
-        return { ...headers, "X-Cybozu-API-Token": apiToken };
+        return { ...commonHeaders, "X-Cybozu-API-Token": apiToken };
       }
       case "oAuthToken": {
-        return { ...headers, Authorization: `Bearer ${this.auth.oAuthToken}` };
+        return {
+          ...commonHeaders,
+          Authorization: `Bearer ${this.auth.oAuthToken}`,
+        };
       }
       default: {
-        return { ...headers, "X-Requested-With": "XMLHttpRequest" };
+        return { ...commonHeaders, "X-Requested-With": "XMLHttpRequest" };
       }
     }
   }
