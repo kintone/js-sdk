@@ -18,9 +18,9 @@ assignees: ''
 
 ## Environment
 
-- OS version: 
+- Operating System:
+- Browser:
 - Node.js version:
-- Browser version:
 
 ## Current Behavior
 
