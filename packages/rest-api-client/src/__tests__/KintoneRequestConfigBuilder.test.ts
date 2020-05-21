@@ -1,9 +1,6 @@
 import { KintoneRequestConfigBuilder } from "../KintoneRequestConfigBuilder";
 import FormData from "form-data";
 
-import { injectPlatformDeps } from "../platform";
-import * as nodeDeps from "../platform/node";
-
 describe("KintoneRequestConfigBuilder", () => {
   const baseUrl = "https://example.kintone.com";
   const apiToken = "apiToken";

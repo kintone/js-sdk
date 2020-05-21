@@ -15,7 +15,6 @@ import {
   DiscriminatedAuth,
 } from "./KintoneRestAPIClient";
 import { platformDeps } from "./platform/";
-import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
 
 type Data = Params | FormData;
 
