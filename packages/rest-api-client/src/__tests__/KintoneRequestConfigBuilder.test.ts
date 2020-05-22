@@ -10,6 +10,8 @@ const osName = os.type();
 const packageName = packageJson.name;
 const packageVersion = packageJson.version;
 
+const expectedUa = `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`;
+
 describe("KintoneRequestConfigBuilder in Node.js environment", () => {
   const baseUrl = "https://example.kintone.com";
   const apiToken = "apiToken";
@@ -34,7 +36,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       proxy: undefined,
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers: {
-        "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+        "User-Agent": expectedUa,
         "X-Cybozu-API-Token": apiToken,
       },
     });
@@ -51,7 +53,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
-        "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+        "User-Agent": expectedUa,
         "X-Cybozu-API-Token": apiToken,
         "X-HTTP-Method-Override": "GET",
       },
@@ -70,7 +72,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       proxy: undefined,
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers: {
-        "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+        "User-Agent": expectedUa,
         "X-Cybozu-API-Token": apiToken,
       },
       responseType: "arraybuffer",
@@ -87,7 +89,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
-        "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+        "User-Agent": expectedUa,
         "X-Cybozu-API-Token": apiToken,
       },
       data: {
@@ -109,7 +111,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
-        "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+        "User-Agent": expectedUa,
         "X-Cybozu-API-Token": apiToken,
         ...formData.getHeaders(),
       },
@@ -127,7 +129,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
-        "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+        "User-Agent": expectedUa,
         "X-Cybozu-API-Token": apiToken,
       },
       data: {
@@ -146,7 +148,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       proxy: undefined,
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers: {
-        "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+        "User-Agent": expectedUa,
         "X-Cybozu-API-Token": apiToken,
       },
     });
@@ -301,7 +303,7 @@ describe("options", () => {
     const apiToken = "apiToken";
     const headers = {
       "X-Cybozu-API-Token": apiToken,
-      "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+      "User-Agent": expectedUa,
     };
     const proxy = {
       host: "localhost",
@@ -377,7 +379,7 @@ describe("Headers", () => {
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
     ).toStrictEqual({
-      "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+      "User-Agent": expectedUa,
       "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`),
     });
   });
@@ -394,7 +396,7 @@ describe("Headers", () => {
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
     ).toStrictEqual({
-      "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+      "User-Agent": expectedUa,
       "X-Cybozu-API-Token": API_TOKEN,
     });
   });
@@ -412,7 +414,7 @@ describe("Headers", () => {
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
     ).toStrictEqual({
-      "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+      "User-Agent": expectedUa,
       "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
     });
   });
@@ -430,7 +432,7 @@ describe("Headers", () => {
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
     ).toStrictEqual({
-      "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+      "User-Agent": expectedUa,
       "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
     });
   });
@@ -445,7 +447,7 @@ describe("Headers", () => {
     expect(
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
     ).toStrictEqual({
-      "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+      "User-Agent": expectedUa,
       "X-Requested-With": "XMLHttpRequest",
     });
   });
@@ -463,7 +465,7 @@ describe("Headers", () => {
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
     ).toStrictEqual({
       Authorization: `Bearer ${oAuthToken}`,
-      "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+      "User-Agent": expectedUa,
     });
   });
 
@@ -480,36 +482,13 @@ describe("Headers", () => {
       kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
     ).toStrictEqual({
       Authorization: `Basic ${Base64.encode("user:password")}`,
-      "User-Agent": `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`,
+      "User-Agent": expectedUa,
       "X-Requested-With": "XMLHttpRequest",
     });
-  });
-  it("should include OS name, OS version, package name, and pacakge version in User-Agent for Node.js enviroment", () => {
-    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
-      baseUrl,
-      auth: {
-        type: "password",
-        username: "user",
-        password: "password",
-      },
-    });
-
-    const headers = kintoneRequestConfigBuilder.build(
-      "get",
-      "/k/v1/record.json",
-      {}
-    ).headers;
-
-    expect(headers["User-Agent"]).toBe(
-      `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`
-    );
   });
 
   it("should not include User-Agent for browser enviroment", () => {
     injectPlatformDeps(browserDeps);
-    global.location = {
-      origin: "https://example.com",
-    };
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
       auth: {
