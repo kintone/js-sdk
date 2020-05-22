@@ -106,6 +106,41 @@ export const errorResponseHandler = (
   throw new KintoneRestAPIError({ data, ...rest });
 };
 
+// asserts syntax fails with arrow functions.
+// see https://github.com/microsoft/TypeScript/issues/33602
+type AssertsOptions = (
+  options: Options
+) => asserts options is Options & {
+  baseUrl: string;
+};
+const assertsOptions: AssertsOptions = (options) => {
+  if (typeof options.baseUrl !== "string") {
+    throw new Error("in Node.js environment, baseUrl is required");
+  }
+};
+
+const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
+  if ("username" in auth) {
+    return { type: "password", ...auth };
+  }
+  if ("apiToken" in auth) {
+    return { type: "apiToken", ...auth };
+  }
+  if ("oAuthToken" in auth) {
+    return { type: "oAuthToken", ...auth };
+  }
+  try {
+    return platformDeps.getDefaultAuth();
+  } catch (e) {
+    if (e instanceof UnsupportedPlatformError) {
+      throw new Error(
+        `session authentication is not supported in ${e.platform} environment.`
+      );
+    }
+    throw e;
+  }
+};
+
 export class KintoneRestAPIClient {
   record: RecordClient;
   app: AppClient;
@@ -153,37 +188,5 @@ export class KintoneRestAPIClient {
     >;
   }): Promise<{ results: Array<{ [K: string]: any }> }> {
     return this.bulkRequest_.send(params);
-  }
-}
-
-function assertsOptions(
-  options: Options
-): asserts options is Options & {
-  baseUrl: string;
-} {
-  if (typeof options.baseUrl !== "string") {
-    throw new Error("in Node.js environment, baseUrl is required");
-  }
-}
-
-function buildDiscriminatedAuth(auth: Auth): DiscriminatedAuth {
-  if ("username" in auth) {
-    return { type: "password", ...auth };
-  }
-  if ("apiToken" in auth) {
-    return { type: "apiToken", ...auth };
-  }
-  if ("oAuthToken" in auth) {
-    return { type: "oAuthToken", ...auth };
-  }
-  try {
-    return platformDeps.getDefaultAuth();
-  } catch (e) {
-    if (e instanceof UnsupportedPlatformError) {
-      throw new Error(
-        `session authentication is not supported in ${e.platform} environment.`
-      );
-    }
-    throw e;
   }
 }
