@@ -22,7 +22,7 @@ export type DiscriminatedAuth =
   | SessionAuth
   | OAuthTokenAuth;
 
-export type Auth =
+type Auth =
   | Omit<ApiTokenAuth, "type">
   | Omit<PasswordAuth, "type">
   | Omit<SessionAuth, "type">
