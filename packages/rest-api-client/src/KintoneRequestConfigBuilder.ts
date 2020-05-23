@@ -34,6 +34,8 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         password: string;
       };
   private proxy?: ProxyConfig;
+  private requestToken: string;
+
   constructor({
     baseUrl,
     auth,
@@ -60,6 +62,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     this.headers = this.buildHeaders(basicAuth);
     this.clientCertAuth = clientCertAuth;
     this.proxy = proxy;
+    this.requestToken = "";
   }
 
   public async build(
@@ -141,7 +144,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
 
   private async buildData<T extends Data>(params: T): Promise<T> {
     if (this.auth.type === "session") {
-      const requestToken = await platformDeps.getRequestToken();
+      const requestToken = await this.getRequestToken();
       if (params instanceof FormData) {
         params.append("__REQUEST_TOKEN__", requestToken);
         return params;
@@ -192,5 +195,12 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         return { ...commonHeaders, "X-Requested-With": "XMLHttpRequest" };
       }
     }
+  }
+
+  private async getRequestToken(): Promise<string> {
+    if (this.requestToken === "") {
+      this.requestToken = await platformDeps.getRequestToken();
+    }
+    return this.requestToken;
   }
 }
