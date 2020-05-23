@@ -53,23 +53,6 @@ export type BasicAuth = {
   password: string;
 };
 
-export type KintoneAuthHeader =
-  | {
-      "X-Cybozu-Authorization": string;
-      Authorization?: string;
-    }
-  | {
-      "X-Cybozu-API-Token": string;
-      Authorization?: string;
-    }
-  | {
-      "X-Requested-With": "XMLHttpRequest";
-      Authorization?: string;
-    }
-  | {
-      Authorization: string;
-    };
-
 type Options = {
   baseUrl?: string;
   auth?: Auth;
