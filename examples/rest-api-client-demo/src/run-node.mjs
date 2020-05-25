@@ -9,9 +9,9 @@ const client = new KintoneRestAPIClient({
 });
 
 client.record
-  .getRecords({ app: 1 })
+  .getRecord({ app: 8, id: 3 })
   .then((resp) => {
-    console.log(resp.records);
+    console.log(resp);
   })
   .catch((err) => {
     console.log(err);

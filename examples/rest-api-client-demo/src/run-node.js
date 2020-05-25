@@ -4,15 +4,15 @@ const client = new KintoneRestAPIClient({
   baseUrl: KINTONE_BASE_URL,
   // Use password authentication
   auth: {
-    username: KINTONE_USERNAME,
-    password: KINTONE_PASSWORD,
-  }
+    username: KINTONE_USERNAME || "",
+    password: KINTONE_PASSWORD || "",
+  },
 });
 
 client.record
-  .getRecords({ app: 1 })
+  .getRecord({ app: 8, id: 3 })
   .then((resp) => {
-    console.log(resp.records);
+    console.log(resp);
   })
   .catch((err) => {
     console.log(err);
