@@ -19,8 +19,8 @@ const client = new KintoneRestAPIClient();
 
   // Upload a file and attach it to a record
   const { fileKey } = await client.file.uploadFile({
-　  file: FILE
-　});
+    file: FILE
+  });
   const { id } = await client.record.addRecord({
     app: APP_ID,
     record: {
@@ -57,12 +57,12 @@ You can use the file key at the following place.
 
 #### Parameters
 
-| Name      |                                     Type                                     |          Required           | Description                                                                                                                                         |
-| --------- | :--------------------------------------------------------------------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| file      |                                    Object                                    |             Yes             | An object includes file name and data.                                                                                                              |
-| file.name |                                    String                                    | Conditionally<br />Required | The name for the file. Required, unless you specify `file.path`.                                                                                    |
-| file.data | String or<br />[Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) | Conditionally<br />Required | The data for the file. Required, unless you specify `file.path`.                                                                                    |
-| file.path |                                    String                                    | Conditionally<br />Required | **This parameter is available only in Node.js environment.** <br /> The path to the file. Required, unless you specify `file.name` and `file.data`. |
+| Name      |                                                                 Type                                                                 |          Required           | Description                                                                                                                                         |
+| --------- | :----------------------------------------------------------------------------------------------------------------------------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| file      |                                                                Object                                                                |             Yes             | An object includes file name and data.                                                                                                              |
+| file.name |                                                                String                                                                | Conditionally<br />Required | The name for the file. Required, unless you specify `file.path`.                                                                                    |
+| file.data | String or<br />[Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) or<br /> [Stream](https://nodejs.org/api/stream.html)\* | Conditionally<br />Required | The data for the file. Required, unless you specify `file.path`.<br>\* Stream is only available in Node.js environment.                             |
+| file.path |                                                                String                                                                | Conditionally<br />Required | **This parameter is available only in Node.js environment.** <br /> The path to the file. Required, unless you specify `file.name` and `file.data`. |
 
 #### Returns
 
@@ -88,9 +88,9 @@ You can get the file key from the following place.
 
 #### Parameters
 
-| Name 　    |  Type  | Required | Description                          |
-| ---------- | :----: | :------: | ------------------------------------ |
-| fileKey 　 | String |   Yes    | The file key of the downloaded file. |
+| Name    |  Type  | Required | Description                          |
+| ------- | :----: | :------: | ------------------------------------ |
+| fileKey | String |   Yes    | The file key of the downloaded file. |
 
 #### Returns
 
