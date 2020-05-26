@@ -9,14 +9,27 @@ import {
   Params,
   ProxyConfig,
 } from "./http/HttpClientInterface";
-import {
-  KintoneAuthHeader,
-  BasicAuth,
-  DiscriminatedAuth,
-} from "./KintoneRestAPIClient";
+import { BasicAuth, DiscriminatedAuth } from "./KintoneRestAPIClient";
 import { platformDeps } from "./platform/";
 
 type Data = Params | FormData;
+
+type KintoneAuthHeader =
+  | {
+      "X-Cybozu-Authorization": string;
+      Authorization?: string;
+    }
+  | {
+      "X-Cybozu-API-Token": string;
+      Authorization?: string;
+    }
+  | {
+      "X-Requested-With": "XMLHttpRequest";
+      Authorization?: string;
+    }
+  | {
+      Authorization: string;
+    };
 
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 

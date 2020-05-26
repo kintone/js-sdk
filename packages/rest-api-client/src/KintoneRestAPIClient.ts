@@ -22,7 +22,7 @@ export type DiscriminatedAuth =
   | SessionAuth
   | OAuthTokenAuth;
 
-export type Auth =
+type Auth =
   | Omit<ApiTokenAuth, "type">
   | Omit<PasswordAuth, "type">
   | Omit<SessionAuth, "type">
@@ -52,23 +52,6 @@ export type BasicAuth = {
   username: string;
   password: string;
 };
-
-export type KintoneAuthHeader =
-  | {
-      "X-Cybozu-Authorization": string;
-      Authorization?: string;
-    }
-  | {
-      "X-Cybozu-API-Token": string;
-      Authorization?: string;
-    }
-  | {
-      "X-Requested-With": "XMLHttpRequest";
-      Authorization?: string;
-    }
-  | {
-      Authorization: string;
-    };
 
 type Options = {
   baseUrl?: string;
