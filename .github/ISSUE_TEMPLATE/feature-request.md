@@ -1,7 +1,7 @@
 ---
-name: Feature Request
+name: ":rocket: Feature Request"
 about: Issue for a feature request
-title: 'Thank you for sending a feature request!'
+title: ''
 labels: ''
 assignees: ''
 
