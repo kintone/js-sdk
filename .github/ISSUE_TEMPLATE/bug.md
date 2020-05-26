@@ -1,7 +1,7 @@
 ---
-name: Bug
+name: ":bug: Bug"
 about: Issue for a bug
-title: 'Thank you for reporting a bug!'
+title: ''
 labels: ''
 assignees: ''
 
