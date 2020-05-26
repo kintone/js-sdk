@@ -1,5 +1,5 @@
 ---
-name: ":bug: Bug"
+name: "🐛 Bug"
 about: Issue for a bug
 title: ''
 labels: ''

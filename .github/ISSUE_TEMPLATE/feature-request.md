@@ -1,5 +1,5 @@
 ---
-name: ":rocket: Feature Request"
+name: "🚀 Feature Request"
 about: Issue for a feature request
 title: ''
 labels: ''
