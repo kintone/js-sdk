@@ -7,6 +7,7 @@ export const readFileFromPath = (filePath: string) => {
 
 export const getRequestToken = async () => {
   if (
+    kintone !== null &&
     typeof kintone === "object" &&
     typeof kintone.getRequestToken === "function"
   ) {
@@ -14,10 +15,9 @@ export const getRequestToken = async () => {
   }
 
   if (
+    garoon !== null &&
     typeof garoon === "object" &&
-    typeof garoon.connect === "object" &&
-    typeof garoon.connect.kintone === "object" &&
-    typeof garoon.connect.kintone.getRequestToken === "function"
+    typeof garoon.connect?.kintone?.getRequestToken === "function"
   ) {
     return garoon.connect.kintone.getRequestToken();
   }
