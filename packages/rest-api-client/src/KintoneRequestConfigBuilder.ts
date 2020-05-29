@@ -34,7 +34,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         password: string;
       };
   private proxy?: ProxyConfig;
-  private requestToken: string;
+  private requestToken: string | null;
 
   constructor({
     baseUrl,
@@ -62,7 +62,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     this.headers = this.buildHeaders(basicAuth);
     this.clientCertAuth = clientCertAuth;
     this.proxy = proxy;
-    this.requestToken = "";
+    this.requestToken = null;
   }
 
   public async build(
@@ -198,7 +198,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   }
 
   private async getRequestToken(): Promise<string> {
-    if (this.requestToken === "") {
+    if (this.requestToken === null) {
       this.requestToken = await platformDeps.getRequestToken();
     }
     return this.requestToken;
