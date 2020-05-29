@@ -8,9 +8,14 @@ export class File {
     this.client = client;
   }
 
-  public async uploadFile() {
+  public async uploadFile(
+    file: { name: string; data: string | ArrayBuffer } = {
+      name: "Hello.text",
+      data: "Hello World!",
+    }
+  ) {
     const { fileKey } = await this.client.file.uploadFile({
-      file: { name: "Hello.text", data: "Hello World!" },
+      file,
     });
     console.log(fileKey);
     this.client.record.addRecord({
@@ -29,15 +34,24 @@ export class File {
   public async downloadFile() {
     const { record } = await this.client.record.getRecord({
       app: APP_ID,
-      id: 537,
+      id: 75085,
     });
 
     const fileField = record.Attachment;
+    let data;
     if (fileField.type === "FILE") {
-      const data = await this.client.file.downloadFile({
+      data = await this.client.file.downloadFile({
         fileKey: fileField.value[0].fileKey,
       });
-      console.log(data.toString());
+      // console.log(data.toString());
+    }
+    return data;
+  }
+
+  public async downloadAndUploadFile() {
+    const data = await this.downloadFile();
+    if (data) {
+      await this.uploadFile({ name: "image.png", data });
     }
   }
 }
