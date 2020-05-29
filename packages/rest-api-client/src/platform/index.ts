@@ -7,7 +7,7 @@ type PlatformDeps = {
   getDefaultAuth: () => DiscriminatedAuth;
   buildPlatformDependentConfig: (params: object) => object;
   buildHeaders: () => Record<string, string>;
-  convertFormDataValue: (data: unknown) => unknown;
+  buildFormDataValue: (data: unknown) => unknown;
 };
 
 export const platformDeps: PlatformDeps = {
@@ -26,7 +26,7 @@ export const platformDeps: PlatformDeps = {
   buildHeaders: () => {
     throw new Error("not implemented");
   },
-  convertFormDataValue: () => {
+  buildFormDataValue: () => {
     throw new Error("not implemented");
   },
 };
@@ -37,5 +37,5 @@ export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   platformDeps.getDefaultAuth = deps.getDefaultAuth!;
   platformDeps.buildPlatformDependentConfig = deps.buildPlatformDependentConfig!;
   platformDeps.buildHeaders = deps.buildHeaders!;
-  platformDeps.convertFormDataValue = deps.convertFormDataValue!;
+  platformDeps.buildFormDataValue = deps.buildFormDataValue!;
 };

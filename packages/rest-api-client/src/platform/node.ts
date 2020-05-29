@@ -57,6 +57,6 @@ export const buildHeaders = () => {
   };
 };
 
-export const convertFormDataValue = (data: unknown) => {
+export const buildFormDataValue = (data: unknown) => {
   return data;
 };

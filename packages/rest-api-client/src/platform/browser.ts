@@ -39,6 +39,6 @@ export const buildHeaders = () => {
   return {};
 };
 
-export const convertFormDataValue = (data: unknown) => {
+export const buildFormDataValue = (data: unknown) => {
   return new Blob([data]);
 };
