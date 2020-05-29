@@ -38,7 +38,7 @@ export class FileClient {
       }
     } else {
       const { name, data } = params.file;
-      formData.append("file", data, name);
+      formData.append("file", platformDeps.buildFormDataValue(data), name);
     }
     return this.client.postData(path, formData);
   }

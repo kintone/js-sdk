@@ -22,3 +22,7 @@ declare const location:
       origin: string;
     }
   | undefined;
+
+declare class Blob {
+  constructor(array: unknown[]);
+}

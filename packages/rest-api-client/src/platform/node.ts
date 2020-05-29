@@ -56,3 +56,7 @@ export const buildHeaders = () => {
     }@${packageJson.version}`,
   };
 };
+
+export const buildFormDataValue = (data: unknown) => {
+  return data;
+};
