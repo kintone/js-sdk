@@ -38,3 +38,7 @@ export const buildPlatformDependentConfig = () => {
 export const buildHeaders = () => {
   return {};
 };
+
+export const buildFormDataValue = (data: unknown) => {
+  return new Blob([data]);
+};
