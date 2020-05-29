@@ -3,7 +3,7 @@ type PlatformDeps = {
   readFileFromPath: (
     filePath: string
   ) => Promise<{ name: string; data: unknown }>;
-  getRequestToken: () => string;
+  getRequestToken: () => Promise<string>;
   getDefaultAuth: () => DiscriminatedAuth;
   buildPlatformDependentConfig: (params: object) => object;
   buildHeaders: () => Record<string, string>;

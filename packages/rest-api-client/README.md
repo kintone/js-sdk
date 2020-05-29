@@ -128,6 +128,8 @@ The client determines which method to use by passed parameters.
 Supported in browser environment only.
 If you omit `auth` parameter, the client uses Session authentication.
 
+Session authentication is available in Garoon customization.
+
 ## Error Handling
 
 See [Error Handling](docs/errorHandling.md)
