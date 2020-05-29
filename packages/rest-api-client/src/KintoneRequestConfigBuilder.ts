@@ -47,6 +47,8 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         password: string;
       };
   private proxy?: ProxyConfig;
+  private requestToken: string | null;
+
   constructor({
     baseUrl,
     auth,
@@ -73,9 +75,10 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     this.headers = this.buildHeaders(basicAuth);
     this.clientCertAuth = clientCertAuth;
     this.proxy = proxy;
+    this.requestToken = null;
   }
 
-  public build(
+  public async build(
     method: HttpMethod,
     path: string,
     params: Data,
@@ -100,7 +103,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
             ...requestConfig,
             method: "post" as const,
             headers: { ...this.headers, "X-HTTP-Method-Override": "GET" },
-            data: this.buildData(params),
+            data: await this.buildData(params),
           };
         }
         return {
@@ -110,7 +113,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       }
       case "post": {
         if (params instanceof FormData) {
-          const formData = this.buildData(params);
+          const formData = await this.buildData(params);
           return {
             ...requestConfig,
             headers:
@@ -123,17 +126,20 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         }
         return {
           ...requestConfig,
-          data: this.buildData(params),
+          data: await this.buildData(params),
         };
       }
       case "put": {
         return {
           ...requestConfig,
-          data: this.buildData(params),
+          data: await this.buildData(params),
         };
       }
       case "delete": {
-        const requestUrl = this.buildRequestUrl(path, this.buildData(params));
+        const requestUrl = this.buildRequestUrl(
+          path,
+          await this.buildData(params)
+        );
         return {
           ...requestConfig,
           url: requestUrl,
@@ -149,9 +155,9 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     return `${this.baseUrl}${path}?${qs.stringify(params)}`;
   }
 
-  private buildData<T extends Data>(params: T): T {
+  private async buildData<T extends Data>(params: T): Promise<T> {
     if (this.auth.type === "session") {
-      const requestToken = platformDeps.getRequestToken();
+      const requestToken = await this.getRequestToken();
       if (params instanceof FormData) {
         params.append("__REQUEST_TOKEN__", requestToken);
         return params;
@@ -202,5 +208,12 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         return { ...commonHeaders, "X-Requested-With": "XMLHttpRequest" };
       }
     }
+  }
+
+  private async getRequestToken(): Promise<string> {
+    if (this.requestToken === null) {
+      this.requestToken = await platformDeps.getRequestToken();
+    }
+    return this.requestToken;
   }
 }

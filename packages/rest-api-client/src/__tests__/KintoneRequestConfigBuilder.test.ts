@@ -25,8 +25,8 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       },
     });
   });
-  it("should build get method requestConfig", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build get method requestConfig", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: "value" }
@@ -41,9 +41,9 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       },
     });
   });
-  it("should build post method requestConfig if the request URL is over the threshold", () => {
+  it("should build post method requestConfig if the request URL is over the threshold", async () => {
     const value = "a".repeat(4096);
-    const requestConfig = kintoneRequestConfigBuilder.build(
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: value }
@@ -60,8 +60,8 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       data: { key: value },
     });
   });
-  it("should build get method requestConfig for data", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build get method requestConfig for data", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: "value" },
@@ -78,8 +78,8 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       responseType: "arraybuffer",
     });
   });
-  it("should build post method requestConfig", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build post method requestConfig", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "post",
       "/k/v1/record.json",
       { key: "value" }
@@ -97,10 +97,10 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       },
     });
   });
-  it("should build post method requestConfig for data", () => {
+  it("should build post method requestConfig for data", async () => {
     const formData = new FormData();
     formData.append("key", "value");
-    const requestConfig = kintoneRequestConfigBuilder.build(
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "post",
       "/k/v1/record.json",
       formData
@@ -118,8 +118,8 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
     });
     expect(data).toBeInstanceOf(FormData);
   });
-  it("should build put method requestConfig", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build put method requestConfig", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "put",
       "/k/v1/record.json",
       { key: "value" }
@@ -137,8 +137,8 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       },
     });
   });
-  it("should build delete method requestConfig", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build delete method requestConfig", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "delete",
       "/k/v1/record.json",
       { key: "value" }
@@ -162,7 +162,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
   beforeEach(() => {
     injectPlatformDeps({
       ...browserDeps,
-      getRequestToken: () => requestToken,
+      getRequestToken: async () => requestToken,
     });
 
     kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
@@ -172,8 +172,8 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
       },
     });
   });
-  it("should build get method requestConfig", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build get method requestConfig", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: "value" }
@@ -187,9 +187,9 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
       },
     });
   });
-  it("should build post method requestConfig if the request URL is over the threshold", () => {
+  it("should build post method requestConfig if the request URL is over the threshold", async () => {
     const value = "a".repeat(4096);
-    const requestConfig = kintoneRequestConfigBuilder.build(
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: value }
@@ -205,8 +205,8 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
       data: { key: value, __REQUEST_TOKEN__: requestToken },
     });
   });
-  it("should build get method requestConfig for data", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build get method requestConfig for data", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: "value" },
@@ -222,8 +222,8 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
       responseType: "arraybuffer",
     });
   });
-  it("should build post method requestConfig", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build post method requestConfig", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "post",
       "/k/v1/record.json",
       { key: "value" }
@@ -241,10 +241,10 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
       },
     });
   });
-  it("should build post method requestConfig for data", () => {
+  it("should build post method requestConfig for data", async () => {
     const formData = new FormData();
     formData.append("key", "value");
-    const requestConfig = kintoneRequestConfigBuilder.build(
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "post",
       "/k/v1/record.json",
       formData
@@ -261,8 +261,8 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     });
     expect(data).toBeInstanceOf(FormData);
   });
-  it("should build put method requestConfig", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build put method requestConfig", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "put",
       "/k/v1/record.json",
       { key: "value" }
@@ -280,8 +280,8 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
       },
     });
   });
-  it("should build delete method requestConfig", () => {
-    const requestConfig = kintoneRequestConfigBuilder.build(
+  it("should build delete method requestConfig", async () => {
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "delete",
       "/k/v1/record.json",
       { key: "value" }
@@ -298,7 +298,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
 });
 
 describe("options", () => {
-  it("should build `requestConfig` having `proxy` property", () => {
+  it("should build `requestConfig` having `proxy` property", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
     const headers = {
@@ -323,7 +323,7 @@ describe("options", () => {
       proxy,
     });
 
-    const requestConfig = kintoneRequestConfigBuilder.build(
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: "value" }
@@ -336,7 +336,7 @@ describe("options", () => {
     });
   });
 
-  it("should build `requestConfig` having `httpsAgent` property", () => {
+  it("should build `requestConfig` having `httpsAgent` property", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
     const clientCertAuth = {
@@ -353,7 +353,7 @@ describe("options", () => {
       },
     });
 
-    const requestConfig = kintoneRequestConfigBuilder.build(
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       { key: "value" }
@@ -365,7 +365,7 @@ describe("options", () => {
 describe("Headers", () => {
   const baseUrl = "https://example.com";
 
-  it("Password auth", () => {
+  it("Password auth", async () => {
     const USERNAME = "user";
     const PASSWORD = "password";
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
@@ -376,15 +376,18 @@ describe("Headers", () => {
         password: PASSWORD,
       },
     });
-    expect(
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toStrictEqual({
+    const requestConfig = await kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      {}
+    );
+    expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedUa,
       "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`),
     });
   });
 
-  it("ApiToken auth", () => {
+  it("ApiToken auth", async () => {
     const API_TOKEN = "ApiToken";
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
@@ -393,15 +396,18 @@ describe("Headers", () => {
         apiToken: API_TOKEN,
       },
     });
-    expect(
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toStrictEqual({
+    const requestConfig = await kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      {}
+    );
+    expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedUa,
       "X-Cybozu-API-Token": API_TOKEN,
     });
   });
 
-  it("ApiToken auth using multiple tokens as comma-separated string", () => {
+  it("ApiToken auth using multiple tokens as comma-separated string", async () => {
     const API_TOKEN1 = "ApiToken1";
     const API_TOKEN2 = "ApiToken2";
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
@@ -411,15 +417,18 @@ describe("Headers", () => {
         apiToken: `${API_TOKEN1},${API_TOKEN2}`,
       },
     });
-    expect(
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toStrictEqual({
+    const requestConfig = await kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      {}
+    );
+    expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedUa,
       "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
     });
   });
 
-  it("ApiToken auth using multiple tokens as array", () => {
+  it("ApiToken auth using multiple tokens as array", async () => {
     const API_TOKEN1 = "ApiToken1";
     const API_TOKEN2 = "ApiToken2";
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
@@ -429,30 +438,36 @@ describe("Headers", () => {
         apiToken: [API_TOKEN1, API_TOKEN2],
       },
     });
-    expect(
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toStrictEqual({
+    const requestConfig = await kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      {}
+    );
+    expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedUa,
       "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
     });
   });
 
-  it("Session auth", () => {
+  it("Session auth", async () => {
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
       auth: {
         type: "session",
       },
     });
-    expect(
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toStrictEqual({
+    const requestConfig = await kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      {}
+    );
+    expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedUa,
       "X-Requested-With": "XMLHttpRequest",
     });
   });
 
-  it("OAuth token auth", () => {
+  it("OAuth token auth", async () => {
     const oAuthToken = "oauth-token";
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
@@ -461,15 +476,18 @@ describe("Headers", () => {
         oAuthToken,
       },
     });
-    expect(
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toStrictEqual({
+    const requestConfig = await kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      {}
+    );
+    expect(requestConfig.headers).toStrictEqual({
       Authorization: `Bearer ${oAuthToken}`,
       "User-Agent": expectedUa,
     });
   });
 
-  it("Basic auth", () => {
+  it("Basic auth", async () => {
     const basicAuth = { username: "user", password: "password" };
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
@@ -478,16 +496,19 @@ describe("Headers", () => {
         type: "session",
       },
     });
-    expect(
-      kintoneRequestConfigBuilder.build("get", "/k/v1/record.json", {}).headers
-    ).toStrictEqual({
+    const requestConfig = await kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      {}
+    );
+    expect(requestConfig.headers).toStrictEqual({
       Authorization: `Basic ${Base64.encode("user:password")}`,
       "User-Agent": expectedUa,
       "X-Requested-With": "XMLHttpRequest",
     });
   });
 
-  it("should not include User-Agent for browser enviroment", () => {
+  it("should not include User-Agent for browser enviroment", async () => {
     injectPlatformDeps(browserDeps);
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
@@ -495,11 +516,11 @@ describe("Headers", () => {
         type: "session",
       },
     });
-    const headers = kintoneRequestConfigBuilder.build(
+    const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
       {}
-    ).headers;
-    expect(headers["User-Agent"]).toBeUndefined();
+    );
+    expect(requestConfig.headers["User-Agent"]).toBeUndefined();
   });
 });

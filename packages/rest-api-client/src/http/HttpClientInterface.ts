@@ -47,5 +47,5 @@ export interface RequestConfigBuilder {
     path: string,
     params: Params | FormData,
     options?: { responseType: "arraybuffer" }
-  ) => RequestConfig;
+  ) => Promise<RequestConfig>;
 }

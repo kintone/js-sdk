@@ -5,14 +5,24 @@ export const readFileFromPath = (filePath: string) => {
   throw new UnsupportedPlatformError("Browser");
 };
 
-export const getRequestToken = () => {
+export const getRequestToken = async () => {
   if (
-    typeof kintone === "undefined" ||
-    typeof kintone.getRequestToken !== "function"
+    kintone !== null &&
+    typeof kintone === "object" &&
+    typeof kintone.getRequestToken === "function"
   ) {
-    throw new Error("session authentication must specify a request token");
+    return kintone.getRequestToken();
   }
-  return kintone.getRequestToken();
+
+  if (
+    garoon !== null &&
+    typeof garoon === "object" &&
+    typeof garoon.connect?.kintone?.getRequestToken === "function"
+  ) {
+    return garoon.connect.kintone.getRequestToken();
+  }
+
+  throw new Error("session authentication must specify a request token");
 };
 
 export const getDefaultAuth = (): DiscriminatedAuth => {
