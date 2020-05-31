@@ -36,7 +36,7 @@
     "@types/mocha": "^7.0.2",
     "@types/node": "^9.6.56",
     "@types/rimraf": "^3.0.0",
-    "@types/webpack": "^4.41.13",
+    "@types/webpack": "^4.41.16",
     "adm-zip": "^0.4.14",
     "eslint": "^6.8.0",
     "mocha": "^7.2.0",
