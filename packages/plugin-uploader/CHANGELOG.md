@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.4](https://github.com/kintone/plugin-uploader/compare/v4.0.3...v4.0.4) (2020-06-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to ^6.1.1 ([ef81653](https://github.com/kintone/plugin-uploader/commit/ef816530517054aaf4d468740d1f5a03bee6bd19))
+* **deps:** update dependency meow to v7 ([#293](https://github.com/kintone/plugin-uploader/issues/293)) ([a00aae5](https://github.com/kintone/plugin-uploader/commit/a00aae57fa3479259546951c5ddc6ce52209b7d3))
+
 ### [4.0.3](https://github.com/kintone/plugin-uploader/compare/v4.0.2...v4.0.3) (2020-04-28)
 
 
