@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.5](https://github.com/kintone/create-plugin/compare/v3.0.4...v3.0.5) (2020-06-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to ^6.1.1 ([86bf6e9](https://github.com/kintone/create-plugin/commit/86bf6e92b8f116ea3cce4912f2bd29170c9db03f))
+* **deps:** update dependency meow to v7 ([#473](https://github.com/kintone/create-plugin/issues/473)) ([af94c1f](https://github.com/kintone/create-plugin/commit/af94c1f5d8099838d0d3621167c91f7689b72dd8))
+
 ### [3.0.4](https://github.com/kintone/create-plugin/compare/v3.0.3...v3.0.4) (2020-04-28)
 
 
