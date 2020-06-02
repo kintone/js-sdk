@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.4](https://github.com/kintone/dts-gen/compare/v3.0.3...v3.0.4) (2020-06-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to ^5.1.0 ([#268](https://github.com/kintone/dts-gen/issues/268)) ([223e191](https://github.com/kintone/dts-gen/commit/223e191beff19c0110cbafb95668f1953a572adc))
+
 ### [3.0.3](https://github.com/kintone/dts-gen/compare/v3.0.2...v3.0.3) (2020-04-28)
 
 
