@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.4](https://github.com/kintone/plugin-packer/compare/v3.0.3...v3.0.4) (2020-06-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-manifest-validator to ^3.0.3 ([#511](https://github.com/kintone/plugin-packer/issues/511)) ([9f4c94c](https://github.com/kintone/plugin-packer/commit/9f4c94cacacb3fc8fab7a31e57c9cd9df73a0534))
+* **deps:** update dependency meow to ^6.1.1 ([#513](https://github.com/kintone/plugin-packer/issues/513)) ([b463703](https://github.com/kintone/plugin-packer/commit/b4637038b8a4d79d7ff9a7103f3838341f98eb5c))
+* **deps:** update dependency meow to v7 ([#516](https://github.com/kintone/plugin-packer/issues/516)) ([0ff1900](https://github.com/kintone/plugin-packer/commit/0ff1900974d944dea980d615cc06a4e71829c4e1))
+
 ### [3.0.3](https://github.com/kintone/plugin-packer/compare/v3.0.2...v3.0.3) (2020-04-28)
 
 
