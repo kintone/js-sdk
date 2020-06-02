@@ -26,11 +26,11 @@ describe("validator", () => {
           keyword: "required",
           message: "is a required property",
           params: {
-            missingProperty: "version"
+            missingProperty: "version",
           },
-          schemaPath: "#/required"
-        }
-      ]
+          schemaPath: "#/required",
+        },
+      ],
     });
   });
 
@@ -43,11 +43,11 @@ describe("validator", () => {
           keyword: "type",
           message: "should be integer",
           params: {
-            type: "integer"
+            type: "integer",
           },
-          schemaPath: "#/properties/version/type"
-        }
-      ]
+          schemaPath: "#/properties/version/type",
+        },
+      ],
     });
   });
 
@@ -62,11 +62,11 @@ describe("validator", () => {
           params: {
             comparison: ">=",
             exclusive: false,
-            limit: 1
+            limit: 1,
           },
-          schemaPath: "#/properties/version/minimum"
-        }
-      ]
+          schemaPath: "#/properties/version/minimum",
+        },
+      ],
     });
   });
 
@@ -79,11 +79,11 @@ describe("validator", () => {
           keyword: "enum",
           message: "should be equal to one of the allowed values",
           params: {
-            allowedValues: ["APP"]
+            allowedValues: ["APP"],
           },
-          schemaPath: "#/properties/type/enum"
-        }
-      ]
+          schemaPath: "#/properties/type/enum",
+        },
+      ],
     });
   });
 
@@ -96,11 +96,11 @@ describe("validator", () => {
           keyword: "required",
           message: "is a required property",
           params: {
-            missingProperty: "en"
+            missingProperty: "en",
           },
-          schemaPath: "#/properties/description/required"
-        }
-      ]
+          schemaPath: "#/properties/description/required",
+        },
+      ],
     });
   });
 
@@ -108,7 +108,7 @@ describe("validator", () => {
     const actual = validator(
       json({
         manifest_version: "a",
-        version: 0
+        version: 0,
       })
     );
     assert(actual.valid === false);
@@ -126,11 +126,11 @@ describe("validator", () => {
     const actual = validator(
       json({
         desktop: {
-          js: ["http://example.com/icon.png"]
-        }
+          js: ["http://example.com/icon.png"],
+        },
       }),
       {
-        relativePath: str => !/^https?:/.test(str)
+        relativePath: (str) => !/^https?:/.test(str),
       }
     );
     assert(actual.valid === false);
@@ -149,7 +149,7 @@ describe("validator", () => {
           assert(path === "image/icon.png");
           called++;
           return true;
-        }
+        },
       });
       assert(called === 1);
       assert(actual.valid === true);
@@ -159,7 +159,7 @@ describe("validator", () => {
       const actual = validator(json({}), {
         maxFileSize(maxFileSizeInBytes, path) {
           return false;
-        }
+        },
       });
       assert(actual.valid === false);
       assert(actual.errors.length === 1);
@@ -168,9 +168,9 @@ describe("validator", () => {
         keyword: "maxFileSize",
         message: "file size should be <= 20MB",
         params: {
-          limit: MAX_FILE_SIZE
+          limit: MAX_FILE_SIZE,
         },
-        schemaPath: "#/properties/icon/maxFileSize"
+        schemaPath: "#/properties/icon/maxFileSize",
       });
     });
 
@@ -178,13 +178,13 @@ describe("validator", () => {
       const actual = validator(
         json({
           desktop: {
-            js: ["./foo.js"]
-          }
+            js: ["./foo.js"],
+          },
         }),
         {
           maxFileSize(maxFileSizeInBytes, path) {
             return path.indexOf("foo.js") === -1;
-          }
+          },
         }
       );
       assert(actual.valid === false);
@@ -194,9 +194,9 @@ describe("validator", () => {
         keyword: "maxFileSize",
         message: "file size should be <= 20MB",
         params: {
-          limit: MAX_FILE_SIZE
+          limit: MAX_FILE_SIZE,
         },
-        schemaPath: "#/definitions/resources/items/anyOf/1/maxFileSize"
+        schemaPath: "#/definitions/resources/items/anyOf/1/maxFileSize",
       });
     });
 
@@ -204,13 +204,13 @@ describe("validator", () => {
       const actual = validator(
         json({
           desktop: {
-            css: ["./foo.css"]
-          }
+            css: ["./foo.css"],
+          },
         }),
         {
           maxFileSize(maxFileSizeInBytes, path) {
             return path.indexOf("foo.css") === -1;
-          }
+          },
         }
       );
       assert(actual.valid === false);
@@ -220,9 +220,9 @@ describe("validator", () => {
         keyword: "maxFileSize",
         message: "file size should be <= 20MB",
         params: {
-          limit: MAX_FILE_SIZE
+          limit: MAX_FILE_SIZE,
         },
-        schemaPath: "#/definitions/resources/items/anyOf/1/maxFileSize"
+        schemaPath: "#/definitions/resources/items/anyOf/1/maxFileSize",
       });
     });
 
@@ -231,8 +231,8 @@ describe("validator", () => {
         json({
           mobile: {
             js: ["https://example.com/foo.js"],
-            css: ["https://example.com/foo.css"]
-          }
+            css: ["https://example.com/foo.css"],
+          },
         })
       );
       assert(actual.valid === true);
@@ -254,9 +254,9 @@ function json(source) {
       version: 1,
       type: "APP",
       name: {
-        en: "sample plugin"
+        en: "sample plugin",
       },
-      icon: "image/icon.png"
+      icon: "image/icon.png",
     },
     source
   );

@@ -11,7 +11,7 @@ const validateUrl = require("./src/validate-https-url");
  * @param {Object=} options
  * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
  */
-module.exports = function(json, options = {}) {
+module.exports = function (json, options = {}) {
   let relativePath = () => true;
   let maxFileSize = () => true;
   if (typeof options.relativePath === "function") {
@@ -27,10 +27,10 @@ module.exports = function(json, options = {}) {
     unknownFormats: true,
     errorDataPath: "property",
     formats: {
-      "http-url": str => validateUrl(str, true),
-      "https-url": str => validateUrl(str),
-      "relative-path": relativePath
-    }
+      "http-url": (str) => validateUrl(str, true),
+      "https-url": (str) => validateUrl(str),
+      "relative-path": relativePath,
+    },
   });
 
   // Using draft-04 schemas
@@ -56,13 +56,13 @@ module.exports = function(json, options = {}) {
             keyword: "maxFileSize",
             message: `file size should be <= ${schema}`,
             params: {
-              limit: maxBytes
-            }
-          }
+              limit: maxBytes,
+            },
+          },
         ];
       }
       return valid;
-    }
+    },
   });
 
   const validate = ajv.compile(jsonSchema);

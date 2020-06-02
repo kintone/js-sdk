@@ -6,6 +6,6 @@ const schema = require("../manifest-schema.json");
 
 delete schema.definitions.resources.items.anyOf;
 
-compile(schema, "manifest-schema.json").then(dts =>
+compile(schema, "manifest-schema.json").then((dts) =>
   fs.writeFileSync("manifest-schema.d.ts", dts)
 );

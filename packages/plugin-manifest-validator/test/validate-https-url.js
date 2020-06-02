@@ -9,8 +9,8 @@ describe("validate-https-url", () => {
       "https://example.com/path/to?foo=bar&baz=piyo#hash",
       "https://localhost:8080",
       "https://127.0.0.1:8000",
-      "https://user:pass@example.com/"
-    ].forEach(url => {
+      "https://user:pass@example.com/",
+    ].forEach((url) => {
       it(url, () => {
         assert(validate(url));
       });
@@ -25,8 +25,8 @@ describe("validate-https-url", () => {
       "//example.com",
       "/path/to/foo",
       "./path/to/foo",
-      "path/to/foo"
-    ].forEach(url => {
+      "path/to/foo",
+    ].forEach((url) => {
       it(url, () => {
         assert(!validate(url));
       });
@@ -35,7 +35,7 @@ describe("validate-https-url", () => {
 
   describe("`allowHttp`", () => {
     describe("valid", () => {
-      ["https://example.com", "http://example.com"].forEach(url => {
+      ["https://example.com", "http://example.com"].forEach((url) => {
         it(url, () => {
           assert(validate(url, true));
         });
@@ -49,8 +49,8 @@ describe("validate-https-url", () => {
         "//example.com",
         "/path/to/foo",
         "./path/to/foo",
-        "path/to/foo"
-      ].forEach(url => {
+        "path/to/foo",
+      ].forEach((url) => {
         it(url, () => {
           assert(!validate(url));
         });
