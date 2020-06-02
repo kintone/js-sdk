@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.3.0...@kintone/rest-api-client@1.4.0) (2020-06-02)
+
+
+### Bug Fixes
+
+* Enable uploadFile in FileClient.ts to receive string. ([#246](https://github.com/kintone/js-sdk/issues/246)) ([bb1419b](https://github.com/kintone/js-sdk/commit/bb1419b12ba380c4406efa9083bbfa9d73e2ff09))
+
+
+### Features
+
+* support `garoon.connect.kintone.getRequestToken()` of Garoon JavaScript API ([#241](https://github.com/kintone/js-sdk/issues/241)) ([579816e](https://github.com/kintone/js-sdk/commit/579816ec98987a709aaac290441839b7f4c01f3e))
+
+
+
+
+
 # [1.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.2.0...@kintone/rest-api-client@1.3.0) (2020-05-19)
 
 
