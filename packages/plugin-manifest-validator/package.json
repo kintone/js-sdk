@@ -15,11 +15,12 @@
   "scripts": {
     "gen-dts": "node script/generate-dts.js",
     "lint": "eslint index.js src test script",
-    "mocha": "mocha test --require intelli-espower-loader",
     "release": "run-s test gen-dts && standard-version",
     "release:dryrun": "standard-version --dry-run",
-    "test": "run-s lint mocha test:dts",
-    "test:dts": "tsc -p test/tsconfig.json"
+    "test": "run-p test:js test:dts",
+    "test:js": "jest",
+    "test:dts": "tsc -p test/tsconfig.json",
+    "test:ci": "run-s test"
   },
   "dependencies": {
     "ajv": "^6.12.2",
@@ -30,11 +31,9 @@
     "eslint": "^6.8.0",
     "intelli-espower-loader": "^1.0.1",
     "json-schema-to-typescript": "^9.1.0",
-    "mocha": "^7.2.0",
     "npm-run-all": "^4.1.5",
     "power-assert": "^1.6.1",
     "prettier": "1.19.1",
-    "standard-version": "^8.0.0",
     "typescript": "^3.8.3"
   },
   "homepage": "https://github.com/kintone/plugin-manifest-validator#readme",

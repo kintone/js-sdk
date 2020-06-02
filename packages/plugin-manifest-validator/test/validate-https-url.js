@@ -4,7 +4,7 @@ const assert = require("assert");
 const validate = require("../src/validate-https-url");
 
 describe("validate-https-url", () => {
-  context("valid", () => {
+  describe("valid", () => {
     [
       "https://example.com/path/to?foo=bar&baz=piyo#hash",
       "https://localhost:8080",
@@ -17,7 +17,7 @@ describe("validate-https-url", () => {
     });
   });
 
-  context("invalid", () => {
+  describe("invalid", () => {
     [
       "http://example.com",
       "ftp://example.com",
@@ -33,8 +33,8 @@ describe("validate-https-url", () => {
     });
   });
 
-  context("`allowHttp`", () => {
-    context("valid", () => {
+  describe("`allowHttp`", () => {
+    describe("valid", () => {
       ["https://example.com", "http://example.com"].forEach(url => {
         it(url, () => {
           assert(validate(url, true));
@@ -42,7 +42,7 @@ describe("validate-https-url", () => {
       });
     });
 
-    context("invalid", () => {
+    describe("invalid", () => {
       [
         "ftp://example.com",
         "://example.com",
