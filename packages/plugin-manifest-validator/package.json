@@ -1,0 +1,52 @@
+{
+  "name": "@kintone/plugin-manifest-validator",
+  "version": "3.0.4",
+  "author": "Teppei Sato <teppeis@gmail.com>",
+  "engines": {
+    "node": ">=10"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "manifest-schema.d.ts",
+    "manifest-schema.json",
+    "src"
+  ],
+  "scripts": {
+    "build": "npm run gen-dts",
+    "gen-dts": "node script/generate-dts.js",
+    "lint": "eslint index.js src test script",
+    "prerelease": "run-p lint test",
+    "test": "run-p test:js test:dts",
+    "test:js": "jest",
+    "test:dts": "tsc -p test/tsconfig.json",
+    "test:ci": "npm run test"
+  },
+  "dependencies": {
+    "ajv": "^6.12.2",
+    "bytes": "^3.1.0"
+  },
+  "devDependencies": {
+    "@cybozu/eslint-config": "^10.0.3",
+    "eslint": "^6.8.0",
+    "intelli-espower-loader": "^1.0.1",
+    "json-schema-to-typescript": "^9.1.0",
+    "npm-run-all": "^4.1.5",
+    "power-assert": "^1.6.1",
+    "prettier": "1.19.1",
+    "typescript": "^3.8.3"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-manifest-validator#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/plugin-manifest-validator"
+  },
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "keywords": [
+    "kintone"
+  ],
+  "license": "MIT"
+}
