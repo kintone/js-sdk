@@ -40,7 +40,7 @@
   "devDependencies": {
     "@types/chokidar": "^1.7.5",
     "@types/inquirer": "6.5.0",
-    "@types/mkdirp": "^1.0.0",
+    "@types/mkdirp": "^1.0.1",
     "@types/request-promise": "^4.1.46",
     "@types/rimraf": "^3.0.0",
     "ts-node": "^8.10.2"
