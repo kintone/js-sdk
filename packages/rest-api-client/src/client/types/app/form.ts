@@ -1,7 +1,7 @@
-import { FieldProperty } from "./properties";
+import { FieldProperty } from "../../../KintoneFields/types/property";
 
 export type Properties = {
   [fieldCode: string]: FieldProperty;
 };
 
-export { Layout } from "./layout";
+export { Layout } from "../../../KintoneFields/types/layout";
