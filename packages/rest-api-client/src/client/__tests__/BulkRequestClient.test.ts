@@ -38,8 +38,8 @@ describe("BulkRequestClient", () => {
         },
       ],
     };
-    beforeEach(() => {
-      bulkRequestClient.send(params);
+    beforeEach(async () => {
+      await bulkRequestClient.send(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/bulkRequest.json");
@@ -94,8 +94,8 @@ describe("BulkRequestClient", () => {
       ],
     };
 
-    beforeEach(() => {
-      bulkRequestClient.send(params);
+    beforeEach(async () => {
+      await bulkRequestClient.send(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/bulkRequest.json");
@@ -118,7 +118,7 @@ describe("BulkRequestClient with guestSpaceId", () => {
     mockClient = new MockClient();
     bulkRequestClient = new BulkRequestClient(mockClient, GUEST_SPACE_ID);
   });
-  it("should pass the path to the http client", () => {
+  it("should pass the path to the http client", async () => {
     const params = {
       requests: [
         {
@@ -135,12 +135,12 @@ describe("BulkRequestClient with guestSpaceId", () => {
         },
       ],
     };
-    bulkRequestClient.send(params);
+    await bulkRequestClient.send(params);
     expect(mockClient.getLogs()[0].path).toBe(
       `/k/guest/${GUEST_SPACE_ID}/v1/bulkRequest.json`
     );
   });
-  it("should pass the path as a param with the guest space id to the http client", () => {
+  it("should pass the path as a param with the guest space id to the http client", async () => {
     const params = {
       requests: [
         {
@@ -157,7 +157,7 @@ describe("BulkRequestClient with guestSpaceId", () => {
         },
       ],
     };
-    bulkRequestClient.send(params);
+    await bulkRequestClient.send(params);
     expect(mockClient.getLogs()[0].params.requests[0].api).toEqual(
       `/k/guest/${GUEST_SPACE_ID}/v1/record.json`
     );

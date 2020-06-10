@@ -21,8 +21,8 @@ describe("FileClient", () => {
           data: "Hello!",
         },
       };
-      beforeEach(() => {
-        fileClient.uploadFile(params);
+      beforeEach(async () => {
+        await fileClient.uploadFile(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/file.json");
@@ -69,9 +69,9 @@ describe("FileClient", () => {
           path: "foo/bar/baz.txt",
         },
       };
-      it("should raise an error on a browser environment", () => {
+      it("should raise an error on a browser environment", async () => {
         injectPlatformDeps(browserDeps);
-        expect(fileClient.uploadFile(params)).rejects.toThrow(
+        await expect(fileClient.uploadFile(params)).rejects.toThrow(
           "uploadFile doesn't allow to accept a file path in Browser environment."
         );
       });
@@ -80,8 +80,8 @@ describe("FileClient", () => {
 
   describe("downloadFile", () => {
     const params = { fileKey: "some_file_key" };
-    beforeEach(() => {
-      fileClient.downloadFile(params);
+    beforeEach(async () => {
+      await fileClient.downloadFile(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/file.json");
@@ -105,10 +105,10 @@ describe("FileClient with guestSpaceId", () => {
   };
   let mockClient: MockClient;
   let fileClient: FileClient;
-  beforeEach(() => {
+  beforeEach(async () => {
     mockClient = new MockClient();
     fileClient = new FileClient(mockClient, GUEST_SPACE_ID);
-    fileClient.uploadFile(params);
+    await fileClient.uploadFile(params);
   });
   it("should pass the path to the http client", () => {
     expect(mockClient.getLogs()[0].path).toBe(
