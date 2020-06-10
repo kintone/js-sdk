@@ -1,17 +1,17 @@
 "use strict";
 
-import * as assert from "assert";
+import assert from "assert";
 import { spawnSync } from "child_process";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import * as rimraf from "rimraf";
+import rimraf from "rimraf";
 
 import { generatePlugin } from "../src/generator";
 
-describe("generator", function() {
+describe("generator", function () {
   // This timeout is for npm install
-  this.timeout(300000);
+  jest.setTimeout(300000);
   let outputDir: string;
   beforeEach(() => {
     outputDir = fs.mkdtempSync(`${os.tmpdir()}${path.sep}`);

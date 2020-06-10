@@ -1,6 +1,6 @@
 "use strict";
 
-import * as assert from "assert";
+import assert from "assert";
 import { filter } from "minimatch";
 import { filterTemplateFile, getTemplateType } from "../src/template";
 import createBaseManifest from "./baseManifest";

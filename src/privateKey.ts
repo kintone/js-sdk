@@ -1,6 +1,6 @@
 "use strict";
 
-import * as RSA from "node-rsa";
+import RSA from "node-rsa";
 
 /**
  * Create a private key for a kintone plugin
