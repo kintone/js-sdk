@@ -3,7 +3,7 @@
 import chalk = require("chalk");
 import * as fs from "fs";
 import * as inquirer from "inquirer";
-import * as rimraf from "rimraf";
+import rimraf from "rimraf";
 import { generatePlugin } from "./generator";
 import { Lang } from "./lang";
 import { printError, printLog } from "./logger";

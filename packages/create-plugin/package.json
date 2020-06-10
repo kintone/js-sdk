@@ -51,10 +51,11 @@
     "lint": "eslint --ext .ts src",
     "release": "run-s build lint test:all && standard-version",
     "release:dryrun": "standard-version --dry-run",
-    "unittest": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts",
+    "unittest": "jest --testRegex=/test/.*-test\\.ts$",
     "test": "run-s build unittest",
     "test:all": "run-p test e2e",
-    "e2e": "mocha --require ts-node/register --watch-extensions ts test/e2e.ts"
+    "test:ci": "npm run test:all",
+    "e2e": "jest ./test/e2e.ts"
   },
   "keywords": [
     "kintone"
