@@ -30,16 +30,10 @@ type MultiLineTextField = FieldWith<"MULTI_LINE_TEXT", string>;
 type RichTextField = FieldWith<"RICH_TEXT", string>;
 type LinkField = FieldWith<"LINK", string>;
 
-type CheckBoxField<T extends string = string> = FieldWith<"CHECK_BOX", T[]>;
-type RadioButtonField<T extends string = string> = FieldWith<"RADIO_BUTTON", T>;
-type DropDownField<T extends string | null = string | null> = FieldWith<
-  "DROP_DOWN",
-  T
->;
-type MultiSelectField<T extends string = string> = FieldWith<
-  "MULTI_SELECT",
-  T[]
->;
+type CheckBoxField = FieldWith<"CHECK_BOX", string[]>;
+type RadioButtonField = FieldWith<"RADIO_BUTTON", string>;
+type DropDownField = FieldWith<"DROP_DOWN", string | null>;
+type MultiSelectField<> = FieldWith<"MULTI_SELECT", string[]>;
 
 type FileField = FieldWith<"FILE", FileInformation[]>;
 
@@ -51,8 +45,8 @@ type UserSelectField = FieldWith<"USER_SELECT", Entity[]>;
 type OrganizationSelectField = FieldWith<"ORGANIZATION_SELECT", Entity[]>;
 type GroupSelectField = FieldWith<"GROUP_SELECT", Entity[]>;
 
-type CategoryField<T extends string = string> = FieldWith<"CATEGORY", T[]>;
-type StatusField<T extends string = string> = FieldWith<"STATUS", T>;
+type CategoryField = FieldWith<"CATEGORY", string[]>;
+type StatusField = FieldWith<"STATUS", string>;
 type StatusAssigneeField = FieldWith<"STATUS_ASSIGNEE", Entity[]>;
 
 type FieldInSubtable =
