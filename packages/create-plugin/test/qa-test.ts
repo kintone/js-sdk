@@ -1,6 +1,6 @@
 "use strict";
 
-import * as assert from "assert";
+import assert from "assert";
 import { Answers, Question } from "inquirer";
 import { buildQuestions } from "../src/qa";
 
@@ -17,7 +17,7 @@ describe("qa", () => {
       const questions = buildQuestions("dist", "en");
       assert(Array.isArray(questions));
     });
-    context("name.en", () => {
+    describe("name.en", () => {
       it("should be set the default value of name.en based on the passed directory", () => {
         const questions = buildQuestions("foo/bar/dist", "en");
         const nameEn = getQuestion(
@@ -49,7 +49,7 @@ describe("qa", () => {
         );
       });
     });
-    context("descripiion.en", () => {
+    describe("descripiion.en", () => {
       it("should be set the default value of description.en based on name.en", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
@@ -81,7 +81,7 @@ describe("qa", () => {
         );
       });
     });
-    context("ja", () => {
+    describe("ja", () => {
       it("should be true by default if the lang is ja", () => {
         const questions = buildQuestions("dist", "ja");
         const q = getQuestion(questions, ({ name }: Question) => name === "ja");
@@ -93,7 +93,7 @@ describe("qa", () => {
         assert(q.default === false);
       });
     });
-    context("name.ja", () => {
+    describe("name.ja", () => {
       it("should be enabled only in anwers.ja is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
@@ -104,7 +104,7 @@ describe("qa", () => {
         assert(typeof q.when === "function" && q.when({ ja: true }) === true);
       });
     });
-    context("description.ja", () => {
+    describe("description.ja", () => {
       it("should be enabled only in anwers.ja is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
@@ -115,7 +115,7 @@ describe("qa", () => {
         assert(typeof q.when === "function" && q.when({ ja: true }) === true);
       });
     });
-    context("name.zh", () => {
+    describe("name.zh", () => {
       it("should be enabled only in anwers.zh is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
@@ -126,7 +126,7 @@ describe("qa", () => {
         assert(typeof q.when === "function" && q.when({ zh: true }) === true);
       });
     });
-    context("description.zh", () => {
+    describe("description.zh", () => {
       it("should be enabled only in anwers.zh is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
@@ -137,7 +137,7 @@ describe("qa", () => {
         assert(typeof q.when === "function" && q.when({ zh: true }) === true);
       });
     });
-    context("homepage_url.ja", () => {
+    describe("homepage_url.ja", () => {
       it("should be enabled only in anwers.ja is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
@@ -148,7 +148,7 @@ describe("qa", () => {
         assert(typeof q.when === "function" && q.when({ ja: true }) === true);
       });
     });
-    context("homepage_url.zh", () => {
+    describe("homepage_url.zh", () => {
       it("should be enabled only in anwers.zh is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
