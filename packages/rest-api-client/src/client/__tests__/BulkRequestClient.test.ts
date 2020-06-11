@@ -1,5 +1,6 @@
 import { MockClient } from "../../http/MockClient";
 import { BulkRequestClient } from "../BulkRequestClient";
+import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
 describe("BulkRequestClient", () => {
   let mockClient: MockClient;
@@ -14,7 +15,11 @@ describe("BulkRequestClient", () => {
   };
 
   beforeEach(() => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder });
     bulkRequestClient = new BulkRequestClient(mockClient);
   });
   describe("send", () => {
@@ -115,7 +120,11 @@ describe("BulkRequestClient with guestSpaceId", () => {
   const APP_ID = 1;
   const GUEST_SPACE_ID = 2;
   beforeEach(() => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder });
     bulkRequestClient = new BulkRequestClient(mockClient, GUEST_SPACE_ID);
   });
   it("should pass the path to the http client", async () => {

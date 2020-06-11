@@ -1,5 +1,6 @@
 import { MockClient } from "../../http/MockClient";
 import { AppClient } from "../AppClient";
+import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
 describe("AppClient", () => {
   let mockClient: MockClient;
@@ -109,7 +110,11 @@ describe("AppClient", () => {
   ];
 
   beforeEach(() => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder });
     appClient = new AppClient(mockClient);
   });
   describe("getFormFields", () => {
@@ -854,7 +859,11 @@ describe("AppClient with guestSpaceId", () => {
     const GUEST_SPACE_ID = 2;
     const lang = "default";
     const params = { app: APP_ID, lang } as const;
-    const mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "session" },
+    });
+    const mockClient = new MockClient({ requestConfigBuilder });
     const appClient = new AppClient(mockClient, GUEST_SPACE_ID);
     await appClient.getFormFields(params);
     expect(mockClient.getLogs()[0].path).toBe(

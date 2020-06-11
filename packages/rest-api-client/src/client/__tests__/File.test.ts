@@ -3,6 +3,8 @@ import { FileClient } from "../FileClient";
 import FormData from "form-data";
 import { injectPlatformDeps } from "../../platform";
 import * as browserDeps from "../../platform/browser";
+import * as nodeDeps from "../../platform/node";
+import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
 jest.mock("form-data");
 
@@ -10,7 +12,11 @@ describe("FileClient", () => {
   let mockClient: MockClient;
   let fileClient: FileClient;
   beforeEach(() => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder });
     fileClient = new FileClient(mockClient);
   });
   describe("uploadFile", () => {
@@ -48,6 +54,7 @@ describe("FileClient", () => {
       };
       it("should pass file object includes name and data as a param to the http client", async () => {
         injectPlatformDeps({
+          ...nodeDeps,
           readFileFromPath: async (filePath: string) => ({
             name: filePath,
             data: "Hello!",
@@ -106,7 +113,11 @@ describe("FileClient with guestSpaceId", () => {
   let mockClient: MockClient;
   let fileClient: FileClient;
   beforeEach(async () => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder });
     fileClient = new FileClient(mockClient, GUEST_SPACE_ID);
     await fileClient.uploadFile(params);
   });
