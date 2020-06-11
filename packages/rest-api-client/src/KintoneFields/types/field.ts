@@ -68,14 +68,15 @@ type FieldInSubtable =
   | OrganizationSelectField
   | GroupSelectField;
 
-type SubtableRow = {
+type SubtableRow<T extends object> = {
   id: string;
-  value: {
-    [fieldCode: string]: FieldInSubtable;
-  };
+  value: T;
 };
 
-type SubtableField = FieldWith<"SUBTABLE", SubtableRow[]>;
+type SubtableField<T extends object> = FieldWith<
+  "SUBTABLE",
+  Array<SubtableRow<T>>
+>;
 
 export type Field =
   | IDField
@@ -105,4 +106,6 @@ export type Field =
   | CategoryField
   | StatusField
   | StatusAssigneeField
-  | SubtableField;
+  | SubtableField<{
+      [fieldCode: string]: FieldInSubtable;
+    }>;
