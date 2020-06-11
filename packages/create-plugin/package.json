@@ -10,9 +10,13 @@
   "engines": {
     "node": ">=10"
   },
-  "repository": "kintone/create-plugin",
-  "homepage": "https://github.com/kintone/create-plugin",
-  "bugs": "https://github.com/kintone/create-plugin/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/create-plugin"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/create-plugin",
+  "bugs": "https://github.com/kintone/js-sdk/issues",
   "dependencies": {
     "chalk": "^4.1.0",
     "glob": "^7.1.6",
@@ -49,8 +53,7 @@
     "start": "tsc -w",
     "build": "tsc",
     "lint": "eslint --ext .ts src",
-    "release": "run-s build lint test:all && standard-version",
-    "release:dryrun": "standard-version --dry-run",
+    "prerelease": "run-p lint test",
     "unittest": "jest --testRegex=/test/.*-test\\.ts$",
     "test": "run-s build unittest",
     "test:all": "run-p test e2e",
