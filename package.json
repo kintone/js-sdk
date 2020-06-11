@@ -14,7 +14,7 @@
   "homepage": "https://github.com/kintone/create-plugin",
   "bugs": "https://github.com/kintone/create-plugin/issues",
   "dependencies": {
-    "chalk": "^4.0.0",
+    "chalk": "^4.1.0",
     "glob": "^7.1.6",
     "inquirer": "^7.1.0",
     "lodash": "^4.17.15",
