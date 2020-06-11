@@ -35,6 +35,9 @@ export type ErrorResponseHandler = (error: HttpClientError) => void;
 export type RequestConfig = {
   method: HttpMethod;
   url: string;
+  maxBodyLength?: number;
+  maxContentLength?: number;
+
   headers: any;
   httpsAgent?: any;
   data?: any;

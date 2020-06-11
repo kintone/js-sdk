@@ -31,6 +31,24 @@ export class File {
     });
   }
 
+  public async uploadFileByPath() {
+    const { fileKey } = await this.client.file.uploadFile({
+      file: { path: "./foo.txt" },
+    });
+    console.log(fileKey);
+    this.client.record.addRecord({
+      app: APP_ID,
+      record: {
+        Customer: {
+          value: `fileKey: ${fileKey}`,
+        },
+        Attachment: {
+          value: [{ fileKey }],
+        },
+      },
+    });
+  }
+
   public async downloadFile() {
     const { record } = await this.client.record.getRecord({
       app: APP_ID,
