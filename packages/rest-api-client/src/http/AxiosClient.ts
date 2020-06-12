@@ -83,7 +83,16 @@ export class AxiosClient implements HttpClient {
     let data;
     try {
       // eslint-disable-next-line new-cap
-      const response = await Axios(requestConfig);
+      const response = await Axios({
+        ...requestConfig,
+
+        // NOTE: For defining the max size of the http request content, `maxBodyLength` will be used after version 0.20.0.
+        // `maxContentLength` will be still needed for defining the max size of the http response content.
+        // ref: https://github.com/axios/axios/pull/2781/files
+        // maxBodyLength: Infinity,
+
+        maxContentLength: Infinity,
+      });
       data = response.data;
     } catch (error) {
       this.handleError(error);
