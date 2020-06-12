@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.4.0...@kintone/rest-api-client@1.4.1) (2020-06-12)
+
+
+### Bug Fixes
+
+* upload files larger than 2MB from Node.js ([#264](https://github.com/kintone/js-sdk/issues/264)) ([2ba667d](https://github.com/kintone/js-sdk/commit/2ba667d1069d283b7c296d01e387fb3218960823))
+
+
+
+
+
 # [1.4.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.3.0...@kintone/rest-api-client@1.4.0) (2020-06-02)
 
 

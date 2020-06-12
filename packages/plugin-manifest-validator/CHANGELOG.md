@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [3.0.5](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@3.0.4...@kintone/plugin-manifest-validator@3.0.5) (2020-06-12)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
