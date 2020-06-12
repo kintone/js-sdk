@@ -88,8 +88,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       method,
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
-      maxBodyLength: Infinity,
-      maxContentLength: Infinity,
       ...(options ? options : {}),
       ...platformDeps.buildPlatformDependentConfig({
         clientCertAuth: this.clientCertAuth,
