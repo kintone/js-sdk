@@ -32,7 +32,7 @@
     "@types/adm-zip": "^0.4.33",
     "@types/chokidar": "^1.7.5",
     "@types/lodash": "^4.14.154",
-    "@types/mkdirp": "^1.0.0",
+    "@types/mkdirp": "^1.0.1",
     "@types/mocha": "^7.0.2",
     "@types/node": "^9.6.56",
     "@types/rimraf": "^3.0.0",
