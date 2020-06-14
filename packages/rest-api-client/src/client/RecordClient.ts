@@ -315,7 +315,7 @@ export class RecordClient {
     try {
       return await this.getAllRecordsRecursiveByCursor<T>(id, []);
     } catch (error) {
-      this.deleteCursor({ id });
+      await this.deleteCursor({ id });
       throw error;
     }
   }
