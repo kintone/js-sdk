@@ -333,14 +333,12 @@ type FieldPropertyInSubtable =
   | GroupSelectFieldProperty
   | LookupFieldProperty;
 
-type SubtableFieldProperty = {
+type SubtableFieldProperty<T extends object> = {
   type: "SUBTABLE";
   code: string;
   label: string;
   noLabel: boolean;
-  fields: {
-    [fieldCode: string]: FieldPropertyInSubtable;
-  };
+  fields: T;
 };
 
 export type FieldProperty =
@@ -372,4 +370,6 @@ export type FieldProperty =
   | GroupFieldProperty
   | ReferenceTableFieldProperty
   | LookupFieldProperty
-  | SubtableFieldProperty;
+  | SubtableFieldProperty<{
+      [fieldCode: string]: FieldPropertyInSubtable;
+    }>;
