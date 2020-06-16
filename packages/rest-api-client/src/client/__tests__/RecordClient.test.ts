@@ -6,6 +6,9 @@ import { KintoneRestAPIError } from "../../KintoneRestAPIError";
 import { Record } from "../types";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
+const errorResponseHandler = (error: Error) => {
+  throw error;
+};
 describe("RecordClient", () => {
   let mockClient: MockClient;
   let recordClient: RecordClient;
@@ -23,7 +26,7 @@ describe("RecordClient", () => {
       baseUrl: "https://example.cybozu.com",
       auth: { type: "apiToken", apiToken: "foo" },
     });
-    mockClient = new MockClient({ requestConfigBuilder });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     const bulkRequestClient = new BulkRequestClient(mockClient);
     recordClient = new RecordClient(mockClient, bulkRequestClient);
   });
@@ -1275,7 +1278,10 @@ describe("RecordClient with guestSpaceId", () => {
       baseUrl: "https://example.cybozu.com",
       auth: { type: "session" },
     });
-    const mockClient = new MockClient({ requestConfigBuilder });
+    const mockClient = new MockClient({
+      requestConfigBuilder,
+      errorResponseHandler,
+    });
     const bulkRequestClient = new BulkRequestClient(mockClient);
     const recordClient = new RecordClient(
       mockClient,

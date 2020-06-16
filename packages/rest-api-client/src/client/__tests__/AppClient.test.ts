@@ -2,6 +2,10 @@ import { MockClient } from "../../http/MockClient";
 import { AppClient } from "../AppClient";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
+const errorResponseHandler = (error: Error) => {
+  throw error;
+};
+
 describe("AppClient", () => {
   let mockClient: MockClient;
   let appClient: AppClient;
@@ -114,7 +118,7 @@ describe("AppClient", () => {
       baseUrl: "https://example.cybozu.com",
       auth: { type: "apiToken", apiToken: "foo" },
     });
-    mockClient = new MockClient({ requestConfigBuilder });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     appClient = new AppClient(mockClient);
   });
   describe("getFormFields", () => {
@@ -863,7 +867,10 @@ describe("AppClient with guestSpaceId", () => {
       baseUrl: "https://example.cybozu.com",
       auth: { type: "session" },
     });
-    const mockClient = new MockClient({ requestConfigBuilder });
+    const mockClient = new MockClient({
+      requestConfigBuilder,
+      errorResponseHandler,
+    });
     const appClient = new AppClient(mockClient, GUEST_SPACE_ID);
     await appClient.getFormFields(params);
     expect(mockClient.getLogs()[0].path).toBe(

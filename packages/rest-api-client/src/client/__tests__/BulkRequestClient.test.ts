@@ -2,6 +2,9 @@ import { MockClient } from "../../http/MockClient";
 import { BulkRequestClient } from "../BulkRequestClient";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
+const errorResponseHandler = (error: Error) => {
+  throw error;
+};
 describe("BulkRequestClient", () => {
   let mockClient: MockClient;
   let bulkRequestClient: BulkRequestClient;
@@ -19,7 +22,7 @@ describe("BulkRequestClient", () => {
       baseUrl: "https://example.cybozu.com",
       auth: { type: "apiToken", apiToken: "foo" },
     });
-    mockClient = new MockClient({ requestConfigBuilder });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     bulkRequestClient = new BulkRequestClient(mockClient);
   });
   describe("send", () => {
@@ -124,7 +127,7 @@ describe("BulkRequestClient with guestSpaceId", () => {
       baseUrl: "https://example.cybozu.com",
       auth: { type: "apiToken", apiToken: "foo" },
     });
-    mockClient = new MockClient({ requestConfigBuilder });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     bulkRequestClient = new BulkRequestClient(mockClient, GUEST_SPACE_ID);
   });
   it("should pass the path to the http client", async () => {

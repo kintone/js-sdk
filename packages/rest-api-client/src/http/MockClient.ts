@@ -14,7 +14,7 @@ type Log = {
 };
 
 export class MockClient implements HttpClient {
-  private errorResponseHandler?: ErrorResponseHandler;
+  private errorResponseHandler: ErrorResponseHandler;
   private requestConfigBuilder: RequestConfigBuilder;
   logs: Log[];
   responses: object[];
@@ -23,7 +23,7 @@ export class MockClient implements HttpClient {
     errorResponseHandler,
     requestConfigBuilder,
   }: {
-    errorResponseHandler?: ErrorResponseHandler;
+    errorResponseHandler: ErrorResponseHandler;
     requestConfigBuilder: RequestConfigBuilder;
   }) {
     this.errorResponseHandler = errorResponseHandler;
@@ -38,7 +38,7 @@ export class MockClient implements HttpClient {
   private createResponse<T extends object>(): T {
     const response = this.responses.shift() || {};
     if (response instanceof Error) {
-      throw response;
+      this.errorResponseHandler(response);
     }
     return response as T;
   }
