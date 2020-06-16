@@ -101,16 +101,21 @@ type FieldLayoutInSubtable = Exclude<
   | SpacerFieldLayout
 >;
 
-type RowLayout = { type: "ROW"; fields: FieldLayout[] };
-type SubTableLayout = {
+type RowLayout<T extends object[]> = { type: "ROW"; fields: T };
+
+type SubTableLayout<T extends object[]> = {
   type: "SUBTABLE";
   code: string;
-  fields: FieldLayoutInSubtable[];
+  fields: T;
 };
-type GroupLayout = {
+type GroupLayout<T extends Array<RowLayout<object[]>>> = {
   type: "GROUP";
   code: string;
-  layout: RowLayout[];
+  layout: T;
 };
 
-export type Layout = Array<RowLayout | SubTableLayout | GroupLayout>;
+export type Layout = Array<
+  | RowLayout<FieldLayout[]>
+  | SubTableLayout<FieldLayoutInSubtable[]>
+  | GroupLayout<Array<RowLayout<FieldLayout[]>>>
+>;
