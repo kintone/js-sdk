@@ -23,7 +23,7 @@ export default class MockKintoneApiClient extends KintoneApiClient {
   public willBeReturn(
     path: string,
     method: string,
-    willBeReturn: string | object
+    willBeReturn: string | { [key: string]: unknown }
   ) {
     let byPath: any = this.willBeReturnResponse[path];
     if (!byPath) {

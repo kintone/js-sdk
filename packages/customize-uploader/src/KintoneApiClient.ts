@@ -8,8 +8,8 @@ interface RequestOption {
   headers: {
     [propName: string]: any;
   };
-  body: object | string | null;
-  formData?: object;
+  body: { [key: string]: any } | string | null;
+  formData?: any;
   proxy?: string;
   tunnel?: boolean;
   resolveWithFullResponse: boolean;
@@ -23,7 +23,7 @@ export interface Option {
 export interface RequestParams {
   method: "GET" | "POST" | "PUT" | "DELETE";
   path: string;
-  body: object;
+  body: RequestOption["body"];
   contentType?: string;
 }
 
