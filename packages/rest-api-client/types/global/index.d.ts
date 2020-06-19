@@ -19,7 +19,8 @@ declare module NodeJS {
 
 declare const location:
   | {
-      origin: string;
+      host: string;
+      protocol: string;
     }
   | undefined;
 
