@@ -89,19 +89,6 @@ export const errorResponseHandler = (
   throw new KintoneRestAPIError({ data, ...rest });
 };
 
-// asserts syntax fails with arrow functions.
-// see https://github.com/microsoft/TypeScript/issues/33602
-type AssertsOptions = (
-  options: Options
-) => asserts options is Options & {
-  baseUrl: string;
-};
-const assertsOptions: AssertsOptions = (options) => {
-  if (typeof options.baseUrl !== "string") {
-    throw new Error("in Node.js environment, baseUrl is required");
-  }
-};
-
 const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
   if ("username" in auth) {
     return { type: "password", ...auth };
@@ -132,12 +119,12 @@ export class KintoneRestAPIClient {
   private baseUrl?: string;
 
   constructor(options: Options = {}) {
-    options.baseUrl = this.baseUrl = options.baseUrl ?? location?.origin;
-    assertsOptions(options);
+    this.baseUrl = platformDeps.buildBaseUrl(options.baseUrl);
 
     const auth = buildDiscriminatedAuth(options.auth ?? {});
     const requestConfigBuilder = new KintoneRequestConfigBuilder({
       ...options,
+      baseUrl: this.baseUrl,
       auth,
     });
     const httpClient = new DefaultHttpClient({

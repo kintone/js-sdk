@@ -8,6 +8,7 @@ type PlatformDeps = {
   buildPlatformDependentConfig: (params: object) => object;
   buildHeaders: () => Record<string, string>;
   buildFormDataValue: (data: unknown) => unknown;
+  buildBaseUrl: (baseUrl?: string) => string;
 };
 
 export const platformDeps: PlatformDeps = {
@@ -29,6 +30,9 @@ export const platformDeps: PlatformDeps = {
   buildFormDataValue: () => {
     throw new Error("not implemented");
   },
+  buildBaseUrl: () => {
+    throw new Error("not implemented");
+  },
 };
 
 export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
@@ -38,4 +42,5 @@ export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   platformDeps.buildPlatformDependentConfig = deps.buildPlatformDependentConfig!;
   platformDeps.buildHeaders = deps.buildHeaders!;
   platformDeps.buildFormDataValue = deps.buildFormDataValue!;
+  platformDeps.buildBaseUrl = deps.buildBaseUrl!;
 };

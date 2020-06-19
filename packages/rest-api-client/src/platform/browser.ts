@@ -42,3 +42,8 @@ export const buildHeaders = () => {
 export const buildFormDataValue = (data: unknown) => {
   return new Blob([data]);
 };
+
+export const buildBaseUrl = (baseUrl?: string) => {
+  // We assume that location always exists in a browser environment
+  return baseUrl ?? location!.origin;
+};
