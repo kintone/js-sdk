@@ -50,7 +50,7 @@
     "glob": "^7.1.6",
     "husky": "^4.2.5",
     "intelli-espower-loader": "^1.0.1",
-    "mocha": "^7.2.0",
+    "mocha": "^8.0.1",
     "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^7.1.1",
