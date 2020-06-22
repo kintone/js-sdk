@@ -26,7 +26,7 @@ type RichTextFieldLayout = FieldLayoutWith<
 type LinkFieldLayout = FieldLayoutWith<"LINK">;
 type CheckBoxFieldLayout = FieldLayoutWith<"CHECK_BOX">;
 type RadioButtonFieldLayout = FieldLayoutWith<"RADIO_BUTTON">;
-type DropDownFieldLayout = FieldLayoutWith<"DROP_DOWN">;
+type DropdownFieldLayout = FieldLayoutWith<"DROP_DOWN">;
 type MultiSelectFieldLayout = FieldLayoutWith<"MULTI_SELECT">;
 type FileFieldLayout = FieldLayoutWith<"FILE">;
 type DateFieldLayout = FieldLayoutWith<"DATE">;
@@ -74,7 +74,7 @@ type FieldLayout =
   | LinkFieldLayout
   | CheckBoxFieldLayout
   | RadioButtonFieldLayout
-  | DropDownFieldLayout
+  | DropdownFieldLayout
   | MultiSelectFieldLayout
   | FileFieldLayout
   | DateFieldLayout

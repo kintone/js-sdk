@@ -32,7 +32,7 @@ type LinkField = FieldWith<"LINK", string>;
 
 type CheckBoxField = FieldWith<"CHECK_BOX", string[]>;
 type RadioButtonField = FieldWith<"RADIO_BUTTON", string>;
-type DropDownField = FieldWith<"DROP_DOWN", string | null>;
+type DropdownField = FieldWith<"DROP_DOWN", string | null>;
 type MultiSelectField<> = FieldWith<"MULTI_SELECT", string[]>;
 
 type FileField = FieldWith<"FILE", FileInformation[]>;
@@ -58,7 +58,7 @@ type FieldInSubtable =
   | LinkField
   | CheckBoxField
   | RadioButtonField
-  | DropDownField
+  | DropdownField
   | MultiSelectField
   | FileField
   | DateField
@@ -94,7 +94,7 @@ export type Field =
   | LinkField
   | CheckBoxField
   | RadioButtonField
-  | DropDownField
+  | DropdownField
   | MultiSelectField
   | FileField
   | DateField

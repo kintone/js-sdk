@@ -165,7 +165,7 @@ type RadioButtonFieldProperty = {
   align: "HORIZONTAL" | "VERTICAL";
 };
 
-type DropDownFieldProperty = {
+type DropdownFieldProperty = {
   type: "DROP_DOWN";
   code: string;
   label: string;
@@ -322,7 +322,7 @@ type FieldPropertyInSubtable =
   | LinkFieldProperty
   | CheckBoxFieldProperty
   | RadioButtonFieldProperty
-  | DropDownFieldProperty
+  | DropdownFieldProperty
   | MultiSelectFieldProperty
   | FileFieldProperty
   | DateFieldProperty
@@ -358,7 +358,7 @@ export type FieldProperty =
   | LinkFieldProperty
   | CheckBoxFieldProperty
   | RadioButtonFieldProperty
-  | DropDownFieldProperty
+  | DropdownFieldProperty
   | MultiSelectFieldProperty
   | FileFieldProperty
   | DateFieldProperty
