@@ -4,38 +4,36 @@ import {
 } from "../KintoneRestAPIClient";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
-import * as nodeDeps from "../platform/node";
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
 import { ErrorResponse, HttpClientError } from "../http/HttpClientInterface";
 
 describe("KintoneRestAPIClient", () => {
   describe("constructor", () => {
     let originalKintone: any;
+    let originalLocation: any;
     beforeEach(() => {
       originalKintone = global.kintone;
+      originalLocation = global.location;
       global.kintone = {
         getRequestToken: () => "dummy request token",
+      };
+      global.location = {
+        origin: "https://example.com",
       };
     });
     afterEach(() => {
       global.kintone = originalKintone;
+      global.location = originalLocation;
     });
     describe("Header", () => {
       const baseUrl = "https://example.com";
-      beforeEach(() => {
-        injectPlatformDeps(browserDeps);
-      });
-
       it("should use location.origin in browser environment if baseUrl param is not specified", () => {
-        global.location = {
-          origin: "https://example.com",
-        };
+        injectPlatformDeps(browserDeps);
         const client = new KintoneRestAPIClient();
         expect(client.getBaseUrl()).toBe("https://example.com");
       });
 
       it("should raise an error in Node.js environment if baseUrl param is not specified", () => {
-        global.location = undefined;
         const USERNAME = "user";
         const PASSWORD = "password";
         const auth = {
@@ -47,7 +45,6 @@ describe("KintoneRestAPIClient", () => {
         );
       });
       it("should raise an error if trying to use session auth in Node.js environment", () => {
-        injectPlatformDeps(nodeDeps);
         expect(() => {
           new KintoneRestAPIClient({
             baseUrl,

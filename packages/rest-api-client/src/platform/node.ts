@@ -60,3 +60,10 @@ export const buildHeaders = () => {
 export const buildFormDataValue = (data: unknown) => {
   return data;
 };
+
+export const buildBaseUrl = (baseUrl: string | undefined) => {
+  if (typeof baseUrl === "undefined") {
+    throw new Error("in Node.js environment, baseUrl is required");
+  }
+  return baseUrl;
+};
