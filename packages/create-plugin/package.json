@@ -16,7 +16,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "glob": "^7.1.6",
-    "inquirer": "^7.1.0",
+    "inquirer": "^7.2.0",
     "lodash": "^4.17.15",
     "meow": "^7.0.1",
     "node-rsa": "^1.0.8",
