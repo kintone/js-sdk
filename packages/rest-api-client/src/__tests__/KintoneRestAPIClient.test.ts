@@ -18,7 +18,8 @@ describe("KintoneRestAPIClient", () => {
         getRequestToken: () => "dummy request token",
       };
       global.location = {
-        origin: "https://example.com",
+        host: "example.com",
+        protocol: "https:",
       };
     });
     afterEach(() => {
@@ -27,7 +28,7 @@ describe("KintoneRestAPIClient", () => {
     });
     describe("Header", () => {
       const baseUrl = "https://example.com";
-      it("should use location.origin in browser environment if baseUrl param is not specified", () => {
+      it("should use a location object in browser environment if baseUrl param is not specified", () => {
         injectPlatformDeps(browserDeps);
         const client = new KintoneRestAPIClient();
         expect(client.getBaseUrl()).toBe("https://example.com");
