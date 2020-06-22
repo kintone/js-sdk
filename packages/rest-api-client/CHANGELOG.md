@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.4.1...@kintone/rest-api-client@1.4.2) (2020-06-22)
+
+
+### Bug Fixes
+
+* use location.{protocol, host} instead of location.origin ([#273](https://github.com/kintone/js-sdk/issues/273)) ([e32cbc0](https://github.com/kintone/js-sdk/commit/e32cbc0147503f2fd4e0dc6f02ce1b5866913b73))
+
+
+
+
+
 ## [1.4.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.4.0...@kintone/rest-api-client@1.4.1) (2020-06-12)
 
 
