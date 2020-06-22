@@ -14,7 +14,9 @@ const {
   HTTPS_PROXY,
   KINTONE_DOMAIN,
   KINTONE_USERNAME,
-  KINTONE_PASSWORD
+  KINTONE_PASSWORD,
+  KINTONE_BASIC_AUTH_USERNAME,
+  KINTONE_BASIC_AUTH_PASSWORD
 } = process.env;
 
 const cli = meow(
@@ -26,6 +28,8 @@ const cli = meow(
     --username Login username
     --password User's password
     --proxy Proxy server
+    --basic-auth-username username for Basic Authentication
+    --basic-auth-password password for Basic Authentication
     --watch Watch the changes of plugin zip and re-run
     --waiting-dialog-ms A ms for waiting show a input dialog
     --lang Using language (en or ja)
@@ -34,6 +38,8 @@ const cli = meow(
     domain: KINTONE_DOMAIN
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
+    basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
+    basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
     proxy: HTTPS_PROXY or HTTP_PROXY
 `,
   {
@@ -53,6 +59,14 @@ const cli = meow(
       proxy: {
         type: "string",
         default: HTTPS_PROXY || HTTP_PROXY || ''
+      },
+      basicAuthUsername: {
+        type: "string",
+        default: KINTONE_BASIC_AUTH_USERNAME || ''
+      },
+      basicAuthPassword: {
+        type: "string",
+        default: KINTONE_BASIC_AUTH_PASSWORD || ''
       },
       watch: {
         type: "boolean",
@@ -76,11 +90,18 @@ const {
   password,
   domain,
   proxy,
+  basicAuthUsername,
+  basicAuthPassword,
   watch,
   waitingDialogMs,
   lang
 } = cli.flags;
-const options = proxy ? { watch, lang, proxyServer: proxy } : { watch, lang };
+
+const basicAuth = basicAuthUsername !== "" && basicAuthPassword !== "" ? {
+  username: basicAuthUsername,
+  password: basicAuthPassword
+} : null;
+const options = { watch, lang, proxyServer: proxy !== "" ? proxy : null, basicAuth };
 
 if (!pluginPath) {
   console.error(getMessage(lang, "Error_requiredZipPath"));

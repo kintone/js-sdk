@@ -7,7 +7,12 @@ import { getBoundMessage } from "./messages";
 
 const TIMEOUT_MS = 5000;
 
-async function launchBrowser(proxy?: string): Promise<Browser> {
+interface BasicAuth {
+  username: string;
+  password: string;
+}
+
+async function launchBrowser(proxy: string | null): Promise<Browser> {
   const args = proxy ? [`--proxy-server=${proxy}`] : [];
   return await puppeteer.launch({ args });
 }
@@ -17,13 +22,19 @@ async function readyForUpload(
   domain: string,
   userName: string,
   password: string,
-  lang: Lang
+  lang: Lang,
+  basicAuth: BasicAuth | null
 ): Promise<Page> {
   const m = getBoundMessage(lang);
 
   const page = await browser.newPage();
   const kintoneUrl = `https://${domain}/`;
   const loginUrl = `${kintoneUrl}login?saml=off`;
+
+  if (basicAuth) {
+    await page.authenticate(basicAuth);
+  }
+
   console.log(`Open ${loginUrl}`);
   await page.goto(loginUrl);
   try {
@@ -83,9 +94,10 @@ async function upload(
 }
 
 interface Option {
-  proxyServer?: string;
+  proxyServer: string | null;
   watch?: boolean;
   lang: Lang;
+  basicAuth: BasicAuth | null;
 }
 
 export async function run(
@@ -97,10 +109,17 @@ export async function run(
 ): Promise<void> {
   let browser = await launchBrowser(options.proxyServer);
   let page: Page;
-  const { lang } = options;
+  const { lang, basicAuth } = options;
   const m = getBoundMessage(lang);
   try {
-    page = await readyForUpload(browser, domain, userName, password, lang);
+    page = await readyForUpload(
+      browser,
+      domain,
+      userName,
+      password,
+      lang,
+      basicAuth
+    );
     await upload(page, pluginPath, lang);
     if (options.watch) {
       let uploading = false;
@@ -121,7 +140,8 @@ export async function run(
             domain,
             userName,
             password,
-            lang
+            lang,
+            basicAuth
           );
           await upload(page, pluginPath, lang);
         } finally {

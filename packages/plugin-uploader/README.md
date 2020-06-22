@@ -51,6 +51,8 @@ You can create a project based on `@kintone/plugin-packer` using [@kintone/creat
     --username Login username
     --password User's password
     --proxy Proxy server
+    --basic-auth-username username for Basic Authentication
+    --basic-auth-password password for Basic Authentication
     --watch Watch the changes of plugin zip and re-run
     --lang Using language (en or ja)
 
@@ -58,6 +60,8 @@ You can create a project based on `@kintone/plugin-packer` using [@kintone/creat
     domain: KINTONE_DOMAIN
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
+    basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
+    basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
     proxy: HTTPS_PROXY or HTTP_PROXY
 ```
 
