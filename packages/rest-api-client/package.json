@@ -81,7 +81,7 @@
   },
   "exports": {
     ".": {
-      "import": "./esm/index.mjs",
+      "import": "./esm/bundled.mjs",
       "require": "./lib/index.js"
     }
   }

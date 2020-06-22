@@ -5,9 +5,9 @@ import json from "@rollup/plugin-json";
 import builtinModules from "builtin-modules";
 
 export default {
-  input: "src/index.ts",
+  input: "src/index.esm.mjs",
   output: {
-    entryFileNames: "index.mjs",
+    entryFileNames: "bundled.mjs",
     dir: "esm",
     format: "esm",
   },
@@ -22,7 +22,5 @@ export default {
     commonjs({ extensions: [".js", ".ts"] }),
     json(),
   ],
-  external: [
-    ...builtinModules,
-  ],
+  external: [...builtinModules],
 };

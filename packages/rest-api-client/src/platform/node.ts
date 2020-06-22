@@ -4,7 +4,7 @@ import { basename } from "path";
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import https from "https";
 import os from "os";
-const packageJson = require("../../package.json");
+let packageJson: Record<string, unknown> | null = null;
 
 const readFile = promisify(fs.readFile);
 
@@ -50,6 +50,9 @@ export const buildPlatformDependentConfig = (params: {
 };
 
 export const buildHeaders = () => {
+  if (packageJson === null) {
+    packageJson = require("../../package.json") as Record<string, unknown>;
+  }
   return {
     "User-Agent": `Node.js/${process.version}(${os.type()}) ${
       packageJson.name
