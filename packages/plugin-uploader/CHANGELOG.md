@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/kintone/plugin-uploader/compare/v4.0.4...v4.1.0) (2020-06-22)
+
+
+### Features
+
+* support Basic Authentication ([#303](https://github.com/kintone/plugin-uploader/issues/303)) ([3334e61](https://github.com/kintone/plugin-uploader/commit/3334e6177eb4ad9583a5419eccaf539fe6605105))
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to ^4.1.0 ([#300](https://github.com/kintone/plugin-uploader/issues/300)) ([66a7556](https://github.com/kintone/plugin-uploader/commit/66a755621f88f2f4b9c2a3c81ba813bed6eed47a))
+* **deps:** update dependency inquirer to ^7.2.0 ([#301](https://github.com/kintone/plugin-uploader/issues/301)) ([daab984](https://github.com/kintone/plugin-uploader/commit/daab9849c1f5071ba0fbae0325669c02dedafcef))
+* **deps:** update dependency puppeteer to v3 ([#286](https://github.com/kintone/plugin-uploader/issues/286)) ([ab8308c](https://github.com/kintone/plugin-uploader/commit/ab8308cb0ff0b9227df7a12b1e840687da83e3d6))
+* **deps:** update dependency puppeteer to v4 ([#302](https://github.com/kintone/plugin-uploader/issues/302)) ([3925b59](https://github.com/kintone/plugin-uploader/commit/3925b590594675517daf75706114fb231e1cf2f8))
+
 ### [4.0.4](https://github.com/kintone/plugin-uploader/compare/v4.0.3...v4.0.4) (2020-06-02)
 
 
