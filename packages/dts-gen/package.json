@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
-    "@types/jest": "^25.2.3",
+    "@types/jest": "^26.0.0",
     "@types/lodash": "^4.14.155",
     "@types/node": "^10.17.26",
     "@typescript-eslint/parser": "^2.34.0",
