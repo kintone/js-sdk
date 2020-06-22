@@ -103,7 +103,7 @@ type FieldLayoutInSubtable = Exclude<
 
 type RowLayout<T extends object[]> = { type: "ROW"; fields: T };
 
-type SubTableLayout<T extends object[]> = {
+type SubtableLayout<T extends object[]> = {
   type: "SUBTABLE";
   code: string;
   fields: T;
@@ -116,6 +116,6 @@ type GroupLayout<T extends Array<RowLayout<object[]>>> = {
 
 export type Layout = Array<
   | RowLayout<FieldLayout[]>
-  | SubTableLayout<FieldLayoutInSubtable[]>
+  | SubtableLayout<FieldLayoutInSubtable[]>
   | GroupLayout<Array<RowLayout<FieldLayout[]>>>
 >;
