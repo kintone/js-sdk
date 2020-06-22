@@ -132,19 +132,19 @@ Session authentication is available in Garoon customization.
 
 ## Error Handling
 
-See [Error Handling](docs/errorHandling.md)
+See [Error Handling](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/errorHandling.md)
 
 ## References
 
-- [Record](docs/record.md)
-- [App](docs/app.md)
-- [File](docs/file.md)
-- [BulkRequest](docs/bulkRequest.md)
+- [Record](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/record.md)
+- [App](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/app.md)
+- [File](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/file.md)
+- [BulkRequest](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/bulkRequest.md)
 
 ## Contribution Guide
 
-- [CONTRIBUTING.md](../../CONTRIBUTING.md)
+- [CONTRIBUTING.md](https://github.com/kintone/js-sdk/tree/master/CONTRIBUTING.md)
 
 ## License
 
-- [MIT](LICENSE)
+- [MIT](https://github.com/kintone/js-sdk/tree/master/LICENSE)
