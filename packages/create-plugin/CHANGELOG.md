@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.6](https://github.com/kintone/create-plugin/compare/v3.0.5...v3.0.6) (2020-06-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to ^4.1.0 ([#491](https://github.com/kintone/create-plugin/issues/491)) ([83e1b1e](https://github.com/kintone/create-plugin/commit/83e1b1ed5df0b3497ec09e35513c67484cdee26e))
+
 ### [3.0.5](https://github.com/kintone/create-plugin/compare/v3.0.4...v3.0.5) (2020-06-02)
 
 
