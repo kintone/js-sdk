@@ -1,6 +1,10 @@
 import { MockClient } from "../../http/MockClient";
 import { BulkRequestClient } from "../BulkRequestClient";
+import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
+const errorResponseHandler = (error: Error) => {
+  throw error;
+};
 describe("BulkRequestClient", () => {
   let mockClient: MockClient;
   let bulkRequestClient: BulkRequestClient;
@@ -14,7 +18,11 @@ describe("BulkRequestClient", () => {
   };
 
   beforeEach(() => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     bulkRequestClient = new BulkRequestClient(mockClient);
   });
   describe("send", () => {
@@ -38,8 +46,8 @@ describe("BulkRequestClient", () => {
         },
       ],
     };
-    beforeEach(() => {
-      bulkRequestClient.send(params);
+    beforeEach(async () => {
+      await bulkRequestClient.send(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/bulkRequest.json");
@@ -94,8 +102,8 @@ describe("BulkRequestClient", () => {
       ],
     };
 
-    beforeEach(() => {
-      bulkRequestClient.send(params);
+    beforeEach(async () => {
+      await bulkRequestClient.send(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/bulkRequest.json");
@@ -115,10 +123,14 @@ describe("BulkRequestClient with guestSpaceId", () => {
   const APP_ID = 1;
   const GUEST_SPACE_ID = 2;
   beforeEach(() => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     bulkRequestClient = new BulkRequestClient(mockClient, GUEST_SPACE_ID);
   });
-  it("should pass the path to the http client", () => {
+  it("should pass the path to the http client", async () => {
     const params = {
       requests: [
         {
@@ -135,12 +147,12 @@ describe("BulkRequestClient with guestSpaceId", () => {
         },
       ],
     };
-    bulkRequestClient.send(params);
+    await bulkRequestClient.send(params);
     expect(mockClient.getLogs()[0].path).toBe(
       `/k/guest/${GUEST_SPACE_ID}/v1/bulkRequest.json`
     );
   });
-  it("should pass the path as a param with the guest space id to the http client", () => {
+  it("should pass the path as a param with the guest space id to the http client", async () => {
     const params = {
       requests: [
         {
@@ -157,7 +169,7 @@ describe("BulkRequestClient with guestSpaceId", () => {
         },
       ],
     };
-    bulkRequestClient.send(params);
+    await bulkRequestClient.send(params);
     expect(mockClient.getLogs()[0].params.requests[0].api).toEqual(
       `/k/guest/${GUEST_SPACE_ID}/v1/record.json`
     );

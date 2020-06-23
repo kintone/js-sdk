@@ -1,5 +1,10 @@
 import { MockClient } from "../../http/MockClient";
 import { AppClient } from "../AppClient";
+import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
+
+const errorResponseHandler = (error: Error) => {
+  throw error;
+};
 
 describe("AppClient", () => {
   let mockClient: MockClient;
@@ -109,15 +114,19 @@ describe("AppClient", () => {
   ];
 
   beforeEach(() => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     appClient = new AppClient(mockClient);
   });
   describe("getFormFields", () => {
     const lang = "default";
     const params = { app: APP_ID, lang } as const;
     describe("without preview", () => {
-      beforeEach(() => {
-        appClient.getFormFields(params);
+      beforeEach(async () => {
+        await appClient.getFormFields(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/form/fields.json");
@@ -130,8 +139,8 @@ describe("AppClient", () => {
       });
     });
     describe("preview: true", () => {
-      beforeEach(() => {
-        appClient.getFormFields({ ...params, preview: true });
+      beforeEach(async () => {
+        await appClient.getFormFields({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -149,8 +158,8 @@ describe("AppClient", () => {
 
   describe("addFormFields", () => {
     const params = { app: APP_ID, properties, revision: REVISION };
-    beforeEach(() => {
-      appClient.addFormFields(params);
+    beforeEach(async () => {
+      await appClient.addFormFields(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -167,8 +176,8 @@ describe("AppClient", () => {
 
   describe("updateFormFields", () => {
     const params = { app: APP_ID, properties, revision: REVISION };
-    beforeEach(() => {
-      appClient.updateFormFields(params);
+    beforeEach(async () => {
+      await appClient.updateFormFields(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -186,8 +195,8 @@ describe("AppClient", () => {
   describe("deleteFormFields", () => {
     const fields = ["fieldCode1", "fieldCode2"];
     const params = { app: APP_ID, fields, revision: REVISION };
-    beforeEach(() => {
-      appClient.deleteFormFields(params);
+    beforeEach(async () => {
+      await appClient.deleteFormFields(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -205,8 +214,8 @@ describe("AppClient", () => {
   describe("getFormLayout", () => {
     const params = { app: APP_ID };
     describe("without preview", () => {
-      beforeEach(() => {
-        appClient.getFormLayout(params);
+      beforeEach(async () => {
+        await appClient.getFormLayout(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/form/layout.json");
@@ -219,8 +228,8 @@ describe("AppClient", () => {
       });
     });
     describe("preview: true", () => {
-      beforeEach(() => {
-        appClient.getFormLayout({ ...params, preview: true });
+      beforeEach(async () => {
+        await appClient.getFormLayout({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -239,8 +248,8 @@ describe("AppClient", () => {
   describe("updateFormLayout", () => {
     const params = { app: APP_ID, layout, revision: REVISION };
 
-    beforeEach(() => {
-      appClient.updateFormLayout(params);
+    beforeEach(async () => {
+      await appClient.updateFormLayout(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -259,8 +268,8 @@ describe("AppClient", () => {
     const lang = "default";
     const params = { app: APP_ID, lang } as const;
     describe("without preview", () => {
-      beforeEach(() => {
-        appClient.getViews(params);
+      beforeEach(async () => {
+        await appClient.getViews(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/views.json");
@@ -273,8 +282,8 @@ describe("AppClient", () => {
       });
     });
     describe("preview: true", () => {
-      beforeEach(() => {
-        appClient.getViews({ ...params, preview: true });
+      beforeEach(async () => {
+        await appClient.getViews({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -292,8 +301,8 @@ describe("AppClient", () => {
 
   describe("updateViews", () => {
     const params = { app: APP_ID, views, revision: REVISION };
-    beforeEach(() => {
-      appClient.updateViews(params);
+    beforeEach(async () => {
+      await appClient.updateViews(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/app/views.json");
@@ -310,8 +319,8 @@ describe("AppClient", () => {
     const params = {
       id: APP_ID,
     };
-    beforeEach(() => {
-      appClient.getApp(params);
+    beforeEach(async () => {
+      await appClient.getApp(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/app.json");
@@ -333,8 +342,8 @@ describe("AppClient", () => {
       limit: 100,
       offset: 30,
     };
-    beforeEach(() => {
-      appClient.getApps(params);
+    beforeEach(async () => {
+      await appClient.getApps(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/apps.json");
@@ -352,8 +361,8 @@ describe("AppClient", () => {
       const params = {
         name: "app",
       };
-      beforeEach(() => {
-        appClient.addApp(params);
+      beforeEach(async () => {
+        await appClient.addApp(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/app.json");
@@ -371,9 +380,9 @@ describe("AppClient", () => {
         space: 10,
       };
       const defaultThread = 20;
-      beforeEach(() => {
+      beforeEach(async () => {
         mockClient.mockResponse({ defaultThread });
-        appClient.addApp(params);
+        await appClient.addApp(params);
       });
       it("should fetch the default thread of the space", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/space.json");
@@ -395,8 +404,8 @@ describe("AppClient", () => {
     const lang = "default";
     const params = { app: APP_ID, lang } as const;
     describe("without preview", () => {
-      beforeEach(() => {
-        appClient.getProcessManagement(params);
+      beforeEach(async () => {
+        await appClient.getProcessManagement(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/status.json");
@@ -409,8 +418,8 @@ describe("AppClient", () => {
       });
     });
     describe("preview: true", () => {
-      beforeEach(() => {
-        appClient.getProcessManagement({ ...params, preview: true });
+      beforeEach(async () => {
+        await appClient.getProcessManagement({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -434,8 +443,8 @@ describe("AppClient", () => {
       states,
       actions,
     };
-    beforeEach(() => {
-      appClient.updateProcessManagement(params);
+    beforeEach(async () => {
+      await appClient.updateProcessManagement(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -454,8 +463,8 @@ describe("AppClient", () => {
     const lang = "default";
     const params = { app: APP_ID, lang } as const;
     describe("without preview", () => {
-      beforeEach(() => {
-        appClient.getAppSettings(params);
+      beforeEach(async () => {
+        await appClient.getAppSettings(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/settings.json");
@@ -468,8 +477,8 @@ describe("AppClient", () => {
       });
     });
     describe("preview: true", () => {
-      beforeEach(() => {
-        appClient.getAppSettings({ ...params, preview: true });
+      beforeEach(async () => {
+        await appClient.getAppSettings({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -499,8 +508,8 @@ describe("AppClient", () => {
       },
       theme: "WHITE" as const,
     };
-    beforeEach(() => {
-      appClient.updateAppSettings(params);
+    beforeEach(async () => {
+      await appClient.updateAppSettings(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -519,8 +528,8 @@ describe("AppClient", () => {
     const params = {
       apps: [APP_ID],
     };
-    beforeEach(() => {
-      appClient.getDeployStatus(params);
+    beforeEach(async () => {
+      await appClient.getDeployStatus(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -540,8 +549,8 @@ describe("AppClient", () => {
       apps: [{ app: APP_ID, revision: REVISION }],
       revert: true,
     };
-    beforeEach(() => {
-      appClient.deployApp(params);
+    beforeEach(async () => {
+      await appClient.deployApp(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -560,8 +569,8 @@ describe("AppClient", () => {
     const params = {
       app: APP_ID,
     };
-    beforeEach(() => {
-      appClient.getFieldAcl(params);
+    beforeEach(async () => {
+      await appClient.getFieldAcl(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/field/acl.json");
@@ -593,8 +602,8 @@ describe("AppClient", () => {
       ],
     };
 
-    beforeEach(() => {
-      appClient.updateFieldAcl(params);
+    beforeEach(async () => {
+      await appClient.updateFieldAcl(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/field/acl.json");
@@ -614,8 +623,8 @@ describe("AppClient", () => {
       lang,
     } as const;
     describe("without preview", () => {
-      beforeEach(() => {
-        appClient.getRecordAcl(params);
+      beforeEach(async () => {
+        await appClient.getRecordAcl(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/acl.json");
@@ -628,8 +637,8 @@ describe("AppClient", () => {
       });
     });
     describe("preview: true", () => {
-      beforeEach(() => {
-        appClient.getRecordAcl({ ...params, preview: true });
+      beforeEach(async () => {
+        await appClient.getRecordAcl({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -667,8 +676,8 @@ describe("AppClient", () => {
       ],
       revision: REVISION,
     };
-    beforeEach(() => {
-      appClient.updateRecordAcl(params);
+    beforeEach(async () => {
+      await appClient.updateRecordAcl(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -688,8 +697,8 @@ describe("AppClient", () => {
       app: APP_ID,
     };
     describe("without preview", () => {
-      beforeEach(() => {
-        appClient.getAppAcl(params);
+      beforeEach(async () => {
+        await appClient.getAppAcl(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/acl.json");
@@ -702,8 +711,8 @@ describe("AppClient", () => {
       });
     });
     describe("preview: true", () => {
-      beforeEach(() => {
-        appClient.getAppAcl({ ...params, preview: true });
+      beforeEach(async () => {
+        await appClient.getAppAcl({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/app/acl.json");
@@ -736,8 +745,8 @@ describe("AppClient", () => {
         },
       ],
     };
-    beforeEach(() => {
-      appClient.updateAppAcl(params);
+    beforeEach(async () => {
+      await appClient.updateAppAcl(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/preview/app/acl.json");
@@ -755,8 +764,8 @@ describe("AppClient", () => {
       app: APP_ID,
       ids: [RECORD_ID],
     };
-    beforeEach(() => {
-      appClient.evaluateRecordsAcl(params);
+    beforeEach(async () => {
+      await appClient.evaluateRecordsAcl(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
@@ -774,8 +783,8 @@ describe("AppClient", () => {
   describe("getAppCustomize", () => {
     const params = { app: APP_ID };
     describe("without preview", () => {
-      beforeEach(() => {
-        appClient.getAppCustomize(params);
+      beforeEach(async () => {
+        await appClient.getAppCustomize(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/customize.json");
@@ -788,8 +797,8 @@ describe("AppClient", () => {
       });
     });
     describe("preview: true", () => {
-      beforeEach(() => {
-        appClient.getAppCustomize({ ...params, preview: true });
+      beforeEach(async () => {
+        await appClient.getAppCustomize({ ...params, preview: true });
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -830,8 +839,8 @@ describe("AppClient", () => {
       revision: REVISION,
     };
     describe("customize resources are specified", () => {
-      beforeEach(() => {
-        appClient.updateAppCustomize(params);
+      beforeEach(async () => {
+        await appClient.updateAppCustomize(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -849,14 +858,21 @@ describe("AppClient", () => {
 });
 
 describe("AppClient with guestSpaceId", () => {
-  it("should pass the path to the http client", () => {
+  it("should pass the path to the http client", async () => {
     const APP_ID = 1;
     const GUEST_SPACE_ID = 2;
     const lang = "default";
     const params = { app: APP_ID, lang } as const;
-    const mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "session" },
+    });
+    const mockClient = new MockClient({
+      requestConfigBuilder,
+      errorResponseHandler,
+    });
     const appClient = new AppClient(mockClient, GUEST_SPACE_ID);
-    appClient.getFormFields(params);
+    await appClient.getFormFields(params);
     expect(mockClient.getLogs()[0].path).toBe(
       `/k/guest/${GUEST_SPACE_ID}/v1/app/form/fields.json`
     );

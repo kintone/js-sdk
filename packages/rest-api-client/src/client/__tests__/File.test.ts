@@ -3,14 +3,24 @@ import { FileClient } from "../FileClient";
 import FormData from "form-data";
 import { injectPlatformDeps } from "../../platform";
 import * as browserDeps from "../../platform/browser";
+import * as nodeDeps from "../../platform/node";
+import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
 jest.mock("form-data");
+
+const errorResponseHandler = (error: Error) => {
+  throw error;
+};
 
 describe("FileClient", () => {
   let mockClient: MockClient;
   let fileClient: FileClient;
   beforeEach(() => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     fileClient = new FileClient(mockClient);
   });
   describe("uploadFile", () => {
@@ -21,8 +31,8 @@ describe("FileClient", () => {
           data: "Hello!",
         },
       };
-      beforeEach(() => {
-        fileClient.uploadFile(params);
+      beforeEach(async () => {
+        await fileClient.uploadFile(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/file.json");
@@ -48,6 +58,7 @@ describe("FileClient", () => {
       };
       it("should pass file object includes name and data as a param to the http client", async () => {
         injectPlatformDeps({
+          ...nodeDeps,
           readFileFromPath: async (filePath: string) => ({
             name: filePath,
             data: "Hello!",
@@ -69,9 +80,9 @@ describe("FileClient", () => {
           path: "foo/bar/baz.txt",
         },
       };
-      it("should raise an error on a browser environment", () => {
+      it("should raise an error on a browser environment", async () => {
         injectPlatformDeps(browserDeps);
-        expect(fileClient.uploadFile(params)).rejects.toThrow(
+        await expect(fileClient.uploadFile(params)).rejects.toThrow(
           "uploadFile doesn't allow to accept a file path in Browser environment."
         );
       });
@@ -80,8 +91,8 @@ describe("FileClient", () => {
 
   describe("downloadFile", () => {
     const params = { fileKey: "some_file_key" };
-    beforeEach(() => {
-      fileClient.downloadFile(params);
+    beforeEach(async () => {
+      await fileClient.downloadFile(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/file.json");
@@ -105,10 +116,14 @@ describe("FileClient with guestSpaceId", () => {
   };
   let mockClient: MockClient;
   let fileClient: FileClient;
-  beforeEach(() => {
-    mockClient = new MockClient();
+  beforeEach(async () => {
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     fileClient = new FileClient(mockClient, GUEST_SPACE_ID);
-    fileClient.uploadFile(params);
+    await fileClient.uploadFile(params);
   });
   it("should pass the path to the http client", () => {
     expect(mockClient.getLogs()[0].path).toBe(

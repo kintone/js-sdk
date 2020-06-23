@@ -4,7 +4,11 @@ import { MockClient } from "../../http/MockClient";
 import { KintoneAllRecordsError } from "../../KintoneAllRecordsError";
 import { KintoneRestAPIError } from "../../KintoneRestAPIError";
 import { Record } from "../types";
+import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
+const errorResponseHandler = (error: Error) => {
+  throw error;
+};
 describe("RecordClient", () => {
   let mockClient: MockClient;
   let recordClient: RecordClient;
@@ -18,14 +22,18 @@ describe("RecordClient", () => {
   };
 
   beforeEach(() => {
-    mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
     const bulkRequestClient = new BulkRequestClient(mockClient);
     recordClient = new RecordClient(mockClient, bulkRequestClient);
   });
   describe("getRecord", () => {
     const params = { app: APP_ID, id: RECORD_ID };
-    beforeEach(() => {
-      recordClient.getRecord(params);
+    beforeEach(async () => {
+      await recordClient.getRecord(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
@@ -40,8 +48,8 @@ describe("RecordClient", () => {
 
   describe("addRecord", () => {
     const params = { app: APP_ID, record };
-    beforeEach(() => {
-      recordClient.addRecord(params);
+    beforeEach(async () => {
+      await recordClient.addRecord(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
@@ -61,8 +69,8 @@ describe("RecordClient", () => {
       record,
       revision: 5,
     };
-    beforeEach(() => {
-      recordClient.updateRecord(params);
+    beforeEach(async () => {
+      await recordClient.updateRecord(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record.json");
@@ -205,8 +213,8 @@ describe("RecordClient", () => {
       query: `${fieldCode} = "foo"`,
       totalCount: true,
     };
-    beforeEach(() => {
-      recordClient.getRecords(params);
+    beforeEach(async () => {
+      await recordClient.getRecords(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
@@ -256,8 +264,8 @@ describe("RecordClient", () => {
       app: APP_ID,
       records: [{ id: RECORD_ID, record, revision: 5 }],
     };
-    beforeEach(() => {
-      recordClient.updateRecords(params);
+    beforeEach(async () => {
+      await recordClient.updateRecords(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
@@ -278,8 +286,8 @@ describe("RecordClient", () => {
       ids,
       revisions,
     };
-    beforeEach(() => {
-      recordClient.deleteRecords(params);
+    beforeEach(async () => {
+      await recordClient.deleteRecords(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
@@ -299,8 +307,8 @@ describe("RecordClient", () => {
       query: `${fieldCode} = "foo"`,
       size: 10,
     };
-    beforeEach(() => {
-      recordClient.createCursor(params);
+    beforeEach(async () => {
+      await recordClient.createCursor(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records/cursor.json");
@@ -317,8 +325,8 @@ describe("RecordClient", () => {
     const params = {
       id: "cursor id",
     };
-    beforeEach(() => {
-      recordClient.getRecordsByCursor(params);
+    beforeEach(async () => {
+      await recordClient.getRecordsByCursor(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records/cursor.json");
@@ -335,8 +343,8 @@ describe("RecordClient", () => {
     const params = {
       id: "cursor id",
     };
-    beforeEach(() => {
-      recordClient.deleteCursor(params);
+    beforeEach(async () => {
+      await recordClient.deleteCursor(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records/cursor.json");
@@ -622,24 +630,24 @@ describe("RecordClient", () => {
         recordClient.getAllRecordsWithCursor = withCursorMockFn;
         recordClient.getAllRecordsWithOffset = withOffsetMockFn;
       });
-      it("should call `getAllRecordsWithCursor` if `withCursor` is not specified", () => {
-        recordClient.getAllRecords({ ...params });
+      it("should call `getAllRecordsWithCursor` if `withCursor` is not specified", async () => {
+        await recordClient.getAllRecords({ ...params });
         expect(withCursorMockFn.mock.calls.length).toBe(1);
         expect(withCursorMockFn.mock.calls[0][0]).toStrictEqual({
           app: params.app,
           query: `${params.condition} order by ${params.orderBy}`,
         });
       });
-      it("should call `getAllRecordsWithCursor` if `withCursor` is true", () => {
-        recordClient.getAllRecords({ ...params, withCursor: true });
+      it("should call `getAllRecordsWithCursor` if `withCursor` is true", async () => {
+        await recordClient.getAllRecords({ ...params, withCursor: true });
         expect(withCursorMockFn.mock.calls.length).toBe(1);
         expect(withCursorMockFn.mock.calls[0][0]).toStrictEqual({
           app: params.app,
           query: `${params.condition} order by ${params.orderBy}`,
         });
       });
-      it("should call `getAllRecordsWithOffset` if `withCursor` is false", () => {
-        recordClient.getAllRecords({ ...params, withCursor: false });
+      it("should call `getAllRecordsWithOffset` if `withCursor` is false", async () => {
+        await recordClient.getAllRecords({ ...params, withCursor: false });
         expect(withOffsetMockFn.mock.calls.length).toBe(1);
         expect(withOffsetMockFn.mock.calls[0][0]).toStrictEqual(params);
       });
@@ -657,18 +665,18 @@ describe("RecordClient", () => {
         mockFn = jest.fn();
         recordClient.getAllRecordsWithId = mockFn;
       });
-      it("should call `getAllRecordsWithId` if `withCursor` is not specified", () => {
-        recordClient.getAllRecords(params);
+      it("should call `getAllRecordsWithId` if `withCursor` is not specified", async () => {
+        await recordClient.getAllRecords(params);
         expect(mockFn.mock.calls.length).toBe(1);
         expect(mockFn.mock.calls[0][0]).toStrictEqual(expected);
       });
-      it("should call `getAllRecordsWithId` if `withCursor` is true", () => {
-        recordClient.getAllRecords({ ...params, withCursor: true });
+      it("should call `getAllRecordsWithId` if `withCursor` is true", async () => {
+        await recordClient.getAllRecords({ ...params, withCursor: true });
         expect(mockFn.mock.calls.length).toBe(1);
         expect(mockFn.mock.calls[0][0]).toStrictEqual(expected);
       });
-      it("should call `getAllRecordsWithId` if `withCursor` is false", () => {
-        recordClient.getAllRecords({ ...params, withCursor: false });
+      it("should call `getAllRecordsWithId` if `withCursor` is false", async () => {
+        await recordClient.getAllRecords({ ...params, withCursor: false });
         expect(mockFn.mock.calls.length).toBe(1);
         expect(mockFn.mock.calls[0][0]).toStrictEqual(expected);
       });
@@ -683,18 +691,18 @@ describe("RecordClient", () => {
         mockFn = jest.fn();
         recordClient.getAllRecordsWithId = mockFn;
       });
-      it("should call `getAllRecordsWithId` if `withCursor` is not specified", () => {
-        recordClient.getAllRecords(params);
+      it("should call `getAllRecordsWithId` if `withCursor` is not specified", async () => {
+        await recordClient.getAllRecords(params);
         expect(mockFn.mock.calls.length).toBe(1);
         expect(mockFn.mock.calls[0][0]).toStrictEqual(params);
       });
-      it("should call `getAllRecordsWithId` if `withCursor` is true", () => {
-        recordClient.getAllRecords({ ...params, withCursor: true });
+      it("should call `getAllRecordsWithId` if `withCursor` is true", async () => {
+        await recordClient.getAllRecords({ ...params, withCursor: true });
         expect(mockFn.mock.calls.length).toBe(1);
         expect(mockFn.mock.calls[0][0]).toStrictEqual(params);
       });
-      it("should call `getAllRecordsWithId` if `withCursor` is false", () => {
-        recordClient.getAllRecords({ ...params, withCursor: false });
+      it("should call `getAllRecordsWithId` if `withCursor` is false", async () => {
+        await recordClient.getAllRecords({ ...params, withCursor: false });
         expect(mockFn.mock.calls.length).toBe(1);
         expect(mockFn.mock.calls[0][0]).toStrictEqual(params);
       });
@@ -844,7 +852,7 @@ describe("RecordClient", () => {
     });
 
     describe("parameter error", () => {
-      it("should raise an Error if `records` parameter is not an array", () => {
+      it("should raise an Error if `records` parameter is not an array", async () => {
         const invalidParams: any = {
           app: APP_ID,
           records: Array.from({ length: 3000 }, (_, index) => index + 1).map(
@@ -860,7 +868,7 @@ describe("RecordClient", () => {
             }
           ),
         };
-        expect(recordClient.addAllRecords(invalidParams)).rejects.toThrow(
+        await expect(recordClient.addAllRecords(invalidParams)).rejects.toThrow(
           "the `records` parameter must be an array of object."
         );
       });
@@ -1134,8 +1142,8 @@ describe("RecordClient", () => {
         ],
       },
     };
-    beforeEach(() => {
-      recordClient.addRecordComment(params);
+    beforeEach(async () => {
+      await recordClient.addRecordComment(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/comment.json");
@@ -1154,8 +1162,8 @@ describe("RecordClient", () => {
       record: RECORD_ID,
       comment: "1",
     };
-    beforeEach(() => {
-      recordClient.deleteRecordComment(params);
+    beforeEach(async () => {
+      await recordClient.deleteRecordComment(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/comment.json");
@@ -1176,8 +1184,8 @@ describe("RecordClient", () => {
       offset: 5,
       limit: 5,
     };
-    beforeEach(() => {
-      recordClient.getRecordComments(params);
+    beforeEach(async () => {
+      await recordClient.getRecordComments(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/comments.json");
@@ -1197,8 +1205,8 @@ describe("RecordClient", () => {
       assignees: ["user1"],
       revision: 10,
     };
-    beforeEach(() => {
-      recordClient.updateRecordAssignees(params);
+    beforeEach(async () => {
+      await recordClient.updateRecordAssignees(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/assignees.json");
@@ -1219,8 +1227,8 @@ describe("RecordClient", () => {
       id: RECORD_ID,
       revision: 10,
     };
-    beforeEach(() => {
-      recordClient.updateRecordStatus(params);
+    beforeEach(async () => {
+      await recordClient.updateRecordStatus(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/record/status.json");
@@ -1245,8 +1253,8 @@ describe("RecordClient", () => {
         },
       ],
     };
-    beforeEach(() => {
-      recordClient.updateRecordsStatus(params);
+    beforeEach(async () => {
+      await recordClient.updateRecordsStatus(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/records/status.json");
@@ -1261,12 +1269,19 @@ describe("RecordClient", () => {
 });
 
 describe("RecordClient with guestSpaceId", () => {
-  it("should pass the path to the http client", () => {
+  it("should pass the path to the http client", async () => {
     const APP_ID = 1;
     const RECORD_ID = 2;
     const GUEST_SPACE_ID = 3;
 
-    const mockClient = new MockClient();
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "session" },
+    });
+    const mockClient = new MockClient({
+      requestConfigBuilder,
+      errorResponseHandler,
+    });
     const bulkRequestClient = new BulkRequestClient(mockClient);
     const recordClient = new RecordClient(
       mockClient,
@@ -1274,7 +1289,7 @@ describe("RecordClient with guestSpaceId", () => {
       GUEST_SPACE_ID
     );
     const params = { app: APP_ID, id: RECORD_ID };
-    recordClient.getRecord(params);
+    await recordClient.getRecord(params);
     expect(mockClient.getLogs()[0].path).toBe(
       `/k/guest/${GUEST_SPACE_ID}/v1/record.json`
     );
