@@ -19,7 +19,10 @@ interface PackedPlugin {
   plugin: Buffer;
 }
 
-type PluginZipPathFunction = (id: string, manifest: object) => string;
+type PluginZipPathFunction = (
+  id: string,
+  manifest: { [key: string]: any }
+) => string;
 
 class KintonePlugin implements Plugin {
   private options: Option;
