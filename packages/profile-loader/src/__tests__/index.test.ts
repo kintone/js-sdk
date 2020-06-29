@@ -8,7 +8,7 @@ describe("index", () => {
   let originalApiToken: string | undefined;
   let originalOAuthToken: string | undefined;
   let originalConfigPath: string | undefined;
-  let originalCredentialPath: string | undefined;
+  let originalCredentialsPath: string | undefined;
   beforeEach(() => {
     originalUsername = process.env.KINTONE_USERNAME;
     originalPassword = process.env.KINTONE_PASSWORD;
@@ -16,14 +16,14 @@ describe("index", () => {
     originalApiToken = process.env.KINTONE_API_TOKEN;
     originalOAuthToken = process.env.KINTONE_OAUTH_TOKEN;
     originalConfigPath = process.env.KINTONE_CONFIG_PATH;
-    originalCredentialPath = process.env.KINTONE_CREDENTIAL_PATH;
+    originalCredentialsPath = process.env.KINTONE_CREDENTIALS_PATH;
     delete process.env.KINTONE_USERNAME;
     delete process.env.KINTONE_PASSWORD;
     delete process.env.KINTONE_BASE_URL;
     delete process.env.KINTONE_API_TOKEN;
     delete process.env.KINTONE_OAUTH_TOKEN;
     delete process.env.KINTONE_CONFIG_PATH;
-    delete process.env.KINTONE_CREDENTIAL_PATH;
+    delete process.env.KINTONE_CREDENTIALS_PATH;
   });
   afterEach(() => {
     process.env.KINTONE_USERNAME = originalUsername;
@@ -32,17 +32,17 @@ describe("index", () => {
     process.env.KINTONE_API_TOKEN = originalApiToken;
     process.env.KINTONE_OAUTH_TOKEN = originalOAuthToken;
     process.env.KINTONE_CONFIG_PATH = originalConfigPath;
-    process.env.KINTONE_CREDENTIAL_PATH = originalCredentialPath;
+    process.env.KINTONE_CREDENTIALS_PATH = originalCredentialsPath;
   });
   describe("loadProfile", () => {
     const configFilePath = path.resolve(__dirname, "fixtures", "config");
-    const credentialFilePath = path.resolve(
+    const credentialsFilePath = path.resolve(
       __dirname,
       "fixtures",
       "credentials"
     );
     it("should return a profile", () => {
-      expect(loadProfile(undefined, null, null)).toEqual({
+      expect(loadProfile({ config: false, credentials: false })).toEqual({
         username: null,
         password: null,
         baseUrl: null,
@@ -56,7 +56,7 @@ describe("index", () => {
       process.env.KINTONE_BASE_URL = "https://example.kintone.com";
       process.env.KINTONE_API_TOKEN = "api_token";
       process.env.KINTONE_OAUTH_TOKEN = "oauth_token";
-      expect(loadProfile(undefined, null, null)).toEqual({
+      expect(loadProfile({ config: false, credentials: false })).toEqual({
         username: "bob",
         password: "password",
         baseUrl: "https://example.kintone.com",
@@ -66,7 +66,10 @@ describe("index", () => {
     });
     it("should be able to load settings from a config file", () => {
       expect(
-        loadProfile(undefined, configFilePath, credentialFilePath)
+        loadProfile({
+          config: configFilePath,
+          credentials: credentialsFilePath,
+        })
       ).toEqual({
         username: "jim",
         password: "foo",
@@ -77,7 +80,11 @@ describe("index", () => {
     });
     it("should be able to load a specified profile settings from environment variable", () => {
       expect(
-        loadProfile("staging", configFilePath, credentialFilePath)
+        loadProfile({
+          profile: "staging",
+          config: configFilePath,
+          credentials: credentialsFilePath,
+        })
       ).toEqual({
         username: "staging-jim",
         password: "staging-foo",
@@ -89,7 +96,10 @@ describe("index", () => {
     it("should override settings in a config file by environment variable settings", () => {
       process.env.KINTONE_USERNAME = "admin";
       expect(
-        loadProfile(undefined, configFilePath, credentialFilePath)
+        loadProfile({
+          config: configFilePath,
+          credentials: credentialsFilePath,
+        })
       ).toEqual({
         username: "admin",
         password: "foo",
@@ -100,7 +110,7 @@ describe("index", () => {
     });
     it("should be able to change the directory storing a config with KINTONE_CONFIG_PATH", () => {
       process.env.KINTONE_CONFIG_PATH = path.dirname(configFilePath);
-      expect(loadProfile(undefined, undefined, null)).toEqual({
+      expect(loadProfile({ credentials: false })).toEqual({
         username: null,
         password: null,
         baseUrl: "https://foo.kintone.com",
@@ -108,9 +118,9 @@ describe("index", () => {
         oAuthToken: null,
       });
     });
-    it("should be able to change the directory storing a credentials with KINTONE_CREDENTIAL_PATH", () => {
-      process.env.KINTONE_CREDENTIAL_PATH = path.dirname(configFilePath);
-      expect(loadProfile(undefined, null, undefined)).toEqual({
+    it("should be able to change the directory storing a credentials with KINTONE_CREDENTIALS_PATH", () => {
+      process.env.KINTONE_CREDENTIALS_PATH = path.dirname(configFilePath);
+      expect(loadProfile({ config: false })).toEqual({
         username: "jim",
         password: "foo",
         baseUrl: null,

@@ -11,7 +11,11 @@ const profileLoader = require("@kintone/profile-loader");
 
 const profile = profileLoader();
 // or
-const profile = profileLoader('your_profile', configPath, credentialPath);
+const profile = profileLoader({
+  profile: "your_profile",
+  config: configFIlePath,
+  credentials: credentialsFilePath,
+});
 ```
 
 ## Settings
@@ -25,11 +29,11 @@ each setting corresponds the environment variable.
 
 If you put a config file at `$HOME/.kintone/config`, the function reads settings from the config file.
 
-**Do not put credential settings in the file, use `$HOME/.kintone/credentials` instead.
+**Do not put your credentials in the file, use `$HOME/.kintone/credentials` instead.**
 
 You can put your settings in the config file and get the value from the function.
 
-The format of the config file is here.
+The format of the config file is the following.
 
 ```toml
 # The default setting, so the function
@@ -44,7 +48,7 @@ baseUrl = "https://staging-example.kintone.com"
 debug = false
 ```
 
-### Credential file
+### Credentialsfile
 
 You can get the following settings from the function.
 each setting corresponds the environment variable.
@@ -54,9 +58,9 @@ each setting corresponds the environment variable.
 - apiToken ... `KINTONE_API_TOKEN`
 - oAuthToken ... `KINTONE_OAUTH_TOKEN`
 
-If you put a credential file at `$HOME/.kintone/credentials`, the function reads settings from the credential file.
+If you put a credentials file at `$HOME/.kintone/credentials`, the function reads settings from the credentials file.
 
-The format of the credential file is here.
+The format of the credentials file is the following.
 
 ```toml
 # The default setting, so the function
@@ -76,17 +80,36 @@ oAuthToken = "staging-oauth_token"
 ### The Priority of loading settings
 
 1. Config file
-1. Credential file
+1. Credentials file
 1. Environment variable
 
-### Customize the location to store `config` and `credential`
+### Customize the location to store `config` and `credentials`
 
-You can customize the location of a directory to store `config` and `credential` through the following environmental values.
+You can customize the location of a directory to store `config` and `credentials` through the following environmental values.
 
 - `config` ... `KINTONE_CONFIG_PATH`
-- `credentials` ... `KINTONE_CREDENTIAL_PATH`
+- `credentials` ... `KINTONE_CREDENTIALS_PATH`
 
 Each default value is `${HOME}/.kintone`.
 
+## API
+
+### `loadProfile`
+
+```js
+const profile = loadProfile({
+  profile: "dev",
+  config: path.resolve(__dirname, ".kintone", "config"),
+  credentials: path.resolve(__dirname, ".kintone", "credentials"),
+});
+```
+
+| Name       | Type   | Required | Description                                                                                    |
+| ---------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
+| profile    | String |          | A profile specified as a [table](https://toml.io/en/v1.0.0-rc.1#section-16) in a setting file. |
+| config     | String |          | A path to a config file. The default value is `$HOME/.kintone/config`.                         |
+| credentials | String |          | A path to a credentials file. The default value is `$HOME/.kintone/credentials`.                |
+
 ## LICENSE
+
 MIT License

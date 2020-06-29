@@ -7,7 +7,7 @@ import { File } from "./file";
 import { BulkRequest } from "./bulkRequest";
 
 const buildClient = (argv: any): KintoneRestAPIClient => {
-  const config = loadProfile(argv.profile);
+  const config = loadProfile({ profile: argv.profile });
   // console.log(`target environment is ${config.baseUrl}`);
   const { apiToken, username, password, oAuthToken, baseUrl } = config;
   let auth;

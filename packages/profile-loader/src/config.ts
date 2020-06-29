@@ -6,9 +6,9 @@ import { Profile } from "./index";
 
 const KINTONE_CONFIG_DIR = path.resolve(os.homedir(), ".kintone");
 const CONFIG_FILE_NAME = "config";
-const CREDENTIAL_FILE_NAME = "credential";
+const CREDENTIALS_FILE_NAME = "credentials";
 
-export const loadConfig = <T extends Profile>(
+const loadSettings = <T extends Profile>(
   profile: string,
   filePath: string | null
 ): Partial<T> => {
@@ -20,7 +20,27 @@ export const loadConfig = <T extends Profile>(
   return config[profile];
 };
 
-export const getDefaultConfigFilePath = (): string | null => {
+export const loadConfig = <T extends Profile>(
+  profile: string,
+  filePath: string | undefined | false
+): Partial<T> => {
+  if (filePath === false) {
+    return {};
+  }
+  return loadSettings(profile, filePath ?? getDefaultConfigFilePath());
+};
+
+export const loadCredentials = <T extends Profile>(
+  profile: string,
+  filePath: string | undefined | false
+): Partial<T> => {
+  if (filePath === false) {
+    return {};
+  }
+  return loadSettings(profile, filePath ?? getDefaultCredentialsFilePath());
+};
+
+const getDefaultConfigFilePath = (): string | null => {
   const kintoneConfigFile = process.env.KINTONE_CONFIG_PATH;
   if (kintoneConfigFile) {
     if (!fs.existsSync(kintoneConfigFile)) {
@@ -32,14 +52,14 @@ export const getDefaultConfigFilePath = (): string | null => {
   return fs.existsSync(filePath) ? filePath : null;
 };
 
-export const getDefaultCredentialFilePath = (): string | null => {
-  const kintoneCredentialFile = process.env.KINTONE_CREDENTIAL_PATH;
-  if (kintoneCredentialFile) {
-    if (!fs.existsSync(kintoneCredentialFile)) {
-      throw new Error(`${kintoneCredentialFile} cannot be found`);
+const getDefaultCredentialsFilePath = (): string | null => {
+  const kintoneCredentialsFile = process.env.KINTONE_CREDENTIALS_PATH;
+  if (kintoneCredentialsFile) {
+    if (!fs.existsSync(kintoneCredentialsFile)) {
+      throw new Error(`${kintoneCredentialsFile} cannot be found`);
     }
-    return path.resolve(kintoneCredentialFile, CREDENTIAL_FILE_NAME);
+    return path.resolve(kintoneCredentialsFile, CREDENTIALS_FILE_NAME);
   }
-  const filePath = path.resolve(KINTONE_CONFIG_DIR, CREDENTIAL_FILE_NAME);
+  const filePath = path.resolve(KINTONE_CONFIG_DIR, CREDENTIALS_FILE_NAME);
   return fs.existsSync(filePath) ? filePath : null;
 };
