@@ -110,6 +110,10 @@ const profile = loadProfile({
 | config      | String |          | A path to a config file. The default value is `$HOME/.kintone/config`.                         |
 | credentials | String |          | A path to a credentials file. The default value is `$HOME/.kintone/credentials`.               |
 
+## Prior Art
+
+- ["Configuration and credential file settings - AWS Command Line Interface"](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+
 ## LICENSE
 
 MIT License
