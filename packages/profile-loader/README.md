@@ -104,11 +104,11 @@ const profile = loadProfile({
 });
 ```
 
-| Name       | Type   | Required | Description                                                                                    |
-| ---------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
-| profile    | String |          | A profile specified as a [table](https://toml.io/en/v1.0.0-rc.1#section-16) in a setting file. |
-| config     | String |          | A path to a config file. The default value is `$HOME/.kintone/config`.                         |
-| credentials | String |          | A path to a credentials file. The default value is `$HOME/.kintone/credentials`.                |
+| Name        | Type   | Required | Description                                                                                    |
+| ----------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
+| profile     | String |          | A profile specified as a [table](https://toml.io/en/v1.0.0-rc.1#section-16) in a setting file. |
+| config      | String |          | A path to a config file. The default value is `$HOME/.kintone/config`.                         |
+| credentials | String |          | A path to a credentials file. The default value is `$HOME/.kintone/credentials`.               |
 
 ## LICENSE
 

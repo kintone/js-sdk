@@ -40,7 +40,7 @@
     "clean": "rimraf lib esm umd",
     "compile": "tsc",
     "fix:lint": "npm run lint:eslint -- --fix",
-    "fix:md": "prettier --write README.md 'docs/**/*.md'",
+    "fix:md": "prettier --write README.md",
     "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md",
