@@ -77,6 +77,12 @@ apiToken = "staging-api_token1,staging-api_token2"
 oAuthToken = "staging-oauth_token"
 ```
 
+### Profile
+
+You can specify a `profile` through the `KINTONE_PROFILE` environmental value.
+
+- `profile` ... `KINTONE_PROFILE`
+
 ### The Priority of loading settings
 
 1. Config file

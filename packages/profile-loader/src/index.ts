@@ -1,5 +1,6 @@
 import { loadConfig, loadCredentials } from "./config";
 import { loadEnv } from "./env";
+import { getProfile } from "./profile";
 
 export type Profile = {
   username: string | null;
@@ -19,7 +20,7 @@ export const loadProfile = <T extends Profile>(params: {
     config: configFilePath,
     credentials: credentialsFilePath,
   } = params;
-  profile = profile || "default";
+  profile = getProfile(profile);
   const config = loadConfig<T>(profile, configFilePath);
   detectCredentialsValues(config);
 

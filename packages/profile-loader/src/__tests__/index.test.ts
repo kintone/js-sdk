@@ -9,6 +9,7 @@ describe("index", () => {
   let originalOAuthToken: string | undefined;
   let originalConfigPath: string | undefined;
   let originalCredentialsPath: string | undefined;
+  let originalKintoneProfile: string | undefined;
   beforeEach(() => {
     originalUsername = process.env.KINTONE_USERNAME;
     originalPassword = process.env.KINTONE_PASSWORD;
@@ -17,6 +18,7 @@ describe("index", () => {
     originalOAuthToken = process.env.KINTONE_OAUTH_TOKEN;
     originalConfigPath = process.env.KINTONE_CONFIG_PATH;
     originalCredentialsPath = process.env.KINTONE_CREDENTIALS_PATH;
+    originalKintoneProfile = process.env.KINTONE_PROFILE;
     delete process.env.KINTONE_USERNAME;
     delete process.env.KINTONE_PASSWORD;
     delete process.env.KINTONE_BASE_URL;
@@ -24,6 +26,7 @@ describe("index", () => {
     delete process.env.KINTONE_OAUTH_TOKEN;
     delete process.env.KINTONE_CONFIG_PATH;
     delete process.env.KINTONE_CREDENTIALS_PATH;
+    delete process.env.KINTONE_PROFILE;
   });
   afterEach(() => {
     process.env.KINTONE_USERNAME = originalUsername;
@@ -33,6 +36,7 @@ describe("index", () => {
     process.env.KINTONE_OAUTH_TOKEN = originalOAuthToken;
     process.env.KINTONE_CONFIG_PATH = originalConfigPath;
     process.env.KINTONE_CREDENTIALS_PATH = originalCredentialsPath;
+    process.env.KINTONE_PROFILE = originalKintoneProfile;
   });
   describe("loadProfile", () => {
     const configFilePath = path.resolve(__dirname, "fixtures", "config");
@@ -82,6 +86,21 @@ describe("index", () => {
       expect(
         loadProfile({
           profile: "staging",
+          config: configFilePath,
+          credentials: credentialsFilePath,
+        })
+      ).toEqual({
+        username: "staging-jim",
+        password: "staging-foo",
+        baseUrl: "https://staging-foo.kintone.com",
+        apiToken: "staging-api_token_config",
+        oAuthToken: "staging-oauth_token_config",
+      });
+    });
+    it("should be able to load a specified profile settings via KINTONE_PROFILE", () => {
+      process.env.KINTONE_PROFILE = "staging";
+      expect(
+        loadProfile({
           config: configFilePath,
           credentials: credentialsFilePath,
         })
