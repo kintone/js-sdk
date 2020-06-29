@@ -7,17 +7,23 @@ describe("index", () => {
   let originalBaseUrl: string | undefined;
   let originalApiToken: string | undefined;
   let originalOAuthToken: string | undefined;
+  let originalConfigPath: string | undefined;
+  let originalCredentialPath: string | undefined;
   beforeEach(() => {
     originalUsername = process.env.KINTONE_USERNAME;
     originalPassword = process.env.KINTONE_PASSWORD;
     originalBaseUrl = process.env.KINTONE_BASE_URL;
     originalApiToken = process.env.KINTONE_API_TOKEN;
     originalOAuthToken = process.env.KINTONE_OAUTH_TOKEN;
+    originalConfigPath = process.env.KINTONE_CONFIG_PATH;
+    originalCredentialPath = process.env.KINTONE_CREDENTIAL_PATH;
     delete process.env.KINTONE_USERNAME;
     delete process.env.KINTONE_PASSWORD;
     delete process.env.KINTONE_BASE_URL;
     delete process.env.KINTONE_API_TOKEN;
     delete process.env.KINTONE_OAUTH_TOKEN;
+    delete process.env.KINTONE_CONFIG_PATH;
+    delete process.env.KINTONE_CREDENTIAL_PATH;
   });
   afterEach(() => {
     process.env.KINTONE_USERNAME = originalUsername;
@@ -25,6 +31,8 @@ describe("index", () => {
     process.env.KINTONE_BASE_URL = originalBaseUrl;
     process.env.KINTONE_API_TOKEN = originalApiToken;
     process.env.KINTONE_OAUTH_TOKEN = originalOAuthToken;
+    process.env.KINTONE_CONFIG_PATH = originalConfigPath;
+    process.env.KINTONE_CREDENTIAL_PATH = originalCredentialPath;
   });
   describe("loadProfile", () => {
     const configFilePath = path.resolve(__dirname, "fixtures", "config");
@@ -86,6 +94,26 @@ describe("index", () => {
         username: "admin",
         password: "foo",
         baseUrl: "https://foo.kintone.com",
+        apiToken: "api_token_config",
+        oAuthToken: "oauth_token_config",
+      });
+    });
+    it("should be able to change the directory storing a config with KINTONE_CONFIG_PATH", () => {
+      process.env.KINTONE_CONFIG_PATH = path.dirname(configFilePath);
+      expect(loadProfile(undefined, undefined, null)).toEqual({
+        username: null,
+        password: null,
+        baseUrl: "https://foo.kintone.com",
+        apiToken: null,
+        oAuthToken: null,
+      });
+    });
+    it("should be able to change the directory storing a credentials with KINTONE_CREDENTIAL_PATH", () => {
+      process.env.KINTONE_CREDENTIAL_PATH = path.dirname(configFilePath);
+      expect(loadProfile(undefined, null, undefined)).toEqual({
+        username: "jim",
+        password: "foo",
+        baseUrl: null,
         apiToken: "api_token_config",
         oAuthToken: "oauth_token_config",
       });

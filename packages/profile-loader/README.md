@@ -1,6 +1,6 @@
 # `@kintone/profile-loader`
 
-A loader to retrive Kintone settings like `username`, `password`, `baseUrl`, and etc.
+A loader to retrive Kintone settings like `username`, `password`, `baseUrl`, and whatever you want.
 
 **THIS IS AN EXPERIMENTAL AND HAS BEEN PUBLISHED YET**
 
@@ -23,7 +23,7 @@ each setting corresponds the environment variable.
 
 - baseUrl ... `KINTONE_BASE_URL`
 
-If you put a config file at `.kintone/config`, the function reads settings from the config file.
+If you put a config file at `$HOME/.kintone/config`, the function reads settings from the config file.
 
 **Do not put credential settings in the file, use `$HOME/.kintone/credentials` instead.
 
@@ -78,6 +78,15 @@ oAuthToken = "staging-oauth_token"
 1. Config file
 1. Credential file
 1. Environment variable
+
+### Customize the location to store `config` and `credential`
+
+You can customize the location of a directory to store `config` and `credential` through the following environmental values.
+
+- `config` ... `KINTONE_CONFIG_PATH`
+- `credentials` ... `KINTONE_CREDENTIAL_PATH`
+
+Each default value is `${HOME}/.kintone`.
 
 ## LICENSE
 MIT License
