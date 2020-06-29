@@ -1,13 +1,5 @@
 [default]
-username = "jim"
-password = "foo"
 baseUrl = "https://foo.kintone.com"
-apiToken = "api_token_config"
-oAuthToken = "oauth_token_config"
 
 [staging]
-username = "staging-jim"
-password = "staging-foo"
 baseUrl = "https://staging-foo.kintone.com"
-apiToken = "staging-api_token_config"
-oAuthToken = "staging-oauth_token_config"

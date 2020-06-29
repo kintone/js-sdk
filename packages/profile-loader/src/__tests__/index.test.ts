@@ -27,8 +27,14 @@ describe("index", () => {
     process.env.KINTONE_OAUTH_TOKEN = originalOAuthToken;
   });
   describe("loadProfile", () => {
+    const configFilePath = path.resolve(__dirname, "fixtures", "config");
+    const credentialFilePath = path.resolve(
+      __dirname,
+      "fixtures",
+      "credentials"
+    );
     it("should return a profile", () => {
-      expect(loadProfile()).toEqual({
+      expect(loadProfile(undefined, null, null)).toEqual({
         username: null,
         password: null,
         baseUrl: null,
@@ -42,7 +48,7 @@ describe("index", () => {
       process.env.KINTONE_BASE_URL = "https://example.kintone.com";
       process.env.KINTONE_API_TOKEN = "api_token";
       process.env.KINTONE_OAUTH_TOKEN = "oauth_token";
-      expect(loadProfile()).toEqual({
+      expect(loadProfile(undefined, null, null)).toEqual({
         username: "bob",
         password: "password",
         baseUrl: "https://example.kintone.com",
@@ -52,7 +58,7 @@ describe("index", () => {
     });
     it("should be able to load settings from a config file", () => {
       expect(
-        loadProfile(undefined, path.resolve(__dirname, "fixtures", "config"))
+        loadProfile(undefined, configFilePath, credentialFilePath)
       ).toEqual({
         username: "jim",
         password: "foo",
@@ -63,7 +69,7 @@ describe("index", () => {
     });
     it("should be able to load a specified profile settings from environment variable", () => {
       expect(
-        loadProfile("staging", path.resolve(__dirname, "fixtures", "config"))
+        loadProfile("staging", configFilePath, credentialFilePath)
       ).toEqual({
         username: "staging-jim",
         password: "staging-foo",
@@ -75,7 +81,7 @@ describe("index", () => {
     it("should override settings in a config file by environment variable settings", () => {
       process.env.KINTONE_USERNAME = "admin";
       expect(
-        loadProfile(undefined, path.resolve(__dirname, "fixtures", "config"))
+        loadProfile(undefined, configFilePath, credentialFilePath)
       ).toEqual({
         username: "admin",
         password: "foo",
