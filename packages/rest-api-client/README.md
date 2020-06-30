@@ -71,6 +71,12 @@ client.record
   });
 ```
 
+## Global
+
+| Name    |  Type  |                    Description                     |
+| ------- | :----: | :------------------------------------------------: |
+| version | String | Provides the used version of KintoneRestAPIClient. |
+
 ## Parameters for `KintoneRestAPIClient`
 
 | Name                       |                               Type                               |          Required           | Description                                                                                                                                                                                                                                                                      |
