@@ -139,6 +139,10 @@ export class KintoneRestAPIClient {
     this.file = new FileClient(httpClient, guestSpaceId);
   }
 
+  public static get version() {
+    return platformDeps.getVersion();
+  }
+
   public getBaseUrl() {
     return this.baseUrl;
   }

@@ -1,4 +1,6 @@
 const path = require("path");
+const webpack = require("webpack");
+const package = require("./package.json");
 
 module.exports = (_, argv) => ({
   entry: "./src/index.browser.ts",
@@ -26,5 +28,10 @@ module.exports = (_, argv) => ({
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      PACKAGE_VERSION: JSON.stringify(package.version),
+    }),
+  ],
   devtool: argv.mode === "production" ? "" : "inline-cheap-source-map",
 });
