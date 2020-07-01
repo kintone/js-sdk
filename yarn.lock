@@ -27,7 +27,7 @@
     invariant "^2.2.4"
     semver "^5.5.0"
 
-"@babel/core@^7.1.0", "@babel/core@^7.10.3", "@babel/core@^7.7.5":
+"@babel/core@^7.1.0", "@babel/core@^7.10.4", "@babel/core@^7.7.5":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.10.4.tgz#780e8b83e496152f8dd7df63892b2e052bf1d51d"
   integrity sha512-3A0tS0HWpy4XujGc7QtOIHTeNwUgWaZc/WuS5YQrfhU67jnVmsD6OGPc1AKHH0LJHQICGncy3+YUjIhVlfDdcA==
@@ -714,7 +714,7 @@
     "@babel/helper-create-regexp-features-plugin" "^7.10.4"
     "@babel/helper-plugin-utils" "^7.10.4"
 
-"@babel/preset-env@^7.10.3":
+"@babel/preset-env@^7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.10.4.tgz#fbf57f9a803afd97f4f32e4f798bb62e4b2bef5f"
   integrity sha512-tcmuQ6vupfMZPrLrc38d0sF2OjLT3/bZ0dry5HchNCQbrokoQi4reXqclvkkAT5b+gWc23meVWpve5P/7+w/zw==
@@ -795,7 +795,7 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/preset-typescript@^7.10.1":
+"@babel/preset-typescript@^7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.10.4.tgz#7d5d052e52a682480d6e2cc5aa31be61c8c25e36"
   integrity sha512-SdYnvGPv+bLlwkF2VkJnaX/ni1sMNetcGI1+nThF1gyv6Ph8Qucc4ZZAjM5yZcE/AKRXIOTZz7eSRDWOEjPyRQ==
