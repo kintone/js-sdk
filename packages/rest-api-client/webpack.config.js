@@ -9,10 +9,10 @@ module.exports = (_, argv) => ({
     library: "KintoneRestAPIClient",
     filename: `KintoneRestAPIClient${
       argv.mode === "production" ? ".min" : ""
-    }.js`
+    }.js`,
   },
   resolve: {
-    extensions: [".ts", ".js"]
+    extensions: [".ts", ".js"],
   },
   module: {
     rules: [
@@ -21,10 +21,10 @@ module.exports = (_, argv) => ({
         loader: "ts-loader",
         options: {
           configFile: "tsconfig.json",
-          transpileOnly: true
-        }
-      }
-    ]
+          transpileOnly: true,
+        },
+      },
+    ],
   },
-  devtool: argv.mode === "production" ? "" : "inline-cheap-source-map"
+  devtool: argv.mode === "production" ? "" : "inline-cheap-source-map",
 });
