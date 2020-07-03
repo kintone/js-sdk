@@ -51,7 +51,7 @@
     "test": "run-s build unittest",
     "test:all": "run-p test e2e",
     "test:ci": "npm run test:all",
-    "e2e": "jest ./test/e2e.ts"
+    "e2e": "NODE_ENV=e2e jest ./test/e2e.ts"
   },
   "keywords": [
     "kintone"
