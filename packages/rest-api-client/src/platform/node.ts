@@ -67,3 +67,7 @@ export const buildBaseUrl = (baseUrl: string | undefined) => {
   }
   return baseUrl;
 };
+
+export const getVersion = () => {
+  return packageJson.version;
+};

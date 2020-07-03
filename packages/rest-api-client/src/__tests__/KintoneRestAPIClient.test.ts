@@ -56,6 +56,15 @@ describe("KintoneRestAPIClient", () => {
       });
     });
   });
+
+  describe("version", () => {
+    it("should provide this library version", () => {
+      expect(KintoneRestAPIClient.version).toBe(
+        require("../../package.json").version
+      );
+    });
+  });
+
   describe("errorResponseHandler", () => {
     class HttpClientErrorImpl<T> extends Error implements HttpClientError<T> {
       public response?: T;

@@ -48,3 +48,7 @@ export const buildBaseUrl = (baseUrl?: string) => {
   const { host, protocol } = location!;
   return baseUrl ?? `${protocol}//${host}`;
 };
+
+export const getVersion = () => {
+  return PACKAGE_VERSION;
+};

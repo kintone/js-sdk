@@ -27,3 +27,5 @@ declare const location:
 declare class Blob {
   constructor(array: unknown[]);
 }
+
+declare const PACKAGE_VERSION: string;

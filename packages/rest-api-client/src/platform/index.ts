@@ -9,6 +9,7 @@ type PlatformDeps = {
   buildHeaders: () => Record<string, string>;
   buildFormDataValue: (data: unknown) => unknown;
   buildBaseUrl: (baseUrl?: string) => string;
+  getVersion: () => string;
 };
 
 export const platformDeps: PlatformDeps = {
@@ -33,6 +34,9 @@ export const platformDeps: PlatformDeps = {
   buildBaseUrl: () => {
     throw new Error("not implemented");
   },
+  getVersion: () => {
+    throw new Error("not implemented");
+  },
 };
 
 export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
@@ -43,4 +47,5 @@ export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   platformDeps.buildHeaders = deps.buildHeaders!;
   platformDeps.buildFormDataValue = deps.buildFormDataValue!;
   platformDeps.buildBaseUrl = deps.buildBaseUrl!;
+  platformDeps.getVersion = deps.getVersion!;
 };
