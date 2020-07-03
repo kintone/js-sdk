@@ -7,8 +7,8 @@ describe("index", () => {
   let originalBaseUrl: string | undefined;
   let originalApiToken: string | undefined;
   let originalOAuthToken: string | undefined;
-  let originalConfigPath: string | undefined;
-  let originalCredentialsPath: string | undefined;
+  let originalConfigFile: string | undefined;
+  let originalCredentialsFile: string | undefined;
   let originalKintoneProfile: string | undefined;
   beforeEach(() => {
     originalUsername = process.env.KINTONE_USERNAME;
@@ -16,16 +16,16 @@ describe("index", () => {
     originalBaseUrl = process.env.KINTONE_BASE_URL;
     originalApiToken = process.env.KINTONE_API_TOKEN;
     originalOAuthToken = process.env.KINTONE_OAUTH_TOKEN;
-    originalConfigPath = process.env.KINTONE_CONFIG_PATH;
-    originalCredentialsPath = process.env.KINTONE_CREDENTIALS_PATH;
+    originalConfigFile = process.env.KINTONE_CONFIG_FILE;
+    originalCredentialsFile = process.env.KINTONE_CREDENTIALS_FILE;
     originalKintoneProfile = process.env.KINTONE_PROFILE;
     delete process.env.KINTONE_USERNAME;
     delete process.env.KINTONE_PASSWORD;
     delete process.env.KINTONE_BASE_URL;
     delete process.env.KINTONE_API_TOKEN;
     delete process.env.KINTONE_OAUTH_TOKEN;
-    delete process.env.KINTONE_CONFIG_PATH;
-    delete process.env.KINTONE_CREDENTIALS_PATH;
+    delete process.env.KINTONE_CONFIG_FILE;
+    delete process.env.KINTONE_CREDENTIALS_FILE;
     delete process.env.KINTONE_PROFILE;
   });
   afterEach(() => {
@@ -34,8 +34,8 @@ describe("index", () => {
     process.env.KINTONE_BASE_URL = originalBaseUrl;
     process.env.KINTONE_API_TOKEN = originalApiToken;
     process.env.KINTONE_OAUTH_TOKEN = originalOAuthToken;
-    process.env.KINTONE_CONFIG_PATH = originalConfigPath;
-    process.env.KINTONE_CREDENTIALS_PATH = originalCredentialsPath;
+    process.env.KINTONE_CONFIG_FILE = originalConfigFile;
+    process.env.KINTONE_CREDENTIALS_FILE = originalCredentialsFile;
     process.env.KINTONE_PROFILE = originalKintoneProfile;
   });
   describe("loadProfile", () => {
@@ -127,8 +127,8 @@ describe("index", () => {
         oAuthToken: "oauth_token_config",
       });
     });
-    it("should be able to change the directory storing a config with KINTONE_CONFIG_PATH", () => {
-      process.env.KINTONE_CONFIG_PATH = path.dirname(configFilePath);
+    it("should be able to change the directory storing a config with KINTONE_CONFIG_FILE", () => {
+      process.env.KINTONE_CONFIG_FILE = configFilePath;
       expect(loadProfile({ credentials: false })).toEqual({
         username: null,
         password: null,
@@ -137,8 +137,8 @@ describe("index", () => {
         oAuthToken: null,
       });
     });
-    it("should be able to change the directory storing a credentials with KINTONE_CREDENTIALS_PATH", () => {
-      process.env.KINTONE_CREDENTIALS_PATH = path.dirname(configFilePath);
+    it("should be able to change the directory storing a credentials with KINTONE_CREDENTIALS_FILE", () => {
+      process.env.KINTONE_CREDENTIALS_FILE = credentialsFilePath;
       expect(loadProfile({ config: false })).toEqual({
         username: "jim",
         password: "foo",

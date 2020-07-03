@@ -91,12 +91,12 @@ You can specify a `profile` through the `KINTONE_PROFILE` environmental value.
 
 ### Customize the location to store `config` and `credentials`
 
-You can customize the location of a directory to store `config` and `credentials` through the following environmental values.
+You can customize the location of the `config` and `credentials` file through the following environmental values.
 
-- `config` ... `KINTONE_CONFIG_PATH`
-- `credentials` ... `KINTONE_CREDENTIALS_PATH`
+- `config` ... `KINTONE_CONFIG_FILE`
+- `credentials` ... `KINTONE_CREDENTIALS_FILE`
 
-Each default value is `${HOME}/.kintone`.
+The default values are `${HOME}/.kintone/config` and `${HOME}/.kintone/credentials`.
 
 ## API
 

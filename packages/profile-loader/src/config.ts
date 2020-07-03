@@ -41,24 +41,24 @@ export const loadCredentials = <T extends Profile>(
 };
 
 const getDefaultConfigFilePath = (): string | null => {
-  const kintoneConfigFile = process.env.KINTONE_CONFIG_PATH;
+  const kintoneConfigFile = process.env.KINTONE_CONFIG_FILE;
   if (kintoneConfigFile) {
     if (!fs.existsSync(kintoneConfigFile)) {
       throw new Error(`${kintoneConfigFile} cannot be found`);
     }
-    return path.resolve(kintoneConfigFile, CONFIG_FILE_NAME);
+    return kintoneConfigFile;
   }
   const filePath = path.resolve(KINTONE_CONFIG_DIR, CONFIG_FILE_NAME);
   return fs.existsSync(filePath) ? filePath : null;
 };
 
 const getDefaultCredentialsFilePath = (): string | null => {
-  const kintoneCredentialsFile = process.env.KINTONE_CREDENTIALS_PATH;
+  const kintoneCredentialsFile = process.env.KINTONE_CREDENTIALS_FILE;
   if (kintoneCredentialsFile) {
     if (!fs.existsSync(kintoneCredentialsFile)) {
       throw new Error(`${kintoneCredentialsFile} cannot be found`);
     }
-    return path.resolve(kintoneCredentialsFile, CREDENTIALS_FILE_NAME);
+    return kintoneCredentialsFile;
   }
   const filePath = path.resolve(KINTONE_CONFIG_DIR, CREDENTIALS_FILE_NAME);
   return fs.existsSync(filePath) ? filePath : null;
