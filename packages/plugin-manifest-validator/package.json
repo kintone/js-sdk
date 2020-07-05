@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "intelli-espower-loader": "^1.0.1",
-    "json-schema-to-typescript": "^9.1.0",
+    "json-schema-to-typescript": "^9.1.1",
     "power-assert": "^1.6.1"
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-manifest-validator#readme",
