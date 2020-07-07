@@ -1,0 +1,54 @@
+{
+  "name": "@kintone/profile-loader",
+  "version": "1.0.0",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "description": "A loader for Kintone setting",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/profile-loader"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/profile-loader#readme",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "npm-run-all -l -s clean compile",
+    "lint": "run-p -l lint:*",
+    "prerelease": "npm-run-all -p lint test -s build",
+    "test": "jest",
+    "test:ci": "jest --runInBand",
+    "clean": "rimraf lib esm umd",
+    "compile": "tsc",
+    "fix:lint": "npm run lint:eslint -- --fix",
+    "fix:md": "prettier --write README.md",
+    "fix": "run-p fix:*",
+    "lint:eslint": "eslint 'src/**/*.ts'",
+    "lint:md": "prettier --check README.md",
+    "lint:ts": "tsc --noEmit",
+    "start": "npm run compile -- --watch"
+  },
+  "dependencies": {
+    "toml": "^3.0.0"
+  }
+}

@@ -1,0 +1,5 @@
+[default]
+baseUrl = "https://foo.kintone.com"
+
+[staging]
+baseUrl = "https://staging-foo.kintone.com"
