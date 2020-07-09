@@ -1,8 +1,6 @@
 # create-kintone-plugin
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fcreate-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fcreate-plugin)
-[![CircleCI](https://circleci.com/gh/kintone/create-plugin.svg?style=shield)](https://circleci.com/gh/kintone/create-plugin)
-[![Build Status](https://travis-ci.org/kintone/create-plugin.svg?branch=master)](https://travis-ci.org/kintone/create-plugin)
 
 A CLI tool for creating a kintone plugin!
 
