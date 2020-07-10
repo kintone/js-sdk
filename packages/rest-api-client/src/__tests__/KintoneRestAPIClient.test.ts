@@ -1,7 +1,4 @@
-import {
-  KintoneRestAPIClient,
-  errorResponseHandler,
-} from "../KintoneRestAPIClient";
+import { KintoneRestAPIClient, responseHandler } from "../KintoneRestAPIClient";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
@@ -65,7 +62,7 @@ describe("KintoneRestAPIClient", () => {
     });
   });
 
-  describe("errorResponseHandler", () => {
+  describe("responseHandler", () => {
     class HttpClientErrorImpl<T> extends Error implements HttpClientError<T> {
       public response?: T;
 
@@ -81,9 +78,11 @@ describe("KintoneRestAPIClient", () => {
         statusText: "Internal Server Error",
         headers: {},
       };
-      expect(() => {
-        errorResponseHandler(new HttpClientErrorImpl("", errorResponse));
-      }).toThrow(KintoneRestAPIError);
+      expect(
+        responseHandler(
+          Promise.reject(new HttpClientErrorImpl("", errorResponse))
+        )
+      ).rejects.toThrow(KintoneRestAPIError);
     });
     it("should raise an Error if error.response.data is a string", () => {
       const errorResponse: ErrorResponse = {
@@ -92,19 +91,25 @@ describe("KintoneRestAPIClient", () => {
         statusText: "Internal Server Error",
         headers: {},
       };
-      expect(() => {
-        errorResponseHandler(new HttpClientErrorImpl("", errorResponse));
-      }).toThrow(`${errorResponse.status}: ${errorResponse.statusText}`);
+      expect(
+        responseHandler(
+          Promise.reject(new HttpClientErrorImpl("", errorResponse))
+        )
+      ).rejects.toThrow(`${errorResponse.status}: ${errorResponse.statusText}`);
     });
     it("should raise an error if error.response is undefined", () => {
-      expect(() => {
-        errorResponseHandler(new HttpClientErrorImpl("unknown error"));
-      }).toThrow("unknown error");
+      expect(
+        responseHandler(
+          Promise.reject(new HttpClientErrorImpl("unknown error"))
+        )
+      ).rejects.toThrow("unknown error");
     });
     it("should raise an error with appropriate message if the error is 'mac verify failure'", () => {
-      expect(() => {
-        errorResponseHandler(new HttpClientErrorImpl("mac verify failure"));
-      }).toThrow("invalid clientCertAuth setting");
+      expect(
+        responseHandler(
+          Promise.reject(new HttpClientErrorImpl("mac verify failure"))
+        )
+      ).rejects.toThrow("invalid clientCertAuth setting");
     });
   });
 });

@@ -4,21 +4,22 @@ import {
   ErrorResponseHandler,
   RequestConfigBuilder,
   RequestConfig,
+  ResponseHandler,
 } from "./HttpClientInterface";
 import FormData from "form-data";
 
 export class AxiosClient implements HttpClient {
-  private errorResponseHandler: ErrorResponseHandler;
+  private responseHandler: ResponseHandler;
   private requestConfigBuilder: RequestConfigBuilder;
 
   constructor({
-    errorResponseHandler,
+    responseHandler,
     requestConfigBuilder,
   }: {
-    errorResponseHandler: ErrorResponseHandler;
+    responseHandler: ResponseHandler;
     requestConfigBuilder: RequestConfigBuilder;
   }) {
-    this.errorResponseHandler = errorResponseHandler;
+    this.responseHandler = responseHandler;
     this.requestConfigBuilder = requestConfigBuilder;
   }
 
@@ -79,11 +80,10 @@ export class AxiosClient implements HttpClient {
     return this.sendRequest(requestConfig);
   }
 
-  private async sendRequest(requestConfig: RequestConfig) {
-    let data;
-    try {
-      // eslint-disable-next-line new-cap
-      const response = await Axios({
+  private sendRequest(requestConfig: RequestConfig) {
+    // eslint-disable-next-line new-cap
+    return this.responseHandler(
+      Axios({
         ...requestConfig,
 
         // NOTE: For defining the max size of the http request content, `maxBodyLength` will be used after version 0.20.0.
@@ -92,15 +92,7 @@ export class AxiosClient implements HttpClient {
         // maxBodyLength: Infinity,
 
         maxContentLength: Infinity,
-      });
-      data = response.data;
-    } catch (error) {
-      this.handleError(error);
-    }
-    return data;
-  }
-
-  private handleError(error: AxiosError) {
-    this.errorResponseHandler(error);
+      })
+    );
   }
 }

@@ -15,6 +15,11 @@ export type ErrorResponse<T = any> = {
   headers: any;
 };
 
+export type Response<T = any> = {
+  data: T;
+  headers: any;
+};
+
 export type HttpMethod = "get" | "post" | "put" | "delete";
 export type Params = { [key: string]: unknown };
 
@@ -30,6 +35,7 @@ export type ProxyConfig = {
 export interface HttpClientError<T = ErrorResponse> extends Error {
   response?: T;
 }
+export type ResponseHandler<T = any> = (response: Promise<Response<T>>) => T;
 export type ErrorResponseHandler = (error: HttpClientError) => void;
 
 export type RequestConfig = {

@@ -11,6 +11,7 @@ import {
   ErrorResponse,
   HttpClientError,
   ProxyConfig,
+  Response,
 } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 import { platformDeps } from "./platform/index";
@@ -70,7 +71,13 @@ type Options = {
   proxy?: ProxyConfig;
 };
 
-export const errorResponseHandler = (
+export const responseHandler = <T>(
+  response: Promise<Response<T>>
+): Promise<T> => {
+  return response.then((res) => res.data, errorResponseHandler);
+};
+
+const errorResponseHandler = (
   error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
 ) => {
   if (!error.response) {
@@ -128,7 +135,7 @@ export class KintoneRestAPIClient {
       auth,
     });
     const httpClient = new DefaultHttpClient({
-      errorResponseHandler,
+      responseHandler,
       requestConfigBuilder,
     });
     const { guestSpaceId } = options;
