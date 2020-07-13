@@ -1,0 +1,60 @@
+{
+  "name": "@kintone/create-plugin",
+  "version": "3.0.6",
+  "description": "A CLI tool for creating a kintone plugin!",
+  "bin": {
+    "create-plugin": "bin/cli.js",
+    "create-kintone-plugin": "bin/cli.js"
+  },
+  "main": "dist/src/index.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/create-plugin"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/create-plugin",
+  "bugs": "https://github.com/kintone/js-sdk/issues",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "glob": "^7.1.6",
+    "inquirer": "^7.2.0",
+    "lodash": "^4.17.15",
+    "meow": "^7.0.1",
+    "node-rsa": "^1.0.8",
+    "os-locale": "^5.0.0",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.2",
+    "@types/inquirer": "^6.5.0",
+    "@types/lodash": "^4.14.155",
+    "@types/node-rsa": "^1.0.0",
+    "@types/rimraf": "^3.0.0",
+    "cross-env": "^7.0.2",
+    "ts-node": "^8.10.2"
+  },
+  "files": [
+    "bin",
+    "dist/src",
+    "templates"
+  ],
+  "scripts": {
+    "start": "tsc -w",
+    "build": "tsc",
+    "lint": "eslint --ext .ts src",
+    "prerelease": "run-p lint test",
+    "unittest": "jest --testRegex=/test/.*-test\\.ts$",
+    "test": "run-s build unittest",
+    "test:all": "run-p test e2e",
+    "test:ci": "npm run test:all",
+    "e2e": "cross-env NODE_ENV=e2e jest ./test/e2e.ts"
+  },
+  "keywords": [
+    "kintone"
+  ],
+  "author": "kintone",
+  "license": "MIT"
+}
