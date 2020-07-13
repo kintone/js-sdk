@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/glob": "^7.1.2",
     "@types/inquirer": "^6.5.0",
-    "@types/lodash": "^4.14.155",
+    "@types/lodash": "^4.14.157",
     "@types/node-rsa": "^1.0.0",
     "@types/rimraf": "^3.0.0",
     "cross-env": "^7.0.2",
