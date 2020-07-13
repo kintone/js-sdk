@@ -37,7 +37,7 @@
     "@types/es6-promise": "^3.3.0",
     "@types/jest": "^26.0.4",
     "@types/lodash": "^4.14.157",
-    "@types/node": "^10.17.26",
+    "@types/node": "^10.17.27",
     "@typescript-eslint/parser": "^2.34.0",
     "eslint": "^6.8.0",
     "eslint-plugin-jest": "^23.17.1",
