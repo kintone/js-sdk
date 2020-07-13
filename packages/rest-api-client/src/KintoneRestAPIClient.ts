@@ -71,10 +71,8 @@ type Options = {
   proxy?: ProxyConfig;
 };
 
-export const responseHandler = <T>(
-  response: Promise<Response<T>>
-): Promise<T> => {
-  return response.then((res) => res.data, errorResponseHandler);
+const successResponseHandler = <T>(response: Response<T>): T => {
+  return response.data;
 };
 
 const errorResponseHandler = (
@@ -95,6 +93,10 @@ const errorResponseHandler = (
   }
   throw new KintoneRestAPIError({ data, ...rest });
 };
+
+export const responseHandler = <T>(
+  response: Promise<Response<T>>
+): Promise<T> => response.then(successResponseHandler, errorResponseHandler);
 
 const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
   if ("username" in auth) {
