@@ -2,7 +2,11 @@ import { KintoneRestAPIClient, responseHandler } from "../KintoneRestAPIClient";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
-import { ErrorResponse, HttpClientError } from "../http/HttpClientInterface";
+import {
+  ErrorResponse,
+  Response,
+  HttpClientError,
+} from "../http/HttpClientInterface";
 
 describe("KintoneRestAPIClient", () => {
   describe("constructor", () => {
@@ -71,6 +75,18 @@ describe("KintoneRestAPIClient", () => {
         this.response = response;
       }
     }
+    it("should throw an error if x-cybozu-warning is'Filter aborted because of too many search results'", () => {
+      const response: Response = {
+        data: { status: "success" },
+        headers: {
+          "x-cybozu-warning":
+            "Filter aborted because of too many search results",
+        },
+      };
+      return expect(responseHandler(Promise.resolve(response))).rejects.toThrow(
+        Error
+      );
+    });
     it("should raise a KintoneRestAPIError", () => {
       const errorResponse: ErrorResponse = {
         data: {},
