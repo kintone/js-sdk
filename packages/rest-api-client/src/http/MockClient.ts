@@ -1,7 +1,7 @@
 import {
   HttpClient,
   RequestConfigBuilder,
-  ErrorResponseHandler,
+  ResponseHandler,
 } from "./HttpClientInterface";
 import FormData from "form-data";
 
@@ -14,33 +14,30 @@ type Log = {
 };
 
 export class MockClient implements HttpClient {
-  private errorResponseHandler: ErrorResponseHandler;
+  private responseHandler: ResponseHandler;
   private requestConfigBuilder: RequestConfigBuilder;
   logs: Log[];
-  responses: object[];
+  responses: any[];
 
   constructor({
-    errorResponseHandler,
+    responseHandler,
     requestConfigBuilder,
   }: {
-    errorResponseHandler: ErrorResponseHandler;
+    responseHandler: ResponseHandler;
     requestConfigBuilder: RequestConfigBuilder;
   }) {
-    this.errorResponseHandler = errorResponseHandler;
+    this.responseHandler = responseHandler;
     this.requestConfigBuilder = requestConfigBuilder;
     this.logs = [];
     this.responses = [];
   }
 
-  public mockResponse(mock: object) {
+  public mockResponse(mock: unknown) {
     this.responses.push(mock);
   }
   private createResponse<T extends object>(): T {
     const response = this.responses.shift() || {};
-    if (response instanceof Error) {
-      this.errorResponseHandler(response);
-    }
-    return response as T;
+    return this.responseHandler(response) as T;
   }
 
   public async get<T extends object>(path: string, params: any): Promise<T> {
@@ -108,3 +105,14 @@ export class MockClient implements HttpClient {
     return this.logs;
   }
 }
+
+const responseHandler = (response: any) => {
+  if (response instanceof Error) {
+    throw response;
+  }
+  return response;
+};
+
+export const buildMockClient = (requestConfigBuilder: RequestConfigBuilder) => {
+  return new MockClient({ requestConfigBuilder, responseHandler });
+};

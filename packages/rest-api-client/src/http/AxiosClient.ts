@@ -1,7 +1,6 @@
-import Axios, { AxiosError } from "axios";
+import Axios from "axios";
 import {
   HttpClient,
-  ErrorResponseHandler,
   RequestConfigBuilder,
   RequestConfig,
   ResponseHandler,
@@ -81,8 +80,8 @@ export class AxiosClient implements HttpClient {
   }
 
   private sendRequest(requestConfig: RequestConfig) {
-    // eslint-disable-next-line new-cap
     return this.responseHandler(
+      // eslint-disable-next-line new-cap
       Axios({
         ...requestConfig,
 

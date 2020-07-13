@@ -1,4 +1,4 @@
-import { MockClient } from "../../http/MockClient";
+import { MockClient, buildMockClient } from "../../http/MockClient";
 import { FileClient } from "../FileClient";
 import FormData from "form-data";
 import { injectPlatformDeps } from "../../platform";
@@ -8,10 +8,6 @@ import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
 jest.mock("form-data");
 
-const errorResponseHandler = (error: Error) => {
-  throw error;
-};
-
 describe("FileClient", () => {
   let mockClient: MockClient;
   let fileClient: FileClient;
@@ -20,7 +16,7 @@ describe("FileClient", () => {
       baseUrl: "https://example.cybozu.com",
       auth: { type: "apiToken", apiToken: "foo" },
     });
-    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
+    mockClient = buildMockClient(requestConfigBuilder);
     fileClient = new FileClient(mockClient);
   });
   describe("uploadFile", () => {
@@ -121,7 +117,7 @@ describe("FileClient with guestSpaceId", () => {
       baseUrl: "https://example.cybozu.com",
       auth: { type: "apiToken", apiToken: "foo" },
     });
-    mockClient = new MockClient({ requestConfigBuilder, errorResponseHandler });
+    mockClient = buildMockClient(requestConfigBuilder);
     fileClient = new FileClient(mockClient, GUEST_SPACE_ID);
     await fileClient.uploadFile(params);
   });

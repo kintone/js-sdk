@@ -36,7 +36,6 @@ export interface HttpClientError<T = ErrorResponse> extends Error {
   response?: T;
 }
 export type ResponseHandler<T = any> = (response: Promise<Response<T>>) => T;
-export type ErrorResponseHandler = (error: HttpClientError) => void;
 
 export type RequestConfig = {
   method: HttpMethod;
