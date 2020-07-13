@@ -28,15 +28,13 @@
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
-    "@cybozu/eslint-config": "^11.0.0",
     "@types/glob": "^7.1.2",
     "@types/inquirer": "^6.5.0",
     "@types/lodash": "^4.14.155",
     "@types/node-rsa": "^1.0.0",
     "@types/rimraf": "^3.0.0",
     "cross-env": "^7.0.2",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "ts-node": "^8.10.2"
   },
   "files": [
     "bin",
