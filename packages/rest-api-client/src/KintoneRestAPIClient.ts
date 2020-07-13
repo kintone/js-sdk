@@ -72,6 +72,13 @@ type Options = {
 };
 
 const successResponseHandler = <T>(response: Response<T>): T => {
+  if (
+    /Filter aborted because of too many search results/.test(
+      response.headers["x-cybozu-warning"]
+    )
+  ) {
+    throw new Error("TODO: should throw an appropriate error");
+  }
   return response.data;
 };
 
