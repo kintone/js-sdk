@@ -17,7 +17,6 @@ import {
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 import { platformDeps } from "./platform/index";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
-import { bind } from "core-js/fn/function";
 
 export type DiscriminatedAuth =
   | ApiTokenAuth
