@@ -2,6 +2,7 @@ import { KintoneRestAPIClient, responseHandler } from "../KintoneRestAPIClient";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
 import { KintoneRestAPIError } from "../error/KintoneRestAPIError";
+import { KintoneAbortedSearchResultError } from "../error/KintoneAbortedSearchResultError";
 import {
   ErrorResponse,
   Response,
@@ -84,7 +85,7 @@ describe("KintoneRestAPIClient", () => {
         },
       };
       return expect(responseHandler(Promise.resolve(response))).rejects.toThrow(
-        Error
+        KintoneAbortedSearchResultError
       );
     });
     it("should raise a KintoneRestAPIError", () => {

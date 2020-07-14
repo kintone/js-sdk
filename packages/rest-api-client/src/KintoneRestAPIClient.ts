@@ -7,6 +7,7 @@ import {
   KintoneRestAPIError,
   KintoneErrorResponse,
 } from "./error/KintoneRestAPIError";
+import { KintoneAbortedSearchResultError } from "./error/KintoneAbortedSearchResultError";
 import {
   ErrorResponse,
   HttpClientError,
@@ -77,7 +78,9 @@ const successResponseHandler = <T>(response: Response<T>): T => {
       response.headers["x-cybozu-warning"]
     )
   ) {
-    throw new Error("TODO: should throw an appropriate error");
+    throw new KintoneAbortedSearchResultError(
+      response.headers["x-cybozu-warning"]
+    );
   }
   return response.data;
 };
