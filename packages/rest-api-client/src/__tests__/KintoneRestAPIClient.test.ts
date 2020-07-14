@@ -1,7 +1,7 @@
 import { KintoneRestAPIClient, responseHandler } from "../KintoneRestAPIClient";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
-import { KintoneRestAPIError } from "../KintoneRestAPIError";
+import { KintoneRestAPIError } from "../error/KintoneRestAPIError";
 import {
   ErrorResponse,
   Response,

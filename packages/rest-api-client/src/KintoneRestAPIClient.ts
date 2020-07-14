@@ -6,7 +6,7 @@ import { DefaultHttpClient } from "./http/";
 import {
   KintoneRestAPIError,
   KintoneErrorResponse,
-} from "./KintoneRestAPIError";
+} from "./error/KintoneRestAPIError";
 import {
   ErrorResponse,
   HttpClientError,
