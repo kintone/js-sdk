@@ -56,3 +56,14 @@ Then the properties of `KintoneAllRecordsError` is:
 | unprocessedRecords     | `records[2000] - records[4999]`            |
 | error                  | An instance of `KintoneRestAPIError`       |
 | errorIndex             | `2499` (If Kintone returns) or `undefined` |
+
+## KintoneAbortedSearchResultError
+
+This error occurs when `KintoneRestAPIClient` receives the message, "Filter aborted because of too many search results", as a value of `x-cybozu-warning` response header.
+
+Kintone returns the message when a search condition matches over 100,000 records.
+
+
+| Name    |  Type  | Description       |
+| ------- | :----: | ----------------- |
+| message | String | The error message |
