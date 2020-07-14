@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "chokidar": "^3.4.0",
-    "inquirer": "^7.3.1",
+    "inquirer": "^7.3.2",
     "meow": "^7.0.1",
     "mkdirp": "^1.0.4",
     "os-locale": "^5.0.0",
