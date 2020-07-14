@@ -63,7 +63,6 @@ This error occurs when `KintoneRestAPIClient` receives the message, "Filter abor
 
 Kintone returns the message when a search condition matches over 100,000 records.
 
-
 | Name    |  Type  | Description       |
 | ------- | :----: | ----------------- |
 | message | String | The error message |
