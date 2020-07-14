@@ -7,16 +7,16 @@ export const readFileFromPath = (filePath: string) => {
 
 export const getRequestToken = async () => {
   if (
-    kintone !== null &&
     typeof kintone === "object" &&
+    kintone !== null &&
     typeof kintone.getRequestToken === "function"
   ) {
     return kintone.getRequestToken();
   }
 
   if (
-    garoon !== null &&
     typeof garoon === "object" &&
+    garoon !== null &&
     typeof garoon.connect?.kintone?.getRequestToken === "function"
   ) {
     return garoon.connect.kintone.getRequestToken();
