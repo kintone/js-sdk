@@ -76,7 +76,7 @@ describe("KintoneRestAPIClient", () => {
         this.response = response;
       }
     }
-    it("should throw an error if x-cybozu-warning is'Filter aborted because of too many search results'", () => {
+    it("should throw an error if enableAbortedSearchResultError is enabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
       const response: Response = {
         data: { status: "success" },
         headers: {
@@ -84,9 +84,21 @@ describe("KintoneRestAPIClient", () => {
             "Filter aborted because of too many search results",
         },
       };
-      return expect(responseHandler(Promise.resolve(response))).rejects.toThrow(
-        KintoneAbortedSearchResultError
-      );
+      return expect(
+        responseHandler(Promise.resolve(response), true)
+      ).rejects.toThrow(KintoneAbortedSearchResultError);
+    });
+    it("should not throw an error if enableAbortedSearchResultError is disabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
+      const response: Response = {
+        data: { status: "success" },
+        headers: {
+          "x-cybozu-warning":
+            "Filter aborted because of too many search results",
+        },
+      };
+      return expect(
+        responseHandler(Promise.resolve(response), false)
+      ).resolves.toStrictEqual({ status: "success" });
     });
     it("should raise a KintoneRestAPIError", () => {
       const errorResponse: ErrorResponse = {
@@ -97,7 +109,8 @@ describe("KintoneRestAPIClient", () => {
       };
       expect(
         responseHandler(
-          Promise.reject(new HttpClientErrorImpl("", errorResponse))
+          Promise.reject(new HttpClientErrorImpl("", errorResponse)),
+          false
         )
       ).rejects.toThrow(KintoneRestAPIError);
     });
@@ -110,21 +123,24 @@ describe("KintoneRestAPIClient", () => {
       };
       expect(
         responseHandler(
-          Promise.reject(new HttpClientErrorImpl("", errorResponse))
+          Promise.reject(new HttpClientErrorImpl("", errorResponse)),
+          false
         )
       ).rejects.toThrow(`${errorResponse.status}: ${errorResponse.statusText}`);
     });
     it("should raise an error if error.response is undefined", () => {
       expect(
         responseHandler(
-          Promise.reject(new HttpClientErrorImpl("unknown error"))
+          Promise.reject(new HttpClientErrorImpl("unknown error")),
+          false
         )
       ).rejects.toThrow("unknown error");
     });
     it("should raise an error with appropriate message if the error is 'mac verify failure'", () => {
       expect(
         responseHandler(
-          Promise.reject(new HttpClientErrorImpl("mac verify failure"))
+          Promise.reject(new HttpClientErrorImpl("mac verify failure")),
+          false
         )
       ).rejects.toThrow("invalid clientCertAuth setting");
     });

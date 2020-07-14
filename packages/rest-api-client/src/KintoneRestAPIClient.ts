@@ -17,6 +17,7 @@ import {
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 import { platformDeps } from "./platform/index";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
+import { bind } from "core-js/fn/function";
 
 export type DiscriminatedAuth =
   | ApiTokenAuth
@@ -70,10 +71,17 @@ type Options = {
         password: string;
       };
   proxy?: ProxyConfig;
+  featureFlags?: {
+    enableAbortedSearchResultError: boolean;
+  };
 };
 
-const successResponseHandler = <T>(response: Response<T>): T => {
+const successResponseHandler = <T>(
+  response: Response<T>,
+  enableAbortedSearchResultError: boolean
+): T => {
   if (
+    enableAbortedSearchResultError &&
     /Filter aborted because of too many search results/.test(
       response.headers["x-cybozu-warning"]
     )
@@ -105,8 +113,13 @@ const errorResponseHandler = (
 };
 
 export const responseHandler = <T>(
-  response: Promise<Response<T>>
-): Promise<T> => response.then(successResponseHandler, errorResponseHandler);
+  response: Promise<Response<T>>,
+  enableAbortedSearchResultError: boolean
+): Promise<T> =>
+  response.then(
+    (res) => successResponseHandler(res, enableAbortedSearchResultError),
+    errorResponseHandler
+  );
 
 const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
   if ("username" in auth) {
@@ -147,7 +160,11 @@ export class KintoneRestAPIClient {
       auth,
     });
     const httpClient = new DefaultHttpClient({
-      responseHandler,
+      responseHandler: (response) =>
+        responseHandler(
+          response,
+          options.featureFlags?.enableAbortedSearchResultError ?? false
+        ),
       requestConfigBuilder,
     });
     const { guestSpaceId } = options;
