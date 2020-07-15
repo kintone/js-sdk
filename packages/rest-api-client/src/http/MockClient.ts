@@ -2,8 +2,10 @@ import {
   HttpClient,
   RequestConfigBuilder,
   ResponseHandler,
+  Response,
 } from "./HttpClientInterface";
 import FormData from "form-data";
+import { KintoneResponseHandler } from "../KintoneResponseHandler";
 
 type Log = {
   method: "get" | "post" | "put" | "delete";
@@ -32,12 +34,16 @@ export class MockClient implements HttpClient {
     this.responses = [];
   }
 
-  public mockResponse(mock: unknown) {
-    this.responses.push(mock);
+  public mockResponse(mock: unknown, headers: Record<string, string> = {}) {
+    this.responses.push({ data: mock, headers });
   }
   private createResponse<T extends object>(): T {
-    const response = this.responses.shift() || {};
-    return this.responseHandler(response) as T;
+    const response = this.responses.shift() || { data: {}, headers: {} };
+    return this.responseHandler.handle(
+      response.data instanceof Error
+        ? Promise.reject(response.data)
+        : Promise.resolve(response)
+    ) as T;
   }
 
   public async get<T extends object>(path: string, params: any): Promise<T> {
@@ -106,13 +112,11 @@ export class MockClient implements HttpClient {
   }
 }
 
-const responseHandler = (response: any) => {
-  if (response instanceof Error) {
-    throw response;
-  }
-  return response;
-};
-
-export const buildMockClient = (requestConfigBuilder: RequestConfigBuilder) => {
+export const buildMockClient = (
+  requestConfigBuilder: RequestConfigBuilder,
+  responseHandler = new KintoneResponseHandler({
+    enableAbortedSearchResultError: true,
+  })
+) => {
   return new MockClient({ requestConfigBuilder, responseHandler });
 };

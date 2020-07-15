@@ -35,7 +35,9 @@ export type ProxyConfig = {
 export interface HttpClientError<T = ErrorResponse> extends Error {
   response?: T;
 }
-export type ResponseHandler<T = any> = (response: Promise<Response<T>>) => T;
+export interface ResponseHandler {
+  handle: <T = any>(response: Promise<Response<T>>) => Promise<T>;
+}
 
 export type RequestConfig = {
   method: HttpMethod;

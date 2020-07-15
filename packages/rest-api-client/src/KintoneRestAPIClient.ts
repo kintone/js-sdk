@@ -3,18 +3,9 @@ import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
-import {
-  KintoneRestAPIError,
-  KintoneErrorResponse,
-} from "./error/KintoneRestAPIError";
-import { KintoneAbortedSearchResultError } from "./error/KintoneAbortedSearchResultError";
-import {
-  ErrorResponse,
-  HttpClientError,
-  ProxyConfig,
-  Response,
-} from "./http/HttpClientInterface";
+import { ProxyConfig } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
+import { KintoneResponseHandler } from "./KintoneResponseHandler";
 import { platformDeps } from "./platform/index";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
 
@@ -75,51 +66,6 @@ type Options = {
   };
 };
 
-const successResponseHandler = <T>(
-  response: Response<T>,
-  enableAbortedSearchResultError: boolean
-): T => {
-  if (
-    enableAbortedSearchResultError &&
-    /Filter aborted because of too many search results/.test(
-      response.headers["x-cybozu-warning"]
-    )
-  ) {
-    throw new KintoneAbortedSearchResultError(
-      response.headers["x-cybozu-warning"]
-    );
-  }
-  return response.data;
-};
-
-const errorResponseHandler = (
-  error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
-) => {
-  if (!error.response) {
-    // FIXME: find a better way to handle this error
-    if (/mac verify failure/.test(error.toString())) {
-      throw new Error("invalid clientCertAuth setting");
-    }
-    throw error;
-  }
-  const errorResponse = error.response;
-
-  const { data, ...rest } = errorResponse;
-  if (typeof data === "string") {
-    throw new Error(`${rest.status}: ${rest.statusText}`);
-  }
-  throw new KintoneRestAPIError({ data, ...rest });
-};
-
-export const responseHandler = <T>(
-  response: Promise<Response<T>>,
-  enableAbortedSearchResultError: boolean
-): Promise<T> =>
-  response.then(
-    (res) => successResponseHandler(res, enableAbortedSearchResultError),
-    errorResponseHandler
-  );
-
 const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
   if ("username" in auth) {
     return { type: "password", ...auth };
@@ -158,12 +104,12 @@ export class KintoneRestAPIClient {
       baseUrl: this.baseUrl,
       auth,
     });
+    const responseHandler = new KintoneResponseHandler({
+      enableAbortedSearchResultError:
+        options.featureFlags?.enableAbortedSearchResultError ?? false,
+    });
     const httpClient = new DefaultHttpClient({
-      responseHandler: (response) =>
-        responseHandler(
-          response,
-          options.featureFlags?.enableAbortedSearchResultError ?? false
-        ),
+      responseHandler,
       requestConfigBuilder,
     });
     const { guestSpaceId } = options;

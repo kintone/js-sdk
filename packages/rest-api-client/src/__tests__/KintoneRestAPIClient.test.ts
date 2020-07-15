@@ -1,13 +1,6 @@
-import { KintoneRestAPIClient, responseHandler } from "../KintoneRestAPIClient";
+import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
-import { KintoneRestAPIError } from "../error/KintoneRestAPIError";
-import { KintoneAbortedSearchResultError } from "../error/KintoneAbortedSearchResultError";
-import {
-  ErrorResponse,
-  Response,
-  HttpClientError,
-} from "../http/HttpClientInterface";
 
 describe("KintoneRestAPIClient", () => {
   describe("constructor", () => {
@@ -64,85 +57,6 @@ describe("KintoneRestAPIClient", () => {
       expect(KintoneRestAPIClient.version).toBe(
         require("../../package.json").version
       );
-    });
-  });
-
-  describe("responseHandler", () => {
-    class HttpClientErrorImpl<T> extends Error implements HttpClientError<T> {
-      public response?: T;
-
-      constructor(message: string, response?: T) {
-        super(message);
-        this.response = response;
-      }
-    }
-    it("should throw an error if enableAbortedSearchResultError is enabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
-      const response: Response = {
-        data: { status: "success" },
-        headers: {
-          "x-cybozu-warning":
-            "Filter aborted because of too many search results",
-        },
-      };
-      return expect(
-        responseHandler(Promise.resolve(response), true)
-      ).rejects.toThrow(KintoneAbortedSearchResultError);
-    });
-    it("should not throw an error if enableAbortedSearchResultError is disabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
-      const response: Response = {
-        data: { status: "success" },
-        headers: {
-          "x-cybozu-warning":
-            "Filter aborted because of too many search results",
-        },
-      };
-      return expect(
-        responseHandler(Promise.resolve(response), false)
-      ).resolves.toStrictEqual({ status: "success" });
-    });
-    it("should raise a KintoneRestAPIError", () => {
-      const errorResponse: ErrorResponse = {
-        data: {},
-        status: 500,
-        statusText: "Internal Server Error",
-        headers: {},
-      };
-      expect(
-        responseHandler(
-          Promise.reject(new HttpClientErrorImpl("", errorResponse)),
-          false
-        )
-      ).rejects.toThrow(KintoneRestAPIError);
-    });
-    it("should raise an Error if error.response.data is a string", () => {
-      const errorResponse: ErrorResponse = {
-        data: "unexpected error",
-        status: 500,
-        statusText: "Internal Server Error",
-        headers: {},
-      };
-      expect(
-        responseHandler(
-          Promise.reject(new HttpClientErrorImpl("", errorResponse)),
-          false
-        )
-      ).rejects.toThrow(`${errorResponse.status}: ${errorResponse.statusText}`);
-    });
-    it("should raise an error if error.response is undefined", () => {
-      expect(
-        responseHandler(
-          Promise.reject(new HttpClientErrorImpl("unknown error")),
-          false
-        )
-      ).rejects.toThrow("unknown error");
-    });
-    it("should raise an error with appropriate message if the error is 'mac verify failure'", () => {
-      expect(
-        responseHandler(
-          Promise.reject(new HttpClientErrorImpl("mac verify failure")),
-          false
-        )
-      ).rejects.toThrow("invalid clientCertAuth setting");
     });
   });
 });
