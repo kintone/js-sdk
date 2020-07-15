@@ -13,6 +13,7 @@ declare const garoon: {
 declare module NodeJS {
   interface Global {
     kintone: typeof kintone;
+    garoon: typeof garoon;
     location: typeof location;
   }
 }
