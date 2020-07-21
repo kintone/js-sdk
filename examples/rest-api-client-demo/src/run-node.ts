@@ -28,6 +28,9 @@ const buildClient = (argv: any): KintoneRestAPIClient => {
   return new KintoneRestAPIClient({
     baseUrl: baseUrl || undefined,
     auth,
+    featureFlags: {
+      enableAbortSearchError: true,
+    },
   });
 };
 

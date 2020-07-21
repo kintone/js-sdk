@@ -1,7 +1,7 @@
 import { buildPath } from "./../url";
 import { HttpClient } from "./../http/";
 import { BulkRequestClient } from "./BulkRequestClient";
-import { KintoneAllRecordsError } from "../KintoneAllRecordsError";
+import { KintoneAllRecordsError } from "../error/KintoneAllRecordsError";
 import {
   AppID,
   RecordID,

@@ -1,9 +1,11 @@
 import {
   HttpClient,
   RequestConfigBuilder,
-  ErrorResponseHandler,
+  ResponseHandler,
+  Response,
 } from "./HttpClientInterface";
 import FormData from "form-data";
+import { KintoneResponseHandler } from "../KintoneResponseHandler";
 
 type Log = {
   method: "get" | "post" | "put" | "delete";
@@ -14,33 +16,34 @@ type Log = {
 };
 
 export class MockClient implements HttpClient {
-  private errorResponseHandler: ErrorResponseHandler;
+  private responseHandler: ResponseHandler;
   private requestConfigBuilder: RequestConfigBuilder;
   logs: Log[];
-  responses: object[];
+  responses: any[];
 
   constructor({
-    errorResponseHandler,
+    responseHandler,
     requestConfigBuilder,
   }: {
-    errorResponseHandler: ErrorResponseHandler;
+    responseHandler: ResponseHandler;
     requestConfigBuilder: RequestConfigBuilder;
   }) {
-    this.errorResponseHandler = errorResponseHandler;
+    this.responseHandler = responseHandler;
     this.requestConfigBuilder = requestConfigBuilder;
     this.logs = [];
     this.responses = [];
   }
 
-  public mockResponse(mock: object) {
-    this.responses.push(mock);
+  public mockResponse(mock: unknown, headers: Record<string, string> = {}) {
+    this.responses.push({ data: mock, headers });
   }
   private createResponse<T extends object>(): T {
-    const response = this.responses.shift() || {};
-    if (response instanceof Error) {
-      this.errorResponseHandler(response);
-    }
-    return response as T;
+    const response = this.responses.shift() || { data: {}, headers: {} };
+    return this.responseHandler.handle(
+      response.data instanceof Error
+        ? Promise.reject(response.data)
+        : Promise.resolve(response)
+    ) as T;
   }
 
   public async get<T extends object>(path: string, params: any): Promise<T> {
@@ -108,3 +111,12 @@ export class MockClient implements HttpClient {
     return this.logs;
   }
 }
+
+export const buildMockClient = (
+  requestConfigBuilder: RequestConfigBuilder,
+  responseHandler = new KintoneResponseHandler({
+    enableAbortSearchError: true,
+  })
+) => {
+  return new MockClient({ requestConfigBuilder, responseHandler });
+};

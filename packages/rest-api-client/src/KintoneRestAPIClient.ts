@@ -3,16 +3,9 @@ import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
-import {
-  KintoneRestAPIError,
-  KintoneErrorResponse,
-} from "./KintoneRestAPIError";
-import {
-  ErrorResponse,
-  HttpClientError,
-  ProxyConfig,
-} from "./http/HttpClientInterface";
+import { ProxyConfig } from "./http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
+import { KintoneResponseHandler } from "./KintoneResponseHandler";
 import { platformDeps } from "./platform/index";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
 
@@ -68,25 +61,9 @@ type Options = {
         password: string;
       };
   proxy?: ProxyConfig;
-};
-
-export const errorResponseHandler = (
-  error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
-) => {
-  if (!error.response) {
-    // FIXME: find a better way to handle this error
-    if (/mac verify failure/.test(error.toString())) {
-      throw new Error("invalid clientCertAuth setting");
-    }
-    throw error;
-  }
-  const errorResponse = error.response;
-
-  const { data, ...rest } = errorResponse;
-  if (typeof data === "string") {
-    throw new Error(`${rest.status}: ${rest.statusText}`);
-  }
-  throw new KintoneRestAPIError({ data, ...rest });
+  featureFlags?: {
+    enableAbortSearchError: boolean;
+  };
 };
 
 const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
@@ -127,8 +104,12 @@ export class KintoneRestAPIClient {
       baseUrl: this.baseUrl,
       auth,
     });
+    const responseHandler = new KintoneResponseHandler({
+      enableAbortSearchError:
+        options.featureFlags?.enableAbortSearchError ?? false,
+    });
     const httpClient = new DefaultHttpClient({
-      errorResponseHandler,
+      responseHandler,
       requestConfigBuilder,
     });
     const { guestSpaceId } = options;

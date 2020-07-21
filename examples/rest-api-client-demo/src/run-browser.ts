@@ -10,6 +10,9 @@ declare const window: {
 const client = new KintoneRestAPIClient({
   baseUrl: process.env.KINTONE_BASE_URL || "",
   auth: {},
+  featureFlags: {
+    enableAbortSearchError: true,
+  },
 });
 
 window.KintoneRestAPIClientDemo = {

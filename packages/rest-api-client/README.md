@@ -97,6 +97,7 @@ client.record
 | proxy.auth                 |                              Object                              |                             | If the proxy server requires Basic authentication, please specify its username and password.                                                                                                                                                                                     |
 | proxy.auth.username        |                              String                              |                             | The username of Basic authentication for the proxy server.                                                                                                                                                                                                                       |
 | proxy.auth.password        |                              String                              |                             | The password of Basic authentication for the proxy server.                                                                                                                                                                                                                       |
+| featureFlags               |                              Object                              |                             | Feature flags that you can configure. See [Feature flags](#Feature-flags).                                                                                                                                                                                                       |
 
 ### Authentication
 
@@ -135,6 +136,12 @@ Supported in browser environment only.
 If you omit `auth` parameter, the client uses Session authentication.
 
 Session authentication is available in Garoon customization.
+
+### Feature flags
+
+| Name                   |  Type   | Default | Description                                                     |
+| ---------------------- | :-----: | :-----: | --------------------------------------------------------------- |
+| enableAbortSearchError | boolean | `false` | An option of whether to throw `KintoneAbortSearchError` or not. |
 
 ## Error Handling
 
