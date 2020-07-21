@@ -4,20 +4,16 @@ import {
   Response,
   ResponseHandler,
 } from "./http/HttpClientInterface";
-import { KintoneAbortedSearchResultError } from "./error/KintoneAbortedSearchResultError";
+import { KintoneAbortSearchError } from "./error/KintoneAbortSearchError";
 import {
   KintoneRestAPIError,
   KintoneErrorResponse,
 } from "./error/KintoneRestAPIError";
 
 export class KintoneResponseHandler implements ResponseHandler {
-  private enableAbortedSearchResultError: boolean;
-  constructor({
-    enableAbortedSearchResultError,
-  }: {
-    enableAbortedSearchResultError: boolean;
-  }) {
-    this.enableAbortedSearchResultError = enableAbortedSearchResultError;
+  private enableAbortSearchError: boolean;
+  constructor({ enableAbortSearchError }: { enableAbortSearchError: boolean }) {
+    this.enableAbortSearchError = enableAbortSearchError;
   }
   handle<T>(response: Promise<Response<T>>): Promise<T> {
     return response.then(
@@ -27,14 +23,12 @@ export class KintoneResponseHandler implements ResponseHandler {
   }
   private handleSuccessResponse<T>(response: Response<T>): T {
     if (
-      this.enableAbortedSearchResultError &&
+      this.enableAbortSearchError &&
       /Filter aborted because of too many search results/.test(
         response.headers["x-cybozu-warning"]
       )
     ) {
-      throw new KintoneAbortedSearchResultError(
-        response.headers["x-cybozu-warning"]
-      );
+      throw new KintoneAbortSearchError(response.headers["x-cybozu-warning"]);
     }
     return response.data;
   }

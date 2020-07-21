@@ -57,9 +57,9 @@ Then the properties of `KintoneAllRecordsError` is:
 | error                  | An instance of `KintoneRestAPIError`       |
 | errorIndex             | `2499` (If Kintone returns) or `undefined` |
 
-## KintoneAbortedSearchResultError
+## KintoneAbortSearchError
 
-This error occurs when the [`enableAbortedSearchResultError`](../README.md#parameters-for-kintonerestapiclient) option is enabled, and `KintoneRestAPIClient` receives the message, "Filter aborted because of too many search results," as a value of `x-cybozu-warning` response header.
+This error occurs when the [`enableAbortSearchError`](../README.md#parameters-for-kintonerestapiclient) option is enabled, and `KintoneRestAPIClient` receives the message, "Filter aborted because of too many search results," as a value of `x-cybozu-warning` response header.
 
 Kintone returns the warning message when a search condition matches over 100,000 records.
 

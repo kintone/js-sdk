@@ -11,7 +11,7 @@ const client = new KintoneRestAPIClient({
   baseUrl: process.env.KINTONE_BASE_URL || "",
   auth: {},
   featureFlags: {
-    enableAbortedSearchResultError: true,
+    enableAbortSearchError: true,
   },
 });
 

@@ -2,7 +2,7 @@ import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
 import { KintoneRestAPIError } from "../error/KintoneRestAPIError";
-import { KintoneAbortedSearchResultError } from "../error/KintoneAbortedSearchResultError";
+import { KintoneAbortSearchError } from "../error/KintoneAbortSearchError";
 import {
   ErrorResponse,
   Response,
@@ -20,9 +20,9 @@ describe("KintoneResponseHandler", () => {
         this.response = response;
       }
     }
-    it("should throw an error if enableAbortedSearchResultError is enabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
+    it("should throw an error if KintoneAbortSearchError is enabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
       const responseHandler = new KintoneResponseHandler({
-        enableAbortedSearchResultError: true,
+        enableAbortSearchError: true,
       });
       const response: Response = {
         data: { status: "success" },
@@ -33,11 +33,11 @@ describe("KintoneResponseHandler", () => {
       };
       return expect(
         responseHandler.handle(Promise.resolve(response))
-      ).rejects.toThrow(KintoneAbortedSearchResultError);
+      ).rejects.toThrow(KintoneAbortSearchError);
     });
-    it("should not throw an error if enableAbortedSearchResultError is disabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
+    it("should not throw an error if enableAbortSearchError is disabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
       const responseHandler = new KintoneResponseHandler({
-        enableAbortedSearchResultError: false,
+        enableAbortSearchError: false,
       });
       const response: Response = {
         data: { status: "success" },
@@ -52,7 +52,7 @@ describe("KintoneResponseHandler", () => {
     });
     it("should raise a KintoneRestAPIError", () => {
       const responseHandler = new KintoneResponseHandler({
-        enableAbortedSearchResultError: false,
+        enableAbortSearchError: false,
       });
       const errorResponse: ErrorResponse = {
         data: {},
@@ -68,7 +68,7 @@ describe("KintoneResponseHandler", () => {
     });
     it("should raise an Error if error.response.data is a string", () => {
       const responseHandler = new KintoneResponseHandler({
-        enableAbortedSearchResultError: false,
+        enableAbortSearchError: false,
       });
       const errorResponse: ErrorResponse = {
         data: "unexpected error",
@@ -84,7 +84,7 @@ describe("KintoneResponseHandler", () => {
     });
     it("should raise an error if error.response is undefined", () => {
       const responseHandler = new KintoneResponseHandler({
-        enableAbortedSearchResultError: false,
+        enableAbortSearchError: false,
       });
       expect(
         responseHandler.handle(
@@ -94,7 +94,7 @@ describe("KintoneResponseHandler", () => {
     });
     it("should raise an error with appropriate message if the error is 'mac verify failure'", () => {
       const responseHandler = new KintoneResponseHandler({
-        enableAbortedSearchResultError: false,
+        enableAbortSearchError: false,
       });
       expect(
         responseHandler.handle(

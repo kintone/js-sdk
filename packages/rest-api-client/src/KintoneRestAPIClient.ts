@@ -62,7 +62,7 @@ type Options = {
       };
   proxy?: ProxyConfig;
   featureFlags?: {
-    enableAbortedSearchResultError: boolean;
+    enableAbortSearchError: boolean;
   };
 };
 
@@ -105,8 +105,8 @@ export class KintoneRestAPIClient {
       auth,
     });
     const responseHandler = new KintoneResponseHandler({
-      enableAbortedSearchResultError:
-        options.featureFlags?.enableAbortedSearchResultError ?? false,
+      enableAbortSearchError:
+        options.featureFlags?.enableAbortSearchError ?? false,
     });
     const httpClient = new DefaultHttpClient({
       responseHandler,

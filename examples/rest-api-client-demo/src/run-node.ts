@@ -29,7 +29,7 @@ const buildClient = (argv: any): KintoneRestAPIClient => {
     baseUrl: baseUrl || undefined,
     auth,
     featureFlags: {
-      enableAbortedSearchResultError: true,
+      enableAbortSearchError: true,
     },
   });
 };

@@ -115,7 +115,7 @@ export class MockClient implements HttpClient {
 export const buildMockClient = (
   requestConfigBuilder: RequestConfigBuilder,
   responseHandler = new KintoneResponseHandler({
-    enableAbortedSearchResultError: true,
+    enableAbortSearchError: true,
   })
 ) => {
   return new MockClient({ requestConfigBuilder, responseHandler });
