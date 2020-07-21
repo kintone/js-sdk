@@ -1,4 +1,4 @@
-import * as commander from "commander"; // eslint-disable-line no-unused-vars
+import * as commander from "commander";
 import { createCommanderProgram } from "./createCommanderProgram";
 
 describe("createCommanderProgram", () => {

@@ -1,5 +1,4 @@
 import { VisibleForTesting } from "./fileldtype-converter";
-// eslint-disable-next-line no-unused-vars
 import { SubTableFieldType } from "../kintone/clients/forms-client";
 import { objectValues } from "../utils/objectvalues";
 

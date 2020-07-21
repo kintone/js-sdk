@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
 import {
     FieldType,
     SubTableFieldType,
 } from "../kintone/clients/forms-client";
-/* eslint-enable no-unused-vars */
 import { objectValues } from "../utils/objectvalues";
 
 type FieldTypesOrSubTableFieldTypes =

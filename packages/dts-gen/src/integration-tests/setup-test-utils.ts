@@ -1,5 +1,4 @@
 import * as fs from "fs";
-// eslint-disable-next-line no-unused-vars
 import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client";
 import { DemoDatas } from "../kintone/clients/demo-datas";
 import { log } from "../utils/logger";
