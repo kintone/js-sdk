@@ -1,6 +1,3 @@
-import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
-import { injectPlatformDeps } from "../platform";
-import * as browserDeps from "../platform/browser";
 import { KintoneRestAPIError } from "../error/KintoneRestAPIError";
 import { KintoneAbortSearchError } from "../error/KintoneAbortSearchError";
 import {
@@ -20,7 +17,7 @@ describe("KintoneResponseHandler", () => {
         this.response = response;
       }
     }
-    it("should throw an error if KintoneAbortSearchError is enabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
+    it("should throw an error if KintoneAbortSearchError is enabled and x-cybozu-warning is'Filter aborted because of too many search results'", async () => {
       const responseHandler = new KintoneResponseHandler({
         enableAbortSearchError: true,
       });
@@ -31,11 +28,11 @@ describe("KintoneResponseHandler", () => {
             "Filter aborted because of too many search results",
         },
       };
-      return expect(
+      await expect(
         responseHandler.handle(Promise.resolve(response))
       ).rejects.toThrow(KintoneAbortSearchError);
     });
-    it("should not throw an error if enableAbortSearchError is disabled and x-cybozu-warning is'Filter aborted because of too many search results'", () => {
+    it("should not throw an error if enableAbortSearchError is disabled and x-cybozu-warning is'Filter aborted because of too many search results'", async () => {
       const responseHandler = new KintoneResponseHandler({
         enableAbortSearchError: false,
       });
@@ -46,11 +43,11 @@ describe("KintoneResponseHandler", () => {
             "Filter aborted because of too many search results",
         },
       };
-      return expect(
+      await expect(
         responseHandler.handle(Promise.resolve(response))
       ).resolves.toStrictEqual({ status: "success" });
     });
-    it("should raise a KintoneRestAPIError", () => {
+    it("should raise a KintoneRestAPIError", async () => {
       const responseHandler = new KintoneResponseHandler({
         enableAbortSearchError: false,
       });
@@ -60,13 +57,13 @@ describe("KintoneResponseHandler", () => {
         statusText: "Internal Server Error",
         headers: {},
       };
-      expect(
+      await expect(
         responseHandler.handle(
           Promise.reject(new HttpClientErrorImpl("", errorResponse))
         )
       ).rejects.toThrow(KintoneRestAPIError);
     });
-    it("should raise an Error if error.response.data is a string", () => {
+    it("should raise an Error if error.response.data is a string", async () => {
       const responseHandler = new KintoneResponseHandler({
         enableAbortSearchError: false,
       });
@@ -76,27 +73,27 @@ describe("KintoneResponseHandler", () => {
         statusText: "Internal Server Error",
         headers: {},
       };
-      expect(
+      await expect(
         responseHandler.handle(
           Promise.reject(new HttpClientErrorImpl("", errorResponse))
         )
       ).rejects.toThrow(`${errorResponse.status}: ${errorResponse.statusText}`);
     });
-    it("should raise an error if error.response is undefined", () => {
+    it("should raise an error if error.response is undefined", async () => {
       const responseHandler = new KintoneResponseHandler({
         enableAbortSearchError: false,
       });
-      expect(
+      await expect(
         responseHandler.handle(
           Promise.reject(new HttpClientErrorImpl("unknown error"))
         )
       ).rejects.toThrow("unknown error");
     });
-    it("should raise an error with appropriate message if the error is 'mac verify failure'", () => {
+    it("should raise an error with appropriate message if the error is 'mac verify failure'", async () => {
       const responseHandler = new KintoneResponseHandler({
         enableAbortSearchError: false,
       });
-      expect(
+      await expect(
         responseHandler.handle(
           Promise.reject(new HttpClientErrorImpl("mac verify failure"))
         )
