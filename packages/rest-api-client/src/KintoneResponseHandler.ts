@@ -21,11 +21,11 @@ export class KintoneResponseHandler implements ResponseHandler {
   }
   handle<T>(response: Promise<Response<T>>): Promise<T> {
     return response.then(
-      (res) => this.successResponseHandler<T>(res),
-      (error) => this.errorResponseHandler(error)
+      (res) => this.handleSuccessResponse<T>(res),
+      (error) => this.handleErrorResponse(error)
     );
   }
-  private successResponseHandler<T>(response: Response<T>): T {
+  private handleSuccessResponse<T>(response: Response<T>): T {
     if (
       this.enableAbortedSearchResultError &&
       /Filter aborted because of too many search results/.test(
@@ -38,7 +38,7 @@ export class KintoneResponseHandler implements ResponseHandler {
     }
     return response.data;
   }
-  private errorResponseHandler(
+  private handleErrorResponse(
     error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
   ): never {
     if (!error.response) {
