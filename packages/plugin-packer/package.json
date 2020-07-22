@@ -18,10 +18,10 @@
   "scripts": {
     "build": "run-p js css",
     "lint": "npm run eslint",
-    "test": "run-s eslint mocha site:test",
+    "test": "run-p eslint mocha site:test",
     "test:ci": "npm run test",
     "css": "postcss --config postcss.config.js ../../node_modules/normalize.css/normalize.css > docs/dist/normalize.min.css",
-    "eslint": "eslint '*.js' bin src site test",
+    "eslint": "eslint \"*.js\" bin src site test",
     "js": "webpack --mode production",
     "js:dev": "webpack-dev-server --mode development",
     "mocha": "mocha --require intelli-espower-loader --timeout 10000",
