@@ -3,6 +3,6 @@ module.exports = {
   extends: "@cybozu/eslint-config/presets/prettier",
   env: {
     mocha: true,
-    node: true
-  }
-}
+    node: true,
+  },
+};
