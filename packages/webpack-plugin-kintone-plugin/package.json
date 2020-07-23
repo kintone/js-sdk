@@ -31,7 +31,7 @@
     "@cybozu/eslint-config": "^11.0.0",
     "@types/adm-zip": "^0.4.33",
     "@types/chokidar": "^1.7.5",
-    "@types/lodash": "^4.14.156",
+    "@types/lodash": "^4.14.158",
     "@types/mkdirp": "^1.0.1",
     "@types/mocha": "^7.0.2",
     "@types/node": "^9.6.56",
