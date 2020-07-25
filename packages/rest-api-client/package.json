@@ -60,7 +60,7 @@
   "devDependencies": {
     "@types/core-js": "^2.5.3",
     "@types/js-base64": "^2.3.2",
-    "@types/qs": "^6.9.3",
+    "@types/qs": "^6.9.4",
     "ts-loader": "^8.0.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
