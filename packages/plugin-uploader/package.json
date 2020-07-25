@@ -39,7 +39,7 @@
   "devDependencies": {
     "@types/inquirer": "6.5.0",
     "@types/node": "^9.6.57",
-    "@types/puppeteer": "^3.0.0",
+    "@types/puppeteer": "^3.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "standard-version": "^8.0.0",
