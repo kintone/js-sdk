@@ -19,7 +19,7 @@ const cli = meow(
     --lang Using language (en or ja)
     --template A template for a generated plug-in (${SUPPORT_TEMPLATE_TYPE.join(
       ","
-    )})
+    )}: the default value is minimum)
 `,
   {
     flags: {
