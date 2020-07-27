@@ -70,7 +70,11 @@ function buildProject(
     generatePrivateKey()
   );
   fs.writeFileSync(
-    path.resolve(outputDirectory, "src", "manifest.json"),
+    path.resolve(
+      outputDirectory,
+      templateType === "modern" ? "plugin" : "src",
+      "manifest.json"
+    ),
     JSON.stringify(manifest, null, 2)
   );
 }

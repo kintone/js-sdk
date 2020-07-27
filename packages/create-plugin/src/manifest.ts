@@ -1,10 +1,11 @@
 "use strict";
 
 import { Answers } from "inquirer";
+import { TemplateType } from "./template";
 
 const jQueryURL = "https://js.cybozu.com/jquery/3.3.1/jquery.min.js";
 
-const baseManifest = {
+const minimumManifest = {
   manifest_version: 1,
   version: 1,
   type: "APP",
@@ -16,6 +17,23 @@ const baseManifest = {
   config: {
     html: "html/config.html",
     js: [jQueryURL, "js/config.js"],
+    css: ["css/51-modern-default.css", "css/config.css"],
+    required_params: ["message"],
+  },
+};
+
+const modernManifest = {
+  manifest_version: 1,
+  version: 1,
+  type: "APP",
+  desktop: {
+    js: ["js/desktop.js"],
+    css: ["css/desktop.css"],
+  },
+  icon: "image/icon.png",
+  config: {
+    html: "html/config.html",
+    js: ["js/config.js"],
     css: ["css/51-modern-default.css", "css/config.css"],
     required_params: ["message"],
   },
@@ -89,14 +107,23 @@ function answer2Manifest(answers: Answers): Manifest {
  * Build the manifest setting
  * @param answers
  */
-export function buildManifest(answers: Answers): Manifest {
-  let manifest = { ...baseManifest, ...answer2Manifest(answers) };
+export function buildManifest(
+  answers: Answers,
+  templateType: TemplateType
+): Manifest {
+  let manifest = {
+    ...(templateType === "modern" ? modernManifest : minimumManifest),
+    ...answer2Manifest(answers),
+  };
   if (answers.mobile) {
     manifest = {
       ...manifest,
       ...{
         mobile: {
-          js: [jQueryURL, "js/mobile.js"],
+          js:
+            templateType === "minimum"
+              ? [jQueryURL, "js/mobile.js"]
+              : ["js/mobile.js"],
           css: ["css/mobile.css"],
         },
       },

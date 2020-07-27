@@ -40,7 +40,7 @@ function run(outputDir: string, lang: Lang, templateType: TemplateType) {
   inquirer
     .prompt(buildQuestions(outputDir, lang))
     .then((answers) => {
-      const manifest = buildManifest(answers);
+      const manifest = buildManifest(answers, templateType);
       generatePlugin(
         outputDir,
         manifest,
