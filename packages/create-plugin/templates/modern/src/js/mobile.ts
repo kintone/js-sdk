@@ -1,3 +1,5 @@
+// import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+
 // @ts-expect-error
 const PLUGIN_ID = kintone.$PLUGIN_ID;
 
