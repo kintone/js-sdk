@@ -5,8 +5,8 @@
  * @param {boolean=} opt_allowHttp
  * @return {boolean}
  */
-function validateHttpsUrl(str, opt_allowHttp) {
+function validateHttpsUrl(str: string, opt_allowHttp: boolean = false) {
   return opt_allowHttp ? /^https?:/.test(str) : /^https:/.test(str);
 }
 
-module.exports = validateHttpsUrl;
+export default validateHttpsUrl;

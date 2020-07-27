@@ -1,19 +1,24 @@
 "use strict";
 
-const Ajv = require("ajv");
-const v4metaSchema = require("ajv/lib/refs/json-schema-draft-04.json");
-const bytes = require("bytes");
-const jsonSchema = require("./manifest-schema.json");
-const validateUrl = require("./src/validate-https-url");
+import Ajv from "ajv";
+import v4metaSchema from "ajv/lib/refs/json-schema-draft-04.json";
+import bytes from "bytes";
+import jsonSchema from "./manifest-schema.json";
+import validateUrl from "./validate-https-url";
 
 /**
  * @param {Object} json
  * @param {Object=} options
  * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
  */
-module.exports = function (json, options = {}) {
-  let relativePath = () => true;
-  let maxFileSize = () => true;
+type ValidateResult = {
+  valid: boolean | PromiseLike<any>,
+  errors: null | Array<Object>,
+}
+
+export default function (json: Object, options: {[s: string]: (...args: any) => boolean} = {}): ValidateResult {
+  let relativePath = (...args: any) => true;
+  let maxFileSize = (...args: any) => true;
   if (typeof options.relativePath === "function") {
     relativePath = options.relativePath;
   }
@@ -27,8 +32,8 @@ module.exports = function (json, options = {}) {
     unknownFormats: true,
     errorDataPath: "property",
     formats: {
-      "http-url": (str) => validateUrl(str, true),
-      "https-url": (str) => validateUrl(str),
+      "http-url": (str: string) => validateUrl(str, true),
+      "https-url": (str: string) => validateUrl(str),
       "relative-path": relativePath,
     },
   });
@@ -36,7 +41,7 @@ module.exports = function (json, options = {}) {
   // Using draft-04 schemas
   // https://github.com/epoberezkin/ajv/releases/tag/5.0.0
   ajv.addMetaSchema(v4metaSchema);
-  ajv._opts.defaultMeta = v4metaSchema.id;
+  // ajv._opts.defaultMeta = v4metaSchema.id;
   ajv.removeKeyword("propertyNames");
   ajv.removeKeyword("contains");
   ajv.removeKeyword("const");
@@ -44,9 +49,8 @@ module.exports = function (json, options = {}) {
   ajv.removeKeyword("then");
   ajv.removeKeyword("else");
 
-  ajv.addKeyword("maxFileSize", {
-    validate: function validateMaxFileSize(schema, data) {
-      // schema: max file size like "512KB" or 123 (in bytes)
+  let validateMaxFileSize: Ajv.SchemaValidateFunction = (schema: string, data: string) => {
+    // schema: max file size like "512KB" or 123 (in bytes)
       // data: path to the file
       const maxBytes = bytes.parse(schema);
       const valid = maxFileSize(maxBytes, data);
@@ -54,15 +58,20 @@ module.exports = function (json, options = {}) {
         validateMaxFileSize.errors = [
           {
             keyword: "maxFileSize",
-            message: `file size should be <= ${schema}`,
+            dataPath: '',
+            schemaPath: '',
             params: {
               limit: maxBytes,
             },
+            message: `file size should be <= ${schema}`,
           },
         ];
       }
       return valid;
-    },
+  }
+
+  ajv.addKeyword("maxFileSize", {
+    validate: validateMaxFileSize,
   });
 
   const validate = ajv.compile(jsonSchema);
@@ -70,11 +79,19 @@ module.exports = function (json, options = {}) {
   return { valid, errors: transformErrors(validate.errors) };
 };
 
+type ValidateError = {
+  keyword: string;
+  message: string;
+  params: {
+    limit: number;
+  };
+};
+
 /**
  * @param {null|Array<Object>} errors
  * @return {null|Array<Object>} shallow copy of the input or null
  */
-function transformErrors(errors) {
+function transformErrors(errors: undefined | null | Array<Ajv.ErrorObject>): null | Array<Object> {
   if (!errors) {
     return null;
   }
