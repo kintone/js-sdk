@@ -16,13 +16,14 @@ module.exports = {
     filename: "[name].js",
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".tsx", ".js"],
   },
   module: {
     rules: [
       {
-        test: /\.[t|j]s$/,
+        test: /\.[t|j]sx?$/,
         loader: "babel-loader",
+        exclude: /node_modules/,
         options: {
           presets: [
             [
@@ -30,9 +31,11 @@ module.exports = {
               {
                 useBuiltIns: "usage",
                 corejs: 3,
+                modules: false,
               },
             ],
             "@babel/preset-typescript",
+            "@babel/preset-react",
           ],
         },
       },
