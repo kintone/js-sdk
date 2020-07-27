@@ -19,7 +19,24 @@ module.exports = {
     extensions: [".ts", ".js"],
   },
   module: {
-    rules: [{ test: /\.ts$/, loader: "ts-loader" }],
+    rules: [
+      {
+        test: /\.[t|j]s$/,
+        loader: "babel-loader",
+        options: {
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                useBuiltIns: "usage",
+                corejs: 3,
+              },
+            ],
+            "@babel/preset-typescript",
+          ],
+        },
+      },
+    ],
   },
   plugins: [
     new KintonePlugin({
