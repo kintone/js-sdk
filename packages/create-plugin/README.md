@@ -143,6 +143,13 @@ The default value is `minimum`, which is a boilerplate without any build process
 - TypeScript
 - Prettier
 
+The `modern` template also includes a settings for React, so you can use React just after installing them.
+
+```
+npm install react react-dom
+npm install --save-dev @types/react @types/react-dom # type definition for React and ReactDOM
+```
+
 ## LICENSE
 
 MIT License
