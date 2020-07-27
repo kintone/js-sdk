@@ -137,7 +137,7 @@ kintoneプラグイン開発をはじめましょう！
 `create-plugin` has a `template` option to choose a project structure.
 The default value is `minimum`, which is a boilerplate without any build processes like `webpack`.
 
-`create-plugin` also has a `modern` as the template option as an **experimental**; This uses the following tools.
+`create-plugin` also has the `modern` template option as an **experimental**; This uses the following tools.
 
 - webpack
 - TypeScript
