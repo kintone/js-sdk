@@ -24,13 +24,13 @@ describe("generator", function () {
     const manifest = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "manifest.json"), "utf8")
     );
-    generatePlugin(outputDir, manifest, "ja", true);
+    generatePlugin(outputDir, manifest, "ja", true, "minimum");
 
     // test that `npm run build` doesn't fail
     const buildResult = spawnSync("npm", ["run", "build"], {
       cwd: outputDir,
       stdio: "inherit",
-      shell: true
+      shell: true,
     });
     assert(fs.existsSync(path.resolve(outputDir, "dist", "plugin.zip")));
     assert(buildResult.status === 0);
