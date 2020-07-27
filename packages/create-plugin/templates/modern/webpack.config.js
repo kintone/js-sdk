@@ -1,3 +1,4 @@
+/* eslint-env node */
 const path = require("path");
 const KintonePlugin = require("@kintone/webpack-plugin-kintone-plugin");
 

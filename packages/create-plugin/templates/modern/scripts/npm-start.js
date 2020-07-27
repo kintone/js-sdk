@@ -1,4 +1,6 @@
+/* eslint-env node */
 "use strict";
+
 const runAll = require("npm-run-all");
 
 runAll(["develop", "upload"], {
