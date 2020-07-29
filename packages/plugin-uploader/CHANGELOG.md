@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/kintone/plugin-uploader/compare/v4.1.0...v4.1.1) (2020-07-29)
+
+
+### Bug Fixes
+
+* ease timeout ([#316](https://github.com/kintone/plugin-uploader/issues/316)) ([80c5272](https://github.com/kintone/plugin-uploader/commit/80c527225f1dfb4cb733a8a22a3732aa341a4cde))
+* **deps:** update dependency puppeteer to v4.0.1 ([026bafa](https://github.com/kintone/plugin-uploader/commit/026bafa49eb16d3b3388adfd1aa19493286b36ee))
+
 ## [4.1.0](https://github.com/kintone/plugin-uploader/compare/v4.0.4...v4.1.0) (2020-06-22)
 
 
