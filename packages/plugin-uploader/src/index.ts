@@ -5,7 +5,8 @@ import puppeteer, { Browser, Page } from "puppeteer";
 import { Lang } from "./lang";
 import { getBoundMessage } from "./messages";
 
-const TIMEOUT_MS = 5000;
+const TIMEOUT_MS = 10000;
+const UPLOAD_TIMEOUT_MS = 60000;
 
 interface BasicAuth {
   username: string;
@@ -88,7 +89,7 @@ async function upload(
   await page.click('button[name="ok"]');
   await page.waitForSelector(".ocean-ui-dialog", {
     hidden: true,
-    timeout: TIMEOUT_MS,
+    timeout: UPLOAD_TIMEOUT_MS,
   });
   console.log(`${pluginPath} ${m("Uploaded")}`);
 }
