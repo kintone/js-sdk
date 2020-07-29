@@ -1,4 +1,4 @@
-import { Appearance, ConditionalExist, ConditionalStrict } from "./utilityType";
+import { Appearance } from "./utilityType";
 
 export type AppCustomizeScope = "ALL" | "ADMIN" | "NONE";
 
@@ -7,22 +7,29 @@ type AppCustomizeResource<T extends Appearance> =
       type: "URL";
       url: string;
     }
-  | {
-      type: "FILE";
-      file: {
-        fileKey: string;
-      } & ConditionalExist<
-        T,
-        "response",
-        { name: string; contentType: string; size: string }
-      >;
-    };
+  | (T extends "response"
+      ? {
+          type: "FILE";
+          file: {
+            fileKey: string;
+            name: string;
+            contentType: string;
+            size: string;
+          };
+        }
+      : {
+          type: "FILE";
+          file: {
+            fileKey: string;
+          };
+        });
 
-export type AppCustomize<T extends Appearance> = ConditionalStrict<
-  T,
-  "response",
-  {
-    js: Array<AppCustomizeResource<T>>;
-    css: Array<AppCustomizeResource<T>>;
-  }
->;
+export type AppCustomize<T extends Appearance> = T extends "response"
+  ? {
+      js: Array<AppCustomizeResource<T>>;
+      css: Array<AppCustomizeResource<T>>;
+    }
+  : {
+      js?: Array<AppCustomizeResource<T>>;
+      css?: Array<AppCustomizeResource<T>>;
+    };
