@@ -1,12 +1,12 @@
 import { Appearance } from "./utilityType";
-
-type EntityType = "USER" | "GROUP" | "ORGANIZATION";
+import { Entity } from "../entity";
 
 type AssigneeEntity<T extends Appearance> = T extends "response"
   ? {
       entity:
+        | Entity
         | {
-            type: EntityType | "FIELD_ENTITY" | "CUSTOM_FIELD";
+            type: "FIELD_ENTITY" | "CUSTOM_FIELD";
             code: string;
           }
         | {
@@ -17,8 +17,9 @@ type AssigneeEntity<T extends Appearance> = T extends "response"
     }
   : {
       entity:
+        | Entity
         | {
-            type: EntityType | "FIELD_ENTITY" | "CUSTOM_FIELD";
+            type: "FIELD_ENTITY" | "CUSTOM_FIELD";
             code: string;
           }
         | {

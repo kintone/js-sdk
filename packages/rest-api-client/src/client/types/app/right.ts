@@ -1,23 +1,27 @@
 import { Appearance } from "./utilityType";
+import { Entity } from "../entity";
 
-type EntityType = "USER" | "GROUP" | "ORGANIZATION";
 type FieldRightAccessibility = "READ" | "WRITE" | "NONE";
 
 type FieldRightEntity<T extends Appearance> = T extends "response"
   ? {
       accessibility: FieldRightAccessibility;
-      entity: {
-        code: string;
-        type: EntityType | "FIELD_ENTITY";
-      };
+      entity:
+        | Entity
+        | {
+            type: "FIELD_ENTITY";
+            code: string;
+          };
       includeSubs: boolean;
     }
   : {
       accessibility: FieldRightAccessibility;
-      entity: {
-        code: string;
-        type: EntityType | "FIELD_ENTITY";
-      };
+      entity:
+        | Entity
+        | {
+            type: "FIELD_ENTITY";
+            code: string;
+          };
       includeSubs?: boolean;
     };
 
@@ -29,10 +33,7 @@ export type FieldRight<T extends Appearance> = {
 export type AppRightEntity<T extends Appearance> = T extends "response"
   ? {
       entity:
-        | {
-            code: string;
-            type: EntityType;
-          }
+        | Entity
         | {
             type: "CREATOR";
             code: null;
@@ -48,10 +49,7 @@ export type AppRightEntity<T extends Appearance> = T extends "response"
     }
   : {
       entity:
-        | {
-            code: string;
-            type: EntityType;
-          }
+        | Entity
         | {
             type: "CREATOR";
           };
@@ -67,20 +65,24 @@ export type AppRightEntity<T extends Appearance> = T extends "response"
 
 type RecordRightEntity<T extends Appearance> = T extends "response"
   ? {
-      entity: {
-        code: string;
-        type: EntityType | "FIELD_ENTITY";
-      };
+      entity:
+        | Entity
+        | {
+            type: "FIELD_ENTITY";
+            code: string;
+          };
       viewable: boolean;
       editable: boolean;
       deletable: boolean;
       includeSubs: boolean;
     }
   : {
-      entity: {
-        code: string;
-        type: EntityType | "FIELD_ENTITY";
-      };
+      entity:
+        | Entity
+        | {
+            type: "FIELD_ENTITY";
+            code: string;
+          };
       viewable?: boolean;
       editable?: boolean;
       deletable?: boolean;
