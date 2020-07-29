@@ -1,41 +1,62 @@
-import { Appearance, ConditionalStrict, ConditionalExist } from "./utilityType";
+import { Appearance } from "./utilityType";
 
-type AssigneeEntity<T extends Appearance> = {
-  entity:
-    | {
-        type:
-          | "USER"
-          | "GROUP"
-          | "ORGANIZATION"
-          | "FIELD_ENTITY"
-          | "CUSTOM_FIELD";
-        code: string;
-      }
-    | ({
-        type: "CREATOR";
-      } & ConditionalExist<T, "response", { code: null }>);
-} & ConditionalStrict<T, "response", { includeSubs: boolean }>;
+type EntityType = "USER" | "GROUP" | "ORGANIZATION";
 
-export type State<T extends Appearance> = {
-  index: T extends "response"
-    ? string
-    : T extends "parameter"
-    ? string | number
-    : never;
-} & ConditionalStrict<
-  T,
-  "response",
-  {
-    name: string;
-    assignee: {
-      type: "ONE" | "ALL" | "ANY";
-      entities: Array<AssigneeEntity<T>>;
+type AssigneeEntity<T extends Appearance> = T extends "response"
+  ? {
+      entity:
+        | {
+            type: EntityType | "FIELD_ENTITY" | "CUSTOM_FIELD";
+            code: string;
+          }
+        | {
+            type: "CREATOR";
+            code: null;
+          };
+      includeSubs: boolean;
+    }
+  : {
+      entity:
+        | {
+            type: EntityType | "FIELD_ENTITY" | "CUSTOM_FIELD";
+            code: string;
+          }
+        | {
+            type: "CREATOR";
+          };
+      includeSubs?: boolean;
     };
-  }
->;
 
-export type Action<T extends Appearance> = {
-  name: string;
-  from: string;
-  to: string;
-} & ConditionalStrict<T, "response", { filterCond: string }>;
+type AssigneeType = "ONE" | "ALL" | "ANY";
+
+export type State<T extends Appearance> = T extends "response"
+  ? {
+      index: string;
+      name: string;
+      assignee: {
+        type: AssigneeType;
+        entities: Array<AssigneeEntity<T>>;
+      };
+    }
+  : {
+      index: string | number;
+      name?: string;
+      assignee?: {
+        type: AssigneeType;
+        entities: Array<AssigneeEntity<T>>;
+      };
+    };
+
+export type Action<T extends Appearance> = T extends "response"
+  ? {
+      name: string;
+      from: string;
+      to: string;
+      filterCond: string;
+    }
+  : {
+      name: string;
+      from: string;
+      to: string;
+      filterCond?: string;
+    };
