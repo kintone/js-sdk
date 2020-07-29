@@ -1,3 +1,21 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [3.0.7](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.0.6...@kintone/create-plugin@3.0.7) (2020-07-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^7.2.0 ([#494](https://github.com/kintone/js-sdk/issues/494)) ([0a08e84](https://github.com/kintone/js-sdk/commit/0a08e8402a81163c5968e460d54e6674a0573688))
+* **deps:** update dependency lodash to ^4.17.19 ([ba70942](https://github.com/kintone/js-sdk/commit/ba709421fc65c6611112c1d08b191890198992f9))
+* **deps:** update dependency node-rsa to ^1.1.1 ([#324](https://github.com/kintone/js-sdk/issues/324)) ([eef3479](https://github.com/kintone/js-sdk/commit/eef3479e81df48440588b42b317d7665b8fe6941))
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
