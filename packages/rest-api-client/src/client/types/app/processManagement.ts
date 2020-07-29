@@ -1,4 +1,4 @@
-import { Appearance } from "./utilityType";
+import { Appearance } from "./apperance";
 import { Entity } from "../entity";
 
 type AssigneeEntity<T extends Appearance> = T extends "response"

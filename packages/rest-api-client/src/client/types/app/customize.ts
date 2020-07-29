@@ -1,4 +1,4 @@
-import { Appearance } from "./utilityType";
+import { Appearance } from "./apperance";
 
 export type AppCustomizeScope = "ALL" | "ADMIN" | "NONE";
 

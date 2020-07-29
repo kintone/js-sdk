@@ -1,4 +1,4 @@
-import { Appearance } from "./utilityType";
+import { Appearance } from "./apperance";
 
 type ViewBase<T extends Appearance> = T extends "response"
   ? {
