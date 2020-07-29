@@ -1,5 +1,7 @@
 import { Appearance } from "./apperance";
 
+type ViewType = "LIST" | "CALENDAR" | "CUSTOM";
+
 type ViewBase<T extends Appearance> = T extends "response"
   ? {
       index: string;
@@ -16,48 +18,21 @@ type ViewBase<T extends Appearance> = T extends "response"
       sort?: string;
     };
 
-type ListView<T extends Appearance> = ViewBase<T> &
-  (T extends "response"
-    ? {
-        type: "LIST";
-        fields: string[];
-      }
-    : {
-        type: "LIST";
-        fields?: string[];
-      });
+type AdditionalProperty<T extends Appearance> = T extends "response"
+  ? {
+      LIST: { fields: string[] };
+      CALENDAR: { date: string; title: string };
+      CUSTOM: { html: string; pager: boolean; device: "DESKTOP" | "ANY" };
+    }
+  : {
+      LIST: { fields?: string[] };
+      CALENDAR: { date?: string; title?: string };
+      CUSTOM: { html?: string; pager?: boolean; device?: "DESKTOP" | "ANY" };
+    };
 
-type CalendarView<T extends Appearance> = ViewBase<T> &
-  (T extends "response"
-    ? {
-        type: "CALENDAR";
-        date: string;
-        title: string;
-      }
-    : {
-        type: "CALENDAR";
-        date?: string;
-        title?: string;
-      });
-
-type Device = "DESKTOP" | "ANY";
-
-type CustomView<T extends Appearance> = ViewBase<T> &
-  (T extends "response"
-    ? {
-        type: "CUSTOM";
-        html: string;
-        pager: boolean;
-        device: Device;
-      }
-    : {
-        type: "CUSTOM";
-        html?: string;
-        pager?: boolean;
-        device?: Device;
-      });
-
-export type View<T extends Appearance> =
-  | ListView<T>
-  | CalendarView<T>
-  | CustomView<T>;
+export type View<
+  T extends Appearance,
+  U extends ViewType = ViewType
+> = U extends ViewType
+  ? ViewBase<T> & { type: U } & AdditionalProperty<T>[U]
+  : never;
