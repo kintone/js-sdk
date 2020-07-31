@@ -1,6 +1,6 @@
 {
   "name": "@kintone/create-plugin",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": {
     "create-plugin": "bin/cli.js",
@@ -23,14 +23,14 @@
     "inquirer": "^7.2.0",
     "lodash": "^4.17.19",
     "meow": "^7.0.1",
-    "node-rsa": "^1.0.8",
+    "node-rsa": "^1.1.1",
     "os-locale": "^5.0.0",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@types/glob": "^7.1.2",
     "@types/inquirer": "^6.5.0",
-    "@types/lodash": "^4.14.157",
+    "@types/lodash": "^4.14.158",
     "@types/node-rsa": "^1.0.0",
     "@types/rimraf": "^3.0.0",
     "cross-env": "^7.0.2",

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.0.4...@kintone/rest-api-client-demo@1.1.0) (2020-07-29)
+
+
+### Features
+
+* add `@kintone/profile-loader` ([#286](https://github.com/kintone/js-sdk/issues/286)) ([65257f7](https://github.com/kintone/js-sdk/commit/65257f74d0fce0733f78608a1b8755ea68a8dba8))
+* Add a new option to throw an error for x-cybozu-warning ([#304](https://github.com/kintone/js-sdk/issues/304)) ([cc9ae56](https://github.com/kintone/js-sdk/commit/cc9ae56a7d2c40c46c46c0e7aef50720293e7f58))
+
+
+
+
+
 ## [1.0.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.0.3...@kintone/rest-api-client-demo@1.0.4) (2020-06-22)
 
 **Note:** Version bump only for package @kintone/rest-api-client-demo

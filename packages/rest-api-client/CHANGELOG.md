@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.4.2...@kintone/rest-api-client@1.5.0) (2020-07-29)
+
+
+### Bug Fixes
+
+* fix a order to check kintone/garoon object ([#311](https://github.com/kintone/js-sdk/issues/311)) ([8fe908e](https://github.com/kintone/js-sdk/commit/8fe908ee3097719bb420b705054299a66db8ac99))
+* **deps:** update dependency js-base64 to ^2.6.1 ([#277](https://github.com/kintone/js-sdk/issues/277)) ([829ef68](https://github.com/kintone/js-sdk/commit/829ef68e59c889b0965b6221338eb6c784c66486))
+* **deps:** update dependency js-base64 to ^2.6.2 ([be37d9f](https://github.com/kintone/js-sdk/commit/be37d9fcd938b34602767ad6c3acedb82928634b))
+* **deps:** update dependency js-base64 to ^2.6.3 ([10964c3](https://github.com/kintone/js-sdk/commit/10964c3614061d02e2838db12386d343fd9afa49))
+* wait the response to delete cursor in `getAllRecordsWithCursor` ([#266](https://github.com/kintone/js-sdk/issues/266)) ([1499383](https://github.com/kintone/js-sdk/commit/1499383637cb37ab79dd999ac936dba878f8226e))
+
+
+### Features
+
+* Add a new option to throw an error for x-cybozu-warning ([#304](https://github.com/kintone/js-sdk/issues/304)) ([cc9ae56](https://github.com/kintone/js-sdk/commit/cc9ae56a7d2c40c46c46c0e7aef50720293e7f58))
+* add a version property into KintoneRestAPIClient ([#287](https://github.com/kintone/js-sdk/issues/287)) ([edb76ac](https://github.com/kintone/js-sdk/commit/edb76ac981795b40d41e1273aeb0bb92cbd6a1f0))
+
+
+
+
+
 ## [1.4.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.4.1...@kintone/rest-api-client@1.4.2) (2020-06-22)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@kintone/customize-uploader",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "A kintone customize uploader",
   "bin": {
     "kintone-customize-uploader": "bin/cli.js"
@@ -47,12 +47,12 @@
   },
   "dependencies": {
     "chokidar": "^3.4.1",
-    "inquirer": "^7.3.2",
+    "inquirer": "^7.3.3",
     "meow": "^7.0.1",
     "mkdirp": "^1.0.4",
     "os-locale": "^5.0.0",
     "request": "^2.88.2",
-    "request-promise": "^4.2.5",
+    "request-promise": "^4.2.6",
     "rimraf": "^3.0.2"
   }
 }
