@@ -5,7 +5,6 @@ const path = require("path");
 const denodeify = require("denodeify");
 
 const rimraf = denodeify(require("rimraf"));
-const sinon = require("sinon");
 const glob = require("glob");
 
 const { readZipContentsNames } = require("./helper/zip");
@@ -40,7 +39,7 @@ describe("cli", () => {
   describe("validation", () => {
     let packer;
     beforeEach(() => {
-      packer = sinon.stub().returns({
+      packer = jest.fn().mockReturnValue({
         id: ID,
         privateKey: PRIVATE_KEY,
         plugin: PLUGIN_BUFFER,
@@ -89,7 +88,7 @@ describe("cli", () => {
     let packer;
     let resultPluginPath;
     beforeEach(() => {
-      packer = sinon.stub().returns({
+      packer = jest.fn().mockReturnValue({
         id: ID,
         privateKey: PRIVATE_KEY,
         plugin: PLUGIN_BUFFER,
@@ -103,9 +102,9 @@ describe("cli", () => {
     });
 
     it("calles `packer` with contents.zip as the 1st argument", (done) => {
-      expect(packer.calledOnce).toBe(true);
-      expect(packer.args[0][0]).toBeTruthy();
-      readZipContentsNames(packer.args[0][0]).then((files) => {
+      expect(packer.mock.calls.length).toBe(1);
+      expect(packer.mock.calls[0][0]).toBeTruthy();
+      readZipContentsNames(packer.mock.calls[0][0]).then((files) => {
         expect(files.sort()).toStrictEqual(
           ["image/icon.png", "manifest.json"].sort()
         );
@@ -114,8 +113,8 @@ describe("cli", () => {
     });
 
     it("calles `packer` with privateKey as the 2nd argument", () => {
-      expect(packer.calledOnce).toBe(true);
-      expect(packer.args[0][1]).toBe(undefined);
+      expect(packer.mock.calls.length).toBe(1);
+      expect(packer.mock.calls[0][1]).toBe(undefined);
     });
 
     it("generates a private key file", () => {
@@ -136,7 +135,7 @@ describe("cli", () => {
     const pluginDir = path.join(sampleDir, "plugin-dir");
     let packer;
     beforeEach(() => {
-      packer = sinon.stub().returns({
+      packer = jest.fn().mockReturnValue({
         id: ID,
         privateKey: PRIVATE_KEY,
         plugin: PLUGIN_BUFFER,
@@ -148,9 +147,9 @@ describe("cli", () => {
     });
 
     it("calles `packer` with privateKey as the 2nd argument", () => {
-      expect(packer.calledOnce).toBe(true);
+      expect(packer.mock.calls.length).toBe(1);
       const ppkFile = fs.readFileSync(ppkPath, "utf8");
-      expect(packer.args[0][1]).toBe(ppkFile);
+      expect(packer.mock.calls[0][1]).toBe(ppkFile);
     });
 
     it("does not generate a private key file", () => {
@@ -161,7 +160,7 @@ describe("cli", () => {
 
   it("includes files listed in manifest.json only", () => {
     const pluginDir = path.join(fixturesDir, "plugin-full-manifest");
-    const packer = sinon.stub().returns({
+    const packer = jest.fn().mockReturnValue({
       id: ID,
       privateKey: PRIVATE_KEY,
       plugin: PLUGIN_BUFFER,
@@ -170,7 +169,7 @@ describe("cli", () => {
     return rimraf(`${sampleDir}/*.*(ppk|zip)`)
       .then(() => cli(pluginDir, { packerMock_: packer }))
       .then(() => {
-        return readZipContentsNames(packer.args[0][0]).then((files) => {
+        return readZipContentsNames(packer.mock.calls[0][0]).then((files) => {
           expect(files.sort()).toStrictEqual(
             [
               "css/config.css",
@@ -192,7 +191,7 @@ describe("cli", () => {
     const pluginDir = path.join(sampleDir, "plugin-dir");
     const outputDir = path.join("test", ".output");
     const outputPluginPath = path.join(outputDir, "foo.zip");
-    const packer = sinon.stub().returns({
+    const packer = jest.fn().mockReturnValue({
       id: ID,
       privateKey: PRIVATE_KEY,
       plugin: PLUGIN_BUFFER,

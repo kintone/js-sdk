@@ -1,7 +1,5 @@
 "use strict";
 
-const sinon = require("sinon");
-
 const {
   UPLOAD_PPK,
   UPLOAD_PPK_START,
@@ -22,7 +20,7 @@ const {
 describe("action", () => {
   let dispatch;
   beforeEach(() => {
-    dispatch = sinon.spy();
+    dispatch = jest.fn();
   });
   afterEach(() => {});
   describe("uploadFailure", () => {
@@ -38,8 +36,9 @@ describe("action", () => {
     it("should dispatch UPLOAD_PPK_START action", () => {
       const promise = Promise.resolve("value");
       uploadPPK("hoge.ppk", () => promise)(dispatch);
-      expect(dispatch.calledOnce).toBe(true);
-      expect(dispatch.getCall(0).args).toStrictEqual([
+      expect(dispatch.mock.calls.length).toBe(1);
+      // https://github.com/facebook/jest/issues/7929
+      expect([...dispatch.mock.calls[0]]).toStrictEqual([
         { type: UPLOAD_PPK_START },
       ]);
     });
@@ -47,8 +46,8 @@ describe("action", () => {
       const promise = Promise.resolve("value");
       uploadPPK("hoge.ppk", () => promise)(dispatch);
       return promise.then(() => {
-        expect(dispatch.callCount).toBe(2);
-        expect(dispatch.getCall(1).args).toStrictEqual([
+        expect(dispatch.mock.calls.length).toBe(2);
+        expect([...dispatch.mock.calls[1]]).toStrictEqual([
           {
             type: UPLOAD_PPK,
             payload: {
@@ -62,8 +61,8 @@ describe("action", () => {
     it("should dispatch UPLOAD_FAILURE action if fileReader was failure", (done) => {
       uploadPPK("hoge.ppk", () => Promise.reject("ng"))(dispatch);
       setTimeout(() => {
-        expect(dispatch.callCount).toBe(2);
-        expect(dispatch.getCall(1).args).toStrictEqual([
+        expect(dispatch.mock.calls.length).toBe(2);
+        expect([...dispatch.mock.calls[1]]).toStrictEqual([
           {
             type: UPLOAD_FAILURE,
             payload: "ng",
@@ -80,13 +79,13 @@ describe("action", () => {
         () => Promise.resolve("ok"),
         () => Promise.resolve()
       )(dispatch);
-      expect(dispatch.calledOnce).toBe(true);
-      expect(dispatch.getCall(0).args).toStrictEqual([
+      expect(dispatch.mock.calls.length).toBe(1);
+      expect([...dispatch.mock.calls[0]]).toStrictEqual([
         { type: UPLOAD_PLUGIN_START },
       ]);
     });
     it("should dispatch UPLOAD_PLUGIN action if validateManifest was success", (done) => {
-      const validateManifestStub = sinon.stub().returns(Promise.resolve());
+      const validateManifestStub = jest.fn().mockResolvedValue();
       uploadPlugin(
         "hoge.zip",
         () => Promise.resolve("ok"),
@@ -94,9 +93,9 @@ describe("action", () => {
       )(dispatch);
       // In order to guarantee to execute assertion after uploadPlugin has finished
       setTimeout(() => {
-        expect(dispatch.callCount).toBe(2);
-        expect(validateManifestStub.getCall(0).args[0]).toBe("ok");
-        expect(dispatch.getCall(1).args).toStrictEqual([
+        expect(dispatch.mock.calls.length).toBe(2);
+        expect(validateManifestStub.mock.calls[0][0]).toBe("ok");
+        expect([...dispatch.mock.calls[1]]).toStrictEqual([
           {
             type: UPLOAD_PLUGIN,
             payload: {
@@ -109,9 +108,7 @@ describe("action", () => {
       });
     });
     it("should dispatch UPLOAD_FAILURE action if validateManifest was failure", (done) => {
-      const validateManifestStub = sinon
-        .stub()
-        .returns(Promise.reject("error"));
+      const validateManifestStub = jest.fn().mockRejectedValue("error");
       uploadPlugin(
         "hoge.zip",
         () => Promise.resolve("ng"),
@@ -119,9 +116,9 @@ describe("action", () => {
       )(dispatch);
       // In order to guarantee to execute assertion after uploadPlugin has finished
       setTimeout(() => {
-        expect(dispatch.callCount).toBe(2);
-        expect(validateManifestStub.getCall(0).args[0]).toBe("ng");
-        expect(dispatch.getCall(1).args).toStrictEqual([
+        expect(dispatch.mock.calls.length).toBe(2);
+        expect(validateManifestStub.mock.calls[0][0]).toBe("ng");
+        expect([...dispatch.mock.calls[1]]).toStrictEqual([
           {
             type: UPLOAD_FAILURE,
             payload: "error",
@@ -138,7 +135,7 @@ describe("action", () => {
         ppk: {},
       });
       createPluginZip(() => Promise.resolve)(dispatch, getState);
-      expect(dispatch.getCall(0).args).toStrictEqual([
+      expect([...dispatch.mock.calls[0]]).toStrictEqual([
         { type: CREATE_PLUGIN_ZIP_START },
       ]);
     });
@@ -150,8 +147,8 @@ describe("action", () => {
     });
     createPluginZip(() => Promise.resolve({ foo: "bar" }))(dispatch, getState);
     setTimeout(() => {
-      expect(dispatch.callCount).toBe(2);
-      expect(dispatch.getCall(1).args).toStrictEqual([
+      expect(dispatch.mock.calls.length).toBe(2);
+      expect([...dispatch.mock.calls[1]]).toStrictEqual([
         {
           type: CREATE_PLUGIN_ZIP,
           payload: {
@@ -169,8 +166,8 @@ describe("action", () => {
     });
     createPluginZip(() => Promise.reject("error"))(dispatch, getState);
     setTimeout(() => {
-      expect(dispatch.callCount).toBe(2);
-      expect(dispatch.getCall(1).args).toStrictEqual([
+      expect(dispatch.mock.calls.length).toBe(2);
+      expect([...dispatch.mock.calls[1]]).toStrictEqual([
         {
           type: CREATE_PLUGIN_ZIP_FAILURE,
           payload: "error",
