@@ -1,6 +1,5 @@
 "use strict";
 
-const assert = require("assert");
 const path = require("path");
 const fs = require("fs");
 
@@ -17,8 +16,8 @@ describe("create-contents-zip", () => {
     const manifest = JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8"));
     createContentsZip(pluginDir, manifest).then((buffer) => {
       readZipContentsNames(buffer).then((files) => {
-        assert.deepStrictEqual(files, ["manifest.json", "image/icon.png"]);
-        assert(buffer instanceof Buffer);
+        expect(files).toStrictEqual(["manifest.json", "image/icon.png"]);
+        expect(buffer).toBeInstanceOf(Buffer);
         done();
       });
     });

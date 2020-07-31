@@ -1,6 +1,5 @@
 "use strict";
 
-const assert = require("assert");
 const crypto = require("crypto");
 const path = require("path");
 const fs = require("fs");
@@ -21,7 +20,7 @@ const invalidMaxFileSizeContentsZipPath = path.join(
 
 describe("packer", () => {
   it("is a function", () => {
-    assert(typeof packer === "function");
+    expect(typeof packer).toBe("function");
   });
 
   describe("without privateKey", () => {
@@ -34,19 +33,20 @@ describe("packer", () => {
     });
 
     it("the id is generated", () => {
-      assert(typeof output.id === "string");
-      assert(output.id.length === 32);
+      expect(typeof output.id).toBe("string");
+      expect(output.id.length).toBe(32);
     });
 
     it("the privateKey is generated", () => {
-      assert(typeof output.privateKey === "string");
-      assert(/^-----BEGIN RSA PRIVATE KEY-----/.test(output.privateKey));
+      expect(typeof output.privateKey).toBe("string");
+      expect(/^-----BEGIN RSA PRIVATE KEY-----/.test(output.privateKey)).toBe(
+        true
+      );
     });
 
     it("the zip contains 3 files", (done) => {
       readZipContentsNames(output.plugin).then((files) => {
-        assert.deepStrictEqual(
-          files.sort(),
+        expect(files.sort()).toStrictEqual(
           ["contents.zip", "PUBKEY", "SIGNATURE"].sort()
         );
         done();
@@ -70,11 +70,11 @@ describe("packer", () => {
     });
 
     it("the id is expected", () => {
-      assert(output.id === "ldmhlgpmfpfhpgimbjlblmfkmcnbjnnj");
+      expect(output.id).toBe("ldmhlgpmfpfhpgimbjlblmfkmcnbjnnj");
     });
 
     it("the privateKey is same", () => {
-      assert(output.privateKey === privateKey);
+      expect(output.privateKey).toBe(privateKey);
     });
 
     it("the zip passes signature verification", () => {
@@ -86,9 +86,9 @@ describe("packer", () => {
     it("throws an error if the contents.zip is invalid", (done) => {
       const contentsZip = fs.readFileSync(invalidMaxFileSizeContentsZipPath);
       packer(contentsZip).catch((error) => {
-        assert(
-          error.message.indexOf('".icon" file size should be <= 20MB') !== -1
-        );
+        expect(
+          error.message.indexOf('".icon" file size should be <= 20MB')
+        ).not.toBe(-1);
         done();
       });
     });
@@ -133,7 +133,7 @@ function verifyPlugin(plugin) {
         verifier.update(zipContentsMap.get("contents.zip"));
         const publicKey = zipContentsMap.get("PUBKEY");
         const signature = zipContentsMap.get("SIGNATURE");
-        assert(verifier.verify(derToPem(publicKey), signature));
+        expect(verifier.verify(derToPem(publicKey), signature)).toBe(true);
         resolve();
       });
     });

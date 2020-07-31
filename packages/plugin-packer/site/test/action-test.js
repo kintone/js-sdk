@@ -1,6 +1,5 @@
 "use strict";
 
-const assert = require("assert");
 const sinon = require("sinon");
 
 const {
@@ -29,7 +28,7 @@ describe("action", () => {
   describe("uploadFailure", () => {
     it("should dispatch an UPLOAD_FAILURE action with an error", () => {
       const error = { message: "error" };
-      assert.deepStrictEqual(uploadFailure(error), {
+      expect(uploadFailure(error)).toStrictEqual({
         type: UPLOAD_FAILURE,
         payload: error,
       });
@@ -39,8 +38,8 @@ describe("action", () => {
     it("should dispatch UPLOAD_PPK_START action", () => {
       const promise = Promise.resolve("value");
       uploadPPK("hoge.ppk", () => promise)(dispatch);
-      assert(dispatch.calledOnce);
-      assert.deepStrictEqual(dispatch.getCall(0).args, [
+      expect(dispatch.calledOnce).toBe(true);
+      expect(dispatch.getCall(0).args).toStrictEqual([
         { type: UPLOAD_PPK_START },
       ]);
     });
@@ -48,8 +47,8 @@ describe("action", () => {
       const promise = Promise.resolve("value");
       uploadPPK("hoge.ppk", () => promise)(dispatch);
       return promise.then(() => {
-        assert.equal(dispatch.callCount, 2);
-        assert.deepStrictEqual(dispatch.getCall(1).args, [
+        expect(dispatch.callCount).toBe(2);
+        expect(dispatch.getCall(1).args).toStrictEqual([
           {
             type: UPLOAD_PPK,
             payload: {
@@ -63,8 +62,8 @@ describe("action", () => {
     it("should dispatch UPLOAD_FAILURE action if fileReader was failure", (done) => {
       uploadPPK("hoge.ppk", () => Promise.reject("ng"))(dispatch);
       setTimeout(() => {
-        assert.equal(dispatch.callCount, 2);
-        assert.deepStrictEqual(dispatch.getCall(1).args, [
+        expect(dispatch.callCount).toBe(2);
+        expect(dispatch.getCall(1).args).toStrictEqual([
           {
             type: UPLOAD_FAILURE,
             payload: "ng",
@@ -81,8 +80,8 @@ describe("action", () => {
         () => Promise.resolve("ok"),
         () => Promise.resolve()
       )(dispatch);
-      assert(dispatch.calledOnce);
-      assert.deepStrictEqual(dispatch.getCall(0).args, [
+      expect(dispatch.calledOnce).toBe(true);
+      expect(dispatch.getCall(0).args).toStrictEqual([
         { type: UPLOAD_PLUGIN_START },
       ]);
     });
@@ -95,9 +94,9 @@ describe("action", () => {
       )(dispatch);
       // In order to guarantee to execute assertion after uploadPlugin has finished
       setTimeout(() => {
-        assert.equal(dispatch.callCount, 2);
-        assert.equal(validateManifestStub.getCall(0).args[0], "ok");
-        assert.deepStrictEqual(dispatch.getCall(1).args, [
+        expect(dispatch.callCount).toBe(2);
+        expect(validateManifestStub.getCall(0).args[0]).toBe("ok");
+        expect(dispatch.getCall(1).args).toStrictEqual([
           {
             type: UPLOAD_PLUGIN,
             payload: {
@@ -120,9 +119,9 @@ describe("action", () => {
       )(dispatch);
       // In order to guarantee to execute assertion after uploadPlugin has finished
       setTimeout(() => {
-        assert.equal(dispatch.callCount, 2);
-        assert.equal(validateManifestStub.getCall(0).args[0], "ng");
-        assert.deepStrictEqual(dispatch.getCall(1).args, [
+        expect(dispatch.callCount).toBe(2);
+        expect(validateManifestStub.getCall(0).args[0]).toBe("ng");
+        expect(dispatch.getCall(1).args).toStrictEqual([
           {
             type: UPLOAD_FAILURE,
             payload: "error",
@@ -139,7 +138,7 @@ describe("action", () => {
         ppk: {},
       });
       createPluginZip(() => Promise.resolve)(dispatch, getState);
-      assert.deepStrictEqual(dispatch.getCall(0).args, [
+      expect(dispatch.getCall(0).args).toStrictEqual([
         { type: CREATE_PLUGIN_ZIP_START },
       ]);
     });
@@ -151,8 +150,8 @@ describe("action", () => {
     });
     createPluginZip(() => Promise.resolve({ foo: "bar" }))(dispatch, getState);
     setTimeout(() => {
-      assert.equal(dispatch.callCount, 2);
-      assert.deepStrictEqual(dispatch.getCall(1).args, [
+      expect(dispatch.callCount).toBe(2);
+      expect(dispatch.getCall(1).args).toStrictEqual([
         {
           type: CREATE_PLUGIN_ZIP,
           payload: {
@@ -170,8 +169,8 @@ describe("action", () => {
     });
     createPluginZip(() => Promise.reject("error"))(dispatch, getState);
     setTimeout(() => {
-      assert.equal(dispatch.callCount, 2);
-      assert.deepStrictEqual(dispatch.getCall(1).args, [
+      expect(dispatch.callCount).toBe(2);
+      expect(dispatch.getCall(1).args).toStrictEqual([
         {
           type: CREATE_PLUGIN_ZIP_FAILURE,
           payload: "error",
@@ -182,7 +181,7 @@ describe("action", () => {
   });
   describe("reset", () => {
     it("should dispatch RESET action", () => {
-      assert.deepStrictEqual(reset(), {
+      expect(reset()).toStrictEqual({
         type: RESET,
       });
     });

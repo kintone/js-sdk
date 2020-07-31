@@ -1,6 +1,5 @@
 "use strict";
 
-const assert = require("assert");
 const path = require("path");
 const fs = require("fs");
 
@@ -25,11 +24,11 @@ describe("pack-plugin-from-manifest", () => {
         packer(buffer, privateKey)
       ),
     ]).then(([result1, result2]) => {
-      assert(result1.id === result2.id);
-      assert(result1.plugin.length === result2.plugin.length);
-      assert(result1.privateKey === result2.privateKey);
+      expect(result1.id).toBe(result2.id);
+      expect(result1.plugin.length).toBe(result2.plugin.length);
+      expect(result1.privateKey).toBe(result2.privateKey);
       readZipContentsNames(result1.plugin).then((files) => {
-        assert.deepStrictEqual(files, ["contents.zip", "PUBKEY", "SIGNATURE"]);
+        expect(files).toStrictEqual(["contents.zip", "PUBKEY", "SIGNATURE"]);
         done();
       });
     });

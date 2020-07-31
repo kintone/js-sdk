@@ -1,6 +1,5 @@
 "use strict";
 
-const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 const denodeify = require("denodeify");
@@ -35,7 +34,7 @@ describe("cli", () => {
   });
 
   it("is a function", () => {
-    assert(typeof cli === "function");
+    expect(typeof cli).toBe("function");
   });
 
   describe("validation", () => {
@@ -52,7 +51,7 @@ describe("cli", () => {
       cli(path.join(fixturesDir, "plugin-invalid-url"), {
         packerMock_: packer,
       }).catch((error) => {
-        assert(/Invalid manifest.json/.test(error.message));
+        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
         done();
       });
     });
@@ -61,7 +60,7 @@ describe("cli", () => {
       cli(path.join(fixturesDir, "plugin-invalid-https-url"), {
         packerMock_: packer,
       }).catch((error) => {
-        assert(/Invalid manifest.json/.test(error.message));
+        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
         done();
       });
     });
@@ -70,7 +69,7 @@ describe("cli", () => {
       cli(path.join(fixturesDir, "plugin-invalid-relative-path"), {
         packerMock_: packer,
       }).catch((error) => {
-        assert(/Invalid manifest.json/.test(error.message));
+        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
         done();
       });
     });
@@ -79,7 +78,7 @@ describe("cli", () => {
       cli(path.join(fixturesDir, "plugin-invalid-maxFileSize"), {
         packerMock_: packer,
       }).catch((error) => {
-        assert(/Invalid manifest.json/.test(error.message));
+        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
         done();
       });
     });
@@ -104,11 +103,10 @@ describe("cli", () => {
     });
 
     it("calles `packer` with contents.zip as the 1st argument", (done) => {
-      assert(packer.calledOnce);
-      assert(packer.args[0][0]);
+      expect(packer.calledOnce).toBe(true);
+      expect(packer.args[0][0]).toBeTruthy();
       readZipContentsNames(packer.args[0][0]).then((files) => {
-        assert.deepStrictEqual(
-          files.sort(),
+        expect(files.sort()).toStrictEqual(
           ["image/icon.png", "manifest.json"].sort()
         );
         done();
@@ -116,8 +114,8 @@ describe("cli", () => {
     });
 
     it("calles `packer` with privateKey as the 2nd argument", () => {
-      assert(packer.calledOnce);
-      assert(packer.args[0][1] === undefined);
+      expect(packer.calledOnce).toBe(true);
+      expect(packer.args[0][1]).toBe(undefined);
     });
 
     it("generates a private key file", () => {
@@ -125,12 +123,12 @@ describe("cli", () => {
         path.join(sampleDir, `${ID}.ppk`),
         "utf8"
       );
-      assert(privateKey === PRIVATE_KEY);
+      expect(privateKey).toBe(PRIVATE_KEY);
     });
 
     it("generates a plugin file", () => {
       const pluginBuffer = fs.readFileSync(resultPluginPath);
-      assert(PLUGIN_BUFFER.equals(pluginBuffer));
+      expect(PLUGIN_BUFFER.equals(pluginBuffer)).toBe(true);
     });
   });
 
@@ -150,14 +148,14 @@ describe("cli", () => {
     });
 
     it("calles `packer` with privateKey as the 2nd argument", () => {
-      assert(packer.calledOnce);
+      expect(packer.calledOnce).toBe(true);
       const ppkFile = fs.readFileSync(ppkPath, "utf8");
-      assert(packer.args[0][1] === ppkFile);
+      expect(packer.args[0][1]).toBe(ppkFile);
     });
 
     it("does not generate a private key file", () => {
       const ppkFiles = glob.sync(`${sampleDir}/*.ppk`);
-      assert.deepStrictEqual(ppkFiles, []);
+      expect(ppkFiles).toStrictEqual([]);
     });
   });
 
@@ -173,8 +171,7 @@ describe("cli", () => {
       .then(() => cli(pluginDir, { packerMock_: packer }))
       .then(() => {
         return readZipContentsNames(packer.args[0][0]).then((files) => {
-          assert.deepStrictEqual(
-            files.sort(),
+          expect(files.sort()).toStrictEqual(
             [
               "css/config.css",
               "css/desktop.css",
@@ -206,11 +203,11 @@ describe("cli", () => {
         cli(pluginDir, { packerMock_: packer, out: outputPluginPath })
       )
       .then((resultPluginPath) => {
-        assert.strictEqual(resultPluginPath, outputPluginPath);
+        expect(resultPluginPath).toBe(outputPluginPath);
         const pluginBuffer = fs.readFileSync(outputPluginPath);
-        assert(PLUGIN_BUFFER.equals(pluginBuffer));
+        expect(PLUGIN_BUFFER.equals(pluginBuffer)).toBe(true);
         const ppk = fs.readFileSync(path.join(outputDir, `${ID}.ppk`));
-        assert.strictEqual(PRIVATE_KEY, ppk.toString());
+        expect(PRIVATE_KEY).toBe(ppk.toString());
       });
   });
 });

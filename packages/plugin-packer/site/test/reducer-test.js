@@ -1,7 +1,5 @@
 "use strict";
 
-const assert = require("assert");
-
 const {
   reducer,
   getDownloadPluginZipName,
@@ -47,8 +45,7 @@ describe("reducer", () => {
   });
   describe("initial state", () => {
     it("should be initialized all values", () => {
-      assert.deepStrictEqual(
-        reducer(undefined, { type: "INIT_TEST" }),
+      expect(reducer(undefined, { type: "INIT_TEST" })).toStrictEqual(
         expectedInitialState
       );
     });
@@ -69,7 +66,7 @@ describe("reducer", () => {
         },
         error: "hoge",
       };
-      assert.deepStrictEqual(reducer(state, { type: UPLOAD_PPK_START }), {
+      expect(reducer(state, { type: UPLOAD_PPK_START })).toStrictEqual({
         contents: {
           data: "hoge",
           name: "bar",
@@ -95,12 +92,9 @@ describe("reducer", () => {
         ppk: null,
       };
       const ppk = { data: [], name: "hgoe.ppk" };
-      assert.deepStrictEqual(
-        reducer(state, { type: UPLOAD_PPK, payload: ppk }),
-        {
-          ppk,
-        }
-      );
+      expect(reducer(state, { type: UPLOAD_PPK, payload: ppk })).toStrictEqual({
+        ppk,
+      });
     });
   });
   describe("UPLOAD_PLUGIN_START", () => {
@@ -119,7 +113,7 @@ describe("reducer", () => {
         },
         error: "hoge",
       };
-      assert.deepStrictEqual(reducer(state, { type: UPLOAD_PLUGIN_START }), {
+      expect(reducer(state, { type: UPLOAD_PLUGIN_START })).toStrictEqual({
         contents: {
           data: null,
           name: null,
@@ -145,12 +139,11 @@ describe("reducer", () => {
         contents: null,
       };
       const contents = { data: [], name: "hoge.zip" };
-      assert.deepStrictEqual(
-        reducer(state, { type: UPLOAD_PLUGIN, payload: contents }),
-        {
-          contents,
-        }
-      );
+      expect(
+        reducer(state, { type: UPLOAD_PLUGIN, payload: contents })
+      ).toStrictEqual({
+        contents,
+      });
     });
   });
   describe("CREATE_PLUGIN_ZIP_START", () => {
@@ -168,16 +161,13 @@ describe("reducer", () => {
         error: "error",
         loading: false,
       };
-      assert.deepStrictEqual(
-        reducer(state, { type: CREATE_PLUGIN_ZIP_START }),
-        {
-          contents: "contents",
-          ppk: "ppk",
-          plugin: expectedInitialState.plugin,
-          error: null,
-          loading: true,
-        }
-      );
+      expect(reducer(state, { type: CREATE_PLUGIN_ZIP_START })).toStrictEqual({
+        contents: "contents",
+        ppk: "ppk",
+        plugin: expectedInitialState.plugin,
+        error: null,
+        loading: true,
+      });
     });
   });
   describe("CREATE_PLUGIN_ZIP", () => {
@@ -205,14 +195,14 @@ describe("reducer", () => {
         },
       };
       const newState = reducer(state, action);
-      assert.deepStrictEqual(newState.ppk, {
+      expect(newState.ppk).toStrictEqual({
         data: "secret",
         name: "abcd.ppk",
       });
-      assert.equal(newState.plugin.id, "abcd");
-      assert.ok(newState.plugin.url.contents instanceof Blob);
-      assert.ok(newState.plugin.url.ppk instanceof Blob);
-      assert.equal(newState.loading, false);
+      expect(newState.plugin.id).toBe("abcd");
+      expect(newState.plugin.url.contents).toBeInstanceOf(Blob);
+      expect(newState.plugin.url.ppk).toBeInstanceOf(Blob);
+      expect(newState.loading).toBe(false);
     });
   });
   describe("UPLOAD_FAILURE and CREATE_PLUGIN_ZIP_FAILURE", () => {
@@ -221,34 +211,31 @@ describe("reducer", () => {
         error: null,
         loading: true,
       };
-      assert.deepStrictEqual(
-        reducer(state, { type: UPLOAD_FAILURE, payload: "error" }),
-        {
-          error: "error",
-          loading: false,
-        }
-      );
-      assert.deepStrictEqual(
-        reducer(state, { type: CREATE_PLUGIN_ZIP_FAILURE, payload: "error" }),
-        {
-          error: "error",
-          loading: false,
-        }
-      );
+      expect(
+        reducer(state, { type: UPLOAD_FAILURE, payload: "error" })
+      ).toStrictEqual({
+        error: "error",
+        loading: false,
+      });
+      expect(
+        reducer(state, { type: CREATE_PLUGIN_ZIP_FAILURE, payload: "error" })
+      ).toStrictEqual({
+        error: "error",
+        loading: false,
+      });
     });
   });
   describe("RESET", () => {
     it("should reset all values", () => {
       const state = "dirty";
-      assert.deepStrictEqual(
-        reducer(state, { type: RESET }),
+      expect(reducer(state, { type: RESET })).toStrictEqual(
         expectedInitialState
       );
     });
   });
   describe("getDownloadPluginZipName", () => {
     it("should return a filename to download a plugin zip", () => {
-      assert.equal(
+      expect(
         getDownloadPluginZipName({
           contents: {
             name: "awesome-plugin.zip",
@@ -256,14 +243,13 @@ describe("reducer", () => {
           plugin: {
             id: "abcd",
           },
-        }),
-        "awesome-plugin.abcd.plugin.zip"
-      );
+        })
+      ).toBe("awesome-plugin.abcd.plugin.zip");
     });
   });
   describe("getDownloadPPKFileName", () => {
     it("should return a filename to download a private key", () => {
-      assert.equal(
+      expect(
         getDownloadPPKFileName({
           contents: {
             name: "awesome-plugin.zip",
@@ -274,9 +260,8 @@ describe("reducer", () => {
           plugin: {
             id: "abcd",
           },
-        }),
-        "awesome-plugin.abcd.private.ppk"
-      );
+        })
+      ).toBe("awesome-plugin.abcd.private.ppk");
     });
   });
 });

@@ -1,6 +1,5 @@
 "use strict";
 
-const assert = require("assert");
 const sourcelist = require("../src/sourcelist");
 
 describe("sourcelist", () => {
@@ -23,7 +22,7 @@ describe("sourcelist", () => {
     };
   });
   it("should return a file list including the manifest", () => {
-    assert.deepStrictEqual(sourcelist(manifest), [
+    expect(sourcelist(manifest)).toStrictEqual([
       "js/desktop.js",
       "js/lib.js",
       "css/desktop.css",
@@ -44,7 +43,7 @@ describe("sourcelist", () => {
     manifest.config.css.push("https://example.com/foo.css");
     // This file should be added the list.
     manifest.desktop.js.push("js/external.js");
-    assert.deepStrictEqual(sourcelist(manifest), [
+    expect(sourcelist(manifest)).toStrictEqual([
       "js/desktop.js",
       "js/lib.js",
       "js/external.js",
@@ -66,7 +65,7 @@ describe("sourcelist", () => {
     manifest.config.css.push("css/config.css");
     // This file should be added the list.
     manifest.desktop.js.push("js/external.js");
-    assert.deepStrictEqual(sourcelist(manifest), [
+    expect(sourcelist(manifest)).toStrictEqual([
       "js/desktop.js",
       "js/lib.js",
       "js/external.js",

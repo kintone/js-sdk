@@ -1,37 +1,36 @@
 "use strict";
 
-const assert = require("assert");
 const hex2a = require("../src/hex2a");
 
 describe("hex2a", () => {
   it("empty string", () => {
-    assert(hex2a("") === "");
+    expect(hex2a("")).toBe("");
   });
 
   it("number", () => {
-    assert(hex2a("0") === "a");
-    assert(hex2a("1") === "b");
-    assert(hex2a("9") === "j");
+    expect(hex2a("0")).toBe("a");
+    expect(hex2a("1")).toBe("b");
+    expect(hex2a("9")).toBe("j");
   });
 
   it("alphabet", () => {
-    assert(hex2a("a") === "k");
-    assert(hex2a("b") === "l");
-    assert(hex2a("f") === "p");
+    expect(hex2a("a")).toBe("k");
+    expect(hex2a("b")).toBe("l");
+    expect(hex2a("f")).toBe("p");
   });
 
   it("string", () => {
-    assert(hex2a("012abc") === "abcklm");
+    expect(hex2a("012abc")).toBe("abcklm");
   });
 
   it("throws for out of range", () => {
-    assert.throws(() => hex2a("/"));
-    assert.throws(() => hex2a(":"));
-    assert.throws(() => hex2a("`"));
-    assert.throws(() => hex2a("g"));
+    expect(() => hex2a("/")).toThrow();
+    expect(() => hex2a(":")).toThrow();
+    expect(() => hex2a("`")).toThrow();
+    expect(() => hex2a("g")).toThrow();
   });
 
   it("upper case is out of range", () => {
-    assert.throws(() => hex2a("A"));
+    expect(() => hex2a("A")).toThrow();
   });
 });
