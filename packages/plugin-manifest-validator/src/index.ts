@@ -40,8 +40,13 @@ export default function (json: Object, options: {[s: string]: (...args: any) => 
 
   // Using draft-04 schemas
   // https://github.com/epoberezkin/ajv/releases/tag/5.0.0
-  ajv.addMetaSchema(v4metaSchema);
-  // ajv._opts.defaultMeta = v4metaSchema.id;
+  const fixedMetaShema = {
+    ...v4metaSchema,
+    $id: v4metaSchema.id,
+  }
+  ajv.addMetaSchema(fixedMetaShema);
+  // @ts-expect-error disable
+  ajv._opts.defaultMeta = v4metaSchema.id;
   ajv.removeKeyword("propertyNames");
   ajv.removeKeyword("contains");
   ajv.removeKeyword("const");
@@ -51,23 +56,23 @@ export default function (json: Object, options: {[s: string]: (...args: any) => 
 
   let validateMaxFileSize: Ajv.SchemaValidateFunction = (schema: string, data: string) => {
     // schema: max file size like "512KB" or 123 (in bytes)
-      // data: path to the file
-      const maxBytes = bytes.parse(schema);
-      const valid = maxFileSize(maxBytes, data);
-      if (!valid) {
-        validateMaxFileSize.errors = [
-          {
-            keyword: "maxFileSize",
-            dataPath: '',
-            schemaPath: '',
-            params: {
-              limit: maxBytes,
-            },
-            message: `file size should be <= ${schema}`,
+    // data: path to the file
+    const maxBytes = bytes.parse(schema);
+    const valid = maxFileSize(maxBytes, data);
+    if (!valid) {
+      validateMaxFileSize.errors = [
+        {
+          keyword: "maxFileSize",
+          dataPath: '',
+          schemaPath: '',
+          params: {
+            limit: maxBytes,
           },
-        ];
-      }
-      return valid;
+          message: `file size should be <= ${schema}`,
+        },
+      ];
+    }
+    return valid;
   }
 
   ajv.addKeyword("maxFileSize", {
