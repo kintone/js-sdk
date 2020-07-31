@@ -13,7 +13,7 @@ import validateUrl from "./validate-https-url";
  */
 type ValidateResult = {
   valid: boolean | PromiseLike<any>,
-  errors: null | Array<Object>,
+  errors: null | Array<Ajv.ErrorObject>,
 }
 
 export default function (json: Object, options: {[s: string]: (...args: any) => boolean} = {}): ValidateResult {
@@ -45,7 +45,7 @@ export default function (json: Object, options: {[s: string]: (...args: any) => 
     $id: v4metaSchema.id,
   }
   ajv.addMetaSchema(fixedMetaShema);
-  // @ts-expect-error disable
+  // @ts-expect-error TODO: capture ajv-validator/ajv issue(https://github.com/ajv-validator/ajv/issues/1253)
   ajv._opts.defaultMeta = v4metaSchema.id;
   ajv.removeKeyword("propertyNames");
   ajv.removeKeyword("contains");
@@ -61,10 +61,9 @@ export default function (json: Object, options: {[s: string]: (...args: any) => 
     const valid = maxFileSize(maxBytes, data);
     if (!valid) {
       validateMaxFileSize.errors = [
+        // @ts-expect-error TODO: need refact to not procedural code.
         {
           keyword: "maxFileSize",
-          dataPath: '',
-          schemaPath: '',
           params: {
             limit: maxBytes,
           },
@@ -96,7 +95,7 @@ type ValidateError = {
  * @param {null|Array<Object>} errors
  * @return {null|Array<Object>} shallow copy of the input or null
  */
-function transformErrors(errors: undefined | null | Array<Ajv.ErrorObject>): null | Array<Object> {
+function transformErrors(errors: undefined | null | Array<Ajv.ErrorObject>): null | Array<Ajv.ErrorObject> {
   if (!errors) {
     return null;
   }

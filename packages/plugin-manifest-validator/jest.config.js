@@ -1,4 +1,6 @@
 module.exports = {
-  testRegex: "/test/.*\\.js$",
+  clearMocks: true,
+  rootDir: "src",
+  testPathIgnorePatterns: ["node_modules"],
   testEnvironment: "node",
 };

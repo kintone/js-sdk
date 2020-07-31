@@ -13,21 +13,28 @@
     "src"
   ],
   "scripts": {
-    "build": "tsc",
-    "gen-dts": "node script/generate-dts.js",
-    "lint": "eslint index.js src test script",
+    "start": "tsc -w",
+    "build": "yarn clean && tsc",
+    "gen-dts": "yarn build && node dist/script/generate-dts.js",
     "prerelease": "run-p lint test",
     "test": "run-p test:js test:dts",
     "test:js": "jest",
-    "test:dts": "tsc -p test/tsconfig.json",
-    "test:ci": "npm run test"
+    "test:dts": "tsc -p tsconfig.json",
+    "test:ci": "yarn test",
+    "lint": "run-p lint:*",
+    "lint:tsc": "tsc --noEmit",
+    "lint:eslint": "eslint --ext .ts src",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "@types/bytes": "^3.1.0",
     "ajv": "^6.12.3",
-    "bytes": "^3.1.0"
+    "bytes": "^3.1.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.10.4",
     "intelli-espower-loader": "^1.0.1",
     "json-schema-to-typescript": "^9.1.1",
     "power-assert": "^1.6.1"

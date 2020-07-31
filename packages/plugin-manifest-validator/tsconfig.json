@@ -68,6 +68,6 @@
     "resolveJsonModule": true
   },
   "exclude": [
-    "./test/**/*.ts"
+    "./src/__tests__/*.ts"
   ]
 }
