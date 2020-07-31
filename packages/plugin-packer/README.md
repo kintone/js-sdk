@@ -3,18 +3,13 @@ kintone-plugin-packer
 
 [kintone plugin package.sh](https://github.com/kintone/plugin-sdk) in JavaScript
 
-[![npm version][npm-image]][npm-url]
-![Node.js Version Support][node-version]
-[![build status][circleci-image]][circleci-url]
-[![build status][travisci-image]][travisci-url]
-[![dependency status][deps-image]][deps-url]
-![License][license]
+[![npm version](https://badge.fury.io/js/%40kintone%plugin-packer.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-packer)
 
 It's written in pure JavaScript, so
 
 - The CLI works with Node.js in Mac/Windows/Linux
 - [The web page](https://kintone.github.io/plugin-packer/) works in any modern browsers
-- Validate your `manifest.json` with [JSON Schema](https://github.com/teppeis/kintone-plugin-manifest-validator)
+- Validate your `manifest.json` with [JSON Schema](https://github.com/kintone/js-sdk/tree/master/packages/plugin-manifest-validator)
 
 # How to install
 
@@ -70,13 +65,3 @@ packer(buffer).then(output => {
 
 MIT License
 
-[npm-image]: https://img.shields.io/npm/v/@kintone/plugin-packer.svg
-[npm-url]: https://npmjs.org/package/@kintone/plugin-packer
-[circleci-image]: https://circleci.com/gh/kintone/plugin-packer.svg?style=shield
-[circleci-url]: https://circleci.com/gh/kintone/plugin-packer
-[travisci-image]: https://travis-ci.org/kintone/plugin-packer.svg?branch=master
-[travisci-url]: https://travis-ci.org/kintone/plugin-packer
-[deps-image]: https://img.shields.io/david/kintone/plugin-packer.svg
-[deps-url]: https://david-dm.org/kintone/plugin-packer
-[node-version]: https://img.shields.io/badge/Node.js%20support-v6,v8,v10-brightgreen.svg
-[license]: https://img.shields.io/npm/l/@kintone/plugin-packer.svg

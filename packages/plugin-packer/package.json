@@ -62,17 +62,13 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
-  "homepage": "https://github.com/kintone/plugin-packer",
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-packer",
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/kintone/plugin-packer.git"
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/plugin-packer"
   },
-  "bugs": "https://github.com/kintone/plugin-packer/issues",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test && npm run site && git add docs"
-    }
-  },
+  "bugs": "https://github.com/kintone/js-sdk/issues",
   "keywords": [
     "kintone"
   ],
