@@ -62,7 +62,7 @@
     "@types/js-base64": "^2.3.2",
     "@types/qs": "^6.9.4",
     "ts-loader": "^8.0.1",
-    "webpack": "^4.44.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
