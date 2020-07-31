@@ -12,11 +12,14 @@ import validateUrl from "./validate-https-url";
  * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
  */
 type ValidateResult = {
-  valid: boolean | PromiseLike<any>,
-  errors: null | Array<Ajv.ErrorObject>,
-}
+  valid: boolean | PromiseLike<any>;
+  errors: null | Ajv.ErrorObject[];
+};
 
-export default function (json: Object, options: {[s: string]: (...args: any) => boolean} = {}): ValidateResult {
+export default function (
+  json: Record<string, any>,
+  options: { [s: string]: (...args: any) => boolean } = {}
+): ValidateResult {
   let relativePath = (...args: any) => true;
   let maxFileSize = (...args: any) => true;
   if (typeof options.relativePath === "function") {
@@ -43,7 +46,7 @@ export default function (json: Object, options: {[s: string]: (...args: any) => 
   const fixedMetaShema = {
     ...v4metaSchema,
     $id: v4metaSchema.id,
-  }
+  };
   ajv.addMetaSchema(fixedMetaShema);
   // @ts-expect-error TODO: capture ajv-validator/ajv issue(https://github.com/ajv-validator/ajv/issues/1253)
   ajv._opts.defaultMeta = v4metaSchema.id;
@@ -54,7 +57,10 @@ export default function (json: Object, options: {[s: string]: (...args: any) => 
   ajv.removeKeyword("then");
   ajv.removeKeyword("else");
 
-  let validateMaxFileSize: Ajv.SchemaValidateFunction = (schema: string, data: string) => {
+  const validateMaxFileSize: Ajv.SchemaValidateFunction = (
+    schema: string,
+    data: string
+  ) => {
     // schema: max file size like "512KB" or 123 (in bytes)
     // data: path to the file
     const maxBytes = bytes.parse(schema);
@@ -72,7 +78,7 @@ export default function (json: Object, options: {[s: string]: (...args: any) => 
       ];
     }
     return valid;
-  }
+  };
 
   ajv.addKeyword("maxFileSize", {
     validate: validateMaxFileSize,
@@ -81,7 +87,7 @@ export default function (json: Object, options: {[s: string]: (...args: any) => 
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);
   return { valid, errors: transformErrors(validate.errors) };
-};
+}
 
 type ValidateError = {
   keyword: string;
@@ -95,7 +101,9 @@ type ValidateError = {
  * @param {null|Array<Object>} errors
  * @return {null|Array<Object>} shallow copy of the input or null
  */
-function transformErrors(errors: undefined | null | Array<Ajv.ErrorObject>): null | Array<Ajv.ErrorObject> {
+function transformErrors(
+  errors: undefined | null | Ajv.ErrorObject[]
+): null | Ajv.ErrorObject[] {
   if (!errors) {
     return null;
   }

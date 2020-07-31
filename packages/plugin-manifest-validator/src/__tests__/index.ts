@@ -1,7 +1,7 @@
 "use strict";
 
-import assert from 'assert';
-import validator from '../index';
+import assert from "assert";
+import validator from "../index";
 
 // 20MB
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
@@ -248,7 +248,7 @@ describe("validator", () => {
  * @param {Object=} source
  * @return {!Object}
  */
-function json(source: Object): { [s: string]: any } {
+function json(source: Record<string, any>): { [s: string]: any } {
   return Object.assign(
     {
       manifest_version: 1,
