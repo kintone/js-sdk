@@ -85,7 +85,7 @@ describe("cli", () => {
     });
   });
 
-  context("without ppk", () => {
+  describe("without ppk", () => {
     const pluginDir = path.join(sampleDir, "plugin-dir");
     let packer;
     let resultPluginPath;
@@ -134,7 +134,7 @@ describe("cli", () => {
     });
   });
 
-  context("with ppk", () => {
+  describe("with ppk", () => {
     const pluginDir = path.join(sampleDir, "plugin-dir");
     let packer;
     beforeEach(() => {

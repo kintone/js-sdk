@@ -18,17 +18,17 @@
   "scripts": {
     "build": "run-p js css",
     "lint": "npm run eslint",
-    "test": "run-p mocha site:test",
+    "test": "run-p jest site:test",
     "test:ci": "npm run test",
     "css": "postcss --config postcss.config.js ../../node_modules/normalize.css/normalize.css > docs/dist/normalize.min.css",
     "eslint": "eslint \"*.js\" bin src site test",
     "js": "webpack --mode production",
     "js:dev": "webpack-dev-server --mode development",
-    "mocha": "mocha --require intelli-espower-loader --timeout 10000",
+    "jest": "jest",
     "prerelease": "run-p lint test build",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
-    "site:test": "mocha site/test --require site/test/setup.js"
+    "site:test": "jest --config site/jest.config.js"
   },
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^3.0.5",
@@ -47,11 +47,8 @@
     "cssnano": "^4.1.10",
     "execa": "^4.0.2",
     "glob": "^7.1.6",
-    "intelli-espower-loader": "^1.0.1",
-    "mocha": "^8.0.1",
     "normalize.css": "^8.0.1",
     "postcss-cli": "^7.1.1",
-    "power-assert": "^1.6.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",

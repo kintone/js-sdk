@@ -24,7 +24,7 @@ describe("packer", () => {
     assert(typeof packer === "function");
   });
 
-  context("without privateKey", () => {
+  describe("without privateKey", () => {
     let output;
     beforeEach(() => {
       const contentsZip = fs.readFileSync(contentsZipPath);
@@ -58,7 +58,7 @@ describe("packer", () => {
     });
   });
 
-  context("with privateKey", () => {
+  describe("with privateKey", () => {
     let privateKey;
     let output;
     beforeEach(() => {
@@ -82,7 +82,7 @@ describe("packer", () => {
     });
   });
 
-  context("invalid contents.zip", () => {
+  describe("invalid contents.zip", () => {
     it("throws an error if the contents.zip is invalid", (done) => {
       const contentsZip = fs.readFileSync(invalidMaxFileSizeContentsZipPath);
       packer(contentsZip).catch((error) => {

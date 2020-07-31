@@ -40,6 +40,11 @@ const expectedInitialState = {
 };
 
 describe("reducer", () => {
+  beforeEach(() => {
+    global.URL = {
+      createObjectURL: (data) => data,
+    };
+  });
   describe("initial state", () => {
     it("should be initialized all values", () => {
       assert.deepStrictEqual(
@@ -199,20 +204,15 @@ describe("reducer", () => {
           id: "abcd",
         },
       };
-      assert.deepStrictEqual(reducer(state, action), {
-        ppk: {
-          data: "secret",
-          name: "abcd.ppk",
-        },
-        plugin: {
-          id: "abcd",
-          url: {
-            contents: [["plugin data"], { type: "application/zip" }],
-            ppk: [["secret"], { type: "text/plain" }],
-          },
-        },
-        loading: false,
+      const newState = reducer(state, action);
+      assert.deepStrictEqual(newState.ppk, {
+        data: "secret",
+        name: "abcd.ppk",
       });
+      assert.equal(newState.plugin.id, "abcd");
+      assert.ok(newState.plugin.url.contents instanceof Blob);
+      assert.ok(newState.plugin.url.ppk instanceof Blob);
+      assert.equal(newState.loading, false);
     });
   });
   describe("UPLOAD_FAILURE and CREATE_PLUGIN_ZIP_FAILURE", () => {
