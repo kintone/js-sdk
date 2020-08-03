@@ -6,16 +6,16 @@ import bytes from "bytes";
 import jsonSchema from "./manifest-schema.json";
 import validateUrl from "./validate-https-url";
 
-/**
- * @param {Object} json
- * @param {Object=} options
- * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
- */
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
   errors: null | Ajv.ErrorObject[];
 };
 
+/**
+ * @param {Object} json
+ * @param {Object=} options
+ * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
+ */
 export default function (
   json: Record<string, any>,
   options: { [s: string]: (...args: any) => boolean } = {}
