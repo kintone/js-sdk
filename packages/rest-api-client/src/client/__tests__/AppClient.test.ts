@@ -18,21 +18,21 @@ describe("AppClient", () => {
 
   const layout = [
     {
-      type: "ROW",
+      type: "ROW" as const,
       fields: [
         {
-          type: "SINGLE_LINE_TEXT",
+          type: "SINGLE_LINE_TEXT" as const,
           code: "fieldCode1",
           size: { width: "100" },
         },
       ],
     },
     {
-      type: "SUBTABLE",
+      type: "SUBTABLE" as const,
       code: "tableFieldCode",
       fields: [
         {
-          type: "MULTI_LINE_TEXT",
+          type: "MULTI_LINE_TEXT" as const,
           code: "fieldCode2",
           size: { width: "150", innerHeight: "200" },
         },
