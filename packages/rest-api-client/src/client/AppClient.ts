@@ -92,7 +92,7 @@ export class AppClient {
 
   public updateFormLayout(params: {
     app: AppID;
-    layout: object[];
+    layout: Layout;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
