@@ -40,9 +40,10 @@ export default (argv) => {
   return {
     input: "./src/index.browser.ts",
     output: {
+      extend: true,
       file: `./umd/KintoneRestAPIClient${isProd ? ".min" : ""}.js`,
       format: "umd",
-      name: "KintoneRestAPIClient",
+      name: "window",
       sourcemap: isProd ? false : "inline",
     },
     plugins,
