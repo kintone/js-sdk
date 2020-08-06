@@ -16,7 +16,7 @@ commands:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
       # run tests!
-      - run: npm run tsc:check
+      - run: npm run build
       - run: npm run lint
 jobs:
   node-v10:

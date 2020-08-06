@@ -16,7 +16,7 @@ const {
   KINTONE_USERNAME,
   KINTONE_PASSWORD,
   KINTONE_BASIC_AUTH_USERNAME,
-  KINTONE_BASIC_AUTH_PASSWORD
+  KINTONE_BASIC_AUTH_PASSWORD,
 } = process.env;
 
 const cli = meow(
@@ -46,41 +46,41 @@ const cli = meow(
     flags: {
       domain: {
         type: "string",
-        default: KINTONE_DOMAIN || ''
+        default: KINTONE_DOMAIN || "",
       },
       username: {
         type: "string",
-        default: KINTONE_USERNAME || ''
+        default: KINTONE_USERNAME || "",
       },
       password: {
         type: "string",
-        default: KINTONE_PASSWORD || ''
+        default: KINTONE_PASSWORD || "",
       },
       proxy: {
         type: "string",
-        default: HTTPS_PROXY || HTTP_PROXY || ''
+        default: HTTPS_PROXY || HTTP_PROXY || "",
       },
       basicAuthUsername: {
         type: "string",
-        default: KINTONE_BASIC_AUTH_USERNAME || ''
+        default: KINTONE_BASIC_AUTH_USERNAME || "",
       },
       basicAuthPassword: {
         type: "string",
-        default: KINTONE_BASIC_AUTH_PASSWORD || ''
+        default: KINTONE_BASIC_AUTH_PASSWORD || "",
       },
       watch: {
         type: "boolean",
-        default: false
+        default: false,
       },
       waitingDialogMs: {
         type: "number",
-        default: 0
+        default: 0,
       },
       lang: {
         type: "string",
-        default: getDefaultLang(osLocale.sync())
-      }
-    }
+        default: getDefaultLang(osLocale.sync()),
+      },
+    },
   }
 );
 
@@ -94,25 +94,32 @@ const {
   basicAuthPassword,
   watch,
   waitingDialogMs,
-  lang
+  lang,
 } = cli.flags;
 
-const basicAuth = basicAuthUsername !== "" && basicAuthPassword !== "" ? {
-  username: basicAuthUsername,
-  password: basicAuthPassword
-} : null;
-const options = { watch, lang, proxyServer: proxy !== "" ? proxy : null, basicAuth };
+const basicAuth =
+  basicAuthUsername !== "" && basicAuthPassword !== ""
+    ? {
+        username: basicAuthUsername,
+        password: basicAuthPassword,
+      }
+    : null;
+const options = {
+  watch,
+  lang,
+  proxyServer: proxy !== "" ? proxy : null,
+  basicAuth,
+};
 
 if (!pluginPath) {
   console.error(getMessage(lang, "Error_requiredZipPath"));
   cli.showHelp();
-  process.exit(1);
 }
 
-const wait = ms => new Promise(r => setTimeout(r, ms));
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 wait(waitingDialogMs)
   .then(() => inquireParams({ username, password, domain, lang }))
-  .then(({ username, password, domain }) =>
-    run(domain, username, password, pluginPath, options)
+  .then((answers) =>
+    run(answers.domain, answers.username, answers.password, pluginPath, options)
   );

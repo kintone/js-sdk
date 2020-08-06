@@ -13,9 +13,9 @@ interface BasicAuth {
   password: string;
 }
 
-async function launchBrowser(proxy: string | null): Promise<Browser> {
+function launchBrowser(proxy: string | null): Promise<Browser> {
   const args = proxy ? [`--proxy-server=${proxy}`] : [];
-  return await puppeteer.launch({ args });
+  return puppeteer.launch({ args });
 }
 
 async function readyForUpload(
@@ -41,8 +41,7 @@ async function readyForUpload(
   try {
     await page.waitFor(".form-username-slash", { timeout: TIMEOUT_MS });
   } catch (e) {
-    console.log(chalk.red(m("Error_cannotOpenLogin")));
-    process.exit(1);
+    throw chalk.red(m("Error_cannotOpenLogin"));
   }
   console.log("Trying to log in...");
   await page.type(".form-username-slash > input.form-text", userName);
@@ -54,20 +53,19 @@ async function readyForUpload(
       waitUntil: "domcontentloaded",
     });
   } catch (e) {
-    console.log(chalk.red(m("Error_failedLogin")));
-    process.exit(1);
+    throw chalk.red(m("Error_failedLogin"));
   }
 
   const pluginUrl = `${kintoneUrl}k/admin/system/plugin/`;
   console.log(`Navigate to ${pluginUrl}`);
   await page.goto(pluginUrl);
+
   try {
     await page.waitForSelector("#page-admin-system-plugin-index-addplugin", {
       timeout: TIMEOUT_MS,
     });
   } catch (e) {
-    console.log(chalk.red(m("Error_adminPrivilege")));
-    process.exit(1);
+    throw chalk.red(m("Error_adminPrivilege"));
   }
   return page;
 }

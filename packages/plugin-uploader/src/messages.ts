@@ -31,20 +31,20 @@ const messages = {
     ja: "kintoneプラグインのzipへのパスを指定してください",
   },
   Error_failedLogin: {
-    en: "Error: Login failed, please confirm your username and password",
+    en: "Login failed, please confirm your username and password",
     ja:
-      "エラー: kintoneへのログインに失敗しました。ログイン名とパスワードを確認してください",
+      "kintoneへのログインに失敗しました。ログイン名とパスワードを確認してください",
   },
   Error_cannotOpenLogin: {
     en:
-      "Error: Cannot find a login form on the specified page, please confirm the subdomain",
+      "Cannot find a login form on the specified page, please confirm the subdomain",
     ja:
-      "エラー: 指定されたページにログインフォームが見つかりませんでした。ドメインを確認してください",
+      "指定されたページにログインフォームが見つかりませんでした。ドメインを確認してください",
   },
   Error_adminPrivilege: {
     en:
-      "Error: Cannot navigate to the plug-ins page, please retry with an account with administrator privileges",
-    ja: "エラー: kintone管理者権限のあるユーザーで実行してください",
+      "Cannot navigate to the plug-ins page, please retry with an account with administrator privileges",
+    ja: "kintone管理者権限のあるユーザーで実行してください",
   },
   Uploaded: {
     en: "has been uploaded!",
