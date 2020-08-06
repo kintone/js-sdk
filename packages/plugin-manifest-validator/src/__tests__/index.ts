@@ -119,8 +119,7 @@ describe("validator", () => {
     const actual = validator(json({ homepage_url: { en: "foo/bar.html" } }));
     assert(actual.valid === false);
     assert(actual.errors?.length === 1);
-    // @ts-expect-error TODO: check for why params(ErrorParams) not reach FormatParams.
-    assert(actual.errors[0].params.format === "http-url");
+    assert.deepStrictEqual(actual.errors[0].params, { format: "http-url" });
   });
 
   it('"http:" is invalid for `https-url`', () => {

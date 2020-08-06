@@ -67,7 +67,7 @@ export default function (
     const valid = maxFileSize(maxBytes, data);
     if (!valid) {
       validateMaxFileSize.errors = [
-        // @ts-expect-error TODO: need refact to not procedural code.
+        // @ts-expect-error TODO: Ajv.ErrorObject has need fixing.
         {
           keyword: "maxFileSize",
           params: {
@@ -88,14 +88,6 @@ export default function (
   const valid = validate(json);
   return { valid, errors: transformErrors(validate.errors) };
 }
-
-type ValidateError = {
-  keyword: string;
-  message: string;
-  params: {
-    limit: number;
-  };
-};
 
 /**
  * @param {null|Array<Object>} errors
