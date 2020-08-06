@@ -37,7 +37,7 @@
     "puppeteer": "4.0.1"
   },
   "devDependencies": {
-    "@cybozu/eslint-config": "^10.0.1",
+    "@cybozu/eslint-config": "^10.0.4",
     "@types/inquirer": "6.5.0",
     "@types/node": "^9.6.57",
     "@types/puppeteer": "^3.0.1",
