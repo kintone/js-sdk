@@ -26,7 +26,7 @@
     "clean": "rimraf lib esm umd",
     "compile": "run-p -l compile:*",
     "compile:esm": "tsc -p tsconfig.esm.json",
-    "compile:cjs": "tsc --outDir lib",
+    "compile:cjs": "tsc",
     "fix:lint": "npm run lint:eslint -- --fix",
     "fix:md": "prettier --write README.md 'docs/**/*.md'",
     "fix": "run-p fix:*",
