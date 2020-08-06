@@ -90,7 +90,7 @@ export default function (
 }
 
 /**
- * @param {null|Array<Object>} errors
+ * @param {undefined|null|Array<Object>} errors
  * @return {null|Array<Object>} shallow copy of the input or null
  */
 function transformErrors(
