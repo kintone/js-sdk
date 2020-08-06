@@ -1,9 +1,9 @@
 kintone-plugin-packer
 ====
 
-[kintone plugin package.sh](https://github.com/kintone/plugin-sdk) in JavaScript
+[kintone plugin package.sh](https://github.com/kintone-samples/plugin-samples) in JavaScript
 
-[![npm version](https://badge.fury.io/js/%40kintone%plugin-packer.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-packer)
+[![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-packer.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-packer)
 
 It's written in pure JavaScript, so
 
@@ -64,4 +64,3 @@ packer(buffer).then(output => {
 ## License
 
 MIT License
-
