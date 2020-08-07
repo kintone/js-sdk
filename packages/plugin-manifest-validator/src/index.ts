@@ -43,11 +43,7 @@ export default function (
 
   // Using draft-04 schemas
   // https://github.com/epoberezkin/ajv/releases/tag/5.0.0
-  const fixedMetaShema = {
-    ...v4metaSchema,
-    $id: v4metaSchema.id,
-  };
-  ajv.addMetaSchema(fixedMetaShema);
+  ajv.addMetaSchema(v4metaSchema);
   // @ts-expect-error TODO: capture ajv-validator/ajv issue(https://github.com/ajv-validator/ajv/issues/1253)
   ajv._opts.defaultMeta = v4metaSchema.id;
   ajv.removeKeyword("propertyNames");
