@@ -3,7 +3,7 @@
 import Ajv from "ajv";
 import v4metaSchema from "ajv/lib/refs/json-schema-draft-04.json";
 import bytes from "bytes";
-import jsonSchema from "./manifest-schema.json";
+import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
 
 type ValidateResult = {

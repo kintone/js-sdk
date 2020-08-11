@@ -5,12 +5,11 @@
   "engines": {
     "node": ">=10"
   },
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "files": [
-    "index.js",
     "manifest-schema.d.ts",
     "manifest-schema.json",
-    "src"
+    "dist"
   ],
   "scripts": {
     "start": "tsc -w",
