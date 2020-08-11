@@ -16,10 +16,9 @@ function renderAsFile(
     renderInput: RenderInput
 ) {
     const tsExpression = convertToTsExpression(renderInput);
-    const formatOption = { parser: "typescript" };
     const prettySource = prettier.format(
         tsExpression.tsExpression(),
-        formatOption
+        { parser: "typescript" }
     );
     const outputPath = path.join(process.cwd(), output);
 
