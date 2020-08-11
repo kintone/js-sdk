@@ -21,9 +21,19 @@ describe("AppClient", () => {
       type: "ROW" as const,
       fields: [
         {
-          type: "SINGLE_LINE_TEXT" as const,
+          type: "SINGLE_LINE_TEXT",
           code: "fieldCode1",
           size: { width: "100" },
+        },
+        {
+          type: "LABEL",
+          label: "label1",
+          size: { width: "100" },
+        },
+        {
+          type: "SPACER",
+          elementId: "space",
+          size: { width: "100", height: "50" },
         },
       ],
     },
@@ -32,9 +42,27 @@ describe("AppClient", () => {
       code: "tableFieldCode",
       fields: [
         {
-          type: "MULTI_LINE_TEXT" as const,
+          type: "MULTI_LINE_TEXT",
           code: "fieldCode2",
           size: { width: "150", innerHeight: "200" },
+        },
+      ],
+    },
+    {
+      type: "GROUP" as const,
+      code: "fieldCode3",
+      layout: [
+        {
+          type: "ROW" as const,
+          fields: [
+            {
+              type: "NUMBER",
+              code: "fieldCode3_1",
+              size: {
+                width: 200,
+              },
+            },
+          ],
         },
       ],
     },
