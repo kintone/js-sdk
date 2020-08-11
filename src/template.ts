@@ -5,7 +5,12 @@ import * as _ from "lodash";
 import * as path from "path";
 import { Manifest } from "./manifest";
 
-export type TemplateType = "minimum";
+export const SUPPORT_TEMPLATE_TYPE = ["minimum", "modern"];
+export type TemplateType = "minimum" | "modern";
+
+export function isValidTemplateType(templateType: string) {
+  return SUPPORT_TEMPLATE_TYPE.indexOf(templateType) !== -1;
+}
 
 /**
  * Return a template type corresponding to the manifest
