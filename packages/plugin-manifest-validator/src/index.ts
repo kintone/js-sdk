@@ -83,7 +83,7 @@ module.exports = function (
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);
   return { valid, errors: transformErrors(validate.errors) };
-}
+};
 
 /**
  * @param {undefined|null|Array<Object>} errors
