@@ -16,7 +16,7 @@ type ValidateResult = {
  * @param {Object=} options
  * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
  */
-export default function (
+module.exports = function (
   json: Record<string, any>,
   options: { [s: string]: (...args: any) => boolean } = {}
 ): ValidateResult {

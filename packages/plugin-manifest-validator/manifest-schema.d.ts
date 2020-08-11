@@ -5,7 +5,14 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Resources = string[];
+export type Resources = (
+  | {
+      [k: string]: unknown;
+    }
+  | {
+      [k: string]: unknown;
+    }
+)[];
 
 export interface KintonePluginManifestJson {
   manifest_version: number;
