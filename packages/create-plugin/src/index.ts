@@ -10,6 +10,7 @@ import { printError, printLog } from "./logger";
 import { buildManifest } from "./manifest";
 import { getBoundMessage, getMessage } from "./messages";
 import { buildQuestions } from "./qa";
+import { TemplateType } from "./template";
 
 /**
  * Verify whether the output directory is valid
@@ -27,7 +28,7 @@ function verifyOutputDirectory(outputDirectory: string, lang: Lang): void {
  * Run create-kintone-plugin script
  * @param outputDir
  */
-function run(outputDir: string, lang: Lang) {
+function run(outputDir: string, lang: Lang, templateType: TemplateType) {
   const m = getBoundMessage(lang);
   verifyOutputDirectory(outputDir, lang);
   printLog(`
@@ -39,8 +40,14 @@ function run(outputDir: string, lang: Lang) {
   inquirer
     .prompt(buildQuestions(outputDir, lang))
     .then((answers) => {
-      const manifest = buildManifest(answers);
-      generatePlugin(outputDir, manifest, lang, answers.pluginUploader);
+      const manifest = buildManifest(answers, templateType);
+      generatePlugin(
+        outputDir,
+        manifest,
+        lang,
+        answers.pluginUploader,
+        templateType
+      );
       return [manifest, answers.pluginUploader];
     })
     .then(([manifest, enablePluginUploader]) => {

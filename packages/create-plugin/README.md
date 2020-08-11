@@ -132,6 +132,24 @@ kintoneプラグイン開発をはじめましょう！
   https://developer.cybozu.io
 ```
 
+## Templates (Experimental)
+
+`create-plugin` has a `template` option to choose a project structure.
+The default value is `minimum`, which is a boilerplate without any build processes like `webpack`.
+
+`create-plugin` also has the `modern` template option as an **experimental**; This uses the following tools.
+
+- webpack
+- TypeScript
+- Prettier
+
+The `modern` template also includes settings for React, so you can use React without any settings, which requires only installing the following packages.
+
+```
+npm install react react-dom
+npm install --save-dev @types/react @types/react-dom # type definition for React and ReactDOM
+```
+
 ## LICENSE
 
 MIT License

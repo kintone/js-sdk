@@ -1,0 +1,41 @@
+{
+  "name": "<%= normalizePackageName(name.en) %>",
+  "version": "0.1.0",
+  "scripts": {
+    <% if (enablePluginUploader) { %>
+    "start": "node scripts/npm-start.js",
+    "upload": "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 3000",
+    <% } else { %>
+    "start": "npm run develop",
+    <% } %>
+    "develop": "npm run build -- --watch",
+    "build": "cross-env NODE_ENV=development webpack",
+    "build:prod": "cross-env NODE_ENV=production webpack",
+    "dts-gen": "kintone-dts-gen",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "@kintone/rest-api-client": "^1.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@cybozu/eslint-config": "^11.0.0",
+    "@kintone/dts-gen": "^3.0.5",
+    <% if (enablePluginUploader) { %>
+    "@kintone/plugin-uploader": "^4.1.0",
+    <% } %>
+    "@kintone/webpack-plugin-kintone-plugin": "^4.0.4",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.5.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12"
+  }
+}

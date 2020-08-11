@@ -24,10 +24,11 @@ export function generatePlugin(
   outputDirectory: string,
   manifest: Manifest,
   lang: Lang,
-  enablePluginUploader: boolean
+  enablePluginUploader: boolean,
+  templateType: TemplateType
 ): void {
   // copy and build a project into the output diretory
-  buildProject(outputDirectory, manifest, enablePluginUploader);
+  buildProject(outputDirectory, manifest, enablePluginUploader, templateType);
   // npm install
   installDependencies(outputDirectory, lang);
 }
@@ -40,9 +41,9 @@ export function generatePlugin(
 function buildProject(
   outputDirectory: string,
   manifest: Manifest,
-  enablePluginUploader: boolean
+  enablePluginUploader: boolean,
+  templateType: TemplateType
 ): void {
-  const templateType = getTemplateType(manifest);
   fs.mkdirSync(outputDirectory);
   // This is necessary for unit testing
   // We use src/generator.ts directory instead of dist/src/generator.js when unit testing
@@ -69,7 +70,11 @@ function buildProject(
     generatePrivateKey()
   );
   fs.writeFileSync(
-    path.resolve(outputDirectory, "src", "manifest.json"),
+    path.resolve(
+      outputDirectory,
+      templateType === "modern" ? "plugin" : "src",
+      "manifest.json"
+    ),
     JSON.stringify(manifest, null, 2)
   );
 }
