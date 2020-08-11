@@ -18,7 +18,6 @@
     "prerelease": "run-p lint test",
     "test": "run-p test:js test:dts",
     "test:js": "jest",
-    "test:dts": "tsc -p tsconfig.json",
     "test:ci": "yarn test",
     "lint": "run-p lint:*",
     "lint:tsc": "tsc --noEmit",
