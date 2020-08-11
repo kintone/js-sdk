@@ -39,14 +39,14 @@
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/customize-uploader#readme",
   "devDependencies": {
-    "@types/inquirer": "6.5.0",
+    "@types/inquirer": "7.3.0",
     "@types/mkdirp": "^1.0.1",
     "@types/request-promise": "^4.1.46",
     "@types/rimraf": "^3.0.0",
     "ts-node": "^8.10.2"
   },
   "dependencies": {
-    "chokidar": "^3.4.1",
+    "chokidar": "^3.4.2",
     "inquirer": "^7.3.3",
     "meow": "^7.0.1",
     "mkdirp": "^1.0.4",

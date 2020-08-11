@@ -1,0 +1,10 @@
+.plugin-space-heading {
+  font-size: 1.5rem;
+  margin: 0.8rem;
+}
+.plugin-space-message {
+  display: inline-block;
+  font-size: 1.2em;
+  margin: 0.8rem;
+  margin-top: 0;
+}
