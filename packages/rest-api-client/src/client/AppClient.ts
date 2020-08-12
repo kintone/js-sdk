@@ -22,7 +22,6 @@ import {
 
 type RowLayoutForParameter = {
   type: "ROW";
-  code?: string;
   fields: Array<{ [key: string]: unknown }>;
 };
 type SubtableLayoutForParameter = {
