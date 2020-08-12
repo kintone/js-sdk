@@ -23,21 +23,20 @@ import {
 type RowLayoutForParameter = {
   type: "ROW";
   code?: string;
-  fields: object[];
+  fields: Array<{ [key: string]: unknown }>;
 };
-
+type SubtableLayoutForParameter = {
+  type: "SUBTABLE";
+  code: string;
+  fields: Array<{ [key: string]: unknown }>;
+};
+type GroupLayoutForParameter = {
+  type: "GROUP";
+  code: string;
+  layout: RowLayoutForParameter[];
+};
 type LayoutForParameter = Array<
-  | RowLayoutForParameter
-  | {
-      type: "SUBTABLE";
-      code: string;
-      fields: object[];
-    }
-  | {
-      type: "GROUP";
-      code: string;
-      layout: RowLayoutForParameter[];
-    }
+  RowLayoutForParameter | SubtableLayoutForParameter | GroupLayoutForParameter
 >;
 
 export class AppClient {
