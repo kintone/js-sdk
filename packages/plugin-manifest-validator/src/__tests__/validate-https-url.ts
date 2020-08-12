@@ -1,7 +1,7 @@
 "use strict";
 
-const assert = require("assert");
-const validate = require("../src/validate-https-url");
+import assert from "assert";
+import validate from "../validate-https-url";
 
 describe("validate-https-url", () => {
   describe("valid", () => {

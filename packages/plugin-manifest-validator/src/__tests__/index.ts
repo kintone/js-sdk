@@ -1,7 +1,7 @@
 "use strict";
 
-const assert = require("assert");
-const validator = require("../");
+import assert from "assert";
+import validator from "../index";
 
 // 20MB
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
@@ -12,11 +12,11 @@ describe("validator", () => {
   });
 
   it("minimal valid JSON", () => {
-    assert.deepStrictEqual(validator(json()), { valid: true, errors: null });
+    assert.deepStrictEqual(validator(json({})), { valid: true, errors: null });
   });
 
   it("missing property", () => {
-    const manifestJson = json();
+    const manifestJson = json({});
     delete manifestJson.version;
     assert.deepStrictEqual(validator(manifestJson), {
       valid: false,
@@ -112,14 +112,14 @@ describe("validator", () => {
       })
     );
     assert(actual.valid === false);
-    assert(actual.errors.length === 2);
+    assert(actual.errors?.length === 2);
   });
 
   it("relative path is invalid for `http-url`", () => {
     const actual = validator(json({ homepage_url: { en: "foo/bar.html" } }));
     assert(actual.valid === false);
-    assert(actual.errors.length === 1);
-    assert(actual.errors[0].params.format === "http-url");
+    assert(actual.errors?.length === 1);
+    assert.deepStrictEqual(actual.errors[0].params, { format: "http-url" });
   });
 
   it('"http:" is invalid for `https-url`', () => {
@@ -134,7 +134,7 @@ describe("validator", () => {
       }
     );
     assert(actual.valid === false);
-    assert(actual.errors.length === 3);
+    assert(actual.errors?.length === 3);
     assert(actual.errors[0].keyword === "format");
     assert(actual.errors[1].keyword === "format");
     assert(actual.errors[2].keyword === "anyOf");
@@ -162,7 +162,7 @@ describe("validator", () => {
         },
       });
       assert(actual.valid === false);
-      assert(actual.errors.length === 1);
+      assert(actual.errors?.length === 1);
       assert.deepStrictEqual(actual.errors[0], {
         dataPath: ".icon",
         keyword: "maxFileSize",
@@ -188,7 +188,7 @@ describe("validator", () => {
         }
       );
       assert(actual.valid === false);
-      assert(actual.errors.length === 3);
+      assert(actual.errors?.length === 3);
       assert.deepStrictEqual(actual.errors[1], {
         dataPath: ".desktop.js[0]",
         keyword: "maxFileSize",
@@ -214,7 +214,7 @@ describe("validator", () => {
         }
       );
       assert(actual.valid === false);
-      assert(actual.errors.length === 3);
+      assert(actual.errors?.length === 3);
       assert.deepStrictEqual(actual.errors[1], {
         dataPath: ".desktop.css[0]",
         keyword: "maxFileSize",
@@ -247,7 +247,7 @@ describe("validator", () => {
  * @param {Object=} source
  * @return {!Object}
  */
-function json(source) {
+function json(source: Record<string, any>): { [s: string]: any } {
   return Object.assign(
     {
       manifest_version: 1,
