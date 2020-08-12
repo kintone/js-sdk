@@ -1,0 +1,14 @@
+{
+    "manifest_version": 1,
+    "version": 1,
+    "type": "APP",
+    "name": {
+        "en": "sample extension"
+    },
+    "desktop": {
+        "js": [
+            "http://example.com/http-is-invalid.js"
+        ]
+    },
+    "icon": "image/icon.png"
+}
