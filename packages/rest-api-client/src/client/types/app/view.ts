@@ -1,38 +1,37 @@
-import { Appearance } from "./apperance";
-
 type ViewType = "LIST" | "CALENDAR" | "CUSTOM";
 
-type ViewBase<T extends Appearance> = T extends "response"
-  ? {
-      index: string;
-      builtinType?: "ASSIGNEE";
-      id: string;
-      name: string;
-      filterCond: string;
-      sort: string;
-    }
-  : {
-      index: string | number;
-      name?: string;
-      filterCond?: string;
-      sort?: string;
-    };
+type ViewBaseForResponse = {
+  index: string;
+  builtinType?: "ASSIGNEE";
+  id: string;
+  name: string;
+  filterCond: string;
+  sort: string;
+};
 
-type AdditionalProperty<T extends Appearance> = T extends "response"
-  ? {
-      LIST: { fields: string[] };
-      CALENDAR: { date: string; title: string };
-      CUSTOM: { html: string; pager: boolean; device: "DESKTOP" | "ANY" };
-    }
-  : {
-      LIST: { fields?: string[] };
-      CALENDAR: { date?: string; title?: string };
-      CUSTOM: { html?: string; pager?: boolean; device?: "DESKTOP" | "ANY" };
-    };
+type ViewBaseForParameter = {
+  index: string | number;
+  name?: string;
+  filterCond?: string;
+  sort?: string;
+};
 
-export type View<
-  T extends Appearance,
-  U extends ViewType = ViewType
-> = U extends ViewType
-  ? ViewBase<T> & { type: U } & AdditionalProperty<T>[U]
+type AdditionalPropertyForResponse = {
+  LIST: { fields: string[] };
+  CALENDAR: { date: string; title: string };
+  CUSTOM: { html: string; pager: boolean; device: "DESKTOP" | "ANY" };
+};
+
+type AdditionalPropertyForParameter = {
+  LIST: { fields?: string[] };
+  CALENDAR: { date?: string; title?: string };
+  CUSTOM: { html?: string; pager?: boolean; device?: "DESKTOP" | "ANY" };
+};
+
+export type ViewForResponse<U extends ViewType = ViewType> = U extends ViewType
+  ? ViewBaseForResponse & { type: U } & AdditionalPropertyForResponse[U]
+  : never;
+
+export type ViewForParameter<U extends ViewType = ViewType> = U extends ViewType
+  ? ViewBaseForParameter & { type: U } & AdditionalPropertyForParameter[U]
   : never;

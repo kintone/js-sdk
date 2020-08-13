@@ -7,7 +7,8 @@ import {
   Properties,
   Lang,
   Layout,
-  View,
+  ViewForResponse,
+  ViewForParameter,
   App,
   StateForResponse,
   StateForParameter,
@@ -113,7 +114,7 @@ export class AppClient {
     lang?: Lang;
     preview?: boolean;
   }): Promise<{
-    views: { [viewName: string]: View<"response"> };
+    views: { [viewName: string]: ViewForResponse };
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -126,7 +127,7 @@ export class AppClient {
 
   public updateViews(params: {
     app: AppID;
-    views: { [viewName: string]: View<"parameter"> };
+    views: { [viewName: string]: ViewForParameter };
     revision?: Revision;
   }): Promise<{
     views: { [viewName: string]: { id: string } };
