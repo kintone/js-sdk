@@ -1,63 +1,62 @@
-import { Appearance } from "./apperance";
 import { Entity } from "../entity";
 
-type AssigneeEntity<T extends Appearance> = T extends "response"
-  ? {
-      entity:
-        | Entity
-        | {
-            type: "FIELD_ENTITY" | "CUSTOM_FIELD";
-            code: string;
-          }
-        | {
-            type: "CREATOR";
-            code: null;
-          };
-      includeSubs: boolean;
-    }
-  : {
-      entity:
-        | Entity
-        | {
-            type: "FIELD_ENTITY" | "CUSTOM_FIELD";
-            code: string;
-          }
-        | {
-            type: "CREATOR";
-          };
-      includeSubs?: boolean;
-    };
+type AssigneeEntityForResponse = {
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY" | "CUSTOM_FIELD";
+        code: string;
+      }
+    | {
+        type: "CREATOR";
+        code: null;
+      };
+  includeSubs: boolean;
+};
+
+type AssigneeEntityForParameter = {
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY" | "CUSTOM_FIELD";
+        code: string;
+      }
+    | {
+        type: "CREATOR";
+      };
+  includeSubs?: boolean;
+};
 
 type AssigneeType = "ONE" | "ALL" | "ANY";
 
-export type State<T extends Appearance> = T extends "response"
-  ? {
-      index: string;
-      name: string;
-      assignee: {
-        type: AssigneeType;
-        entities: Array<AssigneeEntity<T>>;
-      };
-    }
-  : {
-      index: string | number;
-      name?: string;
-      assignee?: {
-        type: AssigneeType;
-        entities: Array<AssigneeEntity<T>>;
-      };
-    };
+export type StateForResponse = {
+  index: string;
+  name: string;
+  assignee: {
+    type: AssigneeType;
+    entities: AssigneeEntityForResponse[];
+  };
+};
 
-export type Action<T extends Appearance> = T extends "response"
-  ? {
-      name: string;
-      from: string;
-      to: string;
-      filterCond: string;
-    }
-  : {
-      name: string;
-      from: string;
-      to: string;
-      filterCond?: string;
-    };
+export type StateForParameter = {
+  index: string | number;
+  name?: string;
+  assignee?: {
+    type: AssigneeType;
+    entities: AssigneeEntityForParameter[];
+  };
+};
+
+export type ActionForResponse = {
+  name: string;
+  from: string;
+  to: string;
+  filterCond: string;
+};
+
+export type ActionForParameter = {
+  name: string;
+  from: string;
+  to: string;
+  filterCond?: string;
+};

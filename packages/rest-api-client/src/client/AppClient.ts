@@ -9,8 +9,10 @@ import {
   Layout,
   View,
   App,
-  State,
-  Action,
+  StateForResponse,
+  StateForParameter,
+  ActionForResponse,
+  ActionForParameter,
   DeployStatus,
   FieldRight,
   AppRightEntity,
@@ -258,9 +260,9 @@ export class AppClient {
   }): Promise<{
     enable: boolean;
     states: {
-      [statusName: string]: State<"response">;
+      [statusName: string]: StateForResponse;
     };
-    actions: Array<Action<"response">>;
+    actions: ActionForResponse[];
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -274,8 +276,8 @@ export class AppClient {
   public updateProcessManagement(params: {
     app: AppID;
     enable?: boolean;
-    states?: { [statusName: string]: State<"parameter"> };
-    actions?: Array<Action<"parameter">>;
+    states?: { [statusName: string]: StateForParameter };
+    actions?: ActionForParameter[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
