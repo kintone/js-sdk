@@ -17,7 +17,8 @@ import {
   EvaluatedRecordRight,
   RecordRight,
   AppCustomizeScope,
-  AppCustomize,
+  AppCustomizeForResponse,
+  AppCustomizeForParameter,
 } from "./types";
 
 export class AppClient {
@@ -405,8 +406,8 @@ export class AppClient {
     preview?: boolean;
   }): Promise<{
     scope: AppCustomizeScope;
-    desktop: AppCustomize<"response">;
-    mobile: AppCustomize<"response">;
+    desktop: AppCustomizeForResponse;
+    mobile: AppCustomizeForResponse;
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -420,8 +421,8 @@ export class AppClient {
   public updateAppCustomize(params: {
     app: AppID;
     scope?: AppCustomizeScope;
-    desktop?: AppCustomize<"parameter">;
-    mobile?: AppCustomize<"parameter">;
+    desktop?: AppCustomizeForParameter;
+    mobile?: AppCustomizeForParameter;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
