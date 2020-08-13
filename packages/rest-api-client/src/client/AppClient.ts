@@ -14,10 +14,13 @@ import {
   ActionForResponse,
   ActionForParameter,
   DeployStatus,
-  FieldRight,
-  AppRightEntity,
+  FieldRightForResponse,
+  FieldRightForParameter,
+  AppRightEntityForResponse,
+  AppRightEntityForParameter,
   EvaluatedRecordRight,
-  RecordRight,
+  RecordRightForResponse,
+  RecordRightForParameter,
   AppCustomizeScope,
   AppCustomizeForResponse,
   AppCustomizeForParameter,
@@ -311,7 +314,7 @@ export class AppClient {
   public getFieldAcl(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ rights: Array<FieldRight<"response">>; revision: string }> {
+  }): Promise<{ rights: FieldRightForResponse[]; revision: string }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "field/acl",
@@ -322,7 +325,7 @@ export class AppClient {
 
   public updateFieldAcl(params: {
     app: AppID;
-    rights: Array<FieldRight<"parameter">>;
+    rights: FieldRightForParameter[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
@@ -339,7 +342,7 @@ export class AppClient {
   public getAppAcl(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ rights: Array<AppRightEntity<"response">>; revision: string }> {
+  }): Promise<{ rights: AppRightEntityForResponse[]; revision: string }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/acl",
@@ -350,7 +353,7 @@ export class AppClient {
 
   public updateAppAcl(params: {
     app: AppID;
-    rights: Array<AppRightEntity<"parameter">>;
+    rights: AppRightEntityForParameter[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
@@ -378,7 +381,7 @@ export class AppClient {
     app: AppID;
     lang?: Lang;
     preview?: boolean;
-  }): Promise<{ rights: Array<RecordRight<"response">>; revision: string }> {
+  }): Promise<{ rights: RecordRightForResponse[]; revision: string }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record/acl",
@@ -389,7 +392,7 @@ export class AppClient {
 
   public updateRecordAcl(params: {
     app: AppID;
-    rights: Array<RecordRight<"parameter">>;
+    rights: RecordRightForParameter[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
