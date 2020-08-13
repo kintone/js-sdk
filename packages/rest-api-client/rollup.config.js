@@ -1,6 +1,5 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-// import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
 import { terser } from "rollup-plugin-terser";
 import replace from "rollup-plugin-replace";
@@ -14,11 +13,19 @@ const extensions = [".ts", ".js"];
 export default (argv) => {
   const isProd = argv.mode === "production";
   const plugins = [
-    // typescript({
-    //   declaration: false,
-    // }),
     babel({
       babelHelpers: "bundled",
+      presets: [
+        [
+          "@babel/preset-env",
+          {
+            corejs: 3,
+            targets: { browsers: ["> 0.25%", "IE 11", "not op_mini all"] },
+            useBuiltIns: "usage",
+          },
+        ],
+        "@babel/preset-typescript",
+      ],
       extensions,
       include: ["src/**/*"],
     }),
