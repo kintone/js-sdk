@@ -25,7 +25,7 @@ const client = new KintoneRestAPIClient();
     app: APP_ID,
     record: {
       [ATTACHMENT_FIELD_CODE]: {
-        value: [{ fileKey }],
+        value: [{ fileKey }]
       }
     }
   });
