@@ -35,7 +35,7 @@ const client = new KintoneRestAPIClient();
     app: APP_ID,
     id,
   });
-  const data = await this.client.file.downloadFile({
+  const data = await client.file.downloadFile({
     fileKey: record[ATTACHMENT_FIELD_CODE].value[0].fileKey,
   });
   console.log(data.toString()); // Hello World!
