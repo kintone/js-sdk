@@ -99,3 +99,8 @@ type Test_SubtableFieldProperty_NG_Group = SubtableFieldProperty<{
 type Test_SubtableFieldProperty_NG_ReferenceTable = SubtableFieldProperty<{
   ReferenceTable: ReferenceTableFieldProperty;
 }>;
+
+// @ts-expect-error
+type Test_SubtableFieldProperty_NG_Subtable = SubtableFieldProperty<{
+  Subtable: Test_SubtableFieldProperty_OK;
+}>;
