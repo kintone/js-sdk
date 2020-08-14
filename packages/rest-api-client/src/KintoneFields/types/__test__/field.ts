@@ -95,5 +95,5 @@ type Test_SubtableField_NG_StatusAssignee = SubtableField<{
 
 // @ts-expect-error
 type Test_SubtableField_NG_Subtable = SubtableField<{
-  Subtable: SubtableField<{ SingleLineText: SingleLineTextField }>;
+  Subtable: Test_SubtableField_OK;
 }>;
