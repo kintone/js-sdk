@@ -14,19 +14,20 @@ const client = new KintoneRestAPIClient();
 
   const FILE = {
     name: "Hello.txt",
-    data: "Hello World!"
+    data: "Hello World!",
   };
 
   // Upload a file and attach it to a record
   const { fileKey } = await client.file.uploadFile({
-    file: FILE
+    file: FILE,
   });
   const { id } = await client.record.addRecord({
     app: APP_ID,
     record: {
-    [ATTACHMENT_FIELD_CODE]: {
-        value: [{ fileKey }]
-    }
+      [ATTACHMENT_FIELD_CODE]: {
+        value: [{ fileKey }],
+      },
+    },
   });
 
   // Download the attached file
@@ -34,8 +35,8 @@ const client = new KintoneRestAPIClient();
     app: APP_ID,
     id,
   });
-  const data = await this.client.file.downloadFile({
-    fileKey: record[ATTACHMENT_FIELD_CODE].value[0].fileKey
+  const data = await client.file.downloadFile({
+    fileKey: record[ATTACHMENT_FIELD_CODE].value[0].fileKey,
   });
   console.log(data.toString()); // Hello World!
 })();
