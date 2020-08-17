@@ -17,16 +17,16 @@ const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
 const DELETE_RECORDS_LIMIT = 100;
 
-type EntityForParametor = { code: string };
-type FileInformationForParametor = { fileKey: string };
+type EntityForParameter = { code: string };
+type FileInformationForParameter = { fileKey: string };
 type SubtableFieldValue =
   | number
   | string
   | string[]
   | null
-  | FileInformationForParametor[]
-  | EntityForParametor[];
-type SubtableForParametor = {
+  | FileInformationForParameter[]
+  | EntityForParameter[];
+type SubtableForParameter = {
   [fieldCode: string]: Array<
     | {
         value: SubtableFieldValue;
