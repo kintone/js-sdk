@@ -130,7 +130,7 @@ export class RecordClient {
     }
     return this.addRecord({
       app,
-      record: Object.assign(record, {
+      record: Object.assign({}, record, {
         [updateKey.field]: { value: updateKey.value },
       }),
     });
