@@ -17,8 +17,15 @@ const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
 const DELETE_RECORDS_LIMIT = 100;
 
-type Entity = { code: string; name: string };
+type Entity = { code: string };
 type FileInformation = { fileKey: string };
+type SubtableFieldValue =
+  | number
+  | string
+  | string[]
+  | null
+  | FileInformation[]
+  | Entity[];
 type RecordForParameter = {
   [fieldCode: string]: {
     value:
@@ -30,15 +37,14 @@ type RecordForParameter = {
       | Entity
       | Entity[]
       | {
-          [fieldCode: string]: {
-            value:
-              | number
-              | string
-              | string[]
-              | null
-              | FileInformation[]
-              | Entity[];
-          };
+          [fieldCode: string]:
+            | {
+                value: SubtableFieldValue;
+              }
+            | {
+                id: number | string;
+                value?: SubtableFieldValue;
+              };
         };
   };
 };
