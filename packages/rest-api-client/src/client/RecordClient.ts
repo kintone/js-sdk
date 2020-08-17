@@ -44,10 +44,10 @@ type RecordForParameter = {
       | string
       | string[]
       | null
-      | FileInformationForParametor[]
-      | EntityForParametor
-      | EntityForParametor[]
-      | SubtableForParametor;
+      | FileInformationForParameter[]
+      | EntityForParameter
+      | EntityForParameter[]
+      | SubtableForParameter;
   };
 };
 
