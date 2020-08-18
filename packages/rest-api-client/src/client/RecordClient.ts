@@ -17,37 +17,9 @@ const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
 const DELETE_RECORDS_LIMIT = 100;
 
-type EntityForParameter = { code: string };
-type FileInformationForParameter = { fileKey: string };
-type SubtableFieldValue =
-  | number
-  | string
-  | string[]
-  | null
-  | FileInformationForParameter[]
-  | EntityForParameter[];
-type SubtableForParameter = {
-  [fieldCode: string]: Array<
-    | {
-        value: SubtableFieldValue;
-      }
-    | {
-        id: number | string;
-        value?: SubtableFieldValue;
-      }
-  >;
-};
 type RecordForParameter = {
   [fieldCode: string]: {
-    value:
-      | number
-      | string
-      | string[]
-      | null
-      | FileInformationForParameter[]
-      | EntityForParameter
-      | EntityForParameter[]
-      | SubtableForParameter;
+    value: unknown;
   };
 };
 
