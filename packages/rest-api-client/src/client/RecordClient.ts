@@ -17,6 +17,12 @@ const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
 const DELETE_RECORDS_LIMIT = 100;
 
+type RecordForParameter = {
+  [fieldCode: string]: {
+    value: unknown;
+  };
+};
+
 export class RecordClient {
   private client: HttpClient;
   private bulkRequestClient: BulkRequestClient;
@@ -46,7 +52,7 @@ export class RecordClient {
 
   public addRecord(params: {
     app: AppID;
-    record?: object;
+    record?: RecordForParameter;
   }): Promise<{ id: string; revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record",
@@ -56,11 +62,16 @@ export class RecordClient {
 
   public updateRecord(
     params:
-      | { app: AppID; id: RecordID; record?: object; revision?: Revision }
+      | {
+          app: AppID;
+          id: RecordID;
+          record?: RecordForParameter;
+          revision?: Revision;
+        }
       | {
           app: AppID;
           updateKey: UpdateKey;
-          record?: object;
+          record?: RecordForParameter;
           revision?: Revision;
         }
   ): Promise<{ revision: string }> {
@@ -73,7 +84,7 @@ export class RecordClient {
   public async upsertRecord(params: {
     app: AppID;
     updateKey: UpdateKey;
-    record?: object;
+    record?: RecordForParameter;
     revision?: Revision;
   }): Promise<{ id: string; revision: string }> {
     const { app, updateKey, record } = params;
@@ -93,7 +104,9 @@ export class RecordClient {
     }
     return this.addRecord({
       app,
-      record: { ...record, [updateKey.field]: { value: updateKey.value } },
+      record: Object.assign({}, record, {
+        [updateKey.field]: { value: updateKey.value },
+      }),
     });
   }
 
@@ -126,7 +139,7 @@ export class RecordClient {
 
   public async addRecords(params: {
     app: AppID;
-    records: object[];
+    records: RecordForParameter[];
   }): Promise<{
     ids: string[];
     revisions: string[];
@@ -149,10 +162,10 @@ export class RecordClient {
   public updateRecords(params: {
     app: AppID;
     records: Array<
-      | { id: RecordID; record?: object; revision?: Revision }
+      | { id: RecordID; record?: RecordForParameter; revision?: Revision }
       | {
           updateKey: UpdateKey;
-          record?: object;
+          record?: RecordForParameter;
           revision?: Revision;
         }
     >;
@@ -334,7 +347,7 @@ export class RecordClient {
 
   public async addAllRecords(params: {
     app: AppID;
-    records: object[];
+    records: RecordForParameter[];
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     if (
       !params.records.every(
@@ -347,7 +360,7 @@ export class RecordClient {
   }
 
   private async addAllRecordsRecursive(
-    params: { app: AppID; records: object[] },
+    params: { app: AppID; records: RecordForParameter[] },
     numOfAllRecords: number,
     results: Array<{ id: string; revision: string }>
   ): Promise<{ records: Array<{ id: string; revision: string }> }> {
@@ -385,7 +398,7 @@ export class RecordClient {
 
   private async addAllRecordsWithBulkRequest(params: {
     app: AppID;
-    records: object[];
+    records: RecordForParameter[];
   }): Promise<
     Array<{
       id: string;
@@ -420,10 +433,10 @@ export class RecordClient {
   public async updateAllRecords(params: {
     app: AppID;
     records: Array<
-      | { id: RecordID; record?: object; revision?: Revision }
+      | { id: RecordID; record?: RecordForParameter; revision?: Revision }
       | {
           updateKey: UpdateKey;
-          record?: object;
+          record?: RecordForParameter;
           revision?: Revision;
         }
     >;
@@ -435,10 +448,10 @@ export class RecordClient {
     params: {
       app: AppID;
       records: Array<
-        | { id: RecordID; record?: object; revision?: Revision }
+        | { id: RecordID; record?: RecordForParameter; revision?: Revision }
         | {
             updateKey: UpdateKey;
-            record?: object;
+            record?: RecordForParameter;
             revision?: Revision;
           }
       >;
@@ -481,10 +494,10 @@ export class RecordClient {
   private async updateAllRecordsWithBulkRequest(params: {
     app: AppID;
     records: Array<
-      | { id: RecordID; record?: object; revision?: Revision }
+      | { id: RecordID; record?: RecordForParameter; revision?: Revision }
       | {
           updateKey: UpdateKey;
-          record?: object;
+          record?: RecordForParameter;
           revision?: Revision;
         }
     >;
