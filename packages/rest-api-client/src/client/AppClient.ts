@@ -20,6 +20,24 @@ import {
   AppCustomize,
 } from "./types";
 
+type RowLayoutForParameter = {
+  type: "ROW";
+  fields: Array<{ [key: string]: unknown }>;
+};
+type SubtableLayoutForParameter = {
+  type: "SUBTABLE";
+  code: string;
+  fields: Array<{ [key: string]: unknown }>;
+};
+type GroupLayoutForParameter = {
+  type: "GROUP";
+  code: string;
+  layout: RowLayoutForParameter[];
+};
+type LayoutForParameter = Array<
+  RowLayoutForParameter | SubtableLayoutForParameter | GroupLayoutForParameter
+>;
+
 export class AppClient {
   private client: HttpClient;
   private guestSpaceId?: number | string;
@@ -92,7 +110,7 @@ export class AppClient {
 
   public updateFormLayout(params: {
     app: AppID;
-    layout: object[];
+    layout: LayoutForParameter;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
