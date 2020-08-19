@@ -37,6 +37,130 @@ type GroupLayoutForParameter = {
 type LayoutForParameter = Array<
   RowLayoutForParameter | SubtableLayoutForParameter | GroupLayoutForParameter
 >;
+type BaseProperties = {
+  type: string;
+  label?: string;
+  required?: boolean;
+  unique?: boolean;
+  maxValue?: number;
+  minValue?: number;
+  maxLength?: number;
+  minLength?: number;
+  defaultValue?:
+    | string
+    | Array<{
+        type: string;
+        code: string;
+      }>;
+  defaultNowValue?: boolean;
+  align?: string;
+  expression?: string;
+  hideExpression?: boolean;
+  digit?: boolean;
+  thumbnailSize?: number;
+  protocol?: string;
+  format?: string;
+  displayScale?: number;
+  unit?: string;
+  unitPosition?: string;
+  entities?: Array<{
+    type: string;
+    code: string;
+  }>;
+  openGroup?: boolean;
+  fields?: PropertiesForParameter;
+};
+type PropertiesForAddParameter = {
+  [fieldCode: string]: BaseProperties & {
+    code: string;
+    options?: {
+      [optionName: string]: {
+        label: string;
+        index: number;
+      };
+    };
+    referenceTable?: {
+      relatedApp:
+        | {
+            app: number;
+            code?: string;
+          }
+        | {
+            app?: number;
+            code: string;
+          };
+      condition: {
+        field: string;
+        relatedField: string;
+      };
+      fliterCond?: string;
+      displayFields: string[];
+      sort?: string;
+      size?: number;
+    };
+    lookup?: {
+      relatedApp:
+        | {
+            app: number;
+            code?: string;
+          }
+        | {
+            app?: number;
+            code: string;
+          };
+      relatedKeyField: string;
+      fieldMappings?: Array<{
+        field: string;
+        relatedField: string;
+      }>;
+      lookupPickerFields?: string[];
+      filterCond?: string;
+      sort?: string;
+    };
+    fields?: PropertiesForAddParameter;
+  };
+};
+
+type PropertiesForUpdateParameter = {
+  [fieldCode: string]: BaseProperties & {
+    code?: string;
+    options?: {
+      [optionName: string]: {
+        label?: string;
+        index: number;
+      };
+    };
+    referenceTable?: {
+      relatedApp?:
+        | {
+            app: number;
+            code?: string;
+          }
+        | {
+            app?: number;
+            code: string;
+          };
+      condition?: {
+        field?: string;
+        relatedField?: string;
+      };
+      fliterCond?: string;
+      displayFields?: string[];
+      sort?: string;
+      size?: number;
+    };
+    lookup?: {
+      fieldMappings?: Array<{
+        field: string;
+        relatedField: string;
+      }>;
+      lookupPickerFields?: string[];
+      filterCond?: string;
+      sort?: string;
+    };
+    fields?: PropertiesForUpdateParameter;
+  };
+};
 
 export class AppClient {
   private client: HttpClient;
@@ -62,7 +186,7 @@ export class AppClient {
 
   public addFormFields(params: {
     app: AppID;
-    properties: object;
+    properties: PropertiesForAddParameter;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
@@ -74,7 +198,7 @@ export class AppClient {
 
   public updateFormFields(params: {
     app: AppID;
-    properties: object;
+    properties: PropertiesForUpdateParameter;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
