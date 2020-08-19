@@ -68,7 +68,6 @@ type BaseProperties = {
     code: string;
   }>;
   openGroup?: boolean;
-  fields?: PropertiesForParameter;
 };
 type PropertiesForAddParameter = {
   [fieldCode: string]: BaseProperties & {
