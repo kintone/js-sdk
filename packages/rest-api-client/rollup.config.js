@@ -20,7 +20,18 @@ export default (argv) => {
           "@babel/preset-env",
           {
             corejs: 3,
-            targets: { browsers: ["> 0.25%", "IE 11", "not op_mini all"] },
+            targets: {
+              // see kintone's supported browsers https://get.kintone.help/general/en/user/list_start/webbrowser.html
+              browsers: [
+                "IE 11",
+                "last 2 edge versions",
+                "last 2 firefox version",
+                "last 2 chrome versions",
+                "last 2 safari versions",
+                "iOS 11",
+                "last 2 and_chr versions",
+              ],
+            },
             useBuiltIns: "usage",
           },
         ],
