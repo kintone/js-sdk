@@ -10,9 +10,18 @@ import babel from "@rollup/plugin-babel";
 
 const extensions = [".ts", ".js"];
 
-export default (argv) => {
-  const isProd = argv.mode === "production";
-  const plugins = [
+const isProd = process.env.BUILD === "production";
+
+export default {
+  input: "./src/index.browser.ts",
+  output: {
+    extend: true,
+    file: `./umd/KintoneRestAPIClient${isProd ? ".min" : ""}.js`,
+    format: "umd",
+    name: "window",
+    sourcemap: isProd ? false : "inline",
+  },
+  plugins: [
     babel({
       babelHelpers: "bundled",
       presets: [
@@ -51,19 +60,6 @@ export default (argv) => {
     }),
     globals(),
     builtins(),
-  ];
-  if (isProd) {
-    plugins.push(terser());
-  }
-  return {
-    input: "./src/index.browser.ts",
-    output: {
-      extend: true,
-      file: `./umd/KintoneRestAPIClient${isProd ? ".min" : ""}.js`,
-      format: "umd",
-      name: "window",
-      sourcemap: isProd ? false : "inline",
-    },
-    plugins,
-  };
+    isProd && terser(),
+  ],
 };
