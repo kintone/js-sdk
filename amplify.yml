@@ -5,9 +5,11 @@ applications:
       phases:
         preBuild:
           commands:
+            - cd ../../
             - yarn install
-            - cd ../plugin-manifest-validator
+            - cd packages/plugin-manifest-validator
             - yarn build
+            - cd ../plugin-packer
         build:
           commands:
             - yarn site
