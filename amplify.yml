@@ -1,7 +1,6 @@
 version: 1
 applications:
-  - appRoot: packages/plugin-packer
-    frontend:
+  - frontend:
       phases:
         preBuild:
           commands:
@@ -20,3 +19,4 @@ applications:
       cache:
         paths:
           - node_modules/**/*
+    appRoot: packages/plugin-packer
