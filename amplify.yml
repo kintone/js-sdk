@@ -5,6 +5,8 @@ applications:
         preBuild:
           commands:
             - yarn install
+            - cd ../plugin-manifest-validator
+            - yarn build
         build:
           commands:
             - yarn site
