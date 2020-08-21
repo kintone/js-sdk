@@ -20,3 +20,9 @@ applications:
         paths:
           - node_modules/**/*
     appRoot: packages/plugin-packer
+  - frontend:
+      artifacts:
+        baseDirectory: docs
+        files:
+          - '**/*'
+    appRoot: test-site
