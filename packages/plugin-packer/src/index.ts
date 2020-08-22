@@ -1,12 +1,19 @@
 "use strict";
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'ZipFile'.
 const ZipFile = require("yazl").ZipFile;
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'RSA'.
 const RSA = require("node-rsa");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'streamBuff... Remove this comment to see the full error message
 const streamBuffers = require("stream-buffers");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'debug'.
 const debug = require("debug")("packer");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'sign'.
 const sign = require("./sign");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'uuid'.
 const uuid = require("./uuid");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'validateCo... Remove this comment to see the full error message
 const { validateContentsZip } = require("./zip");
 
 /**
@@ -14,7 +21,8 @@ const { validateContentsZip } = require("./zip");
  * @param {string=} privateKey The private key (PKCS#1 PEM).
  * @return {!Promise<{plugin: !Buffer, privateKey: string, id: string}>}
  */
-function packer(contentsZip, privateKey_) {
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'packer'.
+function packer(contentsZip: any, privateKey_: any) {
   let privateKey = privateKey_;
   let key;
   if (privateKey) {
@@ -31,11 +39,11 @@ function packer(contentsZip, privateKey_) {
   debug(`id : ${id}`);
   return validateContentsZip(contentsZip)
     .then(() => zip(contentsZip, publicKey, signature))
-    .then((plugin) => ({
-      plugin: plugin,
-      privateKey: privateKey,
-      id: id,
-    }));
+    .then((plugin: any) => ({
+    plugin: plugin,
+    privateKey: privateKey,
+    id: id
+  }));
 }
 
 /**
@@ -46,7 +54,7 @@ function packer(contentsZip, privateKey_) {
  * @param {!Buffer} signature
  * @return {!Promise<!Buffer>}
  */
-function zip(contentsZip, publicKey, signature) {
+function zip(contentsZip: any, publicKey: any, signature: any) {
   debug(`zip(): start`);
   return new Promise((res, rej) => {
     const output = new streamBuffers.WritableStreamBuffer();
@@ -59,7 +67,7 @@ function zip(contentsZip, publicKey, signature) {
     zipFile.addBuffer(contentsZip, "contents.zip");
     zipFile.addBuffer(publicKey, "PUBKEY");
     zipFile.addBuffer(signature, "SIGNATURE");
-    zipFile.end((finalSize) => {
+    zipFile.end((finalSize: any) => {
       debug(`zip(): ZipFile end event: finalSize ${finalSize} bytes`);
     });
   });

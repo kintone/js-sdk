@@ -1,13 +1,18 @@
 "use strict";
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
 const yazl = require("yazl");
 const yauzl = require("yauzl");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'denodeify'... Remove this comment to see the full error message
 const denodeify = require("denodeify");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'validate'.
 const validate = require("@kintone/plugin-manifest-validator");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'streamBuff... Remove this comment to see the full error message
 const streamBuffers = require("stream-buffers");
 
 const genErrorMsg = require("./gen-error-msg");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'sourceList... Remove this comment to see the full error message
 const sourceList = require("./sourcelist");
 
 /**
@@ -16,9 +21,14 @@ const sourceList = require("./sourcelist");
  * @param {!Buffer} contentsZip The zipped plugin contents directory.
  * @return {!Promise<!Buffer>}
  */
-function rezip(contentsZip) {
+function rezip(contentsZip: any) {
   return preprocessToRezip(contentsZip).then(
-    ({ zipFile, entries, manifestJson, manifestPath }) => {
+    ({
+      zipFile,
+      entries,
+      manifestJson,
+      manifestPath
+    }: any) => {
       validateManifest(entries, manifestJson, manifestPath);
       return rezipContents(zipFile, entries, manifestJson, manifestPath);
     }
@@ -30,10 +40,15 @@ function rezip(contentsZip) {
  * @param {!Buffer} contentsZip
  * @return {!Promise<*>}
  */
-function validateContentsZip(contentsZip) {
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'validateCo... Remove this comment to see the full error message
+function validateContentsZip(contentsZip: any) {
   return preprocessToRezip(
     contentsZip
-  ).then(({ entries, manifestJson, manifestPath }) =>
+  ).then(({
+    entries,
+    manifestJson,
+    manifestPath
+  }: any) =>
     validateManifest(entries, manifestJson, manifestPath)
   );
 }
@@ -44,8 +59,8 @@ function validateContentsZip(contentsZip) {
  * @param {!Buffer} contentsZip
  * @return {Promise<PreprocessedContentsZip>}
  */
-function preprocessToRezip(contentsZip) {
-  return zipEntriesFromBuffer(contentsZip).then((result) => {
+function preprocessToRezip(contentsZip: any) {
+  return zipEntriesFromBuffer(contentsZip).then((result: any) => {
     const manifestList = Array.from(result.entries.keys()).filter(
       (file) => path.basename(file) === "manifest.json"
     );
@@ -67,23 +82,22 @@ function preprocessToRezip(contentsZip) {
  * @param {!Buffer} contentsZip
  * @return {!Promise<{zipFile: !yauzl.ZipFile, entries: !Map<string, !yauzl.ZipEntry>}>}
  */
-function zipEntriesFromBuffer(contentsZip) {
+function zipEntriesFromBuffer(contentsZip: any) {
   return denodeify(yauzl.fromBuffer)(contentsZip).then(
-    (zipFile) =>
-      new Promise((res, rej) => {
-        const entries = new Map();
-        const result = {
-          zipFile: zipFile,
-          entries: entries,
-        };
-        zipFile.on("entry", (entry) => {
-          entries.set(entry.fileName, entry);
-        });
-        zipFile.on("end", () => {
-          res(result);
-        });
-        zipFile.on("error", rej);
-      })
+    (zipFile: any) => new Promise((res, rej) => {
+      const entries = new Map();
+      const result = {
+        zipFile: zipFile,
+        entries: entries,
+      };
+      zipFile.on("entry", (entry: any) => {
+        entries.set(entry.fileName, entry);
+      });
+      zipFile.on("end", () => {
+        res(result);
+      });
+      zipFile.on("error", rej);
+    })
   );
 }
 
@@ -92,9 +106,9 @@ function zipEntriesFromBuffer(contentsZip) {
  * @param {!yauzl.ZipEntry} zipEntry
  * @return {!Promise<string>}
  */
-function zipEntryToString(zipFile, zipEntry) {
+function zipEntryToString(zipFile: any, zipEntry: any) {
   return new Promise((res, rej) => {
-    zipFile.openReadStream(zipEntry, (e, stream) => {
+    zipFile.openReadStream(zipEntry, (e: any, stream: any) => {
       if (e) {
         rej(e);
       } else {
@@ -113,7 +127,8 @@ function zipEntryToString(zipFile, zipEntry) {
  * @param {!yauzl.ZipEntry} zipEntry
  * @return {!Promise<string>}
  */
-function getManifestJsonFromEntry(zipFile, zipEntry) {
+function getManifestJsonFromEntry(zipFile: any, zipEntry: any) {
+  // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'unknown' is not assignable to pa... Remove this comment to see the full error message
   return zipEntryToString(zipFile, zipEntry).then((str) => JSON.parse(str));
 }
 
@@ -123,15 +138,14 @@ function getManifestJsonFromEntry(zipFile, zipEntry) {
  * @param {string} manifestPath
  * @throws if manifest.json is invalid
  */
-function validateManifest(entries, manifestJson, manifestPath) {
+function validateManifest(entries: any, manifestJson: any, manifestPath: any) {
   // entry.fileName is a relative path separated by posix style(/) so this makes separators always posix style.
-  const getEntryKey = (filePath) =>
-    path
-      .join(path.dirname(manifestPath), filePath)
-      .replace(new RegExp(`\\${path.sep}`, "g"), "/");
+  const getEntryKey = (filePath: any) => path
+    .join(path.dirname(manifestPath), filePath)
+    .replace(new RegExp(`\\${path.sep}`, "g"), "/");
   const result = validate(manifestJson, {
-    relativePath: (filePath) => entries.has(getEntryKey(filePath)),
-    maxFileSize(maxBytes, filePath) {
+    relativePath: (filePath: any) => entries.has(getEntryKey(filePath)),
+    maxFileSize(maxBytes: any, filePath: any) {
       const entry = entries.get(getEntryKey(filePath));
       if (entry) {
         return entry.uncompressedSize <= maxBytes;
@@ -142,6 +156,7 @@ function validateManifest(entries, manifestJson, manifestPath) {
   if (!result.valid) {
     const errors = genErrorMsg(result.errors);
     const e = new Error(errors.join(", "));
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'validationErrors' does not exist on type... Remove this comment to see the full error message
     e.validationErrors = errors;
     throw e;
   }
@@ -154,7 +169,7 @@ function validateManifest(entries, manifestJson, manifestPath) {
  * @param {string} manifestPath
  * @return {!Promise<!Buffer>}
  */
-function rezipContents(zipFile, entries, manifestJson, manifestPath) {
+function rezipContents(zipFile: any, entries: any, manifestJson: any, manifestPath: any) {
   const manifestPrefix = path.dirname(manifestPath);
 
   return new Promise((res, rej) => {
@@ -167,9 +182,9 @@ function rezipContents(zipFile, entries, manifestJson, manifestPath) {
     newZipFile.outputStream.pipe(output);
     const openReadStream = denodeify(zipFile.openReadStream.bind(zipFile));
     Promise.all(
-      sourceList(manifestJson).map((src) => {
+      sourceList(manifestJson).map((src: any) => {
         const entry = entries.get(path.join(manifestPrefix, src));
-        return openReadStream(entry).then((stream) => {
+        return openReadStream(entry).then((stream: any) => {
           newZipFile.addReadStream(stream, src, {
             size: entry.uncompressedSize,
           });

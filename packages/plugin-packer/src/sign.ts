@@ -1,5 +1,6 @@
 "use strict";
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'RSA'.
 const RSA = require("node-rsa");
 
 /**
@@ -7,7 +8,8 @@ const RSA = require("node-rsa");
  * @param {string} privateKey
  * @return {!Buffer} signature
  */
-function sign(contents, privateKey) {
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'sign'.
+function sign(contents: any, privateKey: any) {
   const key = new RSA(privateKey, "pkcs1-private-pem", {
     signingScheme: "pkcs1-sha1",
   });

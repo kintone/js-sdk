@@ -1,19 +1,28 @@
 "use strict";
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("fs");
 const os = require("os");
 const chokidar = require("chokidar");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'denodeify'... Remove this comment to see the full error message
 const denodeify = require("denodeify");
 
 const writeFile = denodeify(fs.writeFile);
 const mkdirp = require("mkdirp");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'debug'.
 const debug = require("debug")("cli");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'validate'.
 const validate = require("@kintone/plugin-manifest-validator");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'packer'.
 const packer = require("./");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'console'.
 const console = require("./console");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'generateEr... Remove this comment to see the full error message
 const generateErrorMessages = require("./gen-error-msg");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createCont... Remove this comment to see the full error message
 const createContentsZip = require("./create-contents-zip");
 
 /**
@@ -21,7 +30,7 @@ const createContentsZip = require("./create-contents-zip");
  * @param {Object=} options {ppk: string, out: string}.
  * @return {!Promise<string>} The resolved value is a path to the output plugin zip file.
  */
-function cli(pluginDir, options_) {
+function cli(pluginDir: any, options_: any) {
   const options = options_ || {};
   const packerLocal = options.packerMock_ ? options.packerMock_ : packer;
 
@@ -53,7 +62,7 @@ function cli(pluginDir, options_) {
 
       // 4. generate new ppk if not specified
       const ppkFile = options.ppk;
-      let privateKey;
+      let privateKey: any;
       if (ppkFile) {
         debug(`loading an existing key: ${ppkFile}`);
         privateKey = fs.readFileSync(ppkFile, "utf8");
@@ -62,8 +71,7 @@ function cli(pluginDir, options_) {
       // 5. package plugin.zip
       return Promise.all([
         mkdirp(outputDir),
-        createContentsZip(pluginDir, manifest).then((contentsZip) =>
-          packerLocal(contentsZip, privateKey)
+        createContentsZip(pluginDir, manifest).then((contentsZip: any) => packerLocal(contentsZip, privateKey)
         ),
       ]).then((result) => {
         const output = result[1];
@@ -115,7 +123,7 @@ module.exports = cli;
  * @param {!Object} manifest
  * @param {string} pluginDir
  */
-function throwIfInvalidManifest(manifest, pluginDir) {
+function throwIfInvalidManifest(manifest: any, pluginDir: any) {
   const result = validate(manifest, {
     relativePath: validateRelativePath(pluginDir),
     maxFileSize: validateMaxFileSize(pluginDir),
@@ -125,7 +133,7 @@ function throwIfInvalidManifest(manifest, pluginDir) {
   if (!result.valid) {
     const msgs = generateErrorMessages(result.errors);
     console.error("Invalid manifest.json:");
-    msgs.forEach((msg) => {
+    msgs.forEach((msg: any) => {
       console.error(`- ${msg}`);
     });
     throw new Error("Invalid manifest.json");
@@ -139,8 +147,8 @@ function throwIfInvalidManifest(manifest, pluginDir) {
  * @param {!Buffer} plugin
  * @return {!Promise<string>} The value is output path of plugin.zip.
  */
-function outputPlugin(outputPath, plugin) {
-  return writeFile(outputPath, plugin).then((arg) => outputPath);
+function outputPlugin(outputPath: any, plugin: any) {
+  return writeFile(outputPath, plugin).then((arg: any) => outputPath);
 }
 
 /**
@@ -149,7 +157,7 @@ function outputPlugin(outputPath, plugin) {
  * @param {string} jsonPath
  * @return {Object}
  */
-function loadJson(jsonPath) {
+function loadJson(jsonPath: any) {
   const content = fs.readFileSync(jsonPath, "utf8");
   return JSON.parse(content);
 }
@@ -160,8 +168,8 @@ function loadJson(jsonPath) {
  * @param {string} pluginDir
  * @return {function(string): boolean}
  */
-function validateRelativePath(pluginDir) {
-  return (str) => {
+function validateRelativePath(pluginDir: any) {
+  return (str: any) => {
     try {
       const stat = fs.statSync(path.join(pluginDir, str));
       return stat.isFile();
@@ -177,8 +185,8 @@ function validateRelativePath(pluginDir) {
  * @param {string} pluginDir
  * @return {function(number, string): boolean}
  */
-function validateMaxFileSize(pluginDir) {
-  return (maxBytes, filePath) => {
+function validateMaxFileSize(pluginDir: any) {
+  return (maxBytes: any, filePath: any) => {
     try {
       const stat = fs.statSync(path.join(pluginDir, filePath));
       return stat.size <= maxBytes;
