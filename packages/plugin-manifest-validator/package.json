@@ -28,7 +28,7 @@
     "ajv": "^6.12.4",
     "bytes": "^3.1.0",
     "rimraf": "^3.0.2",
-    "ts-node": "^8.10.2"
+    "ts-node": "^9.0.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.10.4",
