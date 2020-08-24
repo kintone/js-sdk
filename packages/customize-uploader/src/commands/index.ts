@@ -53,11 +53,11 @@ export async function upload(
       try {
         const [desktopJS, desktopCSS, mobileJS, mobileCSS] = await Promise.all(
           [
-            { files: manifest.desktop.js, type: "text/javascript" },
-            { files: manifest.desktop.css, type: "text/css" },
-            { files: manifest.mobile.js, type: "text/javascript" },
-            { files: manifest.mobile.css, type: "text/css" },
-          ].map(({ files }) =>
+            manifest.desktop.js,
+            manifest.desktop.css,
+            manifest.mobile.js,
+            manifest.mobile.css,
+          ].map((files) =>
             Promise.all(
               files.map((file: string) =>
                 kintoneApiClient.prepareCustomizeFile(file).then((result) => {
