@@ -6,12 +6,13 @@ export interface Option {
   guestSpaceId: number;
 }
 
-export interface RequestParams {
-  method: "GET" | "POST" | "PUT" | "DELETE";
-  path: string;
-  body: object;
-  contentType?: string;
-}
+export type UpdateAppCustomizeParameter = {
+  app: string | number;
+  scope?: "ALL" | "ADMIN" | "NONE" | undefined;
+  desktop?: { [key: string]: unknown };
+  mobile?: { [key: string]: unknown };
+  revision?: string | number;
+};
 
 export default class KintoneApiClient {
   private restApiClient: KintoneRestAPIClient;
@@ -67,7 +68,7 @@ export default class KintoneApiClient {
     };
   }
 
-  public updateCustomizeSetting(params: any) {
+  public updateCustomizeSetting(params: UpdateAppCustomizeParameter) {
     return this.restApiClient.app.updateAppCustomize(params);
   }
 
@@ -102,7 +103,7 @@ export default class KintoneApiClient {
     });
   }
 
-  public async getAppCustomize(appId: string) {
+  public getAppCustomize(appId: string) {
     return this.restApiClient.app.getAppCustomize({
       app: appId,
     });
