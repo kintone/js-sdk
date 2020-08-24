@@ -69,7 +69,7 @@ export default class MockKintoneApiClient extends KintoneApiClient {
     return this.getByPathResponse({
       path: ApiPreviewPath.Deploy,
       method: "POST",
-      body: { app: appId },
+      body: { apps: [{ app: appId }] },
     });
   }
 
@@ -77,16 +77,16 @@ export default class MockKintoneApiClient extends KintoneApiClient {
     return this.getByPathResponse({
       path: ApiPath.File,
       method: "GET",
-      body: {
-        fileKey,
-      },
+      body: { fileKey },
     });
   }
 
-  public async waitFinishingDeploy() {
+  public async waitFinishingDeploy(appId: string, callback: () => void) {
+    callback();
     return this.getByPathResponse({
       path: ApiPreviewPath.Deploy,
       method: "GET",
+      body: { apps: [appId] },
     });
   }
 
