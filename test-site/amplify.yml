@@ -1,0 +1,8 @@
+version: 1
+applications:
+  - frontend:
+      artifacts:
+        baseDirectory: docs
+        files:
+          - '**/*'
+
