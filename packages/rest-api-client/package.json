@@ -16,6 +16,7 @@
   "scripts": {
     "build": "npm-run-all -l -s clean -p build:*",
     "lint": "run-p -l lint:*",
+    "prepublish": "npm run build",
     "prerelease": "npm-run-all -p lint test -s build",
     "test": "jest",
     "test:ci": "jest --runInBand",
