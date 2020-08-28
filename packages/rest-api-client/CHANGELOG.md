@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.5.0...@kintone/rest-api-client@1.5.1) (2020-08-28)
+
+
+### Bug Fixes
+
+* KintoneRestAPIClient.version differs between UMD files and npm ([#380](https://github.com/kintone/js-sdk/issues/380)) ([83f8882](https://github.com/kintone/js-sdk/commit/83f88822df493723bfb47c0123d76714094c7256))
+* **deps:** update dependency js-base64 to ^2.6.4 ([d300a27](https://github.com/kintone/js-sdk/commit/d300a27f3a7505db2276461908889c6a63d70341))
+
+
+
+
+
 # [1.5.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.4.2...@kintone/rest-api-client@1.5.0) (2020-07-29)
 
 

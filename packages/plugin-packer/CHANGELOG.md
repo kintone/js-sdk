@@ -1,3 +1,29 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [3.0.6](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@3.0.5...@kintone/plugin-packer@3.0.6) (2020-08-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to ^7.1.0 ([#349](https://github.com/kintone/js-sdk/issues/349)) ([954ebbb](https://github.com/kintone/js-sdk/commit/954ebbbbc81c8b07d8924311dd01feea0043b7ef))
+* **deps:** update dependency node-rsa to ~1.1.1 ([#352](https://github.com/kintone/js-sdk/issues/352)) ([f8a2dd3](https://github.com/kintone/js-sdk/commit/f8a2dd3b844c8242de34b313769150efc861be79))
+* do not run eslint for a test script ([972fa90](https://github.com/kintone/js-sdk/commit/972fa90936b2297953fc56e981e9803b1246889c))
+* npm-scripts for eslint ([3e19e03](https://github.com/kintone/js-sdk/commit/3e19e03fc2b6afffbe5fd8b8cbdc1128f046b142))
+* npm-scripts for eslint in plugin-packer ([049ff73](https://github.com/kintone/js-sdk/commit/049ff73bb4afc597baa511e35d731207c348a5b0))
+* pass yarn test in plugin-packer ([121ec33](https://github.com/kintone/js-sdk/commit/121ec33df675ea6a101b2cbd03b32752bb48259c))
+
+
+### Reverts
+
+* Revert "chore: remove an unnecessary file" ([8dc0053](https://github.com/kintone/js-sdk/commit/8dc005340765aa5286136d464078d33fb32d6442))
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
