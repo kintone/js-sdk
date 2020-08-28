@@ -1,6 +1,4 @@
-node_modules/
-dist/src/*
-dist/test/*
-test/fixture/sample/dist/*.zip
-test/fixture/sample/js/*.js
+dist/
+src/__tests__/sample/dist/*.zip
+src/__tests__/sample/js/*.js
 .vscode/
