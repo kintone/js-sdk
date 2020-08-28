@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     <% if (enablePluginUploader) { %>
+    "prestart": "npm run build",
     "start": "node scripts/npm-start.js",
     "upload": "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 3000",
     <% } else { %>
