@@ -19,13 +19,22 @@
     "kintone"
   ],
   "files": [
-    "dist/src"
+    "dist"
   ],
-  "author": "kintone",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "license": "MIT",
-  "repository": "kintone/webpack-plugin-kintone-plugin",
-  "homepage": "https://github.com/kintone/webpack-plugin-kintone-plugin",
-  "bugs": "https://github.com/kintone/webpack-plugin-kintone-plugin/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/webpack-plugin-kintone-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/webpack-plugin-kintone-plugin#readme",
   "devDependencies": {
     "@types/adm-zip": "^0.4.33",
     "@types/chokidar": "^1.7.5",

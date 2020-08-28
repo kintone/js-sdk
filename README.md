@@ -14,6 +14,7 @@ This repository is a monorepo for Kintone development tools!
 | [@kintone/plugin-manifest-validator](packages/plugin-manifest-validator) | A validator for `manifest.json` of Kintone plugin | [![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-manifest-validator.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-manifest-validator) |
 | [@kintone/create-plugin](packages/create-plugin) | A CLI tool for creating a Kintone plugin! | [![npm version](https://badge.fury.io/js/%40kintone%2Fcreate-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fcreate-plugin) |
 | [@kintone/plugin-packer](packages/plugin-packer) | A tool for packaging a Kintone plugin! | [![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-packer.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-packer) |
+| [@kintone/webpack-plugin-kintone-plugin](packages/webpack-plugin-kintone-plugin) | A webpack plugin to create a plugin zip of Kintone | [![npm version](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin) |
 
 ## Contribution Guide
 
