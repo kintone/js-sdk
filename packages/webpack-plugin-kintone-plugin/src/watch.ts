@@ -1,5 +1,5 @@
-import * as chokidar from "chokidar";
-import * as os from "os";
+import chokidar from "chokidar";
+import os from "os";
 
 /**
  * Watch changes of the files, which returns a function to unwatch

@@ -1,12 +1,11 @@
-import * as AdmZip from "adm-zip";
-import * as assert from "assert";
+import AdmZip from "adm-zip";
 import { spawnSync } from "child_process";
-import * as fs from "fs";
-import * as os from "os";
-import * as path from "path";
-import * as rimraf from "rimraf";
+import fs from "fs";
+import os from "os";
+import path from "path";
+import rimraf from "rimraf";
 
-const pluginDir = path.resolve(__dirname, "fixtures", "sample");
+const pluginDir = path.resolve(__dirname, "sample");
 const pluginZipPath = path.resolve(pluginDir, "dist", "plugin.zip");
 const pluginJSPath = path.resolve(pluginDir, "plugin", "js", "customize.js");
 const customNamePluginZipPath = path.resolve(
@@ -41,12 +40,11 @@ const runWebpack = (config = "webpack.config.js") => {
 };
 
 const verifyPluginZip = (zipPath: string) => {
-  assert(fs.existsSync(zipPath));
+  expect(fs.existsSync(zipPath)).toBe(true);
   const zip = new AdmZip(zipPath);
-  assert.deepStrictEqual(
-    zip.getEntries().map((entry: AdmZip.IZipEntry) => entry.entryName),
-    ["contents.zip", "PUBKEY", "SIGNATURE"]
-  );
+  expect(
+    zip.getEntries().map((entry: AdmZip.IZipEntry) => entry.entryName)
+  ).toStrictEqual(["contents.zip", "PUBKEY", "SIGNATURE"]);
 };
 
 describe("KintonePlugin", () => {
@@ -65,24 +63,24 @@ describe("KintonePlugin", () => {
   });
   it("should be able to create a plugin zip", () => {
     const rs = runWebpack();
-    assert(rs.error == null, rs.error && rs.error.message);
+    expect(rs.error).toBeUndefined();
     verifyPluginZip(pluginZipPath);
   });
   it("should be able to customize the zip name", () => {
     const rs = runWebpack("webpack.config.customize.name.js");
-    assert(rs.error == null, rs.error && rs.error.message);
+    expect(rs.error).toBeUndefined();
     verifyPluginZip(customNamePluginZipPath);
   });
   it("should be able to create the zip directory if it does not exist", () => {
     const rs = runWebpack("webpack.config.not.exists.dir.js");
-    assert(rs.error == null, rs.error && rs.error.message);
+    expect(rs.error).toBeUndefined();
     verifyPluginZip(notExistsDirPluginZipPath);
   });
   it("should be able to create the zip directory if it does not exist and using customize the zip name", () => {
     const rs = runWebpack(
       "webpack.config.not.exists.dir.with.customize.name.js"
     );
-    assert(rs.error == null, rs.error && rs.error.message);
+    expect(rs.error).toBeUndefined();
     verifyPluginZip(notExistsDirWithCustomNamePluginZipPath);
   });
 });

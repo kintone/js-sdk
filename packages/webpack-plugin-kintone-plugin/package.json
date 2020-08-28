@@ -2,7 +2,7 @@
   "name": "@kintone/webpack-plugin-kintone-plugin",
   "version": "4.0.4",
   "description": "A webpack plugin to generate a plugin zip",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "engines": {
     "node": ">=10"
   },
@@ -10,10 +10,9 @@
     "start": "tsc -w",
     "build": "tsc",
     "lint": "eslint src test --ext .ts",
-    "release": "run-s build lint test && standard-version",
-    "release:dryrun": "standard-version --dry-run",
-    "unittest": "mocha --require ts-node/register --watch-extensions ts test/**/*-test.ts",
-    "test": "run-s build unittest"
+    "prerelease": "run-p build lint test",
+    "test": "jest",
+    "test:ci": "run-s test"
   },
   "keywords": [
     "webpack",
@@ -28,19 +27,14 @@
   "homepage": "https://github.com/kintone/webpack-plugin-kintone-plugin",
   "bugs": "https://github.com/kintone/webpack-plugin-kintone-plugin/issues",
   "devDependencies": {
-    "@cybozu/eslint-config": "^11.0.0",
     "@types/adm-zip": "^0.4.33",
     "@types/chokidar": "^1.7.5",
     "@types/lodash": "^4.14.159",
     "@types/mkdirp": "^1.0.1",
-    "@types/mocha": "^7.0.2",
-    "@types/node": "^9.6.57",
     "@types/rimraf": "^3.0.0",
     "@types/webpack": "^4.41.21",
     "adm-zip": "^0.4.16",
-    "mocha": "^8.0.1",
     "rimraf": "^3.0.2",
-    "standard-version": "^8.0.2",
     "ts-node": "^8.10.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"

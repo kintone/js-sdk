@@ -1,7 +1,7 @@
-import * as fs from "fs";
+import fs from "fs";
 import { debounce } from "lodash";
-import * as mkdirp from "mkdirp";
-import * as path from "path";
+import mkdirp from "mkdirp";
+import path from "path";
 import { Compiler, Plugin } from "webpack";
 
 import { generatePlugin, getAssetPaths } from "./plugin";
