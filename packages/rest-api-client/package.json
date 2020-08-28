@@ -62,7 +62,7 @@
     "@rollup/plugin-babel": "^5.1.0",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/core-js": "^2.5.3",
     "@types/js-base64": "^2.3.2",
     "@types/qs": "^6.9.4",
