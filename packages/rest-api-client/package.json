@@ -22,6 +22,7 @@
     "test:ci": "jest --runInBand",
     "build:umd_dev": "rollup -c --environment BUILD:development",
     "build:umd_prod": "rollup -c --environment BUILD:production",
+    "build:mjs": "rollup --config rollup.config.esm.js",
     "build:compile": "run-p compile",
     "clean": "rimraf lib esm umd",
     "compile": "run-p -l compile:*",
@@ -78,5 +79,11 @@
     "form-data": "^3.0.0",
     "js-base64": "^2.6.4",
     "qs": "^6.9.4"
+  },
+  "exports": {
+    ".": {
+      "import": "./esm/index.mjs",
+      "require": "./lib/index.js"
+    }
   }
 }

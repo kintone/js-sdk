@@ -4,7 +4,7 @@ import { basename } from "path";
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import https from "https";
 import os from "os";
-const packageJson = require("../../package.json");
+import { packageJson } from "./packageJson";
 
 const readFile = promisify(fs.readFile);
 
@@ -69,5 +69,5 @@ export const buildBaseUrl = (baseUrl: string | undefined) => {
 };
 
 export const getVersion = () => {
-  return packageJson.version;
+  return packageJson.version as string;
 };
