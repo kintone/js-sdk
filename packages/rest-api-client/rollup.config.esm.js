@@ -8,7 +8,7 @@ import builtinModules from "builtin-modules";
 const extensions = [".ts", ".js"];
 
 export default {
-  input: "./src/index.esm.mjs",
+  input: "./src/index.esm.ts",
   output: {
     file: "./esm/index.mjs",
     format: "esm",
