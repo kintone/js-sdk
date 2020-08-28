@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.7](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@3.0.6...@kintone/plugin-manifest-validator@3.0.7) (2020-08-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to ^6.12.4 ([f6dccab](https://github.com/kintone/js-sdk/commit/f6dccab51d5168606a71430256c6e580f390f7c3))
+* **deps:** update dependency ts-node to v9 ([#370](https://github.com/kintone/js-sdk/issues/370)) ([cf5f38b](https://github.com/kintone/js-sdk/commit/cf5f38bb67eaaa38eaa77f67394dcf79c3cb0306))
+
+
+
+
+
 ## [3.0.6](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@3.0.5...@kintone/plugin-manifest-validator@3.0.6) (2020-07-29)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@kintone/customize-uploader",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "A kintone customize uploader",
   "bin": {
     "kintone-customize-uploader": "bin/cli.js"
@@ -39,11 +39,11 @@
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/customize-uploader#readme",
   "devDependencies": {
-    "@types/inquirer": "7.3.0",
+    "@types/inquirer": "7.3.1",
     "@types/mkdirp": "^1.0.1",
     "@types/request-promise": "^4.1.46",
     "@types/rimraf": "^3.0.0",
-    "ts-node": "^8.10.2"
+    "ts-node": "^9.0.0"
   },
   "dependencies": {
     "chokidar": "^3.4.2",

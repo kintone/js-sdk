@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.0.7...@kintone/create-plugin@3.1.0) (2020-08-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^7.3.3 ([#310](https://github.com/kintone/js-sdk/issues/310)) ([25761d9](https://github.com/kintone/js-sdk/commit/25761d9bee9f9624597f5ce9e84ade1e16c76c2c))
+* **deps:** update dependency lodash to ^4.17.20 ([131f6e7](https://github.com/kintone/js-sdk/commit/131f6e700f3f8e326306a2d50c7506cf2a99818c))
+* **deps:** update dependency meow to ^7.1.0 ([#349](https://github.com/kintone/js-sdk/issues/349)) ([954ebbb](https://github.com/kintone/js-sdk/commit/954ebbbbc81c8b07d8924311dd01feea0043b7ef))
+* **deps:** update dependency ts-node to v9 ([#370](https://github.com/kintone/js-sdk/issues/370)) ([cf5f38b](https://github.com/kintone/js-sdk/commit/cf5f38bb67eaaa38eaa77f67394dcf79c3cb0306))
+
+
+### Features
+
+* add a modern template for create plugin ([#332](https://github.com/kintone/js-sdk/issues/332)) ([ad42cac](https://github.com/kintone/js-sdk/commit/ad42cac7624334fae36058586609c9e7ba48e7c1))
+
+
+
+
+
 ## [3.0.7](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.0.6...@kintone/create-plugin@3.0.7) (2020-07-29)
 
 

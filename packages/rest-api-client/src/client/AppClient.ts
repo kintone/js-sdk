@@ -7,17 +7,24 @@ import {
   Properties,
   Lang,
   Layout,
-  View,
+  ViewForResponse,
+  ViewForParameter,
   App,
-  State,
-  Action,
+  StateForResponse,
+  StateForParameter,
+  ActionForResponse,
+  ActionForParameter,
   DeployStatus,
-  FieldRight,
-  AppRightEntity,
+  FieldRightForResponse,
+  FieldRightForParameter,
+  AppRightEntityForResponse,
+  AppRightEntityForParameter,
   EvaluatedRecordRight,
-  RecordRight,
+  RecordRightForResponse,
+  RecordRightForParameter,
   AppCustomizeScope,
-  AppCustomize,
+  AppCustomizeForResponse,
+  AppCustomizeForParameter,
 } from "./types";
 
 type RowLayoutForParameter = {
@@ -125,7 +132,7 @@ export class AppClient {
     lang?: Lang;
     preview?: boolean;
   }): Promise<{
-    views: { [viewName: string]: View<"response"> };
+    views: { [viewName: string]: ViewForResponse };
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -138,7 +145,7 @@ export class AppClient {
 
   public updateViews(params: {
     app: AppID;
-    views: { [viewName: string]: View<"parameter"> };
+    views: { [viewName: string]: ViewForParameter };
     revision?: Revision;
   }): Promise<{
     views: { [viewName: string]: { id: string } };
@@ -275,9 +282,9 @@ export class AppClient {
   }): Promise<{
     enable: boolean;
     states: {
-      [statusName: string]: State<"response">;
+      [statusName: string]: StateForResponse;
     };
-    actions: Array<Action<"response">>;
+    actions: ActionForResponse[];
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -291,8 +298,8 @@ export class AppClient {
   public updateProcessManagement(params: {
     app: AppID;
     enable?: boolean;
-    states?: { [statusName: string]: State<"parameter"> };
-    actions?: Array<Action<"parameter">>;
+    states?: { [statusName: string]: StateForParameter };
+    actions?: ActionForParameter[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
@@ -326,7 +333,7 @@ export class AppClient {
   public getFieldAcl(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ rights: Array<FieldRight<"response">>; revision: string }> {
+  }): Promise<{ rights: FieldRightForResponse[]; revision: string }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "field/acl",
@@ -337,7 +344,7 @@ export class AppClient {
 
   public updateFieldAcl(params: {
     app: AppID;
-    rights: Array<FieldRight<"parameter">>;
+    rights: FieldRightForParameter[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
@@ -354,7 +361,7 @@ export class AppClient {
   public getAppAcl(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ rights: Array<AppRightEntity<"response">>; revision: string }> {
+  }): Promise<{ rights: AppRightEntityForResponse[]; revision: string }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/acl",
@@ -365,7 +372,7 @@ export class AppClient {
 
   public updateAppAcl(params: {
     app: AppID;
-    rights: Array<AppRightEntity<"parameter">>;
+    rights: AppRightEntityForParameter[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
@@ -393,7 +400,7 @@ export class AppClient {
     app: AppID;
     lang?: Lang;
     preview?: boolean;
-  }): Promise<{ rights: Array<RecordRight<"response">>; revision: string }> {
+  }): Promise<{ rights: RecordRightForResponse[]; revision: string }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record/acl",
@@ -404,7 +411,7 @@ export class AppClient {
 
   public updateRecordAcl(params: {
     app: AppID;
-    rights: Array<RecordRight<"parameter">>;
+    rights: RecordRightForParameter[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     // NOTE: When executing this API without `preview`,
@@ -423,8 +430,8 @@ export class AppClient {
     preview?: boolean;
   }): Promise<{
     scope: AppCustomizeScope;
-    desktop: AppCustomize<"response">;
-    mobile: AppCustomize<"response">;
+    desktop: AppCustomizeForResponse;
+    mobile: AppCustomizeForResponse;
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -438,8 +445,8 @@ export class AppClient {
   public updateAppCustomize(params: {
     app: AppID;
     scope?: AppCustomizeScope;
-    desktop?: AppCustomize<"parameter">;
-    mobile?: AppCustomize<"parameter">;
+    desktop?: AppCustomizeForParameter;
+    mobile?: AppCustomizeForParameter;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
