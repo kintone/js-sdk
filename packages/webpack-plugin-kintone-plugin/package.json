@@ -8,7 +8,9 @@
   },
   "scripts": {
     "start": "tsc -w",
-    "build": "tsc",
+    "build": "run-s clean build:tsc",
+    "build:tsc": "tsc",
+    "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",
     "prerelease": "run-p build lint test",
     "test": "jest",
