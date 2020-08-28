@@ -1,41 +1,62 @@
-import { Appearance, ConditionalStrict, ConditionalExist } from "./utilityType";
+import { Entity } from "../entity";
 
-type AssigneeEntity<T extends Appearance> = {
+type AssigneeEntityForResponse = {
   entity:
+    | Entity
     | {
-        type:
-          | "USER"
-          | "GROUP"
-          | "ORGANIZATION"
-          | "FIELD_ENTITY"
-          | "CUSTOM_FIELD";
+        type: "FIELD_ENTITY" | "CUSTOM_FIELD";
         code: string;
       }
-    | ({
+    | {
         type: "CREATOR";
-      } & ConditionalExist<T, "response", { code: null }>);
-} & ConditionalStrict<T, "response", { includeSubs: boolean }>;
+        code: null;
+      };
+  includeSubs: boolean;
+};
 
-export type State<T extends Appearance> = {
-  index: T extends "response"
-    ? string
-    : T extends "parameter"
-    ? string | number
-    : never;
-} & ConditionalStrict<
-  T,
-  "response",
-  {
-    name: string;
-    assignee: {
-      type: "ONE" | "ALL" | "ANY";
-      entities: Array<AssigneeEntity<T>>;
-    };
-  }
->;
+type AssigneeEntityForParameter = {
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY" | "CUSTOM_FIELD";
+        code: string;
+      }
+    | {
+        type: "CREATOR";
+      };
+  includeSubs?: boolean;
+};
 
-export type Action<T extends Appearance> = {
+type AssigneeType = "ONE" | "ALL" | "ANY";
+
+export type StateForResponse = {
+  index: string;
+  name: string;
+  assignee: {
+    type: AssigneeType;
+    entities: AssigneeEntityForResponse[];
+  };
+};
+
+export type StateForParameter = {
+  index: string | number;
+  name?: string;
+  assignee?: {
+    type: AssigneeType;
+    entities: AssigneeEntityForParameter[];
+  };
+};
+
+export type ActionForResponse = {
   name: string;
   from: string;
   to: string;
-} & ConditionalStrict<T, "response", { filterCond: string }>;
+  filterCond: string;
+};
+
+export type ActionForParameter = {
+  name: string;
+  from: string;
+  to: string;
+  filterCond?: string;
+};

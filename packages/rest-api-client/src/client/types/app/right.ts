@@ -1,61 +1,107 @@
-import { Appearance, ConditionalStrict, ConditionalExist } from "./utilityType";
+import { Entity } from "../entity";
 
-type FieldRightEntity<T extends Appearance> = {
-  accessibility: "READ" | "WRITE" | "NONE";
-  entity: {
-    code: string;
-    type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
-  };
-} & ConditionalStrict<T, "response", { includeSubs: boolean }>;
+type FieldRightAccessibility = "READ" | "WRITE" | "NONE";
 
-export type FieldRight<T extends Appearance> = {
-  code: string;
-  entities: Array<FieldRightEntity<T>>;
+type FieldRightEntityForResponse = {
+  accessibility: FieldRightAccessibility;
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY";
+        code: string;
+      };
+  includeSubs: boolean;
 };
 
-export type AppRightEntity<T extends Appearance> = {
+type FieldRightEntityForParameter = {
+  accessibility: FieldRightAccessibility;
   entity:
+    | Entity
     | {
+        type: "FIELD_ENTITY";
         code: string;
-        type: "USER" | "GROUP" | "ORGANIZATION";
-      }
-    | ({
+      };
+  includeSubs?: boolean;
+};
+
+export type FieldRightForResponse = {
+  code: string;
+  entities: FieldRightEntityForResponse[];
+};
+
+export type FieldRightForParameter = {
+  code: string;
+  entities: FieldRightEntityForParameter[];
+};
+
+export type AppRightEntityForResponse = {
+  entity:
+    | Entity
+    | {
         type: "CREATOR";
-      } & ConditionalExist<T, "response", { code: null }>);
-} & ConditionalStrict<
-  T,
-  "response",
-  {
-    includeSubs: boolean;
-    appEditable: boolean;
-    recordViewable: boolean;
-    recordAddable: boolean;
-    recordEditable: boolean;
-    recordDeletable: boolean;
-    recordImportable: boolean;
-    recordExportable: boolean;
-  }
->;
+        code: null;
+      };
+  includeSubs: boolean;
+  appEditable: boolean;
+  recordViewable: boolean;
+  recordAddable: boolean;
+  recordEditable: boolean;
+  recordDeletable: boolean;
+  recordImportable: boolean;
+  recordExportable: boolean;
+};
 
-type RecordRightEntity<T extends Appearance> = {
-  entity: {
-    code: string;
-    type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
-  };
-} & ConditionalStrict<
-  T,
-  "response",
-  {
-    viewable: boolean;
-    editable: boolean;
-    deletable: boolean;
-    includeSubs: boolean;
-  }
->;
+export type AppRightEntityForParameter = {
+  entity:
+    | Entity
+    | {
+        type: "CREATOR";
+      };
+  includeSubs?: boolean;
+  appEditable?: boolean;
+  recordViewable?: boolean;
+  recordAddable?: boolean;
+  recordEditable?: boolean;
+  recordDeletable?: boolean;
+  recordImportable?: boolean;
+  recordExportable?: boolean;
+};
 
-export type RecordRight<T extends Appearance> = {
-  entities: Array<RecordRightEntity<T>>;
-} & ConditionalStrict<T, "response", { filterCond: string }>;
+type RecordRightEntityForResponse = {
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY";
+        code: string;
+      };
+  viewable: boolean;
+  editable: boolean;
+  deletable: boolean;
+  includeSubs: boolean;
+};
+
+type RecordRightEntityForParameter = {
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY";
+        code: string;
+      };
+  viewable?: boolean;
+  editable?: boolean;
+  deletable?: boolean;
+  includeSubs?: boolean;
+};
+
+export type RecordRightForResponse = {
+  entities: RecordRightEntityForResponse[];
+  filterCond: string;
+};
+
+export type RecordRightForParameter = {
+  entities: RecordRightEntityForParameter[];
+  filterCond?: string;
+};
 
 export type EvaluatedRecordRight = {
   id: string;
