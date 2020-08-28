@@ -9,7 +9,7 @@
   "scripts": {
     "start": "tsc -w",
     "build": "tsc",
-    "lint": "eslint src test --ext .ts",
+    "lint": "eslint 'src/**/*.ts'",
     "prerelease": "run-p build lint test",
     "test": "jest",
     "test:ci": "run-s test"
