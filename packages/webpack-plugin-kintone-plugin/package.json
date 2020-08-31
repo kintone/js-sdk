@@ -13,6 +13,7 @@
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",
     "prerelease": "run-p build lint test",
+    "pretest": "run-s build",
     "test": "jest",
     "test:ci": "run-s test"
   },
