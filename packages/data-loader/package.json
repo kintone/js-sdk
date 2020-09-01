@@ -51,7 +51,8 @@
   },
   "devDependencies": {
     "@types/mkdirp": "^1.0.1",
-    "@types/yargs": "^15.0.5"
+    "@types/yargs": "^15.0.5",
+    "pkg": "^4.4.9"
   },
   "dependencies": {
     "@kintone/rest-api-client": "^1.5.1",
