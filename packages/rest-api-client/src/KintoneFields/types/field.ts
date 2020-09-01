@@ -33,7 +33,7 @@ export type LinkField = FieldWith<"LINK", string>;
 export type CheckBoxField = FieldWith<"CHECK_BOX", string[]>;
 export type RadioButtonField = FieldWith<"RADIO_BUTTON", string>;
 export type DropdownField = FieldWith<"DROP_DOWN", string | null>;
-export type MultiSelectField<> = FieldWith<"MULTI_SELECT", string[]>;
+export type MultiSelectField = FieldWith<"MULTI_SELECT", string[]>;
 
 export type FileField = FieldWith<"FILE", FileInformation[]>;
 
