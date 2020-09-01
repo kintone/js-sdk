@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 
-import mkdirp from "mkdirp";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 export async function exportRecords(argv: any) {
@@ -33,7 +32,7 @@ export async function exportRecords(argv: any) {
 
           // TODO: can accept target directory name as an option
           const dir = path.resolve("attachments", recordId);
-          mkdirp.sync(dir);
+          fs.mkdirSync(dir, { recursive: true });
           fs.writeFileSync(path.resolve(dir, fileName), Buffer.from(file));
         });
       }

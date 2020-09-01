@@ -48,16 +48,14 @@
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/data-loader#readme",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=10.13.0"
   },
   "devDependencies": {
-    "@types/mkdirp": "^1.0.1",
     "@types/yargs": "^15.0.5",
     "pkg": "^4.4.9"
   },
   "dependencies": {
     "@kintone/rest-api-client": "^1.5.1",
-    "mkdirp": "^1.0.4",
     "yargs": "^15.4.1"
   }
 }
