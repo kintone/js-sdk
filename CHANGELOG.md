@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.1.0...@kintone/create-plugin@3.1.1) (2020-09-02)
+
+
+### Bug Fixes
+
+* `npm start` with the modern template ([#381](https://github.com/kintone/js-sdk/issues/381)) ([f83f45d](https://github.com/kintone/js-sdk/commit/f83f45dba0647fa6cc9acc8841aeab1700503265))
+
+
+
+
+
 # [3.1.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.0.7...@kintone/create-plugin@3.1.0) (2020-08-28)
 
 
