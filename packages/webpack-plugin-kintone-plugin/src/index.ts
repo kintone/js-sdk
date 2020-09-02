@@ -14,11 +14,6 @@ interface Option {
   pluginZipPath: string | PluginZipPathFunction;
 }
 
-interface PackedPlugin {
-  id: string;
-  plugin: Buffer;
-}
-
 type PluginZipPathFunction = (
   id: string,
   manifest: { [key: string]: any }
@@ -41,7 +36,7 @@ class KintonePlugin implements Plugin {
     );
   }
   public apply(compiler: Compiler) {
-    const { manifestJSONPath, privateKeyPath, pluginZipPath } = this.options;
+    const { manifestJSONPath, privateKeyPath } = this.options;
     compiler.hooks.afterPlugins.tap("KintonePlugin", () => {
       if (!fs.existsSync(manifestJSONPath)) {
         throw new Error(`manifestJSONPath cannot found: ${manifestJSONPath}`);
@@ -53,7 +48,7 @@ class KintonePlugin implements Plugin {
       if (compiler.options.watch) {
         this.watchAssets();
       } else {
-        compiler.hooks.afterEmit.tapPromise(this.name, (compilation) =>
+        compiler.hooks.afterEmit.tapPromise(this.name, () =>
           this.generatePlugin()
         );
       }
