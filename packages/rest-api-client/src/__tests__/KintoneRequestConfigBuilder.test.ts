@@ -3,6 +3,7 @@ import FormData from "form-data";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
 import os from "os";
+import * as Base64 from "js-base64";
 
 const packageJson = require("../../package.json");
 const nodeVersion = process.version;
