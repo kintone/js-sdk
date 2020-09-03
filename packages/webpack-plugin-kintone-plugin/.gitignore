@@ -1,0 +1,4 @@
+dist/
+src/__tests__/sample/dist/*.zip
+src/__tests__/sample/js/*.js
+.vscode/

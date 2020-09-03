@@ -1,0 +1,63 @@
+{
+  "name": "@kintone/webpack-plugin-kintone-plugin",
+  "version": "4.0.4",
+  "description": "A webpack plugin to generate a plugin zip",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsc -w",
+    "build": "run-s clean build:tsc",
+    "build:tsc": "tsc",
+    "clean": "rimraf dist",
+    "lint": "eslint 'src/**/*.ts'",
+    "prerelease": "run-p build lint test",
+    "pretest": "run-s build",
+    "test": "jest",
+    "test:ci": "run-s test"
+  },
+  "keywords": [
+    "webpack",
+    "kintone"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/webpack-plugin-kintone-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/webpack-plugin-kintone-plugin#readme",
+  "devDependencies": {
+    "@types/adm-zip": "^0.4.33",
+    "@types/chokidar": "^1.7.5",
+    "@types/lodash": "^4.14.159",
+    "@types/mkdirp": "^1.0.1",
+    "@types/rimraf": "^3.0.0",
+    "@types/webpack": "^4.41.21",
+    "adm-zip": "^0.4.16",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "peerDependencies": {
+    "webpack": "^4.0.0"
+  },
+  "dependencies": {
+    "@kintone/plugin-packer": "^3.0.5",
+    "chokidar": "^3.4.2",
+    "lodash": "^4.17.20",
+    "mkdirp": "^1.0.4"
+  }
+}
