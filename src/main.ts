@@ -1,5 +1,6 @@
 import yargs from "yargs";
 import { exportRecords } from "./export";
+import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 // FIXME: It doesn't display an error when not passing any arguments.
 // eslint-disable-next-line no-unused-expressions
@@ -11,7 +12,13 @@ yargs
     () => {},
     async (argv: any) => {
       try {
-        const records = await exportRecords(argv);
+        const apiClient = new KintoneRestAPIClient({
+          auth: {
+            username: argv.username,
+            password: argv.password,
+          },
+        });
+        const records = await exportRecords(apiClient, argv.app);
         console.log(JSON.stringify(records));
       } catch (e) {
         console.error(e);
