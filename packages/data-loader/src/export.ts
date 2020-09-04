@@ -1,10 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import { KintoneAPIClient } from "./KintoneAPIClient";
 
 export async function exportRecords(argv: any) {
-  const client = new KintoneRestAPIClient({
+  const client = new KintoneAPIClient({
     auth: {
       username: argv.username,
       password: argv.password,
