@@ -1,5 +1,5 @@
 import yargs from "yargs";
-import { exportRecords } from "./export";
+import { exportRecords, processRecord } from "./export";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 // FIXME: It doesn't display an error when not passing any arguments.
@@ -18,7 +18,7 @@ yargs
             password: argv.password,
           },
         });
-        const records = await exportRecords(apiClient, argv.app);
+        const records = await exportRecords(apiClient, argv.app, processRecord);
         console.log(JSON.stringify(records));
       } catch (e) {
         console.error(e);
