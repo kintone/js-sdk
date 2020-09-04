@@ -1,18 +1,15 @@
 import fs from "fs";
 import path from "path";
 
-import { KintoneAPIClient } from "./KintoneAPIClient";
+import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import { AppID } from "@kintone/rest-api-client/lib/client/types";
 
-export async function exportRecords(argv: any) {
-  const client = new KintoneAPIClient({
-    auth: {
-      username: argv.username,
-      password: argv.password,
-    },
-    baseUrl: argv["base-url"],
-  });
-  const result = await client.record.getRecords({
-    app: argv.app,
+export async function exportRecords(
+  apiClient: KintoneRestAPIClient,
+  app: AppID
+) {
+  const result = await apiClient.record.getRecords({
+    app,
   });
 
   // TODO: filter fields
@@ -28,7 +25,7 @@ export async function exportRecords(argv: any) {
         field.value.forEach(async (fileInfo) => {
           const fileName = fileInfo.name;
           const fileKey = fileInfo.fileKey;
-          const file = await client.file.downloadFile({ fileKey: fileKey });
+          const file = await apiClient.file.downloadFile({ fileKey: fileKey });
 
           // TODO: can accept target directory name as an option
           const dir = path.resolve("attachments", recordId);
