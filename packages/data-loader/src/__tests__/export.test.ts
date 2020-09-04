@@ -10,6 +10,7 @@ describe("export", () => {
     });
   });
   it("should not be failed", () => {
-    return expect(() => exportRecords(apiClient, "1")).rejects.not.toThrow();
+    apiClient.record.getRecords = jest.fn().mockResolvedValue({records: [{}]});
+    return expect(exportRecords(apiClient, "1", async () => {})).resolves.not.toThrow();
   });
 });
