@@ -64,7 +64,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/core-js": "^2.5.3",
-    "@types/js-base64": "^2.3.2",
+    "@types/js-base64": "^3.0.0",
     "@types/qs": "^6.9.4",
     "rollup": "^2.26.10",
     "rollup-plugin-node-builtins": "^2.1.2",
@@ -76,7 +76,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "form-data": "^3.0.0",
-    "js-base64": "^2.6.4",
+    "js-base64": "^3.4.5",
     "qs": "^6.9.4"
   }
 }
