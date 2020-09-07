@@ -1,4 +1,4 @@
-import fs from "fs";
+import { promises as fs } from "fs";
 import path from "path";
 
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
@@ -9,10 +9,15 @@ type Options = {
   attachmentDir: string;
 };
 
+type FileInfo = {
+  name: string;
+  fileKey: string;
+};
+
 export async function exportRecords(
   apiClient: KintoneRestAPIClient,
   options: Options,
-  processRecordCallback: typeof processRecord
+  downloadAttachmentsCallback = downloadAttachments
 ) {
   const { app, attachmentDir } = options;
   const result = await apiClient.record.getRecords({
@@ -24,31 +29,46 @@ export async function exportRecords(
   // TODO: extract attachment fields first
 
   // download attachments if exists
-  result.records.forEach((record) =>
-    processRecordCallback(apiClient, attachmentDir, record)
-  );
+  result.records.forEach(async (record: Record) => {
+    const fileInfos = getFileInfos(record);
+    for (const fileInfo of fileInfos) {
+      await downloadAttachmentsCallback(
+        apiClient,
+        record,
+        attachmentDir,
+        fileInfo
+      );
+    }
+  });
   return result.records;
 }
 
-export const processRecord = async (
-  apiClient: KintoneRestAPIClient,
-  attachmentDir: string,
-  record: Record
-) => {
-  const recordId = record.$id.value as string;
+export const getFileInfos = (record: Record) => {
   // console.debug(`>>>record ${recordId}`);
-  Object.entries(record).forEach(([fieldCode, field]) => {
-    if (field.type === "FILE") {
-      field.value.forEach(async (fileInfo) => {
-        const fileName = fileInfo.name;
-        const fileKey = fileInfo.fileKey;
-        const file = await apiClient.file.downloadFile({ fileKey: fileKey });
-
-        const dir = path.resolve(attachmentDir, recordId);
-        fs.mkdirSync(dir, { recursive: true });
-        fs.writeFileSync(path.resolve(dir, fileName), Buffer.from(file));
-      });
+  const fileInfos: FileInfo[] = [];
+  Object.entries<{ type: string; value: unknown }>(record).forEach(
+    ([fieldCode, field]) => {
+      if (field.type === "FILE") {
+        // @ts-expect-error field.value should be FileInformation[] type.
+        field.value.forEach((fileInfo) => {
+          fileInfos.push(fileInfo);
+        });
+      }
     }
-    // console.debug(fieldCode, field);
-  });
+  );
+  return fileInfos;
+};
+
+export const downloadAttachments = async (
+  apiClient: KintoneRestAPIClient,
+  record: Record,
+  attachmentDir: string,
+  fileInfo: FileInfo
+) => {
+  const { fileKey, name } = fileInfo;
+  const file = await apiClient.file.downloadFile({ fileKey: fileKey });
+  const recordId = record.$id.value as string;
+  const dir = path.resolve(attachmentDir, recordId);
+  await fs.mkdir(dir, { recursive: true });
+  await fs.writeFile(path.resolve(dir, name), Buffer.from(file));
 };
