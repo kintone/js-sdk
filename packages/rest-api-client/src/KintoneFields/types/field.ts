@@ -15,39 +15,42 @@ type FileInformation = {
   size: string;
 };
 
-type IDField = FieldWith<"__ID__", string>;
-type RevisionField = FieldWith<"__REVISION__", string>;
-type RecordNumberField = FieldWith<"RECORD_NUMBER", string>;
-type CreatorField = FieldWith<"CREATOR", Entity>;
-type CreatedTimeField = FieldWith<"CREATED_TIME", string>;
-type ModifierField = FieldWith<"MODIFIER", Entity>;
-type UpdatedTimeField = FieldWith<"UPDATED_TIME", string>;
+export type IDField = FieldWith<"__ID__", string>;
+export type RevisionField = FieldWith<"__REVISION__", string>;
+export type RecordNumberField = FieldWith<"RECORD_NUMBER", string>;
+export type CreatorField = FieldWith<"CREATOR", Entity>;
+export type CreatedTimeField = FieldWith<"CREATED_TIME", string>;
+export type ModifierField = FieldWith<"MODIFIER", Entity>;
+export type UpdatedTimeField = FieldWith<"UPDATED_TIME", string>;
 
-type SingleLineTextField = FieldWith<"SINGLE_LINE_TEXT", string>;
-type NumberField = FieldWith<"NUMBER", string>;
-type CalcField = FieldWith<"CALC", string>;
-type MultiLineTextField = FieldWith<"MULTI_LINE_TEXT", string>;
-type RichTextField = FieldWith<"RICH_TEXT", string>;
-type LinkField = FieldWith<"LINK", string>;
+export type SingleLineTextField = FieldWith<"SINGLE_LINE_TEXT", string>;
+export type NumberField = FieldWith<"NUMBER", string>;
+export type CalcField = FieldWith<"CALC", string>;
+export type MultiLineTextField = FieldWith<"MULTI_LINE_TEXT", string>;
+export type RichTextField = FieldWith<"RICH_TEXT", string>;
+export type LinkField = FieldWith<"LINK", string>;
 
-type CheckBoxField = FieldWith<"CHECK_BOX", string[]>;
-type RadioButtonField = FieldWith<"RADIO_BUTTON", string>;
-type DropdownField = FieldWith<"DROP_DOWN", string | null>;
-type MultiSelectField<> = FieldWith<"MULTI_SELECT", string[]>;
+export type CheckBoxField = FieldWith<"CHECK_BOX", string[]>;
+export type RadioButtonField = FieldWith<"RADIO_BUTTON", string>;
+export type DropdownField = FieldWith<"DROP_DOWN", string | null>;
+export type MultiSelectField = FieldWith<"MULTI_SELECT", string[]>;
 
-type FileField = FieldWith<"FILE", FileInformation[]>;
+export type FileField = FieldWith<"FILE", FileInformation[]>;
 
-type DateField = FieldWith<"DATE", string | null>;
-type TimeField = FieldWith<"TIME", string | null>;
-type DateTimeField = FieldWith<"DATETIME", string>;
+export type DateField = FieldWith<"DATE", string | null>;
+export type TimeField = FieldWith<"TIME", string | null>;
+export type DateTimeField = FieldWith<"DATETIME", string>;
 
-type UserSelectField = FieldWith<"USER_SELECT", Entity[]>;
-type OrganizationSelectField = FieldWith<"ORGANIZATION_SELECT", Entity[]>;
-type GroupSelectField = FieldWith<"GROUP_SELECT", Entity[]>;
+export type UserSelectField = FieldWith<"USER_SELECT", Entity[]>;
+export type OrganizationSelectField = FieldWith<
+  "ORGANIZATION_SELECT",
+  Entity[]
+>;
+export type GroupSelectField = FieldWith<"GROUP_SELECT", Entity[]>;
 
-type CategoryField = FieldWith<"CATEGORY", string[]>;
-type StatusField = FieldWith<"STATUS", string>;
-type StatusAssigneeField = FieldWith<"STATUS_ASSIGNEE", Entity[]>;
+export type CategoryField = FieldWith<"CATEGORY", string[]>;
+export type StatusField = FieldWith<"STATUS", string>;
+export type StatusAssigneeField = FieldWith<"STATUS_ASSIGNEE", Entity[]>;
 
 type FieldInSubtable =
   | SingleLineTextField
@@ -68,15 +71,14 @@ type FieldInSubtable =
   | OrganizationSelectField
   | GroupSelectField;
 
-type SubtableRow<T extends object> = {
+type SubtableRow<T extends { [fieldCode: string]: FieldInSubtable }> = {
   id: string;
   value: T;
 };
 
-type SubtableField<T extends object> = FieldWith<
-  "SUBTABLE",
-  Array<SubtableRow<T>>
->;
+export type SubtableField<
+  T extends { [fieldCode: string]: FieldInSubtable }
+> = FieldWith<"SUBTABLE", Array<SubtableRow<T>>>;
 
 export type Field =
   | IDField

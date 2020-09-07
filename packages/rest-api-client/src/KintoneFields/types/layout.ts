@@ -7,51 +7,56 @@ type FieldLayoutWith<
   size: S;
 };
 
-type RecordNumberFieldLayout = FieldLayoutWith<"RECORD_NUMBER">;
-type CreatorFieldLayout = FieldLayoutWith<"CREATOR">;
-type CreatedTimeFieldLayout = FieldLayoutWith<"CREATED_TIME">;
-type ModifierFieldLayout = FieldLayoutWith<"MODIFIER">;
-type UpdatedTimeFieldLayout = FieldLayoutWith<"UPDATED_TIME">;
-type SingleLineTextFieldLayout = FieldLayoutWith<"SINGLE_LINE_TEXT">;
-type NumberFieldLayout = FieldLayoutWith<"NUMBER">;
-type CalcFieldLayout = FieldLayoutWith<"CALC">;
-type MultiLineTextFieldLayout = FieldLayoutWith<
+export type RecordNumberFieldLayout = FieldLayoutWith<"RECORD_NUMBER">;
+export type CreatorFieldLayout = FieldLayoutWith<"CREATOR">;
+export type CreatedTimeFieldLayout = FieldLayoutWith<"CREATED_TIME">;
+export type ModifierFieldLayout = FieldLayoutWith<"MODIFIER">;
+export type UpdatedTimeFieldLayout = FieldLayoutWith<"UPDATED_TIME">;
+export type SingleLineTextFieldLayout = FieldLayoutWith<"SINGLE_LINE_TEXT">;
+export type NumberFieldLayout = FieldLayoutWith<"NUMBER">;
+export type CalcFieldLayout = FieldLayoutWith<"CALC">;
+export type MultiLineTextFieldLayout = FieldLayoutWith<
   "MULTI_LINE_TEXT",
   { width: string; innerHeight: string }
 >;
-type RichTextFieldLayout = FieldLayoutWith<
+export type RichTextFieldLayout = FieldLayoutWith<
   "RICH_TEXT",
   { width: string; innerHeight: string }
 >;
-type LinkFieldLayout = FieldLayoutWith<"LINK">;
-type CheckBoxFieldLayout = FieldLayoutWith<"CHECK_BOX">;
-type RadioButtonFieldLayout = FieldLayoutWith<"RADIO_BUTTON">;
-type DropdownFieldLayout = FieldLayoutWith<"DROP_DOWN">;
-type MultiSelectFieldLayout = FieldLayoutWith<"MULTI_SELECT">;
-type FileFieldLayout = FieldLayoutWith<"FILE">;
-type DateFieldLayout = FieldLayoutWith<"DATE">;
-type TimeFieldLayout = FieldLayoutWith<"TIME">;
-type DateTimeFieldLayout = FieldLayoutWith<"DATETIME">;
-type UserSelectFieldLayout = FieldLayoutWith<"USER_SELECT">;
-type OrganizationSelectFieldLayout = FieldLayoutWith<"ORGANIZATION_SELECT">;
-type GroupSelectFieldLayout = FieldLayoutWith<"GROUP_SELECT">;
+export type LinkFieldLayout = FieldLayoutWith<"LINK">;
+export type CheckBoxFieldLayout = FieldLayoutWith<"CHECK_BOX">;
+export type RadioButtonFieldLayout = FieldLayoutWith<"RADIO_BUTTON">;
+export type DropdownFieldLayout = FieldLayoutWith<"DROP_DOWN">;
+export type MultiSelectFieldLayout = FieldLayoutWith<"MULTI_SELECT">;
+export type FileFieldLayout = FieldLayoutWith<"FILE">;
+export type DateFieldLayout = FieldLayoutWith<"DATE">;
+export type TimeFieldLayout = FieldLayoutWith<"TIME">;
+export type DateTimeFieldLayout = FieldLayoutWith<"DATETIME">;
+export type UserSelectFieldLayout = FieldLayoutWith<"USER_SELECT">;
+export type OrganizationSelectFieldLayout = FieldLayoutWith<
+  "ORGANIZATION_SELECT"
+>;
+export type GroupSelectFieldLayout = FieldLayoutWith<"GROUP_SELECT">;
 
-type ReferenceTableFieldLayout = { type: "REFERENCE_TABLE"; code: string };
+export type ReferenceTableFieldLayout = {
+  type: "REFERENCE_TABLE";
+  code: string;
+};
 
-type LabelFieldLayout = {
+export type LabelFieldLayout = {
   type: "LABEL";
   label: string;
   size: {
     width: string;
   };
 };
-type HRFieldLayout = {
+export type HRFieldLayout = {
   type: "HR";
   size: {
     width: string;
   };
 };
-type SpacerFieldLayout = {
+export type SpacerFieldLayout = {
   type: "SPACER";
   elementId: string;
   size: {
@@ -101,14 +106,14 @@ type FieldLayoutInSubtable = Exclude<
   | SpacerFieldLayout
 >;
 
-type RowLayout<T extends object[]> = { type: "ROW"; fields: T };
+export type RowLayout<T extends FieldLayout[]> = { type: "ROW"; fields: T };
 
-type SubtableLayout<T extends object[]> = {
+export type SubtableLayout<T extends FieldLayoutInSubtable[]> = {
   type: "SUBTABLE";
   code: string;
   fields: T;
 };
-type GroupLayout<T extends Array<RowLayout<object[]>>> = {
+export type GroupLayout<T extends Array<RowLayout<FieldLayout[]>>> = {
   type: "GROUP";
   code: string;
   layout: T;
