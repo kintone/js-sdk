@@ -3,11 +3,16 @@ import path from "path";
 
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
+import { options } from "yargs";
 
 export async function exportRecords(
   apiClient: KintoneRestAPIClient,
   app: AppID,
-  processRecord: (apiClient: KintoneRestAPIClient, record: Record) => Promise<void>,
+  options: object,
+  processRecord: (
+    apiClient: KintoneRestAPIClient,
+    record: Record
+  ) => Promise<void>
 ) {
   const result = await apiClient.record.getRecords({
     app,
@@ -22,7 +27,10 @@ export async function exportRecords(
   return result.records;
 }
 
-export const processRecord = async (apiClient: KintoneRestAPIClient,record: Record) => {
+export const processRecord = async (
+  apiClient: KintoneRestAPIClient,
+  record: Record
+) => {
   const recordId = record.$id.value as string;
   // console.debug(`>>>record ${recordId}`);
   Object.entries(record).forEach(([fieldCode, field]) => {
@@ -40,4 +48,4 @@ export const processRecord = async (apiClient: KintoneRestAPIClient,record: Reco
     }
     // console.debug(fieldCode, field);
   });
-}
+};
