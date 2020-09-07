@@ -18,7 +18,12 @@ yargs
             password: argv.password,
           },
         });
-        const records = await exportRecords(apiClient, argv.app, processRecord);
+        const records = await exportRecords(
+          apiClient,
+          argv.app,
+          argv,
+          processRecord
+        );
         console.log(JSON.stringify(records));
       } catch (e) {
         console.error(e);
@@ -41,4 +46,7 @@ yargs
   })
   .option("id", {
     describe: "The ID of the record",
+  })
+  .option("attachment-dir", {
+    describe: "Attachment file directory",
   }).argv;
