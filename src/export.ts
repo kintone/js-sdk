@@ -3,17 +3,18 @@ import path from "path";
 
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
-import { options } from "yargs";
+
+type Options = {
+  app: AppID;
+  attachmentDir: string;
+};
 
 export async function exportRecords(
   apiClient: KintoneRestAPIClient,
-  app: AppID,
-  options: object,
-  processRecord: (
-    apiClient: KintoneRestAPIClient,
-    record: Record
-  ) => Promise<void>
+  options: Options,
+  processRecordCallback: typeof processRecord
 ) {
+  const { app, attachmentDir } = options;
   const result = await apiClient.record.getRecords({
     app,
   });
@@ -23,12 +24,15 @@ export async function exportRecords(
   // TODO: extract attachment fields first
 
   // download attachments if exists
-  result.records.forEach((record) => processRecord(apiClient, record));
+  result.records.forEach((record) =>
+    processRecordCallback(apiClient, attachmentDir, record)
+  );
   return result.records;
 }
 
 export const processRecord = async (
   apiClient: KintoneRestAPIClient,
+  attachmentDir: string,
   record: Record
 ) => {
   const recordId = record.$id.value as string;
@@ -40,8 +44,7 @@ export const processRecord = async (
         const fileKey = fileInfo.fileKey;
         const file = await apiClient.file.downloadFile({ fileKey: fileKey });
 
-        // TODO: can accept target directory name as an option
-        const dir = path.resolve("attachments", recordId);
+        const dir = path.resolve(attachmentDir, recordId);
         fs.mkdirSync(dir, { recursive: true });
         fs.writeFileSync(path.resolve(dir, fileName), Buffer.from(file));
       });

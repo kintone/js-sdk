@@ -14,7 +14,9 @@ describe("export", () => {
       .fn()
       .mockResolvedValue({ records: [{}] });
     return expect(
-      exportRecords(apiClient, "1", async () => {})
+      exportRecords(apiClient, { app: "1", attachmentDir: "" }, async () => {
+        /* noop */
+      })
     ).resolves.not.toThrow();
   });
 });
