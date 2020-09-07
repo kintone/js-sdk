@@ -13,17 +13,13 @@ yargs
     async (argv: any) => {
       try {
         const apiClient = new KintoneRestAPIClient({
+          baseUrl: argv.baseUrl,
           auth: {
             username: argv.username,
             password: argv.password,
           },
         });
-        const records = await exportRecords(
-          apiClient,
-          argv.app,
-          argv,
-          processRecord
-        );
+        const records = await exportRecords(apiClient, argv, processRecord);
         console.log(JSON.stringify(records));
       } catch (e) {
         console.error(e);
@@ -32,14 +28,17 @@ yargs
   )
   .option("base-url", {
     describe: "Kintone Base Url",
+    default: process.env.KINTONE_BASE_URL,
   })
   .option("username", {
     alias: "u",
     describe: "Kintone Username",
+    default: process.env.KINTONE_USERNAME,
   })
   .option("password", {
     alias: "p",
     describe: "Kintone Password",
+    default: process.env.KINTONE_PASSWORD,
   })
   .option("app", {
     describe: "The ID of the app",
@@ -49,4 +48,5 @@ yargs
   })
   .option("attachment-dir", {
     describe: "Attachment file directory",
+    default: "attachment",
   }).argv;
