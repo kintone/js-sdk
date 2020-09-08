@@ -48,5 +48,5 @@ yargs
   })
   .option("attachment-dir", {
     describe: "Attachment file directory",
-    default: "attachment",
+    default: "attachments",
   }).argv;
