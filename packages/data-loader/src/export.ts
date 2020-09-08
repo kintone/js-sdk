@@ -20,7 +20,7 @@ export async function exportRecords(
   downloadAttachmentsCallback = downloadAttachments
 ) {
   const { app, attachmentDir } = options;
-  const result = await apiClient.record.getRecords({
+  const records = await apiClient.record.getAllRecords({
     app,
   });
 
@@ -29,7 +29,7 @@ export async function exportRecords(
   // TODO: extract attachment fields first
 
   // download attachments if exists
-  result.records.forEach(async (record: Record) => {
+  records.forEach(async (record: Record) => {
     const fileInfos = getFileInfos(record);
     for (const fileInfo of fileInfos) {
       await downloadAttachmentsCallback(
@@ -40,22 +40,20 @@ export async function exportRecords(
       );
     }
   });
-  return result.records;
+  return records;
 }
 
 export const getFileInfos = (record: Record) => {
   // console.debug(`>>>record ${recordId}`);
   const fileInfos: FileInfo[] = [];
-  Object.entries<{ type: string; value: unknown }>(record).forEach(
-    ([fieldCode, field]) => {
-      if (field.type === "FILE") {
-        // @ts-expect-error field.value should be FileInformation[] type.
-        field.value.forEach((fileInfo) => {
-          fileInfos.push(fileInfo);
-        });
-      }
+  Object.values<{ type: string; value: unknown }>(record).forEach((field) => {
+    if (field.type === "FILE") {
+      // @ts-expect-error field.value should be FileInformation[] type.
+      field.value.forEach((fileInfo) => {
+        fileInfos.push(fileInfo);
+      });
     }
-  );
+  });
   return fileInfos;
 };
 
