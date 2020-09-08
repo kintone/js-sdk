@@ -6,7 +6,8 @@
     "strict": true,
     "target": "es5",
     "outDir": "dist",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "indlude": ["src/**/*.ts"]
 }
