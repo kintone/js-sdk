@@ -4,7 +4,7 @@ module.exports = {
     /* ref
      * - https://github.com/eslint/eslint/issues/11899
      * - https://github.com/eslint/eslint/issues/11954
-    */
-    "require-atomic-updates": "off"
-  }
+     */
+    "require-atomic-updates": "off",
+  },
 };

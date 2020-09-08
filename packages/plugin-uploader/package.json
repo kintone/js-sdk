@@ -5,17 +5,20 @@
   "bin": {
     "kintone-plugin-uploader": "bin/cli.js"
   },
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "engines": {
     "node": ">=10"
   },
   "scripts": {
     "start": "tsc -w",
-    "build": "tsc",
-    "tsc:check": "tsc --noEmit",
-    "lint": "eslint --ext .ts,.js src bin",
-    "release": "run-s build lint && standard-version",
-    "release:dryrun": "standard-version --dry-run"
+    "build": "run-s clean build:tsc",
+    "build:tsc": "tsc",
+    "clean": "rimraf dist",
+    "lint": "npm-run-all -s build -p lint:*",
+    "lint:tsc": "tsc --noEmit",
+    "lint:eslint": "eslint 'src/**/*.ts' 'bin/*.js'",
+    "test": "echo 'no test'",
+    "test:ci": "run-s test"
   },
   "files": [
     "bin",
@@ -24,11 +27,20 @@
   "keywords": [
     "kintone"
   ],
-  "author": "kintone",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "license": "MIT",
-  "repository": "kintone/plugin-uploader",
-  "homepage": "https://github.com/kintone/plugin-uploader",
-  "bugs": "https://github.com/kintone/plugin-uploader/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/plugin-uploader"
+  },
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-uploader#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "inquirer": "^7.3.3",
@@ -37,16 +49,7 @@
     "puppeteer": "5.2.1"
   },
   "devDependencies": {
-    "@cybozu/eslint-config": "^11.0.0",
     "@types/inquirer": "7.3.1",
-    "@types/node": "^9.6.57",
-    "@types/puppeteer": "^3.0.1",
-    "eslint": "^7.8.1",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.1",
-    "standard-version": "^9.0.0",
-    "tslint": "^6.1.3",
-    "tslint-plugin-prettier": "^2.3.0",
-    "typescript": "^4.0.2"
+    "@types/puppeteer": "^3.0.1"
   }
 }
