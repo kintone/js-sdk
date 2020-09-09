@@ -6,7 +6,12 @@
     "strict": true,
     "target": "es5",
     "outDir": "dist",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "../../node_modules/@types",
+      "types"
+    ], 
   },
   "indlude": ["src/**/*.ts"]
 }
