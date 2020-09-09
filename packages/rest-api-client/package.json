@@ -63,7 +63,7 @@
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
-    "@types/core-js": "^2.5.3",
+    "@types/core-js": "^2.5.4",
     "@types/js-base64": "^3.0.0",
     "@types/qs": "^6.9.4",
     "rollup": "^2.26.11",
