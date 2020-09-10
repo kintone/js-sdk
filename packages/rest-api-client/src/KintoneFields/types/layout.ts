@@ -65,7 +65,7 @@ export type SpacerFieldLayout = {
   };
 };
 
-type FieldLayout =
+export type FieldLayout =
   | RecordNumberFieldLayout
   | CreatorFieldLayout
   | CreatedTimeFieldLayout
@@ -93,7 +93,7 @@ type FieldLayout =
   | HRFieldLayout
   | SpacerFieldLayout;
 
-type FieldLayoutInSubtable = Exclude<
+export type FieldLayoutInSubtable = Exclude<
   FieldLayout,
   | RecordNumberFieldLayout
   | CreatorFieldLayout

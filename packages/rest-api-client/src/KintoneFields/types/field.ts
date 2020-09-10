@@ -3,12 +3,12 @@ type FieldWith<T extends string, V> = {
   value: V;
 };
 
-type Entity = {
+export type Entity = {
   code: string;
   name: string;
 };
 
-type FileInformation = {
+export type FileInformation = {
   contentType: string;
   fileKey: string;
   name: string;
@@ -52,7 +52,7 @@ export type CategoryField = FieldWith<"CATEGORY", string[]>;
 export type StatusField = FieldWith<"STATUS", string>;
 export type StatusAssigneeField = FieldWith<"STATUS_ASSIGNEE", Entity[]>;
 
-type FieldInSubtable =
+export type FieldInSubtable =
   | SingleLineTextField
   | NumberField
   | CalcField
@@ -71,7 +71,7 @@ type FieldInSubtable =
   | OrganizationSelectField
   | GroupSelectField;
 
-type SubtableRow<T extends { [fieldCode: string]: FieldInSubtable }> = {
+export type SubtableRow<T extends { [fieldCode: string]: FieldInSubtable }> = {
   id: string;
   value: T;
 };

@@ -136,7 +136,7 @@ export type LinkFieldProperty = {
   protocol: "WEB" | "CALL" | "MAIL";
 };
 
-type Options = {
+export type Options = {
   [optionName: string]: {
     label: string;
     index: string;
@@ -313,7 +313,7 @@ export type LookupFieldProperty = {
   };
 };
 
-type FieldPropertyInSubtable =
+export type FieldPropertyInSubtable =
   | SingleLineTextFieldProperty
   | NumberFieldProperty
   | CalcFieldProperty
