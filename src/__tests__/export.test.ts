@@ -1,4 +1,4 @@
-import { exportRecords } from "../export";
+import { exportRecords } from "../commands/export";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 describe("export", () => {
@@ -14,9 +14,7 @@ describe("export", () => {
       .fn()
       .mockResolvedValue({ records: [{}] });
     return expect(
-      exportRecords(apiClient, { app: "1", attachmentDir: "" }, async () => {
-        /* noop */
-      })
+      exportRecords(apiClient, { app: "1", attachmentDir: "" })
     ).resolves.not.toThrow();
   });
 });

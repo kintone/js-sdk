@@ -1,5 +1,5 @@
 import yargs from "yargs";
-import { exportRecords } from "./export";
+import { exportRecords } from "./commands/export";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 // FIXME: It doesn't display an error when not passing any arguments.

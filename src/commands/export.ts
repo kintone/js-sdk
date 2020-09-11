@@ -17,8 +17,7 @@ type FileInfo = {
 
 export async function exportRecords(
   apiClient: KintoneRestAPIClient,
-  options: Options,
-  downloadAttachmentsCallback = downloadAttachments
+  options: Options
 ) {
   const { app, attachmentDir } = options;
   const records = await apiClient.record.getAllRecords({
@@ -33,12 +32,7 @@ export async function exportRecords(
   const fetchFiles = async (record: Record) => {
     const fileInfos = getFileInfos(record);
     for (const fileInfo of fileInfos) {
-      await downloadAttachmentsCallback(
-        apiClient,
-        record,
-        attachmentDir,
-        fileInfo
-      );
+      await downloadAttachments(apiClient, record, attachmentDir, fileInfo);
     }
   };
   const queue = new PQueue({ concurrency: 5 });
@@ -52,7 +46,7 @@ export async function exportRecords(
   return records;
 }
 
-export const getFileInfos = (record: Record) => {
+const getFileInfos = (record: Record) => {
   // console.debug(`>>>record ${recordId}`);
   const fileInfos: FileInfo[] = [];
   Object.values<{ type: string; value: unknown }>(record).forEach((field) => {
@@ -66,14 +60,14 @@ export const getFileInfos = (record: Record) => {
   return fileInfos;
 };
 
-export const downloadAttachments = async (
+const downloadAttachments = async (
   apiClient: KintoneRestAPIClient,
   record: Record,
   attachmentDir: string,
   fileInfo: FileInfo
 ) => {
   const { fileKey, name } = fileInfo;
-  const file = await apiClient.file.downloadFile({ fileKey: fileKey });
+  const file = await apiClient.file.downloadFile({ fileKey });
   const recordId = record.$id.value as string;
   const dir = path.resolve(attachmentDir, recordId);
   await fs.mkdir(dir, { recursive: true });
