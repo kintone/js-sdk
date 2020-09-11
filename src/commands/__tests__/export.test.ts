@@ -1,5 +1,9 @@
 import { exportRecords } from "../export";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import { promises as fs } from "fs";
+
+import os from "os";
+import path from "path";
 
 describe("export", () => {
   let apiClient: KintoneRestAPIClient;
@@ -37,5 +41,59 @@ describe("export", () => {
     });
     expect(actual).toStrictEqual(records);
   });
-  it.todo("can download files to a specified directory");
+  it("can download files to a specified directory", async () => {
+    const recordWithAttachment = {
+      $id: {
+        value: "2",
+      },
+      fieldCode: {
+        type: "SINGLE_LINE_TEXT",
+        value: "value1",
+      },
+      attachment: {
+        type: "FILE",
+        value: [
+          {
+            contentType: "text/plain",
+            fileKey: "test-file-key",
+            name: "test.txt",
+          },
+        ],
+      },
+    };
+    const testFileData = "test data";
+
+    const records = [
+      recordWithAttachment,
+      {
+        $id: {
+          value: "3",
+        },
+        fieldCode: {
+          type: "SINGLE_LINE_TEXT",
+          value: "value1",
+        },
+      },
+    ];
+
+    const tempDir = await fs.mkdtemp(
+      path.join(os.tmpdir(), "kintone-data-loader-")
+    );
+
+    apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
+    apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
+    const actual = await exportRecords(apiClient, {
+      app: "1",
+      attachmentDir: tempDir,
+    });
+    expect(actual).toStrictEqual(records);
+    const downloadFile = await fs.readFile(
+      path.join(
+        tempDir,
+        recordWithAttachment.$id.value,
+        recordWithAttachment.attachment.value[0].name
+      )
+    );
+    expect(downloadFile.toString()).toBe(testFileData);
+  });
 });
