@@ -1,6 +1,7 @@
 import yargs from "yargs";
 import { exportRecords } from "./commands/export";
-import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import { buildRestAPIClient } from "./api";
+import { buildPrinter } from "./printer";
 
 // FIXME: It doesn't display an error when not passing any arguments.
 // eslint-disable-next-line no-unused-expressions
@@ -12,15 +13,10 @@ yargs
     () => {},
     async (argv: any) => {
       try {
-        const apiClient = new KintoneRestAPIClient({
-          baseUrl: argv.baseUrl,
-          auth: {
-            username: argv.username,
-            password: argv.password,
-          },
-        });
+        const apiClient = buildRestAPIClient(argv);
         const records = await exportRecords(apiClient, argv);
-        console.log(JSON.stringify(records));
+        const printer = buildPrinter(argv.format);
+        printer(records);
       } catch (e) {
         console.error(e);
       }
@@ -49,4 +45,8 @@ yargs
   .option("attachment-dir", {
     describe: "Attachment file directory",
     default: "attachments",
+  })
+  .option("format", {
+    describe: "Output format",
+    default: "json",
   }).argv;
