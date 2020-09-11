@@ -37,8 +37,8 @@ If you want to upload the plugin automatically when the plugin is updated, you c
 ${pluginZipPath}
 ```
 
-It works fine with [@kintone/plugin-packer](https://github.com/kintone/plugin-packer).
-You can create a project based on `@kintone/plugin-packer` using [@kintone/create-plugin](https://github.com/kintone/create-plugin) :).
+It works fine with [@kintone/plugin-packer](https://github.com/kintone/js-sdk/tree/master/packages/plugin-packer).
+You can create a project based on `@kintone/plugin-packer` using [@kintone/create-plugin](https://github.com/kintone/js-sdk/tree/master/packages/create-plugin) :).
 
 ## Options
 
