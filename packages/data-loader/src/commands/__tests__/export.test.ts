@@ -1,4 +1,4 @@
-import { exportRecords } from "../commands/export";
+import { exportRecords } from "../export";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 describe("export", () => {
