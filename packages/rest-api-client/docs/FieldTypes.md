@@ -20,6 +20,7 @@ const client = new KintoneRestAPIClient();
 ```
 
 ## Types
+
 ### Field
 
 ```ts
@@ -39,4 +40,5 @@ import { KintoneProperty } from "@kintone/rest-api-client";
 ```
 
 ## Properties detail
+
 Check the [Field Type](https://developer.kintone.io/hc/en-us/articles/212494818/) page.

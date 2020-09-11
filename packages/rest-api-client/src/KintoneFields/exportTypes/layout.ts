@@ -1,4 +1,4 @@
-export {
+export type {
   RecordNumberFieldLayout,
   CreatorFieldLayout,
   CreatedTimeFieldLayout,
