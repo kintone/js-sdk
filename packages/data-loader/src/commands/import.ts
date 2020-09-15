@@ -1,8 +1,7 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID } from "@kintone/rest-api-client/lib/client/types";
 import { csvParser } from "../parser";
-
-import fs from "fs";
+import { promises as fs } from "fs";
 
 type Options = {
   app: AppID;
@@ -15,23 +14,8 @@ export async function importRecords(
   options: Options
 ) {
   const { app, filePath } = options;
-  const buf = fs.readFileSync(filePath);
-
-  const data = csvParser(buf.toString());
-  const records = data.map((d) => {
-    const keys = Object.keys(d);
-    const row: {
-      [key: string]: any;
-    } = {};
-    for (const key of keys) {
-      row[key] = {
-        value: d[key],
-      };
-    }
-    return row;
-  });
-
-  // TODO: call rest api
+  const buf = await fs.readFile(filePath);
+  const records = csvParser(buf.toString());
   await apiClient.record.addAllRecords({
     app,
     records,
