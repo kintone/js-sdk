@@ -31,7 +31,7 @@ yargs
     async (argv: any) => {
       try {
         const apiClient = buildRestAPIClient(argv);
-        const records = await importRecords(apiClient, argv);
+        await importRecords(apiClient, argv);
       } catch (e) {
         console.error(e);
       }
