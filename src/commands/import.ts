@@ -30,10 +30,9 @@ export async function importRecords(
     }
     return row;
   });
-  console.log(records);
 
   // TODO: call rest api
-  apiClient.record.addAllRecords({
+  await apiClient.record.addAllRecords({
     app,
     records,
   });
