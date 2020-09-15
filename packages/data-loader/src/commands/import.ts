@@ -13,8 +13,30 @@ export async function importRecords(
   apiClient: KintoneRestAPIClient,
   options: Options
 ) {
-  const { filePath } = options;
-  const content = fs.readFileSync(filePath);
-  console.log(content.toString());
+  const { app, filePath } = options;
+  const buf = fs.readFileSync(filePath);
+  const data = buf.toString().split("\n");
+  const [columnRow, ...dataRows] = data;
+  const records = [];
+  const columns = columnRow.split(",");
+  for (const dataRow of dataRows) {
+    const fields = dataRow.split(",");
+    const row: {
+      [key: string]: any;
+    } = {};
+    for (const index in columns) {
+      const fieldValue = fields[index];
+      const column = columns[index];
+      row[column] = {
+          value: fieldValue,
+      }
+    }
+    records.push(row);
+  }
+
   // TODO: call rest api
+  apiClient.record.addAllRecords({
+    app,
+    records,
+  });
 }
