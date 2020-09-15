@@ -11,7 +11,7 @@ describe("export", () => {
     });
   });
   it("should not be failed", () => {
-    apiClient.record.getAllRecords = jest.fn().mockResolvedValue([{}]);
+    apiClient.record.addAllRecords = jest.fn().mockResolvedValue([{}]);
     return expect(
       importRecords(apiClient, {
         app: "1",
