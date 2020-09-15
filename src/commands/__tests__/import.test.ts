@@ -2,7 +2,7 @@ import { importRecords } from "../import";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import path from "path";
 
-describe("export", () => {
+describe("import", () => {
   let apiClient: KintoneRestAPIClient;
   beforeEach(() => {
     apiClient = new KintoneRestAPIClient({
