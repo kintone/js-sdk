@@ -1,5 +1,6 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID } from "@kintone/rest-api-client/lib/client/types";
+import { csvParser } from "../parser";
 
 import fs from "fs";
 
@@ -15,24 +16,21 @@ export async function importRecords(
 ) {
   const { app, filePath } = options;
   const buf = fs.readFileSync(filePath);
-  const data = buf.toString().split("\n");
-  const [columnRow, ...dataRows] = data;
-  const records = [];
-  const columns = columnRow.split(",");
-  for (const dataRow of dataRows) {
-    const fields = dataRow.split(",");
+
+  const data = csvParser(buf.toString());
+  const records = data.map((d) => {
+    const keys = Object.keys(d);
     const row: {
       [key: string]: any;
     } = {};
-    for (const index in columns) {
-      const fieldValue = fields[index];
-      const column = columns[index];
-      row[column] = {
-          value: fieldValue,
-      }
+    for (const key of keys) {
+      row[key] = {
+        value: d[key],
+      };
     }
-    records.push(row);
-  }
+    return row;
+  });
+  console.log(records);
 
   // TODO: call rest api
   apiClient.record.addAllRecords({
