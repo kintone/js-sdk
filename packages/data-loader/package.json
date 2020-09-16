@@ -29,7 +29,8 @@
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md",
     "lint:ts": "tsc --noEmit",
-    "start": "npm run compile -- --watch"
+    "start": "npm run compile -- --watch",
+    "run-ts": "ts-node src/main.ts"
   },
   "repository": {
     "type": "git",
@@ -52,7 +53,8 @@
   },
   "devDependencies": {
     "@types/yargs": "^15.0.5",
-    "pkg": "^4.4.9"
+    "pkg": "^4.4.9",
+    "ts-node": "^9.0.0"
   },
   "dependencies": {
     "@kintone/rest-api-client": "^1.5.1",
