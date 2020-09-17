@@ -1,6 +1,6 @@
 import parse from "csv-parse/lib/sync";
 
-export function csvParser(input: string) {
+const csvParser = (input: string) => {
   const records = parse(input, {
     columns: true,
     skip_empty_lines: true,
@@ -15,4 +15,15 @@ export function csvParser(input: string) {
     }
     return row;
   });
-}
+};
+
+export const parser = (type: string, data: string) => {
+  switch (type) {
+    case "json":
+      return JSON.parse(data);
+    case "csv":
+      return csvParser(data);
+    default:
+      throw new Error(`Unexpected file type: ${type} is unacceptable.`);
+  }
+};
