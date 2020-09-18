@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference types="../../kintone" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference path="./testfields.d.ts" />
 import * as assert from "assert";
 

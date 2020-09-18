@@ -94,7 +94,7 @@ async function deployApp(client: Client, app: string) {
             .requestGetDeployStatus({ apps: [app] })
             .then((resp) => {
                 return resp.apps.filter(
-                    (app) => app.status === "SUCCESS"
+                    (a) => a.status === "SUCCESS"
                 );
             })
             .catch(rethrow);

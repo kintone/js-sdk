@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference path="./testfields.d.ts" />
 import * as assert from "assert";
 type SavedTestFields = kintone.types.SavedFields;
@@ -258,11 +259,11 @@ function assertNotUndefined(ref) {
 
 interface FileFieldValue {
     type: "FILE";
-    value: {
+    value: Array<{
         name: string;
         contentType: string;
         fileKey: string;
-    }[];
+    }>;
 }
 function assertFileField(ref: FileFieldValue) {
     assert.ok(ref.type, "FILE");

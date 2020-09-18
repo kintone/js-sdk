@@ -19,7 +19,7 @@ declare namespace kintone.types {
         Attachment: kintone.fieldTypes.File;
         Table: {
             type: "SUBTABLE";
-            value: {
+            value: Array<{
                 id: string;
                 value: {
                     Text_Table: kintone.fieldTypes.SingleLineText;
@@ -28,11 +28,11 @@ declare namespace kintone.types {
                     Number_Table: kintone.fieldTypes.Number;
                     Calculated_Table: kintone.fieldTypes.Calc;
                 };
-            }[];
+            }>;
         };
         Table_0: {
             type: "SUBTABLE";
-            value: {
+            value: Array<{
                 id: string;
                 value: {
                     Radio_button_Table: kintone.fieldTypes.RadioButton;
@@ -47,7 +47,7 @@ declare namespace kintone.types {
 
                     Attachment_Table: kintone.fieldTypes.File;
                 };
-            }[];
+            }>;
         };
     }
     interface SavedFields extends Fields {
