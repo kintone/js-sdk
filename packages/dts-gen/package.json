@@ -12,11 +12,10 @@
     "lint": "eslint src/**/*.ts",
     "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",
     "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
-    "gh-pages": "git push origin master:gh-pages",
     "help": "node dist/index.js --help",
-    "release": "run-s lint test clean build && standard-version && npm run gh-pages",
-    "release:dryrun": "standard-version --dry-run",
+    "prerelease": "run-s lint test clean build",
     "test": "jest",
+    "test:ci": "jest",
     "prettier:check": "prettier --parser typescript --check \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "fmt": "prettier --parser typescript --write \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "build:integration": "webpack --mode development --config webpack.config.js"
