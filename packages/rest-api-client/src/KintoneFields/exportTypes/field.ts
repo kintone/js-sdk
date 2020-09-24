@@ -1,6 +1,4 @@
 export type {
-  Entity,
-  FileInformation,
   IDField,
   RevisionField,
   RecordNumberField,
@@ -28,7 +26,6 @@ export type {
   CategoryField,
   StatusField,
   StatusAssigneeField,
-  FieldInSubtable,
   SubtableRow,
   SubtableField,
   Field,

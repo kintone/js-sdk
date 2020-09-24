@@ -13,7 +13,6 @@ export type {
   MultiLineTextFieldProperty,
   RichTextFieldProperty,
   LinkFieldProperty,
-  Options,
   CheckBoxFieldProperty,
   RadioButtonFieldProperty,
   DropdownFieldProperty,
@@ -28,7 +27,6 @@ export type {
   GroupFieldProperty,
   ReferenceTableFieldProperty,
   LookupFieldProperty,
-  FieldPropertyInSubtable,
   SubtableFieldProperty,
   FieldProperty,
 } from "../types/property";
