@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@kintone/customize-uploader": "^3.0.8",
-    "@types/yargs": "^15.0.5",
+    "@types/yargs": "^15.0.7",
     "ts-loader": "^8.0.4",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
