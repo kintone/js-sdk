@@ -1,11 +1,6 @@
 # kintone-dts-gen
 
-[![npm version][npm-image]][npm-url]
-![Node.js Version Support][node-version]
-[![build status][circleci-image]][circleci-url]
-[![build status][travisci-image]][travisci-url]
-[![dependency status][deps-image]][deps-url]
-![License][license]
+[![npm version](https://badge.fury.io/js/%40kintone%2Fdts-gen.svg)](https://badge.fury.io/js/%40kintone%2Fdts-gen)
 
 Type definition for kintone customize and
 Type definition generation tool from kintone form settings.
@@ -23,15 +18,4 @@ npm install -D @kintone/dts-gen
 
 ## License
 
-MIT License
-
-[npm-image]: https://img.shields.io/npm/v/@kintone/dts-gen.svg
-[npm-url]: https://npmjs.org/package/@kintone/dts-gen
-[circleci-image]: https://circleci.com/gh/kintone/dts-gen.svg?style=shield
-[circleci-url]: https://circleci.com/gh/kintone/dts-gen
-[travisci-image]: https://travis-ci.org/kintone/dts-gen.svg?branch=master
-[travisci-url]: https://travis-ci.org/kintone/dts-gen
-[deps-image]: https://img.shields.io/david/kintone/dts-gen.svg
-[deps-url]: https://david-dm.org/kintone/dts-gen
-[node-version]: https://img.shields.io/badge/Node.js%20support-v6,v8,v10-brightgreen.svg
-[license]: https://img.shields.io/npm/l/@kintone/dts-gen.svg
+- [MIT](https://github.com/kintone/js-sdk/tree/master/LICENSE)
