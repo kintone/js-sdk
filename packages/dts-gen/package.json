@@ -9,7 +9,7 @@
     "tsc:check": "tsc --noEmit",
     "clean": "rm -rfv dist",
     "lint:fix": "eslint --fix src/**/*.ts",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint 'src/**/*.ts'",
     "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",
     "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
     "help": "node dist/index.js --help",
@@ -23,7 +23,10 @@
   "engines": {
     "node": ">=10"
   },
-  "author": "Tomoya Yokota",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
@@ -33,10 +36,8 @@
     "prettier": "^2.1.2"
   },
   "devDependencies": {
-    "@types/es6-promise": "^3.3.0",
     "@types/lodash": "^4.14.161",
     "standard-version": "^9.0.0",
-    "ts-jest": "^26.3.0",
     "ts-loader": "^8.0.3",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
@@ -48,12 +49,15 @@
     "dist",
     "kintone.d.ts"
   ],
-  "homepage": "https://github.com/kintone/dts-gen",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/dts-gen#readme",
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/kintone/dts-gen.git"
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/dts-gen"
   },
-  "bugs": "https://github.com/kintone/dts-gen/issues",
   "keywords": [
     "kintone"
   ]
