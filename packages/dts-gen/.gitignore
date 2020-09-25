@@ -1,5 +1,3 @@
-*.js
-*.js.map
 demo-fields.d.ts
 fields.d.ts
 node_modules/
