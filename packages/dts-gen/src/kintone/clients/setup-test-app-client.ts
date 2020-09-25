@@ -24,9 +24,9 @@ interface AddFormFieldInput {
 interface AddFormFieldOutput {}
 
 interface DeployInput {
-    apps: {
+    apps: Array<{
         app: string;
-    }[];
+    }>;
 }
 
 interface DeployStatusInput {
@@ -34,14 +34,14 @@ interface DeployStatusInput {
 }
 
 interface DeployStatusOutput {
-    apps: {
+    apps: Array<{
         app: string;
         status:
             | "PROCESSING"
             | "SUCCESS"
             | "FAIL"
             | "CANCEL";
-    }[];
+    }>;
 }
 
 interface UploadFileInput {
@@ -58,7 +58,10 @@ interface JsCustomizeInput {
     app: string;
     scope: string;
     desktop: {
-        js: { type: string; file: { fileKey: string } }[];
+        js: Array<{
+            type: string;
+            file: { fileKey: string };
+        }>;
     };
 }
 

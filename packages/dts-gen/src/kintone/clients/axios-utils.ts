@@ -3,6 +3,7 @@ import axios, {
     AxiosProxyConfig,
     AxiosRequestConfig,
 } from "axios";
+import { IncomingHttpHeaders } from "http";
 
 export interface NewInstanceInput {
     host: string;
@@ -24,11 +25,11 @@ function newAxiosInstance(
     ) {
         proxy = {
             host: input.proxyHost,
-            port: parseInt(input.proxyPort),
+            port: parseInt(input.proxyPort, 10),
         };
     }
 
-    const headers = {
+    const headers: IncomingHttpHeaders = {
         "X-Cybozu-Authorization": Buffer.from(
             `${input.username}:${input.password}`
         ).toString("base64"),
@@ -37,7 +38,7 @@ function newAxiosInstance(
         input.basicAuthPassword &&
         input.basicAuthPassword
     ) {
-        headers["Authorization"] =
+        headers.Authorization =
             "Basic " +
             Buffer.from(
                 `${input.basicAuthUsername}:${input.basicAuthPassword}`

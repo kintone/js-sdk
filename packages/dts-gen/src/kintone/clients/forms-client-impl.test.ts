@@ -2,8 +2,6 @@ import {
     FormsClientImpl,
     VisibleForTesting,
 } from "./forms-client-impl";
-import { AxiosRequestConfig } from "axios";
-import { Promise } from "es6-promise";
 import { AxiosUtils } from "./axios-utils";
 
 describe("VisibleForTesting.constructUrl", () => {

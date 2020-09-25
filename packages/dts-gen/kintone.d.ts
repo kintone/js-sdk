@@ -77,7 +77,7 @@ declare namespace kintone {
         static resolve(resolved: any): Promise<any>;
         static reject(rejected: any): Promise<any>;
         static all(
-            listOfPromise: Promise<any>[]
+            listOfPromise: Array<Promise<any>>
         ): Promise<any>;
     }
 
@@ -349,33 +349,33 @@ declare namespace kintone {
 
         interface UserSelect {
             type?: "USER_SELECT";
-            value: { code: string; name: string }[];
+            value: Array<{ code: string; name: string }>;
             disabled?: boolean;
             error?: string;
         }
 
         interface OrganizationSelect {
             type?: "ORGANIZATION_SELECT";
-            value: { code: string; name: string }[];
+            value: Array<{ code: string; name: string }>;
             disabled?: boolean;
             error?: string;
         }
 
         interface GroupSelect {
             type?: "GROUP_SELECT";
-            value: { code: string; name: string }[];
+            value: Array<{ code: string; name: string }>;
             disabled?: boolean;
             error?: string;
         }
 
         interface File {
             type: "FILE";
-            value: {
+            value: Array<{
                 contentType: string;
                 fileKey: string;
                 name: string;
                 size: string;
-            }[];
+            }>;
             disabled?: boolean;
             error?: string;
         }
