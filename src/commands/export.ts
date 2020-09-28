@@ -4,6 +4,8 @@ import PQueue from "p-queue";
 
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
+import { buildRestAPIClient } from "../api";
+import { buildPrinter } from "../printer";
 
 type Options = {
   app: AppID;
@@ -13,6 +15,52 @@ type Options = {
 type FileInfo = {
   name: string;
   fileKey: string;
+};
+
+export const command = "export";
+
+export const desc = "export the records of the specified app";
+
+export const builder = (yargs: any) =>
+  yargs
+    .option("base-url", {
+      describe: "Kintone Base Url",
+      default: process.env.KINTONE_BASE_URL,
+    })
+    .option("username", {
+      alias: "u",
+      describe: "Kintone Username",
+      default: process.env.KINTONE_USERNAME,
+    })
+    .option("password", {
+      alias: "p",
+      describe: "Kintone Password",
+      default: process.env.KINTONE_PASSWORD,
+    })
+    .option("app", {
+      describe: "The ID of the app",
+    })
+    .option("id", {
+      describe: "The ID of the record",
+    })
+    .option("attachment-dir", {
+      describe: "Attachment file directory",
+      default: "attachments",
+    })
+    .option("format", {
+      describe: "Output format",
+      default: "json",
+    });
+
+export const handler = async (argv: any) => {
+  try {
+    const apiClient = buildRestAPIClient(argv);
+    const records = await exportRecords(apiClient, argv);
+    const printer = buildPrinter(argv.format);
+    printer(records);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export async function exportRecords(
