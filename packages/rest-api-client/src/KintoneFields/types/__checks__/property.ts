@@ -1,106 +1,106 @@
 import {
-  RecordNumberFieldProperty,
-  CreatorFieldProperty,
-  CreatedTimeFieldProperty,
-  ModifierFieldProperty,
-  UpdatedTimeFieldProperty,
-  CategoryFieldProperty,
-  StatusFieldProperty,
-  StatusAssigneeFieldProperty,
-  SingleLineTextFieldProperty,
-  NumberFieldProperty,
-  CalcFieldProperty,
-  MultiLineTextFieldProperty,
-  RichTextFieldProperty,
-  LinkFieldProperty,
-  CheckBoxFieldProperty,
-  RadioButtonFieldProperty,
-  DropdownFieldProperty,
-  MultiSelectFieldProperty,
-  FileFieldProperty,
-  DateFieldProperty,
-  TimeFieldProperty,
-  DateTimeFieldProperty,
-  UserSelectFieldProperty,
-  OrganizationSelectFieldProperty,
-  GroupSelectFieldProperty,
-  GroupFieldProperty,
-  ReferenceTableFieldProperty,
-  LookupFieldProperty,
-  SubtableFieldProperty,
+  RecordNumber,
+  Creator,
+  CreatedTime,
+  Modifier,
+  UpdatedTime,
+  Category,
+  Status,
+  StatusAssignee,
+  SingleLineText,
+  Number,
+  Calc,
+  MultiLineText,
+  RichText,
+  Link,
+  CheckBox,
+  RadioButton,
+  Dropdown,
+  MultiSelect,
+  File,
+  Date,
+  Time,
+  DateTime,
+  UserSelect,
+  OrganizationSelect,
+  GroupSelect,
+  Group,
+  ReferenceTable,
+  Lookup,
+  Subtable,
 } from "../property";
 
-type Test_SubtableFieldProperty_OK = SubtableFieldProperty<{
-  SingleLineText: SingleLineTextFieldProperty;
-  Number: NumberFieldProperty;
-  Calc: CalcFieldProperty;
-  MultiLineText: MultiLineTextFieldProperty;
-  RichText: RichTextFieldProperty;
-  Link: LinkFieldProperty;
-  CheckBox: CheckBoxFieldProperty;
-  RadioButton: RadioButtonFieldProperty;
-  Dropdown: DropdownFieldProperty;
-  MultiSelect: MultiSelectFieldProperty;
-  File: FileFieldProperty;
-  Date: DateFieldProperty;
-  Time: TimeFieldProperty;
-  DateTime: DateTimeFieldProperty;
-  UserSelect: UserSelectFieldProperty;
-  OrganizationSelect: OrganizationSelectFieldProperty;
-  GroupSelect: GroupSelectFieldProperty;
-  Lookup: LookupFieldProperty;
+type Test_SubtableFieldProperty_OK = Subtable<{
+  SingleLineText: SingleLineText;
+  Number: Number; // eslint-disable-line
+  Calc: Calc;
+  MultiLineText: MultiLineText;
+  RichText: RichText;
+  Link: Link;
+  CheckBox: CheckBox;
+  RadioButton: RadioButton;
+  Dropdown: Dropdown;
+  MultiSelect: MultiSelect;
+  File: File;
+  Date: Date;
+  Time: Time;
+  DateTime: DateTime;
+  UserSelect: UserSelect;
+  OrganizationSelect: OrganizationSelect;
+  GroupSelect: GroupSelect;
+  Lookup: Lookup;
 }>;
 
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_RecordNumber = SubtableFieldProperty<{
-  RecordNumber: RecordNumberFieldProperty;
+type Test_SubtableFieldProperty_NG_RecordNumber = Subtable<{
+  RecordNumber: RecordNumber;
 }>;
 
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_Creator = SubtableFieldProperty<{
-  Creator: CreatorFieldProperty;
+type Test_SubtableFieldProperty_NG_Creator = Subtable<{
+  Creator: Creator;
 }>;
 
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_CreatedTime = SubtableFieldProperty<{
-  CreatedTime: CreatedTimeFieldProperty;
+type Test_SubtableFieldProperty_NG_CreatedTime = Subtable<{
+  CreatedTime: CreatedTime;
 }>;
 
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_Modifier = SubtableFieldProperty<{
-  Modifier: ModifierFieldProperty;
+type Test_SubtableFieldProperty_NG_Modifier = Subtable<{
+  Modifier: Modifier;
 }>;
 
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_UpdatedTime = SubtableFieldProperty<{
-  UpdatedTime: UpdatedTimeFieldProperty;
+type Test_SubtableFieldProperty_NG_UpdatedTime = Subtable<{
+  UpdatedTime: UpdatedTime;
 }>;
 
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_Category = SubtableFieldProperty<{
-  Category: CategoryFieldProperty;
+type Test_SubtableFieldProperty_NG_Category = Subtable<{
+  Category: Category;
 }>;
 
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_Status = SubtableFieldProperty<{
-  Status: StatusFieldProperty;
+type Test_SubtableFieldProperty_NG_Status = Subtable<{
+  Status: Status;
 }>;
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_StatusAssignee = SubtableFieldProperty<{
-  StatusAssignee: StatusAssigneeFieldProperty;
-}>;
-
-// @ts-expect-error
-type Test_SubtableFieldProperty_NG_Group = SubtableFieldProperty<{
-  Group: GroupFieldProperty;
+type Test_SubtableFieldProperty_NG_StatusAssignee = Subtable<{
+  StatusAssignee: StatusAssignee;
 }>;
 
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_ReferenceTable = SubtableFieldProperty<{
-  ReferenceTable: ReferenceTableFieldProperty;
+type Test_SubtableFieldProperty_NG_Group = Subtable<{
+  Group: Group;
 }>;
 
 // @ts-expect-error
-type Test_SubtableFieldProperty_NG_Subtable = SubtableFieldProperty<{
+type Test_SubtableFieldProperty_NG_ReferenceTable = Subtable<{
+  ReferenceTable: ReferenceTable;
+}>;
+
+// @ts-expect-error
+type Test_SubtableFieldProperty_NG_Subtable = Subtable<{
   Subtable: Test_SubtableFieldProperty_OK;
 }>;

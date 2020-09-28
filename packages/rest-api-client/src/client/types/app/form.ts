@@ -1,4 +1,4 @@
-import { FieldProperty } from "../../../KintoneFields/types/property";
+import { OneOf as FieldProperty } from "../../../KintoneFields/types/property";
 
 export type Properties = {
   [fieldCode: string]: FieldProperty;

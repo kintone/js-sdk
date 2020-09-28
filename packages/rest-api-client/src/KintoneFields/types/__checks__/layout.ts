@@ -1,131 +1,101 @@
-import {
-  RecordNumberFieldLayout,
-  CreatorFieldLayout,
-  CreatedTimeFieldLayout,
-  ModifierFieldLayout,
-  UpdatedTimeFieldLayout,
-  SingleLineTextFieldLayout,
-  NumberFieldLayout,
-  CalcFieldLayout,
-  MultiLineTextFieldLayout,
-  RichTextFieldLayout,
-  LinkFieldLayout,
-  CheckBoxFieldLayout,
-  RadioButtonFieldLayout,
-  DropdownFieldLayout,
-  MultiSelectFieldLayout,
-  FileFieldLayout,
-  DateFieldLayout,
-  TimeFieldLayout,
-  DateTimeFieldLayout,
-  UserSelectFieldLayout,
-  OrganizationSelectFieldLayout,
-  GroupSelectFieldLayout,
-  ReferenceTableFieldLayout,
-  LabelFieldLayout,
-  HRFieldLayout,
-  SpacerFieldLayout,
-  RowLayout,
-  SubtableLayout,
-  GroupLayout,
-} from "../layout";
+import { Field, RowLayout, SubtableLayout, GroupLayout } from "../layout";
 
 type Test_RowLayout_OK = RowLayout<
   [
-    RecordNumberFieldLayout,
-    CreatorFieldLayout,
-    CreatedTimeFieldLayout,
-    ModifierFieldLayout,
-    UpdatedTimeFieldLayout,
-    SingleLineTextFieldLayout,
-    NumberFieldLayout,
-    CalcFieldLayout,
-    MultiLineTextFieldLayout,
-    RichTextFieldLayout,
-    LinkFieldLayout,
-    CheckBoxFieldLayout,
-    RadioButtonFieldLayout,
-    DropdownFieldLayout,
-    MultiSelectFieldLayout,
-    FileFieldLayout,
-    DateFieldLayout,
-    TimeFieldLayout,
-    DateTimeFieldLayout,
-    UserSelectFieldLayout,
-    OrganizationSelectFieldLayout,
-    GroupSelectFieldLayout,
-    ReferenceTableFieldLayout,
-    LabelFieldLayout,
-    HRFieldLayout,
-    SpacerFieldLayout
+    Field.RecordNumber,
+    Field.Creator,
+    Field.CreatedTime,
+    Field.Modifier,
+    Field.UpdatedTime,
+    Field.SingleLineText,
+    Field.Number,
+    Field.Calc,
+    Field.MultiLineText,
+    Field.RichText,
+    Field.Link,
+    Field.CheckBox,
+    Field.RadioButton,
+    Field.Dropdown,
+    Field.MultiSelect,
+    Field.File,
+    Field.Date,
+    Field.Time,
+    Field.DateTime,
+    Field.UserSelect,
+    Field.OrganizationSelect,
+    Field.GroupSelect,
+    Field.ReferenceTable,
+    Field.Label,
+    Field.HR,
+    Field.Spacer
   ]
 >;
 
 type Test_SubtableLayout_OK = SubtableLayout<
   [
-    SingleLineTextFieldLayout,
-    NumberFieldLayout,
-    CalcFieldLayout,
-    MultiLineTextFieldLayout,
-    RichTextFieldLayout,
-    LinkFieldLayout,
-    CheckBoxFieldLayout,
-    RadioButtonFieldLayout,
-    DropdownFieldLayout,
-    MultiSelectFieldLayout,
-    FileFieldLayout,
-    DateFieldLayout,
-    TimeFieldLayout,
-    DateTimeFieldLayout,
-    UserSelectFieldLayout,
-    OrganizationSelectFieldLayout,
-    GroupSelectFieldLayout
+    Field.SingleLineText,
+    Field.Number,
+    Field.Calc,
+    Field.MultiLineText,
+    Field.RichText,
+    Field.Link,
+    Field.CheckBox,
+    Field.RadioButton,
+    Field.Dropdown,
+    Field.MultiSelect,
+    Field.File,
+    Field.Date,
+    Field.Time,
+    Field.DateTime,
+    Field.UserSelect,
+    Field.OrganizationSelect,
+    Field.GroupSelect
   ]
 >;
 
 type Test_SubtableLayout_NG_RecordNumber = SubtableLayout<
   // @ts-expect-error
-  [RecordNumberFieldLayout]
+  [Field.RecordNumber]
 >;
 
 type Test_SubtableLayout_NG_Creator = SubtableLayout<
   // @ts-expect-error
-  [CreatorFieldLayout]
+  [Field.Creator]
 >;
 
 type Test_SubtableLayout_NG_CreatedTime = SubtableLayout<
   // @ts-expect-error
-  [CreatedTimeFieldLayout]
+  [Field.CreatedTime]
 >;
 
 type Test_SubtableLayout_NG_Modifier = SubtableLayout<
   // @ts-expect-error
-  [ModifierFieldLayout]
+  [Field.Modifier]
 >;
 
 type Test_SubtableLayout_NG_UpdatedTime = SubtableLayout<
   // @ts-expect-error
-  [UpdatedTimeFieldLayout]
+  [Field.UpdatedTime]
 >;
 
 type Test_SubtableLayout_NG_ReferenceTable = SubtableLayout<
   // @ts-expect-error
-  [ReferenceTableFieldLayout]
+  [Field.ReferenceTable]
 >;
 
 type Test_SubtableLayout_NG_Label = SubtableLayout<
   // @ts-expect-error
-  [LabelFieldLayout]
+  [Field.Label]
 >;
 
 type Test_SubtableLayout_NG_HR = SubtableLayout<
   // @ts-expect-error
-  [HRFieldLayout]
+  [Field.HR]
 >;
 
 type Test_SubtableLayout_NG_Spacer = SubtableLayout<
   // @ts-expect-error
-  [SpacerFieldLayout]
+  [Field.Spacer]
 >;
 
 type Test_GroupLayout_OK = GroupLayout<[Test_RowLayout_OK]>;

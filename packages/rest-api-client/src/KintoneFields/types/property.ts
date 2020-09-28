@@ -1,60 +1,60 @@
-export type RecordNumberFieldProperty = {
+export type RecordNumber = {
   type: "RECORD_NUMBER";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-export type CreatorFieldProperty = {
+export type Creator = {
   type: "CREATOR";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-export type CreatedTimeFieldProperty = {
+export type CreatedTime = {
   type: "CREATED_TIME";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-export type ModifierFieldProperty = {
+export type Modifier = {
   type: "MODIFIER";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-export type UpdatedTimeFieldProperty = {
+export type UpdatedTime = {
   type: "UPDATED_TIME";
   code: string;
   label: string;
   noLabel: boolean;
 };
 
-export type CategoryFieldProperty = {
+export type Category = {
   type: "CATEGORY";
   code: string;
   label: string;
   enabled: boolean;
 };
 
-export type StatusFieldProperty = {
+export type Status = {
   type: "STATUS";
   code: string;
   label: string;
   enabled: boolean;
 };
 
-export type StatusAssigneeFieldProperty = {
+export type StatusAssignee = {
   type: "STATUS_ASSIGNEE";
   code: string;
   label: string;
   enabled: boolean;
 };
 
-export type SingleLineTextFieldProperty = {
+export type SingleLineText = {
   type: "SINGLE_LINE_TEXT";
   code: string;
   label: string;
@@ -68,7 +68,7 @@ export type SingleLineTextFieldProperty = {
   hideExpression: boolean;
 };
 
-export type NumberFieldProperty = {
+export type Number = {
   type: "NUMBER";
   code: string;
   label: string;
@@ -84,7 +84,7 @@ export type NumberFieldProperty = {
   unitPosition: "BEFORE" | "AFTER";
 };
 
-export type CalcFieldProperty = {
+export type Calc = {
   type: "CALC";
   code: string;
   label: string;
@@ -105,7 +105,7 @@ export type CalcFieldProperty = {
   unitPosition: "BEFORE" | "AFTER";
 };
 
-export type MultiLineTextFieldProperty = {
+export type MultiLineText = {
   type: "MULTI_LINE_TEXT";
   code: string;
   label: string;
@@ -114,7 +114,7 @@ export type MultiLineTextFieldProperty = {
   defaultValue: string;
 };
 
-export type RichTextFieldProperty = {
+export type RichText = {
   type: "RICH_TEXT";
   code: string;
   label: string;
@@ -123,7 +123,7 @@ export type RichTextFieldProperty = {
   defaultValue: string;
 };
 
-export type LinkFieldProperty = {
+export type Link = {
   type: "LINK";
   code: string;
   label: string;
@@ -143,7 +143,7 @@ export type Options = {
   };
 };
 
-export type CheckBoxFieldProperty = {
+export type CheckBox = {
   type: "CHECK_BOX";
   code: string;
   label: string;
@@ -154,7 +154,7 @@ export type CheckBoxFieldProperty = {
   align: "HORIZONTAL" | "VERTICAL";
 };
 
-export type RadioButtonFieldProperty = {
+export type RadioButton = {
   type: "RADIO_BUTTON";
   code: string;
   label: string;
@@ -165,7 +165,7 @@ export type RadioButtonFieldProperty = {
   align: "HORIZONTAL" | "VERTICAL";
 };
 
-export type DropdownFieldProperty = {
+export type Dropdown = {
   type: "DROP_DOWN";
   code: string;
   label: string;
@@ -175,7 +175,7 @@ export type DropdownFieldProperty = {
   options: Options;
 };
 
-export type MultiSelectFieldProperty = {
+export type MultiSelect = {
   type: "MULTI_SELECT";
   code: string;
   label: string;
@@ -185,7 +185,7 @@ export type MultiSelectFieldProperty = {
   options: Options;
 };
 
-export type FileFieldProperty = {
+export type File = {
   type: "FILE";
   code: string;
   label: string;
@@ -194,7 +194,7 @@ export type FileFieldProperty = {
   thumbnailSize: "50" | "150" | "250" | "500";
 };
 
-export type DateFieldProperty = {
+export type Date = {
   type: "DATE";
   code: string;
   label: string;
@@ -205,7 +205,7 @@ export type DateFieldProperty = {
   defaultNowValue: boolean;
 };
 
-export type TimeFieldProperty = {
+export type Time = {
   type: "TIME";
   code: string;
   label: string;
@@ -215,7 +215,7 @@ export type TimeFieldProperty = {
   defaultNowValue: boolean;
 };
 
-export type DateTimeFieldProperty = {
+export type DateTime = {
   type: "DATETIME";
   code: string;
   label: string;
@@ -226,7 +226,7 @@ export type DateTimeFieldProperty = {
   defaultNowValue: boolean;
 };
 
-export type UserSelectFieldProperty = {
+export type UserSelect = {
   type: "USER_SELECT";
   code: string;
   label: string;
@@ -242,7 +242,7 @@ export type UserSelectFieldProperty = {
   entities: Array<{ code: string; type: "USER" | "GROUP" | "ORGANIZATION" }>;
 };
 
-export type OrganizationSelectFieldProperty = {
+export type OrganizationSelect = {
   type: "ORGANIZATION_SELECT";
   code: string;
   label: string;
@@ -255,7 +255,7 @@ export type OrganizationSelectFieldProperty = {
   entities: Array<{ code: string; type: "ORGANIZATION" }>;
 };
 
-export type GroupSelectFieldProperty = {
+export type GroupSelect = {
   type: "GROUP_SELECT";
   code: string;
   label: string;
@@ -265,7 +265,7 @@ export type GroupSelectFieldProperty = {
   entities: Array<{ code: string; type: "GROUP" }>;
 };
 
-export type GroupFieldProperty = {
+export type Group = {
   type: "GROUP";
   code: string;
   label: string;
@@ -273,7 +273,7 @@ export type GroupFieldProperty = {
   openGroup: boolean;
 };
 
-export type ReferenceTableFieldProperty = {
+export type ReferenceTable = {
   type: "REFERENCE_TABLE";
   code: string;
   label: string;
@@ -294,7 +294,7 @@ export type ReferenceTableFieldProperty = {
   };
 };
 
-export type LookupFieldProperty = {
+export type Lookup = {
   type: "NUMBER" | "SINGLE_LINE_TEXT";
   code: string;
   label: string;
@@ -314,26 +314,26 @@ export type LookupFieldProperty = {
 };
 
 export type FieldPropertyInSubtable =
-  | SingleLineTextFieldProperty
-  | NumberFieldProperty
-  | CalcFieldProperty
-  | MultiLineTextFieldProperty
-  | RichTextFieldProperty
-  | LinkFieldProperty
-  | CheckBoxFieldProperty
-  | RadioButtonFieldProperty
-  | DropdownFieldProperty
-  | MultiSelectFieldProperty
-  | FileFieldProperty
-  | DateFieldProperty
-  | TimeFieldProperty
-  | DateTimeFieldProperty
-  | UserSelectFieldProperty
-  | OrganizationSelectFieldProperty
-  | GroupSelectFieldProperty
-  | LookupFieldProperty;
+  | SingleLineText
+  | Number // eslint-disable-line
+  | Calc
+  | MultiLineText
+  | RichText
+  | Link
+  | CheckBox
+  | RadioButton
+  | Dropdown
+  | MultiSelect
+  | File
+  | Date
+  | Time
+  | DateTime
+  | UserSelect
+  | OrganizationSelect
+  | GroupSelect
+  | Lookup;
 
-export type SubtableFieldProperty<
+export type Subtable<
   T extends { [fieldCode: string]: FieldPropertyInSubtable }
 > = {
   type: "SUBTABLE";
@@ -343,35 +343,35 @@ export type SubtableFieldProperty<
   fields: T;
 };
 
-export type FieldProperty =
-  | RecordNumberFieldProperty
-  | CreatorFieldProperty
-  | CreatedTimeFieldProperty
-  | ModifierFieldProperty
-  | UpdatedTimeFieldProperty
-  | CategoryFieldProperty
-  | StatusFieldProperty
-  | StatusAssigneeFieldProperty
-  | SingleLineTextFieldProperty
-  | NumberFieldProperty
-  | CalcFieldProperty
-  | MultiLineTextFieldProperty
-  | RichTextFieldProperty
-  | LinkFieldProperty
-  | CheckBoxFieldProperty
-  | RadioButtonFieldProperty
-  | DropdownFieldProperty
-  | MultiSelectFieldProperty
-  | FileFieldProperty
-  | DateFieldProperty
-  | TimeFieldProperty
-  | DateTimeFieldProperty
-  | UserSelectFieldProperty
-  | OrganizationSelectFieldProperty
-  | GroupSelectFieldProperty
-  | GroupFieldProperty
-  | ReferenceTableFieldProperty
-  | LookupFieldProperty
-  | SubtableFieldProperty<{
+export type OneOf =
+  | RecordNumber
+  | Creator
+  | CreatedTime
+  | Modifier
+  | UpdatedTime
+  | Category
+  | Status
+  | StatusAssignee
+  | SingleLineText
+  | Number // eslint-disable-line
+  | Calc
+  | MultiLineText
+  | RichText
+  | Link
+  | CheckBox
+  | RadioButton
+  | Dropdown
+  | MultiSelect
+  | File
+  | Date
+  | Time
+  | DateTime
+  | UserSelect
+  | OrganizationSelect
+  | GroupSelect
+  | Group
+  | ReferenceTable
+  | Lookup
+  | Subtable<{
       [fieldCode: string]: FieldPropertyInSubtable;
     }>;

@@ -1,22 +1,22 @@
-import { KintoneRestAPIClient, KintoneRecord as Record } from "../../../";
+import { KintoneRestAPIClient, KintoneRecordField as Record } from "../../../";
 
 const client = new KintoneRestAPIClient({
   /* ... */
 });
 
 type MyAppRecord = {
-  CreatedBy: Record.CreatorField;
-  EmployeeNo: Record.NumberField;
-  Authorizer: Record.UserSelectField;
-  Title: Record.SingleLineTextField;
-  Details: Record.SubtableField<{
-    Date: Record.DateField;
-    Destination: Record.SingleLineTextField;
-    ModeOfTransportation: Record.DropdownField;
-    Cost: Record.NumberField;
+  CreatedBy: Record.Creator;
+  EmployeeNo: Record.Number;
+  Authorizer: Record.UserSelect;
+  Title: Record.SingleLineText;
+  Details: Record.Subtable<{
+    Date: Record.Date;
+    Destination: Record.SingleLineText;
+    ModeOfTransportation: Record.Dropdown;
+    Cost: Record.Number;
   }>;
-  TotalExpenses: Record.NumberField;
-  Notes: Record.MultiLineTextField;
+  TotalExpenses: Record.Number;
+  Notes: Record.MultiLineText;
 };
 
 async function exampleGetRecords() {
