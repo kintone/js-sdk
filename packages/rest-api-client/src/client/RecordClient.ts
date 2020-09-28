@@ -40,10 +40,20 @@ export class RecordClient {
     this.didWarnMaximumOffsetValue = false;
   }
 
-  public getRecord<T extends Record>(params: {
+  public getRecord<T>(params: {
     app: AppID;
     id: RecordID;
-  }): Promise<{ record: T }> {
+  }): Promise<{ record: Record<T> }> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "record",
+    });
+    return this.client.get(path, params);
+  }
+
+  public getRecord2<T>(params: {
+    app: AppID;
+    id: RecordID;
+  }): Promise<{ record: Record<T> }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record",
     });
@@ -111,12 +121,12 @@ export class RecordClient {
   }
 
   // TODO: `records` type in return type should be filtered by `fields`.
-  public getRecords<T extends Record>(params: {
+  public getRecords<T>(params: {
     app: AppID;
     fields?: string[];
     query?: string;
     totalCount?: boolean;
-  }): Promise<{ records: T[]; totalCount: string | null }> {
+  }): Promise<{ records: Array<Record<T>>; totalCount: string | null }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records",
     });
@@ -199,10 +209,10 @@ export class RecordClient {
     return this.client.post(path, params);
   }
 
-  public getRecordsByCursor<T extends Record>(params: {
+  public getRecordsByCursor<T>(params: {
     id: string;
   }): Promise<{
-    records: T[];
+    records: Array<Record<T>>;
     next: boolean;
   }> {
     const path = this.buildPathWithGuestSpaceId({
@@ -218,13 +228,13 @@ export class RecordClient {
     return this.client.delete(path, params);
   }
 
-  public async getAllRecords<T extends Record>(params: {
+  public async getAllRecords<T>(params: {
     app: AppID;
     fields?: string[];
     condition?: string;
     orderBy?: string;
     withCursor?: boolean;
-  }): Promise<T[]> {
+  }): Promise<Array<Record<T>>> {
     const { condition, orderBy, withCursor = true, ...rest } = params;
     if (!orderBy) {
       return this.getAllRecordsWithId({ ...rest, condition });
@@ -237,11 +247,11 @@ export class RecordClient {
     return this.getAllRecordsWithOffset({ ...rest, orderBy, condition });
   }
 
-  public async getAllRecordsWithId<T extends Record>(params: {
+  public async getAllRecordsWithId<T>(params: {
     app: AppID;
     fields?: string[];
     condition?: string;
-  }): Promise<T[]> {
+  }): Promise<Array<Record<T>>> {
     const { fields: originalFields, ...rest } = params;
     let fields = originalFields;
     // Append $id if $id doesn't exist in fields
@@ -251,21 +261,24 @@ export class RecordClient {
     return this.getAllRecordsRecursiveWithId({ ...rest, fields }, "0", []);
   }
 
-  private async getAllRecordsRecursiveWithId<T extends Record>(
+  private async getAllRecordsRecursiveWithId<T>(
     params: {
       app: AppID;
       fields?: string[];
       condition?: string;
     },
     id: string,
-    records: T[]
-  ): Promise<T[]> {
+    records: Array<Record<T>>
+  ): Promise<Array<Record<T>>> {
     const GET_RECORDS_LIMIT = 500;
 
     const { condition, ...rest } = params;
     const conditionQuery = condition ? `${condition} and ` : "";
     const query = `${conditionQuery}$id > ${id} order by $id asc limit ${GET_RECORDS_LIMIT}`;
-    const result = await this.getRecords<T>({ ...rest, query });
+    const result = await this.getRecords<T & { $id: unknown }>({
+      ...rest,
+      query,
+    });
     const allRecords = records.concat(result.records);
     if (result.records.length < GET_RECORDS_LIMIT) {
       return allRecords;
@@ -280,16 +293,16 @@ export class RecordClient {
     );
   }
 
-  public async getAllRecordsWithOffset<T extends Record>(params: {
+  public async getAllRecordsWithOffset<T>(params: {
     app: AppID;
     fields?: string[];
     condition?: string;
     orderBy?: string;
-  }): Promise<T[]> {
+  }): Promise<Array<Record<T>>> {
     return this.getAllRecordsRecursiveWithOffset(params, 0, []);
   }
 
-  private async getAllRecordsRecursiveWithOffset<T extends Record>(
+  private async getAllRecordsRecursiveWithOffset<T>(
     params: {
       app: AppID;
       fields?: string[];
@@ -297,8 +310,8 @@ export class RecordClient {
       orderBy?: string;
     },
     offset: number,
-    records: T[]
-  ): Promise<T[]> {
+    records: Array<Record<T>>
+  ): Promise<Array<Record<T>>> {
     const GET_RECORDS_LIMIT = 500;
 
     const { condition, orderBy, ...rest } = params;
@@ -319,11 +332,11 @@ export class RecordClient {
     );
   }
 
-  public async getAllRecordsWithCursor<T extends Record>(params: {
+  public async getAllRecordsWithCursor<T>(params: {
     app: AppID;
     fields?: string[];
     query?: string;
-  }): Promise<T[]> {
+  }): Promise<Array<Record<T>>> {
     const { id } = await this.createCursor(params);
     try {
       return await this.getAllRecordsRecursiveByCursor<T>(id, []);
@@ -333,10 +346,10 @@ export class RecordClient {
     }
   }
 
-  private async getAllRecordsRecursiveByCursor<T extends Record>(
+  private async getAllRecordsRecursiveByCursor<T>(
     id: string,
-    records: T[]
-  ): Promise<T[]> {
+    records: Array<Record<T>>
+  ): Promise<Array<Record<T>>> {
     const result = await this.getRecordsByCursor<T>({ id });
     const allRecords = records.concat(result.records);
     if (result.next) {
