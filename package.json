@@ -36,7 +36,7 @@
     "@cybozu/eslint-config": "^11.0.0",
     "@types/jest": "^26.0.14",
     "@types/node": "^13.13.20",
-    "eslint": "^7.9.0",
+    "eslint": "^7.10.0",
     "jest": "^26.4.2",
     "lerna": "^3.22.1",
     "npm-run-all": "^4.1.5",
