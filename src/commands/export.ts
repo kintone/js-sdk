@@ -7,6 +7,16 @@ import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient } from "../api";
 import { buildPrinter } from "../printer";
 
+type Argv = {
+  baseUrl: string;
+  username: string;
+  password: string;
+  app: string | number;
+  id: string | number;
+  attachmentDir: string;
+  format: "json" | "csv";
+};
+
 type Options = {
   app: AppID;
   attachmentDir: string;
@@ -52,7 +62,7 @@ export const builder = (yargs: any) =>
       default: "json",
     });
 
-export const handler = async (argv: any) => {
+export const handler = async (argv: Argv) => {
   try {
     const apiClient = buildRestAPIClient(argv);
     const records = await exportRecords(apiClient, argv);

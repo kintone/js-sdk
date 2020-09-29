@@ -5,6 +5,16 @@ import { parser } from "../parser";
 import { promises as fs } from "fs";
 import path from "path";
 
+type Argv = {
+  baseUrl: string;
+  username: string;
+  password: string;
+  app: string | number;
+  id: string | number;
+  attachmentDir: string;
+  filePath: string;
+};
+
 type Options = {
   app: AppID;
   attachmentDir: string;
@@ -45,7 +55,7 @@ export const builder = (yargs: any) =>
       describe: "file path",
     }).argv;
 
-export const handler = async (argv: any) => {
+export const handler = async (argv: Argv) => {
   try {
     const apiClient = buildRestAPIClient(argv);
     await importRecords(apiClient, argv);
