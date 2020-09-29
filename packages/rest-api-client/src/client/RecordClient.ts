@@ -265,7 +265,9 @@ export class RecordClient {
     const { condition, ...rest } = params;
     const conditionQuery = condition ? `${condition} and ` : "";
     const query = `${conditionQuery}$id > ${id} order by $id asc limit ${GET_RECORDS_LIMIT}`;
-    const result = await this.getRecords<T & { $id: unknown }>({
+    const result = await this.getRecords<
+      T & { $id: { type: string; value: string } }
+    >({
       ...rest,
       query,
     });

@@ -1,8 +1,8 @@
 import { Field } from "../../../KintoneFields/types/field";
 
-export type Record<T = void> = T extends object
+export type Record<T = void> = T extends { [fieldCode: string]: any }
   ? {
-      [fieldCode in Extract<keyof T, string>]: Field;
+      [fieldCode in keyof T]: T[fieldCode];
     }
   : {
       [fieldCode: string]: Field;
