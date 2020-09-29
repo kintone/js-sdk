@@ -50,16 +50,6 @@ export class RecordClient {
     return this.client.get(path, params);
   }
 
-  public getRecord2<T>(params: {
-    app: AppID;
-    id: RecordID;
-  }): Promise<{ record: Record<T> }> {
-    const path = this.buildPathWithGuestSpaceId({
-      endpointName: "record",
-    });
-    return this.client.get(path, params);
-  }
-
   public addRecord(params: {
     app: AppID;
     record?: RecordForParameter;
