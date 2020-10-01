@@ -315,7 +315,8 @@ export type Lookup = {
 
 export type FieldPropertyInSubtable =
   | SingleLineText
-  | Number // eslint-disable-line
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  | Number // Although ESLint recognizes it as primitive type, this type is defined above in this file.
   | Calc
   | MultiLineText
   | RichText
@@ -353,7 +354,8 @@ export type OneOf =
   | Status
   | StatusAssignee
   | SingleLineText
-  | Number // eslint-disable-line
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  | Number // Although ESLint recognizes it as primitive type, this type is defined above in this file.
   | Calc
   | MultiLineText
   | RichText
