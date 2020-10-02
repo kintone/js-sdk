@@ -2,9 +2,9 @@
 
 # TypeScript
 
-@kintone/rest-api-client includes TypeScript definitions.
+@kintone/rest-api-client provides the following type definitions.
 
-## `KintoneRecord`
+## `KintoneRecordField`
 
 - A set of Kintone's record fields
 - Convenient for building the type definition of the record of your app
