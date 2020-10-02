@@ -1,38 +1,62 @@
-import { KintoneRestAPIClient, KintoneRecordField as Record } from "../../../";
+import { KintoneRestAPIClient, KintoneRecordField } from "../../../";
 
 const client = new KintoneRestAPIClient({
   /* ... */
 });
 
 type MyAppRecord = {
-  CreatedBy: Record.Creator;
-  EmployeeNo: Record.Number;
-  Authorizer: Record.UserSelect;
-  Title: Record.SingleLineText;
-  Details: Record.Subtable<{
-    Date: Record.Date;
-    Destination: Record.SingleLineText;
-    ModeOfTransportation: Record.Dropdown;
-    Cost: Record.Number;
+  $id: KintoneRecordField.ID;
+  CreatedBy: KintoneRecordField.Creator;
+  EmployeeNo: KintoneRecordField.Number;
+  Authorizer: KintoneRecordField.UserSelect;
+  Title: KintoneRecordField.SingleLineText;
+  Details: KintoneRecordField.Subtable<{
+    Date: KintoneRecordField.Date;
+    Destination: KintoneRecordField.SingleLineText;
+    ModeOfTransportation: KintoneRecordField.Dropdown;
+    Cost: KintoneRecordField.Number;
   }>;
-  TotalExpenses: Record.Number;
-  Notes: Record.MultiLineText;
+  TotalExpenses: KintoneRecordField.Number;
+  Notes: KintoneRecordField.MultiLineText;
 };
+
+declare function displayAuthorizers(
+  authorizers: Array<{ code: string; name: string }>
+): void;
+
+declare function displaySubtableRow(subtableRow: {
+  Date: KintoneRecordField.Date;
+  Destination: KintoneRecordField.SingleLineText;
+  ModeOfTransportation: KintoneRecordField.Dropdown;
+  Cost: KintoneRecordField.Number;
+}): void;
 
 async function exampleGetRecords() {
   const APP_ID = 1;
   const response = await client.record.getRecords<MyAppRecord>({ app: APP_ID });
 
   response.records.forEach((record) => {
+    displayAuthorizers(record.Authorizer.value);
+
     // iterates over fields in subtable field
     record.Details.value.forEach((fieldInSubtable) => {
-      // It will be inferred to be one of
-      // `Date`, `Destination`, `ModeOfTransportation`, `Cost` fields
-      console.log(fieldInSubtable.value);
+      displaySubtableRow(fieldInSubtable.value);
     });
 
     // raises an error when refering to the undefined field
     // @ts-expect-error
     console.log(record.NotExistField.value);
+  });
+
+  await client.record.updateRecords({
+    app: APP_ID,
+    records: response.records.map((record) => ({
+      id: record.$id.value,
+      record: {
+        Title: {
+          value: `prefix-${record.Title.value}`,
+        },
+      },
+    })),
   });
 }
