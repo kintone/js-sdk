@@ -1,4 +1,7 @@
-import { KintoneRestAPIClient, KintoneRecordField } from "../../../";
+import {
+  KintoneRestAPIClient,
+  KintoneRecordField,
+} from "@kintone/rest-api-client"; // eslint-disable-line node/no-extraneous-import
 
 const client = new KintoneRestAPIClient({
   /* ... */
