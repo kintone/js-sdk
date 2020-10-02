@@ -27,6 +27,7 @@ export type {
   Group,
   ReferenceTable,
   Lookup,
+  InSubtable,
   Subtable,
   OneOf,
 } from "../types/property";

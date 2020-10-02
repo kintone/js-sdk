@@ -26,6 +26,7 @@ export type {
   Category,
   Status,
   StatusAssignee,
+  InSubtable,
   Subtable,
   OneOf,
 } from "../types/field";

@@ -136,7 +136,7 @@ export type Link = {
   protocol: "WEB" | "CALL" | "MAIL";
 };
 
-export type Options = {
+type Options = {
   [optionName: string]: {
     label: string;
     index: string;
@@ -313,7 +313,7 @@ export type Lookup = {
   };
 };
 
-export type FieldPropertyInSubtable =
+export type InSubtable =
   | SingleLineText
   // eslint-disable-next-line @typescript-eslint/ban-types
   | Number // Although ESLint recognizes it as primitive type, this type is defined above in this file.
@@ -334,9 +334,7 @@ export type FieldPropertyInSubtable =
   | GroupSelect
   | Lookup;
 
-export type Subtable<
-  T extends { [fieldCode: string]: FieldPropertyInSubtable }
-> = {
+export type Subtable<T extends { [fieldCode: string]: InSubtable }> = {
   type: "SUBTABLE";
   code: string;
   label: string;
@@ -375,5 +373,5 @@ export type OneOf =
   | ReferenceTable
   | Lookup
   | Subtable<{
-      [fieldCode: string]: FieldPropertyInSubtable;
+      [fieldCode: string]: InSubtable;
     }>;
