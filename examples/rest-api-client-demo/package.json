@@ -38,11 +38,11 @@
   },
   "devDependencies": {
     "@kintone/customize-uploader": "^3.0.8",
-    "@types/yargs": "^15.0.5",
-    "ts-loader": "^8.0.3",
+    "@types/yargs": "^15.0.7",
+    "ts-loader": "^8.0.4",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
-    "webpack": "^4.42.1",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.11"
   }
 }
