@@ -1,0 +1,64 @@
+{
+  "name": "@kintone/dts-gen",
+  "version": "3.0.5",
+  "description": "Types for kintone js api and Types generating tools",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "bin/npm-build.sh",
+    "tsc": "tsc",
+    "tsc:check": "tsc --noEmit",
+    "clean": "rm -rfv dist",
+    "lint:fix": "eslint --fix src/**/*.ts",
+    "lint": "eslint 'src/**/*.ts'",
+    "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",
+    "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
+    "help": "node dist/index.js --help",
+    "prerelease": "run-s lint test clean build",
+    "test": "jest",
+    "test:ci": "jest",
+    "prettier:check": "prettier --parser typescript --check \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
+    "fmt": "prettier --parser typescript --write \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
+    "build:integration": "webpack --mode development --config webpack.config.js"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "commander": "^5.1.0",
+    "form-data": "^3.0.0",
+    "lodash": "^4.17.20",
+    "prettier": "^2.1.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.161",
+    "standard-version": "^9.0.0",
+    "ts-loader": "^8.0.3",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "bin": {
+    "kintone-dts-gen": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "kintone.d.ts"
+  ],
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/dts-gen#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/dts-gen"
+  },
+  "keywords": [
+    "kintone"
+  ]
+}
