@@ -23,7 +23,7 @@ $ kintone-dts-gen --host http://***.cybozu.com \
                  -u username \
                  -p password \
                  --app-id 12 \
-                 --type-name SampleFields
+                 --type-name SampleFields \
                  --namespace company.name.types \
                  -o sample-fields.d.ts
 ```
