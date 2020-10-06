@@ -81,8 +81,11 @@
     "qs": "^6.9.4"
   },
   "exports": {
-    "import": "./index.mjs",
-    "require": "./lib/index.js",
-    "default": "./lib/index.js"
+    "node": {
+      "import": "./index.mjs",
+      "require": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "browser": "./lib/index.browser.js"
   }
 }
