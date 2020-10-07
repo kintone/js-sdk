@@ -7,6 +7,7 @@ import pkgJson from "./package.json";
 import builtins from "rollup-plugin-node-builtins";
 import globals from "rollup-plugin-node-globals";
 import babel from "@rollup/plugin-babel";
+import { ecmaVersionValidator } from "rollup-plugin-ecma-version-validator";
 
 const extensions = [".ts", ".js"];
 
@@ -61,5 +62,6 @@ export default {
     globals(),
     builtins(),
     isProd && terser(),
+    ecmaVersionValidator(),
   ],
 };
