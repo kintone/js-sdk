@@ -1,6 +1,6 @@
 import {
   KintoneRestAPIClient,
-  KintoneFormProperty,
+  KintoneFormFieldProperty,
 } from "@kintone/rest-api-client"; // eslint-disable-line node/no-extraneous-import
 
 const client = new KintoneRestAPIClient({
@@ -8,18 +8,18 @@ const client = new KintoneRestAPIClient({
 });
 
 type MyAppProperty = {
-  CreatedBy: KintoneFormProperty.Creator;
-  EmployeeNo: KintoneFormProperty.Number;
-  Authorizer: KintoneFormProperty.UserSelect;
-  Title: KintoneFormProperty.SingleLineText;
-  Details: KintoneFormProperty.Subtable<{
-    Date: KintoneFormProperty.Date;
-    Destination: KintoneFormProperty.SingleLineText;
-    ModeOfTransportation: KintoneFormProperty.Dropdown;
-    Cost: KintoneFormProperty.Number;
+  CreatedBy: KintoneFormFieldProperty.Creator;
+  EmployeeNo: KintoneFormFieldProperty.Number;
+  Authorizer: KintoneFormFieldProperty.UserSelect;
+  Title: KintoneFormFieldProperty.SingleLineText;
+  Details: KintoneFormFieldProperty.Subtable<{
+    Date: KintoneFormFieldProperty.Date;
+    Destination: KintoneFormFieldProperty.SingleLineText;
+    ModeOfTransportation: KintoneFormFieldProperty.Dropdown;
+    Cost: KintoneFormFieldProperty.Number;
   }>;
-  TotalExpenses: KintoneFormProperty.Number;
-  Notes: KintoneFormProperty.MultiLineText;
+  TotalExpenses: KintoneFormFieldProperty.Number;
+  Notes: KintoneFormFieldProperty.MultiLineText;
 };
 
 async function exampleGetAndUpdateProperties() {
