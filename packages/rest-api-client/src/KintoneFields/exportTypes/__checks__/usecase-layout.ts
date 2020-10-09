@@ -1,7 +1,8 @@
-import {
-  KintoneRestAPIClient,
-  KintoneFormLayout,
-} from "@kintone/rest-api-client"; // eslint-disable-line node/no-extraneous-import
+/*
+  When you use this package, you can import them from package root like this:
+  import { KintoneRestAPIClient, KintoneFormLayout } from "@kintone/rest-api-client";
+*/
+import { KintoneRestAPIClient, KintoneFormLayout } from "../../../";
 
 const client = new KintoneRestAPIClient({
   /* ... */
