@@ -16,4 +16,8 @@
 - Convenient for building the type definition of the property of your app form
 - For more detailed usage, see [the example code](../src/KintoneFields/exportTypes/__checks__/usecase-property.ts)
 
-<!-- TODO: Document about `KintoneFormLayout` -->
+## `KintoneFormLayout`
+
+- A set of Kintone's form layout.
+- Convenient for building the type definition of the layout of your app form
+- For more detailed usage, see [the example code](../src/KintoneFields/exportTypes/__checks__/usecase-layout.ts)
