@@ -22,21 +22,26 @@ type MyAppProperty = {
   Notes: KintoneFormFieldProperty.MultiLineText;
 };
 
+declare function displayTitleFieldProperty(
+  property: KintoneFormFieldProperty.SingleLineText
+): void;
+
+declare function modifyDetailsProperty(
+  property: MyAppProperty["Details"]
+): MyAppProperty["Details"];
+
 async function exampleGetAndUpdateProperties() {
   const APP_ID = 1;
   const response = await client.app.getFormFields<MyAppProperty>({
     app: APP_ID,
   });
 
-  const properties = response.properties;
-  properties.Title.noLabel = true;
-  if (properties.Details.fields.Destination.defaultValue === "") {
-    properties.Details.fields.Destination.defaultValue =
-      "No description provided.";
-  }
+  displayTitleFieldProperty(response.properties.Title);
+
+  const newDetailsProperty = modifyDetailsProperty(response.properties.Details);
 
   await client.app.updateFormFields({
     app: APP_ID,
-    properties,
+    properties: { Details: newDetailsProperty },
   });
 }
