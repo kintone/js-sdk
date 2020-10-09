@@ -2,7 +2,7 @@
   When you use this package, you can import them from package root like this:
   import { KintoneRestAPIClient, KintoneRecordField } from "@kintone/rest-api-client";
 */
-import { KintoneRestAPIClient, KintoneRecordField } from "../../../";
+import { KintoneRestAPIClient, KintoneRecordField } from "../../../..";
 
 const client = new KintoneRestAPIClient({
   /* ... */
@@ -35,7 +35,7 @@ declare function displaySubtableRow(subtableRow: {
   Cost: KintoneRecordField.Number;
 }): void;
 
-async function exampleGetRecords() {
+async function exampleGetAndUpdateRecords() {
   const APP_ID = 1;
   const response = await client.record.getRecords<MyAppRecord>({ app: APP_ID });
 

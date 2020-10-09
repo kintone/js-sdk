@@ -2,7 +2,7 @@
   When you use this package, you can import them from package root like this:
   import { KintoneRestAPIClient, KintoneFormLayout } from "@kintone/rest-api-client";
 */
-import { KintoneRestAPIClient, KintoneFormLayout } from "../../../";
+import { KintoneRestAPIClient, KintoneFormLayout } from "../../../..";
 
 const client = new KintoneRestAPIClient({
   /* ... */
@@ -58,7 +58,7 @@ function modifyRow(row: KintoneFormLayout.OneOf) {
   return _check;
 }
 
-async function example() {
+async function exampleGetAndUpdateLayout() {
   const APP_ID = 1;
   const response = await client.app.getFormLayout<MyAppFormLayout>({
     app: APP_ID,
