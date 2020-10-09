@@ -1,8 +1,1 @@
-export type {
-  Field,
-  InSubtable,
-  RowLayout,
-  SubtableLayout,
-  GroupLayout,
-  OneOf,
-} from "../types/layout";
+export type { Field, Row, Subtable, Group, OneOf } from "../types/layout";

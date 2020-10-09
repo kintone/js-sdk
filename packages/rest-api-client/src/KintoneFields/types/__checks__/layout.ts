@@ -1,6 +1,6 @@
-import { Field, RowLayout, SubtableLayout, GroupLayout } from "../layout";
+import { Field, Row, Subtable, Group } from "../layout";
 
-type Test_RowLayout_OK = RowLayout<
+type Test_RowLayout_OK = Row<
   [
     Field.RecordNumber,
     Field.Creator,
@@ -31,7 +31,7 @@ type Test_RowLayout_OK = RowLayout<
   ]
 >;
 
-type Test_SubtableLayout_OK = SubtableLayout<
+type Test_SubtableLayout_OK = Subtable<
   [
     Field.SingleLineText,
     Field.Number,
@@ -53,59 +53,59 @@ type Test_SubtableLayout_OK = SubtableLayout<
   ]
 >;
 
-type Test_SubtableLayout_NG_RecordNumber = SubtableLayout<
+type Test_SubtableLayout_NG_RecordNumber = Subtable<
   // @ts-expect-error
   [Field.RecordNumber]
 >;
 
-type Test_SubtableLayout_NG_Creator = SubtableLayout<
+type Test_SubtableLayout_NG_Creator = Subtable<
   // @ts-expect-error
   [Field.Creator]
 >;
 
-type Test_SubtableLayout_NG_CreatedTime = SubtableLayout<
+type Test_SubtableLayout_NG_CreatedTime = Subtable<
   // @ts-expect-error
   [Field.CreatedTime]
 >;
 
-type Test_SubtableLayout_NG_Modifier = SubtableLayout<
+type Test_SubtableLayout_NG_Modifier = Subtable<
   // @ts-expect-error
   [Field.Modifier]
 >;
 
-type Test_SubtableLayout_NG_UpdatedTime = SubtableLayout<
+type Test_SubtableLayout_NG_UpdatedTime = Subtable<
   // @ts-expect-error
   [Field.UpdatedTime]
 >;
 
-type Test_SubtableLayout_NG_ReferenceTable = SubtableLayout<
+type Test_SubtableLayout_NG_ReferenceTable = Subtable<
   // @ts-expect-error
   [Field.ReferenceTable]
 >;
 
-type Test_SubtableLayout_NG_Label = SubtableLayout<
+type Test_SubtableLayout_NG_Label = Subtable<
   // @ts-expect-error
   [Field.Label]
 >;
 
-type Test_SubtableLayout_NG_HR = SubtableLayout<
+type Test_SubtableLayout_NG_HR = Subtable<
   // @ts-expect-error
   [Field.HR]
 >;
 
-type Test_SubtableLayout_NG_Spacer = SubtableLayout<
+type Test_SubtableLayout_NG_Spacer = Subtable<
   // @ts-expect-error
   [Field.Spacer]
 >;
 
-type Test_GroupLayout_OK = GroupLayout<[Test_RowLayout_OK]>;
+type Test_GroupLayout_OK = Group<[Test_RowLayout_OK]>;
 
-type Test_GroupLayout_NG_Subtable = GroupLayout<
+type Test_GroupLayout_NG_Subtable = Group<
   // @ts-expect-error
   [Test_SubtableLayout_OK]
 >;
 
-type Test_GroupLayout_NG_Group = GroupLayout<
+type Test_GroupLayout_NG_Group = Group<
   // @ts-expect-error
   [Test_GroupLayout_OK]
 >;
