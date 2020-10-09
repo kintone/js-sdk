@@ -12,12 +12,12 @@
 
 ## `KintoneFormFieldProperty`
 
-- A set of Kintone's properties for form settings.
+- A set of Kintone's form properties
 - Convenient for building the type definition of the property of your app form
 - For more detailed usage, see [the example code](../src/KintoneFields/exportTypes/__checks__/usecase-property.ts)
 
 ## `KintoneFormLayout`
 
-- A set of Kintone's form layout.
+- A set of Kintone's form layout
 - Convenient for building the type definition of the layout of your app form
 - For more detailed usage, see [the example code](../src/KintoneFields/exportTypes/__checks__/usecase-layout.ts)
