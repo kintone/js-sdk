@@ -1,4 +1,4 @@
-import { Field } from "../../../KintoneFields/types/field";
+import { OneOf as Field } from "../../../KintoneFields/types/field";
 
 export type Record = {
   [fieldCode: string]: Field;

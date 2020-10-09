@@ -15,99 +15,99 @@ type FileInformation = {
   size: string;
 };
 
-export type IDField = FieldWith<"__ID__", string>;
-export type RevisionField = FieldWith<"__REVISION__", string>;
-export type RecordNumberField = FieldWith<"RECORD_NUMBER", string>;
-export type CreatorField = FieldWith<"CREATOR", Entity>;
-export type CreatedTimeField = FieldWith<"CREATED_TIME", string>;
-export type ModifierField = FieldWith<"MODIFIER", Entity>;
-export type UpdatedTimeField = FieldWith<"UPDATED_TIME", string>;
+export type ID = FieldWith<"__ID__", string>;
+export type Revision = FieldWith<"__REVISION__", string>;
+export type RecordNumber = FieldWith<"RECORD_NUMBER", string>;
+export type Creator = FieldWith<"CREATOR", Entity>;
+export type CreatedTime = FieldWith<"CREATED_TIME", string>;
+export type Modifier = FieldWith<"MODIFIER", Entity>;
+export type UpdatedTime = FieldWith<"UPDATED_TIME", string>;
 
-export type SingleLineTextField = FieldWith<"SINGLE_LINE_TEXT", string>;
-export type NumberField = FieldWith<"NUMBER", string>;
-export type CalcField = FieldWith<"CALC", string>;
-export type MultiLineTextField = FieldWith<"MULTI_LINE_TEXT", string>;
-export type RichTextField = FieldWith<"RICH_TEXT", string>;
-export type LinkField = FieldWith<"LINK", string>;
+export type SingleLineText = FieldWith<"SINGLE_LINE_TEXT", string>;
+export type Number = FieldWith<"NUMBER", string>;
+export type Calc = FieldWith<"CALC", string>;
+export type MultiLineText = FieldWith<"MULTI_LINE_TEXT", string>;
+export type RichText = FieldWith<"RICH_TEXT", string>;
+export type Link = FieldWith<"LINK", string>;
 
-export type CheckBoxField = FieldWith<"CHECK_BOX", string[]>;
-export type RadioButtonField = FieldWith<"RADIO_BUTTON", string>;
-export type DropdownField = FieldWith<"DROP_DOWN", string | null>;
-export type MultiSelectField = FieldWith<"MULTI_SELECT", string[]>;
+export type CheckBox = FieldWith<"CHECK_BOX", string[]>;
+export type RadioButton = FieldWith<"RADIO_BUTTON", string>;
+export type Dropdown = FieldWith<"DROP_DOWN", string | null>;
+export type MultiSelect = FieldWith<"MULTI_SELECT", string[]>;
 
-export type FileField = FieldWith<"FILE", FileInformation[]>;
+export type File = FieldWith<"FILE", FileInformation[]>;
 
-export type DateField = FieldWith<"DATE", string | null>;
-export type TimeField = FieldWith<"TIME", string | null>;
-export type DateTimeField = FieldWith<"DATETIME", string>;
+export type Date = FieldWith<"DATE", string | null>;
+export type Time = FieldWith<"TIME", string | null>;
+export type DateTime = FieldWith<"DATETIME", string>;
 
-export type UserSelectField = FieldWith<"USER_SELECT", Entity[]>;
-export type OrganizationSelectField = FieldWith<
-  "ORGANIZATION_SELECT",
-  Entity[]
->;
-export type GroupSelectField = FieldWith<"GROUP_SELECT", Entity[]>;
+export type UserSelect = FieldWith<"USER_SELECT", Entity[]>;
+export type OrganizationSelect = FieldWith<"ORGANIZATION_SELECT", Entity[]>;
+export type GroupSelect = FieldWith<"GROUP_SELECT", Entity[]>;
 
-export type CategoryField = FieldWith<"CATEGORY", string[]>;
-export type StatusField = FieldWith<"STATUS", string>;
-export type StatusAssigneeField = FieldWith<"STATUS_ASSIGNEE", Entity[]>;
+export type Category = FieldWith<"CATEGORY", string[]>;
+export type Status = FieldWith<"STATUS", string>;
+export type StatusAssignee = FieldWith<"STATUS_ASSIGNEE", Entity[]>;
 
-type FieldInSubtable =
-  | SingleLineTextField
-  | NumberField
-  | CalcField
-  | MultiLineTextField
-  | RichTextField
-  | LinkField
-  | CheckBoxField
-  | RadioButtonField
-  | DropdownField
-  | MultiSelectField
-  | FileField
-  | DateField
-  | TimeField
-  | DateTimeField
-  | UserSelectField
-  | OrganizationSelectField
-  | GroupSelectField;
+export type InSubtable =
+  | SingleLineText
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  | Number // Although ESLint recognizes it as primitive type, this type is defined above in this file.
+  | Calc
+  | MultiLineText
+  | RichText
+  | Link
+  | CheckBox
+  | RadioButton
+  | Dropdown
+  | MultiSelect
+  | File
+  | Date
+  | Time
+  | DateTime
+  | UserSelect
+  | OrganizationSelect
+  | GroupSelect;
 
-type SubtableRow<T extends { [fieldCode: string]: FieldInSubtable }> = {
+type SubtableRow<T extends { [fieldCode: string]: InSubtable }> = {
   id: string;
   value: T;
 };
 
-export type SubtableField<
-  T extends { [fieldCode: string]: FieldInSubtable }
-> = FieldWith<"SUBTABLE", Array<SubtableRow<T>>>;
+export type Subtable<T extends { [fieldCode: string]: InSubtable }> = FieldWith<
+  "SUBTABLE",
+  Array<SubtableRow<T>>
+>;
 
-export type Field =
-  | IDField
-  | RevisionField
-  | RecordNumberField
-  | CreatorField
-  | CreatedTimeField
-  | ModifierField
-  | UpdatedTimeField
-  | SingleLineTextField
-  | NumberField
-  | CalcField
-  | MultiLineTextField
-  | RichTextField
-  | LinkField
-  | CheckBoxField
-  | RadioButtonField
-  | DropdownField
-  | MultiSelectField
-  | FileField
-  | DateField
-  | TimeField
-  | DateTimeField
-  | UserSelectField
-  | OrganizationSelectField
-  | GroupSelectField
-  | CategoryField
-  | StatusField
-  | StatusAssigneeField
-  | SubtableField<{
-      [fieldCode: string]: FieldInSubtable;
+export type OneOf =
+  | ID
+  | Revision
+  | RecordNumber
+  | Creator
+  | CreatedTime
+  | Modifier
+  | UpdatedTime
+  | SingleLineText
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  | Number // Although ESLint recognizes it as primitive type, this type is defined above in this file.
+  | Calc
+  | MultiLineText
+  | RichText
+  | Link
+  | CheckBox
+  | RadioButton
+  | Dropdown
+  | MultiSelect
+  | File
+  | Date
+  | Time
+  | DateTime
+  | UserSelect
+  | OrganizationSelect
+  | GroupSelect
+  | Category
+  | Status
+  | StatusAssignee
+  | Subtable<{
+      [fieldCode: string]: InSubtable;
     }>;
