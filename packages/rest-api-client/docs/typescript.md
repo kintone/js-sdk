@@ -10,4 +10,10 @@
 - Convenient for building the type definition of the record of your app
 - For more detailed usage, see [the example code](../src/KintoneFields/exportTypes/__checks__/usecase-field.ts)
 
-<!-- TODO: Document about `KintoneFormFieldProperty` and `KintoneFormLayout` -->
+## `KintoneFormFieldProperty`
+
+- A set of Kintone's properties for form settings.
+- Convenient for building the type definition of the property of your app form
+- For more detailed usage, see [the example code](../src/KintoneFields/exportTypes/__checks__/usecase-property.ts)
+
+<!-- TODO: Document about `KintoneFormLayout` -->
