@@ -1,4 +1,4 @@
-export type FieldLayoutWith<
+type FieldLayoutWith<
   T extends string,
   S extends unknown = { width: string }
 > = {
@@ -91,3 +91,16 @@ export type OneOf =
   | Label
   | HR
   | Spacer;
+
+export type InSubtable = Exclude<
+  OneOf,
+  | RecordNumber
+  | Creator
+  | CreatedTime
+  | Modifier
+  | UpdatedTime
+  | ReferenceTable
+  | Label
+  | HR
+  | Spacer
+>;
