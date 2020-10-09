@@ -6,6 +6,7 @@
 - [Usage](#usage)
 - [Parameters for `KintoneRestAPIClient`](#parameters-for-kintonerestapiclient)
 - [Error Handling](#error-handling)
+- [TypeScript](#typescript)
 - [References](#references)
 - [Contribution Guide](#contribution-guide)
 - [License](#license)
@@ -146,6 +147,10 @@ Session authentication is available in Garoon customization.
 ## Error Handling
 
 See [Error Handling](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/errorHandling.md)
+
+## TypeScript
+
+See [TypeScript Definitions](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/typescript.md)
 
 ## References
 
