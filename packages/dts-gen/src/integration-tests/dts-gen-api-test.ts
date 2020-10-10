@@ -1,5 +1,6 @@
 import * as assert from "assert";
 
+// eslint-disable-next-line max-statements
 function assertKintoneBuiltinFunctions() {
     // assert function exists in kintone top-level
     assertFunction(kintone.getRequestToken);

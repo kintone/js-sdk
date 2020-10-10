@@ -9,7 +9,7 @@
     "tsc:check": "tsc --noEmit",
     "clean": "rm -rfv dist",
     "lint:fix": "eslint --fix src/**/*.ts",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint src/**/*.ts",
     "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",
     "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
     "help": "node dist/index.js --help",
@@ -38,6 +38,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "@types/lodash": "^4.14.161",
+    "eslint": "^7.11.0",
     "jest": "^26.5.2",
     "standard-version": "^9.0.0",
     "ts-loader": "^8.0.3",
