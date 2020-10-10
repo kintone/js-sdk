@@ -28,6 +28,14 @@ $ kintone-dts-gen --host http://***.cybozu.com \
                  -o sample-fields.d.ts
 ```
 
+You can set the values through environment variables.
+
+host: KINTONE_DOMAIN  
+username: KINTONE_USERNAME  
+password: KINTONE_PASSWORD  
+basic-auth-username: KINTONE_BASIC_AUTH_USERNAME  
+basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
+
 kintone-dts-gen generates record field definition from kintone form settings.
 And from this command line option, record field type definition(`company.name.types.SampleFields`)
 is defined in `sample-fields.d.ts`.
