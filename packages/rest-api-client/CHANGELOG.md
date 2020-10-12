@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.5.2...@kintone/rest-api-client@1.6.0) (2020-10-12)
+
+
+### Bug Fixes
+
+* **deps:** revert js-base64 v3 to v2 ([#438](https://github.com/kintone/js-sdk/issues/438)) ([06fd3ea](https://github.com/kintone/js-sdk/commit/06fd3eaddb78b69bf3afb2a2b613df9455c4635b))
+* add Element type definition to avoid an error of @types/puppeteer ([#402](https://github.com/kintone/js-sdk/issues/402)) ([04493ad](https://github.com/kintone/js-sdk/commit/04493ad2dbbced8a905b2810a829da9269435b6d))
+* **deps:** update dependency js-base64 to v3 ([#319](https://github.com/kintone/js-sdk/issues/319)) ([9a0b05a](https://github.com/kintone/js-sdk/commit/9a0b05a67b34faf147023b8e111a50bb45aa174c))
+
+
+### Features
+
+* export type definitions for Kintone fields from package root ([#404](https://github.com/kintone/js-sdk/issues/404)) ([974bb73](https://github.com/kintone/js-sdk/commit/974bb73aca45f52bf30f2ce611e34f90482d7b74))
+
+
+
+
+
 ## [1.5.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.5.1...@kintone/rest-api-client@1.5.2) (2020-09-02)
 
 **Note:** Version bump only for package @kintone/rest-api-client

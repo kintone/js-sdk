@@ -1,3 +1,25 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [4.0.5](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@4.0.4...@kintone/webpack-plugin-kintone-plugin@4.0.5) (2020-10-12)
+
+
+### Bug Fixes
+
+* add Element type definition to avoid an error of @types/puppeteer ([#402](https://github.com/kintone/js-sdk/issues/402)) ([04493ad](https://github.com/kintone/js-sdk/commit/04493ad2dbbced8a905b2810a829da9269435b6d))
+* **deps:** update dependency @kintone/plugin-packer to ^3.0.5 ([afe671c](https://github.com/kintone/js-sdk/commit/afe671ca88cf800fae198a7be3ef915f14eb0b6a))
+* **deps:** update dependency chokidar to ^3.4.1 ([2157fb7](https://github.com/kintone/js-sdk/commit/2157fb73f5811376d8d9bd655ea3ae2124244b02))
+* **deps:** update dependency chokidar to ^3.4.2 ([4db535a](https://github.com/kintone/js-sdk/commit/4db535a4a1a1df659506b68901edb34e3a52e6c5))
+* **deps:** update dependency lodash to ^4.17.19 ([ce12a0b](https://github.com/kintone/js-sdk/commit/ce12a0b031dffeef598c6b92783a1a2fc75cf6da))
+* **deps:** update dependency lodash to ^4.17.20 ([0d52c5f](https://github.com/kintone/js-sdk/commit/0d52c5f3c1483775ec670a0936f7c821d18fd761))
+* **deps:** update dependency lodash to v4.17.19 [security] ([9e01f4a](https://github.com/kintone/js-sdk/commit/9e01f4a9f65bf13b238bed78f6ddf39fce5dc0bb))
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.

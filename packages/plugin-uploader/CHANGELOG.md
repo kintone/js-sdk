@@ -1,3 +1,24 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [4.1.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.1.1...@kintone/plugin-uploader@4.1.2) (2020-10-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency puppeteer to v5.3.1 ([#435](https://github.com/kintone/js-sdk/issues/435)) ([9a824f6](https://github.com/kintone/js-sdk/commit/9a824f6c9f1e86d63be1d8c5d4b048b2fef7fa7a))
+* failed tests ([f635558](https://github.com/kintone/js-sdk/commit/f6355581d1a651685af107df4d40e20f439dec24))
+* **deps:** update dependency inquirer to ^7.3.3 ([#308](https://github.com/kintone/js-sdk/issues/308)) ([ebe40a6](https://github.com/kintone/js-sdk/commit/ebe40a6622c657a8034207f20d824b8b02ffea44))
+* **deps:** update dependency meow to ^7.1.0 ([#321](https://github.com/kintone/js-sdk/issues/321)) ([07672fe](https://github.com/kintone/js-sdk/commit/07672fed841b1686b0b525a1af9499e64424148e))
+* **deps:** update dependency meow to ^7.1.1 ([c768803](https://github.com/kintone/js-sdk/commit/c7688038ad43662bcb91e64555fce27e52bbf5c8))
+* **deps:** update dependency puppeteer to v5 ([#309](https://github.com/kintone/js-sdk/issues/309)) ([c3b6539](https://github.com/kintone/js-sdk/commit/c3b6539b3dfccca34e29fb7adad1c4443ed0f9a1))
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.

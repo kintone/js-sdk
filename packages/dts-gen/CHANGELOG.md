@@ -1,3 +1,23 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [3.0.6](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.0.5...@kintone/dts-gen@3.0.6) (2020-10-12)
+
+
+### Bug Fixes
+
+* eslint errors ([554a161](https://github.com/kintone/js-sdk/commit/554a161f6880484f0447ab00f1a48f4d45836416))
+* **deps:** update dependency lodash to ^4.17.19 ([988546b](https://github.com/kintone/js-sdk/commit/988546b06cb29ebe9a71511c1f76c51b3aa3848c))
+* **deps:** update dependency lodash to ^4.17.20 ([c12bff8](https://github.com/kintone/js-sdk/commit/c12bff82d8006f7cd7a478cc07da0d964f5c9134))
+* **deps:** update dependency prettier to ^2.1.1 ([#357](https://github.com/kintone/js-sdk/issues/357)) ([09243df](https://github.com/kintone/js-sdk/commit/09243dffd083b62e27fca870cd6e57b183193661))
+* **deps:** update dependency prettier to ^2.1.2 ([194c238](https://github.com/kintone/js-sdk/commit/194c23851903fc177784c35707a797e5ae19c60d))
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.

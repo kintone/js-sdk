@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.7](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@3.0.6...@kintone/plugin-packer@3.0.7) (2020-10-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency debug to ^4.2.0 ([#429](https://github.com/kintone/js-sdk/issues/429)) ([74a0c67](https://github.com/kintone/js-sdk/commit/74a0c67662302f20473fb3bfadae57be47efcf1c))
+* **deps:** update dependency meow to ^7.1.1 ([ce6c6b3](https://github.com/kintone/js-sdk/commit/ce6c6b3cf01878a6b5b1421cb7c26c73719cd2a6))
+
+
+
+
+
 ## [3.0.6](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@3.0.5...@kintone/plugin-packer@3.0.6) (2020-08-28)
 
 
