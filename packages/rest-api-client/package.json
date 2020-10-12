@@ -43,7 +43,8 @@
   "files": [
     "esm",
     "lib",
-    "umd"
+    "umd",
+    "index.mjs"
   ],
   "keywords": [
     "kintone",
@@ -78,5 +79,13 @@
     "form-data": "^3.0.0",
     "js-base64": "^2.6.4",
     "qs": "^6.9.4"
+  },
+  "exports": {
+    "node": {
+      "import": "./index.mjs",
+      "require": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "browser": "./lib/index.browser.js"
   }
 }
