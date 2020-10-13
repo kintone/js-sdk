@@ -5,8 +5,8 @@
 This package is managed with `yarn`, so you have to install `yarn` to build `dts-gen`.
 
 ```
-% yarn
-% yarn build
+$ yarn
+$ yarn build
 ```
 
 You can see the build files in `dist` directory.
