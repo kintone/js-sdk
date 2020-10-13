@@ -2709,6 +2709,11 @@ acorn@^7.1.1, acorn@^7.4.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.0.tgz#e1ad486e6c54501634c6c397c5c121daa383607c"
   integrity sha512-+G7P8jJmCHr+S+cLfQxygbWhXy+8YTVGzAkpEbcLo2mLoL7tij/VG41QSHACSf5QgYRhMZYHuNc6drJaO0Da+w==
 
+acorn@^7.3.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
+  integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
+
 add-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
@@ -11191,6 +11196,13 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+rollup-plugin-ecma-version-validator@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-ecma-version-validator/-/rollup-plugin-ecma-version-validator-0.1.6.tgz#ad6517b73e7040a799c2d5201b0de7ad30f97a1c"
+  integrity sha512-cTscW+7ZLRviDVWXW9Z9BPBh8/tckwYgkxdzc3j67g7/3bq38ARVWjbBNfERwAA+qCX6yeMhXOVE/UHbth1jeg==
+  dependencies:
+    acorn "^7.3.1"
 
 rollup-plugin-node-builtins@^2.1.2:
   version "2.1.2"
