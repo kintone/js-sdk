@@ -12,9 +12,9 @@ npm install -D @kintone/dts-gen
 ```
 
 ## Documentation
-- [How To Use](https://kintone.github.io/dts-gen/docs/#/README)
-- [Field Type Definition Guide](https://kintone.github.io/dts-gen/docs/#/field-type-definition-guide)
-- [Maintenance Guide](https://kintone.github.io/dts-gen/docs/#/maintenance-guide)
+- [How To Use](https://github.com/kintone/js-sdk/blob/master/packages/dts-gen/docs/how-to-use.md)
+- [Field Type Definition Guide](https://github.com/kintone/js-sdk/blob/master/packages/dts-gen/docs/field-type-definition-guide.md)
+- [Maintenance Guide](https://github.com/kintone/js-sdk/blob/master/packages/dts-gen/docs/maintenance-guide.md)
 
 ## License
 

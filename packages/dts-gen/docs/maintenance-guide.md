@@ -1,9 +1,15 @@
 # Maintenance Guide
 
 ## How to build
-Just run `npm run build`.
 
-You can artifact in `dist` directory.
+This package is managed with `yarn`, so you have to install `yarn` to build `dts-gen`.
+
+```
+$ yarn
+$ yarn build
+```
+
+You can see the build files in `dist` directory.
 
 After build process finished, build artifact are below:
 
@@ -65,13 +71,3 @@ You can run the test code as a kintone customize js customize code.
 `-u, --p, --host`:
 
 username, password, host of kintone.
-
-## How to run unit tests
-
-Just run `npm run test`.
-
-## Write document
-
-This document was written by `docsify`.
-
-See Reference: [Quick Start](https://docsify.js.org/#/quickstart)
