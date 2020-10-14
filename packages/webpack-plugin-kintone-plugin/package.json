@@ -48,11 +48,11 @@
     "adm-zip": "^0.4.16",
     "rimraf": "^3.0.2",
     "ts-node": "^8.10.2",
-    "webpack": "^4.44.2",
+    "webpack": "^5.1.0",
     "webpack-cli": "^3.3.12"
   },
   "peerDependencies": {
-    "webpack": "^4.0.0"
+    "webpack": "^4.0.0 || ^5.0.0"
   },
   "dependencies": {
     "@kintone/plugin-packer": "^3.0.7",
