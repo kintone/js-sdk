@@ -111,7 +111,7 @@ export class RecordClient {
   }
 
   // TODO: `records` type in return type should be filtered by `fields`.
-  public getRecords<T extends Record>(params: {
+  public async getRecords<T extends Record>(params: {
     app: AppID;
     fields?: string[];
     query?: string;
@@ -120,6 +120,10 @@ export class RecordClient {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records",
     });
+    const response = await this.client.get<{
+      records: T[];
+      totalCount: string | null;
+    }>(path, params);
     if (params.query) {
       const regexp = /offset\s+(\d+)/i;
       const result = params.query.match(regexp);
@@ -134,7 +138,7 @@ export class RecordClient {
         );
       }
     }
-    return this.client.get(path, params);
+    return response;
   }
 
   public async addRecords(params: {
