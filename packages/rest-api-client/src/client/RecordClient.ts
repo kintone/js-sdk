@@ -124,9 +124,14 @@ export class RecordClient {
       records: T[];
       totalCount: string | null;
     }>(path, params);
-    if (params.query) {
+    this.warnMaximumOffsetValueIfNeeded(params.query);
+    return response;
+  }
+
+  private warnMaximumOffsetValueIfNeeded(query?: string) {
+    if (query) {
       const regexp = /offset\s+(\d+)/i;
-      const result = params.query.match(regexp);
+      const result = query.match(regexp);
       if (
         !this.didWarnMaximumOffsetValue &&
         result &&
@@ -138,7 +143,6 @@ export class RecordClient {
         );
       }
     }
-    return response;
   }
 
   public async addRecords(params: {
