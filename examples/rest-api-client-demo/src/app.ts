@@ -30,7 +30,7 @@ export class App {
   public async addFormFields() {
     const properties = {
       fieldCode: {
-        type: "SINGLE_LINE_TEXT",
+        type: "SINGLE_LINE_TEXT" as const,
         code: "fieldCode",
         label: "Text Field",
       },
@@ -47,7 +47,7 @@ export class App {
   public async updateFormFields() {
     const properties = {
       fieldCode: {
-        type: "SINGLE_LINE_TEXT",
+        type: "SINGLE_LINE_TEXT" as const,
         label: "Text Field 2",
       },
     };

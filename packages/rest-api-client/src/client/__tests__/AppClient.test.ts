@@ -10,7 +10,7 @@ describe("AppClient", () => {
   const RECORD_ID = 3;
   const properties = {
     fieldCode: {
-      type: "SINGLE_LINE_TEXT",
+      type: "SINGLE_LINE_TEXT" as const,
       code: "fieldCode",
       label: "Text Field",
     },
