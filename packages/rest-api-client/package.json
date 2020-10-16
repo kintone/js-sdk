@@ -67,7 +67,7 @@
     "@types/core-js": "^2.5.4",
     "@types/js-base64": "^2.3.2",
     "@types/qs": "^6.9.5",
-    "rollup": "^2.29.0",
+    "rollup": "^2.30.0",
     "rollup-plugin-ecma-version-validator": "^0.1.6",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
