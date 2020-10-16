@@ -204,23 +204,74 @@ describe("RecordClient", () => {
   });
 
   describe("getRecords", () => {
-    const params = {
-      app: APP_ID,
-      fields: [fieldCode],
-      query: `${fieldCode} = "foo"`,
-      totalCount: true,
-    };
-    beforeEach(async () => {
-      await recordClient.getRecords(params);
+    describe("without offset", () => {
+      const params = {
+        app: APP_ID,
+        fields: [fieldCode],
+        query: `${fieldCode} = "foo"`,
+        totalCount: true,
+      };
+      beforeEach(async () => {
+        await recordClient.getRecords(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app, fields, query and totalCount to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
     });
-    it("should pass the path to the http client", () => {
-      expect(mockClient.getLogs()[0].path).toBe("/k/v1/records.json");
-    });
-    it("should send a get request", () => {
-      expect(mockClient.getLogs()[0].method).toBe("get");
-    });
-    it("should pass app, fields, query and totalCount to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual(params);
+    describe("with offset", () => {
+      let consoleWarnMock: jest.SpyInstance;
+      beforeEach(() => {
+        consoleWarnMock = jest.spyOn(console, "warn");
+        consoleWarnMock.mockImplementation((x) => x);
+      });
+      describe("offset <= 10000", () => {
+        const params = {
+          app: APP_ID,
+          fields: [fieldCode],
+          query: `${fieldCode} = "foo" offset 10000`,
+          totalCount: true,
+        };
+        it("doesn't output any message to the console", async () => {
+          const getMockFn = jest.fn();
+          mockClient.get = getMockFn;
+          await recordClient.getRecords(params);
+          expect(consoleWarnMock.mock.calls.length).toBe(0);
+        });
+      });
+      describe("offset > 10000", () => {
+        const params = {
+          app: APP_ID,
+          fields: [fieldCode],
+          query: `${fieldCode} = "foo" offset 10001`,
+          totalCount: true,
+        };
+        it("outputs a message to the console only once when the request succeeds", async () => {
+          const getMockFn = jest.fn().mockResolvedValue({});
+          mockClient.get = getMockFn;
+          await recordClient.getRecords(params);
+          await recordClient.getRecords(params);
+          expect(consoleWarnMock.mock.calls.length).toBe(1);
+        });
+        it("doesn't output any message to the console when the request fails", async () => {
+          const getMockFn = jest.fn().mockRejectedValue({});
+          mockClient.get = getMockFn;
+          try {
+            await recordClient.getRecords(params);
+          } catch {
+            expect(consoleWarnMock.mock.calls.length).toBe(0);
+          }
+        });
+      });
+      afterEach(() => {
+        consoleWarnMock.mockReset();
+        consoleWarnMock.mockRestore();
+      });
     });
   });
 
