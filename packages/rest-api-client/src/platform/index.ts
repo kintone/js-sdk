@@ -1,4 +1,4 @@
-import { DiscriminatedAuth } from "./../KintoneRestAPIClient";
+import { DiscriminatedAuth } from "../types/auth";
 type PlatformDeps = {
   readFileFromPath: (
     filePath: string

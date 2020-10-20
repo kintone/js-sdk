@@ -9,7 +9,7 @@ import {
   Params,
   ProxyConfig,
 } from "./http/HttpClientInterface";
-import { BasicAuth, DiscriminatedAuth } from "./KintoneRestAPIClient";
+import { BasicAuth, DiscriminatedAuth } from "./types/auth";
 import { platformDeps } from "./platform/";
 
 type Data = Params | FormData;

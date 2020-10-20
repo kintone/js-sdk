@@ -4,47 +4,14 @@ import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
 import { ProxyConfig } from "./http/HttpClientInterface";
+import { BasicAuth, DiscriminatedAuth } from "./types/auth";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 import { KintoneResponseHandler } from "./KintoneResponseHandler";
 import { platformDeps } from "./platform/index";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
 
-export type DiscriminatedAuth =
-  | ApiTokenAuth
-  | PasswordAuth
-  | SessionAuth
-  | OAuthTokenAuth;
-
-type Auth =
-  | Omit<ApiTokenAuth, "type">
-  | Omit<PasswordAuth, "type">
-  | Omit<SessionAuth, "type">
-  | Omit<OAuthTokenAuth, "type">;
-
-type ApiTokenAuth = {
-  type: "apiToken";
-  apiToken: string | string[];
-};
-
-type PasswordAuth = {
-  type: "password";
-  username: string;
-  password: string;
-};
-
-type SessionAuth = {
-  type: "session";
-};
-
-type OAuthTokenAuth = {
-  type: "oAuthToken";
-  oAuthToken: string;
-};
-
-export type BasicAuth = {
-  username: string;
-  password: string;
-};
+type OmitTypePropertyFromUnion<T> = T extends unknown ? Omit<T, "type"> : never;
+type Auth = OmitTypePropertyFromUnion<DiscriminatedAuth>;
 
 type Options = {
   baseUrl?: string;
