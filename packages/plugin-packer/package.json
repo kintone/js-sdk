@@ -48,7 +48,7 @@
     "execa": "^4.0.3",
     "glob": "^7.1.6",
     "normalize.css": "^8.0.1",
-    "postcss": "^8.1.1",
+    "postcss": "^8.1.2",
     "postcss-cli": "^8.1.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
