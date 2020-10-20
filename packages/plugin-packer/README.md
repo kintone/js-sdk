@@ -8,7 +8,7 @@ kintone-plugin-packer
 It's written in pure JavaScript, so
 
 - The CLI works with Node.js in Mac/Windows/Linux
-- [The web page](https://kintone.github.io/plugin-packer/) works in any modern browsers
+- [The web page](https://plugin-packer.kintone.dev/) works in any modern browsers
 - Validate your `manifest.json` with [JSON Schema](https://github.com/kintone/js-sdk/tree/master/packages/plugin-manifest-validator)
 
 # How to install
