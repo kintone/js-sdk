@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.6](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@4.0.5...@kintone/webpack-plugin-kintone-plugin@4.0.6) (2020-10-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^3.4.3 ([a50de55](https://github.com/kintone/js-sdk/commit/a50de55fd2b7bd64fdafc29acf5644fed52cccee))
+
+
+
+
+
 ## [4.0.5](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@4.0.4...@kintone/webpack-plugin-kintone-plugin@4.0.5) (2020-10-12)
 
 

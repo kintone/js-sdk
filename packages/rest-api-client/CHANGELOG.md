@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.6.0...@kintone/rest-api-client@1.7.0) (2020-10-21)
+
+
+### Features
+
+* support Node.js native ESM for rest-api-client ([#436](https://github.com/kintone/js-sdk/issues/436)) ([fee6655](https://github.com/kintone/js-sdk/commit/fee66553b10ea779efd8e0a2809c3711957a6c99))
+
+
+
+
+
 # [1.6.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.5.2...@kintone/rest-api-client@1.6.0) (2020-10-12)
 
 

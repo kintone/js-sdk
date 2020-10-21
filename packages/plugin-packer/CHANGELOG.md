@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.8](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@3.0.7...@kintone/plugin-packer@3.0.8) (2020-10-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^3.4.3 ([a50de55](https://github.com/kintone/js-sdk/commit/a50de55fd2b7bd64fdafc29acf5644fed52cccee))
+
+
+
+
+
 ## [3.0.7](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@3.0.6...@kintone/plugin-packer@3.0.7) (2020-10-12)
 
 
