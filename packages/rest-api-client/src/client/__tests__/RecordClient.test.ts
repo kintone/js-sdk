@@ -255,6 +255,7 @@ describe("RecordClient", () => {
           expect(consoleWarnMock.mock.calls.length).toBe(1);
         });
         it("doesn't output any message to the console when the request fails", async () => {
+          expect.assertions(1);
           mockClient.mockResponse(new Error("failed"));
           try {
             await recordClient.getRecords(params);
