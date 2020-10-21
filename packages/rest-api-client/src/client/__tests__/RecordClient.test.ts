@@ -238,8 +238,6 @@ describe("RecordClient", () => {
           totalCount: true,
         };
         it("doesn't output any message to the console", async () => {
-          const getMockFn = jest.fn();
-          mockClient.get = getMockFn;
           await recordClient.getRecords(params);
           expect(consoleWarnMock.mock.calls.length).toBe(0);
         });
@@ -252,15 +250,12 @@ describe("RecordClient", () => {
           totalCount: true,
         };
         it("outputs a message to the console only once when the request succeeds", async () => {
-          const getMockFn = jest.fn().mockResolvedValue({});
-          mockClient.get = getMockFn;
           await recordClient.getRecords(params);
           await recordClient.getRecords(params);
           expect(consoleWarnMock.mock.calls.length).toBe(1);
         });
         it("doesn't output any message to the console when the request fails", async () => {
-          const getMockFn = jest.fn().mockRejectedValue({});
-          mockClient.get = getMockFn;
+          mockClient.mockResponse(new Error("failed"));
           try {
             await recordClient.getRecords(params);
           } catch {
