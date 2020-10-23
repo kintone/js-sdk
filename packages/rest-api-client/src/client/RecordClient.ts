@@ -111,7 +111,7 @@ export class RecordClient {
   }
 
   // TODO: `records` type in return type should be filtered by `fields`.
-  public getRecords<T extends Record>(params: {
+  public async getRecords<T extends Record>(params: {
     app: AppID;
     fields?: string[];
     query?: string;
@@ -120,9 +120,18 @@ export class RecordClient {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records",
     });
-    if (params.query) {
+    const response = await this.client.get<{
+      records: T[];
+      totalCount: string | null;
+    }>(path, params);
+    this.warnMaximumOffsetValueIfNeeded(params.query);
+    return response;
+  }
+
+  private warnMaximumOffsetValueIfNeeded(query?: string) {
+    if (query) {
       const regexp = /offset\s+(\d+)/i;
-      const result = params.query.match(regexp);
+      const result = query.match(regexp);
       if (
         !this.didWarnMaximumOffsetValue &&
         result &&
@@ -134,7 +143,6 @@ export class RecordClient {
         );
       }
     }
-    return this.client.get(path, params);
   }
 
   public async addRecords(params: {
