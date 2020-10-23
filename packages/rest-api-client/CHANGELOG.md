@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.7.0...@kintone/rest-api-client@1.7.1) (2020-10-23)
+
+
+### Bug Fixes
+
+* change the timing to show the warning for large offset ([#470](https://github.com/kintone/js-sdk/issues/470)) ([c86e5b4](https://github.com/kintone/js-sdk/commit/c86e5b457820e1286d0dce8dcb87fc90cce9ddc1))
+
+
+
+
+
 # [1.7.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.6.0...@kintone/rest-api-client@1.7.0) (2020-10-21)
 
 
