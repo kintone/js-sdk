@@ -2,7 +2,7 @@ import fs from "fs";
 import { debounce } from "lodash";
 import mkdirp from "mkdirp";
 import path from "path";
-import { Compiler, Plugin } from "webpack";
+import { Compiler, WebpackPluginInstance } from "webpack";
 
 import { generatePlugin, getAssetPaths } from "./plugin";
 
@@ -19,7 +19,7 @@ type PluginZipPathFunction = (
   manifest: { [key: string]: any }
 ) => string;
 
-class KintonePlugin implements Plugin {
+class KintonePlugin implements WebpackPluginInstance {
   private options: Option;
   private name: string;
   private privateKey: string | null;
