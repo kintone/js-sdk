@@ -75,7 +75,7 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "form-data": "^3.0.0",
     "js-base64": "^2.6.4",
