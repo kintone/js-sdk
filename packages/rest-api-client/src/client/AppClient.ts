@@ -44,13 +44,13 @@ type GroupLayoutForParameter = {
 type LayoutForParameter = Array<
   RowLayoutForParameter | SubtableLayoutForParameter | GroupLayoutForParameter
 >;
-type NestedPartial<T> = {
-  [K in keyof T]?: T[K] extends Array<infer R>
-    ? Array<NestedPartial<R>>
-    : NestedPartial<T[K]>;
-};
+type NestedPartial<T> = T extends object
+  ? {
+      [K in keyof T]?: NestedPartial<T[K]>;
+    }
+  : T;
 
-type PropertyForParameter = NestedPartial<Properties>;
+type PropertiesForParameter = NestedPartial<Properties>;
 
 export class AppClient {
   private client: HttpClient;
@@ -76,7 +76,7 @@ export class AppClient {
 
   public addFormFields(params: {
     app: AppID;
-    properties: PropertyForParameter;
+    properties: PropertiesForParameter;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
@@ -88,7 +88,7 @@ export class AppClient {
 
   public updateFormFields(params: {
     app: AppID;
-    properties: PropertyForParameter;
+    properties: PropertiesForParameter;
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
