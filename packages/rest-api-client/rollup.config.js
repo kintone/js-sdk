@@ -39,7 +39,7 @@ export default {
                 "last 1 chrome versions",
                 "last 1 safari versions",
                 "iOS 11",
-                "last 2 and_chr versions",
+                "last 1 and_chr versions",
               ],
             },
             useBuiltIns: "usage",
