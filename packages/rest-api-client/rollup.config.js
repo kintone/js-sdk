@@ -38,7 +38,7 @@ export default {
                 "last 1 firefox version",
                 "last 1 chrome versions",
                 "last 1 safari versions",
-                "iOS 11",
+                "iOS >= 12",
                 "last 1 and_chr versions",
               ],
             },
