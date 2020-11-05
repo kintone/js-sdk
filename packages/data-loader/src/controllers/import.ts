@@ -22,12 +22,8 @@ type Options = {
 };
 
 export const run = async (argv: Argv) => {
-  try {
-    const apiClient = buildRestAPIClient(argv);
-    await importRecords(apiClient, argv);
-  } catch (e) {
-    console.error(e);
-  }
+  const apiClient = buildRestAPIClient(argv);
+  await importRecords(apiClient, argv);
 };
 
 const extractFileType = (filepath: string) => {
