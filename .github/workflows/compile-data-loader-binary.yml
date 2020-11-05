@@ -1,0 +1,55 @@
+on:
+  push:
+    tags:
+      - "@kintone/data-loader@*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: yarn install, and yarn workspace @kintone/data-loader pkg
+        run: |
+          yarn install
+          yarn build
+          yarn workspace @kintone/data-loader pkg
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload macos binary file
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./packages/data-loader/bin/data-loader-macos
+          asset_name: kintone-data-loader_mac
+          asset_content_type: application/octet-stream
+      - name: Upload linux binary file
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./packages/data-loader/bin/data-loader-linux
+          asset_name: kintone-data-loader_linux
+          asset_content_type: application/octet-stream
+      - name: Upload win binary file
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./packages/data-loader/bin/data-loader-win.exe
+          asset_name: kintone-data-loader_windows.exe
+          asset_content_type: application/octet-stream
