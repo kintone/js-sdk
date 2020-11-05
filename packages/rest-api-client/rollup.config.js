@@ -34,12 +34,12 @@ export default {
               // see kintone's supported browsers https://get.kintone.help/general/en/user/list_start/webbrowser.html
               browsers: [
                 "IE 11",
-                "last 1 edge versions",
-                "last 1 firefox version",
-                "last 1 chrome versions",
-                "last 1 safari versions",
-                "iOS >= 12",
-                "last 1 and_chr versions",
+                "last 2 edge versions",
+                "last 2 firefox version",
+                "last 2 chrome versions",
+                "last 2 safari versions",
+                "iOS >= 11",
+                "last 2 and_chr versions",
               ],
             },
             useBuiltIns: "usage",
