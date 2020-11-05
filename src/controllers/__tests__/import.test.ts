@@ -34,4 +34,15 @@ describe("import", () => {
       ).resolves.not.toThrow();
     });
   });
+  it("should throw error when API response is error", () => {
+    const error = new Error("error for test");
+    apiClient.record.addAllRecords = jest.fn().mockRejectedValueOnce(error);
+    return expect(
+      importRecords(apiClient, {
+        app: "1",
+        attachmentDir: "",
+        filePath: path.resolve(__dirname, "./fixtures/test.json"),
+      })
+    ).rejects.toThrow(error);
+  });
 });

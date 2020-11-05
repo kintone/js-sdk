@@ -28,14 +28,10 @@ type FileInfo = {
 };
 
 export const run = async (argv: Argv) => {
-  try {
-    const apiClient = buildRestAPIClient(argv);
-    const records = await exportRecords(apiClient, argv);
-    const printer = buildPrinter(argv.format);
-    printer(records);
-  } catch (e) {
-    console.error(e);
-  }
+  const apiClient = buildRestAPIClient(argv);
+  const records = await exportRecords(apiClient, argv);
+  const printer = buildPrinter(argv.format);
+  printer(records);
 };
 
 export async function exportRecords(

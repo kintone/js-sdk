@@ -96,4 +96,11 @@ describe("export", () => {
     );
     expect(downloadFile.toString()).toBe(testFileData);
   });
+  it("should throw error when API response is error", () => {
+    const error = new Error("error for test");
+    apiClient.record.getAllRecords = jest.fn().mockRejectedValueOnce(error);
+    return expect(
+      exportRecords(apiClient, { app: "1", attachmentDir: "" })
+    ).rejects.toThrow(error);
+  });
 });
