@@ -1,6 +1,6 @@
-<!-- TODO: link this page from README -->
-
 # TypeScript
+
+This library supports TypeScript 3.6.0 or higher.
 
 @kintone/rest-api-client provides the following type definitions.
 
