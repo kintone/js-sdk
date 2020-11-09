@@ -1,7 +1,5 @@
 # TypeScript
 
-This library supports TypeScript 3.6.0 or higher.
-
 @kintone/rest-api-client provides the following type definitions.
 
 ## `KintoneRecordField`
@@ -21,3 +19,5 @@ This library supports TypeScript 3.6.0 or higher.
 - A set of Kintone's form layout
 - Convenient for building the type definition of the layout of your app form
 - For more detailed usage, see [the example code](../src/KintoneFields/exportTypes/__checks__/usecases/layout.ts)
+
+**Please submit [an issue](https://github.com/kintone/js-sdk/issues/new/choose) if you have any trouble when using a package with TypeScript.**
