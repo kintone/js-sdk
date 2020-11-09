@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@types/yargs": "^15.0.5",
+    "cross-env": "^7.0.2",
     "pkg": "^4.4.9",
     "ts-node": "^9.0.0"
   },
