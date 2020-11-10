@@ -1,5 +1,5 @@
 ---
-name: "TypeScript Issue"
+name: "🙈 TypeScript Issue"
 about: Issue for TypeScript usage
 title: ''
 labels: ''
