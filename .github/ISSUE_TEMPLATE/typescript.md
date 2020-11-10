@@ -11,10 +11,9 @@ assignees: ''
 ## Versions
 
 <!-- Which package do you want to report an issue for? -->
-<!-- What version did the error occur? -->
 - @kintone/xxx 0.0.0
+<!-- What version did the error occur? -->
 - TypeScript: 0.0.0
-- Babel: 0.0.0 <!-- if you use Babel. If not, delete this line. -->
 
 ## Current Behavior
 
@@ -24,7 +23,7 @@ assignees: ''
 
 <!-- What is the behavior you expected?  -->
 
-## Steps to reproduce
+## Steps to reproduce the issue
 
 <!--  Please explain steps and your typescript code using a package to reproduce the issue. -->
 
