@@ -11,8 +11,16 @@ export function createCommanderProgram() {
         )
 
         .option("--host [host]")
-        .option("-u, --username [username]")
-        .option("-p, --password [password]")
+        .option(
+            "-u, --username [username]",
+            "A username for the Kintone environment",
+            process.env.KINTONE_USERNAME
+        )
+        .option(
+            "-p, --password [password]",
+            "A password for the Kintone environment",
+            process.env.KINTONE_PASSWORD
+        )
         .option(
             "--app-id [appId]",
             "id of kintone app",
@@ -50,13 +58,13 @@ export function createCommanderProgram() {
         )
         .option(
             "--basic-auth-username [basicAuthUsername]",
-            "username for basic authentication",
-            null
+            "A username for basic authentication",
+            process.env.KINTONE_BASIC_AUTH_USERNAME
         )
         .option(
             "--basic-auth-password [basicAuthPassword]",
-            "password for basic authentication",
-            null
+            "A password for basic authentication",
+            process.env.KINTONE_BASIC_AUTH_PASSWORD
         )
         .option(
             "-o, --output [output]",

@@ -8,28 +8,14 @@ import { createCommanderProgram } from "./createCommanderProgram";
 const program = createCommanderProgram();
 program.parse(process.argv);
 
-const {
-    // HTTP_PROXY,
-    // HTTPS_PROXY,
-    KINTONE_DOMAIN,
-    KINTONE_USERNAME,
-    KINTONE_PASSWORD,
-    KINTONE_BASIC_AUTH_USERNAME,
-    KINTONE_BASIC_AUTH_PASSWORD,
-} = process.env;
-
 const newClientInput = {
-    host: program.host || `https://${KINTONE_DOMAIN}`,
-    username: program.username || KINTONE_USERNAME,
-    password: program.password || KINTONE_PASSWORD,
+    host: program.host,
+    username: program.username,
+    password: program.password,
     proxyHost: program.proxyHost,
     proxyPort: program.proxyPort,
-    basicAuthUsername:
-        program.basicAuthUsername ||
-        KINTONE_BASIC_AUTH_USERNAME,
-    basicAuthPassword:
-        program.basicAuthPassword ||
-        KINTONE_BASIC_AUTH_PASSWORD,
+    basicAuthUsername: program.basicAuthUsername,
+    basicAuthPassword: program.basicAuthPassword,
 };
 
 const client = program.demo
