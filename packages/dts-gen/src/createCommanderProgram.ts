@@ -14,12 +14,12 @@ export function createCommanderProgram() {
         .option(
             "-u, --username [username]",
             "A username for the Kintone environment",
-            process.env.KINTONE_USERNAME || null
+            process.env.KINTONE_USERNAME
         )
         .option(
             "-p, --password [password]",
             "A password for the Kintone environment",
-            process.env.KINTONE_PASSWORD || null
+            process.env.KINTONE_PASSWORD
         )
         .option(
             "--app-id [appId]",
