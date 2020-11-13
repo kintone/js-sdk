@@ -1,5 +1,4 @@
 import * as commander from "commander";
-import { before } from "lodash";
 import { createCommanderProgram } from "./createCommanderProgram";
 
 describe("createCommanderProgram", () => {
@@ -59,22 +58,22 @@ describe("createCommanderProgram", () => {
         test("long flag values", () => {
             // prettier-ignore
             program.parse([
-          "node", "index.js",
-          "--demo",
-          "--host", "HOST",
-          "--username", "USERNAME",
-          "--password", "PASSWORD",
-          "--app-id", "APP_ID",
-          "--guest-space-id", "GUEST_SPACE_ID",
-          "--preview",
-          "--type-name", "TYPE_NAME",
-          "--namespace", "NAMESPACE",
-          "--proxy-host", "PROXY_HOST",
-          "--proxy-port", "PROXY_PORT",
-          "--basic-auth-username", "BASIC_AUTH_USERNAME",
-          "--basic-auth-password", "BASIC_AUTH_PASSWORD",
-          "--output", "OUTPUT"
-        ]);
+                "node", "index.js",
+                "--demo",
+                "--host", "HOST",
+                "--username", "USERNAME",
+                "--password", "PASSWORD",
+                "--app-id", "APP_ID",
+                "--guest-space-id", "GUEST_SPACE_ID",
+                "--preview",
+                "--type-name", "TYPE_NAME",
+                "--namespace", "NAMESPACE",
+                "--proxy-host", "PROXY_HOST",
+                "--proxy-port", "PROXY_PORT",
+                "--basic-auth-username", "BASIC_AUTH_USERNAME",
+                "--basic-auth-password", "BASIC_AUTH_PASSWORD",
+                "--output", "OUTPUT"
+            ]);
 
             expect(program.demo).toBe(true);
             expect(program.host).toBe("HOST");
@@ -100,11 +99,11 @@ describe("createCommanderProgram", () => {
         test("short flag values", () => {
             // prettier-ignore
             program.parse([
-          "node", "index.js",
-          "-u", "USERNAME",
-          "-p", "PASSWORD",
-          "-o", "OUTPUT"
-        ]);
+                "node", "index.js",
+                "-u", "USERNAME",
+                "-p", "PASSWORD",
+                "-o", "OUTPUT"
+            ]);
 
             expect(program.username).toBe("USERNAME");
             expect(program.password).toBe("PASSWORD");
