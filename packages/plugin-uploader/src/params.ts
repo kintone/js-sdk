@@ -6,10 +6,17 @@ interface Params {
   username?: string;
   password?: string;
   domain?: string;
+  baseUrl?: string;
   lang: Lang;
 }
 
-export const inquireParams = ({ username, password, domain, lang }: Params) => {
+export const inquireParams = ({
+  username,
+  password,
+  domain,
+  baseUrl,
+  lang,
+}: Params) => {
   const m = getBoundMessage(lang);
   const questions: inquirer.Question[] = [
     {
@@ -17,7 +24,7 @@ export const inquireParams = ({ username, password, domain, lang }: Params) => {
       message: m("Q_Domain"),
       name: "domain",
       default: domain,
-      when: () => !domain,
+      when: () => !baseUrl && !domain,
       validate: (v: string) => !!v,
     },
     {

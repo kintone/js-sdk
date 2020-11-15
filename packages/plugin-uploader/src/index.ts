@@ -29,8 +29,10 @@ async function readyForUpload(
   const m = getBoundMessage(lang);
 
   const page = await browser.newPage();
-  const kintoneUrl = `https://${domain}/`;
-  const loginUrl = `${kintoneUrl}login?saml=off`;
+  const kintoneUrl = domain.match(/^https:\/\//)
+    ? `${domain}`
+    : `https://${domain}`;
+  const loginUrl = `${kintoneUrl}/login?saml=off`;
 
   if (basicAuth) {
     await page.authenticate(basicAuth);
@@ -56,7 +58,7 @@ async function readyForUpload(
     throw chalk.red(m("Error_failedLogin"));
   }
 
-  const pluginUrl = `${kintoneUrl}k/admin/system/plugin/`;
+  const pluginUrl = `${kintoneUrl}/k/admin/system/plugin/`;
   console.log(`Navigate to ${pluginUrl}`);
   await page.goto(pluginUrl);
 
