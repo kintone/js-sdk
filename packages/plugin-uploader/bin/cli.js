@@ -130,7 +130,7 @@ wait(waitingDialogMs)
   .then(() => inquireParams({ username, password, domain, baseUrl, lang }))
   .then((answers) => {
     run(
-      baseUrl || answers.domain,
+      answers.baseUrl || answers.domain,
       answers.username,
       answers.password,
       pluginPath,
