@@ -5,6 +5,8 @@ import { parser } from "../parser";
 import { promises as fs } from "fs";
 import path from "path";
 
+const CHUNK_LENGTH = 2000;
+
 export type Argv = {
   baseUrl: string;
   username: string;
@@ -21,9 +23,14 @@ type Options = {
   filePath: string;
 };
 
+type Printer = (text: string) => void;
+
 export const run = async (argv: Argv) => {
   const apiClient = buildRestAPIClient(argv);
-  await importRecords(apiClient, argv);
+  await importRecords(apiClient, console.log, argv).catch(() => {
+    // eslint-disable-next-line no-process-exit
+    process.exit(1);
+  });
 };
 
 const extractFileType = (filepath: string) => {
@@ -33,14 +40,38 @@ const extractFileType = (filepath: string) => {
 
 export async function importRecords(
   apiClient: KintoneRestAPIClient,
+  printer: Printer,
   options: Options
 ) {
   const { app, filePath } = options;
   const buf = await fs.readFile(filePath);
   const type = extractFileType(filePath);
   const records = parser(type, buf.toString());
-  await apiClient.record.addAllRecords({
-    app,
-    records,
-  });
+  await addAllRecordsChunk(app, records, apiClient, printer);
+}
+
+async function addAllRecordsChunk(
+  app: AppID,
+  allRecords: Array<Record<string, Record<"value", unknown>>>,
+  apiClient: KintoneRestAPIClient,
+  printer: Printer
+) {
+  let chunkStartIndex = 0;
+  while (chunkStartIndex < allRecords.length) {
+    const chunkNextIndex =
+      allRecords.length < chunkStartIndex + CHUNK_LENGTH
+        ? allRecords.length
+        : chunkStartIndex + CHUNK_LENGTH;
+    try {
+      await apiClient.record.addAllRecords({
+        app,
+        records: allRecords.slice(chunkStartIndex, chunkNextIndex),
+      });
+      printer(`SUCCESS: records[${chunkStartIndex} - ${chunkNextIndex - 1}]`);
+    } catch (e) {
+      printer(`FAILED: records[${chunkStartIndex} - ${allRecords.length - 1}]`);
+      throw e;
+    }
+    chunkStartIndex = chunkNextIndex;
+  }
 }
