@@ -13,6 +13,7 @@ const {
   HTTP_PROXY,
   HTTPS_PROXY,
   KINTONE_DOMAIN,
+  KINTONE_BASE_URL,
   KINTONE_USERNAME,
   KINTONE_PASSWORD,
   KINTONE_BASIC_AUTH_USERNAME,
@@ -25,6 +26,7 @@ const cli = meow(
     $ kintone-plugin-uploader <pluginPath>
   Options
     --domain Domain of your kintone
+    --base-url Base-url of your kintone (If you set domain, its value is not necessary.)
     --username Login username
     --password User's password
     --proxy Proxy server
@@ -36,6 +38,7 @@ const cli = meow(
 
     You can set the values through environment variables
     domain: KINTONE_DOMAIN
+    base-url: KINTONE_BASE_URL (If you set domain, its value is not necessary.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
     basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
@@ -47,6 +50,10 @@ const cli = meow(
       domain: {
         type: "string",
         default: KINTONE_DOMAIN || "",
+      },
+      baseUrl: {
+        type: "string",
+        default: KINTONE_BASE_URL || "",
       },
       username: {
         type: "string",
@@ -89,6 +96,7 @@ const {
   username,
   password,
   domain,
+  baseUrl,
   proxy,
   basicAuthUsername,
   basicAuthPassword,
@@ -119,7 +127,13 @@ if (!pluginPath) {
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 wait(waitingDialogMs)
-  .then(() => inquireParams({ username, password, domain, lang }))
-  .then((answers) =>
-    run(answers.domain, answers.username, answers.password, pluginPath, options)
-  );
+  .then(() => inquireParams({ username, password, domain, baseUrl, lang }))
+  .then((answers) => {
+    run(
+      answers.baseUrl || answers.domain,
+      answers.username,
+      answers.password,
+      pluginPath,
+      options
+    );
+  });
