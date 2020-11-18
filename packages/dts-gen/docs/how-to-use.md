@@ -19,7 +19,7 @@ uses kintone form settings API.
 you can generate `sample-field.d.ts` like below:
 
 ```bash
-$ kintone-dts-gen --host http://***.cybozu.com \
+$ kintone-dts-gen --base-url https://***.cybozu.com \
                  -u username \
                  -p password \
                  --app-id 12 \
@@ -31,6 +31,7 @@ $ kintone-dts-gen --host http://***.cybozu.com \
 You can set the values through environment variables.
 
 ```
+base-url: KINTONE_BASE_URL
 username: KINTONE_USERNAME
 password: KINTONE_PASSWORD
 basic-auth-username: KINTONE_BASIC_AUTH_USERNAME

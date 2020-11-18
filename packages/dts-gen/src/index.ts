@@ -9,7 +9,7 @@ const program = createCommanderProgram();
 program.parse(process.argv);
 
 const newClientInput = {
-    host: program.host,
+    host: program.baseUrl || program.host,
     username: program.username,
     password: program.password,
     proxyHost: program.proxyHost,

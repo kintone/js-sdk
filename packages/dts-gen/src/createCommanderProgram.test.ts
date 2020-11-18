@@ -41,7 +41,7 @@ describe("createCommanderProgram", () => {
             program.parse(["node", "index.js"]);
 
             expect(program.demo).toBe(false);
-            expect(program.host).toBeUndefined();
+            expect(program.baseUrl).toBeUndefined();
             expect(program.username).toBeUndefined();
             expect(program.password).toBeUndefined();
             expect(program.appId).toBeNull();

@@ -10,7 +10,16 @@ export function createCommanderProgram() {
             false
         )
 
-        .option("--host [host]")
+        .option(
+            "--host [host]",
+            "A base URL for the Kintone environment. This will be replaced with the --base-url option",
+            null
+        )
+        .option(
+            "--base-url [baseUrl]",
+            "A base URL for the Kintone environment",
+            process.env.KINTONE_BASE_URL
+        )
         .option(
             "-u, --username [username]",
             "A username for the Kintone environment",
