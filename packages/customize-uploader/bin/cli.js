@@ -11,6 +11,7 @@ const {
   HTTP_PROXY,
   HTTPS_PROXY,
   KINTONE_DOMAIN,
+  KINTONE_BASE_URL,
   KINTONE_USERNAME,
   KINTONE_PASSWORD,
   KINTONE_BASIC_AUTH_USERNAME,
@@ -22,14 +23,15 @@ const cli = meow(
   Usage
     $ kintone-customize-uploader <manifestFile>
   Options
-    --domain Domain of your kintone
+    --base-url Base-url of your kintone
+    --domain Domain of your kintone (If you set --base-url, this value is not necessary.)
     --username Login username
     --password User's password
     --basic-auth-username Basic Authentication username
     --basic-auth-password Basic Authentication password
     --proxy Proxy server
     --watch Watch the changes of customize files and re-run
-    --dest-dir -d option for subcommands 
+    --dest-dir -d option for subcommands
                   this option stands for output directory
                   default value is dest/
     --lang Using language (en or ja)
@@ -37,10 +39,11 @@ const cli = meow(
 
   SubCommands
     init   generate customize-manifest.json
-    
+
     import download js/css files and update customize-manifest.json
-    
+
     You can set the values through environment variables
+    base-url: KINTONE_BASE_URL
     domain: KINTONE_DOMAIN
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
@@ -53,6 +56,10 @@ const cli = meow(
       domain: {
         type: "string",
         default: KINTONE_DOMAIN || "",
+      },
+      baseUrl: {
+        type: "string",
+        default: KINTONE_BASE_URL || "",
       },
       username: {
         type: "string",
@@ -110,6 +117,7 @@ const {
   basicAuthUsername,
   basicAuthPassword,
   domain,
+  baseUrl,
   proxy,
   watch,
   lang,
@@ -139,11 +147,11 @@ if (isInitCommand) {
     })
     .catch((error) => console.log(error.message));
 } else {
-  inquireParams({ username, password, domain, lang })
+  inquireParams({ username, password, baseUrl, domain, lang })
     .then((params) => {
       if (isImportCommand) {
         runImport(
-          params.domain,
+          params.baseUrl || params.domain,
           params.username,
           params.password,
           basicAuthUsername,
@@ -153,7 +161,7 @@ if (isInitCommand) {
         );
       } else {
         run(
-          params.domain,
+          params.baseUrl || params.domain,
           params.username,
           params.password,
           basicAuthUsername,

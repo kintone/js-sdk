@@ -9,6 +9,10 @@ const messages = {
     en: "Input your kintone's domain (example.cybozu.com):",
     ja: "kintoneのドメインを入力してください (example.cybozu.com):",
   },
+  Q_BaseUrl: {
+    en: "Input your kintone's base URL (https://example.cybozu.com):",
+    ja: "kintoneのベースURLを入力してください (https://example.cybozu.com):",
+  },
   Q_UserName: {
     en: "Input your username:",
     ja: "ログイン名を入力してください:",
