@@ -33,7 +33,7 @@ export const inquireParams = ({
       message: m("Q_BaseUrl"),
       name: "baseUrl",
       default: baseUrl,
-      when: (v: inquirer.Answers) => !baseUrl && !v.domain,
+      when: (v: inquirer.Answers) => !baseUrl && !domain && !v.domain,
       validate: (v: string) => !!v,
     },
     {
