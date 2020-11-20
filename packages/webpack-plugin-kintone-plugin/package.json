@@ -44,7 +44,7 @@
     "@types/lodash": "^4.14.165",
     "@types/mkdirp": "^1.0.1",
     "@types/rimraf": "^3.0.0",
-    "adm-zip": "^0.4.16",
+    "adm-zip": "^0.5.0",
     "rimraf": "^3.0.2",
     "ts-node": "^8.10.2",
     "webpack": "^5.4.0",
