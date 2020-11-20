@@ -5,19 +5,35 @@ import { getBoundMessage } from "../messages";
 interface Params {
   username?: string;
   password?: string;
+  baseUrl?: string;
   domain?: string;
   lang: Lang;
 }
 
-export const inquireParams = ({ username, password, domain, lang }: Params) => {
+export const inquireParams = ({
+  username,
+  password,
+  domain,
+  baseUrl,
+  lang,
+}: Params) => {
   const m = getBoundMessage(lang);
   const questions = [
+    // TODO: remove domain when domain is deprecated
     {
       type: "input",
       message: m("Q_Domain"),
       name: "domain",
       default: domain,
-      when: () => !domain,
+      when: () => !baseUrl && !domain,
+      validate: (v: string) => !!v,
+    },
+    {
+      type: "input",
+      message: m("Q_BaseUrl"),
+      name: "baseUrl",
+      default: baseUrl,
+      when: (v: inquirer.Answers) => !baseUrl && !domain && !v.domain,
       validate: (v: string) => !!v,
     },
     {
@@ -40,7 +56,9 @@ export const inquireParams = ({ username, password, domain, lang }: Params) => {
 
   return inquirer
     .prompt(questions)
-    .then((answers) => Object.assign({ username, password, domain }, answers));
+    .then((answers) =>
+      Object.assign({ username, password, domain, baseUrl }, answers)
+    );
 };
 
 export * from "./init";
