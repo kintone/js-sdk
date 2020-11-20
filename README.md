@@ -60,7 +60,8 @@ If you want to upload the customize files automatically when a file is updated, 
   Usage
     $ kintone-customize-uploader <manifestFile>
   Options
-    --domain Domain of your kintone
+    --base-url Base-url of your kintone
+    --domain Domain of your kintone (If you set --base-url, this value is not necessary.)
     --username Login username
     --password User's password
     --basic-auth-username Basic Authentication username
@@ -79,7 +80,8 @@ If you want to upload the customize files automatically when a file is updated, 
     import download js/css files and update customize-manifest.json
 
     You can set the values through environment variables
-    domain: KINTONE_DOMAIN
+    base-url: KINTONE_BASE_URL
+    domain: KINTONE_DOMAIN (If you set `base-url`, this value is not necessary.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
     basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
