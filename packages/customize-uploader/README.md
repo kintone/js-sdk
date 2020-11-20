@@ -81,7 +81,7 @@ If you want to upload the customize files automatically when a file is updated, 
 
     You can set the values through environment variables
     base-url: KINTONE_BASE_URL
-    domain: KINTONE_DOMAIN
+    domain: KINTONE_DOMAIN (If you set `base-url`, this value is not necessary.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
     basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
