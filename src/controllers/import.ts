@@ -23,55 +23,64 @@ type Options = {
   filePath: string;
 };
 
-type Printer = (text: string) => void;
+type Reporter = (text: string) => void;
 
 export const run = async (argv: Argv) => {
   const apiClient = buildRestAPIClient(argv);
-  await importRecords(apiClient, console.log, argv).catch(() => {
+  const importRecords = buildImporter({ apiClient, reporter: console.log });
+  await importRecords(argv).catch(() => {
     // eslint-disable-next-line no-process-exit
     process.exit(1);
   });
 };
 
-const extractFileType = (filepath: string) => {
-  // TODO this cannot detect file type without extensions
-  return path.extname(filepath).split(".").pop() || "";
-};
+export const buildImporter = ({
+  apiClient,
+  reporter,
+}: {
+  apiClient: KintoneRestAPIClient;
+  reporter: Reporter;
+}) => {
+  const extractFileType = (filepath: string) => {
+    // TODO this cannot detect file type without extensions
+    return path.extname(filepath).split(".").pop() || "";
+  };
 
-export async function importRecords(
-  apiClient: KintoneRestAPIClient,
-  printer: Printer,
-  options: Options
-) {
-  const { app, filePath } = options;
-  const buf = await fs.readFile(filePath);
-  const type = extractFileType(filePath);
-  const records = parser(type, buf.toString());
-  await addAllRecordsChunk(app, records, apiClient, printer);
-}
-
-async function addAllRecordsChunk(
-  app: AppID,
-  allRecords: Array<Record<string, Record<"value", unknown>>>,
-  apiClient: KintoneRestAPIClient,
-  printer: Printer
-) {
-  let chunkStartIndex = 0;
-  while (chunkStartIndex < allRecords.length) {
-    const chunkNextIndex =
-      allRecords.length < chunkStartIndex + CHUNK_LENGTH
-        ? allRecords.length
-        : chunkStartIndex + CHUNK_LENGTH;
-    try {
-      await apiClient.record.addAllRecords({
-        app,
-        records: allRecords.slice(chunkStartIndex, chunkNextIndex),
-      });
-      printer(`SUCCESS: records[${chunkStartIndex} - ${chunkNextIndex - 1}]`);
-    } catch (e) {
-      printer(`FAILED: records[${chunkStartIndex} - ${allRecords.length - 1}]`);
-      throw e;
-    }
-    chunkStartIndex = chunkNextIndex;
+  async function importRecords(options: Options) {
+    const { app, filePath } = options;
+    const buf = await fs.readFile(filePath);
+    const type = extractFileType(filePath);
+    const records = parser(type, buf.toString());
+    await addAllRecordsChunk(app, records);
   }
-}
+
+  async function addAllRecordsChunk(
+    app: AppID,
+    allRecords: Array<Record<string, Record<"value", unknown>>>
+  ) {
+    let chunkStartIndex = 0;
+    while (chunkStartIndex < allRecords.length) {
+      const chunkNextIndex =
+        allRecords.length < chunkStartIndex + CHUNK_LENGTH
+          ? allRecords.length
+          : chunkStartIndex + CHUNK_LENGTH;
+      try {
+        await apiClient.record.addAllRecords({
+          app,
+          records: allRecords.slice(chunkStartIndex, chunkNextIndex),
+        });
+        reporter(
+          `SUCCESS: records[${chunkStartIndex} - ${chunkNextIndex - 1}]`
+        );
+      } catch (e) {
+        reporter(
+          `FAILED: records[${chunkStartIndex} - ${allRecords.length - 1}]`
+        );
+        throw e;
+      }
+      chunkStartIndex = chunkNextIndex;
+    }
+  }
+
+  return importRecords;
+};

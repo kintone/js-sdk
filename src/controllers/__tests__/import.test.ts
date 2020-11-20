@@ -1,4 +1,4 @@
-import { importRecords } from "../import";
+import { buildImporter } from "../import";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import path from "path";
 
@@ -13,20 +13,22 @@ describe("import", () => {
   describe("json", () => {
     it("should not be failed", async () => {
       apiClient.record.addAllRecords = jest.fn().mockResolvedValue([{}]);
-      const printer = jest.fn();
-      await importRecords(apiClient, printer, {
+      const reporter = jest.fn();
+      const importRecords = buildImporter({ apiClient, reporter });
+      await importRecords({
         app: "1",
         attachmentDir: "",
         filePath: path.resolve(__dirname, "./fixtures/test.json"),
       });
-      expect(printer).toHaveBeenCalledWith("SUCCESS: records[0 - 0]");
+      expect(reporter).toHaveBeenCalledWith("SUCCESS: records[0 - 0]");
     });
     it("should throw error when API response is error", async () => {
       const error = new Error();
       apiClient.record.addAllRecords = jest.fn().mockRejectedValueOnce(error);
-      const printer = jest.fn();
+      const reporter = jest.fn();
       try {
-        await importRecords(apiClient, printer, {
+        const importRecords = buildImporter({ apiClient, reporter });
+        await importRecords({
           app: "1",
           attachmentDir: "",
           filePath: path.resolve(__dirname, "./fixtures/test.json"),
@@ -34,7 +36,7 @@ describe("import", () => {
       } catch (e) {
         expect(e).toBe(error);
       }
-      expect(printer).toHaveBeenCalledWith("FAILED: records[0 - 0]");
+      expect(reporter).toHaveBeenCalledWith("FAILED: records[0 - 0]");
       expect.assertions(2);
     });
     it("should throw error when API response is error when records[2000 - 2999] includes bad data", async () => {
@@ -43,9 +45,10 @@ describe("import", () => {
         .fn()
         .mockImplementationOnce((app, records) => Promise.resolve())
         .mockImplementationOnce((app, records) => Promise.reject(error));
-      const printer = jest.fn();
+      const reporter = jest.fn();
       try {
-        await importRecords(apiClient, printer, {
+        const importRecords = buildImporter({ apiClient, reporter });
+        await importRecords({
           app: "1",
           attachmentDir: "",
           filePath: path.resolve(__dirname, "./fixtures/test_3000.json"),
@@ -53,8 +56,8 @@ describe("import", () => {
       } catch (e) {
         expect(e).toBe(error);
       }
-      expect(printer).toHaveBeenNthCalledWith(1, "SUCCESS: records[0 - 1999]");
-      expect(printer).toHaveBeenNthCalledWith(
+      expect(reporter).toHaveBeenNthCalledWith(1, "SUCCESS: records[0 - 1999]");
+      expect(reporter).toHaveBeenNthCalledWith(
         2,
         "FAILED: records[2000 - 2999]"
       );
@@ -64,13 +67,14 @@ describe("import", () => {
   describe("csv", () => {
     it("should not be failed", async () => {
       apiClient.record.addAllRecords = jest.fn().mockResolvedValue([{}]);
-      const printer = jest.fn();
-      await importRecords(apiClient, printer, {
+      const reporter = jest.fn();
+      const importRecords = buildImporter({ apiClient, reporter });
+      await importRecords({
         app: "1",
         attachmentDir: "",
         filePath: path.resolve(__dirname, "./fixtures/test.csv"),
       });
-      expect(printer).toHaveBeenCalledWith("SUCCESS: records[0 - 0]");
+      expect(reporter).toHaveBeenCalledWith("SUCCESS: records[0 - 0]");
     });
   });
 });
