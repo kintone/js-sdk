@@ -31,7 +31,7 @@
     "ts-node": "^9.0.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.7",
     "intelli-espower-loader": "^1.0.1",
     "json-schema-to-typescript": "^9.1.1",
     "power-assert": "^1.6.1"
