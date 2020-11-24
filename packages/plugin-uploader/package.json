@@ -47,7 +47,7 @@
     "inquirer": "^7.3.3",
     "meow": "^8.0.0",
     "os-locale": "^5.0.0",
-    "puppeteer": "5.4.1"
+    "puppeteer": "5.5.0"
   },
   "devDependencies": {
     "@types/inquirer": "7.3.1",
