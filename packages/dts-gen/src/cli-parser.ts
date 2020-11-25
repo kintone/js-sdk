@@ -1,6 +1,6 @@
 import { Command } from "commander";
 
-export interface CliArgs {
+interface ParsedArgs {
     baseUrl: string;
     username: string;
     password: string;
@@ -17,7 +17,7 @@ export interface CliArgs {
     output: string;
 }
 
-export function parse(argv: string[]): CliArgs {
+export function parse(argv: string[]): ParsedArgs {
     const program = new Command();
 
     program
