@@ -425,7 +425,7 @@ Gets the JavaScript and CSS customization settings of an app.
 | desktop.js  | Array\<CustomizationFile\> | An array listing data of JavaScript files for desktop.                                                                                      |
 | mobile      |           Object           | An object containing data of JavaScript and CSS files for the mobile.                                                                       |
 | mobile.css  | Array\<CustomizationFile\> | An array listing data of CSS files for mobile.                                                                                              |
-| mobile.js   | Array\<CustomizationFile\> | An array listing data of JavaScript files for mobile.                                                                                       |  |
+| mobile.js   | Array\<CustomizationFile\> | An array listing data of JavaScript files for mobile.                                                                                       |
 | revision    |           String           | The revision number of the app settings.                                                                                                    |
 | scope       |           String           | The scope of customization<ul><li>`ALL`: Affect all users</li><li>`ADMIN`: Affect only app administrators</li><li>`NONE`: Disable</li></ul> |
 
