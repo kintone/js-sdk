@@ -100,11 +100,10 @@ export function parse(argv: string[]): ParsedArgs {
 
     const parsedArgs = program.parse(argv);
 
-    // TODO: validate parsedArgs
     const baseUrl = parsedArgs.baseUrl || parsedArgs.host;
     if (baseUrl === null) {
         throw new Error(
-            "--base-url or the environmenta variable of KINTONE_BASE_URL must be specified"
+            "--base-url (KINTONE_BASE_URL) must be specified"
         );
     }
 

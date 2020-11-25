@@ -127,7 +127,7 @@ describe("parse", () => {
                     "https://example2.kintone.com",
                 ]);
             }).toThrow(
-                "--base-url or the environmenta variable of KINTONE_BASE_URL must be specified"
+                "--base-url (KINTONE_BASE_URL) must be specified"
             );
         });
     });
