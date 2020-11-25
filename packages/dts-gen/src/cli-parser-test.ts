@@ -117,4 +117,18 @@ describe("parse", () => {
             expect(args.output).toBe("OUTPUT");
         });
     });
+    describe("validations", () => {
+        test("unspecified baseUrl", () => {
+            expect(() => {
+                parse([
+                    "node",
+                    "index.js",
+                    "--base-url",
+                    "https://example2.kintone.com",
+                ]);
+            }).toThrow(
+                "--base-url or the environmenta variable of KINTONE_BASE_URL must be specified"
+            );
+        });
+    });
 });
