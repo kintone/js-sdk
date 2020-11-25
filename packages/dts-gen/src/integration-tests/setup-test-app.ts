@@ -34,7 +34,7 @@ program
 
 async function handleSetupApp(command) {
     const newClientInput = {
-        host: command.host,
+        baseUrl: command.host,
         username: command.username,
         password: command.password,
         proxyHost: command.proxyHost,

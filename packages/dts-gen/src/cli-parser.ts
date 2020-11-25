@@ -1,6 +1,23 @@
 import { Command } from "commander";
 
-export function createCommanderProgram() {
+export interface CliArgs {
+    baseUrl: string;
+    username: string;
+    password: string;
+    proxyHost: string | null;
+    proxyPort: string | null;
+    basicAuthPassword: string | null;
+    basicAuthUsername: string | null;
+    appId: string | null;
+    preview: boolean;
+    guestSpaceId: string | null;
+    demo: boolean;
+    typeName: string;
+    namespace: string;
+    output: string;
+}
+
+export function parse(argv: string[]): CliArgs {
     const program = new Command();
 
     program
@@ -18,17 +35,17 @@ export function createCommanderProgram() {
         .option(
             "--base-url [baseUrl]",
             "A base URL for the Kintone environment",
-            process.env.KINTONE_BASE_URL
+            process.env.KINTONE_BASE_URL || null
         )
         .option(
             "-u, --username [username]",
             "A username for the Kintone environment",
-            process.env.KINTONE_USERNAME
+            process.env.KINTONE_USERNAME || null
         )
         .option(
             "-p, --password [password]",
             "A password for the Kintone environment",
-            process.env.KINTONE_PASSWORD
+            process.env.KINTONE_PASSWORD || null
         )
         .option(
             "--app-id [appId]",
@@ -81,5 +98,18 @@ export function createCommanderProgram() {
             "fields.d.ts"
         );
 
-    return program;
+    const parsedArgs = program.parse(argv);
+
+    // TODO: validate parsedArgs
+    const baseUrl = parsedArgs.baseUrl || parsedArgs.host;
+    if (baseUrl === null) {
+        throw new Error(
+            "--base-url or the environmenta variable of KINTONE_BASE_URL must be specified"
+        );
+    }
+
+    return {
+        ...parsedArgs,
+        baseUrl,
+    } as any;
 }

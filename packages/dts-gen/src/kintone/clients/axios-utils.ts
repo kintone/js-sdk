@@ -6,13 +6,13 @@ import axios, {
 import { IncomingHttpHeaders } from "http";
 
 export interface NewInstanceInput {
-    host: string;
+    baseUrl: string;
     username: string;
     password: string;
-    proxyHost?: string | null;
-    proxyPort?: string | null;
-    basicAuthPassword?: string | null;
-    basicAuthUsername?: string | null;
+    proxyHost: string | null;
+    proxyPort: string | null;
+    basicAuthPassword: string | null;
+    basicAuthUsername: string | null;
 }
 
 function newAxiosInstance(
@@ -45,7 +45,7 @@ function newAxiosInstance(
             ).toString("base64");
     }
     return VisibleForTesting.newAxiosInstanceInternal({
-        baseURL: input.host,
+        baseURL: input.baseUrl,
         headers,
         proxy,
     });

@@ -5,7 +5,7 @@ import {
 import { AxiosRequestConfig } from "axios";
 
 describe("FormsClientImpl#constructor", () => {
-    const baseURL = "https://kintone.com";
+    const baseUrl = "https://kintone.com";
     const authToken = Buffer.from(
         "username:password"
     ).toString("base64");
@@ -23,7 +23,7 @@ describe("FormsClientImpl#constructor", () => {
 
     test("with plain settings", () => {
         const input = {
-            host: baseURL,
+            baseUrl,
             username: "username",
             password: "password",
             proxyHost: null,
@@ -37,7 +37,7 @@ describe("FormsClientImpl#constructor", () => {
         };
         const expectedCalledWith = {
             headers,
-            baseURL,
+            baseURL: baseUrl,
             proxy: false,
         } as AxiosRequestConfig;
         assertConstructorWithArgs(
@@ -48,7 +48,7 @@ describe("FormsClientImpl#constructor", () => {
 
     test("with proxy", () => {
         const input = {
-            host: baseURL,
+            baseUrl,
             username: "username",
             password: "password",
             proxyHost: "proxyHost",
@@ -62,7 +62,7 @@ describe("FormsClientImpl#constructor", () => {
         };
         const expectedCalledWith = {
             headers,
-            baseURL,
+            baseURL: baseUrl,
             proxy: {
                 host: "proxyHost",
                 port: 1234,
@@ -76,7 +76,7 @@ describe("FormsClientImpl#constructor", () => {
 
     test("with basic auth", () => {
         const input = {
-            host: baseURL,
+            baseUrl,
             username: "username",
             password: "password",
             proxyHost: null,
@@ -92,7 +92,7 @@ describe("FormsClientImpl#constructor", () => {
         };
         const expectedCalledWith = {
             headers,
-            baseURL,
+            baseURL: baseUrl,
             proxy: false,
         } as AxiosRequestConfig;
         assertConstructorWithArgs(
