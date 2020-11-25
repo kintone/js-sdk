@@ -5,6 +5,12 @@ import { TypeDefinitionTemplate } from "./templates/template";
 import { objectValues } from "./utils//objectvalues";
 import { parse } from "./cli-parser";
 
+process.on("uncaughtException", (e) => {
+    console.error(e.message);
+    // eslint-disable-next-line no-process-exit
+    process.exit(1);
+});
+
 const args = parse(process.argv);
 
 const client = args.demo
