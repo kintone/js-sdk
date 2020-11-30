@@ -32,6 +32,7 @@ describe("import", () => {
       kintoneApiClient = new MockKintoneApiClient(
         "kintone",
         "hogehoge",
+        "oauthToken",
         "basicAuthUser",
         "basicAuthPass",
         "example.com",

@@ -12,6 +12,7 @@ describe("index", () => {
       kintoneApiClient = new MockKintoneApiClient(
         "kintone",
         "hogehoge",
+        "oauthToken",
         "basicAuthUser",
         "basicAuthPass",
         "example.com",
