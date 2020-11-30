@@ -14,6 +14,7 @@ const {
   KINTONE_BASE_URL,
   KINTONE_USERNAME,
   KINTONE_PASSWORD,
+  KINTONE_OAUTH_TOKEN,
   KINTONE_BASIC_AUTH_USERNAME,
   KINTONE_BASIC_AUTH_PASSWORD,
 } = process.env;
@@ -27,6 +28,7 @@ const cli = meow(
     --domain Domain of your kintone (If you set --base-url, this value is not necessary.)
     --username Login username
     --password User's password
+    --oauth-token OAuth access token (If you set a set of --username and --password, this value is not necessary.)
     --basic-auth-username Basic Authentication username
     --basic-auth-password Basic Authentication password
     --proxy Proxy server
@@ -47,6 +49,7 @@ const cli = meow(
     domain: KINTONE_DOMAIN (If you set base-url, this value is not necessary.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
+    oauth-token: KINTONE_OAUTH_TOKEN (If you set a set of username and password, this value is not necessary.)
     basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
     basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
     proxy: HTTPS_PROXY or HTTP_PROXY
@@ -68,6 +71,10 @@ const cli = meow(
       password: {
         type: "string",
         default: KINTONE_PASSWORD || "",
+      },
+      oauthToken: {
+        type: "string",
+        default: KINTONE_OAUTH_TOKEN || "",
       },
       basicAuthUsername: {
         type: "string",
@@ -116,6 +123,7 @@ const {
   password,
   basicAuthUsername,
   basicAuthPassword,
+  oauthToken,
   domain,
   baseUrl,
   proxy,
@@ -147,13 +155,14 @@ if (isInitCommand) {
     })
     .catch((error) => console.log(error.message));
 } else {
-  inquireParams({ username, password, baseUrl, domain, lang })
+  inquireParams({ username, password, oauthToken, baseUrl, domain, lang })
     .then((params) => {
       if (isImportCommand) {
         runImport(
           params.baseUrl || params.domain,
           params.username,
           params.password,
+          oauthToken,
           basicAuthUsername,
           basicAuthPassword,
           manifestFile,
@@ -164,6 +173,7 @@ if (isInitCommand) {
           params.baseUrl || params.domain,
           params.username,
           params.password,
+          oauthToken,
           basicAuthUsername,
           basicAuthPassword,
           manifestFile,
