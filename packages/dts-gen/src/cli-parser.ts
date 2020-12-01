@@ -19,7 +19,6 @@ interface ParsedArgs {
 
 export function parse(argv: string[]): ParsedArgs {
     const program = new Command();
-
     program
         .option(
             "--demo",
@@ -96,17 +95,27 @@ export function parse(argv: string[]): ParsedArgs {
             "-o, --output [output]",
             "output file name",
             "fields.d.ts"
-        );
+        )
+        .parse(argv);
 
-    // The type of the result of program.parse is commander.Command,
-    // so we have to convert the type to any before casting ParsedArgs.
-    // In addition, the result might have a host parameter as a backward compatibility,
-    // so we have added the type to ParsedArgs.
-    const parsedArgs: ParsedArgs & {
-        host?: string;
-    } = program.parse(argv) as any;
+    const {
+        host,
+        username,
+        password,
+        proxyHost,
+        proxyPort,
+        basicAuthPassword,
+        basicAuthUsername,
+        appId,
+        preview,
+        guestSpaceId,
+        demo,
+        typeName,
+        namespace,
+        output,
+    } = program;
 
-    const baseUrl = parsedArgs.baseUrl || parsedArgs.host;
+    const baseUrl = program.baseUrl || host;
     if (baseUrl === null) {
         throw new Error(
             "--base-url (KINTONE_BASE_URL) must be specified"
@@ -114,7 +123,19 @@ export function parse(argv: string[]): ParsedArgs {
     }
 
     return {
-        ...parsedArgs,
         baseUrl,
+        username,
+        password,
+        proxyHost,
+        proxyPort,
+        basicAuthPassword,
+        basicAuthUsername,
+        appId,
+        preview,
+        guestSpaceId,
+        demo,
+        typeName,
+        namespace,
+        output,
     };
 }
