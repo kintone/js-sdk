@@ -98,7 +98,13 @@ export function parse(argv: string[]): ParsedArgs {
             "fields.d.ts"
         );
 
-    const parsedArgs = program.parse(argv);
+    // The type of the result of program.parse is commander.Command,
+    // so we have to convert the type to any before casting ParsedArgs.
+    // In addition, the result might have a host parameter as a backward compatibility,
+    // so we have added the type to ParsedArgs.
+    const parsedArgs: ParsedArgs & {
+        host?: string;
+    } = program.parse(argv) as any;
 
     const baseUrl = parsedArgs.baseUrl || parsedArgs.host;
     if (baseUrl === null) {
@@ -110,5 +116,5 @@ export function parse(argv: string[]): ParsedArgs {
     return {
         ...parsedArgs,
         baseUrl,
-    } as ParsedArgs;
+    };
 }
