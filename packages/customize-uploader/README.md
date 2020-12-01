@@ -64,6 +64,7 @@ If you want to upload the customize files automatically when a file is updated, 
     --domain Domain of your kintone (If you set --base-url, this value is not necessary.)
     --username Login username
     --password User's password
+    --oauth-token OAuth access token (If you set a set of --username and --password, this value is not necessary.)
     --basic-auth-username Basic Authentication username
     --basic-auth-password Basic Authentication password
     --proxy Proxy server
@@ -84,6 +85,7 @@ If you want to upload the customize files automatically when a file is updated, 
     domain: KINTONE_DOMAIN (If you set `base-url`, this value is not necessary.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
+    oauth-token: KINTONE_OAUTH_TOKEN (If you set a set of username and password, this value is not necessary.)
     basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
     basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
     proxy: HTTPS_PROXY or HTTP_PROXY
