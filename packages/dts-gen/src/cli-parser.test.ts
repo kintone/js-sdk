@@ -120,12 +120,7 @@ describe("parse", () => {
     describe("validations", () => {
         test("unspecified baseUrl", () => {
             expect(() => {
-                parse([
-                    "node",
-                    "index.js",
-                    "--base-url",
-                    "https://example2.kintone.com",
-                ]);
+                parse(["node", "index.js"]);
             }).toThrow(
                 "--base-url (KINTONE_BASE_URL) must be specified"
             );
