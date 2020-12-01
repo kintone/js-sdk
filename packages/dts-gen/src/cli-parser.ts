@@ -110,5 +110,5 @@ export function parse(argv: string[]): ParsedArgs {
     return {
         ...parsedArgs,
         baseUrl,
-    } as any;
+    } as ParsedArgs;
 }
