@@ -3,29 +3,24 @@ import { DemoClient } from "./kintone/clients/demo-client";
 import { FieldTypeConverter } from "./converters/fileldtype-converter";
 import { TypeDefinitionTemplate } from "./templates/template";
 import { objectValues } from "./utils//objectvalues";
-import { createCommanderProgram } from "./createCommanderProgram";
+import { parse } from "./cli-parser";
 
-const program = createCommanderProgram();
-program.parse(process.argv);
+process.on("uncaughtException", (e) => {
+    console.error(e.message);
+    // eslint-disable-next-line no-process-exit
+    process.exit(1);
+});
 
-const newClientInput = {
-    host: program.host,
-    username: program.username,
-    password: program.password,
-    proxyHost: program.proxyHost,
-    proxyPort: program.proxyPort,
-    basicAuthUsername: program.basicAuthUsername,
-    basicAuthPassword: program.basicAuthPassword,
-};
+const args = parse(process.argv);
 
-const client = program.demo
+const client = args.demo
     ? new DemoClient()
-    : new FormsClientImpl(newClientInput);
+    : new FormsClientImpl(args);
 
 const fetchFormPropertiesInput = {
-    appId: program.appId,
-    guestSpaceId: program.guestSpaceId,
-    preview: program.preview,
+    appId: args.appId,
+    guestSpaceId: args.guestSpaceId,
+    preview: args.preview,
 };
 
 client
@@ -36,15 +31,15 @@ client
         )
     )
     .then((fieldTypeGroups) => {
-        const typeName = program.typeName;
-        const namespace = program.namespace;
+        const typeName = args.typeName;
+        const namespace = args.namespace;
         const input = {
             typeName,
             namespace,
             fieldTypeGroups,
         };
         TypeDefinitionTemplate.renderAsFile(
-            program.output,
+            args.output,
             input
         );
     })

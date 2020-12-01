@@ -1,8 +1,24 @@
 import { Command } from "commander";
 
-export function createCommanderProgram() {
-    const program = new Command();
+interface ParsedArgs {
+    baseUrl: string;
+    username: string;
+    password: string;
+    proxyHost: string | null;
+    proxyPort: string | null;
+    basicAuthPassword: string | null;
+    basicAuthUsername: string | null;
+    appId: string | null;
+    preview: boolean;
+    guestSpaceId: string | null;
+    demo: boolean;
+    typeName: string;
+    namespace: string;
+    output: string;
+}
 
+export function parse(argv: string[]): ParsedArgs {
+    const program = new Command();
     program
         .option(
             "--demo",
@@ -10,16 +26,25 @@ export function createCommanderProgram() {
             false
         )
 
-        .option("--host [host]")
+        .option(
+            "--host [host]",
+            "A base URL for the Kintone environment. This will be replaced with the --base-url option",
+            null
+        )
+        .option(
+            "--base-url [baseUrl]",
+            "A base URL for the Kintone environment",
+            process.env.KINTONE_BASE_URL || null
+        )
         .option(
             "-u, --username [username]",
             "A username for the Kintone environment",
-            process.env.KINTONE_USERNAME
+            process.env.KINTONE_USERNAME || null
         )
         .option(
             "-p, --password [password]",
             "A password for the Kintone environment",
-            process.env.KINTONE_PASSWORD
+            process.env.KINTONE_PASSWORD || null
         )
         .option(
             "--app-id [appId]",
@@ -70,7 +95,47 @@ export function createCommanderProgram() {
             "-o, --output [output]",
             "output file name",
             "fields.d.ts"
-        );
+        )
+        .parse(argv);
 
-    return program;
+    const {
+        host,
+        username,
+        password,
+        proxyHost,
+        proxyPort,
+        basicAuthPassword,
+        basicAuthUsername,
+        appId,
+        preview,
+        guestSpaceId,
+        demo,
+        typeName,
+        namespace,
+        output,
+    } = program;
+
+    const baseUrl = program.baseUrl || host;
+    if (baseUrl === null) {
+        throw new Error(
+            "--base-url (KINTONE_BASE_URL) must be specified"
+        );
+    }
+
+    return {
+        baseUrl,
+        username,
+        password,
+        proxyHost,
+        proxyPort,
+        basicAuthPassword,
+        basicAuthUsername,
+        appId,
+        preview,
+        guestSpaceId,
+        demo,
+        typeName,
+        namespace,
+        output,
+    };
 }

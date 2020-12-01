@@ -67,9 +67,13 @@ describe("FormsClientImpl#fetchFormProperties", () => {
         AxiosUtils.newAxiosInstance = mockNewAxiosInstance;
 
         const input = {
-            host: "https://kintone.com",
+            baseUrl: "https://kintone.com",
             username: "username",
             password: "password",
+            proxyHost: null,
+            proxyPort: null,
+            basicAuthPassword: null,
+            basicAuthUsername: null,
         };
         const fetchInput = {
             appId: "1",
