@@ -90,6 +90,7 @@ describe("parse", () => {
                 "GUEST_SPACE_ID"
             );
             expect(args.preview).toBe(true);
+            expect(args.typeName).toBe("TYPE_NAME");
             expect(args.namespace).toBe("NAMESPACE");
             expect(args.proxyHost).toBe("PROXY_HOST");
             expect(args.proxyPort).toBe("PROXY_PORT");
