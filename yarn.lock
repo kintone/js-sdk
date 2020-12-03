@@ -2011,7 +2011,7 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@rollup/plugin-babel@^5.2.1":
+"@rollup/plugin-babel@^5.2.2":
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.2.2.tgz#e5623a01dd8e37e004ba87f2de218c611727d9b2"
   integrity sha512-MjmH7GvFT4TW8xFdIeFS3wqIX646y5tACdxkTO+khbHvS3ZcVJL6vkAHLw2wqPmkhwCfWHoNsp15VYNwW6JEJA==
