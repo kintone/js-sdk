@@ -70,6 +70,8 @@ describe("FormsClientImpl#fetchFormProperties", () => {
             baseUrl: "https://kintone.com",
             username: "username",
             password: "password",
+            apiToken: null,
+            oAuthToken: null,
             proxyHost: null,
             proxyPort: null,
             basicAuthPassword: null,
