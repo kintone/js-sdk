@@ -99,7 +99,7 @@ If you omit the options, you can input the options interactively.
 ? Input your password: [hidden]
 ```
 
-If you use OAuthToken, you need to grant scopes corresponding to the command.
+If you use OAuth access token, you need to grant scopes corresponding to the command.
 
 - To upload a customize setting:
   `k:app_settings:write` and `k:file:write`
