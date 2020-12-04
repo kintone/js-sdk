@@ -102,7 +102,7 @@ If you omit the options, you can input the options interactively.
 If you use OAuth access token, you need to grant scopes corresponding to the command.
 
 - To upload a customize setting:
-  `k:app_settings:write` and `k:file:write`
+  `k:app_settings:read`, `k:app_settings:write` and `k:file:write`
 - To import a customize setting by using `import` of subcommand:
   `k:app_settings:read` and `k:file:read`
 
