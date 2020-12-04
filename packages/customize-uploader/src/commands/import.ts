@@ -186,7 +186,7 @@ export const runImport = async (
   domain: string,
   username: string | null,
   password: string | null,
-  oauthToken: string | null,
+  oAuthToken: string | null,
   basicAuthUsername: string | null,
   basicAuthPassword: string | null,
   manifestFile: string,
@@ -203,7 +203,7 @@ export const runImport = async (
   const kintoneApiClient = new KintoneApiClient(
     username,
     password,
-    oauthToken,
+    oAuthToken,
     basicAuthUsername,
     basicAuthPassword,
     domain,

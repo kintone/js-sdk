@@ -132,7 +132,7 @@ export const run = async (
   domain: string,
   username: string | null,
   password: string | null,
-  oauthToken: string | null,
+  oAuthToken: string | null,
   basicAuthUsername: string | null,
   basicAuthPassword: string | null,
   manifestFile: string,
@@ -159,7 +159,7 @@ export const run = async (
   const kintoneApiClient = new KintoneApiClient(
     username,
     password,
-    oauthToken,
+    oAuthToken,
     basicAuthUsername,
     basicAuthPassword,
     domain,

@@ -19,7 +19,7 @@ export default class KintoneApiClient {
   public constructor(
     username: string | null,
     password: string | null,
-    oauthToken: string | null,
+    oAuthToken: string | null,
     basicAuthUsername: string | null,
     basicAuthPassword: string | null,
     domain: string,
@@ -34,9 +34,9 @@ export default class KintoneApiClient {
         password,
       };
     }
-    if (oauthToken) {
+    if (oAuthToken) {
       auth = {
-        oAuthToken: oauthToken,
+        oAuthToken,
       };
     }
     let basicAuth;
