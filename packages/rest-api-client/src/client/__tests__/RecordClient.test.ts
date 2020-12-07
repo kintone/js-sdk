@@ -768,11 +768,17 @@ describe("RecordClient", () => {
         mockClient.mockResponse({ id: CURSOR_ID, totalCount: "4" });
         // response from getRecordsByCursor
         mockClient.mockResponse({
-          records: [{ id: 1 }, { id: 2 }],
+          records: [
+            { $id: { type: "__ID__", value: "1" } },
+            { $id: { type: "__ID__", value: "2" } },
+          ],
           next: true,
         });
         mockClient.mockResponse({
-          records: [{ id: 3 }, { id: 4 }],
+          records: [
+            { $id: { type: "__ID__", value: "3" } },
+            { $id: { type: "__ID__", value: "4" } },
+          ],
           next: false,
         });
         result = await recordClient.getAllRecordsWithCursor<Record>(params);
@@ -798,10 +804,10 @@ describe("RecordClient", () => {
           params: { id: CURSOR_ID },
         });
         expect(result).toStrictEqual([
-          { id: 1 },
-          { id: 2 },
-          { id: 3 },
-          { id: 4 },
+          { $id: { type: "__ID__", value: "1" } },
+          { $id: { type: "__ID__", value: "2" } },
+          { $id: { type: "__ID__", value: "3" } },
+          { $id: { type: "__ID__", value: "4" } },
         ]);
       });
 
