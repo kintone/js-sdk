@@ -155,7 +155,14 @@ if (isInitCommand) {
     })
     .catch((error) => console.log(error.message));
 } else {
-  inquireParams({ username, password, oauthToken, baseUrl, domain, lang })
+  inquireParams({
+    username,
+    password,
+    oAuthToken: oauthToken,
+    baseUrl,
+    domain,
+    lang,
+  })
     .then((params) => {
       if (isImportCommand) {
         runImport(

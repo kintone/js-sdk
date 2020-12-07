@@ -5,7 +5,7 @@ import { getBoundMessage } from "../messages";
 interface Params {
   username?: string;
   password?: string;
-  oauthToken?: string;
+  oAuthToken?: string;
   baseUrl?: string;
   domain?: string;
   lang: Lang;
@@ -17,7 +17,7 @@ export const inquireParams = ({
   domain,
   baseUrl,
   lang,
-  oauthToken,
+  oAuthToken,
 }: Params) => {
   const m = getBoundMessage(lang);
   const questions = [
@@ -43,7 +43,7 @@ export const inquireParams = ({
       name: "username",
       message: m("Q_UserName"),
       default: username,
-      when: () => !oauthToken && !username,
+      when: () => !oAuthToken && !username,
       validate: (v: string) => !!v,
     },
     {
@@ -51,7 +51,7 @@ export const inquireParams = ({
       name: "password",
       message: m("Q_Password"),
       default: password,
-      when: () => !oauthToken && !password,
+      when: () => !oAuthToken && !password,
       validate: (v: string) => !!v,
     },
   ];
