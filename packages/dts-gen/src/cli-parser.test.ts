@@ -11,6 +11,8 @@ describe("parse", () => {
                 "basic-auth-admin";
             process.env.KINTONE_BASIC_AUTH_PASSWORD =
                 "basic-auth-password";
+            process.env.KINTONE_API_TOKEN = "api-token";
+            process.env.KINTONE_OAUTH_TOKEN = "oauth-token";
         });
         afterEach(() => {
             delete process.env.KINTONE_BASE_URL;
@@ -18,6 +20,8 @@ describe("parse", () => {
             delete process.env.KINTONE_PASSWORD;
             delete process.env.KINTONE_BASIC_AUTH_USERNAME;
             delete process.env.KINTONE_BASIC_AUTH_PASSWORD;
+            delete process.env.KINTONE_API_TOKEN;
+            delete process.env.KINTONE_OAUTH_TOKEN;
         });
         test("default values", () => {
             const args = parse(["node", "index.js"]);
@@ -32,6 +36,8 @@ describe("parse", () => {
             expect(args.basicAuthPassword).toBe(
                 "basic-auth-password"
             );
+            expect(args.apiToken).toBe("api-token");
+            expect(args.oAuthToken).toBe("oauth-token");
             expect(args.output).toBe("fields.d.ts");
         });
     });
@@ -47,6 +53,8 @@ describe("parse", () => {
             expect(args.demo).toBe(false);
             expect(args.username).toBeNull();
             expect(args.password).toBeNull();
+            expect(args.apiToken).toBeNull();
+            expect(args.oAuthToken).toBeNull();
             expect(args.appId).toBeNull();
             expect(args.guestSpaceId).toBeNull();
             expect(args.preview).toBe(false);
@@ -67,6 +75,8 @@ describe("parse", () => {
                 "--host", "HOST",
                 "--username", "USERNAME",
                 "--password", "PASSWORD",
+                "--api-token", "API_TOKEN",
+                "--oauth-token", "OAUTH_TOKEN",
                 "--app-id", "APP_ID",
                 "--guest-space-id", "GUEST_SPACE_ID",
                 "--preview",
@@ -85,6 +95,8 @@ describe("parse", () => {
             );
             expect(args.username).toBe("USERNAME");
             expect(args.password).toBe("PASSWORD");
+            expect(args.apiToken).toBe("API_TOKEN");
+            expect(args.oAuthToken).toBe("OAUTH_TOKEN");
             expect(args.appId).toBe("APP_ID");
             expect(args.guestSpaceId).toBe(
                 "GUEST_SPACE_ID"
