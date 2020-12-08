@@ -130,8 +130,9 @@ export async function upload(
 
 export const run = async (
   domain: string,
-  username: string,
-  password: string,
+  username: string | null,
+  password: string | null,
+  oAuthToken: string | null,
   basicAuthUsername: string | null,
   basicAuthPassword: string | null,
   manifestFile: string,
@@ -158,6 +159,7 @@ export const run = async (
   const kintoneApiClient = new KintoneApiClient(
     username,
     password,
+    oAuthToken,
     basicAuthUsername,
     basicAuthPassword,
     domain,

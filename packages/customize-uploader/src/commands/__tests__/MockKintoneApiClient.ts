@@ -29,7 +29,7 @@ export default class MockKintoneApiClient extends KintoneApiClient {
   }>;
   public willBeReturnResponse: any;
   constructor(
-    ...args: [string, string, string, string, string, ApiClientOption]
+    ...args: [string, string, string, string, string, string, ApiClientOption]
   ) {
     super(...args);
     this.logs = [];
