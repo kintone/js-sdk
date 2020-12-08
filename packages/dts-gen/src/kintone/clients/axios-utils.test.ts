@@ -38,7 +38,7 @@ describe("FormsClientImpl#constructor", () => {
         const expectedCalledWith = {
             headers,
             baseURL: baseUrl,
-            proxy: false,
+            proxy: undefined,
         } as AxiosRequestConfig;
         assertConstructorWithArgs(
             input,
@@ -93,7 +93,7 @@ describe("FormsClientImpl#constructor", () => {
         const expectedCalledWith = {
             headers,
             baseURL: baseUrl,
-            proxy: false,
+            proxy: undefined,
         } as AxiosRequestConfig;
         assertConstructorWithArgs(
             input,
