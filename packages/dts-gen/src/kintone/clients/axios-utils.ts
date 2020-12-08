@@ -20,7 +20,7 @@ export interface NewInstanceInput {
 function newAxiosInstance(
     input: NewInstanceInput
 ): AxiosInstance {
-    let proxy: AxiosProxyConfig | false = false;
+    let proxy: AxiosProxyConfig | undefined;
     if (
         input.proxyHost !== null &&
         input.proxyPort !== null
