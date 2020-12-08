@@ -28,12 +28,34 @@ $ kintone-dts-gen --base-url https://***.cybozu.com \
                  -o sample-fields.d.ts
 ```
 
+You can also use [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth) and [OAuth authentication](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients) instead of the password authentication.
+
+```bash
+// API token
+$ kintone-dts-gen --base-url https://***.cybozu.com \
+                 --api-token YourApiToken
+                 --app-id 12 \
+                 --type-name SampleFields \
+                 --namespace company.name.types \
+                 -o sample-fields.d.ts
+// OAuth token
+$ kintone-dts-gen --base-url https://***.cybozu.com \
+                 --oauth-token YourOAuthToken
+                 --app-id 12 \
+                 --type-name SampleFields \
+                 --namespace company.name.types \
+                 -o sample-fields.d.ts
+```
+
+
 You can set the values through environment variables.
 
 ```
 base-url: KINTONE_BASE_URL
 username: KINTONE_USERNAME
 password: KINTONE_PASSWORD
+apiToken: KINTNOE_API_TOKEN
+oAuthToken: KINTNOE_OAUTH_TOKEN
 basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
 basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
 ```
