@@ -17,8 +17,9 @@ export type UpdateAppCustomizeParameter = {
 export default class KintoneApiClient {
   private restApiClient: KintoneRestAPIClient;
   public constructor(
-    username: string,
-    password: string,
+    username: string | null,
+    password: string | null,
+    oAuthToken: string | null,
     basicAuthUsername: string | null,
     basicAuthPassword: string | null,
     domain: string,
@@ -26,6 +27,18 @@ export default class KintoneApiClient {
   ) {
     const kintoneUrl =
       domain.indexOf("https://") > -1 ? domain : `https://${domain}`;
+    let auth;
+    if (username && password) {
+      auth = {
+        username,
+        password,
+      };
+    }
+    if (oAuthToken) {
+      auth = {
+        oAuthToken,
+      };
+    }
     let basicAuth;
     if (basicAuthUsername && basicAuthPassword) {
       basicAuth = {
@@ -35,7 +48,7 @@ export default class KintoneApiClient {
     }
     this.restApiClient = new KintoneRestAPIClient({
       baseUrl: kintoneUrl,
-      auth: { username, password },
+      auth,
       basicAuth,
       featureFlags: {
         enableAbortSearchError: false,

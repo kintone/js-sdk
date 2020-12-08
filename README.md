@@ -64,6 +64,7 @@ If you want to upload the customize files automatically when a file is updated, 
     --domain Domain of your kintone (If you set --base-url, this value is not necessary.)
     --username Login username
     --password User's password
+    --oauth-token OAuth access token (If you set a set of --username and --password, this value is not necessary.)
     --basic-auth-username Basic Authentication username
     --basic-auth-password Basic Authentication password
     --proxy Proxy server
@@ -84,6 +85,7 @@ If you want to upload the customize files automatically when a file is updated, 
     domain: KINTONE_DOMAIN (If you set `base-url`, this value is not necessary.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
+    oauth-token: KINTONE_OAUTH_TOKEN (If you set a set of username and password, this value is not necessary.)
     basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
     basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
     proxy: HTTPS_PROXY or HTTP_PROXY
@@ -96,6 +98,15 @@ If you omit the options, you can input the options interactively.
 ? Input your username: sato
 ? Input your password: [hidden]
 ```
+
+If you use OAuth access token, you need to grant scopes corresponding to the command.
+
+- To upload a customize setting:
+  `k:app_settings:read`, `k:app_settings:write` and `k:file:write`
+- To import a customize setting by using `import` of subcommand:
+  `k:app_settings:read` and `k:file:read`
+
+For the details; Please see [How to add OAuth clients](https://developer.kintone.io/hc/en-us/articles/360001562353)
 
 ## Example
 This is an example of `customize-manifest.json` .
