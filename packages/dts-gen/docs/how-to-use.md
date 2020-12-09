@@ -28,9 +28,9 @@ $ kintone-dts-gen --base-url https://***.cybozu.com \
                  -o sample-fields.d.ts
 ```
 
-You can also use [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth) and [OAuth authentication](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients) instead of the password authentication.
+You can also use [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth) and [OAuth authorization](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients) instead of the password authentication.
 
-You have to grant `dts-gen` the `k:app_settings:read` scope to use OAuth authentication.
+You have to grant `dts-gen` the `k:app_settings:read` scope to use OAuth authorization.
 
 ```bash
 // API token
