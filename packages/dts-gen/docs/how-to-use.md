@@ -56,8 +56,8 @@ You can set the values through environment variables.
 base-url: KINTONE_BASE_URL
 username: KINTONE_USERNAME
 password: KINTONE_PASSWORD
-apiToken: KINTNOE_API_TOKEN
-oAuthToken: KINTNOE_OAUTH_TOKEN
+apiToken: KINTONE_API_TOKEN
+oAuthToken: KINTONE_OAUTH_TOKEN
 basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
 basic-auth-password: KINTONE_BASIC_AUTH_PASSWORD
 ```
