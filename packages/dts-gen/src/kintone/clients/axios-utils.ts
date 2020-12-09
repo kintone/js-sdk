@@ -7,8 +7,10 @@ import { IncomingHttpHeaders } from "http";
 
 export interface NewInstanceInput {
     baseUrl: string;
-    username: string;
-    password: string;
+    username: string | null;
+    password: string | null;
+    oAuthToken: string;
+    apiToken: string;
     proxyHost: string | null;
     proxyPort: string | null;
     basicAuthPassword: string | null;
@@ -29,11 +31,27 @@ function newAxiosInstance(
         };
     }
 
-    const headers: IncomingHttpHeaders = {
-        "X-Cybozu-Authorization": Buffer.from(
-            `${input.username}:${input.password}`
-        ).toString("base64"),
-    };
+    let headers: IncomingHttpHeaders;
+    if (input.username && input.password) {
+        headers = {
+            "X-Cybozu-Authorization": Buffer.from(
+                `${input.username}:${input.password}`
+            ).toString("base64"),
+        };
+    } else if (input.apiToken) {
+        headers = {
+            "X-Cybozu-API-Token": input.apiToken,
+        };
+    } else if (input.oAuthToken) {
+        headers = {
+            Authorization: `Bearer ${input.oAuthToken}`,
+        };
+    } else {
+        throw new Error(
+            "cannot get an authentication input"
+        );
+    }
+
     if (
         input.basicAuthPassword &&
         input.basicAuthPassword

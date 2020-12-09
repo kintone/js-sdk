@@ -2,8 +2,10 @@ import { Command } from "commander";
 
 interface ParsedArgs {
     baseUrl: string;
-    username: string;
-    password: string;
+    username: string | null;
+    password: string | null;
+    oAuthToken: string | null;
+    apiToken: string | null;
     proxyHost: string | null;
     proxyPort: string | null;
     basicAuthPassword: string | null;
@@ -45,6 +47,16 @@ export function parse(argv: string[]): ParsedArgs {
             "-p, --password [password]",
             "A password for the Kintone environment",
             process.env.KINTONE_PASSWORD || null
+        )
+        .option(
+            "--api-token [apiToken]",
+            "An API token for the Kintone environment",
+            process.env.KINTONE_API_TOKEN || null
+        )
+        .option(
+            "--oauth-token [oAuthToken]",
+            "An OAuth token for the Kintone environment",
+            process.env.KINTONE_OAUTH_TOKEN || null
         )
         .option(
             "--app-id [appId]",
@@ -102,6 +114,8 @@ export function parse(argv: string[]): ParsedArgs {
         host,
         username,
         password,
+        apiToken,
+        oauthToken,
         proxyHost,
         proxyPort,
         basicAuthPassword,
@@ -126,6 +140,8 @@ export function parse(argv: string[]): ParsedArgs {
         baseUrl,
         username,
         password,
+        apiToken,
+        oAuthToken: oauthToken,
         proxyHost,
         proxyPort,
         basicAuthPassword,

@@ -37,6 +37,8 @@ async function handleSetupApp(command) {
         baseUrl: command.host,
         username: command.username,
         password: command.password,
+        apiToken: command.apiToken,
+        oAuthToken: command.oAuthToken,
         proxyHost: command.proxyHost,
         proxyPort: command.proxyPort,
         basicAuthUsername: command.basicAuthUsername,
