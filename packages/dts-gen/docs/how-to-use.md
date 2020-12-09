@@ -68,6 +68,23 @@ is defined in `sample-fields.d.ts`.
 
 **If you change form settings in kintone, Please re-generate type definition files**
 
+### Proxy support
+
+You can use a proxy server with `--proxy` option.
+
+```bash
+$ kintone-dts-gen --base-url https://***.cybozu.com \
+                 -u username \
+                 -p password \
+                 --proxy http://localhost:8000 \
+                 --app-id 12 \
+                 --type-name SampleFields \
+                 --namespace company.name.types \
+                 -o sample-fields.d.ts
+```
+
+In addition, you can use `HTTP_PROXY` and `HTTPS_PROXY` environment variables instead of the command line option.
+
 ### demo mode
 If you won't have a kintone, you can try with demo mode.
 you can generate demo type definition like below:

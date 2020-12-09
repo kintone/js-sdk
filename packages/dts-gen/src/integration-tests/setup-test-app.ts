@@ -12,6 +12,7 @@ program
     .option("-p, --password <password>")
     .option("--proxy-host [proxyHost]", "proxy host", null)
     .option("--proxy-port [proxyPort]", "proxy port", null)
+    .option("--proxy [proxy]", "proxy server", null)
     .option(
         "--basic-auth-username [basicAuthUsername]",
         "username for basic authentication",
@@ -41,6 +42,7 @@ async function handleSetupApp(command) {
         oAuthToken: command.oAuthToken,
         proxyHost: command.proxyHost,
         proxyPort: command.proxyPort,
+        proxy: command.proxy,
         basicAuthUsername: command.basicAuthUsername,
         basicAuthPassword: command.basicAuthPassword,
     };
