@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.0.11...@kintone/customize-uploader@3.1.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to v8 ([#510](https://github.com/kintone/js-sdk/issues/510)) ([b064c79](https://github.com/kintone/js-sdk/commit/b064c79b056a8ca2365a33c12d4d6c8e8b419eaf))
+
+
+### Features
+
+* support environment variable for base URL of customize uploader ([#543](https://github.com/kintone/js-sdk/issues/543)) ([1941977](https://github.com/kintone/js-sdk/commit/1941977036cc6593b5aa8eea3db02a70b101696a))
+* support OAuth token of customize uploader ([#566](https://github.com/kintone/js-sdk/issues/566)) ([9777927](https://github.com/kintone/js-sdk/commit/977792799a4d412048898169faaca28096d702c0))
+
+
+
+
+
 ## [3.0.11](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.0.10...@kintone/customize-uploader@3.0.11) (2020-10-23)
 
 **Note:** Version bump only for package @kintone/customize-uploader
