@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.1.5...@kintone/rest-api-client-demo@1.1.6) (2020-12-16)
+
+
+### Bug Fixes
+
+* Modify `properties` type in AppClient ([#469](https://github.com/kintone/js-sdk/issues/469)) ([a6f727f](https://github.com/kintone/js-sdk/commit/a6f727f0e0b266a78c69eb7f3ae0d2df29379cbb))
+* **deps:** update dependency webpack to v5 ([#475](https://github.com/kintone/js-sdk/issues/475)) ([ac6af9d](https://github.com/kintone/js-sdk/commit/ac6af9d3003ff6910a663ac53ca60a27c9999d87))
+
+
+
+
+
 ## [1.1.5](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.1.4...@kintone/rest-api-client-demo@1.1.5) (2020-10-23)
 
 **Note:** Version bump only for package @kintone/rest-api-client-demo

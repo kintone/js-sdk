@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.8](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@4.0.7...@kintone/webpack-plugin-kintone-plugin@4.0.8) (2020-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency puppeteer to v5.4.1 ([#492](https://github.com/kintone/js-sdk/issues/492)) ([f330e34](https://github.com/kintone/js-sdk/commit/f330e3478997f8f465e22ff8237f5c22405a5c26))
+* **deps:** update dependency webpack to v5 ([#475](https://github.com/kintone/js-sdk/issues/475)) ([ac6af9d](https://github.com/kintone/js-sdk/commit/ac6af9d3003ff6910a663ac53ca60a27c9999d87))
+
+
+
+
+
 ## [4.0.7](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@4.0.6...@kintone/webpack-plugin-kintone-plugin@4.0.7) (2020-10-23)
 
 **Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin

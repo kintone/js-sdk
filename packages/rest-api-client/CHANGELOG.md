@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.7.1...@kintone/rest-api-client@1.7.2) (2020-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.7.0 ([#525](https://github.com/kintone/js-sdk/issues/525)) ([0cb45b6](https://github.com/kintone/js-sdk/commit/0cb45b6983cc46477e649b5cb39694baa7054028))
+* **deps:** update dependency core-js to ^3.8.0 ([#557](https://github.com/kintone/js-sdk/issues/557)) ([bddee3d](https://github.com/kintone/js-sdk/commit/bddee3da2472386090dbda80ef0bedecb8eddd2f))
+* **deps:** update dependency core-js to ^3.8.1 ([6230fa8](https://github.com/kintone/js-sdk/commit/6230fa846bc5e7f833bd3e745cfb0c3849e04a0e))
+* adjust browserslist to product ([#506](https://github.com/kintone/js-sdk/issues/506)) ([c5843f5](https://github.com/kintone/js-sdk/commit/c5843f58439677a26c5fe68a9bb17f023e4f44a2))
+* Modify `properties` type in AppClient ([#469](https://github.com/kintone/js-sdk/issues/469)) ([a6f727f](https://github.com/kintone/js-sdk/commit/a6f727f0e0b266a78c69eb7f3ae0d2df29379cbb))
+* **deps:** update dependency axios to ^0.21.0 ([#493](https://github.com/kintone/js-sdk/issues/493)) ([934eb37](https://github.com/kintone/js-sdk/commit/934eb37583edbd5184482b04179f91ae55ee6d7a))
+* **deps:** update dependency puppeteer to v5.4.1 ([#492](https://github.com/kintone/js-sdk/issues/492)) ([f330e34](https://github.com/kintone/js-sdk/commit/f330e3478997f8f465e22ff8237f5c22405a5c26))
+
+
+
+
+
 ## [1.7.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.7.0...@kintone/rest-api-client@1.7.1) (2020-10-23)
 
 

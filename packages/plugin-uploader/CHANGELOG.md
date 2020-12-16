@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.1.2...@kintone/plugin-uploader@4.2.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency puppeteer to v5.5.0 ([#535](https://github.com/kintone/js-sdk/issues/535)) ([27fef79](https://github.com/kintone/js-sdk/commit/27fef79df9d6de086937a5e8ce0c8331c194f4b2))
+* description for Options of plugin-uploader ([#544](https://github.com/kintone/js-sdk/issues/544)) ([db97cc8](https://github.com/kintone/js-sdk/commit/db97cc8457c55ddd2ccf04cd220b3e76358d16d8))
+* should not ask base-url if use domain option ([#538](https://github.com/kintone/js-sdk/issues/538)) ([9821570](https://github.com/kintone/js-sdk/commit/98215706d3f4947ad6f63940ce0388cfa7fe0177))
+* **deps:** update dependency meow to v8 ([#510](https://github.com/kintone/js-sdk/issues/510)) ([b064c79](https://github.com/kintone/js-sdk/commit/b064c79b056a8ca2365a33c12d4d6c8e8b419eaf))
+* **deps:** update dependency puppeteer to v5.4.1 ([#492](https://github.com/kintone/js-sdk/issues/492)) ([f330e34](https://github.com/kintone/js-sdk/commit/f330e3478997f8f465e22ff8237f5c22405a5c26))
+
+
+### Features
+
+* support environment variable for base URL of plugin-uploader ([#534](https://github.com/kintone/js-sdk/issues/534)) ([4d78388](https://github.com/kintone/js-sdk/commit/4d783888d548c551236ccb05e8849803e343c162))
+
+
+
+
+
 ## [4.1.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.1.1...@kintone/plugin-uploader@4.1.2) (2020-10-12)
 
 

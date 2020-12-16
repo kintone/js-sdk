@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.0.8...@kintone/dts-gen@3.1.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.21.0 ([#493](https://github.com/kintone/js-sdk/issues/493)) ([934eb37](https://github.com/kintone/js-sdk/commit/934eb37583edbd5184482b04179f91ae55ee6d7a))
+* **deps:** update dependency commander to ^6.2.0 ([#497](https://github.com/kintone/js-sdk/issues/497)) ([8b766ef](https://github.com/kintone/js-sdk/commit/8b766ef82b4758dd763f033143f63de58253f4e0))
+* **deps:** update dependency prettier to ^2.2.1 ([c76c51a](https://github.com/kintone/js-sdk/commit/c76c51aa367c1ab53b12d06ba8505911d169e563))
+* **deps:** update dependency webpack to v5 ([#475](https://github.com/kintone/js-sdk/issues/475)) ([ac6af9d](https://github.com/kintone/js-sdk/commit/ac6af9d3003ff6910a663ac53ca60a27c9999d87))
+
+
+### Features
+
+* add API Token and OAuth Token support in dts-gen ([#575](https://github.com/kintone/js-sdk/issues/575)) ([e2d95be](https://github.com/kintone/js-sdk/commit/e2d95be1069b7cc7974b49d341c192caf4a41d86))
+* support --base-url and KINTONE_BASE_URL ([#536](https://github.com/kintone/js-sdk/issues/536)) ([9316fd9](https://github.com/kintone/js-sdk/commit/9316fd913adfad949274a886ed009a85536b6919))
+* support environment variables for user authentication of dts-gen ([#532](https://github.com/kintone/js-sdk/issues/532)) ([71c160c](https://github.com/kintone/js-sdk/commit/71c160cbcf09a7840de0aa25d8c1d415b0cdb822))
+* support HTTP(S)_PROXY and --proxys option  in dts-gen ([#585](https://github.com/kintone/js-sdk/issues/585)) ([7bf557e](https://github.com/kintone/js-sdk/commit/7bf557e981163b79cb86f8e680305d9170612b22))
+
+
+
+
+
 ## [3.0.8](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.0.7...@kintone/dts-gen@3.0.8) (2020-10-23)
 
 **Note:** Version bump only for package @kintone/dts-gen
