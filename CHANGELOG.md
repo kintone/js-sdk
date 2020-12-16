@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.1.3...@kintone/create-plugin@3.1.4) (2020-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to v8 ([#510](https://github.com/kintone/js-sdk/issues/510)) ([b064c79](https://github.com/kintone/js-sdk/commit/b064c79b056a8ca2365a33c12d4d6c8e8b419eaf))
+* **deps:** update dependency puppeteer to v5.4.1 ([#492](https://github.com/kintone/js-sdk/issues/492)) ([f330e34](https://github.com/kintone/js-sdk/commit/f330e3478997f8f465e22ff8237f5c22405a5c26))
+
+
+
+
+
 ## [3.1.3](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.1.2...@kintone/create-plugin@3.1.3) (2020-10-21)
 
 **Note:** Version bump only for package @kintone/create-plugin
