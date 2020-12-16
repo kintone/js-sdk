@@ -9,8 +9,9 @@ export interface NewInstanceInput {
     baseUrl: string;
     username: string | null;
     password: string | null;
-    oAuthToken: string;
-    apiToken: string;
+    oAuthToken: string | null;
+    apiToken: string | null;
+    proxy: string | null;
     proxyHost: string | null;
     proxyPort: string | null;
     basicAuthPassword: string | null;
@@ -20,8 +21,19 @@ export interface NewInstanceInput {
 function newAxiosInstance(
     input: NewInstanceInput
 ): AxiosInstance {
-    let proxy: AxiosProxyConfig | false = false;
-    if (
+    let proxy: AxiosProxyConfig | undefined;
+    // parse the proxy URL like http://admin:pass@localhost:8000
+    if (input.proxy) {
+        const proxyUrl = new URL(input.proxy);
+        proxy = {
+            host: proxyUrl.hostname,
+            port: parseInt(proxyUrl.port, 10),
+            auth: {
+                username: proxyUrl.username,
+                password: proxyUrl.password,
+            },
+        };
+    } else if (
         input.proxyHost !== null &&
         input.proxyPort !== null
     ) {

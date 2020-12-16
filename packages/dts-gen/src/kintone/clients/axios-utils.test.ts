@@ -26,6 +26,7 @@ describe("FormsClientImpl#constructor", () => {
             baseUrl,
             username: "username",
             password: "password",
+            proxy: null,
             proxyHost: null,
             proxyPort: null,
             basicAuthPassword: null,
@@ -38,7 +39,7 @@ describe("FormsClientImpl#constructor", () => {
         const expectedCalledWith = {
             headers,
             baseURL: baseUrl,
-            proxy: false,
+            proxy: undefined,
         } as AxiosRequestConfig;
         assertConstructorWithArgs(
             input,
@@ -46,11 +47,12 @@ describe("FormsClientImpl#constructor", () => {
         );
     });
 
-    test("with proxy", () => {
+    test("with proxyHost and proxyPort option", () => {
         const input = {
             baseUrl,
             username: "username",
             password: "password",
+            proxy: null,
             proxyHost: "proxyHost",
             proxyPort: "1234",
             basicAuthPassword: null,
@@ -74,11 +76,45 @@ describe("FormsClientImpl#constructor", () => {
         );
     });
 
+    test("with proxy option", () => {
+        const input = {
+            baseUrl,
+            username: "username",
+            password: "password",
+            proxy: "http://admin:password@localhost:1234",
+            proxyHost: null,
+            proxyPort: null,
+            basicAuthPassword: null,
+            basicAuthUsername: null,
+        };
+
+        const headers = {
+            "X-Cybozu-Authorization": authToken,
+        };
+        const expectedCalledWith = {
+            headers,
+            baseURL: baseUrl,
+            proxy: {
+                host: "localhost",
+                port: 1234,
+                auth: {
+                    username: "admin",
+                    password: "password",
+                },
+            },
+        };
+        assertConstructorWithArgs(
+            input,
+            expectedCalledWith
+        );
+    });
+
     test("with basic auth", () => {
         const input = {
             baseUrl,
             username: "username",
             password: "password",
+            proxy: null,
             proxyHost: null,
             proxyPort: null,
             basicAuthPassword: "basicUsername",
@@ -93,7 +129,7 @@ describe("FormsClientImpl#constructor", () => {
         const expectedCalledWith = {
             headers,
             baseURL: baseUrl,
-            proxy: false,
+            proxy: undefined,
         } as AxiosRequestConfig;
         assertConstructorWithArgs(
             input,

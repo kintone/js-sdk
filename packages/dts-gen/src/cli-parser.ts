@@ -6,6 +6,7 @@ interface ParsedArgs {
     password: string | null;
     oAuthToken: string | null;
     apiToken: string | null;
+    proxy: string | null;
     proxyHost: string | null;
     proxyPort: string | null;
     basicAuthPassword: string | null;
@@ -93,6 +94,9 @@ export function parse(argv: string[]): ParsedArgs {
             "proxy port",
             null
         )
+        // Axios handles HTTP_PROXY and HTTPS_PROXY natively,
+        // so we don't use the environment variables as the default value
+        .option("--proxy [proxy]", "proxy server", null)
         .option(
             "--basic-auth-username [basicAuthUsername]",
             "A username for basic authentication",
@@ -116,6 +120,7 @@ export function parse(argv: string[]): ParsedArgs {
         password,
         apiToken,
         oauthToken,
+        proxy,
         proxyHost,
         proxyPort,
         basicAuthPassword,
@@ -142,6 +147,7 @@ export function parse(argv: string[]): ParsedArgs {
         password,
         apiToken,
         oAuthToken: oauthToken,
+        proxy,
         proxyHost,
         proxyPort,
         basicAuthPassword,
