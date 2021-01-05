@@ -15,7 +15,7 @@ A kintone customize uploader
 dest/customize-manifest.json file has been created
 
 % ./node_modules/.bin/kintone-customize-uploader import dest/customize-manifest.json
-? Input your kintone's domain (example.cybozu.com): {yourDomain}
+? Input your kintone's base URL (https://example.cybozu.com): {kintoneBaseUrl}
 ? Input your username: {userLoginName}
 ? Input your password: [input is hidden] {yourPassword}
 
@@ -38,7 +38,7 @@ or
 dest/customize-manifest.json file has been created
 
 % kintone-customize-uploader import dest/customize-manifest.json
-? Input your kintone's domain (example.cybozu.com): {yourDomain}
+? Input your kintone's base URL (https://example.cybozu.com): {kintoneBaseUrl}
 ? Input your username: {userLoginName}
 ? Input your password: [input is hidden] {yourPassword}
 
@@ -61,7 +61,7 @@ If you want to upload the customize files automatically when a file is updated, 
     $ kintone-customize-uploader <manifestFile>
   Options
     --base-url Base-url of your kintone
-    --domain Domain of your kintone (If you set --base-url, this value is not necessary.)
+    --domain Domain of your kintone (This value is deprecated. Please you use --base-url.)
     --username Login username
     --password User's password
     --oauth-token OAuth access token (If you set a set of --username and --password, this value is not necessary.)
@@ -82,7 +82,7 @@ If you want to upload the customize files automatically when a file is updated, 
 
     You can set the values through environment variables
     base-url: KINTONE_BASE_URL
-    domain: KINTONE_DOMAIN (If you set `base-url`, this value is not necessary.)
+    domain: KINTONE_DOMAIN (This value is deprecated. Please you use KINTONE_BASE_URL.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
     oauth-token: KINTONE_OAUTH_TOKEN (If you set a set of username and password, this value is not necessary.)
@@ -94,7 +94,7 @@ If you want to upload the customize files automatically when a file is updated, 
 If you omit the options, you can input the options interactively.
 ```
 % kintone-customize-uploader dest/customize-manifest.json
-? Input your domain: example.cybozu.com
+? Input your kintone's base URL: https://example.cybozu.com
 ? Input your username: sato
 ? Input your password: [hidden]
 ```
@@ -138,7 +138,7 @@ This is an example of `customize-manifest.json` .
 To upload files, run `kintone-customize-uploader <manifestFile>`.
 ```
 % kintone-customize-uploader dest/customize-manifest.json
-? Input your domain: example.cybozu.com
+? Input your kintone's base URL: https://example.cybozu.com
 ? Input your username: sato
 ? Input your password: [hidden]
 
