@@ -5,11 +5,6 @@ const messages = {
     en: "Please specify manifest file",
     ja: "マニフェストファイルを指定してください",
   },
-  // TODO: remove Q_Domain when `domain` option is deprecated.
-  Q_Domain: {
-    en: "Input your kintone's domain (example.cybozu.com):",
-    ja: "kintoneのドメインを入力してください (example.cybozu.com):",
-  },
   Q_BaseUrl: {
     en: "Input your kintone's base URL (https://example.cybozu.com):",
     ja: "kintoneのベースURLを入力してください (https://example.cybozu.com):",
