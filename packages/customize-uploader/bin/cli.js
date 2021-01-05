@@ -148,6 +148,10 @@ if (!isInitCommand && !manifestFile) {
   process.exit(1);
 }
 
+if (domain) {
+  console.warn(getMessage(lang, "W_Deprecated_domain"));
+}
+
 if (isInitCommand) {
   inquireInitParams(lang)
     .then((initParams) => {
