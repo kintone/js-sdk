@@ -4,16 +4,16 @@
 - [KintoneAllRecordsError](#kintoneallrecordserror)
 - [KintoneAbortSearchError](#kintoneabortsearcherror)
 
-
 These errors are exported so that it is available to import and use them like the following.
 
 ```javascript
 import {
   KintoneRestAPIError,
   KintoneAllRecordsError,
-  KintoneAbortSearchError
+  KintoneAbortSearchError,
 } from "@kintone/rest-api-client";
 ```
+
 ## KintoneRestAPIError
 
 When the API request responds with a status code other than 200, the client raises [`KintoneRestAPIError`](../src/KintoneRestAPIError.ts).

@@ -11,5 +11,5 @@ describe("index.browser", () => {
     expect(browser.KintoneAllRecordsError).toBe(KintoneAllRecordsError);
     expect(browser.KintoneRestAPIError).not.toBeUndefined();
     expect(browser.KintoneRestAPIError).toBe(KintoneRestAPIError);
-  })
-})
+  });
+});
