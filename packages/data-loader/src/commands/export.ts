@@ -33,6 +33,10 @@ export const builder = (yargs: any) =>
     .option("format", {
       describe: "Output format",
       default: "json",
+    })
+    .option("query", {
+      alias: "q",
+      describe: "The query string",
     });
 
 export const handler = (argv: Argv) => run(argv);

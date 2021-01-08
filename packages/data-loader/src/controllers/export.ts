@@ -15,11 +15,13 @@ export type Argv = {
   id: string | number;
   attachmentDir: string;
   format: "json" | "csv";
+  query?: string;
 };
 
 type Options = {
   app: AppID;
   attachmentDir: string;
+  query?: string;
 };
 
 type FileInfo = {
@@ -38,9 +40,10 @@ export async function exportRecords(
   apiClient: KintoneRestAPIClient,
   options: Options
 ) {
-  const { app, attachmentDir } = options;
+  const { app, attachmentDir, query } = options;
   const records = await apiClient.record.getAllRecords({
     app,
+    condition: query,
   });
 
   // TODO: filter fields
