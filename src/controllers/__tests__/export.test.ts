@@ -19,6 +19,25 @@ describe("export", () => {
       exportRecords(apiClient, { app: "1", attachmentDir: "" })
     ).resolves.not.toThrow();
   });
+
+  it("should pass parameters to the apiClient correctly", async () => {
+    const getAllRecordsMockFn = jest.fn().mockResolvedValue([{}]);
+    apiClient.record.getAllRecords = getAllRecordsMockFn;
+    const APP_ID = 1;
+    const QUERY = 'Customer like "foo"';
+
+    await exportRecords(apiClient, {
+      app: APP_ID,
+      attachmentDir: "",
+      query: QUERY,
+    });
+
+    expect(getAllRecordsMockFn.mock.calls[0][0]).toStrictEqual({
+      app: APP_ID,
+      condition: QUERY,
+    });
+  });
+
   it("can get records", async () => {
     const records = [
       {
