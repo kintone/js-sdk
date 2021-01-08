@@ -2,6 +2,17 @@
 
 - [KintoneRestAPIError](#kintonerestapierror)
 - [KintoneAllRecordsError](#kintoneallrecordserror)
+- [KintoneAbortSearchError](#kintoneabortsearcherror)
+
+These errors are exported so that it is available to import and use them like the following.
+
+```javascript
+import {
+  KintoneRestAPIError,
+  KintoneAllRecordsError,
+  KintoneAbortSearchError,
+} from "@kintone/rest-api-client";
+```
 
 ## KintoneRestAPIError
 
