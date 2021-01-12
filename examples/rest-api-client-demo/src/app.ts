@@ -445,4 +445,16 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getGeneralNotifications() {
+    try {
+      console.log(
+        JSON.stringify(
+          await this.client.app.getGeneralNotifications({ app: APP_ID })
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
