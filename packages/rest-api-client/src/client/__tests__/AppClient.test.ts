@@ -879,6 +879,44 @@ describe("AppClient", () => {
       });
     });
   });
+
+  describe("getGeneralNotifications", () => {
+    const params = {
+      app: APP_ID,
+    };
+    describe("without preview", () => {
+      beforeEach(async () => {
+        await appClient.getGeneralNotifications(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/app/notifications/general.json"
+        );
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+    describe("preview: true", () => {
+      beforeEach(async () => {
+        await appClient.getGeneralNotifications({ ...params, preview: true });
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/preview/app/notifications/general.json"
+        );
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app and preview as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+  });
 });
 
 describe("AppClient with guestSpaceId", () => {
