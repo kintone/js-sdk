@@ -41,7 +41,7 @@ async function readyForUpload(
   console.log(`Open ${loginUrl}`);
   await page.goto(loginUrl);
   try {
-    await page.waitFor(".form-username-slash", { timeout: TIMEOUT_MS });
+    await page.waitForSelector(".form-username-slash", { timeout: TIMEOUT_MS });
   } catch (e) {
     throw chalk.red(m("Error_cannotOpenLogin"));
   }
