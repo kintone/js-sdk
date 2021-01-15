@@ -991,6 +991,45 @@ describe("AppClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+  describe("getAppNotificationsReminder", () => {
+    const lang = "default";
+    const params = { app: APP_ID, lang } as const;
+    describe("without preview", () => {
+      beforeEach(async () => {
+        await appClient.getReminderNotifications(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/app/notifications/reminder.json"
+        );
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app and lang as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+    describe("preview: true", () => {
+      beforeEach(async () => {
+        await appClient.getReminderNotifications({
+          ...params,
+          preview: true,
+        });
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/preview/app/notifications/reminder.json"
+        );
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app and lang as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+  });
 });
 
 describe("AppClient with guestSpaceId", () => {

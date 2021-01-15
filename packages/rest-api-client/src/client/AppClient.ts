@@ -509,6 +509,23 @@ export class AppClient {
     return this.client.put(path, params);
   }
 
+  public getReminderNotifications(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{
+    notifications: NotificationForResponse[];
+    timezone: string;
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/notifications/reminder",
+      preview,
+    });
+    return this.client.get(path, rest);
+  }
+
   private buildPathWithGuestSpaceId(params: {
     endpointName: string;
     preview?: boolean;
