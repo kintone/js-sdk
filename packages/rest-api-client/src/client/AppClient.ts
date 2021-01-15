@@ -25,6 +25,7 @@ import {
   AppCustomizeScope,
   AppCustomizeForResponse,
   AppCustomizeForParameter,
+  GeneralNotificationForParameter,
   GeneralNotificationForResponse,
   PerRecordNotificationForParameter,
   PerRecordNotificationForResponse,
@@ -480,6 +481,19 @@ export class AppClient {
       preview,
     });
     return this.client.get(path, { ...rest });
+  }
+
+  public updateGeneralNotifications(params: {
+    app: AppID;
+    notifications?: GeneralNotificationForParameter[];
+    notifyToCommenter?: boolean;
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/notifications/general",
+      preview: true,
+    });
+    return this.client.put(path, params);
   }
 
   public getPerRecordNotifications(params: {

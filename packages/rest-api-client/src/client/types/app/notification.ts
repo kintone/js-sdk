@@ -1,5 +1,16 @@
 import { Entity } from "../entity";
 
+export type GeneralNotificationForParameter = {
+  entity: Entity;
+  includeSubs?: boolean;
+  recordAdded?: boolean;
+  recordEdited?: boolean;
+  commentAdded?: boolean;
+  statusChanged?: boolean;
+  fileImported?: boolean;
+  notifyToCommenter?: boolean;
+};
+
 export type GeneralNotificationForResponse = {
   entity:
     | Entity

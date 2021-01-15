@@ -975,6 +975,8 @@ describe("AppClient", () => {
           ],
         },
       ],
+      notifyToCommenter: true,
+      revision: 1,
     };
 
     beforeEach(async () => {
@@ -1030,6 +1032,42 @@ describe("AppClient", () => {
       it("should pass app and lang as a param to the http client", () => {
         expect(mockClient.getLogs()[0].params).toEqual(params);
       });
+    });
+  });
+  describe("updateAppUpdateGeneralNotifications", () => {
+    const params = {
+      app: APP_ID,
+      notifications: [
+        {
+          entity: {
+            type: "USER" as const,
+            code: "foo",
+          },
+          includeSubs: true,
+          recordAdded: true,
+          recordEdited: true,
+          commentAdded: true,
+          statusChanged: true,
+          fileImported: true,
+          notifyToCommenter: true,
+        },
+      ],
+      notifyToCommenter: true,
+      revision: 1,
+    };
+    beforeEach(async () => {
+      await appClient.updateGeneralNotifications(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/preview/app/notifications/general.json"
+      );
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app and rights as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
 });
