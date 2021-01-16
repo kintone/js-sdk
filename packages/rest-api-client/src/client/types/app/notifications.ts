@@ -1,4 +1,4 @@
-export type AppNotificationsReminderResponse = {
+export type ReminderNotificationsResponse = {
   timing: Record<"code" | "daysLater" | "hoursLater", string>;
   filterCond: string;
   title: string;
