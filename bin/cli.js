@@ -25,7 +25,7 @@ const cli = meow(
     $ kintone-customize-uploader <manifestFile>
   Options
     --base-url Base-url of your kintone
-    --domain Domain of your kintone (If you set --base-url, this value is not necessary.)
+    --domain Domain of your kintone (This value is deprecated. Please use --base-url.)
     --username Login username
     --password User's password
     --oauth-token OAuth access token (If you set a set of --username and --password, this value is not necessary.)
@@ -46,7 +46,7 @@ const cli = meow(
 
     You can set the values through environment variables
     base-url: KINTONE_BASE_URL
-    domain: KINTONE_DOMAIN (If you set base-url, this value is not necessary.)
+    domain: KINTONE_DOMAIN (This value is deprecated. Please use KINTONE_BASE_URL.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
     oauth-token: KINTONE_OAUTH_TOKEN (If you set a set of username and password, this value is not necessary.)
@@ -146,6 +146,10 @@ if (!isInitCommand && !manifestFile) {
   console.error(getMessage(lang, "E_requiredManifestFile"));
   cli.showHelp();
   process.exit(1);
+}
+
+if (domain) {
+  console.warn(getMessage(lang, "W_Deprecated_domain"));
 }
 
 if (isInitCommand) {

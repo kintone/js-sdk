@@ -5,11 +5,6 @@ const messages = {
     en: "Please specify manifest file",
     ja: "マニフェストファイルを指定してください",
   },
-  // TODO: remove Q_Domain when `domain` option is deprecated.
-  Q_Domain: {
-    en: "Input your kintone's domain (example.cybozu.com):",
-    ja: "kintoneのドメインを入力してください (example.cybozu.com):",
-  },
   Q_BaseUrl: {
     en: "Input your kintone's base URL (https://example.cybozu.com):",
     ja: "kintoneのベースURLを入力してください (https://example.cybozu.com):",
@@ -104,6 +99,12 @@ const messages = {
       "An error occured, exit process. Please check if you passed proper arguments and manifest file",
     ja:
       "エラーが発生しました。引数の値と、マニフェストファイルに正しい値が入力されているか確認してください",
+  },
+  W_Deprecated_domain: {
+    en:
+      "The --domain option and KINTONE_DOMAIN are deprecated and will be removed in the next major release. Please use --base-url or KINTONE_BASE_URL instead.",
+    ja:
+      "--domain オプションおよび KINTONE_DOMAIN は非推奨となり、次のメジャーリリースで削除されます。代わりに --base-url や KINTONE_BASE_URL を使用してください",
   },
 } as const;
 
