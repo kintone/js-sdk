@@ -458,6 +458,19 @@ export class App {
     }
   }
 
+  public async getPerRecordNotifications() {
+    try {
+      console.log(
+        await this.client.app.getPerRecordNotifications({
+          app: APP_ID,
+          preview: true,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async updatePerRecordNotifications() {
     const notifications = [
       {
