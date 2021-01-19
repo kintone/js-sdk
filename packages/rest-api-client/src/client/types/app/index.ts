@@ -22,3 +22,4 @@ export * from "./view";
 export * from "./right";
 export * from "./processManagement";
 export * from "./customize";
+export * from "./notification";
