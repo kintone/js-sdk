@@ -1,10 +1,5 @@
-type Entity = {
-  type: string;
-  code: string;
-};
-
 export type GeneralNotificationsForResponse = {
-  entity: Entity;
+  entity: Record<"type" | "code", string>;
   includeSubs: boolean;
   recordAdded: boolean;
   recordEdited: boolean;
