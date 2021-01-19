@@ -26,6 +26,10 @@ export const builder = (yargs: any) =>
     .option("id", {
       describe: "The ID of the record",
     })
+    .option("guest-space-id", {
+      describe: "The ID of guest space",
+      default: process.env.KINTONE_GUEST_SPACE_ID,
+    })
     .option("attachment-dir", {
       describe: "Attachment file directory",
       default: "attachments",
