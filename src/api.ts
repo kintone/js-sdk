@@ -7,5 +7,6 @@ export const buildRestAPIClient = (argv: any) => {
       username: argv.username,
       password: argv.password,
     },
+    guestSpaceId: argv.guestSpaceId,
   });
 };
