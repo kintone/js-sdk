@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.10](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@3.0.9...@kintone/plugin-packer@3.0.10) (2021-01-19)
+
+
+### Bug Fixes
+
+* **deps:** update webpack-dev-server to 3.11.1 ([#603](https://github.com/kintone/js-sdk/issues/603)) ([75b0141](https://github.com/kintone/js-sdk/commit/75b0141fc4053688aa7d13ed2abb5a386f5b52a1))
+
+
+
+
+
 ## [3.0.9](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@3.0.8...@kintone/plugin-packer@3.0.9) (2020-12-16)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.2.0...@kintone/plugin-uploader@4.2.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* Fixed deprecated waitFor () ([#605](https://github.com/kintone/js-sdk/issues/605)) ([6bb1bf9](https://github.com/kintone/js-sdk/commit/6bb1bf93ba818908d2fd007a38b69925f7048c06))
+
+
+
+
+
 # [4.2.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.1.2...@kintone/plugin-uploader@4.2.0) (2020-12-16)
 
 

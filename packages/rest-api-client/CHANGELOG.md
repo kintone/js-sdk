@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.7.2...@kintone/rest-api-client@1.8.0) (2021-01-19)
+
+
+### Bug Fixes
+
+* add package.json into pkg.exports in package.json of rest-api-client ([#599](https://github.com/kintone/js-sdk/issues/599)) ([c665746](https://github.com/kintone/js-sdk/commit/c6657467e9c536d7f4ec12d00fc0e4d52e0e2a1e))
+
+
+### Features
+
+* export error classes to allow users to import them ([#601](https://github.com/kintone/js-sdk/issues/601)) ([edcd2e9](https://github.com/kintone/js-sdk/commit/edcd2e9323fdb639bd76016c99503f42e86635df))
+
+
+
+
+
 ## [1.7.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.7.1...@kintone/rest-api-client@1.7.2) (2020-12-16)
 
 
