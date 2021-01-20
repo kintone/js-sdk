@@ -460,12 +460,21 @@ export class App {
 
   public async getPerRecordNotifications() {
     try {
-      console.log(
-        await this.client.app.getPerRecordNotifications({
-          app: APP_ID,
-          preview: true,
-        })
-      );
+      const res = await this.client.app.getPerRecordNotifications({
+        app: APP_ID,
+        preview: true,
+      });
+      res.notifications.forEach((notification) => {
+        console.log(`notification.title: ${notification.title}`);
+        console.log(`notification.filterCond: ${notification.filterCond}`);
+        console.log("targets:");
+        notification.targets.forEach((target) => {
+          console.log(
+            `  target.entity: (${target.entity.code}: ${target.entity.type})`
+          );
+          console.log(`  target.includeSubs: ${target.includeSubs}`);
+        });
+      });
     } catch (error) {
       console.log(error);
     }
