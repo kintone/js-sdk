@@ -18,8 +18,8 @@ jobs:
         node-version: 14.x
     - name: run Yamory
       run: |
-        ls -1 packages | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" --manifest ./packages/{}/package.json
-        ls -1 examples | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" --manifest ./examples/{}/package.json
+        ls -1 packages | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" --  --manifest ./packages/{}/package.json
+        ls -1 examples | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" -- --manifest ./examples/{}/package.json
       env:
         CI: true
         PROJECT_GROUP_KEY: js-sdk
