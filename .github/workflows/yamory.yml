@@ -1,0 +1,26 @@
+
+name: yamory
+
+on:
+  push:
+    branches:
+      - master
+      - 'yamory/*'
+jobs:
+  build:
+    name: Node.js ubuntu-latest 14.x
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - name: run Yamory
+      run: |
+        ls -1 packages | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" --manifest ./packages/{}/package.json
+        ls -1 examples | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" --manifest ./examples/{}/package.json
+      env:
+        CI: true
+        PROJECT_GROUP_KEY: js-sdk
+        YAMORY_API_KEY: ${{ secrets.YAMORY_API_KEY }}
