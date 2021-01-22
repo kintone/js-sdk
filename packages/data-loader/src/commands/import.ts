@@ -20,6 +20,14 @@ export const builder = (yargs: any) =>
       describe: "Kintone Password",
       default: process.env.KINTONE_PASSWORD,
     })
+    .option("basic-auth-username", {
+      describe: "Kintone Basic Auth Username",
+      default: process.env.KINTONE_BASIC_AUTH_USERNAME,
+    })
+    .option("basic-auth-password", {
+      describe: "Kintone Basic Auth Password",
+      default: process.env.KINTONE_BASIC_AUTH_PASSWORD,
+    })
     .option("app", {
       describe: "The ID of the app",
     })
