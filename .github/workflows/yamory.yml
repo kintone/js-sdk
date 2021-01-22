@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - master
-      - 'yamory/*'
 jobs:
   build:
     name: Node.js ubuntu-latest 14.x
