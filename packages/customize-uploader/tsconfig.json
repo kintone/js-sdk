@@ -1,11 +1,16 @@
 {
+  "extends": "../tsconfig-base.json",
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
     "lib": ["es6", "es2015", "dom"],
+    "rootDir": "src",
     "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
     "resolveJsonModule": true
-  }
+  },
+  "references": [
+    { "path": "../rest-api-client" }
+  ]
 }
