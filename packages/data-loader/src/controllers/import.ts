@@ -11,6 +11,8 @@ export type Argv = {
   baseUrl: string;
   username: string;
   password: string;
+  pfxFilePath?: string;
+  pfxFilePassword?: string;
   app: string | number;
   id: string | number;
   attachmentDir: string;
