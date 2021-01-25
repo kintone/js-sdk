@@ -13,10 +13,18 @@ This repository is a monorepo using Lerna and Yarn Workspaces.
 % yarn install
 ```
 
+### Develop
+
+```sh
+% cd js-sdk
+% yarn start
+```
+
 ### Test
 
 ```sh
 % cd js-sdk
+% yarn build
 % yarn test
 % yarn lint
 ```
@@ -51,10 +59,10 @@ If you'd like to release a new package.
 When you create a new package, you must define the following npm-scripts, otherwise CI would be failed.
 
 - `build`
+- `clean`
 - `lint`
 - `test`
 - `test:ci`
-- `prerelease`
 
 ## Import a package into `kintone/js-sdk`
 
