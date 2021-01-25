@@ -64,6 +64,11 @@ When you create a new package, you must define the following npm-scripts, otherw
 - `test`
 - `test:ci`
 
+### Configure TypeScript Project References
+
+You have to add the new package into the `references` field in `packages/tsconfig.json`, and dependencies in `kintone/js-sdk` into the `references` field in the package's `tsconfig.json`.
+It also requires to extend `packages/tsconfig-base.json`.
+
 ## Import a package into `kintone/js-sdk`
 
 You can import an exsiting package with `lerna import path/to/package`.
