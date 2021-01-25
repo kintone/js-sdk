@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
-import * as FormData from "form-data";
-import * as fs from "fs";
+import FormData from "form-data";
+import fs from "fs";
 
 import {
     NewInstanceInput,
@@ -21,7 +21,7 @@ interface AddFormFieldInput {
     properties: any[];
 }
 
-interface AddFormFieldOutput {}
+export interface AddFormFieldOutput {}
 
 interface DeployInput {
     apps: Array<{
@@ -65,7 +65,7 @@ interface JsCustomizeInput {
     };
 }
 
-interface JsCustomizeOutput {
+export interface JsCustomizeOutput {
     revision: string;
 }
 
@@ -74,7 +74,7 @@ interface AddRecordInput {
     record: any;
 }
 
-interface AddRecordOutput {
+export interface AddRecordOutput {
     id: string;
     revision: string;
 }

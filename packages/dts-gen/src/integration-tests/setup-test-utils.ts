@@ -1,5 +1,10 @@
 import * as fs from "fs";
-import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client";
+import {
+    SetUpTestAppClient,
+    AddFormFieldOutput,
+    JsCustomizeOutput,
+    AddRecordOutput,
+} from "../kintone/clients/setup-test-app-client";
 import { DemoDatas } from "../kintone/clients/demo-datas";
 import { log } from "../utils/logger";
 
@@ -20,7 +25,10 @@ async function createKintoneApp(
         .catch(rethrow);
 }
 
-async function addDemoField(client: Client, app: string) {
+async function addDemoField(
+    client: Client,
+    app: string
+): Promise<AddFormFieldOutput> {
     log(`Preparing for field settings(ID:${app})`);
     const properties = DemoDatas.DemoDataFields;
     return client
@@ -65,7 +73,7 @@ async function updateJsCustomize(
     client: Client,
     app: string,
     fileKey: string
-) {
+): Promise<JsCustomizeOutput> {
     const scope = "ALL";
     const desktop = {
         js: [
@@ -111,7 +119,7 @@ async function addDemoRecord(
     client: Client,
     app: string,
     fileName: string
-) {
+): Promise<AddRecordOutput> {
     const DemoRecord = DemoDatas.DemoRecord;
     const record = Object.assign(DemoRecord);
 
