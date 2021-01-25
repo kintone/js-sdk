@@ -1,13 +1,9 @@
 {
   "extends": "../tsconfig-base.json",
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "lib": ["es6", "es2015", "dom"],
-    "rootDir": "src",
-    "outDir": "dist",
-    "strict": true,
-    "esModuleInterop": true,
+    "lib": ["es2015", "dom"],
+    "outDir": "./dist",
+    "rootDir": "./src",
     "resolveJsonModule": true
   },
   "references": [
