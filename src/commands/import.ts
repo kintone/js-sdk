@@ -20,6 +20,10 @@ export const builder = (yargs: any) =>
       describe: "Kintone Password",
       default: process.env.KINTONE_PASSWORD,
     })
+    .option("api-token", {
+      describe: "App's API token",
+      default: process.env.KINTONE_API_TOKEN,
+    })
     .option("basic-auth-username", {
       describe: "Kintone Basic Auth Username",
       default: process.env.KINTONE_BASIC_AUTH_USERNAME,
