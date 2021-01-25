@@ -17,19 +17,16 @@
     "from-manifest.js"
   ],
   "scripts": {
-    "build": "npm run build:ts && npm run build:site",
-    "build:site": "run-p js css",
-    "build:ts": "rimraf ./dist && tsc",
-    "lint": "run-p lint:*",
-    "lint:eslint": "eslint \"*.{js,ts}\" bin src site test",
-    "lint:ts": "tsc --noEmit",
+    "build": "echo 'no build'",
+    "postbuild": "run-p js css",
+    "clean": "echo 'no clean'",
+    "lint": "npm run eslint",
     "test": "run-p jest site:test",
     "test:ci": "npm run test",
     "css": "postcss --config postcss.config.js ../../node_modules/normalize.css/normalize.css > docs/dist/normalize.min.css",
     "js": "webpack --mode production",
     "js:dev": "webpack serve --mode development",
     "jest": "jest",
-    "prerelease": "run-p lint test build",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
     "site:test": "jest --config site/jest.config.js"

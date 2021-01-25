@@ -1,7 +1,7 @@
 import path from "path";
 import { spawnSync } from "child_process";
 
-const REQUIRED_NPMSCRIPTS = ["build", "lint", "test", "test:ci"];
+const REQUIRED_NPMSCRIPTS = ["build", "clean", "lint", "test", "test:ci"];
 
 const yarnCommand = process.platform === "win32" ? "yarn.cmd" : "yarn";
 
