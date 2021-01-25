@@ -8,6 +8,8 @@ describe("api", () => {
   const USERNAME = "username";
   const PASSWORD = "password";
   const BASE_URL = "https://localhost";
+  const PFX_FILE_PATH = "./dummy.pfx";
+  const PFX_FILE_PASSWORD = "pfx_password";
 
   it("should pass username and password to the apiClient correctly", () => {
     const apiClient = buildRestAPIClient({
@@ -65,6 +67,27 @@ describe("api", () => {
       basicAuth: {
         username: BASIC_AUTH_USERNAME,
         password: BASIC_AUTH_PASSWORD,
+      },
+    });
+  });
+  it("should pass information of client certificate to the apiClient correctly", () => {
+    const apiClient = buildRestAPIClient({
+      baseUrl: BASE_URL,
+      username: USERNAME,
+      password: PASSWORD,
+      pfxFilePath: PFX_FILE_PATH,
+      pfxFilePassword: PFX_FILE_PASSWORD,
+    });
+    expect(apiClient).toBeInstanceOf(KintoneRestAPIClient);
+    expect(KintoneRestAPIClient).toHaveBeenCalledWith({
+      baseUrl: BASE_URL,
+      auth: {
+        username: USERNAME,
+        password: PASSWORD,
+      },
+      clientCertAuth: {
+        pfxFilePath: PFX_FILE_PATH,
+        password: PFX_FILE_PASSWORD,
       },
     });
   });

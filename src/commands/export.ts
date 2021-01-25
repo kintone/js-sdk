@@ -49,6 +49,12 @@ export const builder = (yargs: any) =>
     .option("query", {
       alias: "q",
       describe: "The query string",
+    })
+    .option("pfx-file-path", {
+      describe: "The path to client certificate file",
+    })
+    .option("pfx-file-password", {
+      describe: "The password of client certificate file",
     });
 
 export const handler = (argv: Argv) => run(argv);

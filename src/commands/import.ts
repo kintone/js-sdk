@@ -44,6 +44,12 @@ export const builder = (yargs: any) =>
     })
     .option("file-path", {
       describe: "file path",
+    })
+    .option("pfx-file-path", {
+      describe: "The path to client certificate file",
+    })
+    .option("pfx-file-password", {
+      describe: "The password of client certificate file",
     }).argv;
 
 export const handler = (argv: Argv) => run(argv);
