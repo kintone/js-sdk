@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    { "path": "./create-plugin"},
+    { "path": "./customize-uploader"},
+    { "path": "./dts-gen"},
+    { "path": "./plugin-manifest-validator"},
+    { "path": "./plugin-uploader"},
+    { "path": "./profile-loader"},
+    { "path": "./rest-api-client" },
+    { "path": "./webpack-plugin-kintone-plugin"}
+  ]
+}
