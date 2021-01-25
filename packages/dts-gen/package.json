@@ -4,9 +4,9 @@
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "npm run clean",
+    "prebuild": "yarn clean",
     "build": "tsc --build",
-    "postbuild": "bin/npm-build.sh",
+    "postbuild": "bin/npm-build.sh && yarn build:integration",
     "tsc:check": "tsc --noEmit",
     "clean": "rimraf dist",
     "lint:fix": "eslint --fix src/**/*.ts",

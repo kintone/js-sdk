@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "tsc --build -w",
-    "prebuild": "npm run clean",
+    "prebuild": "yarn clean",
     "build": "tsc --build",
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",

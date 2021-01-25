@@ -10,7 +10,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "prebuild": "npm run clean",
+    "prebuild": "yarn clean",
     "build": "tsc --build",
     "lint": "run-p lint:*",
     "test": "jest --rootDir src",
