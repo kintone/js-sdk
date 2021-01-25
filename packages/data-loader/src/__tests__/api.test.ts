@@ -8,6 +8,7 @@ describe("api", () => {
   const USERNAME = "username";
   const PASSWORD = "password";
   const BASE_URL = "https://localhost";
+  const API_TOKEN = "api_token";
   const PFX_FILE_PATH = "./dummy.pfx";
   const PFX_FILE_PASSWORD = "pfx_password";
 
@@ -44,6 +45,35 @@ describe("api", () => {
         password: PASSWORD,
       },
       guestSpaceId: GUEST_SPACE_ID,
+    });
+  });
+
+  it("should pass apiToken to the apiClient correctly", () => {
+    const apiClient = buildRestAPIClient({
+      baseUrl: BASE_URL,
+      apiToken: API_TOKEN,
+    });
+    expect(apiClient).toBeInstanceOf(KintoneRestAPIClient);
+    expect(KintoneRestAPIClient).toHaveBeenCalledWith({
+      baseUrl: BASE_URL,
+      auth: { apiToken: API_TOKEN },
+    });
+  });
+
+  it("should prioritize username and password over apiToken", () => {
+    const apiClient = buildRestAPIClient({
+      baseUrl: BASE_URL,
+      username: USERNAME,
+      password: PASSWORD,
+      apiToken: API_TOKEN,
+    });
+    expect(apiClient).toBeInstanceOf(KintoneRestAPIClient);
+    expect(KintoneRestAPIClient).toHaveBeenCalledWith({
+      baseUrl: BASE_URL,
+      auth: {
+        username: USERNAME,
+        password: PASSWORD,
+      },
     });
   });
 

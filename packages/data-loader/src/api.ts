@@ -1,5 +1,16 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
+const buildAuthParam = (argv: any) => {
+  const passwordAuthParam = {
+    username: argv.username,
+    password: argv.password,
+  };
+
+  if (argv.username) return passwordAuthParam;
+  if (argv.apiToken) return { apiToken: argv.apiToken };
+  return passwordAuthParam;
+};
+
 const buildBasicAuthParam = (argv: any) => {
   return argv.basicAuthUsername
     ? {
@@ -25,10 +36,7 @@ const buildClientCertAuth = (argv: any) => {
 export const buildRestAPIClient = (argv: any) => {
   return new KintoneRestAPIClient({
     baseUrl: argv.baseUrl,
-    auth: {
-      username: argv.username,
-      password: argv.password,
-    },
+    auth: buildAuthParam(argv),
     ...buildBasicAuthParam(argv),
     ...buildClientCertAuth(argv),
     ...(argv.guestSpaceId ? { guestSpaceId: argv.guestSpaceId } : {}),
