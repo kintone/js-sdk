@@ -43,11 +43,12 @@
   ],
   "scripts": {
     "start": "tsc -w",
+    "prebuild": "npm run clean",
     "build": "tsc",
+    "clean": "rimraf dist",
     "lint": "eslint --ext .ts src",
-    "prerelease": "run-p lint test",
     "unittest": "jest --testRegex=/test/.*-test\\.ts$",
-    "test": "run-s build unittest",
+    "test": "run-s unittest",
     "test:all": "run-p test e2e",
     "test:ci": "npm run test:all",
     "e2e": "cross-env NODE_ENV=e2e jest ./test/e2e.ts"

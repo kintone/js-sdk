@@ -10,9 +10,9 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "npm run clean && tsc",
+    "prebuild": "npm run clean",
+    "build": "tsc --build",
     "lint": "run-p lint:*",
-    "prerelease": "npm-run-all -p lint test -s build",
     "test": "jest --rootDir src",
     "test:ci": "jest --rootDir src --runInBand",
     "clean": "rimraf dist",

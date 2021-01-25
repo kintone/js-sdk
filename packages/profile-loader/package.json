@@ -33,13 +33,13 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "build": "npm-run-all -l -s clean compile",
+    "prebuild": "npm run clean",
+    "build": "npm run compile",
     "lint": "run-p -l lint:*",
-    "prerelease": "npm-run-all -p lint test -s build",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf lib esm umd",
-    "compile": "tsc",
+    "compile": "tsc --build",
     "fix:lint": "npm run lint:eslint -- --fix",
     "fix:md": "prettier --write README.md",
     "fix": "run-p fix:*",

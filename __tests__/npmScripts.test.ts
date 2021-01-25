@@ -5,7 +5,6 @@ const REQUIRED_NPMSCRIPTS = [
   "build",
   "lint",
   "test",
-  "prerelease",
   "test:ci"
 ]
 

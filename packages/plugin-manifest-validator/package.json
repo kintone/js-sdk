@@ -13,8 +13,10 @@
   ],
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "start": "tsc -w",
-    "build": "yarn clean && tsc",
+    "start": "tsc --build -w",
+    "prebuild": "yarn clean",
+    "build": "tsc --build",
+    "postbuild": "yarn gen-dts",
     "gen-dts": "node script/generate-dts.js",
     "prerelease": "run-p lint test",
     "test": "jest",
