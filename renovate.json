@@ -1,6 +1,6 @@
 {
   "extends": [
-    "@cybozu"
+    "github>cybozu/renovate-config"
   ],
   "ignorePaths": [
     "**/node_modules/**",
