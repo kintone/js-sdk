@@ -1,40 +1,50 @@
-import path from "path";
-import { getWorkspacesInfo } from "./helper";
+import {
+  getTypeScriptWorkspaces,
+  getWorkspaceByName,
+  getReferencePaths,
+  isIgnorePackage,
+} from "./lib/workspace";
 
-const tsconfig = require(path.resolve(
-  __dirname,
-  "..",
-  "packages",
-  "tsconfig.json"
-));
+describe("projectReferences", () => {
+  describe("packages/tsconfig", () => {
+    it("should includes all packages and examples", () => {
+      const referencePaths = getReferencePaths("packages");
+      const workspaces = getTypeScriptWorkspaces();
 
-const IGNORE_PACKAGES = ["./packages/plugin-packer"];
-
-describe("packages/tsconfig", () => {
-  it("should includes all packages and examples", () => {
-    const referencePaths = tsconfig.references.map((ref: { path: string }) =>
-      path.resolve("packages", ref.path)
-    );
-    const packageInfo = getWorkspacesInfo();
-    const workspaces = Object.values<{ location: string }>(
-      packageInfo
-    ).map(({ location }) => [location, path.resolve(location)]);
-
-    for (const [name, packagesPath] of workspaces) {
-      try {
-        expect(
-          referencePaths.includes(packagesPath) ||
-            IGNORE_PACKAGES.some(
-              (ignorePackagesPath) =>
-                path.resolve(ignorePackagesPath) === packagesPath
-            )
-        ).toBe(true);
-      } catch (e) {
-        console.error(
-          `${name} must be included in the references field in packages/tsconfig.json`
-        );
-        throw e;
+      for (const { packagePath } of workspaces) {
+        try {
+          expect(referencePaths.includes(packagePath)).toBe(true);
+        } catch (e) {
+          console.error(
+            `${name} must be included in the references field in packages/tsconfig.json`
+          );
+          throw e;
+        }
       }
-    }
+    });
+    describe("packages/*/tsconfig", () => {
+      it("should specify all internal dependencies in each Project References setting", async () => {
+        const workspaces = getTypeScriptWorkspaces();
+        for (const { packageName, packagePath, dependencies } of workspaces) {
+          const referencePaths = getReferencePaths(packagePath);
+
+          for (const dependency of dependencies) {
+            if (isIgnorePackage(dependency)) {
+              continue;
+            }
+            if (
+              referencePaths.length === 0 ||
+              !referencePaths.some((referencePath: string) => {
+                return (
+                  referencePath === getWorkspaceByName(dependency).packagePath
+                );
+              })
+            ) {
+              throw new Error(`${packageName} doesn't have ${dependency}`);
+            }
+          }
+        }
+      });
+    });
   });
 });

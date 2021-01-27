@@ -16,11 +16,9 @@
     "initial:release": "lerna publish from-package --conventional-commits",
     "prerelease": "npm-run-all -s build -p lint test",
     "release": "lerna publish --conventional-commits",
-    "pretest": "run-p test:jest test:project-references",
+    "pretest": "jest --rootDir __tests__",
     "start": "yarn build --watch",
     "test": "lerna run test --parallel",
-    "test:jest": "jest --rootDir __tests__",
-    "test:project-references": "workspaces-to-typescript-project-references --check",
     "pretest:ci": "yarn pretest",
     "test:ci": "lerna run test:ci --stream"
   },
