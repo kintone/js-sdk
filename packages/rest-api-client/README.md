@@ -2,6 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Frest-api-client.svg)](https://badge.fury.io/js/%40kintone%2Frest-api-client)
 
+API client for Kintone REST API.
+It supports both browser environment (Kintone customization & plugin) and Node.js environment.
+
 - [Installation](#installation)
 - [Browsers support](#browsers-support)
 - [Usage](#usage)
