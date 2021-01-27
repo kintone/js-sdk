@@ -1,15 +1,12 @@
 import path from "path";
-import { spawnSync } from "child_process";
+
+import { getWorkspacesInfo } from "./helper";
 
 const REQUIRED_NPMSCRIPTS = ["build", "clean", "lint", "test", "test:ci"];
 
-const yarnCommand = process.platform === "win32" ? "yarn.cmd" : "yarn";
-
 describe("npmScripts", () => {
   it("should define all required npm-scripts in all pacakges", () => {
-    const packageInfo = JSON.parse(
-      spawnSync(yarnCommand, ["workspaces", "info"]).stdout.toString()
-    );
+    const packageInfo = getWorkspacesInfo();
     Object.entries<{ location: string }>(packageInfo).forEach(
       ([name, { location }]) => {
         if (location.indexOf("examples/") === 0) {
