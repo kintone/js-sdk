@@ -10,7 +10,9 @@
     "url": "https://cybozu.co.jp"
   },
   "description": "A data loader",
-  "bin": "lib/main.js",
+  "bin": {
+    "kintone-data-loader": "cli.js"
+  },
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "npm-run-all -l -s clean -p build:*",
