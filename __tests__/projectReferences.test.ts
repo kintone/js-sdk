@@ -15,10 +15,9 @@ describe("projectReferences", () => {
         try {
           expect(referencePaths.includes(packagePath)).toBe(true);
         } catch (e) {
-          console.error(
+          throw new Error(
             `${packageName} must be included in the references field in packages/tsconfig.json`
           );
-          throw e;
         }
       }
     });
