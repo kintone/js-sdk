@@ -11,12 +11,12 @@ describe("projectReferences", () => {
       const referencePaths = getReferencePaths("packages");
       const workspaces = getTypeScriptWorkspaces();
 
-      for (const { packagePath } of workspaces) {
+      for (const { packageName, packagePath } of workspaces) {
         try {
           expect(referencePaths.includes(packagePath)).toBe(true);
         } catch (e) {
           console.error(
-            `${name} must be included in the references field in packages/tsconfig.json`
+            `${packageName} must be included in the references field in packages/tsconfig.json`
           );
           throw e;
         }
@@ -40,7 +40,9 @@ describe("projectReferences", () => {
                 );
               })
             ) {
-              throw new Error(`${packageName} doesn't have ${dependency}`);
+              throw new Error(
+                `${packageName} doesn't have ${dependency} in the references field in tsconfig.json`
+              );
             }
           }
         }
