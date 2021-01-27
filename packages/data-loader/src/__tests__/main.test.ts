@@ -5,7 +5,10 @@ import fs from "fs";
 const projectRoot = path.resolve(__dirname, "../..");
 const exec = promisify(childProcess.exec);
 const packageJson = require(path.resolve(projectRoot, "package.json"));
-const mainFilePath = path.resolve(projectRoot, packageJson.bin);
+const mainFilePath = path.resolve(
+  projectRoot,
+  packageJson.bin["kintone-data-loader"]
+);
 
 const checkRejectArg = ({
   arg,
