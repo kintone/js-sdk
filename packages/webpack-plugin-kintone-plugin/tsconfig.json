@@ -9,7 +9,5 @@
       "types"
     ]
   },
-  "references": [
-    { "path": "../plugin-packer"}
-  ]
+  "references": []
 }
