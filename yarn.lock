@@ -2407,10 +2407,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@types/yargs@^15.0.11":
-  version "15.0.11"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-15.0.11.tgz#361d7579ecdac1527687bcebf9946621c12ab78c"
-  integrity sha512-jfcNBxHFYJ4nPIacsi3woz1+kvUO6s1CyeEhtnDHBjHUMNj5UlW2GynmnSgiJJEdNg9yW5C8lfoNRZrHGv5EqA==
+"@types/yargs@^15.0.13":
+  version "15.0.13"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-15.0.13.tgz#34f7fec8b389d7f3c1fd08026a5763e072d3c6dc"
+  integrity sha512-kQ5JNTrbDv3Rp5X2n/iUu37IJBDU2gsZ5R/g1/KHOOEc5IKfUFjXT6DENPGduh08I/pamwtEq4oul7gUqKTQDQ==
   dependencies:
     "@types/yargs-parser" "*"
 
@@ -10665,10 +10665,10 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-qs@^6.9.4:
-  version "6.9.4"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.4.tgz#9090b290d1f91728d3c22e54843ca44aea5ab687"
-  integrity sha512-A1kFqHekCTM7cz0udomYUoYNWjBebHm/5wzU/XqrBRBNWectVH0QIiN+NEcZ0Dte5hvzHwbr8+XQmguPhJ6WdQ==
+qs@^6.9.6:
+  version "6.9.6"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.6.tgz#26ed3c8243a431b2924aca84cc90471f35d5a0ee"
+  integrity sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==
 
 qs@~6.5.2:
   version "6.5.2"
