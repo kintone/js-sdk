@@ -12,7 +12,7 @@ describe("import", () => {
   });
   describe("json", () => {
     it("should not be failed", async () => {
-      apiClient.record.addAllRecords = jest.fn().mockResolvedValue([{}]);
+      apiClient.record.addRecords = jest.fn().mockResolvedValue([{}]);
       const reporter = jest.fn();
       const importRecords = buildImporter({ apiClient, reporter });
       await importRecords({
@@ -24,7 +24,7 @@ describe("import", () => {
     });
     it("should throw error when API response is error", async () => {
       const error = new Error();
-      apiClient.record.addAllRecords = jest.fn().mockRejectedValueOnce(error);
+      apiClient.record.addRecords = jest.fn().mockRejectedValueOnce(error);
       const reporter = jest.fn();
       try {
         const importRecords = buildImporter({ apiClient, reporter });
@@ -39,9 +39,9 @@ describe("import", () => {
       expect(reporter).toHaveBeenCalledWith("FAILED: records[0 - 0]");
       expect.assertions(2);
     });
-    it("should throw error when API response is error when records[2000 - 2999] includes bad data", async () => {
+    it("should throw error when API response is error when records[100 - 2999] includes bad data", async () => {
       const error = new Error();
-      apiClient.record.addAllRecords = jest
+      apiClient.record.addRecords = jest
         .fn()
         .mockImplementationOnce((app, records) => Promise.resolve())
         .mockImplementationOnce((app, records) => Promise.reject(error));
@@ -56,17 +56,17 @@ describe("import", () => {
       } catch (e) {
         expect(e).toBe(error);
       }
-      expect(reporter).toHaveBeenNthCalledWith(1, "SUCCESS: records[0 - 1999]");
+      expect(reporter).toHaveBeenNthCalledWith(1, "SUCCESS: records[0 - 99]");
       expect(reporter).toHaveBeenNthCalledWith(
         2,
-        "FAILED: records[2000 - 2999]"
+        "FAILED: records[100 - 2999]"
       );
       expect.assertions(3);
     });
   });
   describe("csv", () => {
     it("should not be failed", async () => {
-      apiClient.record.addAllRecords = jest.fn().mockResolvedValue([{}]);
+      apiClient.record.addRecords = jest.fn().mockResolvedValue([{}]);
       const reporter = jest.fn();
       const importRecords = buildImporter({ apiClient, reporter });
       await importRecords({
