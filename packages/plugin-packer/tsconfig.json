@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "strict": true,
+    "target": "ES2017",
+    "lib": ["es2015"],
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "typeRoots": []
+  },
+  "indlude": ["ts-src/**/*.ts"],
+  "exclude": ["site/**"]
+}
