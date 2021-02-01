@@ -40,7 +40,8 @@
     "directory": "packages/data-loader"
   },
   "files": [
-    "lib"
+    "lib",
+    "cli.js"
   ],
   "keywords": [
     "kintone"
