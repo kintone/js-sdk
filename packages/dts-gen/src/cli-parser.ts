@@ -114,6 +114,7 @@ export function parse(argv: string[]): ParsedArgs {
         )
         .parse(argv);
 
+    const options = program.opts();
     const {
         host,
         username,
@@ -132,9 +133,9 @@ export function parse(argv: string[]): ParsedArgs {
         typeName,
         namespace,
         output,
-    } = program;
+    } = options;
 
-    const baseUrl = program.baseUrl || host;
+    const baseUrl = options.baseUrl || host;
     if (baseUrl === null) {
         throw new Error(
             "--base-url (KINTONE_BASE_URL) must be specified"
