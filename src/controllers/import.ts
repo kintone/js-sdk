@@ -5,7 +5,7 @@ import { parser } from "../parser";
 import { promises as fs } from "fs";
 import path from "path";
 
-const CHUNK_LENGTH = 2000;
+const CHUNK_LENGTH = 100;
 
 export type Argv = {
   baseUrl: string;
@@ -67,7 +67,7 @@ export const buildImporter = ({
           ? allRecords.length
           : chunkStartIndex + CHUNK_LENGTH;
       try {
-        await apiClient.record.addAllRecords({
+        await apiClient.record.addRecords({
           app,
           records: allRecords.slice(chunkStartIndex, chunkNextIndex),
         });
