@@ -124,6 +124,10 @@ if (!pluginPath) {
   cli.showHelp();
 }
 
+if (domain) {
+  console.warn(getMessage(lang, "Warning_Deprecated_domain"));
+}
+
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 wait(waitingDialogMs)
