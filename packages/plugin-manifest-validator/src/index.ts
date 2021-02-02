@@ -1,7 +1,6 @@
 "use strict";
 
 import Ajv from "ajv";
-import v4metaSchema from "ajv/lib/refs/json-schema-draft-04.json";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
@@ -29,8 +28,6 @@ module.exports = function (
     maxFileSize = options.maxFileSize;
   }
   const ajv = new Ajv({
-    schemaId: "auto", // for draft-04
-    meta: false, // don't load draft-07 meta schema
     allErrors: true,
     unknownFormats: true,
     errorDataPath: "property",
@@ -41,11 +38,6 @@ module.exports = function (
     },
   });
 
-  // Using draft-04 schemas
-  // https://github.com/epoberezkin/ajv/releases/tag/5.0.0
-  ajv.addMetaSchema(v4metaSchema);
-  // @ts-expect-error TODO: capture ajv-validator/ajv issue(https://github.com/ajv-validator/ajv/issues/1253)
-  ajv._opts.defaultMeta = v4metaSchema.id;
   ajv.removeKeyword("propertyNames");
   ajv.removeKeyword("contains");
   ajv.removeKeyword("const");
