@@ -34,19 +34,17 @@
   },
   "scripts": {
     "prebuild": "yarn clean",
-    "build": "yarn compile",
+    "build": "tsc --build",
     "lint": "run-p -l lint:*",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf lib esm umd",
-    "compile": "tsc --build",
     "fix:lint": "yarn lint:eslint --fix",
     "fix:md": "prettier --write README.md",
     "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md",
-    "lint:ts": "tsc --noEmit",
-    "start": "yarn run compile --watch"
+    "start": "yarn build --watch"
   },
   "dependencies": {
     "toml": "^3.0.0"

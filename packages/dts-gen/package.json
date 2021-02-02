@@ -7,7 +7,6 @@
     "prebuild": "yarn clean",
     "build": "tsc --build",
     "postbuild": "bin/npm-build.sh && yarn build:integration",
-    "tsc:check": "tsc --noEmit",
     "clean": "rimraf dist",
     "lint:fix": "eslint --fix src/**/*.ts",
     "lint": "eslint 'src/**/*.ts'",
@@ -15,7 +14,7 @@
     "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
     "help": "node dist/index.js --help",
     "test": "jest",
-    "test:ci": "jest",
+    "test:ci": "jest --runInBand",
     "prettier:check": "prettier --parser typescript --check \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "fmt": "prettier --parser typescript --write \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "build:integration": "webpack --mode development --config webpack.config.js"

@@ -18,7 +18,6 @@
     "build": "tsc --build",
     "postbuild": "yarn pkg",
     "lint": "run-p -l lint:*",
-    "prepublishOnly": "npm run build",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf lib bin",
@@ -28,7 +27,6 @@
     "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md",
-    "lint:ts": "tsc --noEmit",
     "start": "yarn build --watch"
   },
   "repository": {

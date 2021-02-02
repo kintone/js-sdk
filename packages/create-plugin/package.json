@@ -44,7 +44,7 @@
   "scripts": {
     "start": "tsc -w",
     "prebuild": "yarn clean",
-    "build": "tsc",
+    "build": "tsc --build",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts src",
     "unittest": "jest --testRegex=/test/.*-test\\.ts$",

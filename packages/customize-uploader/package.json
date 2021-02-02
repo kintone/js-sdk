@@ -12,13 +12,11 @@
   "scripts": {
     "prebuild": "yarn clean",
     "build": "tsc --build",
-    "lint": "run-p lint:*",
+    "lint": "eslint --ext .ts src",
     "test": "jest --rootDir src",
     "test:ci": "jest --rootDir src --runInBand",
     "clean": "rimraf dist",
-    "start": "tsc -w",
-    "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint --ext .ts src"
+    "start": "tsc -w"
   },
   "files": [
     "bin",
