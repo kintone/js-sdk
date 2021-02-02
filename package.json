@@ -1,7 +1,6 @@
 {
   "name": "@kintone/data-loader",
   "version": "0.1.0",
-  "private": true,
   "publishConfig": {
     "access": "public"
   },
