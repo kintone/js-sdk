@@ -9,7 +9,7 @@ A kintone plugin uploader using [puppeteer](https://github.com/GoogleChrome/pupp
 ```
 % npm install @kintone/plugin-uploader
 % ./node_modules/.bin/kintone-plugin-uploader
---domain ${yourDomain} \
+--base-url ${yourKintoneBaseUrl} \
 --username ${yourLoginName} \
 --password ${yourPassword} \
 ${pluginZipPath}
@@ -20,7 +20,7 @@ or
 ```
 % npm install -g @kintone/plugin-uploader
 % kintone-plugin-uploader \
---domain ${yourDomain} \
+--base-url ${yourKintoneBaseUrl} \
 --username ${yourLoginName} \
 --password ${yourPassword} \
 ${pluginZipPath}
@@ -30,7 +30,7 @@ If you want to upload the plugin automatically when the plugin is updated, you c
 
 ```
 % kintone-plugin-uploader \
---domain ${yourDomain} \
+--base-url ${yourKintoneBaseUrl} \
 --username ${yourLoginName} \
 --password ${yourPassword} \
 --watch \
