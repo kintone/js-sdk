@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.12](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@3.0.11...@kintone/plugin-packer@3.0.12) (2021-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to ^3.5.1 ([#635](https://github.com/kintone/js-sdk/issues/635)) ([85642c7](https://github.com/kintone/js-sdk/commit/85642c7946dbb4269c621882d8c13386b53fcaee))
+* **deps:** update dependency meow to v9 ([#637](https://github.com/kintone/js-sdk/issues/637)) ([09132c6](https://github.com/kintone/js-sdk/commit/09132c6fd16abb1798ca6bc6d569d4365fcb1968))
+
+
+
+
+
 ## [3.0.11](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@3.0.10...@kintone/plugin-packer@3.0.11) (2021-01-26)
 
 **Note:** Version bump only for package @kintone/plugin-packer

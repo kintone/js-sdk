@@ -1,7 +1,7 @@
 {
   "name": "@kintone/plugin-packer",
   "description": "Package your kintone plugin with pure JavaScript",
-  "version": "3.0.11",
+  "version": "3.0.12",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=10"

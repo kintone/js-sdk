@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.8.1...@kintone/rest-api-client@1.8.2) (2021-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency qs to ^6.9.6 ([bf9961e](https://github.com/kintone/js-sdk/commit/bf9961ed7f92882f9e52166beed54cc31d729962))
+
+
+
+
+
 ## [1.8.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.8.0...@kintone/rest-api-client@1.8.1) (2021-01-26)
 
 

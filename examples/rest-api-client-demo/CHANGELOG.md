@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.1.8...@kintone/rest-api-client-demo@1.1.9) (2021-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yargs to v16 ([#638](https://github.com/kintone/js-sdk/issues/638)) ([5663030](https://github.com/kintone/js-sdk/commit/5663030c17b7199251a53e1e3831319d1dd2913c))
+
+
+
+
+
 ## [1.1.8](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.1.7...@kintone/rest-api-client-demo@1.1.8) (2021-01-26)
 
 **Note:** Version bump only for package @kintone/rest-api-client-demo

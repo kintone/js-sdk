@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.1...@kintone/dts-gen@3.1.2) (2021-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to ^6.2.1 ([8e8bf57](https://github.com/kintone/js-sdk/commit/8e8bf5761935d64b4cad6a53e4308e0671280ec0))
+* **deps:** update dependency commander to v7 ([#647](https://github.com/kintone/js-sdk/issues/647)) ([a426aa1](https://github.com/kintone/js-sdk/commit/a426aa1bb4faeb53f0f9d355a58f1164b0ff6cae))
+
+
+
+
+
 ## [3.1.1](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.0...@kintone/dts-gen@3.1.1) (2021-01-26)
 
 **Note:** Version bump only for package @kintone/dts-gen

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.2.1...@kintone/plugin-uploader@4.2.2) (2021-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to v9 ([#637](https://github.com/kintone/js-sdk/issues/637)) ([09132c6](https://github.com/kintone/js-sdk/commit/09132c6fd16abb1798ca6bc6d569d4365fcb1968))
+
+
+
+
+
 ## [4.2.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.2.0...@kintone/plugin-uploader@4.2.1) (2021-01-19)
 
 
