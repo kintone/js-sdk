@@ -36,7 +36,8 @@ import \
 Options:
   --base-url             Kintone Base Url           [default: process.env.KINTONE_BASE_URL]
   --username, -u         Kintone Username           [default: process.env.KINTONE_USERNAME]
-  --password, -p         Kintone Password           [default: process.env.KINTONE_USERNAME]
+  --password, -p         Kintone Password           [default: process.env.KINTONE_PASSWORD]
+  --api-token            App's API token
   --basic-auth-username  Kintone Basic Auth Username
   --basic-auth-password  Kintone Basic Auth Password
   --app                  The ID of the app
@@ -66,12 +67,13 @@ export \
 Options:
   --base-url             Kintone Base Url           [default: process.env.KINTONE_BASE_URL]
   --username, -u         Kintone Username           [default: process.env.KINTONE_USERNAME]
-  --password, -p         Kintone Password           [default: process.env.KINTONE_USERNAME]
+  --password, -p         Kintone Password           [default: process.env.KINTONE_PASSWORD]
+  --api-token            App's API token
   --basic-auth-username  Kintone Basic Auth Username
   --basic-auth-password  Kintone Basic Auth Password
   --app                  The ID of the app
   --guest-space-id       The ID of guest space
-  --attachment-dir       Attachment file directory
+  --attachment-dir       Attachment file directory  [string]
   --format               Output format              [default: "json"]
   --query, -q            The query string
   --pfx-file-path        The path to client certificate file
