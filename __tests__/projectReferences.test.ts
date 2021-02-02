@@ -1,3 +1,4 @@
+import assert from "assert";
 import {
   getTypeScriptWorkspaces,
   getWorkspaceByName,
@@ -12,13 +13,10 @@ describe("projectReferences", () => {
       const workspaces = getTypeScriptWorkspaces();
 
       for (const { packageName, packagePath } of workspaces) {
-        try {
-          expect(referencePaths.includes(packagePath)).toBe(true);
-        } catch (e) {
-          throw new Error(
-            `${packageName} must be included in the references field in packages/tsconfig.json`
-          );
-        }
+        assert.ok(
+          referencePaths.includes(packagePath),
+          `${packageName} must be included in the references field in packages/tsconfig.json`
+        );
       }
     });
     describe("packages/*/tsconfig", () => {
@@ -26,23 +24,17 @@ describe("projectReferences", () => {
         const workspaces = getTypeScriptWorkspaces();
         for (const { packageName, packagePath, dependencies } of workspaces) {
           const referencePaths = getReferencePaths(packagePath);
-
           for (const dependency of dependencies) {
             if (isIgnorePackage(dependency)) {
               continue;
             }
-            if (
-              referencePaths.length === 0 ||
-              !referencePaths.some((referencePath: string) => {
-                return (
+            assert.ok(
+              referencePaths.some(
+                (referencePath: string) =>
                   referencePath === getWorkspaceByName(dependency).packagePath
-                );
-              })
-            ) {
-              throw new Error(
-                `${packageName} doesn't have ${dependency} in the references field in tsconfig.json`
-              );
-            }
+              ),
+              `${packageName} doesn't have ${dependency} in the references field in tsconfig.json`
+            );
           }
         }
       });

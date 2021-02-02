@@ -1,4 +1,5 @@
 import path from "path";
+import assert from "assert";
 
 import { getWorkspaces } from "./lib/workspace";
 
@@ -12,14 +13,11 @@ describe("npmScripts", () => {
     for (const { packageName, packagePath } of workspaces) {
       const { scripts } = require(path.resolve(packagePath, "package.json"));
       for (const requiredScript of REQUIRED_NPMSCRIPTS) {
-        try {
-          expect(typeof scripts[requiredScript]).toBe("string");
-        } catch (e) {
-          console.error(
-            `${packageName} doesn't have "${requiredScript}" as a npm-scripts.`
-          );
-          throw e;
-        }
+        assert.strictEqual(
+          typeof scripts[requiredScript],
+          "string",
+          `${packageName} doesn't have "${requiredScript}" as a npm-scripts.`
+        );
       }
     }
   });
