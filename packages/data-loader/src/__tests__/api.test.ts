@@ -29,7 +29,7 @@ describe("api", () => {
   });
 
   it("should pass guestSpaceId to the apiClient correctly", () => {
-    const GUEST_SPACE_ID = 1;
+    const GUEST_SPACE_ID = "1";
 
     const apiClient = buildRestAPIClient({
       baseUrl: BASE_URL,
