@@ -3,7 +3,7 @@ import assert from "assert";
 
 import { getWorkspaces } from "./lib/workspace";
 
-const REQUIRED_NPMSCRIPTS = ["build", "clean", "lint", "test", "test:ci"];
+const REQUIRED_NPMSCRIPTS = ["build", "lint", "test", "test:ci"];
 
 describe("npmScripts", () => {
   it("should define all required npm-scripts in all pacakges", () => {
