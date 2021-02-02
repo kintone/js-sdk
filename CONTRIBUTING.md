@@ -66,8 +66,8 @@ When you create a new package, you must define the following npm-scripts, otherw
 
 ### Configure TypeScript Project References
 
-You have to add the new package into the `references` field in `packages/tsconfig.json`, and dependencies in `kintone/js-sdk` into the `references` field in the package's `tsconfig.json`.
-It also requires to extend `packages/tsconfig-base.json`.
+You have to add the new package into the `references` field in `packages/tsconfig.json`, and its dependencies in `kintone/js-sdk` have to be added into the `references` field in the package's `tsconfig.json`.
+The `tsconfig.json` has to extend `packages/tsconfig-base.json`.
 
 ## Import a package into `kintone/js-sdk`
 
