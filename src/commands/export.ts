@@ -1,4 +1,7 @@
-import { run, Argv } from "../controllers/export";
+import { run, Options } from "../controllers/export";
+import { RestAPIClientOptions } from "../api";
+
+type Argv = RestAPIClientOptions & Options;
 
 export const command = "export";
 
@@ -35,16 +38,13 @@ export const builder = (yargs: any) =>
     .option("app", {
       describe: "The ID of the app",
     })
-    .option("id", {
-      describe: "The ID of the record",
-    })
     .option("guest-space-id", {
       describe: "The ID of guest space",
       default: process.env.KINTONE_GUEST_SPACE_ID,
     })
     .option("attachment-dir", {
       describe: "Attachment file directory",
-      default: "attachments",
+      type: "string",
     })
     .option("format", {
       describe: "Output format",

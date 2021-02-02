@@ -1,33 +1,20 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID } from "@kintone/rest-api-client/lib/client/types";
-import { buildRestAPIClient } from "../api";
+import { buildRestAPIClient, RestAPIClientOptions } from "../api";
 import { parser } from "../parser";
 import { promises as fs } from "fs";
 import path from "path";
 
 const CHUNK_LENGTH = 100;
 
-export type Argv = {
-  baseUrl: string;
-  username: string;
-  password: string;
-  pfxFilePath?: string;
-  pfxFilePassword?: string;
-  app: string | number;
-  id: string | number;
-  attachmentDir: string;
-  filePath: string;
-};
-
-type Options = {
+export type Options = {
   app: AppID;
-  attachmentDir: string;
   filePath: string;
 };
 
 type Reporter = (text: string) => void;
 
-export const run = async (argv: Argv) => {
+export const run = async (argv: RestAPIClientOptions & Options) => {
   const apiClient = buildRestAPIClient(argv);
   const importRecords = buildImporter({ apiClient, reporter: console.log });
   await importRecords(argv).catch(() => {

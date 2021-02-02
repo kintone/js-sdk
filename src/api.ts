@@ -1,44 +1,56 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
-const buildAuthParam = (argv: any) => {
+export type RestAPIClientOptions = {
+  baseUrl: string;
+  username?: string;
+  password?: string;
+  basicAuthUsername?: string;
+  basicAuthPassword?: string;
+  apiToken?: string | string[];
+  guestSpaceId?: string;
+  pfxFilePath?: string;
+  pfxFilePassword?: string;
+};
+
+const buildAuthParam = (options: RestAPIClientOptions) => {
   const passwordAuthParam = {
-    username: argv.username,
-    password: argv.password,
+    username: options.username,
+    password: options.password,
   };
 
-  if (argv.username) return passwordAuthParam;
-  if (argv.apiToken) return { apiToken: argv.apiToken };
+  if (options.username) return passwordAuthParam;
+  if (options.apiToken) return { apiToken: options.apiToken };
   return passwordAuthParam;
 };
 
-const buildBasicAuthParam = (argv: any) => {
-  return argv.basicAuthUsername
+const buildBasicAuthParam = (options: RestAPIClientOptions) => {
+  return options.basicAuthUsername && options.basicAuthPassword
     ? {
         basicAuth: {
-          username: argv.basicAuthUsername,
-          password: argv.basicAuthPassword,
+          username: options.basicAuthUsername,
+          password: options.basicAuthPassword,
         },
       }
     : {};
 };
 
-const buildClientCertAuth = (argv: any) => {
-  return argv.pfxFilePath && argv.pfxFilePassword
+const buildClientCertAuth = (options: RestAPIClientOptions) => {
+  return options.pfxFilePath && options.pfxFilePassword
     ? {
         clientCertAuth: {
-          pfxFilePath: argv.pfxFilePath,
-          password: argv.pfxFilePassword,
+          pfxFilePath: options.pfxFilePath,
+          password: options.pfxFilePassword,
         },
       }
     : {};
 };
 
-export const buildRestAPIClient = (argv: any) => {
+export const buildRestAPIClient = (options: RestAPIClientOptions) => {
   return new KintoneRestAPIClient({
-    baseUrl: argv.baseUrl,
-    auth: buildAuthParam(argv),
-    ...buildBasicAuthParam(argv),
-    ...buildClientCertAuth(argv),
-    ...(argv.guestSpaceId ? { guestSpaceId: argv.guestSpaceId } : {}),
+    baseUrl: options.baseUrl,
+    auth: buildAuthParam(options),
+    ...buildBasicAuthParam(options),
+    ...buildClientCertAuth(options),
+    ...(options.guestSpaceId ? { guestSpaceId: options.guestSpaceId } : {}),
   });
 };

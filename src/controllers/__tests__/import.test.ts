@@ -17,7 +17,6 @@ describe("import", () => {
       const importRecords = buildImporter({ apiClient, reporter });
       await importRecords({
         app: "1",
-        attachmentDir: "",
         filePath: path.resolve(__dirname, "./fixtures/test.json"),
       });
       expect(reporter).toHaveBeenCalledWith("SUCCESS: records[0 - 0]");
@@ -30,7 +29,6 @@ describe("import", () => {
         const importRecords = buildImporter({ apiClient, reporter });
         await importRecords({
           app: "1",
-          attachmentDir: "",
           filePath: path.resolve(__dirname, "./fixtures/test.json"),
         });
       } catch (e) {
@@ -50,7 +48,6 @@ describe("import", () => {
         const importRecords = buildImporter({ apiClient, reporter });
         await importRecords({
           app: "1",
-          attachmentDir: "",
           filePath: path.resolve(__dirname, "./fixtures/test_3000.json"),
         });
       } catch (e) {
@@ -71,7 +68,6 @@ describe("import", () => {
       const importRecords = buildImporter({ apiClient, reporter });
       await importRecords({
         app: "1",
-        attachmentDir: "",
         filePath: path.resolve(__dirname, "./fixtures/test.csv"),
       });
       expect(reporter).toHaveBeenCalledWith("SUCCESS: records[0 - 0]");
