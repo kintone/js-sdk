@@ -1,0 +1,68 @@
+{
+  "name": "@kintone/data-loader",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "description": "A data loader",
+  "bin": {
+    "kintone-data-loader": "cli.js"
+  },
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "npm-run-all -l -s clean -p build:*",
+    "lint": "run-p -l lint:*",
+    "prepublishOnly": "npm run build",
+    "prerelease": "npm-run-all -p lint test -s",
+    "test": "jest",
+    "test:ci": "jest --runInBand",
+    "build:compile": "run-p compile",
+    "clean": "rimraf lib bin",
+    "compile": "tsc",
+    "pkg": "npm run build && pkg . --out-path=bin",
+    "fix:lint": "npm run lint:eslint -- --fix",
+    "fix:md": "prettier --write README.md",
+    "fix": "run-p fix:*",
+    "lint:eslint": "eslint 'src/**/*.ts'",
+    "lint:md": "prettier --check README.md",
+    "lint:ts": "tsc --noEmit",
+    "start": "npm run compile -- --watch",
+    "run-ts": "ts-node src/main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/data-loader"
+  },
+  "files": [
+    "lib",
+    "cli.js"
+  ],
+  "keywords": [
+    "kintone"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/data-loader#readme",
+  "engines": {
+    "node": "^10.17.0 || >=11.14"
+  },
+  "devDependencies": {
+    "@types/yargs": "^15.0.5",
+    "cross-env": "^7.0.2",
+    "pkg": "^4.4.9",
+    "ts-node": "^9.0.0"
+  },
+  "dependencies": {
+    "@kintone/rest-api-client": "^1.5.1",
+    "csv-parse": "^4.12.0",
+    "p-queue": "^6.6.1",
+    "yargs": "^15.4.1"
+  }
+}
