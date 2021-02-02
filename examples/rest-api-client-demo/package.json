@@ -34,15 +34,15 @@
   "dependencies": {
     "@kintone/profile-loader": "^1.1.1",
     "@kintone/rest-api-client": "^1.8.1",
-    "yargs": "^15.4.1"
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
     "@kintone/customize-uploader": "^3.1.2",
-    "@types/yargs": "^15.0.13",
+    "@types/yargs": "^16.0.0",
     "ts-loader": "^8.0.14",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
-    "webpack": "^5.16.0",
+    "webpack": "^5.19.0",
     "webpack-cli": "4.4.0"
   }
 }

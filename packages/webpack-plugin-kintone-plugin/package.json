@@ -41,13 +41,13 @@
   "devDependencies": {
     "@types/adm-zip": "^0.4.33",
     "@types/chokidar": "^1.7.5",
-    "@types/lodash": "^4.14.165",
+    "@types/lodash": "^4.14.168",
     "@types/mkdirp": "^1.0.1",
     "@types/rimraf": "^3.0.0",
-    "adm-zip": "^0.5.1",
+    "adm-zip": "^0.5.2",
     "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
-    "webpack": "^5.16.0",
+    "webpack": "^5.19.0",
     "webpack-cli": "4.4.0"
   },
   "peerDependencies": {
@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@kintone/plugin-packer": "^3.0.11",
-    "chokidar": "^3.4.3",
+    "chokidar": "^3.5.1",
     "lodash": "^4.17.20",
     "mkdirp": "^1.0.4"
   }

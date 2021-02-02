@@ -30,15 +30,15 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.0",
-    "commander": "^6.2.0",
+    "commander": "^7.0.0",
     "form-data": "^3.0.0",
     "lodash": "^4.17.20",
     "prettier": "^2.2.1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.165",
+    "@types/lodash": "^4.14.168",
     "ts-loader": "^8.0.14",
-    "webpack": "^5.16.0",
+    "webpack": "^5.19.0",
     "webpack-cli": "^4.4.0"
   },
   "bin": {
