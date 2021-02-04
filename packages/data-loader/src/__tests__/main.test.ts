@@ -23,10 +23,8 @@ const checkRejectArg = ({
 };
 
 describe("main", () => {
-  beforeEach(() => {
-    if (!fs.existsSync(mainFilePath)) {
-      execSync("npm run build");
-    }
+  beforeAll(() => {
+    execSync("npm run build");
   });
   it("should throw error when no commands are passed", () => {
     return checkRejectArg({
