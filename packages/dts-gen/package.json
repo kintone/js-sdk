@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168",
-    "ts-loader": "^8.0.14",
+    "ts-loader": "^8.0.15",
     "webpack": "^5.20.2",
     "webpack-cli": "^4.4.0"
   },
