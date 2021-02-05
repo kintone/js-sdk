@@ -11,6 +11,7 @@
     "manifest-schema.json",
     "dist"
   ],
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "start": "tsc -w",
     "build": "yarn clean && tsc",
