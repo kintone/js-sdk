@@ -25,7 +25,12 @@ This repository is a monorepo using Lerna and Yarn Workspaces.
 
 ### Merge
 
-After you have approved a PR, please merge the PR using **Squash and merge** with [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
+After you have approved a PR, please merge the PR using **Squash and merge** with [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format. The commit message should include the target package name as the scope.
+
+```sh
+# rest-api-client is the scope of this commit
+feat(rest-api-client): add record.getRecord()
+```
 
 ### Release
 
