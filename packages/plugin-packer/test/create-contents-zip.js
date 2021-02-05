@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const { readZipContentsNames } = require("./helper/zip");
 
-const createContentsZip = require("../src/create-contents-zip");
+const { createContentsZip } = require("../dist/create-contents-zip");
 
 const fixturesDir = path.join(__dirname, "fixtures");
 const pluginDir = path.join(fixturesDir, "sample-plugin", "plugin-dir");

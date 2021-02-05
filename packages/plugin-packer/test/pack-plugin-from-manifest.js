@@ -5,9 +5,9 @@ const fs = require("fs");
 
 const { readZipContentsNames } = require("./helper/zip");
 
-const packer = require("../src/");
-const packPluginFromManifest = require("../src/pack-plugin-from-manifest");
-const createContentsZip = require("../src/create-contents-zip");
+const packer = require("../dist/").default;
+const { packPluginFromManifest } = require("../dist/pack-plugin-from-manifest");
+const { createContentsZip } = require("../dist/create-contents-zip");
 
 const fixturesDir = path.join(__dirname, "fixtures");
 const ppkFilePath = path.join(fixturesDir, "private.ppk");

@@ -1,6 +1,6 @@
 "use strict";
 
-const hex2a = require("../src/hex2a");
+const { hex2a } = require("../dist/hex2a");
 
 describe("hex2a", () => {
   it("empty string", () => {
