@@ -6,13 +6,13 @@
   "engines": {
     "node": ">=10"
   },
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "bin": {
     "kintone-plugin-packer": "bin/cli.js"
   },
   "files": [
     "bin",
-    "src",
+    "dist",
     "from-manifest.js"
   ],
   "scripts": {
