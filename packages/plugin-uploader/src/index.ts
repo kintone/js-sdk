@@ -1,6 +1,8 @@
 import chalk from "chalk";
 import fs from "fs";
-import puppeteer, { Browser, Page } from "puppeteer";
+import puppeteer from "puppeteer";
+import { Browser } from "puppeteer/lib/cjs/puppeteer/common/Browser";
+import { Page } from "puppeteer/lib/cjs/puppeteer/common/Page";
 
 import { Lang } from "./lang";
 import { getBoundMessage } from "./messages";
