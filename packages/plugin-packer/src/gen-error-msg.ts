@@ -1,8 +1,6 @@
 import type Ajv from "ajv";
 
-export function generateErrorMessages(
-  errors: Array<Ajv.ErrorObject>
-): Array<string> {
+export function generateErrorMessages(errors: Ajv.ErrorObject[]): string[] {
   return errors.map((e) => {
     if (e.keyword === "enum") {
       return `"${e.dataPath}" ${

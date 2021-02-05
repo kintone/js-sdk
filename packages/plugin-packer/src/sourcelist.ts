@@ -4,7 +4,7 @@
 export function sourceList(
   // TODO: Define and use menifest type
   manifest: any
-): Array<string> {
+): string[] {
   const sourceTypes = [
     ["desktop", "js"],
     ["desktop", "css"],

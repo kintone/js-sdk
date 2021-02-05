@@ -24,8 +24,10 @@ describe("cli", () => {
   const consoleLog = console.log;
   const consoleError = console.error;
   beforeEach(() => {
+    /* eslint-disable @typescript-eslint/no-empty-function -- This is mock functions */
     console.log = () => {};
     console.error = () => {};
+    /* eslint-enable @typescript-eslint/no-empty-function */
   });
   afterEach(() => {
     console.log = consoleLog;
