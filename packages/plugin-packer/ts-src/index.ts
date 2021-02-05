@@ -8,7 +8,7 @@ import { validateContentsZip } from "./zip";
 
 const debug = _debug("packer");
 
-export default function packer(
+export = function packer(
   contentsZip: Buffer,
   privateKey_?: string
 ): Promise<{
@@ -37,7 +37,7 @@ export default function packer(
       privateKey,
       id,
     })) as any;
-}
+};
 
 /**
  * Create plugin.zip

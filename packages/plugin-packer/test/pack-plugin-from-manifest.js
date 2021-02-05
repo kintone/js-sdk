@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const { readZipContentsNames } = require("./helper/zip");
 
-const packer = require("../dist/").default;
+const packer = require("../dist/");
 const { packPluginFromManifest } = require("../dist/pack-plugin-from-manifest");
 const { createContentsZip } = require("../dist/create-contents-zip");
 

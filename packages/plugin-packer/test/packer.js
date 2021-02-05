@@ -8,7 +8,7 @@ const yauzl = require("yauzl");
 
 const { readZipContentsNames } = require("./helper/zip");
 
-const packer = require("../dist/").default;
+const packer = require("../dist/");
 
 const privateKeyPath = path.join(__dirname, "fixtures", "private.ppk");
 const contentsZipPath = path.join(__dirname, "fixtures", "contents.zip");

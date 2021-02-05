@@ -9,8 +9,8 @@ const glob = require("glob");
 
 const { readZipContentsNames } = require("./helper/zip");
 
-const cli = require("../dist/cli").default;
-const console = require("../dist/console").default;
+const cli = require("../dist/cli");
+const console = require("../dist/console");
 
 const fixturesDir = path.join(__dirname, "fixtures");
 const sampleDir = path.join(fixturesDir, "sample-plugin");

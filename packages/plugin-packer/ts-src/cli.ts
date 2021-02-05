@@ -14,7 +14,7 @@ import { createContentsZip } from "./create-contents-zip";
 const debug = _debug("cli");
 const writeFile = promisify(fs.writeFile);
 
-export default function cli(pluginDir: string, options_?: any) {
+export = function cli(pluginDir: string, options_?: any) {
   const options = options_ || {};
   const packerLocal = options.packerMock_ ? options.packerMock_ : packer;
 
@@ -100,7 +100,7 @@ export default function cli(pluginDir: string, options_?: any) {
       console.error("Failed:", error.message);
       return Promise.reject(error);
     });
-}
+};
 
 function throwIfInvalidManifest(manifest: any, pluginDir: string) {
   const result = validate(manifest, {
