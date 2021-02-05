@@ -1,4 +1,4 @@
 module.exports = {
-  testRegex: "(?<!site)/test/[^\\/]*\\.js$",
+  testRegex: "(?<!site)/test/[^\\/]*\\.spec.ts$",
   testEnvironment: "node",
 };
