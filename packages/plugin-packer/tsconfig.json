@@ -8,6 +8,5 @@
     "esModuleInterop": true,
     "types": ["node", "jest"],
   },
-  "indlude": ["src/**/*.ts"],
-  "exclude": ["site/**"]
+  "exclude": ["site/**", "test/**"]
 }
