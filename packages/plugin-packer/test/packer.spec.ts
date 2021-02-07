@@ -1,14 +1,14 @@
 "use strict";
 
-const crypto = require("crypto");
-const path = require("path");
-const fs = require("fs");
-const RSA = require("node-rsa");
-const yauzl = require("yauzl");
+import crypto from "crypto";
+import path from "path";
+import fs from "fs";
+import RSA from "node-rsa";
+import yauzl from "yauzl";
 
-const { readZipContentsNames } = require("./helper/zip");
+import { readZipContentsNames } from "./helper/zip";
 
-const packer = require("../dist/");
+import packer from "../src";
 
 const privateKeyPath = path.join(__dirname, "fixtures", "private.ppk");
 const contentsZipPath = path.join(__dirname, "fixtures", "contents.zip");
@@ -104,7 +104,7 @@ function streamToBuffer(stream) {
   });
 }
 
-function readZipContents(zipEntry) {
+function readZipContents(zipEntry): Promise<Map<any, Buffer>> {
   const zipContentsMap = new Map();
   const streamToBufferPromises = [];
   return new Promise((resolve, reject) => {
@@ -124,7 +124,7 @@ function readZipContents(zipEntry) {
   });
 }
 
-function verifyPlugin(plugin) {
+function verifyPlugin(plugin): Promise<void> {
   return new Promise((resolve, reject) => {
     yauzl.fromBuffer(plugin, (err, zipEntry) => {
       if (err) reject(err);

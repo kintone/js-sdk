@@ -1,6 +1,6 @@
 "use strict";
 
-const { sourceList } = require("../dist/sourcelist");
+import { sourceList } from "../dist/sourcelist";
 
 describe("sourcelist", () => {
   let manifest;

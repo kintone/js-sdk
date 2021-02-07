@@ -1,13 +1,13 @@
 "use strict";
 
-const path = require("path");
-const fs = require("fs");
+import path from "path";
+import fs from "fs";
 
-const { readZipContentsNames } = require("./helper/zip");
+import { readZipContentsNames } from "./helper/zip";
 
-const packer = require("../dist/");
-const { packPluginFromManifest } = require("../dist/pack-plugin-from-manifest");
-const { createContentsZip } = require("../dist/create-contents-zip");
+import packer from "../src";
+import { packPluginFromManifest } from "../dist/pack-plugin-from-manifest";
+import { createContentsZip } from "../dist/create-contents-zip";
 
 const fixturesDir = path.join(__dirname, "fixtures");
 const ppkFilePath = path.join(fixturesDir, "private.ppk");

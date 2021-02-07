@@ -1,16 +1,15 @@
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
-const denodeify = require("denodeify");
+import fs from "fs";
+import path from "path";
+import { promisify } from "util";
+import _rimraf from "rimraf";
+import glob from "glob";
+import { readZipContentsNames } from "./helper/zip";
+import cli from "../src/cli";
+import console from "../src/console";
 
-const rimraf = denodeify(require("rimraf"));
-const glob = require("glob");
-
-const { readZipContentsNames } = require("./helper/zip");
-
-const cli = require("../dist/cli");
-const console = require("../dist/console");
+const rimraf = promisify(_rimraf);
 
 const fixturesDir = path.join(__dirname, "fixtures");
 const sampleDir = path.join(fixturesDir, "sample-plugin");
