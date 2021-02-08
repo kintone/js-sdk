@@ -68,7 +68,6 @@ Options:
   --base-url             Kintone Base Url            [default: process.env.KINTONE_BASE_URL]
   --username, -u         Kintone Username            [default: process.env.KINTONE_USERNAME]
   --password, -p         Kintone Password            [default: process.env.KINTONE_PASSWORD]
-  --api-token            App's API token
   --api-token            App's API token             [default: process.env.KINTONE_API_TOKEN]
   --basic-auth-username  Kintone Basic Auth Username [default: process.env.KINTONE_BASIC_AUTH_USERNAME]
   --basic-auth-password  Kintone Basic Auth Password [default: process.env.KINTONE_BASIC_AUTH_PASSWORD]
