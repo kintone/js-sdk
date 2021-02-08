@@ -4,7 +4,7 @@
     "strict": true,
     "target": "ES2017",
     "lib": ["es2015"],
-    "outDir": "dist",
+    "outDir": "lib",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "types": ["node", "jest"],

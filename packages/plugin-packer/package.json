@@ -6,14 +6,14 @@
   "engines": {
     "node": ">=10"
   },
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "bin": {
     "kintone-plugin-packer": "bin/cli.js"
   },
-  "types": "dist/index.d.ts",
+  "types": "lib/index.d.ts",
   "files": [
     "bin",
-    "dist",
+    "lib",
     "from-manifest.js"
   ],
   "scripts": {
@@ -31,11 +31,13 @@
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
     "site:test": "jest --config site/jest.config.js",
-    "build:ts": "rm -rf ./dist && tsc"
+    "build:ts": "rm -rf ./lib && tsc",
+    "build:browser": "rm -rf ./esm && rollup -c"
   },
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^3.0.12",
     "chokidar": "^3.5.1",
+    "core-js": "^3.8.3",
     "debug": "^4.3.1",
     "denodeify": "^1.2.1",
     "meow": "^9.0.0",
@@ -46,6 +48,10 @@
     "yazl": "^2.5.1"
   },
   "devDependencies": {
+    "@rollup/plugin-babel": "^5.2.3",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.1.1",
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.20",
     "@types/stream-buffers": "^3.0.3",
@@ -72,6 +78,8 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "rimraf": "^3.0.2",
+    "rollup": "^2.38.5",
+    "rollup-plugin-polyfill-node": "^0.5.0",
     "setimmediate": "^1.0.5",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.3",

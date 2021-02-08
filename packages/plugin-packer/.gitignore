@@ -5,4 +5,5 @@ test/fixtures/sample-plugin/*.ppk
 test/.output
 docs/dist/*
 !docs/dist/.gitkeep
-/dist
+/lib
+/esm
