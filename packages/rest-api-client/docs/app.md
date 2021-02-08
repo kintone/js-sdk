@@ -26,6 +26,7 @@
 - [updateAppSettings](#updateAppSettings)
 - [getProcessManagement](#getProcessManagement)
 - [updateProcessManagement](#updateProcessManagement)
+- [updatePerRecordNotifications](#updatePerRecordNotifications)
 
 ## Overview
 
@@ -1004,3 +1005,31 @@ Updates the process management settings of an app.
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/115005066028
+
+### updatePerRecordNotifications
+
+Updates the [Per Record Notification settings](https://get.kintone.help/k/en/user/app_settings/notification/record_condition.html) of the App.
+
+#### Parameters
+
+| Name                                  |       Type        |  Required   | Description                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------------------------- | :---------------: | :---------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| notifications                         |       Array       |             | An array of objects containing data of the Per Record Notification settings.<br>Order the object in descending order of priority.<br>If the array is empty, all of the Per Record Notification settings will be deleted.<br>If ignored, this setting will not be changed.                                                                                                                                                        |
+| notifications[].filterCond            |      String       | Conditional | The record's filter condition in query string format. For more information, refer to the [Sample Requests (Query String)](https://developer.kintone.io/hc/en-us/articles/360019245194#requests_query) section.<br>Required when specifying the `notifications` parameter.                                                                                                                                                        |
+| notifications[].title                 |      String       |             | The notification subject saved under "Summary".<br>If ignored, the notification subject will be an empty string.                                                                                                                                                                                                                                                                                                                 |
+| notifications[].targets               |       Array       | Conditional | An array of objects containing the recipients of the Per Record Notification.<br>If the array is empty, the Per Record Notification will not have a recipient.<br>Required when specifying the `notifications` parameter.                                                                                                                                                                                                        |
+| notifications[].targets[].entity      |      Object       | Conditional | An object containing entity details per recipient of the Per Record Notification.<br>Required when specifying the `notifications` parameter.                                                                                                                                                                                                                                                                                     |
+| notifications[].targets[].entity.type |      String       | Conditional | The type of the entity the Per Record Notification settings are configured to.<ul><li>`USER` : User</li><li>`GROUP` : Group</li><li>`ORGANIZATION` : Department</li><li>`FIELD_ENTITY` : Created By, Updated By, User Selection, Group Selection, and Department Selection Fields</li></ul>Required when specifying the `entity` parameter.                                                                                      |
+| notifications[].targets[].entity.code |      String       | Conditional | The code of the entity the Per Record Notification settings are configured to.<br>Specify the field code if the `notifications[].targets[].entity.type` parameter is specified as `FIELD_ENTITY`.<br>For guest users, add "guest/" before the login name.<br><br>Required when specifying the `entity` parameter.                                                                                                                |
+| notifications[].targets[].includeSubs |      Boolean      |             | The "Include affiliated departments" setting of the Department. This parameter is available if `notifications[].targets[].entity.type` parameter is specified to `ORGANIZATION` or `FIELD_ENTITY`.<ul><li>`true` : Affiliated departments do inherit the Per Record Notification settings</li><li>`false` : Affiliated departments do not inherit the Per Record Notification settings</li></ul>If ignored, this value is false. |
+| revision                              | Integer or String |             | Specify the revision number of the settings that will be deployed.<br>The request will fail if the revision number is not the latest revision.<br>The revision will not be checked if this parameter is ignored or `-1` is specified.                                                                                                                                                                                            |
+
+#### Returns
+
+| Name     |  Type  | Description                              |
+| -------- | :----: | ---------------------------------------- |
+| revision | String | The revision number of the app settings. |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/900004909963
