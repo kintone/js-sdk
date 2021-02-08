@@ -17,6 +17,7 @@ This repository is a monorepo for Kintone development tools!
 | [@kintone/webpack-plugin-kintone-plugin](packages/webpack-plugin-kintone-plugin) | A webpack plugin to create a plugin zip of Kintone | [![npm version](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin) |
 | [@kintone/plugin-uploader](packages/plugin-uploader) | A kintone plugin uploader using puppeteer | [![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-uploader.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-uploader) |
 | [@kintone/dts-gen](packages/dts-gen) | A tool for generating type definitions for your Kintone apps | [![npm version](https://badge.fury.io/js/%40kintone%2Fdts-gen.svg)](https://badge.fury.io/js/%40kintone%2Fdts-gen) |
+| [@kintone/data-loader](packages/data-loader) | A kintone record importer and exporter. | [![npm version](https://badge.fury.io/js/%40kintone%2Fdata-loader.svg)](https://badge.fury.io/js/%40kintone%2Fdata-loader) |
 
 ## Contribution Guide
 
