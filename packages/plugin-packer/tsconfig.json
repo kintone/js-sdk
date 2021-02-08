@@ -8,6 +8,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "types": ["node", "jest"],
+    "declaration": true
   },
   "exclude": ["site/**", "test/**"]
 }

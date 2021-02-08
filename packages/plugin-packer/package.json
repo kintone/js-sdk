@@ -10,6 +10,7 @@
   "bin": {
     "kintone-plugin-packer": "bin/cli.js"
   },
+  "types": "dist/index.d.ts",
   "files": [
     "bin",
     "dist",
