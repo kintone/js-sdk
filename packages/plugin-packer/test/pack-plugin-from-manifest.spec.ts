@@ -1,10 +1,6 @@
-"use strict";
-
 import path from "path";
 import fs from "fs";
-
 import { readZipContentsNames } from "./helper/zip";
-
 import packer from "../src";
 import { packPluginFromManifest } from "../dist/pack-plugin-from-manifest";
 import { createContentsZip } from "../dist/create-contents-zip";

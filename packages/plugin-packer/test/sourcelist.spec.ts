@@ -1,5 +1,3 @@
-"use strict";
-
 import { sourceList } from "../dist/sourcelist";
 
 describe("sourcelist", () => {
