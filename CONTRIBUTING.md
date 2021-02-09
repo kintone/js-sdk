@@ -63,7 +63,7 @@ When you create a new package, you must define the following npm-scripts, otherw
 ### `build`
 
 You have to define `build` script to build source files.
-In most cases, the script would be `tsc --build`.
+In most cases, the script would be `tsc --build --force`.
 
 Actually, the script isn't run when releasing new versions of packages, so it's not necessary.
 But it might be helpful when you want to build only specific packages rather than all pacakges, I'm not sure there is any case it is necessary though.
