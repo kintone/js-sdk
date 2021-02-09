@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@3.0.12...@kintone/plugin-manifest-validator@4.0.0) (2021-02-09)
+
+
+### Features
+
+* **plugin-manifest-validator:** bump the JSON Schema version from draft4 to draft7 ([#652](https://github.com/kintone/js-sdk/issues/652)) ([1545f94](https://github.com/kintone/js-sdk/commit/1545f94d76dc8f7b5b863748d5f78005091bed01))
+* **plugin-manifest-validator:** Generate declaration file for TS interface ([#670](https://github.com/kintone/js-sdk/issues/670)) ([2b2ce2a](https://github.com/kintone/js-sdk/commit/2b2ce2acf0c5a4eccd2c15c12595e5cbcf064bad))
+
+
+### BREAKING CHANGES
+
+* **plugin-manifest-validator:** bump the JSON Schema version from draft4 to draft7
+
+
+
+
+
 ## [3.0.12](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@3.0.11...@kintone/plugin-manifest-validator@3.0.12) (2021-01-26)
 
 **Note:** Version bump only for package @kintone/plugin-manifest-validator

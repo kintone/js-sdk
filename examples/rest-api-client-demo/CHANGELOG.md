@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.1.9...@kintone/rest-api-client-demo@1.2.0) (2021-02-09)
+
+
+### Features
+
+* **rest-api-client:** implement PUT /k/v1/preview/app/notifications/perRecord.json ([#611](https://github.com/kintone/js-sdk/issues/611)) ([e0d502e](https://github.com/kintone/js-sdk/commit/e0d502e64158fad2a50fd1b6a1a946fbeaa3a2ee))
+
+
+
+
+
 ## [1.1.9](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.1.8...@kintone/rest-api-client-demo@1.1.9) (2021-02-02)
 
 
