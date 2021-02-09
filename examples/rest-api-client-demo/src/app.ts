@@ -457,4 +457,32 @@ export class App {
       console.log(error);
     }
   }
+
+  public async updatePerRecordNotifications() {
+    const notifications = [
+      {
+        filterCond: 'Customer = "foo"',
+        title: "Send a notification",
+        targets: [
+          {
+            entity: {
+              code: "everyone",
+              type: "GROUP" as const,
+            },
+            includeSubs: false,
+          },
+        ],
+      },
+    ];
+    try {
+      console.log(
+        await this.client.app.updatePerRecordNotifications({
+          app: APP_ID,
+          notifications,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

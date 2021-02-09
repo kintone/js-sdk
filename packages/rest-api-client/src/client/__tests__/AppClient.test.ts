@@ -917,6 +917,42 @@ describe("AppClient", () => {
       });
     });
   });
+
+  describe("updatePerRecordNotifications", () => {
+    const params = {
+      app: APP_ID,
+      notifications: [
+        {
+          filterCond: 'Customer = "foo"',
+          title: "Send a notification",
+          targets: [
+            {
+              entity: {
+                type: "USER" as const,
+                code: "foo",
+              },
+              includeSubs: false,
+            },
+          ],
+        },
+      ],
+    };
+
+    beforeEach(async () => {
+      await appClient.updatePerRecordNotifications(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/preview/app/notifications/perRecord.json"
+      );
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app and rights as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
 
 describe("AppClient with guestSpaceId", () => {
