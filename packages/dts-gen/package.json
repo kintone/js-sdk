@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "prebuild": "yarn clean",
-    "build": "tsc --build",
+    "build": "tsc --build --force",
     "postbuild": "bin/npm-build.sh && yarn build:integration",
     "clean": "rimraf dist",
     "lint:fix": "eslint --fix src/**/*.ts",

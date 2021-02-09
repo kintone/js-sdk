@@ -15,7 +15,7 @@
   "scripts": {
     "start": "yarn build --watch",
     "prebuild": "yarn clean",
-    "build": "tsc --build",
+    "build": "tsc --build --force",
     "postbuild": "yarn gen-dts",
     "gen-dts": "node script/generate-dts.js",
     "test": "jest",

@@ -34,7 +34,7 @@
   },
   "scripts": {
     "prebuild": "yarn clean",
-    "build": "tsc --build",
+    "build": "tsc --build --force",
     "lint": "run-p -l lint:*",
     "test": "jest",
     "test:ci": "jest --runInBand",

@@ -15,10 +15,12 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "prebuild": "yarn clean",
-    "build": "tsc --build",
+    "build": "tsc --build --force",
     "postbuild": "yarn pkg",
     "lint": "run-p -l lint:*",
+    "pretest": "yarn build",
     "test": "jest",
+    "pretest:ci": "yarn pretest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf lib bin",
     "pkg": "pkg . --out-path=bin",

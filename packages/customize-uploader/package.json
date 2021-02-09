@@ -11,12 +11,12 @@
   },
   "scripts": {
     "prebuild": "yarn clean",
-    "build": "tsc --build",
+    "build": "tsc --build --force",
     "lint": "eslint --ext .ts src",
     "test": "jest --rootDir src",
     "test:ci": "jest --rootDir src --runInBand",
     "clean": "rimraf dist",
-    "start": "tsc -w"
+    "start": "yarn build --watch"
   },
   "files": [
     "bin",

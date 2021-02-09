@@ -42,9 +42,9 @@
     "templates"
   ],
   "scripts": {
-    "start": "tsc -w",
+    "start": "yarn build --watch",
     "prebuild": "yarn clean",
-    "build": "tsc --build",
+    "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts src",
     "unittest": "jest --testRegex=/test/.*-test\\.ts$",

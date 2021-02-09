@@ -15,7 +15,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "prebuild": "yarn clean",
-    "build": "tsc --build",
+    "build": "tsc --build --force",
     "postbuild": "run-p build:*",
     "lint": "run-p -l lint:*",
     "prepublishOnly": "run-p build:umd_*",
