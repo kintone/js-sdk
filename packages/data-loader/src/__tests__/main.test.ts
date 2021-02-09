@@ -24,7 +24,7 @@ const checkRejectArg = ({
 
 describe("main", () => {
   beforeAll(() => {
-    execSync("npm run build");
+    execSync("yarn build");
   });
   it("should throw error when no commands are passed", () => {
     return checkRejectArg({
