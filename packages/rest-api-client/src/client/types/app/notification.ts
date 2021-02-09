@@ -1,7 +1,12 @@
 import { Entity } from "../entity";
 
 export type GeneralNotificationsForResponse = {
-  entity: Record<"type" | "code", string>;
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY";
+        code: string;
+      };
   includeSubs: boolean;
   recordAdded: boolean;
   recordEdited: boolean;
