@@ -6,4 +6,4 @@ test/.output
 docs/dist/*
 !docs/dist/.gitkeep
 /lib
-/esm
+/dist

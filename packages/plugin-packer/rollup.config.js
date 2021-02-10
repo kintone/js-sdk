@@ -3,15 +3,18 @@ import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import json from "@rollup/plugin-json";
 import polyfillNode from "rollup-plugin-polyfill-node";
+import { terser } from "rollup-plugin-terser";
+
+const isProd = process.env.BUILD === "production";
 
 const extensions = [".js", ".jsx", ".es6", ".es", ".mjs", ".ts", ".tsx"];
 
 export default {
   input: "./src/index.ts",
   output: {
-    file: `./esm/index.browser.js`,
+    file: `./dist/index${isProd ? ".min" : ""}.js`,
     format: "esm",
-    sourcemap: "inline",
+    sourcemap: isProd ? false : "inline",
   },
   plugins: [
     commonjs(),
@@ -39,5 +42,6 @@ export default {
       ],
       plugins: ["babel-plugin-replace-ts-export-assignment"],
     }),
+    isProd && terser(),
   ],
 };

@@ -7,7 +7,7 @@
     "node": ">=10"
   },
   "main": "lib/index.js",
-  "browser": "esm/index.browser.js",
+  "browser": "dist/index.min.js",
   "bin": {
     "kintone-plugin-packer": "bin/cli.js"
   },
@@ -15,6 +15,7 @@
   "files": [
     "bin",
     "lib",
+    "dist",
     "from-manifest.js"
   ],
   "scripts": {
@@ -32,8 +33,10 @@
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
     "site:test": "jest --config site/jest.config.js",
-    "build:ts": "rm -rf ./lib && tsc",
-    "build:browser": "rm -rf ./esm && rollup -c"
+    "tsc": "rm -rf ./lib && tsc",
+    "rollup": "run-p rollup:*",
+    "rollup:prod": "rollup -c --environment BUILD:production",
+    "rollup:dev": "rollup -c --environment BUILD:development"
   },
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^3.0.12",
@@ -81,6 +84,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.38.5",
     "rollup-plugin-polyfill-node": "^0.5.0",
+    "rollup-plugin-terser": "^7.0.2",
     "setimmediate": "^1.0.5",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.3",
