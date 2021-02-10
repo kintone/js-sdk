@@ -39,16 +39,8 @@ export async function exportRecords(
 
   // TODO: extract attachment fields first
 
-  if (!attachmentDir) {
-    return records;
-  }
-
-  // download attachments if exists
-  for (const record of records) {
-    const fileInfos = getFileInfos(record);
-    for (const fileInfo of fileInfos) {
-      await downloadAttachments(apiClient, record, attachmentDir, fileInfo);
-    }
+  if (attachmentDir) {
+    await downloadAttachments(apiClient, records, attachmentDir);
   }
 
   return records;
@@ -70,14 +62,19 @@ const getFileInfos = (record: Record) => {
 
 const downloadAttachments = async (
   apiClient: KintoneRestAPIClient,
-  record: Record,
-  attachmentDir: string,
-  fileInfo: FileInfo
+  records: Record[],
+  attachmentDir: string
 ) => {
-  const { fileKey, name } = fileInfo;
-  const file = await apiClient.file.downloadFile({ fileKey });
-  const recordId = record.$id.value as string;
-  const dir = path.resolve(attachmentDir, recordId);
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(path.resolve(dir, name), Buffer.from(file));
+  for (const record of records) {
+    const fileInfos = getFileInfos(record);
+    for (const fileInfo of fileInfos) {
+      const { fileKey, name } = fileInfo;
+      const file = await apiClient.file.downloadFile({ fileKey });
+
+      const recordId = record.$id.value as string;
+      const dir = path.resolve(attachmentDir, recordId);
+      await fs.mkdir(dir, { recursive: true });
+      await fs.writeFile(path.resolve(dir, name), Buffer.from(file));
+    }
+  }
 };
