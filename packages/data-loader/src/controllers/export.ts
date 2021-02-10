@@ -1,6 +1,5 @@
 import { promises as fs } from "fs";
 import path from "path";
-import PQueue from "p-queue";
 
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
@@ -43,21 +42,15 @@ export async function exportRecords(
   if (!attachmentDir) {
     return records;
   }
+
   // download attachments if exists
-  const fetchFiles = async (record: Record) => {
+  for (const record of records) {
     const fileInfos = getFileInfos(record);
     for (const fileInfo of fileInfos) {
       await downloadAttachments(apiClient, record, attachmentDir, fileInfo);
     }
-  };
-  const queue = new PQueue({ concurrency: 5 });
-  await queue.addAll(
-    records.map((record: Record) => {
-      return () => {
-        return fetchFiles(record);
-      };
-    })
-  );
+  }
+
   return records;
 }
 
