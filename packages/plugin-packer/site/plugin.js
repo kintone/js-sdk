@@ -1,7 +1,7 @@
 "use strict";
 
-const packer = require("../dist/");
-const { rezip } = require("../dist/zip");
+const packer = require("../lib/");
+const { rezip } = require("../lib/zip");
 const { createDownloadUrl, revokeDownloadUrl } = require("./dom");
 
 /**

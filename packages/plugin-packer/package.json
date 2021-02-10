@@ -19,7 +19,7 @@
     "from-manifest.js"
   ],
   "scripts": {
-    "build": "npm run build:ts && npm run build:site",
+    "build": "npm run tsc && npm run build:site && npm run rollup",
     "build:site": "run-p js css",
     "lint": "npm run eslint",
     "test": "run-p jest site:test",
