@@ -14,7 +14,14 @@ import { createContentsZip } from "./create-contents-zip";
 const debug = _debug("cli");
 const writeFile = promisify(fs.writeFile);
 
-export = function cli(pluginDir: string, options_?: any) {
+type Options = Partial<{
+  ppk: string;
+  out: string;
+  watch: boolean;
+  packerMock_: typeof packer;
+}>;
+
+export = function cli(pluginDir: string, options_?: Options) {
   const options = options_ || {};
   const packerLocal = options.packerMock_ ? options.packerMock_ : packer;
 
