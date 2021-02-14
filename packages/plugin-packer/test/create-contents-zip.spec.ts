@@ -11,7 +11,7 @@ describe("create-contents-zip", () => {
     const manifestJSONPath = path.join(pluginDir, "manifest.json");
     const manifest = JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8"));
     createContentsZip(pluginDir, manifest).then((buffer) => {
-      readZipContentsNames(buffer as any).then((files) => {
+      readZipContentsNames(buffer as Buffer).then((files) => {
         expect(files).toStrictEqual(["manifest.json", "image/icon.png"]);
         expect(buffer).toBeInstanceOf(Buffer);
         done();
