@@ -31,7 +31,7 @@
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
     "site:test": "jest --config site/jest.config.js",
-    "build:ts": "rm -rf ./dist && tsc"
+    "build:ts": "rimraf ./dist && tsc"
   },
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^4.0.0",
