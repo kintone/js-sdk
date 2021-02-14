@@ -25,7 +25,7 @@ export function createContentsZip(
     sourceList(manifest).forEach((src) => {
       zipFile.addFile(path.join(pluginDir, src), src);
     });
-    zipFile.end(undefined, ((finalSize: any) => {
+    zipFile.end(undefined, ((finalSize: number) => {
       size = finalSize;
     }) as any);
   });

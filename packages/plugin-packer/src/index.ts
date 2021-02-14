@@ -59,7 +59,7 @@ function zip(
     zipFile.addBuffer(contentsZip, "contents.zip");
     zipFile.addBuffer(publicKey, "PUBKEY");
     zipFile.addBuffer(signature, "SIGNATURE");
-    zipFile.end(undefined, ((finalSize: any) => {
+    zipFile.end(undefined, ((finalSize: number) => {
       debug(`zip(): ZipFile end event: finalSize ${finalSize} bytes`);
     }) as any);
   });
