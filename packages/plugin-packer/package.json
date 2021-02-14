@@ -19,6 +19,7 @@
   "scripts": {
     "build": "npm run build:ts && npm run build:site",
     "build:site": "run-p js css",
+    "build:ts": "rimraf ./dist && tsc",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint \"*.{js,ts}\" bin src site test",
     "lint:ts": "tsc --noEmit",
@@ -31,8 +32,7 @@
     "prerelease": "run-p lint test build",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
-    "site:test": "jest --config site/jest.config.js",
-    "build:ts": "rimraf ./dist && tsc"
+    "site:test": "jest --config site/jest.config.js"
   },
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^4.0.0",
