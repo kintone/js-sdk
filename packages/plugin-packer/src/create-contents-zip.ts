@@ -12,14 +12,14 @@ const debug = _debug("create-contents-zip");
 export function createContentsZip(
   pluginDir: string,
   manifest: any
-): Promise<false | Buffer> {
+): Promise<Buffer> {
   return new Promise((res, rej) => {
     const output = new streamBuffers.WritableStreamBuffer();
     const zipFile = new ZipFile();
     let size: any = null;
     output.on("finish", () => {
       debug(`plugin.zip: ${size} bytes`);
-      res(output.getContents());
+      res(output.getContents() as any);
     });
     zipFile.outputStream.pipe(output);
     sourceList(manifest).forEach((src) => {
