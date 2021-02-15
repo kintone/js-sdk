@@ -514,7 +514,7 @@ export class AppClient {
     lang?: Lang;
     preview?: boolean;
   }): Promise<{
-    notifications: NotificationForResponse[];
+    notifications: ReminderNotificationsForResponse[];
     timezone: string;
     revision: string;
   }> {
