@@ -20,7 +20,7 @@ export type PerRecordNotificationsForParameter = {
   title?: string;
   targets: Array<{
     entity: Entity | { type: "FIELD_ENTITY"; code: string };
-    includeSubs: boolean;
+    includeSubs?: boolean;
   }>;
 };
 
