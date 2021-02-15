@@ -528,6 +528,7 @@ export class App {
       console.log(error);
     }
   }
+
   public async getReminderNotifications() {
     try {
       console.log(
