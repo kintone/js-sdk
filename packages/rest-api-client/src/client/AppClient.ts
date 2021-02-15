@@ -483,6 +483,7 @@ export class AppClient {
 
   public getPerRecordNotifications(params: {
     app: AppID;
+    lang?: Lang;
     preview?: boolean;
   }): Promise<{
     notifications: PerRecordNotificationForResponse[];
