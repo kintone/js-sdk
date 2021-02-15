@@ -40,7 +40,7 @@ export type ReminderNotificationsForResponse = {
   title: string;
   targets: [
     {
-      entity: Record<"type" | "code", string>;
+      entity: Entity | { type: "FIELD_ENTITY"; code: string };
       includeSubs: boolean;
     }
   ];
