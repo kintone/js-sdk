@@ -20,10 +20,26 @@ const isSupportedFieldType = (field: KintoneRecordField.OneOf) => {
   return supportedFieldTypes.includes(field.type);
 };
 
+const lexer = (field: KintoneRecordField.OneOf) => {
+  switch (field.type) {
+    case "RECORD_NUMBER":
+    case "SINGLE_LINE_TEXT":
+    case "RADIO_BUTTON":
+    case "MULTI_LINE_TEXT":
+    case "NUMBER":
+    case "LINK":
+    case "DROP_DOWN":
+    case "CALC":
+      return encloseInQuotation(field.value);
+    default:
+      return field.value;
+  }
+};
+
 const escapeQuotation = (value: string) => value.replace(/"/g, '""');
 
 const encloseInQuotation = (value: string | null) =>
-  `"${escapeQuotation(value || "")}"`;
+  value ? `"${escapeQuotation(value)}"` : "";
 
 const extractFieldCodes = (records: KintoneRecords) => {
   const firstRecord = records[0];
@@ -39,11 +55,11 @@ export const fromJSON = (records: KintoneRecords) => {
     .map((fieldCode) => encloseInQuotation(fieldCode))
     .join(SEPARATOR);
 
-  const lines = records.map((record) => {
+  const rows = records.map((record) => {
     return fieldCodes
-      .map((fieldCode) => encloseInQuotation(record[fieldCode].value as string))
+      .map((fieldCode) => lexer(record[fieldCode]))
       .join(SEPARATOR);
   });
 
-  return [header, ...lines].join(LINE_BREAK);
+  return [header, ...rows].join(LINE_BREAK);
 };
