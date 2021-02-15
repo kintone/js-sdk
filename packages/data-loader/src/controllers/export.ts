@@ -5,7 +5,7 @@ import PQueue from "p-queue";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { buildPrinter } from "../printer";
+import { buildPrinter } from "../printers";
 
 export type Options = {
   app: AppID;

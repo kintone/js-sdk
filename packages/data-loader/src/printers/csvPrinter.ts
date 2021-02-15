@@ -72,7 +72,7 @@ const lexer = (field: KintoneRecordField.OneOf) => {
   }
 };
 
-export const fromJSON = (records: KintoneRecords) => {
+const convertKintoneRecordsToCsv = (records: KintoneRecords) => {
   const fieldCodes = extractFieldCodes(records);
 
   const header = fieldCodes
@@ -89,4 +89,10 @@ export const fromJSON = (records: KintoneRecords) => {
     });
 
   return [header, ...rows].join(LINE_BREAK);
+};
+
+export const csvPrinter = (
+  records: Array<{ [k: string]: KintoneRecordField.OneOf }>
+) => {
+  console.log(convertKintoneRecordsToCsv(records));
 };
