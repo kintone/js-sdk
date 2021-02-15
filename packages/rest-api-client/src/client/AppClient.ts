@@ -484,7 +484,10 @@ export class AppClient {
   public getPerRecordNotifications(params: {
     app: AppID;
     preview?: boolean;
-  }): Promise<{ notifications: PerRecordNotificationForResponse[] }> {
+  }): Promise<{
+    notifications: PerRecordNotificationForResponse[];
+    revision: string;
+  }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/notifications/perRecord",
