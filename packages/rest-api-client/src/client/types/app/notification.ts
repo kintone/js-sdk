@@ -35,7 +35,12 @@ export type PerRecordNotificationForResponse = {
 };
 
 export type ReminderNotificationsForResponse = {
-  timing: Record<"code" | "daysLater" | "hoursLater", string>;
+  timing: {
+    code: string;
+    daysLater: number | string;
+    hoursLater: number | string;
+    time: string;
+  };
   filterCond: string;
   title: string;
   targets: [
