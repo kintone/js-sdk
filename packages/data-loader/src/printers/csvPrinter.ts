@@ -72,7 +72,7 @@ const lexer = (field: KintoneRecordField.OneOf) => {
   }
 };
 
-const convertKintoneRecordsToCsv = (records: KintoneRecords) => {
+export const convertKintoneRecordsToCsv = (records: KintoneRecords) => {
   const fieldCodes = extractFieldCodes(records);
 
   const header = fieldCodes

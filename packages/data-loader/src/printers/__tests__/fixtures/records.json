@@ -1,0 +1,74 @@
+[
+  {
+    "レコード番号": {
+      "type": "RECORD_NUMBER",
+      "value": "9"
+    },
+    "更新者": {
+      "type": "MODIFIER",
+      "value": {
+        "code": "nakajmg",
+        "name": "nakajmg"
+      }
+    },
+    "作成者": {
+      "type": "CREATOR",
+      "value": {
+        "code": "nakajmg",
+        "name": "nakajmg"
+      }
+    },
+    "更新日時": {
+      "type": "UPDATED_TIME",
+      "value": "2021-02-15T02:41:00Z"
+    },
+    "作成日時": {
+      "type": "CREATED_TIME",
+      "value": "2021-02-10T06:14:00Z"
+    },
+    "文字列__1行_": {
+      "type": "SINGLE_LINE_TEXT",
+      "value": "てすと4"
+    },
+    "文字列__複数行_": {
+      "type": "MULTI_LINE_TEXT",
+      "value": "\"複数行\n複数行\"\n"
+    },
+    "リッチエディター": {
+      "type": "RICH_TEXT",
+      "value": "<div>リッチエディタリッチエディタ<div>リッチエディタ<br /></div><div>リッチエディタ<br /></div></div>"
+    },
+    "数値": {
+      "type": "NUMBER",
+      "value": "8"
+    },
+    "計算": {
+      "type": "CALC",
+      "value": "16"
+    },
+    "ラジオボタン": {
+      "type": "RADIO_BUTTON",
+      "value": "sample2"
+    },
+    "ドロップダウン": {
+      "type": "DROP_DOWN",
+      "value": "sample1"
+    },
+    "チェックボックス": {
+      "type": "CHECK_BOX",
+      "value": ["\"sample2\""]
+    },
+    "複数選択": {
+      "type": "MULTI_SELECT",
+      "value": ["\"sample3\"", "sample4"]
+    },
+    "$revision": {
+      "type": "__REVISION__",
+      "value": "4"
+    },
+    "$id": {
+      "type": "__ID__",
+      "value": "9"
+    }
+  }
+]
