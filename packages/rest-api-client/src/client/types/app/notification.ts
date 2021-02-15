@@ -1,6 +1,6 @@
 import { Entity } from "../entity";
 
-export type GeneralNotificationsForResponse = {
+export type GeneralNotificationForResponse = {
   entity:
     | Entity
     | {
@@ -15,7 +15,7 @@ export type GeneralNotificationsForResponse = {
   fileImported: boolean;
 };
 
-export type PerRecordNotificationsForParameter = {
+export type PerRecordNotificationForParameter = {
   filterCond: string;
   title?: string;
   targets: Array<{
