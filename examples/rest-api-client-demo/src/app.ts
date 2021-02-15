@@ -446,6 +446,18 @@ export class App {
     }
   }
 
+  public async getGeneralNotifications() {
+    try {
+      console.log(
+        JSON.stringify(
+          await this.client.app.getGeneralNotifications({ app: APP_ID })
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async updatePerRecordNotifications() {
     const notifications = [
       {

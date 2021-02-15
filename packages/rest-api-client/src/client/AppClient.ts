@@ -25,6 +25,7 @@ import {
   AppCustomizeScope,
   AppCustomizeForResponse,
   AppCustomizeForParameter,
+  GeneralNotificationsForResponse,
   PerRecordNotificationsForParameter,
 } from "./types";
 type RowLayoutForParameter = {
@@ -461,6 +462,22 @@ export class AppClient {
       preview: true,
     });
     return this.client.put(path, params);
+  }
+
+  public getGeneralNotifications(params: {
+    app: AppID;
+    preview?: boolean;
+  }): Promise<{
+    notifications: GeneralNotificationsForResponse[];
+    notifyToCommenter: boolean;
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/notifications/general",
+      preview,
+    });
+    return this.client.get(path, { ...rest });
   }
 
   public updatePerRecordNotifications(params: {
