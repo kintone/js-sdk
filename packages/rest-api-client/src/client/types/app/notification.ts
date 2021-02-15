@@ -24,7 +24,7 @@ export type PerRecordNotificationsForParameter = {
   }>;
 };
 
-export type NotificationForResponse = {
+export type PerRecordNotificationForResponse = {
   filterCond: string;
   title: string;
   targets: Array<{
