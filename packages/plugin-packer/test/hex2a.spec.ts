@@ -1,6 +1,4 @@
-"use strict";
-
-const hex2a = require("../src/hex2a");
+import { hex2a } from "../src/hex2a";
 
 describe("hex2a", () => {
   it("empty string", () => {

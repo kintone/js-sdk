@@ -1,6 +1,4 @@
-"use strict";
-
-const sourcelist = require("../src/sourcelist");
+import { sourceList } from "../dist/sourcelist";
 
 describe("sourcelist", () => {
   let manifest;
@@ -22,7 +20,7 @@ describe("sourcelist", () => {
     };
   });
   it("should return a file list including the manifest", () => {
-    expect(sourcelist(manifest)).toStrictEqual([
+    expect(sourceList(manifest)).toStrictEqual([
       "js/desktop.js",
       "js/lib.js",
       "css/desktop.css",
@@ -43,7 +41,7 @@ describe("sourcelist", () => {
     manifest.config.css.push("https://example.com/foo.css");
     // This file should be added the list.
     manifest.desktop.js.push("js/external.js");
-    expect(sourcelist(manifest)).toStrictEqual([
+    expect(sourceList(manifest)).toStrictEqual([
       "js/desktop.js",
       "js/lib.js",
       "js/external.js",
@@ -65,7 +63,7 @@ describe("sourcelist", () => {
     manifest.config.css.push("css/config.css");
     // This file should be added the list.
     manifest.desktop.js.push("js/external.js");
-    expect(sourcelist(manifest)).toStrictEqual([
+    expect(sourceList(manifest)).toStrictEqual([
       "js/desktop.js",
       "js/lib.js",
       "js/external.js",
