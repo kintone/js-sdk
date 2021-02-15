@@ -1,5 +1,4 @@
 import { KintoneRecordField } from "@kintone/rest-api-client";
-import { format } from "util";
 
 type KintoneRecords = Array<{ [k: string]: KintoneRecordField.OneOf }>;
 
@@ -28,18 +27,25 @@ const isSupportedFieldType = (field: KintoneRecordField.OneOf) => {
 const zeroPad = (num: number) => (num + "").padStart(2, "0");
 
 /**
- * format date to "YYYY/MM/DD HH:mm"
- * @param dateString
+ * format: "YYYY/MM/DD HH:mm"
  */
 const formatDateFieldValue = (dateString: string) => {
   const date = new Date(dateString);
-  return format(
-    "%d/%d/%d %d:%d",
-    date.getFullYear(),
-    zeroPad(date.getMonth() + 1),
-    zeroPad(date.getDate()),
-    zeroPad(date.getHours()),
-    zeroPad(date.getMinutes())
+  return `${date.getFullYear()}/${zeroPad(date.getMonth() + 1)}/${zeroPad(
+    date.getDate()
+  )} ${zeroPad(date.getHours())}:${zeroPad(date.getMinutes())}`;
+};
+
+const escapeQuotation = (fieldValue: string) => fieldValue.replace(/"/g, '""');
+
+const encloseInQuotation = (fieldValue: string | null) =>
+  `"${fieldValue ? escapeQuotation(fieldValue) : ""}"`;
+
+const extractFieldCodes = (records: KintoneRecords) => {
+  const firstRecord = records.slice().shift();
+  if (!firstRecord) return [];
+  return Object.keys(firstRecord).filter((key) =>
+    isSupportedFieldType(firstRecord[key])
   );
 };
 
@@ -64,19 +70,6 @@ const lexer = (field: KintoneRecordField.OneOf) => {
     default:
       return field.value;
   }
-};
-
-const escapeQuotation = (fieldValue: string) => fieldValue.replace(/"/g, '""');
-
-const encloseInQuotation = (fieldValue: string | null) =>
-  `"${fieldValue ? escapeQuotation(fieldValue) : ""}"`;
-
-const extractFieldCodes = (records: KintoneRecords) => {
-  const firstRecord = records.slice().shift();
-  if (!firstRecord) return [];
-  return Object.keys(firstRecord).filter((key) =>
-    isSupportedFieldType(firstRecord[key])
-  );
 };
 
 export const fromJSON = (records: KintoneRecords) => {
