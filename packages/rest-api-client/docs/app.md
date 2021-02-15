@@ -1041,32 +1041,34 @@ Gets the [General Notification](https://get.kintone.help/k/en/user/app_settings/
 
 ### getPerRecordNotifications
 
-<!-- TODO -->
+Gets the [Per Record Notification settings](https://get.kintone.help/k/en/user/app_settings/notification/record_condition.html) of the App.
 
 #### Parameters
 
-| Name    |       Type       | Required | Description                                                                    |
-| ------- | :--------------: | :------: | ------------------------------------------------------------------------------ |
-| app     | Number or String |   Yes    | The app ID.                                                                    |
-| preview |     Boolean      |          | A flag whether to get the process management settings for pre-live environment |
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| lang    |      String      |          | The localized language to retrieve the data in: <ul><li>`default`: retrieves the default names</li><li>`en`: retrieves the localized English names</li><li>`zh`: retrieves the localized Chinese names</li><li>`ja`: retrieves the localized Japanese names</li><li>`user`: retrieves the localized names, in the same language as the language setting set on the user used for the authentication.</li></ul>If ignored, the default names will be retrieved. |
+| preview |     Boolean      |          | A flag whether to get the Per Record Notification settings for pre-live environment                                                                                                                                                                                                                                                                                                                                                                                 |
 
 #### Returns
 
-| Name                                  |  Type   | Description                              |
-| ------------------------------------- | :-----: | ---------------------------------------- |
-| notifications                         |  Array  |                                          |
-| notifications[].filterCond            | String  |                                          |
-| notifications[].title                 | String  |                                          |
-| notifications[].targets               |  Array  |                                          |
-| notifications[].targets[].entity      | Object  |                                          |
-| notifications[].targets[].entity.type | String  |                                          |
-| notifications[].targets[].entity.code | String  |                                          |
-| notifications[].targets[].includeSubs | Boolean |                                          |
-| revision                              | String  | The revision number of the app settings. |
+| Name                                  |  Type   | Description                                                                                                                                                                                                                                                                                 |
+| ------------------------------------- | :-----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| notifications                         |  Array  | An array of objects containing data of the Per Record Notification settings. The objects are in descending order of priority.                                                                                                                                                               |
+| notifications[].filterCond            | String  | The record's filter condition in query string format. For more information, refer to the [Sample Requests (Query String)](https://developer.kintone.io/hc/en-us/articles/360019245194#requests_query) section.                                                                              |
+| notifications[].title                 | String  | The notification subject that is saved under "Summary".                                                                                                                                                                                                                                     |
+| notifications[].targets               |  Array  | An array of objects containing the recipients of the Per Record Notification.                                                                                                                                                                                                               |
+| notifications[].targets[].entity      | Object  | An object containing entity details per recipient of the Per Record Notification.                                                                                                                                                                                                           |
+| notifications[].targets[].entity.type | String  | The type of the entity the Per Record Notification settings are configured to.<ul><li>`USER` : User</li><li>`GROUP` : Group</li><li>`ORGANIZATION` : Department</li><li>`FIELD_ENTITY` : Created By, Updated By, User Selection, Group Selection, and Department Selection Fields</li></ul> |
+| notifications[].targets[].entity.code | String  | The code of the entity the Per Record Notification settings are configured to. The following entities will return the following values:<ul><li>`FIELD_ENTITY` : The field code of the field</li><li>For all other entities : The code of the User, Group, or Department</li></ul>           |
+| notifications[].targets[].includeSubs | Boolean | The "Include affiliated departments" setting of the Department. Will always return `false` unless the `notifications[].targets[].entity.type` is set to `ORGANIZATION` or `FIELD_ENTITY` for a Department Selection Field.                                                                  |
+| revision                              | String  | The revision number of the App settings.                                                                                                                                                                                                                                                    |
 
 #### Reference
 
-<!-- TODO -->
+- https://developer.kintone.io/hc/en-us/articles/900004909023
+
 ### updatePerRecordNotifications
 
 Updates the [Per Record Notification settings](https://get.kintone.help/k/en/user/app_settings/notification/record_condition.html) of the App.
