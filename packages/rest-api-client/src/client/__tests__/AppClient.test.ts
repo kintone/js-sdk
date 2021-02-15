@@ -1031,7 +1031,6 @@ describe("AppClient", () => {
       });
     });
   });
-
 });
 
 describe("AppClient with guestSpaceId", () => {
