@@ -2,7 +2,7 @@ import { KintoneRecordField } from "@kintone/rest-api-client";
 
 type KintoneRecords = Array<{ [k: string]: KintoneRecordField.OneOf }>;
 
-const LINE_BREAK = "\r\n";
+const LINE_BREAK = "\n";
 const SEPARATOR = ",";
 
 const isSupportedFieldType = (field: KintoneRecordField.OneOf) => {
@@ -88,7 +88,7 @@ export const convertKintoneRecordsToCsv = (records: KintoneRecords) => {
         .join(SEPARATOR);
     });
 
-  return [header, ...rows].join(LINE_BREAK);
+  return [header, ...rows].join(LINE_BREAK).replace(/\r?\n/gm, LINE_BREAK);
 };
 
 export const csvPrinter = (
