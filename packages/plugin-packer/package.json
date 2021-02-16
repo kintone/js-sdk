@@ -17,9 +17,10 @@
     "from-manifest.js"
   ],
   "scripts": {
-    "build": "echo 'no build'",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
     "postbuild": "run-p js css",
-    "clean": "echo 'no clean'",
+    "clean": "rimraf dist",
     "lint": "yarn eslint",
     "test": "run-p jest site:test",
     "test:ci": "yarn test",
@@ -29,7 +30,8 @@
     "jest": "jest",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
-    "site:test": "jest --config site/jest.config.js"
+    "site:test": "jest --config site/jest.config.js",
+    "start": "yarn build --watch"
   },
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^4.0.0",

@@ -5,7 +5,7 @@ import fs from "fs";
 // eslint-disable-next-line node/no-unpublished-import
 import commentJSON from "comment-json";
 
-const IGNORE_PACKAGES = ["@kintone/plugin-packer"];
+const IGNORE_PACKAGES: string[] = [];
 
 let __cacheWorkspacesInfo: YarnWorkSpaceInfo;
 
@@ -67,6 +67,9 @@ export const getReferencePaths = (packagePath: string): string[] => {
   const tsconfig = commentJSON.parse(
     fs.readFileSync(path.resolve(packagePath, "tsconfig.json")).toString()
   );
+  if (typeof tsconfig.references === "undefined") {
+    return [];
+  }
   return tsconfig.references.map((reference: TSConfig["references"][number]) =>
     path.resolve(packagePath, reference.path)
   );
