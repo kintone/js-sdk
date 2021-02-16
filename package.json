@@ -42,14 +42,15 @@
     "templates"
   ],
   "scripts": {
-    "start": "tsc -w",
-    "build": "tsc",
+    "start": "yarn build --watch",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
+    "clean": "rimraf dist",
     "lint": "eslint --ext .ts src",
-    "prerelease": "run-p lint test",
     "unittest": "jest --testRegex=/test/.*-test\\.ts$",
-    "test": "run-s build unittest",
+    "test": "yarn unittest",
     "test:all": "run-p test e2e",
-    "test:ci": "npm run test:all",
+    "test:ci": "yarn test:all",
     "e2e": "cross-env NODE_ENV=e2e jest ./test/e2e.ts"
   },
   "keywords": [
