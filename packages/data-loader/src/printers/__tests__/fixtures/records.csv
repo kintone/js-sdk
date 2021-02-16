@@ -1,4 +1,4 @@
-"レコード番号","更新者","作成者","更新日時","作成日時","文字列__1行_","文字列__複数行_","リッチエディター","数値","計算","ラジオボタン","ドロップダウン"
-"9","nakajmg","nakajmg","2021/02/15 11:41","2021/02/10 15:14","てすと4","""複数行
-複数行""
-","<div>リッチエディタリッチエディタ<div>リッチエディタ<br /></div><div>リッチエディタ<br /></div></div>","8","16","sample2","sample1"
+"recordNumber","updatedTime","dropDown","creator","modifier","richText","singleLineText","number","radioButton","multiLineText","createdTime","calc"
+"9","2021/02/16 11:43","sample1","username","username","<div><div>rich text editor<br /></div></div><div>rich text editor<br /></div><div>rich text editor<br /></div>","""single line text""","8","sample2","multi
+line
+text","2021/02/10 15:14","16"
