@@ -21,7 +21,7 @@
     "build": "tsc --build --force",
     "postbuild": "run-p js css",
     "clean": "rimraf dist",
-    "lint": "yarn eslint",
+    "lint": "eslint \"*.{js,ts}\" bin src site test",
     "test": "run-p jest site:test",
     "test:ci": "yarn test",
     "css": "postcss --config postcss.config.js ../../node_modules/normalize.css/normalize.css > docs/dist/normalize.min.css",

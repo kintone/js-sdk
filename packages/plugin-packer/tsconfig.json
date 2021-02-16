@@ -5,7 +5,7 @@
     "outDir": "dist",
     "resolveJsonModule": true
   },
-  "exclude": ["site/**", "test/**"],
+  "exclude": ["site/**", "test/**", "dist/**"],
   "references": [
     { "path": "../plugin-manifest-validator" }
   ]
