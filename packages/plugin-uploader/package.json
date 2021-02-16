@@ -10,16 +10,13 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsc -w",
-    "build": "run-s clean build:tsc",
-    "build:tsc": "tsc",
+    "start": "yarn build --watch",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
     "clean": "rimraf dist",
-    "lint": "npm-run-all -s build -p lint:*",
-    "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint 'src/**/*.ts' 'bin/*.js'",
-    "prerelease": "npm-run-all -p lint test -s build",
+    "lint": "eslint 'src/**/*.ts' 'bin/*.js'",
     "test": "echo 'no test'",
-    "test:ci": "run-s test"
+    "test:ci": "yarn test"
   },
   "files": [
     "bin",

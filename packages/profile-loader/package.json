@@ -33,20 +33,18 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "build": "npm-run-all -l -s clean compile",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
     "lint": "run-p -l lint:*",
-    "prerelease": "npm-run-all -p lint test -s build",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf lib esm umd",
-    "compile": "tsc",
-    "fix:lint": "npm run lint:eslint -- --fix",
+    "fix:lint": "yarn lint:eslint --fix",
     "fix:md": "prettier --write README.md",
     "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md",
-    "lint:ts": "tsc --noEmit",
-    "start": "npm run compile -- --watch"
+    "start": "yarn build --watch"
   },
   "dependencies": {
     "toml": "^3.0.0"

@@ -1,32 +1,24 @@
-import path from 'path';
-import { spawnSync } from 'child_process';
+import path from "path";
+import assert from "assert";
 
-const REQUIRED_NPMSCRIPTS = [
-  "build",
-  "lint",
-  "test",
-  "prerelease",
-  "test:ci"
-]
+import { getWorkspaces } from "./lib/workspace";
 
-const yarnCommand = process.platform === 'win32' ? 'yarn.cmd' : 'yarn';
+const REQUIRED_NPMSCRIPTS = ["build", "lint", "test", "test:ci"];
 
 describe("npmScripts", () => {
   it("should define all required npm-scripts in all pacakges", () => {
-    const packageInfo = JSON.parse(spawnSync(yarnCommand, ["workspaces", "info"]).stdout.toString());
-    Object.entries<{ location: string }>(packageInfo).forEach(([name, {location}]) => {
-      if (location.indexOf("examples/") === 0) {
-        return;
+    const workspaces = getWorkspaces().filter(({ packagePath }) =>
+      /\/packages\//.test(packagePath)
+    );
+    for (const { packageName, packagePath } of workspaces) {
+      const { scripts } = require(path.resolve(packagePath, "package.json"));
+      for (const requiredScript of REQUIRED_NPMSCRIPTS) {
+        assert.strictEqual(
+          typeof scripts[requiredScript],
+          "string",
+          `${packageName} doesn't have "${requiredScript}" as a npm-scripts.`
+        );
       }
-      const npmScripts = require(path.resolve(location, "package.json")).scripts;
-      REQUIRED_NPMSCRIPTS.forEach(script => {
-        try {
-          expect(typeof npmScripts[script]).toBe("string");
-        } catch (e) {
-          console.error(`${name} doesn't have "${script}" as a npm-scripts.`);
-          throw e;
-        }
-      });
-    })
-  })
-})
+    }
+  });
+});

@@ -7,15 +7,13 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsc -w",
-    "build": "run-s clean build:tsc",
-    "build:tsc": "tsc",
+    "start": "yarn build --watch",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",
-    "prerelease": "run-p build lint test",
-    "pretest": "run-s build",
     "test": "jest",
-    "test:ci": "run-s test"
+    "test:ci": "test --runInBand"
   },
   "keywords": [
     "webpack",

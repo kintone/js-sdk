@@ -11,9 +11,6 @@ module.exports = {
         use: [
           {
             loader: 'ts-loader',
-            options: {
-              configFile: 'tsconfig.integration.json'
-            },
           }
         ],
         exclude: /node_modules/

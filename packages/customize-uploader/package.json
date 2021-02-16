@@ -10,15 +10,13 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "npm run clean && tsc",
-    "lint": "run-p lint:*",
-    "prerelease": "npm-run-all -p lint test -s build",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
+    "lint": "eslint --ext .ts src",
     "test": "jest --rootDir src",
     "test:ci": "jest --rootDir src --runInBand",
     "clean": "rimraf dist",
-    "start": "tsc -w",
-    "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint --ext .ts src"
+    "start": "yarn build --watch"
   },
   "files": [
     "bin",

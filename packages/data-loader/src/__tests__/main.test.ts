@@ -1,7 +1,7 @@
-import childProcess, { execSync } from "child_process";
+import childProcess from "child_process";
 import { promisify } from "util";
 import path from "path";
-import fs from "fs";
+
 const projectRoot = path.resolve(__dirname, "../..");
 const exec = promisify(childProcess.exec);
 const packageJson = require(path.resolve(projectRoot, "package.json"));
@@ -23,9 +23,6 @@ const checkRejectArg = ({
 };
 
 describe("main", () => {
-  beforeAll(() => {
-    execSync("npm run build");
-  });
   it("should throw error when no commands are passed", () => {
     return checkRejectArg({
       arg: "",
