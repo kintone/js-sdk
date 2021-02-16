@@ -88,7 +88,10 @@ export const convertKintoneRecordsToCsv = (records: KintoneRecords) => {
         .join(SEPARATOR);
     });
 
-  return [header, ...rows].join(LINE_BREAK).replace(/\r?\n/gm, LINE_BREAK);
+  return (
+    [header, ...rows].join(LINE_BREAK).replace(/\r?\n/gm, LINE_BREAK) +
+    LINE_BREAK
+  );
 };
 
 export const csvPrinter = (
