@@ -24,6 +24,7 @@
     "lint": "eslint \"*.{js,ts}\" bin src site test",
     "test": "run-p jest site:test",
     "test:ci": "yarn test",
+    "build:dev": "tsc --build --force --watch",
     "css": "postcss --config postcss.config.js ../../node_modules/normalize.css/normalize.css > docs/dist/normalize.min.css",
     "js": "webpack --mode production",
     "js:dev": "webpack serve --mode development",
@@ -31,7 +32,7 @@
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
     "site:test": "jest --config site/jest.config.js",
-    "start": "yarn build --watch"
+    "start": "npm-run-all -l -s clean build -p build:dev site:dev"
   },
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^4.0.0",
