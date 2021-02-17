@@ -538,4 +538,17 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getReminderNotificationsPreview() {
+    try {
+      console.log(
+        await this.client.app.getReminderNotifications({
+          app: APP_ID,
+          preview: true,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
