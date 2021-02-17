@@ -28,7 +28,7 @@ import {
   GeneralNotificationForResponse,
   PerRecordNotificationForParameter,
   PerRecordNotificationForResponse,
-  ReminderNotificationsForResponse
+  ReminderNotificationsForResponse,
 } from "./types";
 type RowLayoutForParameter = {
   type: "ROW";

@@ -2,140 +2,141 @@ import { MockClient, buildMockClient } from "../../http/MockClient";
 import { AppClient } from "../AppClient";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
+const APP_ID = 1;
+const REVISION = 5;
+const RECORD_ID = 3;
+const properties = {
+  fieldCode: {
+    type: "SINGLE_LINE_TEXT" as const,
+    code: "fieldCode",
+    label: "Text Field",
+  },
+};
+
+const layout = [
+  {
+    type: "ROW" as const,
+    fields: [
+      {
+        type: "SINGLE_LINE_TEXT",
+        code: "fieldCode1",
+        size: { width: "100" },
+      },
+      {
+        type: "LABEL",
+        label: "label1",
+        size: { width: "100" },
+      },
+      {
+        type: "SPACER",
+        elementId: "space",
+        size: { width: "100", height: "50" },
+      },
+    ],
+  },
+  {
+    type: "SUBTABLE" as const,
+    code: "tableFieldCode",
+    fields: [
+      {
+        type: "MULTI_LINE_TEXT",
+        code: "fieldCode2",
+        size: { width: "150", innerHeight: "200" },
+      },
+    ],
+  },
+  {
+    type: "GROUP" as const,
+    code: "fieldCode3",
+    layout: [
+      {
+        type: "ROW" as const,
+        fields: [
+          {
+            type: "NUMBER",
+            code: "fieldCode3_1",
+            size: {
+              width: 200,
+            },
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const views = {
+  view1: {
+    type: "LIST" as const,
+    index: 0,
+    name: "view1",
+    fields: ["field"],
+    filterCond: 'field = "foo"',
+    sort: "sortField desc",
+  },
+  view2: {
+    type: "CALENDAR" as const,
+    index: 1,
+    name: "view2",
+    date: "dateField",
+    title: "titleField",
+    filterCond: 'field = "bar"',
+    sort: "sortField asc",
+  },
+  view3: {
+    type: "CUSTOM" as const,
+    index: 2,
+    name: "view3",
+    html: "<div>Hello!</div>",
+    pager: true,
+    device: "DESKTOP" as const,
+  },
+};
+
+const states = {
+  status1: {
+    name: "status1",
+    index: 0,
+    assignee: {
+      type: "ONE" as const,
+      entities: [
+        { entity: { type: "FIELD_ENTITY" as const, code: "creator" } },
+      ],
+    },
+  },
+  status2: {
+    name: "status2",
+    index: 1,
+    assignee: {
+      type: "ANY" as const,
+      entities: [{ entity: { type: "CREATOR" as const } }],
+    },
+  },
+  status3: {
+    name: "status3",
+    index: 2,
+    assignee: {
+      type: "ALL" as const,
+      entities: [
+        { entity: { type: "USER" as const, code: "user1" } },
+        { entity: { type: "USER" as const, code: "user2" } },
+      ],
+    },
+  },
+};
+const actions = [
+  { name: "action1to2", from: "status1", to: "status2" },
+  {
+    name: "action2to3",
+    from: "status2",
+    to: "status3",
+    filterCond: 'field = "foo"',
+  },
+];
+
 describe("AppClient", () => {
   let mockClient: MockClient;
   let appClient: AppClient;
-  const APP_ID = 1;
-  const REVISION = 5;
-  const RECORD_ID = 3;
-  const properties = {
-    fieldCode: {
-      type: "SINGLE_LINE_TEXT" as const,
-      code: "fieldCode",
-      label: "Text Field",
-    },
-  };
-
-  const layout = [
-    {
-      type: "ROW" as const,
-      fields: [
-        {
-          type: "SINGLE_LINE_TEXT",
-          code: "fieldCode1",
-          size: { width: "100" },
-        },
-        {
-          type: "LABEL",
-          label: "label1",
-          size: { width: "100" },
-        },
-        {
-          type: "SPACER",
-          elementId: "space",
-          size: { width: "100", height: "50" },
-        },
-      ],
-    },
-    {
-      type: "SUBTABLE" as const,
-      code: "tableFieldCode",
-      fields: [
-        {
-          type: "MULTI_LINE_TEXT",
-          code: "fieldCode2",
-          size: { width: "150", innerHeight: "200" },
-        },
-      ],
-    },
-    {
-      type: "GROUP" as const,
-      code: "fieldCode3",
-      layout: [
-        {
-          type: "ROW" as const,
-          fields: [
-            {
-              type: "NUMBER",
-              code: "fieldCode3_1",
-              size: {
-                width: 200,
-              },
-            },
-          ],
-        },
-      ],
-    },
-  ];
-
-  const views = {
-    view1: {
-      type: "LIST" as const,
-      index: 0,
-      name: "view1",
-      fields: ["field"],
-      filterCond: 'field = "foo"',
-      sort: "sortField desc",
-    },
-    view2: {
-      type: "CALENDAR" as const,
-      index: 1,
-      name: "view2",
-      date: "dateField",
-      title: "titleField",
-      filterCond: 'field = "bar"',
-      sort: "sortField asc",
-    },
-    view3: {
-      type: "CUSTOM" as const,
-      index: 2,
-      name: "view3",
-      html: "<div>Hello!</div>",
-      pager: true,
-      device: "DESKTOP" as const,
-    },
-  };
-
-  const states = {
-    status1: {
-      name: "status1",
-      index: 0,
-      assignee: {
-        type: "ONE" as const,
-        entities: [
-          { entity: { type: "FIELD_ENTITY" as const, code: "creator" } },
-        ],
-      },
-    },
-    status2: {
-      name: "status2",
-      index: 1,
-      assignee: {
-        type: "ANY" as const,
-        entities: [{ entity: { type: "CREATOR" as const } }],
-      },
-    },
-    status3: {
-      name: "status3",
-      index: 2,
-      assignee: {
-        type: "ALL" as const,
-        entities: [
-          { entity: { type: "USER" as const, code: "user1" } },
-          { entity: { type: "USER" as const, code: "user2" } },
-        ],
-      },
-    },
-  };
-  const actions = [
-    { name: "action1to2", from: "status1", to: "status2" },
-    {
-      name: "action2to3",
-      from: "status2",
-      to: "status3",
-      filterCond: 'field = "foo"',
-    },
-  ];
 
   beforeEach(() => {
     const requestConfigBuilder = new KintoneRequestConfigBuilder({
@@ -1035,7 +1036,6 @@ describe("AppClient", () => {
 
 describe("AppClient with guestSpaceId", () => {
   it("should pass the path to the http client", async () => {
-    const APP_ID = 1;
     const GUEST_SPACE_ID = 2;
     const lang = "default";
     const params = { app: APP_ID, lang } as const;
