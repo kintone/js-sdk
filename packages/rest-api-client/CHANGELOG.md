@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.9.0...@kintone/rest-api-client@1.10.0) (2021-02-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency form-data to ^3.0.1 ([89da8fe](https://github.com/kintone/js-sdk/commit/89da8feee911a499288d079c26b882c44cdcd179))
+* **deps:** update dependency form-data to v4 ([#696](https://github.com/kintone/js-sdk/issues/696)) ([1622248](https://github.com/kintone/js-sdk/commit/1622248e45d81c1f4cc3c76db2ae8a5803f3aaea))
+
+
+### Features
+
+* **rest-api-client:** implement GET /k/v1/app/notifications/general.json  ([#604](https://github.com/kintone/js-sdk/issues/604)) ([48f2170](https://github.com/kintone/js-sdk/commit/48f217049c997230f8d2e8efced9e768e37e44bb))
+
+
+
+
+
 # [1.9.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.8.2...@kintone/rest-api-client@1.9.0) (2021-02-09)
 
 
