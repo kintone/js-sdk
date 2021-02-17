@@ -28,7 +28,7 @@ import {
   GeneralNotificationForResponse,
   PerRecordNotificationForParameter,
   PerRecordNotificationForResponse,
-  ReminderNotificationsForResponse,
+  ReminderNotificationForResponse,
 } from "./types";
 type RowLayoutForParameter = {
   type: "ROW";
@@ -515,7 +515,7 @@ export class AppClient {
     lang?: Lang;
     preview?: boolean;
   }): Promise<{
-    notifications: ReminderNotificationsForResponse[];
+    notifications: ReminderNotificationForResponse[];
     timezone: string;
     revision: string;
   }> {
