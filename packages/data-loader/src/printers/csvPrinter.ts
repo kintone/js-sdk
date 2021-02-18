@@ -20,6 +20,8 @@ const isSupportedFieldType = (field: KintoneRecordField.OneOf) => {
     "MODIFIER",
     "UPDATED_TIME",
     "CREATED_TIME",
+    "MULTI_SELECT",
+    "CHECK_BOX",
   ];
   return supportedFieldTypes.includes(field.type);
 };
@@ -67,6 +69,9 @@ const lexer = (field: KintoneRecordField.OneOf) => {
     case "UPDATED_TIME":
     case "CREATED_TIME":
       return encloseInQuotation(formatDateFieldValue(field.value));
+    case "MULTI_SELECT":
+    case "CHECK_BOX":
+      return encloseInQuotation(JSON.stringify(field.value));
     default:
       return field.value;
   }
