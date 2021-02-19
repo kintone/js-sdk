@@ -1,7 +1,12 @@
 import { Entity } from "../entity";
 
 export type GeneralNotificationForParameter = {
-  entity: Entity;
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY";
+        code: string;
+      };
   includeSubs?: boolean;
   recordAdded?: boolean;
   recordEdited?: boolean;
