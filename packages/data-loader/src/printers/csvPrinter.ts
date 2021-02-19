@@ -26,18 +26,6 @@ const isSupportedFieldType = (field: KintoneRecordField.OneOf) => {
   return supportedFieldTypes.includes(field.type);
 };
 
-const zeroPad = (num: number) => (num + "").padStart(2, "0");
-
-/**
- * format: "YYYY/MM/DD HH:mm"
- */
-const formatDateFieldValue = (dateString: string) => {
-  const date = new Date(dateString);
-  return `${date.getFullYear()}/${zeroPad(date.getMonth() + 1)}/${zeroPad(
-    date.getDate()
-  )} ${zeroPad(date.getHours())}:${zeroPad(date.getMinutes())}`;
-};
-
 const escapeQuotation = (fieldValue: string) => fieldValue.replace(/"/g, '""');
 
 const encloseInQuotation = (fieldValue: string | null) =>
@@ -62,16 +50,15 @@ const lexer = (field: KintoneRecordField.OneOf) => {
     case "LINK":
     case "DROP_DOWN":
     case "CALC":
+    case "UPDATED_TIME":
+    case "CREATED_TIME":
       return encloseInQuotation(field.value);
     case "CREATOR":
     case "MODIFIER":
       return encloseInQuotation(field.value.code);
-    case "UPDATED_TIME":
-    case "CREATED_TIME":
-      return encloseInQuotation(formatDateFieldValue(field.value));
     case "MULTI_SELECT":
     case "CHECK_BOX":
-      return encloseInQuotation(JSON.stringify(field.value));
+      return encloseInQuotation(field.value.join("\n"));
     default:
       return field.value;
   }
@@ -99,8 +86,6 @@ export const convertKintoneRecordsToCsv = (records: KintoneRecords) => {
   );
 };
 
-export const csvPrinter = (
-  records: Array<{ [k: string]: KintoneRecordField.OneOf }>
-) => {
+export const csvPrinter = (records: KintoneRecords) => {
   console.log(convertKintoneRecordsToCsv(records));
 };
