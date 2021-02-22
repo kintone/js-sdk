@@ -29,8 +29,6 @@ export = function (
   }
   const ajv = new Ajv({
     allErrors: true,
-    // unknownFormats: true,
-    // errorDataPath: "property",
     formats: {
       "http-url": (str: string) => validateUrl(str, true),
       "https-url": (str: string) => validateUrl(str),
@@ -38,19 +36,7 @@ export = function (
     },
   });
 
-  /*
-  ajv.removeKeyword("propertyNames");
-  ajv.removeKeyword("contains");
-  ajv.removeKeyword("const");
-  ajv.removeKeyword("if");
-  ajv.removeKeyword("then");
-  ajv.removeKeyword("else");
-  */
-
-  const validateMaxFileSize: (...args: any[]) => boolean = (
-    schema: string,
-    data: string
-  ) => {
+  const validateMaxFileSize = (schema: string, data: string) => {
     // schema: max file size like "512KB" or 123 (in bytes)
     // data: path to the file
     const maxBytes = bytes.parse(schema);
