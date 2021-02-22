@@ -10,6 +10,12 @@ type ValidateResult = {
   errors: null | ErrorObject[];
 };
 
+// https://ajv.js.org/docs/keywords.html#define-keyword-with-validation-function
+interface SchemaValidateFunction {
+  (schema: string, data: string): boolean;
+  errors?: Array<Partial<ErrorObject>>;
+}
+
 /**
  * @param {Object} json
  * @param {Object=} options
@@ -27,6 +33,7 @@ export = function (
   if (typeof options.maxFileSize === "function") {
     maxFileSize = options.maxFileSize;
   }
+
   const ajv = new Ajv({
     allErrors: true,
     formats: {
@@ -36,13 +43,15 @@ export = function (
     },
   });
 
-  const validateMaxFileSize = (schema: string, data: string) => {
+  const validateMaxFileSize: SchemaValidateFunction = (
+    schema: string,
+    data: string
+  ) => {
     // schema: max file size like "512KB" or 123 (in bytes)
     // data: path to the file
     const maxBytes = bytes.parse(schema);
     const valid = maxFileSize(maxBytes, data);
     if (!valid) {
-      // @ts-expect-error
       validateMaxFileSize.errors = [
         {
           keyword: "maxFileSize",
