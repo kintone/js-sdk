@@ -11,6 +11,7 @@ type ValidateResult = {
 };
 
 // https://ajv.js.org/docs/keywords.html#define-keyword-with-validation-function
+// FIXME: use the type definition that Ajv provides if https://github.com/ajv-validator/ajv/pull/1460 has been merged
 interface SchemaValidateFunction {
   (schema: string, data: string): boolean;
   errors?: Array<Partial<ErrorObject>>;
