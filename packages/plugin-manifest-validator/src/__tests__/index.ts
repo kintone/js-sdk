@@ -61,7 +61,6 @@ describe("validator", () => {
           message: "should be >= 1",
           params: {
             comparison: ">=",
-            // exclusive: false,
             limit: 1,
           },
           schemaPath: "#/properties/version/minimum",
@@ -237,6 +236,31 @@ describe("validator", () => {
       );
       assert(actual.valid === true);
       assert(actual.errors === null);
+    });
+  });
+  describe("maxItems", () => {
+    it("exceed the max item counts", () => {
+      const urls = [...new Array(100)].map(
+        (_, i) => `https://example.com/${i}.js`
+      );
+      const actual = validator(
+        json({
+          desktop: {
+            js: urls,
+          },
+        })
+      );
+      assert.strictEqual(actual.valid, false);
+      assert.strictEqual(actual.errors?.length, 1);
+      assert.deepStrictEqual(actual.errors[0], {
+        dataPath: "/desktop/js",
+        keyword: "maxItems",
+        message: "should NOT have more than 30 items",
+        params: {
+          limit: 30,
+        },
+        schemaPath: "#/definitions/resources/maxItems",
+      });
     });
   });
 });
