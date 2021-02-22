@@ -163,9 +163,9 @@
         }, {
           "format": "relative-path",
           "maxFileSize": "20MB"
-        }],
-        "maxItems": 30
-      }
+        }]
+      },
+      "maxItems": 30
     }
   }
 }
