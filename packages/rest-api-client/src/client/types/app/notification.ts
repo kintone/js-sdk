@@ -33,3 +33,20 @@ export type PerRecordNotificationForResponse = {
   }>;
   revision: string;
 };
+
+export type ReminderNotificationForResponse = {
+  timing: {
+    code: string;
+    daysLater: string;
+    hoursLater?: string;
+    time?: string;
+  };
+  filterCond: string;
+  title: string;
+  targets: [
+    {
+      entity: Entity | { type: "FIELD_ENTITY"; code: string };
+      includeSubs: boolean;
+    }
+  ];
+};

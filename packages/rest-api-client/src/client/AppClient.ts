@@ -28,6 +28,7 @@ import {
   GeneralNotificationForResponse,
   PerRecordNotificationForParameter,
   PerRecordNotificationForResponse,
+  ReminderNotificationForResponse,
 } from "./types";
 type RowLayoutForParameter = {
   type: "ROW";
@@ -507,6 +508,23 @@ export class AppClient {
       preview: true,
     });
     return this.client.put(path, params);
+  }
+
+  public getReminderNotifications(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{
+    notifications: ReminderNotificationForResponse[];
+    timezone: string;
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/notifications/reminder",
+      preview,
+    });
+    return this.client.get(path, rest);
   }
 
   private buildPathWithGuestSpaceId(params: {
