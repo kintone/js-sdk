@@ -1,11 +1,13 @@
-const printJSON = (value: unknown) => {
-  console.log(JSON.stringify(value, null, 2));
-};
+import { csvPrinter } from "./csvPrinter";
+import { jsonPrinter } from "./jsonPrinter";
 
 export const buildPrinter = (type = "json") => {
   switch (type) {
     case "json": {
-      return printJSON;
+      return jsonPrinter;
+    }
+    case "csv": {
+      return csvPrinter;
     }
     default: {
       throw new Error(
