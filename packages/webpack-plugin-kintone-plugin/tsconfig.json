@@ -1,17 +1,15 @@
 {
+  "extends": "../tsconfig-base.json",
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "lib": ["es2015"],
-    "strict": true,
-    "target": "es5",
-    "outDir": "dist",
-    "esModuleInterop": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
     "typeRoots": [
       "node_modules/@types",
       "../../node_modules/@types",
       "types"
-    ], 
+    ]
   },
-  "indlude": ["src/**/*.ts"]
+  "references": [
+    { "path": "../plugin-packer" }
+  ]
 }

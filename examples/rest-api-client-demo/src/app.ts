@@ -458,6 +458,91 @@ export class App {
     }
   }
 
+  public async updateGeneralNotifications() {
+    const notifications = [
+      {
+        entity: {
+          code: "Administrator",
+          type: "USER" as const,
+        },
+        includeSubs: true,
+        recordAdded: false,
+        recordEdited: true,
+        commentAdded: false,
+        statusChanged: true,
+        fileImported: false,
+        notifyToCommenter: true,
+      },
+      {
+        entity: {
+          code: "everyone",
+          type: "GROUP" as const,
+        },
+        includeSubs: false,
+        recordAdded: true,
+        recordEdited: false,
+        commentAdded: true,
+        statusChanged: false,
+        fileImported: true,
+        notifyToCommenter: false,
+      },
+    ];
+    try {
+      console.log(
+        await this.client.app.updateGeneralNotifications({
+          app: APP_ID,
+          notifications,
+          notifyToCommenter: true,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getPerRecordNotifications() {
+    try {
+      const res = await this.client.app.getPerRecordNotifications({
+        app: APP_ID,
+      });
+      res.notifications.forEach((notification) => {
+        console.log(`notification.title: ${notification.title}`);
+        console.log(`notification.filterCond: ${notification.filterCond}`);
+        console.log("targets:");
+        notification.targets.forEach((target) => {
+          console.log(
+            `  target.entity: (${target.entity.code}: ${target.entity.type})`
+          );
+          console.log(`  target.includeSubs: ${target.includeSubs}`);
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getPerRecordNotificationsPreview() {
+    try {
+      const res = await this.client.app.getPerRecordNotifications({
+        app: APP_ID,
+        preview: true,
+      });
+      res.notifications.forEach((notification) => {
+        console.log(`notification.title: ${notification.title}`);
+        console.log(`notification.filterCond: ${notification.filterCond}`);
+        console.log("targets:");
+        notification.targets.forEach((target) => {
+          console.log(
+            `  target.entity: (${target.entity.code}: ${target.entity.type})`
+          );
+          console.log(`  target.includeSubs: ${target.includeSubs}`);
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async updatePerRecordNotifications() {
     const notifications = [
       {
@@ -479,6 +564,29 @@ export class App {
         await this.client.app.updatePerRecordNotifications({
           app: APP_ID,
           notifications,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getReminderNotifications() {
+    try {
+      console.log(
+        await this.client.app.getReminderNotifications({ app: APP_ID })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getReminderNotificationsPreview() {
+    try {
+      console.log(
+        await this.client.app.getReminderNotifications({
+          app: APP_ID,
+          preview: true,
         })
       );
     } catch (error) {

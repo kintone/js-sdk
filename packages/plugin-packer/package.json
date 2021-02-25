@@ -1,37 +1,41 @@
 {
   "name": "@kintone/plugin-packer",
   "description": "Package your kintone plugin with pure JavaScript",
-  "version": "3.0.13",
+  "version": "3.0.14",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=10"
   },
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "bin": {
     "kintone-plugin-packer": "bin/cli.js"
   },
+  "types": "dist/index.d.ts",
   "files": [
     "bin",
-    "src",
+    "dist",
     "from-manifest.js"
   ],
   "scripts": {
-    "build": "run-p js css",
-    "lint": "npm run eslint",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
+    "postbuild": "run-p js css",
+    "clean": "rimraf dist",
+    "lint": "eslint \"*.{js,ts}\" bin src site test",
     "test": "run-p jest site:test",
-    "test:ci": "npm run test",
+    "test:ci": "yarn test",
+    "build:dev": "tsc --build --force --watch",
     "css": "postcss --config postcss.config.js ../../node_modules/normalize.css/normalize.css > docs/dist/normalize.min.css",
-    "eslint": "eslint \"*.js\" bin src site test",
     "js": "webpack --mode production",
     "js:dev": "webpack serve --mode development",
     "jest": "jest",
-    "prerelease": "run-p lint test build",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
-    "site:test": "jest --config site/jest.config.js"
+    "site:test": "jest --config site/jest.config.js",
+    "start": "npm-run-all -l -s clean build -p build:dev site:dev"
   },
   "dependencies": {
-    "@kintone/plugin-manifest-validator": "^4.0.0",
+    "@kintone/plugin-manifest-validator": "^4.0.1",
     "chokidar": "^3.5.1",
     "debug": "^4.3.1",
     "denodeify": "^1.2.1",
@@ -43,8 +47,15 @@
     "yazl": "^2.5.1"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/stream-buffers": "^3.0.3",
+    "@types/yauzl": "^2.9.1",
+    "@types/yazl": "^2.4.2",
+    "ajv": "^6.12.6",
     "array-flatten": "^3.0.0",
     "assert": "^2.0.0",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "constants-browserify": "^1.0.0",
@@ -64,7 +75,7 @@
     "setimmediate": "^1.0.5",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.3",
-    "webpack": "^5.21.2",
+    "webpack": "^5.23.0",
     "webpack-cli": "4.5.0",
     "webpack-dev-server": "^3.11.2"
   },

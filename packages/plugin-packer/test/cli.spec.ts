@@ -1,16 +1,13 @@
-"use strict";
+import fs from "fs";
+import path from "path";
+import { promisify } from "util";
+import _rimraf from "rimraf";
+import glob from "glob";
+import { readZipContentsNames } from "./helper/zip";
+import cli from "../src/cli";
+import console from "../src/console";
 
-const fs = require("fs");
-const path = require("path");
-const denodeify = require("denodeify");
-
-const rimraf = denodeify(require("rimraf"));
-const glob = require("glob");
-
-const { readZipContentsNames } = require("./helper/zip");
-
-const cli = require("../src/cli");
-const console = require("../src/console");
+const rimraf = promisify(_rimraf);
 
 const fixturesDir = path.join(__dirname, "fixtures");
 const sampleDir = path.join(fixturesDir, "sample-plugin");
@@ -24,8 +21,10 @@ describe("cli", () => {
   const consoleLog = console.log;
   const consoleError = console.error;
   beforeEach(() => {
+    /* eslint-disable @typescript-eslint/no-empty-function -- This is mock functions */
     console.log = () => {};
     console.error = () => {};
+    /* eslint-enable @typescript-eslint/no-empty-function */
   });
   afterEach(() => {
     console.log = consoleLog;

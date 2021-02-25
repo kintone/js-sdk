@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "publishConfig": {
     "access": "public"
   },
@@ -14,26 +14,23 @@
   "browser": "lib/index.browser.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "npm-run-all -l -s clean -p build:*",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
+    "postbuild": "run-p build:*",
     "lint": "run-p -l lint:*",
-    "prepublishOnly": "npm run build",
-    "prerelease": "npm-run-all -p lint test -s build",
+    "prepublishOnly": "run-p build:umd_*",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "build:umd_dev": "rollup -c --environment BUILD:development",
     "build:umd_prod": "rollup -c --environment BUILD:production",
-    "build:compile": "run-p compile",
+    "build:esm": "tsc -p tsconfig.esm.json",
     "clean": "rimraf lib esm umd",
-    "compile": "run-p -l compile:*",
-    "compile:esm": "tsc -p tsconfig.esm.json",
-    "compile:cjs": "tsc",
-    "fix:lint": "npm run lint:eslint -- --fix",
+    "fix:lint": "yarn lint:eslint --fix",
     "fix:md": "prettier --write README.md 'docs/**/*.md'",
     "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md 'docs/**/*.md'",
-    "lint:ts": "tsc --noEmit",
-    "start": "npm run compile:cjs -- --watch"
+    "start": "yarn build --watch"
   },
   "repository": {
     "type": "git",
@@ -60,14 +57,14 @@
     "node": ">=10.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-babel": "^5.2.3",
+    "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^11.1.1",
+    "@rollup/plugin-node-resolve": "^11.2.0",
     "@types/core-js": "^2.5.4",
     "@types/js-base64": "^2.3.2",
     "@types/qs": "^6.9.5",
-    "rollup": "^2.38.5",
+    "rollup": "^2.39.1",
     "rollup-plugin-ecma-version-validator": "^0.1.6",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
@@ -76,8 +73,8 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
-    "core-js": "^3.8.3",
-    "form-data": "^3.0.0",
+    "core-js": "^3.9.0",
+    "form-data": "^4.0.0",
     "js-base64": "^2.6.4",
     "qs": "^6.9.6"
   },

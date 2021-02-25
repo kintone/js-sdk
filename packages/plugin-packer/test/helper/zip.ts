@@ -1,6 +1,6 @@
-const yauzl = require("yauzl");
+import yauzl from "yauzl";
 
-exports.readZipContentsNames = (zipFilePath) => {
+export function readZipContentsNames(zipFilePath: Buffer): Promise<string[]> {
   return new Promise((resolve, reject) => {
     yauzl.fromBuffer(zipFilePath, (err, zipFile) => {
       if (err) reject(err);
@@ -13,4 +13,4 @@ exports.readZipContentsNames = (zipFilePath) => {
       });
     });
   });
-};
+}

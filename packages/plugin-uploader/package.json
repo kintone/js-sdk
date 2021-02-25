@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-uploader",
-  "version": "4.2.3",
+  "version": "4.2.4",
   "description": "A kintone plugin uploader using puppetieer",
   "bin": {
     "kintone-plugin-uploader": "bin/cli.js"
@@ -10,16 +10,13 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsc -w",
-    "build": "run-s clean build:tsc",
-    "build:tsc": "tsc",
+    "start": "yarn build --watch",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
     "clean": "rimraf dist",
-    "lint": "npm-run-all -s build -p lint:*",
-    "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint 'src/**/*.ts' 'bin/*.js'",
-    "prerelease": "npm-run-all -p lint test -s build",
+    "lint": "eslint 'src/**/*.ts' 'bin/*.js'",
     "test": "echo 'no test'",
-    "test:ci": "run-s test"
+    "test:ci": "yarn test"
   },
   "files": [
     "bin",
@@ -47,7 +44,7 @@
     "inquirer": "^7.3.3",
     "meow": "^9.0.0",
     "os-locale": "^5.0.0",
-    "puppeteer": "7.0.1"
+    "puppeteer": "7.1.0"
   },
   "devDependencies": {
     "@types/inquirer": "7.3.1",

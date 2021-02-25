@@ -1,22 +1,27 @@
-"use strict";
+import path from "path";
+import * as yazl from "yazl";
+import * as yauzl from "yauzl";
+import { promisify } from "util";
+import validate from "@kintone/plugin-manifest-validator";
+import * as streamBuffers from "stream-buffers";
 
-const path = require("path");
-const yazl = require("yazl");
-const yauzl = require("yauzl");
-const denodeify = require("denodeify");
-const validate = require("@kintone/plugin-manifest-validator");
-const streamBuffers = require("stream-buffers");
+import { generateErrorMessages } from "./gen-error-msg";
+import { sourceList } from "./sourcelist";
 
-const genErrorMsg = require("./gen-error-msg");
-const sourceList = require("./sourcelist");
+type ManifestJson = any;
+type Entries = Map<string, any>;
+
+interface PreprocessedContentsZip {
+  zipFile: yauzl.ZipFile;
+  entries: Entries;
+  manifestJson: ManifestJson;
+  manifestPath: string;
+}
 
 /**
  * Extract, validate and rezip contents.zip
- *
- * @param {!Buffer} contentsZip The zipped plugin contents directory.
- * @return {!Promise<!Buffer>}
  */
-function rezip(contentsZip) {
+export function rezip(contentsZip: Buffer): Promise<Buffer> {
   return preprocessToRezip(contentsZip).then(
     ({ zipFile, entries, manifestJson, manifestPath }) => {
       validateManifest(entries, manifestJson, manifestPath);
@@ -27,10 +32,8 @@ function rezip(contentsZip) {
 
 /**
  * Validate a buffer of contents.zip
- * @param {!Buffer} contentsZip
- * @return {!Promise<*>}
  */
-function validateContentsZip(contentsZip) {
+export function validateContentsZip(contentsZip: Buffer): Promise<any> {
   return preprocessToRezip(
     contentsZip
   ).then(({ entries, manifestJson, manifestPath }) =>
@@ -40,11 +43,10 @@ function validateContentsZip(contentsZip) {
 
 /**
  * Create an intermediate representation for contents.zip
- * @typedef {{zipFile: !yauzl.ZipFile,entries: !Map<string, !yauzl.ZipEntry>, manifestJson: Object, manifestPath: string}} PreprocessedContentsZip
- * @param {!Buffer} contentsZip
- * @return {Promise<PreprocessedContentsZip>}
  */
-function preprocessToRezip(contentsZip) {
+function preprocessToRezip(
+  contentsZip: Buffer
+): Promise<PreprocessedContentsZip> {
   return zipEntriesFromBuffer(contentsZip).then((result) => {
     const manifestList = Array.from(result.entries.keys()).filter(
       (file) => path.basename(file) === "manifest.json"
@@ -54,45 +56,51 @@ function preprocessToRezip(contentsZip) {
     } else if (manifestList.length > 1) {
       throw new Error("The zip file has many manifest.json files");
     }
-    result.manifestPath = manifestList[0];
-    const manifestEntry = result.entries.get(result.manifestPath);
+    (result as any).manifestPath = manifestList[0];
+    const manifestEntry = result.entries.get((result as any).manifestPath);
     return getManifestJsonFromEntry(
       result.zipFile,
       manifestEntry
-    ).then((json) => Object.assign(result, { manifestJson: json }));
+    ).then((json: any) => Object.assign(result, { manifestJson: json })) as any;
   });
 }
 
-/**
- * @param {!Buffer} contentsZip
- * @return {!Promise<{zipFile: !yauzl.ZipFile, entries: !Map<string, !yauzl.ZipEntry>}>}
- */
-function zipEntriesFromBuffer(contentsZip) {
-  return denodeify(yauzl.fromBuffer)(contentsZip).then(
+function getManifestJsonFromEntry(
+  zipFile: yauzl.ZipFile,
+  zipEntry: yauzl.ZipFile
+): Promise<string> {
+  return zipEntryToString(zipFile, zipEntry).then((str) => JSON.parse(str));
+}
+
+function zipEntriesFromBuffer(
+  contentsZip: Buffer
+): Promise<{
+  zipFile: yauzl.ZipFile;
+  entries: Entries;
+}> {
+  return promisify(yauzl.fromBuffer)(contentsZip).then(
     (zipFile) =>
       new Promise((res, rej) => {
         const entries = new Map();
         const result = {
-          zipFile: zipFile,
-          entries: entries,
+          zipFile,
+          entries,
         };
-        zipFile.on("entry", (entry) => {
+        zipFile?.on("entry", (entry) => {
           entries.set(entry.fileName, entry);
         });
-        zipFile.on("end", () => {
+        zipFile?.on("end", () => {
           res(result);
         });
-        zipFile.on("error", rej);
+        zipFile?.on("error", rej);
       })
-  );
+  ) as any;
 }
 
-/**
- * @param {!yauzl.ZipFile} zipFile
- * @param {!yauzl.ZipEntry} zipEntry
- * @return {!Promise<string>}
- */
-function zipEntryToString(zipFile, zipEntry) {
+function zipEntryToString(
+  zipFile: yauzl.ZipFile,
+  zipEntry: any
+): Promise<string> {
   return new Promise((res, rej) => {
     zipFile.openReadStream(zipEntry, (e, stream) => {
       if (e) {
@@ -102,30 +110,19 @@ function zipEntryToString(zipFile, zipEntry) {
         output.on("finish", () => {
           res(output.getContents().toString("utf8"));
         });
-        stream.pipe(output);
+        stream?.pipe(output);
       }
     });
   });
 }
 
-/**
- * @param {!yauzl.ZipFile} zipFile
- * @param {!yauzl.ZipEntry} zipEntry
- * @return {!Promise<string>}
- */
-function getManifestJsonFromEntry(zipFile, zipEntry) {
-  return zipEntryToString(zipFile, zipEntry).then((str) => JSON.parse(str));
-}
-
-/**
- * @param {!Map<string, !yauzl.ZipEntry>} entries
- * @param {!Object} manifestJson
- * @param {string} manifestPath
- * @throws if manifest.json is invalid
- */
-function validateManifest(entries, manifestJson, manifestPath) {
+function validateManifest(
+  entries: Entries,
+  manifestJson: ManifestJson,
+  manifestPath: string
+) {
   // entry.fileName is a relative path separated by posix style(/) so this makes separators always posix style.
-  const getEntryKey = (filePath) =>
+  const getEntryKey = (filePath: string) =>
     path
       .join(path.dirname(manifestPath), filePath)
       .replace(new RegExp(`\\${path.sep}`, "g"), "/");
@@ -140,37 +137,35 @@ function validateManifest(entries, manifestJson, manifestPath) {
     },
   });
   if (!result.valid) {
-    const errors = genErrorMsg(result.errors);
-    const e = new Error(errors.join(", "));
+    const errors = generateErrorMessages(result.errors!);
+    const e: any = new Error(errors.join(", "));
     e.validationErrors = errors;
     throw e;
   }
 }
 
-/**
- * @param {!yauzl.ZipFile} zipFile
- * @param {!Map<string, !yauzl.ZipEntry>} entries
- * @param {!Object} manifestJson
- * @param {string} manifestPath
- * @return {!Promise<!Buffer>}
- */
-function rezipContents(zipFile, entries, manifestJson, manifestPath) {
+function rezipContents(
+  zipFile: yauzl.ZipFile,
+  entries: Entries,
+  manifestJson: ManifestJson,
+  manifestPath: string
+): Promise<Buffer> {
   const manifestPrefix = path.dirname(manifestPath);
 
   return new Promise((res, rej) => {
     const newZipFile = new yazl.ZipFile();
-    newZipFile.on("error", rej);
+    (newZipFile as any).on("error", rej);
     const output = new streamBuffers.WritableStreamBuffer();
     output.on("finish", () => {
-      res(output.getContents());
+      res(output.getContents() as Buffer);
     });
     newZipFile.outputStream.pipe(output);
-    const openReadStream = denodeify(zipFile.openReadStream.bind(zipFile));
+    const openReadStream = promisify(zipFile.openReadStream.bind(zipFile));
     Promise.all(
       sourceList(manifestJson).map((src) => {
         const entry = entries.get(path.join(manifestPrefix, src));
         return openReadStream(entry).then((stream) => {
-          newZipFile.addReadStream(stream, src, {
+          newZipFile.addReadStream(stream!, src, {
             size: entry.uncompressedSize,
           });
         });
@@ -180,8 +175,3 @@ function rezipContents(zipFile, entries, manifestJson, manifestPath) {
     });
   });
 }
-
-module.exports = {
-  rezip,
-  validateContentsZip,
-};

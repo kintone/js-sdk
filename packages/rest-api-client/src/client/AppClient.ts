@@ -25,8 +25,11 @@ import {
   AppCustomizeScope,
   AppCustomizeForResponse,
   AppCustomizeForParameter,
-  GeneralNotificationsForResponse,
-  PerRecordNotificationsForParameter,
+  GeneralNotificationForParameter,
+  GeneralNotificationForResponse,
+  PerRecordNotificationForParameter,
+  PerRecordNotificationForResponse,
+  ReminderNotificationForResponse,
 } from "./types";
 type RowLayoutForParameter = {
   type: "ROW";
@@ -468,7 +471,7 @@ export class AppClient {
     app: AppID;
     preview?: boolean;
   }): Promise<{
-    notifications: GeneralNotificationsForResponse[];
+    notifications: GeneralNotificationForResponse[];
     notifyToCommenter: boolean;
     revision: string;
   }> {
@@ -480,9 +483,38 @@ export class AppClient {
     return this.client.get(path, { ...rest });
   }
 
+  public updateGeneralNotifications(params: {
+    app: AppID;
+    notifications?: GeneralNotificationForParameter[];
+    notifyToCommenter?: boolean;
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/notifications/general",
+      preview: true,
+    });
+    return this.client.put(path, params);
+  }
+
+  public getPerRecordNotifications(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{
+    notifications: PerRecordNotificationForResponse[];
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/notifications/perRecord",
+      preview,
+    });
+    return this.client.get(path, rest);
+  }
+
   public updatePerRecordNotifications(params: {
     app: AppID;
-    notifications: PerRecordNotificationsForParameter[];
+    notifications: PerRecordNotificationForParameter[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
@@ -490,6 +522,23 @@ export class AppClient {
       preview: true,
     });
     return this.client.put(path, params);
+  }
+
+  public getReminderNotifications(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{
+    notifications: ReminderNotificationForResponse[];
+    timezone: string;
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/notifications/reminder",
+      preview,
+    });
+    return this.client.get(path, rest);
   }
 
   private buildPathWithGuestSpaceId(params: {

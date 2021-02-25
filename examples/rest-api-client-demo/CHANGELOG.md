@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.2.0...@kintone/rest-api-client-demo@1.3.0) (2021-02-17)
+
+
+### Features
+
+* **rest-api-client:** implement GET /k/v1/app/notifications/general.json  ([#604](https://github.com/kintone/js-sdk/issues/604)) ([48f2170](https://github.com/kintone/js-sdk/commit/48f217049c997230f8d2e8efced9e768e37e44bb))
+
+
+
+
+
 # [1.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.1.9...@kintone/rest-api-client-demo@1.2.0) (2021-02-09)
 
 

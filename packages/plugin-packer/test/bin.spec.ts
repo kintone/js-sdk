@@ -1,8 +1,6 @@
-"use strict";
-
-const path = require("path");
-const execa = require("execa");
-const pkg = require("../package.json");
+import path from "path";
+import execa from "execa";
+import pkg from "../package.json";
 
 describe("bin", () => {
   it("should output version with --version", () =>
@@ -71,7 +69,7 @@ describe("bin", () => {
     }));
 });
 
-function exec(...args) {
+function exec(...args: string[]) {
   const binPath = path.resolve(__dirname, "../bin/cli.js");
   const env = Object.assign({}, process.env, { NODE_ENV: "test" });
   return execa(binPath, args, { env });

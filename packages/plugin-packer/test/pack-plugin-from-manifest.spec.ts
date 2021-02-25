@@ -1,13 +1,9 @@
-"use strict";
-
-const path = require("path");
-const fs = require("fs");
-
-const { readZipContentsNames } = require("./helper/zip");
-
-const packer = require("../src/");
-const packPluginFromManifest = require("../src/pack-plugin-from-manifest");
-const createContentsZip = require("../src/create-contents-zip");
+import path from "path";
+import fs from "fs";
+import { readZipContentsNames } from "./helper/zip";
+import packer from "../src";
+import { packPluginFromManifest } from "../dist/pack-plugin-from-manifest";
+import { createContentsZip } from "../dist/create-contents-zip";
 
 const fixturesDir = path.join(__dirname, "fixtures");
 const ppkFilePath = path.join(fixturesDir, "private.ppk");
@@ -21,7 +17,7 @@ describe("pack-plugin-from-manifest", () => {
     Promise.all([
       packPluginFromManifest(manifestJSONPath, privateKey),
       createContentsZip(pluginDir, manifest).then((buffer) =>
-        packer(buffer, privateKey)
+        packer(buffer as any, privateKey)
       ),
     ]).then(([result1, result2]) => {
       expect(result1.id).toBe(result2.id);

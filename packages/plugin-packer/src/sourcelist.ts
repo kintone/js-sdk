@@ -1,12 +1,10 @@
-"use strict";
-
 /**
  * Create content file list from manifest.json
- *
- * @param {!Object} manifest
- * @return {!Array<string>}
  */
-function sourceList(manifest) {
+export function sourceList(
+  // TODO: Define and use menifest type
+  manifest: any
+): string[] {
   const sourceTypes = [
     ["desktop", "js"],
     ["desktop", "css"],
@@ -19,13 +17,11 @@ function sourceList(manifest) {
     .map((t) => manifest[t[0]] && manifest[t[0]][t[1]])
     .filter((i) => !!i)
     .reduce((a, b) => a.concat(b), [])
-    .filter((file) => !/^https?:\/\//.test(file));
+    .filter((file: any) => !/^https?:\/\//.test(file));
   if (manifest.config && manifest.config.html) {
     list.push(manifest.config.html);
   }
   list.push("manifest.json", manifest.icon);
   // Make the file list unique
-  return [...new Set(list)];
+  return Array.from(new Set(list));
 }
-
-module.exports = sourceList;

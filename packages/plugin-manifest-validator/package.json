@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-manifest-validator",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=10"
@@ -13,15 +13,14 @@
   ],
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "start": "tsc -w",
-    "build": "yarn clean && tsc",
+    "start": "yarn build --watch",
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
+    "postbuild": "yarn gen-dts",
     "gen-dts": "node script/generate-dts.js",
-    "prerelease": "run-p lint test",
     "test": "jest",
-    "test:ci": "yarn test",
-    "lint": "run-p lint:*",
-    "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint --ext .ts src",
+    "test:ci": "jest --runInBand",
+    "lint": "eslint --ext .ts src",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -29,7 +28,7 @@
     "bytes": "^3.1.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.12.16",
+    "@babel/preset-typescript": "^7.12.17",
     "@types/bytes": "^3.1.0",
     "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "intelli-espower-loader": "^1.0.1",

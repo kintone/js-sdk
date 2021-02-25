@@ -1,20 +1,21 @@
-"use strict";
+import { ZipFile } from "yazl";
+import RSA from "node-rsa";
+import streamBuffers from "stream-buffers";
+import _debug from "debug";
+import { sign } from "./sign";
+import { uuid } from "./uuid";
+import { validateContentsZip } from "./zip";
 
-const ZipFile = require("yazl").ZipFile;
-const RSA = require("node-rsa");
-const streamBuffers = require("stream-buffers");
-const debug = require("debug")("packer");
+const debug = _debug("packer");
 
-const sign = require("./sign");
-const uuid = require("./uuid");
-const { validateContentsZip } = require("./zip");
-
-/**
- * @param {!Buffer} contentsZip The zipped plugin contents directory.
- * @param {string=} privateKey The private key (PKCS#1 PEM).
- * @return {!Promise<{plugin: !Buffer, privateKey: string, id: string}>}
- */
-function packer(contentsZip, privateKey_) {
+export = function packer(
+  contentsZip: Buffer,
+  privateKey_?: string
+): Promise<{
+  plugin: Buffer;
+  privateKey: string;
+  id: string;
+}> {
   let privateKey = privateKey_;
   let key;
   if (privateKey) {
@@ -32,37 +33,34 @@ function packer(contentsZip, privateKey_) {
   return validateContentsZip(contentsZip)
     .then(() => zip(contentsZip, publicKey, signature))
     .then((plugin) => ({
-      plugin: plugin,
-      privateKey: privateKey,
-      id: id,
-    }));
-}
+      plugin,
+      privateKey,
+      id,
+    })) as any;
+};
 
 /**
  * Create plugin.zip
- *
- * @param {!Buffer} contentsZip
- * @param {!Buffer} publicKey
- * @param {!Buffer} signature
- * @return {!Promise<!Buffer>}
  */
-function zip(contentsZip, publicKey, signature) {
+function zip(
+  contentsZip: Buffer,
+  publicKey: Buffer,
+  signature: Buffer
+): Promise<Buffer> {
   debug(`zip(): start`);
   return new Promise((res, rej) => {
     const output = new streamBuffers.WritableStreamBuffer();
     const zipFile = new ZipFile();
     output.on("finish", () => {
       debug(`zip(): output finish event`);
-      res(output.getContents());
+      res(output.getContents() as any);
     });
     zipFile.outputStream.pipe(output);
     zipFile.addBuffer(contentsZip, "contents.zip");
     zipFile.addBuffer(publicKey, "PUBKEY");
     zipFile.addBuffer(signature, "SIGNATURE");
-    zipFile.end((finalSize) => {
+    zipFile.end(undefined, ((finalSize: number) => {
       debug(`zip(): ZipFile end event: finalSize ${finalSize} bytes`);
-    });
+    }) as any);
   });
 }
-
-module.exports = packer;
