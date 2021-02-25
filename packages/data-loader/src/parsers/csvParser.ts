@@ -20,7 +20,6 @@ export const parseCsv = (
     >((fields, fieldCode) => {
       const fieldType = fieldsJson.properties[fieldCode].type;
       switch (fieldType) {
-        case "RECORD_NUMBER":
         case "SINGLE_LINE_TEXT":
         case "RADIO_BUTTON":
         case "MULTI_LINE_TEXT":
@@ -29,22 +28,23 @@ export const parseCsv = (
         case "LINK":
         case "DROP_DOWN":
         case "CALC":
-        case "UPDATED_TIME":
-        case "CREATED_TIME":
+          // case "RECORD_NUMBER":
+          // case "UPDATED_TIME":
+          // case "CREATED_TIME":
           fields[fieldCode] = {
             type: fieldType,
             value: record[fieldCode],
           };
           break;
-        case "CREATOR":
-        case "MODIFIER":
-          fields[fieldCode] = {
-            type: fieldType,
-            value: {
-              code: record[fieldCode],
-            },
-          };
-          break;
+        // case "CREATOR":
+        // case "MODIFIER":
+        //   fields[fieldCode] = {
+        //     type: fieldType,
+        //     value: {
+        //       code: record[fieldCode],
+        //     },
+        //   };
+        //   break;
         case "MULTI_SELECT":
         case "CHECK_BOX":
           fields[fieldCode] = {
