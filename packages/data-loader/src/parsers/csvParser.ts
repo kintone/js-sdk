@@ -1,6 +1,8 @@
 import parseCsv from "csv-parse/lib/sync";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
+const LINE_BREAK = "\n";
+
 export const convertCsvToJson = (
   csv: string,
   fieldsJson: { properties: Record<string, KintoneFormFieldProperty.OneOf> }
@@ -11,7 +13,10 @@ export const convertCsvToJson = (
   });
   return records.map((record) => {
     return Object.keys(record).reduce<
-      Record<string, { type: string; value: string | { code: string } }>
+      Record<
+        string,
+        { type: string; value: string | string[] | { code: string } }
+      >
     >((fields, fieldCode) => {
       const fieldType = fieldsJson.properties[fieldCode].type;
       switch (fieldType) {
@@ -38,6 +43,13 @@ export const convertCsvToJson = (
             value: {
               code: record[fieldCode],
             },
+          };
+          break;
+        case "MULTI_SELECT":
+        case "CHECK_BOX":
+          fields[fieldCode] = {
+            type: fieldType,
+            value: record[fieldCode].split(LINE_BREAK),
           };
           break;
       }

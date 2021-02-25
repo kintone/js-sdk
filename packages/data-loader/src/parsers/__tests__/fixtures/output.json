@@ -48,9 +48,17 @@
       "type": "CREATED_TIME",
       "value": "2021-02-10T06:14:00Z"
     },
+    "multiSelect": {
+      "type": "MULTI_SELECT",
+      "value": ["\"sample3\"", "sample4"]
+    },
     "calc": {
       "type": "CALC",
       "value": "16"
+    },
+    "checkBox": {
+      "type": "CHECK_BOX",
+      "value": ["\"sample2\""]
     }
   }
 ]
