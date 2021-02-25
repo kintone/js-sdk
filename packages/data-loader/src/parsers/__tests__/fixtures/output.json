@@ -1,28 +1,8 @@
 [
   {
-    "recordNumber": {
-      "type": "RECORD_NUMBER",
-      "value": "9"
-    },
-    "updatedTime": {
-      "type": "UPDATED_TIME",
-      "value": "2021-02-16T02:43:00Z"
-    },
     "dropDown": {
       "type": "DROP_DOWN",
       "value": "sample1"
-    },
-    "creator": {
-      "type": "CREATOR",
-      "value": {
-        "code": "username"
-      }
-    },
-    "modifier": {
-      "type": "MODIFIER",
-      "value": {
-        "code": "username"
-      }
     },
     "richText": {
       "type": "RICH_TEXT",
@@ -44,13 +24,9 @@
       "type": "MULTI_LINE_TEXT",
       "value": "multi\nline\ntext"
     },
-    "createdTime": {
-      "type": "CREATED_TIME",
-      "value": "2021-02-10T06:14:00Z"
-    },
     "multiSelect": {
       "type": "MULTI_SELECT",
-      "value": ["\"sample3\"", "sample4"]
+      "value": ["\"sample3\"", "sample4,sample5"]
     },
     "calc": {
       "type": "CALC",
