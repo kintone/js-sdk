@@ -58,7 +58,7 @@ const lexer = (field: KintoneRecordField.OneOf) => {
       return encloseInQuotation(field.value.code);
     case "MULTI_SELECT":
     case "CHECK_BOX":
-      return encloseInQuotation(field.value.join("\n"));
+      return encloseInQuotation(field.value.join(LINE_BREAK));
     default:
       return field.value;
   }
