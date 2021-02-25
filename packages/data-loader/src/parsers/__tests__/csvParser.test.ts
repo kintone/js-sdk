@@ -4,7 +4,7 @@ import {
 } from "@kintone/rest-api-client";
 import fs from "fs";
 import path from "path";
-import { convertCsvToJson } from "../csvParser";
+import { parseCsv } from "../csvParser";
 const outputJson: Array<{
   [k: string]: KintoneRecordField.OneOf;
 }> = require("./fixtures/output.json");
@@ -18,6 +18,6 @@ describe("csvParser", () => {
       path.resolve(__dirname, "fixtures", "records.csv"),
       "utf-8"
     );
-    expect(convertCsvToJson(csv, fieldsJson)).toEqual(outputJson);
+    expect(parseCsv(csv, fieldsJson)).toEqual(outputJson);
   });
 });

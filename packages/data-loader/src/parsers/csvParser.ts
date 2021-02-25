@@ -1,13 +1,13 @@
-import parseCsv from "csv-parse/lib/sync";
+import csvParse from "csv-parse/lib/sync";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
 const LINE_BREAK = "\n";
 
-export const convertCsvToJson = (
+export const parseCsv = (
   csv: string,
   fieldsJson: { properties: Record<string, KintoneFormFieldProperty.OneOf> }
 ) => {
-  const records: Array<Record<string, string>> = parseCsv(csv, {
+  const records: Array<Record<string, string>> = csvParse(csv, {
     columns: true,
     skip_empty_lines: true,
   });
