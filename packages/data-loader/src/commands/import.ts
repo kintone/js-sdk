@@ -45,6 +45,10 @@ export const builder = (yargs: any) =>
     .option("file-path", {
       describe: "file path",
     })
+    .option("format", {
+      describe: "Output format",
+      default: "json",
+    })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",
     })
