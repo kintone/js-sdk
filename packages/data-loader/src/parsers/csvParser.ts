@@ -49,7 +49,7 @@ export const parseCsv = (
         case "CHECK_BOX":
           fields[fieldCode] = {
             type: fieldType,
-            value: record[fieldCode].split(LINE_BREAK),
+            value: record[fieldCode] ? record[fieldCode].split(LINE_BREAK) : [],
           };
           break;
       }
