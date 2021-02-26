@@ -30,6 +30,7 @@
 - [getPerRecordNotifications](#getPerRecordNotifications)
 - [updatePerRecordNotifications](#updatePerRecordNotifications)
 - [getReminderNotifications](#getReminderNotifications)
+- [updateReminderNotifications](#updateReminderNotifications)
 
 ## Overview
 
