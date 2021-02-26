@@ -594,7 +594,7 @@ export class App {
     }
   }
 
-  public async updateReminderlNotifications() {
+  public async updateReminderNotifications() {
     try {
       console.log(
         await this.client.app.updateReminderlNotifications({
