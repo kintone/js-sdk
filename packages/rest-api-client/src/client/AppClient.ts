@@ -542,7 +542,7 @@ export class AppClient {
     return this.client.get(path, rest);
   }
 
-  public updateReminderlNotifications(params: {
+  public updateReminderNotifications(params: {
     app: AppID;
     notifications?: ReminderNotificationForParameter[];
     timezone?: string;
