@@ -65,7 +65,7 @@ export type ReminderNotificationForParameter = {
   filterCond?: string;
   title?: string;
   targets: Array<{
-    entity: Entity;
+    entity: Entity | { type: "FIELD_ENTITY"; code: string };
     includeSubs?: boolean | string;
   }>;
 };
