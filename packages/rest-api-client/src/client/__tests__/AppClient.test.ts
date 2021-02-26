@@ -957,7 +957,7 @@ describe("AppClient", () => {
     });
   });
 
-  describe("updateReminderlNotifications", () => {
+  describe("updateReminderNotifications", () => {
     const params = {
       app: 1,
       notifications: [
