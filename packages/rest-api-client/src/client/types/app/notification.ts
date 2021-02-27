@@ -50,6 +50,26 @@ export type PerRecordNotificationForResponse = {
   revision: string;
 };
 
+export type ReminderNotificationForParameter = {
+  timing:
+    | {
+        code: string;
+        daysLater: string | number;
+        hoursLater: string | number;
+      }
+    | {
+        code: string;
+        daysLater: string | number;
+        time: string;
+      };
+  filterCond?: string;
+  title?: string;
+  targets: Array<{
+    entity: Entity | { type: "FIELD_ENTITY"; code: string };
+    includeSubs?: boolean | string;
+  }>;
+};
+
 export type ReminderNotificationForResponse = {
   timing: {
     code: string;

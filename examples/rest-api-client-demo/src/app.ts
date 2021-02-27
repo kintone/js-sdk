@@ -593,4 +593,36 @@ export class App {
       console.log(error);
     }
   }
+
+  public async updateReminderNotifications() {
+    try {
+      console.log(
+        await this.client.app.updateReminderNotifications({
+          app: APP_ID,
+          notifications: [
+            {
+              timing: {
+                code: "作成日時",
+                daysLater: "1",
+                hoursLater: "2",
+              },
+              title: "This reminder was updated by rest-api-client-demo",
+              targets: [
+                {
+                  entity: {
+                    type: "USER",
+                    code: "Administrator",
+                  } as const,
+                  includeSubs: false,
+                },
+              ],
+            },
+          ],
+          timezone: "Asia/Tokyo",
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
