@@ -481,9 +481,9 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: `${
+            query: `(${
               params.condition || ""
-            } and $id > 0 order by $id asc limit 500`,
+            }) and $id > 0 order by $id asc limit 500`,
           },
         });
         expect(mockClient.getLogs()[1]).toEqual({
@@ -492,9 +492,9 @@ describe("RecordClient", () => {
           params: {
             app: params.app,
             fields: params.fields,
-            query: `${
+            query: `(${
               params.condition || ""
-            } and $id > 500 order by $id asc limit 500`,
+            }) and $id > 500 order by $id asc limit 500`,
           },
         });
 
