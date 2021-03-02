@@ -1130,6 +1130,60 @@ describe("AppClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("updateReports", () => {
+    const params = {
+      app: 1,
+      reports: {
+        "Graph 1": {
+          chartType: "BAR" as const,
+          chartMode: "NORMAL" as const,
+          name: "Graph 1",
+          index: 0,
+          groups: [
+            {
+              code: "Radio_button",
+            },
+          ],
+          aggregations: [
+            {
+              type: "COUNT" as const,
+            },
+          ],
+          filterCond: "",
+          sorts: [
+            {
+              by: "TOTAL" as const,
+              order: "DESC" as const,
+            },
+          ],
+          periodicReport: {
+            active: true,
+            period: {
+              every: "QUARTER" as const,
+              pattern: "JAN_APR_JUL_OCT" as const,
+              dayOfMonth: "END_OF_MONTH",
+              time: "23:30",
+            },
+          },
+        },
+      },
+    };
+    beforeEach(async () => {
+      await appClient.updateReports(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/preview/app/reports.json"
+      );
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app and rights as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
 
 describe("AppClient with guestSpaceId", () => {
