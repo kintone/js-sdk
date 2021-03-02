@@ -625,4 +625,22 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getReports() {
+    try {
+      console.log(await this.client.app.getReports({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getReportsPreview() {
+    try {
+      console.log(
+        await this.client.app.getReports({ app: APP_ID, preview: true })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
