@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-manifest-validator",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=10"

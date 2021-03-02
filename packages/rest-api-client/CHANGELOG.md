@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.10.0...@kintone/rest-api-client@1.11.0) (2021-03-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.9.0 ([#706](https://github.com/kintone/js-sdk/issues/706)) ([e8a31fa](https://github.com/kintone/js-sdk/commit/e8a31fa892ffd137b4df50ef5ed447bccc18a07e))
+* **deps:** update dependency core-js to ^3.9.1 ([2004d5b](https://github.com/kintone/js-sdk/commit/2004d5b5c51082de6f6db0cec3b3cc29a94c4751))
+
+
+### Features
+
+* add PUT /k/v1/preview/app/notifications/reminder.json ([#612](https://github.com/kintone/js-sdk/issues/612)) ([155f5a7](https://github.com/kintone/js-sdk/commit/155f5a7a657777e1039148ce18396fa27fb9f437))
+* **rest-api-client:** add GET /k/v1/app/notifications/reminder.json ([#606](https://github.com/kintone/js-sdk/issues/606)) ([b924a57](https://github.com/kintone/js-sdk/commit/b924a57a5fdd1355f85ac50abeff22438c2535bb))
+* **rest-api-client:** implement GET /k/v1/app/notifications/perRecord.json ([#609](https://github.com/kintone/js-sdk/issues/609)) ([6f5f289](https://github.com/kintone/js-sdk/commit/6f5f2895757e70bb063b4719601f9e1a43e61b61))
+* **rest-api-client:** implement PUT /k/v1/preview/app/notifications/general.json ([#607](https://github.com/kintone/js-sdk/issues/607)) ([cadc46c](https://github.com/kintone/js-sdk/commit/cadc46ccc292527932604a46d9c51619bdb77d6c))
+
+
+
+
+
 # [1.10.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.9.0...@kintone/rest-api-client@1.10.0) (2021-02-17)
 
 
