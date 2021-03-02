@@ -35,6 +35,26 @@
     "checkBox": {
       "type": "CHECK_BOX",
       "value": ["\"sample2\""]
+    },
+    "createdTime": {
+      "type": "CREATED_TIME",
+      "value": "2021-02-10T06:14:00Z"
+    },
+    "updatedTime": {
+      "type": "UPDATED_TIME",
+      "value": "2021-02-16T02:43:00Z"
+    },
+    "creator": {
+      "type": "CREATOR",
+      "value": {
+        "code": "username"
+      }
+    },
+    "modifier": {
+      "type": "MODIFIER",
+      "value": {
+        "code": "username"
+      }
     }
   }
 ]

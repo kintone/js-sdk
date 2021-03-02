@@ -28,23 +28,22 @@ export const parseCsv = (
         case "LINK":
         case "DROP_DOWN":
         case "CALC":
-          // case "RECORD_NUMBER":
-          // case "UPDATED_TIME":
-          // case "CREATED_TIME":
+        case "UPDATED_TIME":
+        case "CREATED_TIME":
           fields[fieldCode] = {
             type: fieldType,
             value: record[fieldCode],
           };
           break;
-        // case "CREATOR":
-        // case "MODIFIER":
-        //   fields[fieldCode] = {
-        //     type: fieldType,
-        //     value: {
-        //       code: record[fieldCode],
-        //     },
-        //   };
-        //   break;
+        case "CREATOR":
+        case "MODIFIER":
+          fields[fieldCode] = {
+            type: fieldType,
+            value: {
+              code: record[fieldCode],
+            },
+          };
+          break;
         case "MULTI_SELECT":
         case "CHECK_BOX":
           fields[fieldCode] = {
