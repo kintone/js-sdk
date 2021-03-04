@@ -1,10 +1,17 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import {
+  KintoneFormFieldProperty,
+  KintoneRestAPIClient,
+} from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
 import { buildPrinter } from "../printers";
+
+type FieldsJson = {
+  properties: { [k: string]: KintoneFormFieldProperty.OneOf };
+};
 
 export type Options = {
   app: AppID;
@@ -22,7 +29,8 @@ export const run = async (argv: RestAPIClientOptions & Options) => {
   const apiClient = buildRestAPIClient(argv);
   const records = await exportRecords(apiClient, argv);
   const printer = buildPrinter(argv.format);
-  printer(records);
+  const fieldsJson: FieldsJson = await apiClient.app.getFormFields(argv);
+  printer(records, fieldsJson);
 };
 
 export async function exportRecords(

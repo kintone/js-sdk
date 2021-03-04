@@ -69,6 +69,37 @@
     "$id": {
       "type": "__ID__",
       "value": "9"
+    },
+    "subTable": {
+      "type": "SUBTABLE",
+      "value": [
+        {
+          "id": "537306",
+          "value": {
+            "subTableText": {
+              "type": "SINGLE_LINE_TEXT",
+              "value": "text_line1"
+            },
+            "subTableCheckbox": {
+              "type": "CHECK_BOX",
+              "value": ["st_sample1"]
+            }
+          }
+        },
+        {
+          "id": "537307",
+          "value": {
+            "subTableText": {
+              "type": "SINGLE_LINE_TEXT",
+              "value": "text_line2"
+            },
+            "subTableCheckbox": {
+              "type": "CHECK_BOX",
+              "value": ["st_sample2"]
+            }
+          }
+        }
+      ]
     }
   }
 ]
