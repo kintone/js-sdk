@@ -37,46 +37,6 @@
       "label": "作成者",
       "noLabel": false
     },
-    "subTable": {
-      "type": "SUBTABLE",
-      "code": "subTable",
-      "noLabel": false,
-      "label": "subTable",
-      "fields": {
-        "subTableText": {
-          "type": "SINGLE_LINE_TEXT",
-          "code": "subTableText",
-          "label": "文字列 (1行)",
-          "noLabel": false,
-          "required": false,
-          "minLength": "",
-          "maxLength": "",
-          "expression": "",
-          "hideExpression": false,
-          "unique": false,
-          "defaultValue": ""
-        },
-        "subTableCheckbox": {
-          "type": "CHECK_BOX",
-          "code": "subTableCheckbox",
-          "label": "チェックボックス",
-          "noLabel": false,
-          "required": false,
-          "options": {
-            "st_sample2": {
-              "label": "st_sample2",
-              "index": "1"
-            },
-            "st_sample1": {
-              "label": "st_sample1",
-              "index": "0"
-            }
-          },
-          "defaultValue": [],
-          "align": "HORIZONTAL"
-        }
-      }
-    },
     "作業者": {
       "type": "STATUS_ASSIGNEE",
       "code": "作業者",

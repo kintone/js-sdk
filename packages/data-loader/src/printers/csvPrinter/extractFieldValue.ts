@@ -27,11 +27,11 @@ export const extractFieldValue = (
       return encloseInQuotation(escapeQuotation(field.value.join(LINE_BREAK)));
     case "SUBTABLE":
       return field.value.map((subTableField) => ({
-        id: subTableField.id,
-        ...Object.keys(subTableField.value).reduce<Record<string, string>>(
-          (ret, fieldCode) => {
-            return {
-              ...ret,
+        id: encloseInQuotation(subTableField.id),
+              ...Object.keys(subTableField.value).reduce<Record<string, string>>(
+                (ret, fieldCode) => {
+                  return {
+                    ...ret,
               [fieldCode]: extractFieldValue(
                 subTableField.value[fieldCode]
               ) as string,
