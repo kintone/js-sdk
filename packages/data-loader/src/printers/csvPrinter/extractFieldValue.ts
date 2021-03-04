@@ -28,10 +28,10 @@ export const extractFieldValue = (
     case "SUBTABLE":
       return field.value.map((subTableField) => ({
         id: encloseInQuotation(subTableField.id),
-              ...Object.keys(subTableField.value).reduce<Record<string, string>>(
-                (ret, fieldCode) => {
-                  return {
-                    ...ret,
+        ...Object.keys(subTableField.value).reduce<Record<string, string>>(
+          (ret, fieldCode) => {
+            return {
+              ...ret,
               [fieldCode]: extractFieldValue(
                 subTableField.value[fieldCode]
               ) as string,
