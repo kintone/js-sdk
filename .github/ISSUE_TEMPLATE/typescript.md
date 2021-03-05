@@ -11,7 +11,7 @@ assignees: ''
 ## Versions
 
 <!-- Which package do you want to report an issue for? -->
-- @kintone/xxx 0.0.0
+- @kintone/\*\*\* 0.0.0
 <!-- What version did the error occur? -->
 - TypeScript: 0.0.0
 
