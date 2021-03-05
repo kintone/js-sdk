@@ -24,7 +24,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "ajv": "^6.12.6",
+    "ajv": "^7.0.3",
     "bytes": "^3.1.0"
   },
   "devDependencies": {

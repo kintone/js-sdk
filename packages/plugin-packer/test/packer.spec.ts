@@ -84,9 +84,7 @@ describe("packer", () => {
     it("throws an error if the contents.zip is invalid", (done) => {
       const contentsZip = fs.readFileSync(invalidMaxFileSizeContentsZipPath);
       packer(contentsZip).catch((error) => {
-        expect(
-          error.message.indexOf('".icon" file size should be <= 20MB')
-        ).not.toBe(-1);
+        expect(error.message).toBe('"/icon" file size should be <= 20MB');
         done();
       });
     });

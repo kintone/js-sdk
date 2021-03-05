@@ -1,14 +1,21 @@
 "use strict";
 
-import Ajv from "ajv";
+import Ajv, { ErrorObject } from "ajv";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
 
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
-  errors: null | Ajv.ErrorObject[];
+  errors: null | ErrorObject[];
 };
+
+// https://ajv.js.org/docs/keywords.html#define-keyword-with-validation-function
+// FIXME: use the type definition that Ajv provides if https://github.com/ajv-validator/ajv/pull/1460 has been merged
+interface SchemaValidateFunction {
+  (schema: string, data: string): boolean;
+  errors?: Array<Partial<ErrorObject>>;
+}
 
 /**
  * @param {Object} json
@@ -27,10 +34,9 @@ export = function (
   if (typeof options.maxFileSize === "function") {
     maxFileSize = options.maxFileSize;
   }
+
   const ajv = new Ajv({
     allErrors: true,
-    unknownFormats: true,
-    errorDataPath: "property",
     formats: {
       "http-url": (str: string) => validateUrl(str, true),
       "https-url": (str: string) => validateUrl(str),
@@ -38,14 +44,7 @@ export = function (
     },
   });
 
-  ajv.removeKeyword("propertyNames");
-  ajv.removeKeyword("contains");
-  ajv.removeKeyword("const");
-  ajv.removeKeyword("if");
-  ajv.removeKeyword("then");
-  ajv.removeKeyword("else");
-
-  const validateMaxFileSize: Ajv.SchemaValidateFunction = (
+  const validateMaxFileSize: SchemaValidateFunction = (
     schema: string,
     data: string
   ) => {
@@ -55,7 +54,6 @@ export = function (
     const valid = maxFileSize(maxBytes, data);
     if (!valid) {
       validateMaxFileSize.errors = [
-        // @ts-expect-error TODO: Ajv.ErrorObject has need fixing.
         {
           keyword: "maxFileSize",
           params: {
@@ -68,7 +66,8 @@ export = function (
     return valid;
   };
 
-  ajv.addKeyword("maxFileSize", {
+  ajv.addKeyword({
+    keyword: "maxFileSize",
     validate: validateMaxFileSize,
   });
 
@@ -82,8 +81,8 @@ export = function (
  * @return {null|Array<Object>} shallow copy of the input or null
  */
 function transformErrors(
-  errors: undefined | null | Ajv.ErrorObject[]
-): null | Ajv.ErrorObject[] {
+  errors: undefined | null | ErrorObject[]
+): null | ErrorObject[] {
   if (!errors) {
     return null;
   }
