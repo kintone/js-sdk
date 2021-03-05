@@ -31,7 +31,7 @@ console.log(result.errors); // array of ajv error objects
 
 ```js
 {
-  dataPath: '.version',
+  dataPath: '/version',
   keyword: 'type',
   message: 'should be integer',
   params: {
