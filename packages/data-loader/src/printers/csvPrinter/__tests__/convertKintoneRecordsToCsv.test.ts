@@ -8,7 +8,7 @@ const fieldsJson: FieldsJson = require("./fixtures/fields.json");
 const subTableRecords: KintoneRecord[] = require("./fixtures/subtable_records.json");
 const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
-describe("csvPrinter", () => {
+describe("convertKintoneRecordsToCsv", () => {
   it("should convert kintone records to csv string correctly", async () => {
     const expectedCsv = await fs.promises.readFile(
       path.resolve(__dirname, "fixtures", "records.csv"),

@@ -5,6 +5,10 @@ import { extractFieldValue } from "./extractFieldValue";
 import { buildHeaderFields } from "./buildHeaderFields";
 import { hasSubTable } from "./hasSubTable";
 
+type RowObject = {
+  [fieldCode: string]: string | Array<{ [fieldCode: string]: string }>;
+};
+
 export const convertKintoneRecordsToCsv = ({
   records,
   fieldsJson,
@@ -85,7 +89,7 @@ const buildRow = ({
 };
 
 const buildRecordObject = (record: KintoneRecord) => {
-  return Object.keys(record).reduce<Record<string, any>>((ret, fieldCode) => {
+  return Object.keys(record).reduce<RowObject>((ret, fieldCode) => {
     return {
       ...ret,
       [fieldCode]: extractFieldValue(record[fieldCode]),
@@ -97,21 +101,18 @@ const buildPrimaryRowObject = ({
   recordObject,
   fieldsJson,
 }: {
-  recordObject: Record<string, any>;
+  recordObject: RowObject;
   fieldsJson: FieldsJson;
 }) => {
-  return Object.keys(recordObject).reduce<Record<string, string>>(
-    (ret, fieldCode) => {
-      return {
-        ...ret,
-        ...(fieldsJson.properties[fieldCode] &&
-        fieldsJson.properties[fieldCode].type !== "SUBTABLE"
-          ? { [fieldCode]: recordObject[fieldCode] }
-          : {}),
-      };
-    },
-    {}
-  );
+  return Object.keys(recordObject).reduce<RowObject>((ret, fieldCode) => {
+    return {
+      ...ret,
+      ...(fieldsJson.properties[fieldCode] &&
+      fieldsJson.properties[fieldCode].type !== "SUBTABLE"
+        ? { [fieldCode]: recordObject[fieldCode] }
+        : {}),
+    };
+  }, {});
 };
 
 const buildSubTableRowObjects = ({
@@ -122,30 +123,31 @@ const buildSubTableRowObjects = ({
 }: {
   recordObject: Record<string, any>;
   subTableFieldCodes: string[];
-  primaryRowObject: Record<string, string>;
+  primaryRowObject: RowObject;
   recordIndex: number;
 }) => {
-  const rowObjects = subTableFieldCodes.reduce<
-    Array<{
-      [fieldCode: string]: string;
-    }>
-  >((ret, subTableFieldCode) => {
-    return ret.concat(
-      recordObject[subTableFieldCode].map((field: { [k: string]: string }) => ({
-        [RECORD_INDEX]: encloseInQuotation(recordIndex + 1 + ""),
-        ...primaryRowObject,
-        ...Object.keys(field).reduce<Record<string, string>>(
-          (rowObject, fieldCode) => {
-            return {
-              ...rowObject,
-              [`${subTableFieldCode}.${fieldCode}`]: field[fieldCode],
-            };
-          },
-          {}
-        ),
-      }))
-    );
-  }, []);
+  const rowObjects = subTableFieldCodes.reduce<RowObject[]>(
+    (ret, subTableFieldCode) => {
+      return ret.concat(
+        recordObject[subTableFieldCode].map(
+          (field: { [k: string]: string }) => ({
+            [RECORD_INDEX]: encloseInQuotation(recordIndex + 1 + ""),
+            ...primaryRowObject,
+            ...Object.keys(field).reduce<Record<string, string>>(
+              (rowObject, fieldCode) => {
+                return {
+                  ...rowObject,
+                  [`${subTableFieldCode}.${fieldCode}`]: field[fieldCode],
+                };
+              },
+              {}
+            ),
+          })
+        )
+      );
+    },
+    []
+  );
   if (rowObjects.length !== 0) {
     rowObjects[0][PRIMARY_MARK] = PRIMARY_MARK;
   }
@@ -156,7 +158,7 @@ const rowObjectToCsvRow = ({
   rowObject,
   headerFields,
 }: {
-  rowObject: Record<string, string>;
+  rowObject: RowObject;
   headerFields: string[];
 }) => {
   return headerFields.map((fieldCode) => rowObject[fieldCode]).join(SEPARATOR);
