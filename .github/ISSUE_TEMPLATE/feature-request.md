@@ -13,7 +13,7 @@ assignees: ''
 
 <!-- Which package do you want to add a feature for? -->
 
-- @kintone/xxx
+- @kintone/\*\*\*
 
 ## Why
 
