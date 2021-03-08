@@ -4,179 +4,220 @@ import { PRIMARY_MARK, RECORD_INDEX } from "../printers/csvPrinter/constants";
 import { FieldsJson } from "../printers/csvPrinter";
 import { hasSubTable } from "../printers/csvPrinter/hasSubTable";
 
+export type RecordObject = {
+  [fieldCode: string]: {
+    value: string | string[] | { code: string };
+    type: string;
+  };
+};
+
+type Records = Array<Record<string, string>>;
+
 const LINE_BREAK = "\n";
 
 export const parseCsv = (
   csv: string,
   fieldsJson: { properties: Record<string, KintoneFormFieldProperty.OneOf> }
 ) => {
-  const records: Array<Record<string, string>> = csvParse(csv, {
+  const records: Records = csvParse(csv, {
     columns: true,
     skip_empty_lines: true,
   });
-  if (hasSubTable(fieldsJson)) {
-    return mergeByIndex(records, fieldsJson);
-  }
   return convertToKintoneRecords({
     records,
     fieldsJson,
   });
 };
 
-export type RecordObject = {
-  [fieldCode: string]: { value: string | string[]; type: string };
+const formatToKintoneRecords = ({
+  records,
+  fieldsJson,
+}: {
+  records: Records;
+  fieldsJson: FieldsJson;
+}) => {
+  return records.map((record) => {
+    return Object.keys(record)
+      .filter((fieldCode) => {
+        const field = fieldsJson.properties[fieldCode];
+        return field ? isSupportedFieldType(field.type) : false;
+      })
+      .reduce<RecordObject>(
+        (recordObjects, fieldCode) => ({
+          ...recordObjects,
+          [fieldCode]: formatToRecordValue({
+            value: record[fieldCode],
+            fieldType: fieldsJson.properties[fieldCode].type,
+          }),
+        }),
+        {}
+      );
+  });
+};
+
+const groupByIndex = (records: Records) => {
+  return records.reduce<Record<string, Array<{ [k: string]: string }>>>(
+    (ret, record) => {
+      if (ret[record[RECORD_INDEX]]) {
+        ret[record[RECORD_INDEX]].push(record);
+      } else {
+        ret[record[RECORD_INDEX]] = [record];
+      }
+      return ret;
+    },
+    {}
+  );
+};
+
+const extractSubTableFields = (records: Records) => {
+  return [
+    ...new Set(
+      records.reduce<string[]>((fields, record) => {
+        return fields.concat(
+          Object.keys(record).filter(
+            (fieldCode) => fieldCode.indexOf(".") !== -1
+          )
+        );
+      }, [])
+    ),
+  ];
+};
+
+const extractSubTableFieldsValue = ({
+  records,
+  fieldsJson,
+}: {
+  records: Records;
+  fieldsJson: FieldsJson;
+}) => {
+  const subTableFields = extractSubTableFields(records);
+  const parentFieldCodes = [
+    ...new Set(
+      subTableFields.map((subTableFieldCode) => subTableFieldCode.split(".")[0])
+    ),
+  ];
+
+  return parentFieldCodes.reduce<Record<string, any>>(
+    (subTableValue, parentFieldCode) => {
+      const regex = new RegExp(`^${parentFieldCode}`);
+      const childFieldCodes = subTableFields
+        .filter((fieldCode) => regex.test(fieldCode))
+        .map((fieldCode) => fieldCode.split(".")[1]);
+      
+      const value = records.map((record) => {
+        return childFieldCodes.reduce<any>(
+          (v, childFieldCode) => {
+            if (childFieldCode === "id") {
+              return {
+                ...v,
+                id: record[`${parentFieldCode}.${childFieldCode}`],
+              };
+            }
+
+            const fieldType = (fieldsJson.properties[
+              parentFieldCode
+            ] as KintoneFormFieldProperty.Subtable<any>).fields[childFieldCode]
+              .type;
+            return {
+              ...v,
+              value: {
+                ...v.value,
+                [childFieldCode]: formatToRecordValue({
+                  fieldType,
+                  value: record[`${parentFieldCode}.${childFieldCode}`],
+                }),
+              },
+            };
+          },
+          { id: "", value: {} }
+        );
+      });
+      return {
+        ...subTableValue,
+        [parentFieldCode]: {
+          type: "SUBTABLE",
+          value,
+        },
+      };
+    },
+    {}
+  );
+};
+
+const buildSubTableRecord = ({
+  primaryRow,
+  fieldsJson,
+  subTableFieldsValue,
+}: {
+  primaryRow: Record<string, string>;
+  fieldsJson: FieldsJson;
+  subTableFieldsValue: Record<string, any>;
+}) => {
+  return {
+    ...Object.keys(primaryRow!)
+      .filter((fieldCode) =>
+        isSupportedFieldType(fieldsJson.properties[fieldCode]?.type)
+      )
+      .reduce<Record<string, string | any>>((obj, fieldCode) => {
+        const fieldType = fieldsJson.properties[fieldCode].type;
+        return {
+          ...obj,
+          [fieldCode]: formatToRecordValue({
+            fieldType,
+            value: primaryRow![fieldCode],
+          }),
+        };
+      }, {}),
+    ...subTableFieldsValue,
+  };
 };
 
 const convertToKintoneRecords = ({
   records,
   fieldsJson,
 }: {
-  records: Array<Record<string, string>>;
+  records: Records;
   fieldsJson: FieldsJson;
 }) => {
-  return records.map((record) => {
-    return Object.keys(record).reduce<RecordObject>(
-      (ret, fieldCode) => ({
-        ...ret,
-        ...(isSupportedFieldType(fieldsJson.properties[fieldCode].type)
-          ? {
-              [fieldCode]: {
-                type: fieldsJson.properties[fieldCode].type,
-                value: formatToKintoneValue({
-                  value: record[fieldCode],
-                  fieldType: fieldsJson.properties[fieldCode].type,
-                }),
-              },
-            }
-          : {}),
-      }),
-      {}
-    );
-  });
-};
+  if (!hasSubTable(fieldsJson)) {
+    return formatToKintoneRecords({
+      records,
+      fieldsJson,
+    });
+  }
 
-const mergeByIndex = (
-  records: Array<Record<string, string>>,
-  fieldsJson: FieldsJson
-) => {
-  const byIndex = records.reduce<
-    Record<string, Array<{ [k: string]: string }>>
-  >((ret, record) => {
-    if (ret[record[RECORD_INDEX]]) {
-      ret[record[RECORD_INDEX]].push(record);
-    } else {
-      ret[record[RECORD_INDEX]] = [record];
-    }
-    return ret;
-  }, {});
-  return Object.keys(byIndex).reduce<Array<Record<string, string>>>(
-    (ret, index) => {
-      const primaryRow = byIndex[index].find((record) => record[PRIMARY_MARK]);
-      const subTableFields = [
-        ...new Set(
-          byIndex[index].reduce<string[]>((fields, record) => {
-            return fields.concat(
-              Object.keys(record).filter(
-                (fieldCode) => fieldCode.indexOf(".") !== -1
-              )
-            );
-          }, [])
-        ),
-      ];
-      const parentFieldCodes = [
-        ...new Set(
-          subTableFields.map(
-            (subTableFieldCode) => subTableFieldCode.split(".")[0]
-          )
-        ),
-      ];
-      const subTableFieldValues = parentFieldCodes.reduce<Record<string, any>>(
-        (subTableValue, parentFieldCode) => {
-          const regex = new RegExp(`^${parentFieldCode}`);
-          const childFieldCodes = subTableFields
-            .filter((fieldCode) => regex.test(fieldCode))
-            .map((fieldCode) => fieldCode.split(".")[1]);
-          const value = byIndex[index].map((record) => {
-            return childFieldCodes.reduce<any>(
-              (v, childFieldCode) => {
-                if (childFieldCode === "id") {
-                  return {
-                    ...v,
-                    id: record[`${parentFieldCode}.${childFieldCode}`],
-                  };
-                }
+  const subTableRecordGroups = groupByIndex(records);
 
-                const fieldType = (fieldsJson.properties[
-                  parentFieldCode
-                ] as KintoneFormFieldProperty.Subtable<any>).fields[
-                  childFieldCode
-                ].type;
-                const fieldValue = formatToKintoneValue({
-                  fieldType,
-                  value: record[`${parentFieldCode}.${childFieldCode}`],
-                });
-                return {
-                  ...v,
-                  value: {
-                    ...v.value,
-                    [childFieldCode]: {
-                      type: fieldType,
-                      value: fieldValue,
-                    },
-                  },
-                };
-              },
-              { id: "", value: {} }
-            );
-          });
-          return {
-            ...subTableValue,
-            [parentFieldCode]: {
-              type: "SUBTABLE",
-              value,
-            },
-          };
-        },
-        {}
+  return Object.keys(subTableRecordGroups).reduce<Records>(
+    (subTableRecords, index) => {
+      const primaryRow = subTableRecordGroups[index].find(
+        (record) => record[PRIMARY_MARK]
       );
+      if (!primaryRow) {
+        return subTableRecords;
+      }
+      const subTableFieldsValue = extractSubTableFieldsValue({
+        records: subTableRecordGroups[index],
+        fieldsJson,
+      });
 
-      const row = {
-        ...Object.keys(primaryRow!)
-          .filter(
-            (fieldCode) =>
-              fieldCode.indexOf(".") === -1 &&
-              fieldCode !== PRIMARY_MARK &&
-              fieldCode !== RECORD_INDEX &&
-              fieldsJson.properties[fieldCode].type !== "RECORD_NUMBER"
-          )
-          .reduce<Record<string, string | any>>((obj, fieldCode) => {
-            const fieldType = fieldsJson.properties[fieldCode].type;
-            return {
-              ...obj,
-              [fieldCode]: {
-                type: fieldType,
-                value: formatToKintoneValue({
-                  fieldType,
-                  value: primaryRow![fieldCode],
-                }),
-              },
-            };
-          }, {}),
-        ...subTableFieldValues,
-      };
-      ret.push(row);
-      return ret;
+      const subTableRecord = buildSubTableRecord({
+        primaryRow,
+        fieldsJson,
+        subTableFieldsValue,
+      });
+      return subTableRecords.concat([subTableRecord]);
     },
     []
   );
 };
 
-const formatToKintoneValue = ({
+const formatToRecordValue = ({
   fieldType,
   value,
 }: {
   fieldType: string;
-  value: any;
+  value: string;
 }) => {
   switch (fieldType) {
     case "SINGLE_LINE_TEXT":
@@ -189,15 +230,29 @@ const formatToKintoneValue = ({
     case "CALC":
     case "UPDATED_TIME":
     case "CREATED_TIME":
-      return value;
+      return {
+        type: fieldType,
+        value,
+      };
     case "CREATOR":
     case "MODIFIER":
       return {
-        code: value,
+        type: fieldType,
+        value: {
+          code: value,
+        },
       };
     case "MULTI_SELECT":
     case "CHECK_BOX":
-      return value ? value.split(LINE_BREAK) : [];
+      return {
+        type: fieldType,
+        value: value ? value.split(LINE_BREAK) : [],
+      };
+    default:
+      return {
+        type: fieldType,
+        value,
+      };
   }
 };
 
