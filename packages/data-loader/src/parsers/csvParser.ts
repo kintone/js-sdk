@@ -103,7 +103,7 @@ const extractSubTableFieldsValue = ({
       const childFieldCodes = subTableFields
         .filter((fieldCode) => regex.test(fieldCode))
         .map((fieldCode) => fieldCode.split(".")[1]);
-      
+
       const value = records.map((record) => {
         return childFieldCodes.reduce<any>(
           (v, childFieldCode) => {
