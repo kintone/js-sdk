@@ -1,0 +1,22 @@
+name: License
+
+on: push
+
+jobs:
+  license-finder:
+    name: License Finder
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Set up License Finder
+        run: sudo gem install license_finder
+
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Install Node modules
+        run: yarn install
+
+      - name: Check licenses
+        run: license_finder --decisions-file=license-finder-decisions.yml
