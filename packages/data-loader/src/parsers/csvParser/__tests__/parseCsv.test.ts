@@ -4,7 +4,7 @@ import {
 } from "@kintone/rest-api-client";
 import fs from "fs";
 import path from "path";
-import { parseCsv } from "../csvParser";
+import { parseCsv } from "../index";
 const outputJson: Array<{
   [k: string]: KintoneRecordField.OneOf;
 }> = require("./fixtures/output.json");

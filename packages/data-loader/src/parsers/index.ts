@@ -1,5 +1,5 @@
-import { parseCsv } from "./csvParser";
 import { parseJson } from "./jsonParser";
+import { parseCsv } from "./csvParser";
 
 export const buildParser = (type: string) => {
   switch (type) {
