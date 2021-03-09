@@ -23,17 +23,14 @@ describe("extractSubTableFieldsValue", () => {
 
     const expected = {
       subTable: {
-        type: "SUBTABLE",
         value: [
           {
             id: "11111",
             value: {
               subTableText: {
-                type: "SINGLE_LINE_TEXT",
                 value: "text1",
               },
               subTableCheckbox: {
-                type: "CHECK_BOX",
                 value: ["st_sample1"],
               },
             },
@@ -42,11 +39,9 @@ describe("extractSubTableFieldsValue", () => {
             id: "22222",
             value: {
               subTableText: {
-                type: "SINGLE_LINE_TEXT",
                 value: "text2",
               },
               subTableCheckbox: {
-                type: "CHECK_BOX",
                 value: ["st_sample2"],
               },
             },

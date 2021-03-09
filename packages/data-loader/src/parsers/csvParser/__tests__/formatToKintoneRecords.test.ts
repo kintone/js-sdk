@@ -19,11 +19,9 @@ describe("formatToKintoneRecords", () => {
       {
         singleLineText: {
           value: "single line text",
-          type: "SINGLE_LINE_TEXT",
         },
         multiSelect: {
           value: ["sample1", "sample2"],
-          type: "MULTI_SELECT",
         },
       },
     ]);

@@ -19,13 +19,11 @@ export const formatToRecordValue = ({
     case "UPDATED_TIME":
     case "CREATED_TIME":
       return {
-        type: fieldType,
         value,
       };
     case "CREATOR":
     case "MODIFIER":
       return {
-        type: fieldType,
         value: {
           code: value,
         },
@@ -33,12 +31,10 @@ export const formatToRecordValue = ({
     case "MULTI_SELECT":
     case "CHECK_BOX":
       return {
-        type: fieldType,
         value: value ? value.split(LINE_BREAK) : [],
       };
     default:
       return {
-        type: fieldType,
         value,
       };
   }

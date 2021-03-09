@@ -1,7 +1,5 @@
-import { KintoneRecordField } from "@kintone/rest-api-client";
+import { ParsedRecord } from "./csvParser";
 
 export const parseJson = (jsonString: string) => {
-  return JSON.parse(jsonString) as Array<{
-    [k: string]: KintoneRecordField.OneOf;
-  }>;
+  return JSON.parse(jsonString) as ParsedRecord[];
 };

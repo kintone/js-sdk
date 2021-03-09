@@ -10,6 +10,7 @@ import { formatToKintoneRecords } from "./formatToKintoneRecords";
 import { formatToRecordValue } from "./formatToRecordValue";
 
 export type CsvRecords = Array<Record<string, string>>;
+export type ParsedRecord = Record<string, Record<"value", unknown>>;
 
 export const parseCsv = (
   csv: string,
@@ -39,7 +40,7 @@ const buildSubTableRecord = ({
       .filter((fieldCode) =>
         isImportSupportedFieldType(fieldsJson.properties[fieldCode]?.type)
       )
-      .reduce<Record<string, string | any>>((obj, fieldCode) => {
+      .reduce((obj, fieldCode) => {
         const fieldType = fieldsJson.properties[fieldCode].type;
         return {
           ...obj,
@@ -48,7 +49,7 @@ const buildSubTableRecord = ({
             value: primaryRow![fieldCode],
           }),
         };
-      }, {}),
+      }, {} as ParsedRecord),
     ...subTableFieldsValue,
   };
 };
@@ -69,7 +70,7 @@ const convertToKintoneRecords = ({
 
   const subTableRecordGroups = groupByIndex(records);
 
-  return Object.keys(subTableRecordGroups).reduce<CsvRecords>(
+  return Object.keys(subTableRecordGroups).reduce<ParsedRecord[]>(
     (subTableRecords, index) => {
       const primaryRow = subTableRecordGroups[index].find(
         (record) => record[PRIMARY_MARK]

@@ -47,8 +47,7 @@ export const buildImporter = ({
     const records =
       type === "csv"
         ? parser(buf.toString(), await fetchFieldsJson(options))
-        : // @ts-ignore
-          parser(buf.toString());
+        : parser(buf.toString());
     await addAllRecordsChunk(app, records);
   }
 

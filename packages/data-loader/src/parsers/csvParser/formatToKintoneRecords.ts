@@ -1,14 +1,7 @@
 import { FieldsJson } from "../../printers/csvPrinter";
-import { CsvRecords } from "./index";
+import { ParsedRecord, CsvRecords } from "./index";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToRecordValue } from "./formatToRecordValue";
-
-type RecordObject = {
-  [fieldCode: string]: {
-    value: string | string[] | { code: string };
-    type: string;
-  };
-};
 
 export const formatToKintoneRecords = ({
   records,
@@ -23,7 +16,7 @@ export const formatToKintoneRecords = ({
         const field = fieldsJson.properties[fieldCode];
         return field ? isImportSupportedFieldType(field.type) : false;
       })
-      .reduce<RecordObject>(
+      .reduce(
         (recordObjects, fieldCode) => ({
           ...recordObjects,
           [fieldCode]: formatToRecordValue({
@@ -31,7 +24,7 @@ export const formatToKintoneRecords = ({
             fieldType: fieldsJson.properties[fieldCode].type,
           }),
         }),
-        {}
+        {} as ParsedRecord
       );
   });
 };

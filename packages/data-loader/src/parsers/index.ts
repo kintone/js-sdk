@@ -1,7 +1,12 @@
 import { parseJson } from "./jsonParser";
-import { parseCsv } from "./csvParser";
+import { parseCsv, ParsedRecord } from "./csvParser";
+import { FieldsJson } from "../printers/csvPrinter";
 
-export const buildParser = (type: string) => {
+function buildParser(
+  type: string
+): (sourceString: string, fieldsJson?: FieldsJson) => ParsedRecord[];
+
+function buildParser(type: string) {
   switch (type) {
     case "json":
       return parseJson;
@@ -10,4 +15,6 @@ export const buildParser = (type: string) => {
     default:
       throw new Error(`Unexpected file type: ${type} is unacceptable.`);
   }
-};
+}
+
+export { buildParser };

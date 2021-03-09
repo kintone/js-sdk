@@ -69,7 +69,6 @@ export const extractSubTableFieldsValue = ({
       return {
         ...subTableValue,
         [parentFieldCode]: {
-          type: "SUBTABLE",
           value,
         },
       };
