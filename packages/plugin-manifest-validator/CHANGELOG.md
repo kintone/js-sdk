@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@4.0.2...@kintone/plugin-manifest-validator@5.0.0) (2021-03-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to ^7.0.4 ([10cb494](https://github.com/kintone/js-sdk/commit/10cb4943f2446a8e3170759d5da8cc2390a3eeef))
+
+
+### chore
+
+* **deps:** update dependency ajv to v7 ([#636](https://github.com/kintone/js-sdk/issues/636)) ([a5490d5](https://github.com/kintone/js-sdk/commit/a5490d5702de9f32b06e1511f1e924388e7510c4))
+
+
+### BREAKING CHANGES
+
+* **deps:** The format of dataPath and message in an error object have been changed.
+dataPath: .desktop.css[0] -> /desktop/css/0
+message: *** is a required property -> *** should have required property 'version'
+
+* fix: put maxItems in the correct location
+
+* refactor: remove unnecessary code
+
+* refactor: define SchemaValidateFunction locally
+
+* test: add a test for maxItems
+
+* chore: add a note for PR that expose SchemaValidateFunction
+
+* types: regenerate manifest-schema.d.ts
+
+* docs: update an error object format
+
+* docs: update a link to the documentation for validation errors
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com>
+Co-authored-by: Toru Kobayashi <koba0004@gmail.com>
+
+
+
+
+
 ## [4.0.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@4.0.1...@kintone/plugin-manifest-validator@4.0.2) (2021-03-02)
 
 **Note:** Version bump only for package @kintone/plugin-manifest-validator
