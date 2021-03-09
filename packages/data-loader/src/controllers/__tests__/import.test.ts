@@ -63,7 +63,17 @@ describe("import", () => {
   });
   describe("csv", () => {
     it("should not be failed", async () => {
-      apiClient.record.addRecords = jest.fn().mockResolvedValue([{}]);
+      apiClient.record.addRecords = jest.fn().mockResolvedValue([]);
+      apiClient.app.getFormFields = jest.fn().mockReturnValue({
+        properties: {
+          recordId: {
+            type: "RECORD_NUMBER",
+          },
+          text: {
+            type: "SINGLE_LINE_TEXT",
+          },
+        },
+      });
       const reporter = jest.fn();
       const importRecords = buildImporter({ apiClient, reporter });
       await importRecords({
