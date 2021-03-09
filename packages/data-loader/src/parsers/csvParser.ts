@@ -12,47 +12,44 @@ export const parseCsv = (
     skip_empty_lines: true,
   });
   return records.map((record) => {
-    return Object.keys(record).reduce<
-      Record<
-        string,
-        { type: string; value: string | string[] | { code: string } }
-      >
-    >((fields, fieldCode) => {
-      const fieldType = fieldsJson.properties[fieldCode].type;
-      switch (fieldType) {
-        case "SINGLE_LINE_TEXT":
-        case "RADIO_BUTTON":
-        case "MULTI_LINE_TEXT":
-        case "NUMBER":
-        case "RICH_TEXT":
-        case "LINK":
-        case "DROP_DOWN":
-        case "CALC":
-        case "UPDATED_TIME":
-        case "CREATED_TIME":
-          fields[fieldCode] = {
-            type: fieldType,
-            value: record[fieldCode],
-          };
-          break;
-        case "CREATOR":
-        case "MODIFIER":
-          fields[fieldCode] = {
-            type: fieldType,
-            value: {
-              code: record[fieldCode],
-            },
-          };
-          break;
-        case "MULTI_SELECT":
-        case "CHECK_BOX":
-          fields[fieldCode] = {
-            type: fieldType,
-            value: record[fieldCode] ? record[fieldCode].split(LINE_BREAK) : [],
-          };
-          break;
-      }
-      return fields;
-    }, {});
+    return Object.keys(record).reduce<Record<string, Record<"value", unknown>>>(
+      (fields, fieldCode) => {
+        const fieldType = fieldsJson.properties[fieldCode].type;
+        switch (fieldType) {
+          case "SINGLE_LINE_TEXT":
+          case "RADIO_BUTTON":
+          case "MULTI_LINE_TEXT":
+          case "NUMBER":
+          case "RICH_TEXT":
+          case "LINK":
+          case "DROP_DOWN":
+          case "CALC":
+          case "UPDATED_TIME":
+          case "CREATED_TIME":
+            fields[fieldCode] = {
+              value: record[fieldCode],
+            };
+            break;
+          case "CREATOR":
+          case "MODIFIER":
+            fields[fieldCode] = {
+              value: {
+                code: record[fieldCode],
+              },
+            };
+            break;
+          case "MULTI_SELECT":
+          case "CHECK_BOX":
+            fields[fieldCode] = {
+              value: record[fieldCode]
+                ? record[fieldCode].split(LINE_BREAK)
+                : [],
+            };
+            break;
+        }
+        return fields;
+      },
+      {}
+    );
   });
 };
