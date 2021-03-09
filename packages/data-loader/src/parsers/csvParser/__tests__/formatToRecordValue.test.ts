@@ -1,7 +1,7 @@
 import { formatToRecordValue } from "../formatToRecordValue";
 
 describe("formatToRecordValue", () => {
-  it("formatToRecordValue", () => {
+  it("should format correctly", () => {
     expect(
       formatToRecordValue({ fieldType: "SINGLE_LINE_TEXT", value: "text" })
     ).toEqual({ value: "text" });

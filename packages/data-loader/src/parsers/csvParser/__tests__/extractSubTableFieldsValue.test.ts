@@ -5,7 +5,7 @@ const subTableFieldsJson: {
 } = require("./fixtures/subtable_fields.json");
 
 describe("extractSubTableFieldsValue", () => {
-  it("should", () => {
+  it("should extract subtable fields value correctly", () => {
     const records = [
       {
         singleLineText: "text",

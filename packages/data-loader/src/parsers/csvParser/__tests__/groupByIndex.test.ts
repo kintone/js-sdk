@@ -2,7 +2,7 @@ import { RECORD_INDEX } from "../../../printers/csvPrinter/constants";
 import { groupByIndex } from "../groupByIndex";
 
 describe("groupByIndex", () => {
-  it("should", () => {
+  it("should grouping by record index correctly", () => {
     const records = [
       {
         [RECORD_INDEX]: "1",
