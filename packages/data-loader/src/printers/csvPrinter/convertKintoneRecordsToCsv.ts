@@ -12,11 +12,15 @@ type RowObject = {
 export const convertKintoneRecordsToCsv = ({
   records,
   fieldsJson,
+  exportFields,
 }: {
   records: KintoneRecord[];
   fieldsJson: FieldsJson;
+  exportFields?: string;
 }) => {
-  const headerFields = buildHeaderFields(fieldsJson);
+  const headerFields = exportFields
+    ? exportFields.split(SEPARATOR)
+    : buildHeaderFields(fieldsJson);
   const rows = buildRows({
     records,
     headerFields,

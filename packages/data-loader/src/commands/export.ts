@@ -54,6 +54,9 @@ export const builder = (yargs: any) =>
       alias: "q",
       describe: "The query string",
     })
+    .option("export-fields", {
+      describe: "Fields to export (comma separated)",
+    })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",
     })

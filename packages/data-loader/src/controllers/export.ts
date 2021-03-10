@@ -18,6 +18,7 @@ export type Options = {
   attachmentDir?: string;
   format?: "json" | "csv";
   query?: string;
+  exportFields?: string;
 };
 
 type FileInfo = {
@@ -30,7 +31,7 @@ export const run = async (argv: RestAPIClientOptions & Options) => {
   const records = await exportRecords(apiClient, argv);
   const printer = buildPrinter(argv.format);
   const fieldsJson: FieldsJson = await apiClient.app.getFormFields(argv);
-  printer(records, fieldsJson);
+  printer({ records, fieldsJson, exportFields: argv.exportFields });
 };
 
 export async function exportRecords(
