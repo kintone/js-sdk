@@ -1130,7 +1130,7 @@ describe("AppClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
-  describe("getAppReport", () => {
+  describe("getReports", () => {
     const lang = "default";
     const params = { app: APP_ID, lang } as const;
     describe("without preview", () => {
