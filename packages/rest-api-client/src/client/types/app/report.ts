@@ -2,7 +2,7 @@ export type ReportForResponse =
   | ReportForResponseWithoutMode
   | ReportForResponseWithMode;
 
-interface ReportForResponseBase {
+type ReportForResponseBase = {
   chartType: ChartType;
   id: string;
   name: string;
@@ -12,16 +12,16 @@ interface ReportForResponseBase {
   filterCond: string;
   sorts: Sort[];
   periodicReport: PeriodicReport | null;
-}
+};
 
-interface ReportForResponseWithoutMode extends ReportForResponseBase {
+type ReportForResponseWithoutMode = ReportForResponseBase & {
   chartType: Exclude<ChartType, ChartTypeWithMode>;
-}
+};
 
-interface ReportForResponseWithMode extends ReportForResponseBase {
+type ReportForResponseWithMode = ReportForResponseBase & {
   chartType: ChartTypeWithMode;
   chartMode: ChartMode;
-}
+};
 
 type ChartType =
   | "PIE"
