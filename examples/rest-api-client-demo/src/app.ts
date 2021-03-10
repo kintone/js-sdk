@@ -471,7 +471,6 @@ export class App {
         commentAdded: false,
         statusChanged: true,
         fileImported: false,
-        notifyToCommenter: true,
       },
       {
         entity: {
@@ -484,7 +483,6 @@ export class App {
         commentAdded: true,
         statusChanged: false,
         fileImported: true,
-        notifyToCommenter: false,
       },
     ];
     try {
