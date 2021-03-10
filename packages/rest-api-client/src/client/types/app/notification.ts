@@ -13,7 +13,6 @@ export type GeneralNotificationForParameter = {
   commentAdded?: boolean;
   statusChanged?: boolean;
   fileImported?: boolean;
-  notifyToCommenter?: boolean;
 };
 
 export type GeneralNotificationForResponse = {
