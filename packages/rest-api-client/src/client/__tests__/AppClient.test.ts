@@ -1035,7 +1035,6 @@ describe("AppClient", () => {
           ],
         },
       ],
-      notifyToCommenter: true,
       revision: 1,
     };
 
@@ -1109,7 +1108,6 @@ describe("AppClient", () => {
           commentAdded: true,
           statusChanged: true,
           fileImported: true,
-          notifyToCommenter: true,
         },
       ],
       notifyToCommenter: true,
