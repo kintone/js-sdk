@@ -27,6 +27,7 @@
 - [getProcessManagement](#getProcessManagement)
 - [updateProcessManagement](#updateProcessManagement)
 - [getGeneralNotifications](#getGeneralNotifications)
+- [updateGeneralNotifications](#updateGeneralNotifications)
 - [getPerRecordNotifications](#getPerRecordNotifications)
 - [updatePerRecordNotifications](#updatePerRecordNotifications)
 - [getReminderNotifications](#getReminderNotifications)
