@@ -1,7 +1,8 @@
 import csvParse from "csv-parse/lib/sync";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
-const LINE_BREAK = "\n";
+const { EOL } = require("os");
+const LINE_BREAK = EOL;
 
 export const parseCsv = (
   csv: string,
