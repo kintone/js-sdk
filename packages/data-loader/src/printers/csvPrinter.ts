@@ -1,8 +1,7 @@
 import { KintoneRecordField } from "@kintone/rest-api-client";
 
 type KintoneRecords = Array<{ [k: string]: KintoneRecordField.OneOf }>;
-const { EOL } = require("os");
-const LINE_BREAK = EOL;
+const LINE_BREAK = "\n";
 const SEPARATOR = ",";
 
 const isSupportedFieldType = (field: KintoneRecordField.OneOf) => {
