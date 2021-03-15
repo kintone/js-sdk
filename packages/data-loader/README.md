@@ -42,7 +42,7 @@ Options:
   --basic-auth-password  Kintone Basic Auth Password [default: process.env.KINTONE_BASIC_AUTH_PASSWORD]
   --app                  The ID of the app
   --guest-space-id       The ID of guest space       [default: process.env.KINTONE_GUEST_SPACE_ID]
-  --file-path            File path
+  --file-path            The path to source file. ".json" or ".csv"
   --pfx-file-path        The path to client certificate file
   --pfx-file-password    The password of client certificate file
 ```
@@ -65,16 +65,16 @@ export \
 
 ```
 Options:
-  --base-url             Kintone Base Url            [default: process.env.KINTONE_BASE_URL]
-  --username, -u         Kintone Username            [default: process.env.KINTONE_USERNAME]
-  --password, -p         Kintone Password            [default: process.env.KINTONE_PASSWORD]
-  --api-token            App's API token             [default: process.env.KINTONE_API_TOKEN]
-  --basic-auth-username  Kintone Basic Auth Username [default: process.env.KINTONE_BASIC_AUTH_USERNAME]
-  --basic-auth-password  Kintone Basic Auth Password [default: process.env.KINTONE_BASIC_AUTH_PASSWORD]
+  --base-url             Kintone Base Url               [default: process.env.KINTONE_BASE_URL]
+  --username, -u         Kintone Username               [default: process.env.KINTONE_USERNAME]
+  --password, -p         Kintone Password               [default: process.env.KINTONE_PASSWORD]
+  --api-token            App's API token                [default: process.env.KINTONE_API_TOKEN]
+  --basic-auth-username  Kintone Basic Auth Username    [default: process.env.KINTONE_BASIC_AUTH_USERNAME]
+  --basic-auth-password  Kintone Basic Auth Password    [default: process.env.KINTONE_BASIC_AUTH_PASSWORD]
   --app                  The ID of the app
-  --guest-space-id       The ID of guest space       [default: process.env.KINTONE_GUEST_SPACE_ID]
-  --attachment-dir       Attachment file directory   [string]
-  --format               Output format               [default: "json"]
+  --guest-space-id       The ID of guest space          [default: process.env.KINTONE_GUEST_SPACE_ID]
+  --attachment-dir       Attachment file directory      [string]
+  --format               Output format. "json" or "csv" [default: "json"]
   --query, -q            The query string
   --pfx-file-path        The path to client certificate file
   --pfx-file-password    The password of client certificate file
