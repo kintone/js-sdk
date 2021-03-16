@@ -50,13 +50,13 @@
     "node": "^10.17.0 || >=11.14"
   },
   "devDependencies": {
-    "@types/yargs": "^15.0.5",
+    "@types/yargs": "^16.0.0",
     "cross-env": "^7.0.2",
     "pkg": "^4.4.9"
   },
   "dependencies": {
     "@kintone/rest-api-client": "^1.11.1",
     "csv-parse": "^4.15.3",
-    "yargs": "^15.4.1"
+    "yargs": "^16.2.0"
   }
 }
