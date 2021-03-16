@@ -70,12 +70,17 @@ export type ReminderNotificationForParameter = {
 };
 
 export type ReminderNotificationForResponse = {
-  timing: {
-    code: string;
-    daysLater: string;
-    hoursLater?: string;
-    time?: string;
-  };
+  timing:
+    | {
+        code: string;
+        daysLater: string;
+        hoursLater: string;
+      }
+    | {
+        code: string;
+        daysLater: string;
+        time: string;
+      };
   filterCond: string;
   title: string;
   targets: [
