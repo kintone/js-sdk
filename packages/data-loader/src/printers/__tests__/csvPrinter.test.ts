@@ -13,7 +13,7 @@ sample4"
 `;
 
 describe("csvPrinter", () => {
-  it("should convert kintone records to csv string correctly", async () => {
+  it("should convert kintone records to csv string correctly", () => {
     expect(convertKintoneRecordsToCsv(records)).toBe(expectedCsv);
   });
 });
