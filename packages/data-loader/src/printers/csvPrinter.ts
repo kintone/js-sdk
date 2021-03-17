@@ -71,14 +71,11 @@ export const convertKintoneRecordsToCsv = (records: KintoneRecords) => {
     .map((fieldCode) => encloseInQuotation(fieldCode))
     .join(SEPARATOR);
 
-  const rows = records
-    .slice()
-    .reverse()
-    .map((record) => {
-      return fieldCodes
-        .map((fieldCode) => lexer(record[fieldCode]))
-        .join(SEPARATOR);
-    });
+  const rows = records.map((record) => {
+    return fieldCodes
+      .map((fieldCode) => lexer(record[fieldCode]))
+      .join(SEPARATOR);
+  });
 
   return (
     [header, ...rows].join(LINE_BREAK).replace(/((?!.)\s)+/g, LINE_BREAK) +
