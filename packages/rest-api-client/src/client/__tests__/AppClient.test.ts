@@ -1162,7 +1162,7 @@ describe("AppClient", () => {
             period: {
               every: "QUARTER" as const,
               pattern: "JAN_APR_JUL_OCT" as const,
-              dayOfMonth: "END_OF_MONTH",
+              dayOfMonth: "END_OF_MONTH" as const,
               time: "23:30",
             },
           },
