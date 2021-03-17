@@ -76,12 +76,14 @@ export const convertKintoneRecordsToCsv = (records: KintoneRecords) => {
       .map((fieldCode) => lexer(record[fieldCode]))
       .join(SEPARATOR);
   });
-
-  return (
-    [header, ...rows].join(LINE_BREAK).replace(/((?!.)\s)+/g, LINE_BREAK) +
-    LINE_BREAK
-  );
+  return addNewLineAtEof(unifyLineBreak([header, ...rows].join(LINE_BREAK)));
 };
+
+const unifyLineBreak = (str: string) => {
+  return str.replace(/\r?\n/g, LINE_BREAK);
+};
+
+const addNewLineAtEof = (str: string) => str + LINE_BREAK;
 
 export const csvPrinter = (records: KintoneRecords) => {
   console.log(convertKintoneRecordsToCsv(records));
