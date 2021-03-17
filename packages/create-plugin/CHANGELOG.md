@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.8](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.1.7...@kintone/create-plugin@3.1.8) (2021-03-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to v8 ([#721](https://github.com/kintone/js-sdk/issues/721)) ([ee63882](https://github.com/kintone/js-sdk/commit/ee6388295a9408addcb3cb94e58d52b83ebb7ac1))
+
+
+
+
+
+## [3.1.7](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.1.6...@kintone/create-plugin@3.1.7) (2021-03-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lodash to ^4.17.21 ([2110af1](https://github.com/kintone/js-sdk/commit/2110af159d237372223dd53a5ab22714bc4f9be4))
+
+
+
+
+
 ## [3.1.6](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@3.1.5...@kintone/create-plugin@3.1.6) (2021-02-17)
 
 **Note:** Version bump only for package @kintone/create-plugin

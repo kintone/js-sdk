@@ -22,9 +22,9 @@ describe("validator", () => {
       valid: false,
       errors: [
         {
-          dataPath: ".version",
+          dataPath: "",
           keyword: "required",
-          message: "is a required property",
+          message: "should have required property 'version'",
           params: {
             missingProperty: "version",
           },
@@ -39,7 +39,7 @@ describe("validator", () => {
       valid: false,
       errors: [
         {
-          dataPath: ".version",
+          dataPath: "/version",
           keyword: "type",
           message: "should be integer",
           params: {
@@ -56,12 +56,11 @@ describe("validator", () => {
       valid: false,
       errors: [
         {
-          dataPath: ".version",
+          dataPath: "/version",
           keyword: "minimum",
           message: "should be >= 1",
           params: {
             comparison: ">=",
-            exclusive: false,
             limit: 1,
           },
           schemaPath: "#/properties/version/minimum",
@@ -75,7 +74,7 @@ describe("validator", () => {
       valid: false,
       errors: [
         {
-          dataPath: ".type",
+          dataPath: "/type",
           keyword: "enum",
           message: "should be equal to one of the allowed values",
           params: {
@@ -92,9 +91,9 @@ describe("validator", () => {
       valid: false,
       errors: [
         {
-          dataPath: ".description.en",
+          dataPath: "/description",
           keyword: "required",
-          message: "is a required property",
+          message: "should have required property 'en'",
           params: {
             missingProperty: "en",
           },
@@ -164,7 +163,7 @@ describe("validator", () => {
       assert(actual.valid === false);
       assert(actual.errors?.length === 1);
       assert.deepStrictEqual(actual.errors[0], {
-        dataPath: ".icon",
+        dataPath: "/icon",
         keyword: "maxFileSize",
         message: "file size should be <= 20MB",
         params: {
@@ -190,7 +189,7 @@ describe("validator", () => {
       assert(actual.valid === false);
       assert(actual.errors?.length === 3);
       assert.deepStrictEqual(actual.errors[1], {
-        dataPath: ".desktop.js[0]",
+        dataPath: "/desktop/js/0",
         keyword: "maxFileSize",
         message: "file size should be <= 20MB",
         params: {
@@ -216,7 +215,7 @@ describe("validator", () => {
       assert(actual.valid === false);
       assert(actual.errors?.length === 3);
       assert.deepStrictEqual(actual.errors[1], {
-        dataPath: ".desktop.css[0]",
+        dataPath: "/desktop/css/0",
         keyword: "maxFileSize",
         message: "file size should be <= 20MB",
         params: {
@@ -237,6 +236,31 @@ describe("validator", () => {
       );
       assert(actual.valid === true);
       assert(actual.errors === null);
+    });
+  });
+  describe("maxItems", () => {
+    it("exceed the max item counts", () => {
+      const urls = [...new Array(100)].map(
+        (_, i) => `https://example.com/${i}.js`
+      );
+      const actual = validator(
+        json({
+          desktop: {
+            js: urls,
+          },
+        })
+      );
+      assert.strictEqual(actual.valid, false);
+      assert.strictEqual(actual.errors?.length, 1);
+      assert.deepStrictEqual(actual.errors[0], {
+        dataPath: "/desktop/js",
+        keyword: "maxItems",
+        message: "should NOT have more than 30 items",
+        params: {
+          limit: 30,
+        },
+        schemaPath: "#/definitions/resources/maxItems",
+      });
     });
   });
 });

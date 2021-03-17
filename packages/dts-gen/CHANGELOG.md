@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.6](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.5...@kintone/dts-gen@3.1.6) (2021-03-09)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## [3.1.5](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.4...@kintone/dts-gen@3.1.5) (2021-03-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lodash to ^4.17.21 ([2110af1](https://github.com/kintone/js-sdk/commit/2110af159d237372223dd53a5ab22714bc4f9be4))
+
+
+
+
+
 ## [3.1.4](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.3...@kintone/dts-gen@3.1.4) (2021-02-17)
 
 

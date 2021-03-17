@@ -471,7 +471,6 @@ export class App {
         commentAdded: false,
         statusChanged: true,
         fileImported: false,
-        notifyToCommenter: true,
       },
       {
         entity: {
@@ -484,7 +483,6 @@ export class App {
         commentAdded: true,
         statusChanged: false,
         fileImported: true,
-        notifyToCommenter: false,
       },
     ];
     try {
@@ -625,6 +623,25 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getReports() {
+    try {
+      console.log(await this.client.app.getReports({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getReportsPreview() {
+    try {
+      console.log(
+        await this.client.app.getReports({ app: APP_ID, preview: true })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async updateReports() {
     try {
       console.log(
