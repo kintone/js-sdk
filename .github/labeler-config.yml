@@ -1,0 +1,20 @@
+"pkg: create-plugin": 
+  - packages/create-plugin/**/*
+"pkg: customize-uploader":
+  - packages/customize-uploader/**/*
+"pkg: data-loader":
+  - packages/data-loader/**/*
+"pkg: dts-gen":
+  - packages/dts-gen/**/*
+"pkg: plugin-manifest-validator":
+  - packages/plugin-manifest-validator/**/*
+"pkg: plugin-packer":
+  - packages/plugin-packer/**/*
+"pkg: plugin-uploader":
+  - packages/plugin-uploader/**/*
+"pkg: profile-loader":
+  - packages/profile-loader/**/*
+"pkg: rest-api-client":
+  - packages/rest-api-client/**/*
+"pkg: webpack-plugin-kintone-plugin":
+  - packages/webpack-plugin-kintone-plugin/**/*
