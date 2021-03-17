@@ -26,10 +26,11 @@ const isSupportedFieldType = (field: KintoneRecordField.OneOf) => {
   return supportedFieldTypes.includes(field.type);
 };
 
-const escapeQuotation = (fieldValue: string) => fieldValue.replace(/"/g, '""');
+const escapeDoubleQuotes = (fieldValue: string) =>
+  fieldValue.replace(/"/g, '""');
 
-const encloseInQuotation = (fieldValue: string | null) =>
-  `"${fieldValue ? escapeQuotation(fieldValue) : ""}"`;
+const encloseInDoubleQuotes = (fieldValue: string | null) =>
+  `"${fieldValue ? escapeDoubleQuotes(fieldValue) : ""}"`;
 
 const extractFieldCodes = (records: KintoneRecords) => {
   const firstRecord = records.slice().shift();
@@ -52,14 +53,15 @@ const lexer = (field: KintoneRecordField.OneOf) => {
     case "CALC":
     case "UPDATED_TIME":
     case "CREATED_TIME":
-      return encloseInQuotation(field.value);
+      return encloseInDoubleQuotes(field.value);
     case "CREATOR":
     case "MODIFIER":
-      return encloseInQuotation(field.value.code);
+      return encloseInDoubleQuotes(field.value.code);
     case "MULTI_SELECT":
     case "CHECK_BOX":
-      return encloseInQuotation(field.value.join(LINE_BREAK));
+      return encloseInDoubleQuotes(field.value.join(LINE_BREAK));
     default:
+      // never reach the default
       return field.value;
   }
 };
@@ -68,7 +70,7 @@ export const convertKintoneRecordsToCsv = (records: KintoneRecords) => {
   const fieldCodes = extractFieldCodes(records);
 
   const header = fieldCodes
-    .map((fieldCode) => encloseInQuotation(fieldCode))
+    .map((fieldCode) => encloseInDoubleQuotes(fieldCode))
     .join(SEPARATOR);
 
   const rows = records.map((record) => {
