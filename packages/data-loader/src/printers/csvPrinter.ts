@@ -33,7 +33,7 @@ const encloseInDoubleQuotes = (fieldValue: string | null) =>
   `"${fieldValue ? escapeDoubleQuotes(fieldValue) : ""}"`;
 
 const extractFieldCodes = (records: KintoneRecords) => {
-  const firstRecord = records.slice().shift();
+  const firstRecord = Array.isArray(records) && records[0];
   if (!firstRecord) return [];
   return Object.keys(firstRecord).filter((key) =>
     isSupportedFieldType(firstRecord[key])
