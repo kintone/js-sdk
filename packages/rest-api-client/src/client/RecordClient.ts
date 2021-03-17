@@ -271,7 +271,7 @@ export class RecordClient {
     const GET_RECORDS_LIMIT = 500;
 
     const { condition, ...rest } = params;
-    const conditionQuery = condition ? `${condition} and ` : "";
+    const conditionQuery = condition ? `(${condition}) and ` : "";
     const query = `${conditionQuery}$id > ${id} order by $id asc limit ${GET_RECORDS_LIMIT}`;
     const result = await this.getRecords<T>({ ...rest, query });
     const allRecords = records.concat(result.records);

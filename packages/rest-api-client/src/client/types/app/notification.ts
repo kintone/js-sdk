@@ -13,7 +13,6 @@ export type GeneralNotificationForParameter = {
   commentAdded?: boolean;
   statusChanged?: boolean;
   fileImported?: boolean;
-  notifyToCommenter?: boolean;
 };
 
 export type GeneralNotificationForResponse = {
@@ -50,13 +49,38 @@ export type PerRecordNotificationForResponse = {
   revision: string;
 };
 
+export type ReminderNotificationForParameter = {
+  timing:
+    | {
+        code: string;
+        daysLater: string | number;
+        hoursLater: string | number;
+      }
+    | {
+        code: string;
+        daysLater: string | number;
+        time: string;
+      };
+  filterCond?: string;
+  title?: string;
+  targets: Array<{
+    entity: Entity | { type: "FIELD_ENTITY"; code: string };
+    includeSubs?: boolean | string;
+  }>;
+};
+
 export type ReminderNotificationForResponse = {
-  timing: {
-    code: string;
-    daysLater: string;
-    hoursLater?: string;
-    time?: string;
-  };
+  timing:
+    | {
+        code: string;
+        daysLater: string;
+        hoursLater: string;
+      }
+    | {
+        code: string;
+        daysLater: string;
+        time: string;
+      };
   filterCond: string;
   title: string;
   targets: [

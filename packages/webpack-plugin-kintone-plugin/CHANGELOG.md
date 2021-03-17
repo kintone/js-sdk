@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.15](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@4.0.14...@kintone/webpack-plugin-kintone-plugin@4.0.15) (2021-03-09)
+
+**Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
+
+
+
+
+
+## [4.0.14](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@4.0.13...@kintone/webpack-plugin-kintone-plugin@4.0.14) (2021-03-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lodash to ^4.17.21 ([2110af1](https://github.com/kintone/js-sdk/commit/2110af159d237372223dd53a5ab22714bc4f9be4))
+
+
+
+
+
 ## [4.0.13](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@4.0.12...@kintone/webpack-plugin-kintone-plugin@4.0.13) (2021-02-17)
 
 **Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin

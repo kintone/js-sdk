@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-manifest-validator",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=10"
@@ -24,11 +24,11 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "ajv": "^6.12.6",
+    "ajv": "^7.0.4",
     "bytes": "^3.1.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.12.17",
+    "@babel/preset-typescript": "^7.13.0",
     "@types/bytes": "^3.1.0",
     "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "intelli-espower-loader": "^1.0.1",
