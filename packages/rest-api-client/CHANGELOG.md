@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.11.1...@kintone/rest-api-client@1.11.2) (2021-03-18)
+
+
+### Bug Fixes
+
+* **rest-api-client:** fix ReminderNotificationForResponse type ([#751](https://github.com/kintone/js-sdk/issues/751)) ([4e194a3](https://github.com/kintone/js-sdk/commit/4e194a3707ecc6ac87113cb4f6c59371c0fda3d6))
+* **rest-api-client:** prevent infinite loop when `condition` contains OR clause ([#726](https://github.com/kintone/js-sdk/issues/726)) ([6afdd84](https://github.com/kintone/js-sdk/commit/6afdd84c265684188536b816aebfaee8dee2694f))
+* **rest-api-client:** remove an unnecessary property from the notifications param of app.updateGeneralNotifications ([#750](https://github.com/kintone/js-sdk/issues/750)) ([8b07e24](https://github.com/kintone/js-sdk/commit/8b07e243ff4e1009a20654bf0621f4afc6c810c7))
+
+
+
+
+
 ## [1.11.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.11.0...@kintone/rest-api-client@1.11.1) (2021-03-09)
 
 **Note:** Version bump only for package @kintone/rest-api-client

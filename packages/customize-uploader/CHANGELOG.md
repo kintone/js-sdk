@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.8](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.1.7...@kintone/customize-uploader@3.1.8) (2021-03-18)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
 ## [3.1.7](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.1.6...@kintone/customize-uploader@3.1.7) (2021-03-09)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.4.1...@kintone/rest-api-client-demo@1.4.2) (2021-03-18)
+
+
+### Bug Fixes
+
+* **rest-api-client:** remove an unnecessary property from the notifications param of app.updateGeneralNotifications ([#750](https://github.com/kintone/js-sdk/issues/750)) ([8b07e24](https://github.com/kintone/js-sdk/commit/8b07e243ff4e1009a20654bf0621f4afc6c810c7))
+
+
+
+
+
 ## [1.4.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.4.0...@kintone/rest-api-client-demo@1.4.1) (2021-03-09)
 
 **Note:** Version bump only for package @kintone/rest-api-client-demo
