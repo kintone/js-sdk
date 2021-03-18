@@ -23,7 +23,6 @@ export const parseCsv = (
           case "RICH_TEXT":
           case "LINK":
           case "DROP_DOWN":
-          case "CALC":
           case "UPDATED_TIME":
           case "CREATED_TIME":
             fields[fieldCode] = {
