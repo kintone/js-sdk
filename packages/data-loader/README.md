@@ -6,6 +6,17 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL. DON'T USE THIS FOR PRODUCTION.**
 
+- [Installation](#installation)
+- [Usage](#usage)
+  - [import](#import)
+    - [Options](#options)
+  - [export](#export)
+    - [Options](#options-1)
+- [Supported file formats](#supported-file-formats)
+  - [JSON format](#json-format)
+  - [CSV format](#csv-format)
+- [LICENSE](#license)
+
 ## Installation
 
 ```
