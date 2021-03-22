@@ -92,6 +92,60 @@ Options:
   --pfx-file-password    The password of client certificate file
 ```
 
+## Supported file formats
+
+data-loader supports JSON and CSV for both import/export commands.  
+When import, it determines the format automatically by the extension of the file (specified by `--file-path` option).  
+When export, you can specify the format by specifying `--format` option.
+
+Here are the detailed format of each file
+
+### JSON format
+
+The format of JSON file is the same as Get/Add/Update records REST API.
+
+```json
+[
+  {
+    "FieldCode1": {
+      "type": "SINGLE_LINE_TEXT",
+      "value": "foo"
+    },
+    "Created_by": {
+      "type": "CREATOR",
+      "value": {
+        "code": "Administrator",
+        "name": "Administrator"
+      }
+    },
+    ...
+  },
+  {
+    ...
+  },
+  ...
+]
+```
+
+### CSV format
+
+The first row (header row) lists the **field codes** of each field.  
+Each subsequent row corresponds to a record. Each value represents the value of the field.
+
+```csv
+"$id","FieldCode1","FieldCode2"
+"1","foo","bar"
+"2","baz","qux"
+```
+
+Here are considerations for some field types:
+
+- Text area
+  - TODO
+- Check box, Multi-choice
+  - Specify multiple values divided by line break
+- TODO: currently unsupported field types
+
 ## LICENSE
 
 - [MIT](https://github.com/kintone/js-sdk/blob/master/packages/data-loader/LICENSE)
