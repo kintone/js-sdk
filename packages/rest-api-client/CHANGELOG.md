@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.11.2...@kintone/rest-api-client@1.12.0) (2021-03-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency qs to ^6.10.1 ([#768](https://github.com/kintone/js-sdk/issues/768)) ([0363926](https://github.com/kintone/js-sdk/commit/0363926b668f9b2103d1d81f2a190f383ca44099))
+
+
+### Features
+
+* **rest-api-client:** Support graph settings API ([#763](https://github.com/kintone/js-sdk/issues/763)) ([32d691f](https://github.com/kintone/js-sdk/commit/32d691f43931f0b8878424929da528cc6f269de2)), closes [#735](https://github.com/kintone/js-sdk/issues/735) [#731](https://github.com/kintone/js-sdk/issues/731)
+
+
+
+
+
 ## [1.11.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.11.1...@kintone/rest-api-client@1.11.2) (2021-03-18)
 
 
