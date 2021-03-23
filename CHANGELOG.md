@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.1.6...@kintone/data-loader@0.2.0) (2021-03-23)
+
+
+### Features
+
+* **data-loader:** Support CSV format ([#719](https://github.com/kintone/js-sdk/issues/719)) ([59fcab6](https://github.com/kintone/js-sdk/commit/59fcab6094078f1b629850d7d2f3e50ae8167f98))
+
+
+
+
+
 ## [0.1.6](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.1.5...@kintone/data-loader@0.1.6) (2021-03-18)
 
 
