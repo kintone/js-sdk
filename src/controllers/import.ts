@@ -1,7 +1,10 @@
-import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import {
+  KintoneFormFieldProperty,
+  KintoneRestAPIClient,
+} from "@kintone/rest-api-client";
 import { AppID } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { parser } from "../parser";
+import { buildParser } from "../parsers";
 import { promises as fs } from "fs";
 import path from "path";
 
@@ -39,8 +42,21 @@ export const buildImporter = ({
     const { app, filePath } = options;
     const buf = await fs.readFile(filePath);
     const type = extractFileType(filePath);
-    const records = parser(type, buf.toString());
+    const parser = buildParser(type);
+
+    const records =
+      type === "csv"
+        ? parser(buf.toString(), await fetchFieldsJson(options))
+        : // @ts-ignore
+          parser(buf.toString());
     await addAllRecordsChunk(app, records);
+  }
+
+  async function fetchFieldsJson(options: Options) {
+    const fieldsJson = await apiClient.app.getFormFields<
+      Record<string, KintoneFormFieldProperty.OneOf>
+    >(options);
+    return fieldsJson;
   }
 
   async function addAllRecordsChunk(
