@@ -109,7 +109,7 @@ data-loader supports JSON and CSV for both import/export commands.
 When import, it determines the format automatically by the extension of the file (specified by `--file-path` option).  
 When export, you can specify the format by specifying `--format` option.
 
-Here are the detailed format of each file
+Here are the detailed format of each file:
 
 ### JSON format
 
@@ -151,11 +151,35 @@ Each subsequent row corresponds to a record. Each value represents the value of 
 
 Here are considerations for some field types:
 
-- Text area
-  - TODO
-- Check box, Multi-choice
-  - Specify multiple values divided by line break
-- TODO: currently unsupported field types
+#### Text area
+
+If the value contains line break, enclose the value in double quotes.
+
+```csv
+"TextAreaField"
+"multi
+line
+text"
+```
+
+#### Check box, Multi-choice
+
+Specify multiple values divided by line break.
+
+```csv
+"CheckboxField"
+"value1
+value2"
+```
+
+#### Created by, Updated by
+
+Specify the user's login name (equivalent to `value.code` in REST API).
+
+```csv
+"Created_by"
+"John"
+```
 
 ## LICENSE
 
