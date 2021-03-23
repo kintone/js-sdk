@@ -1,3 +1,90 @@
+// --- Types for request ---
+
+export type ReportForParameter = {
+  [reportName: string]: ReportProperty;
+};
+
+type ChartTypeWithRequiredMode = "BAR" | "COLUMN" | "AREA" | "SPLINE_AREA";
+
+type ChartTypeWithOptionalMode =
+  | "PIE"
+  | "LINE"
+  | "PIVOT_TABLE"
+  | "TABLE"
+  | "SPLINE";
+
+type ChartProps = {
+  name: string;
+  index: string | number;
+  groups?: Array<{
+    code: string;
+    per?: GroupPer;
+  }>;
+  aggregations?: Aggregation[];
+  filterCond?: string;
+  sorts?: Sort[];
+  periodicReport?: PeriodicReportForParameters;
+};
+
+type ReportProperty =
+  | ({
+      chartType: ChartTypeWithOptionalMode;
+      chartMode?: ChartMode;
+    } & ChartProps)
+  | ({
+      chartType: ChartTypeWithRequiredMode;
+      chartMode: ChartMode;
+    } & ChartProps);
+
+type PeriodicReportForParameters = {
+  active?: boolean | string;
+  period?:
+    | PeriodReportPeriodYear
+    | PeriodReportPeriodDay
+    | PeriodReportPeriodQuater
+    | PeriodReportPeriodMonth
+    | PeriodReportPeriodWeek
+    | PeriodReportPeriodHour;
+};
+
+type PeriodReportPeriodYear = {
+  every: "YEAR";
+  month: MonthOfYear;
+  time: string;
+  dayOfMonth: DayOfMonth;
+};
+
+type PeriodReportPeriodQuater = {
+  every: "QUARTER";
+  pattern: QuarterPattern;
+  time: string;
+  dayOfMonth: DayOfMonth | EndOfMonth;
+};
+
+type PeriodReportPeriodMonth = {
+  every: "MONTH";
+  time: string;
+  dayOfMonth: DayOfMonth | EndOfMonth;
+};
+
+type PeriodReportPeriodWeek = {
+  every: "WEEK";
+  dayOfWeek: DayOfWeek;
+  time: string;
+};
+
+type PeriodReportPeriodDay = {
+  every: "DAY";
+  time: string;
+};
+
+type PeriodReportPeriodHour = {
+  every: "HOUR";
+  minute: MinuteOfHour;
+};
+
+// --- Types for response ---
+
 export type ReportForResponse =
   | ReportForResponseWithoutMode
   | ReportForResponseWithMode;
@@ -39,39 +126,9 @@ type ChartTypeWithMode = Extract<
   "BAR" | "COLUMN" | "AREA" | "SPLINE_AREA"
 >;
 
-type ChartMode = "NORMAL" | "STACKED" | "PERCENTAGE";
-
 type Group = {
   code: string;
   per: GroupPer;
-};
-
-type GroupPer =
-  | "YEAR"
-  | "QUARTER"
-  | "MONTH"
-  | "WEEK"
-  | "DAY"
-  | "HOUR"
-  | "MINUTE";
-
-type Aggregation = RecordAggregation | FieldAggregation;
-
-type AggregatonType = "COUNT" | "SUM" | "AVERAGE" | "MAX" | "MIN";
-type RecordAggregationType = Extract<AggregatonType, "COUNT">;
-
-type RecordAggregation = {
-  type: RecordAggregationType;
-};
-
-type FieldAggregation = {
-  type: Exclude<AggregatonType, RecordAggregationType>;
-  code: string;
-};
-
-type Sort = {
-  by: "TOTAL" | "GROUP1" | "GROUP2" | "GROUP3";
-  order: "ASC" | "DESC";
 };
 
 type PeriodicReport = {
@@ -132,6 +189,33 @@ type PeriodicReportPeriodHour = {
   minute: MinuteOfHour;
 };
 
+// --- Common types for both request and response ---
+
+type Sort = {
+  by: "TOTAL" | "GROUP1" | "GROUP2" | "GROUP3";
+  order: "ASC" | "DESC";
+};
+
+type GroupPer =
+  | "YEAR"
+  | "QUARTER"
+  | "MONTH"
+  | "WEEK"
+  | "DAY"
+  | "HOUR"
+  | "MINUTE";
+
+type Aggregation =
+  | {
+      type: "COUNT";
+    }
+  | {
+      type: "SUM" | "AVERAGE" | "MAX" | "MIN";
+      code: string;
+    };
+
+type ChartMode = "NORMAL" | "STACKED" | "PERCENTAGE";
+
 type QuarterPattern = "JAN_APR_JUL_OCT" | "FEB_MAY_AUG_NOV" | "MAR_JUN_SEP_DEC";
 
 type MonthOfYear =
@@ -147,6 +231,15 @@ type MonthOfYear =
   | "10"
   | "11"
   | "12";
+
+type DayOfWeek =
+  | "SUNDAY"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY";
 
 type DayOfMonth =
   | "1"
@@ -181,15 +274,6 @@ type DayOfMonth =
   | "30"
   | "31";
 
-type EndOfMonth = "END_OF_MONHTH";
-
-type DayOfWeek =
-  | "SUNDAY"
-  | "MONDAY"
-  | "TUESDAY"
-  | "WEDNESDAY"
-  | "THURSDAY"
-  | "FRIDAY"
-  | "SATURDAY";
+type EndOfMonth = "END_OF_MONTH";
 
 type MinuteOfHour = "0" | "10" | "20" | "30" | "40" | "50";

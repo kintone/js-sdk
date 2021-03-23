@@ -641,4 +641,66 @@ export class App {
       console.log(error);
     }
   }
+
+  public async updateReports() {
+    try {
+      console.log(
+        await this.client.app.updateReports({
+          app: APP_ID,
+          reports: {
+            "Graph 1": {
+              chartType: "TABLE",
+              name: "Graph 1",
+              index: 0,
+              groups: [
+                {
+                  code: "Status",
+                },
+              ],
+              aggregations: [
+                {
+                  type: "COUNT",
+                },
+              ],
+              filterCond: "",
+              sorts: [
+                {
+                  by: "TOTAL",
+                  order: "DESC",
+                },
+              ],
+            },
+            "Graph 2": {
+              chartType: "LINE",
+              name: "Graph 2",
+              index: 1,
+              groups: [
+                {
+                  code: "ReceptionDate",
+                  per: "MONTH",
+                },
+                {
+                  code: "QType",
+                },
+              ],
+              aggregations: [
+                {
+                  type: "COUNT",
+                },
+              ],
+              filterCond: "",
+              sorts: [
+                {
+                  by: "GROUP1",
+                  order: "ASC",
+                },
+              ],
+            },
+          },
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
