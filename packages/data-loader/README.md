@@ -4,7 +4,18 @@
 
 A kintone record importer and exporter.
 
-**THIS IS EXPERIMENTAL. DON'T USE THIS FOR PRODUCTION.**
+**THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
+
+- Export attachments of fields in table field
+- Import attachemnts
+- Update records when importing
+- When using CSV format, the following fields are not supported
+  - User selection, Group selection, Department selection
+  - Fields in table field
+
+We plan to support them in the future release.
+
+---
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -16,17 +27,6 @@ A kintone record importer and exporter.
   - [JSON format](#json-format)
   - [CSV format](#csv-format)
 - [LICENSE](#license)
-
-## :warning: Current limitations
-
-These features are not supported yet. We plan to support them in the future release.
-
-- Export attachments of fields in table field
-- Import attachemnts
-- Update records when importing
-- When using CSV format, the following fields are not supported
-  - User selection, Group selection, Department selection
-  - Fields in table field
 
 ## Installation
 
@@ -120,7 +120,7 @@ data-loader supports JSON and CSV for both import/export commands.
 When import, it determines the format automatically by the extension of the file (specified by `--file-path` option).  
 When export, you can specify the format by specifying `--format` option.
 
-Here are the detailed format of each file:
+The detailed formats of JSON / CSV files are as follows:
 
 ### JSON format
 
@@ -155,7 +155,7 @@ The first row (header row) lists the **field codes** of each field.
 Each subsequent row corresponds to a record. Each value represents the value of the field.
 
 ```csv
-"$id","FieldCode1","FieldCode2"
+"Record_number","FieldCode1","FieldCode2"
 "1","foo","bar"
 "2","baz","qux"
 ```
