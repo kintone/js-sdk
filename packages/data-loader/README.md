@@ -17,6 +17,17 @@ A kintone record importer and exporter.
   - [CSV format](#csv-format)
 - [LICENSE](#license)
 
+## :warning: Current limitations
+
+These features are not supported yet. We plan to support them in the future release.
+
+- Export attachments of fields in table field
+- Import attachemnts
+- Update records when importing
+- When using CSV format, the following fields are not supported
+  - User selection, Group selection, Department selection
+  - Fields in table field
+
 ## Installation
 
 ```
