@@ -21,9 +21,6 @@
     "multiSelect": {
       "value": ["\"sample3\"", "sample4,sample5"]
     },
-    "calc": {
-      "value": "16"
-    },
     "checkBox": {
       "value": ["\"sample2\""]
     },
