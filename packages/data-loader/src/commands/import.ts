@@ -50,7 +50,7 @@ export const builder = (yargs: any) =>
       defaultDescription: "KINTONE_GUEST_SPACE_ID",
     })
     .option("file-path", {
-      describe: "file path",
+      describe: 'The path to source file. ".json" or ".csv"',
     })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",

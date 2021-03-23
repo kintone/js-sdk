@@ -54,7 +54,7 @@ export const builder = (yargs: any) =>
       type: "string",
     })
     .option("format", {
-      describe: "Output format",
+      describe: 'Output format. "json" or "csv"',
       default: "json",
     })
     .option("query", {
