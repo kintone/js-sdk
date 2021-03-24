@@ -13,7 +13,7 @@ assignees: ''
 
 <!-- Which package do you want to report a bug for? -->
 
-- @kintone/xxx 0.0.0
+- @kintone/\*\*\* 0.0.0
 
 ## Environment
 

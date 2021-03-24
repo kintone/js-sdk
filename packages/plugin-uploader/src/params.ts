@@ -19,21 +19,12 @@ export const inquireParams = ({
 }: Params) => {
   const m = getBoundMessage(lang);
   const questions: inquirer.Question[] = [
-    // TODO: remove an object of domain when `domain` option is deprecated
-    {
-      type: "input",
-      message: m("Q_Domain"),
-      name: "domain",
-      default: domain,
-      when: () => !baseUrl && !domain,
-      validate: (v: string) => !!v,
-    },
     {
       type: "input",
       message: m("Q_BaseUrl"),
       name: "baseUrl",
       default: baseUrl,
-      when: (v: inquirer.Answers) => !baseUrl && !domain && !v.domain,
+      when: () => !baseUrl && !domain,
       validate: (v: string) => !!v,
     },
     {

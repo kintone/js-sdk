@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.9](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.1.8...@kintone/customize-uploader@3.1.9) (2021-03-23)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## [3.1.8](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.1.7...@kintone/customize-uploader@3.1.8) (2021-03-18)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## [3.1.7](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.1.6...@kintone/customize-uploader@3.1.7) (2021-03-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to v8 ([#721](https://github.com/kintone/js-sdk/issues/721)) ([ee63882](https://github.com/kintone/js-sdk/commit/ee6388295a9408addcb3cb94e58d52b83ebb7ac1))
+
+
+
+
+
+## [3.1.6](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.1.5...@kintone/customize-uploader@3.1.6) (2021-03-02)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
 ## [3.1.5](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.1.4...@kintone/customize-uploader@3.1.5) (2021-02-17)
 
 **Note:** Version bump only for package @kintone/customize-uploader

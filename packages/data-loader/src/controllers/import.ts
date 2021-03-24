@@ -52,9 +52,9 @@ export const buildImporter = ({
   }
 
   async function fetchFieldsJson(options: Options) {
-    const fieldsJson: {
-      properties: Record<string, KintoneFormFieldProperty.OneOf>;
-    } = await apiClient.app.getFormFields(options);
+    const fieldsJson = await apiClient.app.getFormFields<
+      Record<string, KintoneFormFieldProperty.OneOf>
+    >(options);
     return fieldsJson;
   }
 

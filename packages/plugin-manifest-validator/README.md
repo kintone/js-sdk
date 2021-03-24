@@ -27,11 +27,11 @@ console.log(result.valid); // true or false
 console.log(result.errors); // array of ajv error objects
 ```
 
-[ajv error objects](https://github.com/epoberezkin/ajv#validation-errors) is like:
+[ajv error objects](https://ajv.js.org/docs/api.html#validation-errors) is like:
 
 ```js
 {
-  dataPath: '.version',
+  dataPath: '/version',
   keyword: 'type',
   message: 'should be integer',
   params: {
