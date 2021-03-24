@@ -14,7 +14,7 @@ export const printAsCsv = (
   fieldsJson: FieldsJson
 ) => {
   const csv = convertKintoneRecordsToCsv({
-    records: records.slice().reverse(),
+    records,
     fieldsJson,
   });
   console.log(csv);
