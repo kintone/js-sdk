@@ -1,7 +1,7 @@
-import { escapeQuotation } from "../escapeQuotation";
+import { escapeDoubleQuotes } from "../escapeDoubleQuotes";
 
 describe("escapeQuotation", () => {
   it("should escape quotation correctly", () => {
-    expect(escapeQuotation(`"test"`)).toBe(`""test""`);
+    expect(escapeDoubleQuotes(`"test"`)).toBe(`""test""`);
   });
 });

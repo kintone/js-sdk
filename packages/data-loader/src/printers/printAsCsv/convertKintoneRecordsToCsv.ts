@@ -1,5 +1,5 @@
 import { FieldsJson, KintoneRecord } from "./index";
-import { encloseInQuotation } from "./encloseInQuotation";
+import { encloseInDoubleQuotes } from "./encloseInDoubleQuotes";
 import { LINE_BREAK, PRIMARY_MARK, RECORD_INDEX, SEPARATOR } from "./constants";
 import { extractFieldValue } from "./extractFieldValue";
 import { buildHeaderFields } from "./buildHeaderFields";
@@ -24,7 +24,7 @@ export const convertKintoneRecordsToCsv = ({
   });
 
   const headerRow = headerFields
-    .map((fieldCode) => encloseInQuotation(fieldCode))
+    .map((fieldCode) => encloseInDoubleQuotes(fieldCode))
     .join(SEPARATOR);
 
   return [headerRow, ...rows].join(LINE_BREAK) + LINE_BREAK;
@@ -131,7 +131,7 @@ const buildSubTableRowObjects = ({
       return ret.concat(
         recordObject[subTableFieldCode].map(
           (field: { [k: string]: string }) => ({
-            [RECORD_INDEX]: encloseInQuotation(recordIndex + 1 + ""),
+            [RECORD_INDEX]: encloseInDoubleQuotes(recordIndex + 1 + ""),
             ...primaryRowObject,
             ...Object.keys(field).reduce<Record<string, string>>(
               (rowObject, fieldCode) => {

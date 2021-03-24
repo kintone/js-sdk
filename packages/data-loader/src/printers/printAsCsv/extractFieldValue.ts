@@ -1,6 +1,6 @@
 import { KintoneRecordField } from "@kintone/rest-api-client";
-import { encloseInQuotation } from "./encloseInQuotation";
-import { escapeQuotation } from "./escapeQuotation";
+import { encloseInDoubleQuotes } from "./encloseInDoubleQuotes";
+import { escapeDoubleQuotes } from "./escapeDoubleQuotes";
 import { LINE_BREAK } from "./constants";
 
 export const extractFieldValue = (
@@ -18,16 +18,18 @@ export const extractFieldValue = (
     case "CALC":
     case "UPDATED_TIME":
     case "CREATED_TIME":
-      return encloseInQuotation(escapeQuotation(field.value));
+      return encloseInDoubleQuotes(escapeDoubleQuotes(field.value));
     case "CREATOR":
     case "MODIFIER":
-      return encloseInQuotation(escapeQuotation(field.value.code));
+      return encloseInDoubleQuotes(escapeDoubleQuotes(field.value.code));
     case "MULTI_SELECT":
     case "CHECK_BOX":
-      return encloseInQuotation(escapeQuotation(field.value.join(LINE_BREAK)));
+      return encloseInDoubleQuotes(
+        escapeDoubleQuotes(field.value.join(LINE_BREAK))
+      );
     case "SUBTABLE":
       return field.value.map((subTableField) => ({
-        id: encloseInQuotation(subTableField.id),
+        id: encloseInDoubleQuotes(subTableField.id),
         ...Object.keys(subTableField.value).reduce<Record<string, string>>(
           (ret, fieldCode) => {
             return {
