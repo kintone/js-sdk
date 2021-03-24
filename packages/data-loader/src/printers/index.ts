@@ -1,13 +1,13 @@
-import { csvPrinter } from "./csvPrinter";
-import { jsonPrinter } from "./jsonPrinter";
+import { printAsCsv } from "./printAsCsv";
+import { printAsJson } from "./printAsJson";
 
 export const buildPrinter = (type = "json") => {
   switch (type) {
     case "json": {
-      return jsonPrinter;
+      return printAsJson;
     }
     case "csv": {
-      return csvPrinter;
+      return printAsCsv;
     }
     default: {
       throw new Error(

@@ -1,4 +1,4 @@
-import { LINE_BREAK } from "../../printers/csvPrinter/constants";
+import { LINE_BREAK } from "../../printers/printAsCsv/constants";
 
 export const formatToRecordValue = ({
   fieldType,

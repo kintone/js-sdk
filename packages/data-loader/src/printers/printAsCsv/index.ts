@@ -9,7 +9,7 @@ export type FieldsJson = {
   properties: { [k: string]: KintoneFormFieldProperty.OneOf };
 };
 
-export const csvPrinter = (
+export const printAsCsv = (
   records: KintoneRecord[],
   fieldsJson: FieldsJson
 ) => {

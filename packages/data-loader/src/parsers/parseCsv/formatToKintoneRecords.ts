@@ -1,4 +1,4 @@
-import { FieldsJson } from "../../printers/csvPrinter";
+import { FieldsJson } from "../../printers/printAsCsv";
 import { ParsedRecord, CsvRecords } from "./index";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToRecordValue } from "./formatToRecordValue";

@@ -1,4 +1,4 @@
-import { RECORD_INDEX } from "../../printers/csvPrinter/constants";
+import { RECORD_INDEX } from "../../printers/printAsCsv/constants";
 import { CsvRecords } from "./index";
 
 export const groupByIndex = (records: CsvRecords) => {
