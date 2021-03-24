@@ -50,10 +50,10 @@ describe("isSupportedFieldType", () => {
     ).toBe(true);
   });
   it("should be true", () => {
-    expect(isSupportedFieldType(subTableFieldsJson.properties.ステータス)).toBe(
+    expect(isSupportedFieldType(subTableFieldsJson.properties.Status)).toBe(
       false
     );
-    expect(isSupportedFieldType(subTableFieldsJson.properties.作業者)).toBe(
+    expect(isSupportedFieldType(subTableFieldsJson.properties.Assignee)).toBe(
       false
     );
   });

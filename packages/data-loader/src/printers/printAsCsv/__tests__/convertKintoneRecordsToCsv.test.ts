@@ -3,9 +3,9 @@ import fs from "fs";
 import path from "path";
 import { FieldsJson, KintoneRecord } from "../index";
 
-const records: KintoneRecord[] = require("./fixtures/records.json");
+const records: KintoneRecord[] = require("./fixtures/input.json");
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
-const subTableRecords: KintoneRecord[] = require("./fixtures/subtable_records.json");
+const subTableRecords: KintoneRecord[] = require("./fixtures/subtable_input.json");
 const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("convertKintoneRecordsToCsv", () => {
