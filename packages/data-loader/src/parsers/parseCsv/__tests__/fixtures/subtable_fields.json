@@ -4,19 +4,19 @@
     "recordNumber": {
       "type": "RECORD_NUMBER",
       "code": "recordNumber",
-      "label": "レコード番号",
+      "label": "recordNumber",
       "noLabel": false
     },
     "updatedTime": {
       "type": "UPDATED_TIME",
       "code": "updatedTime",
-      "label": "更新日時",
+      "label": "updatedTime",
       "noLabel": false
     },
     "dropDown": {
       "type": "DROP_DOWN",
       "code": "dropDown",
-      "label": "ドロップダウン",
+      "label": "dropDown",
       "noLabel": false,
       "required": false,
       "options": {
@@ -34,7 +34,7 @@
     "creator": {
       "type": "CREATOR",
       "code": "creator",
-      "label": "作成者",
+      "label": "creator",
       "noLabel": false
     },
     "subTable": {
@@ -46,7 +46,7 @@
         "subTableText": {
           "type": "SINGLE_LINE_TEXT",
           "code": "subTableText",
-          "label": "文字列 (1行)",
+          "label": "subTableText",
           "noLabel": false,
           "required": false,
           "minLength": "",
@@ -59,7 +59,7 @@
         "subTableCheckbox": {
           "type": "CHECK_BOX",
           "code": "subTableCheckbox",
-          "label": "チェックボックス",
+          "label": "subTableCheckbox",
           "noLabel": false,
           "required": false,
           "options": {
@@ -77,28 +77,28 @@
         }
       }
     },
-    "作業者": {
+    "Assignee": {
       "type": "STATUS_ASSIGNEE",
-      "code": "作業者",
-      "label": "作業者",
+      "code": "Assignee",
+      "label": "Assignee",
       "enabled": false
     },
     "modifier": {
       "type": "MODIFIER",
       "code": "modifier",
-      "label": "更新者",
+      "label": "modifier",
       "noLabel": false
     },
-    "ステータス": {
+    "Status": {
       "type": "STATUS",
-      "code": "ステータス",
-      "label": "ステータス",
+      "code": "Status",
+      "label": "Status",
       "enabled": false
     },
     "richText": {
       "type": "RICH_TEXT",
       "code": "richText",
-      "label": "リッチエディター",
+      "label": "richText",
       "noLabel": false,
       "required": false,
       "defaultValue": ""
@@ -106,7 +106,7 @@
     "singleLineText": {
       "type": "SINGLE_LINE_TEXT",
       "code": "singleLineText",
-      "label": "文字列（１行）",
+      "label": "singleLineText",
       "noLabel": false,
       "required": false,
       "minLength": "",
@@ -116,16 +116,16 @@
       "unique": false,
       "defaultValue": ""
     },
-    "カテゴリー": {
+    "Categories": {
       "type": "CATEGORY",
-      "code": "カテゴリー",
-      "label": "カテゴリー",
+      "code": "Categories",
+      "label": "Categories",
       "enabled": false
     },
     "number": {
       "type": "NUMBER",
       "code": "number",
-      "label": "数値",
+      "label": "number",
       "noLabel": false,
       "required": false,
       "minValue": "",
@@ -140,7 +140,7 @@
     "radioButton": {
       "type": "RADIO_BUTTON",
       "code": "radioButton",
-      "label": "ラジオボタン",
+      "label": "radioButton",
       "noLabel": false,
       "required": true,
       "options": {
@@ -159,7 +159,7 @@
     "multiLineText": {
       "type": "MULTI_LINE_TEXT",
       "code": "multiLineText",
-      "label": "文字列 (複数行)",
+      "label": "multiLineText",
       "noLabel": false,
       "required": false,
       "defaultValue": ""
@@ -167,13 +167,13 @@
     "createdTime": {
       "type": "CREATED_TIME",
       "code": "createdTime",
-      "label": "作成日時",
+      "label": "createdTime",
       "noLabel": false
     },
     "checkBox": {
       "type": "CHECK_BOX",
       "code": "checkBox",
-      "label": "チェックボックス",
+      "label": "checkBox",
       "noLabel": false,
       "required": false,
       "options": {
@@ -192,7 +192,7 @@
     "calc": {
       "type": "CALC",
       "code": "calc",
-      "label": "計算",
+      "label": "calc",
       "noLabel": false,
       "required": false,
       "expression": "number + number",
@@ -205,7 +205,7 @@
     "multiSelect": {
       "type": "MULTI_SELECT",
       "code": "multiSelect",
-      "label": "複数選択",
+      "label": "multiSelect",
       "noLabel": false,
       "required": false,
       "options": {
