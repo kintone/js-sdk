@@ -1,0 +1,44 @@
+[
+  {
+    "dropDown": {
+      "value": "sample1"
+    },
+    "richText": {
+      "value": "<div><div>rich text editor<br /></div></div><div>rich text editor<br /></div><div>rich text editor<br /></div>"
+    },
+    "singleLineText": {
+      "value": "\"single line text\""
+    },
+    "number": {
+      "value": "8"
+    },
+    "radioButton": {
+      "value": "sample2"
+    },
+    "multiLineText": {
+      "value": "multi\nline\ntext"
+    },
+    "multiSelect": {
+      "value": ["\"sample3\"", "sample4,sample5"]
+    },
+    "checkBox": {
+      "value": ["\"sample2\""]
+    },
+    "createdTime": {
+      "value": "2021-02-10T06:14:00Z"
+    },
+    "updatedTime": {
+      "value": "2021-02-16T02:43:00Z"
+    },
+    "creator": {
+      "value": {
+        "code": "username"
+      }
+    },
+    "modifier": {
+      "value": {
+        "code": "username"
+      }
+    }
+  }
+]

@@ -29,7 +29,10 @@ import {
   GeneralNotificationForResponse,
   PerRecordNotificationForParameter,
   PerRecordNotificationForResponse,
+  ReminderNotificationForParameter,
   ReminderNotificationForResponse,
+  ReportForParameter,
+  ReportForResponse,
 } from "./types";
 type RowLayoutForParameter = {
   type: "ROW";
@@ -539,6 +542,50 @@ export class AppClient {
       preview,
     });
     return this.client.get(path, rest);
+  }
+
+  public updateReminderNotifications(params: {
+    app: AppID;
+    notifications?: ReminderNotificationForParameter[];
+    timezone?: string;
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/notifications/reminder",
+      preview: true,
+    });
+    return this.client.put(path, params);
+  }
+
+  public getReports(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{
+    reports: { [reportName: string]: ReportForResponse };
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/reports",
+      preview,
+    });
+    return this.client.get(path, rest);
+  }
+
+  public updateReports(params: {
+    app: AppID;
+    reports: ReportForParameter;
+    revision?: Revision;
+  }): Promise<{
+    revision: string;
+    reports: { [reportName: string]: { id: string } };
+  }> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/reports",
+      preview: true,
+    });
+    return this.client.put(path, params);
   }
 
   private buildPathWithGuestSpaceId(params: {

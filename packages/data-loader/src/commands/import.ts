@@ -12,28 +12,34 @@ export const builder = (yargs: any) =>
     .option("base-url", {
       describe: "Kintone Base Url",
       default: process.env.KINTONE_BASE_URL,
+      defaultDescription: "KINTONE_BASE_URL",
     })
     .option("username", {
       alias: "u",
       describe: "Kintone Username",
       default: process.env.KINTONE_USERNAME,
+      defaultDescription: "KINTONE_USERNAME",
     })
     .option("password", {
       alias: "p",
       describe: "Kintone Password",
       default: process.env.KINTONE_PASSWORD,
+      defaultDescription: "KINTONE_PASSWORD",
     })
     .option("api-token", {
       describe: "App's API token",
       default: process.env.KINTONE_API_TOKEN,
+      defaultDescription: "KINTONE_API_TOKEN",
     })
     .option("basic-auth-username", {
       describe: "Kintone Basic Auth Username",
       default: process.env.KINTONE_BASIC_AUTH_USERNAME,
+      defaultDescription: "KINTONE_BASIC_AUTH_USERNAME",
     })
     .option("basic-auth-password", {
       describe: "Kintone Basic Auth Password",
       default: process.env.KINTONE_BASIC_AUTH_PASSWORD,
+      defaultDescription: "KINTONE_BASIC_AUTH_PASSWORD",
     })
     .option("app", {
       describe: "The ID of the app",
@@ -41,9 +47,10 @@ export const builder = (yargs: any) =>
     .option("guest-space-id", {
       describe: "The ID of guest space",
       default: process.env.KINTONE_GUEST_SPACE_ID,
+      defaultDescription: "KINTONE_GUEST_SPACE_ID",
     })
     .option("file-path", {
-      describe: "file path",
+      describe: 'The path to source file. ".json" or ".csv"',
     })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",
