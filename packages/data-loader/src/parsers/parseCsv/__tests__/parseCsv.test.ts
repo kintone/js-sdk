@@ -1,22 +1,10 @@
-import {
-  KintoneRecordField,
-  KintoneFormFieldProperty,
-} from "@kintone/rest-api-client";
-import fs from "fs";
-import path from "path";
+import { KintoneRecordField } from "@kintone/rest-api-client";
 import { parseCsv } from "../index";
-const expectedJson: Array<{
-  [k: string]: KintoneRecordField.OneOf;
-}> = require("./fixtures/expected.json");
-const fieldsJson: {
-  properties: { [k: string]: KintoneFormFieldProperty.OneOf };
-} = require("./fixtures/fields.json");
-const subTableExpectedJson: Array<{
-  [k: string]: KintoneRecordField.OneOf;
-}> = require("./fixtures/subtable_expected.json");
-const subTableFieldsJson: {
-  properties: { [k: string]: KintoneFormFieldProperty.OneOf };
-} = require("./fixtures/subtable_fields.json");
+import { FieldsJson, KintoneRecord } from "../../../types";
+const expectedJson: KintoneRecord[] = require("./fixtures/expected.json");
+const fieldsJson: FieldsJson = require("./fixtures/fields.json");
+const subTableExpectedJson: KintoneRecord[] = require("./fixtures/subtable_expected.json");
+const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("csvParser", () => {
   it("should convert csv string to JSON correctly", () => {

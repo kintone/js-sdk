@@ -1,7 +1,6 @@
-import { FieldsJson } from "../../printers/printAsCsv";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { formatToRecordValue } from "./formatToRecordValue";
-import { CsvRecords } from "./index";
+import { CsvRecords, FieldsJson } from "../../types";
 
 const extractSubTableFields = (records: CsvRecords) => {
   return [

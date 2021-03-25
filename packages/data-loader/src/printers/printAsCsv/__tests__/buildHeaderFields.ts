@@ -1,6 +1,6 @@
 import { buildHeaderFields } from "../buildHeaderFields";
-import { FieldsJson } from "../index";
 import { PRIMARY_MARK, RECORD_INDEX } from "../constants";
+import { FieldsJson } from "../../../types";
 
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
 const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");

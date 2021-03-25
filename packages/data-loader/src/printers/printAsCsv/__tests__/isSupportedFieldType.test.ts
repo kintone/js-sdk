@@ -1,5 +1,5 @@
 import { isSupportedFieldType } from "../isSupportedFieldType";
-import { FieldsJson } from "../index";
+import { FieldsJson } from "../../../types";
 
 const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 

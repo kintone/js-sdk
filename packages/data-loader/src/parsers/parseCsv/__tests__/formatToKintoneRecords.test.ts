@@ -1,5 +1,5 @@
-import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { formatToKintoneRecords } from "../formatToKintoneRecords";
+import { FieldsJson } from "../../../types";
 
 const records = [
   {
@@ -7,9 +7,7 @@ const records = [
     multiSelect: "sample1\nsample2",
   },
 ];
-const subTableFieldsJson: {
-  properties: { [k: string]: KintoneFormFieldProperty.OneOf };
-} = require("./fixtures/subtable_fields.json");
+const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("formatToKintoneRecords", () => {
   it("should format correctly", () => {

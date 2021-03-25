@@ -1,6 +1,6 @@
 import { parseJson } from "./parseJson";
-import { parseCsv, ParsedRecord } from "./parseCsv";
-import { FieldsJson } from "../printers/printAsCsv";
+import { parseCsv } from "./parseCsv";
+import { FieldsJson, ParsedRecord } from "../types";
 
 function buildParser(
   type: string

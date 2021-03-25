@@ -1,16 +1,13 @@
 import csvParse from "csv-parse/lib/sync";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
-import { FieldsJson } from "../../printers/printAsCsv";
 import { hasSubTable } from "../../printers/printAsCsv/hasSubTable";
 import { extractSubTableFieldsValue } from "./extractSubTableFieldsValue";
 import { groupByIndex } from "./groupByIndex";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToKintoneRecords } from "./formatToKintoneRecords";
 import { formatToRecordValue } from "./formatToRecordValue";
-
-export type CsvRecords = Array<Record<string, string>>;
-export type ParsedRecord = Record<string, Record<"value", unknown>>;
+import { CsvRecords, FieldsJson, ParsedRecord } from "../../types";
 
 export const parseCsv = (
   csv: string,

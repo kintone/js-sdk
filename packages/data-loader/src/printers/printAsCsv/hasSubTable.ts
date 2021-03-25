@@ -1,4 +1,4 @@
-import { FieldsJson } from "./index";
+import { FieldsJson } from "../../types";
 
 export const hasSubTable = (fieldsJson: FieldsJson) =>
   Object.keys(fieldsJson.properties).some(

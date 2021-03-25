@@ -1,7 +1,7 @@
-import { FieldsJson } from "./index";
 import { isSupportedFieldType } from "./isSupportedFieldType";
 import { PRIMARY_MARK, RECORD_INDEX } from "./constants";
 import { hasSubTable } from "./hasSubTable";
+import { FieldsJson } from "../../types";
 
 export const buildHeaderFields = (fieldsJson: FieldsJson) => {
   const fields = Object.keys(fieldsJson.properties)

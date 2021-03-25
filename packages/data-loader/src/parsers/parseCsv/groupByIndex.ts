@@ -1,5 +1,5 @@
 import { RECORD_INDEX } from "../../printers/printAsCsv/constants";
-import { CsvRecords } from "./index";
+import { CsvRecords } from "../../types";
 
 export const groupByIndex = (records: CsvRecords) => {
   return records.reduce<Record<string, Array<{ [k: string]: string }>>>(

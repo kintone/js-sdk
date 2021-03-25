@@ -1,8 +1,6 @@
-import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { extractSubTableFieldsValue } from "../extractSubTableFieldsValue";
-const subTableFieldsJson: {
-  properties: { [k: string]: KintoneFormFieldProperty.OneOf };
-} = require("./fixtures/subtable_fields.json");
+import { FieldsJson } from "../../../types";
+const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("extractSubTableFieldsValue", () => {
   it("should extract subtable fields value correctly", () => {

@@ -1,5 +1,5 @@
 import { extractFieldValue } from "../extractFieldValue";
-import { KintoneRecord } from "../index";
+import { KintoneRecord } from "../../../types";
 
 const subTableRecords: KintoneRecord[] = require("./fixtures/subtable_input.json");
 

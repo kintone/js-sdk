@@ -1,9 +1,9 @@
-import { FieldsJson, KintoneRecord } from "./index";
 import { encloseInDoubleQuotes } from "./encloseInDoubleQuotes";
 import { LINE_BREAK, PRIMARY_MARK, RECORD_INDEX, SEPARATOR } from "./constants";
 import { extractFieldValue } from "./extractFieldValue";
 import { buildHeaderFields } from "./buildHeaderFields";
 import { hasSubTable } from "./hasSubTable";
+import { FieldsJson, KintoneRecord } from "../../types";
 
 type RowObject = {
   [fieldCode: string]: string | Array<{ [fieldCode: string]: string }>;

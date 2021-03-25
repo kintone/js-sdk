@@ -1,7 +1,5 @@
 import { convertKintoneRecordsToCsv } from "../convertKintoneRecordsToCsv";
-import fs from "fs";
-import path from "path";
-import { FieldsJson, KintoneRecord } from "../index";
+import { FieldsJson, KintoneRecord } from "../../../types";
 
 const records: KintoneRecord[] = require("./fixtures/input.json");
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
