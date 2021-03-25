@@ -1,7 +1,7 @@
 import { KintoneRecordField } from "@kintone/rest-api-client";
 import { KintoneRecord } from "../types";
 
-const fieldsFilter = ({
+export const exportFieldsFilter = ({
   records,
   exportFields,
 }: {
@@ -30,7 +30,7 @@ export const printAsJson = ({
 }) => {
   console.log(
     JSON.stringify(
-      exportFields ? fieldsFilter({ records, exportFields }) : records,
+      exportFields ? exportFieldsFilter({ records, exportFields }) : records,
       null,
       2
     )

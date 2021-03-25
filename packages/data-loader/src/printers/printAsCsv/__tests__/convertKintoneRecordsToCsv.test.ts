@@ -36,4 +36,17 @@ sample4"
       })
     ).toBe(expectedCsv);
   });
+
+  it("should filter in order to export fields option", () => {
+    const expectedCsv = `"recordNumber","number"
+"9","8"
+`;
+    expect(
+      convertKintoneRecordsToCsv({
+        records,
+        fieldsJson,
+        exportFields: "recordNumber,number",
+      })
+    ).toBe(expectedCsv);
+  });
 });

@@ -1,4 +1,3 @@
-import { KintoneRecordField } from "@kintone/rest-api-client";
 import { parseCsv } from "../index";
 import { FieldsJson, KintoneRecord } from "../../../types";
 const expectedJson: KintoneRecord[] = require("./fixtures/expected.json");
