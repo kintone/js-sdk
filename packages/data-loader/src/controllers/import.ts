@@ -4,9 +4,10 @@ import {
 } from "@kintone/rest-api-client";
 import { AppID } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { buildParser } from "../parsers";
 import { promises as fs } from "fs";
 import path from "path";
+import { parseJson } from "../parsers/parseJson";
+import { parseCsv } from "../parsers/parseCsv";
 
 const CHUNK_LENGTH = 100;
 
@@ -42,20 +43,36 @@ export const buildImporter = ({
     const { app, filePath } = options;
     const buf = await fs.readFile(filePath);
     const type = extractFileType(filePath);
-    const parser = buildParser(type);
-
-    const records =
-      type === "csv"
-        ? parser(buf.toString(), await fetchFieldsJson(options))
-        : parser(buf.toString());
+    const records = await parseSource({
+      type,
+      source: buf.toString(),
+      options,
+    });
     await addAllRecordsChunk(app, records);
   }
 
-  async function fetchFieldsJson(options: Options) {
-    const fieldsJson = await apiClient.app.getFormFields<
-      Record<string, KintoneFormFieldProperty.OneOf>
-    >(options);
-    return fieldsJson;
+  async function parseSource({
+    type,
+    source,
+    options,
+  }: {
+    type: string;
+    source: string;
+    options: Options;
+  }) {
+    switch (type) {
+      case "json":
+        return parseJson(source);
+      case "csv":
+        return parseCsv(
+          source,
+          await apiClient.app.getFormFields<
+            Record<string, KintoneFormFieldProperty.OneOf>
+          >(options)
+        );
+      default:
+        throw new Error(`Unexpected file type: ${type} is unacceptable.`);
+    }
   }
 
   async function addAllRecordsChunk(
