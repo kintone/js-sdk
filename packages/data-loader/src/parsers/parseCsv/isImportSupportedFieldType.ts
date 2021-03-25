@@ -7,7 +7,6 @@ export const isImportSupportedFieldType = (fieldType: string) => {
     "RICH_TEXT",
     "LINK",
     "DROP_DOWN",
-    "CALC",
     "UPDATED_TIME",
     "CREATED_TIME",
     "CREATOR",

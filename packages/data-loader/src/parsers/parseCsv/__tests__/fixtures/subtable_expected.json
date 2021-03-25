@@ -37,9 +37,6 @@
     "checkBox": {
       "value": ["\"sample2\""]
     },
-    "calc": {
-      "value": "16"
-    },
     "multiSelect": {
       "value": ["\"sample3\"", "sample4"]
     },
