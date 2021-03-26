@@ -1,7 +1,7 @@
 import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
 import { CsvRecords } from "../../types";
 
-export const groupByIndex = (records: CsvRecords) => {
+export const groupByKintoneRecord = (records: CsvRecords) => {
   let cursor = 0;
   return records.reduce<Record<string, Array<{ [k: string]: string }>>>(
     (ret, record) => {

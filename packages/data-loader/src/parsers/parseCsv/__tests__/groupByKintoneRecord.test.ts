@@ -1,5 +1,5 @@
 import { PRIMARY_MARK } from "../../../printers/printAsCsv/constants";
-import { groupByIndex } from "../groupByIndex";
+import { groupByKintoneRecord } from "../groupByKintoneRecord";
 
 describe("groupByIndex", () => {
   it("should grouping by record index correctly", () => {
@@ -20,7 +20,7 @@ describe("groupByIndex", () => {
         [PRIMARY_MARK]: "",
       },
     ];
-    const groups = groupByIndex(records);
+    const groups = groupByKintoneRecord(records);
     expect(groups["1"]).toHaveLength(3);
     expect(groups["2"]).toHaveLength(2);
   });
