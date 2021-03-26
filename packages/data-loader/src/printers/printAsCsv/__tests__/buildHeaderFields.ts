@@ -15,9 +15,6 @@ describe("buildHeaderFields", () => {
     expect(buildHeaderFields(subTableFieldsJson).includes(PRIMARY_MARK)).toBe(
       true
     );
-    expect(buildHeaderFields(subTableFieldsJson).includes(RECORD_INDEX)).toBe(
-      true
-    );
-    expect(buildHeaderFields(subTableFieldsJson)).toHaveLength(19);
+    expect(buildHeaderFields(subTableFieldsJson)).toHaveLength(18);
   });
 });
