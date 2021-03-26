@@ -1,23 +1,23 @@
-import { RECORD_INDEX } from "../../../printers/printAsCsv/constants";
+import { PRIMARY_MARK } from "../../../printers/printAsCsv/constants";
 import { groupByIndex } from "../groupByIndex";
 
 describe("groupByIndex", () => {
   it("should grouping by record index correctly", () => {
     const records = [
       {
-        [RECORD_INDEX]: "1",
+        [PRIMARY_MARK]: "*",
       },
       {
-        [RECORD_INDEX]: "1",
+        [PRIMARY_MARK]: "",
       },
       {
-        [RECORD_INDEX]: "1",
+        [PRIMARY_MARK]: "",
       },
       {
-        [RECORD_INDEX]: "2",
+        [PRIMARY_MARK]: "*",
       },
       {
-        [RECORD_INDEX]: "2",
+        [PRIMARY_MARK]: "",
       },
     ];
     const groups = groupByIndex(records);
