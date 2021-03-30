@@ -42,7 +42,7 @@
     "@kintone/customize-uploader": "^3.1.9",
     "@types/yargs": "^16.0.1",
     "ts-loader": "^8.1.0",
-    "webpack": "^5.27.2",
+    "webpack": "^5.28.0",
     "webpack-cli": "4.5.0"
   }
 }
