@@ -3,7 +3,6 @@ import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
 import { hasSubTable } from "../../printers/printAsCsv/hasSubTable";
 import { extractSubTableFieldsValue } from "./extractSubTableFieldsValue";
-import { groupByKintoneRecord } from "./groupByKintoneRecord";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToKintoneRecords } from "./formatToKintoneRecords";
 import { formatToRecordValue } from "./formatToRecordValue";
@@ -65,18 +64,25 @@ const convertToKintoneRecords = ({
     });
   }
 
-  const subTableRecordGroups = groupByKintoneRecord(records);
+  let temp: Array<Record<string, string>> = [];
+  const lastIndex = records.length - 1;
 
-  return Object.keys(subTableRecordGroups).reduce<ParsedRecord[]>(
-    (subTableRecords, index) => {
-      const primaryRow = subTableRecordGroups[index].find(
-        (record) => record[PRIMARY_MARK]
-      );
-      if (!primaryRow) {
-        return subTableRecords;
+  return records.reduce<Array<{ [k: string]: string }>>(
+    (ret, record, index) => {
+      const isPrimaryRow = !!record[PRIMARY_MARK];
+      const isLastRow = index === lastIndex;
+      const isEmpty = temp.length === 0;
+
+      if (isLastRow) {
+        temp.push(record);
+      } else if (isEmpty || !isPrimaryRow) {
+        temp.push(record);
+        return ret;
       }
+
+      const primaryRow = temp[0];
       const subTableFieldsValue = extractSubTableFieldsValue({
-        records: subTableRecordGroups[index],
+        records: temp,
         fieldsJson,
       });
 
@@ -85,7 +91,10 @@ const convertToKintoneRecords = ({
         fieldsJson,
         subTableFieldsValue,
       });
-      return subTableRecords.concat([subTableRecord]);
+
+      temp = [record];
+
+      return ret.concat([subTableRecord]);
     },
     []
   );
