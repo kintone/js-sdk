@@ -1,0 +1,109 @@
+---
+- - :permit
+  - MIT
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 00:57:53.222325005 Z
+- - :permit
+  - MIT*
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 00:57:53.222325005 Z
+- - :permit
+  - ISC
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 00:58:46.336505041 Z
+- - :permit
+  - Apache 2.0
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:01:34.534509225 Z
+- - :permit
+  - BSD
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:01:34.534509225 Z
+- - :permit
+  - BSD*
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:01:34.534509225 Z
+- - :permit
+  - Simplified BSD
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:01:34.534509225 Z
+- - :permit
+  - New BSD
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:01:34.534509225 Z
+- - :permit
+  - BSD Zero Clause License
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:01:34.534509225 Z
+- - :permit
+  - Unlicense
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:11:34.040931798 Z
+- - :permit
+  - CC0-1.0
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:12:52.037007860 Z
+- - :permit
+  - CC-BY-3.0
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:13:03.231947956 Z
+- - :permit
+  - CC-BY-4.0
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:13:12.251434205 Z
+- - :permit
+  - Mozilla Public License 2.0
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:13:12.251434205 Z
+- - :permit
+  - Artistic-2.0
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:24:32.175073587 Z
+- - :permit
+  - (MIT AND Zlib)
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-09 01:24:32.175073587 Z
+- - :permit
+  - ODC-By-1.0
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-03-23 13:01:00.000000000 Z
+- - :approve
+  - fsevents
+  - :who:
+    :why: https://github.com/pivotal/LicenseFinder/issues/673
+    :versions: []
+    :when: 2021-03-09 01:40:15.366288252 Z
