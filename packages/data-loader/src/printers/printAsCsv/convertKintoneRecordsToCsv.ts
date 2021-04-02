@@ -1,5 +1,5 @@
 import { encloseInDoubleQuotes } from "./encloseInDoubleQuotes";
-import { LINE_BREAK, PRIMARY_MARK, RECORD_INDEX, SEPARATOR } from "./constants";
+import { LINE_BREAK, PRIMARY_MARK, SEPARATOR } from "./constants";
 import { extractFieldValue } from "./extractFieldValue";
 import { buildHeaderFields } from "./buildHeaderFields";
 import { hasSubTable } from "./hasSubTable";
@@ -43,12 +43,11 @@ const buildRows = ({
   headerFields: string[];
   fieldsJson: FieldsJson;
 }) => {
-  return records.map((record, recordIndex) =>
+  return records.map((record) =>
     buildRow({
       record,
       headerFields,
       fieldsJson,
-      recordIndex,
     })
   );
 };
@@ -57,12 +56,10 @@ const buildRow = ({
   record,
   headerFields,
   fieldsJson,
-  recordIndex,
 }: {
   record: KintoneRecord;
   headerFields: string[];
   fieldsJson: FieldsJson;
-  recordIndex: number;
 }) => {
   const recordObject = buildRecordObject(record);
   const primaryRowObject = buildPrimaryRowObject({
@@ -84,7 +81,6 @@ const buildRow = ({
     recordObject,
     subTableFieldCodes,
     primaryRowObject,
-    recordIndex,
   });
 
   return rowObjects
@@ -123,19 +119,16 @@ const buildSubTableRowObjects = ({
   recordObject,
   subTableFieldCodes,
   primaryRowObject,
-  recordIndex,
 }: {
   recordObject: Record<string, any>;
   subTableFieldCodes: string[];
   primaryRowObject: RowObject;
-  recordIndex: number;
 }) => {
   const rowObjects = subTableFieldCodes.reduce<RowObject[]>(
     (ret, subTableFieldCode) => {
       return ret.concat(
         recordObject[subTableFieldCode].map(
           (field: { [k: string]: string }) => ({
-            [RECORD_INDEX]: encloseInDoubleQuotes(recordIndex + 1 + ""),
             ...primaryRowObject,
             ...Object.keys(field).reduce<Record<string, string>>(
               (rowObject, fieldCode) => {

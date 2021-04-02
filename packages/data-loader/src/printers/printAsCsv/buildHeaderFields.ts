@@ -1,5 +1,5 @@
 import { isSupportedFieldType } from "./isSupportedFieldType";
-import { PRIMARY_MARK, RECORD_INDEX } from "./constants";
+import { PRIMARY_MARK } from "./constants";
 import { hasSubTable } from "./hasSubTable";
 import { FieldsJson } from "../../types";
 
@@ -22,7 +22,5 @@ export const buildHeaderFields = (fieldsJson: FieldsJson) => {
       );
     }, [] as string[]);
 
-  return hasSubTable(fieldsJson)
-    ? [PRIMARY_MARK, RECORD_INDEX].concat(fields)
-    : fields;
+  return hasSubTable(fieldsJson) ? [PRIMARY_MARK].concat(fields) : fields;
 };

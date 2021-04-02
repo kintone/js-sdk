@@ -3,7 +3,7 @@ import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
 import { hasSubTable } from "../../printers/printAsCsv/hasSubTable";
 import { extractSubTableFieldsValue } from "./extractSubTableFieldsValue";
-import { groupByIndex } from "./groupByIndex";
+import { groupByKintoneRecord } from "./groupByKintoneRecord";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToKintoneRecords } from "./formatToKintoneRecords";
 import { formatToRecordValue } from "./formatToRecordValue";
@@ -65,7 +65,7 @@ const convertToKintoneRecords = ({
     });
   }
 
-  const subTableRecordGroups = groupByIndex(records);
+  const subTableRecordGroups = groupByKintoneRecord(records);
 
   return Object.keys(subTableRecordGroups).reduce<ParsedRecord[]>(
     (subTableRecords, index) => {
