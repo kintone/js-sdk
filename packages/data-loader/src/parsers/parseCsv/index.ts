@@ -6,18 +6,18 @@ import { extractSubTableFieldsValue } from "./extractSubTableFieldsValue";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToKintoneRecords } from "./formatToKintoneRecords";
 import { formatToRecordValue } from "./formatToRecordValue";
-import { CsvRecords, FieldsJson, ParsedRecord } from "../../types";
+import { CsvRows, FieldsJson, ParsedRecord } from "../../types";
 
 export const parseCsv = (
   csv: string,
   fieldsJson: { properties: Record<string, KintoneFormFieldProperty.OneOf> }
 ) => {
-  const records: CsvRecords = csvParse(csv, {
+  const rows: CsvRows = csvParse(csv, {
     columns: true,
     skip_empty_lines: true,
   });
   return convertToKintoneRecords({
-    records,
+    rows,
     fieldsJson,
   });
 };
@@ -51,33 +51,33 @@ const buildSubTableRecord = ({
 };
 
 const convertToKintoneRecords = ({
-  records,
+  rows,
   fieldsJson,
 }: {
-  records: CsvRecords;
+  rows: CsvRows;
   fieldsJson: FieldsJson;
 }) => {
   if (!hasSubTable(fieldsJson)) {
     return formatToKintoneRecords({
-      records,
+      rows,
       fieldsJson,
     });
   }
 
   let temp: Array<Record<string, string>> = [];
-  const lastIndex = records.length - 1;
+  const lastIndex = rows.length - 1;
 
-  return records.reduce<Array<{ [k: string]: string }>>(
-    (ret, record, index) => {
-      const isPrimaryRow = !!record[PRIMARY_MARK];
+  return rows.reduce<Array<{ [k: string]: string }>>(
+    (kintoneFormatObjects, row, index) => {
+      const isPrimaryRow = !!row[PRIMARY_MARK];
       const isLastRow = index === lastIndex;
       const isEmpty = temp.length === 0;
 
       if (isLastRow) {
-        temp.push(record);
+        temp.push(row);
       } else if (isEmpty || !isPrimaryRow) {
-        temp.push(record);
-        return ret;
+        temp.push(row);
+        return kintoneFormatObjects;
       }
 
       const primaryRow = temp[0];
@@ -92,9 +92,9 @@ const convertToKintoneRecords = ({
         subTableFieldsValue,
       });
 
-      temp = [record];
+      temp = [row];
 
-      return ret.concat([subTableRecord]);
+      return kintoneFormatObjects.concat([subTableRecord]);
     },
     []
   );

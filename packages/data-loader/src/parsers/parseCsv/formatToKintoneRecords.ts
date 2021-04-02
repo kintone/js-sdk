@@ -1,16 +1,16 @@
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToRecordValue } from "./formatToRecordValue";
-import { CsvRecords, FieldsJson, ParsedRecord } from "../../types";
+import { CsvRows, FieldsJson, ParsedRecord } from "../../types";
 
 export const formatToKintoneRecords = ({
-  records,
+  rows,
   fieldsJson,
 }: {
-  records: CsvRecords;
+  rows: CsvRows;
   fieldsJson: FieldsJson;
 }) => {
-  return records.map((record) => {
-    return Object.keys(record)
+  return rows.map((row) => {
+    return Object.keys(row)
       .filter((fieldCode) => {
         const field = fieldsJson.properties[fieldCode];
         return field ? isImportSupportedFieldType(field.type) : false;
@@ -19,7 +19,7 @@ export const formatToKintoneRecords = ({
         (recordObjects, fieldCode) => ({
           ...recordObjects,
           [fieldCode]: formatToRecordValue({
-            value: record[fieldCode],
+            value: row[fieldCode],
             fieldType: fieldsJson.properties[fieldCode].type,
           }),
         }),
