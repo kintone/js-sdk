@@ -58,21 +58,22 @@ Some options use enviroment variables starting `KINTONE_` as default values.
 
 ```
 Options:
-  --version              Show version number                           [boolean]
-  --help                 Show help                                     [boolean]
-  --base-url             Kintone Base Url            [default: KINTONE_BASE_URL]
-  --username, -u         Kintone Username            [default: KINTONE_USERNAME]
-  --password, -p         Kintone Password            [default: KINTONE_PASSWORD]
-  --api-token            App's API token            [default: KINTONE_API_TOKEN]
-  --basic-auth-username  Kintone Basic Auth Username
+      --version              Show version number                       [boolean]
+      --help                 Show help                                 [boolean]
+      --base-url             Kintone Base Url        [default: KINTONE_BASE_URL]
+  -u, --username             Kintone Username        [default: KINTONE_USERNAME]
+  -p, --password             Kintone Password        [default: KINTONE_PASSWORD]
+      --api-token            App's API token        [default: KINTONE_API_TOKEN]
+      --basic-auth-username  Kintone Basic Auth Username
                                           [default: KINTONE_BASIC_AUTH_USERNAME]
-  --basic-auth-password  Kintone Basic Auth Password
+      --basic-auth-password  Kintone Basic Auth Password
                                           [default: KINTONE_BASIC_AUTH_PASSWORD]
-  --app                  The ID of the app
-  --guest-space-id       The ID of guest space [default: KINTONE_GUEST_SPACE_ID]
-  --file-path            The path to source file. ".json" or ".csv"
-  --pfx-file-path        The path to client certificate file
-  --pfx-file-password    The password of client certificate file
+      --app                  The ID of the app
+      --guest-space-id       The ID of guest space
+                                               [default: KINTONE_GUEST_SPACE_ID]
+      --file-path            The path to source file. ".json" or ".csv"
+      --pfx-file-path        The path to client certificate file
+      --pfx-file-password    The password of client certificate file
 ```
 
 ### export
@@ -95,23 +96,24 @@ Some options use enviroment variables starting `KINTONE_` as default values.
 
 ```
 Options:
-  --version              Show version number                           [boolean]
-  --help                 Show help                                     [boolean]
-  --base-url             Kintone Base Url            [default: KINTONE_BASE_URL]
-  --username, -u         Kintone Username            [default: KINTONE_USERNAME]
-  --password, -p         Kintone Password            [default: KINTONE_PASSWORD]
-  --api-token            App's API token            [default: KINTONE_API_TOKEN]
-  --basic-auth-username  Kintone Basic Auth Username
+      --version              Show version number                       [boolean]
+      --help                 Show help                                 [boolean]
+      --base-url             Kintone Base Url        [default: KINTONE_BASE_URL]
+  -u, --username             Kintone Username        [default: KINTONE_USERNAME]
+  -p, --password             Kintone Password        [default: KINTONE_PASSWORD]
+      --api-token            App's API token        [default: KINTONE_API_TOKEN]
+      --basic-auth-username  Kintone Basic Auth Username
                                           [default: KINTONE_BASIC_AUTH_USERNAME]
-  --basic-auth-password  Kintone Basic Auth Password
+      --basic-auth-password  Kintone Basic Auth Password
                                           [default: KINTONE_BASIC_AUTH_PASSWORD]
-  --app                  The ID of the app
-  --guest-space-id       The ID of guest space [default: KINTONE_GUEST_SPACE_ID]
-  --attachment-dir       Attachment file directory                      [string]
-  --format               Output format. "json" or "csv"        [default: "json"]
-  --query, -q            The query string
-  --pfx-file-path        The path to client certificate file
-  --pfx-file-password    The password of client certificate file
+      --app                  The ID of the app
+      --guest-space-id       The ID of guest space
+                                               [default: KINTONE_GUEST_SPACE_ID]
+      --attachment-dir       Attachment file directory                  [string]
+      --format               Output format. "json" or "csv"    [default: "json"]
+  -q, --query                The query string
+      --pfx-file-path        The path to client certificate file
+      --pfx-file-password    The password of client certificate file
 ```
 
 ## Supported file formats
