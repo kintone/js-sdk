@@ -67,35 +67,32 @@ const convertToKintoneRecords = ({
   let temp: Array<Record<string, string>> = [];
   const lastIndex = rows.length - 1;
 
-  return rows.reduce<Array<{ [k: string]: string }>>(
-    (kintoneFormatObjects, row, index) => {
-      const isPrimaryRow = !!row[PRIMARY_MARK];
-      const isLastRow = index === lastIndex;
-      const isEmpty = temp.length === 0;
+  return rows.reduce<ParsedRecord[]>((kintoneFormatObjects, row, index) => {
+    const isPrimaryRow = !!row[PRIMARY_MARK];
+    const isLastRow = index === lastIndex;
+    const isEmpty = temp.length === 0;
 
-      if (isLastRow) {
-        temp.push(row);
-      } else if (isEmpty || !isPrimaryRow) {
-        temp.push(row);
-        return kintoneFormatObjects;
-      }
+    if (isLastRow) {
+      temp.push(row);
+    } else if (isEmpty || !isPrimaryRow) {
+      temp.push(row);
+      return kintoneFormatObjects;
+    }
 
-      const primaryRow = temp[0];
-      const subTableFieldsValue = extractSubTableFieldsValue({
-        records: temp,
-        fieldsJson,
-      });
+    const primaryRow = temp[0];
+    const subTableFieldsValue = extractSubTableFieldsValue({
+      records: temp,
+      fieldsJson,
+    });
 
-      const subTableRecord = buildSubTableRecord({
-        primaryRow,
-        fieldsJson,
-        subTableFieldsValue,
-      });
+    const subTableRecord = buildSubTableRecord({
+      primaryRow,
+      fieldsJson,
+      subTableFieldsValue,
+    });
 
-      temp = [row];
+    temp = [row];
 
-      return kintoneFormatObjects.concat([subTableRecord]);
-    },
-    []
-  );
+    return kintoneFormatObjects.concat([subTableRecord]);
+  }, []);
 };

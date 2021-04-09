@@ -1,8 +1,8 @@
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { formatToRecordValue } from "./formatToRecordValue";
-import { CsvRecords, FieldsJson } from "../../types";
+import { CsvRows, FieldsJson } from "../../types";
 
-const extractSubTableFields = (records: CsvRecords) => {
+const extractSubTableFields = (records: CsvRows) => {
   return [
     ...new Set(
       records.reduce<string[]>((fields, record) => {
@@ -20,7 +20,7 @@ export const extractSubTableFieldsValue = ({
   records,
   fieldsJson,
 }: {
-  records: CsvRecords;
+  records: CsvRows;
   fieldsJson: FieldsJson;
 }) => {
   const subTableFields = extractSubTableFields(records);

@@ -8,6 +8,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { parseJson } from "../parsers/parseJson";
 import { parseCsv } from "../parsers/parseCsv";
+import { ParsedRecord } from "../types";
 
 const CHUNK_LENGTH = 100;
 
@@ -75,10 +76,7 @@ export const buildImporter = ({
     }
   }
 
-  async function addAllRecordsChunk(
-    app: AppID,
-    allRecords: Array<Record<string, Record<"value", unknown>>>
-  ) {
+  async function addAllRecordsChunk(app: AppID, allRecords: ParsedRecord[]) {
     let chunkStartIndex = 0;
     while (chunkStartIndex < allRecords.length) {
       const chunkNextIndex =
