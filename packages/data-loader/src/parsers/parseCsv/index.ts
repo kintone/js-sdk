@@ -29,7 +29,7 @@ const buildSubTableRecord = ({
   subTableFieldsValue: Record<string, any>;
 }) => {
   return {
-    ...Object.keys(primaryRow!)
+    ...Object.keys(primaryRow)
       .filter((fieldCode) =>
         isImportSupportedFieldType(fieldsJson.properties[fieldCode]?.type)
       )
@@ -39,7 +39,7 @@ const buildSubTableRecord = ({
           ...obj,
           [fieldCode]: formatToRecordValue({
             fieldType,
-            value: primaryRow![fieldCode],
+            value: primaryRow[fieldCode],
           }),
         };
       }, {} as ParsedRecord),
