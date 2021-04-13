@@ -1,6 +1,6 @@
 {
   "name": "@kintone/data-loader",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "publishConfig": {
     "access": "public"
   },
@@ -55,7 +55,7 @@
     "pkg": "^4.5.1"
   },
   "dependencies": {
-    "@kintone/rest-api-client": "^1.12.2",
+    "@kintone/rest-api-client": "^1.12.3",
     "csv-parse": "^4.15.3",
     "yargs": "^16.2.0"
   }
