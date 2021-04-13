@@ -8,10 +8,7 @@ import { formatToKintoneRecords } from "./formatToKintoneRecords";
 import { formatToRecordValue } from "./formatToRecordValue";
 import { CsvRows, FieldsJson, ParsedRecord } from "../../types";
 
-export const parseCsv = (
-  csv: string,
-  fieldsJson: { properties: Record<string, KintoneFormFieldProperty.OneOf> }
-) => {
+export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
   const rows: CsvRows = csvParse(csv, {
     columns: true,
     skip_empty_lines: true,
