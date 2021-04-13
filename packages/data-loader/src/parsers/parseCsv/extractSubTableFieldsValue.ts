@@ -2,14 +2,12 @@ import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { formatToRecordValue } from "./formatToRecordValue";
 import { CsvRows, FieldsJson } from "../../types";
 
-const extractSubTableFields = (records: CsvRows) => {
+const extractSubTableFields = (rows: CsvRows) => {
   return [
     ...new Set(
-      records.reduce<string[]>((fields, record) => {
+      rows.reduce<string[]>((fields, row) => {
         return fields.concat(
-          Object.keys(record).filter(
-            (fieldCode) => fieldCode.indexOf(".") !== -1
-          )
+          Object.keys(row).filter((fieldCode) => fieldCode.indexOf(".") !== -1)
         );
       }, [])
     ),
@@ -17,13 +15,13 @@ const extractSubTableFields = (records: CsvRows) => {
 };
 
 export const extractSubTableFieldsValue = ({
-  records,
+  rows,
   fieldsJson,
 }: {
-  records: CsvRows;
+  rows: CsvRows;
   fieldsJson: FieldsJson;
 }) => {
-  const subTableFields = extractSubTableFields(records);
+  const subTableFields = extractSubTableFields(rows);
   const parentFieldCodes = [
     ...new Set(
       subTableFields.map((subTableFieldCode) => subTableFieldCode.split(".")[0])
@@ -37,7 +35,7 @@ export const extractSubTableFieldsValue = ({
         .filter((fieldCode) => regex.test(fieldCode))
         .map((fieldCode) => fieldCode.split(".")[1]);
 
-      const value = records.map((record) => {
+      const value = rows.map((record) => {
         return childFieldCodes.reduce<any>(
           (ret, childFieldCode) => {
             if (childFieldCode === "id") {
