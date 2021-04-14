@@ -78,7 +78,7 @@ const convertToKintoneRecords = ({
 
     const primaryRow = temp[0];
     const subTableFieldsValue = extractSubTableFieldsValue({
-      records: temp,
+      rows: temp,
       fieldsJson,
     });
 

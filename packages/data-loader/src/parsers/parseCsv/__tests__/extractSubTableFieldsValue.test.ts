@@ -4,7 +4,7 @@ const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json"
 
 describe("extractSubTableFieldsValue", () => {
   it("should extract subtable fields value correctly", () => {
-    const records = [
+    const rows = [
       {
         singleLineText: "text",
         "subTable.id": "11111",
@@ -48,7 +48,10 @@ describe("extractSubTableFieldsValue", () => {
       },
     };
     expect(
-      extractSubTableFieldsValue({ records, fieldsJson: subTableFieldsJson })
+      extractSubTableFieldsValue({
+        rows,
+        fieldsJson: subTableFieldsJson,
+      })
     ).toEqual(expected);
   });
 });
