@@ -55,6 +55,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     basicAuth,
     clientCertAuth,
     proxy,
+    userAgent,
   }: {
     baseUrl: string;
     auth: DiscriminatedAuth;
@@ -69,10 +70,11 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
           password: string;
         };
     proxy?: ProxyConfig;
+    userAgent?: string;
   }) {
     this.baseUrl = baseUrl;
     this.auth = auth;
-    this.headers = this.buildHeaders(basicAuth);
+    this.headers = this.buildHeaders({ basicAuth, userAgent });
     this.clientCertAuth = clientCertAuth;
     this.proxy = proxy;
     this.requestToken = null;
@@ -170,7 +172,11 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     return params;
   }
 
-  private buildHeaders(basicAuth?: BasicAuth): KintoneAuthHeader {
+  private buildHeaders(params: {
+    basicAuth?: BasicAuth;
+    userAgent?: string;
+  }): KintoneAuthHeader {
+    const { basicAuth, userAgent } = params;
     const basicAuthHeaders = basicAuth
       ? {
           Authorization: `Basic ${Base64.encode(
@@ -178,7 +184,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
           )}`,
         }
       : {};
-    const platformDepsHeaders = platformDeps.buildHeaders();
+    const platformDepsHeaders = platformDeps.buildHeaders({ userAgent });
 
     const commonHeaders = { ...platformDepsHeaders, ...basicAuthHeaders };
 
