@@ -130,7 +130,11 @@ const buildSubTableRowObjects = ({
               (rowObject, fieldCode) => {
                 return {
                   ...rowObject,
-                  [`${subTableFieldCode}.${fieldCode}`]: field[fieldCode],
+                  // NOTE: If fieldCode is `id`, use field code of subtable itself
+                  // to avoid conflicts between each subtable.
+                  [fieldCode === "id" ? subTableFieldCode : fieldCode]: field[
+                    fieldCode
+                  ],
                 };
               },
               {}

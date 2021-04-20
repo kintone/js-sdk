@@ -10,16 +10,9 @@ export const buildHeaderFields = (fieldsJson: FieldsJson) => {
     )
     .reduce((ret, fieldCode) => {
       const field = fieldsJson.properties[fieldCode];
-      return ret.concat(
-        field.type === "SUBTABLE"
-          ? [
-              `${fieldCode}.id`,
-              ...Object.keys(field.fields).map(
-                (subTableFieldCode) => `${fieldCode}.${subTableFieldCode}`
-              ),
-            ]
-          : [fieldCode]
-      );
+      const fieldCodesInSubtable =
+        field.type === "SUBTABLE" ? Object.keys(field.fields) : [];
+      return ret.concat(fieldCode, ...fieldCodesInSubtable);
     }, [] as string[]);
 
   return hasSubTable(fieldsJson) ? [PRIMARY_MARK].concat(fields) : fields;
