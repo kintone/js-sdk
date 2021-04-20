@@ -5,8 +5,8 @@ import {
 import { AppID } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
 import { buildParser } from "../parsers";
-import { promises as fs } from "fs";
 import path from "path";
+import fs from "fs";
 
 const CHUNK_LENGTH = 100;
 
@@ -38,17 +38,27 @@ export const buildImporter = ({
     return path.extname(filepath).split(".").pop() || "";
   };
 
+  async function readStream(stream: fs.ReadStream, encoding = "utf8") {
+    stream.setEncoding(encoding);
+    let content = "";
+    for await (const chunk of stream) {
+      content += chunk;
+    }
+    return content;
+  }
+
   async function importRecords(options: Options) {
     const { app, filePath } = options;
-    const buf = await fs.readFile(filePath);
+    const stream = fs.createReadStream(filePath);
+    const content = await readStream(stream);
     const type = extractFileType(filePath);
     const parser = buildParser(type);
 
     const records =
       type === "csv"
-        ? parser(buf.toString(), await fetchFieldsJson(options))
+        ? parser(content, await fetchFieldsJson(options))
         : // @ts-ignore
-          parser(buf.toString());
+          parser(content);
     await addAllRecordsChunk(app, records);
   }
 
