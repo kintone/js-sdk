@@ -1,18 +1,5 @@
-import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { formatToRecordValue } from "./formatToRecordValue";
 import { CsvRows, FieldsJson } from "../../types";
-
-const extractSubTableFields = (rows: CsvRows) => {
-  return [
-    ...new Set(
-      rows.reduce<string[]>((fields, row) => {
-        return fields.concat(
-          Object.keys(row).filter((fieldCode) => fieldCode.indexOf(".") !== -1)
-        );
-      }, [])
-    ),
-  ];
-};
 
 export const extractSubTableFieldsValue = ({
   rows,
@@ -21,55 +8,34 @@ export const extractSubTableFieldsValue = ({
   rows: CsvRows;
   fieldsJson: FieldsJson;
 }) => {
-  const subTableFields = extractSubTableFields(rows);
-  const parentFieldCodes = [
-    ...new Set(
-      subTableFields.map((subTableFieldCode) => subTableFieldCode.split(".")[0])
-    ),
-  ];
+  const subtableFieldProperties = Object.keys(fieldsJson.properties)
+    .filter((fieldCode) => {
+      return fieldsJson.properties[fieldCode].type === "SUBTABLE";
+    })
+    .map((fieldCode) => fieldsJson.properties[fieldCode]);
 
-  return parentFieldCodes.reduce<Record<string, any>>(
-    (subTableValue, parentFieldCode) => {
-      const regex = new RegExp(`^${parentFieldCode}.`);
-      const childFieldCodes = subTableFields
-        .filter((fieldCode) => regex.test(fieldCode))
-        .map((fieldCode) => fieldCode.split(".")[1]);
-
-      const value = rows.map((record) => {
-        return childFieldCodes.reduce<any>(
-          (ret, childFieldCode) => {
-            if (childFieldCode === "id") {
-              return {
-                ...ret,
-                id: record[`${parentFieldCode}.${childFieldCode}`],
-              };
-            }
-
-            const fieldType = (fieldsJson.properties[
-              parentFieldCode
-            ] as KintoneFormFieldProperty.Subtable<any>).fields[childFieldCode]
-              .type;
-            return {
-              ...ret,
-              value: {
-                ...ret.value,
-                [childFieldCode]: formatToRecordValue({
-                  fieldType,
-                  value: record[`${parentFieldCode}.${childFieldCode}`],
-                }),
-              },
-            };
-          },
-          { id: "", value: {} }
-        );
-      });
-      return {
-        ...subTableValue,
-        [parentFieldCode]: {
-          value,
-        },
-      };
-    },
-    {}
-  );
+  return subtableFieldProperties.reduce((ret, subtableFieldProperty) => {
+    if (subtableFieldProperty.type !== "SUBTABLE") return ret;
+    ret[subtableFieldProperty.code] = {
+      value: rows.map((row) => {
+        return {
+          id: row[subtableFieldProperty.code],
+          value: Object.keys(subtableFieldProperty.fields).reduce(
+            (subtableFieldValue, subtableFieldCode) => {
+              if (row[subtableFieldCode]) {
+                subtableFieldValue[subtableFieldCode] = formatToRecordValue({
+                  fieldType:
+                    subtableFieldProperty.fields[subtableFieldCode].type,
+                  value: row[subtableFieldCode],
+                });
+              }
+              return subtableFieldValue;
+            },
+            {} as any
+          ),
+        };
+      }),
+    };
+    return ret;
+  }, {} as any);
 };

@@ -7,15 +7,15 @@ describe("extractSubTableFieldsValue", () => {
     const rows = [
       {
         singleLineText: "text",
-        "subTable.id": "11111",
-        "subTable.subTableText": "text1",
-        "subTable.subTableCheckbox": "st_sample1",
+        subTable: "11111",
+        subTableText: "text1",
+        subTableCheckbox: "st_sample1",
       },
       {
         singleLineText: "text",
-        "subTable.id": "22222",
-        "subTable.subTableText": "text2",
-        "subTable.subTableCheckbox": "st_sample2",
+        subTable: "22222",
+        subTableText: "text2",
+        subTableCheckbox: "st_sample2",
       },
     ];
 
