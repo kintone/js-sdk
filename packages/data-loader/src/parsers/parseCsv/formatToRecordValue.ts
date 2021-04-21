@@ -2,7 +2,7 @@ import { LINE_BREAK } from "../../printers/printAsCsv/constants";
 
 export const formatToRecordValue = ({
   fieldType,
-  value,
+  value = "",
 }: {
   fieldType: string;
   value: string;

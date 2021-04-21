@@ -54,7 +54,7 @@ const buildSubtableValue = (
               ...inSubtableFieldValue,
               [inSubtableFieldProperty.code]: formatToRecordValue({
                 fieldType: inSubtableFieldProperty.type,
-                value: row[inSubtableFieldProperty.code] || "",
+                value: row[inSubtableFieldProperty.code],
               }),
             };
           },
