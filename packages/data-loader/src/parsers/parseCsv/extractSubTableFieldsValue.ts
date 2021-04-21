@@ -42,16 +42,16 @@ const buildSubtableValue = (
   return rows.map((row) => {
     return {
       id: row[subtableFieldProperty.code],
-      value: Object.keys(
+      value: Object.values(
         subtableFieldProperty.fields
       ).reduce<InSubtableFieldValue>(
-        (inSubtableFieldValue, inSubtableFieldCode) => {
-          if (!row[inSubtableFieldCode]) return inSubtableFieldValue;
+        (inSubtableFieldValue, inSubtableFieldProperty) => {
+          if (!row[inSubtableFieldProperty.code]) return inSubtableFieldValue;
           return {
             ...inSubtableFieldValue,
-            [inSubtableFieldCode]: formatToRecordValue({
-              fieldType: subtableFieldProperty.fields[inSubtableFieldCode].type,
-              value: row[inSubtableFieldCode],
+            [inSubtableFieldProperty.code]: formatToRecordValue({
+              fieldType: inSubtableFieldProperty.type,
+              value: row[inSubtableFieldProperty.code],
             }),
           };
         },
