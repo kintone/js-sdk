@@ -1,5 +1,16 @@
 import { formatToRecordValue } from "./formatToRecordValue";
 import { CsvRows, FieldsJson } from "../../types";
+import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
+
+type InSubtableFieldProperty = Record<
+  string,
+  KintoneFormFieldProperty.InSubtable
+>;
+
+type InSubtableFieldValue = Record<
+  string,
+  { value: string } | { value: { code: string } } | { value: string[] }
+>;
 
 export const extractSubTableFieldsValue = ({
   rows,
@@ -8,34 +19,44 @@ export const extractSubTableFieldsValue = ({
   rows: CsvRows;
   fieldsJson: FieldsJson;
 }) => {
-  const subtableFieldProperties = Object.keys(fieldsJson.properties)
-    .filter((fieldCode) => {
-      return fieldsJson.properties[fieldCode].type === "SUBTABLE";
-    })
-    .map((fieldCode) => fieldsJson.properties[fieldCode]);
-
-  return subtableFieldProperties.reduce((ret, subtableFieldProperty) => {
-    if (subtableFieldProperty.type !== "SUBTABLE") return ret;
-    ret[subtableFieldProperty.code] = {
-      value: rows.map((row) => {
-        return {
-          id: row[subtableFieldProperty.code],
-          value: Object.keys(subtableFieldProperty.fields).reduce(
-            (subtableFieldValue, subtableFieldCode) => {
-              if (row[subtableFieldCode]) {
-                subtableFieldValue[subtableFieldCode] = formatToRecordValue({
-                  fieldType:
-                    subtableFieldProperty.fields[subtableFieldCode].type,
-                  value: row[subtableFieldCode],
-                });
-              }
-              return subtableFieldValue;
-            },
-            {} as any
-          ),
-        };
-      }),
+  return Object.values(fieldsJson.properties).reduce<
+    Record<
+      string,
+      { value: Array<{ id: string; value: InSubtableFieldValue }> }
+    >
+  >((subtableFieldValue, fieldProperty) => {
+    if (fieldProperty.type !== "SUBTABLE") return subtableFieldValue;
+    return {
+      ...subtableFieldValue,
+      [fieldProperty.code]: {
+        value: buildSubtableValue(rows, fieldProperty),
+      },
     };
-    return ret;
-  }, {} as any);
+  }, {});
+};
+
+const buildSubtableValue = (
+  rows: CsvRows,
+  subtableFieldProperty: KintoneFormFieldProperty.Subtable<InSubtableFieldProperty>
+) => {
+  return rows.map((row) => {
+    return {
+      id: row[subtableFieldProperty.code],
+      value: Object.keys(
+        subtableFieldProperty.fields
+      ).reduce<InSubtableFieldValue>(
+        (inSubtableFieldValue, inSubtableFieldCode) => {
+          if (!row[inSubtableFieldCode]) return inSubtableFieldValue;
+          return {
+            ...inSubtableFieldValue,
+            [inSubtableFieldCode]: formatToRecordValue({
+              fieldType: subtableFieldProperty.fields[inSubtableFieldCode].type,
+              value: row[inSubtableFieldCode],
+            }),
+          };
+        },
+        {}
+      ),
+    };
+  });
 };
