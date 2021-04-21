@@ -39,24 +39,27 @@ const buildSubtableValue = (
   rows: CsvRows,
   subtableFieldProperty: KintoneFormFieldProperty.Subtable<InSubtableFieldProperty>
 ) => {
-  return rows.map((row) => {
-    return {
-      id: row[subtableFieldProperty.code],
-      value: Object.values(
-        subtableFieldProperty.fields
-      ).reduce<InSubtableFieldValue>(
-        (inSubtableFieldValue, inSubtableFieldProperty) => {
-          if (!row[inSubtableFieldProperty.code]) return inSubtableFieldValue;
-          return {
-            ...inSubtableFieldValue,
-            [inSubtableFieldProperty.code]: formatToRecordValue({
-              fieldType: inSubtableFieldProperty.type,
-              value: row[inSubtableFieldProperty.code],
-            }),
-          };
-        },
-        {}
-      ),
-    };
-  });
+  return rows
+    .filter((row) => {
+      return row[subtableFieldProperty.code];
+    })
+    .map((row) => {
+      return {
+        id: row[subtableFieldProperty.code],
+        value: Object.values(
+          subtableFieldProperty.fields
+        ).reduce<InSubtableFieldValue>(
+          (inSubtableFieldValue, inSubtableFieldProperty) => {
+            return {
+              ...inSubtableFieldValue,
+              [inSubtableFieldProperty.code]: formatToRecordValue({
+                fieldType: inSubtableFieldProperty.type,
+                value: row[inSubtableFieldProperty.code] || "",
+              }),
+            };
+          },
+          {}
+        ),
+      };
+    });
 };

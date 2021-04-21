@@ -1,5 +1,5 @@
 import { extractSubTableFieldsValue } from "../extractSubTableFieldsValue";
-import { FieldsJson } from "../../../types";
+import { CsvRows, FieldsJson } from "../../../types";
 const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("extractSubTableFieldsValue", () => {
@@ -17,7 +17,11 @@ describe("extractSubTableFieldsValue", () => {
         subTableText: "text2",
         subTableCheckbox: "st_sample2",
       },
-    ];
+      {
+        singleLineText: "text",
+        subTable: "33333",
+      },
+    ] as CsvRows;
 
     const expected = {
       subTable: {
@@ -41,6 +45,17 @@ describe("extractSubTableFieldsValue", () => {
               },
               subTableCheckbox: {
                 value: ["st_sample2"],
+              },
+            },
+          },
+          {
+            id: "33333",
+            value: {
+              subTableCheckbox: {
+                value: [],
+              },
+              subTableText: {
+                value: "",
               },
             },
           },
