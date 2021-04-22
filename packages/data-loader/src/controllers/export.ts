@@ -9,9 +9,11 @@ import { buildPrinter } from "../printers";
 export type Options = {
   app: AppID;
   attachmentDir?: string;
-  format?: "json" | "csv";
+  format?: ExportFileFormat;
   query?: string;
 };
+
+export type ExportFileFormat = "json" | "csv";
 
 type FileInfo = {
   name: string;
