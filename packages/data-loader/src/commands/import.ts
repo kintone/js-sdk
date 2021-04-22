@@ -1,14 +1,15 @@
 import { run, Options } from "../controllers/import";
 import { RestAPIClientOptions } from "../api";
+import * as yargs from "yargs";
 
-type Argv = RestAPIClientOptions & Options;
+type Argv = Partial<RestAPIClientOptions & Options>;
 
 export const command = "import";
 
 export const desc = "import the records of the specified app";
 
-export const builder = (yargs: any) =>
-  yargs
+export const builder = (argv: yargs.Argv) =>
+  argv
     .option("base-url", {
       describe: "Kintone Base Url",
       default: process.env.KINTONE_BASE_URL,
@@ -73,4 +74,12 @@ export const builder = (yargs: any) =>
       type: "string",
     });
 
-export const handler = (argv: Argv) => run(argv);
+export const handler = (argv: Argv) => {
+  const { app, baseUrl, filePath, ...options } = argv;
+  return run({
+    app: app as string,
+    baseUrl: baseUrl as string,
+    filePath: filePath as string,
+    ...options,
+  });
+};
