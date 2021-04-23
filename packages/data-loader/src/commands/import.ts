@@ -1,15 +1,12 @@
-import { run, Options } from "../controllers/import";
-import { RestAPIClientOptions } from "../api";
+import { run } from "../controllers/import";
 import * as yargs from "yargs";
-
-type Argv = Partial<RestAPIClientOptions & Options>;
 
 export const command = "import";
 
 export const desc = "import the records of the specified app";
 
-export const builder = (argv: yargs.Argv) =>
-  argv
+export const builder = (args: yargs.Argv) =>
+  args
     .option("base-url", {
       describe: "Kintone Base Url",
       default: process.env.KINTONE_BASE_URL,
@@ -74,12 +71,22 @@ export const builder = (argv: yargs.Argv) =>
       type: "string",
     });
 
-export const handler = (argv: Argv) => {
-  const { app, baseUrl, filePath, ...options } = argv;
+type Args = yargs.Arguments<
+  ReturnType<typeof builder> extends yargs.Argv<infer U> ? U : unknown
+>;
+
+export const handler = (args: Args) => {
   return run({
-    app: app as string,
-    baseUrl: baseUrl as string,
-    filePath: filePath as string,
-    ...options,
+    baseUrl: args["base-url"] as string,
+    username: args.username,
+    password: args.password,
+    apiToken: args["api-token"],
+    basicAuthUsername: args["basic-auth-username"],
+    basicAuthPassword: args["basic-auth-password"],
+    app: args.app,
+    guestSpaceId: args["guest-space-id"],
+    filePath: args["file-path"],
+    pfxFilePath: args["pfx-file-path"],
+    pfxFilePassword: args["pfx-file-password"],
   });
 };

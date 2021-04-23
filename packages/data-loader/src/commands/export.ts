@@ -1,8 +1,5 @@
-import { run, Options, ExportFileFormat } from "../controllers/export";
-import { RestAPIClientOptions } from "../api";
+import { run, ExportFileFormat } from "../controllers/export";
 import * as yargs from "yargs";
-
-type Argv = Partial<RestAPIClientOptions & Options>;
 
 const formats: ExportFileFormat[] = ["json", "csv"];
 
@@ -10,8 +7,8 @@ export const command = "export";
 
 export const desc = "export the records of the specified app";
 
-export const builder = (argv: yargs.Argv) =>
-  argv
+export const builder = (args: yargs.Argv) =>
+  args
     .option("base-url", {
       describe: "Kintone Base Url",
       default: process.env.KINTONE_BASE_URL,
@@ -85,7 +82,24 @@ export const builder = (argv: yargs.Argv) =>
       type: "string",
     });
 
-export const handler = (argv: Argv) => {
-  const { app, baseUrl, ...options } = argv;
-  return run({ app: app as string, baseUrl: baseUrl as string, ...options });
+type Args = yargs.Arguments<
+  ReturnType<typeof builder> extends yargs.Argv<infer U> ? U : unknown
+>;
+
+export const handler = (args: Args) => {
+  return run({
+    baseUrl: args["base-url"] as string,
+    username: args.username,
+    password: args.password,
+    apiToken: args["api-token"],
+    basicAuthUsername: args["basic-auth-username"],
+    basicAuthPassword: args["basic-auth-password"],
+    app: args.app,
+    guestSpaceId: args["guest-space-id"],
+    attachmentDir: args["attachment-dir"],
+    format: args.format,
+    query: args.query,
+    pfxFilePath: args["pfx-file-path"],
+    pfxFilePassword: args["pfx-file-password"],
+  });
 };
