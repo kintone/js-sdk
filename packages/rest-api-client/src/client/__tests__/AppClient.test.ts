@@ -1258,6 +1258,57 @@ describe("AppClient", () => {
       });
     });
   });
+
+  describe("updateAppActions", () => {
+    const params = {
+      app: APP_ID,
+      actions: {
+        Action_A: {
+          name: "Action_A",
+          index: "0",
+          destApp: {
+            code: "INVOICE",
+          },
+          mappings: [
+            {
+              srcType: "FIELD" as const,
+              srcField: "CompanyName",
+              destField: "CompanyName",
+            },
+            {
+              srcType: "FIELD" as const,
+              srcField: "DivisionName",
+              destField: "DivisionName",
+            },
+            {
+              srcType: "RECORD_URL" as const,
+              destField: "URL",
+            },
+          ],
+          entities: [
+            {
+              type: "USER" as const,
+              code: "Administrator",
+            },
+          ],
+        },
+      },
+    };
+    beforeEach(async () => {
+      await appClient.updateAppActions(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/preview/app/actions.json"
+      );
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app and rights as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
 
 describe("AppClient with guestSpaceId", () => {
