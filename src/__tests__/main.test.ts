@@ -15,7 +15,7 @@ const checkRejectArg = ({
   errorMessage,
 }: {
   arg: string;
-  errorMessage: string;
+  errorMessage: string | RegExp;
 }) => {
   return expect(
     exec(`cross-env LC_ALL='en_US' node ${mainFilePath} ${arg}`)
@@ -37,8 +37,15 @@ describe("main", () => {
   });
   it("should throw error when an undefined argument is passed", () => {
     return checkRejectArg({
-      arg: "import --dummy",
+      arg:
+        "import --base-url https://example.com --app 1 --file-path /your/file/path --dummy",
       errorMessage: "Unknown argument: dummy",
+    });
+  });
+  it("should throw error when required arguments are missing", () => {
+    return checkRejectArg({
+      arg: "import",
+      errorMessage: /Missing required arguments:/,
     });
   });
 });
