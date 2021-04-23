@@ -26,15 +26,17 @@ type ChartProps = {
   periodicReport?: PeriodicReportForParameters;
 };
 
-type ReportProperty =
-  | ({
+type ReportProperty = (
+  | {
       chartType: ChartTypeWithOptionalMode;
       chartMode?: ChartMode;
-    } & ChartProps)
-  | ({
+    }
+  | {
       chartType: ChartTypeWithRequiredMode;
       chartMode: ChartMode;
-    } & ChartProps);
+    }
+) &
+  ChartProps;
 
 type PeriodicReportForParameters = {
   active?: boolean | string;
