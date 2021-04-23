@@ -1,5 +1,5 @@
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
-import { formatToRecordValue } from "./formatToRecordValue";
+import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
 import { CsvRows, FieldsJson, ParsedRecord } from "../../types";
 
 export const formatToKintoneRecords = ({
@@ -18,10 +18,12 @@ export const formatToKintoneRecords = ({
       .reduce(
         (recordObjects, fieldCode) => ({
           ...recordObjects,
-          [fieldCode]: formatToRecordValue({
-            value: row[fieldCode],
-            fieldType: fieldsJson.properties[fieldCode].type,
-          }),
+          [fieldCode]: {
+            value: convertToKintoneRecordFormatValue({
+              value: row[fieldCode],
+              fieldType: fieldsJson.properties[fieldCode].type,
+            }),
+          },
         }),
         {} as ParsedRecord
       );

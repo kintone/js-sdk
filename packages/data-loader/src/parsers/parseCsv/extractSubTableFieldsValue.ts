@@ -1,4 +1,4 @@
-import { formatToRecordValue } from "./formatToRecordValue";
+import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
 import { CsvRows, FieldsJson } from "../../types";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
@@ -9,7 +9,7 @@ type InSubtableFieldProperty = Record<
 
 type InSubtableFieldValue = Record<
   string,
-  { value: string } | { value: { code: string } } | { value: string[] }
+  { value: string | string[] | { code: string } }
 >;
 
 export const extractSubTableFieldsValue = ({
@@ -52,10 +52,12 @@ const buildSubtableValue = (
           (inSubtableFieldValue, inSubtableFieldProperty) => {
             return {
               ...inSubtableFieldValue,
-              [inSubtableFieldProperty.code]: formatToRecordValue({
-                fieldType: inSubtableFieldProperty.type,
-                value: row[inSubtableFieldProperty.code],
-              }),
+              [inSubtableFieldProperty.code]: {
+                value: convertToKintoneRecordFormatValue({
+                  fieldType: inSubtableFieldProperty.type,
+                  value: row[inSubtableFieldProperty.code],
+                }),
+              },
             };
           },
           {}

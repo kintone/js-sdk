@@ -1,11 +1,10 @@
 import csvParse from "csv-parse/lib/sync";
-import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
 import { hasSubTable } from "../../printers/printAsCsv/hasSubTable";
 import { extractSubTableFieldsValue } from "./extractSubTableFieldsValue";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToKintoneRecords } from "./formatToKintoneRecords";
-import { formatToRecordValue } from "./formatToRecordValue";
+import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
 import { CsvRows, FieldsJson, ParsedRecord } from "../../types";
 
 export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
@@ -37,10 +36,12 @@ const buildSubTableRecord = ({
         const fieldType = fieldsJson.properties[fieldCode].type;
         return {
           ...obj,
-          [fieldCode]: formatToRecordValue({
-            fieldType,
-            value: primaryRow[fieldCode],
-          }),
+          [fieldCode]: {
+            value: convertToKintoneRecordFormatValue({
+              fieldType,
+              value: primaryRow[fieldCode],
+            }),
+          },
         };
       }, {} as ParsedRecord),
     ...subTableFieldsValue,
