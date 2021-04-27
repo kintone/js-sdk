@@ -1305,7 +1305,7 @@ describe("AppClient", () => {
     it("should send a put request", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
-    it("should pass app and rights as a param to the http client", () => {
+    it("should pass app and actions as a param to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
