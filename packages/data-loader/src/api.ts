@@ -1,4 +1,5 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+const packageJson = require("../package.json");
 
 export type RestAPIClientOptions = {
   baseUrl: string;
@@ -10,6 +11,7 @@ export type RestAPIClientOptions = {
   guestSpaceId?: string;
   pfxFilePath?: string;
   pfxFilePassword?: string;
+  userAgent?: string;
 };
 
 const buildAuthParam = (options: RestAPIClientOptions) => {
@@ -52,5 +54,6 @@ export const buildRestAPIClient = (options: RestAPIClientOptions) => {
     ...buildBasicAuthParam(options),
     ...buildClientCertAuth(options),
     ...(options.guestSpaceId ? { guestSpaceId: options.guestSpaceId } : {}),
+    userAgent: `${packageJson.name}@${packageJson.version}`,
   });
 };
