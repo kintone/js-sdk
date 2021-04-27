@@ -34,6 +34,8 @@
 - [updateReminderNotifications](#updateReminderNotifications)
 - [getReports](#getReports)
 - [updateReports](#updateReports)
+- [getAppActions](#getAppActions)
+- [updateAppActions](#updateAppActions)
 
 ## Overview
 
@@ -1260,11 +1262,6 @@ Updates the [Graph settings](https://get.kintone.help/k/en/user/app_settings/rep
 
 #### Parameters
 
-| Name | Type | Required | Description |
-| ---- | :--: | :------: | ----------- |
-
-#### Parameters
-
 | Name                                                 |       Type        |  Required   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------------------------------- | :---------------: | :---------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app                                                  | Number or String  |     Yes     | The App ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -1307,3 +1304,50 @@ Updates the [Graph settings](https://get.kintone.help/k/en/user/app_settings/rep
 #### Reference
 
 - https://developer.kintone.io/hc/en-us/articles/900005300943
+
+### getAppActions
+
+Get the [Action](https://get.kintone.help/k/en/user/app_settings/appaction/set_appaction.html) settings of the App.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| lang    |      String      |          | The localized language to retrieve the data in: <ul><li>`default`: retrieves the default names</li><li>`en`: retrieves the localized English names</li><li>`zh`: retrieves the localized Chinese names</li><li>`ja`: retrieves the localized Japanese names</li><li>`user`: retrieves the localized names, in the same language as the language setting set on the user used for the authentication.</li></ul>If ignored, the default names will be retrieved. |
+| preview |     Boolean      |          | A flag whether to get the app actions for pre-live environment                                                                                                                                                                                                                                                                                                                                                                                                 |
+
+#### Returns
+
+| Name     |  Type  | Description                                                                                                                                                                                                                    |
+| -------- | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| revision | String | The revision number of the App settings.                                                                                                                                                                                       |
+| actions  | Object | An object listing Action settings. An object listing Action settings. <br/>For each property of this object, see “Response Parameters” section of [the reference](https://developer.kintone.io/hc/en-us/articles/900004690626) |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/900004690626
+
+### updateAppActions
+
+Updates the [Action](https://get.kintone.help/k/en/user/app_settings/appaction/set_appaction.html) settings of the App.
+
+#### Parameters
+
+| Name     |       Type       | Required | Description                                                                                                                                                                                                                           |
+| -------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app      | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                           |
+| actions  |      Object      |   Yes    | An object listing Action settings. <br/>For each property of this object, see “Request Parameters” section of [the reference](https://developer.kintone.io/hc/en-us/articles/900005635363)                                            |
+| revision | Number or String |          | Specify the revision number of the settings that will be deployed.<br>The request will fail if the revision number is not the latest revision.<br>The revision will not be checked if this parameter is ignored or `-1` is specified. |
+
+#### Returns
+
+| Name                    |  Type  | Description                              |
+| ----------------------- | :----: | ---------------------------------------- |
+| revision                | String | The revision number of the App settings. |
+| actions                 | Object | An object listing Action settings.       |
+| actions.{actionname}.id | String | The ID of the Action.                    |
+
+#### Reference
+
+- https://developer.kintone.io/hc/en-us/articles/900005635363
