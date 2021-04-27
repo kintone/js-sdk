@@ -1,6 +1,8 @@
 import { buildRestAPIClient } from "../api";
 
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+const packageJson = require("../../package.json");
+const expectedUa = `${packageJson.name}@${packageJson.version}`;
 
 jest.mock("@kintone/rest-api-client");
 
@@ -25,6 +27,7 @@ describe("api", () => {
         username: USERNAME,
         password: PASSWORD,
       },
+      userAgent: expectedUa,
     });
   });
 
@@ -45,6 +48,7 @@ describe("api", () => {
         password: PASSWORD,
       },
       guestSpaceId: GUEST_SPACE_ID,
+      userAgent: expectedUa,
     });
   });
 
@@ -57,6 +61,7 @@ describe("api", () => {
     expect(KintoneRestAPIClient).toHaveBeenCalledWith({
       baseUrl: BASE_URL,
       auth: { apiToken: API_TOKEN },
+      userAgent: expectedUa,
     });
   });
 
@@ -74,6 +79,7 @@ describe("api", () => {
         username: USERNAME,
         password: PASSWORD,
       },
+      userAgent: expectedUa,
     });
   });
 
@@ -98,6 +104,7 @@ describe("api", () => {
         username: BASIC_AUTH_USERNAME,
         password: BASIC_AUTH_PASSWORD,
       },
+      userAgent: expectedUa,
     });
   });
   it("should pass information of client certificate to the apiClient correctly", () => {
@@ -119,6 +126,7 @@ describe("api", () => {
         pfxFilePath: PFX_FILE_PATH,
         password: PFX_FILE_PASSWORD,
       },
+      userAgent: expectedUa,
     });
   });
 });
