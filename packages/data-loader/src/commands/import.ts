@@ -12,7 +12,6 @@ export const builder = (args: yargs.Argv) =>
       default: process.env.KINTONE_BASE_URL,
       defaultDescription: "KINTONE_BASE_URL",
       type: "string",
-      demandOption: true,
     })
     .option("username", {
       alias: "u",
@@ -49,7 +48,6 @@ export const builder = (args: yargs.Argv) =>
     .option("app", {
       describe: "The ID of the app",
       type: "string",
-      demandOption: true,
     })
     .option("guest-space-id", {
       describe: "The ID of guest space",
@@ -60,7 +58,6 @@ export const builder = (args: yargs.Argv) =>
     .option("file-path", {
       describe: 'The path to source file. ".json" or ".csv"',
       type: "string",
-      demandOption: true,
     })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",
@@ -69,7 +66,9 @@ export const builder = (args: yargs.Argv) =>
     .option("pfx-file-password", {
       describe: "The password of client certificate file",
       type: "string",
-    });
+    })
+    // NOTE: Unexpected `undefined` in inferred type by `option()`.
+    .demandOption(["base-url", "app", "file-path"]);
 
 type Args = yargs.Arguments<
   ReturnType<typeof builder> extends yargs.Argv<infer U> ? U : never
@@ -77,7 +76,7 @@ type Args = yargs.Arguments<
 
 export const handler = (args: Args) => {
   return run({
-    baseUrl: args["base-url"] as string,
+    baseUrl: args["base-url"],
     username: args.username,
     password: args.password,
     apiToken: args["api-token"],
