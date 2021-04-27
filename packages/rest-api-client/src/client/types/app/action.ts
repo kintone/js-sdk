@@ -7,12 +7,6 @@ export type AppActionsForParameter = {
   [actionName: string]: ActionPropertyForParameter;
 };
 
-type ActionProps = {
-  name?: string;
-  index: string | number;
-  entities?: Entity[];
-};
-
 type ActionPropertyForParameter = (
   | {
       destApp: DestAppForParameter;
@@ -21,8 +15,11 @@ type ActionPropertyForParameter = (
   | {
       mappings?: Mapping[];
     }
-) &
-  ActionProps;
+) & {
+  name?: string;
+  index: string | number;
+  entities?: Entity[];
+};
 
 type DestAppForParameter =
   | {
