@@ -83,7 +83,7 @@ export const builder = (args: yargs.Argv) =>
     });
 
 type Args = yargs.Arguments<
-  ReturnType<typeof builder> extends yargs.Argv<infer U> ? U : unknown
+  ReturnType<typeof builder> extends yargs.Argv<infer U> ? U : never
 >;
 
 export const handler = (args: Args) => {
