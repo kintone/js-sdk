@@ -2,7 +2,7 @@ import { encloseInDoubleQuotes } from "./encloseInDoubleQuotes";
 import { LINE_BREAK, PRIMARY_MARK, SEPARATOR } from "./constants";
 import { extractFieldValue } from "./extractFieldValue";
 import { buildHeaderFields } from "./buildHeaderFields";
-import { hasSubTable } from "./hasSubTable";
+import { hasSubtable } from "./hasSubtable";
 import { FieldsJson, KintoneRecord } from "../../types";
 
 type RowObject = {
@@ -63,11 +63,11 @@ const buildRow = ({
     fieldsJson,
   });
 
-  if (!hasSubTable(fieldsJson)) {
+  if (!hasSubtable(fieldsJson)) {
     return rowObjectToCsvRow({ rowObject: primaryRowObject, headerFields });
   }
 
-  const subTableFieldCodes = Object.keys(recordObject).filter(
+  const subtableFieldCodes = Object.keys(recordObject).filter(
     (fieldCode) =>
       fieldsJson.properties[fieldCode] &&
       fieldsJson.properties[fieldCode].type === "SUBTABLE"
@@ -75,7 +75,7 @@ const buildRow = ({
 
   const rowObjects = buildSubTableRowObjects({
     recordObject,
-    subTableFieldCodes,
+    subtableFieldCodes,
     primaryRowObject,
   });
 
@@ -113,17 +113,17 @@ const buildPrimaryRowObject = ({
 
 const buildSubTableRowObjects = ({
   recordObject,
-  subTableFieldCodes,
+  subtableFieldCodes,
   primaryRowObject,
 }: {
   recordObject: Record<string, any>;
-  subTableFieldCodes: string[];
+  subtableFieldCodes: string[];
   primaryRowObject: RowObject;
 }) => {
-  const rowObjects = subTableFieldCodes.reduce<RowObject[]>(
-    (ret, subTableFieldCode) => {
+  const rowObjects = subtableFieldCodes.reduce<RowObject[]>(
+    (ret, subtableFieldCode) => {
       return ret.concat(
-        recordObject[subTableFieldCode].map(
+        recordObject[subtableFieldCode].map(
           (field: { [k: string]: string }) => ({
             ...primaryRowObject,
             ...Object.keys(field).reduce<Record<string, string>>(
@@ -132,7 +132,7 @@ const buildSubTableRowObjects = ({
                   ...rowObject,
                   // NOTE: If fieldCode is `id`, use field code of subtable itself
                   // to avoid conflicts between each subtable.
-                  [fieldCode === "id" ? subTableFieldCode : fieldCode]: field[
+                  [fieldCode === "id" ? subtableFieldCode : fieldCode]: field[
                     fieldCode
                   ],
                 };

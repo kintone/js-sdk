@@ -1,59 +1,59 @@
 import { isSupportedFieldType } from "../isSupportedFieldType";
 import { FieldsJson } from "../../../types";
 
-const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
+const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("isSupportedFieldType", () => {
   it("should be true", () => {
-    expect(isSupportedFieldType(subTableFieldsJson.properties.subTable)).toBe(
+    expect(isSupportedFieldType(subtableFieldsJson.properties.subTable)).toBe(
       true
     );
     expect(
-      isSupportedFieldType(subTableFieldsJson.properties.multiSelect)
+      isSupportedFieldType(subtableFieldsJson.properties.multiSelect)
     ).toBe(true);
     expect(
-      isSupportedFieldType(subTableFieldsJson.properties.multiLineText)
+      isSupportedFieldType(subtableFieldsJson.properties.multiLineText)
     ).toBe(true);
-    expect(isSupportedFieldType(subTableFieldsJson.properties.calc)).toBe(true);
-    expect(isSupportedFieldType(subTableFieldsJson.properties.checkBox)).toBe(
+    expect(isSupportedFieldType(subtableFieldsJson.properties.calc)).toBe(true);
+    expect(isSupportedFieldType(subtableFieldsJson.properties.checkBox)).toBe(
       true
     );
     expect(
-      isSupportedFieldType(subTableFieldsJson.properties.createdTime)
+      isSupportedFieldType(subtableFieldsJson.properties.createdTime)
     ).toBe(true);
-    expect(isSupportedFieldType(subTableFieldsJson.properties.creator)).toBe(
+    expect(isSupportedFieldType(subtableFieldsJson.properties.creator)).toBe(
       true
     );
-    expect(isSupportedFieldType(subTableFieldsJson.properties.dropDown)).toBe(
+    expect(isSupportedFieldType(subtableFieldsJson.properties.dropDown)).toBe(
       true
     );
-    expect(isSupportedFieldType(subTableFieldsJson.properties.modifier)).toBe(
+    expect(isSupportedFieldType(subtableFieldsJson.properties.modifier)).toBe(
       true
     );
-    expect(isSupportedFieldType(subTableFieldsJson.properties.number)).toBe(
+    expect(isSupportedFieldType(subtableFieldsJson.properties.number)).toBe(
       true
     );
     expect(
-      isSupportedFieldType(subTableFieldsJson.properties.recordNumber)
+      isSupportedFieldType(subtableFieldsJson.properties.recordNumber)
     ).toBe(true);
     expect(
-      isSupportedFieldType(subTableFieldsJson.properties.radioButton)
+      isSupportedFieldType(subtableFieldsJson.properties.radioButton)
     ).toBe(true);
-    expect(isSupportedFieldType(subTableFieldsJson.properties.richText)).toBe(
+    expect(isSupportedFieldType(subtableFieldsJson.properties.richText)).toBe(
       true
     );
     expect(
-      isSupportedFieldType(subTableFieldsJson.properties.singleLineText)
+      isSupportedFieldType(subtableFieldsJson.properties.singleLineText)
     ).toBe(true);
     expect(
-      isSupportedFieldType(subTableFieldsJson.properties.updatedTime)
+      isSupportedFieldType(subtableFieldsJson.properties.updatedTime)
     ).toBe(true);
   });
   it("should be true", () => {
-    expect(isSupportedFieldType(subTableFieldsJson.properties.Status)).toBe(
+    expect(isSupportedFieldType(subtableFieldsJson.properties.Status)).toBe(
       false
     );
-    expect(isSupportedFieldType(subTableFieldsJson.properties.Assignee)).toBe(
+    expect(isSupportedFieldType(subtableFieldsJson.properties.Assignee)).toBe(
       false
     );
   });

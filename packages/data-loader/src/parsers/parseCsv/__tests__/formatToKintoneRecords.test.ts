@@ -7,12 +7,12 @@ const rows = [
     multiSelect: "sample1\nsample2",
   },
 ];
-const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
+const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("formatToKintoneRecords", () => {
   it("should format correctly", () => {
     expect(
-      formatToKintoneRecords({ rows, fieldsJson: subTableFieldsJson })
+      formatToKintoneRecords({ rows, fieldsJson: subtableFieldsJson })
     ).toEqual([
       {
         singleLineText: {

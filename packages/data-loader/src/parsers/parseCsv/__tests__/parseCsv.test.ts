@@ -2,8 +2,8 @@ import { parseCsv } from "../index";
 import { FieldsJson, KintoneRecord } from "../../../types";
 const expectedJson: KintoneRecord[] = require("./fixtures/expected.json");
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
-const subTableExpectedJson: KintoneRecord[] = require("./fixtures/subtable_expected.json");
-const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
+const subtableExpectedJson: KintoneRecord[] = require("./fixtures/subtable_expected.json");
+const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("parseCsv", () => {
   it("should convert csv string to JSON correctly", () => {
@@ -34,6 +34,6 @@ line
 text","2021-02-10T06:14:00Z","""sample2""","16","""sample3""
 sample4"
 `;
-    expect(parseCsv(csv, subTableFieldsJson)).toEqual(subTableExpectedJson);
+    expect(parseCsv(csv, subtableFieldsJson)).toEqual(subtableExpectedJson);
   });
 });

@@ -1,11 +1,11 @@
 import { extractFieldValue } from "../extractFieldValue";
 import { KintoneRecord } from "../../../types";
 
-const subTableRecords: KintoneRecord[] = require("./fixtures/subtable_input.json");
+const subtableRecords: KintoneRecord[] = require("./fixtures/subtable_input.json");
 
 describe("extractFieldValue", () => {
   it("", () => {
-    const record = subTableRecords[0];
+    const record = subtableRecords[0];
     expect(extractFieldValue(record.recordNumber)).toEqual(`"9"`);
     expect(extractFieldValue(record.multiLineText)).toEqual(
       `"multi\nline\ntext"`

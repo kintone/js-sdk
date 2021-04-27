@@ -1,8 +1,8 @@
-import { extractSubTableFieldsValue } from "../extractSubTableFieldsValue";
+import { extractSubtableFieldsValue } from "../extractSubtableFieldsValue";
 import { CsvRows, FieldsJson } from "../../../types";
-const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
+const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
-describe("extractSubTableFieldsValue", () => {
+describe("extractSubtableFieldsValue", () => {
   it("should extract subtable fields value correctly", () => {
     const rows = [
       {
@@ -63,9 +63,9 @@ describe("extractSubTableFieldsValue", () => {
       },
     };
     expect(
-      extractSubTableFieldsValue({
+      extractSubtableFieldsValue({
         rows,
-        fieldsJson: subTableFieldsJson,
+        fieldsJson: subtableFieldsJson,
       })
     ).toEqual(expected);
   });

@@ -12,7 +12,7 @@ type InSubtableFieldValue = Record<
   { value: string | string[] | { code: string } }
 >;
 
-export const extractSubTableFieldsValue = ({
+export const extractSubtableFieldsValue = ({
   rows,
   fieldsJson,
 }: {

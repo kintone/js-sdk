@@ -3,8 +3,8 @@ import { FieldsJson, KintoneRecord } from "../../../types";
 
 const records: KintoneRecord[] = require("./fixtures/input.json");
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
-const subTableRecords: KintoneRecord[] = require("./fixtures/subtable_input.json");
-const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
+const subtableRecords: KintoneRecord[] = require("./fixtures/subtable_input.json");
+const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("convertKintoneRecordsToCsv", () => {
   it("should convert kintone records to csv string correctly", () => {
@@ -31,8 +31,8 @@ sample4"
 `;
     expect(
       convertKintoneRecordsToCsv({
-        records: subTableRecords,
-        fieldsJson: subTableFieldsJson,
+        records: subtableRecords,
+        fieldsJson: subtableFieldsJson,
       })
     ).toBe(expectedCsv);
   });

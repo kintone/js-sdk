@@ -1,7 +1,7 @@
 import csvParse from "csv-parse/lib/sync";
 import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
-import { hasSubTable } from "../../printers/printAsCsv/hasSubTable";
-import { extractSubTableFieldsValue } from "./extractSubTableFieldsValue";
+import { hasSubtable } from "../../printers/printAsCsv/hasSubtable";
+import { extractSubtableFieldsValue } from "./extractSubtableFieldsValue";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToKintoneRecords } from "./formatToKintoneRecords";
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
@@ -18,14 +18,14 @@ export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
   });
 };
 
-const buildSubTableRecord = ({
+const buildSubtableRecord = ({
   primaryRow,
   fieldsJson,
-  subTableFieldsValue,
+  subtableFieldsValue,
 }: {
   primaryRow: Record<string, string>;
   fieldsJson: FieldsJson;
-  subTableFieldsValue: Record<string, any>;
+  subtableFieldsValue: Record<string, any>;
 }) => {
   return {
     ...Object.keys(primaryRow)
@@ -44,7 +44,7 @@ const buildSubTableRecord = ({
           },
         };
       }, {} as ParsedRecord),
-    ...subTableFieldsValue,
+    ...subtableFieldsValue,
   };
 };
 
@@ -55,7 +55,7 @@ const convertToKintoneRecords = ({
   rows: CsvRows;
   fieldsJson: FieldsJson;
 }) => {
-  if (!hasSubTable(fieldsJson)) {
+  if (!hasSubtable(fieldsJson)) {
     return formatToKintoneRecords({
       rows,
       fieldsJson,
@@ -78,19 +78,19 @@ const convertToKintoneRecords = ({
     }
 
     const primaryRow = temp[0];
-    const subTableFieldsValue = extractSubTableFieldsValue({
+    const subtableFieldsValue = extractSubtableFieldsValue({
       rows: temp,
       fieldsJson,
     });
 
-    const subTableRecord = buildSubTableRecord({
+    const subtableRecord = buildSubtableRecord({
       primaryRow,
       fieldsJson,
-      subTableFieldsValue,
+      subtableFieldsValue,
     });
 
     temp = [row];
 
-    return kintoneFormatObjects.concat([subTableRecord]);
+    return kintoneFormatObjects.concat([subtableRecord]);
   }, []);
 };
