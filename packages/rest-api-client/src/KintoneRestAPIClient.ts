@@ -31,6 +31,7 @@ type Options = {
   featureFlags?: {
     enableAbortSearchError: boolean;
   };
+  userAgent?: string;
 };
 
 const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
