@@ -256,6 +256,8 @@ declare namespace kintone {
     function getLoginUser(): LoginUser;
     function getUiVersion(): 1 | 2;
 
+    const $PLUGIN_ID: string;
+
     namespace fieldTypes {
         interface SingleLineText {
             type?: "SINGLE_LINE_TEXT";
