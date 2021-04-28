@@ -174,6 +174,12 @@ declare namespace kintone {
         namespace portal {
             function getContentSpaceElement(): HTMLElement | null;
         }
+
+        namespace space {
+            namespace portal {
+                function getContentSpaceElement(): HTMLElement | null;
+            }
+        }
     }
 
     namespace plugin {
