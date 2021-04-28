@@ -67,7 +67,10 @@ export const builder = (args: yargs.Argv) =>
       describe: "The password of client certificate file",
       type: "string",
     })
-    // NOTE: Unexpected `undefined` in inferred type by `option()`.
+    // NOTE: Since yargs doesn't detect the type correctly by adding `demandOption: true` in `option()`,
+    // (inferred type always contains `| undefined`)
+    // related issue: https://github.com/yargs/yargs/issues/1928
+    // we declare the required params later as a workaround.
     .demandOption(["base-url", "app", "file-path"]);
 
 type Args = yargs.Arguments<
