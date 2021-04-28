@@ -139,6 +139,9 @@ declare namespace kintone {
 
     namespace mobile {
         namespace app {
+            function getFieldElements(
+                fieldCode: string
+            ): HTMLElement[] | null;
             function getHeaderSpaceElement(): HTMLElement | null;
             function getId(): number | null;
             function getLookupTargetAppId(
