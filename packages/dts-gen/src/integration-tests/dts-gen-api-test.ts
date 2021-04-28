@@ -124,6 +124,10 @@ function assertKintoneBuiltinFunctions() {
     assertFunction(
         kintone.mobile.portal.getContentSpaceElement
     );
+
+    // kintone.$PLUGIN_ID
+    assert.ok(kintone.$PLUGIN_ID);
+    assert.ok(typeof kintone.$PLUGIN_ID === "string");
 }
 
 function assertFunction(ref) {
