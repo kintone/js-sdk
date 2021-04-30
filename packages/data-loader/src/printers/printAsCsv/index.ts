@@ -7,7 +7,7 @@ export const printAsCsv = (
 ) => {
   const csv = convertKintoneRecordsToCsv({
     records,
-    fieldsJson,
+    fieldProperties: fieldsJson.properties,
   });
   console.log(csv);
 };

@@ -65,7 +65,7 @@ describe("extractSubtableFieldsValue", () => {
     expect(
       extractSubtableFieldsValue({
         rows,
-        fieldsJson: subtableFieldsJson,
+        fieldProperties: subtableFieldsJson.properties,
       })
     ).toEqual(expected);
   });

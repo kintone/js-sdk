@@ -1,19 +1,17 @@
 import { isSupportedFieldType } from "./isSupportedFieldType";
 import { PRIMARY_MARK } from "./constants";
 import { hasSubtable } from "./hasSubtable";
-import { FieldsJson } from "../../types";
+import { FieldProperties } from "../../types";
 
-export const buildHeaderFields = (fieldsJson: FieldsJson) => {
-  const fields = Object.keys(fieldsJson.properties)
-    .filter((fieldCode) =>
-      isSupportedFieldType(fieldsJson.properties[fieldCode])
-    )
+export const buildHeaderFields = (fieldProperties: FieldProperties) => {
+  const fields = Object.keys(fieldProperties)
+    .filter((fieldCode) => isSupportedFieldType(fieldProperties[fieldCode]))
     .reduce((ret, fieldCode) => {
-      const field = fieldsJson.properties[fieldCode];
+      const field = fieldProperties[fieldCode];
       const fieldCodesInSubtable =
         field.type === "SUBTABLE" ? Object.keys(field.fields) : [];
       return ret.concat(fieldCode, ...fieldCodesInSubtable);
     }, [] as string[]);
 
-  return hasSubtable(fieldsJson) ? [PRIMARY_MARK].concat(fields) : fields;
+  return hasSubtable(fieldProperties) ? [PRIMARY_MARK].concat(fields) : fields;
 };

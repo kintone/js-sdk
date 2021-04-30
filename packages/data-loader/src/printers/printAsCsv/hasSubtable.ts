@@ -1,6 +1,6 @@
-import { FieldsJson } from "../../types";
+import { FieldProperties } from "../../types";
 
-export const hasSubtable = (fieldsJson: FieldsJson) =>
-  Object.keys(fieldsJson.properties).some(
-    (fieldCode) => fieldsJson.properties[fieldCode].type === "SUBTABLE"
+export const hasSubtable = (fieldProperties: FieldProperties) =>
+  Object.keys(fieldProperties).some(
+    (fieldCode) => fieldProperties[fieldCode].type === "SUBTABLE"
   );

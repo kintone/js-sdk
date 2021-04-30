@@ -3,7 +3,10 @@ import { convertToKintoneRecordFormatValue } from "../convertToKintoneRecordForm
 describe("formatToRecordValue", () => {
   it("should format correctly", () => {
     expect(
-      convertToKintoneRecordFormatValue({ fieldType: "SINGLE_LINE_TEXT", value: "text" })
+      convertToKintoneRecordFormatValue({
+        fieldType: "SINGLE_LINE_TEXT",
+        value: "text",
+      })
     ).toEqual("text");
 
     expect(

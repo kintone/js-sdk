@@ -5,7 +5,12 @@ import { extractSubtableFieldsValue } from "./extractSubtableFieldsValue";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { formatToKintoneRecords } from "./formatToKintoneRecords";
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
-import { CsvRows, FieldsJson, ParsedRecord } from "../../types";
+import {
+  CsvRows,
+  FieldProperties,
+  FieldsJson,
+  ParsedRecord,
+} from "../../types";
 
 export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
   const rows: CsvRows = csvParse(csv, {
@@ -14,26 +19,26 @@ export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
   });
   return convertToKintoneRecords({
     rows,
-    fieldsJson,
+    fieldProperties: fieldsJson.properties,
   });
 };
 
 const buildSubtableRecord = ({
   primaryRow,
-  fieldsJson,
+  fieldProperties,
   subtableFieldsValue,
 }: {
   primaryRow: Record<string, string>;
-  fieldsJson: FieldsJson;
+  fieldProperties: FieldProperties;
   subtableFieldsValue: Record<string, any>;
 }) => {
   return {
     ...Object.keys(primaryRow)
       .filter((fieldCode) =>
-        isImportSupportedFieldType(fieldsJson.properties[fieldCode]?.type)
+        isImportSupportedFieldType(fieldProperties[fieldCode]?.type)
       )
       .reduce((obj, fieldCode) => {
-        const fieldType = fieldsJson.properties[fieldCode].type;
+        const fieldType = fieldProperties[fieldCode].type;
         return {
           ...obj,
           [fieldCode]: {
@@ -50,15 +55,15 @@ const buildSubtableRecord = ({
 
 const convertToKintoneRecords = ({
   rows,
-  fieldsJson,
+  fieldProperties,
 }: {
   rows: CsvRows;
-  fieldsJson: FieldsJson;
+  fieldProperties: FieldProperties;
 }) => {
-  if (!hasSubtable(fieldsJson)) {
+  if (!hasSubtable(fieldProperties)) {
     return formatToKintoneRecords({
       rows,
-      fieldsJson,
+      fieldProperties,
     });
   }
 
@@ -80,12 +85,12 @@ const convertToKintoneRecords = ({
     const primaryRow = temp[0];
     const subtableFieldsValue = extractSubtableFieldsValue({
       rows: temp,
-      fieldsJson,
+      fieldProperties,
     });
 
     const subtableRecord = buildSubtableRecord({
       primaryRow,
-      fieldsJson,
+      fieldProperties,
       subtableFieldsValue,
     });
 

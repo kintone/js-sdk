@@ -3,7 +3,7 @@ import { LINE_BREAK, PRIMARY_MARK, SEPARATOR } from "./constants";
 import { extractFieldValue } from "./extractFieldValue";
 import { buildHeaderFields } from "./buildHeaderFields";
 import { hasSubtable } from "./hasSubtable";
-import { FieldsJson, KintoneRecord } from "../../types";
+import { FieldProperties, KintoneRecord } from "../../types";
 
 type RowObject = {
   [fieldCode: string]: string | Array<{ [fieldCode: string]: string }>;
@@ -11,16 +11,16 @@ type RowObject = {
 
 export const convertKintoneRecordsToCsv = ({
   records,
-  fieldsJson,
+  fieldProperties,
 }: {
   records: KintoneRecord[];
-  fieldsJson: FieldsJson;
+  fieldProperties: FieldProperties;
 }) => {
-  const headerFields = buildHeaderFields(fieldsJson);
+  const headerFields = buildHeaderFields(fieldProperties);
   const rows = buildRows({
     records,
     headerFields,
-    fieldsJson,
+    fieldProperties,
   });
 
   const headerRow = headerFields
@@ -33,17 +33,17 @@ export const convertKintoneRecordsToCsv = ({
 const buildRows = ({
   records,
   headerFields,
-  fieldsJson,
+  fieldProperties,
 }: {
   records: KintoneRecord[];
   headerFields: string[];
-  fieldsJson: FieldsJson;
+  fieldProperties: FieldProperties;
 }) => {
   return records.map((record) =>
     buildRow({
       record,
       headerFields,
-      fieldsJson,
+      fieldProperties,
     })
   );
 };
@@ -51,26 +51,26 @@ const buildRows = ({
 const buildRow = ({
   record,
   headerFields,
-  fieldsJson,
+  fieldProperties,
 }: {
   record: KintoneRecord;
   headerFields: string[];
-  fieldsJson: FieldsJson;
+  fieldProperties: FieldProperties;
 }) => {
   const recordObject = buildRecordObject(record);
   const primaryRowObject = buildPrimaryRowObject({
     recordObject,
-    fieldsJson,
+    fieldProperties,
   });
 
-  if (!hasSubtable(fieldsJson)) {
+  if (!hasSubtable(fieldProperties)) {
     return rowObjectToCsvRow({ rowObject: primaryRowObject, headerFields });
   }
 
   const subtableFieldCodes = Object.keys(recordObject).filter(
     (fieldCode) =>
-      fieldsJson.properties[fieldCode] &&
-      fieldsJson.properties[fieldCode].type === "SUBTABLE"
+      fieldProperties[fieldCode] &&
+      fieldProperties[fieldCode].type === "SUBTABLE"
   );
 
   const rowObjects = buildSubTableRowObjects({
@@ -95,16 +95,16 @@ const buildRecordObject = (record: KintoneRecord) => {
 
 const buildPrimaryRowObject = ({
   recordObject,
-  fieldsJson,
+  fieldProperties,
 }: {
   recordObject: RowObject;
-  fieldsJson: FieldsJson;
+  fieldProperties: FieldProperties;
 }) => {
   return Object.keys(recordObject).reduce<RowObject>((ret, fieldCode) => {
     return {
       ...ret,
-      ...(fieldsJson.properties[fieldCode] &&
-      fieldsJson.properties[fieldCode].type !== "SUBTABLE"
+      ...(fieldProperties[fieldCode] &&
+      fieldProperties[fieldCode].type !== "SUBTABLE"
         ? { [fieldCode]: recordObject[fieldCode] }
         : {}),
     };

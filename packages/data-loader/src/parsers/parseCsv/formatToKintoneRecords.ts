@@ -1,18 +1,23 @@
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
-import { CsvRows, FieldsJson, ParsedRecord } from "../../types";
+import {
+  CsvRows,
+  FieldProperties,
+  FieldsJson,
+  ParsedRecord,
+} from "../../types";
 
 export const formatToKintoneRecords = ({
   rows,
-  fieldsJson,
+  fieldProperties,
 }: {
   rows: CsvRows;
-  fieldsJson: FieldsJson;
+  fieldProperties: FieldProperties;
 }) => {
   return rows.map((row) => {
     return Object.keys(row)
       .filter((fieldCode) => {
-        const field = fieldsJson.properties[fieldCode];
+        const field = fieldProperties[fieldCode];
         return field ? isImportSupportedFieldType(field.type) : false;
       })
       .reduce(
@@ -21,7 +26,7 @@ export const formatToKintoneRecords = ({
           [fieldCode]: {
             value: convertToKintoneRecordFormatValue({
               value: row[fieldCode],
-              fieldType: fieldsJson.properties[fieldCode].type,
+              fieldType: fieldProperties[fieldCode].type,
             }),
           },
         }),

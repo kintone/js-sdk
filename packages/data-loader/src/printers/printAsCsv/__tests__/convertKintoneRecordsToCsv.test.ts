@@ -14,9 +14,12 @@ line
 text","2021-02-10T06:14:00Z","""sample2""","16","""sample3""
 sample4"
 `;
-    expect(convertKintoneRecordsToCsv({ records, fieldsJson })).toBe(
-      expectedCsv
-    );
+    expect(
+      convertKintoneRecordsToCsv({
+        records,
+        fieldProperties: fieldsJson.properties,
+      })
+    ).toBe(expectedCsv);
   });
   it("should convert kintone records to csv string correctly when SUBTABLE included", () => {
     const expectedCsv = `"*","recordNumber","updatedTime","dropDown","creator","subTable","subTableText","subTableCheckbox","modifier","richText","singleLineText","number","radioButton","multiLineText","createdTime","checkBox","calc","multiSelect"
@@ -32,7 +35,7 @@ sample4"
     expect(
       convertKintoneRecordsToCsv({
         records: subtableRecords,
-        fieldsJson: subtableFieldsJson,
+        fieldProperties: subtableFieldsJson.properties,
       })
     ).toBe(expectedCsv);
   });

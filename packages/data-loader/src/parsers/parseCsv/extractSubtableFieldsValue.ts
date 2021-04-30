@@ -1,5 +1,5 @@
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
-import { CsvRows, FieldsJson } from "../../types";
+import { CsvRows, FieldProperties, FieldsJson } from "../../types";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
 type InSubtableFieldProperty = Record<
@@ -14,12 +14,12 @@ type InSubtableFieldValue = Record<
 
 export const extractSubtableFieldsValue = ({
   rows,
-  fieldsJson,
+  fieldProperties,
 }: {
   rows: CsvRows;
-  fieldsJson: FieldsJson;
+  fieldProperties: FieldProperties;
 }) => {
-  return Object.values(fieldsJson.properties).reduce<
+  return Object.values(fieldProperties).reduce<
     Record<
       string,
       { value: Array<{ id: string; value: InSubtableFieldValue }> }

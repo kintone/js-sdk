@@ -12,7 +12,10 @@ const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json"
 describe("formatToKintoneRecords", () => {
   it("should format correctly", () => {
     expect(
-      formatToKintoneRecords({ rows, fieldsJson: subtableFieldsJson })
+      formatToKintoneRecords({
+        rows,
+        fieldProperties: subtableFieldsJson.properties,
+      })
     ).toEqual([
       {
         singleLineText: {
