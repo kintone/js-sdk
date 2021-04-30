@@ -5,7 +5,9 @@ import {
 
 export type CsvRows = Array<Record<string, string>>;
 export type ParsedRecord = Record<string, Record<"value", unknown>>;
-export type KintoneRecord = { [fieldCode: string]: KintoneRecordField.OneOf };
+export type KintoneRecordForResponse = {
+  [fieldCode: string]: KintoneRecordField.OneOf;
+};
 export type FieldProperties = Record<string, KintoneFormFieldProperty.OneOf>;
 export type FieldsJson = {
   properties: FieldProperties;

@@ -1,8 +1,8 @@
 import { convertKintoneRecordsToCsv } from "./convertKintoneRecordsToCsv";
-import { FieldsJson, KintoneRecord } from "../../types";
+import { FieldsJson, KintoneRecordForResponse } from "../../types";
 
 export const printAsCsv = (
-  records: KintoneRecord[],
+  records: KintoneRecordForResponse[],
   fieldsJson: FieldsJson
 ) => {
   const csv = convertKintoneRecordsToCsv({

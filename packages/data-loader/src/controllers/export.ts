@@ -3,7 +3,7 @@ import path from "path";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { KintoneRecord } from "../types";
+import { KintoneRecordForResponse } from "../types";
 import { printAsJson } from "../printers/printAsJson";
 import { printAsCsv } from "../printers/printAsCsv";
 
@@ -90,7 +90,7 @@ async function printRecords({
   argv,
   apiClient,
 }: {
-  records: KintoneRecord[];
+  records: KintoneRecordForResponse[];
   argv: RestAPIClientOptions & Options;
   apiClient: KintoneRestAPIClient;
 }) {
