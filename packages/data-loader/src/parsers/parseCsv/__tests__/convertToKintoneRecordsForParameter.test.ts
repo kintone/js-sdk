@@ -1,4 +1,4 @@
-import { formatToKintoneRecords } from "../formatToKintoneRecords";
+import { convertToKintoneRecordsForParameter } from "../convertToKintoneRecordsForParameter";
 import { FieldsJson } from "../../../types";
 
 const rows = [
@@ -9,10 +9,10 @@ const rows = [
 ];
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
-describe("formatToKintoneRecords", () => {
+describe("convertToKintoneRecordsForParameter", () => {
   it("should format correctly", () => {
     expect(
-      formatToKintoneRecords({
+      convertToKintoneRecordsForParameter({
         rows,
         fieldProperties: subtableFieldsJson.properties,
       })

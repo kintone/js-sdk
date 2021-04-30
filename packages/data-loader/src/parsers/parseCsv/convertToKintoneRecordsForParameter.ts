@@ -3,11 +3,10 @@ import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordForma
 import {
   CsvRows,
   FieldProperties,
-  FieldsJson,
-  ParsedRecord,
+  KintoneRecordForParameter,
 } from "../../types";
 
-export const formatToKintoneRecords = ({
+export const convertToKintoneRecordsForParameter = ({
   rows,
   fieldProperties,
 }: {
@@ -20,9 +19,9 @@ export const formatToKintoneRecords = ({
         const field = fieldProperties[fieldCode];
         return field ? isImportSupportedFieldType(field.type) : false;
       })
-      .reduce(
-        (recordObjects, fieldCode) => ({
-          ...recordObjects,
+      .reduce<KintoneRecordForParameter>(
+        (kintoneRecordForParameter, fieldCode) => ({
+          ...kintoneRecordForParameter,
           [fieldCode]: {
             value: convertToKintoneRecordFormatValue({
               value: row[fieldCode],
@@ -30,7 +29,7 @@ export const formatToKintoneRecords = ({
             }),
           },
         }),
-        {} as ParsedRecord
+        {}
       );
   });
 };

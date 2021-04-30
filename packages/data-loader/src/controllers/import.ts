@@ -8,7 +8,7 @@ import path from "path";
 import fs from "fs";
 import { parseJson } from "../parsers/parseJson";
 import { parseCsv } from "../parsers/parseCsv";
-import { ParsedRecord } from "../types";
+import { KintoneRecordForParameter } from "../types";
 
 const CHUNK_LENGTH = 100;
 
@@ -86,7 +86,10 @@ export const buildImporter = ({
     }
   }
 
-  async function addAllRecordsChunk(app: AppID, allRecords: ParsedRecord[]) {
+  async function addAllRecordsChunk(
+    app: AppID,
+    allRecords: KintoneRecordForParameter[]
+  ) {
     let chunkStartIndex = 0;
     while (chunkStartIndex < allRecords.length) {
       const chunkNextIndex =
