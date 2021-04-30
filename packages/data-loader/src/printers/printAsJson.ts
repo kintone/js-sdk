@@ -1,4 +1,3 @@
-import { KintoneRecordField } from "@kintone/rest-api-client";
 import { KintoneRecordForResponse } from "../types";
 
 export const exportFieldsFilter = ({
@@ -9,12 +8,12 @@ export const exportFieldsFilter = ({
   exportFields: string;
 }) => {
   return records.map((record) =>
-    Object.keys(record)
-      .filter((fieldCode) => exportFields.split(",").includes(fieldCode))
-      .reduce<{ [fieldCode: string]: KintoneRecordField.OneOf }>(
-        (ret, fieldCode) => ({
-          ...ret,
-          [fieldCode]: record[fieldCode],
+    Object.entries(record)
+      .filter(([fieldCode]) => exportFields.split(",").includes(fieldCode))
+      .reduce<KintoneRecordForResponse>(
+        (kintoneRecordForResponse, [fieldCode, fieldValue]) => ({
+          ...kintoneRecordForResponse,
+          [fieldCode]: fieldValue,
         }),
         {}
       )

@@ -77,6 +77,7 @@ export const builder = (yargs: any) =>
     })
     .option("export-fields", {
       describe: "Fields to export (comma separated)",
+      type: "string",
     })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",
