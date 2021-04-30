@@ -33,23 +33,22 @@ const buildSubtableRecord = ({
   subtableFieldsValue: Record<string, any>;
 }) => {
   return {
-    ...Object.keys(primaryRow)
-      .filter((fieldCode) =>
+    ...subtableFieldsValue,
+    ...Object.entries(primaryRow)
+      .filter(([fieldCode]) =>
         isImportSupportedFieldType(fieldProperties[fieldCode]?.type)
       )
-      .reduce((obj, fieldCode) => {
-        const fieldType = fieldProperties[fieldCode].type;
+      .reduce((ret, [fieldCode, fieldValue]) => {
         return {
-          ...obj,
+          ...ret,
           [fieldCode]: {
             value: convertToKintoneRecordFormatValue({
-              fieldType,
-              value: primaryRow[fieldCode],
+              fieldType: fieldProperties[fieldCode].type,
+              value: fieldValue,
             }),
           },
         };
       }, {} as ParsedRecord),
-    ...subtableFieldsValue,
   };
 };
 
