@@ -152,10 +152,10 @@ The number of records that can be retrieved at once is 500.
 
 #### Returns
 
-| Name       |  Type  | Description                                                                                                                                                        |
-| ---------- | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| records    | Array  | An array of objects, including field types and field values within the matching records.                                                                           |
-| totalCount | String | The total count of records that match the query conditions.<br />If the `totalCount` parameter is ignored or is set as `false` in the request, `null` is returned. |
+| Name       |       Type       | Description                                                                                                                                                        |
+| ---------- | :--------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| records    |      Array       | An array of objects, including field types and field values within the matching records.                                                                           |
+| totalCount | String or `null` | The total count of records that match the query conditions.<br />If the `totalCount` parameter is ignored or is set as `false` in the request, `null` is returned. |
 
 #### Reference
 
