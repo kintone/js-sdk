@@ -14,17 +14,17 @@ export const convertToKintoneRecordsForParameter = ({
   fieldProperties: FieldProperties;
 }) => {
   return rows.map((row) => {
-    return Object.keys(row)
-      .filter((fieldCode) => {
+    return Object.entries(row)
+      .filter(([fieldCode]) => {
         const field = fieldProperties[fieldCode];
         return field ? isImportSupportedFieldType(field.type) : false;
       })
       .reduce<KintoneRecordForParameter>(
-        (kintoneRecordForParameter, fieldCode) => ({
+        (kintoneRecordForParameter, [fieldCode, fieldValue]) => ({
           ...kintoneRecordForParameter,
           [fieldCode]: {
             value: convertToKintoneRecordFormatValue({
-              value: row[fieldCode],
+              value: fieldValue,
               fieldType: fieldProperties[fieldCode].type,
             }),
           },
