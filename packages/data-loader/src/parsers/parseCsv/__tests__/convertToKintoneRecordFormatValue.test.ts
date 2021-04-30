@@ -1,6 +1,6 @@
 import { convertToKintoneRecordFormatValue } from "../convertToKintoneRecordFormatValue";
 
-describe("formatToRecordValue", () => {
+describe("convertToKintoneRecordFormatValue", () => {
   it("should format correctly", () => {
     expect(
       convertToKintoneRecordFormatValue({
