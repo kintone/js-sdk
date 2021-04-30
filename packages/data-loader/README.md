@@ -11,7 +11,6 @@ A kintone record importer and exporter.
 - Update records when importing
 - When using CSV format, the following fields are not supported
   - User selection, Group selection, Department selection
-  - Fields in table field
 
 We plan to support them in the future release.
 
