@@ -4,56 +4,32 @@ import { FieldsJson } from "../../../types";
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("isSupportedFieldType", () => {
-  it("should be true", () => {
-    expect(isSupportedFieldType(subtableFieldsJson.properties.subTable)).toBe(
+  const SUPPORTED_FIELD_TYPES = [
+    "recordNumber",
+    "singleLineText",
+    "multiLineText",
+    "richText",
+    "number",
+    "checkBox",
+    "dropDown",
+    "radioButton",
+    "multiSelect",
+    "calc",
+    "subTable",
+    "creator",
+    "createdTime",
+    "modifier",
+    "updatedTime",
+  ];
+  it.each(SUPPORTED_FIELD_TYPES)("should be true [%s]", (fieldType) => {
+    expect(isSupportedFieldType(subtableFieldsJson.properties[fieldType])).toBe(
       true
     );
-    expect(
-      isSupportedFieldType(subtableFieldsJson.properties.multiSelect)
-    ).toBe(true);
-    expect(
-      isSupportedFieldType(subtableFieldsJson.properties.multiLineText)
-    ).toBe(true);
-    expect(isSupportedFieldType(subtableFieldsJson.properties.calc)).toBe(true);
-    expect(isSupportedFieldType(subtableFieldsJson.properties.checkBox)).toBe(
-      true
-    );
-    expect(
-      isSupportedFieldType(subtableFieldsJson.properties.createdTime)
-    ).toBe(true);
-    expect(isSupportedFieldType(subtableFieldsJson.properties.creator)).toBe(
-      true
-    );
-    expect(isSupportedFieldType(subtableFieldsJson.properties.dropDown)).toBe(
-      true
-    );
-    expect(isSupportedFieldType(subtableFieldsJson.properties.modifier)).toBe(
-      true
-    );
-    expect(isSupportedFieldType(subtableFieldsJson.properties.number)).toBe(
-      true
-    );
-    expect(
-      isSupportedFieldType(subtableFieldsJson.properties.recordNumber)
-    ).toBe(true);
-    expect(
-      isSupportedFieldType(subtableFieldsJson.properties.radioButton)
-    ).toBe(true);
-    expect(isSupportedFieldType(subtableFieldsJson.properties.richText)).toBe(
-      true
-    );
-    expect(
-      isSupportedFieldType(subtableFieldsJson.properties.singleLineText)
-    ).toBe(true);
-    expect(
-      isSupportedFieldType(subtableFieldsJson.properties.updatedTime)
-    ).toBe(true);
   });
-  it("should be true", () => {
-    expect(isSupportedFieldType(subtableFieldsJson.properties.Status)).toBe(
-      false
-    );
-    expect(isSupportedFieldType(subtableFieldsJson.properties.Assignee)).toBe(
+
+  const UNSUPPORTED_FIELD_TYPES = ["Status", "Assignee"];
+  it.each(UNSUPPORTED_FIELD_TYPES)("should be false [%s]", (fieldType) => {
+    expect(isSupportedFieldType(subtableFieldsJson.properties[fieldType])).toBe(
       false
     );
   });
