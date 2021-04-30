@@ -1,6 +1,6 @@
 {
   "name": "@kintone/dts-gen",
-  "version": "3.1.8",
+  "version": "3.1.12",
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
   "scripts": {
@@ -36,9 +36,9 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168",
-    "ts-loader": "^8.0.18",
-    "webpack": "^5.27.2",
-    "webpack-cli": "^4.5.0"
+    "ts-loader": "^8.2.0",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0"
   },
   "bin": {
     "kintone-dts-gen": "dist/index.js"

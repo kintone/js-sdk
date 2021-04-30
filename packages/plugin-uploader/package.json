@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-uploader",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "description": "A kintone plugin uploader using puppetieer",
   "bin": {
     "kintone-plugin-uploader": "bin/cli.js"
@@ -40,11 +40,11 @@
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-uploader#readme",
   "dependencies": {
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.1",
     "inquirer": "^8.0.0",
     "meow": "^9.0.0",
     "os-locale": "^5.0.0",
-    "puppeteer": "8.0.0"
+    "puppeteer": "9.0.0"
   },
   "devDependencies": {
     "@types/inquirer": "7.3.1",

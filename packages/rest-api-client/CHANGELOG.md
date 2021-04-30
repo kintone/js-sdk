@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.12.4...@kintone/rest-api-client@1.13.0) (2021-04-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.11.0 ([#829](https://github.com/kintone/js-sdk/issues/829)) ([28b664c](https://github.com/kintone/js-sdk/commit/28b664c630487a6d2fb77c6350a9e5b923311de2))
+
+
+### Features
+
+* **rest-api-client:** add an option to set a custom User-Agent string in Node.js environment ([#822](https://github.com/kintone/js-sdk/issues/822)) ([4d7ed5d](https://github.com/kintone/js-sdk/commit/4d7ed5da7b8b4ab7851447833d048878ff1ce826))
+* **rest-api-client:** Support App Action Settings API ([#833](https://github.com/kintone/js-sdk/issues/833)) ([bca0d98](https://github.com/kintone/js-sdk/commit/bca0d9805636423c9de5694ea8f908149c9ff65f))
+
+
+
+
+
+## [1.12.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.12.3...@kintone/rest-api-client@1.12.4) (2021-04-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.10.2 ([1ffcc04](https://github.com/kintone/js-sdk/commit/1ffcc043529bac39aff57e5682632c85562c8785))
+
+
+
+
+
+## [1.12.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.12.2...@kintone/rest-api-client@1.12.3) (2021-04-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.10.1 ([061b24b](https://github.com/kintone/js-sdk/commit/061b24bf61d4e1131e5ac7d9c230610959eacc59))
+
+
+
+
+
+## [1.12.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.12.1...@kintone/rest-api-client@1.12.2) (2021-04-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.10.0 ([#795](https://github.com/kintone/js-sdk/issues/795)) ([446f861](https://github.com/kintone/js-sdk/commit/446f86143380c1a291a0b80ed00a71497975c623))
+
+
+
+
+
+## [1.12.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.12.0...@kintone/rest-api-client@1.12.1) (2021-03-31)
+
+**Note:** Version bump only for package @kintone/rest-api-client
+
+
+
+
+
 # [1.12.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.11.2...@kintone/rest-api-client@1.12.0) (2021-03-23)
 
 

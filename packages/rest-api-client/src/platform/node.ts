@@ -49,11 +49,12 @@ export const buildPlatformDependentConfig = (params: {
   return {};
 };
 
-export const buildHeaders = () => {
+export const buildHeaders = (params: { userAgent?: string }) => {
+  const { userAgent } = params;
   return {
     "User-Agent": `Node.js/${process.version}(${os.type()}) ${
       packageJson.name
-    }@${packageJson.version}`,
+    }@${packageJson.version}${userAgent ? ` ${userAgent}` : ""}`,
   };
 };
 

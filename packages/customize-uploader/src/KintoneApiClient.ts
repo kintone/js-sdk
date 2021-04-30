@@ -46,6 +46,10 @@ export default class KintoneApiClient {
         password: basicAuthPassword,
       };
     }
+    let guestSpaceId;
+    if (options.guestSpaceId) {
+      guestSpaceId = options.guestSpaceId;
+    }
     this.restApiClient = new KintoneRestAPIClient({
       baseUrl: kintoneUrl,
       auth,
@@ -53,6 +57,7 @@ export default class KintoneApiClient {
       featureFlags: {
         enableAbortSearchError: false,
       },
+      guestSpaceId,
     });
   }
 

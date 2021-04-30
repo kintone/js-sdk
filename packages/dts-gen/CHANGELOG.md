@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.12](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.11...@kintone/dts-gen@3.1.12) (2021-04-27)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## [3.1.11](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.10...@kintone/dts-gen@3.1.11) (2021-04-20)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## [3.1.10](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.9...@kintone/dts-gen@3.1.10) (2021-04-13)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## [3.1.9](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.8...@kintone/dts-gen@3.1.9) (2021-03-31)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
 ## [3.1.8](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.7...@kintone/dts-gen@3.1.8) (2021-03-23)
 
 
