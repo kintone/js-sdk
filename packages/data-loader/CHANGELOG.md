@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.2.4...@kintone/data-loader@0.3.0) (2021-04-27)
+
+
+### Features
+
+* **data-loader:** enhance CLI help message (type and requirement of arguments) ([#828](https://github.com/kintone/js-sdk/issues/828)) ([d4599af](https://github.com/kintone/js-sdk/commit/d4599af06f86aec884c87625ed6a868cbf6f0924))
+
+
+
+
+
+## [0.2.4](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.2.3...@kintone/data-loader@0.2.4) (2021-04-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency csv-parse to ^4.15.4 ([4f9ff54](https://github.com/kintone/js-sdk/commit/4f9ff541474a5c0ed74d7b1e949c42332ef45bd4))
+
+
+
+
+
+## [0.2.3](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.2.2...@kintone/data-loader@0.2.3) (2021-04-13)
+
+**Note:** Version bump only for package @kintone/data-loader
+
+
+
+
+
+## [0.2.2](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.2.1...@kintone/data-loader@0.2.2) (2021-04-06)
+
+**Note:** Version bump only for package @kintone/data-loader
+
+
+
+
+
+## [0.2.1](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.2.0...@kintone/data-loader@0.2.1) (2021-03-31)
+
+**Note:** Version bump only for package @kintone/data-loader
+
+
+
+
+
 # [0.2.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.1.6...@kintone/data-loader@0.2.0) (2021-03-23)
 
 

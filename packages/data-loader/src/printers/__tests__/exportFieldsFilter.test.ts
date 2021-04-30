@@ -1,6 +1,7 @@
 import { exportFieldsFilter } from "../printAsJson";
+import { KintoneRecordForResponse } from "../../types";
 
-const records = require("../printAsCsv/__tests__/fixtures/input.json");
+const records: KintoneRecordForResponse[] = require("../printAsCsv/__tests__/fixtures/input.json");
 
 describe("exportFieldsFilter", () => {
   it("should filter in order to export fields option", () => {

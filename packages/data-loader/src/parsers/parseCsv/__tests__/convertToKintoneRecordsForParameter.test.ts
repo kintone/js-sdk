@@ -1,18 +1,21 @@
-import { formatToKintoneRecords } from "../formatToKintoneRecords";
+import { convertToKintoneRecordsForParameter } from "../convertToKintoneRecordsForParameter";
 import { FieldsJson } from "../../../types";
 
-const records = [
+const rows = [
   {
     singleLineText: "single line text",
     multiSelect: "sample1\nsample2",
   },
 ];
-const subTableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
+const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
-describe("formatToKintoneRecords", () => {
+describe("convertToKintoneRecordsForParameter", () => {
   it("should format correctly", () => {
     expect(
-      formatToKintoneRecords({ records, fieldsJson: subTableFieldsJson })
+      convertToKintoneRecordsForParameter({
+        rows,
+        fieldProperties: subtableFieldsJson.properties,
+      })
     ).toEqual([
       {
         singleLineText: {

@@ -1,8 +1,8 @@
 import { LINE_BREAK } from "../../printers/printAsCsv/constants";
 
-export const formatToRecordValue = ({
+export const convertToKintoneRecordFormatValue = ({
   fieldType,
-  value,
+  value = "",
 }: {
   fieldType: string;
   value: string;
@@ -17,24 +17,16 @@ export const formatToRecordValue = ({
     case "DROP_DOWN":
     case "UPDATED_TIME":
     case "CREATED_TIME":
-      return {
-        value,
-      };
+      return value;
     case "CREATOR":
     case "MODIFIER":
       return {
-        value: {
-          code: value,
-        },
+        code: value,
       };
     case "MULTI_SELECT":
     case "CHECK_BOX":
-      return {
-        value: value ? value.split(LINE_BREAK) : [],
-      };
+      return value ? value.split(LINE_BREAK) : [];
     default:
-      return {
-        value,
-      };
+      return value;
   }
 };

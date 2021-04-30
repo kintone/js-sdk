@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.5.4...@kintone/rest-api-client-demo@1.6.0) (2021-04-27)
+
+
+### Features
+
+* **rest-api-client:** Support App Action Settings API ([#833](https://github.com/kintone/js-sdk/issues/833)) ([bca0d98](https://github.com/kintone/js-sdk/commit/bca0d9805636423c9de5694ea8f908149c9ff65f))
+
+
+
+
+
+## [1.5.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.5.3...@kintone/rest-api-client-demo@1.5.4) (2021-04-20)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
+## [1.5.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.5.2...@kintone/rest-api-client-demo@1.5.3) (2021-04-13)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
+## [1.5.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.5.1...@kintone/rest-api-client-demo@1.5.2) (2021-04-06)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
+## [1.5.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.5.0...@kintone/rest-api-client-demo@1.5.1) (2021-03-31)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
 # [1.5.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.4.2...@kintone/rest-api-client-demo@1.5.0) (2021-03-23)
 
 

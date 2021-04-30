@@ -1,7 +1,7 @@
 {
   "name": "@kintone/plugin-packer",
   "description": "Package your kintone plugin with pure JavaScript",
-  "version": "4.0.2",
+  "version": "4.0.6",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=10"
@@ -35,7 +35,7 @@
     "start": "npm-run-all -l -s clean build -p build:dev site:dev"
   },
   "dependencies": {
-    "@kintone/plugin-manifest-validator": "^5.0.0",
+    "@kintone/plugin-manifest-validator": "^5.0.2",
     "chokidar": "^3.5.1",
     "debug": "^4.3.1",
     "denodeify": "^1.2.1",
@@ -60,12 +60,12 @@
     "buffer": "^6.0.3",
     "constants-browserify": "^1.0.0",
     "crypto-browserify": "^3.12.0",
-    "cssnano": "^4.1.10",
+    "cssnano": "^5.0.2",
     "execa": "^5.0.0",
     "glob": "^7.1.6",
     "normalize.css": "^8.0.1",
     "path-browserify": "^1.0.1",
-    "postcss": "^8.2.8",
+    "postcss": "^8.2.13",
     "postcss-cli": "^8.3.1",
     "process": "^0.11.10",
     "redux": "^4.0.5",
@@ -75,8 +75,8 @@
     "setimmediate": "^1.0.5",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.3",
-    "webpack": "^5.27.2",
-    "webpack-cli": "4.5.0",
+    "webpack": "^5.35.1",
+    "webpack-cli": "4.6.0",
     "webpack-dev-server": "^3.11.2"
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-packer",

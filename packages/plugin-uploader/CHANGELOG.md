@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.3.0...@kintone/plugin-uploader@4.3.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to ^4.1.1 ([1750dff](https://github.com/kintone/js-sdk/commit/1750dff45fe19f82dab074d547da541086fc3791))
+* **deps:** update dependency puppeteer to v9 ([#826](https://github.com/kintone/js-sdk/issues/826)) ([f3e688c](https://github.com/kintone/js-sdk/commit/f3e688c5805d5b79d6c6588952c66d548a92a7e5))
+
+
+
+
+
 # [4.3.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.2.5...@kintone/plugin-uploader@4.3.0) (2021-03-09)
 
 

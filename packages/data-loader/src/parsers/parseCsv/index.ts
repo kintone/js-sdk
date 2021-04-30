@@ -1,91 +1,103 @@
 import csvParse from "csv-parse/lib/sync";
-import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
-import { hasSubTable } from "../../printers/printAsCsv/hasSubTable";
-import { extractSubTableFieldsValue } from "./extractSubTableFieldsValue";
-import { groupByKintoneRecord } from "./groupByKintoneRecord";
+import { hasSubtable } from "../../printers/printAsCsv/hasSubtable";
+import { extractSubtableFieldsValue } from "./extractSubtableFieldsValue";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
-import { formatToKintoneRecords } from "./formatToKintoneRecords";
-import { formatToRecordValue } from "./formatToRecordValue";
-import { CsvRecords, FieldsJson, ParsedRecord } from "../../types";
+import { convertToKintoneRecordsForParameter } from "./convertToKintoneRecordsForParameter";
+import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
+import {
+  CsvRows,
+  FieldProperties,
+  FieldsJson,
+  KintoneRecordForParameter,
+} from "../../types";
 
-export const parseCsv = (
-  csv: string,
-  fieldsJson: { properties: Record<string, KintoneFormFieldProperty.OneOf> }
-) => {
-  const records: CsvRecords = csvParse(csv, {
+export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
+  const rows: CsvRows = csvParse(csv, {
     columns: true,
     skip_empty_lines: true,
   });
-  return convertToKintoneRecords({
-    records,
-    fieldsJson,
-  });
+  return hasSubtable(fieldsJson.properties)
+    ? convertToKintoneRecordsForParameterFromSubtableRows({
+        rows,
+        fieldProperties: fieldsJson.properties,
+      })
+    : convertToKintoneRecordsForParameter({
+        rows,
+        fieldProperties: fieldsJson.properties,
+      });
 };
 
-const buildSubTableRecord = ({
+const buildSubtableRecordForParameter = ({
   primaryRow,
-  fieldsJson,
-  subTableFieldsValue,
+  fieldProperties,
+  subtableFieldsValue,
 }: {
   primaryRow: Record<string, string>;
-  fieldsJson: FieldsJson;
-  subTableFieldsValue: Record<string, any>;
-}) => {
+  fieldProperties: FieldProperties;
+  subtableFieldsValue: KintoneRecordForParameter;
+}): KintoneRecordForParameter => {
   return {
-    ...Object.keys(primaryRow!)
-      .filter((fieldCode) =>
-        isImportSupportedFieldType(fieldsJson.properties[fieldCode]?.type)
+    ...subtableFieldsValue,
+    ...Object.entries(primaryRow)
+      .filter(([fieldCode]) =>
+        isImportSupportedFieldType(fieldProperties[fieldCode]?.type)
       )
-      .reduce((obj, fieldCode) => {
-        const fieldType = fieldsJson.properties[fieldCode].type;
-        return {
-          ...obj,
-          [fieldCode]: formatToRecordValue({
-            fieldType,
-            value: primaryRow![fieldCode],
-          }),
-        };
-      }, {} as ParsedRecord),
-    ...subTableFieldsValue,
+      .reduce<KintoneRecordForParameter>(
+        (recordForParameter, [fieldCode, fieldValue]) => {
+          return {
+            ...recordForParameter,
+            [fieldCode]: {
+              value: convertToKintoneRecordFormatValue({
+                fieldType: fieldProperties[fieldCode].type,
+                value: fieldValue,
+              }),
+            },
+          };
+        },
+        {}
+      ),
   };
 };
 
-const convertToKintoneRecords = ({
-  records,
-  fieldsJson,
+const convertToKintoneRecordsForParameterFromSubtableRows = ({
+  rows,
+  fieldProperties,
 }: {
-  records: CsvRecords;
-  fieldsJson: FieldsJson;
+  rows: CsvRows;
+  fieldProperties: FieldProperties;
 }) => {
-  if (!hasSubTable(fieldsJson)) {
-    return formatToKintoneRecords({
-      records,
-      fieldsJson,
-    });
-  }
+  let temp: Array<Record<string, string>> = [];
+  const lastIndex = rows.length - 1;
 
-  const subTableRecordGroups = groupByKintoneRecord(records);
+  return rows.reduce<KintoneRecordForParameter[]>(
+    (kintoneRecordsForParameter, row, index) => {
+      const isPrimaryRow = !!row[PRIMARY_MARK];
+      const isLastRow = index === lastIndex;
+      const isEmpty = temp.length === 0;
 
-  return Object.keys(subTableRecordGroups).reduce<ParsedRecord[]>(
-    (subTableRecords, index) => {
-      const primaryRow = subTableRecordGroups[index].find(
-        (record) => record[PRIMARY_MARK]
-      );
-      if (!primaryRow) {
-        return subTableRecords;
+      if (isLastRow) {
+        temp.push(row);
+      } else if (isEmpty || !isPrimaryRow) {
+        temp.push(row);
+        return kintoneRecordsForParameter;
       }
-      const subTableFieldsValue = extractSubTableFieldsValue({
-        records: subTableRecordGroups[index],
-        fieldsJson,
+
+      const primaryRow = temp[0];
+      const subtableFieldsValue = extractSubtableFieldsValue({
+        rows: temp,
+        fieldProperties,
       });
 
-      const subTableRecord = buildSubTableRecord({
+      const subtableRecord = buildSubtableRecordForParameter({
         primaryRow,
-        fieldsJson,
-        subTableFieldsValue,
+        fieldProperties,
+        subtableFieldsValue,
       });
-      return subTableRecords.concat([subTableRecord]);
+
+      temp = [row];
+
+      return kintoneRecordsForParameter.concat([subtableRecord]);
     },
     []
   );

@@ -1,7 +1,7 @@
 import { encloseInDoubleQuotes } from "../encloseInDoubleQuotes";
 
-describe("encloseInQuotation", () => {
-  it("should enclose in quotation correctly", () => {
+describe("encloseInDoubleQuotes", () => {
+  it("should enclose in double quotes correctly", () => {
     expect(encloseInDoubleQuotes(`test`)).toBe(`"test"`);
   });
 });

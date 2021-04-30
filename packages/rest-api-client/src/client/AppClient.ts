@@ -33,6 +33,8 @@ import {
   ReminderNotificationForResponse,
   ReportForParameter,
   ReportForResponse,
+  AppActionsForParameter,
+  AppActionsForResponse,
 } from "./types";
 type RowLayoutForParameter = {
   type: "ROW";
@@ -583,6 +585,37 @@ export class AppClient {
   }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/reports",
+      preview: true,
+    });
+    return this.client.put(path, params);
+  }
+
+  public getAppActions(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{
+    actions: AppActionsForResponse;
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/actions",
+      preview,
+    });
+    return this.client.get(path, rest);
+  }
+
+  public updateAppActions(params: {
+    app: AppID;
+    actions: AppActionsForParameter;
+    revision?: Revision;
+  }): Promise<{
+    revision: string;
+    actions: { [actionName: string]: { id: string } };
+  }> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/actions",
       preview: true,
     });
     return this.client.put(path, params);

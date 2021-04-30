@@ -1,5 +1,5 @@
-import { ParsedRecord } from "../types";
+import { KintoneRecordForParameter } from "../types";
 
 export const parseJson = (jsonString: string) => {
-  return JSON.parse(jsonString) as ParsedRecord[];
+  return JSON.parse(jsonString) as KintoneRecordForParameter[];
 };

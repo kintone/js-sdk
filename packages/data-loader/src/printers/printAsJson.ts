@@ -1,11 +1,11 @@
 import { KintoneRecordField } from "@kintone/rest-api-client";
-import { KintoneRecord } from "../types";
+import { KintoneRecordForResponse } from "../types";
 
 export const exportFieldsFilter = ({
   records,
   exportFields,
 }: {
-  records: KintoneRecord[];
+  records: KintoneRecordForResponse[];
   exportFields: string;
 }) => {
   return records.map((record) =>
@@ -25,7 +25,7 @@ export const printAsJson = ({
   records,
   exportFields,
 }: {
-  records: KintoneRecord[];
+  records: KintoneRecordForResponse[];
   exportFields?: string;
 }) => {
   console.log(
