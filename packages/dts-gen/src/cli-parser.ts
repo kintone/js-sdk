@@ -85,12 +85,12 @@ export function parse(argv: string[]): ParsedArgs {
             "kintone.types"
         )
         .option(
-            "--proxy-host [proxyHost]",
+            "--proxy-host [proxyHost]. This will be replaced with the --proxy option",
             "proxy host",
             null
         )
         .option(
-            "--proxy-port [proxyPort]",
+            "--proxy-port [proxyPort]. This will be replaced with the --proxy option",
             "proxy port",
             null
         )
@@ -134,6 +134,18 @@ export function parse(argv: string[]): ParsedArgs {
         namespace,
         output,
     } = options;
+
+    // warn deprecated options
+    if (host) {
+        console.warn(
+            "--host option will be deprecated, please use the --base-url option instead."
+        );
+    }
+    if (proxyHost || proxyPort) {
+        console.warn(
+            "--proxy-host and --proxy-port options will be deprecated, please use the --proxy option instead"
+        );
+    }
 
     const baseUrl = options.baseUrl || host;
     if (baseUrl === null) {
