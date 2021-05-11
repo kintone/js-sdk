@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.6.0...@kintone/rest-api-client-demo@2.0.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yargs to v17 ([#856](https://github.com/kintone/js-sdk/issues/856)) ([8b9f290](https://github.com/kintone/js-sdk/commit/8b9f290c7ff0b70a6460843984bdd117a57760ea))
+
+
+### chore
+
+* drop Node v10 support ([#870](https://github.com/kintone/js-sdk/issues/870)) ([5263389](https://github.com/kintone/js-sdk/commit/526338928e5a89a1f24c7458fc0c7c2452e36cc1))
+
+
+### BREAKING CHANGES
+
+* drop Node v10 support because of the EOL.
+
+
+
+
+
 # [1.6.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.5.4...@kintone/rest-api-client-demo@1.6.0) (2021-04-27)
 
 

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.13.0...@kintone/rest-api-client@2.0.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.11.1 ([1e569b7](https://github.com/kintone/js-sdk/commit/1e569b79d84d07655e34929753adcfb6e2b1eadb))
+* **deps:** update dependency core-js to ^3.11.2 ([#857](https://github.com/kintone/js-sdk/issues/857)) ([4aa5530](https://github.com/kintone/js-sdk/commit/4aa553038eaa32be5f3b35ed1a738fe1fe72dab0))
+* **deps:** update dependency core-js to ^3.11.3 ([#863](https://github.com/kintone/js-sdk/issues/863)) ([0ddd350](https://github.com/kintone/js-sdk/commit/0ddd350dbd009659d3214a25795d7430072794f0))
+* **deps:** update dependency core-js to ^3.12.1 ([#874](https://github.com/kintone/js-sdk/issues/874)) ([217053c](https://github.com/kintone/js-sdk/commit/217053ca4b5ec1d9ca11ecc454473475d5e12561))
+
+
+### chore
+
+* drop Node v10 support ([#870](https://github.com/kintone/js-sdk/issues/870)) ([5263389](https://github.com/kintone/js-sdk/commit/526338928e5a89a1f24c7458fc0c7c2452e36cc1))
+
+
+### BREAKING CHANGES
+
+* drop Node v10 support because of the EOL.
+
+
+
+
+
 # [1.13.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.12.4...@kintone/rest-api-client@1.13.0) (2021-04-27)
 
 

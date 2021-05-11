@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.12...@kintone/dts-gen@4.0.0) (2021-05-11)
+
+
+### chore
+
+* drop Node v10 support ([#870](https://github.com/kintone/js-sdk/issues/870)) ([5263389](https://github.com/kintone/js-sdk/commit/526338928e5a89a1f24c7458fc0c7c2452e36cc1))
+
+
+### Features
+
+* **dts-gen:** print deprecating messages for --host, --proxyHost, and --proxyPort ([#869](https://github.com/kintone/js-sdk/issues/869)) ([b6c7af8](https://github.com/kintone/js-sdk/commit/b6c7af89452f458b442c1151c1f9e46f8322f5c7))
+
+
+### BREAKING CHANGES
+
+* drop Node v10 support because of the EOL.
+
+
+
+
+
 ## [3.1.12](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.11...@kintone/dts-gen@3.1.12) (2021-04-27)
 
 **Note:** Version bump only for package @kintone/dts-gen

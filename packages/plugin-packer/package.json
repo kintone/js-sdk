@@ -1,7 +1,7 @@
 {
   "name": "@kintone/plugin-packer",
   "description": "Package your kintone plugin with pure JavaScript",
-  "version": "4.0.6",
+  "version": "5.0.0",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=12"
@@ -35,7 +35,7 @@
     "start": "npm-run-all -l -s clean build -p build:dev site:dev"
   },
   "dependencies": {
-    "@kintone/plugin-manifest-validator": "^5.0.2",
+    "@kintone/plugin-manifest-validator": "^6.0.0",
     "chokidar": "^3.5.1",
     "debug": "^4.3.1",
     "denodeify": "^1.2.1",

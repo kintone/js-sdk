@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.3.1...@kintone/plugin-uploader@5.0.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency puppeteer to v9.1.1 ([#858](https://github.com/kintone/js-sdk/issues/858)) ([40125ba](https://github.com/kintone/js-sdk/commit/40125ba049a34e5083d3d2b57f3435368f75b9ae))
+
+
+### chore
+
+* drop Node v10 support ([#870](https://github.com/kintone/js-sdk/issues/870)) ([5263389](https://github.com/kintone/js-sdk/commit/526338928e5a89a1f24c7458fc0c7c2452e36cc1))
+
+
+### BREAKING CHANGES
+
+* drop Node v10 support because of the EOL.
+
+
+
+
+
 ## [4.3.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.3.0...@kintone/plugin-uploader@4.3.1) (2021-04-27)
 
 
