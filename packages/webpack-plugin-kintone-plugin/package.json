@@ -4,7 +4,7 @@
   "description": "A webpack plugin to generate a plugin zip",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "start": "yarn build --watch",
