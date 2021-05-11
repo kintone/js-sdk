@@ -30,18 +30,14 @@ const messages = {
   },
   Error_failedLogin: {
     en: "Login failed, please confirm your username and password",
-    ja:
-      "kintoneへのログインに失敗しました。ログイン名とパスワードを確認してください",
+    ja: "kintoneへのログインに失敗しました。ログイン名とパスワードを確認してください",
   },
   Error_cannotOpenLogin: {
-    en:
-      "Cannot find a login form on the specified page, please confirm the subdomain",
-    ja:
-      "指定されたページにログインフォームが見つかりませんでした。ドメインを確認してください",
+    en: "Cannot find a login form on the specified page, please confirm the subdomain",
+    ja: "指定されたページにログインフォームが見つかりませんでした。ドメインを確認してください",
   },
   Error_adminPrivilege: {
-    en:
-      "Cannot navigate to the plug-ins page, please retry with an account with administrator privileges",
+    en: "Cannot navigate to the plug-ins page, please retry with an account with administrator privileges",
     ja: "kintone管理者権限のあるユーザーで実行してください",
   },
   Uploaded: {
@@ -49,10 +45,8 @@ const messages = {
     ja: "をアップロードしました!",
   },
   Warning_Deprecated_domain: {
-    en:
-      "The --domain option and KINTONE_DOMAIN are deprecated and will be removed in the next major release. Please use --base-url or KINTONE_BASE_URL instead.",
-    ja:
-      "--domain オプションおよび KINTONE_DOMAIN は非推奨となり、次のメジャーリリースで削除されます。代わりに --base-url や KINTONE_BASE_URL を使用してください",
+    en: "The --domain option and KINTONE_DOMAIN are deprecated and will be removed in the next major release. Please use --base-url or KINTONE_BASE_URL instead.",
+    ja: "--domain オプションおよび KINTONE_DOMAIN は非推奨となり、次のメジャーリリースで削除されます。代わりに --base-url や KINTONE_BASE_URL を使用してください",
   },
 };
 
