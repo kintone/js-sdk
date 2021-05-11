@@ -132,9 +132,8 @@ const buildSubTableRowObjects = ({
                   ...rowObject,
                   // NOTE: If fieldCode is `id`, use field code of subtable itself
                   // to avoid conflicts between each subtable.
-                  [fieldCode === "id" ? subtableFieldCode : fieldCode]: field[
-                    fieldCode
-                  ],
+                  [fieldCode === "id" ? subtableFieldCode : fieldCode]:
+                    field[fieldCode],
                 };
               },
               {}
