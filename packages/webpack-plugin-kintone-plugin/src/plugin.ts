@@ -68,8 +68,7 @@ export function generatePlugin(
   manifestJSONPath: string,
   privateKey: string | null
 ): Promise<{ id: string; buffer: Buffer }> {
-  return packFromManifest(
-    manifestJSONPath,
-    privateKey
-  ).then((output: PackedPlugin) => ({ id: output.id, buffer: output.plugin }));
+  return packFromManifest(manifestJSONPath, privateKey).then(
+    (output: PackedPlugin) => ({ id: output.id, buffer: output.plugin })
+  );
 }
