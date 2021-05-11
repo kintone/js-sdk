@@ -98,14 +98,11 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
   },
   npmStart: {
     en: "Start watching file changes and create a Kintone plug-in zip file.",
-    ja:
-      "ファイルの変更を監視してプラグインのzipを自動的に作成するプロセスを起動します",
+    ja: "ファイルの変更を監視してプラグインのzipを自動的に作成するプロセスを起動します",
   },
   npmStartWithPluginUploader: {
-    en:
-      "Next, the plug-in zip file is uploaded automatically by @kintone/plugin-uploader.",
-    ja:
-      "その後、@kintone/plugin-uploaderにより、プラグインのzipは自動的にアップロードされます",
+    en: "Next, the plug-in zip file is uploaded automatically by @kintone/plugin-uploader.",
+    ja: "その後、@kintone/plugin-uploaderにより、プラグインのzipは自動的にアップロードされます",
   },
   npmBuild: {
     en: "Create a Kintone plug-in zip file.",
@@ -136,8 +133,7 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
   },
   Error_alreadyExists: {
     en: "already exists. Choose a different directory",
-    ja:
-      "はすでに存在しています。削除するか、別のディレクトリを指定してください",
+    ja: "はすでに存在しています。削除するか、別のディレクトリを指定してください",
   },
   Error_cannotCreatePlugin: {
     en: "Could not create a plug-in project. Error:",
