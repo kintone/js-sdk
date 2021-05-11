@@ -52,18 +52,24 @@ export async function exportRecords(
   return records;
 }
 
-const getFileInfos = (record: Record) => {
-  // console.debug(`>>>record ${recordId}`);
-  const fileInfos: FileInfo[] = [];
-  Object.values<{ type: string; value: unknown }>(record).forEach((field) => {
+const getFileInfos = (record: Record): FileInfo[] => {
+  return Object.values(record).reduce<FileInfo[]>((acc, field) => {
     if (field.type === "FILE") {
-      // @ts-expect-error field.value should be FileInformation[] type.
-      field.value.forEach((fileInfo) => {
-        fileInfos.push(fileInfo);
-      });
+      return [...acc, ...field.value];
     }
-  });
-  return fileInfos;
+    if (field.type === "SUBTABLE") {
+      const fileInfos = Object.values(field.value.map((f) => f.value))
+        .map((f) => f.value)
+        .reduce<FileInfo[]>((a, f) => {
+          if (f.type === "FILE") {
+            return [...acc, ...f.value];
+          }
+          return acc;
+        }, []);
+      return [...acc, ...fileInfos];
+    }
+    return acc;
+  }, []);
 };
 
 const downloadAttachments = async (
