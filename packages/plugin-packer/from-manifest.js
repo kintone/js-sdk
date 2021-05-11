@@ -1,3 +1,4 @@
 "use strict";
 
-module.exports = require("./dist/pack-plugin-from-manifest").packPluginFromManifest;
+module.exports =
+  require("./dist/pack-plugin-from-manifest").packPluginFromManifest;

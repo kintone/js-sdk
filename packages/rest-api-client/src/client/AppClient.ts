@@ -441,10 +441,7 @@ export class AppClient {
     return this.client.put(path, params);
   }
 
-  public getAppCustomize(params: {
-    app: AppID;
-    preview?: boolean;
-  }): Promise<{
+  public getAppCustomize(params: { app: AppID; preview?: boolean }): Promise<{
     scope: AppCustomizeScope;
     desktop: AppCustomizeForResponse;
     mobile: AppCustomizeForResponse;

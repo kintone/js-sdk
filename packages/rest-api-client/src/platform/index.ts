@@ -43,7 +43,8 @@ export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   platformDeps.readFileFromPath = deps.readFileFromPath!;
   platformDeps.getRequestToken = deps.getRequestToken!;
   platformDeps.getDefaultAuth = deps.getDefaultAuth!;
-  platformDeps.buildPlatformDependentConfig = deps.buildPlatformDependentConfig!;
+  platformDeps.buildPlatformDependentConfig =
+    deps.buildPlatformDependentConfig!;
   platformDeps.buildHeaders = deps.buildHeaders!;
   platformDeps.buildFormDataValue = deps.buildFormDataValue!;
   platformDeps.buildBaseUrl = deps.buildBaseUrl!;

@@ -40,9 +40,10 @@ export class KintoneRestAPIError extends Error {
     );
   }
 
-  private static buildErrorResponseDateWithIndex(
-    error: KintoneErrorResponse
-  ): { data: SingleErrorResponseData; bulkRequestIndex?: number } {
+  private static buildErrorResponseDateWithIndex(error: KintoneErrorResponse): {
+    data: SingleErrorResponseData;
+    bulkRequestIndex?: number;
+  } {
     if ("results" in error.data) {
       return KintoneRestAPIError.findErrorResponseDataWithIndex(
         error.data.results
@@ -52,10 +53,8 @@ export class KintoneRestAPIError extends Error {
   }
 
   constructor(error: KintoneErrorResponse) {
-    const {
-      data,
-      bulkRequestIndex,
-    } = KintoneRestAPIError.buildErrorResponseDateWithIndex(error);
+    const { data, bulkRequestIndex } =
+      KintoneRestAPIError.buildErrorResponseDateWithIndex(error);
 
     super(data.message);
 

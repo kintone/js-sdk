@@ -46,9 +46,8 @@ function constructUrl(
         return `/k/guest/${guest}/v1/app/form/fields.json`;
     } else if (input.preview) {
         return "/k/v1/preview/app/form/fields.json";
-    } else {
-        return "/k/v1/app/form/fields.json";
     }
+    return "/k/v1/app/form/fields.json";
 }
 
 export const VisibleForTesting = {

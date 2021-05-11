@@ -17,14 +17,15 @@ export function convertToTsExpression({
     fieldTypeGroups: FieldTypeGroups;
 }): Namespace {
     const fieldGroup = convertToFieldGroup(fieldTypeGroups);
-    const subTableFields = fieldTypeGroups.subTableFields.map(
-        (f) =>
-            new F.SubTableField(
-                f.code,
-                f.type,
-                convertToFieldGroup(f.fields)
-            )
-    );
+    const subTableFields =
+        fieldTypeGroups.subTableFields.map(
+            (f) =>
+                new F.SubTableField(
+                    f.code,
+                    f.type,
+                    convertToFieldGroup(f.fields)
+                )
+        );
 
     const typeDefenition = new TypeDefinition(
         typeName,
@@ -32,13 +33,15 @@ export function convertToTsExpression({
         subTableFields
     );
 
-    const userFields = fieldTypeGroups.userFieldsInSavedRecord.map(
-        (f) => new F.TsDefinedField(f.code, f.type)
-    );
+    const userFields =
+        fieldTypeGroups.userFieldsInSavedRecord.map(
+            (f) => new F.TsDefinedField(f.code, f.type)
+        );
 
-    const stringFieldsInSavedRecord = fieldTypeGroups.stringFieldsInSavedRecord.map(
-        (f) => new F.TsDefinedField(f.code, f.type)
-    );
+    const stringFieldsInSavedRecord =
+        fieldTypeGroups.stringFieldsInSavedRecord.map(
+            (f) => new F.TsDefinedField(f.code, f.type)
+        );
 
     const savedTypeDefenition = new SavedTypeDefinition(
         typeName,
