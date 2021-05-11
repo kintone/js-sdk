@@ -1,10 +1,11 @@
 import { promises as fs } from "fs";
 import path from "path";
-
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { buildPrinter } from "../printers";
+import { KintoneRecordForResponse } from "../types";
+import { printAsJson } from "../printers/printAsJson";
+import { printAsCsv } from "../printers/printAsCsv";
 
 export type Options = {
   app: AppID;
@@ -23,8 +24,11 @@ type FileInfo = {
 export const run = async (argv: RestAPIClientOptions & Options) => {
   const apiClient = buildRestAPIClient(argv);
   const records = await exportRecords(apiClient, argv);
-  const printer = buildPrinter(argv.format);
-  printer(records);
+  await printRecords({
+    records,
+    argv,
+    apiClient,
+  });
 };
 
 export async function exportRecords(
@@ -80,3 +84,29 @@ const downloadAttachments = async (
     }
   }
 };
+
+async function printRecords({
+  records,
+  argv,
+  apiClient,
+}: {
+  records: KintoneRecordForResponse[];
+  argv: RestAPIClientOptions & Options;
+  apiClient: KintoneRestAPIClient;
+}) {
+  switch (argv.format) {
+    case "json": {
+      printAsJson(records);
+      break;
+    }
+    case "csv": {
+      printAsCsv(records, await apiClient.app.getFormFields(argv));
+      break;
+    }
+    default: {
+      throw new Error(
+        `Unknown format type. '${argv.format}' is unknown as a format option.`
+      );
+    }
+  }
+}
