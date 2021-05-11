@@ -34,10 +34,9 @@ export function rezip(contentsZip: Buffer): Promise<Buffer> {
  * Validate a buffer of contents.zip
  */
 export function validateContentsZip(contentsZip: Buffer): Promise<any> {
-  return preprocessToRezip(
-    contentsZip
-  ).then(({ entries, manifestJson, manifestPath }) =>
-    validateManifest(entries, manifestJson, manifestPath)
+  return preprocessToRezip(contentsZip).then(
+    ({ entries, manifestJson, manifestPath }) =>
+      validateManifest(entries, manifestJson, manifestPath)
   );
 }
 
@@ -58,10 +57,9 @@ function preprocessToRezip(
     }
     (result as any).manifestPath = manifestList[0];
     const manifestEntry = result.entries.get((result as any).manifestPath);
-    return getManifestJsonFromEntry(
-      result.zipFile,
-      manifestEntry
-    ).then((json: any) => Object.assign(result, { manifestJson: json })) as any;
+    return getManifestJsonFromEntry(result.zipFile, manifestEntry).then(
+      (json: any) => Object.assign(result, { manifestJson: json })
+    ) as any;
   });
 }
 
@@ -72,9 +70,7 @@ function getManifestJsonFromEntry(
   return zipEntryToString(zipFile, zipEntry).then((str) => JSON.parse(str));
 }
 
-function zipEntriesFromBuffer(
-  contentsZip: Buffer
-): Promise<{
+function zipEntriesFromBuffer(contentsZip: Buffer): Promise<{
   zipFile: yauzl.ZipFile;
   entries: Entries;
 }> {
