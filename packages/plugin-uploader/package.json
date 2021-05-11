@@ -7,7 +7,7 @@
   },
   "main": "dist/index.js",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "start": "yarn build --watch",
