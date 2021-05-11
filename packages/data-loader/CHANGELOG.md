@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.2.4...@kintone/data-loader@0.3.0) (2021-04-27)
+
+
+### Features
+
+* **data-loader:** enhance CLI help message (type and requirement of arguments) ([#828](https://github.com/kintone/js-sdk/issues/828)) ([d4599af](https://github.com/kintone/js-sdk/commit/d4599af06f86aec884c87625ed6a868cbf6f0924))
+
+
+
+
+
 ## [0.2.4](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.2.3...@kintone/data-loader@0.2.4) (2021-04-20)
 
 

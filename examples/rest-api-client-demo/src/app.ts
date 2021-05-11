@@ -703,4 +703,65 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getAppActions() {
+    try {
+      console.log(await this.client.app.getAppActions({ app: APP_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getAppActionsPreview() {
+    try {
+      console.log(
+        await this.client.app.getAppActions({ app: APP_ID, preview: true })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateAppActions() {
+    try {
+      console.log(
+        await this.client.app.updateAppActions({
+          app: APP_ID,
+          actions: {
+            Action_A: {
+              name: "Action_A",
+              index: "0",
+              destApp: {
+                code: "INVOICE",
+              },
+              mappings: [
+                {
+                  srcType: "FIELD",
+                  srcField: "CompanyName",
+                  destField: "CompanyName",
+                },
+                {
+                  srcType: "FIELD",
+                  srcField: "DivisionName",
+                  destField: "DivisionName",
+                },
+                {
+                  srcType: "RECORD_URL",
+                  destField: "URL",
+                },
+              ],
+              entities: [
+                {
+                  type: "USER",
+                  code: "Administrator",
+                },
+              ],
+            },
+          },
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

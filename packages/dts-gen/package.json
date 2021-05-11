@@ -1,6 +1,6 @@
 {
   "name": "@kintone/dts-gen",
-  "version": "3.1.11",
+  "version": "3.1.12",
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "build:integration": "webpack --mode development --config webpack.config.js"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "author": {
     "name": "Cybozu, Inc.",
@@ -36,9 +36,9 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168",
-    "ts-loader": "^8.1.0",
-    "webpack": "^5.35.1",
-    "webpack-cli": "^4.6.0"
+    "ts-loader": "^8.2.0",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0"
   },
   "bin": {
     "kintone-dts-gen": "dist/index.js"

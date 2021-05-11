@@ -10,147 +10,175 @@ const osName = os.type();
 const packageName = packageJson.name;
 const packageVersion = packageJson.version;
 
-const expectedUa = `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`;
+const expectedDefaultUa = `Node.js/${nodeVersion}(${osName}) ${packageName}@${packageVersion}`;
 
 describe("KintoneRequestConfigBuilder in Node.js environment", () => {
   const baseUrl = "https://example.kintone.com";
   const apiToken = "apiToken";
   let kintoneRequestConfigBuilder: KintoneRequestConfigBuilder;
-  beforeEach(() => {
-    kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
-      baseUrl,
-      auth: {
-        type: "apiToken",
-        apiToken,
-      },
+  describe("specify a User-Agent", () => {
+    it("should use a specified User-Agent", async () => {
+      kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
+        baseUrl,
+        auth: {
+          type: "apiToken",
+          apiToken,
+        },
+        userAgent: "foo",
+      });
+      const requestConfig = await kintoneRequestConfigBuilder.build(
+        "get",
+        "/k/v1/record.json",
+        { key: "value" }
+      );
+      expect(requestConfig).toStrictEqual({
+        method: "get",
+        proxy: undefined,
+        url: `${baseUrl}/k/v1/record.json?key=value`,
+        headers: {
+          "User-Agent": `${expectedDefaultUa} foo`,
+          "X-Cybozu-API-Token": apiToken,
+        },
+      });
     });
   });
-  it("should build get method requestConfig", async () => {
-    const requestConfig = await kintoneRequestConfigBuilder.build(
-      "get",
-      "/k/v1/record.json",
-      { key: "value" }
-    );
-    expect(requestConfig).toStrictEqual({
-      method: "get",
-      proxy: undefined,
-      url: `${baseUrl}/k/v1/record.json?key=value`,
-      headers: {
-        "User-Agent": expectedUa,
-        "X-Cybozu-API-Token": apiToken,
-      },
+  describe("not specified a User-Agent", () => {
+    beforeEach(() => {
+      kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
+        baseUrl,
+        auth: {
+          type: "apiToken",
+          apiToken,
+        },
+      });
     });
-  });
-  it("should build post method requestConfig if the request URL is over the threshold", async () => {
-    const value = "a".repeat(4096);
-    const requestConfig = await kintoneRequestConfigBuilder.build(
-      "get",
-      "/k/v1/record.json",
-      { key: value }
-    );
-    expect(requestConfig).toStrictEqual({
-      method: "post",
-      proxy: undefined,
-      url: `${baseUrl}/k/v1/record.json`,
-      headers: {
-        "User-Agent": expectedUa,
-        "X-Cybozu-API-Token": apiToken,
-        "X-HTTP-Method-Override": "GET",
-      },
-      data: { key: value },
+    it("should build get method requestConfig", async () => {
+      const requestConfig = await kintoneRequestConfigBuilder.build(
+        "get",
+        "/k/v1/record.json",
+        { key: "value" }
+      );
+      expect(requestConfig).toStrictEqual({
+        method: "get",
+        proxy: undefined,
+        url: `${baseUrl}/k/v1/record.json?key=value`,
+        headers: {
+          "User-Agent": expectedDefaultUa,
+          "X-Cybozu-API-Token": apiToken,
+        },
+      });
     });
-  });
-  it("should build get method requestConfig for data", async () => {
-    const requestConfig = await kintoneRequestConfigBuilder.build(
-      "get",
-      "/k/v1/record.json",
-      { key: "value" },
-      { responseType: "arraybuffer" }
-    );
-    expect(requestConfig).toStrictEqual({
-      method: "get",
-      proxy: undefined,
-      url: `${baseUrl}/k/v1/record.json?key=value`,
-      headers: {
-        "User-Agent": expectedUa,
-        "X-Cybozu-API-Token": apiToken,
-      },
-      responseType: "arraybuffer",
+    it("should build post method requestConfig if the request URL is over the threshold", async () => {
+      const value = "a".repeat(4096);
+      const requestConfig = await kintoneRequestConfigBuilder.build(
+        "get",
+        "/k/v1/record.json",
+        { key: value }
+      );
+      expect(requestConfig).toStrictEqual({
+        method: "post",
+        proxy: undefined,
+        url: `${baseUrl}/k/v1/record.json`,
+        headers: {
+          "User-Agent": expectedDefaultUa,
+          "X-Cybozu-API-Token": apiToken,
+          "X-HTTP-Method-Override": "GET",
+        },
+        data: { key: value },
+      });
     });
-  });
-  it("should build post method requestConfig", async () => {
-    const requestConfig = await kintoneRequestConfigBuilder.build(
-      "post",
-      "/k/v1/record.json",
-      { key: "value" }
-    );
-    expect(requestConfig).toStrictEqual({
-      method: "post",
-      proxy: undefined,
-      url: `${baseUrl}/k/v1/record.json`,
-      headers: {
-        "User-Agent": expectedUa,
-        "X-Cybozu-API-Token": apiToken,
-      },
-      data: {
-        key: "value",
-      },
+    it("should build get method requestConfig for data", async () => {
+      const requestConfig = await kintoneRequestConfigBuilder.build(
+        "get",
+        "/k/v1/record.json",
+        { key: "value" },
+        { responseType: "arraybuffer" }
+      );
+      expect(requestConfig).toStrictEqual({
+        method: "get",
+        proxy: undefined,
+        url: `${baseUrl}/k/v1/record.json?key=value`,
+        headers: {
+          "User-Agent": expectedDefaultUa,
+          "X-Cybozu-API-Token": apiToken,
+        },
+        responseType: "arraybuffer",
+      });
     });
-  });
-  it("should build post method requestConfig for data", async () => {
-    const formData = new FormData();
-    formData.append("key", "value");
-    const requestConfig = await kintoneRequestConfigBuilder.build(
-      "post",
-      "/k/v1/record.json",
-      formData
-    );
-    const { data, ...config } = requestConfig;
-    expect(config).toStrictEqual({
-      method: "post",
-      proxy: undefined,
-      url: `${baseUrl}/k/v1/record.json`,
-      headers: {
-        "User-Agent": expectedUa,
-        "X-Cybozu-API-Token": apiToken,
-        ...formData.getHeaders(),
-      },
+    it("should build post method requestConfig", async () => {
+      const requestConfig = await kintoneRequestConfigBuilder.build(
+        "post",
+        "/k/v1/record.json",
+        { key: "value" }
+      );
+      expect(requestConfig).toStrictEqual({
+        method: "post",
+        proxy: undefined,
+        url: `${baseUrl}/k/v1/record.json`,
+        headers: {
+          "User-Agent": expectedDefaultUa,
+          "X-Cybozu-API-Token": apiToken,
+        },
+        data: {
+          key: "value",
+        },
+      });
     });
-    expect(data).toBeInstanceOf(FormData);
-  });
-  it("should build put method requestConfig", async () => {
-    const requestConfig = await kintoneRequestConfigBuilder.build(
-      "put",
-      "/k/v1/record.json",
-      { key: "value" }
-    );
-    expect(requestConfig).toStrictEqual({
-      method: "put",
-      proxy: undefined,
-      url: `${baseUrl}/k/v1/record.json`,
-      headers: {
-        "User-Agent": expectedUa,
-        "X-Cybozu-API-Token": apiToken,
-      },
-      data: {
-        key: "value",
-      },
+    it("should build post method requestConfig for data", async () => {
+      const formData = new FormData();
+      formData.append("key", "value");
+      const requestConfig = await kintoneRequestConfigBuilder.build(
+        "post",
+        "/k/v1/record.json",
+        formData
+      );
+      const { data, ...config } = requestConfig;
+      expect(config).toStrictEqual({
+        method: "post",
+        proxy: undefined,
+        url: `${baseUrl}/k/v1/record.json`,
+        headers: {
+          "User-Agent": expectedDefaultUa,
+          "X-Cybozu-API-Token": apiToken,
+          ...formData.getHeaders(),
+        },
+      });
+      expect(data).toBeInstanceOf(FormData);
     });
-  });
-  it("should build delete method requestConfig", async () => {
-    const requestConfig = await kintoneRequestConfigBuilder.build(
-      "delete",
-      "/k/v1/record.json",
-      { key: "value" }
-    );
-    expect(requestConfig).toStrictEqual({
-      method: "delete",
-      proxy: undefined,
-      url: `${baseUrl}/k/v1/record.json?key=value`,
-      headers: {
-        "User-Agent": expectedUa,
-        "X-Cybozu-API-Token": apiToken,
-      },
+    it("should build put method requestConfig", async () => {
+      const requestConfig = await kintoneRequestConfigBuilder.build(
+        "put",
+        "/k/v1/record.json",
+        { key: "value" }
+      );
+      expect(requestConfig).toStrictEqual({
+        method: "put",
+        proxy: undefined,
+        url: `${baseUrl}/k/v1/record.json`,
+        headers: {
+          "User-Agent": expectedDefaultUa,
+          "X-Cybozu-API-Token": apiToken,
+        },
+        data: {
+          key: "value",
+        },
+      });
+    });
+    it("should build delete method requestConfig", async () => {
+      const requestConfig = await kintoneRequestConfigBuilder.build(
+        "delete",
+        "/k/v1/record.json",
+        { key: "value" }
+      );
+      expect(requestConfig).toStrictEqual({
+        method: "delete",
+        proxy: undefined,
+        url: `${baseUrl}/k/v1/record.json?key=value`,
+        headers: {
+          "User-Agent": expectedDefaultUa,
+          "X-Cybozu-API-Token": apiToken,
+        },
+      });
     });
   });
 });
@@ -303,7 +331,7 @@ describe("options", () => {
     const apiToken = "apiToken";
     const headers = {
       "X-Cybozu-API-Token": apiToken,
-      "User-Agent": expectedUa,
+      "User-Agent": expectedDefaultUa,
     };
     const proxy = {
       host: "localhost",
@@ -382,7 +410,7 @@ describe("Headers", () => {
       {}
     );
     expect(requestConfig.headers).toStrictEqual({
-      "User-Agent": expectedUa,
+      "User-Agent": expectedDefaultUa,
       "X-Cybozu-Authorization": Base64.encode(`${USERNAME}:${PASSWORD}`),
     });
   });
@@ -402,7 +430,7 @@ describe("Headers", () => {
       {}
     );
     expect(requestConfig.headers).toStrictEqual({
-      "User-Agent": expectedUa,
+      "User-Agent": expectedDefaultUa,
       "X-Cybozu-API-Token": API_TOKEN,
     });
   });
@@ -423,7 +451,7 @@ describe("Headers", () => {
       {}
     );
     expect(requestConfig.headers).toStrictEqual({
-      "User-Agent": expectedUa,
+      "User-Agent": expectedDefaultUa,
       "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
     });
   });
@@ -444,7 +472,7 @@ describe("Headers", () => {
       {}
     );
     expect(requestConfig.headers).toStrictEqual({
-      "User-Agent": expectedUa,
+      "User-Agent": expectedDefaultUa,
       "X-Cybozu-API-Token": `${API_TOKEN1},${API_TOKEN2}`,
     });
   });
@@ -462,7 +490,7 @@ describe("Headers", () => {
       {}
     );
     expect(requestConfig.headers).toStrictEqual({
-      "User-Agent": expectedUa,
+      "User-Agent": expectedDefaultUa,
       "X-Requested-With": "XMLHttpRequest",
     });
   });
@@ -483,7 +511,7 @@ describe("Headers", () => {
     );
     expect(requestConfig.headers).toStrictEqual({
       Authorization: `Bearer ${oAuthToken}`,
-      "User-Agent": expectedUa,
+      "User-Agent": expectedDefaultUa,
     });
   });
 
@@ -503,7 +531,7 @@ describe("Headers", () => {
     );
     expect(requestConfig.headers).toStrictEqual({
       Authorization: `Basic ${Base64.encode("user:password")}`,
-      "User-Agent": expectedUa,
+      "User-Agent": expectedDefaultUa,
       "X-Requested-With": "XMLHttpRequest",
     });
   });

@@ -1,5 +1,5 @@
 {
-  "revision": "19",
+  "revision": "29",
   "properties": {
     "recordNumber": {
       "type": "RECORD_NUMBER",
@@ -34,7 +34,7 @@
     "creator": {
       "type": "CREATOR",
       "code": "creator",
-      "label": "label",
+      "label": "creator",
       "noLabel": false
     },
     "Assignee": {
@@ -173,17 +173,21 @@
           "label": "sample1",
           "index": "0"
         },
+        "tab\ttab": {
+          "label": "tab\ttab",
+          "index": "4"
+        },
         "\"sample2\"": {
           "label": "\"sample2\"",
           "index": "1"
         },
+        "sample4,sample5": {
+          "label": "sample4,sample5",
+          "index": "3"
+        },
         "\"sample3\"": {
           "label": "\"sample3\"",
           "index": "2"
-        },
-        "sample4": {
-          "label": "sample4",
-          "index": "3"
         }
       },
       "defaultValue": []

@@ -1,10 +1,10 @@
 {
   "name": "@kintone/webpack-plugin-kintone-plugin",
-  "version": "4.0.21",
+  "version": "4.0.22",
   "description": "A webpack plugin to generate a plugin zip",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "start": "yarn build --watch",
@@ -45,14 +45,14 @@
     "adm-zip": "^0.5.5",
     "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
-    "webpack": "^5.35.1",
-    "webpack-cli": "4.6.0"
+    "webpack": "^5.37.0",
+    "webpack-cli": "4.7.0"
   },
   "peerDependencies": {
     "webpack": "^4.0.0 || ^5.0.0"
   },
   "dependencies": {
-    "@kintone/plugin-packer": "^4.0.5",
+    "@kintone/plugin-packer": "^4.0.6",
     "chokidar": "^3.5.1",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4"
