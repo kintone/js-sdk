@@ -37,8 +37,7 @@ describe("main", () => {
   });
   it("should throw error when an undefined argument is passed", () => {
     return checkRejectArg({
-      arg:
-        "import --base-url https://example.com --app 1 --file-path /your/file/path --dummy",
+      arg: "import --base-url https://example.com --app 1 --file-path /your/file/path --dummy",
       errorMessage: "Unknown argument: dummy",
     });
   });
