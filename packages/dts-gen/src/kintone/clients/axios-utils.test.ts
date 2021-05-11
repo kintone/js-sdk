@@ -14,7 +14,8 @@ describe("FormsClientImpl#constructor", () => {
         input,
         expectedInput: AxiosRequestConfig
     ) {
-        VisibleForTesting.newAxiosInstanceInternal = jest.fn();
+        VisibleForTesting.newAxiosInstanceInternal =
+            jest.fn();
         AxiosUtils.newAxiosInstance(input);
         expect(
             VisibleForTesting.newAxiosInstanceInternal

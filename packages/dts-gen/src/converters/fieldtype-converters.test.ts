@@ -91,10 +91,11 @@ describe("FileFieldTypeConverter", () => {
 
     test("selectFieldsTypesEquals returns lists of values which is selected if fieldType is same", () => {
         const type = VisibleForTesting.constants.FILE_TYPE;
-        const output = VisibleForTesting.selectFieldsTypesEquals(
-            type,
-            objectValues(input)
-        );
+        const output =
+            VisibleForTesting.selectFieldsTypesEquals(
+                type,
+                objectValues(input)
+            );
         const expected = [
             {
                 type: "FILE",
@@ -107,10 +108,11 @@ describe("FileFieldTypeConverter", () => {
     test("selectFieldsTypesIn returns list of values which is selected if fieldType was contained in condition.", () => {
         const types =
             VisibleForTesting.constants.STRING_LIST_TYPES;
-        const output = VisibleForTesting.selectFieldsTypesIn(
-            types,
-            objectValues(input)
-        );
+        const output =
+            VisibleForTesting.selectFieldsTypesIn(
+                types,
+                objectValues(input)
+            );
         const expected = [
             {
                 code: "checkbox",
@@ -132,9 +134,10 @@ describe("FileFieldTypeConverter", () => {
                 fields: input,
             },
         ] as SubTableFieldType[];
-        const output = VisibleForTesting.convertSubTableFields(
-            subTables
-        );
+        const output =
+            VisibleForTesting.convertSubTableFields(
+                subTables
+            );
         const expectedSimpleFields = [
             {
                 code: "singleLineText",
