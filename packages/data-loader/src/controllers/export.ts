@@ -58,14 +58,18 @@ const getFileInfos = (record: Record): FileInfo[] => {
       return [...acc, ...field.value];
     }
     if (field.type === "SUBTABLE") {
-      const fileInfos = Object.values(field.value.map((f) => f.value))
-        .map((f) => f.value)
-        .reduce<FileInfo[]>((a, f) => {
-          if (f.type === "FILE") {
-            return [...acc, ...f.value];
-          }
-          return acc;
-        }, []);
+      const rows = field.value;
+      const fileInfos = rows
+        .map((r) => {
+          const fieldsInRow = Object.values(r.value);
+          return fieldsInRow.reduce<FileInfo[]>((a, f) => {
+            if (f.type === "FILE") {
+              return [...a, ...f.value];
+            }
+            return a;
+          }, []);
+        })
+        .reduce((a, f) => [...a, ...f], []);
       return [...acc, ...fileInfos];
     }
     return acc;
