@@ -1,6 +1,9 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import {
+  KintoneRestAPIClient,
+  KintoneRecordField as Field,
+} from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
 import { KintoneRecordForResponse } from "../types";
@@ -58,22 +61,27 @@ const getFileInfos = (record: Record): FileInfo[] => {
       return [...acc, ...field.value];
     }
     if (field.type === "SUBTABLE") {
-      const rows = field.value;
-      const fileInfos = rows
-        .map((r) => {
-          const fieldsInRow = Object.values(r.value);
-          return fieldsInRow.reduce<FileInfo[]>((a, f) => {
-            if (f.type === "FILE") {
-              return [...a, ...f.value];
-            }
-            return a;
-          }, []);
-        })
-        .reduce((a, f) => [...a, ...f], []);
-      return [...acc, ...fileInfos];
+      const fileInfosInSubtable = getFileInfosInSubtable(field);
+      return [...acc, ...fileInfosInSubtable];
     }
     return acc;
   }, []);
+};
+
+const getFileInfosInSubtable = <
+  T extends { [fieldCode: string]: Field.InSubtable }
+>(
+  subtableField: Field.Subtable<T>
+): FileInfo[] => {
+  const rows = subtableField.value;
+  return rows
+    .map((row) => {
+      const fieldsInRow = Object.values(row.value);
+      return fieldsInRow
+        .filter((field): field is Field.File => field.type === "FILE")
+        .reduce<FileInfo[]>((acc, field) => [...acc, ...field.value], []);
+    })
+    .reduce((acc, fileInfos) => [...acc, ...fileInfos], []);
 };
 
 const downloadAttachments = async (
