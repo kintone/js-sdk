@@ -1,6 +1,9 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import {
+  KintoneRestAPIClient,
+  KintoneRecordField as Field,
+} from "@kintone/rest-api-client";
 import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
 import { KintoneRecordForResponse } from "../types";
@@ -52,18 +55,33 @@ export async function exportRecords(
   return records;
 }
 
-const getFileInfos = (record: Record) => {
-  // console.debug(`>>>record ${recordId}`);
-  const fileInfos: FileInfo[] = [];
-  Object.values<{ type: string; value: unknown }>(record).forEach((field) => {
+const getFileInfos = (record: Record): FileInfo[] => {
+  return Object.values(record).reduce<FileInfo[]>((acc, field) => {
     if (field.type === "FILE") {
-      // @ts-expect-error field.value should be FileInformation[] type.
-      field.value.forEach((fileInfo) => {
-        fileInfos.push(fileInfo);
-      });
+      return [...acc, ...field.value];
     }
-  });
-  return fileInfos;
+    if (field.type === "SUBTABLE") {
+      const fileInfosInSubtable = getFileInfosInSubtable(field);
+      return [...acc, ...fileInfosInSubtable];
+    }
+    return acc;
+  }, []);
+};
+
+const getFileInfosInSubtable = <
+  T extends { [fieldCode: string]: Field.InSubtable }
+>(
+  subtableField: Field.Subtable<T>
+): FileInfo[] => {
+  const rows = subtableField.value;
+  return rows
+    .map((row) => {
+      const fieldsInRow = Object.values(row.value);
+      return fieldsInRow
+        .filter((field): field is Field.File => field.type === "FILE")
+        .reduce<FileInfo[]>((acc, field) => [...acc, ...field.value], []);
+    })
+    .reduce((acc, fileInfos) => [...acc, ...fileInfos], []);
 };
 
 const downloadAttachments = async (
