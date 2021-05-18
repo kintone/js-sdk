@@ -153,6 +153,9 @@ declare namespace kintone {
             namespace record {
                 function getId(): number | null;
                 function get(): any | null;
+                function getFieldElement(
+                    fieldCode: string
+                ): HTMLElement | null;
                 function set(record: any): void;
                 function getSpaceElement(
                     id: string

@@ -114,6 +114,7 @@ function assertKintoneBuiltinFunctions() {
     const mr = kintone.mobile.app.record;
     assertFunction(mr.get);
     assertFunction(mr.getId);
+    assertFunction(mr.getFieldElement);
     assertFunction(mr.getSpaceElement);
     assertFunction(mr.set);
     assertFunction(mr.setFieldShown);
