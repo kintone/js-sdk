@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.0.0...@kintone/dts-gen@4.1.0) (2021-05-18)
+
+
+### Features
+
+* **dts-gen:** add type definition of `kintone.$PLUGIN_ID` ([#850](https://github.com/kintone/js-sdk/issues/850)) ([6fb78a4](https://github.com/kintone/js-sdk/commit/6fb78a468ad7ad0f08ccc3dbbc1a4a546867fe2e))
+* **dts-gen:** Support `kintone.mobile.app.record.getFieldElement()` ([#847](https://github.com/kintone/js-sdk/issues/847)) ([0c80eed](https://github.com/kintone/js-sdk/commit/0c80eedd4078a48066b0523e8bbfc49ed2ff4553))
+
+
+
+
+
 # [4.0.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.12...@kintone/dts-gen@4.0.0) (2021-05-11)
 
 
