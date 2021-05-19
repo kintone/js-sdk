@@ -103,6 +103,7 @@ function assertKintoneBuiltinFunctions() {
 
     // assert function exists in kintone.mobile.app
     const ma = kintone.mobile.app;
+    assertFunction(ma.getFieldElements);
     assertFunction(ma.getHeaderSpaceElement);
     assertFunction(ma.getId);
     assertFunction(ma.getLookupTargetAppId);
