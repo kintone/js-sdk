@@ -71,6 +71,10 @@ export const builder = (args: yargs.Argv) =>
       describe: "The query string",
       type: "string",
     })
+    .option("order-by", {
+      description: "The sort order as a query",
+      type: "string",
+    })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",
       type: "string",
@@ -102,6 +106,7 @@ export const handler = (args: Args) => {
     attachmentDir: args["attachment-dir"],
     format: args.format,
     query: args.query,
+    orderBy: args["order-by"],
     pfxFilePath: args["pfx-file-path"],
     pfxFilePassword: args["pfx-file-password"],
   });

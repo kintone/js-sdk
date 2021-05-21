@@ -12,6 +12,7 @@ export type Options = {
   attachmentDir?: string;
   format?: ExportFileFormat;
   query?: string;
+  orderBy?: string;
 };
 
 export type ExportFileFormat = "json" | "csv";
@@ -35,10 +36,11 @@ export async function exportRecords(
   apiClient: KintoneRestAPIClient,
   options: Options
 ) {
-  const { app, attachmentDir, query } = options;
+  const { app, attachmentDir, query, orderBy } = options;
   const records = await apiClient.record.getAllRecords({
     app,
     condition: query,
+    orderBy,
   });
 
   // TODO: filter fields
