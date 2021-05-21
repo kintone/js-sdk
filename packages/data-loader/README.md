@@ -118,7 +118,7 @@ Options:
       --attachment-dir       Attachment file directory                  [string]
       --format               Output format. "json" or "csv"
                                       [choices: "json", "csv"] [default: "json"]
-  -q, --query                The query string                           [string]
+  -c, --condition            The query string                           [string]
       --order-by             The sort order as a query                  [string]
       --pfx-file-path        The path to client certificate file        [string]
       --pfx-file-password    The password of client certificate file    [string]
