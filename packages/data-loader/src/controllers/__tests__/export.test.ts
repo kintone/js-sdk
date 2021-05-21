@@ -24,19 +24,19 @@ describe("export", () => {
     const getAllRecordsMockFn = jest.fn().mockResolvedValue([{}]);
     apiClient.record.getAllRecords = getAllRecordsMockFn;
     const APP_ID = 1;
-    const QUERY = 'Customer like "foo"';
+    const CONDITION = 'Customer like "foo"';
     const ORDER_BY = "Customer desc";
 
     await exportRecords(apiClient, {
       app: APP_ID,
       attachmentDir: "",
-      query: QUERY,
+      condition: CONDITION,
       orderBy: ORDER_BY,
     });
 
     expect(getAllRecordsMockFn.mock.calls[0][0]).toStrictEqual({
       app: APP_ID,
-      condition: QUERY,
+      condition: CONDITION,
       orderBy: ORDER_BY,
     });
   });
