@@ -14,6 +14,7 @@ export const builder = (args: yargs.Argv) =>
       default: process.env.KINTONE_BASE_URL,
       defaultDescription: "KINTONE_BASE_URL",
       type: "string",
+      demandOption: true,
     })
     .option("username", {
       alias: "u",
@@ -50,6 +51,7 @@ export const builder = (args: yargs.Argv) =>
     .option("app", {
       describe: "The ID of the app",
       type: "string",
+      demandOption: true,
     })
     .option("guest-space-id", {
       describe: "The ID of guest space",
@@ -78,12 +80,7 @@ export const builder = (args: yargs.Argv) =>
     .option("pfx-file-password", {
       describe: "The password of client certificate file",
       type: "string",
-    })
-    // NOTE: Since yargs doesn't detect the type correctly by adding `demandOption: true` in `option()`,
-    // (inferred type always contains `| undefined`)
-    // related issue: https://github.com/yargs/yargs/issues/1928
-    // we declare the required params later as a workaround.
-    .demandOption(["base-url", "app"]);
+    });
 
 type Args = yargs.Arguments<
   ReturnType<typeof builder> extends yargs.Argv<infer U> ? U : never
