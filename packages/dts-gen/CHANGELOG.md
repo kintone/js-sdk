@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.1.0...@kintone/dts-gen@4.2.0) (2021-05-25)
+
+
+### Features
+
+* **dts-gen:** Support `kintone.mobile.app.getFieldElements()` ([#846](https://github.com/kintone/js-sdk/issues/846)) ([7ab798e](https://github.com/kintone/js-sdk/commit/7ab798e659d253f843b3b2459f893cc59354c7f0))
+* **dts-gen:** Support Get Space Element API ([#849](https://github.com/kintone/js-sdk/issues/849)) ([f5bdbe0](https://github.com/kintone/js-sdk/commit/f5bdbe0a3d82540842fbce7964aed9d26d5e0f3e))
+
+
+
+
+
 # [4.1.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.0.0...@kintone/dts-gen@4.1.0) (2021-05-18)
 
 
