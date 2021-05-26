@@ -68,9 +68,13 @@ export const builder = (args: yargs.Argv) =>
       default: "json" as ExportFileFormat,
       choices: formats,
     })
-    .option("query", {
-      alias: "q",
+    .option("condition", {
+      alias: "c",
       describe: "The query string",
+      type: "string",
+    })
+    .option("order-by", {
+      description: "The sort order as a query",
       type: "string",
     })
     .option("pfx-file-path", {
@@ -98,7 +102,8 @@ export const handler = (args: Args) => {
     guestSpaceId: args["guest-space-id"],
     attachmentDir: args["attachment-dir"],
     format: args.format,
-    query: args.query,
+    condition: args.condition,
+    orderBy: args["order-by"],
     pfxFilePath: args["pfx-file-path"],
     pfxFilePassword: args["pfx-file-password"],
   });
