@@ -1,13 +1,36 @@
 "use strict";
 
-import Ajv, { ErrorObject } from "ajv";
+import Ajv, { ErrorObject, AnySchemaObject } from "ajv";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
 
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
-  errors: null | ErrorObject[];
+  errors: null | ValidateErrorObject[];
+};
+
+type ValidateErrorObject<
+  K extends string = string,
+  P = Record<string, any>,
+  S = unknown
+> = {
+  keyword: K;
+  dataPath: string;
+  instancePath?: string;
+  schemaPath: string;
+  params: P;
+  propertyName?: string;
+  message?: string;
+  schema?: S;
+  parentSchema?: AnySchemaObject;
+  data?: unknown;
+};
+
+type ValidateOptions = {
+  passthroughErrorObject?: boolean;
+  maxFileSize?: (...args: any) => boolean;
+  relativePath?: (...args: any) => boolean;
 };
 
 // https://ajv.js.org/docs/keywords.html#define-keyword-with-validation-function
@@ -24,14 +47,14 @@ interface SchemaValidateFunction {
  */
 export = function (
   json: Record<string, any>,
-  options: { [s: string]: (...args: any) => boolean } = {}
+  options?: ValidateOptions
 ): ValidateResult {
   let relativePath = (...args: any) => true;
   let maxFileSize = (...args: any) => true;
-  if (typeof options.relativePath === "function") {
+  if (typeof options?.relativePath === "function") {
     relativePath = options.relativePath;
   }
-  if (typeof options.maxFileSize === "function") {
+  if (typeof options?.maxFileSize === "function") {
     maxFileSize = options.maxFileSize;
   }
 
@@ -73,7 +96,10 @@ export = function (
 
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);
-  return { valid, errors: transformErrors(validate.errors) };
+  return {
+    valid,
+    errors: transformErrors(validate.errors, options?.passthroughErrorObject),
+  };
 };
 
 /**
@@ -81,11 +107,18 @@ export = function (
  * @return {null|Array<Object>} shallow copy of the input or null
  */
 function transformErrors(
-  errors: undefined | null | ErrorObject[]
-): null | ErrorObject[] {
+  errors: undefined | null | ErrorObject[],
+  passthroughErrorObject: boolean = false
+): null | ErrorObject[] | ValidateErrorObject[] {
   if (!errors) {
     return null;
   }
-  // shallow copy
-  return errors.slice();
+
+  if (passthroughErrorObject) {
+    // shallow copy
+    return errors.slice();
+  }
+  return errors.map((error: ErrorObject) => {
+    return error;
+  });
 }
