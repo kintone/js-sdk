@@ -51,33 +51,32 @@ export async function upload(
     if (!updateBody) {
       console.log(m("M_StartUploading"));
       try {
-        const [desktopJS, desktopCSS, mobileJS, mobileCSS] = await Promise.all(
-          [
-            manifest.desktop.js,
-            manifest.desktop.css,
-            manifest.mobile.js,
-            manifest.mobile.css,
-          ].map((files) =>
-            Promise.all(
-              files.map((file: string) =>
-                kintoneApiClient.prepareCustomizeFile(file).then((result) => {
-                  if (result.type === "FILE") {
-                    console.log(`${file} ` + m("M_Uploaded"));
-                  }
-                  return result;
-                })
-              )
-            )
-          )
-        );
+        const uploadFilesResult = [];
+        for (const files of [
+          manifest.desktop.js,
+          manifest.desktop.css,
+          manifest.mobile.js,
+          manifest.mobile.css,
+        ]) {
+          const results = [];
+          for (const file of files) {
+            const result = await kintoneApiClient.prepareCustomizeFile(file);
+            if (result.type === "FILE") {
+              console.log(`${file} ` + m("M_Uploaded"));
+            }
+            results.push(result);
+          }
+          uploadFilesResult.push(results);
+        }
+
         updateBody = Object.assign({}, manifest, {
           desktop: {
-            js: desktopJS,
-            css: desktopCSS,
+            js: uploadFilesResult[0],
+            css: uploadFilesResult[1],
           },
           mobile: {
-            js: mobileJS,
-            css: mobileCSS,
+            js: uploadFilesResult[2],
+            css: uploadFilesResult[3],
           },
         });
         console.log(m("M_FileUploaded"));
