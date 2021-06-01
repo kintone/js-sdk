@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.4.2...@kintone/data-loader@0.5.0) (2021-06-01)
+
+
+### Features
+
+* **data-loader:** add `--order-by` of export option (BREAKING CHANGE) ([#907](https://github.com/kintone/js-sdk/issues/907)) ([0bf641a](https://github.com/kintone/js-sdk/commit/0bf641a5cbddb47af18fc7abcf7d60e68b8eec2e))
+
+
+
+
+
 ## [0.4.2](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.4.1...@kintone/data-loader@0.4.2) (2021-05-25)
 
 
