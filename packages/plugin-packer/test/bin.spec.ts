@@ -70,7 +70,11 @@ describe("bin", () => {
 });
 
 function exec(...args: string[]) {
-  const binPath = path.resolve(__dirname, "..", pkg.bin["kintone-plugin-packer"]);
+  const binPath = path.resolve(
+    __dirname,
+    "..",
+    pkg.bin["kintone-plugin-packer"]
+  );
   const env = Object.assign({}, process.env, { NODE_ENV: "test" });
   return execa(binPath, args, { env });
 }

@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 import meow from "meow";
-import path from "path";
-import {createRequire} from "module";
+import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const packer = require("../dist/cli");
-
 
 const USAGE = "$ kintone-plugin-packer [options] PLUGIN_DIR";
 
