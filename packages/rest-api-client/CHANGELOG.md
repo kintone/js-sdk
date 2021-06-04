@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.3...@kintone/rest-api-client@2.0.4) (2021-06-04)
+
+
+### Bug Fixes
+
+* set maxBodyLength: Infinity to avoid "ERR_FR_MAX_BODY_LENGTH_EXCEEDED" error ([#918](https://github.com/kintone/js-sdk/issues/918)) ([712f3f8](https://github.com/kintone/js-sdk/commit/712f3f82d09a04ea18846b4382a36840293d5bf1))
+
+
+
+
+
 ## [2.0.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.2...@kintone/rest-api-client@2.0.3) (2021-06-01)
 
 
