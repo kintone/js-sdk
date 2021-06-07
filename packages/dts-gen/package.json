@@ -38,7 +38,7 @@
     "@types/lodash": "^4.14.170",
     "ts-loader": "^8.3.0",
     "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.1"
+    "webpack-cli": "^4.7.2"
   },
   "bin": {
     "kintone-dts-gen": "dist/index.js"
