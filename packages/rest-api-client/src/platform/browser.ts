@@ -44,9 +44,10 @@ export const buildFormDataValue = (data: unknown) => {
 };
 
 export const buildBaseUrl = (baseUrl?: string) => {
-  // We assume that location always exists in a browser environment
+  if (baseUrl) return baseUrl;
+
   const { host, protocol } = location!;
-  return baseUrl ?? `${protocol}//${host}`;
+  return `${protocol}//${host}`;
 };
 
 export const getVersion = () => {
