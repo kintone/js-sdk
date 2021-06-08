@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.4...@kintone/rest-api-client@2.0.5) (2021-06-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.14.0 ([#932](https://github.com/kintone/js-sdk/issues/932)) ([5dd1899](https://github.com/kintone/js-sdk/commit/5dd1899f86f84204f32f33f7f54c31b8c95511f8))
+* **deps:** update dependency prettier to ^2.3.1 ([#931](https://github.com/kintone/js-sdk/issues/931)) ([0eca21d](https://github.com/kintone/js-sdk/commit/0eca21d2a80ad68468fc57443d98a571713d4157))
+* **rest-api-client:** `baseUrl` is not used when `location` is undefined ([#855](https://github.com/kintone/js-sdk/issues/855)) ([b892520](https://github.com/kintone/js-sdk/commit/b89252029bbc947d395b26c8a61815b0f5b12c7c))
+
+
+
+
+
 ## [2.0.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.3...@kintone/rest-api-client@2.0.4) (2021-06-04)
 
 
