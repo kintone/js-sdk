@@ -12,9 +12,11 @@
       "oneOf": [
         {
           "type": "integer",
-          "minimum": 1
+          "minimum": 0
         },
-        { "type": "string" }
+        { "type": "string",
+          "pattern": "^(0|[1-9]\\d*)(?:\\.(0|[1-9]\\d*))?(?:\\.(0|[1-9]\\d*))?$"
+        }
       ]
     },
     "type": {
