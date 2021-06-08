@@ -69,6 +69,89 @@ describe("validator", () => {
     });
   });
 
+  it.each([
+    [
+      "0.1.2",
+      {
+        valid: true,
+        errors: null,
+      },
+    ],
+    [
+      "0.1",
+      {
+        valid: true,
+        errors: null,
+      },
+    ],
+    [
+      "0",
+      {
+        valid: true,
+        errors: null,
+      },
+    ],
+    [
+      0.1,
+      {
+        valid: false,
+        errors: [
+          {
+            dataPath: "/version",
+            keyword: "type",
+            message: "should be integer",
+            params: { type: "integer" },
+            schemaPath: "#/properties/version/oneOf/0/type",
+          },
+          {
+            dataPath: "/version",
+            keyword: "type",
+            message: "should be string",
+            params: { type: "string" },
+            schemaPath: "#/properties/version/oneOf/1/type",
+          },
+          {
+            dataPath: "/version",
+            keyword: "oneOf",
+            message: "should match exactly one schema in oneOf",
+            params: { passingSchemas: null },
+            schemaPath: "#/properties/version/oneOf",
+          },
+        ],
+      },
+    ],
+    [
+      0,
+      {
+        valid: true,
+        errors: null,
+      },
+    ],
+  ])("version string: %s", (version, expected) => {
+    assert.deepStrictEqual(validator(json({ version })), expected);
+  });
+
+  it("valid version string 0.1.2", () => {
+    assert.deepStrictEqual(validator(json({ version: "0.1.2" })), {
+      valid: true,
+      errors: null,
+    });
+  });
+
+  it("valid version string: omit minor version", () => {
+    assert.deepStrictEqual(validator(json({ version: "0.1" })), {
+      valid: true,
+      errors: null,
+    });
+  });
+
+  it("valid version string: omit patch version", () => {
+    assert.deepStrictEqual(validator(json({ version: "0" })), {
+      valid: true,
+      errors: null,
+    });
+  });
+
   it("invalid enum value", () => {
     assert.deepStrictEqual(validator(json({ type: "FOO" })), {
       valid: false,
