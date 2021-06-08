@@ -9,8 +9,13 @@
       "minimum": 1
     },
     "version": {
-      "type": "integer",
-      "minimum": 1
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        { "type": "string" }
+      ]
     },
     "type": {
       "type": "string",
