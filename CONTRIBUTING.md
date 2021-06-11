@@ -2,7 +2,18 @@
 
 ## For Contributors
 
-Thank you for your contribution!
+Contributions are always welcome!
+If you have discovered a bug or have a feature request, [please create an issue on GitHub](https://github.com/kintone/js-sdk/issues/new/choose).
+Pull requests are also welcome when you find trivial bugs or typos.
+
+We use English for all commit messages, code comments, issues, pull requests.
+For Japanese speakers, we have another repository: https://github.com/kintone/js-sdk-ja.
+Please file an issue there.
+
+(Translated in Japanese)
+本リポジトリではコミットメッセージやコードコメント、issues、pull requests において英語を使用しています。
+日本語話者向けに専用のリポジトリも用意しています: https://github.com/kintone/js-sdk-ja
+こちらに issue をご登録ください。
 
 ### Setup
 
