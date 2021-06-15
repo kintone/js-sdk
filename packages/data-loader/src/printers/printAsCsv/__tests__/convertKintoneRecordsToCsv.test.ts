@@ -5,6 +5,8 @@ const records: KintoneRecordForResponse[] = require("./fixtures/input.json");
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
 const subtableRecords: KintoneRecordForResponse[] = require("./fixtures/subtable_input.json");
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
+const unsupportedRecords: KintoneRecordForResponse[] = require("./fixtures/unsupported_input.json");
+const unsupportedFieldsJson: FieldsJson = require("./fixtures/unsupported_fields.json");
 
 describe("convertKintoneRecordsToCsv", () => {
   it("should convert kintone records to csv string correctly", () => {
@@ -36,6 +38,18 @@ sample4"
       convertKintoneRecordsToCsv({
         records: subtableRecords,
         fieldProperties: subtableFieldsJson.properties,
+      })
+    ).toBe(expectedCsv);
+  });
+  it("should convert kintone records to csv string correctly when unsupported fields included", () => {
+    const expectedCsv = `"*","recordNumber","subTable","subTableText","singleLineText"
+*,"9","537306","text_line1","""single line text"""
+,"9","537307","text_line2","""single line text"""
+`;
+    expect(
+      convertKintoneRecordsToCsv({
+        records: unsupportedRecords,
+        fieldProperties: unsupportedFieldsJson.properties,
       })
     ).toBe(expectedCsv);
   });
