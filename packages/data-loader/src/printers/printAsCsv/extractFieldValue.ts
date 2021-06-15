@@ -27,6 +27,10 @@ export const extractFieldValue = (
       return encloseInDoubleQuotes(
         escapeDoubleQuotes(field.value.join(LINE_BREAK))
       );
+    case "FILE":
+      return encloseInDoubleQuotes(
+        field.value.map((fileInformation) => fileInformation.name).join()
+      );
     case "SUBTABLE":
       return field.value.map((subtableField) => ({
         id: encloseInDoubleQuotes(subtableField.id),
