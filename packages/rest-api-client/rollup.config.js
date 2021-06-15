@@ -1,3 +1,4 @@
+import { defineConfig } from "rollup";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
@@ -13,7 +14,7 @@ const extensions = [".ts", ".js"];
 
 const isProd = process.env.BUILD === "production";
 
-export default {
+export default defineConfig({
   input: "./src/index.browser.ts",
   output: {
     extend: true,
@@ -64,4 +65,4 @@ export default {
     isProd && terser(),
     ecmaVersionValidator(),
   ],
-};
+});
