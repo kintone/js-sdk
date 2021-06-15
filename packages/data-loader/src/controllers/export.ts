@@ -109,7 +109,6 @@ function generateUniqueLocalFileName(
 ) {
   let localFileName = fileName;
   for (let i = 1; localFileNameSet.has(localFileName); i++) {
-    console.log(localFileName);
     localFileName =
       path.basename(fileName, path.extname(fileName)) +
       "-" +
