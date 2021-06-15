@@ -98,6 +98,13 @@ describe("export", () => {
       },
     ];
 
+    const attachmentMetaDataList = [
+      {
+        attachment: ["test.txt"],
+      },
+      {},
+    ];
+
     const tempDir = await fs.mkdtemp(
       path.join(os.tmpdir(), "kintone-data-loader-")
     );
@@ -109,14 +116,20 @@ describe("export", () => {
       attachmentDir: tempDir,
     });
     expect(actual).toStrictEqual(records);
-    const downloadFile = await fs.readFile(
+    const attachmentsJson = await fs.readFile(
+      path.join(tempDir, "attachments.json")
+    );
+    expect(JSON.parse(attachmentsJson.toString())).toStrictEqual(
+      attachmentMetaDataList
+    );
+    const downloadedFile = await fs.readFile(
       path.join(
         tempDir,
         recordWithAttachment.$id.value,
         recordWithAttachment.attachment.value[0].name
       )
     );
-    expect(downloadFile.toString()).toBe(testFileData);
+    expect(downloadedFile.toString()).toBe(testFileData);
   });
   it("can download files of subtable to a specified directory", async () => {
     const recordWithAttachment = {
@@ -137,7 +150,7 @@ describe("export", () => {
                 type: "SINGLE_LINE_TEXT",
                 value: "value1",
               },
-              attachment: {
+              attachmentInSubtable: {
                 type: "FILE",
                 value: [
                   {
@@ -167,6 +180,13 @@ describe("export", () => {
       },
     ];
 
+    const attachmentMetaDataList = [
+      {
+        subTable: [{ attachmentInSubtable: ["test.txt"] }],
+      },
+      {},
+    ];
+
     const tempDir = await fs.mkdtemp(
       path.join(os.tmpdir(), "kintone-data-loader-")
     );
@@ -178,14 +198,21 @@ describe("export", () => {
       attachmentDir: tempDir,
     });
     expect(actual).toStrictEqual(records);
-    const downloadFile = await fs.readFile(
+    const attachmentsJson = await fs.readFile(
+      path.join(tempDir, "attachments.json")
+    );
+    expect(JSON.parse(attachmentsJson.toString())).toStrictEqual(
+      attachmentMetaDataList
+    );
+    const downloadedFile = await fs.readFile(
       path.join(
         tempDir,
         recordWithAttachment.$id.value,
-        recordWithAttachment.subTable.value[0].value.attachment.value[0].name
+        recordWithAttachment.subTable.value[0].value.attachmentInSubtable
+          .value[0].name
       )
     );
-    expect(downloadFile.toString()).toBe(testFileData);
+    expect(downloadedFile.toString()).toBe(testFileData);
   });
   it("should throw error when API response is error", () => {
     const error = new Error("error for test");
