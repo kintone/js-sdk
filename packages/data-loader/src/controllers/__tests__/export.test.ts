@@ -214,6 +214,137 @@ describe("export", () => {
     );
     expect(downloadedFile.toString()).toBe(testFileData);
   });
+  it("can download files with duplicate file names to a specified directory", async () => {
+    const recordWithAttachment = {
+      $id: {
+        value: "2",
+      },
+      fieldCode: {
+        type: "SINGLE_LINE_TEXT",
+        value: "value1",
+      },
+      attachment: {
+        type: "FILE",
+        value: [
+          {
+            contentType: "text/plain",
+            fileKey: "test-file-key",
+            name: "test.txt",
+          },
+          {
+            contentType: "text/plain",
+            fileKey: "test-file-key",
+            name: "test.txt",
+          },
+        ],
+      },
+      attachment2: {
+        type: "FILE",
+        value: [
+          {
+            contentType: "text/plain",
+            fileKey: "test-file-key",
+            name: "test.txt",
+          },
+          {
+            contentType: "text/plain",
+            fileKey: "test-file-key",
+            name: "test.txt",
+          },
+        ],
+      },
+      subTable: {
+        type: "SUBTABLE",
+        value: [
+          {
+            id: "4",
+            value: {
+              singleLineText: {
+                type: "SINGLE_LINE_TEXT",
+                value: "value1",
+              },
+              attachmentInSubtable: {
+                type: "FILE",
+                value: [
+                  {
+                    contentType: "text/plain",
+                    fileKey: "test-file-key",
+                    name: "test.txt",
+                  },
+                  {
+                    contentType: "text/plain",
+                    fileKey: "test-file-key",
+                    name: "test.txt",
+                  },
+                ],
+              },
+              attachmentInSubtable2: {
+                type: "FILE",
+                value: [
+                  {
+                    contentType: "text/plain",
+                    fileKey: "test-file-key",
+                    name: "test.txt",
+                  },
+                  {
+                    contentType: "text/plain",
+                    fileKey: "test-file-key",
+                    name: "test.txt",
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    };
+    const testFileData = "test data";
+
+    const records = [
+      recordWithAttachment,
+      {
+        $id: {
+          value: "3",
+        },
+        fieldCode: {
+          type: "SINGLE_LINE_TEXT",
+          value: "value1",
+        },
+      },
+    ];
+
+    const attachmentMetaDataList = [
+      {
+        attachment: ["test.txt", "test-1.txt"],
+        attachment2: ["test-2.txt", "test-3.txt"],
+        subTable: [
+          {
+            attachmentInSubtable: ["test-4.txt", "test-5.txt"],
+            attachmentInSubtable2: ["test-6.txt", "test-7.txt"],
+          },
+        ],
+      },
+      {},
+    ];
+
+    const tempDir = await fs.mkdtemp(
+      path.join(os.tmpdir(), "kintone-data-loader-")
+    );
+
+    apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
+    apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
+    const actual = await exportRecords(apiClient, {
+      app: "1",
+      attachmentDir: tempDir,
+    });
+    expect(actual).toStrictEqual(records);
+    const attachmentsJson = await fs.readFile(
+      path.join(tempDir, "attachments.json")
+    );
+    expect(JSON.parse(attachmentsJson.toString())).toStrictEqual(
+      attachmentMetaDataList
+    );
+  });
   it("should throw error when API response is error", () => {
     const error = new Error("error for test");
     apiClient.record.getAllRecords = jest.fn().mockRejectedValueOnce(error);
