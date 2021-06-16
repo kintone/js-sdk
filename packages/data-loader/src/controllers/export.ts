@@ -66,14 +66,11 @@ const generateAttachmentMetadata = (record: Record): AttachmentMetadata => {
         acc[fieldCode] = field.value.map((fileInformation) =>
           generateUniqueLocalFileName(fileInformation.name, localFileNameSet)
         );
-        return acc;
-      }
-      if (field.type === "SUBTABLE") {
+      } else if (field.type === "SUBTABLE") {
         acc[fieldCode] = generateAttachmentMetadataInSubtable(
           field,
           localFileNameSet
         );
-        return acc;
       }
       return acc;
     },
@@ -94,7 +91,6 @@ const generateAttachmentMetadataInSubtable = <
           acc[fieldCode] = field.value.map((fileInformation) =>
             generateUniqueLocalFileName(fileInformation.name, localFileNameSet)
           );
-          return acc;
         }
         return acc;
       },
@@ -126,20 +122,19 @@ const getFileInfos = (
   return Object.entries(record).reduce<FileInfo[]>(
     (acc, [fieldCode, field]) => {
       if (field.type === "FILE") {
-        const fileInfos = field.value.map((fileInformation, index) => {
-          return {
+        const fileInfos = field.value.map(
+          (fileInformation, index): FileInfo => ({
             fileKey: fileInformation.fileKey,
             filePath: attachmentMetadata[fieldCode][index] as string,
-          };
-        });
-        return acc.concat(fileInfos);
-      }
-      if (field.type === "SUBTABLE") {
+          })
+        );
+        acc.push(...fileInfos);
+      } else if (field.type === "SUBTABLE") {
         const fileInfosInSubtable = getFileInfosInSubtable(
           field,
           attachmentMetadata[fieldCode] as SubtableField
         );
-        return acc.concat(fileInfosInSubtable);
+        acc.push(...fileInfosInSubtable);
       }
       return acc;
     },
@@ -159,14 +154,11 @@ const getFileInfosInSubtable = <
       const fieldsInRow = Object.entries(row.value);
       return fieldsInRow.reduce<FileInfo[]>((acc, [fieldCode, field]) => {
         if (field.type === "FILE") {
-          const fileInfos = field.value.map((fileInformation, index) => {
-            return {
-              fileKey: fileInformation.fileKey,
-              filePath:
-                attachmentMetadataInSubtable[rowIndex][fieldCode][index],
-            };
-          });
-          return acc.concat(fileInfos);
+          const fileInfos = field.value.map((fileInformation, index) => ({
+            fileKey: fileInformation.fileKey,
+            filePath: attachmentMetadataInSubtable[rowIndex][fieldCode][index],
+          }));
+          acc.push(...fileInfos);
         }
         return acc;
       }, []);
