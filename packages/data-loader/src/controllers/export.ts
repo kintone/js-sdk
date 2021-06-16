@@ -9,7 +9,7 @@ import { buildRestAPIClient, RestAPIClientOptions } from "../api";
 import { KintoneRecordForResponse } from "../types";
 import { printAsJson } from "../printers/printAsJson";
 import { printAsCsv } from "../printers/printAsCsv";
-import { AttachmentMetadata, SubTableField, SubTableRow } from "./attachments";
+import { AttachmentMetadata, SubtableField, SubtableRow } from "./attachments";
 
 export type Options = {
   app: AppID;
@@ -88,7 +88,7 @@ const generateAttachmentMetadataInSubtable = <
   localFileNameSet: Set<string>
 ) => {
   return subtableField.value.map((row) => {
-    return Object.entries(row.value).reduce<SubTableRow>(
+    return Object.entries(row.value).reduce<SubtableRow>(
       (acc, [fieldCode, field]) => {
         if (field.type === "FILE") {
           acc[fieldCode] = field.value.map((fileInformation) =>
@@ -137,7 +137,7 @@ const getFileInfos = (
       if (field.type === "SUBTABLE") {
         const fileInfosInSubtable = getFileInfosInSubtable(
           field,
-          attachmentMetadata[fieldCode] as SubTableField
+          attachmentMetadata[fieldCode] as SubtableField
         );
         return acc.concat(fileInfosInSubtable);
       }
@@ -151,7 +151,7 @@ const getFileInfosInSubtable = <
   T extends { [field: string]: Field.InSubtable }
 >(
   subtableField: Field.Subtable<T>,
-  attachmentMetadataInSubtable: SubTableField
+  attachmentMetadataInSubtable: SubtableField
 ): FileInfo[] => {
   const rows = subtableField.value;
   return rows

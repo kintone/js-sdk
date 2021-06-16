@@ -4,12 +4,12 @@ type Record = {
   [fieldCode: string]: Field;
 };
 
-type Field = FileField | SubTableField;
+type Field = FileField | SubtableField;
 
 type FileField = string[];
 
-export type SubTableField = SubTableRow[];
+export type SubtableField = SubtableRow[];
 
-export type SubTableRow = {
+export type SubtableRow = {
   [fieldCode: string]: FileField;
 };

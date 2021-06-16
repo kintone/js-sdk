@@ -140,7 +140,7 @@ describe("export", () => {
         type: "SINGLE_LINE_TEXT",
         value: "value1",
       },
-      subTable: {
+      subtable: {
         type: "SUBTABLE",
         value: [
           {
@@ -182,7 +182,7 @@ describe("export", () => {
 
     const attachmentMetadataList = [
       {
-        subTable: [{ attachmentInSubtable: ["test.txt"] }],
+        subtable: [{ attachmentInSubtable: ["test.txt"] }],
       },
       {},
     ];
@@ -208,7 +208,7 @@ describe("export", () => {
       path.join(
         tempDir,
         recordWithAttachment.$id.value,
-        recordWithAttachment.subTable.value[0].value.attachmentInSubtable
+        recordWithAttachment.subtable.value[0].value.attachmentInSubtable
           .value[0].name
       )
     );
@@ -253,7 +253,7 @@ describe("export", () => {
           },
         ],
       },
-      subTable: {
+      subtable: {
         type: "SUBTABLE",
         value: [
           {
@@ -317,7 +317,7 @@ describe("export", () => {
       {
         attachment: ["test.txt", "test-1.txt"],
         attachment2: ["test-2.txt", "test-3.txt"],
-        subTable: [
+        subtable: [
           {
             attachmentInSubtable: ["test-4.txt", "test-5.txt"],
             attachmentInSubtable2: ["test-6.txt", "test-7.txt"],
