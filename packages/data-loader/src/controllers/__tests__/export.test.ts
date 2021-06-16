@@ -98,7 +98,7 @@ describe("export", () => {
       },
     ];
 
-    const attachmentMetaDataList = [
+    const attachmentMetadataList = [
       {
         attachment: ["test.txt"],
       },
@@ -120,7 +120,7 @@ describe("export", () => {
       path.join(tempDir, "attachments.json")
     );
     expect(JSON.parse(attachmentsJson.toString())).toStrictEqual(
-      attachmentMetaDataList
+      attachmentMetadataList
     );
     const downloadedFile = await fs.readFile(
       path.join(
@@ -180,7 +180,7 @@ describe("export", () => {
       },
     ];
 
-    const attachmentMetaDataList = [
+    const attachmentMetadataList = [
       {
         subTable: [{ attachmentInSubtable: ["test.txt"] }],
       },
@@ -202,7 +202,7 @@ describe("export", () => {
       path.join(tempDir, "attachments.json")
     );
     expect(JSON.parse(attachmentsJson.toString())).toStrictEqual(
-      attachmentMetaDataList
+      attachmentMetadataList
     );
     const downloadedFile = await fs.readFile(
       path.join(
@@ -313,7 +313,7 @@ describe("export", () => {
       },
     ];
 
-    const attachmentMetaDataList = [
+    const attachmentMetadataList = [
       {
         attachment: ["test.txt", "test-1.txt"],
         attachment2: ["test-2.txt", "test-3.txt"],
@@ -342,7 +342,7 @@ describe("export", () => {
       path.join(tempDir, "attachments.json")
     );
     expect(JSON.parse(attachmentsJson.toString())).toStrictEqual(
-      attachmentMetaDataList
+      attachmentMetadataList
     );
   });
   it("should throw error when API response is error", () => {

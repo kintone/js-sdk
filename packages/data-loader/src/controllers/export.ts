@@ -9,7 +9,7 @@ import { buildRestAPIClient, RestAPIClientOptions } from "../api";
 import { KintoneRecordForResponse } from "../types";
 import { printAsJson } from "../printers/printAsJson";
 import { printAsCsv } from "../printers/printAsCsv";
-import { AttachmentMetaData, SubTableField, SubTableRow } from "./attachments";
+import { AttachmentMetadata, SubTableField, SubTableRow } from "./attachments";
 
 export type Options = {
   app: AppID;
@@ -58,9 +58,9 @@ export async function exportRecords(
   return records;
 }
 
-const generateAttachmentMetaData = (record: Record): AttachmentMetaData => {
+const generateAttachmentMetadata = (record: Record): AttachmentMetadata => {
   const localFileNameSet = new Set<string>();
-  return Object.entries(record).reduce<AttachmentMetaData>(
+  return Object.entries(record).reduce<AttachmentMetadata>(
     (acc, [fieldCode, field]) => {
       if (field.type === "FILE") {
         acc[fieldCode] = field.value.map((fileInformation) =>
@@ -69,7 +69,7 @@ const generateAttachmentMetaData = (record: Record): AttachmentMetaData => {
         return acc;
       }
       if (field.type === "SUBTABLE") {
-        acc[fieldCode] = generateAttachmentMetaDataInSubtable(
+        acc[fieldCode] = generateAttachmentMetadataInSubtable(
           field,
           localFileNameSet
         );
@@ -81,7 +81,7 @@ const generateAttachmentMetaData = (record: Record): AttachmentMetaData => {
   );
 };
 
-const generateAttachmentMetaDataInSubtable = <
+const generateAttachmentMetadataInSubtable = <
   T extends { [field: string]: Field.InSubtable }
 >(
   subtableField: Field.Subtable<T>,
@@ -121,7 +121,7 @@ function generateUniqueLocalFileName(
 
 const getFileInfos = (
   record: Record,
-  attachmentMetaData: AttachmentMetaData
+  attachmentMetadata: AttachmentMetadata
 ): FileInfo[] => {
   return Object.entries(record).reduce<FileInfo[]>(
     (acc, [fieldCode, field]) => {
@@ -129,7 +129,7 @@ const getFileInfos = (
         const fileInfos = field.value.map((fileInformation, index) => {
           return {
             fileKey: fileInformation.fileKey,
-            filePath: attachmentMetaData[fieldCode][index] as string,
+            filePath: attachmentMetadata[fieldCode][index] as string,
           };
         });
         return acc.concat(fileInfos);
@@ -137,7 +137,7 @@ const getFileInfos = (
       if (field.type === "SUBTABLE") {
         const fileInfosInSubtable = getFileInfosInSubtable(
           field,
-          attachmentMetaData[fieldCode] as SubTableField
+          attachmentMetadata[fieldCode] as SubTableField
         );
         return acc.concat(fileInfosInSubtable);
       }
@@ -151,7 +151,7 @@ const getFileInfosInSubtable = <
   T extends { [field: string]: Field.InSubtable }
 >(
   subtableField: Field.Subtable<T>,
-  attachmentMetaDataInSubtable: SubTableField
+  attachmentMetadataInSubtable: SubTableField
 ): FileInfo[] => {
   const rows = subtableField.value;
   return rows
@@ -163,7 +163,7 @@ const getFileInfosInSubtable = <
             return {
               fileKey: fileInformation.fileKey,
               filePath:
-                attachmentMetaDataInSubtable[rowIndex][fieldCode][index],
+                attachmentMetadataInSubtable[rowIndex][fieldCode][index],
             };
           });
           return acc.concat(fileInfos);
@@ -179,10 +179,10 @@ const downloadAttachments = async (
   records: Record[],
   attachmentDir: string
 ) => {
-  const attachmentMetaDataList = [];
+  const attachmentMetadataList = [];
   for (const record of records) {
-    const attachmentMetaData = generateAttachmentMetaData(record);
-    const fileInfos = getFileInfos(record, attachmentMetaData);
+    const attachmentMetadata = generateAttachmentMetadata(record);
+    const fileInfos = getFileInfos(record, attachmentMetadata);
     for (const fileInfo of fileInfos) {
       const { fileKey, filePath } = fileInfo;
       const file = await apiClient.file.downloadFile({ fileKey });
@@ -192,11 +192,11 @@ const downloadAttachments = async (
       await fs.mkdir(dir, { recursive: true });
       await fs.writeFile(path.resolve(dir, filePath), Buffer.from(file));
     }
-    attachmentMetaDataList.push(attachmentMetaData);
+    attachmentMetadataList.push(attachmentMetadata);
   }
   await fs.writeFile(
     path.resolve(attachmentDir, "attachments.json"),
-    JSON.stringify(attachmentMetaDataList, null, 2)
+    JSON.stringify(attachmentMetadataList, null, 2)
   );
 };
 

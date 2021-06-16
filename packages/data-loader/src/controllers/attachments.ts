@@ -1,4 +1,4 @@
-export type AttachmentMetaData = Record;
+export type AttachmentMetadata = Record;
 
 type Record = {
   [fieldCode: string]: Field;
