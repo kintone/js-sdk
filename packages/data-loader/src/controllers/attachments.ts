@@ -34,8 +34,8 @@ export const downloadAttachments = async (
 ) => {
   const recordMetadataList = [];
   for (const record of records) {
-    const recordMetadata = generateRecordMetadata(record);
-    const filePathAndKeys = generateFilePathAndKeys(record, recordMetadata);
+    const recordMetadata = buildRecordMetadata(record);
+    const filePathAndKeys = buildFilePathAndKeys(record, recordMetadata);
     for (const filePathAndKey of filePathAndKeys) {
       const { fileKey, filePath } = filePathAndKey;
       const file = await apiClient.file.downloadFile({ fileKey });
@@ -53,14 +53,14 @@ export const downloadAttachments = async (
   );
 };
 
-const generateRecordMetadata = (record: KintoneRecord): RecordMetadata => {
+const buildRecordMetadata = (record: KintoneRecord): RecordMetadata => {
   const localFileNameSet = new Set<string>();
   return Object.entries(record).reduce<RecordMetadata>(
     (acc, [fieldCode, field]) => {
       if (field.type === "FILE") {
-        acc[fieldCode] = generateFileFieldMetadata(field, localFileNameSet);
+        acc[fieldCode] = buildFileFieldMetadata(field, localFileNameSet);
       } else if (field.type === "SUBTABLE") {
-        acc[fieldCode] = generateSubtableFieldMetadata(field, localFileNameSet);
+        acc[fieldCode] = buildSubtableFieldMetadata(field, localFileNameSet);
       }
       return acc;
     },
@@ -68,7 +68,7 @@ const generateRecordMetadata = (record: KintoneRecord): RecordMetadata => {
   );
 };
 
-const generateFileFieldMetadata = (
+const buildFileFieldMetadata = (
   fileField: KintoneRecordField.File,
   localFileNameSet: Set<string>
 ): FileFieldMetadata => {
@@ -77,7 +77,7 @@ const generateFileFieldMetadata = (
   );
 };
 
-const generateSubtableFieldMetadata = <
+const buildSubtableFieldMetadata = <
   T extends { [field: string]: KintoneRecordField.InSubtable }
 >(
   subtableField: KintoneRecordField.Subtable<T>,
@@ -98,7 +98,7 @@ const generateSubtableFieldMetadata = <
   });
 };
 
-const generateFilePathAndKeys = (
+const buildFilePathAndKeys = (
   record: KintoneRecord,
   attachmentMetadata: RecordMetadata
 ): FilePathAndKey[] => {
@@ -113,7 +113,7 @@ const generateFilePathAndKeys = (
         );
         acc.push(...fileInfos);
       } else if (field.type === "SUBTABLE") {
-        const fileInfosInSubtable = generateFilePathAndKeysInSubtable(
+        const fileInfosInSubtable = buildFilePathAndKeysInSubtable(
           field,
           attachmentMetadata[fieldCode] as SubtableFieldMetadata
         );
@@ -125,7 +125,7 @@ const generateFilePathAndKeys = (
   );
 };
 
-const generateFilePathAndKeysInSubtable = <
+const buildFilePathAndKeysInSubtable = <
   T extends { [field: string]: KintoneRecordField.InSubtable }
 >(
   subtableField: KintoneRecordField.Subtable<T>,
