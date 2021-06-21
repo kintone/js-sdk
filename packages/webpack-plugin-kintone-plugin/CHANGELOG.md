@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.5](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@5.0.4...@kintone/webpack-plugin-kintone-plugin@5.0.5) (2021-06-15)
+
+**Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
+
+
+
+
+
+## [5.0.4](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@5.0.3...@kintone/webpack-plugin-kintone-plugin@5.0.4) (2021-06-08)
+
+**Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
+
+
+
+
+
+## [5.0.3](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@5.0.2...@kintone/webpack-plugin-kintone-plugin@5.0.3) (2021-06-01)
+
+**Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
+
+
+
+
+
+## [5.0.2](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@5.0.1...@kintone/webpack-plugin-kintone-plugin@5.0.2) (2021-05-25)
+
+**Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
+
+
+
+
+
+## [5.0.1](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@5.0.0...@kintone/webpack-plugin-kintone-plugin@5.0.1) (2021-05-18)
+
+**Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
+
+
+
+
+
 # [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@4.0.22...@kintone/webpack-plugin-kintone-plugin@5.0.0) (2021-05-11)
 
 

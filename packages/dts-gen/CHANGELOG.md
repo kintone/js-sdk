@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.3](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.2.2...@kintone/dts-gen@4.2.3) (2021-06-15)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## [4.2.2](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.2.1...@kintone/dts-gen@4.2.2) (2021-06-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to ^2.3.1 ([#931](https://github.com/kintone/js-sdk/issues/931)) ([0eca21d](https://github.com/kintone/js-sdk/commit/0eca21d2a80ad68468fc57443d98a571713d4157))
+
+
+
+
+
+## [4.2.1](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.2.0...@kintone/dts-gen@4.2.1) (2021-06-01)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+# [4.2.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.1.0...@kintone/dts-gen@4.2.0) (2021-05-25)
+
+
+### Features
+
+* **dts-gen:** Support `kintone.mobile.app.getFieldElements()` ([#846](https://github.com/kintone/js-sdk/issues/846)) ([7ab798e](https://github.com/kintone/js-sdk/commit/7ab798e659d253f843b3b2459f893cc59354c7f0))
+* **dts-gen:** Support Get Space Element API ([#849](https://github.com/kintone/js-sdk/issues/849)) ([f5bdbe0](https://github.com/kintone/js-sdk/commit/f5bdbe0a3d82540842fbce7964aed9d26d5e0f3e))
+
+
+
+
+
+# [4.1.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.0.0...@kintone/dts-gen@4.1.0) (2021-05-18)
+
+
+### Features
+
+* **dts-gen:** add type definition of `kintone.$PLUGIN_ID` ([#850](https://github.com/kintone/js-sdk/issues/850)) ([6fb78a4](https://github.com/kintone/js-sdk/commit/6fb78a468ad7ad0f08ccc3dbbc1a4a546867fe2e))
+* **dts-gen:** Support `kintone.mobile.app.record.getFieldElement()` ([#847](https://github.com/kintone/js-sdk/issues/847)) ([0c80eed](https://github.com/kintone/js-sdk/commit/0c80eedd4078a48066b0523e8bbfc49ed2ff4553))
+
+
+
+
+
 # [4.0.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@3.1.12...@kintone/dts-gen@4.0.0) (2021-05-11)
 
 

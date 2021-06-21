@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-manifest-validator",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "engines": {
     "node": ">=12"
@@ -28,7 +28,7 @@
     "bytes": "^3.1.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.13.0",
+    "@babel/preset-typescript": "^7.14.5",
     "@types/bytes": "^3.1.0",
     "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "intelli-espower-loader": "^1.1.0",

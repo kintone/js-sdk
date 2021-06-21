@@ -103,6 +103,7 @@ function assertKintoneBuiltinFunctions() {
 
     // assert function exists in kintone.mobile.app
     const ma = kintone.mobile.app;
+    assertFunction(ma.getFieldElements);
     assertFunction(ma.getHeaderSpaceElement);
     assertFunction(ma.getId);
     assertFunction(ma.getLookupTargetAppId);
@@ -114,6 +115,7 @@ function assertKintoneBuiltinFunctions() {
     const mr = kintone.mobile.app.record;
     assertFunction(mr.get);
     assertFunction(mr.getId);
+    assertFunction(mr.getFieldElement);
     assertFunction(mr.getSpaceElement);
     assertFunction(mr.set);
     assertFunction(mr.setFieldShown);
@@ -123,6 +125,18 @@ function assertKintoneBuiltinFunctions() {
     assertFunction(kintone.portal.getContentSpaceElement);
     assertFunction(
         kintone.mobile.portal.getContentSpaceElement
+    );
+
+    // kintone.$PLUGIN_ID
+    assert.ok(kintone.$PLUGIN_ID);
+    assert.ok(typeof kintone.$PLUGIN_ID === "string");
+
+    // Space API
+    assertFunction(
+        kintone.space.portal.getContentSpaceElement
+    );
+    assertFunction(
+        kintone.mobile.space.portal.getContentSpaceElement
     );
 }
 

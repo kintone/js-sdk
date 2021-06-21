@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.6](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.5...@kintone/rest-api-client@2.0.6) (2021-06-15)
+
+**Note:** Version bump only for package @kintone/rest-api-client
+
+
+
+
+
+## [2.0.5](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.4...@kintone/rest-api-client@2.0.5) (2021-06-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.14.0 ([#932](https://github.com/kintone/js-sdk/issues/932)) ([5dd1899](https://github.com/kintone/js-sdk/commit/5dd1899f86f84204f32f33f7f54c31b8c95511f8))
+* **deps:** update dependency prettier to ^2.3.1 ([#931](https://github.com/kintone/js-sdk/issues/931)) ([0eca21d](https://github.com/kintone/js-sdk/commit/0eca21d2a80ad68468fc57443d98a571713d4157))
+* **rest-api-client:** `baseUrl` is not used when `location` is undefined ([#855](https://github.com/kintone/js-sdk/issues/855)) ([b892520](https://github.com/kintone/js-sdk/commit/b89252029bbc947d395b26c8a61815b0f5b12c7c))
+
+
+
+
+
+## [2.0.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.3...@kintone/rest-api-client@2.0.4) (2021-06-04)
+
+
+### Bug Fixes
+
+* set maxBodyLength: Infinity to avoid "ERR_FR_MAX_BODY_LENGTH_EXCEEDED" error ([#918](https://github.com/kintone/js-sdk/issues/918)) ([712f3f8](https://github.com/kintone/js-sdk/commit/712f3f82d09a04ea18846b4382a36840293d5bf1))
+
+
+
+
+
+## [2.0.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.2...@kintone/rest-api-client@2.0.3) (2021-06-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.13.0 ([#912](https://github.com/kintone/js-sdk/issues/912)) ([0f07fca](https://github.com/kintone/js-sdk/commit/0f07fcac5a71b0b4a6f89b46329148b536a05b66))
+* **deps:** update dependency core-js to ^3.13.1 ([#922](https://github.com/kintone/js-sdk/issues/922)) ([b1442c4](https://github.com/kintone/js-sdk/commit/b1442c453c372ed6ecc4e71e0768eb8ff4cfb416))
+
+
+
+
+
+## [2.0.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.1...@kintone/rest-api-client@2.0.2) (2021-05-25)
+
+**Note:** Version bump only for package @kintone/rest-api-client
+
+
+
+
+
+## [2.0.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.0...@kintone/rest-api-client@2.0.1) (2021-05-18)
+
+**Note:** Version bump only for package @kintone/rest-api-client
+
+
+
+
+
 # [2.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@1.13.0...@kintone/rest-api-client@2.0.0) (2021-05-11)
 
 

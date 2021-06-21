@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.6](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.5...@kintone/customize-uploader@4.0.6) (2021-06-15)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## [4.0.5](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.4...@kintone/customize-uploader@4.0.5) (2021-06-08)
+
+
+### Bug Fixes
+
+* **customize-uploader:** upload customize files sequentially ([#925](https://github.com/kintone/js-sdk/issues/925)) ([6fd72e3](https://github.com/kintone/js-sdk/commit/6fd72e383f820e1ce0de3349fbcd02378aaac59d))
+
+
+
+
+
+## [4.0.4](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.3...@kintone/customize-uploader@4.0.4) (2021-06-04)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## [4.0.3](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.2...@kintone/customize-uploader@4.0.3) (2021-06-01)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## [4.0.2](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.1...@kintone/customize-uploader@4.0.2) (2021-05-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^8.0.1 ([#902](https://github.com/kintone/js-sdk/issues/902)) ([8e67f71](https://github.com/kintone/js-sdk/commit/8e67f71b43793d857128a38bc96bdb41e90b8d6c))
+* **deps:** update dependency inquirer to ^8.1.0 ([#904](https://github.com/kintone/js-sdk/issues/904)) ([9de640f](https://github.com/kintone/js-sdk/commit/9de640feb214adf9e03ba9623d50df5c2af46111))
+
+
+
+
+
+## [4.0.1](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.0...@kintone/customize-uploader@4.0.1) (2021-05-18)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
 # [4.0.0](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@3.1.14...@kintone/customize-uploader@4.0.0) (2021-05-11)
 
 

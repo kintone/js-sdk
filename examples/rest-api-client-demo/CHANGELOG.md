@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.6](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@2.0.5...@kintone/rest-api-client-demo@2.0.6) (2021-06-15)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
+## [2.0.5](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@2.0.4...@kintone/rest-api-client-demo@2.0.5) (2021-06-08)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
+## [2.0.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@2.0.3...@kintone/rest-api-client-demo@2.0.4) (2021-06-04)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
+## [2.0.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@2.0.2...@kintone/rest-api-client-demo@2.0.3) (2021-06-01)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
+## [2.0.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@2.0.1...@kintone/rest-api-client-demo@2.0.2) (2021-05-25)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
+## [2.0.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@2.0.0...@kintone/rest-api-client-demo@2.0.1) (2021-05-18)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
+
+
+
+
 # [2.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@1.6.0...@kintone/rest-api-client-demo@2.0.0) (2021-05-11)
 
 

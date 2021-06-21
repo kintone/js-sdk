@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@5.0.1...@kintone/plugin-uploader@5.0.2) (2021-05-25)
+
+
+### Bug Fixes
+
+* **deps:** pin puppeteer version to v8 ([#889](https://github.com/kintone/js-sdk/issues/889)) ([8a8b951](https://github.com/kintone/js-sdk/commit/8a8b95102ec0417bed6b838f80d59b9c70d54459))
+* **deps:** update dependency inquirer to ^8.0.1 ([#902](https://github.com/kintone/js-sdk/issues/902)) ([8e67f71](https://github.com/kintone/js-sdk/commit/8e67f71b43793d857128a38bc96bdb41e90b8d6c))
+* **deps:** update dependency inquirer to ^8.1.0 ([#904](https://github.com/kintone/js-sdk/issues/904)) ([9de640f](https://github.com/kintone/js-sdk/commit/9de640feb214adf9e03ba9623d50df5c2af46111))
+
+
+
+
+
+## [5.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@5.0.0...@kintone/plugin-uploader@5.0.1) (2021-05-18)
+
+**Note:** Version bump only for package @kintone/plugin-uploader
+
+
+
+
+
 # [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@4.3.1...@kintone/plugin-uploader@5.0.0) (2021-05-11)
 
 

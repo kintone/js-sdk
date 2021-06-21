@@ -1,9 +1,11 @@
-type FieldLayoutWith<T extends string, S extends unknown = { width: string }> =
-  {
-    type: T;
-    code: string;
-    size: S;
-  };
+type FieldLayoutWith<
+  T extends string,
+  S extends unknown = { width: string }
+> = {
+  type: T;
+  code: string;
+  size: S;
+};
 
 export type RecordNumber = FieldLayoutWith<"RECORD_NUMBER">;
 export type Creator = FieldLayoutWith<"CREATOR">;

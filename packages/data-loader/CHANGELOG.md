@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.3](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.2...@kintone/data-loader@0.5.3) (2021-06-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency csv-parse to ^4.16.0 ([#939](https://github.com/kintone/js-sdk/issues/939)) ([0a974f8](https://github.com/kintone/js-sdk/commit/0a974f8456f0113fc494890d02e31687a88af49b))
+
+
+
+
+
+## [0.5.2](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.1...@kintone/data-loader@0.5.2) (2021-06-08)
+
+**Note:** Version bump only for package @kintone/data-loader
+
+
+
+
+
+## [0.5.1](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.0...@kintone/data-loader@0.5.1) (2021-06-04)
+
+**Note:** Version bump only for package @kintone/data-loader
+
+
+
+
+
+# [0.5.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.4.2...@kintone/data-loader@0.5.0) (2021-06-01)
+
+
+### Features
+
+* **data-loader:** add `--order-by` of export option (BREAKING CHANGE) ([#907](https://github.com/kintone/js-sdk/issues/907)) ([0bf641a](https://github.com/kintone/js-sdk/commit/0bf641a5cbddb47af18fc7abcf7d60e68b8eec2e))
+
+
+
+
+
+## [0.4.2](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.4.1...@kintone/data-loader@0.4.2) (2021-05-25)
+
+
+### Bug Fixes
+
+* **data-loader:** apply @types/yargs bugfix (DefinitelyTyped/DefinitelyTyped[#52624](https://github.com/kintone/js-sdk/issues/52624)) ([#895](https://github.com/kintone/js-sdk/issues/895)) ([1ad2af5](https://github.com/kintone/js-sdk/commit/1ad2af5b0b1d88c038d9223aaab32986e58ec820))
+
+
+
+
+
+## [0.4.1](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.4.0...@kintone/data-loader@0.4.1) (2021-05-18)
+
+**Note:** Version bump only for package @kintone/data-loader
+
+
+
+
+
 # [0.4.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.3.0...@kintone/data-loader@0.4.0) (2021-05-11)
 
 

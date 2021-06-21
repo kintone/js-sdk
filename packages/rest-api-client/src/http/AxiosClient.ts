@@ -85,11 +85,7 @@ export class AxiosClient implements HttpClient {
       Axios({
         ...requestConfig,
 
-        // NOTE: For defining the max size of the http request content, `maxBodyLength` will be used after version 0.20.0.
-        // `maxContentLength` will be still needed for defining the max size of the http response content.
-        // ref: https://github.com/axios/axios/pull/2781/files
-        // maxBodyLength: Infinity,
-
+        maxBodyLength: Infinity,
         maxContentLength: Infinity,
       })
     );

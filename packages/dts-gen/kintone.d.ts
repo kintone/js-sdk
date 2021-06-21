@@ -139,6 +139,9 @@ declare namespace kintone {
 
     namespace mobile {
         namespace app {
+            function getFieldElements(
+                fieldCode: string
+            ): HTMLElement[] | null;
             function getHeaderSpaceElement(): HTMLElement | null;
             function getId(): number | null;
             function getLookupTargetAppId(
@@ -153,6 +156,9 @@ declare namespace kintone {
             namespace record {
                 function getId(): number | null;
                 function get(): any | null;
+                function getFieldElement(
+                    fieldCode: string
+                ): HTMLElement | null;
                 function set(record: any): void;
                 function getSpaceElement(
                     id: string
@@ -170,6 +176,12 @@ declare namespace kintone {
 
         namespace portal {
             function getContentSpaceElement(): HTMLElement | null;
+        }
+
+        namespace space {
+            namespace portal {
+                function getContentSpaceElement(): HTMLElement | null;
+            }
         }
     }
 
@@ -238,6 +250,12 @@ declare namespace kintone {
         function getContentSpaceElement(): HTMLElement | null;
     }
 
+    namespace space {
+        namespace portal {
+            function getContentSpaceElement(): HTMLElement | null;
+        }
+    }
+
     interface LoginUser {
         id: string;
         code: string;
@@ -255,6 +273,8 @@ declare namespace kintone {
 
     function getLoginUser(): LoginUser;
     function getUiVersion(): 1 | 2;
+
+    const $PLUGIN_ID: string;
 
     namespace fieldTypes {
         interface SingleLineText {
