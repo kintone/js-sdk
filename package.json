@@ -15,7 +15,7 @@
     "preinitial:release": "yarn prerelease",
     "initial:release": "lerna publish from-package --conventional-commits",
     "prerelease": "npm-run-all -s build -p lint test",
-    "release": "lerna publish --conventional-commits",
+    "release": "lerna publish --conventional-commits --create-release github",
     "pretest": "jest --rootDir __tests__",
     "start": "yarn build --watch",
     "test": "lerna run test --parallel",
