@@ -416,7 +416,7 @@ export type Resources =
 
 export interface KintonePluginManifestJson {
   manifest_version: number;
-  version: number;
+  version: number | string;
   type: "APP";
   name: {
     ja?: string;
