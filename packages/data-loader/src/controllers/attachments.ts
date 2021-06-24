@@ -27,23 +27,42 @@ export const downloadAttachments = async (
   records: KintoneRecord[],
   attachmentDir: string
 ) => {
-  const metadataList = [];
+  const metadataFilePath = path.join(attachmentDir, "attachments.json");
+  const metadataList = await downloadRecordsAttachments(
+    apiClient,
+    records,
+    attachmentDir,
+    path.dirname(metadataFilePath)
+  );
+  await fs.writeFile(metadataFilePath, JSON.stringify(metadataList, null, 2));
+};
+
+const downloadRecordsAttachments = async (
+  apiClient: KintoneRestAPIClient,
+  records: KintoneRecord[],
+  attachmentDir: string,
+  metadataBaseDir?: string
+): Promise<RecordMetadata[]> => {
+  const metadataList: RecordMetadata[] = [];
   for (const record of records) {
     const recordId = record.$id.value as string;
-    const dir = path.resolve(attachmentDir, recordId);
-    const metadata = await downloadRecordAttachments(apiClient, record, dir);
+    const dir = path.join(attachmentDir, recordId);
+    const metadata = await downloadRecordAttachments(
+      apiClient,
+      record,
+      dir,
+      metadataBaseDir
+    );
     metadataList.push(metadata);
   }
-  await fs.writeFile(
-    path.resolve(attachmentDir, "attachments.json"),
-    JSON.stringify(metadataList, null, 2)
-  );
+  return metadataList;
 };
 
 const downloadRecordAttachments = async (
   apiClient: KintoneRestAPIClient,
   record: KintoneRecord,
-  attachmentDir: string
+  attachmentDir: string,
+  metadataBaseDir?: string
 ): Promise<RecordMetadata> => {
   const metadata: RecordMetadata = {};
   for (const [fieldCode, field] of Object.entries(record)) {
@@ -51,13 +70,15 @@ const downloadRecordAttachments = async (
       metadata[fieldCode] = await downloadFileFieldAttachments(
         apiClient,
         field,
-        attachmentDir
+        attachmentDir,
+        metadataBaseDir
       );
     } else if (field.type === "SUBTABLE") {
       metadata[fieldCode] = await downloadSubtableFieldAttachments(
         apiClient,
         field,
-        attachmentDir
+        attachmentDir,
+        metadataBaseDir
       );
     }
   }
@@ -67,14 +88,18 @@ const downloadRecordAttachments = async (
 const downloadFileFieldAttachments = async (
   apiClient: KintoneRestAPIClient,
   field: KintoneRecordField.File,
-  attachmentDir: string
+  attachmentDir: string,
+  metadataBaseDir?: string
 ): Promise<FileFieldMetadata> => {
   const metadata: FileFieldMetadata = [];
   for (const { fileKey, name: fileName } of field.value) {
-    const filePath = path.resolve(attachmentDir, fileName);
+    const filePath = path.join(attachmentDir, fileName);
     const file = await apiClient.file.downloadFile({ fileKey });
     const savedFilePath = await saveFileWithoutOverwrite(filePath, file);
-    metadata.push(path.basename(savedFilePath));
+    const relativePath = metadataBaseDir
+      ? path.relative(metadataBaseDir, savedFilePath)
+      : savedFilePath;
+    metadata.push(relativePath);
   }
   return metadata;
 };
@@ -84,7 +109,8 @@ const downloadSubtableFieldAttachments = async <
 >(
   apiClient: KintoneRestAPIClient,
   field: KintoneRecordField.Subtable<T>,
-  attachmentDir: string
+  attachmentDir: string,
+  metadataBaseDir?: string
 ): Promise<SubtableFieldMetadata> => {
   const subtableFieldMetadata: SubtableFieldMetadata = [];
   for (const row of field.value) {
@@ -95,7 +121,8 @@ const downloadSubtableFieldAttachments = async <
           await downloadFileFieldAttachments(
             apiClient,
             fieldInRow,
-            attachmentDir
+            attachmentDir,
+            metadataBaseDir
           );
       }
     }
@@ -122,7 +149,7 @@ const generateUniqueLocalFilePath = (filePath: string) => {
       "-" +
       i +
       path.extname(filePath);
-    newFilePath = path.resolve(path.dirname(newFilePath), newFileName);
+    newFilePath = path.join(path.dirname(newFilePath), newFileName);
   }
   return newFilePath;
 };
