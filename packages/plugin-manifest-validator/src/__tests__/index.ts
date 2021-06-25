@@ -34,41 +34,6 @@ describe("validator", () => {
     });
   });
 
-  it("invalid type", () => {
-    assert.deepStrictEqual(validator(json({ version: "1" })), {
-      valid: false,
-      errors: [
-        {
-          dataPath: "/version",
-          keyword: "type",
-          message: "should be integer",
-          params: {
-            type: "integer",
-          },
-          schemaPath: "#/properties/version/type",
-        },
-      ],
-    });
-  });
-
-  it("integer is out of range", () => {
-    assert.deepStrictEqual(validator(json({ version: 0 })), {
-      valid: false,
-      errors: [
-        {
-          dataPath: "/version",
-          keyword: "minimum",
-          message: "should be >= 1",
-          params: {
-            comparison: ">=",
-            limit: 1,
-          },
-          schemaPath: "#/properties/version/minimum",
-        },
-      ],
-    });
-  });
-
   it.each([
     [
       "0.1.2",
@@ -86,6 +51,13 @@ describe("validator", () => {
     ],
     [
       "0",
+      {
+        valid: true,
+        errors: null,
+      },
+    ],
+    [
+      0,
       {
         valid: true,
         errors: null,
@@ -121,10 +93,32 @@ describe("validator", () => {
       },
     ],
     [
-      0,
+      -1,
       {
-        valid: true,
-        errors: null,
+        valid: false,
+        errors: [
+          {
+            dataPath: "/version",
+            keyword: "minimum",
+            message: "should be >= 0",
+            params: { comparison: ">=", limit: 0 },
+            schemaPath: "#/properties/version/oneOf/0/minimum",
+          },
+          {
+            dataPath: "/version",
+            keyword: "type",
+            message: "should be string",
+            params: { type: "string" },
+            schemaPath: "#/properties/version/oneOf/1/type",
+          },
+          {
+            dataPath: "/version",
+            keyword: "oneOf",
+            message: "should match exactly one schema in oneOf",
+            params: { passingSchemas: null },
+            schemaPath: "#/properties/version/oneOf",
+          },
+        ],
       },
     ],
   ])("version string: %s", (version, expected) => {
@@ -186,15 +180,30 @@ describe("validator", () => {
     });
   });
 
-  it("2 errors", () => {
+  it("returns combined errors", () => {
     const actual = validator(
       json({
         manifest_version: "a",
-        version: 0,
+        version: -1,
       })
     );
-    assert(actual.valid === false);
-    assert(actual.errors?.length === 2);
+    const invalidManifestVersion = validator(
+      json({
+        manifest_version: "a",
+      })
+    );
+    const invalidVersion = validator(
+      json({
+        version: -1,
+      })
+    );
+    expect(actual.valid).toBe(false);
+    expect(actual.errors).toStrictEqual(
+      expect.arrayContaining([
+        ...(invalidManifestVersion.errors ?? []),
+        ...(invalidVersion.errors ?? []),
+      ])
+    );
   });
 
   it("relative path is invalid for `http-url`", () => {
