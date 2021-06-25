@@ -100,7 +100,7 @@ describe("export", () => {
 
     const attachmentMetadataList = [
       {
-        attachment: ["test.txt"],
+        attachment: ["2/test.txt"],
       },
       {},
     ];
@@ -182,7 +182,7 @@ describe("export", () => {
 
     const attachmentMetadataList = [
       {
-        subtable: [{ attachmentInSubtable: ["test.txt"] }],
+        subtable: [{ attachmentInSubtable: ["2/test.txt"] }],
       },
       {},
     ];
@@ -315,12 +315,12 @@ describe("export", () => {
 
     const attachmentMetadataList = [
       {
-        attachment: ["test.txt", "test-1.txt"],
-        attachment2: ["test-2.txt", "test-3.txt"],
+        attachment: ["2/test.txt", "2/test-1.txt"],
+        attachment2: ["2/test-2.txt", "2/test-3.txt"],
         subtable: [
           {
-            attachmentInSubtable: ["test-4.txt", "test-5.txt"],
-            attachmentInSubtable2: ["test-6.txt", "test-7.txt"],
+            attachmentInSubtable: ["2/test-4.txt", "2/test-5.txt"],
+            attachmentInSubtable2: ["2/test-6.txt", "2/test-7.txt"],
           },
         ],
       },
