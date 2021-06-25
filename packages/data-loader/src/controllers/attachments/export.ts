@@ -1,26 +1,17 @@
 import path from "path";
 import {
-  KintoneRestAPIClient,
   KintoneRecordField,
+  KintoneRestAPIClient,
 } from "@kintone/rest-api-client";
 import { Record as KintoneRecord } from "@kintone/rest-api-client/lib/client/types";
-import { promises as fs, existsSync } from "fs";
-
-type RecordMetadata = {
-  [fieldCode: string]: FieldMetadata;
-};
-
-type FileName = string;
-
-type FieldMetadata = FileFieldMetadata | SubtableFieldMetadata;
-
-type FileFieldMetadata = FileName[];
-
-type SubtableFieldMetadata = SubtableRowMetadata[];
-
-type SubtableRowMetadata = {
-  [fieldCode: string]: FileFieldMetadata;
-};
+import { existsSync, promises as fs } from "fs";
+import {
+  FileFieldMetadata,
+  FileName,
+  RecordMetadata,
+  SubtableFieldMetadata,
+  SubtableRowMetadata,
+} from "./index";
 
 export const downloadAttachments = async (params: {
   apiClient: KintoneRestAPIClient;
