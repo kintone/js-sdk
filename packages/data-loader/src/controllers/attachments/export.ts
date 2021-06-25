@@ -34,9 +34,9 @@ const downloadRecordsAttachments = async (params: {
   records: KintoneRecord[];
   targetDir: string;
   metadataBaseDir: string;
-}): Promise<RecordMetadata[]> => {
+}): Promise<Array<RecordMetadata<FileName>>> => {
   const { apiClient, records, targetDir, metadataBaseDir } = params;
-  const metadataList: RecordMetadata[] = [];
+const metadataList: Array<RecordMetadata<FileName>> = [];
   for (const record of records) {
     const recordId = record.$id.value as string;
     const dir = path.join(targetDir, recordId);
@@ -56,9 +56,9 @@ const downloadRecordAttachments = async (params: {
   record: KintoneRecord;
   targetDir: string;
   metadataBaseDir: string;
-}): Promise<RecordMetadata> => {
+}): Promise<RecordMetadata<FileName>> => {
   const { apiClient, record, targetDir, metadataBaseDir } = params;
-  const metadata: RecordMetadata = {};
+  const metadata: RecordMetadata<FileName> = {};
   for (const [fieldCode, field] of Object.entries(record)) {
     if (field.type === "FILE") {
       metadata[fieldCode] = await downloadFileFieldAttachments({
@@ -86,11 +86,11 @@ const downloadSubtableFieldAttachments = async <
   field: KintoneRecordField.Subtable<T>;
   targetDir: string;
   metadataBaseDir: string;
-}): Promise<SubtableFieldMetadata> => {
+}): Promise<SubtableFieldMetadata<FileName>> => {
   const { apiClient, field, targetDir, metadataBaseDir } = params;
-  const subtableFieldMetadata: SubtableFieldMetadata = [];
+  const subtableFieldMetadata: SubtableFieldMetadata<FileName> = [];
   for (const row of field.value) {
-    const subtableRowMetadata: SubtableRowMetadata = {};
+    const subtableRowMetadata: SubtableRowMetadata<FileName> = {};
     for (const [fieldCodeInRow, fieldInRow] of Object.entries(row.value)) {
       if (fieldInRow.type === "FILE") {
         subtableRowMetadata[fieldCodeInRow] =
@@ -112,9 +112,9 @@ const downloadFileFieldAttachments = async (params: {
   field: KintoneRecordField.File;
   targetDir: string;
   metadataBaseDir: string;
-}): Promise<FileFieldMetadata> => {
+}): Promise<FileFieldMetadata<FileName>> => {
   const { apiClient, field, targetDir, metadataBaseDir } = params;
-  const metadata: FileFieldMetadata = [];
+  const metadata: FileFieldMetadata<FileName> = [];
   for (const { fileKey, name: fileName } of field.value) {
     const filePath = path.join(targetDir, fileName);
     const fileBuffer = await apiClient.file.downloadFile({ fileKey });
