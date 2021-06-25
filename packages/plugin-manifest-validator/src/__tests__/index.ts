@@ -35,37 +35,42 @@ describe("validator", () => {
   });
 
   it.each([
-    [
-      "0.1.2",
-      {
+    {
+      description: "valid string",
+      version: "0.1.2",
+      expected: {
         valid: true,
         errors: null,
       },
-    ],
-    [
-      "0.1",
-      {
+    },
+    {
+      description: "valid string (omit patch version)",
+      version: "0.1",
+      expected: {
         valid: true,
         errors: null,
       },
-    ],
-    [
-      "0",
-      {
+    },
+    {
+      description: "valid string (omit minor version)",
+      version: "0",
+      expected: {
         valid: true,
         errors: null,
       },
-    ],
-    [
-      0,
-      {
+    },
+    {
+      description: "valid number",
+      version: 0,
+      expected: {
         valid: true,
         errors: null,
       },
-    ],
-    [
-      0.1,
-      {
+    },
+    {
+      description: "invalid number (float)",
+      version: 0.1,
+      expected: {
         valid: false,
         errors: [
           {
@@ -91,10 +96,11 @@ describe("validator", () => {
           },
         ],
       },
-    ],
-    [
-      -1,
-      {
+    },
+    {
+      description: "invalid number (out of range)",
+      version: -1,
+      expected: {
         valid: false,
         errors: [
           {
@@ -120,30 +126,9 @@ describe("validator", () => {
           },
         ],
       },
-    ],
-  ])("version string: %s", (version, expected) => {
+    },
+  ])("version string: $description", ({ version, expected }) => {
     assert.deepStrictEqual(validator(json({ version })), expected);
-  });
-
-  it("valid version string 0.1.2", () => {
-    assert.deepStrictEqual(validator(json({ version: "0.1.2" })), {
-      valid: true,
-      errors: null,
-    });
-  });
-
-  it("valid version string: omit minor version", () => {
-    assert.deepStrictEqual(validator(json({ version: "0.1" })), {
-      valid: true,
-      errors: null,
-    });
-  });
-
-  it("valid version string: omit patch version", () => {
-    assert.deepStrictEqual(validator(json({ version: "0" })), {
-      valid: true,
-      errors: null,
-    });
   });
 
   it("invalid enum value", () => {
