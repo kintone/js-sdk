@@ -34,9 +34,10 @@ describe("validator", () => {
     });
   });
 
-  it.each(
-    // prettier-ignore
-    [
+  describe("version", () => {
+    it.each(
+      // prettier-ignore
+      [
       "0",
       "0.1",
       "0.1.2",
@@ -45,76 +46,77 @@ describe("validator", () => {
       0,
       10
     ]
-  )("valid version: %s", (version) => {
-    expect(validator(json({ version }))).toStrictEqual({
-      valid: true,
-      errors: null,
+    )("valid version: %s", (version) => {
+      expect(validator(json({ version }))).toStrictEqual({
+        valid: true,
+        errors: null,
+      });
     });
-  });
 
-  it.each([
-    {
-      description: "number is float",
-      version: 0.1,
-      expected: {
-        valid: false,
-        errors: [
-          {
-            dataPath: "/version",
-            keyword: "type",
-            message: "should be integer",
-            params: { type: "integer" },
-            schemaPath: "#/properties/version/oneOf/0/type",
-          },
-          {
-            dataPath: "/version",
-            keyword: "type",
-            message: "should be string",
-            params: { type: "string" },
-            schemaPath: "#/properties/version/oneOf/1/type",
-          },
-          {
-            dataPath: "/version",
-            keyword: "oneOf",
-            message: "should match exactly one schema in oneOf",
-            params: { passingSchemas: null },
-            schemaPath: "#/properties/version/oneOf",
-          },
-        ],
+    it.each([
+      {
+        description: "number is float",
+        version: 0.1,
+        expected: {
+          valid: false,
+          errors: [
+            {
+              dataPath: "/version",
+              keyword: "type",
+              message: "should be integer",
+              params: { type: "integer" },
+              schemaPath: "#/properties/version/oneOf/0/type",
+            },
+            {
+              dataPath: "/version",
+              keyword: "type",
+              message: "should be string",
+              params: { type: "string" },
+              schemaPath: "#/properties/version/oneOf/1/type",
+            },
+            {
+              dataPath: "/version",
+              keyword: "oneOf",
+              message: "should match exactly one schema in oneOf",
+              params: { passingSchemas: null },
+              schemaPath: "#/properties/version/oneOf",
+            },
+          ],
+        },
       },
-    },
-    {
-      description: "number is out of range",
-      version: -1,
-      expected: {
-        valid: false,
-        errors: [
-          {
-            dataPath: "/version",
-            keyword: "minimum",
-            message: "should be >= 0",
-            params: { comparison: ">=", limit: 0 },
-            schemaPath: "#/properties/version/oneOf/0/minimum",
-          },
-          {
-            dataPath: "/version",
-            keyword: "type",
-            message: "should be string",
-            params: { type: "string" },
-            schemaPath: "#/properties/version/oneOf/1/type",
-          },
-          {
-            dataPath: "/version",
-            keyword: "oneOf",
-            message: "should match exactly one schema in oneOf",
-            params: { passingSchemas: null },
-            schemaPath: "#/properties/version/oneOf",
-          },
-        ],
+      {
+        description: "number is out of range",
+        version: -1,
+        expected: {
+          valid: false,
+          errors: [
+            {
+              dataPath: "/version",
+              keyword: "minimum",
+              message: "should be >= 0",
+              params: { comparison: ">=", limit: 0 },
+              schemaPath: "#/properties/version/oneOf/0/minimum",
+            },
+            {
+              dataPath: "/version",
+              keyword: "type",
+              message: "should be string",
+              params: { type: "string" },
+              schemaPath: "#/properties/version/oneOf/1/type",
+            },
+            {
+              dataPath: "/version",
+              keyword: "oneOf",
+              message: "should match exactly one schema in oneOf",
+              params: { passingSchemas: null },
+              schemaPath: "#/properties/version/oneOf",
+            },
+          ],
+        },
       },
-    },
-  ])("invalid version: $description", ({ version, expected }) => {
-    expect(validator(json({ version }))).toStrictEqual(expected);
+    ])("invalid version: $description", ({ version, expected }) => {
+      expect(validator(json({ version }))).toStrictEqual(expected);
+    });
   });
 
   it("invalid enum value", () => {
