@@ -46,7 +46,7 @@ describe("validator", () => {
       10
     ]
   )("valid version: %s", (version) => {
-    assert.deepStrictEqual(validator(json({ version })), {
+    expect(validator(json({ version }))).toStrictEqual({
       valid: true,
       errors: null,
     });
@@ -114,7 +114,7 @@ describe("validator", () => {
       },
     },
   ])("invalid version: $description", ({ version, expected }) => {
-    assert.deepStrictEqual(validator(json({ version })), expected);
+    expect(validator(json({ version }))).toStrictEqual(expected);
   });
 
   it("invalid enum value", () => {
