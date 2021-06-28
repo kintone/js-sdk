@@ -34,41 +34,27 @@ describe("validator", () => {
     });
   });
 
+  it.each(
+    // prettier-ignore
+    [
+      "0",
+      "0.1",
+      "0.1.2",
+      "1.0.0",
+      "2.0.3",
+      0,
+      10
+    ]
+  )("valid version: %s", (version) => {
+    assert.deepStrictEqual(validator(json({ version })), {
+      valid: true,
+      errors: null,
+    });
+  });
+
   it.each([
     {
-      description: "valid string",
-      version: "0.1.2",
-      expected: {
-        valid: true,
-        errors: null,
-      },
-    },
-    {
-      description: "valid string (omit patch version)",
-      version: "0.1",
-      expected: {
-        valid: true,
-        errors: null,
-      },
-    },
-    {
-      description: "valid string (omit minor version)",
-      version: "0",
-      expected: {
-        valid: true,
-        errors: null,
-      },
-    },
-    {
-      description: "valid number",
-      version: 0,
-      expected: {
-        valid: true,
-        errors: null,
-      },
-    },
-    {
-      description: "invalid number (float)",
+      description: "number is float",
       version: 0.1,
       expected: {
         valid: false,
@@ -98,7 +84,7 @@ describe("validator", () => {
       },
     },
     {
-      description: "invalid number (out of range)",
+      description: "number is out of range",
       version: -1,
       expected: {
         valid: false,
@@ -127,7 +113,7 @@ describe("validator", () => {
         ],
       },
     },
-  ])("version string: $description", ({ version, expected }) => {
+  ])("invalid version: $description", ({ version, expected }) => {
     assert.deepStrictEqual(validator(json({ version })), expected);
   });
 
