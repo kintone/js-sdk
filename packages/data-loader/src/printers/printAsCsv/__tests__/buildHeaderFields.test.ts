@@ -13,13 +13,13 @@ describe("buildHeaderFields", () => {
       buildHeaderFields(fieldsJson.properties).includes(PRIMARY_MARK)
     ).toBe(false);
   });
-  it("should generate fieldCode array it contains relation to subtable field correctly", () => {
+  it("should generate fieldCode array which contains relation to subtable field correctly", () => {
     expect(
       buildHeaderFields(subtableFieldsJson.properties).includes(PRIMARY_MARK)
     ).toBe(true);
     expect(buildHeaderFields(subtableFieldsJson.properties)).toHaveLength(18);
   });
-  it("should generate fieldCode array it contains unsupported fields correctly", () => {
+  it("should generate fieldCode array which doesn't contain unsupported fields", () => {
     expect(
       buildHeaderFields(unsupportedFieldsJson.properties).includes("file")
     ).toBe(false);
