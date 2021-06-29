@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.4](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@5.0.3...@kintone/plugin-uploader@5.0.4) (2021-06-29)
+
+**Note:** Version bump only for package @kintone/plugin-uploader
+
+
+
+
+
 ## [5.0.3](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@5.0.2...@kintone/plugin-uploader@5.0.3) (2021-06-22)
 
 
