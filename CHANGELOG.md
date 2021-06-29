@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.5](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.4...@kintone/data-loader@0.5.5) (2021-06-29)
+
+
+### Bug Fixes
+
+* **data-loader:** ignore unsupported fields from CSV export ([#954](https://github.com/kintone/js-sdk/issues/954)) ([073a977](https://github.com/kintone/js-sdk/commit/073a977b537b3f42124771eb820742a877cb1952))
+
+
+
+
+
 ## [0.5.4](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.3...@kintone/data-loader@0.5.4) (2021-06-22)
 
 **Note:** Version bump only for package @kintone/data-loader
