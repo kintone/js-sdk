@@ -27,7 +27,7 @@ console.log(result.valid); // true or false
 console.log(result.errors); // array of ajv error objects
 ```
 
-[ajv error objects](https://ajv.js.org/docs/api.html#validation-errors) is like:
+[ajv error objects](https://ajv.js.org/api.html#error-objects) is like:
 
 ```js
 {
