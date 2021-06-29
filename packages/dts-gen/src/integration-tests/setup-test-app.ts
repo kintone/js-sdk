@@ -1,4 +1,4 @@
-import * as program from "commander";
+import { program } from "commander";
 import * as fs from "fs";
 
 import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client";
