@@ -38,14 +38,14 @@ describe("validator", () => {
     it.each(
       // prettier-ignore
       [
-      "0",
-      "0.1",
-      "0.1.2",
-      "1.0.0",
-      "2.0.3",
-      0,
-      10
-    ]
+        "0",
+        "0.1",
+        "0.1.2",
+        "1.0.0",
+        "2.0.3",
+        0,
+        10
+      ]
     )("valid version: %s", (version) => {
       expect(validator(json({ version }))).toStrictEqual({
         valid: true,
