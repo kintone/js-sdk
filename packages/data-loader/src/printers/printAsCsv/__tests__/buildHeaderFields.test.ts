@@ -4,6 +4,7 @@ import { FieldsJson } from "../../../types";
 
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
+const unsupportedFieldsJson: FieldsJson = require("./fixtures/unsupported_fields.json");
 
 describe("buildHeaderFields", () => {
   it("should generate fieldCode array without subtable relation field correctly", () => {
@@ -12,10 +13,21 @@ describe("buildHeaderFields", () => {
       buildHeaderFields(fieldsJson.properties).includes(PRIMARY_MARK)
     ).toBe(false);
   });
-  it("should generate fieldCode array it contains relation to subtable field correctly", () => {
+  it("should generate fieldCode array which contains relation to subtable field correctly", () => {
     expect(
       buildHeaderFields(subtableFieldsJson.properties).includes(PRIMARY_MARK)
     ).toBe(true);
     expect(buildHeaderFields(subtableFieldsJson.properties)).toHaveLength(18);
+  });
+  it("should generate fieldCode array which doesn't contain unsupported fields", () => {
+    expect(
+      buildHeaderFields(unsupportedFieldsJson.properties).includes("file")
+    ).toBe(false);
+    expect(
+      buildHeaderFields(unsupportedFieldsJson.properties).includes(
+        "subTableFile"
+      )
+    ).toBe(false);
+    expect(buildHeaderFields(unsupportedFieldsJson.properties)).toHaveLength(5);
   });
 });

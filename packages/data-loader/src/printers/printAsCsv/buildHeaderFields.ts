@@ -1,6 +1,7 @@
 import { PRIMARY_MARK } from "./constants";
 import { hasSubtable } from "./hasSubtable";
 import { FieldProperties } from "../../types";
+import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
 const supportedFieldTypes = [
   "RECORD_NUMBER",
@@ -21,6 +22,21 @@ const supportedFieldTypes = [
   "SUBTABLE",
 ];
 
+const supportedFieldTypesInSubtable: Array<
+  KintoneFormFieldProperty.InSubtable["type"]
+> = [
+  "SINGLE_LINE_TEXT",
+  "RADIO_BUTTON",
+  "MULTI_LINE_TEXT",
+  "NUMBER",
+  "RICH_TEXT",
+  "LINK",
+  "DROP_DOWN",
+  "CALC",
+  "MULTI_SELECT",
+  "CHECK_BOX",
+];
+
 export const buildHeaderFields = (fieldProperties: FieldProperties) => {
   const fields = Object.keys(fieldProperties)
     .filter((fieldCode) =>
@@ -28,9 +44,16 @@ export const buildHeaderFields = (fieldProperties: FieldProperties) => {
     )
     .reduce((ret, fieldCode) => {
       const field = fieldProperties[fieldCode];
-      const fieldCodesInSubtable =
-        field.type === "SUBTABLE" ? Object.keys(field.fields) : [];
-      return ret.concat(fieldCode, ...fieldCodesInSubtable);
+      if (field.type === "SUBTABLE") {
+        const fieldCodesInSubtable = Object.keys(field.fields).filter(
+          (fieldCodeInSubtable) =>
+            supportedFieldTypesInSubtable.includes(
+              field.fields[fieldCodeInSubtable].type
+            )
+        );
+        return ret.concat(fieldCode, ...fieldCodesInSubtable);
+      }
+      return ret.concat(fieldCode);
     }, [] as string[]);
 
   return hasSubtable(fieldProperties) ? [PRIMARY_MARK].concat(fields) : fields;
