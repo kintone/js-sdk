@@ -3064,6 +3064,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/yauzl@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@types/yauzl/-/yauzl-2.9.2.tgz#c48e5d56aff1444409e39fa164b0b4d4552a7b7a"
+  integrity sha512-8uALY5LTvSuHgloDVUvWP3pIauILm+8/0pDMokuDYIoNsOkSwd5AiHBTSEJjKTDcZr5z8UpgOWZkxBF4iJftoA==
+  dependencies:
+    "@types/node" "*"
+
 "@types/yazl@^2.4.2":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@types/yazl/-/yazl-2.4.2.tgz#d5f8a4752261badbf1a36e8b49e042dc18ec84bc"
