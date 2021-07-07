@@ -1,5 +1,5 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
-import { isUrlString, wait } from "./util";
+import { isUrlString, parseProxy, wait } from "./util";
 
 export interface Option {
   proxy: string;
@@ -50,6 +50,10 @@ export default class KintoneApiClient {
     if (options.guestSpaceId) {
       guestSpaceId = options.guestSpaceId;
     }
+    let proxy;
+    if (options.proxy) {
+      proxy = parseProxy(options.proxy);
+    }
     this.restApiClient = new KintoneRestAPIClient({
       baseUrl: kintoneUrl,
       auth,
@@ -58,6 +62,7 @@ export default class KintoneApiClient {
         enableAbortSearchError: false,
       },
       guestSpaceId,
+      proxy,
     });
   }
 
