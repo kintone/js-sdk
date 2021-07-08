@@ -2967,10 +2967,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node-rsa@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/node-rsa/-/node-rsa-1.1.0.tgz#b0864186c1c468179645517c56d83622595e8813"
-  integrity sha512-MDFFz1Fra3Xb4S7ZoWHPyFqq8WxRSI5c1Y/UKq/mD9HUAzGw9fu0LSgSvCzrqndtNPPw3DQS3petBVgQtPGfMA==
+"@types/node-rsa@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/node-rsa/-/node-rsa-1.1.1.tgz#c3649c0ae7fdb93d3e65076a08d3fc9feb017a67"
+  integrity sha512-itzxtaBgk4OMbrCawVCvas934waMZWjW17v7EYgFVlfYS/cl0/P7KZdojWCq9SDJMI5cnLQLUP8ayhVCTY8TEg==
   dependencies:
     "@types/node" "*"
 
