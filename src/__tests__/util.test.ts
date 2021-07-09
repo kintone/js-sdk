@@ -1,5 +1,5 @@
 import assert from "assert";
-import { isUrlString, wait } from "../util";
+import { isUrlString, parseProxy, wait } from "../util";
 
 describe("util", () => {
   describe("isUrlString", () => {
@@ -18,6 +18,29 @@ describe("util", () => {
       const start = Date.now();
       return wait(100).then(() => {
         assert(Date.now() >= start + 90);
+      });
+    });
+  });
+
+  describe("parseProxy", () => {
+    it("should return proxy object", () => {
+      const host = "localhost";
+      const port = 8080;
+      const result = parseProxy(`http://${host}:${port}`);
+      expect(result).toStrictEqual({ host, port, auth: undefined });
+    });
+    it("should return proxy object with username and password", () => {
+      const host = "localhost";
+      const port = 8080;
+      const username = "USERNAME";
+      const password = "PASSWORD";
+      const result = parseProxy(
+        `http://${username}:${password}@${host}:${port}`
+      );
+      expect(result).toStrictEqual({
+        host,
+        port,
+        auth: { username, password },
       });
     });
   });
