@@ -126,8 +126,8 @@ const downloadFileFieldAttachments = async (params: {
   const metadata: FileFieldMetadata = [];
   for (const { fileKey, name: fileName } of field.value) {
     const filePath = path.join(targetDir, fileName);
-    const file = await apiClient.file.downloadFile({ fileKey });
-    const savedFilePath = await saveFileWithoutOverwrite(filePath, file);
+    const fileBuffer = await apiClient.file.downloadFile({ fileKey });
+    const savedFilePath = await saveFileWithoutOverwrite(filePath, fileBuffer);
     const relativePath = path.relative(metadataBaseDir, savedFilePath);
     metadata.push(relativePath);
   }
@@ -136,11 +136,11 @@ const downloadFileFieldAttachments = async (params: {
 
 const saveFileWithoutOverwrite = async (
   filePath: string,
-  file: any
+  fileBuffer: any
 ): Promise<FileName> => {
   const uniqueFilePath = generateUniqueLocalFilePath(filePath);
   await fs.mkdir(path.dirname(uniqueFilePath), { recursive: true });
-  await fs.writeFile(uniqueFilePath, Buffer.from(file));
+  await fs.writeFile(uniqueFilePath, Buffer.from(fileBuffer));
   return uniqueFilePath;
 };
 
