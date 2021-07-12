@@ -42,7 +42,7 @@ export async function exportRecords(
   // TODO: extract attachment fields first
 
   if (attachmentDir) {
-    await downloadAttachments(apiClient, records, attachmentDir);
+    await downloadAttachments({ apiClient, records, targetDir: attachmentDir });
   }
 
   return records;
