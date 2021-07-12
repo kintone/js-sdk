@@ -34,38 +34,88 @@ describe("validator", () => {
     });
   });
 
-  it("invalid type", () => {
-    assert.deepStrictEqual(validator(json({ version: "1" })), {
-      valid: false,
-      errors: [
-        {
-          dataPath: "/version",
-          keyword: "type",
-          message: "should be integer",
-          params: {
-            type: "integer",
-          },
-          schemaPath: "#/properties/version/type",
-        },
-      ],
+  describe("version", () => {
+    it.each(
+      // prettier-ignore
+      [
+        "0",
+        "0.1",
+        "0.1.2",
+        "1.0.0",
+        "2.0.3",
+        0,
+        10
+      ]
+    )("valid version: %s", (version) => {
+      expect(validator(json({ version }))).toStrictEqual({
+        valid: true,
+        errors: null,
+      });
     });
-  });
 
-  it("integer is out of range", () => {
-    assert.deepStrictEqual(validator(json({ version: 0 })), {
-      valid: false,
-      errors: [
-        {
-          dataPath: "/version",
-          keyword: "minimum",
-          message: "should be >= 1",
-          params: {
-            comparison: ">=",
-            limit: 1,
-          },
-          schemaPath: "#/properties/version/minimum",
+    it.each([
+      {
+        description: "number is float",
+        version: 0.1,
+        expected: {
+          valid: false,
+          errors: [
+            {
+              dataPath: "/version",
+              keyword: "type",
+              message: "should be integer",
+              params: { type: "integer" },
+              schemaPath: "#/properties/version/oneOf/0/type",
+            },
+            {
+              dataPath: "/version",
+              keyword: "type",
+              message: "should be string",
+              params: { type: "string" },
+              schemaPath: "#/properties/version/oneOf/1/type",
+            },
+            {
+              dataPath: "/version",
+              keyword: "oneOf",
+              message: "should match exactly one schema in oneOf",
+              params: { passingSchemas: null },
+              schemaPath: "#/properties/version/oneOf",
+            },
+          ],
         },
-      ],
+      },
+      {
+        description: "number is out of range",
+        version: -1,
+        expected: {
+          valid: false,
+          errors: [
+            {
+              dataPath: "/version",
+              keyword: "minimum",
+              message: "should be >= 0",
+              params: { comparison: ">=", limit: 0 },
+              schemaPath: "#/properties/version/oneOf/0/minimum",
+            },
+            {
+              dataPath: "/version",
+              keyword: "type",
+              message: "should be string",
+              params: { type: "string" },
+              schemaPath: "#/properties/version/oneOf/1/type",
+            },
+            {
+              dataPath: "/version",
+              keyword: "oneOf",
+              message: "should match exactly one schema in oneOf",
+              params: { passingSchemas: null },
+              schemaPath: "#/properties/version/oneOf",
+            },
+          ],
+        },
+      },
+    ])("invalid version: $description", ({ version, expected }) => {
+      expect(validator(json({ version }))).toStrictEqual(expected);
     });
   });
 
@@ -103,15 +153,30 @@ describe("validator", () => {
     });
   });
 
-  it("2 errors", () => {
+  it("returns combined errors", () => {
     const actual = validator(
       json({
         manifest_version: "a",
-        version: 0,
+        version: -1,
       })
     );
-    assert(actual.valid === false);
-    assert(actual.errors?.length === 2);
+    const invalidManifestVersion = validator(
+      json({
+        manifest_version: "a",
+      })
+    );
+    const invalidVersion = validator(
+      json({
+        version: -1,
+      })
+    );
+    expect(actual.valid).toBe(false);
+    expect(actual.errors).toStrictEqual(
+      expect.arrayContaining([
+        ...(invalidManifestVersion.errors ?? []),
+        ...(invalidVersion.errors ?? []),
+      ])
+    );
   });
 
   it("relative path is invalid for `http-url`", () => {
