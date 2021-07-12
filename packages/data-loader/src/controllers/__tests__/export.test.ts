@@ -100,7 +100,7 @@ describe("export", () => {
 
     const attachmentMetadataList = [
       {
-        attachment: ["2/test.txt"],
+        attachment: [path.join("2", "test.txt")],
       },
       {},
     ];
@@ -182,7 +182,7 @@ describe("export", () => {
 
     const attachmentMetadataList = [
       {
-        subtable: [{ attachmentInSubtable: ["2/test.txt"] }],
+        subtable: [{ attachmentInSubtable: [path.join("2", "test.txt")] }],
       },
       {},
     ];
@@ -315,12 +315,21 @@ describe("export", () => {
 
     const attachmentMetadataList = [
       {
-        attachment: ["2/test.txt", "2/test-1.txt"],
-        attachment2: ["2/test-2.txt", "2/test-3.txt"],
+        attachment: [path.join("2", "test.txt"), path.join("2", "test-1.txt")],
+        attachment2: [
+          path.join("2", "test-2.txt"),
+          path.join("2", "test-3.txt"),
+        ],
         subtable: [
           {
-            attachmentInSubtable: ["2/test-4.txt", "2/test-5.txt"],
-            attachmentInSubtable2: ["2/test-6.txt", "2/test-7.txt"],
+            attachmentInSubtable: [
+              path.join("2", "test-4.txt"),
+              path.join("2", "test-5.txt"),
+            ],
+            attachmentInSubtable2: [
+              path.join("2", "test-6.txt"),
+              path.join("2", "test-7.txt"),
+            ],
           },
         ],
       },
