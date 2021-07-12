@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.10](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.9...@kintone/customize-uploader@4.0.10) (2021-07-12)
+
+
+### Bug Fixes
+
+* **customize-uploader:** pass the value of `--proxy` ([#1002](https://github.com/kintone/js-sdk/issues/1002)) ([f704faf](https://github.com/kintone/js-sdk/commit/f704faf7bef8446d007680a52d3b0553f7928b24))
+
+
+
+
+
 ## [4.0.9](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.8...@kintone/customize-uploader@4.0.9) (2021-07-06)
 
 **Note:** Version bump only for package @kintone/customize-uploader
