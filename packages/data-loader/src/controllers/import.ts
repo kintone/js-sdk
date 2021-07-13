@@ -81,18 +81,18 @@ export const buildImporter = ({
     const { properties: schema } = await apiClient.app.getFormFields<
       Record<string, KintoneFormFieldProperty.OneOf>
     >(options);
-    const metadata = await uploadAttachments(
+    const metadata = await uploadAttachments({
       apiClient,
       records,
-      schema,
+      recordSchema: schema,
       recordMetadataList,
-      attachmentDir
-    );
-    const recordsWithAttachments = mergeRecordsAndMetadata(
+      sourceDir: attachmentDir,
+    });
+    const recordsWithAttachments = mergeRecordsAndMetadata({
       records,
-      schema,
-      metadata
-    );
+      recordSchema: schema,
+      recordMetadataList: metadata,
+    });
     return addAllRecordsChunk(app, recordsWithAttachments);
   }
 
