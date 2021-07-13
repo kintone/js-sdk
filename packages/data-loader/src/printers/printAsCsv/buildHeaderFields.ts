@@ -19,6 +19,7 @@ const supportedFieldTypes = [
   "CREATED_TIME",
   "MULTI_SELECT",
   "CHECK_BOX",
+  "FILE",
   "SUBTABLE",
 ];
 
@@ -35,6 +36,7 @@ const supportedFieldTypesInSubtable: Array<
   "CALC",
   "MULTI_SELECT",
   "CHECK_BOX",
+  "FILE",
 ];
 
 export const buildHeaderFields = (fieldProperties: FieldProperties) => {
