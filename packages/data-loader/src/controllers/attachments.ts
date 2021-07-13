@@ -22,81 +22,93 @@ type SubtableRowMetadata = {
   [fieldCode: string]: FileFieldMetadata;
 };
 
-export const downloadAttachments = async (
-  apiClient: KintoneRestAPIClient,
-  records: KintoneRecord[],
-  attachmentDir: string
-) => {
-  const metadataList = [];
-  for (const record of records) {
-    const recordId = record.$id.value as string;
-    const dir = path.resolve(attachmentDir, recordId);
-    const metadata = await downloadRecordAttachments(apiClient, record, dir);
-    metadataList.push(metadata);
-  }
-  await fs.writeFile(
-    path.resolve(attachmentDir, "attachments.json"),
-    JSON.stringify(metadataList, null, 2)
-  );
+export const downloadAttachments = async (params: {
+  apiClient: KintoneRestAPIClient;
+  records: KintoneRecord[];
+  targetDir: string;
+}) => {
+  const { apiClient, records, targetDir } = params;
+  const metadataList = await downloadRecordsAttachments({
+    apiClient,
+    records,
+    targetDir,
+    metadataBaseDir: targetDir,
+  });
+  const metadataFilePath = path.join(targetDir, "attachments.json");
+  await fs.writeFile(metadataFilePath, JSON.stringify(metadataList, null, 2));
 };
 
-const downloadRecordAttachments = async (
-  apiClient: KintoneRestAPIClient,
-  record: KintoneRecord,
-  attachmentDir: string
-): Promise<RecordMetadata> => {
+const downloadRecordsAttachments = async (params: {
+  apiClient: KintoneRestAPIClient;
+  records: KintoneRecord[];
+  targetDir: string;
+  metadataBaseDir: string;
+}): Promise<RecordMetadata[]> => {
+  const { apiClient, records, targetDir, metadataBaseDir } = params;
+  const metadataList: RecordMetadata[] = [];
+  for (const record of records) {
+    const recordId = record.$id.value as string;
+    const dir = path.join(targetDir, recordId);
+    const metadata = await downloadRecordAttachments({
+      apiClient,
+      record,
+      targetDir: dir,
+      metadataBaseDir,
+    });
+    metadataList.push(metadata);
+  }
+  return metadataList;
+};
+
+const downloadRecordAttachments = async (params: {
+  apiClient: KintoneRestAPIClient;
+  record: KintoneRecord;
+  targetDir: string;
+  metadataBaseDir: string;
+}): Promise<RecordMetadata> => {
+  const { apiClient, record, targetDir, metadataBaseDir } = params;
   const metadata: RecordMetadata = {};
   for (const [fieldCode, field] of Object.entries(record)) {
     if (field.type === "FILE") {
-      metadata[fieldCode] = await downloadFileFieldAttachments(
+      metadata[fieldCode] = await downloadFileFieldAttachments({
         apiClient,
         field,
-        attachmentDir
-      );
+        targetDir,
+        metadataBaseDir,
+      });
     } else if (field.type === "SUBTABLE") {
-      metadata[fieldCode] = await downloadSubtableFieldAttachments(
+      metadata[fieldCode] = await downloadSubtableFieldAttachments({
         apiClient,
         field,
-        attachmentDir
-      );
+        targetDir,
+        metadataBaseDir,
+      });
     }
-  }
-  return metadata;
-};
-
-const downloadFileFieldAttachments = async (
-  apiClient: KintoneRestAPIClient,
-  field: KintoneRecordField.File,
-  attachmentDir: string
-): Promise<FileFieldMetadata> => {
-  const metadata: FileFieldMetadata = [];
-  for (const { fileKey, name: fileName } of field.value) {
-    const filePath = path.resolve(attachmentDir, fileName);
-    const file = await apiClient.file.downloadFile({ fileKey });
-    const savedFilePath = await saveFileWithoutOverwrite(filePath, file);
-    metadata.push(path.basename(savedFilePath));
   }
   return metadata;
 };
 
 const downloadSubtableFieldAttachments = async <
   T extends { [field: string]: KintoneRecordField.InSubtable }
->(
-  apiClient: KintoneRestAPIClient,
-  field: KintoneRecordField.Subtable<T>,
-  attachmentDir: string
-): Promise<SubtableFieldMetadata> => {
+>(params: {
+  apiClient: KintoneRestAPIClient;
+  field: KintoneRecordField.Subtable<T>;
+  targetDir: string;
+  metadataBaseDir: string;
+}): Promise<SubtableFieldMetadata> => {
+  const { apiClient, field, targetDir, metadataBaseDir } = params;
   const subtableFieldMetadata: SubtableFieldMetadata = [];
   for (const row of field.value) {
     const subtableRowMetadata: SubtableRowMetadata = {};
     for (const [fieldCodeInRow, fieldInRow] of Object.entries(row.value)) {
       if (fieldInRow.type === "FILE") {
         subtableRowMetadata[fieldCodeInRow] =
-          await downloadFileFieldAttachments(
+          await downloadFileFieldAttachments({
             apiClient,
-            fieldInRow,
-            attachmentDir
-          );
+            field: fieldInRow,
+            targetDir,
+            metadataBaseDir,
+          });
       }
     }
     subtableFieldMetadata.push(subtableRowMetadata);
@@ -104,13 +116,31 @@ const downloadSubtableFieldAttachments = async <
   return subtableFieldMetadata;
 };
 
+const downloadFileFieldAttachments = async (params: {
+  apiClient: KintoneRestAPIClient;
+  field: KintoneRecordField.File;
+  targetDir: string;
+  metadataBaseDir: string;
+}): Promise<FileFieldMetadata> => {
+  const { apiClient, field, targetDir, metadataBaseDir } = params;
+  const metadata: FileFieldMetadata = [];
+  for (const { fileKey, name: fileName } of field.value) {
+    const filePath = path.join(targetDir, fileName);
+    const fileBuffer = await apiClient.file.downloadFile({ fileKey });
+    const savedFilePath = await saveFileWithoutOverwrite(filePath, fileBuffer);
+    const relativePath = path.relative(metadataBaseDir, savedFilePath);
+    metadata.push(relativePath);
+  }
+  return metadata;
+};
+
 const saveFileWithoutOverwrite = async (
   filePath: string,
-  file: any
+  fileBuffer: any
 ): Promise<FileName> => {
   const uniqueFilePath = generateUniqueLocalFilePath(filePath);
   await fs.mkdir(path.dirname(uniqueFilePath), { recursive: true });
-  await fs.writeFile(uniqueFilePath, Buffer.from(file));
+  await fs.writeFile(uniqueFilePath, Buffer.from(fileBuffer));
   return uniqueFilePath;
 };
 
@@ -122,7 +152,7 @@ const generateUniqueLocalFilePath = (filePath: string) => {
       "-" +
       i +
       path.extname(filePath);
-    newFilePath = path.resolve(path.dirname(newFilePath), newFileName);
+    newFilePath = path.join(path.dirname(newFilePath), newFileName);
   }
   return newFilePath;
 };
