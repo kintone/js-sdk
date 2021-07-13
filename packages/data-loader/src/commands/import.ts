@@ -62,6 +62,10 @@ export const builder = (args: yargs.Argv) =>
       type: "string",
       demandOption: true,
     })
+    .option("attachment-dir", {
+      describe: "Attachment file directory",
+      type: "string",
+    })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",
       type: "string",
@@ -86,6 +90,7 @@ export const handler = (args: Args) => {
     app: args.app,
     guestSpaceId: args["guest-space-id"],
     filePath: args["file-path"],
+    attachmentDir: args["attachment-dir"],
     pfxFilePath: args["pfx-file-path"],
     pfxFilePassword: args["pfx-file-password"],
   });
