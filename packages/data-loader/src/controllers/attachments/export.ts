@@ -36,7 +36,7 @@ const downloadRecordsAttachments = async (params: {
   metadataBaseDir: string;
 }): Promise<Array<RecordMetadata<FileName>>> => {
   const { apiClient, records, targetDir, metadataBaseDir } = params;
-const metadataList: Array<RecordMetadata<FileName>> = [];
+  const metadataList: Array<RecordMetadata<FileName>> = [];
   for (const record of records) {
     const recordId = record.$id.value as string;
     const dir = path.join(targetDir, recordId);
