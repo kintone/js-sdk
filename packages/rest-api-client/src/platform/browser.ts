@@ -44,7 +44,9 @@ export const buildFormDataValue = (data: unknown) => {
 };
 
 export const buildBaseUrl = (baseUrl?: string) => {
-  if (baseUrl) return baseUrl;
+  if (baseUrl) {
+    return baseUrl;
+  }
 
   const { host, protocol } = location!;
   return `${protocol}//${host}`;

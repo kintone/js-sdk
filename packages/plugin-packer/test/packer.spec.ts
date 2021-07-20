@@ -106,7 +106,9 @@ function readZipContents(zipEntry): Promise<Map<any, Buffer>> {
   return new Promise((resolve, reject) => {
     zipEntry.on("entry", (entry) => {
       zipEntry.openReadStream(entry, (err, stream) => {
-        if (err) reject(err);
+        if (err) {
+          reject(err);
+        }
         streamToBufferPromises.push(
           streamToBuffer(stream).then((buffer) => {
             zipContentsMap.set(entry.fileName, buffer);
@@ -123,7 +125,9 @@ function readZipContents(zipEntry): Promise<Map<any, Buffer>> {
 function verifyPlugin(plugin): Promise<void> {
   return new Promise((resolve, reject) => {
     yauzl.fromBuffer(plugin, (err, zipEntry) => {
-      if (err) reject(err);
+      if (err) {
+        reject(err);
+      }
       readZipContents(zipEntry).then((zipContentsMap) => {
         const verifier = crypto.createVerify("RSA-SHA1");
         verifier.update(zipContentsMap.get("contents.zip"));
