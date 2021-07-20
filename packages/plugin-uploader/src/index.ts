@@ -87,7 +87,12 @@ async function upload(
     throw new Error('input[type="file"] cannot find');
   }
   await file.uploadFile(pluginPath);
-  await page.click('button[name="ok"]');
+  await page.evaluate(() => {
+    const button = document.querySelector(
+      'button[name="ok"]'
+    ) as HTMLButtonElement;
+    button.click();
+  });
   await page.waitForSelector(".ocean-ui-dialog", {
     hidden: true,
     timeout: UPLOAD_TIMEOUT_MS,
