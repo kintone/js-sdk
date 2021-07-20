@@ -84,7 +84,7 @@ async function upload(
 
   const file = await page.$('.plupload > input[type="file"]');
   if (file == null) {
-    throw new Error('input[type="file"] cannot find');
+    throw new Error('input[type="file"] is not found');
   }
   await file.uploadFile(pluginPath);
   await page.evaluate(() => {
@@ -93,7 +93,7 @@ async function upload(
     if (button) {
       button.click();
     } else {
-      throw new Error('button[name="ok"] cannot find');
+      throw new Error('button[name="ok"] is not found');
     }
   });
   await page.waitForSelector(".ocean-ui-dialog", {
