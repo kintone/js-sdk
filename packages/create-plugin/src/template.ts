@@ -8,25 +8,28 @@ import { Manifest } from "./manifest";
 export const SUPPORT_TEMPLATE_TYPE = ["minimum", "modern"];
 export type TemplateType = "minimum" | "modern";
 
-export function isValidTemplateType(templateType: string) {
+export const isValidTemplateType = (templateType: string) => {
   return SUPPORT_TEMPLATE_TYPE.indexOf(templateType) !== -1;
-}
+};
 
 /**
  * Return a template type corresponding to the manifest
  * @param manifest
  */
-export function getTemplateType(manifest: Manifest): TemplateType {
+export const getTemplateType = (manifest: Manifest): TemplateType => {
   // We don't have any other template types
   return "minimum";
-}
+};
 
 /**
  * Filter unnecessary files from template files
  * @param manifest
  * @param file
  */
-export function filterTemplateFile(manifest: Manifest, file: string): boolean {
+export const filterTemplateFile = (
+  manifest: Manifest,
+  file: string
+): boolean => {
   if (/mobile\..+/.test(file)) {
     return !!manifest.mobile;
   }
@@ -34,7 +37,7 @@ export function filterTemplateFile(manifest: Manifest, file: string): boolean {
     return !!manifest.config;
   }
   return true;
-}
+};
 
 /**
  * Process a template file
@@ -43,13 +46,13 @@ export function filterTemplateFile(manifest: Manifest, file: string): boolean {
  * @param destDir
  * @param manifest
  */
-export function processTemplateFile(
+export const processTemplateFile = (
   filePath: string,
   srcDir: string,
   destDir: string,
   manifest: Manifest,
   enablePluginUploader: boolean
-): void {
+): void => {
   const destFilePath = filePath
     // For Windows
     .replace(/\//g, path.sep)
@@ -78,4 +81,4 @@ export function processTemplateFile(
     // fs.copyFileSync(filePath, destFilePath);
     fs.writeFileSync(destFilePath, fs.readFileSync(filePath));
   }
-}
+};

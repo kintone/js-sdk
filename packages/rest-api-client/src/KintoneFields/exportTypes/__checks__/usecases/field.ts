@@ -35,7 +35,7 @@ declare function displaySubtableRow(subtableRow: {
   Cost: KintoneRecordField.Number;
 }): void;
 
-async function exampleGetAndUpdateRecords() {
+const exampleGetAndUpdateRecords = async () => {
   const APP_ID = 1;
   const response = await client.record.getRecords<MyAppRecord>({ app: APP_ID });
 
@@ -63,4 +63,4 @@ async function exampleGetAndUpdateRecords() {
       },
     })),
   });
-}
+};

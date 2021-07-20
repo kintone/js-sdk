@@ -51,34 +51,34 @@ interface SubTableFieldTypeGroups {
   fields: FieldTypeGroups;
 }
 
-function excludeLookupOrRelatedRecord(field: FieldType | SubTableFieldType) {
+const excludeLookupOrRelatedRecord = (field: FieldType | SubTableFieldType) => {
   return Object.keys(field).indexOf("relatedApp") < 0;
-}
+};
 
-function selectFieldsTypesIn(
+const selectFieldsTypesIn = (
   types: string[],
   fieldsToBeSelected: FieldTypesOrSubTableFieldTypes
-): FieldTypesOrSubTableFieldTypes {
+): FieldTypesOrSubTableFieldTypes => {
   const fields = fieldsToBeSelected as Array<FieldType | SubTableFieldType>;
   const typeIncludes = (fieldToTest) => types.indexOf(fieldToTest.type) >= 0;
 
   return fields.filter(typeIncludes).filter(excludeLookupOrRelatedRecord);
-}
+};
 
-function selectFieldsTypesEquals(
+const selectFieldsTypesEquals = (
   type: string,
   fieldsToBeSelected: FieldTypesOrSubTableFieldTypes
-): FieldTypesOrSubTableFieldTypes {
+): FieldTypesOrSubTableFieldTypes => {
   const fields = fieldsToBeSelected as Array<FieldType | SubTableFieldType>;
 
   return fields
     .filter((field) => field.type === type)
     .filter(excludeLookupOrRelatedRecord);
-}
+};
 
-function convertSubTableFields(
+const convertSubTableFields = (
   subTableFields: SubTableFieldType[]
-): SubTableFieldTypeGroups[] {
+): SubTableFieldTypeGroups[] => {
   return subTableFields.map((subTableField) => {
     return {
       code: subTableField.code,
@@ -88,11 +88,11 @@ function convertSubTableFields(
       ),
     };
   });
-}
+};
 
-function convertFieldTypesToFieldTypeGroups(
+const convertFieldTypesToFieldTypeGroups = (
   properties: FieldTypesOrSubTableFieldTypes
-): FieldTypeGroups {
+): FieldTypeGroups => {
   const fieldTypes = objectValues(properties);
   const stringFields = selectFieldsTypesIn(SIMPLE_VALUE_TYPES, fieldTypes);
   const calculatedFields = selectFieldsTypesIn(
@@ -124,7 +124,7 @@ function convertFieldTypesToFieldTypeGroups(
     fileTypeFields,
     subTableFields,
   };
-}
+};
 
 export const FieldTypeConverter = {
   convertFieldTypesToFieldTypeGroups,

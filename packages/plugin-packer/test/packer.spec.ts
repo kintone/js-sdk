@@ -91,16 +91,16 @@ describe("packer", () => {
   });
 });
 
-function streamToBuffer(stream) {
+const streamToBuffer = (stream) => {
   return new Promise((resolve, reject) => {
     const buffers = [];
     stream.on("data", (data) => buffers.push(data));
     stream.on("end", () => resolve(Buffer.concat(buffers)));
     stream.on("error", reject);
   });
-}
+};
 
-function readZipContents(zipEntry): Promise<Map<any, Buffer>> {
+const readZipContents = (zipEntry): Promise<Map<any, Buffer>> => {
   const zipContentsMap = new Map();
   const streamToBufferPromises = [];
   return new Promise((resolve, reject) => {
@@ -120,9 +120,9 @@ function readZipContents(zipEntry): Promise<Map<any, Buffer>> {
       Promise.all(streamToBufferPromises).then(() => resolve(zipContentsMap));
     });
   });
-}
+};
 
-function verifyPlugin(plugin): Promise<void> {
+const verifyPlugin = (plugin): Promise<void> => {
   return new Promise((resolve, reject) => {
     yauzl.fromBuffer(plugin, (err, zipEntry) => {
       if (err) {
@@ -138,9 +138,9 @@ function verifyPlugin(plugin): Promise<void> {
       });
     });
   });
-}
+};
 
-function derToPem(der) {
+const derToPem = (der) => {
   const key = new RSA(der, "pkcs8-public-der");
   return key.exportKey("pkcs1-public-pem");
-}
+};

@@ -55,16 +55,19 @@ const messages = {
  * @param lang
  * @param key
  */
-export function getMessage(lang: keyof LangMap, key: keyof MessageMap): string {
+export const getMessage = (
+  lang: keyof LangMap,
+  key: keyof MessageMap
+): string => {
   return messages[key][lang];
-}
+};
 
 /**
  * Returns a function bound lang to getMessage
  * @param lang
  */
-export function getBoundMessage(
+export const getBoundMessage = (
   lang: keyof LangMap
-): (key: keyof MessageMap) => string {
+): ((key: keyof MessageMap) => string) => {
   return getMessage.bind(null, lang);
-}
+};

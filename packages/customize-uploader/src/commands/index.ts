@@ -33,7 +33,7 @@ export interface CustomizeManifest {
 
 const MAX_RETRY_COUNT = 3;
 
-export async function upload(
+export const upload = async (
   kintoneApiClient: KintoneApiClient,
   manifest: CustomizeManifest,
   status: {
@@ -42,7 +42,7 @@ export async function upload(
     updated: boolean;
   },
   options: Option
-): Promise<void> {
+): Promise<void> => {
   const m = getBoundMessage(options.lang);
   const appId = manifest.app;
   let { retryCount, updateBody, updated } = status;
@@ -125,7 +125,7 @@ export async function upload(
       throw e;
     }
   }
-}
+};
 
 export const run = async (
   domain: string,

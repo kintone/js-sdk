@@ -208,7 +208,7 @@ describe("validator", () => {
     it("valid file size", () => {
       let called = 0;
       const actual = validator(json({}), {
-        maxFileSize(maxFileSizeInBytes, path) {
+        maxFileSize: (maxFileSizeInBytes, path) => {
           assert(maxFileSizeInBytes === MAX_FILE_SIZE);
           assert(path === "image/icon.png");
           called++;
@@ -221,7 +221,7 @@ describe("validator", () => {
 
     it("invalid icon file size", () => {
       const actual = validator(json({}), {
-        maxFileSize(maxFileSizeInBytes, path) {
+        maxFileSize: (maxFileSizeInBytes, path) => {
           return false;
         },
       });
@@ -246,7 +246,7 @@ describe("validator", () => {
           },
         }),
         {
-          maxFileSize(maxFileSizeInBytes, path) {
+          maxFileSize: (maxFileSizeInBytes, path) => {
             return path.indexOf("foo.js") === -1;
           },
         }
@@ -272,7 +272,7 @@ describe("validator", () => {
           },
         }),
         {
-          maxFileSize(maxFileSizeInBytes, path) {
+          maxFileSize: (maxFileSizeInBytes, path) => {
             return path.indexOf("foo.css") === -1;
           },
         }
@@ -336,7 +336,7 @@ describe("validator", () => {
  * @param {Object=} source
  * @return {!Object}
  */
-function json(source: Record<string, any>): { [s: string]: any } {
+const json = (source: Record<string, any>): { [s: string]: any } => {
   return Object.assign(
     {
       manifest_version: 1,
@@ -349,4 +349,4 @@ function json(source: Record<string, any>): { [s: string]: any } {
     },
     source
   );
-}
+};

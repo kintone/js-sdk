@@ -11,7 +11,7 @@ interface RenderInput {
   fieldTypeGroups: FieldTypeGroups;
 }
 
-function renderAsFile(output: string, renderInput: RenderInput) {
+const renderAsFile = (output: string, renderInput: RenderInput) => {
   const tsExpression = convertToTsExpression(renderInput);
   const prettySource = prettier.format(tsExpression.tsExpression(), {
     parser: "typescript",
@@ -23,7 +23,7 @@ function renderAsFile(output: string, renderInput: RenderInput) {
   }
 
   fs.writeFileSync(path.join(process.cwd(), output), prettySource);
-}
+};
 // definition
 export const TypeDefinitionTemplate = {
   renderAsFile,

@@ -14,19 +14,19 @@ interface BasicAuth {
   password: string;
 }
 
-function launchBrowser(proxy: string | null): Promise<Browser> {
+const launchBrowser = (proxy: string | null): Promise<Browser> => {
   const args = proxy ? [`--proxy-server=${proxy}`] : [];
   return puppeteer.launch({ args });
-}
+};
 
-async function readyForUpload(
+const readyForUpload = async (
   browser: Browser,
   domain: string,
   userName: string,
   password: string,
   lang: Lang,
   basicAuth: BasicAuth | null
-): Promise<Page> {
+): Promise<Page> => {
   const m = getBoundMessage(lang);
 
   const page = await browser.newPage();
@@ -71,13 +71,13 @@ async function readyForUpload(
     throw chalk.red(m("Error_adminPrivilege"));
   }
   return page;
-}
+};
 
-async function upload(
+const upload = async (
   page: Page,
   pluginPath: string,
   lang: Lang
-): Promise<void> {
+): Promise<void> => {
   const m = getBoundMessage(lang);
   console.log(`Trying to upload ${pluginPath}`);
   await page.click("#page-admin-system-plugin-index-addplugin");
@@ -93,7 +93,7 @@ async function upload(
     timeout: UPLOAD_TIMEOUT_MS,
   });
   console.log(`${pluginPath} ${m("Uploaded")}`);
-}
+};
 
 interface Option {
   proxyServer: string | null;
@@ -102,13 +102,13 @@ interface Option {
   basicAuth: BasicAuth | null;
 }
 
-export async function run(
+export const run = async (
   domain: string,
   userName: string,
   password: string,
   pluginPath: string,
   options: Option
-): Promise<void> {
+): Promise<void> => {
   let browser = await launchBrowser(options.proxyServer);
   let page: Page;
   const { lang, basicAuth } = options;
@@ -157,4 +157,4 @@ export async function run(
     console.error(m("Error"), e);
     await browser.close();
   }
-}
+};

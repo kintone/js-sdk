@@ -16,19 +16,19 @@ import { TemplateType } from "./template";
  * Verify whether the output directory is valid
  * @param outputDirectory
  */
-function verifyOutputDirectory(outputDirectory: string, lang: Lang): void {
+const verifyOutputDirectory = (outputDirectory: string, lang: Lang): void => {
   if (fs.existsSync(outputDirectory)) {
     throw new Error(
       `${outputDirectory} ${getMessage(lang, "Error_alreadyExists")}`
     );
   }
-}
+};
 
 /**
  * Run create-kintone-plugin script
  * @param outputDir
  */
-function run(outputDir: string, lang: Lang, templateType: TemplateType) {
+const run = (outputDir: string, lang: Lang, templateType: TemplateType) => {
   const m = getBoundMessage(lang);
   verifyOutputDirectory(outputDir, lang);
   printLog(`
@@ -84,7 +84,7 @@ ${m("developerSite")}
         printError(m("Error_cannotCreatePlugin"), error.message);
       });
     });
-}
+};
 
 module.exports = run;
 module.exports.default = run;
