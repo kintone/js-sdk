@@ -18,7 +18,7 @@ export interface NewInstanceInput {
   basicAuthUsername: string | null;
 }
 
-function newAxiosInstance(input: NewInstanceInput): AxiosInstance {
+const newAxiosInstance = (input: NewInstanceInput): AxiosInstance => {
   let proxy: AxiosProxyConfig | undefined;
   // parse the proxy URL like http://admin:pass@localhost:8000
   if (input.proxy) {
@@ -69,11 +69,11 @@ function newAxiosInstance(input: NewInstanceInput): AxiosInstance {
     headers,
     proxy,
   });
-}
+};
 
-function newAxiosInstanceInternal(config: AxiosRequestConfig) {
+const newAxiosInstanceInternal = (config: AxiosRequestConfig) => {
   return axios.create(config);
-}
+};
 
 export const AxiosUtils = {
   newAxiosInstance,

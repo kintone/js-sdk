@@ -40,16 +40,16 @@ export const buildImporter = ({
     return path.extname(filepath).split(".").pop() || "";
   };
 
-  async function readStream(stream: fs.ReadStream, encoding = "utf8") {
+  const readStream = async (stream: fs.ReadStream, encoding = "utf8") => {
     stream.setEncoding(encoding);
     let content = "";
     for await (const chunk of stream) {
       content += chunk;
     }
     return content;
-  }
+  };
 
-  async function importRecords(options: Options) {
+  const importRecords = async (options: Options) => {
     const { app, filePath } = options;
     const stream = fs.createReadStream(filePath);
     const content = await readStream(stream);
@@ -60,9 +60,9 @@ export const buildImporter = ({
       options,
     });
     await addAllRecordsChunk(app, records);
-  }
+  };
 
-  async function parseSource({
+  const parseSource = async ({
     type,
     source,
     options,
@@ -70,7 +70,7 @@ export const buildImporter = ({
     type: string;
     source: string;
     options: Options;
-  }) {
+  }) => {
     switch (type) {
       case "json":
         return parseJson(source);
@@ -84,12 +84,12 @@ export const buildImporter = ({
       default:
         throw new Error(`Unexpected file type: ${type} is unacceptable.`);
     }
-  }
+  };
 
-  async function addAllRecordsChunk(
+  const addAllRecordsChunk = async (
     app: AppID,
     allRecords: KintoneRecordForParameter[]
-  ) {
+  ) => {
     let chunkStartIndex = 0;
     while (chunkStartIndex < allRecords.length) {
       const chunkNextIndex =
@@ -112,7 +112,7 @@ export const buildImporter = ({
       }
       chunkStartIndex = chunkNextIndex;
     }
-  }
+  };
 
   return importRecords;
 };

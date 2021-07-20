@@ -23,7 +23,7 @@ const KintoneFieldTypeAndTypeScriptFieldTypeName = {
   ORGANIZATION_SELECT: "kintone.fieldTypes.OrganizationSelect",
 };
 
-function convert(typeName: string) {
+const convert = (typeName: string) => {
   const typeScriptFieldType =
     KintoneFieldTypeAndTypeScriptFieldTypeName[typeName];
   if (!typeScriptFieldType) {
@@ -32,7 +32,7 @@ function convert(typeName: string) {
     );
   }
   return typeScriptFieldType;
-}
+};
 
 export const Converter = {
   convert,

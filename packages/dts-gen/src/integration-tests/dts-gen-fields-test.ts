@@ -3,7 +3,7 @@
 import * as assert from "assert";
 type SavedTestFields = kintone.types.SavedFields;
 
-function assertFieldTypes(record: SavedTestFields) {
+const assertFieldTypes = (record: SavedTestFields) => {
   // Assert simple field types
   [
     {
@@ -189,54 +189,54 @@ function assertFieldTypes(record: SavedTestFields) {
       type: "MULTI_SELECT",
     },
   ].forEach(({ ref, type }) => assertStringListField(ref, type));
-}
+};
 
-function assertSubTable(ref: { type: string; value: any[] }) {
+const assertSubTable = (ref: { type: string; value: any[] }) => {
   assertType(ref.type, "SUBTABLE");
   assertNotUndefined(ref.value.length);
-}
+};
 
-function assertSimpleField(ref: any, expectedType: string) {
+const assertSimpleField = (ref: any, expectedType: string) => {
   assertType(ref.type, expectedType);
   assert.ok(ref.value !== undefined);
-}
+};
 
-function assertStringListField(ref: any, expectedType: string) {
+const assertStringListField = (ref: any, expectedType: string) => {
   assertType(ref.type, expectedType);
   assertNotUndefined(ref.value.length);
-}
+};
 
-function assertEntity(
+const assertEntity = (
   ref: {
     type: string;
     value: { code: string; name: string };
   },
   expectedType: string
-) {
+) => {
   assertType(ref.type, expectedType);
   assertNotUndefined(ref.value);
   assertNotUndefined(ref.value.code);
   assertNotUndefined(ref.value.name);
-}
+};
 
-function assertEntityListField(ref: any, expectedType: string) {
+const assertEntityListField = (ref: any, expectedType: string) => {
   assertType(ref.type, expectedType);
   assertNotUndefined(ref.value.length);
   assertNotUndefined(ref.value[0].code);
   assertNotUndefined(ref.value[0].name);
-}
+};
 
-function assertType(type, expectedType) {
+const assertType = (type, expectedType) => {
   assert.strictEqual(
     type,
     expectedType,
     `expected: ${expectedType}, actual:${type}`
   );
-}
+};
 
-function assertNotUndefined(ref) {
+const assertNotUndefined = (ref) => {
   assert.ok(ref !== undefined);
-}
+};
 
 interface FileFieldValue {
   type: "FILE";
@@ -246,13 +246,13 @@ interface FileFieldValue {
     fileKey: string;
   }>;
 }
-function assertFileField(ref: FileFieldValue) {
+const assertFileField = (ref: FileFieldValue) => {
   assert.ok(ref.type, "FILE");
   assert.ok(ref.value.length);
   assert.ok(ref.value[0].name);
   assert.ok(ref.value[0].contentType);
   assert.ok(ref.value[0].fileKey);
-}
+};
 
 export const DTSGenFieldsTest = {
   assertFieldTypes,

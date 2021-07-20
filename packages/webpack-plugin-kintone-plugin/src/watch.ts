@@ -6,10 +6,10 @@ import os from "os";
  * @param files
  * @param cb
  */
-export function watchFiles(
+export const watchFiles = (
   files: string[],
   cb: (file: string) => void
-): () => void {
+): (() => void) => {
   // change events are fired before chagned files are flushed on Windows,
   // which generate an invalid plugin zip.
   // in order to fix this, we use awaitWriteFinish option only on Windows.
@@ -27,4 +27,4 @@ export function watchFiles(
     cb(file);
   });
   return () => files.map((f) => watcher.unwatch(f));
-}
+};
