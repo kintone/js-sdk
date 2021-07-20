@@ -87,6 +87,8 @@ async function upload(
     throw new Error('input[type="file"] is not found');
   }
   await file.uploadFile(pluginPath);
+  // HACK: `page.click` does not work as expected, so we use `page.evaluate` instead.
+  // ref: https://github.com/puppeteer/puppeteer/pull/7097#issuecomment-850348366
   await page.evaluate(() => {
     const button =
       document.querySelector<HTMLButtonElement>('button[name="ok"]');
