@@ -8,7 +8,7 @@
     "build": "tsc --build --force",
     "postbuild": "bin/npm-build.sh && yarn build:integration",
     "clean": "rimraf dist",
-    "lint:fix": "eslint --fix src/**/*.ts",
+    "lint:fix": "yarn lint --fix",
     "lint": "eslint 'src/**/*.ts'",
     "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",
     "generate": "node dist/index.js --host https://****.cybozu.com --username *** --password *** --app-id ***",
