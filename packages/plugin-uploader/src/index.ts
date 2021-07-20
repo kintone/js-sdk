@@ -88,10 +88,13 @@ async function upload(
   }
   await file.uploadFile(pluginPath);
   await page.evaluate(() => {
-    const button = document.querySelector(
-      'button[name="ok"]'
-    ) as HTMLButtonElement;
-    button.click();
+    const button =
+      document.querySelector<HTMLButtonElement>('button[name="ok"]');
+    if (button) {
+      button.click();
+    } else {
+      throw new Error('button[name="ok"] cannot find');
+    }
   });
   await page.waitForSelector(".ocean-ui-dialog", {
     hidden: true,
