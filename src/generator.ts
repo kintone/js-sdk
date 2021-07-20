@@ -1,6 +1,5 @@
 "use strict";
 
-import { spawnSync } from "child_process";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
@@ -10,7 +9,6 @@ import { Manifest } from "./manifest";
 import { generatePrivateKey } from "./privateKey";
 import {
   filterTemplateFile,
-  getTemplateType,
   processTemplateFile,
   TemplateType,
 } from "./template";
