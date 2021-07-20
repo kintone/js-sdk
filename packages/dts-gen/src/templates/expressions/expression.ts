@@ -1,11 +1,7 @@
 export interface TsExpression {
-    tsExpression(): string;
+  tsExpression(): string;
 }
 
-export function toTsExpressions(
-    expressions: TsExpression[]
-): string {
-    return expressions
-        .map((e) => e.tsExpression())
-        .join("\n");
+export function toTsExpressions(expressions: TsExpression[]): string {
+  return expressions.map((e) => e.tsExpression()).join("\n");
 }
