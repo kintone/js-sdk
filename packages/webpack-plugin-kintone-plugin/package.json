@@ -45,7 +45,7 @@
     "adm-zip": "^0.5.5",
     "rimraf": "^3.0.2",
     "ts-node": "^10.1.0",
-    "webpack": "^5.44.0",
+    "webpack": "^5.45.1",
     "webpack-cli": "4.7.2"
   },
   "peerDependencies": {
