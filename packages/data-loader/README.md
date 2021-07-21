@@ -6,7 +6,6 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
 
-- Export attachments of fields in table field
 - Import attachemnts
 - Update records when importing
 - When using CSV format, the following fields are not supported

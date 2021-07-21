@@ -98,6 +98,13 @@ describe("export", () => {
       },
     ];
 
+    const attachmentMetadataList = [
+      {
+        attachment: [path.join("2", "test.txt")],
+      },
+      {},
+    ];
+
     const tempDir = await fs.mkdtemp(
       path.join(os.tmpdir(), "kintone-data-loader-")
     );
@@ -109,14 +116,243 @@ describe("export", () => {
       attachmentDir: tempDir,
     });
     expect(actual).toStrictEqual(records);
-    const downloadFile = await fs.readFile(
+    const attachmentsJson = await fs.readFile(
+      path.join(tempDir, "attachments.json")
+    );
+    expect(JSON.parse(attachmentsJson.toString())).toStrictEqual(
+      attachmentMetadataList
+    );
+    const downloadedFile = await fs.readFile(
       path.join(
         tempDir,
         recordWithAttachment.$id.value,
         recordWithAttachment.attachment.value[0].name
       )
     );
-    expect(downloadFile.toString()).toBe(testFileData);
+    expect(downloadedFile.toString()).toBe(testFileData);
+  });
+  it("can download files of subtable to a specified directory", async () => {
+    const recordWithAttachment = {
+      $id: {
+        value: "2",
+      },
+      fieldCode: {
+        type: "SINGLE_LINE_TEXT",
+        value: "value1",
+      },
+      subtable: {
+        type: "SUBTABLE",
+        value: [
+          {
+            id: "4",
+            value: {
+              singleLineText: {
+                type: "SINGLE_LINE_TEXT",
+                value: "value1",
+              },
+              attachmentInSubtable: {
+                type: "FILE",
+                value: [
+                  {
+                    contentType: "text/plain",
+                    fileKey: "test-file-key",
+                    name: "test.txt",
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    };
+    const testFileData = "test data";
+
+    const records = [
+      recordWithAttachment,
+      {
+        $id: {
+          value: "3",
+        },
+        fieldCode: {
+          type: "SINGLE_LINE_TEXT",
+          value: "value1",
+        },
+      },
+    ];
+
+    const attachmentMetadataList = [
+      {
+        subtable: [{ attachmentInSubtable: [path.join("2", "test.txt")] }],
+      },
+      {},
+    ];
+
+    const tempDir = await fs.mkdtemp(
+      path.join(os.tmpdir(), "kintone-data-loader-")
+    );
+
+    apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
+    apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
+    const actual = await exportRecords(apiClient, {
+      app: "1",
+      attachmentDir: tempDir,
+    });
+    expect(actual).toStrictEqual(records);
+    const attachmentsJson = await fs.readFile(
+      path.join(tempDir, "attachments.json")
+    );
+    expect(JSON.parse(attachmentsJson.toString())).toStrictEqual(
+      attachmentMetadataList
+    );
+    const downloadedFile = await fs.readFile(
+      path.join(
+        tempDir,
+        recordWithAttachment.$id.value,
+        recordWithAttachment.subtable.value[0].value.attachmentInSubtable
+          .value[0].name
+      )
+    );
+    expect(downloadedFile.toString()).toBe(testFileData);
+  });
+  it("can download files with duplicate file names to a specified directory", async () => {
+    const recordWithAttachment = {
+      $id: {
+        value: "2",
+      },
+      fieldCode: {
+        type: "SINGLE_LINE_TEXT",
+        value: "value1",
+      },
+      attachment: {
+        type: "FILE",
+        value: [
+          {
+            contentType: "text/plain",
+            fileKey: "test-file-key",
+            name: "test.txt",
+          },
+          {
+            contentType: "text/plain",
+            fileKey: "test-file-key",
+            name: "test.txt",
+          },
+        ],
+      },
+      attachment2: {
+        type: "FILE",
+        value: [
+          {
+            contentType: "text/plain",
+            fileKey: "test-file-key",
+            name: "test.txt",
+          },
+          {
+            contentType: "text/plain",
+            fileKey: "test-file-key",
+            name: "test.txt",
+          },
+        ],
+      },
+      subtable: {
+        type: "SUBTABLE",
+        value: [
+          {
+            id: "4",
+            value: {
+              singleLineText: {
+                type: "SINGLE_LINE_TEXT",
+                value: "value1",
+              },
+              attachmentInSubtable: {
+                type: "FILE",
+                value: [
+                  {
+                    contentType: "text/plain",
+                    fileKey: "test-file-key",
+                    name: "test.txt",
+                  },
+                  {
+                    contentType: "text/plain",
+                    fileKey: "test-file-key",
+                    name: "test.txt",
+                  },
+                ],
+              },
+              attachmentInSubtable2: {
+                type: "FILE",
+                value: [
+                  {
+                    contentType: "text/plain",
+                    fileKey: "test-file-key",
+                    name: "test.txt",
+                  },
+                  {
+                    contentType: "text/plain",
+                    fileKey: "test-file-key",
+                    name: "test.txt",
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    };
+    const testFileData = "test data";
+
+    const records = [
+      recordWithAttachment,
+      {
+        $id: {
+          value: "3",
+        },
+        fieldCode: {
+          type: "SINGLE_LINE_TEXT",
+          value: "value1",
+        },
+      },
+    ];
+
+    const attachmentMetadataList = [
+      {
+        attachment: [path.join("2", "test.txt"), path.join("2", "test-1.txt")],
+        attachment2: [
+          path.join("2", "test-2.txt"),
+          path.join("2", "test-3.txt"),
+        ],
+        subtable: [
+          {
+            attachmentInSubtable: [
+              path.join("2", "test-4.txt"),
+              path.join("2", "test-5.txt"),
+            ],
+            attachmentInSubtable2: [
+              path.join("2", "test-6.txt"),
+              path.join("2", "test-7.txt"),
+            ],
+          },
+        ],
+      },
+      {},
+    ];
+
+    const tempDir = await fs.mkdtemp(
+      path.join(os.tmpdir(), "kintone-data-loader-")
+    );
+
+    apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
+    apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
+    const actual = await exportRecords(apiClient, {
+      app: "1",
+      attachmentDir: tempDir,
+    });
+    expect(actual).toStrictEqual(records);
+    const attachmentsJson = await fs.readFile(
+      path.join(tempDir, "attachments.json")
+    );
+    expect(JSON.parse(attachmentsJson.toString())).toStrictEqual(
+      attachmentMetadataList
+    );
   });
   it("should throw error when API response is error", () => {
     const error = new Error("error for test");
