@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@5.0.5...@kintone/plugin-uploader@5.0.6) (2021-07-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^8.1.2 ([#1012](https://github.com/kintone/js-sdk/issues/1012)) ([20df6cf](https://github.com/kintone/js-sdk/commit/20df6cf179d381748f305fc122b95ee43a10d301))
+* **plugin-uploader:** change the way of clicking the "Import" button ([#1018](https://github.com/kintone/js-sdk/issues/1018)) ([af008e7](https://github.com/kintone/js-sdk/commit/af008e73d7a2818272ba4a87b9ba54e32db5883f))
+
+
+
+
+
 ## [5.0.5](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@5.0.4...@kintone/plugin-uploader@5.0.5) (2021-07-12)
 
 **Note:** Version bump only for package @kintone/plugin-uploader
