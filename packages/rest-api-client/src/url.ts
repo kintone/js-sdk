@@ -4,7 +4,7 @@ export const buildPath = (params: {
   preview?: boolean;
 }) => {
   const { endpointName, guestSpaceId, preview } = params;
-  const guestPath = guestSpaceId !== undefined ? `/guest/${guestSpaceId}` : "";
+  const guestPath = guestSpaceId ? `/guest/${guestSpaceId}` : "";
   const previewPath = preview ? "/preview" : "";
   return `/k${guestPath}/v1${previewPath}/${endpointName}.json`;
 };
