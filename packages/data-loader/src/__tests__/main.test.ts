@@ -10,9 +10,7 @@ const mainFilePath = path.resolve(
   packageJson.bin["kintone-data-loader"]
 );
 
-beforeEach(() => {
-  jest.setTimeout(10000);
-});
+jest.setTimeout(30000);
 
 const checkRejectArg = ({
   arg,
