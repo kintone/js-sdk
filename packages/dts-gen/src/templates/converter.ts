@@ -7,7 +7,7 @@ import {
 } from "./expressions/typedefinitions";
 import { FieldType } from "../kintone/clients/forms-client";
 
-export function convertToTsExpression({
+export const convertToTsExpression = ({
   namespace,
   typeName,
   fieldTypeGroups,
@@ -15,7 +15,7 @@ export function convertToTsExpression({
   namespace: string;
   typeName: string;
   fieldTypeGroups: FieldTypeGroups;
-}): Namespace {
+}): Namespace => {
   const fieldGroup = convertToFieldGroup(fieldTypeGroups);
   const subTableFields = fieldTypeGroups.subTableFields.map(
     (f) => new F.SubTableField(f.code, f.type, convertToFieldGroup(f.fields))
@@ -43,7 +43,7 @@ export function convertToTsExpression({
   );
 
   return new Namespace(namespace, typeDefenition, savedTypeDefenition);
-}
+};
 
 interface ConvertToFieldGroupInput {
   stringFields: FieldType[];
@@ -53,7 +53,7 @@ interface ConvertToFieldGroupInput {
   entityListFields: FieldType[];
   fileTypeFields: FieldType[];
 }
-function convertToFieldGroup(input: ConvertToFieldGroupInput): F.FieldGroup {
+const convertToFieldGroup = (input: ConvertToFieldGroupInput): F.FieldGroup => {
   const stringFields = input.stringFields.map(
     (f) => new F.TsDefinedField(f.code, f.type)
   );
@@ -81,4 +81,4 @@ function convertToFieldGroup(input: ConvertToFieldGroupInput): F.FieldGroup {
     entityFields,
     fileFields
   );
-}
+};

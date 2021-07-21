@@ -1,10 +1,10 @@
 /**
  * Create content file list from manifest.json
  */
-export function sourceList(
+export const sourceList = (
   // TODO: Define and use menifest type
   manifest: any
-): string[] {
+): string[] => {
   const sourceTypes = [
     ["desktop", "js"],
     ["desktop", "css"],
@@ -24,4 +24,4 @@ export function sourceList(
   list.push("manifest.json", manifest.icon);
   // Make the file list unique
   return Array.from(new Set(list));
-}
+};

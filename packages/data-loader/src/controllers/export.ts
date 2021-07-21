@@ -32,10 +32,10 @@ export const run = async (argv: RestAPIClientOptions & Options) => {
   });
 };
 
-export async function exportRecords(
+export const exportRecords = async (
   apiClient: KintoneRestAPIClient,
   options: Options
-) {
+) => {
   const { app, attachmentDir, condition, orderBy } = options;
   const records = await apiClient.record.getAllRecords({
     app,
@@ -52,7 +52,7 @@ export async function exportRecords(
   }
 
   return records;
-}
+};
 
 const getFileInfos = (record: Record) => {
   // console.debug(`>>>record ${recordId}`);
@@ -87,7 +87,7 @@ const downloadAttachments = async (
   }
 };
 
-async function printRecords({
+const printRecords = async ({
   records,
   argv,
   apiClient,
@@ -95,7 +95,7 @@ async function printRecords({
   records: KintoneRecordForResponse[];
   argv: RestAPIClientOptions & Options;
   apiClient: KintoneRestAPIClient;
-}) {
+}) => {
   switch (argv.format) {
     case "json": {
       printAsJson(records);
@@ -111,4 +111,4 @@ async function printRecords({
       );
     }
   }
-}
+};

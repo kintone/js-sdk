@@ -9,7 +9,10 @@ import { getMessage } from "./messages";
  * Install specified dependencies
  * @param outputDirectory
  */
-export function installDependencies(outputDirectory: string, lang: Lang): void {
+export const installDependencies = (
+  outputDirectory: string,
+  lang: Lang
+): void => {
   printLog(getMessage(lang, "installDependencies"));
 
   const result = spawnSync("npm", ["install"], {
@@ -20,4 +23,4 @@ export function installDependencies(outputDirectory: string, lang: Lang): void {
   if (result.status !== 0) {
     throw new Error("Installing dependencies were failed");
   }
-}
+};

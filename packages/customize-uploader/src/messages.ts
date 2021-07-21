@@ -104,16 +104,16 @@ const messages = {
  * @param lang
  * @param key
  */
-export function getMessage(lang: Lang, key: keyof typeof messages) {
+export const getMessage = (lang: Lang, key: keyof typeof messages) => {
   return messages[key][lang];
-}
+};
 
 /**
  * Returns a function bound lang to getMessage
  * @param lang
  */
-export function getBoundMessage(
+export const getBoundMessage = (
   lang: Lang
-): (key: keyof typeof messages) => string {
+): ((key: keyof typeof messages) => string) => {
   return (key) => getMessage(lang, key);
-}
+};

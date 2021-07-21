@@ -8,14 +8,14 @@ import { validateContentsZip } from "./zip";
 
 const debug = _debug("packer");
 
-export = function packer(
+const packer = (
   contentsZip: Buffer,
   privateKey_?: string
 ): Promise<{
   plugin: Buffer;
   privateKey: string;
   id: string;
-}> {
+}> => {
   let privateKey = privateKey_;
   let key;
   if (privateKey) {
@@ -39,14 +39,16 @@ export = function packer(
     })) as any;
 };
 
+export = packer;
+
 /**
  * Create plugin.zip
  */
-function zip(
+const zip = (
   contentsZip: Buffer,
   publicKey: Buffer,
   signature: Buffer
-): Promise<Buffer> {
+): Promise<Buffer> => {
   debug(`zip(): start`);
   return new Promise((res, rej) => {
     const output = new streamBuffers.WritableStreamBuffer();
@@ -63,4 +65,4 @@ function zip(
       debug(`zip(): ZipFile end event: finalSize ${finalSize} bytes`);
     }) as any);
   });
-}
+};

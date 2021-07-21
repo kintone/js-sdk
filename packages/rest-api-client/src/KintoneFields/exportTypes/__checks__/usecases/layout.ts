@@ -42,7 +42,7 @@ declare function modifyGroupLayout<
   T extends Array<KintoneFormLayout.Row<KintoneFormLayout.Field.OneOf[]>>
 >(group: KintoneFormLayout.Group<T>): KintoneFormLayout.Group<T>;
 
-function modifyRow(row: KintoneFormLayout.OneOf) {
+const modifyRow = (row: KintoneFormLayout.OneOf) => {
   switch (row.type) {
     case "ROW": {
       return modifyRowLayout(row);
@@ -56,9 +56,9 @@ function modifyRow(row: KintoneFormLayout.OneOf) {
   }
   const _check: never = row;
   return _check;
-}
+};
 
-async function exampleGetAndUpdateLayout() {
+const exampleGetAndUpdateLayout = async () => {
   const APP_ID = 1;
   const response = await client.app.getFormLayout<MyAppFormLayout>({
     app: APP_ID,
@@ -68,4 +68,4 @@ async function exampleGetAndUpdateLayout() {
 
   const newLayout = response.layout.map(modifyRow);
   client.app.updateFormLayout({ app: APP_ID, layout: newLayout });
-}
+};

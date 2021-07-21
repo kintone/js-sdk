@@ -20,7 +20,7 @@ interface ParsedArgs {
   output: string;
 }
 
-export function parse(argv: string[]): ParsedArgs {
+export const parse = (argv: string[]): ParsedArgs => {
   const program = new Command();
   program
     .option("--demo", "Generate Type definition from demo data.", false)
@@ -155,4 +155,4 @@ export function parse(argv: string[]): ParsedArgs {
     namespace,
     output,
   };
-}
+};

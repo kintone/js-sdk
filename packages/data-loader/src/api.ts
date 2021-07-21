@@ -20,8 +20,12 @@ const buildAuthParam = (options: RestAPIClientOptions) => {
     password: options.password,
   };
 
-  if (options.username) return passwordAuthParam;
-  if (options.apiToken) return { apiToken: options.apiToken };
+  if (options.username) {
+    return passwordAuthParam;
+  }
+  if (options.apiToken) {
+    return { apiToken: options.apiToken };
+  }
   return passwordAuthParam;
 };
 

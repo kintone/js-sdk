@@ -33,7 +33,7 @@ export class FormsClientImpl implements FormsClient {
   }
 }
 
-function constructUrl(input: FetchFormPropertiesInput): string {
+const constructUrl = (input: FetchFormPropertiesInput): string => {
   const guest = input.guestSpaceId;
   if (guest !== null && input.preview) {
     return `/k/guest/${guest}/v1/preview/app/form/fields.json`;
@@ -43,7 +43,7 @@ function constructUrl(input: FetchFormPropertiesInput): string {
     return "/k/v1/preview/app/form/fields.json";
   }
   return "/k/v1/app/form/fields.json";
-}
+};
 
 export const VisibleForTesting = {
   constructUrl,

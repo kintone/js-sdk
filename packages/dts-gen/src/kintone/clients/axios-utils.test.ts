@@ -5,13 +5,16 @@ describe("FormsClientImpl#constructor", () => {
   const baseUrl = "https://kintone.com";
   const authToken = Buffer.from("username:password").toString("base64");
 
-  function assertConstructorWithArgs(input, expectedInput: AxiosRequestConfig) {
+  const assertConstructorWithArgs = (
+    input,
+    expectedInput: AxiosRequestConfig
+  ) => {
     VisibleForTesting.newAxiosInstanceInternal = jest.fn();
     AxiosUtils.newAxiosInstance(input);
     expect(VisibleForTesting.newAxiosInstanceInternal).toBeCalledWith(
       expectedInput
     );
-  }
+  };
 
   test("with plain settings", () => {
     const input = {

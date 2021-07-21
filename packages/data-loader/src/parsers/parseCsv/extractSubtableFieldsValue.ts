@@ -25,7 +25,9 @@ export const extractSubtableFieldsValue = ({
       { value: Array<{ id: string; value: InSubtableFieldValue }> }
     >
   >((subtableFieldValue, fieldProperty) => {
-    if (fieldProperty.type !== "SUBTABLE") return subtableFieldValue;
+    if (fieldProperty.type !== "SUBTABLE") {
+      return subtableFieldValue;
+    }
     return {
       ...subtableFieldValue,
       [fieldProperty.code]: {

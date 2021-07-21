@@ -45,14 +45,14 @@ interface GetAppCustomizeResp {
   };
 }
 
-export async function importCustomizeSetting(
+export const importCustomizeSetting = async (
   kintoneApiClient: KintoneApiClient,
   manifest: ImportCustomizeManifest,
   status: {
     retryCount: number;
   },
   options: Option
-): Promise<void> {
+): Promise<void> => {
   const m = getBoundMessage(options.lang);
   const appId = manifest.app;
   let { retryCount } = status;
@@ -91,13 +91,13 @@ export async function importCustomizeSetting(
       throw e;
     }
   }
-}
+};
 
-function exportAsManifestFile(
+const exportAsManifestFile = (
   appId: string,
   destRootDir: string,
   resp: GetAppCustomizeResp
-): GetAppCustomizeResp {
+): GetAppCustomizeResp => {
   const toNameOrUrl = (destDir: string) => (f: CustomizeFile) => {
     if (f.type === "FILE") {
       return `${destDir}/${f.file.name}`;
@@ -131,14 +131,14 @@ function exportAsManifestFile(
     JSON.stringify(customizeJson, null, 4)
   );
   return resp;
-}
+};
 
-async function downloadCustomizeFiles(
+const downloadCustomizeFiles = async (
   kintoneApiClient: KintoneApiClient,
   appId: string,
   destDir: string,
   { desktop, mobile }: GetAppCustomizeResp
-): Promise<any> {
+): Promise<any> => {
   const desktopJs: CustomizeFile[] = desktop.js;
   const desktopCss: CustomizeFile[] = desktop.css;
   const mobileJs: CustomizeFile[] = mobile.js;
@@ -168,19 +168,19 @@ async function downloadCustomizeFiles(
     ...mobileJsPromise,
     ...mobileCssPromise,
   ];
-}
+};
 
-function downloadAndWriteFile(
+const downloadAndWriteFile = (
   kintoneApiClient: KintoneApiClient,
   destDir: string
-): (f: CustomizeFile) => void {
+): ((f: CustomizeFile) => void) => {
   return async (f) => {
     if (f.type !== "URL") {
       const resp = await kintoneApiClient.downloadFile(f.file.fileKey);
       fs.writeFileSync(`${destDir}${sep}${f.file.name}`, resp);
     }
   };
-}
+};
 
 export const runImport = async (
   domain: string,

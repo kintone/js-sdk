@@ -75,7 +75,7 @@ export interface Manifest {
   };
 }
 
-function answer2Manifest(answers: Answers): Manifest {
+const answer2Manifest = (answers: Answers): Manifest => {
   const filteredAnswer = Object.keys(answers).reduce((acc, key) => {
     if (typeof answers[key] === "boolean") {
       return acc;
@@ -101,16 +101,16 @@ function answer2Manifest(answers: Answers): Manifest {
     }
     return { ...acc, ...{ [key]: filteredAnswer[key] } };
   }, {}) as Manifest;
-}
+};
 
 /**
  * Build the manifest setting
  * @param answers
  */
-export function buildManifest(
+export const buildManifest = (
   answers: Answers,
   templateType: TemplateType
-): Manifest {
+): Manifest => {
   let manifest = {
     ...(templateType === "modern" ? modernManifest : minimumManifest),
     ...answer2Manifest(answers),
@@ -130,4 +130,4 @@ export function buildManifest(
     };
   }
   return manifest;
-}
+};
