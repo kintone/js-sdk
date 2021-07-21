@@ -1,8 +1,8 @@
 #!/usr/bin/env node
+import meow from "meow";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
-"use strict";
-
-const meow = require("meow");
 const packer = require("../dist/cli");
 
 const USAGE = "$ kintone-plugin-packer [options] PLUGIN_DIR";
@@ -31,6 +31,7 @@ Options
   --watch: Watch PLUGIN_DIR for the changes.
 `,
   {
+    importMeta: import.meta,
     flags: flagSpec,
   }
 );
