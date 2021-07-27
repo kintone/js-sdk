@@ -18,30 +18,30 @@ import {
  * @param outputDirectory
  * @param manifest
  */
-export function generatePlugin(
+export const generatePlugin = (
   outputDirectory: string,
   manifest: Manifest,
   lang: Lang,
   enablePluginUploader: boolean,
   templateType: TemplateType
-): void {
+): void => {
   // copy and build a project into the output diretory
   buildProject(outputDirectory, manifest, enablePluginUploader, templateType);
   // npm install
   installDependencies(outputDirectory, lang);
-}
+};
 
 /**
  * Create a plugin project based on passed manifest
  * @param outputDirectory
  * @param manifest
  */
-function buildProject(
+const buildProject = (
   outputDirectory: string,
   manifest: Manifest,
   enablePluginUploader: boolean,
   templateType: TemplateType
-): void {
+): void => {
   fs.mkdirSync(outputDirectory);
   // This is necessary for unit testing
   // We use src/generator.ts directory instead of dist/src/generator.js when unit testing
@@ -75,4 +75,4 @@ function buildProject(
     ),
     JSON.stringify(manifest, null, 2)
   );
-}
+};

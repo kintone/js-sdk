@@ -11,7 +11,7 @@ const DESCRIPTION_MAX_LENGTH = 200;
  * Build questions for creating a kintone plugin project
  * @param outputDir
  */
-export function buildQuestions(outputDir: string, lang: Lang): Question[] {
+export const buildQuestions = (outputDir: string, lang: Lang): Question[] => {
   const m = getBoundMessage(lang);
   return [
     {
@@ -116,4 +116,4 @@ export function buildQuestions(outputDir: string, lang: Lang): Question[] {
       message: m("Q_enablePluginUploader"),
     },
   ];
-}
+};
