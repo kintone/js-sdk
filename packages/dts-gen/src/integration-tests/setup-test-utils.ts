@@ -12,7 +12,10 @@ type Client = SetUpTestAppClient;
 
 const rethrow = (err) => Promise.reject(err);
 
-async function createKintoneApp(client: Client, name: string): Promise<string> {
+const createKintoneApp = async (
+  client: Client,
+  name: string
+): Promise<string> => {
   return client
     .requestCreateNewApp({ name })
     .then((resp) => {
@@ -20,12 +23,12 @@ async function createKintoneApp(client: Client, name: string): Promise<string> {
       return resp.app;
     })
     .catch(rethrow);
-}
+};
 
-async function addDemoField(
+const addDemoField = async (
   client: Client,
   app: string
-): Promise<AddFormFieldOutput> {
+): Promise<AddFormFieldOutput> => {
   log(`Preparing for field settings(ID:${app})`);
   const properties = DemoDatas.DemoDataFields;
   return client
@@ -34,16 +37,16 @@ async function addDemoField(
       properties,
     })
     .catch(rethrow);
-}
+};
 
-async function uploadFile(
+const uploadFile = async (
   client: Client,
   data: fs.ReadStream,
   metadata: {
     name: string;
     contentType: string;
   }
-) {
+) => {
   log(`Uploading ${metadata.name}`);
   return client
     .requestUploadFile({
@@ -56,17 +59,17 @@ async function uploadFile(
       return resp.fileKey;
     })
     .catch(rethrow);
-}
+};
 
-async function sleep(msec) {
+const sleep = async (msec) => {
   return new Promise((resolve) => setTimeout(resolve, msec));
-}
+};
 
-async function updateJsCustomize(
+const updateJsCustomize = async (
   client: Client,
   app: string,
   fileKey: string
-): Promise<JsCustomizeOutput> {
+): Promise<JsCustomizeOutput> => {
   const scope = "ALL";
   const desktop = {
     js: [
@@ -85,9 +88,9 @@ async function updateJsCustomize(
       desktop,
     })
     .catch(rethrow);
-}
+};
 
-async function deployApp(client: Client, app: string) {
+const deployApp = async (client: Client, app: string) => {
   const apps = [{ app }];
   await client.requestDepoy({ apps });
   for (const i of [1, 2, 3, 4, 5]) {
@@ -102,13 +105,13 @@ async function deployApp(client: Client, app: string) {
       await sleep(3000);
     }
   }
-}
+};
 
-async function addDemoRecord(
+const addDemoRecord = async (
   client: Client,
   app: string,
   fileName: string
-): Promise<AddRecordOutput> {
+): Promise<AddRecordOutput> => {
   const DemoRecord = DemoDatas.DemoRecord;
   const record = Object.assign(DemoRecord);
 
@@ -135,7 +138,7 @@ async function addDemoRecord(
   });
 
   return client.requestAddRecord({ app, record });
-}
+};
 
 export const SetupTestApp = {
   createKintoneApp,

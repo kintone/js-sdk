@@ -21,7 +21,7 @@ type Options = Partial<{
   packerMock_: typeof packer;
 }>;
 
-export = function cli(pluginDir: string, options_?: Options) {
+const cli = (pluginDir: string, options_?: Options) => {
   const options = options_ || {};
   const packerLocal = options.packerMock_ ? options.packerMock_ : packer;
 
@@ -109,7 +109,9 @@ export = function cli(pluginDir: string, options_?: Options) {
     });
 };
 
-function throwIfInvalidManifest(manifest: any, pluginDir: string) {
+export = cli;
+
+const throwIfInvalidManifest = (manifest: any, pluginDir: string) => {
   const result = validate(manifest, {
     relativePath: validateRelativePath(pluginDir),
     maxFileSize: validateMaxFileSize(pluginDir),
@@ -124,27 +126,27 @@ function throwIfInvalidManifest(manifest: any, pluginDir: string) {
     });
     throw new Error("Invalid manifest.json");
   }
-}
+};
 
 /**
  * Create and save plugin.zip
  */
-function outputPlugin(outputPath: string, plugin: Buffer): Promise<string> {
+const outputPlugin = (outputPath: string, plugin: Buffer): Promise<string> => {
   return writeFile(outputPath, plugin).then((arg) => outputPath);
-}
+};
 
 /**
  * Load JSON file without caching
  */
-function loadJson(jsonPath: string) {
+const loadJson = (jsonPath: string) => {
   const content = fs.readFileSync(jsonPath, "utf8");
   return JSON.parse(content);
-}
+};
 
 /**
  * Return validator for `relative-path` format
  */
-function validateRelativePath(pluginDir: string) {
+const validateRelativePath = (pluginDir: string) => {
   return (str: string) => {
     try {
       const stat = fs.statSync(path.join(pluginDir, str));
@@ -153,12 +155,12 @@ function validateRelativePath(pluginDir: string) {
       return false;
     }
   };
-}
+};
 
 /**
  * Return validator for `maxFileSize` keyword
  */
-function validateMaxFileSize(pluginDir: string) {
+const validateMaxFileSize = (pluginDir: string) => {
   return (maxBytes: number, filePath: string) => {
     try {
       const stat = fs.statSync(path.join(pluginDir, filePath));
@@ -167,4 +169,4 @@ function validateMaxFileSize(pluginDir: string) {
       return false;
     }
   };
-}
+};

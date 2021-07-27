@@ -22,10 +22,10 @@ interface SchemaValidateFunction {
  * @param {Object=} options
  * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
  */
-export = function (
+export default (
   json: Record<string, any>,
   options: { [s: string]: (...args: any) => boolean } = {}
-): ValidateResult {
+): ValidateResult => {
   let relativePath = (...args: any) => true;
   let maxFileSize = (...args: any) => true;
   if (typeof options.relativePath === "function") {
@@ -80,12 +80,12 @@ export = function (
  * @param {undefined|null|Array<Object>} errors
  * @return {null|Array<Object>} shallow copy of the input or null
  */
-function transformErrors(
+const transformErrors = (
   errors: undefined | null | ErrorObject[]
-): null | ErrorObject[] {
+): null | ErrorObject[] => {
   if (!errors) {
     return null;
   }
   // shallow copy
   return errors.slice();
-}
+};

@@ -31,7 +31,7 @@ interface Event {
     assertNotUndefined(ev.date);
   });
 
-  function assertNotUndefined(ref) {
+  const assertNotUndefined = (ref) => {
     assert.ok(ref !== undefined);
-  }
+  };
 })();

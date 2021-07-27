@@ -31,7 +31,7 @@ declare function modifyDetailsProperty(
   property: MyAppProperty["Details"]
 ): MyAppProperty["Details"];
 
-async function exampleGetAndUpdateProperties() {
+const exampleGetAndUpdateProperties = async () => {
   const APP_ID = 1;
   const response = await client.app.getFormFields<MyAppProperty>({
     app: APP_ID,
@@ -45,4 +45,4 @@ async function exampleGetAndUpdateProperties() {
     app: APP_ID,
     properties: { Details: newDetailsProperty },
   });
-}
+};

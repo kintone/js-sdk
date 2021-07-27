@@ -1,6 +1,6 @@
 import * as assert from "assert";
 
-function assertKintoneBuiltinFunctions() {
+const assertKintoneBuiltinFunctions = () => {
   // assert function exists in kintone top-level
   assertFunction(kintone.getRequestToken);
   assertFunction(kintone.getLoginUser);
@@ -124,12 +124,12 @@ function assertKintoneBuiltinFunctions() {
   // Space API
   assertFunction(kintone.space.portal.getContentSpaceElement);
   assertFunction(kintone.mobile.space.portal.getContentSpaceElement);
-}
+};
 
-function assertFunction(ref) {
+const assertFunction = (ref) => {
   assert.ok(ref);
   assert.ok(typeof ref === "function");
-}
+};
 
 export const DTSGenApiTest = {
   assertKintoneBuiltinFunctions,

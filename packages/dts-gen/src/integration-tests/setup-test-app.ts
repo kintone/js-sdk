@@ -33,7 +33,7 @@ program
   await handleSetupApp(program);
 })();
 
-async function handleSetupApp(command) {
+const handleSetupApp = async (command) => {
   const newClientInput = {
     baseUrl: command.host,
     username: command.username,
@@ -63,4 +63,4 @@ async function handleSetupApp(command) {
   await SetupTestApp.deployApp(client, app);
   log("Adding Demo Record");
   await SetupTestApp.addDemoRecord(client, app, command.integrationTestJsFile);
-}
+};

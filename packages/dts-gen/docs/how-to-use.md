@@ -180,7 +180,7 @@ If you work with VSCode, WebStorm IDE or some editor, you can gain the power of 
 ```javascript
 /// <reference path="../node_modules/@kintone/dts-gen/kintone.d.ts" />
 /// <reference path="./demo-field.d.ts" />
-(function() {
+(() => {
     kintone.events.on("test", function(event){
         /**
          * @type {kintone.types.DemoField}

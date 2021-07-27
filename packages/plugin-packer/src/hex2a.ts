@@ -4,7 +4,7 @@ const A_TO_K = "k".charCodeAt(0) - "a".charCodeAt(0);
 /**
  * `tr '0-9a-f' 'a-p'` in JS
  */
-export function hex2a(hex: string): string {
+export const hex2a = (hex: string): string => {
   return Array.from(hex)
     .map((s) => {
       if (s >= "0" && s <= "9") {
@@ -15,4 +15,4 @@ export function hex2a(hex: string): string {
       throw new Error(`invalid char: ${s}`);
     })
     .join("");
-}
+};

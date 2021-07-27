@@ -5,11 +5,11 @@
  * @param {boolean=} opt_allowHttp
  * @return {boolean}
  */
-function validateHttpsUrl(
+const validateHttpsUrl = (
   str: string,
   opt_allowHttp: boolean = false
-): boolean {
+): boolean => {
   return opt_allowHttp ? /^https?:/.test(str) : /^https:/.test(str);
-}
+};
 
 export default validateHttpsUrl;

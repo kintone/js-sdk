@@ -9,10 +9,10 @@ const debug = _debug("create-contents-zip");
 /**
  * Create a zipped contents
  */
-export function createContentsZip(
+export const createContentsZip = (
   pluginDir: string,
   manifest: any
-): Promise<Buffer> {
+): Promise<Buffer> => {
   return new Promise((res, rej) => {
     const output = new streamBuffers.WritableStreamBuffer();
     const zipFile = new ZipFile();
@@ -29,4 +29,4 @@ export function createContentsZip(
       size = finalSize;
     }) as any);
   });
-}
+};
