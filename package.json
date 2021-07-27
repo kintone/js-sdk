@@ -38,7 +38,7 @@
     "@cybozu/eslint-config": "^14.0.2",
     "@types/jest": "^26.0.24",
     "@types/node": "^13.13.52",
-    "comment-json": "^4.1.0",
+    "comment-json": "^4.1.1",
     "eslint": "^7.31.0",
     "jest": "^27.0.6",
     "lerna": "^4.0.0",
