@@ -18,7 +18,7 @@
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/create-plugin",
   "bugs": "https://github.com/kintone/js-sdk/issues",
   "dependencies": {
-    "chalk": "^4.1.1",
+    "chalk": "^4.1.2",
     "glob": "^7.1.7",
     "inquirer": "^8.1.2",
     "lodash": "^4.17.21",
