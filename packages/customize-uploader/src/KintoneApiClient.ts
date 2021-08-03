@@ -22,11 +22,9 @@ export default class KintoneApiClient {
     oAuthToken: string | null,
     basicAuthUsername: string | null,
     basicAuthPassword: string | null,
-    domain: string,
+    baseUrl: string,
     public options: Option
   ) {
-    const kintoneUrl =
-      domain.indexOf("https://") > -1 ? domain : `https://${domain}`;
     let auth;
     if (username && password) {
       auth = {
@@ -55,7 +53,7 @@ export default class KintoneApiClient {
       proxy = parseProxy(options.proxy);
     }
     this.restApiClient = new KintoneRestAPIClient({
-      baseUrl: kintoneUrl,
+      baseUrl,
       auth,
       basicAuth,
       featureFlags: {

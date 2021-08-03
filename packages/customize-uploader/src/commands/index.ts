@@ -128,7 +128,7 @@ export const upload = async (
 };
 
 export const run = async (
-  domain: string,
+  baseUrl: string,
   username: string | null,
   password: string | null,
   oAuthToken: string | null,
@@ -161,7 +161,7 @@ export const run = async (
     oAuthToken,
     basicAuthUsername,
     basicAuthPassword,
-    domain,
+    baseUrl,
     options
   );
   await upload(kintoneApiClient, manifest, status, options);
