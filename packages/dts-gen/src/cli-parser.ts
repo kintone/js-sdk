@@ -24,12 +24,6 @@ export const parse = (argv: string[]): ParsedArgs => {
   const program = new Command();
   program
     .option("--demo", "Generate Type definition from demo data.", false)
-
-    .option(
-      "--host [host]",
-      "A base URL for the Kintone environment. This will be replaced with the --base-url option",
-      null
-    )
     .option(
       "--base-url [baseUrl]",
       "A base URL for the Kintone environment",
@@ -100,7 +94,6 @@ export const parse = (argv: string[]): ParsedArgs => {
 
   const options = program.opts();
   const {
-    host,
     username,
     password,
     apiToken,
@@ -120,18 +113,13 @@ export const parse = (argv: string[]): ParsedArgs => {
   } = options;
 
   // warn deprecated options
-  if (host) {
-    console.warn(
-      "--host option will be deprecated, please use the --base-url option instead."
-    );
-  }
   if (proxyHost || proxyPort) {
     console.warn(
       "--proxy-host and --proxy-port options will be deprecated, please use the --proxy option instead"
     );
   }
 
-  const baseUrl = options.baseUrl || host;
+  const baseUrl = options.baseUrl;
   if (baseUrl === null) {
     throw new Error("--base-url (KINTONE_BASE_URL) must be specified");
   }
