@@ -10,8 +10,6 @@ program
   .option("-u, --username <username>")
   .option("-p, --password <password>")
   .option("--base-url <base-url>")
-  .option("--proxy-host [proxyHost]", "proxy host", null)
-  .option("--proxy-port [proxyPort]", "proxy port", null)
   .option("--proxy [proxy]", "proxy server", null)
   .option(
     "--basic-auth-username [basicAuthUsername]",
@@ -40,8 +38,6 @@ const handleSetupApp = async (command) => {
     password: command.password,
     apiToken: command.apiToken,
     oAuthToken: command.oAuthToken,
-    proxyHost: command.proxyHost,
-    proxyPort: command.proxyPort,
     proxy: command.proxy,
     basicAuthUsername: command.basicAuthUsername,
     basicAuthPassword: command.basicAuthPassword,

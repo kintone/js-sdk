@@ -50,8 +50,6 @@ describe("parse", () => {
       expect(args.guestSpaceId).toBeNull();
       expect(args.preview).toBe(false);
       expect(args.namespace).toBe("kintone.types");
-      expect(args.proxyHost).toBeNull();
-      expect(args.proxyPort).toBeNull();
       expect(args.basicAuthUsername).toBeNull();
       expect(args.basicAuthPassword).toBeNull();
       expect(args.output).toBe("fields.d.ts");
@@ -113,38 +111,6 @@ describe("parse", () => {
       expect(() => {
         parse(["node", "index.js"]);
       }).toThrow("--base-url (KINTONE_BASE_URL) must be specified");
-    });
-  });
-  describe("deprecated options", () => {
-    let spy;
-    beforeEach(() => {
-      spy = jest.spyOn(console, "warn").mockImplementation();
-    });
-    afterEach(() => {
-      spy.mockRestore();
-    });
-    test("should print the deprecating message with --proxyHost and --proxyPort", () => {
-      const args = parse([
-        "node",
-        "index.js",
-        "--base-url",
-        "https://example2.kintone.com",
-        "--username",
-        "USERNAME",
-        "--password",
-        "PASSWORD",
-        "--app-id",
-        "APP_ID",
-        "--proxy-host",
-        "PROXY_HOST",
-        "--proxy-port",
-        "PROXY_PORT",
-      ]);
-      expect(args.proxyHost).toBe("PROXY_HOST");
-      expect(args.proxyPort).toBe("PROXY_PORT");
-      expect(spy).toHaveBeenCalledWith(
-        "--proxy-host and --proxy-port options will be deprecated, please use the --proxy option instead"
-      );
     });
   });
 });
