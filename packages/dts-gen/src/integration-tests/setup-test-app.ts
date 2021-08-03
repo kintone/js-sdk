@@ -7,7 +7,6 @@ import { log } from "../utils/logger";
 
 program
   .version("0.0.1")
-  .option("--host <host>")
   .option("-u, --username <username>")
   .option("-p, --password <password>")
   .option("--proxy-host [proxyHost]", "proxy host", null)

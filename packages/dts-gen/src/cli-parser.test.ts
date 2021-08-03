@@ -123,24 +123,6 @@ describe("parse", () => {
     afterEach(() => {
       spy.mockRestore();
     });
-    test("should print the deprecating message with --host", () => {
-      const args = parse([
-        "node",
-        "index.js",
-        "--host",
-        "https://example.kintone.com",
-        "--username",
-        "USERNAME",
-        "--password",
-        "PASSWORD",
-        "--app-id",
-        "APP_ID",
-      ]);
-      expect(args.baseUrl).toBe("https://example.kintone.com");
-      expect(spy).toHaveBeenCalledWith(
-        "--host option will be deprecated, please use the --base-url option instead."
-      );
-    });
     test("should print the deprecating message with --proxyHost and --proxyPort", () => {
       const args = parse([
         "node",
