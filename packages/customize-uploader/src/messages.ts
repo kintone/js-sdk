@@ -70,8 +70,8 @@ const messages = {
     ja: "運用環境に反映しました!",
   },
   E_Authentication: {
-    en: "Failed to authenticate. Please confirm your username, password, and domain",
-    ja: "認証に失敗しました。ログイン名、パスワード、ドメインを確認してください",
+    en: "Failed to authenticate. Please confirm your username, password, and kintone's base URL",
+    ja: "認証に失敗しました。ログイン名、パスワード、ベース URL を確認してください",
   },
   E_Deployed: {
     en: "Failed to deploy setting",
