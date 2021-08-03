@@ -44,10 +44,6 @@ const messages = {
     en: "has been uploaded!",
     ja: "をアップロードしました!",
   },
-  Warning_Deprecated_domain: {
-    en: "The --domain option and KINTONE_DOMAIN are deprecated and will be removed in the next major release. Please use --base-url or KINTONE_BASE_URL instead.",
-    ja: "--domain オプションおよび KINTONE_DOMAIN は非推奨となり、次のメジャーリリースで削除されます。代わりに --base-url や KINTONE_BASE_URL を使用してください",
-  },
 };
 
 /**

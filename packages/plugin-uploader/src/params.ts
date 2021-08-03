@@ -5,7 +5,6 @@ import { getBoundMessage } from "./messages";
 interface Params {
   username?: string;
   password?: string;
-  domain?: string;
   baseUrl?: string;
   lang: Lang;
 }
@@ -13,7 +12,6 @@ interface Params {
 export const inquireParams = ({
   username,
   password,
-  domain,
   baseUrl,
   lang,
 }: Params) => {
@@ -24,7 +22,7 @@ export const inquireParams = ({
       message: m("Q_BaseUrl"),
       name: "baseUrl",
       default: baseUrl,
-      when: () => !baseUrl && !domain,
+      when: () => !baseUrl,
       validate: (v: string) => !!v,
     },
     {
@@ -47,7 +45,5 @@ export const inquireParams = ({
 
   return inquirer
     .prompt(questions)
-    .then((answers) =>
-      Object.assign({ username, password, domain, baseUrl }, answers)
-    );
+    .then((answers) => Object.assign({ username, password, baseUrl }, answers));
 };
