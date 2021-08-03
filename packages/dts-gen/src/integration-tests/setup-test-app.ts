@@ -9,6 +9,7 @@ program
   .version("0.0.1")
   .option("-u, --username <username>")
   .option("-p, --password <password>")
+  .option("--base-url <base-url>")
   .option("--proxy-host [proxyHost]", "proxy host", null)
   .option("--proxy-port [proxyPort]", "proxy port", null)
   .option("--proxy [proxy]", "proxy server", null)
@@ -34,7 +35,7 @@ program
 
 const handleSetupApp = async (command) => {
   const newClientInput = {
-    baseUrl: command.host,
+    baseUrl: command.baseUrl,
     username: command.username,
     password: command.password,
     apiToken: command.apiToken,
