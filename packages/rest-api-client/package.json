@@ -61,7 +61,7 @@
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
-    "@types/core-js": "^2.5.4",
+    "@types/core-js": "^2.5.5",
     "@types/js-base64": "^2.3.2",
     "@types/qs": "^6.9.7",
     "rollup": "^2.54.0",
