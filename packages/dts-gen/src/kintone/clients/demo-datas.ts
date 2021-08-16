@@ -214,6 +214,7 @@ const DemoDataFields: any = {
   Table: {
     type: "SUBTABLE",
     code: "Table",
+    label: "Table",
     fields: {
       Text_Table: {
         type: "SINGLE_LINE_TEXT",
@@ -278,6 +279,7 @@ const DemoDataFields: any = {
   Table_0: {
     type: "SUBTABLE",
     code: "Table_0",
+    label: "Table_0",
     fields: {
       Radio_button_Table: {
         type: "RADIO_BUTTON",
