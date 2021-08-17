@@ -21,7 +21,7 @@ const launchBrowser = (proxy: string | null): Promise<Browser> => {
 
 const readyForUpload = async (
   browser: Browser,
-  domain: string,
+  baseUrl: string,
   userName: string,
   password: string,
   lang: Lang,
@@ -30,10 +30,7 @@ const readyForUpload = async (
   const m = getBoundMessage(lang);
 
   const page = await browser.newPage();
-  const kintoneUrl = domain.match(/^https:\/\//)
-    ? `${domain}`
-    : `https://${domain}`;
-  const loginUrl = `${kintoneUrl}/login?saml=off`;
+  const loginUrl = `${baseUrl}/login?saml=off`;
 
   if (basicAuth) {
     await page.authenticate(basicAuth);
@@ -59,7 +56,7 @@ const readyForUpload = async (
     throw chalk.red(m("Error_failedLogin"));
   }
 
-  const pluginUrl = `${kintoneUrl}/k/admin/system/plugin/`;
+  const pluginUrl = `${baseUrl}/k/admin/system/plugin/`;
   console.log(`Navigate to ${pluginUrl}`);
   await page.goto(pluginUrl);
 
@@ -113,7 +110,7 @@ interface Option {
 }
 
 export const run = async (
-  domain: string,
+  baseUrl: string,
   userName: string,
   password: string,
   pluginPath: string,
@@ -126,7 +123,7 @@ export const run = async (
   try {
     page = await readyForUpload(
       browser,
-      domain,
+      baseUrl,
       userName,
       password,
       lang,
@@ -149,7 +146,7 @@ export const run = async (
           browser = await launchBrowser(options.proxyServer);
           page = await readyForUpload(
             browser,
-            domain,
+            baseUrl,
             userName,
             password,
             lang,
