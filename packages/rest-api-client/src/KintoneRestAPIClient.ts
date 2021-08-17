@@ -64,6 +64,8 @@ export class KintoneRestAPIClient {
   private baseUrl?: string;
 
   constructor(options: Options = {}) {
+    validateOptions(options);
+
     this.baseUrl = platformDeps.buildBaseUrl(options.baseUrl);
 
     const auth = buildDiscriminatedAuth(options.auth ?? {});
@@ -113,3 +115,13 @@ export class KintoneRestAPIClient {
     return this.bulkRequest_.send(params);
   }
 }
+
+const validateOptions = (options: Options) => {
+  validateGuestSpaceId(options.guestSpaceId);
+};
+
+const validateGuestSpaceId = (guestSpaceId: Options["guestSpaceId"]) => {
+  if (guestSpaceId === "" || guestSpaceId === null) {
+    throw new Error(`invalid guestSpaceId: got [${guestSpaceId}]`);
+  }
+};

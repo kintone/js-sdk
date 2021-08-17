@@ -21,6 +21,40 @@ describe("KintoneRestAPIClient", () => {
       global.kintone = originalKintone;
       global.location = originalLocation;
     });
+
+    describe("guestSpaceId", () => {
+      const baseUrl = "https://example.com";
+      const auth = { apiToken: "foo" };
+
+      it("should not throw an error", () => {
+        const validGuestSpaceIds = [
+          undefined,
+          1,
+          "1",
+          100,
+          "100",
+          1234,
+          "1234",
+        ];
+        validGuestSpaceIds.forEach((guestSpaceId) => {
+          expect(
+            () => new KintoneRestAPIClient({ baseUrl, auth, guestSpaceId })
+          ).not.toThrow();
+        });
+      });
+
+      it("should throw an error", () => {
+        const invalidGuestSpaceIds = ["", null];
+        invalidGuestSpaceIds.forEach((guestSpaceId) => {
+          expect(
+            () =>
+              // @ts-ignore
+              new KintoneRestAPIClient({ baseUrl, auth, guestSpaceId })
+          ).toThrow();
+        });
+      });
+    });
+
     describe("Header", () => {
       const baseUrl = "https://example.com";
       it("should use a location object in browser environment if baseUrl param is not specified", () => {
