@@ -59,7 +59,7 @@ You can execute these tools like below:
 $ node ./dist/integration-tests/setup-test-app.js \
     -u *** \
     -p *** \
-    --host https://****.cybozu.com \
+    --base-url https://****.cybozu.com \
     --integration-test-js-file ./dist/dts-gen-integration-test.js
 ```
 
@@ -68,6 +68,6 @@ $ node ./dist/integration-tests/setup-test-app.js \
 path of integration test which will be uploaded as kintone js customize file.
 You can run the test code as a kintone customize js customize code.
 
-`-u, --p, --host`:
+`-u, --p, --base-url`:
 
-username, password, host of kintone.
+username, password, base URL of kintone.

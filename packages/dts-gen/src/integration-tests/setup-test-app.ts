@@ -7,11 +7,9 @@ import { log } from "../utils/logger";
 
 program
   .version("0.0.1")
-  .option("--host <host>")
   .option("-u, --username <username>")
   .option("-p, --password <password>")
-  .option("--proxy-host [proxyHost]", "proxy host", null)
-  .option("--proxy-port [proxyPort]", "proxy port", null)
+  .option("--base-url <base-url>")
   .option("--proxy [proxy]", "proxy server", null)
   .option(
     "--basic-auth-username [basicAuthUsername]",
@@ -35,13 +33,11 @@ program
 
 const handleSetupApp = async (command) => {
   const newClientInput = {
-    baseUrl: command.host,
+    baseUrl: command.baseUrl,
     username: command.username,
     password: command.password,
     apiToken: command.apiToken,
     oAuthToken: command.oAuthToken,
-    proxyHost: command.proxyHost,
-    proxyPort: command.proxyPort,
     proxy: command.proxy,
     basicAuthUsername: command.basicAuthUsername,
     basicAuthPassword: command.basicAuthPassword,

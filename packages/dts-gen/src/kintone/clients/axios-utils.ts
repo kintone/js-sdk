@@ -12,8 +12,6 @@ export interface NewInstanceInput {
   oAuthToken: string | null;
   apiToken: string | null;
   proxy: string | null;
-  proxyHost: string | null;
-  proxyPort: string | null;
   basicAuthPassword: string | null;
   basicAuthUsername: string | null;
 }
@@ -30,11 +28,6 @@ const newAxiosInstance = (input: NewInstanceInput): AxiosInstance => {
         username: proxyUrl.username,
         password: proxyUrl.password,
       },
-    };
-  } else if (input.proxyHost !== null && input.proxyPort !== null) {
-    proxy = {
-      host: input.proxyHost,
-      port: parseInt(input.proxyPort, 10),
     };
   }
 

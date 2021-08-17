@@ -22,8 +22,6 @@ describe("FormsClientImpl#constructor", () => {
       username: "username",
       password: "password",
       proxy: null,
-      proxyHost: null,
-      proxyPort: null,
       basicAuthPassword: null,
       basicAuthUsername: null,
     };
@@ -39,40 +37,12 @@ describe("FormsClientImpl#constructor", () => {
     assertConstructorWithArgs(input, expectedCalledWith);
   });
 
-  test("with proxyHost and proxyPort option", () => {
-    const input = {
-      baseUrl,
-      username: "username",
-      password: "password",
-      proxy: null,
-      proxyHost: "proxyHost",
-      proxyPort: "1234",
-      basicAuthPassword: null,
-      basicAuthUsername: null,
-    };
-
-    const headers = {
-      "X-Cybozu-Authorization": authToken,
-    };
-    const expectedCalledWith = {
-      headers,
-      baseURL: baseUrl,
-      proxy: {
-        host: "proxyHost",
-        port: 1234,
-      },
-    };
-    assertConstructorWithArgs(input, expectedCalledWith);
-  });
-
   test("with proxy option", () => {
     const input = {
       baseUrl,
       username: "username",
       password: "password",
       proxy: "http://admin:password@localhost:1234",
-      proxyHost: null,
-      proxyPort: null,
       basicAuthPassword: null,
       basicAuthUsername: null,
     };
@@ -101,8 +71,6 @@ describe("FormsClientImpl#constructor", () => {
       username: "username",
       password: "password",
       proxy: null,
-      proxyHost: null,
-      proxyPort: null,
       basicAuthPassword: "basicUsername",
       basicAuthUsername: "basicPassword",
     };
