@@ -10,7 +10,6 @@ const { getMessage } = require("../dist/messages");
 const {
   HTTP_PROXY,
   HTTPS_PROXY,
-  KINTONE_DOMAIN,
   KINTONE_BASE_URL,
   KINTONE_USERNAME,
   KINTONE_PASSWORD,
@@ -25,7 +24,6 @@ const cli = meow(
     $ kintone-customize-uploader <manifestFile>
   Options
     --base-url Base-url of your kintone
-    --domain Domain of your kintone (This value is deprecated. Please use --base-url.)
     --username Login username
     --password User's password
     --oauth-token OAuth access token (If you set a set of --username and --password, this value is not necessary.)
@@ -46,7 +44,6 @@ const cli = meow(
 
     You can set the values through environment variables
     base-url: KINTONE_BASE_URL
-    domain: KINTONE_DOMAIN (This value is deprecated. Please use KINTONE_BASE_URL.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
     oauth-token: KINTONE_OAUTH_TOKEN (If you set a set of username and password, this value is not necessary.)
@@ -56,10 +53,6 @@ const cli = meow(
 `,
   {
     flags: {
-      domain: {
-        type: "string",
-        default: KINTONE_DOMAIN || "",
-      },
       baseUrl: {
         type: "string",
         default: KINTONE_BASE_URL || "",
@@ -124,7 +117,6 @@ const {
   basicAuthUsername,
   basicAuthPassword,
   oauthToken,
-  domain,
   baseUrl,
   proxy,
   watch,
@@ -148,10 +140,6 @@ if (!isInitCommand && !manifestFile) {
   process.exit(1);
 }
 
-if (domain) {
-  console.warn(getMessage(lang, "W_Deprecated_domain"));
-}
-
 if (isInitCommand) {
   inquireInitParams(lang)
     .then((initParams) => {
@@ -164,13 +152,12 @@ if (isInitCommand) {
     password,
     oAuthToken: oauthToken,
     baseUrl,
-    domain,
     lang,
   })
     .then((params) => {
       if (isImportCommand) {
         runImport(
-          params.baseUrl || params.domain,
+          params.baseUrl,
           params.username,
           params.password,
           oauthToken,
@@ -181,7 +168,7 @@ if (isInitCommand) {
         );
       } else {
         run(
-          params.baseUrl || params.domain,
+          params.baseUrl,
           params.username,
           params.password,
           oauthToken,

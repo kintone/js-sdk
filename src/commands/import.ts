@@ -183,7 +183,7 @@ const downloadAndWriteFile = (
 };
 
 export const runImport = async (
-  domain: string,
+  baseUrl: string,
   username: string | null,
   password: string | null,
   oAuthToken: string | null,
@@ -206,7 +206,7 @@ export const runImport = async (
     oAuthToken,
     basicAuthUsername,
     basicAuthPassword,
-    domain,
+    baseUrl,
     options
   );
   await importCustomizeSetting(kintoneApiClient, manifest, status, options);

@@ -61,7 +61,6 @@ If you want to upload the customize files automatically when a file is updated, 
     $ kintone-customize-uploader <manifestFile>
   Options
     --base-url Base-url of your kintone
-    --domain Domain of your kintone (This value is deprecated. Please use --base-url.)
     --username Login username
     --password User's password
     --oauth-token OAuth access token (If you set a set of --username and --password, this value is not necessary.)
@@ -82,7 +81,6 @@ If you want to upload the customize files automatically when a file is updated, 
 
     You can set the values through environment variables
     base-url: KINTONE_BASE_URL
-    domain: KINTONE_DOMAIN (This value is deprecated. Please use KINTONE_BASE_URL.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
     oauth-token: KINTONE_OAUTH_TOKEN (If you set a set of username and password, this value is not necessary.)
