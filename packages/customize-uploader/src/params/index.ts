@@ -7,14 +7,12 @@ interface Params {
   password?: string;
   oAuthToken?: string;
   baseUrl?: string;
-  domain?: string;
   lang: Lang;
 }
 
 export const inquireParams = ({
   username,
   password,
-  domain,
   baseUrl,
   lang,
   oAuthToken,
@@ -26,7 +24,7 @@ export const inquireParams = ({
       message: m("Q_BaseUrl"),
       name: "baseUrl",
       default: baseUrl,
-      when: () => !baseUrl && !domain,
+      when: () => !baseUrl,
       validate: (v: string) => !!v,
     },
     {
@@ -49,9 +47,7 @@ export const inquireParams = ({
 
   return inquirer
     .prompt(questions)
-    .then((answers) =>
-      Object.assign({ username, password, domain, baseUrl }, answers)
-    );
+    .then((answers) => Object.assign({ username, password, baseUrl }, answers));
 };
 
 export * from "./init";
