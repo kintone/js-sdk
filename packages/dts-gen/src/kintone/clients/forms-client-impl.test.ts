@@ -64,8 +64,6 @@ describe("FormsClientImpl#fetchFormProperties", () => {
       password: "password",
       apiToken: null,
       oAuthToken: null,
-      proxyHost: null,
-      proxyPort: null,
       proxy: null,
       basicAuthPassword: null,
       basicAuthUsername: null,
