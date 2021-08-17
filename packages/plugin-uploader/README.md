@@ -47,7 +47,6 @@ You can create a project based on `@kintone/plugin-packer` using [@kintone/creat
     $ kintone-plugin-uploader <pluginPath>
   Options
     --base-url Base-url of your kintone
-    --domain Domain of your kintone (This value is deprecated. Please use --base-url.)
     --username Login username
     --password User's password
     --proxy Proxy server
@@ -58,7 +57,6 @@ You can create a project based on `@kintone/plugin-packer` using [@kintone/creat
 
     You can set the values through environment variables
     base-url: KINTONE_BASE_URL
-    domain: KINTONE_DOMAIN (This value is deprecated. Please you KINTONE_BASE_URL.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
     basic-auth-username: KINTONE_BASIC_AUTH_USERNAME

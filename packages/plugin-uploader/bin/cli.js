@@ -12,7 +12,6 @@ const { getMessage } = require("../dist/messages");
 const {
   HTTP_PROXY,
   HTTPS_PROXY,
-  KINTONE_DOMAIN,
   KINTONE_BASE_URL,
   KINTONE_USERNAME,
   KINTONE_PASSWORD,
@@ -26,7 +25,6 @@ const cli = meow(
     $ kintone-plugin-uploader <pluginPath>
   Options
     --base-url Base-url of your kintone
-    --domain Domain of your kintone (This value is deprecated. Please use --base-url.)
     --username Login username
     --password User's password
     --proxy Proxy server
@@ -38,7 +36,6 @@ const cli = meow(
 
     You can set the values through environment variables
     base-url: KINTONE_BASE_URL
-    domain: KINTONE_DOMAIN (This value is deprecated. Please you KINTONE_BASE_URL.)
     username: KINTONE_USERNAME
     password: KINTONE_PASSWORD
     basic-auth-username: KINTONE_BASIC_AUTH_USERNAME
@@ -47,10 +44,6 @@ const cli = meow(
 `,
   {
     flags: {
-      domain: {
-        type: "string",
-        default: KINTONE_DOMAIN || "",
-      },
       baseUrl: {
         type: "string",
         default: KINTONE_BASE_URL || "",
@@ -95,7 +88,6 @@ const pluginPath = cli.input[0];
 const {
   username,
   password,
-  domain,
   baseUrl,
   proxy,
   basicAuthUsername,
@@ -124,17 +116,13 @@ if (!pluginPath) {
   cli.showHelp();
 }
 
-if (domain) {
-  console.warn(getMessage(lang, "Warning_Deprecated_domain"));
-}
-
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 wait(waitingDialogMs)
-  .then(() => inquireParams({ username, password, domain, baseUrl, lang }))
+  .then(() => inquireParams({ username, password, baseUrl, lang }))
   .then((answers) => {
     run(
-      answers.baseUrl || answers.domain,
+      answers.baseUrl,
       answers.username,
       answers.password,
       pluginPath,
