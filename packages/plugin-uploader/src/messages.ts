@@ -30,11 +30,11 @@ const messages = {
   },
   Error_failedLogin: {
     en: "Login failed, please confirm your username and password",
-    ja: "kintoneへのログインに失敗しました。ログイン名とパスワードを確認してください",
+    ja: "kintoneへのログインに失敗しました。ログイン名とパスワードを確認してください。",
   },
   Error_cannotOpenLogin: {
-    en: "Cannot find a login form on the specified page, please confirm the subdomain",
-    ja: "指定されたページにログインフォームが見つかりませんでした。ドメインを確認してください",
+    en: "Login failed, please confirm the base URL",
+    ja: "kintoneへのログインに失敗しました。ベースURLを確認してください。",
   },
   Error_adminPrivilege: {
     en: "Cannot navigate to the plug-ins page, please retry with an account with administrator privileges",
