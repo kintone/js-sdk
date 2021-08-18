@@ -36,7 +36,7 @@
   "dependencies": {
     "@kintone/profile-loader": "^2.0.0",
     "@kintone/rest-api-client": "^2.0.15",
-    "yargs": "^17.0.1"
+    "yargs": "^17.1.1"
   },
   "devDependencies": {
     "@kintone/customize-uploader": "^5.0.0",
