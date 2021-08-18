@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.15](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.14...@kintone/rest-api-client@2.0.15) (2021-08-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.16.2 ([#1066](https://github.com/kintone/js-sdk/issues/1066)) ([ff9ce29](https://github.com/kintone/js-sdk/commit/ff9ce294eaa6b2b6ece55f67b9e0e49bb9d3b049))
+* **rest-api-client:** validate guestSpaceId ([#1065](https://github.com/kintone/js-sdk/issues/1065)) ([5115573](https://github.com/kintone/js-sdk/commit/51155731e6d3241e2fc1a6c24e2f390e8f37114e))
+
+
+
+
+
 ## [2.0.14](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.13...@kintone/rest-api-client@2.0.14) (2021-08-11)
 
 

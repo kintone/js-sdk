@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@5.0.8...@kintone/plugin-uploader@6.0.0) (2021-08-18)
+
+
+* feat(plugin-uploader)!: remove `--domain` option and `KINTONE_DOMAIN` (BREAKING CHANGE) (#1046) ([e66c7b6](https://github.com/kintone/js-sdk/commit/e66c7b6d21e9d19343b2c8d8a36598e3b8c56a28)), closes [#1046](https://github.com/kintone/js-sdk/issues/1046)
+
+
+### BREAKING CHANGES
+
+* remove `--domain` option and `KINTONE_DOMAIN`
+
+Co-authored-by: shintaroNagata <cybozu.nagata@gmail.com>
+
+
+
+
+
 ## [5.0.8](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@5.0.7...@kintone/plugin-uploader@5.0.8) (2021-08-04)
 
 

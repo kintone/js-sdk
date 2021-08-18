@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.2.11...@kintone/dts-gen@5.0.0) (2021-08-18)
+
+
+* feat(dts-gen)!: remove `--host`, `--proxyHost` and `--proxyPort` options (BREAKING CHANGE)  (#1048) ([0b255eb](https://github.com/kintone/js-sdk/commit/0b255eb57fb84ff5252ada5b72831ba35c20cd50)), closes [#1048](https://github.com/kintone/js-sdk/issues/1048)
+
+
+### BREAKING CHANGES
+
+* remove `--host`, `--proxyHost` and `--proxyPort` options
+
+
+
+
+
 ## [4.2.11](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@4.2.10...@kintone/dts-gen@4.2.11) (2021-08-11)
 
 **Note:** Version bump only for package @kintone/dts-gen

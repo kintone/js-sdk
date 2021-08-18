@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.14...@kintone/customize-uploader@5.0.0) (2021-08-18)
+
+
+* feat(customize-uploader)!: remove `--domain` option and `KINTONE_DOMAIN` (BREAKING CHANGE)  (#1047) ([294270b](https://github.com/kintone/js-sdk/commit/294270b8be567cd3672c0b7417af32fc6e222867)), closes [#1047](https://github.com/kintone/js-sdk/issues/1047)
+
+
+### BREAKING CHANGES
+
+* remove `--domain` option and `KINTONE_DOMAIN`
+
+
+
+
+
 ## [4.0.14](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@4.0.13...@kintone/customize-uploader@4.0.14) (2021-08-11)
 
 **Note:** Version bump only for package @kintone/customize-uploader
