@@ -1,8 +1,9 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   entry: {
-      'dts-gen-integration-test' : './src/integration-tests/dts-gen-integration-test.ts'
+    "dts-gen-integration-test":
+      "./src/integration-tests/dts-gen-integration-test.ts",
   },
   module: {
     rules: [
@@ -10,21 +11,21 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'ts-loader',
-          }
+            loader: "ts-loader",
+          },
         ],
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: [".tsx", ".ts", ".js"],
     fallback: {
       assert: false,
     },
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
-  }
+    filename: "[name].js",
+    path: path.resolve(__dirname, "dist"),
+  },
 };
