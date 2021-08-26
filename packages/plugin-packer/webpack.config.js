@@ -10,9 +10,13 @@ module.exports = {
     filename: "bundle.js",
   },
   devServer: {
-    contentBase: path.resolve(__dirname, "docs"),
-    publicPath: "/dist/",
-    watchContentBase: true,
+    devMiddleware: {
+      publicPath: "/dist/",
+    },
+    static: {
+      directory: path.resolve(__dirname, "docs"),
+      watch: true,
+    },
     open: true,
   },
   resolve: {
