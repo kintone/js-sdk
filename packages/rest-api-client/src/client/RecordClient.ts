@@ -385,7 +385,7 @@ export class RecordClient {
         app,
         records: recordsChunk,
       });
-    } catch (e) {
+    } catch (e: any) {
       throw new KintoneAllRecordsError(
         { records: results },
         records,
@@ -480,7 +480,7 @@ export class RecordClient {
         app,
         records: recordsChunk,
       });
-    } catch (e) {
+    } catch (e: any) {
       throw new KintoneAllRecordsError(
         { records: results },
         records,
@@ -564,7 +564,7 @@ export class RecordClient {
         app,
         records: recordsChunk,
       });
-    } catch (e) {
+    } catch (e: any) {
       throw new KintoneAllRecordsError(
         {},
         records,
