@@ -52,7 +52,7 @@ describe("index", () => {
       try {
         await upload(kintoneApiClient, manifest, status, options);
         assert.ok(true, "the upload has been successful");
-      } catch (e) {
+      } catch (e: any) {
         assert.fail(e);
       }
     });
