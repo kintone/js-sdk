@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.14](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.13...@kintone/data-loader@0.5.14) (2021-09-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency csv-parse to ^4.16.2 ([#1075](https://github.com/kintone/js-sdk/issues/1075)) ([106373d](https://github.com/kintone/js-sdk/commit/106373d63cf5b39a21d8e242c14efd337c6efc1f))
+
+
+
+
+
 ## [0.5.13](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.12...@kintone/data-loader@0.5.13) (2021-08-25)
 
 
