@@ -32,8 +32,8 @@
   "author": "kintone",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
+    "@babel/core": "^7.15.4",
+    "@babel/preset-env": "^7.15.4",
     "@babel/preset-typescript": "^7.15.0",
     "@cybozu/eslint-config": "^14.0.3",
     "@types/jest": "^27.0.1",
