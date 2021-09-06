@@ -3180,13 +3180,13 @@
   dependencies:
     "@types/node" "*"
 
-"@types/inquirer@7.3.3", "@types/inquirer@^7.3.3":
-  version "7.3.3"
-  resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-7.3.3.tgz#92e6676efb67fa6925c69a2ee638f67a822952ac"
-  integrity sha512-HhxyLejTHMfohAuhRun4csWigAMjXTmRyiJTU1Y/I1xmggikFMkOUoMQRlFm+zQcPEGHSs3io/0FAmNZf8EymQ==
+"@types/inquirer@8.1.0", "@types/inquirer@^8.1.0":
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-8.1.0.tgz#99fab20fd6fb3ee2b0352042082fe8dbec76bf55"
+  integrity sha512-FqQ0zoCqh5dLQnrY+GE9d5B8wNiXSuEZo9YLIGhVOkJRBTTnYUDJ5maGzzTGE5nihSnGajdMP6RmbzV1oWgflQ==
   dependencies:
     "@types/through" "*"
-    rxjs "^6.4.0"
+    rxjs "^7.2.0"
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.3"
@@ -11734,7 +11734,7 @@ run-parallel@^1.1.9:
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.1.10.tgz#60a51b2ae836636c81377df16cb107351bcd13ef"
   integrity sha512-zb/1OuZ6flOlH6tQyMPUrE3x3Ulxjlo9WIVXR4yVYi4H9UXQaeIsPbLn2R3O3vQCnDKkAl2qHiuocKKX4Tz/Sw==
 
-rxjs@^6.4.0, rxjs@^6.6.0:
+rxjs@^6.6.0:
   version "6.6.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.3.tgz#8ca84635c4daa900c0d3967a6ee7ac60271ee552"
   integrity sha512-trsQc+xYYXZ3urjOiJOuCOa5N3jAZ3eiSpQB5hIT8zGlL2QfnHLJ2r7GMkBGuIausdJN1OneaI6gQlsqNHHmZQ==
