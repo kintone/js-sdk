@@ -1,35 +1,9 @@
-import * as program from "commander";
 import * as fs from "fs";
+import { Command } from "commander";
 
 import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client";
 import { SetupTestApp } from "./setup-test-utils";
 import { log } from "../utils/logger";
-
-program
-  .version("0.0.1")
-  .option("-u, --username <username>")
-  .option("-p, --password <password>")
-  .option("--base-url <base-url>")
-  .option("--proxy [proxy]", "proxy server", null)
-  .option(
-    "--basic-auth-username [basicAuthUsername]",
-    "username for basic authentication",
-    null
-  )
-  .option(
-    "--basic-auth-password [basicAuthPassword]",
-    "password for basic authentication",
-    null
-  )
-  .option(
-    "--integration-test-js-file <integrationTestJsFile>",
-    "path to integration js file which will be uploaded to test kintone app"
-  )
-  .parse(process.argv);
-
-(async () => {
-  await handleSetupApp(program);
-})();
 
 const handleSetupApp = async (command) => {
   const newClientInput = {
@@ -60,3 +34,31 @@ const handleSetupApp = async (command) => {
   log("Adding Demo Record");
   await SetupTestApp.addDemoRecord(client, app, command.integrationTestJsFile);
 };
+
+(async () => {
+  const program = new Command();
+  program
+    .version("0.0.1")
+    .option("-u, --username <username>")
+    .option("-p, --password <password>")
+    .option("--base-url <base-url>")
+    .option("--proxy [proxy]", "proxy server", null)
+    .option(
+      "--basic-auth-username [basicAuthUsername]",
+      "username for basic authentication",
+      null
+    )
+    .option(
+      "--basic-auth-password [basicAuthPassword]",
+      "password for basic authentication",
+      null
+    )
+    .option(
+      "--integration-test-js-file <integrationTestJsFile>",
+      "path to integration js file which will be uploaded to test kintone app"
+    )
+    .parse(process.argv);
+
+  const options = program.opts();
+  await handleSetupApp(options);
+})();
