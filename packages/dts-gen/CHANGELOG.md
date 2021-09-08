@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.1...@kintone/dts-gen@5.0.2) (2021-09-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.21.2 ([#1087](https://github.com/kintone/js-sdk/issues/1087)) ([5ce05bf](https://github.com/kintone/js-sdk/commit/5ce05bfb331765ff23e05eb6fca96f6ba6519f1d))
+* **deps:** update dependency axios to ^0.21.3 ([#1088](https://github.com/kintone/js-sdk/issues/1088)) ([2a557e9](https://github.com/kintone/js-sdk/commit/2a557e979e4260752d72645a522ec19d9d7107c3))
+* **deps:** update dependency axios to ^0.21.4 ([#1089](https://github.com/kintone/js-sdk/issues/1089)) ([52d5af5](https://github.com/kintone/js-sdk/commit/52d5af5dc216eb65f677ab1f6dbe40b24ce6cb9d))
+
+
+
+
+
 ## [5.0.1](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.0...@kintone/dts-gen@5.0.1) (2021-08-25)
 
 **Note:** Version bump only for package @kintone/dts-gen
