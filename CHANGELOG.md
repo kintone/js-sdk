@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.4](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@5.0.3...@kintone/customize-uploader@5.0.4) (2021-09-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^8.1.3 ([#1104](https://github.com/kintone/js-sdk/issues/1104)) ([d333fd4](https://github.com/kintone/js-sdk/commit/d333fd46273d108cbe97f71aa5514831afb607f4))
+
+
+
+
+
 ## [5.0.3](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@5.0.2...@kintone/customize-uploader@5.0.3) (2021-09-08)
 
 **Note:** Version bump only for package @kintone/customize-uploader
