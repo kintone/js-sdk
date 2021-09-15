@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@6.0.1...@kintone/plugin-uploader@6.0.2) (2021-09-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^8.1.3 ([#1104](https://github.com/kintone/js-sdk/issues/1104)) ([d333fd4](https://github.com/kintone/js-sdk/commit/d333fd46273d108cbe97f71aa5514831afb607f4))
+
+
+
+
+
 ## [6.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@6.0.0...@kintone/plugin-uploader@6.0.1) (2021-09-08)
 
 
