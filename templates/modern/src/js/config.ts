@@ -6,9 +6,8 @@ const PLUGIN_ID = kintone.$PLUGIN_ID;
 
 const form = document.querySelector(".js-submit-settings")!;
 const cancelButton = document.querySelector(".js-cancel-button")!;
-const messageInput = document.querySelector<HTMLInputElement>(
-  ".js-text-message"
-)!;
+const messageInput =
+  document.querySelector<HTMLInputElement>(".js-text-message")!;
 const config = kintone.plugin.app.getConfig(PLUGIN_ID);
 
 if (config.message) {
