@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/glob": "^7.1.4",
-    "@types/inquirer": "^8.1.1",
+    "@types/inquirer": "^8.1.2",
     "@types/lodash": "^4.14.173",
     "@types/node-rsa": "^1.1.1",
     "@types/rimraf": "^3.0.2",
