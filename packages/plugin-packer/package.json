@@ -54,7 +54,7 @@
     "ajv": "^6.12.6",
     "array-flatten": "^3.0.0",
     "assert": "^2.0.0",
-    "babel-jest": "^27.2.0",
+    "babel-jest": "^27.2.1",
     "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
