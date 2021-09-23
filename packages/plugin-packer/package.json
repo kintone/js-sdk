@@ -62,7 +62,7 @@
     "crypto-browserify": "^3.12.0",
     "cssnano": "^5.0.8",
     "execa": "^5.1.1",
-    "glob": "^7.1.7",
+    "glob": "^7.2.0",
     "normalize.css": "^8.0.1",
     "path-browserify": "^1.0.1",
     "postcss": "^8.3.7",
