@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.5...@kintone/dts-gen@5.0.6) (2021-10-06)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
 ## [5.0.5](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.4...@kintone/dts-gen@5.0.5) (2021-09-29)
 
 **Note:** Version bump only for package @kintone/dts-gen
