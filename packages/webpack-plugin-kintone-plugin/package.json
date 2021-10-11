@@ -42,7 +42,7 @@
     "@types/lodash": "^4.14.175",
     "@types/mkdirp": "^1.0.2",
     "@types/rimraf": "^3.0.2",
-    "adm-zip": "^0.5.7",
+    "adm-zip": "^0.5.9",
     "rimraf": "^3.0.2",
     "ts-node": "^10.2.1",
     "webpack": "^5.57.1",
