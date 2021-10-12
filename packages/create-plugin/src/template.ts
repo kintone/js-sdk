@@ -36,6 +36,9 @@ export const filterTemplateFile = (
   if (/config\..+/.test(file)) {
     return !!manifest.config;
   }
+  if (/with-plugin-uploader.json/.test(file)) {
+    return false;
+  }
   return true;
 };
 
@@ -45,6 +48,7 @@ export const filterTemplateFile = (
  * @param srcDir
  * @param destDir
  * @param manifest
+ * @param enablePluginUploader
  */
 export const processTemplateFile = (
   filePath: string,
@@ -74,6 +78,35 @@ export const processTemplateFile = (
         })
       )
     );
+  } else if (filePath === path.join(srcDir, "package.json")) {
+    const packageJson: PackageJson = JSON.parse(
+      fs.readFileSync(filePath, "utf-8")
+    );
+    packageJson.name = manifest.name.en.replace(/\s/g, "-");
+    if (enablePluginUploader) {
+      const withPluginUploaderJson: WithPluginUploaderJson = JSON.parse(
+        fs.readFileSync(path.join(srcDir, "with-plugin-uploader.json"), "utf-8")
+      );
+      if (withPluginUploaderJson.scripts) {
+        packageJson.scripts = {
+          ...packageJson.scripts,
+          ...withPluginUploaderJson.scripts,
+        };
+      }
+      if (withPluginUploaderJson.dependencies) {
+        packageJson.dependencies = {
+          ...packageJson.dependencies,
+          ...withPluginUploaderJson.dependencies,
+        };
+      }
+      if (withPluginUploaderJson.devDependencies) {
+        packageJson.devDependencies = {
+          ...packageJson.devDependencies,
+          ...withPluginUploaderJson.devDependencies,
+        };
+      }
+    }
+    fs.writeFileSync(destFilePath, JSON.stringify(packageJson, null, 2));
   } else if (fs.statSync(filePath).isDirectory()) {
     fs.mkdirSync(destFilePath);
   } else {
@@ -81,4 +114,18 @@ export const processTemplateFile = (
     // fs.copyFileSync(filePath, destFilePath);
     fs.writeFileSync(destFilePath, fs.readFileSync(filePath));
   }
+};
+
+type PackageJson = {
+  name?: string;
+  version?: string;
+  scripts?: { [key: string]: string };
+  dependencies?: { [key: string]: string };
+  devDependencies?: { [key: string]: string };
+};
+
+type WithPluginUploaderJson = {
+  scripts?: { [key: string]: string };
+  dependencies?: { [key: string]: string };
+  devDependencies?: { [key: string]: string };
 };
