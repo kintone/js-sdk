@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.3](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.2...@kintone/create-plugin@4.1.3) (2021-10-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^8.2.0 ([#1140](https://github.com/kintone/js-sdk/issues/1140)) ([c494498](https://github.com/kintone/js-sdk/commit/c49449830b9e85783a96aa10fb8cb78c1d10fb3c))
+
+
+
+
+
 ## [4.1.2](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.1...@kintone/create-plugin@4.1.2) (2021-10-06)
 
 **Note:** Version bump only for package @kintone/create-plugin
