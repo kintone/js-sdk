@@ -2,6 +2,7 @@ import axios, {
   AxiosInstance,
   AxiosProxyConfig,
   AxiosRequestConfig,
+  AxiosRequestHeaders,
 } from "axios";
 import { IncomingHttpHeaders } from "http";
 
@@ -31,7 +32,7 @@ const newAxiosInstance = (input: NewInstanceInput): AxiosInstance => {
     };
   }
 
-  let headers: IncomingHttpHeaders;
+  let headers: AxiosRequestHeaders;
   if (input.username && input.password) {
     headers = {
       "X-Cybozu-Authorization": Buffer.from(
