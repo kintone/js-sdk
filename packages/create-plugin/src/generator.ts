@@ -7,11 +7,7 @@ import { installDependencies } from "./deps";
 import { Lang } from "./lang";
 import { Manifest } from "./manifest";
 import { generatePrivateKey } from "./privateKey";
-import {
-  filterTemplateFile,
-  processTemplateFile,
-  TemplateType,
-} from "./template";
+import { isNecessaryFile, processTemplateFile, TemplateType } from "./template";
 
 /**
  * Create a plugin project based on passed manifest and install dependencies
@@ -53,8 +49,8 @@ const buildProject = (
     .sync(path.resolve(templatePath, "**", "*"), {
       dot: true,
     })
-    .filter(filterTemplateFile.bind(null, manifest))
-    .forEach((file: string) =>
+    .filter((file) => isNecessaryFile(manifest, file))
+    .forEach((file) =>
       processTemplateFile(
         file,
         templatePath,

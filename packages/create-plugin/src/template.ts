@@ -22,22 +22,19 @@ export const getTemplateType = (manifest: Manifest): TemplateType => {
 };
 
 /**
- * Filter unnecessary files from template files
+ * return `true` if `file` is necessary.
  * @param manifest
  * @param file
  */
-export const filterTemplateFile = (
-  manifest: Manifest,
-  file: string
-): boolean => {
+export const isNecessaryFile = (manifest: Manifest, file: string): boolean => {
+  if (/with-plugin-uploader.json/.test(file)) {
+    return false;
+  }
   if (/mobile\..+/.test(file)) {
     return !!manifest.mobile;
   }
   if (/config\..+/.test(file)) {
     return !!manifest.config;
-  }
-  if (/with-plugin-uploader.json/.test(file)) {
-    return false;
   }
   return true;
 };

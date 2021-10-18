@@ -1,8 +1,7 @@
 "use strict";
 
 import assert from "assert";
-import { filter } from "minimatch";
-import { filterTemplateFile, getTemplateType } from "../src/template";
+import { isNecessaryFile, getTemplateType } from "../src/template";
 import createBaseManifest from "./baseManifest";
 
 describe("template", () => {
@@ -14,14 +13,14 @@ describe("template", () => {
   describe("filterTemplateFile", () => {
     it("should returns a boolean that shows whether the file should include or not", () => {
       const manifest = createBaseManifest();
-      assert(filterTemplateFile(manifest, "js/mobile.js") === false);
-      assert(filterTemplateFile(manifest, "js/config.js") === false);
-      assert(filterTemplateFile(manifest, "js/other.js") === true);
+      assert(isNecessaryFile(manifest, "js/mobile.js") === false);
+      assert(isNecessaryFile(manifest, "js/config.js") === false);
+      assert(isNecessaryFile(manifest, "js/other.js") === true);
       assert(
-        filterTemplateFile({ ...manifest, mobile: {} }, "js/mobile.js") === true
+        isNecessaryFile({ ...manifest, mobile: {} }, "js/mobile.js") === true
       );
       assert(
-        filterTemplateFile({ ...manifest, config: {} }, "js/config.js") === true
+        isNecessaryFile({ ...manifest, config: {} }, "js/config.js") === true
       );
     });
   });
