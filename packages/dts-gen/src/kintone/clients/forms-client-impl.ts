@@ -25,11 +25,15 @@ export class FormsClientImpl implements FormsClient {
       },
     };
 
-    return this.client
-      .request(config)
-      .then(
-        (resp) => resp.data.properties
-      ) as Promise<FieldNameAndFieldOrSubTableField>;
+    return this.client.request(config).then(
+      (resp) =>
+        (
+          resp.data as {
+            properties: FieldNameAndFieldOrSubTableField;
+            revision: string;
+          }
+        ).properties
+    ) as Promise<FieldNameAndFieldOrSubTableField>;
   }
 }
 
