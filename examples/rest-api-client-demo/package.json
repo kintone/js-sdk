@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client-demo",
-  "version": "2.0.23",
+  "version": "2.0.24",
   "private": true,
   "author": {
     "name": "Cybozu, Inc.",
@@ -35,11 +35,11 @@
   },
   "dependencies": {
     "@kintone/profile-loader": "^2.0.0",
-    "@kintone/rest-api-client": "^2.0.22",
+    "@kintone/rest-api-client": "^2.0.23",
     "yargs": "^17.2.1"
   },
   "devDependencies": {
-    "@kintone/customize-uploader": "^5.0.8",
+    "@kintone/customize-uploader": "^5.0.9",
     "@types/yargs": "^17.0.4",
     "ts-loader": "^8.3.0",
     "webpack": "^5.59.0",
