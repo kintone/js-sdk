@@ -12,6 +12,6 @@
     "**/__fixtures__/**"
   ],
   "npm": {
-    "fileMatch": ["(^|/|)with-plugin-uploader\\.json$"]
+    "fileMatch": ["^packages/create-plugin/templates/([^/]+/)*with-plugin-uploader\\.json$"]
   }
 }
