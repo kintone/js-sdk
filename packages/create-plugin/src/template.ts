@@ -4,6 +4,7 @@ import * as fs from "fs";
 import * as _ from "lodash";
 import * as path from "path";
 import { Manifest } from "./manifest";
+import sortPackageJson from "sort-package-json";
 
 export const SUPPORT_TEMPLATE_TYPE = ["minimum", "modern"];
 export type TemplateType = "minimum" | "modern";
@@ -103,7 +104,10 @@ export const processTemplateFile = (
         };
       }
     }
-    fs.writeFileSync(destFilePath, JSON.stringify(packageJson, null, 2));
+    const sortedPackageJson = sortPackageJson(
+      JSON.stringify(packageJson, null, 2)
+    );
+    fs.writeFileSync(destFilePath, sortedPackageJson);
   } else if (fs.statSync(filePath).isDirectory()) {
     fs.mkdirSync(destFilePath);
   } else {
