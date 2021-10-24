@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client",
-  "version": "2.0.21",
+  "version": "2.0.23",
   "publishConfig": {
     "access": "public"
   },
@@ -58,9 +58,9 @@
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@rollup/plugin-node-resolve": "^13.0.6",
     "@types/core-js": "^2.5.5",
     "@types/js-base64": "^2.3.2",
     "@types/qs": "^6.9.7",
@@ -72,8 +72,8 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
-    "axios": "^0.21.4",
-    "core-js": "^3.18.2",
+    "axios": "^0.23.0",
+    "core-js": "^3.18.3",
     "form-data": "^4.0.0",
     "js-base64": "^2.6.4",
     "qs": "^6.10.1"

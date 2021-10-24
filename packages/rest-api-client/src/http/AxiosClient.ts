@@ -22,13 +22,13 @@ export class AxiosClient implements HttpClient {
     this.requestConfigBuilder = requestConfigBuilder;
   }
 
-  public async get(path: string, params: any) {
+  public async get<T extends object>(path: string, params: any) {
     const requestConfig = await this.requestConfigBuilder.build(
       "get",
       path,
       params
     );
-    return this.sendRequest(requestConfig);
+    return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
 
   public async getData(path: string, params: any) {
@@ -40,43 +40,43 @@ export class AxiosClient implements HttpClient {
         responseType: "arraybuffer",
       }
     );
-    return this.sendRequest(requestConfig);
+    return (await this.sendRequest(requestConfig)) as Promise<ArrayBuffer>;
   }
 
-  public async post(path: string, params: any) {
+  public async post<T extends object>(path: string, params: any) {
     const requestConfig = await this.requestConfigBuilder.build(
       "post",
       path,
       params
     );
-    return this.sendRequest(requestConfig);
+    return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
 
-  public async postData(path: string, formData: FormData) {
+  public async postData<T extends object>(path: string, formData: FormData) {
     const requestConfig = await this.requestConfigBuilder.build(
       "post",
       path,
       formData
     );
-    return this.sendRequest(requestConfig);
+    return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
 
-  public async put(path: string, params: any) {
+  public async put<T extends object>(path: string, params: any) {
     const requestConfig = await this.requestConfigBuilder.build(
       "put",
       path,
       params
     );
-    return this.sendRequest(requestConfig);
+    return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
 
-  public async delete(path: string, params: any) {
+  public async delete<T extends object>(path: string, params: any) {
     const requestConfig = await this.requestConfigBuilder.build(
       "delete",
       path,
       params
     );
-    return this.sendRequest(requestConfig);
+    return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
 
   private sendRequest(requestConfig: RequestConfig) {

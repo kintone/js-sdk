@@ -5,8 +5,8 @@ import { FieldTypeConverter } from "../converters/fileldtype-converter";
 import { objectValues } from "../utils/objectvalues";
 import * as fs from "fs";
 describe("renderAsFile", () => {
-  const TEMP_TEST_TYPEDEF = "tmp.testfields.d.ts";
-  test("generate typedefinition file", async () => {
+  const TEMP_TEST_TYPEDEF = "tmp.test-renderAsFile-fields.d.ts";
+  test("generate type definition file", async () => {
     const client = new DemoClient();
     const fieldTypeGroups = await client
       .fetchFormProperties({
@@ -27,7 +27,7 @@ describe("renderAsFile", () => {
     t.renderAsFile(TEMP_TEST_TYPEDEF, input);
 
     const expected = fs
-      .readFileSync("./resources/testfields.d.ts")
+      .readFileSync(`./resources/test-renderAsFile-fields.d.ts`)
       .toString()
       .trim()
       .replace(/\r?\n/g, "");
@@ -51,7 +51,7 @@ describe("renderAsFile", () => {
 });
 
 describe("fullWidthSymbol Test", () => {
-  const TEMP_TEST_TYPEDEF = "tmp.testfields.d.ts";
+  const TEMP_TEST_TYPEDEF = "tmp.test-fullWidthSymbol-fields.d.ts";
   test("generate type definition file", async () => {
     const client = new DemoFullWidthSymbolClient();
     const fieldTypeGroups = await client
@@ -73,7 +73,7 @@ describe("fullWidthSymbol Test", () => {
     t.renderAsFile(TEMP_TEST_TYPEDEF, input);
 
     const expected = fs
-      .readFileSync("./resources/test-fullwidth-symbol-field.d.ts")
+      .readFileSync("./resources/test-fullWidthSymbol-fields.d.ts")
       .toString()
       .trim()
       .replace(/\r?\n/g, "");
