@@ -1,14 +1,8 @@
 {
-  "name": "<%= normalizePackageName(name.en) %>",
+  "name": "kintone-plugin-template-modern",
   "version": "0.1.0",
   "scripts": {
-    <% if (enablePluginUploader) { %>
-    "prestart": "npm run build",
-    "start": "node scripts/npm-start.js",
-    "upload": "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 3000",
-    <% } else { %>
     "start": "npm run develop",
-    <% } %>
     "develop": "npm run build -- --watch",
     "build": "cross-env NODE_ENV=development webpack",
     "build:prod": "cross-env NODE_ENV=production webpack",
@@ -26,9 +20,6 @@
     "@babel/preset-typescript": "^7.15.0",
     "@cybozu/eslint-config": "^14.0.3",
     "@kintone/dts-gen": "^5.0.2",
-    <% if (enablePluginUploader) { %>
-    "@kintone/plugin-uploader": "^6.0.1",
-    <% } %>
     "@kintone/webpack-plugin-kintone-plugin": "^5.0.16",
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",

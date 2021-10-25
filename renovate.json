@@ -10,5 +10,8 @@
     "**/test/**",
     "**/tests/**",
     "**/__fixtures__/**"
-  ]
+  ],
+  "npm": {
+    "fileMatch": ["^packages/create-plugin/templates/([^/]+/)*with-plugin-uploader\\.json$"]
+  }
 }
