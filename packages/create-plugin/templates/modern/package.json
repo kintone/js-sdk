@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "core-js": "^3.10.1",
-    "@kintone/rest-api-client": "^1.12.2"
+    "@kintone/rest-api-client": "^1.12.4"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
