@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.7](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.6...@kintone/create-plugin@4.1.7) (2021-11-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to v2 ([#1184](https://github.com/kintone/js-sdk/issues/1184)) ([7551950](https://github.com/kintone/js-sdk/commit/7551950161200445fc2bd3208f5dc1d8d317b827))
+* **deps:** update dependency sort-package-json to ^1.53.1 ([#1202](https://github.com/kintone/js-sdk/issues/1202)) ([bfc1b82](https://github.com/kintone/js-sdk/commit/bfc1b82032ef106e025135bd2e8480937994a467))
+
+
+
+
+
 ## [4.1.6](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.5...@kintone/create-plugin@4.1.6) (2021-11-09)
 
 
