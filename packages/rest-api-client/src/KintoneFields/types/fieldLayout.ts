@@ -1,7 +1,4 @@
-type FieldLayoutWith<
-  T extends string,
-  S extends unknown = { width: string }
-> = {
+type FieldLayoutWith<T extends string, S = { width: string }> = {
   type: T;
   code: string;
   size: S;
