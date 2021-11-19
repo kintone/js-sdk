@@ -138,8 +138,8 @@ The client determines which method to use by passed parameters.
 
 #### 3. Parameters for [OAuth authentication](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/-How-to-add-OAuth-clients)
 
-| Name       |  Type  | Required | Description                                                                                                                                           |
-| ---------- | :----: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name       |  Type  | Required | Description                                                                                                                                                           |
+| ---------- | :----: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | oAuthToken | String |   Yes    | An OAuth access token you get through the [OAuth process flow](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/-How-to-add-OAuth-clients). |
 
 #### 4. [Session authentication](https://kintone.dev/en/docs/common/authentication/#session-authentication)
