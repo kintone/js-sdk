@@ -11,6 +11,6 @@
   "devDependencies": {
     "@cybozu/eslint-config": "^16.0.0",
     "@kintone/plugin-packer": "^5.0.25",
-    "eslint": "^8.2.0"
+    "eslint": "^8.3.0"
   }
 }
