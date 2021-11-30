@@ -1,4 +1,4 @@
-import csvParse from "csv-parse/lib/sync";
+import { parse } from "csv-parse/sync";
 import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
 import { hasSubtable } from "../../printers/printAsCsv/hasSubtable";
 import { extractSubtableFieldsValue } from "./extractSubtableFieldsValue";
@@ -13,7 +13,7 @@ import {
 } from "../../types";
 
 export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
-  const rows: CsvRows = csvParse(csv, {
+  const rows: CsvRows = parse(csv, {
     columns: true,
     skip_empty_lines: true,
   });
