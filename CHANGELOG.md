@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.9](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.8...@kintone/create-plugin@4.1.9) (2021-12-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.19.2 ([#1183](https://github.com/kintone/js-sdk/issues/1183)) ([da57c87](https://github.com/kintone/js-sdk/commit/da57c879542da3ae371b5acfecbe367488151dc5))
+
+
+
+
+
 ## [4.1.8](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.7...@kintone/create-plugin@4.1.8) (2021-11-24)
 
 
