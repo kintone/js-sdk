@@ -30,7 +30,10 @@
   "keywords": [
     "kintone"
   ],
-  "author": "kintone",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"

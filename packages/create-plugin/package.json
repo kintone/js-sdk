@@ -57,6 +57,9 @@
   "keywords": [
     "kintone"
   ],
-  "author": "kintone",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "license": "MIT"
 }
