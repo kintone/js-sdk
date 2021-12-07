@@ -117,7 +117,7 @@ The client supports three authentication methods:
 
 1. [Password authentication](https://kintone.dev/en/docs/common/authentication/#password-authentication)
 2. [API token authentication](https://kintone.dev/en/docs/common/authentication/#api-token-authentication)
-3. [OAuth authentication](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/-How-to-add-OAuth-clients)
+3. [OAuth authentication](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/)
 4. [Session authentication](https://kintone.dev/en/docs/common/authentication/#session-authentication)
 
 The required parameters inside `auth` are different by the methods.
@@ -136,11 +136,11 @@ The client determines which method to use by passed parameters.
 | -------- | :----------------: | :------: | ------------------------------------------------------- |
 | apiToken | String or String[] |   Yes    | You can pass multiple api tokens as an array of string. |
 
-#### 3. Parameters for [OAuth authentication](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/-How-to-add-OAuth-clients)
+#### 3. Parameters for [OAuth authentication](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/)
 
 | Name       |  Type  | Required | Description                                                                                                                                                           |
 | ---------- | :----: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| oAuthToken | String |   Yes    | An OAuth access token you get through the [OAuth process flow](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/-How-to-add-OAuth-clients). |
+| oAuthToken | String |   Yes    | An OAuth access token you get through the [OAuth process flow](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/#authorization-code-grant-flow). |
 
 #### 4. [Session authentication](https://kintone.dev/en/docs/common/authentication/#session-authentication)
 
