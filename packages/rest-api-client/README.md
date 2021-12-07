@@ -1,6 +1,8 @@
 # kintone-rest-api-client
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Frest-api-client.svg)](https://badge.fury.io/js/%40kintone%2Frest-api-client)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/rest-api-client/package.json&label=node&query=$.engines.node&colorB=blue)
+![License](https://img.shields.io/npm/l/@kintone/rest-api-client.svg)
 
 API client for Kintone REST API.
 It supports both browser environment (Kintone customization & plugin) and Node.js environment.

@@ -1,6 +1,8 @@
 # kintone-customize-uploader
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fcustomize-uploader.svg)](https://badge.fury.io/js/%40kintone%2Fcustomize-uploader)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/customize-uploader/package.json&label=node&query=$.engines.node&colorB=blue)
+![License](https://img.shields.io/npm/l/@kintone/customize-uploader.svg)
 
 A kintone customize uploader
 
@@ -154,4 +156,5 @@ In this example, JavaScript and CSS Customization is set as below.
 ![Example screenshot of JavaScript and CSS Customization](docs/example_setting.PNG)
 
 ## LICENSE
+
 MIT License
