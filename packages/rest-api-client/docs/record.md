@@ -63,7 +63,7 @@ Retrieves details of 1 record from an app by specifying the app ID and record ID
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/213149287
+- https://kintone.dev/en/docs/kintone/rest-api/records/get-record/
 
 ### addRecord
 
@@ -74,7 +74,7 @@ Adds 1 record to an app.
 | Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                    |
 | ------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | app    | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                    |
-| record |      Object      |          | Field codes and values are specified in this object. <br /> If ignored, the record will be added with default field values. <br /> If field codes that don't exist are specified, these will be ignored. <br /> For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+| record |      Object      |          | Field codes and values are specified in this object. <br /> If ignored, the record will be added with default field values. <br /> If field codes that don't exist are specified, these will be ignored. <br /> For field type specs, check the [Field Types](https://kintone.dev/en/docs/kintone/overview/field-types/) page. |
 
 #### Returns
 
@@ -85,7 +85,7 @@ Adds 1 record to an app.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/212494628
+- https://kintone.dev/en/docs/kintone/rest-api/records/add-record/
 
 ### updateRecord
 
@@ -101,7 +101,7 @@ Updates details of 1 record in an app by specifying its record number, or a diff
 | updateKey.field |      String      | Conditionally<br />Required | The field code of the unique key.<br />Required, if `updateKey` will be specified.                                                                                                                              |
 | updateKey.value | Number or String | Conditionally<br />Required | The value of the unique key.<br />Required, if `updateKey` will be specified.                                                                                                                                   |
 | revision        | Number or String |                             | The expected revision number. If the value does not match, an error will occur and the record will not be updated. If the value is not specified or is `-1`, the revision number will not be checked.           |
-| record          |      Object      |                             | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+| record          |      Object      |                             | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://kintone.dev/en/docs/kintone/overview/field-types/) page. |
 
 #### Returns
 
@@ -111,7 +111,7 @@ Updates details of 1 record in an app by specifying its record number, or a diff
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/213149027
+- https://kintone.dev/en/docs/kintone/rest-api/records/update-record/
 
 ### upsertRecord
 
@@ -127,7 +127,7 @@ This method updates a record if the unique key specified by `updateKey` has matc
 | updateKey.field |      String      |   Yes    | The field code of the unique key.                                                                                                                                                                               |
 | updateKey.value | Number or String |   Yes    | The value of the unique key.                                                                                                                                                                                    |
 | revision        | Number or String |          | The expected revision number. If the value does not match, an error will occur and the record will not be updated. If the value is not specified or is `-1`, the revision number will not be checked.           |
-| record          |      Object      |          | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+| record          |      Object      |          | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://kintone.dev/en/docs/kintone/overview/field-types/) page. |
 
 #### Returns
 
@@ -159,24 +159,24 @@ The number of records that can be retrieved at once is 500.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/360019245194
+- https://kintone.dev/en/docs/kintone/rest-api/records/get-records/
 
 ### getAllRecords
 
 Retrieves details of all records from an app by specifying the app ID, fields, condition, and sort order.
-This method can retrieve the records exceeding the [REST API limitation](https://developer.kintone.io/hc/en-us/articles/212495188#limitations).
+This method can retrieve the records exceeding the [REST API limitation](https://kintone.dev/en/docs/kintone/rest-api/overview/kintone-rest-api-overview/#limitations).
 
 If you specify `orderBy` parameter, this method uses [`createCursor()`](#createCursor) and [`getRecordsByCursor()`](#getRecordsByCursor) API internally unless you specify `withCursor = false`.
 
 #### Parameters
 
-| Name       |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
-| ---------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app        | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                          |
-| fields     | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                                                                                     |
-| condition  |      String      |          | The query that will specify what records will be responded. <br /> Refer to the [Query Operators and Functions](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned.<br />`order by`, `limit`, and `offset` can not be used in the query. |
-| orderBy    |      String      |          | The sort order as a query.<br />Check [Query Options](https://developer.kintone.io/hc/en-us/articles/360019245194#options) for more information on query formats.                                                                                                                                                                                                                                                    |
-| withCursor |     Boolean      |          | It indicates whether to use [`createCursor()`](#createCursor) and [`getRecordsByCursor()`](#getRecordsByCursor) internally. The default is `true`.                                                                                                                                                                                                                                                                   |
+| Name       |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ---------- | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app        | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| fields     | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                                                                                                          |
+| condition  |      String      |          | The query that will specify what records will be responded. <br /> Refer to the [Query Operators and Functions](https://kintone.dev/en/docs/kintone/overview/query-string/#query-operators-and-functions) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned.<br />`order by`, `limit`, and `offset` can not be used in the query. |
+| orderBy    |      String      |          | The sort order as a query.<br />Check [Query Options](https://kintone.dev/en/docs/kintone/overview/query-string/#query-options) for more information on query formats.                                                                                                                                                                                                                                                                    |
+| withCursor |     Boolean      |          | It indicates whether to use [`createCursor()`](#createCursor) and [`getRecordsByCursor()`](#getRecordsByCursor) internally. The default is `true`.                                                                                                                                                                                                                                                                                        |
 
 #### Returns
 
@@ -185,15 +185,15 @@ An array of objects, including field types and field values within the matching 
 ### getAllRecordsWithId
 
 Retrieves details of all records from an app by specifying the app ID, fields, and condition.
-This method can retrieve the records exceeding the [REST API limitation](https://developer.kintone.io/hc/en-us/articles/212495188#limitations).
+This method can retrieve the records exceeding the [REST API limitation](https://kintone.dev/en/docs/kintone/rest-api/overview/kintone-rest-api-overview/#limitations).
 
 #### Parameters
 
-| Name      |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
-| --------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app       | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                          |
-| fields    | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                                                                                     |
-| condition |      String      |          | The query that will specify what records will be responded. <br /> Refer to the [Query Operators and Functions](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned.<br />`order by`, `limit`, and `offset` can not be used in the query. |
+| Name      |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| --------- | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app       | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| fields    | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                                                                                                          |
+| condition |      String      |          | The query that will specify what records will be responded. <br /> Refer to the [Query Operators and Functions](https://kintone.dev/en/docs/kintone/overview/query-string/#query-operators-and-functions) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned.<br />`order by`, `limit`, and `offset` can not be used in the query. |
 
 #### Returns
 
@@ -203,16 +203,16 @@ The returned array is sorted by `id` in ascending order.
 ### getAllRecordsWithOffset
 
 Retrieves details of all records from an app by specifying the app ID, fields, condition, and sort order.
-This method can retrieve the records exceeding the [REST API limitation](https://developer.kintone.io/hc/en-us/articles/212495188#limitations).
+This method can retrieve the records exceeding the [REST API limitation](https://kintone.dev/en/docs/kintone/rest-api/overview/kintone-rest-api-overview/#limitations).
 
 #### Parameters
 
-| Name      |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
-| --------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app       | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                          |
-| fields    | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                                                                                     |
-| condition |      String      |          | The query that will specify what records will be responded. <br /> Refer to the [Query Operators and Functions](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned.<br />`order by`, `limit`, and `offset` can not be used in the query. |
-| orderBy   |      String      |          | The sort order as a query.<br />Check [Query Options](https://developer.kintone.io/hc/en-us/articles/360019245194#options) for more information on query formats.                                                                                                                                                                                                                                                    |
+| Name      |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| --------- | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app       | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| fields    | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                                                                                                          |
+| condition |      String      |          | The query that will specify what records will be responded. <br /> Refer to the [Query Operators and Functions](https://kintone.dev/en/docs/kintone/overview/query-string/#query-operators-and-functions) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned.<br />`order by`, `limit`, and `offset` can not be used in the query. |
+| orderBy   |      String      |          | The sort order as a query.<br />Check [Query Options](https://kintone.dev/en/docs/kintone/overview/query-string/#query-options) for more information on query formats.                                                                                                                                                                                                                                                                    |
 
 #### Returns
 
@@ -226,11 +226,11 @@ However, this method can retrieve the records exceeding the limitation of `size`
 
 #### Parameters
 
-| Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                     |
-| ------ | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app    | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                     |
-| fields | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                |
-| query  |      String      |          | The query that will specify what records will be responded. <br /> Refer to the [Query Operators and Functions](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned. |
+| Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                          |
+| ------ | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app    | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                          |
+| fields | Array\<String\>  |          | The field codes to be included in the response. Ignoring this parameter will return all accessible fields that exist in the app.                                                                                                                                                                                                                                     |
+| query  |      String      |          | The query that will specify what records will be responded. <br /> Refer to the [Query Operators and Functions](https://kintone.dev/en/docs/kintone/overview/query-string/#query-operators-and-functions) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned. |
 
 #### Returns
 
@@ -247,7 +247,7 @@ If you'd like to add over 100 records, please consider using [addAllRecords](#ad
 | Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                              |
 | ------- | :--------------: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                              |
-| records |      Array       |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Up to 100 records can be specified.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+| records |      Array       |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Up to 100 records can be specified.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://kintone.dev/en/docs/kintone/overview/field-types/) page. |
 
 #### Returns
 
@@ -261,7 +261,7 @@ If you'd like to add over 100 records, please consider using [addAllRecords](#ad
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/360000313321
+- https://kintone.dev/en/docs/kintone/rest-api/records/add-records/
 
 ### addAllRecords
 
@@ -276,7 +276,7 @@ For more information, please see [an example of KintoneAllRecordsError](errorHan
 | Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                             |
 | ------- | :--------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app     | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                             |
-| records |      Array       |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Over 100 records can be specified.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+| records |      Array       |   Yes    | Holds an array of record objects, that contains field codes and their values.<br />Over 100 records can be specified.<br />Fields that are not included in the objects are added with their default value. Objects containing field codes that do not exist are ignored. For field type specs, check the [Field Types](https://kintone.dev/en/docs/kintone/overview/field-types/) page. |
 
 #### Returns
 
@@ -303,7 +303,7 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 | records[].updateKey.field |      String      | Conditionally<br />Required | The field code of the unique key. Required, if `updateKey` will be specified.                                                                                                                                   |
 | records[].updateKey.value | Number or String | Conditionally<br />Required | The value of the unique key. Required, if `updateKey` will be specified.                                                                                                                                        |
 | records[].revision        | Number or String |                             | The expected revision number. If the value does not match, an error will occur and all records will not be updated. If the value is not specified or is `-1`, the revision number will not be checked.          |
-| records[].record          |      Object      |                             | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+| records[].record          |      Object      |                             | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://kintone.dev/en/docs/kintone/overview/field-types/) page. |
 
 #### Returns
 
@@ -315,7 +315,7 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/360000313622
+- https://kintone.dev/en/docs/kintone/rest-api/records/update-records/
 
 ### updateAllRecords
 
@@ -336,7 +336,7 @@ For more information, please see [an example of KintoneAllRecordsError](errorHan
 | records[].updateKey.field |      String      | Conditionally<br />Required | The field code of the unique key. Required, if `updateKey` will be specified.                                                                                                                                   |
 | records[].updateKey.value | Number or String | Conditionally<br />Required | The value of the unique key. Required, if `updateKey` will be specified.                                                                                                                                        |
 | records[].revision        | Number or String |                             | The expected revision number. If the value does not match, an error will occur. If the value is not specified or is `-1`, the revision number will not be checked.                                              |
-| records[].record          |      Object      |                             | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://developer.kintone.io/hc/en-us/articles/212494818/) page. |
+| records[].record          |      Object      |                             | Field codes and values are specified in this object. If ignored, the record will not be updated. For field type specs, check the [Field Types](https://kintone.dev/en/docs/kintone/overview/field-types/) page. |
 
 #### Returns
 
@@ -364,7 +364,7 @@ An empty object.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/212494558
+- https://kintone.dev/en/docs/kintone/rest-api/records/delete-records/
 
 ### deleteAllRecords
 
@@ -420,7 +420,7 @@ Retrieves multiple comments from a record in an app.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/219105188
+- https://kintone.dev/en/docs/kintone/rest-api/records/get-comments/
 
 ### addRecordComment
 
@@ -446,7 +446,7 @@ Add a comment to a record in an app.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/219501367
+- https://kintone.dev/en/docs/kintone/rest-api/records/add-comment/
 
 ### deleteRecordComment
 
@@ -466,7 +466,7 @@ An empty object.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/219562607
+- https://kintone.dev/en/docs/kintone/rest-api/records/delete-comment/
 
 ### createCursor
 
@@ -474,12 +474,12 @@ Adds a cursor so that large amount of records can be obtained from an app.
 
 #### Parameters
 
-| Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app    | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                         |
-| fields | Array\<String\>  |          | The field codes to be included in the response when using the [`getRecordsByCursor()`](#getRecordsByCursor). <br /> If ignored, all accessible fields in the app will be returned.                                                                                                                                                                                                                                  |
-| query  |      String      |          | The query string that will specify what records will be responded when using the [`getRecordsByCursor()`](#getRecordsByCursor). <br /> Refer to the [Query Operators and Functions](https://developer.kintone.io/hc/en-us/articles/360019245194#optfunc) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned. |
-| size   | Number or String |          | The maximum number of records the [`getRecordsByCursor()`](#getRecordsByCursor) can retrieve from this cursor with one request. <br /> The maximum number is 500 records. If ignored, the default number of records to be retrieved is 100.                                                                                                                                                                         |
+| Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ------ | :--------------: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app    | Number or String |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| fields | Array\<String\>  |          | The field codes to be included in the response when using the [`getRecordsByCursor()`](#getRecordsByCursor). <br /> If ignored, all accessible fields in the app will be returned.                                                                                                                                                                                                                                                       |
+| query  |      String      |          | The query string that will specify what records will be responded when using the [`getRecordsByCursor()`](#getRecordsByCursor). <br /> Refer to the [Query Operators and Functions](https://kintone.dev/en/docs/kintone/overview/query-string/#query-operators-and-functions) document for the operators and options that can be specified in the query string. <br /> If ignored, all accessible records from the app will be returned. |
+| size   | Number or String |          | The maximum number of records the [`getRecordsByCursor()`](#getRecordsByCursor) can retrieve from this cursor with one request. <br /> The maximum number is 500 records. If ignored, the default number of records to be retrieved is 100.                                                                                                                                                                                              |
 
 #### Returns
 
@@ -490,7 +490,7 @@ Adds a cursor so that large amount of records can be obtained from an app.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/360000280322
+- https://kintone.dev/en/docs/kintone/rest-api/records/add-cursor/
 
 ### getRecordsByCursor
 
@@ -511,7 +511,7 @@ Retrieves multiple records from an app by specifying the cursor ID.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/360000280502
+- https://kintone.dev/en/docs/kintone/rest-api/records/get-cursor/
 
 ### deleteCursor
 
@@ -529,7 +529,7 @@ An empty object.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/360000280522
+- https://kintone.dev/en/docs/kintone/rest-api/records/delete-cursor/
 
 ### updateRecordAssignees
 
@@ -552,7 +552,7 @@ Updates the assignees of a record status, that was set with the [Process Managem
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/219563427
+- https://kintone.dev/en/docs/kintone/rest-api/records/update-assignees/
 
 ### updateRecordStatus
 
@@ -576,7 +576,7 @@ Updates the status of a record of an app, that was set with the [Process Managem
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/213149747
+- https://kintone.dev/en/docs/kintone/rest-api/records/update-status/
 
 ### ️updateRecordsStatus
 
@@ -603,4 +603,4 @@ Updates the statuses of multiple records of an app, that were set with the [Proc
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/360000334541
+- https://kintone.dev/en/docs/kintone/rest-api/records/update-statuses/

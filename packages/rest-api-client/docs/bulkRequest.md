@@ -75,4 +75,4 @@ Runs multiple API requests sequentially to multiple apps.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/213148977
+- https://kintone.dev/en/docs/kintone/rest-api/records/bulk-request/
