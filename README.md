@@ -1,6 +1,8 @@
 # create-kintone-plugin
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fcreate-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fcreate-plugin)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/create-plugin/package.json&label=node&query=$.engines.node&colorB=blue)
+![License](https://img.shields.io/npm/l/@kintone/create-plugin.svg)
 
 A CLI tool for creating a kintone plugin!
 
