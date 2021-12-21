@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.6](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@6.1.5...@kintone/plugin-manifest-validator@6.1.6) (2021-12-21)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
+
+
+
+
 ## [6.1.5](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@6.1.4...@kintone/plugin-manifest-validator@6.1.5) (2021-12-15)
 
 **Note:** Version bump only for package @kintone/plugin-manifest-validator
