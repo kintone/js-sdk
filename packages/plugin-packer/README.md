@@ -1,9 +1,11 @@
 kintone-plugin-packer
 ====
 
-[kintone plugin package.sh](https://github.com/kintone-samples/plugin-samples) in JavaScript
-
 [![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-packer.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-packer)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/plugin-packer/package.json&label=node&query=$.engines.node&colorB=blue)
+![License](https://img.shields.io/npm/l/@kintone/plugin-packer.svg)
+
+[kintone plugin package.sh](https://github.com/kintone-samples/plugin-samples) in JavaScript
 
 It's written in pure JavaScript, so
 

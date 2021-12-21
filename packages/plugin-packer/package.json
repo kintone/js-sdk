@@ -2,7 +2,10 @@
   "name": "@kintone/plugin-packer",
   "description": "Package your kintone plugin with pure JavaScript",
   "version": "5.0.28",
-  "author": "Teppei Sato <teppeis@gmail.com>",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "engines": {
     "node": ">=12"
   },

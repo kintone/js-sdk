@@ -1,6 +1,8 @@
 # @kintone/plugin-uploader
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-uploader.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-uploader)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/plugin-uploader/package.json&label=node&query=$.engines.node&colorB=blue)
+![License](https://img.shields.io/npm/l/@kintone/plugin-uploader.svg)
 
 A kintone plugin uploader using [puppeteer](https://github.com/GoogleChrome/puppeteer)
 

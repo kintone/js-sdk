@@ -1,7 +1,10 @@
 {
   "name": "@kintone/plugin-manifest-validator",
   "version": "6.1.5",
-  "author": "Teppei Sato <teppeis@gmail.com>",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "engines": {
     "node": ">=12"
   },
