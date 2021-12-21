@@ -5,6 +5,6 @@
     "upload": "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 3000"
   },
   "devDependencies": {
-    "@kintone/plugin-uploader": "^6.0.6"
+    "@kintone/plugin-uploader": "^6.0.7"
   }
 }
