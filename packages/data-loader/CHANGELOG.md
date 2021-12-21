@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.27](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.26...@kintone/data-loader@0.5.27) (2021-12-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yargs to ^17.3.0 ([#1242](https://github.com/kintone/js-sdk/issues/1242)) ([8c32641](https://github.com/kintone/js-sdk/commit/8c32641bd8d37298e9131ac952661a79d0ea023e))
+
+
+
+
+
 ## [0.5.26](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.25...@kintone/data-loader@0.5.26) (2021-12-07)
 
 **Note:** Version bump only for package @kintone/data-loader

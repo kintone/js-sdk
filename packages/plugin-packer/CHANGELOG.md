@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.28](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.27...@kintone/plugin-packer@5.0.28) (2021-12-15)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
 ## [5.0.27](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.26...@kintone/plugin-packer@5.0.27) (2021-12-07)
 
 
