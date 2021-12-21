@@ -1,6 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as prettier from "prettier";
+// eslint-disable-next-line node/no-extraneous-import
+import { ESLint } from "eslint";
 
 import { FieldTypeGroups } from "../converters/fileldtype-converter";
 import { convertToTsExpression } from "./converter";
@@ -11,9 +13,30 @@ interface RenderInput {
   fieldTypeGroups: FieldTypeGroups;
 }
 
-const renderAsFile = (output: string, renderInput: RenderInput) => {
+const renderAsFile = async (output: string, renderInput: RenderInput) => {
   const tsExpression = convertToTsExpression(renderInput);
-  const prettySource = prettier.format(tsExpression.tsExpression(), {
+  const eslint = new ESLint({
+    fix: true,
+    useEslintrc: false,
+    baseConfig: {
+      extends: "@cybozu/eslint-config/presets/typescript",
+      globals: {
+        kintone: true,
+      },
+      rules: {
+        "@typescript-eslint/no-namespace": [
+          "error",
+          { allowDeclarations: true },
+        ],
+      },
+    },
+  });
+  const eslintReport = await eslint.lintText(tsExpression.tsExpression());
+  const eslintOutput = eslintReport
+    .filter((r) => Object.prototype.hasOwnProperty.call(r, "output"))
+    .map((r) => r.output)
+    .join("");
+  const prettySource = prettier.format(eslintOutput, {
     parser: "typescript",
   });
   const outputPath = path.join(process.cwd(), output);
