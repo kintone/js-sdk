@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.1.13 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/create-plugin
+
+
+
+
+
 ## [4.1.12](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.11...@kintone/create-plugin@4.1.12) (2021-12-21)
 
 

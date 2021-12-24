@@ -1,7 +1,7 @@
 {
   "name": "@kintone/plugin-packer",
   "description": "Package your kintone plugin with pure JavaScript",
-  "version": "5.0.29",
+  "version": "5.0.30",
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
@@ -38,7 +38,7 @@
     "start": "npm-run-all -l -s clean build -p build:dev site:dev"
   },
   "dependencies": {
-    "@kintone/plugin-manifest-validator": "^6.1.6",
+    "@kintone/plugin-manifest-validator": "^6.1.7",
     "chokidar": "^3.5.2",
     "debug": "^4.3.3",
     "denodeify": "^1.2.1",
