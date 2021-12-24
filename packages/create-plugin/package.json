@@ -1,6 +1,6 @@
 {
   "name": "@kintone/create-plugin",
-  "version": "4.1.13",
+  "version": "4.1.14",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": {
     "create-plugin": "bin/cli.js",
