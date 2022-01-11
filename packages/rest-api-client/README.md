@@ -1,6 +1,8 @@
 # kintone-rest-api-client
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Frest-api-client.svg)](https://badge.fury.io/js/%40kintone%2Frest-api-client)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/rest-api-client/package.json&label=node&query=$.engines.node&colorB=blue)
+![License](https://img.shields.io/npm/l/@kintone/rest-api-client.svg)
 
 API client for Kintone REST API.
 It supports both browser environment (Kintone customization & plugin) and Node.js environment.
@@ -115,34 +117,34 @@ client.record
 
 The client supports three authentication methods:
 
-1. [Password authentication](https://developer.kintone.io/hc/en-us/articles/212495188#passwordAuth)
-2. [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
-3. [OAuth authentication](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients)
-4. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
+1. [Password authentication](https://kintone.dev/en/docs/common/authentication/#password-authentication)
+2. [API token authentication](https://kintone.dev/en/docs/common/authentication/#api-token-authentication)
+3. [OAuth authentication](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/)
+4. [Session authentication](https://kintone.dev/en/docs/common/authentication/#session-authentication)
 
 The required parameters inside `auth` are different by the methods.
 The client determines which method to use by passed parameters.
 
-#### 1. Parameters for [Password authentication](https://developer.kintone.io/hc/en-us/articles/212495188#passwordAuth)
+#### 1. Parameters for [Password authentication](https://kintone.dev/en/docs/common/authentication/#password-authentication)
 
 | Name     |  Type  | Required | Description |
 | -------- | :----: | :------: | ----------- |
 | username | String |   Yes    |
 | password | String |   Yes    |
 
-#### 2. Parameters for [API token authentication](https://developer.kintone.io/hc/en-us/articles/212495188#APItokenAuth)
+#### 2. Parameters for [API token authentication](https://kintone.dev/en/docs/common/authentication/#api-token-authentication)
 
 | Name     |        Type        | Required | Description                                             |
 | -------- | :----------------: | :------: | ------------------------------------------------------- |
 | apiToken | String or String[] |   Yes    | You can pass multiple api tokens as an array of string. |
 
-#### 3. Parameters for [OAuth authentication](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients)
+#### 3. Parameters for [OAuth authentication](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/)
 
-| Name       |  Type  | Required | Description                                                                                                                                           |
-| ---------- | :----: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| oAuthToken | String |   Yes    | An OAuth access token you get through the [OAuth process flow](https://developer.kintone.io/hc/en-us/articles/360001562353-How-to-add-OAuth-clients). |
+| Name       |  Type  | Required | Description                                                                                                                                                                |
+| ---------- | :----: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| oAuthToken | String |   Yes    | An OAuth access token you get through the [OAuth process flow](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/#authorization-code-grant-flow). |
 
-#### 4. [Session authentication](https://developer.kintone.io/hc/en-us/articles/212495188#sessionAuth)
+#### 4. [Session authentication](https://kintone.dev/en/docs/common/authentication/#session-authentication)
 
 Supported in browser environment only.
 If you omit `auth` parameter, the client uses Session authentication.

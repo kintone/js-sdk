@@ -75,7 +75,7 @@ You can use the file key at the following place.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/212494448
+- https://kintone.dev/en/docs/kintone/rest-api/files/upload-file/
 
 ### downloadFile
 
@@ -103,4 +103,4 @@ You can get the file key from the following place.
 
 #### Reference
 
-- https://developer.kintone.io/hc/en-us/articles/212494468
+- https://kintone.dev/en/docs/kintone/rest-api/files/download-file/

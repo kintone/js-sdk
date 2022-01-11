@@ -1,6 +1,6 @@
 {
   "name": "@kintone/create-plugin",
-  "version": "4.1.8",
+  "version": "4.1.15",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": {
     "create-plugin": "bin/cli.js",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@types/glob": "^7.2.0",
     "@types/inquirer": "^8.1.3",
-    "@types/lodash": "^4.14.177",
+    "@types/lodash": "^4.14.178",
     "@types/node-rsa": "^1.1.1",
     "@types/rimraf": "^3.0.2",
     "cross-env": "^7.0.3",
@@ -57,6 +57,9 @@
   "keywords": [
     "kintone"
   ],
-  "author": "kintone",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "license": "MIT"
 }

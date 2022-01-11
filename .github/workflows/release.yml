@@ -1,0 +1,28 @@
+
+name: release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  version:
+    name: Release packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - run: yarn install
+      - name: Configure git user
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+      - name: Configure npm user
+        run: npm config set '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'
+      - name: Release packages
+        run: yarn release --no-verify-access --yes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,6 +1,8 @@
 # webpack-plugin-kintone-plugin
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fwebpack-plugin-kintone-plugin)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/webpack-plugin-kintone-plugin/package.json&label=node&query=$.engines.node&colorB=blue)
+![License](https://img.shields.io/npm/l/@kintone/webpack-plugin-kintone-plugin.svg)
 
 A webpack plugin to create a plugin zip of Kintone.
 

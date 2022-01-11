@@ -1,14 +1,11 @@
 @kintone/plugin-manifest-validator
 ====
 
-Validate `manifest.json` of kintone plugin. Used in [@kintone/plugin-packer](https://github.com/kintone/plugin-packer).
+[![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-manifest-validator.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-manifest-validator)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/create-plugin/package.json&label=node&query=$.engines.node&colorB=blue)
+![License](https://img.shields.io/npm/l/@kintone/plugin-manifest-validator.svg)
 
-[![npm version][npm-image]][npm-url]
-![Node.js Version Support][node-version]
-[![build status][circleci-image]][circleci-url]
-[![build status][travisci-image]][travisci-url]
-[![dependency status][deps-image]][deps-url]
-![License][license]
+Validate `manifest.json` of kintone plugin. Used in [@kintone/plugin-packer](https://github.com/kintone/plugin-packer).
 
 ## How to install
 
@@ -61,14 +58,3 @@ let manifest: KintonePluginManifestJson;
 ## License
 
 MIT License
-
-[npm-image]: https://img.shields.io/npm/v/@kintone/plugin-manifest-validator.svg
-[npm-url]: https://npmjs.org/package/@kintone/plugin-manifest-validator
-[circleci-image]: https://circleci.com/gh/kintone/plugin-manifest-validator.svg?style=shield
-[circleci-url]: https://circleci.com/gh/kintone/plugin-manifest-validator
-[travisci-image]: https://travis-ci.org/kintone/plugin-manifest-validator.svg?branch=master
-[travisci-url]: https://travis-ci.org/kintone/plugin-manifest-validator
-[deps-image]: https://img.shields.io/david/kintone/plugin-manifest-validator.svg
-[deps-url]: https://david-dm.org/kintone/plugin-manifest-validator
-[node-version]: https://img.shields.io/badge/Node.js%20support-v6,v8,v10-brightgreen.svg
-[license]: https://img.shields.io/npm/l/@kintone/plugin-manifest-validator.svg

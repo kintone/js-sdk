@@ -1,8 +1,11 @@
 {
   "name": "@kintone/plugin-packer",
   "description": "Package your kintone plugin with pure JavaScript",
-  "version": "5.0.25",
-  "author": "Teppei Sato <teppeis@gmail.com>",
+  "version": "5.0.32",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "engines": {
     "node": ">=12"
   },
@@ -35,9 +38,9 @@
     "start": "npm-run-all -l -s clean build -p build:dev site:dev"
   },
   "dependencies": {
-    "@kintone/plugin-manifest-validator": "^6.1.4",
+    "@kintone/plugin-manifest-validator": "^6.1.9",
     "chokidar": "^3.5.2",
-    "debug": "^4.3.2",
+    "debug": "^4.3.3",
     "denodeify": "^1.2.1",
     "meow": "^9.0.0",
     "mkdirp": "^1.0.4",
@@ -54,30 +57,30 @@
     "ajv": "^6.12.6",
     "array-flatten": "^3.0.0",
     "assert": "^2.0.0",
-    "babel-jest": "^27.3.1",
+    "babel-jest": "^27.4.6",
     "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "constants-browserify": "^1.0.0",
     "crypto-browserify": "^3.12.0",
-    "cssnano": "^5.0.11",
+    "cssnano": "^5.0.15",
     "execa": "^5.1.1",
     "glob": "^7.2.0",
     "normalize.css": "^8.0.1",
     "path-browserify": "^1.0.1",
-    "postcss": "^8.3.11",
-    "postcss-cli": "^9.0.2",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
     "process": "^0.11.10",
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.4.0",
+    "redux-thunk": "^2.4.1",
     "rimraf": "^3.0.2",
     "setimmediate": "^1.0.5",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.4",
-    "webpack": "^5.64.1",
+    "webpack": "^5.65.0",
     "webpack-cli": "4.9.1",
-    "webpack-dev-server": "^4.5.0"
+    "webpack-dev-server": "^4.7.2"
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-packer",
   "repository": {

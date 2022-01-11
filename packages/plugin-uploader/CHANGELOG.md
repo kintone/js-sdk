@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.0.10 (2022-01-11)
+
+**Note:** Version bump only for package @kintone/plugin-uploader
+
+
+
+
+
+## 6.0.9 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/plugin-uploader
+
+
+
+
+
+## 6.0.8 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/plugin-uploader
+
+
+
+
+
+## [6.0.7](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@6.0.6...@kintone/plugin-uploader@6.0.7) (2021-12-21)
+
+**Note:** Version bump only for package @kintone/plugin-uploader
+
+
+
+
+
+## [6.0.6](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@6.0.5...@kintone/plugin-uploader@6.0.6) (2021-12-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency puppeteer to v13 ([#1249](https://github.com/kintone/js-sdk/issues/1249)) ([1846150](https://github.com/kintone/js-sdk/commit/18461507ce0e38fcbc41ec602c1b877142905505))
+
+
+
+
+
 ## [6.0.5](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@6.0.4...@kintone/plugin-uploader@6.0.5) (2021-10-13)
 
 

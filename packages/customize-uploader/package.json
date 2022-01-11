@@ -1,6 +1,6 @@
 {
   "name": "@kintone/customize-uploader",
-  "version": "5.0.12",
+  "version": "5.0.18",
   "description": "A kintone customize uploader",
   "bin": {
     "kintone-customize-uploader": "bin/cli.js"
@@ -30,7 +30,10 @@
   "keywords": [
     "kintone"
   ],
-  "author": "kintone",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
@@ -43,7 +46,7 @@
     "ts-node": "^10.4.0"
   },
   "dependencies": {
-    "@kintone/rest-api-client": "^2.0.26",
+    "@kintone/rest-api-client": "^2.0.32",
     "chokidar": "^3.5.2",
     "inquirer": "^8.2.0",
     "meow": "^9.0.0",

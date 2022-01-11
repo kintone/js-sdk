@@ -1,0 +1,23 @@
+
+name: version
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  version:
+    name: Dry-run next release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - run: yarn install
+      - name: Generate next release (dry-run)
+        run: yarn run lerna version --conventional-commits --no-git-tag-version --no-push --yes
+      - name: Show CHANGELOG.md
+        run: git diff ./packages/*/CHANGELOG.md

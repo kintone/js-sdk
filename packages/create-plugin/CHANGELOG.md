@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.1.15 (2022-01-11)
+
+**Note:** Version bump only for package @kintone/create-plugin
+
+
+
+
+
+## 4.1.14 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/create-plugin
+
+
+
+
+
+## 4.1.13 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/create-plugin
+
+
+
+
+
+## [4.1.12](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.11...@kintone/create-plugin@4.1.12) (2021-12-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^2.0.28 ([#1261](https://github.com/kintone/js-sdk/issues/1261)) ([628e293](https://github.com/kintone/js-sdk/commit/628e2933ac7d3499b011ceb7e08ca31201b029e7))
+
+
+
+
+
+## [4.1.11](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.10...@kintone/create-plugin@4.1.11) (2021-12-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.19.3 ([#1237](https://github.com/kintone/js-sdk/issues/1237)) ([fdf637b](https://github.com/kintone/js-sdk/commit/fdf637b60dfd3c499259c1e74144fdb8437cc6ef))
+* **deps:** update dependency prettier to ^2.5.1 ([#1238](https://github.com/kintone/js-sdk/issues/1238)) ([cfd1fca](https://github.com/kintone/js-sdk/commit/cfd1fcaab6ff72957d91526445928fd8ed876890))
+
+
+
+
+
+## [4.1.10](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.9...@kintone/create-plugin@4.1.10) (2021-12-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^2.0.27 ([#1225](https://github.com/kintone/js-sdk/issues/1225)) ([7050d1a](https://github.com/kintone/js-sdk/commit/7050d1aa6a58eaf6a9a4061fccce43d8a0160e50))
+
+
+
+
+
+## [4.1.9](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.8...@kintone/create-plugin@4.1.9) (2021-12-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.19.2 ([#1183](https://github.com/kintone/js-sdk/issues/1183)) ([da57c87](https://github.com/kintone/js-sdk/commit/da57c879542da3ae371b5acfecbe367488151dc5))
+
+
+
+
+
 ## [4.1.8](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.7...@kintone/create-plugin@4.1.8) (2021-11-24)
 
 
