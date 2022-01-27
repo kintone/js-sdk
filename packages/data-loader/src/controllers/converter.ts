@@ -1,5 +1,5 @@
 import { KintoneRecordForResponse } from "../types/kintone";
-import { DataLoaderRecord } from "../types/data-loader";
+import { DataLoaderRecord, DataLoaderFields } from "../types/data-loader";
 
 export const convertKintoneRecordsToDataLoaderRecords = (
   kintoneRecords: KintoneRecordForResponse[]
@@ -8,7 +8,20 @@ export const convertKintoneRecordsToDataLoaderRecords = (
   for (const kintoneRecord of kintoneRecords) {
     const record: DataLoaderRecord = {};
     for (const [fieldCode, field] of Object.entries(kintoneRecord)) {
-      record[fieldCode] = field;
+      if (field.type === "FILE") {
+        const fileField: DataLoaderFields.File = {
+          type: "FILE",
+          value: field.value.map((fileInfo) => {
+            return {
+              ...fileInfo,
+              localFilePath: "",
+            };
+          }),
+        };
+        record[fieldCode] = fileField;
+      } else {
+        record[fieldCode] = field;
+      }
     }
     records.push(record);
   }

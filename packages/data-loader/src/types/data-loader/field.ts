@@ -12,6 +12,7 @@ export type File = FieldWith<
     fileKey: string;
     name: string;
     size: string;
+    localFilePath: string;
   }>
 >;
 
@@ -34,7 +35,7 @@ export type OneOf =
   | KintoneRecordField.RadioButton
   | KintoneRecordField.Dropdown
   | KintoneRecordField.MultiSelect
-  | KintoneRecordField.File
+  | File
   | KintoneRecordField.Date
   | KintoneRecordField.Time
   | KintoneRecordField.DateTime
