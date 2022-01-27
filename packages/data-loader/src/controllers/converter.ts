@@ -1,5 +1,6 @@
 import { KintoneRecordForResponse } from "../types/kintone";
 import { DataLoaderRecord, DataLoaderFields } from "../types/data-loader";
+import path from "path";
 
 export const convertKintoneRecordsToDataLoaderRecords = (
   kintoneRecords: KintoneRecordForResponse[]
@@ -14,7 +15,11 @@ export const convertKintoneRecordsToDataLoaderRecords = (
           value: field.value.map((fileInfo) => {
             return {
               ...fileInfo,
-              localFilePath: "",
+              localFilePath: path.join(
+                // TODO: attachment-dir
+                `${fieldCode}-${kintoneRecord.$id.value as string}`,
+                fileInfo.name
+              ),
             };
           }),
         };
