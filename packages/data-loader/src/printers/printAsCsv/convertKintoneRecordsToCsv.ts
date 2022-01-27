@@ -3,7 +3,8 @@ import { LINE_BREAK, PRIMARY_MARK, SEPARATOR } from "./constants";
 import { extractFieldValue } from "./extractFieldValue";
 import { buildHeaderFields } from "./buildHeaderFields";
 import { hasSubtable } from "./hasSubtable";
-import { FieldProperties, KintoneRecordForResponse } from "../../types";
+import { FieldProperties } from "../../types/kintone";
+import { DataLoaderRecord } from "../../types/data-loader";
 
 type RowObject = {
   [fieldCode: string]: string | Array<{ [fieldCode: string]: string }>;
@@ -13,7 +14,7 @@ export const convertKintoneRecordsToCsv = ({
   records,
   fieldProperties,
 }: {
-  records: KintoneRecordForResponse[];
+  records: DataLoaderRecord[];
   fieldProperties: FieldProperties;
 }) => {
   const headerFields = buildHeaderFields(fieldProperties);
@@ -35,7 +36,7 @@ const buildRows = ({
   headerFields,
   fieldProperties,
 }: {
-  records: KintoneRecordForResponse[];
+  records: DataLoaderRecord[];
   headerFields: string[];
   fieldProperties: FieldProperties;
 }) => {
@@ -53,7 +54,7 @@ const buildRow = ({
   headerFields,
   fieldProperties,
 }: {
-  record: KintoneRecordForResponse;
+  record: DataLoaderRecord;
   headerFields: string[];
   fieldProperties: FieldProperties;
 }) => {
@@ -84,7 +85,7 @@ const buildRow = ({
     .join(LINE_BREAK);
 };
 
-const buildRecordObject = (record: KintoneRecordForResponse) => {
+const buildRecordObject = (record: DataLoaderRecord) => {
   return Object.keys(record).reduce<RowObject>((ret, fieldCode) => {
     return {
       ...ret,

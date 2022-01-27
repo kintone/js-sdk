@@ -1,6 +1,6 @@
 import { PRIMARY_MARK } from "./constants";
 import { hasSubtable } from "./hasSubtable";
-import { FieldProperties } from "../../types";
+import { FieldProperties } from "../../types/kintone";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
 const supportedFieldTypes = [

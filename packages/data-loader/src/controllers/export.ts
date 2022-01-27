@@ -1,11 +1,13 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { KintoneRestAPIClient } from "@kintone/rest-api-client";
-import { AppID, Record } from "@kintone/rest-api-client/lib/client/types";
+import type { KintoneRestAPIClient } from "@kintone/rest-api-client";
+import { AppID } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { KintoneRecordForResponse } from "../types";
 import { printAsJson } from "../printers/printAsJson";
 import { printAsCsv } from "../printers/printAsCsv";
+import { DataLoaderRecord, DataLoaderFields } from "../types/data-loader";
+import { KintoneRecordForResponse } from "../types/kintone";
+import { convertKintoneRecordsToDataLoaderRecords } from "./converter";
 
 export type Options = {
   app: AppID;
@@ -35,9 +37,9 @@ export const run = async (argv: RestAPIClientOptions & Options) => {
 export const exportRecords = async (
   apiClient: KintoneRestAPIClient,
   options: Options
-) => {
+): Promise<DataLoaderRecord[]> => {
   const { app, attachmentDir, condition, orderBy } = options;
-  const records = await apiClient.record.getAllRecords({
+  const kintoneRecords = await apiClient.record.getAllRecords({
     app,
     condition,
     orderBy,
@@ -47,6 +49,8 @@ export const exportRecords = async (
 
   // TODO: extract attachment fields first
 
+  const records = convertKintoneRecordsToDataLoaderRecords(kintoneRecords);
+
   if (attachmentDir) {
     await downloadAttachments(apiClient, records, attachmentDir);
   }
@@ -54,7 +58,7 @@ export const exportRecords = async (
   return records;
 };
 
-const getFileInfos = (record: Record) => {
+const getFileInfos = (record: DataLoaderRecord) => {
   // console.debug(`>>>record ${recordId}`);
   const fileInfos: FileInfo[] = [];
   Object.values<{ type: string; value: unknown }>(record).forEach((field) => {
@@ -70,7 +74,7 @@ const getFileInfos = (record: Record) => {
 
 const downloadAttachments = async (
   apiClient: KintoneRestAPIClient,
-  records: Record[],
+  records: DataLoaderRecord[],
   attachmentDir: string
 ) => {
   for (const record of records) {
@@ -92,7 +96,7 @@ const printRecords = async ({
   argv,
   apiClient,
 }: {
-  records: KintoneRecordForResponse[];
+  records: DataLoaderRecord[];
   argv: RestAPIClientOptions & Options;
   apiClient: KintoneRestAPIClient;
 }) => {

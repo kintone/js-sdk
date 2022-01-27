@@ -1,7 +1,7 @@
 import { extractFieldValue } from "../extractFieldValue";
-import { KintoneRecordForResponse } from "../../../types";
+import { DataLoaderRecord } from "../../../types/data-loader";
 
-const subtableRecords: KintoneRecordForResponse[] = require("./fixtures/subtable_input.json");
+const subtableRecords: DataLoaderRecord[] = require("./fixtures/subtable_input.json");
 
 describe("extractFieldValue", () => {
   it("", () => {

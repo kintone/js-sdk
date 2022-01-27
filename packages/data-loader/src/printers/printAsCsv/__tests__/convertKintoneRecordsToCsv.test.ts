@@ -1,11 +1,12 @@
 import { convertKintoneRecordsToCsv } from "../convertKintoneRecordsToCsv";
-import { FieldsJson, KintoneRecordForResponse } from "../../../types";
+import { FieldsJson } from "../../../types/kintone";
+import { DataLoaderRecord } from "../../../types/data-loader";
 
-const records: KintoneRecordForResponse[] = require("./fixtures/input.json");
+const records: DataLoaderRecord[] = require("./fixtures/input.json");
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
-const subtableRecords: KintoneRecordForResponse[] = require("./fixtures/subtable_input.json");
+const subtableRecords: DataLoaderRecord[] = require("./fixtures/subtable_input.json");
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
-const unsupportedRecords: KintoneRecordForResponse[] = require("./fixtures/unsupported_input.json");
+const unsupportedRecords: DataLoaderRecord[] = require("./fixtures/unsupported_input.json");
 const unsupportedFieldsJson: FieldsJson = require("./fixtures/unsupported_fields.json");
 
 describe("convertKintoneRecordsToCsv", () => {

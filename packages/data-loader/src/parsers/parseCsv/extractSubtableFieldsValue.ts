@@ -1,5 +1,5 @@
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
-import { CsvRows, FieldProperties, FieldsJson } from "../../types";
+import { CsvRows, FieldProperties, FieldsJson } from "../../types/kintone";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
 type InSubtableFieldProperty = Record<
