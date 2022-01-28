@@ -16,7 +16,7 @@ describe("export", () => {
   it("should not be failed", () => {
     apiClient.record.getAllRecords = jest.fn().mockResolvedValue([{}]);
     return expect(
-      exportRecords(apiClient, { app: "1", attachmentDir: "" })
+      exportRecords(apiClient, { app: "1", attachmentsDir: "" })
     ).resolves.not.toThrow();
   });
 
@@ -29,7 +29,7 @@ describe("export", () => {
 
     await exportRecords(apiClient, {
       app: APP_ID,
-      attachmentDir: "",
+      attachmentsDir: "",
       condition: CONDITION,
       orderBy: ORDER_BY,
     });
@@ -59,7 +59,7 @@ describe("export", () => {
     apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
     const actual = await exportRecords(apiClient, {
       app: "1",
-      attachmentDir: "",
+      attachmentsDir: "",
     });
     expect(actual).toStrictEqual(records);
   });
@@ -106,7 +106,7 @@ describe("export", () => {
     apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
     const actual = await exportRecords(apiClient, {
       app: "1",
-      attachmentDir: tempDir,
+      attachmentsDir: tempDir,
     });
     expect(actual).toStrictEqual(records);
     const downloadFile = await fs.readFile(
@@ -122,7 +122,7 @@ describe("export", () => {
     const error = new Error("error for test");
     apiClient.record.getAllRecords = jest.fn().mockRejectedValueOnce(error);
     return expect(
-      exportRecords(apiClient, { app: "1", attachmentDir: "" })
+      exportRecords(apiClient, { app: "1", attachmentsDir: "" })
     ).rejects.toThrow(error);
   });
 });

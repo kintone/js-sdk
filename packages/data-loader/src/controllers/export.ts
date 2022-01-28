@@ -11,7 +11,7 @@ import { convertKintoneRecordsToDataLoaderRecords } from "./converter";
 
 export type Options = {
   app: AppID;
-  attachmentDir?: string;
+  attachmentsDir?: string;
   format?: ExportFileFormat;
   condition?: string;
   orderBy?: string;
@@ -38,7 +38,7 @@ export const exportRecords = async (
   apiClient: KintoneRestAPIClient,
   options: Options
 ): Promise<DataLoaderRecord[]> => {
-  const { app, attachmentDir, condition, orderBy } = options;
+  const { app, attachmentsDir, condition, orderBy } = options;
   const kintoneRecords = await apiClient.record.getAllRecords({
     app,
     condition,
@@ -51,8 +51,8 @@ export const exportRecords = async (
 
   const records = convertKintoneRecordsToDataLoaderRecords(kintoneRecords);
 
-  if (attachmentDir) {
-    await downloadAttachments(apiClient, records, attachmentDir);
+  if (attachmentsDir) {
+    await downloadAttachments(apiClient, records, attachmentsDir);
   }
 
   return records;
@@ -75,7 +75,7 @@ const getFileInfos = (record: DataLoaderRecord) => {
 const downloadAttachments = async (
   apiClient: KintoneRestAPIClient,
   records: DataLoaderRecord[],
-  attachmentDir: string
+  attachmentsDir: string
 ) => {
   for (const record of records) {
     const fileInfos = getFileInfos(record);
@@ -84,7 +84,7 @@ const downloadAttachments = async (
       const file = await apiClient.file.downloadFile({ fileKey });
 
       const recordId = record.$id.value as string;
-      const dir = path.resolve(attachmentDir, recordId);
+      const dir = path.resolve(attachmentsDir, recordId);
       await fs.mkdir(dir, { recursive: true });
       await fs.writeFile(path.resolve(dir, name), Buffer.from(file));
     }

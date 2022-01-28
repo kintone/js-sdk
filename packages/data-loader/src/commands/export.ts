@@ -59,7 +59,8 @@ export const builder = (args: yargs.Argv) =>
       defaultDescription: "KINTONE_GUEST_SPACE_ID",
       type: "string",
     })
-    .option("attachment-dir", {
+    .option("attachments-dir", {
+      alias: "b",
       describe: "Attachment file directory",
       type: "string",
     })
@@ -100,7 +101,7 @@ export const handler = (args: Args) => {
     basicAuthPassword: args["basic-auth-password"],
     app: args.app,
     guestSpaceId: args["guest-space-id"],
-    attachmentDir: args["attachment-dir"],
+    attachmentsDir: args["attachments-dir"],
     format: args.format,
     condition: args.condition,
     orderBy: args["order-by"],
