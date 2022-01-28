@@ -1,5 +1,6 @@
-import { run, ExportFileFormat } from "../controllers/export";
+import { run } from "../controllers/export";
 import * as yargs from "yargs";
+import { ExportFileFormat } from "../printers";
 
 const formats: ExportFileFormat[] = ["json", "csv"];
 

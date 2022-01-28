@@ -1,171 +1,35 @@
-import { promises as fs } from "fs";
-import path from "path";
-import type { KintoneRestAPIClient } from "@kintone/rest-api-client";
-import { AppID } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { printAsJson } from "../printers/printAsJson";
-import { printAsCsv } from "../printers/printAsCsv";
-import { DataLoaderRecord, DataLoaderFields } from "../types/data-loader";
-import { KintoneRecordForResponse } from "../types/kintone";
-import { convertKintoneRecordsToDataLoaderRecords } from "./converter";
+import { downloadRecords } from "../kintone/download";
+import { ExportFileFormat, printRecords } from "../printers";
 
 export type Options = {
-  app: AppID;
+  app: string;
   attachmentsDir?: string;
   format?: ExportFileFormat;
   condition?: string;
   orderBy?: string;
 };
 
-export type ExportFileFormat = "json" | "csv";
-
-type FileInfo = {
-  name: string;
-  fileKey: string;
-};
-
 export const run = async (argv: RestAPIClientOptions & Options) => {
-  const apiClient = buildRestAPIClient(argv);
-  const records = await exportRecords(apiClient, argv);
-  await printRecords({
-    records,
-    argv,
-    apiClient,
-  });
-};
-
-export const exportRecords = async (
-  apiClient: KintoneRestAPIClient,
-  options: Options
-): Promise<DataLoaderRecord[]> => {
-  const { app, attachmentsDir, condition, orderBy } = options;
-  const kintoneRecords = await apiClient.record.getAllRecords({
+  const {
+    app,
+    format,
+    condition,
+    orderBy,
+    attachmentsDir,
+    ...restApiClientOptions
+  } = argv;
+  const apiClient = buildRestAPIClient(restApiClientOptions);
+  const records = await downloadRecords(apiClient, {
     app,
     condition,
     orderBy,
+    attachmentsDir,
   });
-
-  // TODO: filter fields
-
-  // TODO: extract attachment fields first
-
-  const records = convertKintoneRecordsToDataLoaderRecords(
-    kintoneRecords,
-    attachmentsDir
-  );
-
-  if (attachmentsDir) {
-    await newDownloadAttachments(apiClient, records, attachmentsDir);
-  }
-
-  return records;
-};
-
-const getFileInfos = (record: DataLoaderRecord) => {
-  // console.debug(`>>>record ${recordId}`);
-  const fileInfos: FileInfo[] = [];
-  Object.values<{ type: string; value: unknown }>(record).forEach((field) => {
-    if (field.type === "FILE") {
-      // @ts-expect-error field.value should be FileInformation[] type.
-      field.value.forEach((fileInfo) => {
-        fileInfos.push(fileInfo);
-      });
-    }
+  await printRecords({
+    records,
+    app,
+    format,
+    apiClient,
   });
-  return fileInfos;
-};
-
-const newDownloadAttachments = async (
-  apiClient: KintoneRestAPIClient,
-  records: DataLoaderRecord[],
-  attachmentsDir: string
-) => {
-  const newRecords = [];
-  const downLoadList: Array<{ localFilePath: string; fileKey: string }> = [];
-  for (const record of records) {
-    const newRecord: DataLoaderRecord = {};
-    for (const [fieldCode, field] of Object.entries(record)) {
-      if (field.type === "FILE") {
-        const fileField: DataLoaderFields.File = {
-          type: "FILE",
-          value: field.value.map((fileInfo) => {
-            const localFilePath = path.join(
-              attachmentsDir,
-              `${fieldCode}-${record.$id.value as string}`,
-              fileInfo.name
-            );
-
-            downLoadList.push({ localFilePath, fileKey: fileInfo.fileKey });
-
-            return {
-              ...fileInfo,
-              localFilePath,
-            };
-          }),
-        };
-        newRecord[fieldCode] = fileField;
-      } else {
-        newRecord[fieldCode] = field;
-      }
-    }
-    newRecords.push(newRecord);
-  }
-
-  for (const downLoadInfo of downLoadList) {
-    const file = await apiClient.file.downloadFile({
-      fileKey: downLoadInfo.fileKey,
-    });
-
-    await fs.mkdir(path.dirname(downLoadInfo.localFilePath), {
-      recursive: true,
-    });
-    await fs.writeFile(downLoadInfo.localFilePath, Buffer.from(file));
-  }
-
-  return records;
-};
-
-const downloadAttachments = async (
-  apiClient: KintoneRestAPIClient,
-  records: DataLoaderRecord[],
-  attachmentsDir: string
-) => {
-  for (const record of records) {
-    const fileInfos = getFileInfos(record);
-    for (const fileInfo of fileInfos) {
-      const { fileKey, name } = fileInfo;
-      const file = await apiClient.file.downloadFile({ fileKey });
-
-      const recordId = record.$id.value as string;
-      const dir = path.resolve(attachmentsDir, recordId);
-      await fs.mkdir(dir, { recursive: true });
-      await fs.writeFile(path.resolve(dir, name), Buffer.from(file));
-    }
-  }
-};
-
-const printRecords = async ({
-  records,
-  argv,
-  apiClient,
-}: {
-  records: DataLoaderRecord[];
-  argv: RestAPIClientOptions & Options;
-  apiClient: KintoneRestAPIClient;
-}) => {
-  switch (argv.format) {
-    case "json": {
-      printAsJson(records);
-      break;
-    }
-    case "csv": {
-      printAsCsv(records, await apiClient.app.getFormFields(argv));
-      break;
-    }
-    default: {
-      throw new Error(
-        `Unknown format type. '${argv.format}' is unknown as a format option.`
-      );
-    }
-  }
 };

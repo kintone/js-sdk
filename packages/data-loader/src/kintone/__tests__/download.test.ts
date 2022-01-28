@@ -1,9 +1,9 @@
-import { exportRecords } from "../export";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { promises as fs } from "fs";
 
 import os from "os";
 import path from "path";
+import { downloadRecords } from "../download";
 
 describe("export", () => {
   let apiClient: KintoneRestAPIClient;
@@ -16,18 +16,18 @@ describe("export", () => {
   it("should not be failed", () => {
     apiClient.record.getAllRecords = jest.fn().mockResolvedValue([{}]);
     return expect(
-      exportRecords(apiClient, { app: "1", attachmentsDir: "" })
+      downloadRecords(apiClient, { app: "1", attachmentsDir: "" })
     ).resolves.not.toThrow();
   });
 
   it("should pass parameters to the apiClient correctly", async () => {
     const getAllRecordsMockFn = jest.fn().mockResolvedValue([{}]);
     apiClient.record.getAllRecords = getAllRecordsMockFn;
-    const APP_ID = 1;
+    const APP_ID = "1";
     const CONDITION = 'Customer like "foo"';
     const ORDER_BY = "Customer desc";
 
-    await exportRecords(apiClient, {
+    await downloadRecords(apiClient, {
       app: APP_ID,
       attachmentsDir: "",
       condition: CONDITION,
@@ -57,7 +57,7 @@ describe("export", () => {
       },
     ];
     apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
-    const actual = await exportRecords(apiClient, {
+    const actual = await downloadRecords(apiClient, {
       app: "1",
       attachmentsDir: "",
     });
@@ -104,7 +104,7 @@ describe("export", () => {
 
     apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
     apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
-    const actual = await exportRecords(apiClient, {
+    const actual = await downloadRecords(apiClient, {
       app: "1",
       attachmentsDir: tempDir,
     });
@@ -122,7 +122,7 @@ describe("export", () => {
     const error = new Error("error for test");
     apiClient.record.getAllRecords = jest.fn().mockRejectedValueOnce(error);
     return expect(
-      exportRecords(apiClient, { app: "1", attachmentsDir: "" })
+      downloadRecords(apiClient, { app: "1", attachmentsDir: "" })
     ).rejects.toThrow(error);
   });
 });
