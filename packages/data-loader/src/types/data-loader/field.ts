@@ -12,7 +12,7 @@ export type File = FieldWith<
     fileKey: string;
     name: string;
     size: string;
-    localFilePath: string;
+    localFilePath?: string;
   }>
 >;
 

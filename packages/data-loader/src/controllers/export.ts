@@ -49,10 +49,13 @@ export const exportRecords = async (
 
   // TODO: extract attachment fields first
 
-  const records = convertKintoneRecordsToDataLoaderRecords(kintoneRecords);
+  const records = convertKintoneRecordsToDataLoaderRecords(
+    kintoneRecords,
+    attachmentsDir
+  );
 
   if (attachmentsDir) {
-    await downloadAttachments(apiClient, records, attachmentsDir);
+    await newDownloadAttachments(apiClient, records, attachmentsDir);
   }
 
   return records;
@@ -70,6 +73,56 @@ const getFileInfos = (record: DataLoaderRecord) => {
     }
   });
   return fileInfos;
+};
+
+const newDownloadAttachments = async (
+  apiClient: KintoneRestAPIClient,
+  records: DataLoaderRecord[],
+  attachmentsDir: string
+) => {
+  const newRecords = [];
+  const downLoadList: Array<{ localFilePath: string; fileKey: string }> = [];
+  for (const record of records) {
+    const newRecord: DataLoaderRecord = {};
+    for (const [fieldCode, field] of Object.entries(record)) {
+      if (field.type === "FILE") {
+        const fileField: DataLoaderFields.File = {
+          type: "FILE",
+          value: field.value.map((fileInfo) => {
+            const localFilePath = path.join(
+              attachmentsDir,
+              `${fieldCode}-${record.$id.value as string}`,
+              fileInfo.name
+            );
+
+            downLoadList.push({ localFilePath, fileKey: fileInfo.fileKey });
+
+            return {
+              ...fileInfo,
+              localFilePath,
+            };
+          }),
+        };
+        newRecord[fieldCode] = fileField;
+      } else {
+        newRecord[fieldCode] = field;
+      }
+    }
+    newRecords.push(newRecord);
+  }
+
+  for (const downLoadInfo of downLoadList) {
+    const file = await apiClient.file.downloadFile({
+      fileKey: downLoadInfo.fileKey,
+    });
+
+    await fs.mkdir(path.dirname(downLoadInfo.localFilePath), {
+      recursive: true,
+    });
+    await fs.writeFile(downLoadInfo.localFilePath, Buffer.from(file));
+  }
+
+  return records;
 };
 
 const downloadAttachments = async (

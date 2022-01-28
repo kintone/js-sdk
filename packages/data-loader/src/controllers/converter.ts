@@ -3,7 +3,8 @@ import { DataLoaderRecord, DataLoaderFields } from "../types/data-loader";
 import path from "path";
 
 export const convertKintoneRecordsToDataLoaderRecords = (
-  kintoneRecords: KintoneRecordForResponse[]
+  kintoneRecords: KintoneRecordForResponse[],
+  attachmentsDir?: string
 ): DataLoaderRecord[] => {
   const records = [];
   for (const kintoneRecord of kintoneRecords) {
@@ -13,14 +14,18 @@ export const convertKintoneRecordsToDataLoaderRecords = (
         const fileField: DataLoaderFields.File = {
           type: "FILE",
           value: field.value.map((fileInfo) => {
-            return {
-              ...fileInfo,
-              localFilePath: path.join(
-                // TODO: attachment-dir
-                `${fieldCode}-${kintoneRecord.$id.value as string}`,
-                fileInfo.name
-              ),
-            };
+            if (attachmentsDir) {
+              return {
+                ...fileInfo,
+                localFilePath: path.join(
+                  attachmentsDir,
+                  `${fieldCode}-${kintoneRecord.$id.value as string}`,
+                  fileInfo.name
+                ),
+              };
+            }
+
+            return fileInfo;
           }),
         };
         record[fieldCode] = fileField;
