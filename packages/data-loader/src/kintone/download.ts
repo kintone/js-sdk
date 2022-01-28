@@ -129,7 +129,7 @@ const generateUniqueLocalFilePath: (filePath: string) => string = (
             filePath,
             path.extname(filePath)
           )} (${index})${path.extname(filePath)}`;
-    const newFilePath = path.resolve(path.dirname(filePath), newFileName);
+    const newFilePath = path.join(path.dirname(filePath), newFileName);
     if (existsSync(newFilePath)) {
       return internal(index + 1);
     }
