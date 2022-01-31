@@ -94,7 +94,10 @@ const task: (
 
           return [
             ...(await downloadedList),
-            { ...fileInfo, localFilePath: savedFilePath },
+            {
+              ...fileInfo,
+              localFilePath: path.relative(attachmentsDir, savedFilePath),
+            },
           ];
         }, Promise.resolve([]));
         return {
