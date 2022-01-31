@@ -10,7 +10,7 @@ type RowObject = {
   [fieldCode: string]: string | Array<{ [fieldCode: string]: string }>;
 };
 
-export const convertKintoneRecordsToCsv = ({
+export const convertRecordsToCsv = ({
   records,
   fieldProperties,
 }: {

@@ -2,9 +2,10 @@ import { KintoneRecordField } from "@kintone/rest-api-client";
 import { encloseInDoubleQuotes } from "./encloseInDoubleQuotes";
 import { escapeDoubleQuotes } from "./escapeDoubleQuotes";
 import { LINE_BREAK } from "./constants";
+import { DataLoaderFields } from "../../types/data-loader";
 
 export const extractFieldValue = (
-  field: KintoneRecordField.OneOf
+  field: DataLoaderFields.OneOf
 ): string | Array<{ [fieldCode: string]: string }> => {
   switch (field.type) {
     case "RECORD_NUMBER":
@@ -26,6 +27,12 @@ export const extractFieldValue = (
     case "CHECK_BOX":
       return encloseInDoubleQuotes(
         escapeDoubleQuotes(field.value.join(LINE_BREAK))
+      );
+    case "FILE":
+      return encloseInDoubleQuotes(
+        escapeDoubleQuotes(
+          field.value.map((value) => value.localFilePath).join(LINE_BREAK)
+        )
       );
     case "SUBTABLE":
       return field.value.map((subtableField) => ({

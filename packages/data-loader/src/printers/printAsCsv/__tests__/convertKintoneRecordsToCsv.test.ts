@@ -1,4 +1,4 @@
-import { convertKintoneRecordsToCsv } from "../convertKintoneRecordsToCsv";
+import { convertRecordsToCsv } from "../convertKintoneRecordsToCsv";
 import { FieldsJson } from "../../../types/kintone";
 import { DataLoaderRecord } from "../../../types/data-loader";
 
@@ -18,7 +18,7 @@ text","2021-02-10T06:14:00Z","""sample2""","16","""sample3""
 sample4"
 `;
     expect(
-      convertKintoneRecordsToCsv({
+      convertRecordsToCsv({
         records,
         fieldProperties: fieldsJson.properties,
       })
@@ -36,7 +36,7 @@ text","2021-02-10T06:14:00Z","""sample2""","16","""sample3""
 sample4"
 `;
     expect(
-      convertKintoneRecordsToCsv({
+      convertRecordsToCsv({
         records: subtableRecords,
         fieldProperties: subtableFieldsJson.properties,
       })
@@ -48,7 +48,7 @@ sample4"
 ,"9","537307","text_line2","""single line text"""
 `;
     expect(
-      convertKintoneRecordsToCsv({
+      convertRecordsToCsv({
         records: unsupportedRecords,
         fieldProperties: unsupportedFieldsJson.properties,
       })

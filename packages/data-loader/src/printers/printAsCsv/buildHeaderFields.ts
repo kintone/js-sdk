@@ -19,6 +19,7 @@ const supportedFieldTypes = [
   "CREATED_TIME",
   "MULTI_SELECT",
   "CHECK_BOX",
+  "FILE",
   "SUBTABLE",
 ];
 
