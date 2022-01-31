@@ -21,9 +21,6 @@ describe("buildHeaderFields", () => {
   });
   it("should generate fieldCode array which doesn't contain unsupported fields", () => {
     expect(
-      buildHeaderFields(unsupportedFieldsJson.properties).includes("file")
-    ).toBe(false);
-    expect(
       buildHeaderFields(unsupportedFieldsJson.properties).includes(
         "subTableFile"
       )

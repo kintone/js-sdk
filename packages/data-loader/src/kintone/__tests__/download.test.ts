@@ -44,12 +44,18 @@ describe("export", () => {
   it("can get records", async () => {
     const records = [
       {
+        $id: {
+          value: "1",
+        },
         fieldCode: {
           type: "SINGLE_LINE_TEXT",
           value: "value1",
         },
       },
       {
+        $id: {
+          value: "2",
+        },
         fieldCode: {
           type: "SINGLE_LINE_TEXT",
           value: "value1",
@@ -64,21 +70,31 @@ describe("export", () => {
     expect(actual).toStrictEqual(records);
   });
   it("can download files to a specified directory", async () => {
+    const recordId = "2";
+    const attachmentFieldCode = "attachment";
+    const fileInfo = {
+      contentType: "text/plain",
+      fileKey: "test-file-key",
+      name: "test.txt",
+    };
+    const localFilePath = path.join(
+      `${attachmentFieldCode}-${recordId}`,
+      fileInfo.name
+    );
     const recordWithAttachment = {
       $id: {
-        value: "2",
+        value: recordId,
       },
       fieldCode: {
         type: "SINGLE_LINE_TEXT",
         value: "value1",
       },
-      attachment: {
+      [attachmentFieldCode]: {
         type: "FILE",
         value: [
           {
-            contentType: "text/plain",
-            fileKey: "test-file-key",
-            name: "test.txt",
+            ...fileInfo,
+            localFilePath,
           },
         ],
       },
@@ -112,7 +128,7 @@ describe("export", () => {
     const downloadFile = await fs.readFile(
       path.join(
         tempDir,
-        recordWithAttachment.$id.value,
+        `${attachmentFieldCode}-${recordWithAttachment.$id.value}`,
         recordWithAttachment.attachment.value[0].name
       )
     );

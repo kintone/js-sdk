@@ -8,16 +8,6 @@
       "type": "__REVISION__",
       "value": "7"
     },
-    "file": {
-      "type": "FILE",
-      "value": [
-        {
-          "contentType": "text/plain",
-          "fileKey": "test-file-key",
-          "name": "test.txt"
-        }
-      ]
-    },
     "singleLineText": {
       "type": "SINGLE_LINE_TEXT",
       "value": "\"single line text\""

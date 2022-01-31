@@ -69,6 +69,16 @@
     "$id": {
       "type": "__ID__",
       "value": "9"
+    },
+    "file": {
+      "type": "FILE",
+      "value": [
+        {
+          "contentType": "text/plain",
+          "fileKey": "test-file-key",
+          "name": "test.txt"
+        }
+      ]
     }
   }
 ]
