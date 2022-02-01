@@ -191,6 +191,14 @@
         }
       },
       "defaultValue": []
+    },
+    "file": {
+      "type": "FILE",
+      "code": "file",
+      "label": "file",
+      "noLabel": false,
+      "required": false,
+      "thumbnailSize": "150"
     }
   }
 }

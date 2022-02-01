@@ -117,8 +117,14 @@ describe("export", () => {
         attachment: {
           type: "FILE",
           value: [
-            { ...fileInfo, localFilePath: "attachment-2/test.txt" },
-            { ...fileInfo, localFilePath: "attachment-2/test (1).txt" },
+            {
+              ...fileInfo,
+              localFilePath: path.join("attachment-2", "test.txt"),
+            },
+            {
+              ...fileInfo,
+              localFilePath: path.join("attachment-2", "test (1).txt"),
+            },
           ],
         },
       },
