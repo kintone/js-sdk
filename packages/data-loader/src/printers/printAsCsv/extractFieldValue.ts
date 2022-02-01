@@ -31,7 +31,10 @@ export const extractFieldValue = (
     case "FILE":
       return encloseInDoubleQuotes(
         escapeDoubleQuotes(
-          field.value.map((value) => value.localFilePath).join(LINE_BREAK)
+          field.value
+            .filter((value) => value.localFilePath)
+            .map((value) => value.localFilePath)
+            .join(LINE_BREAK)
         )
       );
     case "SUBTABLE":
