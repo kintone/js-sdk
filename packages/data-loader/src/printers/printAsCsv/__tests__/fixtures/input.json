@@ -76,7 +76,8 @@
         {
           "contentType": "text/plain",
           "fileKey": "test-file-key",
-          "name": "test.txt"
+          "name": "test.txt",
+          "localFilePath": "file-9/test.txt"
         }
       ]
     }

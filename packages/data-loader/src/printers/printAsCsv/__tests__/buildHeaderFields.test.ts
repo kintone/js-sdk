@@ -8,7 +8,7 @@ const unsupportedFieldsJson: FieldsJson = require("./fixtures/unsupported_fields
 
 describe("buildHeaderFields", () => {
   it("should generate fieldCode array without subtable relation field correctly", () => {
-    expect(buildHeaderFields(fieldsJson.properties)).toHaveLength(14);
+    expect(buildHeaderFields(fieldsJson.properties)).toHaveLength(15);
     expect(
       buildHeaderFields(fieldsJson.properties).includes(PRIMARY_MARK)
     ).toBe(false);

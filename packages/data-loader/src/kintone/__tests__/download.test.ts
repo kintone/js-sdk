@@ -69,42 +69,32 @@ describe("export", () => {
     });
     expect(actual).toStrictEqual(records);
   });
+
   it("can download files to a specified directory", async () => {
-    const recordId = "2";
-    const attachmentFieldCode = "attachment";
     const fileInfo = {
       contentType: "text/plain",
       fileKey: "test-file-key",
       name: "test.txt",
+      size: "123456",
     };
-    const localFilePath = path.join(
-      `${attachmentFieldCode}-${recordId}`,
-      fileInfo.name
-    );
-    const recordWithAttachment = {
-      $id: {
-        value: recordId,
-      },
-      fieldCode: {
-        type: "SINGLE_LINE_TEXT",
-        value: "value1",
-      },
-      [attachmentFieldCode]: {
-        type: "FILE",
-        value: [
-          {
-            ...fileInfo,
-            localFilePath,
-          },
-        ],
-      },
-    };
-    const testFileData = "test data";
-
-    const records = [
-      recordWithAttachment,
+    const kintoneRecords = [
       {
         $id: {
+          type: "__ID__",
+          value: "2",
+        },
+        fieldCode: {
+          type: "SINGLE_LINE_TEXT",
+          value: "value1",
+        },
+        attachment: {
+          type: "FILE",
+          value: [fileInfo, fileInfo],
+        },
+      },
+      {
+        $id: {
+          type: "__ID__",
           value: "3",
         },
         fieldCode: {
@@ -114,25 +104,57 @@ describe("export", () => {
       },
     ];
 
+    const expectedRecords = [
+      {
+        $id: {
+          type: "__ID__",
+          value: "2",
+        },
+        fieldCode: {
+          type: "SINGLE_LINE_TEXT",
+          value: "value1",
+        },
+        attachment: {
+          type: "FILE",
+          value: [
+            { ...fileInfo, localFilePath: "attachment-2/test.txt" },
+            { ...fileInfo, localFilePath: "attachment-2/test (1).txt" },
+          ],
+        },
+      },
+      {
+        $id: {
+          type: "__ID__",
+          value: "3",
+        },
+        fieldCode: {
+          type: "SINGLE_LINE_TEXT",
+          value: "value1",
+        },
+      },
+    ];
+
+    const testFileData = "test data";
     const tempDir = await fs.mkdtemp(
       path.join(os.tmpdir(), "kintone-data-loader-")
     );
-
-    apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
+    apiClient.record.getAllRecords = jest
+      .fn()
+      .mockResolvedValue(kintoneRecords);
     apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
     const actual = await downloadRecords(apiClient, {
       app: "1",
       attachmentsDir: tempDir,
     });
-    expect(actual).toStrictEqual(records);
-    const downloadFile = await fs.readFile(
-      path.join(
-        tempDir,
-        `${attachmentFieldCode}-${recordWithAttachment.$id.value}`,
-        recordWithAttachment.attachment.value[0].name
-      )
-    );
-    expect(downloadFile.toString()).toBe(testFileData);
+    expect(actual).toStrictEqual(expectedRecords);
+
+    const attachmentValue = expectedRecords[0].attachment!.value;
+    for (const attachment of attachmentValue) {
+      const downloadFile = await fs.readFile(
+        path.join(tempDir, attachment.localFilePath)
+      );
+      expect(downloadFile.toString()).toBe(testFileData);
+    }
   });
   it("should throw error when API response is error", () => {
     const error = new Error("error for test");
