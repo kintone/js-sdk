@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "@kintone/plugin-packer": "^5.0.33",
-    "chokidar": "^3.5.2",
+    "chokidar": "^3.5.3",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4"
   }
