@@ -117,7 +117,7 @@ Options:
       --app                  The ID of the app               [string] [required]
       --guest-space-id       The ID of guest space
                                       [string] [default: KINTONE_GUEST_SPACE_ID]
-      --attachment-dir       Attachment file directory                  [string]
+      --attachments-dir      Attachment file directory                  [string]
       --format               Output format. "json" or "csv"
                                       [choices: "json", "csv"] [default: "json"]
   -c, --condition            The query string                           [string]
@@ -160,6 +160,8 @@ The format of JSON file is the same as Get/Add/Update records REST API.
   ...
 ]
 ```
+
+When `--attachments-dir` is given, The format of FILE field is changed to follows
 
 ### CSV format
 
