@@ -258,7 +258,7 @@ If NOT set `--attachments-dir` option, only the file name will be output.
 ```csv
 "fileFieldCode"
 "test.txt
-test (1).txt"
+test.txt"
 ```
 
 ## LICENSE
