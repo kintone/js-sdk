@@ -31,5 +31,6 @@ export const run = async (argv: RestAPIClientOptions & Options) => {
     app,
     format,
     apiClient,
+    attachmentsDir,
   });
 };

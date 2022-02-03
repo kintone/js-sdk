@@ -24,12 +24,12 @@ describe("extractFieldValue", () => {
   });
   it("should extract file value correctly when file field has two files", () => {
     const record = fileRecords[0];
-    expect(extractFieldValue(record.file)).toEqual(
+    expect(extractFieldValue(record.file, "attachmentsDir")).toEqual(
       `"file-9/test.txt\nfile-9/test (1).txt"`
     );
   });
   it("should extract file value correctly without attachments-dir option", () => {
     const record = fileWithoutAttachmentsDirRecords[0];
-    expect(extractFieldValue(record.file)).toEqual(`""`);
+    expect(extractFieldValue(record.file)).toEqual(`"test.txt\ntest.txt"`);
   });
 });

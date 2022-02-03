@@ -5,7 +5,8 @@ import { LINE_BREAK } from "./constants";
 import { DataLoaderFields } from "../../types/data-loader";
 
 export const extractFieldValue = (
-  field: DataLoaderFields.OneOf
+  field: DataLoaderFields.OneOf,
+  attachmentsDir?: string
 ): string | Array<{ [fieldCode: string]: string }> => {
   switch (field.type) {
     case "RECORD_NUMBER":
@@ -32,8 +33,7 @@ export const extractFieldValue = (
       return encloseInDoubleQuotes(
         escapeDoubleQuotes(
           field.value
-            .filter((value) => value.localFilePath)
-            .map((value) => value.localFilePath)
+            .map((value) => (attachmentsDir ? value.localFilePath : value.name))
             .join(LINE_BREAK)
         )
       );

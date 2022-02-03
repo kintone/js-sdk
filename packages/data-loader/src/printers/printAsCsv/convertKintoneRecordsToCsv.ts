@@ -13,15 +13,18 @@ type RowObject = {
 export const convertRecordsToCsv = ({
   records,
   fieldProperties,
+  attachmentsDir,
 }: {
   records: DataLoaderRecord[];
   fieldProperties: FieldProperties;
+  attachmentsDir?: string;
 }) => {
   const headerFields = buildHeaderFields(fieldProperties);
   const rows = buildRows({
     records,
     headerFields,
     fieldProperties,
+    attachmentsDir,
   });
 
   const headerRow = headerFields
@@ -35,16 +38,19 @@ const buildRows = ({
   records,
   headerFields,
   fieldProperties,
+  attachmentsDir,
 }: {
   records: DataLoaderRecord[];
   headerFields: string[];
   fieldProperties: FieldProperties;
+  attachmentsDir?: string;
 }) => {
   return records.map((record) =>
     buildRow({
       record,
       headerFields,
       fieldProperties,
+      attachmentsDir,
     })
   );
 };
@@ -53,12 +59,14 @@ const buildRow = ({
   record,
   headerFields,
   fieldProperties,
+  attachmentsDir,
 }: {
   record: DataLoaderRecord;
   headerFields: string[];
   fieldProperties: FieldProperties;
+  attachmentsDir?: string;
 }) => {
-  const recordObject = buildRecordObject(record);
+  const recordObject = buildRecordObject(record, attachmentsDir);
   const primaryRowObject = buildPrimaryRowObject({
     recordObject,
     fieldProperties,
@@ -85,11 +93,14 @@ const buildRow = ({
     .join(LINE_BREAK);
 };
 
-const buildRecordObject = (record: DataLoaderRecord) => {
+const buildRecordObject = (
+  record: DataLoaderRecord,
+  attachmentsDir?: string
+) => {
   return Object.keys(record).reduce<RowObject>((ret, fieldCode) => {
     return {
       ...ret,
-      [fieldCode]: extractFieldValue(record[fieldCode]),
+      [fieldCode]: extractFieldValue(record[fieldCode], attachmentsDir),
     };
   }, {});
 };
