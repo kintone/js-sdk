@@ -1,5 +1,7 @@
 "use strict";
 
+// Hello, world!
+
 require("setimmediate"); // polyfill
 
 const { createStore, applyMiddleware } = require("redux");
