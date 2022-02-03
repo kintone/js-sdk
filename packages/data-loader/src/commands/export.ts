@@ -61,7 +61,6 @@ export const builder = (args: yargs.Argv) =>
       type: "string",
     })
     .option("attachments-dir", {
-      alias: "b",
       describe: "Attachment file directory",
       type: "string",
     })
