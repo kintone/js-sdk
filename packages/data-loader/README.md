@@ -117,7 +117,7 @@ Options:
       --app                  The ID of the app               [string] [required]
       --guest-space-id       The ID of guest space
                                       [string] [default: KINTONE_GUEST_SPACE_ID]
-      --attachments-dir      Attachment file directory                  [string]
+  -b, --attachments-dir      Attachment file directory                  [string]
       --format               Output format. "json" or "csv"
                                       [choices: "json", "csv"] [default: "json"]
   -c, --condition            The query string                           [string]
@@ -125,6 +125,13 @@ Options:
       --pfx-file-path        The path to client certificate file        [string]
       --pfx-file-password    The password of client certificate file    [string]
 ```
+
+#### Download attachment files
+
+If set `--attachments-dir` option, attachment files will be downloaded to local directory.
+
+- the file path is `<attachmentsDir>/<fieldCode>-<fieldId>/<filename>`
+- if same name files are exist in same FILE field, renamed to `<filename> (<index>).<ext>`
 
 ## Supported file formats
 
@@ -161,7 +168,37 @@ The format of JSON file is the same as Get/Add/Update records REST API.
 ]
 ```
 
-When `--attachments-dir` is given, The format of FILE field is changed to follows
+If set `--attachments-dir` option, The format of FILE field will be changed to bellow.
+
+```json
+[
+  {
+     "$id": {
+      "type": "__ID__",
+      "value": "1"
+    },
+    "fileFieldCode": {
+      "type": "FILE",
+      "value": [
+        {
+          "contentType": "text/plain",
+          "fileKey": "test-file-key",
+          "name": "test.txt",
+          "localFilePath": "file-1/test.txt"
+        },
+        {
+          "contentType": "text/plain",
+          "fileKey": "test-file-key",
+          "name": "test.txt",
+          "localFilePath": "file-1/test (1).txt"
+        }
+      ]
+    },
+    ...
+  }
+  ...
+]
+```
 
 ### CSV format
 
@@ -189,7 +226,7 @@ text"
 
 #### Check box, Multi-choice
 
-Specify multiple values divided by line break.
+Specify multiple values divided by line break (\n).
 
 ```csv
 "CheckboxField"
@@ -204,6 +241,24 @@ Specify the user's login name (equivalent to `value.code` in REST API).
 ```csv
 "Created_by"
 "John"
+```
+
+#### File
+
+Files in same FILE field are separated with line break (\n).
+
+```csv
+"fileFieldCode"
+"file-9/test.txt
+file-9/test (1).txt"
+```
+
+If NOT set `--attachments-dir` option, only the file name will be output.
+
+```csv
+"fileFieldCode"
+"test.txt
+test (1).txt"
 ```
 
 ## LICENSE
