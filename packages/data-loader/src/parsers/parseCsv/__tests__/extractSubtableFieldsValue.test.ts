@@ -1,5 +1,5 @@
 import { extractSubtableFieldsValue } from "../extractSubtableFieldsValue";
-import { CsvRows, FieldsJson } from "../../../types";
+import { CsvRows, FieldsJson } from "../../../types/kintone";
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("extractSubtableFieldsValue", () => {

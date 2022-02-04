@@ -3,24 +3,28 @@ import { LINE_BREAK, PRIMARY_MARK, SEPARATOR } from "./constants";
 import { extractFieldValue } from "./extractFieldValue";
 import { buildHeaderFields } from "./buildHeaderFields";
 import { hasSubtable } from "./hasSubtable";
-import { FieldProperties, KintoneRecordForResponse } from "../../types";
+import { FieldProperties } from "../../types/kintone";
+import { DataLoaderRecord } from "../../types/data-loader";
 
 type RowObject = {
   [fieldCode: string]: string | Array<{ [fieldCode: string]: string }>;
 };
 
-export const convertKintoneRecordsToCsv = ({
+export const convertRecordsToCsv = ({
   records,
   fieldProperties,
+  attachmentsDir,
 }: {
-  records: KintoneRecordForResponse[];
+  records: DataLoaderRecord[];
   fieldProperties: FieldProperties;
+  attachmentsDir?: string;
 }) => {
   const headerFields = buildHeaderFields(fieldProperties);
   const rows = buildRows({
     records,
     headerFields,
     fieldProperties,
+    attachmentsDir,
   });
 
   const headerRow = headerFields
@@ -34,16 +38,19 @@ const buildRows = ({
   records,
   headerFields,
   fieldProperties,
+  attachmentsDir,
 }: {
-  records: KintoneRecordForResponse[];
+  records: DataLoaderRecord[];
   headerFields: string[];
   fieldProperties: FieldProperties;
+  attachmentsDir?: string;
 }) => {
   return records.map((record) =>
     buildRow({
       record,
       headerFields,
       fieldProperties,
+      attachmentsDir,
     })
   );
 };
@@ -52,12 +59,14 @@ const buildRow = ({
   record,
   headerFields,
   fieldProperties,
+  attachmentsDir,
 }: {
-  record: KintoneRecordForResponse;
+  record: DataLoaderRecord;
   headerFields: string[];
   fieldProperties: FieldProperties;
+  attachmentsDir?: string;
 }) => {
-  const recordObject = buildRecordObject(record);
+  const recordObject = buildRecordObject(record, attachmentsDir);
   const primaryRowObject = buildPrimaryRowObject({
     recordObject,
     fieldProperties,
@@ -84,11 +93,14 @@ const buildRow = ({
     .join(LINE_BREAK);
 };
 
-const buildRecordObject = (record: KintoneRecordForResponse) => {
+const buildRecordObject = (
+  record: DataLoaderRecord,
+  attachmentsDir?: string
+) => {
   return Object.keys(record).reduce<RowObject>((ret, fieldCode) => {
     return {
       ...ret,
-      [fieldCode]: extractFieldValue(record[fieldCode]),
+      [fieldCode]: extractFieldValue(record[fieldCode], attachmentsDir),
     };
   }, {});
 };

@@ -1,5 +1,5 @@
 import { parseCsv } from "../index";
-import { FieldsJson, KintoneRecordForResponse } from "../../../types";
+import { FieldsJson, KintoneRecordForResponse } from "../../../types/kintone";
 const expectedJson: KintoneRecordForResponse[] = require("./fixtures/expected.json");
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
 const subtableExpectedJson: KintoneRecordForResponse[] = require("./fixtures/subtable_expected.json");

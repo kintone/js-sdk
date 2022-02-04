@@ -1,13 +1,16 @@
-import { convertKintoneRecordsToCsv } from "./convertKintoneRecordsToCsv";
-import { FieldsJson, KintoneRecordForResponse } from "../../types";
+import { convertRecordsToCsv } from "./convertKintoneRecordsToCsv";
+import { FieldsJson } from "../../types/kintone";
+import { DataLoaderRecord } from "../../types/data-loader";
 
 export const printAsCsv = (
-  records: KintoneRecordForResponse[],
-  fieldsJson: FieldsJson
+  records: DataLoaderRecord[],
+  fieldsJson: FieldsJson,
+  attachmentsDir?: string
 ) => {
-  const csv = convertKintoneRecordsToCsv({
+  const csv = convertRecordsToCsv({
     records,
     fieldProperties: fieldsJson.properties,
+    attachmentsDir,
   });
   console.log(csv);
 };

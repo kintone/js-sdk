@@ -1,6 +1,6 @@
 import { PRIMARY_MARK } from "./constants";
 import { hasSubtable } from "./hasSubtable";
-import { FieldProperties } from "../../types";
+import { FieldProperties } from "../../types/kintone";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
 const supportedFieldTypes = [
@@ -19,6 +19,7 @@ const supportedFieldTypes = [
   "CREATED_TIME",
   "MULTI_SELECT",
   "CHECK_BOX",
+  "FILE",
   "SUBTABLE",
 ];
 
