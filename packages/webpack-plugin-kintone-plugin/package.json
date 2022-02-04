@@ -1,6 +1,6 @@
 {
   "name": "@kintone/webpack-plugin-kintone-plugin",
-  "version": "5.0.33",
+  "version": "5.0.34",
   "description": "A webpack plugin to generate a plugin zip",
   "main": "dist/index.js",
   "engines": {
@@ -52,7 +52,7 @@
     "webpack": "^4.0.0 || ^5.0.0"
   },
   "dependencies": {
-    "@kintone/plugin-packer": "^5.0.33",
+    "@kintone/plugin-packer": "^5.0.34",
     "chokidar": "^3.5.3",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4"

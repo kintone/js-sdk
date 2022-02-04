@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.1.11 (2022-02-04)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
+
+
+
+
 ## 6.1.10 (2022-01-18)
 
 **Note:** Version bump only for package @kintone/plugin-manifest-validator
