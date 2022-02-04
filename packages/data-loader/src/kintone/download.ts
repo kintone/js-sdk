@@ -106,6 +106,91 @@ const task: (
         };
       }
       return field;
+    case "SUBTABLE":
+      return {
+        type: "SUBTABLE",
+        value: await field.value.reduce<
+          Promise<
+            KintoneRecordField.Subtable<{
+              [fieldCode: string]: DataLoaderFields.InSubtable;
+            }>["value"]
+          >
+        >(
+          async (newRows, row, rowIndex) => [
+            ...(await newRows),
+            {
+              id: row.id,
+              value: await Object.entries(row.value).reduce(
+                async (newRow, [fieldCodeInSubtable, fieldInSubtable]) => ({
+                  ...(await newRow),
+                  [fieldCodeInSubtable]: await taskInSubtable(
+                    recordId,
+                    row.id,
+                    rowIndex,
+                    fieldCodeInSubtable,
+                    fieldInSubtable,
+                    { apiClient, attachmentsDir }
+                  ),
+                }),
+                Promise.resolve({})
+              ),
+            },
+          ],
+          Promise.resolve([])
+        ),
+      };
+    default:
+      return field;
+  }
+};
+
+const taskInSubtable: (
+  recordId: string,
+  rowId: string,
+  rowIndex: number,
+  fieldCode: string,
+  field: KintoneRecordField.InSubtable,
+  options: { apiClient: KintoneRestAPIClient; attachmentsDir?: string }
+) => Promise<DataLoaderFields.InSubtable> = async (
+  recordId,
+  rowId,
+  rowIndex,
+  fieldCode,
+  field,
+  options
+) => {
+  const { apiClient, attachmentsDir } = options;
+  switch (field.type) {
+    case "FILE":
+      if (attachmentsDir) {
+        const value = await field.value.reduce<
+          Promise<DataLoaderFields.File["value"]>
+        >(async (downloadedList, fileInfo) => {
+          const localFilePath = path.join(
+            attachmentsDir,
+            `${fieldCode}-${recordId}-${rowIndex}`,
+            fileInfo.name
+          );
+
+          const file = await apiClient.file.downloadFile({
+            fileKey: fileInfo.fileKey,
+          });
+          const savedFilePath = saveFileWithoutOverwrite(localFilePath, file);
+
+          return [
+            ...(await downloadedList),
+            {
+              ...fileInfo,
+              localFilePath: path.relative(attachmentsDir, savedFilePath),
+            },
+          ];
+        }, Promise.resolve([]));
+        return {
+          type: "FILE",
+          value,
+        };
+      }
+      return field;
     default:
       return field;
   }

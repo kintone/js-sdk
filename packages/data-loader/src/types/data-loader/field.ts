@@ -16,6 +16,29 @@ export type File = FieldWith<
   }>
 >;
 
+export type InSubtable =
+  | KintoneRecordField.SingleLineText
+  | KintoneRecordField.Number
+  | KintoneRecordField.Calc
+  | KintoneRecordField.MultiLineText
+  | KintoneRecordField.RichText
+  | KintoneRecordField.Link
+  | KintoneRecordField.CheckBox
+  | KintoneRecordField.RadioButton
+  | KintoneRecordField.Dropdown
+  | KintoneRecordField.MultiSelect
+  | File
+  | KintoneRecordField.Date
+  | KintoneRecordField.Time
+  | KintoneRecordField.DateTime
+  | KintoneRecordField.UserSelect
+  | KintoneRecordField.OrganizationSelect
+  | KintoneRecordField.GroupSelect;
+
+export type Subtable = KintoneRecordField.Subtable<{
+  [fieldCode: string]: InSubtable;
+}>;
+
 export type OneOf =
   | KintoneRecordField.ID
   | KintoneRecordField.Revision
@@ -45,6 +68,4 @@ export type OneOf =
   | KintoneRecordField.Category
   | KintoneRecordField.Status
   | KintoneRecordField.StatusAssignee
-  | KintoneRecordField.Subtable<{
-      [fieldCode: string]: KintoneRecordField.InSubtable;
-    }>;
+  | Subtable;
