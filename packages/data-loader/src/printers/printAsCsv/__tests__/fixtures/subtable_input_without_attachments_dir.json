@@ -90,14 +90,12 @@
                 {
                   "contentType": "text/plain",
                   "fileKey": "test-file-key",
-                  "name": "test.txt",
-                  "localFilePath": "subTableFile-9-0/test.txt"
+                  "name": "test.txt"
                 },
                 {
                   "contentType": "text/plain",
                   "fileKey": "test-file-key",
-                  "name": "test.txt",
-                  "localFilePath": "subTableFile-9-0/test (1).txt"
+                  "name": "test.txt"
                 }
               ]
             }
@@ -120,14 +118,12 @@
                 {
                   "contentType": "text/plain",
                   "fileKey": "test-file-key",
-                  "name": "test.txt",
-                  "localFilePath": "subTableFile-9-1/test.txt"
+                  "name": "test.txt"
                 },
                 {
                   "contentType": "text/plain",
                   "fileKey": "test-file-key",
-                  "name": "test.txt",
-                  "localFilePath": "subTableFile-9-1/test (1).txt"
+                  "name": "test.txt"
                 }
               ]
             }

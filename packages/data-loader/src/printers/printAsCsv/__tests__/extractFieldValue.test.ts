@@ -6,7 +6,7 @@ const fileRecords: DataLoaderRecord[] = require("./fixtures/file_input.json");
 const fileWithoutAttachmentsDirRecords: DataLoaderRecord[] = require("./fixtures/file_without_attachments_dir.json");
 
 describe("extractFieldValue", () => {
-  it("", () => {
+  it("should extract field values from record with subtable", () => {
     const record = subtableRecords[0];
     expect(extractFieldValue(record.recordNumber)).toEqual(`"9"`);
     expect(extractFieldValue(record.multiLineText)).toEqual(
@@ -20,6 +20,13 @@ describe("extractFieldValue", () => {
       id: `"537306"`,
       subTableText: `"text_line1"`,
       subTableCheckbox: `"st_sample1"`,
+      subTableFile: `"test.txt\ntest.txt"`,
+    });
+    expect(extractFieldValue(record.subTable, "attachmentsDir")[0]).toEqual({
+      id: `"537306"`,
+      subTableText: `"text_line1"`,
+      subTableCheckbox: `"st_sample1"`,
+      subTableFile: `"subTableFile-9-0/test.txt\nsubTableFile-9-0/test (1).txt"`,
     });
   });
   it("should extract file value correctly when file field has two files", () => {
