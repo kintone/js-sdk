@@ -38,14 +38,15 @@ export const extractFieldValue = (
         )
       );
     case "SUBTABLE":
-      return field.value.map((subtableField) => ({
-        id: encloseInDoubleQuotes(subtableField.id),
-        ...Object.keys(subtableField.value).reduce<Record<string, string>>(
-          (ret, fieldCode) => {
+      return field.value.map((subtableRow) => ({
+        id: encloseInDoubleQuotes(subtableRow.id),
+        ...Object.keys(subtableRow.value).reduce<Record<string, string>>(
+          (newSubtableRow, fieldCode) => {
             return {
-              ...ret,
+              ...newSubtableRow,
               [fieldCode]: extractFieldValue(
-                subtableField.value[fieldCode]
+                subtableRow.value[fieldCode],
+                attachmentsDir
               ) as string,
             };
           },
