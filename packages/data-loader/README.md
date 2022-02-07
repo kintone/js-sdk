@@ -8,7 +8,6 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
 
-- Export attachments of fields in table field
 - Import attachemnts
 - Update records when importing
 - When using CSV format, the following fields are not supported
@@ -130,7 +129,7 @@ Options:
 
 If set `--attachments-dir` option, attachment files will be downloaded to local directory.
 
-- the file path is `<attachmentsDir>/<fieldCode>-<fieldId>/<filename>`
+- the file path is `<attachmentsDir>/<fieldCode>-<fieldId>/<filename>` // TODO Table
 - if same name files are exist in same FILE field, renamed to `<filename> (<index>).<ext>`
 
 ## Supported file formats
@@ -168,7 +167,8 @@ The format of JSON file is the same as Get/Add/Update records REST API.
 ]
 ```
 
-If set `--attachments-dir` option, The format of FILE field will be changed to bellow.
+If set `--attachments-dir` option, The format of FILE field will be changed to below.  
+(FILE field in Table follows the same rule.)
 
 ```json
 [
@@ -245,12 +245,18 @@ Specify the user's login name (equivalent to `value.code` in REST API).
 
 #### File
 
-Files in same FILE field are separated with line break (\n).
+Files in same FILE field (in same Table row) are separated with line break (\n).
 
 ```csv
-"fileFieldCode"
+"file"
 "file-9/test.txt
 file-9/test (1).txt"
+```
+
+```csv
+"fileInTable"
+"fileInTable-1-0/test.txt
+fileInTable-1-0/test (1).txt"
 ```
 
 If NOT set `--attachments-dir` option, only the file name will be output.
