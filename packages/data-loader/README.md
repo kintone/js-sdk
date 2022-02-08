@@ -129,8 +129,9 @@ Options:
 
 If set `--attachments-dir` option, attachment files will be downloaded to local directory.
 
-- the file path is `<attachmentsDir>/<fieldCode>-<fieldId>/<filename>` // TODO Table
-- if same name files are exist in same FILE field, renamed to `<filename> (<index>).<ext>`
+- the file path is `<attachmentsDir>/<fieldCode>-<recordId>/<filename>`
+  - as for attachments in Table, the file path is `<attachmentsDir>/<fieldCode>-<recordId>-<tableRowIndex>/<filename>`
+- if same name files exist in same FILE field, renamed to `<filename> (<index>).<ext>`
 
 ## Supported file formats
 
@@ -167,7 +168,7 @@ The format of JSON file is the same as Get/Add/Update records REST API.
 ]
 ```
 
-If set `--attachments-dir` option, The format of FILE field will be changed to below.  
+If set `--attachments-dir` option, the format of FILE field will be changed to below.  
 (FILE field in Table follows the same rule.)
 
 ```json
