@@ -23,7 +23,7 @@ export const downloadRecords = async (
     orderBy,
   });
   return recordsReducer(kintoneRecords, (recordId, fieldCode, field) =>
-    task(recordId, fieldCode, field, { apiClient, attachmentsDir })
+    fieldProcessor(recordId, fieldCode, field, { apiClient, attachmentsDir })
   );
 };
 
@@ -60,7 +60,7 @@ const recordReducer: (
     Promise.resolve({})
   );
 
-const task: (
+const fieldProcessor: (
   recordId: string,
   fieldCode: string,
   field: KintoneRecordField.OneOf,
@@ -87,10 +87,11 @@ const task: (
             fileInfo.name
           );
 
-          const file = await apiClient.file.downloadFile({
-            fileKey: fileInfo.fileKey,
-          });
-          const savedFilePath = saveFileWithoutOverwrite(localFilePath, file);
+          const savedFilePath = await downloadAndSaveFile(
+            apiClient,
+            fileInfo.fileKey,
+            localFilePath
+          );
 
           return [
             ...(await downloadedList),
@@ -123,7 +124,7 @@ const task: (
               value: await Object.entries(row.value).reduce(
                 async (newRow, [fieldCodeInSubtable, fieldInSubtable]) => ({
                   ...(await newRow),
-                  [fieldCodeInSubtable]: await taskInSubtable(
+                  [fieldCodeInSubtable]: await fieldProcessorInSubtable(
                     recordId,
                     row.id,
                     rowIndex,
@@ -144,7 +145,7 @@ const task: (
   }
 };
 
-const taskInSubtable: (
+const fieldProcessorInSubtable: (
   recordId: string,
   rowId: string,
   rowIndex: number,
@@ -172,10 +173,11 @@ const taskInSubtable: (
             fileInfo.name
           );
 
-          const file = await apiClient.file.downloadFile({
-            fileKey: fileInfo.fileKey,
-          });
-          const savedFilePath = saveFileWithoutOverwrite(localFilePath, file);
+          const savedFilePath = await downloadAndSaveFile(
+            apiClient,
+            fileInfo.fileKey,
+            localFilePath
+          );
 
           return [
             ...(await downloadedList),
@@ -194,6 +196,17 @@ const taskInSubtable: (
     default:
       return field;
   }
+};
+
+const downloadAndSaveFile: (
+  apiClient: KintoneRestAPIClient,
+  fileKey: string,
+  localFilePath: string
+) => Promise<string> = async (apiClient, fileKey, localFilePath) => {
+  const file = await apiClient.file.downloadFile({
+    fileKey,
+  });
+  return saveFileWithoutOverwrite(localFilePath, file);
 };
 
 const saveFileWithoutOverwrite: (
