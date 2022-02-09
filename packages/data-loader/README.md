@@ -8,7 +8,7 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
 
-- Import attachemnts
+- Import attachments
 - Update records when importing
 - When using CSV format, the following fields are not supported
   - User selection, Group selection, Department selection
@@ -54,7 +54,7 @@ import \
 
 #### Options
 
-Some options use enviroment variables starting `KINTONE_` as default values.
+Some options use environment variables starting `KINTONE_` as default values.
 
 ```
 Options:
@@ -96,7 +96,7 @@ export \
 
 #### Options
 
-Some options use enviroment variables starting `KINTONE_` as default values.
+Some options use environment variables starting `KINTONE_` as default values.
 
 ```
 Options:
