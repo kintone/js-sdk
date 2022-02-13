@@ -131,7 +131,7 @@ If set `--attachments-dir` option, attachment files will be downloaded to local 
 
 - the file path is `<attachmentsDir>/<fieldCode>-<recordId>/<filename>`
   - as for attachments in Table, the file path is `<attachmentsDir>/<fieldCode>-<recordId>-<tableRowIndex>/<filename>`
-- if same name files exist in same FILE field, renamed to `<filename> (<index>).<ext>`
+- if same name files exist in same Attachment field, renamed to `<filename> (<index>).<ext>`
 
 ## Supported file formats
 
@@ -168,8 +168,8 @@ The format of JSON file is the same as Get/Add/Update records REST API.
 ]
 ```
 
-If set `--attachments-dir` option, the format of FILE field will be changed to below.  
-(FILE field in Table follows the same rule.)
+If set `--attachments-dir` option, the format of Attachment field will be changed to below.  
+(Attachment field in Table follows the same rule.)
 
 ```json
 [
@@ -246,7 +246,7 @@ Specify the user's login name (equivalent to `value.code` in REST API).
 
 #### File
 
-Files in same FILE field (in same Table row) are separated with line break (\n).
+Files in same Attachment field (in same Table row) are separated with line break (\n).
 
 ```csv
 "file"
