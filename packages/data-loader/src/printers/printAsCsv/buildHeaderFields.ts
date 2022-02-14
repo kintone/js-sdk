@@ -36,6 +36,7 @@ const supportedFieldTypesInSubtable: Array<
   "CALC",
   "MULTI_SELECT",
   "CHECK_BOX",
+  "FILE",
 ];
 
 export const buildHeaderFields = (fieldProperties: FieldProperties) => {

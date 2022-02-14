@@ -23,7 +23,7 @@ export const downloadRecords = async (
     orderBy,
   });
   return recordsReducer(kintoneRecords, (recordId, fieldCode, field) =>
-    task(recordId, fieldCode, field, { apiClient, attachmentsDir })
+    fieldProcessor(recordId, fieldCode, field, { apiClient, attachmentsDir })
   );
 };
 
@@ -34,16 +34,16 @@ const recordsReducer: (
     fieldCode: string,
     field: KintoneRecordField.OneOf
   ) => Promise<DataLoaderFields.OneOf>
-) => Promise<DataLoaderRecord[]> = (kintoneRecords, task) =>
-  kintoneRecords.reduce<Promise<DataLoaderRecord[]>>(
-    async (records, record) => [
-      ...(await records),
-      await recordReducer(record, (fieldCode, field) =>
-        task(record.$id.value as string, fieldCode, field)
-      ),
-    ],
-    Promise.resolve([])
-  );
+) => Promise<DataLoaderRecord[]> = async (kintoneRecords, task) => {
+  const records: DataLoaderRecord[] = [];
+  for (const kintoneRecord of kintoneRecords) {
+    const record = await recordReducer(kintoneRecord, (fieldCode, field) =>
+      task(kintoneRecord.$id.value as string, fieldCode, field)
+    );
+    records.push(record);
+  }
+  return records;
+};
 
 const recordReducer: (
   record: KintoneRecordForResponse,
@@ -51,16 +51,15 @@ const recordReducer: (
     fieldCode: string,
     field: KintoneRecordField.OneOf
   ) => Promise<DataLoaderFields.OneOf>
-) => Promise<DataLoaderRecord> = (record, task) =>
-  Object.entries(record).reduce<Promise<DataLoaderRecord>>(
-    async (newRecord, [fieldCode, field]) => ({
-      ...(await newRecord),
-      [fieldCode]: await task(fieldCode, field),
-    }),
-    Promise.resolve({})
-  );
+) => Promise<DataLoaderRecord> = async (record, task) => {
+  const newRecord: DataLoaderRecord = {};
+  for (const [fieldCode, field] of Object.entries(record)) {
+    newRecord[fieldCode] = await task(fieldCode, field);
+  }
+  return newRecord;
+};
 
-const task: (
+const fieldProcessor: (
   recordId: string,
   fieldCode: string,
   field: KintoneRecordField.OneOf,
@@ -78,37 +77,118 @@ const task: (
   switch (field.type) {
     case "FILE":
       if (attachmentsDir) {
-        const value = await field.value.reduce<
-          Promise<DataLoaderFields.File["value"]>
-        >(async (downloadedList, fileInfo) => {
+        const downloadedList: DataLoaderFields.File["value"] = [];
+        for (const fileInfo of field.value) {
           const localFilePath = path.join(
             attachmentsDir,
             `${fieldCode}-${recordId}`,
             fileInfo.name
           );
 
-          const file = await apiClient.file.downloadFile({
-            fileKey: fileInfo.fileKey,
-          });
-          const savedFilePath = saveFileWithoutOverwrite(localFilePath, file);
+          const savedFilePath = await downloadAndSaveFile(
+            apiClient,
+            fileInfo.fileKey,
+            localFilePath
+          );
 
-          return [
-            ...(await downloadedList),
-            {
-              ...fileInfo,
-              localFilePath: path.relative(attachmentsDir, savedFilePath),
-            },
-          ];
-        }, Promise.resolve([]));
+          downloadedList.push({
+            ...fileInfo,
+            localFilePath: path.relative(attachmentsDir, savedFilePath),
+          });
+        }
         return {
           type: "FILE",
-          value,
+          value: downloadedList,
+        };
+      }
+      return field;
+    case "SUBTABLE": {
+      const newRows = [];
+      for (const [rowIndex, row] of field.value.entries()) {
+        const fieldsInRow: DataLoaderFields.Subtable["value"][number]["value"] =
+          {};
+        for (const [fieldCodeInSubtable, fieldInSubtable] of Object.entries(
+          row.value
+        )) {
+          fieldsInRow[fieldCodeInSubtable] = await fieldProcessorInSubtable(
+            recordId,
+            row.id,
+            rowIndex,
+            fieldCodeInSubtable,
+            fieldInSubtable,
+            { apiClient, attachmentsDir }
+          );
+        }
+        newRows.push({ id: row.id, value: fieldsInRow });
+      }
+      return {
+        type: "SUBTABLE",
+        value: newRows,
+      };
+    }
+    default:
+      return field;
+  }
+};
+
+const fieldProcessorInSubtable: (
+  recordId: string,
+  rowId: string,
+  rowIndex: number,
+  fieldCode: string,
+  field: KintoneRecordField.InSubtable,
+  options: { apiClient: KintoneRestAPIClient; attachmentsDir?: string }
+) => Promise<DataLoaderFields.InSubtable> = async (
+  recordId,
+  rowId,
+  rowIndex,
+  fieldCode,
+  field,
+  options
+) => {
+  const { apiClient, attachmentsDir } = options;
+  switch (field.type) {
+    case "FILE":
+      if (attachmentsDir) {
+        const downloadedList: DataLoaderFields.File["value"] = [];
+        for (const fileInfo of field.value) {
+          const localFilePath = path.join(
+            attachmentsDir,
+            `${fieldCode}-${recordId}-${rowIndex}`,
+            fileInfo.name
+          );
+
+          const savedFilePath = await downloadAndSaveFile(
+            apiClient,
+            fileInfo.fileKey,
+            localFilePath
+          );
+
+          downloadedList.push({
+            ...fileInfo,
+            localFilePath: path.relative(attachmentsDir, savedFilePath),
+          });
+        }
+        return {
+          type: "FILE",
+          value: downloadedList,
         };
       }
       return field;
     default:
       return field;
   }
+};
+
+const downloadAndSaveFile: (
+  apiClient: KintoneRestAPIClient,
+  fileKey: string,
+  localFilePath: string
+) => Promise<string> = async (apiClient, fileKey, localFilePath) => {
+  const file = await apiClient.file.downloadFile({
+    fileKey,
+  });
+  return saveFileWithoutOverwrite(localFilePath, file);
 };
 
 const saveFileWithoutOverwrite: (

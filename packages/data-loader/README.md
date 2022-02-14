@@ -8,8 +8,7 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
 
-- Export attachments of fields in table field
-- Import attachemnts
+- Import attachments
 - Update records when importing
 - When using CSV format, the following fields are not supported
   - User selection, Group selection, Department selection
@@ -55,7 +54,7 @@ import \
 
 #### Options
 
-Some options use enviroment variables starting `KINTONE_` as default values.
+Some options use environment variables starting `KINTONE_` as default values.
 
 ```
 Options:
@@ -97,7 +96,7 @@ export \
 
 #### Options
 
-Some options use enviroment variables starting `KINTONE_` as default values.
+Some options use environment variables starting `KINTONE_` as default values.
 
 ```
 Options:
@@ -130,8 +129,9 @@ Options:
 
 If set `--attachments-dir` option, attachment files will be downloaded to local directory.
 
-- the file path is `<attachmentsDir>/<fieldCode>-<fieldId>/<filename>`
-- if same name files are exist in same FILE field, renamed to `<filename> (<index>).<ext>`
+- the file path is `<attachmentsDir>/<fieldCode>-<recordId>/<filename>`
+  - as for attachments in Table, the file path is `<attachmentsDir>/<fieldCode>-<recordId>-<tableRowIndex>/<filename>`
+- if same name files exist in same Attachment field, renamed to `<filename> (<index>).<ext>`
 
 ## Supported file formats
 
@@ -168,7 +168,8 @@ The format of JSON file is the same as Get/Add/Update records REST API.
 ]
 ```
 
-If set `--attachments-dir` option, The format of FILE field will be changed to bellow.
+If set `--attachments-dir` option, the format of Attachment field will be changed to below.  
+(Attachment field in Table follows the same rule.)
 
 ```json
 [
@@ -245,12 +246,18 @@ Specify the user's login name (equivalent to `value.code` in REST API).
 
 #### File
 
-Files in same FILE field are separated with line break (\n).
+Files in same Attachment field (in same Table row) are separated with line break (\n).
 
 ```csv
-"fileFieldCode"
+"file"
 "file-9/test.txt
 file-9/test (1).txt"
+```
+
+```csv
+"fileInTable"
+"fileInTable-1-0/test.txt
+fileInTable-1-0/test (1).txt"
 ```
 
 If NOT set `--attachments-dir` option, only the file name will be output.

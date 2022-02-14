@@ -8,9 +8,8 @@ const fileRecords: DataLoaderRecord[] = require("./fixtures/file_input.json");
 const fileWithoutAttachmentsDirRecords: DataLoaderRecord[] = require("./fixtures/file_without_attachments_dir.json");
 const fileFieldsJson: FieldsJson = require("./fixtures/file_fields.json");
 const subtableRecords: DataLoaderRecord[] = require("./fixtures/subtable_input.json");
+const subtableWithoutAttachmentsDirRecords: DataLoaderRecord[] = require("./fixtures/subtable_input_without_attachments_dir.json");
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
-const unsupportedRecords: DataLoaderRecord[] = require("./fixtures/unsupported_input.json");
-const unsupportedFieldsJson: FieldsJson = require("./fixtures/unsupported_fields.json");
 
 describe("convertKintoneRecordsToCsv", () => {
   it("should convert kintone records to csv string correctly", () => {
@@ -59,13 +58,15 @@ test.txt"
       })
     ).toBe(expectedCsv);
   });
-  it("should convert kintone records to csv string correctly when SUBTABLE included", () => {
-    const expectedCsv = `"*","recordNumber","updatedTime","dropDown","creator","subTable","subTableText","subTableCheckbox","modifier","richText","singleLineText","number","radioButton","multiLineText","createdTime","checkBox","calc","multiSelect"
-*,"9","2021-02-16T02:43:00Z","sample1","username","537306","text_line1","st_sample1","username","<div><div>rich text editor<br /></div></div><div>rich text editor<br /></div><div>rich text editor<br /></div>","""single line text""","8","sample2","multi
+  it("should convert kintone records to csv string correctly when SUBTABLE included with attachmentsDir option", () => {
+    const expectedCsv = `"*","recordNumber","updatedTime","dropDown","creator","subTable","subTableText","subTableCheckbox","subTableFile","modifier","richText","singleLineText","number","radioButton","multiLineText","createdTime","checkBox","calc","multiSelect"
+*,"9","2021-02-16T02:43:00Z","sample1","username","537306","text_line1","st_sample1","subTableFile-9-0/test.txt
+subTableFile-9-0/test (1).txt","username","<div><div>rich text editor<br /></div></div><div>rich text editor<br /></div><div>rich text editor<br /></div>","""single line text""","8","sample2","multi
 line
 text","2021-02-10T06:14:00Z","""sample2""","16","""sample3""
 sample4"
-,"9","2021-02-16T02:43:00Z","sample1","username","537307","text_line2","st_sample2","username","<div><div>rich text editor<br /></div></div><div>rich text editor<br /></div><div>rich text editor<br /></div>","""single line text""","8","sample2","multi
+,"9","2021-02-16T02:43:00Z","sample1","username","537307","text_line2","st_sample2","subTableFile-9-1/test.txt
+subTableFile-9-1/test (1).txt","username","<div><div>rich text editor<br /></div></div><div>rich text editor<br /></div><div>rich text editor<br /></div>","""single line text""","8","sample2","multi
 line
 text","2021-02-10T06:14:00Z","""sample2""","16","""sample3""
 sample4"
@@ -74,18 +75,27 @@ sample4"
       convertRecordsToCsv({
         records: subtableRecords,
         fieldProperties: subtableFieldsJson.properties,
+        attachmentsDir: "attachmentsDir",
       })
     ).toBe(expectedCsv);
   });
-  it("should convert kintone records to csv string correctly when unsupported fields included", () => {
-    const expectedCsv = `"*","recordNumber","subTable","subTableText","singleLineText"
-*,"9","537306","text_line1","""single line text"""
-,"9","537307","text_line2","""single line text"""
+  it("should convert kintone records to csv string correctly when SUBTABLE included without attachmentsDir option", () => {
+    const expectedCsv = `"*","recordNumber","updatedTime","dropDown","creator","subTable","subTableText","subTableCheckbox","subTableFile","modifier","richText","singleLineText","number","radioButton","multiLineText","createdTime","checkBox","calc","multiSelect"
+*,"9","2021-02-16T02:43:00Z","sample1","username","537306","text_line1","st_sample1","test.txt
+test.txt","username","<div><div>rich text editor<br /></div></div><div>rich text editor<br /></div><div>rich text editor<br /></div>","""single line text""","8","sample2","multi
+line
+text","2021-02-10T06:14:00Z","""sample2""","16","""sample3""
+sample4"
+,"9","2021-02-16T02:43:00Z","sample1","username","537307","text_line2","st_sample2","test.txt
+test.txt","username","<div><div>rich text editor<br /></div></div><div>rich text editor<br /></div><div>rich text editor<br /></div>","""single line text""","8","sample2","multi
+line
+text","2021-02-10T06:14:00Z","""sample2""","16","""sample3""
+sample4"
 `;
     expect(
       convertRecordsToCsv({
-        records: unsupportedRecords,
-        fieldProperties: unsupportedFieldsJson.properties,
+        records: subtableWithoutAttachmentsDirRecords,
+        fieldProperties: subtableFieldsJson.properties,
       })
     ).toBe(expectedCsv);
   });

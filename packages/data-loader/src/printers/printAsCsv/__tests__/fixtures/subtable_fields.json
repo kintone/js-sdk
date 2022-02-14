@@ -74,6 +74,14 @@
           },
           "defaultValue": [],
           "align": "HORIZONTAL"
+        },
+        "subTableFile": {
+          "type": "FILE",
+          "code": "subTableFile",
+          "label": "subTableFile",
+          "noLabel": false,
+          "required": false,
+          "thumbnailSize": "150"
         }
       }
     },
