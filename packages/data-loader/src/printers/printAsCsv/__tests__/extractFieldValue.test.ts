@@ -21,12 +21,18 @@ describe("extractFieldValue", () => {
       subTableText: `"text_line1"`,
       subTableCheckbox: `"st_sample1"`,
       subTableFile: `"test.txt\ntest.txt"`,
+      userSelect: `"sato\ntanaka"`,
+      organizationSelect: `"Development Div"`,
+      groupSelect: `"Administrators"`,
     });
     expect(extractFieldValue(record.subTable, "attachmentsDir")[0]).toEqual({
       id: `"537306"`,
       subTableText: `"text_line1"`,
       subTableCheckbox: `"st_sample1"`,
       subTableFile: `"subTableFile-9-0/test.txt\nsubTableFile-9-0/test (1).txt"`,
+      userSelect: `"sato\ntanaka"`,
+      organizationSelect: `"Development Div"`,
+      groupSelect: `"Administrators"`,
     });
   });
   it("should extract file value correctly when file field has two files", () => {
