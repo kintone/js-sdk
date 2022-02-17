@@ -1,0 +1,55 @@
+{
+  "revision": "29",
+  "properties": {
+    "singleLineText": {
+      "type": "SINGLE_LINE_TEXT",
+      "code": "singleLineText",
+      "label": "singleLineText",
+      "noLabel": false,
+      "required": false,
+      "minLength": "",
+      "maxLength": "",
+      "expression": "",
+      "hideExpression": false,
+      "unique": false,
+      "defaultValue": ""
+    },
+    "file": {
+      "type": "FILE",
+      "code": "file",
+      "label": "file",
+      "noLabel": false,
+      "required": false,
+      "thumbnailSize": "150"
+    },
+    "subTable": {
+      "type": "SUBTABLE",
+      "code": "subTable",
+      "noLabel": false,
+      "label": "subTable",
+      "fields": {
+        "subTableText": {
+          "type": "SINGLE_LINE_TEXT",
+          "code": "subTableText",
+          "label": "subTableText",
+          "noLabel": false,
+          "required": false,
+          "minLength": "",
+          "maxLength": "",
+          "expression": "",
+          "hideExpression": false,
+          "unique": false,
+          "defaultValue": ""
+        },
+        "subTableFile": {
+          "type": "FILE",
+          "code": "subTableFile",
+          "label": "subTableFile",
+          "noLabel": false,
+          "required": false,
+          "thumbnailSize": "150"
+        }
+      }
+    }
+  }
+}
