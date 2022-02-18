@@ -8,7 +8,7 @@ import path from "path";
 import fs from "fs";
 import { parseJson } from "../parsers/parseJson";
 import { parseCsv } from "../parsers/parseCsv";
-import { KintoneRecordForParameter } from "../types";
+import { KintoneRecordForParameter } from "../types/kintone";
 
 const CHUNK_LENGTH = 100;
 
