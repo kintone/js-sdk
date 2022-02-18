@@ -1,5 +1,5 @@
 import { convertToKintoneRecordsForParameter } from "../convertToKintoneRecordsForParameter";
-import { FieldsJson } from "../../../types";
+import { FieldsJson } from "../../../types/kintone";
 
 const rows = [
   {
