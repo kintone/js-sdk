@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.0.35 (2022-02-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^2.0.34 ([#1341](https://github.com/kintone/js-sdk/issues/1341)) ([0e01847](https://github.com/kintone/js-sdk/commit/0e018475d77c68f42d414d563377aef56a7a1d41))
+
+
+
+
+
+## 5.0.34 (2022-02-04)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
 ## 5.0.33 (2022-01-18)
 
 **Note:** Version bump only for package @kintone/plugin-packer
