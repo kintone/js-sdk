@@ -134,25 +134,27 @@ const buildSubTableRowObjects = ({
 }) => {
   const rowObjects = subtableFieldCodes.reduce<RowObject[]>(
     (ret, subtableFieldCode) => {
-      return ret.concat(
-        recordObject[subtableFieldCode].map(
-          (field: { [k: string]: string }) => ({
-            ...primaryRowObject,
-            ...Object.keys(field).reduce<Record<string, string>>(
-              (rowObject, fieldCode) => {
-                return {
-                  ...rowObject,
-                  // NOTE: If fieldCode is `id`, use field code of subtable itself
-                  // to avoid conflicts between each subtable.
-                  [fieldCode === "id" ? subtableFieldCode : fieldCode]:
-                    field[fieldCode],
-                };
-              },
-              {}
-            ),
-          })
-        )
-      );
+      return recordObject[subtableFieldCode].length === 0
+        ? [primaryRowObject]
+        : ret.concat(
+            recordObject[subtableFieldCode].map(
+              (field: { [k: string]: string }) => ({
+                ...primaryRowObject,
+                ...Object.keys(field).reduce<Record<string, string>>(
+                  (rowObject, fieldCode) => {
+                    return {
+                      ...rowObject,
+                      // NOTE: If fieldCode is `id`, use field code of subtable itself
+                      // to avoid conflicts between each subtable.
+                      [fieldCode === "id" ? subtableFieldCode : fieldCode]:
+                        field[fieldCode],
+                    };
+                  },
+                  {}
+                ),
+              })
+            )
+          );
     },
     []
   );
