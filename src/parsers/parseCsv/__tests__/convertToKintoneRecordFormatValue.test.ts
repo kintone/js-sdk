@@ -23,5 +23,15 @@ describe("convertToKintoneRecordFormatValue", () => {
     ).toEqual({
       code: "creator",
     });
+    expect(
+      convertToKintoneRecordFormatValue({
+        fieldType: "USER_SELECT",
+        value: "sato",
+      })
+    ).toEqual([
+      {
+        code: "sato",
+      },
+    ]);
   });
 });

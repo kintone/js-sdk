@@ -10,12 +10,18 @@ describe("extractSubtableFieldsValue", () => {
         subTable: "11111",
         subTableText: "text1",
         subTableCheckbox: "st_sample1",
+        userSelect: "sato\ntanaka",
+        organizationSelect: "Development Div",
+        groupSelect: "Administrators",
       },
       {
         singleLineText: "text",
         subTable: "22222",
         subTableText: "text2",
         subTableCheckbox: "st_sample2",
+        userSelect: "sato\ntanaka",
+        organizationSelect: "Development Div",
+        groupSelect: "Administrators",
       },
       {
         singleLineText: "text",
@@ -35,6 +41,30 @@ describe("extractSubtableFieldsValue", () => {
               subTableCheckbox: {
                 value: ["st_sample1"],
               },
+              userSelect: {
+                value: [
+                  {
+                    code: "sato",
+                  },
+                  {
+                    code: "tanaka",
+                  },
+                ],
+              },
+              groupSelect: {
+                value: [
+                  {
+                    code: "Administrators",
+                  },
+                ],
+              },
+              organizationSelect: {
+                value: [
+                  {
+                    code: "Development Div",
+                  },
+                ],
+              },
             },
           },
           {
@@ -46,6 +76,30 @@ describe("extractSubtableFieldsValue", () => {
               subTableCheckbox: {
                 value: ["st_sample2"],
               },
+              userSelect: {
+                value: [
+                  {
+                    code: "sato",
+                  },
+                  {
+                    code: "tanaka",
+                  },
+                ],
+              },
+              groupSelect: {
+                value: [
+                  {
+                    code: "Administrators",
+                  },
+                ],
+              },
+              organizationSelect: {
+                value: [
+                  {
+                    code: "Development Div",
+                  },
+                ],
+              },
             },
           },
           {
@@ -56,6 +110,15 @@ describe("extractSubtableFieldsValue", () => {
               },
               subTableText: {
                 value: "",
+              },
+              userSelect: {
+                value: [],
+              },
+              groupSelect: {
+                value: [],
+              },
+              organizationSelect: {
+                value: [],
               },
             },
           },

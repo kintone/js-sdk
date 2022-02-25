@@ -10,8 +10,6 @@ A kintone record importer and exporter.
 
 - Import attachments
 - Update records when importing
-- When using CSV format, the following fields are not supported
-  - User selection, Group selection, Department selection
 
 We plan to support them in the future release.
 
@@ -233,6 +231,16 @@ Specify multiple values divided by line break (\n).
 "CheckboxField"
 "value1
 value2"
+```
+
+#### User Selection, Department Selection, Group Selection
+
+If multiple value is selected, separated with line break (\n). (equivalent to `value.code` in REST API).
+
+```csv
+"userSelectionField","departmentSelectionField","groupSelectionField"
+"John
+Bob","Development Div","Administrators"
 ```
 
 #### Created by, Updated by

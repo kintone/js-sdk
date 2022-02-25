@@ -11,13 +11,13 @@ describe("buildHeaderFields", () => {
     expect(
       buildHeaderFields(fieldsJson.properties).includes(PRIMARY_MARK)
     ).toBe(false);
-    expect(buildHeaderFields(fieldsJson.properties)).toHaveLength(14);
+    expect(buildHeaderFields(fieldsJson.properties)).toHaveLength(17);
     expect(buildHeaderFields(fileFieldsJson.properties)).toHaveLength(15);
   });
   it("should generate fieldCode array correctly (data with subtable)", () => {
     expect(
       buildHeaderFields(subtableFieldsJson.properties).includes(PRIMARY_MARK)
     ).toBe(true);
-    expect(buildHeaderFields(subtableFieldsJson.properties)).toHaveLength(19);
+    expect(buildHeaderFields(subtableFieldsJson.properties)).toHaveLength(22);
   });
 });
