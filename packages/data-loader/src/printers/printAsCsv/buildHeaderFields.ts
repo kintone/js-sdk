@@ -21,6 +21,9 @@ const supportedFieldTypes = [
   "CHECK_BOX",
   "FILE",
   "SUBTABLE",
+  "USER_SELECT",
+  "ORGANIZATION_SELECT",
+  "GROUP_SELECT",
 ];
 
 const supportedFieldTypesInSubtable: Array<
@@ -37,6 +40,9 @@ const supportedFieldTypesInSubtable: Array<
   "MULTI_SELECT",
   "CHECK_BOX",
   "FILE",
+  "USER_SELECT",
+  "ORGANIZATION_SELECT",
+  "GROUP_SELECT",
 ];
 
 export const buildHeaderFields = (fieldProperties: FieldProperties) => {

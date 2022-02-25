@@ -53,6 +53,14 @@ export const extractFieldValue = (
           {}
         ),
       }));
+    case "USER_SELECT":
+    case "ORGANIZATION_SELECT":
+    case "GROUP_SELECT":
+      return encloseInDoubleQuotes(
+        escapeDoubleQuotes(
+          field.value.map((value) => value.code).join(LINE_BREAK)
+        )
+      );
     default:
       return "";
   }

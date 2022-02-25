@@ -98,6 +98,37 @@
                   "name": "test.txt"
                 }
               ]
+            },
+            "userSelect": {
+              "type": "USER_SELECT",
+              "value": [
+                {
+                  "code": "sato",
+                  "name": "Noboru Sato"
+                },
+                {
+                  "code": "tanaka",
+                  "name": "Taro Tanaka"
+                }
+              ]
+            },
+            "groupSelect": {
+              "type": "GROUP_SELECT",
+              "value": [
+                {
+                  "code": "Administrators",
+                  "name": "Administrators"
+                }
+              ]
+            },
+            "organizationSelect": {
+              "type": "ORGANIZATION_SELECT",
+              "value": [
+                {
+                  "code": "Development Div",
+                  "name": "Development Div"
+                }
+              ]
             }
           }
         },
@@ -124,6 +155,37 @@
                   "contentType": "text/plain",
                   "fileKey": "test-file-key",
                   "name": "test.txt"
+                }
+              ]
+            },
+            "userSelect": {
+              "type": "USER_SELECT",
+              "value": [
+                {
+                  "code": "sato",
+                  "name": "Noboru Sato"
+                },
+                {
+                  "code": "tanaka",
+                  "name": "Taro Tanaka"
+                }
+              ]
+            },
+            "groupSelect": {
+              "type": "GROUP_SELECT",
+              "value": [
+                {
+                  "code": "Administrators",
+                  "name": "Administrators"
+                }
+              ]
+            },
+            "organizationSelect": {
+              "type": "ORGANIZATION_SELECT",
+              "value": [
+                {
+                  "code": "Development Div",
+                  "name": "Development Div"
                 }
               ]
             }
