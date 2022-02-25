@@ -8,6 +8,7 @@ import fs from "fs";
 import { parseJson } from "../parsers/parseJson";
 import { parseCsv } from "../parsers/parseCsv";
 import { KintoneRecordForParameter } from "../types/kintone";
+import { parseRecords } from "../parsers";
 
 const CHUNK_LENGTH = 100;
 
@@ -22,7 +23,13 @@ export const run = async (argv: RestAPIClientOptions & Options) => {
   const apiClient = buildRestAPIClient(argv);
 
   try {
-    const records = await parseRecords({ app, filePath, apiClient });
+    const { content, format } = await readFile(filePath);
+    const records = await parseRecords({
+      source: content,
+      format,
+      app,
+      apiClient,
+    });
     await uploadRecords({ records, app, apiClient });
   } catch (e) {
     console.log(e);
@@ -31,24 +38,13 @@ export const run = async (argv: RestAPIClientOptions & Options) => {
   }
 };
 
-const parseRecords: (options: {
-  app: string;
-  filePath: string;
-  apiClient: KintoneRestAPIClient;
-}) => Promise<KintoneRecordForParameter[]> = async (options) => {
-  const { filePath, apiClient } = options;
+const readFile: (
+  filePath: string
+) => Promise<{ content: string; format: string }> = async (filePath) => {
   const stream = fs.createReadStream(filePath);
   const content = await readStream(stream);
-  const type = extractFileType(filePath);
-  const records = await parseSource({
-    type,
-    source: content,
-    options,
-    apiClient,
-  });
-  console.log(records);
-  // TODO: convert to DataLoaderRecords[]
-  return records;
+  const format = extractFileFormat(filePath);
+  return { content, format };
 };
 
 const readStream = async (stream: fs.ReadStream, encoding = "utf8") => {
@@ -60,35 +56,9 @@ const readStream = async (stream: fs.ReadStream, encoding = "utf8") => {
   return content;
 };
 
-const extractFileType = (filepath: string) => {
-  // TODO this cannot detect file type without extensions
+const extractFileFormat = (filepath: string) => {
+  // TODO this cannot detect file format without extensions
   return path.extname(filepath).split(".").pop() || "";
-};
-
-const parseSource = async ({
-  type,
-  source,
-  options,
-  apiClient,
-}: {
-  type: string;
-  source: string;
-  options: Options;
-  apiClient: KintoneRestAPIClient;
-}) => {
-  switch (type) {
-    case "json":
-      return parseJson(source);
-    case "csv":
-      return parseCsv(
-        source,
-        await apiClient.app.getFormFields<
-          Record<string, KintoneFormFieldProperty.OneOf>
-        >(options)
-      );
-    default:
-      throw new Error(`Unexpected file type: ${type} is unacceptable.`);
-  }
 };
 
 const uploadRecords: (options: {
