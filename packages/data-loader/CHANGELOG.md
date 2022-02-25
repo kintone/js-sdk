@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.6.0...@kintone/data-loader@0.7.0) (2022-02-25)
+
+
+### Bug Fixes
+
+* **data-loader:** export csv correctly when Table value is empty array ([#1349](https://github.com/kintone/js-sdk/issues/1349)) ([0f1371e](https://github.com/kintone/js-sdk/commit/0f1371e54ecdf64b57dba5d3c9307e1b4a6923a1))
+
+
+### Features
+
+* **data-loader:** support User/Department/Group Selection Field ([#1345](https://github.com/kintone/js-sdk/issues/1345)) ([7ebe9c7](https://github.com/kintone/js-sdk/commit/7ebe9c7b1aa1852569f125736b3e646e4d9e79ad)), closes [#1332](https://github.com/kintone/js-sdk/issues/1332) [#1335](https://github.com/kintone/js-sdk/issues/1335)
+
+
+
+
+
 # [0.6.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.5.34...@kintone/data-loader@0.6.0) (2022-02-18)
 
 
