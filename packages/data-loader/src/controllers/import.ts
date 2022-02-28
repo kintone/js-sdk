@@ -8,7 +8,9 @@ export type Options = {
   filePath: string;
 };
 
-export const run = async (argv: RestAPIClientOptions & Options) => {
+export const run: (
+  argv: RestAPIClientOptions & Options
+) => Promise<void> = async (argv) => {
   const { app, filePath, ...restApiClientOptions } = argv;
 
   const apiClient = buildRestAPIClient(restApiClientOptions);

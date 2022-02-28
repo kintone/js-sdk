@@ -10,7 +10,10 @@ export const readFile: (
   return { content, format };
 };
 
-const readStream = async (stream: fs.ReadStream, encoding = "utf8") => {
+const readStream: (
+  stream: fs.ReadStream,
+  encoding?: string
+) => Promise<string> = async (stream, encoding = "utf8") => {
   stream.setEncoding(encoding);
   let content = "";
   for await (const chunk of stream) {
@@ -19,7 +22,7 @@ const readStream = async (stream: fs.ReadStream, encoding = "utf8") => {
   return content;
 };
 
-const extractFileFormat = (filepath: string) => {
+const extractFileFormat: (filepath: string) => string = (filepath) => {
   // TODO this cannot detect file format without extensions
   return path.extname(filepath).split(".").pop() || "";
 };
