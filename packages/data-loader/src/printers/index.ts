@@ -6,16 +6,16 @@ import { printAsCsv } from "./printAsCsv";
 export type ExportFileFormat = "json" | "csv";
 
 export const printRecords = async ({
+  apiClient,
   records,
   app,
   format,
-  apiClient,
   attachmentsDir,
 }: {
+  apiClient: KintoneRestAPIClient;
   records: DataLoaderRecord[];
   app: string;
   format?: ExportFileFormat;
-  apiClient: KintoneRestAPIClient;
   attachmentsDir?: string;
 }) => {
   switch (format) {

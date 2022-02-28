@@ -9,12 +9,12 @@ import { parseCsv } from "./parseCsv";
 import { Options } from "../controllers/import";
 
 export const parseRecords: (options: {
+  apiClient: KintoneRestAPIClient;
   source: string;
   format: string;
   app: string;
-  apiClient: KintoneRestAPIClient;
 }) => Promise<KintoneRecordForParameter[]> = async (options) => {
-  const { source, format, apiClient } = options;
+  const { apiClient, source, format } = options;
   // TODO: convert to DataLoaderRecords[]
   switch (format) {
     case "json":
