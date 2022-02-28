@@ -3,7 +3,7 @@ import { hasSubtable } from "./hasSubtable";
 import { FieldProperties } from "../../types/kintone";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 
-const supportedFieldTypes = [
+const supportedFieldTypes: Array<KintoneFormFieldProperty.OneOf["type"]> = [
   "RECORD_NUMBER",
   "SINGLE_LINE_TEXT",
   "RADIO_BUTTON",
@@ -66,3 +66,5 @@ export const buildHeaderFields = (fieldProperties: FieldProperties) => {
 
   return hasSubtable(fieldProperties) ? [PRIMARY_MARK].concat(fields) : fields;
 };
+
+const buildHeaderFieldsInSubtable = (fieldProperties: FieldProperties) => {};

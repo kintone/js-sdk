@@ -20,11 +20,11 @@ export const printRecords: (options: {
     }
     case "csv": {
       // TODO: pass the schema as arguments
-      printAsCsv(
+      printAsCsv({
         records,
-        await apiClient.app.getFormFields({ app }),
-        attachmentsDir
-      );
+        fieldsJson: await apiClient.app.getFormFields({ app }),
+        attachmentsDir,
+      });
       break;
     }
     default: {
