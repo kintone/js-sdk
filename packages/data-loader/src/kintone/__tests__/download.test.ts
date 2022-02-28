@@ -21,7 +21,7 @@ describe("export", () => {
   it("should not be failed", () => {
     apiClient.record.getAllRecords = jest.fn().mockResolvedValue([{}]);
     return expect(
-      downloadRecords(apiClient, { app: "1", attachmentsDir: "" })
+      downloadRecords({ apiClient, app: "1", attachmentsDir: "" })
     ).resolves.not.toThrow();
   });
 
@@ -32,7 +32,8 @@ describe("export", () => {
     const CONDITION = 'Customer like "foo"';
     const ORDER_BY = "Customer desc";
 
-    await downloadRecords(apiClient, {
+    await downloadRecords({
+      apiClient,
       app: APP_ID,
       attachmentsDir: "",
       condition: CONDITION,
@@ -51,7 +52,8 @@ describe("export", () => {
     const expectedRecords = caseCanGetRecords.expected;
 
     apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
-    const actual = await downloadRecords(apiClient, {
+    const actual = await downloadRecords({
+      apiClient,
       app: "1",
       attachmentsDir: "",
     });
@@ -70,7 +72,8 @@ describe("export", () => {
       .fn()
       .mockResolvedValue(kintoneRecords);
     apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
-    const actual = await downloadRecords(apiClient, {
+    const actual = await downloadRecords({
+      apiClient,
       app: "1",
       attachmentsDir: tempDir,
     });
@@ -99,7 +102,8 @@ describe("export", () => {
       .fn()
       .mockResolvedValue(kintoneRecords);
     apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
-    const actual = await downloadRecords(apiClient, {
+    const actual = await downloadRecords({
+      apiClient,
       app: "1",
       attachmentsDir: tempDir,
     });
@@ -120,7 +124,7 @@ describe("export", () => {
     const error = new Error("error for test");
     apiClient.record.getAllRecords = jest.fn().mockRejectedValueOnce(error);
     return expect(
-      downloadRecords(apiClient, { app: "1", attachmentsDir: "" })
+      downloadRecords({ apiClient, app: "1", attachmentsDir: "" })
     ).rejects.toThrow(error);
   });
 });
