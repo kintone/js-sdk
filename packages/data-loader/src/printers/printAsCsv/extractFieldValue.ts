@@ -1,13 +1,15 @@
-import { KintoneRecordField } from "@kintone/rest-api-client";
 import { encloseInDoubleQuotes } from "./encloseInDoubleQuotes";
 import { escapeDoubleQuotes } from "./escapeDoubleQuotes";
 import { LINE_BREAK } from "./constants";
 import { DataLoaderFields } from "../../types/data-loader";
 
-export const extractFieldValue = (
+export const extractFieldValue: (
   field: DataLoaderFields.OneOf,
   attachmentsDir?: string
-): string | Array<{ [fieldCode: string]: string }> => {
+) => string | Array<{ [fieldCode: string]: string }> = (
+  field,
+  attachmentsDir
+) => {
   switch (field.type) {
     case "RECORD_NUMBER":
     case "SINGLE_LINE_TEXT":

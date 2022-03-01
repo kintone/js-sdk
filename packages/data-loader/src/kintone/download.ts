@@ -7,16 +7,14 @@ import {
 } from "@kintone/rest-api-client";
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 
-export const downloadRecords = async (
-  apiClient: KintoneRestAPIClient,
-  options: {
-    app: string;
-    condition?: string;
-    orderBy?: string;
-    attachmentsDir?: string;
-  }
-): Promise<DataLoaderRecord[]> => {
-  const { app, condition, orderBy, attachmentsDir } = options;
+export const downloadRecords: (options: {
+  apiClient: KintoneRestAPIClient;
+  app: string;
+  condition?: string;
+  orderBy?: string;
+  attachmentsDir?: string;
+}) => Promise<DataLoaderRecord[]> = async (options) => {
+  const { apiClient, app, condition, orderBy, attachmentsDir } = options;
   const kintoneRecords = await apiClient.record.getAllRecords({
     app,
     condition,
