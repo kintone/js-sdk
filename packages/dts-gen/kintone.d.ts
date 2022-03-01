@@ -102,7 +102,7 @@ declare namespace kintone {
       function getFieldElement(fieldCode: string): HTMLElement | null;
       function set(record: any): void;
       function getSpaceElement(id: string): HTMLElement | null;
-      function setFieldShown(fieldCode: string, isShwon: boolean): void;
+      function setFieldShown(fieldCode: string, isShown: boolean): void;
       function setGroupFieldOpen(fieldCode: string, isOpen: boolean): void;
     }
   }
@@ -123,7 +123,7 @@ declare namespace kintone {
         function getFieldElement(fieldCode: string): HTMLElement | null;
         function set(record: any): void;
         function getSpaceElement(id: string): HTMLElement | null;
-        function setFieldShown(fieldCode: string, isShwon: boolean): void;
+        function setFieldShown(fieldCode: string, isShown: boolean): void;
         function setGroupFieldOpen(fieldCode: string, isOpen: boolean): void;
       }
     }
