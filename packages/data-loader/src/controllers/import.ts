@@ -1,118 +1,32 @@
-import {
-  KintoneFormFieldProperty,
-  KintoneRestAPIClient,
-} from "@kintone/rest-api-client";
-import { AppID } from "@kintone/rest-api-client/lib/client/types";
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import path from "path";
-import fs from "fs";
-import { parseJson } from "../parsers/parseJson";
-import { parseCsv } from "../parsers/parseCsv";
-import { KintoneRecordForParameter } from "../types";
-
-const CHUNK_LENGTH = 100;
+import { readFile } from "../utils/file";
+import { parseRecords } from "../parsers";
+import { uploadRecords } from "../kintone/upload";
 
 export type Options = {
-  app: AppID;
+  app: string;
   filePath: string;
 };
 
-type Reporter = (text: string) => void;
+export const run: (
+  argv: RestAPIClientOptions & Options
+) => Promise<void> = async (argv) => {
+  const { app, filePath, ...restApiClientOptions } = argv;
 
-export const run = async (argv: RestAPIClientOptions & Options) => {
-  const apiClient = buildRestAPIClient(argv);
-  const importRecords = buildImporter({ apiClient, reporter: console.log });
-  await importRecords(argv).catch(() => {
+  const apiClient = buildRestAPIClient(restApiClientOptions);
+
+  try {
+    const { content, format } = await readFile(filePath);
+    const records = await parseRecords({
+      apiClient,
+      source: content,
+      app,
+      format,
+    });
+    await uploadRecords({ apiClient, app, records });
+  } catch (e) {
+    console.log(e);
     // eslint-disable-next-line no-process-exit
     process.exit(1);
-  });
-};
-
-export const buildImporter = ({
-  apiClient,
-  reporter,
-}: {
-  apiClient: KintoneRestAPIClient;
-  reporter: Reporter;
-}) => {
-  const extractFileType = (filepath: string) => {
-    // TODO this cannot detect file type without extensions
-    return path.extname(filepath).split(".").pop() || "";
-  };
-
-  const readStream = async (stream: fs.ReadStream, encoding = "utf8") => {
-    stream.setEncoding(encoding);
-    let content = "";
-    for await (const chunk of stream) {
-      content += chunk;
-    }
-    return content;
-  };
-
-  const importRecords = async (options: Options) => {
-    const { app, filePath } = options;
-    const stream = fs.createReadStream(filePath);
-    const content = await readStream(stream);
-    const type = extractFileType(filePath);
-    const records = await parseSource({
-      type,
-      source: content,
-      options,
-    });
-    await addAllRecordsChunk(app, records);
-  };
-
-  const parseSource = async ({
-    type,
-    source,
-    options,
-  }: {
-    type: string;
-    source: string;
-    options: Options;
-  }) => {
-    switch (type) {
-      case "json":
-        return parseJson(source);
-      case "csv":
-        return parseCsv(
-          source,
-          await apiClient.app.getFormFields<
-            Record<string, KintoneFormFieldProperty.OneOf>
-          >(options)
-        );
-      default:
-        throw new Error(`Unexpected file type: ${type} is unacceptable.`);
-    }
-  };
-
-  const addAllRecordsChunk = async (
-    app: AppID,
-    allRecords: KintoneRecordForParameter[]
-  ) => {
-    let chunkStartIndex = 0;
-    while (chunkStartIndex < allRecords.length) {
-      const chunkNextIndex =
-        allRecords.length < chunkStartIndex + CHUNK_LENGTH
-          ? allRecords.length
-          : chunkStartIndex + CHUNK_LENGTH;
-      try {
-        await apiClient.record.addRecords({
-          app,
-          records: allRecords.slice(chunkStartIndex, chunkNextIndex),
-        });
-        reporter(
-          `SUCCESS: records[${chunkStartIndex} - ${chunkNextIndex - 1}]`
-        );
-      } catch (e) {
-        reporter(
-          `FAILED: records[${chunkStartIndex} - ${allRecords.length - 1}]`
-        );
-        throw e;
-      }
-      chunkStartIndex = chunkNextIndex;
-    }
-  };
-
-  return importRecords;
+  }
 };

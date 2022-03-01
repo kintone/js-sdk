@@ -63,16 +63,35 @@ type TSConfig = {
   references: Array<{ path: string }>;
 };
 
+const isTSConfig = (value: unknown): value is TSConfig => {
+  if (value == null) {
+    return false;
+  }
+  if (typeof value !== "object") {
+    return false;
+  }
+  if (!("references" in value)) {
+    return false;
+  }
+  const references = (value as { references: unknown }).references;
+  if (!Array.isArray(references)) {
+    return false;
+  }
+  return references.every((reference) => typeof reference.path === "string");
+};
+
 export const getReferencePaths = (packagePath: string): string[] => {
   const tsconfig = commentJSON.parse(
     fs.readFileSync(path.resolve(packagePath, "tsconfig.json")).toString()
   );
-  if (typeof tsconfig.references === "undefined") {
-    return [];
+
+  if (isTSConfig(tsconfig)) {
+    return tsconfig.references.map((reference) =>
+      path.resolve(packagePath, reference.path)
+    );
   }
-  return tsconfig.references.map((reference: TSConfig["references"][number]) =>
-    path.resolve(packagePath, reference.path)
-  );
+
+  return [];
 };
 
 export const isIgnorePackage = (packageName: string): boolean =>

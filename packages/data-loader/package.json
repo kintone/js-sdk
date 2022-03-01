@@ -1,6 +1,6 @@
 {
   "name": "@kintone/data-loader",
-  "version": "0.5.34",
+  "version": "0.7.0",
   "publishConfig": {
     "access": "public"
   },

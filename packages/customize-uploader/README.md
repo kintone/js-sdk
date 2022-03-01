@@ -106,7 +106,7 @@ If you use OAuth access token, you need to grant scopes corresponding to the com
 - To import a customize setting by using `import` of subcommand:
   `k:app_settings:read` and `k:file:read`
 
-For the details; Please see [How to add OAuth clients](https://developer.kintone.io/hc/en-us/articles/360001562353)
+For the details; Please see [How to add OAuth clients](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/)
 
 ## Example
 This is an example of `customize-manifest.json` .

@@ -191,6 +191,33 @@
         }
       },
       "defaultValue": []
+    },
+    "userSelect": {
+      "type": "USER_SELECT",
+      "code": "userSelect",
+      "label": "userSelect",
+      "noLabel": false,
+      "required": false,
+      "entities": [],
+      "defaultValue": []
+    },
+    "organizationSelect": {
+      "type": "ORGANIZATION_SELECT",
+      "code": "organizationSelect",
+      "label": "organizationSelect",
+      "noLabel": false,
+      "required": false,
+      "entities": [],
+      "defaultValue": []
+    },
+    "groupSelect": {
+      "type": "GROUP_SELECT",
+      "code": "groupSelect",
+      "label": "groupSelect",
+      "noLabel": false,
+      "required": false,
+      "entities": [],
+      "defaultValue": []
     }
   }
 }
