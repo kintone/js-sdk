@@ -1,4 +1,4 @@
-import { DataLoaderRecord } from "../../../types/data-loader";
+import { DataLoaderRecordForResponse } from "../../../types/data-loader";
 import { KintoneRecordForResponse } from "../../../types/kintone";
 
 export const input: KintoneRecordForResponse[] = [
@@ -24,4 +24,4 @@ export const input: KintoneRecordForResponse[] = [
   },
 ];
 
-export const expected: DataLoaderRecord[] = input;
+export const expected: DataLoaderRecordForResponse[] = input;
