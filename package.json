@@ -38,7 +38,7 @@
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
-    "@cybozu/eslint-config": "^16.0.1",
+    "@cybozu/eslint-config": "^17.0.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^13.13.52",
     "comment-json": "^4.2.2",

@@ -9,7 +9,7 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@cybozu/eslint-config": "^16.0.1",
+    "@cybozu/eslint-config": "^17.0.0",
     "@kintone/plugin-packer": "^5.0.35",
     "eslint": "^8.8.0"
   }
