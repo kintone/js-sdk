@@ -1,6 +1,7 @@
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
-import { CsvRows, FieldProperties, FieldsJson } from "../../types";
+import { CsvRows, FieldProperties, FieldsJson } from "../../types/kintone";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
+import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
 
 type InSubtableFieldProperty = Record<
   string,
@@ -9,7 +10,7 @@ type InSubtableFieldProperty = Record<
 
 type InSubtableFieldValue = Record<
   string,
-  { value: string | string[] | { code: string } }
+  { value: string | string[] | { code: string } | Array<{ code: string }> }
 >;
 
 export const extractSubtableFieldsValue = ({
@@ -48,22 +49,24 @@ const buildSubtableValue = (
     .map((row) => {
       return {
         id: row[subtableFieldProperty.code],
-        value: Object.values(
-          subtableFieldProperty.fields
-        ).reduce<InSubtableFieldValue>(
-          (inSubtableFieldValue, inSubtableFieldProperty) => {
-            return {
-              ...inSubtableFieldValue,
-              [inSubtableFieldProperty.code]: {
-                value: convertToKintoneRecordFormatValue({
-                  fieldType: inSubtableFieldProperty.type,
-                  value: row[inSubtableFieldProperty.code],
-                }),
-              },
-            };
-          },
-          {}
-        ),
+        value: Object.values(subtableFieldProperty.fields)
+          .filter((inSubtableFieldProperty) =>
+            isImportSupportedFieldType(inSubtableFieldProperty.type)
+          )
+          .reduce<InSubtableFieldValue>(
+            (inSubtableFieldValue, inSubtableFieldProperty) => {
+              return {
+                ...inSubtableFieldValue,
+                [inSubtableFieldProperty.code]: {
+                  value: convertToKintoneRecordFormatValue({
+                    fieldType: inSubtableFieldProperty.type,
+                    value: row[inSubtableFieldProperty.code],
+                  }),
+                },
+              };
+            },
+            {}
+          ),
       };
     });
 };

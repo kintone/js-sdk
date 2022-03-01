@@ -8,11 +8,8 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
 
-- Export attachments of fields in table field
-- Import attachemnts
+- Import attachments
 - Update records when importing
-- When using CSV format, the following fields are not supported
-  - User selection, Group selection, Department selection
 
 We plan to support them in the future release.
 
@@ -55,7 +52,7 @@ import \
 
 #### Options
 
-Some options use enviroment variables starting `KINTONE_` as default values.
+Some options use environment variables starting `KINTONE_` as default values.
 
 ```
 Options:
@@ -97,7 +94,7 @@ export \
 
 #### Options
 
-Some options use enviroment variables starting `KINTONE_` as default values.
+Some options use environment variables starting `KINTONE_` as default values.
 
 ```
 Options:
@@ -117,7 +114,7 @@ Options:
       --app                  The ID of the app               [string] [required]
       --guest-space-id       The ID of guest space
                                       [string] [default: KINTONE_GUEST_SPACE_ID]
-      --attachment-dir       Attachment file directory                  [string]
+      --attachments-dir      Attachment file directory                  [string]
       --format               Output format. "json" or "csv"
                                       [choices: "json", "csv"] [default: "json"]
   -c, --condition            The query string                           [string]
@@ -125,6 +122,14 @@ Options:
       --pfx-file-path        The path to client certificate file        [string]
       --pfx-file-password    The password of client certificate file    [string]
 ```
+
+#### Download attachment files
+
+If set `--attachments-dir` option, attachment files will be downloaded to local directory.
+
+- the file path is `<attachmentsDir>/<fieldCode>-<recordId>/<filename>`
+  - as for attachments in Table, the file path is `<attachmentsDir>/<fieldCode>-<recordId>-<tableRowIndex>/<filename>`
+- if same name files exist in same Attachment field, renamed to `<filename> (<index>).<ext>`
 
 ## Supported file formats
 
@@ -161,6 +166,39 @@ The format of JSON file is the same as Get/Add/Update records REST API.
 ]
 ```
 
+If set `--attachments-dir` option, the format of Attachment field will be changed to below.  
+(Attachment field in Table follows the same rule.)
+
+```json
+[
+  {
+     "$id": {
+      "type": "__ID__",
+      "value": "1"
+    },
+    "fileFieldCode": {
+      "type": "FILE",
+      "value": [
+        {
+          "contentType": "text/plain",
+          "fileKey": "test-file-key",
+          "name": "test.txt",
+          "localFilePath": "file-1/test.txt"
+        },
+        {
+          "contentType": "text/plain",
+          "fileKey": "test-file-key",
+          "name": "test.txt",
+          "localFilePath": "file-1/test (1).txt"
+        }
+      ]
+    },
+    ...
+  }
+  ...
+]
+```
+
 ### CSV format
 
 The first row (header row) lists the **field codes** of each field.  
@@ -187,12 +225,22 @@ text"
 
 #### Check box, Multi-choice
 
-Specify multiple values divided by line break.
+Specify multiple values divided by line break (\n).
 
 ```csv
 "CheckboxField"
 "value1
 value2"
+```
+
+#### User Selection, Department Selection, Group Selection
+
+If multiple value is selected, separated with line break (\n). (equivalent to `value.code` in REST API).
+
+```csv
+"userSelectionField","departmentSelectionField","groupSelectionField"
+"John
+Bob","Development Div","Administrators"
 ```
 
 #### Created by, Updated by
@@ -202,6 +250,30 @@ Specify the user's login name (equivalent to `value.code` in REST API).
 ```csv
 "Created_by"
 "John"
+```
+
+#### File
+
+Files in same Attachment field (in same Table row) are separated with line break (\n).
+
+```csv
+"file"
+"file-9/test.txt
+file-9/test (1).txt"
+```
+
+```csv
+"fileInTable"
+"fileInTable-1-0/test.txt
+fileInTable-1-0/test (1).txt"
+```
+
+If NOT set `--attachments-dir` option, only the file name will be output.
+
+```csv
+"fileFieldCode"
+"test.txt
+test.txt"
 ```
 
 ## LICENSE

@@ -1,6 +1,6 @@
 {
   "name": "@kintone/profile-loader",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "private": true,
   "publishConfig": {
     "access": "public"

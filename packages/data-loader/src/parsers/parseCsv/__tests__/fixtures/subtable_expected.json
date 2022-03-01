@@ -50,6 +50,30 @@
             },
             "subTableCheckbox": {
               "value": ["st_sample1"]
+            },
+            "userSelect": {
+              "value": [
+                {
+                  "code": "sato"
+                },
+                {
+                  "code": "tanaka"
+                }
+              ]
+            },
+            "groupSelect": {
+              "value": [
+                {
+                  "code": "Administrators"
+                }
+              ]
+            },
+            "organizationSelect": {
+              "value": [
+                {
+                  "code": "Development Div"
+                }
+              ]
             }
           }
         },
@@ -61,6 +85,30 @@
             },
             "subTableCheckbox": {
               "value": ["st_sample2"]
+            },
+            "userSelect": {
+              "value": [
+                {
+                  "code": "sato"
+                },
+                {
+                  "code": "tanaka"
+                }
+              ]
+            },
+            "groupSelect": {
+              "value": [
+                {
+                  "code": "Administrators"
+                }
+              ]
+            },
+            "organizationSelect": {
+              "value": [
+                {
+                  "code": "Development Div"
+                }
+              ]
             }
           }
         }
@@ -118,6 +166,30 @@
             },
             "subTableCheckbox": {
               "value": ["st_sample1"]
+            },
+            "userSelect": {
+              "value": [
+                {
+                  "code": "sato"
+                },
+                {
+                  "code": "tanaka"
+                }
+              ]
+            },
+            "groupSelect": {
+              "value": [
+                {
+                  "code": "Administrators"
+                }
+              ]
+            },
+            "organizationSelect": {
+              "value": [
+                {
+                  "code": "Development Div"
+                }
+              ]
             }
           }
         },
@@ -129,6 +201,30 @@
             },
             "subTableCheckbox": {
               "value": ["st_sample2"]
+            },
+            "userSelect": {
+              "value": [
+                {
+                  "code": "sato"
+                },
+                {
+                  "code": "tanaka"
+                }
+              ]
+            },
+            "groupSelect": {
+              "value": [
+                {
+                  "code": "Administrators"
+                }
+              ]
+            },
+            "organizationSelect": {
+              "value": [
+                {
+                  "code": "Development Div"
+                }
+              ]
             }
           }
         }
