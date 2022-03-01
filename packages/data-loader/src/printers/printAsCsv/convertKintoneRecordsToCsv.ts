@@ -16,17 +16,17 @@ export const convertRecordsToCsv: (options: {
   attachmentsDir?: string;
 }) => string = (options) => {
   const { records, fieldProperties, attachmentsDir } = options;
+
   const headerFields = buildHeaderFields(fieldProperties);
+  const headerRow = headerFields
+    .map((fieldCode) => encloseInDoubleQuotes(fieldCode))
+    .join(SEPARATOR);
   const rows = buildRows({
     records,
     headerFields,
     fieldProperties,
     attachmentsDir,
   });
-
-  const headerRow = headerFields
-    .map((fieldCode) => encloseInDoubleQuotes(fieldCode))
-    .join(SEPARATOR);
 
   return [headerRow, ...rows].join(LINE_BREAK) + LINE_BREAK;
 };
@@ -87,10 +87,10 @@ const buildRecordObject: (options: {
   attachmentsDir?: string;
 }) => RowObject = (options) => {
   const { record, attachmentsDir } = options;
-  return Object.keys(record).reduce<RowObject>((ret, fieldCode) => {
+  return Object.entries(record).reduce<RowObject>((row, [fieldCode, field]) => {
     return {
-      ...ret,
-      [fieldCode]: extractFieldValue(record[fieldCode], attachmentsDir),
+      ...row,
+      [fieldCode]: extractFieldValue(field, attachmentsDir),
     };
   }, {});
 };
@@ -100,15 +100,18 @@ const buildPrimaryRowObject: (options: {
   fieldProperties: FieldProperties;
 }) => RowObject = (options) => {
   const { recordObject, fieldProperties } = options;
-  return Object.keys(recordObject).reduce<RowObject>((ret, fieldCode) => {
-    return {
-      ...ret,
-      ...(fieldProperties[fieldCode] &&
-      fieldProperties[fieldCode].type !== "SUBTABLE"
-        ? { [fieldCode]: recordObject[fieldCode] }
-        : {}),
-    };
-  }, {});
+  return Object.entries(recordObject).reduce<RowObject>(
+    (row, [fieldCode, field]) => {
+      return {
+        ...row,
+        ...(fieldProperties[fieldCode] &&
+        fieldProperties[fieldCode].type !== "SUBTABLE"
+          ? { [fieldCode]: field }
+          : {}),
+      };
+    },
+    {}
+  );
 };
 
 const buildSubTableRowObjects: (options: {
@@ -118,21 +121,22 @@ const buildSubTableRowObjects: (options: {
 }) => RowObject[] = (options) => {
   const { recordObject, subtableFieldCodes, primaryRowObject } = options;
   const rowObjects = subtableFieldCodes.reduce<RowObject[]>(
-    (ret, subtableFieldCode) => {
+    (row, subtableFieldCode) => {
       return recordObject[subtableFieldCode].length === 0
         ? [primaryRowObject]
-        : ret.concat(
+        : row.concat(
             recordObject[subtableFieldCode].map(
-              (field: { [k: string]: string }) => ({
+              (subtableRow: { [k: string]: string }) => ({
                 ...primaryRowObject,
-                ...Object.keys(field).reduce<Record<string, string>>(
-                  (rowObject, fieldCode) => {
+                ...Object.entries(subtableRow).reduce<Record<string, string>>(
+                  (rowObject, [fieldCodeInSubtable, fieldInSubtable]) => {
                     return {
                       ...rowObject,
                       // NOTE: If fieldCode is `id`, use field code of subtable itself
                       // to avoid conflicts between each subtable.
-                      [fieldCode === "id" ? subtableFieldCode : fieldCode]:
-                        field[fieldCode],
+                      [fieldCodeInSubtable === "id"
+                        ? subtableFieldCode
+                        : fieldCodeInSubtable]: fieldInSubtable,
                     };
                   },
                   {}
