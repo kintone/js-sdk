@@ -1,2 +1,3 @@
-export const encloseInDoubleQuotes = (fieldValue: string) =>
-  `"${fieldValue ? fieldValue : ""}"`;
+export const encloseInDoubleQuotes: (fieldValue: string) => string = (
+  fieldValue
+) => `"${fieldValue ? fieldValue : ""}"`;

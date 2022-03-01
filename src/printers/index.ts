@@ -5,19 +5,14 @@ import { printAsCsv } from "./printAsCsv";
 
 export type ExportFileFormat = "json" | "csv";
 
-export const printRecords = async ({
-  records,
-  app,
-  format,
-  apiClient,
-  attachmentsDir,
-}: {
+export const printRecords: (options: {
+  apiClient: KintoneRestAPIClient;
   records: DataLoaderRecord[];
   app: string;
   format?: ExportFileFormat;
-  apiClient: KintoneRestAPIClient;
   attachmentsDir?: string;
-}) => {
+}) => void = async (options) => {
+  const { apiClient, records, app, format, attachmentsDir } = options;
   switch (format) {
     case "json": {
       printAsJson(records);
@@ -25,11 +20,11 @@ export const printRecords = async ({
     }
     case "csv": {
       // TODO: pass the schema as arguments
-      printAsCsv(
+      printAsCsv({
         records,
-        await apiClient.app.getFormFields({ app }),
-        attachmentsDir
-      );
+        fieldsJson: await apiClient.app.getFormFields({ app }),
+        attachmentsDir,
+      });
       break;
     }
     default: {

@@ -10,7 +10,9 @@ export type Options = {
   orderBy?: string;
 };
 
-export const run = async (argv: RestAPIClientOptions & Options) => {
+export const run: (
+  argv: RestAPIClientOptions & Options
+) => Promise<void> = async (argv) => {
   const {
     app,
     format,
@@ -20,17 +22,18 @@ export const run = async (argv: RestAPIClientOptions & Options) => {
     ...restApiClientOptions
   } = argv;
   const apiClient = buildRestAPIClient(restApiClientOptions);
-  const records = await downloadRecords(apiClient, {
+  const records = await downloadRecords({
+    apiClient,
     app,
     condition,
     orderBy,
     attachmentsDir,
   });
   await printRecords({
+    apiClient,
     records,
     app,
     format,
-    apiClient,
     attachmentsDir,
   });
 };
