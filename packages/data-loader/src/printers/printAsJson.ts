@@ -1,7 +1,5 @@
-import { KintoneRecordField } from "@kintone/rest-api-client";
+import { DataLoaderRecord } from "../types/data-loader";
 
-export const printAsJson = (
-  records: Array<{ [k: string]: KintoneRecordField.OneOf }>
-) => {
+export const printAsJson: (records: DataLoaderRecord[]) => void = (records) => {
   console.log(JSON.stringify(records, null, 2));
 };

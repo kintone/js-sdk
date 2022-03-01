@@ -13,5 +13,8 @@ export const isImportSupportedFieldType = (fieldType: string) => {
     "MODIFIER",
     "MULTI_SELECT",
     "CHECK_BOX",
+    "USER_SELECT",
+    "ORGANIZATION_SELECT",
+    "GROUP_SELECT",
   ].includes(fieldType);
 };

@@ -10,7 +10,7 @@ import {
   FieldProperties,
   FieldsJson,
   KintoneRecordForParameter,
-} from "../../types";
+} from "../../types/kintone";
 
 export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
   const rows: CsvRows = csvParse(csv, {

@@ -26,6 +26,14 @@ export const convertToKintoneRecordFormatValue = ({
     case "MULTI_SELECT":
     case "CHECK_BOX":
       return value ? value.split(LINE_BREAK) : [];
+    case "USER_SELECT":
+    case "ORGANIZATION_SELECT":
+    case "GROUP_SELECT":
+      return value
+        ? value.split(LINE_BREAK).map((code) => ({
+            code,
+          }))
+        : [];
     default:
       return value;
   }

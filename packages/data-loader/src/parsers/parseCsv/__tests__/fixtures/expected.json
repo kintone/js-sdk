@@ -39,6 +39,30 @@
       "value": {
         "code": "username"
       }
+    },
+    "userSelect": {
+      "value": [
+        {
+          "code": "sato"
+        },
+        {
+          "code": "tanaka"
+        }
+      ]
+    },
+    "groupSelect": {
+      "value": [
+        {
+          "code": "Administrators"
+        }
+      ]
+    },
+    "organizationSelect": {
+      "value": [
+        {
+          "code": "Development Div"
+        }
+      ]
     }
   }
 ]

@@ -4,7 +4,7 @@ import {
   CsvRows,
   FieldProperties,
   KintoneRecordForParameter,
-} from "../../types";
+} from "../../types/kintone";
 
 export const convertToKintoneRecordsForParameter = ({
   rows,
