@@ -48,7 +48,9 @@ export const buildBaseUrl = (baseUrl?: string) => {
     return baseUrl;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { host, protocol } = location!;
+
   return `${protocol}//${host}`;
 };
 
