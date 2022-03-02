@@ -10,7 +10,14 @@ type InSubtableFieldProperty = Record<
 
 type InSubtableFieldValue = Record<
   string,
-  { value: string | string[] | { code: string } | Array<{ code: string }> }
+  {
+    value:
+      | string
+      | string[]
+      | { code: string }
+      | Array<{ code: string }>
+      | Array<{ localFilePath: string }>;
+  }
 >;
 
 export const extractSubtableFieldsValue = ({

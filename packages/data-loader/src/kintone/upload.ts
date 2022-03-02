@@ -15,10 +15,11 @@ const CHUNK_LENGTH = 100;
 
 export const uploadRecords: (options: {
   apiClient: KintoneRestAPIClient;
+  attachmentsDir?: string;
   app: string;
   records: DataLoaderRecordForParameter[];
 }) => Promise<void> = async (options) => {
-  const { apiClient, app, records } = options;
+  const { apiClient, attachmentsDir, app, records } = options;
 
   const { properties } = await apiClient.app.getFormFields<
     Record<string, KintoneFormFieldProperty.OneOf>
@@ -31,17 +32,17 @@ export const uploadRecords: (options: {
         ? records.length
         : chunkStartIndex + CHUNK_LENGTH;
     try {
-      // TODO: convert DataLoaderRecords to KintoneRecordForParameter
       const kintoneRecords: KintoneRecordForParameter[] = await recordsReducer(
         records,
-        (recordId, fieldCode, field) =>
-          fieldProcessor(recordId, fieldCode, field, properties, {
+        (fieldCode, field) =>
+          fieldProcessor(fieldCode, field, properties, {
             apiClient,
+            attachmentsDir,
           })
       );
       await apiClient.record.addRecords({
         app,
-        records: records.slice(chunkStartIndex, chunkNextIndex),
+        records: kintoneRecords.slice(chunkStartIndex, chunkNextIndex),
       });
       console.log(
         `SUCCESS: records[${chunkStartIndex} - ${chunkNextIndex - 1}]`
@@ -59,15 +60,14 @@ export const uploadRecords: (options: {
 const recordsReducer: (
   records: DataLoaderRecordForParameter[],
   task: (
-    recordId: string,
     fieldCode: string,
-    field: KintoneRecordField.OneOf
+    field: DataLoaderRecordForParameter[string]
   ) => Promise<KintoneRecordForParameter[string]>
 ) => Promise<KintoneRecordForParameter[]> = async (kintoneRecords, task) => {
   const records: KintoneRecordForParameter[] = [];
   for (const kintoneRecord of kintoneRecords) {
     const record = await recordReducer(kintoneRecord, (fieldCode, field) =>
-      task(kintoneRecord.$id.value as string, fieldCode, field)
+      task(fieldCode, field)
     );
     records.push(record);
   }
@@ -78,7 +78,7 @@ const recordReducer: (
   record: DataLoaderRecordForParameter,
   task: (
     fieldCode: string,
-    field: KintoneRecordField.OneOf
+    field: DataLoaderRecordForParameter[string]
   ) => Promise<KintoneRecordForParameter[string]>
 ) => Promise<KintoneRecordForParameter> = async (record, task) => {
   const newRecord: KintoneRecordForParameter = {};
@@ -89,26 +89,27 @@ const recordReducer: (
 };
 
 const fieldProcessor: (
-  recordId: string,
   fieldCode: string,
   field: DataLoaderRecordForParameter[string],
   properties: Record<string, KintoneFormFieldProperty.OneOf>,
   options: { apiClient: KintoneRestAPIClient; attachmentsDir?: string }
 ) => Promise<KintoneRecordForParameter[string]> = async (
-  recordId,
   fieldCode,
   field,
+  properties,
   options
 ) => {
   const { attachmentsDir, apiClient } = options;
 
   // TODO: filter fields
 
-  switch (field.type) {
+  switch (properties[fieldCode].type) {
     case "FILE":
       if (attachmentsDir) {
         const uploadedList: Array<{ fileKey: string }> = [];
-        for (const fileInfo of field.value) {
+        for (const fileInfo of field.value as Array<{
+          localFilePath: string;
+        }>) {
           if (!fileInfo.localFilePath) {
             throw new Error("local file path not defined.");
           }

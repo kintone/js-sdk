@@ -16,5 +16,6 @@ export const isImportSupportedFieldType = (fieldType: string) => {
     "USER_SELECT",
     "ORGANIZATION_SELECT",
     "GROUP_SELECT",
+    "FILE",
   ].includes(fieldType);
 };
