@@ -35,7 +35,7 @@
     "@types/node-rsa": "^1.1.1",
     "@types/rimraf": "^3.0.2",
     "cross-env": "^7.0.3",
-    "ts-node": "^10.5.0"
+    "ts-node": "^10.6.0"
   },
   "files": [
     "bin",
