@@ -40,13 +40,29 @@ export const platformDeps: PlatformDeps = {
 };
 
 export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
-  platformDeps.readFileFromPath = deps.readFileFromPath!;
-  platformDeps.getRequestToken = deps.getRequestToken!;
-  platformDeps.getDefaultAuth = deps.getDefaultAuth!;
-  platformDeps.buildPlatformDependentConfig =
-    deps.buildPlatformDependentConfig!;
-  platformDeps.buildHeaders = deps.buildHeaders!;
-  platformDeps.buildFormDataValue = deps.buildFormDataValue!;
-  platformDeps.buildBaseUrl = deps.buildBaseUrl!;
-  platformDeps.getVersion = deps.getVersion!;
+  if (deps.readFileFromPath) {
+    platformDeps.readFileFromPath = deps.readFileFromPath;
+  }
+  if (deps.getRequestToken) {
+    platformDeps.getRequestToken = deps.getRequestToken;
+  }
+  if (deps.getDefaultAuth) {
+    platformDeps.getDefaultAuth = deps.getDefaultAuth;
+  }
+  if (deps.buildPlatformDependentConfig) {
+    platformDeps.buildPlatformDependentConfig =
+      deps.buildPlatformDependentConfig;
+  }
+  if (deps.buildHeaders) {
+    platformDeps.buildHeaders = deps.buildHeaders;
+  }
+  if (deps.buildFormDataValue) {
+    platformDeps.buildFormDataValue = deps.buildFormDataValue;
+  }
+  if (deps.buildBaseUrl) {
+    platformDeps.buildBaseUrl = deps.buildBaseUrl;
+  }
+  if (deps.getVersion) {
+    platformDeps.getVersion = deps.getVersion;
+  }
 };
