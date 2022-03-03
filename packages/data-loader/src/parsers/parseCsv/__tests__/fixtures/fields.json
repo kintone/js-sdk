@@ -218,6 +218,15 @@
       "required": false,
       "entities": [],
       "defaultValue": []
+    },
+    "file": {
+      "type": "FILE",
+      "code": "file",
+      "label": "file",
+      "noLabel": false,
+      "required": false,
+      "entities": [],
+      "defaultValue": []
     }
   }
 }
