@@ -23,7 +23,7 @@ export const uploadRecords: (options: {
 
   const { properties } = await apiClient.app.getFormFields<
     Record<string, KintoneFormFieldProperty.OneOf>
-  >(options);
+  >({ app });
 
   let chunkStartIndex = 0;
   while (chunkStartIndex < records.length) {
