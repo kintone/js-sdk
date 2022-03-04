@@ -225,8 +225,7 @@
       "label": "file",
       "noLabel": false,
       "required": false,
-      "entities": [],
-      "defaultValue": []
+      "thumbnailSize": "150"
     }
   }
 }
