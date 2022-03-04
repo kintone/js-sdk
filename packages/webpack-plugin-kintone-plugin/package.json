@@ -39,13 +39,13 @@
   "devDependencies": {
     "@types/adm-zip": "^0.4.34",
     "@types/chokidar": "^1.7.5",
-    "@types/lodash": "^4.14.178",
+    "@types/lodash": "^4.14.179",
     "@types/mkdirp": "^1.0.2",
     "@types/rimraf": "^3.0.2",
     "adm-zip": "^0.5.9",
     "rimraf": "^3.0.2",
-    "ts-node": "^10.5.0",
-    "webpack": "^5.68.0",
+    "ts-node": "^10.6.0",
+    "webpack": "^5.69.1",
     "webpack-cli": "4.9.2"
   },
   "peerDependencies": {

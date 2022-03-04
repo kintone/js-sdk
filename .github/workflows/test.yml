@@ -20,14 +20,14 @@ jobs:
         os: [ubuntu-latest, windows-latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     - name: yarn install, and yarn test
       run: |
-        yarn install
+        yarn install --network-timeout 900000
         yarn build
         yarn test:ci
       env:
