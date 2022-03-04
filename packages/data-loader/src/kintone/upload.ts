@@ -1,14 +1,9 @@
 import { KintoneRecordForParameter } from "../types/kintone";
 import {
   KintoneFormFieldProperty,
-  KintoneRecordField,
   KintoneRestAPIClient,
 } from "@kintone/rest-api-client";
-import {
-  DataLoaderFields,
-  DataLoaderRecordForParameter,
-  DataLoaderRecordForResponse,
-} from "../types/data-loader";
+import { DataLoaderRecordForParameter } from "../types/data-loader";
 import path from "path";
 
 const CHUNK_LENGTH = 100;
@@ -27,10 +22,10 @@ export const uploadRecords: (options: {
 
   let chunkStartIndex = 0;
   while (chunkStartIndex < records.length) {
-    const chunkNextIndex =
-      records.length < chunkStartIndex + CHUNK_LENGTH
-        ? records.length
-        : chunkStartIndex + CHUNK_LENGTH;
+    const chunkNextIndex = Math.min(
+      records.length,
+      chunkStartIndex + CHUNK_LENGTH
+    );
     try {
       const kintoneRecords: KintoneRecordForParameter[] = await recordsReducer(
         records,
@@ -123,7 +118,6 @@ const fieldProcessor: (
           });
         }
         return {
-          type: "FILE",
           value: uploadedList,
         };
       }
