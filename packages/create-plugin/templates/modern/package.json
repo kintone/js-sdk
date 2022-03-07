@@ -11,16 +11,16 @@
   },
   "dependencies": {
     "core-js": "^3.21.1",
-    "@kintone/rest-api-client": "^2.0.35"
+    "@kintone/rest-api-client": "^2.0.36"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@cybozu/eslint-config": "^17.0.0",
-    "@kintone/dts-gen": "^5.0.20",
-    "@kintone/webpack-plugin-kintone-plugin": "^5.0.35",
+    "@cybozu/eslint-config": "^17.0.1",
+    "@kintone/dts-gen": "^5.0.21",
+    "@kintone/webpack-plugin-kintone-plugin": "^5.0.36",
     "babel-loader": "^8.2.3",
     "cross-env": "^7.0.3",
     "eslint": "^8.10.0",
