@@ -83,9 +83,9 @@ Options:
 
 If records contains Attachment field, `--attachments-dir` option is required.
 
-- the local filepath in record is treated as relative path from `--attachments-dir`
+- the local file path in record is treated as relative path from `--attachments-dir`
   - upload the file there
-- filename on kintone is same as local
+- file name on kintone is same as local
 
 ### export
 
@@ -232,7 +232,6 @@ If set `--attachments-dir` option, the format of Attachment field will be change
   ...
 ]
 ```
-
 
 ### CSV format
 
