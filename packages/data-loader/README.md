@@ -8,7 +8,7 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
 
-- Import attachments
+- Import Attachment field inside Table
 - Update records when importing
 
 We plan to support them in the future release.
@@ -72,11 +72,20 @@ Options:
       --app                  The ID of the app               [string] [required]
       --guest-space-id       The ID of guest space
                                       [string] [default: KINTONE_GUEST_SPACE_ID]
+      --attachments-dir      Attachment file directory                  [string]
       --file-path            The path to source file. ".json" or ".csv"
                                                              [string] [required]
       --pfx-file-path        The path to client certificate file        [string]
       --pfx-file-password    The password of client certificate file    [string]
 ```
+
+#### Import Attachment field
+
+If records contains Attachment field, `--attachments-dir` option is required.
+
+- the local filepath in record is treated as relative path from `--attachments-dir`
+  - upload the file there
+- filename on kintone is same as local
 
 ### export
 
@@ -166,8 +175,12 @@ The format of JSON file is the same as Get/Add/Update records REST API.
 ]
 ```
 
+#### Attachment field
+
 If set `--attachments-dir` option, the format of Attachment field will be changed to below.  
 (Attachment field in Table follows the same rule.)
+
+##### Export
 
 ```json
 [
@@ -198,6 +211,28 @@ If set `--attachments-dir` option, the format of Attachment field will be change
   ...
 ]
 ```
+
+##### Import
+
+```json
+[
+  {
+    "fileFieldCode": {
+      "value": [
+        {
+          "localFilePath": "file-1/test.txt"
+        },
+        {
+          "localFilePath": "file-1/test (1).txt"
+        }
+      ]
+    },
+    ...
+  }
+  ...
+]
+```
+
 
 ### CSV format
 
@@ -252,7 +287,7 @@ Specify the user's login name (equivalent to `value.code` in REST API).
 "John"
 ```
 
-#### File
+#### Attachment
 
 Files in same Attachment field (in same Table row) are separated with line break (\n).
 
@@ -268,7 +303,7 @@ file-9/test (1).txt"
 fileInTable-1-0/test (1).txt"
 ```
 
-If NOT set `--attachments-dir` option, only the file name will be output.
+When export, if NOT set `--attachments-dir` option, only the file name will be output.
 
 ```csv
 "fileFieldCode"
