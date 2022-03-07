@@ -49,6 +49,25 @@ describe("import", () => {
     });
   });
 
+  it("should throw error when attachmentsDir is NOT given", () => {
+    const getFormFieldsMockFn = jest
+      .fn()
+      .mockResolvedValue({ properties: canUploadFiles.properties });
+    apiClient.app.getFormFields = getFormFieldsMockFn;
+
+    const APP_ID = "1";
+    const INPUT_RECORDS = canUploadFiles.input;
+
+    return expect(
+      uploadRecords({
+        apiClient,
+        attachmentsDir: "",
+        app: APP_ID,
+        records: INPUT_RECORDS,
+      })
+    ).rejects.toThrow(new Error("--attachments-dir option is required."));
+  });
+
   it("should upload files correctly when attachmentsDir is given", async () => {
     const getFormFieldsMockFn = jest
       .fn()
