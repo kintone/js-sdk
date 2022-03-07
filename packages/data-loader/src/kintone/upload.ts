@@ -99,29 +99,30 @@ const fieldProcessor: (
   // TODO: filter fields
 
   switch (properties[fieldCode].type) {
-    case "FILE":
-      if (attachmentsDir) {
-        const uploadedList: Array<{ fileKey: string }> = [];
-        for (const fileInfo of field.value as Array<{
-          localFilePath: string;
-        }>) {
-          if (!fileInfo.localFilePath) {
-            throw new Error("local file path not defined.");
-          }
-          const { fileKey } = await apiClient.file.uploadFile({
-            file: {
-              path: path.join(attachmentsDir, fileInfo.localFilePath),
-            },
-          });
-          uploadedList.push({
-            fileKey,
-          });
-        }
-        return {
-          value: uploadedList,
-        };
+    case "FILE": {
+      if (!attachmentsDir) {
+        throw new Error("--attachments-dir option is required.");
       }
-      return field;
+      const uploadedList: Array<{ fileKey: string }> = [];
+      for (const fileInfo of field.value as Array<{
+        localFilePath: string;
+      }>) {
+        if (!fileInfo.localFilePath) {
+          throw new Error("local file path not defined.");
+        }
+        const { fileKey } = await apiClient.file.uploadFile({
+          file: {
+            path: path.join(attachmentsDir, fileInfo.localFilePath),
+          },
+        });
+        uploadedList.push({
+          fileKey,
+        });
+      }
+      return {
+        value: uploadedList,
+      };
+    }
     default:
       return field;
   }
