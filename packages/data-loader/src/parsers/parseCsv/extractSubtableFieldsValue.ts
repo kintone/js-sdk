@@ -1,7 +1,7 @@
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
 import { CsvRows, FieldProperties, FieldsJson } from "../../types/kintone";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
-import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
+import { isImportSupportedFieldTypeInSubtable } from "./isImportSupportedFieldType";
 
 type InSubtableFieldProperty = Record<
   string,
@@ -58,7 +58,7 @@ const buildSubtableValue = (
         id: row[subtableFieldProperty.code],
         value: Object.values(subtableFieldProperty.fields)
           .filter((inSubtableFieldProperty) =>
-            isImportSupportedFieldType(inSubtableFieldProperty.type)
+            isImportSupportedFieldTypeInSubtable(inSubtableFieldProperty.type)
           )
           .reduce<InSubtableFieldValue>(
             (inSubtableFieldValue, inSubtableFieldProperty) => {
