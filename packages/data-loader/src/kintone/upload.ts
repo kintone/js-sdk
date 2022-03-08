@@ -3,7 +3,10 @@ import {
   KintoneFormFieldProperty,
   KintoneRestAPIClient,
 } from "@kintone/rest-api-client";
-import { DataLoaderRecordForParameter } from "../types/data-loader";
+import {
+  DataLoaderFields,
+  DataLoaderRecordForParameter,
+} from "../types/data-loader";
 import path from "path";
 
 const CHUNK_LENGTH = 100;
@@ -121,6 +124,36 @@ const fieldProcessor: (
       }
       return {
         value: uploadedList,
+      };
+    }
+    case "SUBTABLE": {
+      const newRows = [];
+
+      const subtableValue = field.value as Array<{
+        id: string;
+        value: { [key: string]: { value: unknown } };
+      }>;
+      for (const row of subtableValue) {
+        const fieldsInRow: KintoneRecordForParameter = {};
+        for (const [fieldCodeInSubtable, fieldInSubtable] of Object.entries(
+          row.value
+        )) {
+          fieldsInRow[fieldCodeInSubtable] = await fieldProcessor(
+            fieldCodeInSubtable,
+            fieldInSubtable,
+            (
+              properties[fieldCode] as KintoneFormFieldProperty.Subtable<{
+                [fieldCode: string]: KintoneFormFieldProperty.InSubtable;
+              }>
+            ).fields,
+            { apiClient, attachmentsDir }
+          );
+        }
+        newRows.push({ id: row.id, value: fieldsInRow });
+      }
+      return {
+        type: "SUBTABLE",
+        value: newRows,
       };
     }
     default:
