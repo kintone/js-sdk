@@ -152,7 +152,6 @@ const fieldProcessor: (
         newRows.push({ id: row.id, value: fieldsInRow });
       }
       return {
-        type: "SUBTABLE",
         value: newRows,
       };
     }
