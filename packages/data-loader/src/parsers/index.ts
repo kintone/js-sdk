@@ -7,13 +7,14 @@ import fs from "fs";
 import { parseJson } from "./parseJson";
 import { parseCsv } from "./parseCsv";
 import { Options } from "../controllers/import";
+import { DataLoaderRecordForParameter } from "../types/data-loader";
 
 export const parseRecords: (options: {
   apiClient: KintoneRestAPIClient;
   source: string;
   format: string;
   app: string;
-}) => Promise<KintoneRecordForParameter[]> = async (options) => {
+}) => Promise<DataLoaderRecordForParameter[]> = async (options) => {
   const { apiClient, source, format } = options;
   // TODO: convert to DataLoaderRecords[]
   switch (format) {

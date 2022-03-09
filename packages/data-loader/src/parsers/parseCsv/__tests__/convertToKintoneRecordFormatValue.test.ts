@@ -33,5 +33,18 @@ describe("convertToKintoneRecordFormatValue", () => {
         code: "sato",
       },
     ]);
+    expect(
+      convertToKintoneRecordFormatValue({
+        fieldType: "FILE",
+        value: "AttachmentFolder/1.png\nAttachmentFolder/2.png",
+      })
+    ).toEqual([
+      {
+        localFilePath: "AttachmentFolder/1.png",
+      },
+      {
+        localFilePath: "AttachmentFolder/2.png",
+      },
+    ]);
   });
 });
