@@ -3,10 +3,7 @@ import {
   KintoneFormFieldProperty,
   KintoneRestAPIClient,
 } from "@kintone/rest-api-client";
-import {
-  DataLoaderFields,
-  DataLoaderRecordForParameter,
-} from "../types/data-loader";
+import { DataLoaderRecordForParameter } from "../types/data-loader";
 import path from "path";
 
 const CHUNK_LENGTH = 100;
