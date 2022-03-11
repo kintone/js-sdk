@@ -8,7 +8,6 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
 
-- Import Attachment field inside Table
 - Update records when importing
 
 We plan to support them in the future release.

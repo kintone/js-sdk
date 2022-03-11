@@ -41,6 +41,7 @@ export const isImportSupportedFieldTypeInSubtable = (
     "USER_SELECT",
     "ORGANIZATION_SELECT",
     "GROUP_SELECT",
+    "FILE",
   ];
   return fieldTypes.includes(fieldType);
 };
