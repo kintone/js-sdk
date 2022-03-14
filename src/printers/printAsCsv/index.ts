@@ -1,9 +1,9 @@
 import { convertRecordsToCsv } from "./convertKintoneRecordsToCsv";
 import { FieldsJson } from "../../types/kintone";
-import { DataLoaderRecord } from "../../types/data-loader";
+import { DataLoaderRecordForResponse } from "../../types/data-loader";
 
 export const printAsCsv: (options: {
-  records: DataLoaderRecord[];
+  records: DataLoaderRecordForResponse[];
   fieldsJson: FieldsJson;
   attachmentsDir?: string;
 }) => void = (options) => {

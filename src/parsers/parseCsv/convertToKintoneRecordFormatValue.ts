@@ -34,6 +34,12 @@ export const convertToKintoneRecordFormatValue = ({
             code,
           }))
         : [];
+    case "FILE":
+      return value
+        ? value.split(LINE_BREAK).map((localFilePath) => ({
+            localFilePath,
+          }))
+        : [];
     default:
       return value;
   }

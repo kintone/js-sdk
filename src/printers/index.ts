@@ -1,4 +1,4 @@
-import { DataLoaderRecord } from "../types/data-loader";
+import { DataLoaderRecordForResponse } from "../types/data-loader";
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { printAsJson } from "./printAsJson";
 import { printAsCsv } from "./printAsCsv";
@@ -7,7 +7,7 @@ export type ExportFileFormat = "json" | "csv";
 
 export const printRecords: (options: {
   apiClient: KintoneRestAPIClient;
-  records: DataLoaderRecord[];
+  records: DataLoaderRecordForResponse[];
   app: string;
   format?: ExportFileFormat;
   attachmentsDir?: string;

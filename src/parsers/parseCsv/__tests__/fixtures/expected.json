@@ -63,6 +63,12 @@
           "code": "Development Div"
         }
       ]
+    },
+    "file": {
+      "value": [
+        { "localFilePath": "AttachementFolder/1.png" },
+        { "localFilePath": "AttachementFolder/2.png" }
+      ]
     }
   }
 ]

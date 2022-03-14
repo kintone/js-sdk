@@ -6,12 +6,13 @@ import { uploadRecords } from "../kintone/upload";
 export type Options = {
   app: string;
   filePath: string;
+  attachmentsDir?: string;
 };
 
 export const run: (
   argv: RestAPIClientOptions & Options
 ) => Promise<void> = async (argv) => {
-  const { app, filePath, ...restApiClientOptions } = argv;
+  const { app, filePath, attachmentsDir, ...restApiClientOptions } = argv;
 
   const apiClient = buildRestAPIClient(restApiClientOptions);
 
@@ -23,7 +24,7 @@ export const run: (
       app,
       format,
     });
-    await uploadRecords({ apiClient, app, records });
+    await uploadRecords({ apiClient, attachmentsDir, app, records });
   } catch (e) {
     console.log(e);
     // eslint-disable-next-line no-process-exit

@@ -5,8 +5,9 @@ import {
   FieldProperties,
   KintoneRecordForParameter,
 } from "../../types/kintone";
+import { DataLoaderRecordForParameter } from "../../types/data-loader";
 
-export const convertToKintoneRecordsForParameter = ({
+export const convertToDataLoaderRecordForParameterList = ({
   rows,
   fieldProperties,
 }: {
@@ -19,9 +20,9 @@ export const convertToKintoneRecordsForParameter = ({
         const field = fieldProperties[fieldCode];
         return field ? isImportSupportedFieldType(field.type) : false;
       })
-      .reduce<KintoneRecordForParameter>(
-        (kintoneRecordForParameter, [fieldCode, fieldValue]) => ({
-          ...kintoneRecordForParameter,
+      .reduce<DataLoaderRecordForParameter>(
+        (dataLoaderRecordForParameter, [fieldCode, fieldValue]) => ({
+          ...dataLoaderRecordForParameter,
           [fieldCode]: {
             value: convertToKintoneRecordFormatValue({
               value: fieldValue,
