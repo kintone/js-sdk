@@ -36,7 +36,7 @@
     "prettier": "^2.5.1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.179",
+    "@types/lodash": "^4.14.180",
     "ts-loader": "^9.2.8",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
