@@ -1,4 +1,4 @@
-import { DataLoaderRecordForResponse } from "../../../types/data-loader";
+import { RecordForExport } from "../../../types/data-loader";
 import { KintoneRecordForResponse } from "../../../types/kintone";
 import path from "path";
 
@@ -69,7 +69,7 @@ export const input: KintoneRecordForResponse[] = [
   },
 ];
 
-export const expected: DataLoaderRecordForResponse[] = [
+export const expected: RecordForExport[] = [
   {
     $id: {
       type: "__ID__",

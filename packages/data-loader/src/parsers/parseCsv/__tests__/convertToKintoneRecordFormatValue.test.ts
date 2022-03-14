@@ -7,44 +7,50 @@ describe("convertToKintoneRecordFormatValue", () => {
         fieldType: "SINGLE_LINE_TEXT",
         value: "text",
       })
-    ).toEqual("text");
+    ).toEqual({ value: "text" });
 
     expect(
       convertToKintoneRecordFormatValue({
         fieldType: "MULTI_SELECT",
         value: "select1\nselect2",
       })
-    ).toEqual(["select1", "select2"]);
+    ).toEqual({ value: ["select1", "select2"] });
     expect(
       convertToKintoneRecordFormatValue({
         fieldType: "CREATOR",
         value: "creator",
       })
     ).toEqual({
-      code: "creator",
+      value: {
+        code: "creator",
+      },
     });
     expect(
       convertToKintoneRecordFormatValue({
         fieldType: "USER_SELECT",
         value: "sato",
       })
-    ).toEqual([
-      {
-        code: "sato",
-      },
-    ]);
+    ).toEqual({
+      value: [
+        {
+          code: "sato",
+        },
+      ],
+    });
     expect(
       convertToKintoneRecordFormatValue({
         fieldType: "FILE",
         value: "AttachmentFolder/1.png\nAttachmentFolder/2.png",
       })
-    ).toEqual([
-      {
-        localFilePath: "AttachmentFolder/1.png",
-      },
-      {
-        localFilePath: "AttachmentFolder/2.png",
-      },
-    ]);
+    ).toEqual({
+      value: [
+        {
+          localFilePath: "AttachmentFolder/1.png",
+        },
+        {
+          localFilePath: "AttachmentFolder/2.png",
+        },
+      ],
+    });
   });
 });

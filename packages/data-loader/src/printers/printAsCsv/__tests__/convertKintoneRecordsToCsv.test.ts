@@ -1,15 +1,15 @@
 import { convertRecordsToCsv } from "../convertKintoneRecordsToCsv";
 import { FieldsJson } from "../../../types/kintone";
-import { DataLoaderRecordForResponse } from "../../../types/data-loader";
+import { RecordForExport } from "../../../types/data-loader";
 
-const records: DataLoaderRecordForResponse[] = require("./fixtures/input.json");
+const records: RecordForExport[] = require("./fixtures/input.json");
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
-const fileRecords: DataLoaderRecordForResponse[] = require("./fixtures/file_input.json");
-const fileWithoutAttachmentsDirRecords: DataLoaderRecordForResponse[] = require("./fixtures/file_without_attachments_dir.json");
+const fileRecords: RecordForExport[] = require("./fixtures/file_input.json");
+const fileWithoutAttachmentsDirRecords: RecordForExport[] = require("./fixtures/file_without_attachments_dir.json");
 const fileFieldsJson: FieldsJson = require("./fixtures/file_fields.json");
-const subtableRecords: DataLoaderRecordForResponse[] = require("./fixtures/subtable_input.json");
-const subtableWithoutAttachmentsDirRecords: DataLoaderRecordForResponse[] = require("./fixtures/subtable_input_without_attachments_dir.json");
-const subtableWithEmptyTable: DataLoaderRecordForResponse[] = require("./fixtures/subtable_input_with_empty_table.json");
+const subtableRecords: RecordForExport[] = require("./fixtures/subtable_input.json");
+const subtableWithoutAttachmentsDirRecords: RecordForExport[] = require("./fixtures/subtable_input_without_attachments_dir.json");
+const subtableWithEmptyTable: RecordForExport[] = require("./fixtures/subtable_input_with_empty_table.json");
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
 describe("convertKintoneRecordsToCsv", () => {

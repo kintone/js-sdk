@@ -1,4 +1,4 @@
-import { convertToDataLoaderRecordForParameterList } from "../convertToDataLoaderRecordForParameterList";
+import { convertToRecordForImportList } from "../convertToRecordForImportList";
 import { FieldsJson } from "../../../types/kintone";
 
 const rows = [
@@ -9,10 +9,10 @@ const rows = [
 ];
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");
 
-describe("convertToDataLoaderRecordForParameterList", () => {
+describe("convertToRecordForImportList", () => {
   it("should format correctly", () => {
     expect(
-      convertToDataLoaderRecordForParameterList({
+      convertToRecordForImportList({
         rows,
         fieldProperties: subtableFieldsJson.properties,
       })

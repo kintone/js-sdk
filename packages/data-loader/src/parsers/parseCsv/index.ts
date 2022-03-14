@@ -3,22 +3,25 @@ import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
 import { hasSubtable } from "../../printers/printAsCsv/hasSubtable";
 import { extractSubtableFieldsValue } from "./extractSubtableFieldsValue";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
-import { convertToDataLoaderRecordForParameterList } from "./convertToDataLoaderRecordForParameterList";
+import { convertToRecordForImportList } from "./convertToRecordForImportList";
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
 import { CsvRows, FieldProperties, FieldsJson } from "../../types/kintone";
-import { DataLoaderRecordForParameter } from "../../types/data-loader";
+import { RecordForImport } from "../../types/data-loader";
 
-export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
+export const parseCsv = (
+  csv: string,
+  fieldsJson: FieldsJson
+): RecordForImport[] => {
   const rows: CsvRows = csvParse(csv, {
     columns: true,
     skip_empty_lines: true,
   });
   return hasSubtable(fieldsJson.properties)
-    ? convertToKintoneRecordsForParameterFromSubtableRows({
+    ? convertToRecordsForImportFromSubtableRows({
         rows,
         fieldProperties: fieldsJson.properties,
       })
-    : convertToDataLoaderRecordForParameterList({
+    : convertToRecordForImportList({
         rows,
         fieldProperties: fieldsJson.properties,
       });
@@ -31,32 +34,27 @@ const buildSubtableRecordForParameter = ({
 }: {
   primaryRow: Record<string, string>;
   fieldProperties: FieldProperties;
-  subtableFieldsValue: DataLoaderRecordForParameter;
-}): DataLoaderRecordForParameter => {
+  subtableFieldsValue: RecordForImport;
+}): RecordForImport => {
   return {
     ...subtableFieldsValue,
     ...Object.entries(primaryRow)
       .filter(([fieldCode]) =>
         isImportSupportedFieldType(fieldProperties[fieldCode]?.type)
       )
-      .reduce<DataLoaderRecordForParameter>(
-        (recordForParameter, [fieldCode, fieldValue]) => {
-          return {
-            ...recordForParameter,
-            [fieldCode]: {
-              value: convertToKintoneRecordFormatValue({
-                fieldType: fieldProperties[fieldCode].type,
-                value: fieldValue,
-              }),
-            },
-          };
-        },
-        {}
-      ),
+      .reduce((recordForParameter, [fieldCode, fieldValue]) => {
+        return {
+          ...recordForParameter,
+          [fieldCode]: convertToKintoneRecordFormatValue({
+            fieldType: fieldProperties[fieldCode].type,
+            value: fieldValue,
+          }),
+        };
+      }, {}),
   };
 };
 
-const convertToKintoneRecordsForParameterFromSubtableRows = ({
+const convertToRecordsForImportFromSubtableRows = ({
   rows,
   fieldProperties,
 }: {
@@ -66,35 +64,32 @@ const convertToKintoneRecordsForParameterFromSubtableRows = ({
   let temp: Array<Record<string, string>> = [];
   const lastIndex = rows.length - 1;
 
-  return rows.reduce<DataLoaderRecordForParameter[]>(
-    (dataLoaderRecordForParameter, row, index) => {
-      const isPrimaryRow = !!row[PRIMARY_MARK];
-      const isLastRow = index === lastIndex;
-      const isEmpty = temp.length === 0;
+  return rows.reduce<RecordForImport[]>((recordForImport, row, index) => {
+    const isPrimaryRow = !!row[PRIMARY_MARK];
+    const isLastRow = index === lastIndex;
+    const isEmpty = temp.length === 0;
 
-      if (isLastRow) {
-        temp.push(row);
-      } else if (isEmpty || !isPrimaryRow) {
-        temp.push(row);
-        return dataLoaderRecordForParameter;
-      }
+    if (isLastRow) {
+      temp.push(row);
+    } else if (isEmpty || !isPrimaryRow) {
+      temp.push(row);
+      return recordForImport;
+    }
 
-      const primaryRow = temp[0];
-      const subtableFieldsValue = extractSubtableFieldsValue({
-        rows: temp,
-        fieldProperties,
-      });
+    const primaryRow = temp[0];
+    const subtableFieldsValue = extractSubtableFieldsValue({
+      rows: temp,
+      fieldProperties,
+    });
 
-      const subtableRecord = buildSubtableRecordForParameter({
-        primaryRow,
-        fieldProperties,
-        subtableFieldsValue,
-      });
+    const subtableRecord = buildSubtableRecordForParameter({
+      primaryRow,
+      fieldProperties,
+      subtableFieldsValue,
+    });
 
-      temp = [row];
+    temp = [row];
 
-      return dataLoaderRecordForParameter.concat([subtableRecord]);
-    },
-    []
-  );
+    return recordForImport.concat([subtableRecord]);
+  }, []);
 };

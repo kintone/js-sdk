@@ -1,23 +1,12 @@
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
-import { CsvRows, FieldProperties, FieldsJson } from "../../types/kintone";
+import { CsvRows, FieldProperties } from "../../types/kintone";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { isImportSupportedFieldTypeInSubtable } from "./isImportSupportedFieldType";
+import { FieldsForImport } from "../../types/data-loader";
 
 type InSubtableFieldProperty = Record<
   string,
   KintoneFormFieldProperty.InSubtable
->;
-
-type InSubtableFieldValue = Record<
-  string,
-  {
-    value:
-      | string
-      | string[]
-      | { code: string }
-      | Array<{ code: string }>
-      | Array<{ localFilePath: string }>;
-  }
 >;
 
 export const extractSubtableFieldsValue = ({
@@ -26,12 +15,9 @@ export const extractSubtableFieldsValue = ({
 }: {
   rows: CsvRows;
   fieldProperties: FieldProperties;
-}) => {
+}): Record<string, FieldsForImport.Subtable> => {
   return Object.values(fieldProperties).reduce<
-    Record<
-      string,
-      { value: Array<{ id: string; value: InSubtableFieldValue }> }
-    >
+    Record<string, FieldsForImport.Subtable>
   >((subtableFieldValue, fieldProperty) => {
     if (fieldProperty.type !== "SUBTABLE") {
       return subtableFieldValue;
@@ -48,7 +34,7 @@ export const extractSubtableFieldsValue = ({
 const buildSubtableValue = (
   rows: CsvRows,
   subtableFieldProperty: KintoneFormFieldProperty.Subtable<InSubtableFieldProperty>
-) => {
+): FieldsForImport.Subtable["value"] => {
   return rows
     .filter((row) => {
       return row[subtableFieldProperty.code];
@@ -60,20 +46,17 @@ const buildSubtableValue = (
           .filter((inSubtableFieldProperty) =>
             isImportSupportedFieldTypeInSubtable(inSubtableFieldProperty.type)
           )
-          .reduce<InSubtableFieldValue>(
-            (inSubtableFieldValue, inSubtableFieldProperty) => {
-              return {
-                ...inSubtableFieldValue,
-                [inSubtableFieldProperty.code]: {
-                  value: convertToKintoneRecordFormatValue({
-                    fieldType: inSubtableFieldProperty.type,
-                    value: row[inSubtableFieldProperty.code],
-                  }),
-                },
-              };
-            },
-            {}
-          ),
+          .reduce((inSubtableFieldValue, inSubtableFieldProperty) => {
+            return {
+              ...inSubtableFieldValue,
+              [inSubtableFieldProperty.code]: convertToKintoneRecordFormatValue(
+                {
+                  fieldType: inSubtableFieldProperty.type,
+                  value: row[inSubtableFieldProperty.code],
+                }
+              ),
+            };
+          }, {}),
       };
     });
 };
