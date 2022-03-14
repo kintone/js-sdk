@@ -3,14 +3,10 @@ import { PRIMARY_MARK } from "../../printers/printAsCsv/constants";
 import { hasSubtable } from "../../printers/printAsCsv/hasSubtable";
 import { extractSubtableFieldsValue } from "./extractSubtableFieldsValue";
 import { isImportSupportedFieldType } from "./isImportSupportedFieldType";
-import { convertToKintoneRecordsForParameter } from "./convertToKintoneRecordsForParameter";
+import { convertToDataLoaderRecordForParameterList } from "./convertToDataLoaderRecordForParameterList";
 import { convertToKintoneRecordFormatValue } from "./convertToKintoneRecordFormatValue";
-import {
-  CsvRows,
-  FieldProperties,
-  FieldsJson,
-  KintoneRecordForParameter,
-} from "../../types/kintone";
+import { CsvRows, FieldProperties, FieldsJson } from "../../types/kintone";
+import { DataLoaderRecordForParameter } from "../../types/data-loader";
 
 export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
   const rows: CsvRows = csvParse(csv, {
@@ -22,7 +18,7 @@ export const parseCsv = (csv: string, fieldsJson: FieldsJson) => {
         rows,
         fieldProperties: fieldsJson.properties,
       })
-    : convertToKintoneRecordsForParameter({
+    : convertToDataLoaderRecordForParameterList({
         rows,
         fieldProperties: fieldsJson.properties,
       });
@@ -35,15 +31,15 @@ const buildSubtableRecordForParameter = ({
 }: {
   primaryRow: Record<string, string>;
   fieldProperties: FieldProperties;
-  subtableFieldsValue: KintoneRecordForParameter;
-}): KintoneRecordForParameter => {
+  subtableFieldsValue: DataLoaderRecordForParameter;
+}): DataLoaderRecordForParameter => {
   return {
     ...subtableFieldsValue,
     ...Object.entries(primaryRow)
       .filter(([fieldCode]) =>
         isImportSupportedFieldType(fieldProperties[fieldCode]?.type)
       )
-      .reduce<KintoneRecordForParameter>(
+      .reduce<DataLoaderRecordForParameter>(
         (recordForParameter, [fieldCode, fieldValue]) => {
           return {
             ...recordForParameter,
@@ -70,8 +66,8 @@ const convertToKintoneRecordsForParameterFromSubtableRows = ({
   let temp: Array<Record<string, string>> = [];
   const lastIndex = rows.length - 1;
 
-  return rows.reduce<KintoneRecordForParameter[]>(
-    (kintoneRecordsForParameter, row, index) => {
+  return rows.reduce<DataLoaderRecordForParameter[]>(
+    (dataLoaderRecordForParameter, row, index) => {
       const isPrimaryRow = !!row[PRIMARY_MARK];
       const isLastRow = index === lastIndex;
       const isEmpty = temp.length === 0;
@@ -80,7 +76,7 @@ const convertToKintoneRecordsForParameterFromSubtableRows = ({
         temp.push(row);
       } else if (isEmpty || !isPrimaryRow) {
         temp.push(row);
-        return kintoneRecordsForParameter;
+        return dataLoaderRecordForParameter;
       }
 
       const primaryRow = temp[0];
@@ -97,7 +93,7 @@ const convertToKintoneRecordsForParameterFromSubtableRows = ({
 
       temp = [row];
 
-      return kintoneRecordsForParameter.concat([subtableRecord]);
+      return dataLoaderRecordForParameter.concat([subtableRecord]);
     },
     []
   );

@@ -1,5 +1,8 @@
 import { KintoneRecordForResponse } from "../types/kintone";
-import { DataLoaderFields, DataLoaderRecord } from "../types/data-loader";
+import {
+  DataLoaderFields,
+  DataLoaderRecordForResponse,
+} from "../types/data-loader";
 import path from "path";
 import {
   KintoneRecordField,
@@ -13,7 +16,7 @@ export const downloadRecords: (options: {
   condition?: string;
   orderBy?: string;
   attachmentsDir?: string;
-}) => Promise<DataLoaderRecord[]> = async (options) => {
+}) => Promise<DataLoaderRecordForResponse[]> = async (options) => {
   const { apiClient, app, condition, orderBy, attachmentsDir } = options;
   const kintoneRecords = await apiClient.record.getAllRecords({
     app,
@@ -32,8 +35,8 @@ const recordsReducer: (
     fieldCode: string,
     field: KintoneRecordField.OneOf
   ) => Promise<DataLoaderFields.OneOf>
-) => Promise<DataLoaderRecord[]> = async (kintoneRecords, task) => {
-  const records: DataLoaderRecord[] = [];
+) => Promise<DataLoaderRecordForResponse[]> = async (kintoneRecords, task) => {
+  const records: DataLoaderRecordForResponse[] = [];
   for (const kintoneRecord of kintoneRecords) {
     const record = await recordReducer(kintoneRecord, (fieldCode, field) =>
       task(kintoneRecord.$id.value as string, fieldCode, field)
@@ -49,8 +52,8 @@ const recordReducer: (
     fieldCode: string,
     field: KintoneRecordField.OneOf
   ) => Promise<DataLoaderFields.OneOf>
-) => Promise<DataLoaderRecord> = async (record, task) => {
-  const newRecord: DataLoaderRecord = {};
+) => Promise<DataLoaderRecordForResponse> = async (record, task) => {
+  const newRecord: DataLoaderRecordForResponse = {};
   for (const [fieldCode, field] of Object.entries(record)) {
     newRecord[fieldCode] = await task(fieldCode, field);
   }
