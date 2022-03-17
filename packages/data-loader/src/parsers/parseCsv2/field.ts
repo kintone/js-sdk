@@ -1,0 +1,34 @@
+import { CsvRow, FieldProperties, FieldsJson } from "../../types/kintone";
+import { FieldsForImport } from "../../types/data-loader";
+import { importSupportedFieldTypes } from "./constants";
+import { convertFieldValue } from "./fieldValue";
+
+type Field = {
+  code: string;
+  value: string;
+  type: FieldProperties[string]["type"];
+};
+
+export const convertField = (field: Field): FieldsForImport.OneOf => {
+  return convertFieldValue(field);
+};
+
+export // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#use_of_the_yield_keyword
+// eslint-disable-next-line func-style
+function* fieldReader(
+  row: CsvRow,
+  fieldJson: FieldsJson
+): Generator<Field, void, undefined> {
+  for (const [code, property] of Object.entries(fieldJson.properties)) {
+    if (!importSupportedFieldTypes.includes(property.type)) {
+      continue;
+    }
+    if (property.type === "SUBTABLE") {
+      continue;
+    }
+    if (!row[code]) {
+      continue;
+    }
+    yield { code, value: row[code], type: property.type };
+  }
+}
