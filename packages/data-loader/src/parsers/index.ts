@@ -3,7 +3,7 @@ import {
   KintoneRestAPIClient,
 } from "@kintone/rest-api-client";
 import { parseJson } from "./parseJson";
-import { parseCsv } from "./parseCsv2";
+import { parseCsv } from "./parseCsv";
 import { RecordForImport } from "../types/data-loader";
 
 export const parseRecords: (options: {
