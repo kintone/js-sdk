@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.7.1...@kintone/data-loader@0.8.0) (2022-03-18)
+
+
+### Features
+
+* **support:** import Attachment field ([#1404](https://github.com/kintone/js-sdk/issues/1404)) ([2568eb9](https://github.com/kintone/js-sdk/commit/2568eb9fad906be168443667f763b5796d30471f)), closes [#1381](https://github.com/kintone/js-sdk/issues/1381) [#1397](https://github.com/kintone/js-sdk/issues/1397)
+
+
+
+
+
 ## [0.7.1](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.7.0...@kintone/data-loader@0.7.1) (2022-03-04)
 
 **Note:** Version bump only for package @kintone/data-loader
