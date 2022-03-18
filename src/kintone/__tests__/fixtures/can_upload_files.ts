@@ -1,9 +1,9 @@
-import { DataLoaderRecordForParameter } from "../../../types/data-loader";
+import { RecordForImport } from "../../../types/data-loader";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import path from "path";
 import { KintoneRecordForParameter } from "../../../types/kintone";
 
-export const input: DataLoaderRecordForParameter[] = [
+export const input: RecordForImport[] = [
   {
     singleLineText: {
       value: "value1",

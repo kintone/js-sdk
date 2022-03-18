@@ -1,5 +1,5 @@
-export {
-  RecordForResponse as DataLoaderRecordForResponse,
-  RecordForParameter as DataLoaderRecordForParameter,
-} from "./data-loader/record";
-export * as DataLoaderFields from "./data-loader/field";
+export { RecordForExport } from "./data-loader/export/record";
+export * as FieldsForExport from "./data-loader/export/field";
+
+export { RecordForImport } from "./data-loader/import/record";
+export * as FieldsForImport from "./data-loader/import/field";

@@ -1,9 +1,9 @@
 import { extractFieldValue } from "../extractFieldValue";
-import { DataLoaderRecordForResponse } from "../../../types/data-loader";
+import { RecordForExport } from "../../../types/data-loader";
 
-const subtableRecords: DataLoaderRecordForResponse[] = require("./fixtures/subtable_input.json");
-const fileRecords: DataLoaderRecordForResponse[] = require("./fixtures/file_input.json");
-const fileWithoutAttachmentsDirRecords: DataLoaderRecordForResponse[] = require("./fixtures/file_without_attachments_dir.json");
+const subtableRecords: RecordForExport[] = require("./fixtures/subtable_input.json");
+const fileRecords: RecordForExport[] = require("./fixtures/file_input.json");
+const fileWithoutAttachmentsDirRecords: RecordForExport[] = require("./fixtures/file_without_attachments_dir.json");
 
 describe("extractFieldValue", () => {
   it("should extract field values from record with subtable", () => {

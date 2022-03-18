@@ -3,7 +3,7 @@ import {
   KintoneRecordField,
 } from "@kintone/rest-api-client";
 
-export type CsvRows = Array<Record<string, string>>;
+export type CsvRow = Record<string, string>;
 export type KintoneRecordForParameter = {
   [fieldCode: string]: {
     value: unknown;

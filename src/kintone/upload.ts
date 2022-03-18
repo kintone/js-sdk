@@ -3,7 +3,7 @@ import {
   KintoneFormFieldProperty,
   KintoneRestAPIClient,
 } from "@kintone/rest-api-client";
-import { DataLoaderRecordForParameter } from "../types/data-loader";
+import { RecordForImport, FieldsForImport } from "../types/data-loader";
 import path from "path";
 
 const CHUNK_LENGTH = 100;
@@ -12,7 +12,7 @@ export const uploadRecords: (options: {
   apiClient: KintoneRestAPIClient;
   attachmentsDir?: string;
   app: string;
-  records: DataLoaderRecordForParameter[];
+  records: RecordForImport[];
 }) => Promise<void> = async (options) => {
   const { apiClient, attachmentsDir, app, records } = options;
 
@@ -53,10 +53,10 @@ export const uploadRecords: (options: {
 };
 
 const recordsReducer: (
-  records: DataLoaderRecordForParameter[],
+  records: RecordForImport[],
   task: (
     fieldCode: string,
-    field: DataLoaderRecordForParameter[string]
+    field: FieldsForImport.OneOf
   ) => Promise<KintoneRecordForParameter[string]>
 ) => Promise<KintoneRecordForParameter[]> = async (kintoneRecords, task) => {
   const records: KintoneRecordForParameter[] = [];
@@ -70,10 +70,10 @@ const recordsReducer: (
 };
 
 const recordReducer: (
-  record: DataLoaderRecordForParameter,
+  record: RecordForImport,
   task: (
     fieldCode: string,
-    field: DataLoaderRecordForParameter[string]
+    field: FieldsForImport.OneOf
   ) => Promise<KintoneRecordForParameter[string]>
 ) => Promise<KintoneRecordForParameter> = async (record, task) => {
   const newRecord: KintoneRecordForParameter = {};
@@ -85,7 +85,7 @@ const recordReducer: (
 
 const fieldProcessor: (
   fieldCode: string,
-  field: DataLoaderRecordForParameter[string],
+  field: FieldsForImport.OneOf,
   properties: Record<string, KintoneFormFieldProperty.OneOf>,
   options: { apiClient: KintoneRestAPIClient; attachmentsDir?: string }
 ) => Promise<KintoneRecordForParameter[string]> = async (
@@ -104,9 +104,7 @@ const fieldProcessor: (
         throw new Error("--attachments-dir option is required.");
       }
       const uploadedList: Array<{ fileKey: string }> = [];
-      for (const fileInfo of field.value as Array<{
-        localFilePath: string;
-      }>) {
+      for (const fileInfo of (field as FieldsForImport.File).value) {
         if (!fileInfo.localFilePath) {
           throw new Error("local file path not defined.");
         }
@@ -126,10 +124,7 @@ const fieldProcessor: (
     case "SUBTABLE": {
       const newRows = [];
 
-      const subtableValue = field.value as Array<{
-        id: string;
-        value: { [key: string]: { value: unknown } };
-      }>;
+      const subtableValue = (field as FieldsForImport.Subtable).value;
       for (const row of subtableValue) {
         const fieldsInRow: KintoneRecordForParameter = {};
         for (const [fieldCodeInSubtable, fieldInSubtable] of Object.entries(

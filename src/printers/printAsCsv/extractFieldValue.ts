@@ -1,10 +1,10 @@
 import { encloseInDoubleQuotes } from "./encloseInDoubleQuotes";
 import { escapeDoubleQuotes } from "./escapeDoubleQuotes";
 import { LINE_BREAK } from "./constants";
-import { DataLoaderFields } from "../../types/data-loader";
+import { FieldsForExport } from "../../types/data-loader";
 
 export const extractFieldValue: (
-  field: DataLoaderFields.OneOf,
+  field: FieldsForExport.OneOf,
   attachmentsDir?: string
 ) => string | Array<{ [fieldCode: string]: string }> = (
   field,
