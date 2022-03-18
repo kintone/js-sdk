@@ -8,21 +8,23 @@ type RecordCsv = CsvRow[];
 
 export const convertRecord = (
   recordCsv: RecordCsv,
-  fieldJson: FieldsJson
+  fieldsJson: FieldsJson
 ): RecordForImport => {
   const record: RecordForImport = {};
-  for (const field of fieldReader(recordCsv[0], fieldJson)) {
+  for (const field of fieldReader(recordCsv[0], fieldsJson)) {
     record[field.code] = convertField(field);
   }
-  for (const subtableField of subtableFieldReader(recordCsv, fieldJson)) {
+  for (const subtableField of subtableFieldReader(recordCsv, fieldsJson)) {
     record[subtableField.code] = convertSubtableField(subtableField);
   }
   return record;
 };
 
-export // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#use_of_the_yield_keyword
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#use_of_the_yield_keyword
 // eslint-disable-next-line func-style
-function* recordReader(rows: CsvRow[]): Generator<RecordCsv, void, undefined> {
+export function* recordReader(
+  rows: CsvRow[]
+): Generator<RecordCsv, void, undefined> {
   if (!hasSubtable(rows[0])) {
     yield* rows.map((row) => [row]);
     return;
@@ -35,13 +37,11 @@ function* recordReader(rows: CsvRow[]): Generator<RecordCsv, void, undefined> {
 
     // skip to the first primary mark
     while (first < rows.length && !isPrimaryCsvRow(rows[first])) {
-      console.log(first);
       first++;
     }
 
     // find the row just before the next primary mark
     while (last + 1 < rows.length && !isPrimaryCsvRow(rows[last + 1])) {
-      console.log(last);
       last++;
     }
 
@@ -51,6 +51,6 @@ function* recordReader(rows: CsvRow[]): Generator<RecordCsv, void, undefined> {
   }
 }
 
-const hasSubtable = (row: CsvRow) => PRIMARY_MARK in row;
+const hasSubtable = (row: CsvRow): boolean => PRIMARY_MARK in row;
 
-const isPrimaryCsvRow = (row: CsvRow) => !!row[PRIMARY_MARK];
+const isPrimaryCsvRow = (row: CsvRow): boolean => !!row[PRIMARY_MARK];

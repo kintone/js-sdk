@@ -13,13 +13,12 @@ export const convertField = (field: Field): FieldsForImport.OneOf => {
   return convertFieldValue(field);
 };
 
-export // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#use_of_the_yield_keyword
 // eslint-disable-next-line func-style
-function* fieldReader(
+export function* fieldReader(
   row: CsvRow,
-  fieldJson: FieldsJson
+  fieldsJson: FieldsJson
 ): Generator<Field, void, undefined> {
-  for (const [code, property] of Object.entries(fieldJson.properties)) {
+  for (const [code, property] of Object.entries(fieldsJson.properties)) {
     if (!importSupportedFieldTypes.includes(property.type)) {
       continue;
     }

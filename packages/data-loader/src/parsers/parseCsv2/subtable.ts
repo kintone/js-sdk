@@ -22,7 +22,6 @@ export const convertSubtableField = (
   return field;
 };
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#use_of_the_yield_keyword
 // eslint-disable-next-line func-style
 export function* subtableFieldReader(
   rows: CsvRow[],
@@ -36,7 +35,7 @@ export function* subtableFieldReader(
   for (const { fieldCode, fieldProperty } of subtableFieldProperties) {
     // pick rows which contains subtable related fields
     const subtableRows = rows.filter((row) =>
-      doesRowContainSubtableFields(row, fieldCode, fieldProperty)
+      doesRowContainSubtableFields(row, fieldCode, fieldProperty.fields)
     );
 
     if (subtableRows.length > 0) {
@@ -51,11 +50,11 @@ export function* subtableFieldReader(
 const doesRowContainSubtableFields = (
   row: CsvRows[number],
   subtableFieldCode: string,
-  subtableFieldProperty: KintoneFormFieldProperty.Subtable<{
+  subtableFields: {
     [fieldCode: string]: KintoneFormFieldProperty.InSubtable;
-  }>
-) =>
-  Object.keys(subtableFieldProperty.fields)
+  }
+): boolean =>
+  Object.keys(subtableFields)
     .concat(subtableFieldCode)
     .some((fieldCode) => !!row[fieldCode]);
 
@@ -80,7 +79,6 @@ const convertSubtableRow = (
   return newRow;
 };
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#use_of_the_yield_keyword
 // eslint-disable-next-line func-style
 function* subtableRowReader(
   subtableField: SubtableField
@@ -101,7 +99,6 @@ const convertFieldInSubtable = (
   return convertFieldValue(fieldInSubtable) as FieldsForImport.InSubtable;
 };
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#use_of_the_yield_keyword
 // eslint-disable-next-line func-style
 function* fieldInSubtableReader({
   row,

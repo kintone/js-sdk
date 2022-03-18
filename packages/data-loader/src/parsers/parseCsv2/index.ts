@@ -6,7 +6,7 @@ import { convertRecord, recordReader } from "./record";
 export const parseCsv: (
   csv: string,
   fieldsJson: FieldsJson
-) => RecordForImport[] = (csv, fieldJson) => {
+) => RecordForImport[] = (csv, fieldsJson) => {
   const rows: CsvRows = csvParse(csv, {
     columns: true,
     skip_empty_lines: true,
@@ -15,7 +15,7 @@ export const parseCsv: (
   const records: RecordForImport[] = [];
 
   for (const recordRows of recordReader(rows)) {
-    const record = convertRecord(recordRows, fieldJson);
+    const record = convertRecord(recordRows, fieldsJson);
     records.push(record);
   }
 
