@@ -1,4 +1,4 @@
-import { CsvRow, CsvRows, FieldsJson } from "../../types/kintone";
+import { CsvRow, FieldsJson } from "../../types/kintone";
 import { FieldsForImport } from "../../types/data-loader";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import { importSupportedFieldTypesInSubtable } from "./constants";
@@ -48,7 +48,7 @@ export function* subtableFieldReader(
   }
 }
 const doesRowContainSubtableFields = (
-  row: CsvRows[number],
+  row: CsvRow,
   subtableFieldCode: string,
   subtableFields: {
     [fieldCode: string]: KintoneFormFieldProperty.InSubtable;
