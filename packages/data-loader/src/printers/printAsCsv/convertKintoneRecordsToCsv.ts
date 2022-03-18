@@ -4,14 +4,14 @@ import { extractFieldValue } from "./extractFieldValue";
 import { buildHeaderFields } from "./buildHeaderFields";
 import { hasSubtable } from "./hasSubtable";
 import { FieldProperties } from "../../types/kintone";
-import { DataLoaderRecordForResponse } from "../../types/data-loader";
+import { RecordForExport } from "../../types/data-loader";
 
 type RowObject = {
   [fieldCode: string]: string | Array<{ [fieldCode: string]: string }>;
 };
 
 export const convertRecordsToCsv: (options: {
-  records: DataLoaderRecordForResponse[];
+  records: RecordForExport[];
   fieldProperties: FieldProperties;
   attachmentsDir?: string;
 }) => string = (options) => {
@@ -32,7 +32,7 @@ export const convertRecordsToCsv: (options: {
 };
 
 const buildRows: (options: {
-  records: DataLoaderRecordForResponse[];
+  records: RecordForExport[];
   headerFields: string[];
   fieldProperties: FieldProperties;
   attachmentsDir?: string;
@@ -49,7 +49,7 @@ const buildRows: (options: {
 };
 
 const buildRow: (options: {
-  record: DataLoaderRecordForResponse;
+  record: RecordForExport;
   headerFields: string[];
   fieldProperties: FieldProperties;
   attachmentsDir?: string;
@@ -83,7 +83,7 @@ const buildRow: (options: {
 };
 
 const buildRecordObject: (options: {
-  record: DataLoaderRecordForResponse;
+  record: RecordForExport;
   attachmentsDir?: string;
 }) => RowObject = (options) => {
   const { record, attachmentsDir } = options;

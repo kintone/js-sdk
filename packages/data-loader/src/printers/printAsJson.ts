@@ -1,7 +1,5 @@
-import { DataLoaderRecordForResponse } from "../types/data-loader";
+import { RecordForExport } from "../types/data-loader";
 
-export const printAsJson: (records: DataLoaderRecordForResponse[]) => void = (
-  records
-) => {
+export const printAsJson: (records: RecordForExport[]) => void = (records) => {
   console.log(JSON.stringify(records, null, 2));
 };

@@ -4,7 +4,7 @@ import { promises as fs } from "fs";
 import os from "os";
 import path from "path";
 import { downloadRecords } from "../download";
-import { DataLoaderFields } from "../../types/data-loader";
+import { FieldsForExport } from "../../types/data-loader";
 
 import * as caseCanGetRecords from "./fixtures/can_get_records";
 import * as caseCanDownloadFiles from "./fixtures/can_download_files";
@@ -80,7 +80,7 @@ describe("export", () => {
     expect(actual).toStrictEqual(expectedRecords);
 
     const attachmentValue = (
-      expectedRecords[0].attachment as DataLoaderFields.File
+      expectedRecords[0].attachment as FieldsForExport.File
     ).value;
     for (const attachment of attachmentValue) {
       const downloadFile = await fs.readFile(
@@ -110,8 +110,8 @@ describe("export", () => {
     expect(actual).toStrictEqual(expectedRecords);
 
     const attachmentValue = (
-      (expectedRecords[0].subTable as DataLoaderFields.Subtable).value[0].value
-        .subTableFile as DataLoaderFields.File
+      (expectedRecords[0].subTable as FieldsForExport.Subtable).value[0].value
+        .subTableFile as FieldsForExport.File
     ).value;
     for (const attachment of attachmentValue) {
       if (!attachment.localFilePath) {
