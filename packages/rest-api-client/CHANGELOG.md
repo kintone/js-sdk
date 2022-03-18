@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.37](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.36...@kintone/rest-api-client@2.0.37) (2022-03-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.26.1 ([#1399](https://github.com/kintone/js-sdk/issues/1399)) ([ebba9fc](https://github.com/kintone/js-sdk/commit/ebba9fc8bf8c12d436945b2d07f988c8dcc4ac4c))
+
+
+
+
+
 ## [2.0.36](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.35...@kintone/rest-api-client@2.0.36) (2022-03-04)
 
 
