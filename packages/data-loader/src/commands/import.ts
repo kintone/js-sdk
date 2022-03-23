@@ -66,6 +66,10 @@ export const builder = (args: yargs.Argv) =>
       type: "string",
       demandOption: true,
     })
+    .option("update-key", {
+      describe: "Key to Bulk Update",
+      type: "string",
+    })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",
       type: "string",
@@ -91,6 +95,7 @@ export const handler = (args: Args) => {
     guestSpaceId: args["guest-space-id"],
     attachmentsDir: args["attachments-dir"],
     filePath: args["file-path"],
+    updateKey: args["update-key"],
     pfxFilePath: args["pfx-file-path"],
     pfxFilePassword: args["pfx-file-password"],
   });
