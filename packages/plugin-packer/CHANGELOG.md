@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.38](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.37...@kintone/plugin-packer@5.0.38) (2022-03-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency debug to ^4.3.4 ([#1418](https://github.com/kintone/js-sdk/issues/1418)) ([31caa35](https://github.com/kintone/js-sdk/commit/31caa35e06ce92e56580ad03b661a5457e2751f5))
+
+
+
+
+
 ## [5.0.37](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.36...@kintone/plugin-packer@5.0.37) (2022-03-18)
 
 **Note:** Version bump only for package @kintone/plugin-packer
