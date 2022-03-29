@@ -1,5 +1,5 @@
-import { RecordForExport } from "../../../types/data-loader";
-import { KintoneRecordForResponse } from "../../../types/kintone";
+import { RecordForExport } from "../../../../types/data-loader";
+import { KintoneRecordForResponse } from "../../../../types/kintone";
 import path from "path";
 
 const fileInfo = {

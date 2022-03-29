@@ -1,11 +1,10 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
-import { uploadRecords } from "../upload";
+import { uploadRecords } from "../../upload";
 
 import path from "path";
 
 import * as canUploadFiles from "./fixtures/can_upload_files";
 import * as canUploadFilesInSubtable from "./fixtures/can_upload_files_in_subtable";
-import * as canUpdateRecordsWithUniqueField from "./fixtures/can_update_records_with_unique_field";
 
 describe("import", () => {
   let apiClient: KintoneRestAPIClient;
@@ -170,122 +169,5 @@ describe("import", () => {
     return expect(
       uploadRecords({ apiClient, attachmentsDir: "", app: "1", records: [{}] })
     ).rejects.toThrow(error);
-  });
-
-  it("should update records correctly with single line text", async () => {
-    apiClient.app.getFormFields = jest.fn().mockResolvedValue({
-      properties: canUpdateRecordsWithUniqueField.properties,
-    });
-    const updateRecordsMockFn = jest.fn().mockResolvedValue({
-      records: [
-        {
-          id: "1",
-          revision: "2",
-        },
-        {
-          id: "2",
-          revision: "2",
-        },
-      ],
-    });
-    apiClient.record.updateRecords = updateRecordsMockFn;
-    const addRecordsMockFn = jest.fn().mockResolvedValue({});
-    apiClient.record.addRecords = addRecordsMockFn;
-
-    const APP_ID = "1";
-    await uploadRecords({
-      apiClient,
-      app: APP_ID,
-      records: canUpdateRecordsWithUniqueField.input,
-      updateKey: "singleLineText",
-    });
-
-    expect(updateRecordsMockFn).toBeCalledWith(
-      canUpdateRecordsWithUniqueField
-        .expectedParamsOfUpdateRecordsBySingleLineText[0]
-    );
-    expect(addRecordsMockFn).not.toHaveBeenCalled();
-  });
-
-  it("should update records correctly with number", async () => {
-    apiClient.app.getFormFields = jest.fn().mockResolvedValue({
-      properties: canUpdateRecordsWithUniqueField.properties,
-    });
-    const updateRecordsMockFn = jest.fn().mockResolvedValue({
-      records: [
-        {
-          id: "1",
-          revision: "2",
-        },
-        {
-          id: "2",
-          revision: "2",
-        },
-      ],
-    });
-    apiClient.record.updateRecords = updateRecordsMockFn;
-    const addRecordsMockFn = jest.fn().mockResolvedValue({});
-    apiClient.record.addRecords = addRecordsMockFn;
-
-    const APP_ID = "1";
-    await uploadRecords({
-      apiClient,
-      app: APP_ID,
-      records: canUpdateRecordsWithUniqueField.input,
-      updateKey: "number",
-    });
-
-    expect(updateRecordsMockFn).toBeCalledWith(
-      canUpdateRecordsWithUniqueField.expectedParamsOfUpdateRecordsByNumber[0]
-    );
-    expect(addRecordsMockFn).not.toHaveBeenCalled();
-  });
-
-  it("should throw error when update key field is not unique", async () => {
-    apiClient.app.getFormFields = jest.fn().mockResolvedValue({
-      properties: canUpdateRecordsWithUniqueField.properties,
-    });
-
-    const APP_ID = "1";
-    expect(
-      uploadRecords({
-        apiClient,
-        app: APP_ID,
-        records: canUpdateRecordsWithUniqueField.input,
-        updateKey: "singleLineText_nonUnique",
-      })
-    ).rejects.toThrow("update key field should set to unique");
-  });
-
-  it("should throw error when unsupported field is passed as update key", async () => {
-    apiClient.app.getFormFields = jest.fn().mockResolvedValue({
-      properties: canUpdateRecordsWithUniqueField.properties,
-    });
-
-    const APP_ID = "1";
-    expect(
-      uploadRecords({
-        apiClient,
-        app: APP_ID,
-        records: canUpdateRecordsWithUniqueField.input,
-        updateKey: "date",
-      })
-    ).rejects.toThrow("unsupported field type for update key");
-  });
-
-  it("should throw error when unexisted field is passed as update key", async () => {
-    apiClient.app.getFormFields = jest.fn().mockResolvedValue({
-      properties: canUpdateRecordsWithUniqueField.properties,
-    });
-
-    const APP_ID = "1";
-    expect(
-      uploadRecords({
-        apiClient,
-        app: APP_ID,
-        records: canUpdateRecordsWithUniqueField.input,
-        updateKey: "unexistedField",
-      })
-    ).rejects.toThrow("no such update key");
   });
 });
