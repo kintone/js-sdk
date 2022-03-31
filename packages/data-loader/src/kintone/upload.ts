@@ -1,4 +1,7 @@
-import { KintoneRecordForParameter } from "../types/kintone";
+import {
+  KintoneRecordForParameter,
+  KintoneRecordForUpdateParameter,
+} from "../types/kintone";
 import {
   KintoneFormFieldProperty,
   KintoneRestAPIClient,
@@ -13,12 +16,35 @@ export const uploadRecords: (options: {
   attachmentsDir?: string;
   app: string;
   records: RecordForImport[];
+  updateKey?: string;
 }) => Promise<void> = async (options) => {
-  const { apiClient, attachmentsDir, app, records } = options;
+  const { apiClient, attachmentsDir, app, records, updateKey } = options;
 
   const { properties } = await apiClient.app.getFormFields<
     Record<string, KintoneFormFieldProperty.OneOf>
   >({ app });
+
+  if (updateKey) {
+    const supportedUpdateKeyFieldTypes = ["SINGLE_LINE_TEXT", "NUMBER"];
+
+    if (!properties[updateKey]) {
+      throw new Error("no such update key");
+    }
+
+    if (!supportedUpdateKeyFieldTypes.includes(properties[updateKey].type)) {
+      throw new Error("unsupported field type for update key");
+    }
+
+    if (
+      !(
+        properties[updateKey] as
+          | KintoneFormFieldProperty.SingleLineText
+          | KintoneFormFieldProperty.Number
+      ).unique
+    ) {
+      throw new Error("update key field should set to unique");
+    }
+  }
 
   let chunkStartIndex = 0;
   while (chunkStartIndex < records.length) {
@@ -27,18 +53,35 @@ export const uploadRecords: (options: {
       chunkStartIndex + CHUNK_LENGTH
     );
     try {
-      const kintoneRecords: KintoneRecordForParameter[] = await recordsReducer(
+      const kintoneRecords: Array<
+        KintoneRecordForParameter | KintoneRecordForUpdateParameter
+      > = await recordsReducer(
         records,
         (fieldCode, field) =>
           fieldProcessor(fieldCode, field, properties, {
             apiClient,
             attachmentsDir,
-          })
+          }),
+        updateKey
       );
-      await apiClient.record.addRecords({
-        app,
-        records: kintoneRecords.slice(chunkStartIndex, chunkNextIndex),
-      });
+      if (updateKey) {
+        await apiClient.record.updateRecords({
+          app,
+          records: kintoneRecords.slice(
+            chunkStartIndex,
+            chunkNextIndex
+          ) as KintoneRecordForUpdateParameter[],
+        });
+      } else {
+        await apiClient.record.addRecords({
+          app,
+          records: kintoneRecords.slice(
+            chunkStartIndex,
+            chunkNextIndex
+          ) as KintoneRecordForParameter[],
+        });
+      }
+
       console.log(
         `SUCCESS: records[${chunkStartIndex} - ${chunkNextIndex - 1}]`
       );
@@ -57,14 +100,32 @@ const recordsReducer: (
   task: (
     fieldCode: string,
     field: FieldsForImport.OneOf
-  ) => Promise<KintoneRecordForParameter[string]>
-) => Promise<KintoneRecordForParameter[]> = async (kintoneRecords, task) => {
-  const records: KintoneRecordForParameter[] = [];
+  ) => Promise<KintoneRecordForParameter[string]>,
+  updateKey?: string
+) => Promise<
+  Array<KintoneRecordForParameter | KintoneRecordForUpdateParameter>
+> = async (kintoneRecords, task, updateKey) => {
+  const records: Array<
+    KintoneRecordForParameter | KintoneRecordForUpdateParameter
+  > = [];
   for (const kintoneRecord of kintoneRecords) {
     const record = await recordReducer(kintoneRecord, (fieldCode, field) =>
       task(fieldCode, field)
     );
-    records.push(record);
+    if (updateKey) {
+      const recordUpdateKey = {
+        field: updateKey,
+        value: record[updateKey].value as string | number,
+      };
+      delete record[updateKey];
+      const recordForUpdate: KintoneRecordForUpdateParameter = {
+        updateKey: recordUpdateKey,
+        record: record,
+      };
+      records.push(recordForUpdate);
+    } else {
+      records.push(record);
+    }
   }
   return records;
 };

@@ -3,8 +3,8 @@ import { promises as fs } from "fs";
 
 import os from "os";
 import path from "path";
-import { downloadRecords } from "../download";
-import { FieldsForExport } from "../../types/data-loader";
+import { downloadRecords } from "../../download";
+import { FieldsForExport } from "../../../types/data-loader";
 
 import * as caseCanGetRecords from "./fixtures/can_get_records";
 import * as caseCanDownloadFiles from "./fixtures/can_download_files";

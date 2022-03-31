@@ -1,7 +1,7 @@
-import { RecordForImport } from "../../../types/data-loader";
+import { RecordForImport } from "../../../../types/data-loader";
 import { KintoneFormFieldProperty } from "@kintone/rest-api-client";
 import path from "path";
-import { KintoneRecordForParameter } from "../../../types/kintone";
+import { KintoneRecordForParameter } from "../../../../types/kintone";
 
 export const input: RecordForImport[] = [
   {

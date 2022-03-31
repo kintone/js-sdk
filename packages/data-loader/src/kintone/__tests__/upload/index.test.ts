@@ -1,5 +1,5 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
-import { uploadRecords } from "../upload";
+import { uploadRecords } from "../../upload";
 
 import path from "path";
 
