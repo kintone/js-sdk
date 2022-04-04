@@ -25,25 +25,7 @@ export const uploadRecords: (options: {
 
   let recordsOnKintone: Set<string> | undefined;
   if (updateKey) {
-    const supportedUpdateKeyFieldTypes = ["SINGLE_LINE_TEXT", "NUMBER"];
-
-    if (!properties[updateKey]) {
-      throw new Error("no such update key");
-    }
-
-    if (!supportedUpdateKeyFieldTypes.includes(properties[updateKey].type)) {
-      throw new Error("unsupported field type for update key");
-    }
-
-    if (
-      !(
-        properties[updateKey] as
-          | KintoneFormFieldProperty.SingleLineText
-          | KintoneFormFieldProperty.Number
-      ).unique
-    ) {
-      throw new Error("update key field should set to unique");
-    }
+    validateUpdateKey(properties, updateKey);
 
     const tmp = await apiClient.record.getAllRecords({
       app,
@@ -74,7 +56,11 @@ export const uploadRecords: (options: {
 
   // TODO: remove this debug message
   console.log(
-    `records to be updated: ${kintoneRecords.update}, records to be added: ${kintoneRecords.add}`
+    `records to be updated: ${JSON.stringify(
+      kintoneRecords.update,
+      null,
+      2
+    )}, records to be added: ${JSON.stringify(kintoneRecords.add, null, 2)}`
   );
 
   // TODO: message on success
@@ -108,28 +94,27 @@ const recordsReducer: (
   const recordsForAdd: KintoneRecordForParameter[] = [];
   const recordsForUpdate: KintoneRecordForUpdateParameter[] = [];
   for (const kintoneRecord of kintoneRecords) {
-    const record = await recordReducer(kintoneRecord, (fieldCode, field) =>
-      task(fieldCode, field)
-    );
-    if (updateKey && recordsOnKintone?.has(record[updateKey].value as string)) {
-      const recordUpdateKey = {
-        field: updateKey,
-        value: record[updateKey].value as string | number,
-      };
-      delete record[updateKey];
-      const recordForUpdate: KintoneRecordForUpdateParameter = {
-        updateKey: recordUpdateKey,
-        record: record,
-      };
-      recordsForUpdate.push(recordForUpdate);
+    if (
+      updateKey &&
+      recordsOnKintone?.has(kintoneRecord[updateKey].value as string)
+    ) {
+      const record = await recordReducerForUpdate(
+        kintoneRecord,
+        (fieldCode, field) => task(fieldCode, field),
+        updateKey
+      );
+      recordsForUpdate.push(record);
     } else {
+      const record = await recordReducerAdd(kintoneRecord, (fieldCode, field) =>
+        task(fieldCode, field)
+      );
       recordsForAdd.push(record);
     }
   }
   return { add: recordsForAdd, update: recordsForUpdate };
 };
 
-const recordReducer: (
+const recordReducerAdd: (
   record: RecordForImport,
   task: (
     fieldCode: string,
@@ -141,6 +126,34 @@ const recordReducer: (
     newRecord[fieldCode] = await task(fieldCode, field);
   }
   return newRecord;
+};
+
+const recordReducerForUpdate: (
+  record: RecordForImport,
+  task: (
+    fieldCode: string,
+    field: FieldsForImport.OneOf
+  ) => Promise<KintoneRecordForParameter[string]>,
+  updateKey: string
+) => Promise<KintoneRecordForUpdateParameter> = async (
+  record,
+  task,
+  updateKey
+) => {
+  const newRecord: KintoneRecordForParameter = {};
+  for (const [fieldCode, field] of Object.entries(record)) {
+    newRecord[fieldCode] = await task(fieldCode, field);
+  }
+  const recordUpdateKey = {
+    field: updateKey,
+    value: newRecord[updateKey].value as string | number,
+  };
+  delete newRecord[updateKey];
+
+  return {
+    updateKey: recordUpdateKey,
+    record: newRecord,
+  };
 };
 
 const fieldProcessor: (
@@ -209,5 +222,30 @@ const fieldProcessor: (
     }
     default:
       return field;
+  }
+};
+
+const validateUpdateKey = (
+  properties: Record<string, KintoneFormFieldProperty.OneOf>,
+  updateKey: string
+) => {
+  const supportedUpdateKeyFieldTypes = ["SINGLE_LINE_TEXT", "NUMBER"];
+
+  if (!properties[updateKey]) {
+    throw new Error("no such update key");
+  }
+
+  if (!supportedUpdateKeyFieldTypes.includes(properties[updateKey].type)) {
+    throw new Error("unsupported field type for update key");
+  }
+
+  if (
+    !(
+      properties[updateKey] as
+        | KintoneFormFieldProperty.SingleLineText
+        | KintoneFormFieldProperty.Number
+    ).unique
+  ) {
+    throw new Error("update key field should set to unique");
   }
 };
