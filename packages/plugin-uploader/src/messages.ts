@@ -17,11 +17,11 @@ const messages = {
     ja: "パスワードを入力してください:",
   },
   Error: {
-    en: "An error occured",
+    en: "An error occurred",
     ja: "エラーが発生しました",
   },
   Error_retry: {
-    en: "An error occured, retry with a new browser",
+    en: "An error occurred, retry with a new browser",
     ja: "エラーが発生しました。リトライします",
   },
   Error_requiredZipPath: {
