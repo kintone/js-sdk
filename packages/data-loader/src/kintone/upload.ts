@@ -90,25 +90,22 @@ const recordsReducer: (
 ) => Promise<{
   add: KintoneRecordForParameter[];
   update: KintoneRecordForUpdateParameter[];
-}> = async (kintoneRecords, task, updateKey, recordsOnKintone) => {
+}> = async (records, task, updateKey, recordsOnKintone) => {
   const recordsForAdd: KintoneRecordForParameter[] = [];
   const recordsForUpdate: KintoneRecordForUpdateParameter[] = [];
-  for (const kintoneRecord of kintoneRecords) {
-    if (
-      updateKey &&
-      recordsOnKintone?.has(kintoneRecord[updateKey].value as string)
-    ) {
-      const record = await recordReducerForUpdate(
-        kintoneRecord,
+  for (const record of records) {
+    if (updateKey && recordsOnKintone?.has(record[updateKey].value as string)) {
+      const kintoneRecord = await recordReducerForUpdate(
+        record,
         (fieldCode, field) => task(fieldCode, field),
         updateKey
       );
-      recordsForUpdate.push(record);
+      recordsForUpdate.push(kintoneRecord);
     } else {
-      const record = await recordReducerAdd(kintoneRecord, (fieldCode, field) =>
+      const kintoneRecord = await recordReducerAdd(record, (fieldCode, field) =>
         task(fieldCode, field)
       );
-      recordsForAdd.push(record);
+      recordsForAdd.push(kintoneRecord);
     }
   }
   return { add: recordsForAdd, update: recordsForUpdate };
