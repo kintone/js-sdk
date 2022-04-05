@@ -14,10 +14,10 @@ export const input: RecordForImport[] = [
   },
   {
     singleLineText: {
-      value: "value2",
+      value: "value3",
     },
     number: {
-      value: "2",
+      value: "3",
     },
     date: {
       value: "2022-04-01",
