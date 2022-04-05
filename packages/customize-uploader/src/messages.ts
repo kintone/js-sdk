@@ -86,11 +86,11 @@ const messages = {
     ja: "ファイルの変更を監視しています...",
   },
   E_Retry: {
-    en: "An error occured, retry",
+    en: "An error occurred, retry",
     ja: "エラーが発生しました。リトライします",
   },
   E_Exit: {
-    en: "An error occured, exit process. Please check if you passed proper arguments and manifest file",
+    en: "An error occurred, exit process. Please check if you passed proper arguments and manifest file",
     ja: "エラーが発生しました。引数の値と、マニフェストファイルに正しい値が入力されているか確認してください",
   },
 } as const;
