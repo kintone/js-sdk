@@ -54,15 +54,6 @@ export const uploadRecords: (options: {
     existingUpdateKeyValues
   );
 
-  // TODO: remove this debug message
-  console.log(
-    `records to be updated: ${JSON.stringify(
-      kintoneRecords.forUpdate,
-      null,
-      2
-    )}, records to be added: ${JSON.stringify(kintoneRecords.forAdd, null, 2)}`
-  );
-
   // TODO: message on success
   // TODO: message on failure
   if (kintoneRecords.forUpdate.length > 0) {

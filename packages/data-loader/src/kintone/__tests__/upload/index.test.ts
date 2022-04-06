@@ -19,7 +19,7 @@ describe("import", () => {
     apiClient.app.getFormFields = jest
       .fn()
       .mockResolvedValue({ properties: {} });
-    apiClient.record.addRecords = jest.fn().mockResolvedValue([{}]);
+    apiClient.record.addAllRecords = jest.fn().mockResolvedValue([{}]);
     return expect(
       uploadRecords({ apiClient, attachmentsDir: "", app: "1", records: [] })
     ).resolves.not.toThrow();
@@ -28,8 +28,8 @@ describe("import", () => {
   it("should pass parameters to the apiClient correctly", async () => {
     const getFormFieldsMockFn = jest.fn().mockResolvedValue({ properties: {} });
     apiClient.app.getFormFields = getFormFieldsMockFn;
-    const addRecordsMockFn = jest.fn().mockResolvedValue([{}]);
-    apiClient.record.addRecords = addRecordsMockFn;
+    const addAllRecordsMockFn = jest.fn().mockResolvedValue([{}]);
+    apiClient.record.addAllRecords = addAllRecordsMockFn;
     const ATTACHMENTS_DIR = "";
     const APP_ID = "1";
     const RECORDS = [{}];
@@ -44,7 +44,7 @@ describe("import", () => {
     expect(getFormFieldsMockFn.mock.calls[0][0]).toStrictEqual({
       app: APP_ID,
     });
-    expect(addRecordsMockFn.mock.calls[0][0]).toStrictEqual({
+    expect(addAllRecordsMockFn.mock.calls[0][0]).toStrictEqual({
       app: APP_ID,
       records: RECORDS,
     });
@@ -79,8 +79,8 @@ describe("import", () => {
       .mockReturnValueOnce({ fileKey: "abcde" })
       .mockReturnValueOnce({ fileKey: "fghij" });
     apiClient.file.uploadFile = uploadFileMockFn;
-    const addRecordsMockFn = jest.fn().mockResolvedValue([{}]);
-    apiClient.record.addRecords = addRecordsMockFn;
+    const addAllRecordsMockFn = jest.fn().mockResolvedValue([{}]);
+    apiClient.record.addAllRecords = addAllRecordsMockFn;
 
     const ATTACHMENTS_DIR = "AttachmentsFolder";
     const APP_ID = "1";
@@ -110,7 +110,7 @@ describe("import", () => {
     });
 
     // records should contain fileKeys
-    expect(addRecordsMockFn.mock.calls[0][0]).toStrictEqual({
+    expect(addAllRecordsMockFn.mock.calls[0][0]).toStrictEqual({
       app: APP_ID,
       records: EXPECTED_RECORDS,
     });
@@ -126,8 +126,8 @@ describe("import", () => {
       .mockReturnValueOnce({ fileKey: "abcde" })
       .mockReturnValueOnce({ fileKey: "fghij" });
     apiClient.file.uploadFile = uploadFileMockFn;
-    const addRecordsMockFn = jest.fn().mockResolvedValue([{}]);
-    apiClient.record.addRecords = addRecordsMockFn;
+    const addAllRecordsMockFn = jest.fn().mockResolvedValue([{}]);
+    apiClient.record.addAllRecords = addAllRecordsMockFn;
 
     const ATTACHMENTS_DIR = "AttachmentsFolder";
     const APP_ID = "1";
@@ -157,7 +157,7 @@ describe("import", () => {
     });
 
     // records should contain fileKeys
-    expect(addRecordsMockFn.mock.calls[0][0]).toStrictEqual({
+    expect(addAllRecordsMockFn.mock.calls[0][0]).toStrictEqual({
       app: APP_ID,
       records: EXPECTED_RECORDS,
     });

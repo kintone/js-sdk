@@ -1,10 +1,11 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { uploadRecords } from "../../upload";
 
-import { input } from "./fixtures/update_records/input";
-import { properties } from "./fixtures/update_records/properties";
-import { patterns as patternsSucceeded } from "./fixtures/update_records/patterns_succeeded";
-import { patterns as patternsFailed } from "./fixtures/update_records/patterns_failed";
+import { input } from "./fixtures/upsert_records/input";
+import { properties } from "./fixtures/upsert_records/properties";
+import { patterns as patternsSucceeded } from "./fixtures/upsert_records/patterns_succeeded";
+import { patterns as patternsFailed } from "./fixtures/upsert_records/patterns_failed";
+import { existingRecords } from "./fixtures/upsert_records/existing_records";
 
 describe("update records correctly", () => {
   let apiClient: KintoneRestAPIClient;
@@ -17,25 +18,24 @@ describe("update records correctly", () => {
 
   it.each(patternsSucceeded)(
     "$description",
-    async ({ updateKey, expected }) => {
+    async ({ updateKey, forUpdateExpected, forAddExpected }) => {
       apiClient.app.getFormFields = jest.fn().mockResolvedValue({
         properties,
       });
-      const updateRecordsMockFn = jest.fn().mockResolvedValue({
+
+      const getAllRecordsMockFn = jest.fn().mockResolvedValue(existingRecords);
+      apiClient.record.getAllRecords = getAllRecordsMockFn;
+      const updateAllRecordsMockFn = jest.fn().mockResolvedValue({
         records: [
           {
             id: "1",
             revision: "2",
           },
-          {
-            id: "2",
-            revision: "2",
-          },
         ],
       });
-      apiClient.record.updateRecords = updateRecordsMockFn;
-      const addRecordsMockFn = jest.fn().mockResolvedValue({});
-      apiClient.record.addRecords = addRecordsMockFn;
+      apiClient.record.updateAllRecords = updateAllRecordsMockFn;
+      const addAllRecordsMockFn = jest.fn().mockResolvedValue({});
+      apiClient.record.addAllRecords = addAllRecordsMockFn;
 
       const APP_ID = "1";
       await uploadRecords({
@@ -45,8 +45,8 @@ describe("update records correctly", () => {
         updateKey,
       });
 
-      expect(updateRecordsMockFn).toBeCalledWith(expected);
-      expect(addRecordsMockFn).not.toHaveBeenCalled();
+      expect(updateAllRecordsMockFn).toBeCalledWith(forUpdateExpected);
+      expect(addAllRecordsMockFn).toBeCalledWith(forAddExpected);
     }
   );
 });

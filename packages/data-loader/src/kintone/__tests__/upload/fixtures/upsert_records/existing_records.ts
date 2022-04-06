@@ -1,5 +1,4 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
-import { KintoneRecordForResponse } from "../../../../../types/kintone";
 
 export const existingRecords: Awaited<
   ReturnType<KintoneRestAPIClient["record"]["getAllRecords"]>
@@ -29,7 +28,7 @@ export const existingRecords: Awaited<
     },
     date: {
       type: "DATE",
-      value: "2022-03-01",
+      value: "2022-04-01",
     },
   },
 ];
