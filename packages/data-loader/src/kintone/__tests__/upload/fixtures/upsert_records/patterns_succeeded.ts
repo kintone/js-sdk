@@ -11,7 +11,7 @@ export const patterns: Array<{
   >[0];
 }> = [
   {
-    description: "should update records correctly with single line text",
+    description: "should upsert records correctly with single line text",
     updateKey: "singleLineText",
     forUpdateExpected: {
       app: "1",
@@ -50,7 +50,7 @@ export const patterns: Array<{
     },
   },
   {
-    description: "should update records correctly with number",
+    description: "should upsert records correctly with number",
     updateKey: "number",
     forUpdateExpected: {
       app: "1",

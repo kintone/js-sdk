@@ -7,7 +7,7 @@ import { patterns as patternsSucceeded } from "./fixtures/upsert_records/pattern
 import { patterns as patternsFailed } from "./fixtures/upsert_records/patterns_failed";
 import { existingRecords } from "./fixtures/upsert_records/existing_records";
 
-describe("update records correctly", () => {
+describe("upsert records correctly", () => {
   let apiClient: KintoneRestAPIClient;
   beforeEach(() => {
     apiClient = new KintoneRestAPIClient({
@@ -51,7 +51,7 @@ describe("update records correctly", () => {
   );
 });
 
-describe("update records failed", () => {
+describe("upsert records failed", () => {
   let apiClient: KintoneRestAPIClient;
   beforeEach(() => {
     apiClient = new KintoneRestAPIClient({
