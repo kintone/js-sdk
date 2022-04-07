@@ -54,19 +54,31 @@ export const uploadRecords: (options: {
     existingUpdateKeyValues
   );
 
-  // TODO: message on success
-  // TODO: message on failure
   if (kintoneRecords.forUpdate.length > 0) {
-    await apiClient.record.updateAllRecords({
-      app,
-      records: kintoneRecords.forUpdate,
-    });
+    try {
+      await apiClient.record.updateAllRecords({
+        app,
+        records: kintoneRecords.forUpdate,
+      });
+      console.log(
+        `SUCCESS: update records[${kintoneRecords.forUpdate.length}]`
+      );
+    } catch (e) {
+      console.log(`FAILED: update records[${kintoneRecords.forUpdate.length}]`);
+      throw e;
+    }
   }
   if (kintoneRecords.forAdd.length > 0) {
-    await apiClient.record.addAllRecords({
-      app,
-      records: kintoneRecords.forAdd,
-    });
+    try {
+      await apiClient.record.addAllRecords({
+        app,
+        records: kintoneRecords.forAdd,
+      });
+      console.log(`SUCCESS: add records[${kintoneRecords.forAdd.length}]`);
+    } catch (e) {
+      console.log(`FAILED: add records[${kintoneRecords.forAdd.length}]`);
+      throw e;
+    }
   }
 };
 
