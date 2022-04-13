@@ -1,11 +1,11 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
-import { uploadRecords } from "../../upload";
+import { upsertRecords } from "../../upsert";
 
-import { input } from "./fixtures/upsert_records/input";
-import { properties } from "./fixtures/upsert_records/properties";
-import { patterns as patternsSucceeded } from "./fixtures/upsert_records/patterns_succeeded";
-import { patterns as patternsFailed } from "./fixtures/upsert_records/patterns_failed";
-import { existingRecords } from "./fixtures/upsert_records/existing_records";
+import { input } from "./fixtures/input";
+import { properties } from "./fixtures/properties";
+import { patterns as patternsSucceeded } from "./fixtures/patterns_succeeded";
+import { patterns as patternsFailed } from "./fixtures/patterns_failed";
+import { existingRecords } from "./fixtures/existing_records";
 
 describe("upsert records correctly", () => {
   let apiClient: KintoneRestAPIClient;
@@ -38,12 +38,7 @@ describe("upsert records correctly", () => {
       apiClient.record.addAllRecords = addAllRecordsMockFn;
 
       const APP_ID = "1";
-      await uploadRecords({
-        apiClient,
-        app: APP_ID,
-        records: input,
-        updateKey,
-      });
+      await upsertRecords(apiClient, APP_ID, input, updateKey, {});
 
       expect(updateAllRecordsMockFn).toBeCalledWith(forUpdateExpected);
       expect(addAllRecordsMockFn).toBeCalledWith(forAddExpected);
@@ -69,12 +64,7 @@ describe("upsert records failed", () => {
 
       const APP_ID = "1";
       await expect(
-        uploadRecords({
-          apiClient,
-          app: APP_ID,
-          records: input,
-          updateKey,
-        })
+        upsertRecords(apiClient, APP_ID, input, updateKey, {})
       ).rejects.toThrow(errorMessage);
     }
   );

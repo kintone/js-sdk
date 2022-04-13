@@ -1,4 +1,4 @@
-import { RecordForImport } from "../../../../../types/data-loader/import/record";
+import { RecordForImport } from "../../../../types/data-loader/import/record";
 
 export const input: RecordForImport[] = [
   {

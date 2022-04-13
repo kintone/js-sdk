@@ -1,7 +1,9 @@
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
 import { readFile } from "../utils/file";
 import { parseRecords } from "../parsers";
-import { uploadRecords } from "../kintone/upload";
+import { addRecords } from "../usecase/add";
+import { upsertRecords } from "../usecase/upsert";
+import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 export type Options = {
   app: string;
@@ -26,10 +28,21 @@ export const run: (
       app,
       format,
     });
-    await uploadRecords({ apiClient, attachmentsDir, app, records, updateKey });
+    if (updateKey) {
+      await upsertRecords(apiClient, app, records, updateKey, {
+        attachmentsDir,
+      });
+    } else {
+      await addRecords(apiClient, app, records, { attachmentsDir });
+    }
   } catch (e) {
     console.log(e);
     // eslint-disable-next-line no-process-exit
     process.exit(1);
   }
+};
+
+type Deps = { apiClient: KintoneRestAPIClient };
+export const func = (deps: Deps) => (appId: string) => {
+  return true;
 };
