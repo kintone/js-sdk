@@ -107,6 +107,11 @@ const convertRecordsToApiRequestParameter = async (
         attachmentsDir,
       })
     );
+    if (record[updateKey] === undefined) {
+      throw new Error(
+        `The field specified as "Key to Bulk Update" (${updateKey}) does not exist on input`
+      );
+    }
     if (existingUpdateKeyValues.has(record[updateKey].value as string)) {
       const recordUpdateKey = {
         field: updateKey,

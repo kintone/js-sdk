@@ -61,6 +61,9 @@ describe("upsert records failed", () => {
       apiClient.app.getFormFields = jest.fn().mockResolvedValue({
         properties,
       });
+      apiClient.record.getAllRecords = jest
+        .fn()
+        .mockResolvedValue(existingRecords);
 
       const APP_ID = "1";
       await expect(

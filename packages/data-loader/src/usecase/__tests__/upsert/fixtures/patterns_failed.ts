@@ -20,4 +20,11 @@ export const patterns: Array<{
     updateKey: "unexistedField",
     errorMessage: "no such update key",
   },
+  {
+    description:
+      "should throw error when update key field does not exist on input record",
+    updateKey: "singleLineText_nonExistentOnInput",
+    errorMessage:
+      'The field specified as "Key to Bulk Update" (singleLineText_nonExistentOnInput) does not exist on input',
+  },
 ];

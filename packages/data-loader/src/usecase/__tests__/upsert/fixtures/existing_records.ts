@@ -16,6 +16,10 @@ export const existingRecords: Awaited<
       type: "DATE",
       value: "2022-03-01",
     },
+    singleLineText_nonExistentOnInput: {
+      type: "SINGLE_LINE_TEXT",
+      value: "value1",
+    },
   },
   {
     singleLineText: {
@@ -29,6 +33,10 @@ export const existingRecords: Awaited<
     date: {
       type: "DATE",
       value: "2022-04-01",
+    },
+    singleLineText_nonExistentOnInput: {
+      type: "SINGLE_LINE_TEXT",
+      value: "value2",
     },
   },
 ];
