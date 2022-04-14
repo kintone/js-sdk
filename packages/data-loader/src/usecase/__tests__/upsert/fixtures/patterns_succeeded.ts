@@ -3,12 +3,17 @@ import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 export const patterns: Array<{
   description: string;
   updateKey: string;
-  expected: Parameters<KintoneRestAPIClient["record"]["updateRecords"]>[0];
+  forUpdateExpected: Parameters<
+    KintoneRestAPIClient["record"]["updateAllRecords"]
+  >[0];
+  forAddExpected: Parameters<
+    KintoneRestAPIClient["record"]["addAllRecords"]
+  >[0];
 }> = [
   {
-    description: "should update records correctly with single line text",
+    description: "should upsert records correctly with single line text",
     updateKey: "singleLineText",
-    expected: {
+    forUpdateExpected: {
       app: "1",
       records: [
         {
@@ -25,27 +30,29 @@ export const patterns: Array<{
             },
           },
         },
+      ],
+    },
+    forAddExpected: {
+      app: "1",
+      records: [
         {
-          updateKey: {
-            field: "singleLineText",
-            value: "value2",
+          singleLineText: {
+            value: "value3",
           },
-          record: {
-            number: {
-              value: "2",
-            },
-            date: {
-              value: "2022-04-01",
-            },
+          number: {
+            value: "3",
+          },
+          date: {
+            value: "2022-04-01",
           },
         },
       ],
     },
   },
   {
-    description: "should update records correctly with number",
+    description: "should upsert records correctly with number",
     updateKey: "number",
-    expected: {
+    forUpdateExpected: {
       app: "1",
       records: [
         {
@@ -62,18 +69,20 @@ export const patterns: Array<{
             },
           },
         },
+      ],
+    },
+    forAddExpected: {
+      app: "1",
+      records: [
         {
-          updateKey: {
-            field: "number",
-            value: "2",
+          singleLineText: {
+            value: "value3",
           },
-          record: {
-            singleLineText: {
-              value: "value2",
-            },
-            date: {
-              value: "2022-04-01",
-            },
+          number: {
+            value: "3",
+          },
+          date: {
+            value: "2022-04-01",
           },
         },
       ],

@@ -8,7 +8,7 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
 
-- Upsert records when importing
+- use Record ID as Key to Bulk Update to import records
 
 We plan to support them in the future release.
 
@@ -88,15 +88,16 @@ If records contains Attachment field, `--attachments-dir` option is required.
   - upload the file there
 - file name on kintone is same as local
 
-#### Update records
+#### Upsert records
 
-When `--update-key` option is set, the option value is used as “Key to Bulk Update” to update existing records into a specified app.  
-The following types of fields can be specified as "Key to Bulk Update".
+When `--update-key` option is set, the option value is used as “Key to Bulk Update” to import (upsert) records.
 
-- Text
-- Number
+"Upsert" means updating and/or inserting records at the same time. Data containing keys that match existing record values is used to update those records accordingly, and the remaining data is added to the specified app as new records.
 
-Also, the field must have "Prohibit duplicate values" enabled.
+The field specified as "Key to Bulk Update" should meet the following requirements:
+
+- be of either type Text or Number
+- must have "Prohibit duplicate values" enabled
 
 ### export
 

@@ -1,5 +1,5 @@
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { downloadRecords } from "../kintone/download";
+import { getRecords } from "../usecase/get";
 import { ExportFileFormat, printRecords } from "../printers";
 
 export type Options = {
@@ -22,9 +22,7 @@ export const run: (
     ...restApiClientOptions
   } = argv;
   const apiClient = buildRestAPIClient(restApiClientOptions);
-  const records = await downloadRecords({
-    apiClient,
-    app,
+  const records = await getRecords(apiClient, app, {
     condition,
     orderBy,
     attachmentsDir,
