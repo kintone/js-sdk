@@ -1,6 +1,7 @@
 {
   "extends": [
-    "github>cybozu/renovate-config"
+    "github>cybozu/renovate-config",
+    "prConcurrentLimitNone"
   ],
   "ignorePaths": [
     "**/node_modules/**",
