@@ -3,14 +3,14 @@ import { promises as fs } from "fs";
 
 import os from "os";
 import path from "path";
-import { downloadRecords } from "../download";
-import { FieldsForExport } from "../../types/data-loader";
+import { getRecords } from "../../get";
+import { FieldsForExport } from "../../../types/data-loader";
 
 import * as caseCanGetRecords from "./fixtures/can_get_records";
 import * as caseCanDownloadFiles from "./fixtures/can_download_files";
 import * as caseCanDownloadFilesInSubtable from "./fixtures/can_download_files_in_subtable";
 
-describe("export", () => {
+describe("getRecords", () => {
   let apiClient: KintoneRestAPIClient;
   beforeEach(() => {
     apiClient = new KintoneRestAPIClient({
@@ -21,7 +21,7 @@ describe("export", () => {
   it("should not be failed", () => {
     apiClient.record.getAllRecords = jest.fn().mockResolvedValue([{}]);
     return expect(
-      downloadRecords({ apiClient, app: "1", attachmentsDir: "" })
+      getRecords(apiClient, "1", { attachmentsDir: "" })
     ).resolves.not.toThrow();
   });
 
@@ -32,9 +32,7 @@ describe("export", () => {
     const CONDITION = 'Customer like "foo"';
     const ORDER_BY = "Customer desc";
 
-    await downloadRecords({
-      apiClient,
-      app: APP_ID,
+    await getRecords(apiClient, APP_ID, {
       attachmentsDir: "",
       condition: CONDITION,
       orderBy: ORDER_BY,
@@ -52,11 +50,7 @@ describe("export", () => {
     const expectedRecords = caseCanGetRecords.expected;
 
     apiClient.record.getAllRecords = jest.fn().mockResolvedValue(records);
-    const actual = await downloadRecords({
-      apiClient,
-      app: "1",
-      attachmentsDir: "",
-    });
+    const actual = await getRecords(apiClient, "1", { attachmentsDir: "" });
     expect(actual).toStrictEqual(expectedRecords);
   });
 
@@ -72,9 +66,7 @@ describe("export", () => {
       .fn()
       .mockResolvedValue(kintoneRecords);
     apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
-    const actual = await downloadRecords({
-      apiClient,
-      app: "1",
+    const actual = await getRecords(apiClient, "1", {
       attachmentsDir: tempDir,
     });
     expect(actual).toStrictEqual(expectedRecords);
@@ -102,9 +94,7 @@ describe("export", () => {
       .fn()
       .mockResolvedValue(kintoneRecords);
     apiClient.file.downloadFile = jest.fn().mockResolvedValue(testFileData);
-    const actual = await downloadRecords({
-      apiClient,
-      app: "1",
+    const actual = await getRecords(apiClient, "1", {
       attachmentsDir: tempDir,
     });
     expect(actual).toStrictEqual(expectedRecords);
@@ -127,7 +117,7 @@ describe("export", () => {
     const error = new Error("error for test");
     apiClient.record.getAllRecords = jest.fn().mockRejectedValueOnce(error);
     return expect(
-      downloadRecords({ apiClient, app: "1", attachmentsDir: "" })
+      getRecords(apiClient, "1", { attachmentsDir: "" })
     ).rejects.toThrow(error);
   });
 });

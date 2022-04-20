@@ -8,7 +8,7 @@ A kintone record importer and exporter.
 
 **THIS IS EXPERIMENTAL, AND THESE FEATURES ARE NOT SUPPORTED YET.**
 
-- Update records when importing
+- use Record ID as Key to Bulk Update to import records
 
 We plan to support them in the future release.
 
@@ -74,6 +74,8 @@ Options:
       --attachments-dir      Attachment file directory                  [string]
       --file-path            The path to source file. ".json" or ".csv"
                                                              [string] [required]
+      --update-key           The key to Bulk Update
+                                                                        [string]
       --pfx-file-path        The path to client certificate file        [string]
       --pfx-file-password    The password of client certificate file    [string]
 ```
@@ -85,6 +87,17 @@ If records contains Attachment field, `--attachments-dir` option is required.
 - the local file path in record is treated as relative path from `--attachments-dir`
   - upload the file there
 - file name on kintone is same as local
+
+#### Upsert records
+
+When `--update-key` option is set, the option value is used as “Key to Bulk Update” to import (upsert) records.
+
+"Upsert" means updating and/or inserting records at the same time. Data containing keys that match existing record values is used to update those records accordingly, and the remaining data is added to the specified app as new records.
+
+The field specified as "Key to Bulk Update" should meet the following requirements:
+
+- be of either type Text or Number
+- must have "Prohibit duplicate values" enabled
 
 ### export
 
