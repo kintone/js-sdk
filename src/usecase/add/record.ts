@@ -1,75 +1,12 @@
-import { KintoneRecordForParameter } from "../types/kintone";
+import { KintoneRecordForParameter } from "../..//types/kintone";
 import {
   KintoneFormFieldProperty,
   KintoneRestAPIClient,
 } from "@kintone/rest-api-client";
-import { RecordForImport, FieldsForImport } from "../types/data-loader";
+import { RecordForImport, FieldsForImport } from "../../types/data-loader";
 import path from "path";
 
-const CHUNK_LENGTH = 100;
-
-export const uploadRecords: (options: {
-  apiClient: KintoneRestAPIClient;
-  attachmentsDir?: string;
-  app: string;
-  records: RecordForImport[];
-}) => Promise<void> = async (options) => {
-  const { apiClient, attachmentsDir, app, records } = options;
-
-  const { properties } = await apiClient.app.getFormFields<
-    Record<string, KintoneFormFieldProperty.OneOf>
-  >({ app });
-
-  let chunkStartIndex = 0;
-  while (chunkStartIndex < records.length) {
-    const chunkNextIndex = Math.min(
-      records.length,
-      chunkStartIndex + CHUNK_LENGTH
-    );
-    try {
-      const kintoneRecords: KintoneRecordForParameter[] = await recordsReducer(
-        records,
-        (fieldCode, field) =>
-          fieldProcessor(fieldCode, field, properties, {
-            apiClient,
-            attachmentsDir,
-          })
-      );
-      await apiClient.record.addRecords({
-        app,
-        records: kintoneRecords.slice(chunkStartIndex, chunkNextIndex),
-      });
-      console.log(
-        `SUCCESS: records[${chunkStartIndex} - ${chunkNextIndex - 1}]`
-      );
-    } catch (e) {
-      console.log(
-        `FAILED: records[${chunkStartIndex} - ${records.length - 1}]`
-      );
-      throw e;
-    }
-    chunkStartIndex = chunkNextIndex;
-  }
-};
-
-const recordsReducer: (
-  records: RecordForImport[],
-  task: (
-    fieldCode: string,
-    field: FieldsForImport.OneOf
-  ) => Promise<KintoneRecordForParameter[string]>
-) => Promise<KintoneRecordForParameter[]> = async (kintoneRecords, task) => {
-  const records: KintoneRecordForParameter[] = [];
-  for (const kintoneRecord of kintoneRecords) {
-    const record = await recordReducer(kintoneRecord, (fieldCode, field) =>
-      task(fieldCode, field)
-    );
-    records.push(record);
-  }
-  return records;
-};
-
-const recordReducer: (
+export const recordReducer: (
   record: RecordForImport,
   task: (
     fieldCode: string,
@@ -83,18 +20,20 @@ const recordReducer: (
   return newRecord;
 };
 
-const fieldProcessor: (
+export const fieldProcessor: (
+  apiClient: KintoneRestAPIClient,
   fieldCode: string,
   field: FieldsForImport.OneOf,
   properties: Record<string, KintoneFormFieldProperty.OneOf>,
-  options: { apiClient: KintoneRestAPIClient; attachmentsDir?: string }
+  options: { attachmentsDir?: string }
 ) => Promise<KintoneRecordForParameter[string]> = async (
+  apiClient,
   fieldCode,
   field,
   properties,
   options
 ) => {
-  const { attachmentsDir, apiClient } = options;
+  const { attachmentsDir } = options;
 
   // TODO: filter fields
 
@@ -131,6 +70,7 @@ const fieldProcessor: (
           row.value
         )) {
           fieldsInRow[fieldCodeInSubtable] = await fieldProcessor(
+            apiClient,
             fieldCodeInSubtable,
             fieldInSubtable,
             (
@@ -138,7 +78,7 @@ const fieldProcessor: (
                 [fieldCode: string]: KintoneFormFieldProperty.InSubtable;
               }>
             ).fields,
-            { apiClient, attachmentsDir }
+            { attachmentsDir }
           );
         }
         newRows.push({ id: row.id, value: fieldsInRow });
