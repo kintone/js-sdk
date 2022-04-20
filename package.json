@@ -43,7 +43,7 @@
     "@types/inquirer": "8.2.1",
     "@types/mkdirp": "^1.0.2",
     "@types/rimraf": "^3.0.2",
-    "ts-node": "^10.6.0"
+    "ts-node": "^10.7.0"
   },
   "dependencies": {
     "@kintone/rest-api-client": "^2.0.37",
