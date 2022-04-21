@@ -17,6 +17,9 @@ export const convertFieldValue = ({
     case "RICH_TEXT":
     case "LINK":
     case "DROP_DOWN":
+    case "DATE":
+    case "DATETIME":
+    case "TIME":
     case "UPDATED_TIME":
     case "CREATED_TIME":
       return { value };
