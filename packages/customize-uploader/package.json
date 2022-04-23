@@ -51,7 +51,7 @@
     "inquirer": "^8.2.2",
     "meow": "^9.0.0",
     "mkdirp": "^1.0.4",
-    "os-locale": "^5.0.0",
+    "os-locale": "^6.0.2",
     "rimraf": "^3.0.2"
   }
 }
