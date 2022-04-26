@@ -1,5 +1,5 @@
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { readFile } from "../utils/file";
+import { ImportEncoding, readFile } from "../utils/file";
 import { parseRecords } from "../parsers";
 import { addRecords } from "../usecase/add";
 import { upsertRecords } from "../usecase/upsert";
@@ -10,18 +10,25 @@ export type Options = {
   filePath: string;
   attachmentsDir?: string;
   updateKey?: string;
+  encoding?: ImportEncoding;
 };
 
 export const run: (
   argv: RestAPIClientOptions & Options
 ) => Promise<void> = async (argv) => {
-  const { app, filePath, attachmentsDir, updateKey, ...restApiClientOptions } =
-    argv;
+  const {
+    app,
+    filePath,
+    encoding,
+    attachmentsDir,
+    updateKey,
+    ...restApiClientOptions
+  } = argv;
 
   const apiClient = buildRestAPIClient(restApiClientOptions);
 
   try {
-    const { content, format } = await readFile(filePath);
+    const { content, format } = await readFile(filePath, encoding);
     const records = await parseRecords({
       apiClient,
       source: content,
