@@ -48,7 +48,7 @@
   "dependencies": {
     "@kintone/rest-api-client": "^2.0.37",
     "chokidar": "^3.5.3",
-    "inquirer": "^8.2.2",
+    "inquirer": "^8.2.3",
     "meow": "^9.0.0",
     "mkdirp": "^1.0.4",
     "os-locale": "^5.0.0",
