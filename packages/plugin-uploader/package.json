@@ -48,6 +48,6 @@
   },
   "devDependencies": {
     "@types/inquirer": "8.2.1",
-    "@types/puppeteer": "^5.4.5"
+    "@types/puppeteer": "^5.4.6"
   }
 }
