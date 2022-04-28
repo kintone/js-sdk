@@ -22,6 +22,9 @@ export const extractFieldValue: (
     case "CALC":
     case "UPDATED_TIME":
     case "CREATED_TIME":
+    case "DATETIME":
+    case "DATE":
+    case "TIME":
       return encloseInDoubleQuotes(escapeDoubleQuotes(field.value));
     case "CREATOR":
     case "MODIFIER":

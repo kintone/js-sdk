@@ -11,7 +11,7 @@ describe("buildHeaderFields", () => {
     expect(
       buildHeaderFields(fieldsJson.properties).includes(PRIMARY_MARK)
     ).toBe(false);
-    expect(buildHeaderFields(fieldsJson.properties)).toHaveLength(17);
+    expect(buildHeaderFields(fieldsJson.properties)).toHaveLength(20);
     expect(buildHeaderFields(fileFieldsJson.properties)).toHaveLength(15);
   });
   it("should generate fieldCode array correctly (data with subtable)", () => {
