@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.8.0...@kintone/data-loader@0.9.0) (2022-04-28)
+
+
+### Features
+
+* **data-loader:** support upsert records ([#1449](https://github.com/kintone/js-sdk/issues/1449)) ([35bfe07](https://github.com/kintone/js-sdk/commit/35bfe0757e2ff3172246b170305bc4483326247e)), closes [#1421](https://github.com/kintone/js-sdk/issues/1421) [#1423](https://github.com/kintone/js-sdk/issues/1423)
+
+
+
+
+
 # [0.8.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.7.1...@kintone/data-loader@0.8.0) (2022-03-18)
 
 
