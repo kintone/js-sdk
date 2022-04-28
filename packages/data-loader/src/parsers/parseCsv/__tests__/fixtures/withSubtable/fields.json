@@ -101,6 +101,35 @@
           "required": false,
           "entities": [],
           "defaultValue": []
+        },
+        "date": {
+          "type": "DATE",
+          "code": "date",
+          "label": "date",
+          "noLabel": false,
+          "required": false,
+          "unique": false,
+          "defaultValue": "",
+          "defaultNowValue": true
+        },
+        "dateTime": {
+          "type": "DATETIME",
+          "code": "dateTime",
+          "label": "dateTime",
+          "noLabel": false,
+          "required": false,
+          "unique": false,
+          "defaultValue": "",
+          "defaultNowValue": true
+        },
+        "time": {
+          "type": "TIME",
+          "code": "time",
+          "label": "time",
+          "noLabel": false,
+          "required": false,
+          "defaultValue": "",
+          "defaultNowValue": true
         }
       }
     },

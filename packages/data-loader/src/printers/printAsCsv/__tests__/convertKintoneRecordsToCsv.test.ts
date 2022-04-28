@@ -14,12 +14,12 @@ const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json"
 
 describe("convertKintoneRecordsToCsv", () => {
   it("should convert kintone records to csv string correctly", () => {
-    const expectedCsv = `"recordNumber","updatedTime","dropDown","creator","modifier","richText","singleLineText","number","radioButton","multiLineText","createdTime","checkBox","calc","multiSelect","userSelect","organizationSelect","groupSelect"
+    const expectedCsv = `"recordNumber","updatedTime","dropDown","creator","modifier","richText","singleLineText","number","radioButton","multiLineText","createdTime","checkBox","calc","multiSelect","userSelect","organizationSelect","groupSelect","date","dateTime","time"
 "9","2021-02-16T02:43:00Z","sample1","username","username","<div><div>rich text editor<br /></div></div><div>rich text editor<br /></div><div>rich text editor<br /></div>","""single line text""","8","sample2","multi
 line
 text","2021-02-10T06:14:00Z","""sample2""","16","""sample3""
 sample4","sato
-tanaka","Development Div","Administrators"
+tanaka","Development Div","Administrators","2022-04-11","2022-04-11T07:39:00Z","16:39"
 `;
     expect(
       convertRecordsToCsv({
