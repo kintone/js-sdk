@@ -1,12 +1,12 @@
 import { run } from "../controllers/import";
 import * as yargs from "yargs";
-import { ImportEncoding } from "../utils/file";
+import { SupportedImportEncoding } from "../utils/file";
 
 export const command = "import";
 
 export const desc = "import the records of the specified app";
 
-const encoding: ImportEncoding[] = ["utf8", "sjis"];
+const encoding: SupportedImportEncoding[] = ["utf8", "sjis"];
 
 export const builder = (args: yargs.Argv) =>
   args
@@ -71,7 +71,7 @@ export const builder = (args: yargs.Argv) =>
     })
     .option("encoding", {
       describe: "Character encoding",
-      default: "utf8" as ImportEncoding,
+      default: "utf8" as SupportedImportEncoding,
       choices: encoding,
     })
     .option("update-key", {

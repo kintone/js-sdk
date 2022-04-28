@@ -1,5 +1,5 @@
 import { buildRestAPIClient, RestAPIClientOptions } from "../api";
-import { ImportEncoding, readFile } from "../utils/file";
+import { SupportedImportEncoding, readFile } from "../utils/file";
 import { parseRecords } from "../parsers";
 import { addRecords } from "../usecase/add";
 import { upsertRecords } from "../usecase/upsert";
@@ -10,7 +10,7 @@ export type Options = {
   filePath: string;
   attachmentsDir?: string;
   updateKey?: string;
-  encoding?: ImportEncoding;
+  encoding?: SupportedImportEncoding;
 };
 
 export const run: (

@@ -2,11 +2,11 @@ import fs from "fs";
 import path from "path";
 import iconv from "iconv-lite";
 
-export type ImportEncoding = "utf8" | "sjis";
+export type SupportedImportEncoding = "utf8" | "sjis";
 
 export const readFile: (
   filePath: string,
-  encoding?: ImportEncoding
+  encoding?: SupportedImportEncoding
 ) => Promise<{ content: string; format: string }> = async (
   filePath,
   encoding
