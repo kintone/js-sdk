@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.22](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.21...@kintone/create-plugin@4.1.22) (2022-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.22.1 ([#1441](https://github.com/kintone/js-sdk/issues/1441)) ([19f40bb](https://github.com/kintone/js-sdk/commit/19f40bb1be985d93d748c2ce529b8f0c884fc4a0))
+* **deps:** update dependency core-js to ^3.22.2 ([#1452](https://github.com/kintone/js-sdk/issues/1452)) ([a28beae](https://github.com/kintone/js-sdk/commit/a28beae73c58f92e32dfe2beba17b9b32b3a5568))
+* **deps:** update dependency inquirer to ^8.2.2 ([#1435](https://github.com/kintone/js-sdk/issues/1435)) ([afa0e6a](https://github.com/kintone/js-sdk/commit/afa0e6a4b7f941a2e0744716da3810cec0366a51))
+* **deps:** update dependency inquirer to ^8.2.3 ([#1461](https://github.com/kintone/js-sdk/issues/1461)) ([f4d8f87](https://github.com/kintone/js-sdk/commit/f4d8f87571e9ca6ed014b71c8ebdf45ab42f9ef5))
+* **deps:** update dependency sort-package-json to ^1.55.0 ([#1442](https://github.com/kintone/js-sdk/issues/1442)) ([fba6f91](https://github.com/kintone/js-sdk/commit/fba6f918d6ca6c788e7f4999c45c8c3e8cfa9b9f))
+
+
+
+
+
 ## [4.1.21](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.20...@kintone/create-plugin@4.1.21) (2022-03-25)
 
 
