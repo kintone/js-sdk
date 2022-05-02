@@ -1,6 +1,6 @@
 {
   "name": "@kintone/customize-uploader",
-  "version": "5.0.24",
+  "version": "5.0.25",
   "description": "A kintone customize uploader",
   "bin": {
     "kintone-customize-uploader": "bin/cli.js"
@@ -46,9 +46,9 @@
     "ts-node": "^10.7.0"
   },
   "dependencies": {
-    "@kintone/rest-api-client": "^2.0.37",
+    "@kintone/rest-api-client": "^2.0.38",
     "chokidar": "^3.5.3",
-    "inquirer": "^8.2.2",
+    "inquirer": "^8.2.4",
     "meow": "^9.0.0",
     "mkdirp": "^1.0.4",
     "os-locale": "^5.0.0",

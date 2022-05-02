@@ -10,24 +10,24 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "core-js": "^3.22.2",
-    "@kintone/rest-api-client": "^2.0.37"
+    "core-js": "^3.22.3",
+    "@kintone/rest-api-client": "^2.0.38"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/preset-env": "^7.16.11",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@cybozu/eslint-config": "^17.0.1",
-    "@kintone/dts-gen": "^5.0.22",
-    "@kintone/webpack-plugin-kintone-plugin": "^5.0.38",
+    "@kintone/dts-gen": "^5.0.23",
+    "@kintone/webpack-plugin-kintone-plugin": "^5.0.39",
     "babel-loader": "^8.2.5",
     "cross-env": "^7.0.3",
     "eslint": "^8.14.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.6.2",
-    "typescript": "^4.6.3",
-    "webpack": "^5.69.1",
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2"
   }
 }
