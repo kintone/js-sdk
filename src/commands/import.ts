@@ -67,7 +67,7 @@ export const builder = (args: yargs.Argv) =>
       demandOption: true,
     })
     .option("update-key", {
-      describe: "Key to Bulk Update",
+      describe: "The key to Bulk Update",
       type: "string",
     })
     .option("pfx-file-path", {
