@@ -57,19 +57,26 @@ describe("KintoneRestAPIClient", () => {
 
     describe("Header", () => {
       const baseUrl = "https://example.com";
+      const USERNAME = "user";
+      const PASSWORD = "password";
+      const auth = {
+        username: USERNAME,
+        password: PASSWORD,
+      };
       it("should use a location object in browser environment if baseUrl param is not specified", () => {
         injectPlatformDeps(browserDeps);
         const client = new KintoneRestAPIClient();
         expect(client.getBaseUrl()).toBe("https://example.com");
       });
-
+      it("should remove trailing slash from baseUrl", () => {
+        const baseUrlWithTrailingSlash = "https://example.com/";
+        const client = new KintoneRestAPIClient({
+          baseUrl: baseUrlWithTrailingSlash,
+          auth,
+        });
+        expect(client.getBaseUrl()).toBe("https://example.com");
+      });
       it("should raise an error in Node.js environment if baseUrl param is not specified", () => {
-        const USERNAME = "user";
-        const PASSWORD = "password";
-        const auth = {
-          username: USERNAME,
-          password: PASSWORD,
-        };
         expect(() => new KintoneRestAPIClient({ auth })).toThrow(
           "in Node.js environment, baseUrl is required"
         );
