@@ -8,14 +8,14 @@ on:
       - yamory-*
 jobs:
   build:
-    name: Node.js ubuntu-latest 14.x
+    name: Node.js ubuntu-latest 16.x
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js 14.x
+    - name: Use Node.js 16.x
       uses: actions/setup-node@v3
       with:
-        node-version: 14.x
+        node-version: 16.x
     - name: run Yamory
       run: |
         ls -1 -d packages/*/ | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" --  --manifest {}/package.json
