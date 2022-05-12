@@ -11,6 +11,7 @@ import {
 } from "./http/HttpClientInterface";
 import { BasicAuth, DiscriminatedAuth } from "./types/auth";
 import { platformDeps } from "./platform/";
+import https from "https";
 
 type Data = Params | FormData;
 
@@ -34,10 +35,11 @@ type KintoneAuthHeader =
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 
 export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
-  private baseUrl: string;
-  private headers: KintoneAuthHeader;
-  private auth: DiscriminatedAuth;
-  private clientCertAuth?:
+  private readonly baseUrl: string;
+  private readonly headers: KintoneAuthHeader;
+  private readonly auth: DiscriminatedAuth;
+  private readonly httpsAgent?: https.Agent;
+  private readonly clientCertAuth?:
     | {
         pfx: Buffer;
         password: string;
@@ -46,37 +48,44 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         pfxFilePath: string;
         password: string;
       };
-  private proxy?: ProxyConfig;
+  private readonly proxy?: ProxyConfig;
   private requestToken: string | null;
 
-  constructor({
-    baseUrl,
-    auth,
-    basicAuth,
-    clientCertAuth,
-    proxy,
-    userAgent,
-  }: {
-    baseUrl: string;
-    auth: DiscriminatedAuth;
-    basicAuth?: BasicAuth;
-    clientCertAuth?:
+  constructor(
+    options: {
+      baseUrl: string;
+      auth: DiscriminatedAuth;
+      basicAuth?: BasicAuth;
+      proxy?: ProxyConfig;
+      userAgent?: string;
+    } & (
+      | { httpsAgent: https.Agent }
       | {
-          pfx: Buffer;
-          password: string;
+          clientCertAuth?:
+            | {
+                pfx: Buffer;
+                password: string;
+              }
+            | {
+                pfxFilePath: string;
+                password: string;
+              };
         }
-      | {
-          pfxFilePath: string;
-          password: string;
-        };
-    proxy?: ProxyConfig;
-    userAgent?: string;
-  }) {
-    this.baseUrl = baseUrl;
-    this.auth = auth;
-    this.headers = this.buildHeaders({ basicAuth, userAgent });
-    this.clientCertAuth = clientCertAuth;
-    this.proxy = proxy;
+    )
+  ) {
+    this.baseUrl = options.baseUrl;
+    this.auth = options.auth;
+    this.headers = this.buildHeaders({
+      basicAuth: options.basicAuth,
+      userAgent: options.userAgent,
+    });
+    if ("httpsAgent" in options) {
+      this.httpsAgent = options.httpsAgent;
+    }
+    if ("clientCertAuth" in options) {
+      this.clientCertAuth = options.clientCertAuth;
+    }
+    this.proxy = options.proxy;
     this.requestToken = null;
   }
 
@@ -91,9 +100,11 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
       ...(options ? options : {}),
-      ...platformDeps.buildPlatformDependentConfig({
-        clientCertAuth: this.clientCertAuth,
-      }),
+      ...platformDeps.buildPlatformDependentConfig(
+        this.httpsAgent
+          ? { httpsAgent: this.httpsAgent }
+          : { clientCertAuth: this.clientCertAuth }
+      ),
       proxy: this.proxy,
     };
 

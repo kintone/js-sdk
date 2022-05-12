@@ -22,19 +22,27 @@ export const getDefaultAuth = () => {
   throw new UnsupportedPlatformError("Node.js");
 };
 
-export const buildPlatformDependentConfig = (params: {
-  clientCertAuth?:
+export const buildPlatformDependentConfig = (
+  params:
+    | { httpsAgent: https.Agent }
     | {
-        pfx: Buffer;
-        password: string;
+        clientCertAuth?:
+          | {
+              pfx: Buffer;
+              password: string;
+            }
+          | {
+              pfxFilePath: string;
+              password: string;
+            };
       }
-    | {
-        pfxFilePath: string;
-        password: string;
-      };
-}) => {
-  const clientCertAuth = params.clientCertAuth;
+) => {
+  if ("httpsAgent" in params) {
+    return { httpsAgent: params.httpsAgent };
+  }
 
+  // use Default HTTPS Agent
+  const clientCertAuth = params.clientCertAuth;
   if (clientCertAuth) {
     const pfx =
       "pfx" in clientCertAuth
