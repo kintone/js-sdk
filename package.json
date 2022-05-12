@@ -57,6 +57,6 @@
   "dependencies": {
     "@kintone/rest-api-client": "^2.0.38",
     "csv-parse": "^4.16.3",
-    "yargs": "^17.4.1"
+    "yargs": "^17.5.0"
   }
 }
