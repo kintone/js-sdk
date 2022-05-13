@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/data-loader#readme",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "devDependencies": {
     "@types/yargs": "^17.0.10",

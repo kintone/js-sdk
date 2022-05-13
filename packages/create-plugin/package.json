@@ -8,7 +8,7 @@
   },
   "main": "dist/src/index.js",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "repository": {
     "type": "git",
