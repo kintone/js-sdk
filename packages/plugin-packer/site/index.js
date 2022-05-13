@@ -2,7 +2,7 @@
 
 require("setimmediate"); // polyfill
 
-const { createStore, applyMiddleware } = require("redux");
+const { configureStore } = require("@reduxjs/toolkit");
 const thunk = require("redux-thunk").default;
 const logger = require("redux-logger").default;
 
@@ -84,7 +84,10 @@ if (process.env.NODE_ENV !== "production") {
   middlewares.push(logger);
 }
 
-const store = createStore(reducer, applyMiddleware(...middlewares));
+const store = configureStore({
+  reducer,
+  middleware: middlewares,
+});
 
 store.subscribe(() => {
   view.render(store.getState());
