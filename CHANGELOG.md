@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.9.0...@kintone/data-loader@0.10.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yargs to ^17.4.1 ([#1420](https://github.com/kintone/js-sdk/issues/1420)) ([615b57b](https://github.com/kintone/js-sdk/commit/615b57b39a6d0b5bbc689c8021080ca0c10bc5c1))
+* **deps:** update dependency yargs to ^17.5.0 ([#1494](https://github.com/kintone/js-sdk/issues/1494)) ([43fed86](https://github.com/kintone/js-sdk/commit/43fed86cf50beee1eac1d6a7406dd09530297bdb))
+
+
+### Features
+
+* **data-loader:** support datetime related field ([#1451](https://github.com/kintone/js-sdk/issues/1451)) ([21f6eb1](https://github.com/kintone/js-sdk/commit/21f6eb17c61a9f1ea0b6c22bd9b932c21353621d))
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
 # [0.9.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.8.0...@kintone/data-loader@0.9.0) (2022-04-28)
 
 
