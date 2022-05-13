@@ -50,6 +50,7 @@
     "yazl": "^2.5.1"
   },
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
     "@types/debug": "^4.1.7",
     "@types/stream-buffers": "^3.0.4",
     "@types/yauzl": "^2.10.0",
