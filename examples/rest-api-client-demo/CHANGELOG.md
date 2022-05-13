@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@2.0.41...@kintone/rest-api-client-demo@3.0.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yargs to ^17.4.1 ([#1420](https://github.com/kintone/js-sdk/issues/1420)) ([615b57b](https://github.com/kintone/js-sdk/commit/615b57b39a6d0b5bbc689c8021080ca0c10bc5c1))
+* **deps:** update dependency yargs to ^17.5.0 ([#1494](https://github.com/kintone/js-sdk/issues/1494)) ([43fed86](https://github.com/kintone/js-sdk/commit/43fed86cf50beee1eac1d6a7406dd09530297bdb))
+* **examples:** Run examples by ts-node ([#1488](https://github.com/kintone/js-sdk/issues/1488)) ([3351773](https://github.com/kintone/js-sdk/commit/335177317c13d3ce7c7e273394f2985541a8e8dc))
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
 ## [2.0.41](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@2.0.40...@kintone/rest-api-client-demo@2.0.41) (2022-04-28)
 
 **Note:** Version bump only for package @kintone/rest-api-client-demo

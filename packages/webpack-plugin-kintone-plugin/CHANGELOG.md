@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@5.0.39...@kintone/webpack-plugin-kintone-plugin@6.0.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### Bug Fixes
+
+* **examples:** Run examples by ts-node ([#1488](https://github.com/kintone/js-sdk/issues/1488)) ([3351773](https://github.com/kintone/js-sdk/commit/335177317c13d3ce7c7e273394f2985541a8e8dc))
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
 ## [5.0.39](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@5.0.38...@kintone/webpack-plugin-kintone-plugin@5.0.39) (2022-04-28)
 
 **Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
