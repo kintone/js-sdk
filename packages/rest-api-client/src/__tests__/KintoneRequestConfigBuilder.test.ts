@@ -366,17 +366,14 @@ describe("options", () => {
     });
   });
 
-  it("should build `requestConfig` having `httpsAgent` property from clientCertAuth", async () => {
+  it("should build `requestConfig` having `httpsAgent` property", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
-    const clientCertAuth = {
-      pfx: Buffer.alloc(0),
-      password: "password",
-    };
+    const httpsAgent = new https.Agent();
 
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      clientCertAuth,
+      httpsAgent,
       auth: {
         type: "apiToken",
         apiToken,
@@ -391,14 +388,17 @@ describe("options", () => {
     expect(requestConfig).toHaveProperty("httpsAgent");
   });
 
-  it("should build `requestConfig` having `httpsAgent` property", async () => {
+  it("should build `requestConfig` having `httpsAgent` property from clientCertAuth", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
-    const httpsAgent = new https.Agent();
+    const clientCertAuth = {
+      pfx: Buffer.alloc(0),
+      password: "password",
+    };
 
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl,
-      httpsAgent,
+      clientCertAuth,
       auth: {
         type: "apiToken",
         apiToken,

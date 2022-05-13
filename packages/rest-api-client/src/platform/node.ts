@@ -41,7 +41,7 @@ export const buildPlatformDependentConfig = (
     return { httpsAgent: params.httpsAgent };
   }
 
-  // use Default HTTPS Agent
+  // use default HTTPS agent
   const clientCertAuth = params.clientCertAuth;
   if (clientCertAuth) {
     const pfx =
