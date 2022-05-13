@@ -1,6 +1,6 @@
 {
   "name": "@kintone/create-plugin",
-  "version": "4.1.22",
+  "version": "5.0.0",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": {
     "create-plugin": "bin/cli.js",
@@ -8,7 +8,7 @@
   },
   "main": "dist/src/index.js",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "repository": {
     "type": "git",

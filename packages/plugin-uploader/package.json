@@ -1,13 +1,13 @@
 {
   "name": "@kintone/plugin-uploader",
-  "version": "6.0.17",
+  "version": "7.0.0",
   "description": "A kintone plugin uploader using puppeteer",
   "bin": {
     "kintone-plugin-uploader": "bin/cli.js"
   },
   "main": "dist/index.js",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "scripts": {
     "start": "yarn build --watch",

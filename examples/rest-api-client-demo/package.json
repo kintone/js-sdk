@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client-demo",
-  "version": "2.0.41",
+  "version": "3.0.0",
   "private": true,
   "author": {
     "name": "Cybozu, Inc.",
@@ -31,15 +31,15 @@
     "url": "https://github.com/kintone/js-sdk/issues"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "dependencies": {
-    "@kintone/profile-loader": "^2.0.7",
-    "@kintone/rest-api-client": "^2.0.38",
-    "yargs": "^17.4.1"
+    "@kintone/profile-loader": "^3.0.0",
+    "@kintone/rest-api-client": "^3.0.0",
+    "yargs": "^17.5.0"
   },
   "devDependencies": {
-    "@kintone/customize-uploader": "^5.0.25",
+    "@kintone/customize-uploader": "^6.0.0",
     "@types/yargs": "^17.0.10",
     "ts-loader": "^9.3.0",
     "ts-node": "^10.7.0",

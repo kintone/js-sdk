@@ -1,12 +1,12 @@
 {
   "name": "@kintone/plugin-manifest-validator",
-  "version": "6.1.13",
+  "version": "7.0.0",
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "main": "dist/src/index.js",
   "files": [

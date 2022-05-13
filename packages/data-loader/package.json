@@ -1,6 +1,6 @@
 {
   "name": "@kintone/data-loader",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "publishConfig": {
     "access": "public"
   },
@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/data-loader#readme",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "devDependencies": {
     "@types/yargs": "^17.0.10",
@@ -55,8 +55,8 @@
     "pkg": "^5.6.0"
   },
   "dependencies": {
-    "@kintone/rest-api-client": "^2.0.38",
+    "@kintone/rest-api-client": "^3.0.0",
     "csv-parse": "^4.16.3",
-    "yargs": "^17.4.1"
+    "yargs": "^17.5.0"
   }
 }
