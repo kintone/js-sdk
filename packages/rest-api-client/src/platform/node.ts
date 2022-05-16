@@ -22,37 +22,36 @@ export const getDefaultAuth = () => {
   throw new UnsupportedPlatformError("Node.js");
 };
 
-export const buildPlatformDependentConfig = (
-  params:
-    | { httpsAgent: https.Agent }
+export const buildPlatformDependentConfig = ({
+  httpsAgent,
+  clientCertAuth,
+}: {
+  httpsAgent?: https.Agent;
+  clientCertAuth?:
     | {
-        clientCertAuth?:
-          | {
-              pfx: Buffer;
-              password: string;
-            }
-          | {
-              pfxFilePath: string;
-              password: string;
-            };
+        pfx: Buffer;
+        password: string;
       }
-) => {
-  if ("httpsAgent" in params) {
-    return { httpsAgent: params.httpsAgent };
+    | {
+        pfxFilePath: string;
+        password: string;
+      };
+}) => {
+  if (httpsAgent !== undefined) {
+    return { httpsAgent };
   }
 
   // use default HTTPS agent
-  const clientCertAuth = params.clientCertAuth;
-  if (clientCertAuth) {
+  if (clientCertAuth !== undefined) {
     const pfx =
       "pfx" in clientCertAuth
         ? clientCertAuth.pfx
         : fs.readFileSync(clientCertAuth.pfxFilePath);
-    const httpsAgent = new https.Agent({
+    const defaultHttpsAgent = new https.Agent({
       pfx,
       passphrase: clientCertAuth.password,
     });
-    return { httpsAgent };
+    return { httpsAgent: defaultHttpsAgent };
   }
   return {};
 };

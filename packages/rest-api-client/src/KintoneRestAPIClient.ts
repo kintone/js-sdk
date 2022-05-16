@@ -9,7 +9,7 @@ import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 import { KintoneResponseHandler } from "./KintoneResponseHandler";
 import { platformDeps } from "./platform";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
-import https from "https";
+import type { Agent as HttpsAgent } from "https";
 
 type OmitTypePropertyFromUnion<T> = T extends unknown ? Omit<T, "type"> : never;
 type Auth = OmitTypePropertyFromUnion<DiscriminatedAuth>;
@@ -20,24 +20,21 @@ type Options = {
   guestSpaceId?: number | string;
   basicAuth?: BasicAuth;
   proxy?: ProxyConfig;
+  httpsAgent?: HttpsAgent;
+  clientCertAuth?:
+    | {
+        pfx: Buffer;
+        password: string;
+      }
+    | {
+        pfxFilePath: string;
+        password: string;
+      };
   featureFlags?: {
     enableAbortSearchError: boolean;
   };
   userAgent?: string;
-} & (
-  | { httpsAgent: https.Agent }
-  | {
-      clientCertAuth?:
-        | {
-            pfx: Buffer;
-            password: string;
-          }
-        | {
-            pfxFilePath: string;
-            password: string;
-          };
-    }
-);
+};
 
 const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
   if ("username" in auth) {
