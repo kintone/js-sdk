@@ -57,10 +57,18 @@ export const builder = (args: yargs.Argv) =>
       defaultDescription: "KINTONE_GUEST_SPACE_ID",
       type: "string",
     })
+    .option("attachments-dir", {
+      describe: "Attachment file directory",
+      type: "string",
+    })
     .option("file-path", {
       describe: 'The path to source file. ".json" or ".csv"',
       type: "string",
       demandOption: true,
+    })
+    .option("update-key", {
+      describe: "The key to Bulk Update",
+      type: "string",
     })
     .option("pfx-file-path", {
       describe: "The path to client certificate file",
@@ -85,7 +93,9 @@ export const handler = (args: Args) => {
     basicAuthPassword: args["basic-auth-password"],
     app: args.app,
     guestSpaceId: args["guest-space-id"],
+    attachmentsDir: args["attachments-dir"],
     filePath: args["file-path"],
+    updateKey: args["update-key"],
     pfxFilePath: args["pfx-file-path"],
     pfxFilePassword: args["pfx-file-password"],
   });

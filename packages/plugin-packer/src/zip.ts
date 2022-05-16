@@ -7,6 +7,7 @@ import * as streamBuffers from "stream-buffers";
 
 import { generateErrorMessages } from "./gen-error-msg";
 import { sourceList } from "./sourcelist";
+import internal from "stream";
 
 type ManifestJson = any;
 type Entries = Map<string, any>;
@@ -135,7 +136,7 @@ const validateManifest = (
     },
   });
   if (!result.valid) {
-    const errors = generateErrorMessages(result.errors!);
+    const errors = generateErrorMessages(result.errors ?? []);
     const e: any = new Error(errors.join(", "));
     e.validationErrors = errors;
     throw e;
@@ -163,7 +164,7 @@ const rezipContents = (
       sourceList(manifestJson).map((src) => {
         const entry = entries.get(path.join(manifestPrefix, src));
         return openReadStream(entry).then((stream) => {
-          newZipFile.addReadStream(stream!, src, {
+          newZipFile.addReadStream(stream as internal.Readable, src, {
             size: entry.uncompressedSize,
           });
         });

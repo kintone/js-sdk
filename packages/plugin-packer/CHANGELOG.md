@@ -3,6 +3,118 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.39...@kintone/plugin-packer@6.0.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
+## [5.0.39](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.38...@kintone/plugin-packer@5.0.39) (2022-04-28)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
+## [5.0.38](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.37...@kintone/plugin-packer@5.0.38) (2022-03-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency debug to ^4.3.4 ([#1418](https://github.com/kintone/js-sdk/issues/1418)) ([31caa35](https://github.com/kintone/js-sdk/commit/31caa35e06ce92e56580ad03b661a5457e2751f5))
+
+
+
+
+
+## [5.0.37](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.36...@kintone/plugin-packer@5.0.37) (2022-03-18)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
+## [5.0.36](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.35...@kintone/plugin-packer@5.0.36) (2022-03-04)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
+## 5.0.35 (2022-02-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^2.0.34 ([#1341](https://github.com/kintone/js-sdk/issues/1341)) ([0e01847](https://github.com/kintone/js-sdk/commit/0e018475d77c68f42d414d563377aef56a7a1d41))
+
+
+
+
+
+## 5.0.34 (2022-02-04)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
+## 5.0.33 (2022-01-18)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
+## 5.0.32 (2022-01-11)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
+## 5.0.31 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
+## 5.0.30 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
+## [5.0.29](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.28...@kintone/plugin-packer@5.0.29) (2021-12-21)
+
+**Note:** Version bump only for package @kintone/plugin-packer
+
+
+
+
+
 ## [5.0.28](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@5.0.27...@kintone/plugin-packer@5.0.28) (2021-12-15)
 
 **Note:** Version bump only for package @kintone/plugin-packer

@@ -1,5 +1,5 @@
 import { hasSubtable } from "../hasSubtable";
-import { FieldsJson } from "../../../types";
+import { FieldsJson } from "../../../types/kintone";
 
 const fieldsJson: FieldsJson = require("./fixtures/fields.json");
 const subtableFieldsJson: FieldsJson = require("./fixtures/subtable_fields.json");

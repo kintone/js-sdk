@@ -3,6 +3,131 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@5.0.25...@kintone/customize-uploader@6.0.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^8.2.4 ([#1468](https://github.com/kintone/js-sdk/issues/1468)) ([8a5316d](https://github.com/kintone/js-sdk/commit/8a5316d7a6492cfe7e07842bf4095f4ab25eebd2))
+* **examples:** Run examples by ts-node ([#1488](https://github.com/kintone/js-sdk/issues/1488)) ([3351773](https://github.com/kintone/js-sdk/commit/335177317c13d3ce7c7e273394f2985541a8e8dc))
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
+## [5.0.25](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@5.0.24...@kintone/customize-uploader@5.0.25) (2022-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^8.2.2 ([#1435](https://github.com/kintone/js-sdk/issues/1435)) ([afa0e6a](https://github.com/kintone/js-sdk/commit/afa0e6a4b7f941a2e0744716da3810cec0366a51))
+* **deps:** update dependency inquirer to ^8.2.3 ([#1461](https://github.com/kintone/js-sdk/issues/1461)) ([f4d8f87](https://github.com/kintone/js-sdk/commit/f4d8f87571e9ca6ed014b71c8ebdf45ab42f9ef5))
+
+
+
+
+
+## [5.0.24](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@5.0.23...@kintone/customize-uploader@5.0.24) (2022-04-08)
+
+
+### Bug Fixes
+
+* **customize-uploader,plugin-uploader:** fix typo in error messages ([#1422](https://github.com/kintone/js-sdk/issues/1422)) ([f46cbae](https://github.com/kintone/js-sdk/commit/f46cbae011d92cdc45561d5c7bf5895cb99153f8))
+
+
+
+
+
+## [5.0.23](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@5.0.22...@kintone/customize-uploader@5.0.23) (2022-03-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^8.2.1 ([#1398](https://github.com/kintone/js-sdk/issues/1398)) ([e6ff25d](https://github.com/kintone/js-sdk/commit/e6ff25d13c6b718d4b8fa4bbce2c20060cc7e065))
+
+
+
+
+
+## [5.0.22](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@5.0.21...@kintone/customize-uploader@5.0.22) (2022-03-04)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## 5.0.21 (2022-02-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^2.0.34 ([#1341](https://github.com/kintone/js-sdk/issues/1341)) ([0e01847](https://github.com/kintone/js-sdk/commit/0e018475d77c68f42d414d563377aef56a7a1d41))
+
+
+
+
+
+## 5.0.20 (2022-02-04)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## 5.0.19 (2022-01-18)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## 5.0.18 (2022-01-11)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## 5.0.17 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## 5.0.16 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
+## [5.0.15](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@5.0.14...@kintone/customize-uploader@5.0.15) (2021-12-21)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+
+
+
+
 ## [5.0.14](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@5.0.13...@kintone/customize-uploader@5.0.14) (2021-12-15)
 
 **Note:** Version bump only for package @kintone/customize-uploader

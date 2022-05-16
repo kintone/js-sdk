@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@6.1.13...@kintone/plugin-manifest-validator@7.0.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
+## [6.1.13](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@6.1.12...@kintone/plugin-manifest-validator@6.1.13) (2022-03-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to ^7.2.4 ([#1290](https://github.com/kintone/js-sdk/issues/1290)) ([28ebd21](https://github.com/kintone/js-sdk/commit/28ebd21b48fce964cc01816a99a991982f1ef48e))
+
+
+
+
+
+## 6.1.12 (2022-02-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^2.0.34 ([#1341](https://github.com/kintone/js-sdk/issues/1341)) ([0e01847](https://github.com/kintone/js-sdk/commit/0e018475d77c68f42d414d563377aef56a7a1d41))
+
+
+
+
+
+## 6.1.11 (2022-02-04)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
+
+
+
+
+## 6.1.10 (2022-01-18)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
+
+
+
+
+## 6.1.9 (2022-01-11)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
+
+
+
+
+## 6.1.8 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
+
+
+
+
+## 6.1.7 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
+
+
+
+
+## [6.1.6](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@6.1.5...@kintone/plugin-manifest-validator@6.1.6) (2021-12-21)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
+
+
+
+
 ## [6.1.5](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@6.1.4...@kintone/plugin-manifest-validator@6.1.5) (2021-12-15)
 
 **Note:** Version bump only for package @kintone/plugin-manifest-validator

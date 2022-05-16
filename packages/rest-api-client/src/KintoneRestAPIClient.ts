@@ -66,7 +66,9 @@ export class KintoneRestAPIClient {
   constructor(options: Options = {}) {
     validateOptions(options);
 
-    this.baseUrl = platformDeps.buildBaseUrl(options.baseUrl);
+    this.baseUrl = platformDeps
+      .buildBaseUrl(options.baseUrl)
+      .replace(/\/+$/, ""); // Remove trailing slash
 
     const auth = buildDiscriminatedAuth(options.auth ?? {});
     const requestConfigBuilder = new KintoneRequestConfigBuilder({

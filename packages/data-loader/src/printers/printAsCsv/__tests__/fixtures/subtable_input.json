@@ -83,6 +83,54 @@
             "subTableCheckbox": {
               "type": "CHECK_BOX",
               "value": ["st_sample1"]
+            },
+            "subTableFile": {
+              "type": "FILE",
+              "value": [
+                {
+                  "contentType": "text/plain",
+                  "fileKey": "test-file-key",
+                  "name": "test.txt",
+                  "localFilePath": "subTableFile-9-0/test.txt"
+                },
+                {
+                  "contentType": "text/plain",
+                  "fileKey": "test-file-key",
+                  "name": "test.txt",
+                  "localFilePath": "subTableFile-9-0/test (1).txt"
+                }
+              ]
+            },
+            "userSelect": {
+              "type": "USER_SELECT",
+              "value": [
+                {
+                  "code": "sato",
+                  "name": "Noboru Sato"
+                },
+                {
+                  "code": "tanaka",
+                  "name": "Taro Tanaka"
+                }
+              ]
+            },
+            "groupSelect": {
+              "type": "GROUP_SELECT",
+              "value": [
+                {
+                  "code": "Administrators",
+                  "name": "Administrators"
+                }
+              ]
+            },
+            "organizationSelect": {
+              "type": "ORGANIZATION_SELECT",
+              "value": [
+                {
+                  "code": "Development Div",
+                  "name": "Development Div"
+                }
+              ]
             }
           }
         },
@@ -96,6 +144,54 @@
             "subTableCheckbox": {
               "type": "CHECK_BOX",
               "value": ["st_sample2"]
+            },
+            "subTableFile": {
+              "type": "FILE",
+              "value": [
+                {
+                  "contentType": "text/plain",
+                  "fileKey": "test-file-key",
+                  "name": "test.txt",
+                  "localFilePath": "subTableFile-9-1/test.txt"
+                },
+                {
+                  "contentType": "text/plain",
+                  "fileKey": "test-file-key",
+                  "name": "test.txt",
+                  "localFilePath": "subTableFile-9-1/test (1).txt"
+                }
+              ]
+            },
+            "userSelect": {
+              "type": "USER_SELECT",
+              "value": [
+                {
+                  "code": "sato",
+                  "name": "Noboru Sato"
+                },
+                {
+                  "code": "tanaka",
+                  "name": "Taro Tanaka"
+                }
+              ]
+            },
+            "groupSelect": {
+              "type": "GROUP_SELECT",
+              "value": [
+                {
+                  "code": "Administrators",
+                  "name": "Administrators"
+                }
+              ]
+            },
+            "organizationSelect": {
+              "type": "ORGANIZATION_SELECT",
+              "value": [
+                {
+                  "code": "Development Div",
+                  "name": "Development Div"
+                }
+              ]
             }
           }
         }

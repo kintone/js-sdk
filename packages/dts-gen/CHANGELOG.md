@@ -3,6 +3,130 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.23...@kintone/dts-gen@6.0.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.27.2 ([#1457](https://github.com/kintone/js-sdk/issues/1457)) ([a1f069c](https://github.com/kintone/js-sdk/commit/a1f069cd705129f58bb7149bad7738a7c90d903d))
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
+## [5.0.23](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.22...@kintone/dts-gen@5.0.23) (2022-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to ^9.2.0 ([#1419](https://github.com/kintone/js-sdk/issues/1419)) ([fc5d572](https://github.com/kintone/js-sdk/commit/fc5d57237f446873034e0f7e460f749d05292526))
+
+
+
+
+
+## [5.0.22](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.21...@kintone/dts-gen@5.0.22) (2022-03-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.26.1 ([#1399](https://github.com/kintone/js-sdk/issues/1399)) ([ebba9fc](https://github.com/kintone/js-sdk/commit/ebba9fc8bf8c12d436945b2d07f988c8dcc4ac4c))
+
+
+
+
+
+## [5.0.21](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.20...@kintone/dts-gen@5.0.21) (2022-03-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.26.0 ([#1325](https://github.com/kintone/js-sdk/issues/1325)) ([181387a](https://github.com/kintone/js-sdk/commit/181387aebfa5eb8481036be6439a95bd11d08d7b))
+* **deps:** update dependency commander to v9 ([#1375](https://github.com/kintone/js-sdk/issues/1375)) ([442da00](https://github.com/kintone/js-sdk/commit/442da0075afd1f6bafdb5abe4e15224100f2f2bc))
+
+
+
+
+
+## [5.0.20](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.19...@kintone/dts-gen@5.0.20) (2022-02-18)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## 5.0.19 (2022-02-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^2.0.34 ([#1341](https://github.com/kintone/js-sdk/issues/1341)) ([0e01847](https://github.com/kintone/js-sdk/commit/0e018475d77c68f42d414d563377aef56a7a1d41))
+
+
+
+
+
+## 5.0.18 (2022-02-04)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## 5.0.17 (2022-01-18)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## 5.0.16 (2022-01-11)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## 5.0.15 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## 5.0.14 (2021-12-24)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
+## [5.0.13](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.12...@kintone/dts-gen@5.0.13) (2021-12-21)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
+
+
+
+
 ## [5.0.12](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.11...@kintone/dts-gen@5.0.12) (2021-12-15)
 
 

@@ -1,11 +1,15 @@
-import { KintoneRecordField } from "@kintone/rest-api-client";
 import { encloseInDoubleQuotes } from "./encloseInDoubleQuotes";
 import { escapeDoubleQuotes } from "./escapeDoubleQuotes";
 import { LINE_BREAK } from "./constants";
+import { FieldsForExport } from "../../types/data-loader";
 
-export const extractFieldValue = (
-  field: KintoneRecordField.OneOf
-): string | Array<{ [fieldCode: string]: string }> => {
+export const extractFieldValue: (
+  field: FieldsForExport.OneOf,
+  attachmentsDir?: string
+) => string | Array<{ [fieldCode: string]: string }> = (
+  field,
+  attachmentsDir
+) => {
   switch (field.type) {
     case "RECORD_NUMBER":
     case "SINGLE_LINE_TEXT":
@@ -18,6 +22,9 @@ export const extractFieldValue = (
     case "CALC":
     case "UPDATED_TIME":
     case "CREATED_TIME":
+    case "DATETIME":
+    case "DATE":
+    case "TIME":
       return encloseInDoubleQuotes(escapeDoubleQuotes(field.value));
     case "CREATOR":
     case "MODIFIER":
@@ -27,21 +34,38 @@ export const extractFieldValue = (
       return encloseInDoubleQuotes(
         escapeDoubleQuotes(field.value.join(LINE_BREAK))
       );
+    case "FILE":
+      return encloseInDoubleQuotes(
+        escapeDoubleQuotes(
+          field.value
+            .map((value) => (attachmentsDir ? value.localFilePath : value.name))
+            .join(LINE_BREAK)
+        )
+      );
     case "SUBTABLE":
-      return field.value.map((subtableField) => ({
-        id: encloseInDoubleQuotes(subtableField.id),
-        ...Object.keys(subtableField.value).reduce<Record<string, string>>(
-          (ret, fieldCode) => {
+      return field.value.map((subtableRow) => ({
+        id: encloseInDoubleQuotes(subtableRow.id),
+        ...Object.keys(subtableRow.value).reduce<Record<string, string>>(
+          (newSubtableRow, fieldCode) => {
             return {
-              ...ret,
+              ...newSubtableRow,
               [fieldCode]: extractFieldValue(
-                subtableField.value[fieldCode]
+                subtableRow.value[fieldCode],
+                attachmentsDir
               ) as string,
             };
           },
           {}
         ),
       }));
+    case "USER_SELECT":
+    case "ORGANIZATION_SELECT":
+    case "GROUP_SELECT":
+      return encloseInDoubleQuotes(
+        escapeDoubleQuotes(
+          field.value.map((value) => value.code).join(LINE_BREAK)
+        )
+      );
     default:
       return "";
   }

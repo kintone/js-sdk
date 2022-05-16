@@ -29,22 +29,26 @@
   "keywords": [
     "kintone"
   ],
-  "author": "kintone",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.16.5",
-    "@babel/preset-env": "^7.16.5",
-    "@babel/preset-typescript": "^7.16.5",
-    "@cybozu/eslint-config": "^16.0.1",
-    "@types/jest": "^27.0.3",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-typescript": "^7.16.7",
+    "@cybozu/eslint-config": "^17.0.1",
+    "@types/jest": "^27.5.1",
     "@types/node": "^13.13.52",
-    "comment-json": "^4.1.1",
-    "eslint": "^8.4.1",
-    "jest": "^27.4.5",
+    "comment-json": "^4.2.2",
+    "eslint": "^8.15.0",
+    "jest": "^27.5.1",
     "lerna": "^4.0.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.5.1",
+    "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "typescript": "^4.5.4"
-  }
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {}
 }

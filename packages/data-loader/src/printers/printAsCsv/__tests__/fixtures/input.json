@@ -69,6 +69,49 @@
     "$id": {
       "type": "__ID__",
       "value": "9"
+    },
+    "userSelect": {
+      "type": "USER_SELECT",
+      "value": [
+        {
+          "code": "sato",
+          "name": "Noboru Sato"
+        },
+        {
+          "code": "tanaka",
+          "name": "Taro Tanaka"
+        }
+      ]
+    },
+    "groupSelect": {
+      "type": "GROUP_SELECT",
+      "value": [
+        {
+          "code": "Administrators",
+          "name": "Administrators"
+        }
+      ]
+    },
+    "organizationSelect": {
+      "type": "ORGANIZATION_SELECT",
+      "value": [
+        {
+          "code": "Development Div",
+          "name": "Development Div"
+        }
+      ]
+    },
+    "date": {
+      "type": "DATE",
+      "value": "2022-04-11"
+    },
+    "dateTime": {
+      "type": "DATETIME",
+      "value": "2022-04-11T07:39:00Z"
+    },
+    "time": {
+      "type": "TIME",
+      "value": "16:39"
     }
   }
 ]

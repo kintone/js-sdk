@@ -26,3 +26,18 @@ This repository is a monorepo for Kintone development tools!
 ## License
 
 - [MIT](LICENSE)
+
+## Author
+
+Cybozu, Inc.
+
+## Contributors
+
+- Isao Yoshikoshi [@latica-jp](https://github.com/latica-jp)
+- Yohei Murayama [@mura-](https://github.com/mura-)
+- Kosuke Kawachi [@kosuke-k](https://github.com/kosuke-k)
+- Shohei Ihaya [@Climber22](https://github.com/Climber22)
+- Yonashiro Yuu [@cloneko](https://github.com/cloneko)
+- akira345 [@akira345](https://github.com/akira345)
+- potaracom [@potaracom](https://github.com/potaracom)
+- r3-yamauchi [@r3-yamauchi](https://github.com/r3-yamauchi)
