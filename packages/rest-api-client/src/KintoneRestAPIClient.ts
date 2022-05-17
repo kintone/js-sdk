@@ -7,8 +7,9 @@ import { ProxyConfig } from "./http/HttpClientInterface";
 import { BasicAuth, DiscriminatedAuth } from "./types/auth";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 import { KintoneResponseHandler } from "./KintoneResponseHandler";
-import { platformDeps } from "./platform/index";
+import { platformDeps } from "./platform";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
+import type { Agent as HttpsAgent } from "https";
 
 type OmitTypePropertyFromUnion<T> = T extends unknown ? Omit<T, "type"> : never;
 type Auth = OmitTypePropertyFromUnion<DiscriminatedAuth>;
@@ -18,6 +19,8 @@ type Options = {
   auth?: Auth;
   guestSpaceId?: number | string;
   basicAuth?: BasicAuth;
+  proxy?: ProxyConfig;
+  httpsAgent?: HttpsAgent;
   clientCertAuth?:
     | {
         pfx: Buffer;
@@ -27,7 +30,6 @@ type Options = {
         pfxFilePath: string;
         password: string;
       };
-  proxy?: ProxyConfig;
   featureFlags?: {
     enableAbortSearchError: boolean;
   };

@@ -1,7 +1,7 @@
 import { sourceList } from "../dist/sourcelist";
 
 describe("sourcelist", () => {
-  let manifest;
+  let manifest: any;
   beforeEach(() => {
     manifest = {
       icon: "image/icon.png",
