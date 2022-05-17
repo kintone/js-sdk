@@ -1,4 +1,6 @@
-module.exports = {
+/** @type {import('@jest/types').Config.InitialOptions} */
+const config = {
   testRegex: "(?<!site)/test/[^\\/]*\\.spec.ts$",
   testEnvironment: "node",
 };
+module.exports = config;
