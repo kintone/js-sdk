@@ -40,7 +40,7 @@ export const buildHeaders = () => {
 };
 
 export const buildFormDataValue = (data: unknown) => {
-  return new Blob([data]);
+  return new Blob([data as BlobPart]);
 };
 
 export const buildBaseUrl = (baseUrl?: string) => {
