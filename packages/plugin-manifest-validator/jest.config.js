@@ -1,6 +1,7 @@
-module.exports = {
+/** @type {import('@jest/types').Config.InitialOptions} */
+const config = {
+  roots: ["<rootDir>/src"],
   clearMocks: true,
-  rootDir: "src",
-  testPathIgnorePatterns: ["node_modules"],
   testEnvironment: "node",
 };
+module.exports = config;
