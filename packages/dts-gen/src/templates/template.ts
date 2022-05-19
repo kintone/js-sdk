@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as prettier from "prettier";
-// eslint-disable-next-line node/no-extraneous-import
 import { ESLint } from "eslint";
 
 import { FieldTypeGroups } from "../converters/fileldtype-converter";
@@ -31,10 +30,18 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
       },
     },
   });
-  const eslintReport = await eslint.lintText(tsExpression.tsExpression());
-  const eslintOutput = eslintReport
-    .filter((r) => Object.prototype.hasOwnProperty.call(r, "output"))
-    .map((r) => r.output)
+  const eslintResult = await eslint.lintText(tsExpression.tsExpression());
+  const eslintOutput = eslintResult
+    .map((r) => {
+      // https://eslint.org/docs/developer-guide/nodejs-api#-lintresult-type
+      if ("output" in r) {
+        return r.output;
+      }
+      if ("source" in r) {
+        return r.source;
+      }
+      return "";
+    })
     .join("");
   const prettySource = prettier.format(eslintOutput, {
     parser: "typescript",
