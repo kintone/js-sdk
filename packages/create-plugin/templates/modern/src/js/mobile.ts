@@ -7,7 +7,10 @@ const PLUGIN_ID = kintone.$PLUGIN_ID;
 kintone.events.on("mobile.app.record.index.show", () => {
   const config = kintone.plugin.app.getConfig(PLUGIN_ID);
 
-  const spaceElement = kintone.mobile.app.getHeaderSpaceElement()!;
+  const spaceElement = kintone.mobile.app.getHeaderSpaceElement();
+  if (spaceElement === null) {
+    throw new Error("kintone.mobile.app.getHeaderSpaceElement() failed");
+  }
   const fragment = document.createDocumentFragment();
   const headingEl = document.createElement("h3");
   const messageEl = document.createElement("p");

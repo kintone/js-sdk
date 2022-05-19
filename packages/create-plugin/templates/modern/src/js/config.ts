@@ -4,10 +4,19 @@
 // @ts-expect-error
 const PLUGIN_ID = kintone.$PLUGIN_ID;
 
-const form = document.querySelector(".js-submit-settings")!;
-const cancelButton = document.querySelector(".js-cancel-button")!;
+const form = document.querySelector(".js-submit-settings");
+if (form === null) {
+  throw new Error("element (.js-submit-settings) does not exist");
+}
+const cancelButton = document.querySelector(".js-cancel-button");
+if (cancelButton === null) {
+  throw new Error("element (.js-cancel-button) does not exist");
+}
 const messageInput =
-  document.querySelector<HTMLInputElement>(".js-text-message")!;
+  document.querySelector<HTMLInputElement>(".js-text-message");
+if (messageInput === null) {
+  throw new Error("element (.js-text-message) does not exist");
+}
 const config = kintone.plugin.app.getConfig(PLUGIN_ID);
 
 if (config.message) {
