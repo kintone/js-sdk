@@ -13,8 +13,8 @@
     "prebuild": "yarn clean",
     "build": "tsc --build --force",
     "lint": "eslint --ext .ts src",
-    "test": "jest --rootDir src",
-    "test:ci": "jest --rootDir src --runInBand",
+    "test": "jest",
+    "test:ci": "jest --runInBand",
     "clean": "rimraf dist",
     "start": "yarn build --watch"
   },
