@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.0.0...@kintone/rest-api-client@3.1.0) (2022-05-20)
+
+
+### Features
+
+* **rest-api-client:** add `httpsAgent` property to constructor options ([#1495](https://github.com/kintone/js-sdk/issues/1495)) ([721d25e](https://github.com/kintone/js-sdk/commit/721d25e88988c66923523a7ba7a9c4f2ecddecb0))
+
+
+
+
+
 # [3.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.38...@kintone/rest-api-client@3.0.0) (2022-05-13)
 
 
