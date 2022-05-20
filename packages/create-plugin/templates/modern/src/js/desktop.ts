@@ -7,7 +7,10 @@ const PLUGIN_ID = kintone.$PLUGIN_ID;
 kintone.events.on("app.record.index.show", () => {
   const config = kintone.plugin.app.getConfig(PLUGIN_ID);
 
-  const spaceElement = kintone.app.getHeaderSpaceElement()!;
+  const spaceElement = kintone.app.getHeaderSpaceElement();
+  if (spaceElement === null) {
+    throw new Error("The header element is unavailable on this page");
+  }
   const fragment = document.createDocumentFragment();
   const headingEl = document.createElement("h3");
   const messageEl = document.createElement("p");
