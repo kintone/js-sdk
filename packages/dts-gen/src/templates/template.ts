@@ -52,7 +52,7 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
   const outputPath = path.join(process.cwd(), output);
 
   await fs.promises.mkdir(path.dirname(outputPath), { recursive: true });
-  await fs.promises.writeFile(path.join(process.cwd(), output), prettySource);
+  await fs.promises.writeFile(outputPath, prettySource);
 };
 // definition
 export const TypeDefinitionTemplate = {
