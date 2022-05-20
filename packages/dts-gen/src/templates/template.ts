@@ -30,19 +30,17 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
       },
     },
   });
-  const eslintResult = await eslint.lintText(tsExpression.tsExpression());
-  const eslintOutput = eslintResult
-    .map((r) => {
-      // https://eslint.org/docs/developer-guide/nodejs-api#-lintresult-type
-      if ("output" in r) {
-        return r.output;
-      }
-      if ("source" in r) {
-        return r.source;
-      }
-      return "";
-    })
-    .join("");
+  const eslintResult = (await eslint.lintText(tsExpression.tsExpression()))[0];
+  let eslintOutput = "";
+  // https://eslint.org/docs/developer-guide/nodejs-api#-lintresult-type
+  if ("output" in eslintResult) {
+    eslintOutput = eslintResult.output;
+  } else if ("source" in eslintResult) {
+    eslintOutput = eslintResult.source;
+  } else {
+    throw new Error("unexpected result");
+  }
+
   const prettySource = prettier.format(eslintOutput, {
     parser: "typescript",
   });
