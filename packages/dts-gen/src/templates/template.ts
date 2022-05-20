@@ -31,6 +31,11 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
     },
   });
   const eslintResult = (await eslint.lintText(tsExpression.tsExpression()))[0];
+  if (eslintResult.fatalErrorCount > 0) {
+    throw new Error(
+      "failed to fix lint errors on generated type definition file."
+    );
+  }
   let eslintOutput = "";
   // https://eslint.org/docs/developer-guide/nodejs-api#-lintresult-type
   if ("output" in eslintResult) {
