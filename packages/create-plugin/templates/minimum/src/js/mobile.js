@@ -7,6 +7,9 @@ jQuery.noConflict();
     var config = kintone.plugin.app.getConfig(PLUGIN_ID);
 
     var spaceElement = kintone.mobile.app.getHeaderSpaceElement();
+    if (spaceElement === null) {
+      throw new Error('The header element is unavailable on this page');
+    }
     var fragment = document.createDocumentFragment();
     var headingEl = document.createElement('h3');
     var messageEl = document.createElement('p');
@@ -20,5 +23,4 @@ jQuery.noConflict();
     fragment.appendChild(messageEl);
     spaceElement.appendChild(fragment);
   });
-
 })(jQuery, kintone.$PLUGIN_ID);

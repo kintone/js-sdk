@@ -6,6 +6,9 @@ jQuery.noConflict();
   var $form = $('.js-submit-settings');
   var $cancelButton = $('.js-cancel-button');
   var $message = $('.js-text-message');
+  if (!($form.length > 0 && $cancelButton.length > 0 && $message.length > 0)) {
+    throw new Error('Required elements do not exist.');
+  }
   var config = kintone.plugin.app.getConfig(PLUGIN_ID);
 
   if (config.message) {
