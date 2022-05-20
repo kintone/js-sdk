@@ -18,7 +18,7 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
     fix: true,
     useEslintrc: false,
     baseConfig: {
-      extends: "@cybozu/eslint-config/presets/typescript-prettier",
+      extends: "@cybozu/eslint-config/presets/typescript",
       globals: {
         kintone: true,
       },
