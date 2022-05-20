@@ -9,7 +9,7 @@ kintone.events.on("mobile.app.record.index.show", () => {
 
   const spaceElement = kintone.mobile.app.getHeaderSpaceElement();
   if (spaceElement === null) {
-    throw new Error("kintone.mobile.app.getHeaderSpaceElement() failed");
+    throw new Error("The header element is unavailable on this page");
   }
   const fragment = document.createDocumentFragment();
   const headingEl = document.createElement("h3");
