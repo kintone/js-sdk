@@ -26,6 +26,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+        cache: yarn
     - name: yarn install, and yarn test
       run: |
         yarn install --network-timeout 900000

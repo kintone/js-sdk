@@ -16,6 +16,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
+        cache: yarn
     - name: run Yamory
       run: |
         ls -1 -d packages/*/ | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" --  --manifest {}/package.json
