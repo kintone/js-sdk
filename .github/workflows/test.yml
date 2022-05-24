@@ -27,10 +27,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: yarn
-    - name: yarn install, and yarn test
-      run: |
-        yarn install --network-timeout 900000 --immutable
-        yarn build
-        yarn test:ci
-      env:
-        CI: true
+    - run: yarn install --network-timeout 900000 --immutable
+    - run: yarn build
+    - run: yarn test:ci

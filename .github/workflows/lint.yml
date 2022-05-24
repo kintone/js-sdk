@@ -19,10 +19,6 @@ jobs:
       with:
         node-version: 16.x
         cache: yarn
-    - name: yarn install, and yarn lint
-      run: |
-        yarn install --immutable
-        yarn build
-        yarn lint
-      env:
-        CI: true
+    - run:  yarn install --immutable
+    - run:  yarn build
+    - run:  yarn lint

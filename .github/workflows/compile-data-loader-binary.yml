@@ -13,11 +13,9 @@ jobs:
         with:
           node-version: 16.x
           cache: yarn
-      - name: yarn install, and yarn workspace @kintone/data-loader pkg
-        run: |
-          yarn install --immutable
-          yarn build
-          yarn workspace @kintone/data-loader pkg
+      - run: yarn install --immutable
+      - run: yarn build
+      - run: yarn workspace @kintone/data-loader pkg
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
