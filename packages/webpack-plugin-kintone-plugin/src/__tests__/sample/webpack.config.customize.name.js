@@ -12,7 +12,9 @@ const KintonePlugin = require(path.resolve(
 
 module.exports = {
   entry: {
-    customize: "./src/customize.js",
+    desktop: "./src/desktop.js",
+    mobile: "./src/mobile.js",
+    config: "./src/config.js",
   },
   output: {
     path: path.resolve(__dirname, "plugin", "js"),

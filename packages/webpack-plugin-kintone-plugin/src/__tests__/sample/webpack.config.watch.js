@@ -1,5 +1,3 @@
-"use strict";
-
 const path = require("path");
 const KintonePlugin = require(path.resolve(
   __dirname,
@@ -22,8 +20,9 @@ module.exports = {
   },
   plugins: [
     new KintonePlugin({
-      pluginZipPath: (id, manifest) =>
-        `dist/new/to/${id}.${manifest.name.en.replace(/\s/g, ".")}.zip`,
+      manifestJSONPath: "./plugin/manifest.json",
+      privateKeyPath: "./private.ppk",
+      pluginZipPath: "dist/watch/plugin.zip",
     }),
   ],
 };
