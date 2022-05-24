@@ -20,9 +20,10 @@ type PluginZipPathFunction = (
 ) => string;
 
 class KintonePlugin implements WebpackPluginInstance {
-  private options: Option;
-  private name: string;
+  private readonly options: Option;
+  private readonly name: string;
   private privateKey: string | null;
+  private isFirstEmitting: boolean = true;
   constructor(options = {}) {
     this.name = "KintonePlugin";
     this.privateKey = null;
@@ -46,6 +47,12 @@ class KintonePlugin implements WebpackPluginInstance {
       }
       this.privateKey = fs.readFileSync(privateKeyPath, "utf-8");
       if (compiler.options.watch) {
+        compiler.hooks.afterEmit.tapPromise(this.name, async () => {
+          if (this.isFirstEmitting) {
+            this.isFirstEmitting = false;
+            await this.generatePlugin();
+          }
+        });
         this.watchAssets();
       } else {
         compiler.hooks.afterEmit.tapPromise(this.name, () =>
