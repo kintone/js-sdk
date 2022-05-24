@@ -15,7 +15,7 @@ jobs:
           cache: yarn
       - name: yarn install, and yarn workspace @kintone/data-loader pkg
         run: |
-          yarn install
+          yarn install --immutable
           yarn build
           yarn workspace @kintone/data-loader pkg
       - name: Create Release

@@ -29,7 +29,7 @@ jobs:
         cache: yarn
     - name: yarn install, and yarn test
       run: |
-        yarn install --network-timeout 900000
+        yarn install --network-timeout 900000 --immutable
         yarn build
         yarn test:ci
       env:

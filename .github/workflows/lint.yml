@@ -21,7 +21,7 @@ jobs:
         cache: yarn
     - name: yarn install, and yarn lint
       run: |
-        yarn install
+        yarn install --immutable
         yarn build
         yarn lint
       env:
