@@ -19,7 +19,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - run: yarn install
+          cache: yarn
+      - run: yarn install --immutable
       - name: Generate next release (dry-run)
         run: yarn run lerna version --conventional-commits --no-git-tag-version --no-push --yes
       - name: Show CHANGELOG.md
