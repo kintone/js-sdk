@@ -13,7 +13,7 @@
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",
     "test": "jest",
-    "test:ci": "test --runInBand"
+    "test:ci": "jest --runInBand"
   },
   "keywords": [
     "webpack",
