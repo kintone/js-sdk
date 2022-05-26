@@ -4,6 +4,7 @@ import fs from "fs";
 import os from "os";
 import path from "path";
 import rimraf from "rimraf";
+import { Readable } from "stream";
 
 const pluginDir = path.resolve(__dirname, "sample");
 const pluginZipPath = path.resolve(pluginDir, "dist", "plugin.zip");
@@ -49,14 +50,17 @@ const runWebpack = (config = "webpack.config.js") => {
   );
 };
 
-const runWebpackWatch = (config = "webpack.config.watch.js") => {
+const runWebpackWatch = (options: { config?: string; srcDir?: string }) => {
+  const config = options.config ?? "webpack.config.watch.js";
+  const srcDir = options.srcDir ?? path.resolve(pluginDir, "src");
   const webpackCommand = `webpack${os.platform() === "win32" ? ".cmd" : ""}`;
   return spawn(
     webpackCommand,
     ["--config", config, "--mode", "development", "--watch"],
     {
       cwd: pluginDir,
-      timeout: 5000,
+      timeout: 10000,
+      env: { ...process.env, SRC_DIR: srcDir },
     }
   );
 };
@@ -106,8 +110,8 @@ describe("KintonePlugin", () => {
     verifyPluginZip(notExistsDirWithCustomNamePluginZipPath);
   });
   it("should be able to create a plugin zip when watch mode started (fix #1299)", (done) => {
-    const rs = runWebpackWatch("webpack.config.watch.js");
-    const onExit = (code: any) => {
+    const rs = runWebpackWatch({});
+    const onClose = (code: any) => {
       try {
         expect(code).toBe(0);
         done();
@@ -115,19 +119,87 @@ describe("KintonePlugin", () => {
         done(e);
       }
     };
-    rs.on("close", onExit);
 
-    rs.stdout.on("data", (data: string) => {
+    const onStdoutData = (data: Readable) => {
       try {
-        if (data.includes("Success to create a plugin zip!")) {
+        if (data.toString().includes("Success to create a plugin zip!")) {
           verifyPluginZip(onWatchModePluginZipPath);
-          rs.removeListener("close", onExit);
+          rs.stdout.removeListener("data", onStdoutData);
+          rs.removeListener("close", onClose);
           rs.kill();
           done();
         }
       } catch (e) {
         done(e);
       }
+    };
+
+    rs.once("close", onClose);
+    rs.stdout.on("data", onStdoutData);
+  });
+  it("should not create plugin zip more than once for single webpack compilation when watch mode", (done) => {
+    // copy src files to temp directory
+    const tempDir = fs.mkdtempSync(
+      path.join(os.tmpdir(), "kintone-webpack-plugin-kintone-plugin-")
+    );
+    fs.mkdirSync(path.join(tempDir, "src"), { recursive: true });
+    ["desktop.js", "mobile.js", "config.js"].forEach((filename) => {
+      fs.copyFileSync(
+        path.resolve(pluginDir, "src", filename),
+        path.resolve(tempDir, "src", filename)
+      );
     });
+
+    let countFileChanged = 0;
+    let countPluginZipGenerated = 0;
+
+    const rs = runWebpackWatch({
+      srcDir: path.resolve(tempDir, "src"),
+    });
+
+    const onClose = (code: number) => {
+      try {
+        expect(code).toBe(0);
+        done();
+      } catch (e) {
+        done(e);
+      }
+    };
+
+    const onStdoutData = (data: Readable) => {
+      try {
+        console.log(`${data}`); // TODO: delete
+        if (!data.toString().includes("Success to create a plugin zip!")) {
+          return;
+        }
+        verifyPluginZip(onWatchModePluginZipPath);
+        countPluginZipGenerated++;
+        console.log(`countPluginZipGenerated: ${countPluginZipGenerated}`); // TODO: delete
+
+        expect(countPluginZipGenerated).toBe(countFileChanged + 1);
+
+        if (countFileChanged > 2) {
+          console.log("terminate child process!!"); // TODO: delete
+          rs.stdout.removeListener("data", onStdoutData);
+          rs.removeListener("close", onClose);
+          rs.kill();
+          done();
+          return;
+        }
+
+        console.log("create file change!!!"); // TODO: delete
+        countFileChanged++;
+        fs.writeFileSync(
+          path.resolve(tempDir, "src", "desktop.js"),
+          `const count = ${countFileChanged};`
+        );
+        console.log(`countFileChanged: ${countFileChanged}`); // TODO: delete
+      } catch (e) {
+        done(e);
+      }
+    };
+
+    rs.once("close", onClose);
+    rs.stdout.on("data", onStdoutData);
   });
 });
