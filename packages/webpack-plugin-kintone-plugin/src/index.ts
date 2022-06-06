@@ -24,7 +24,7 @@ class KintonePlugin implements WebpackPluginInstance {
   private readonly name: string;
   private privateKey: string | null;
   private isFirstEmitting: boolean = true;
-  constructor(options = {}) {
+  constructor(options: Partial<Option> = {}) {
     this.name = "KintonePlugin";
     this.privateKey = null;
     this.options = Object.assign(
@@ -46,25 +46,30 @@ class KintonePlugin implements WebpackPluginInstance {
         throw new Error(`privateKeyPath cannot found: ${privateKeyPath}`);
       }
       this.privateKey = fs.readFileSync(privateKeyPath, "utf-8");
-      if (compiler.options.watch) {
-        compiler.hooks.afterEmit.tapPromise(this.name, async () => {
-          if (this.isFirstEmitting) {
-            this.isFirstEmitting = false;
-            await this.generatePlugin();
+
+      const afterEmitEvent = new EventTarget();
+      afterEmitEvent.addEventListener(
+        "afterEmit",
+        async () => {
+          await this.generatePlugin();
+          if (compiler.watchMode) {
+            const unwatch = this.watchAssets();
+            compiler.hooks.watchClose.tap(this.name, () => {
+              unwatch();
+            });
           }
-        });
-        this.watchAssets();
-      } else {
-        compiler.hooks.afterEmit.tapPromise(this.name, () =>
-          this.generatePlugin()
-        );
-      }
+        },
+        { once: true }
+      );
+      compiler.hooks.afterEmit.tapPromise(this.name, async () => {
+        afterEmitEvent.dispatchEvent(new Event("afterEmit"));
+      });
     });
   }
   /**
    * Watch assets specified in manifest.json
    */
-  private watchAssets(): void {
+  private watchAssets(): () => void {
     let unwatch: () => void;
     const onFileChange = debounce((file: string) => {
       console.log(`${file} was changed`);
@@ -85,6 +90,7 @@ class KintonePlugin implements WebpackPluginInstance {
       getAssetPaths(this.options.manifestJSONPath),
       onFileChange
     );
+    return unwatch;
   }
   /**
    * Generate a plugin zip
@@ -114,5 +120,6 @@ class KintonePlugin implements WebpackPluginInstance {
   }
 }
 
+export default KintonePlugin;
 module.exports = KintonePlugin;
 module.exports.default = module.exports;
