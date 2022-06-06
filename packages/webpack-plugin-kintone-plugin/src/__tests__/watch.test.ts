@@ -95,7 +95,6 @@ describe("KintonePlugin", () => {
 
     pluginZipWatcher
       .on("add", (filepath) => {
-        console.log(`File ${filepath} has been added`);
         try {
           callback(filepath);
         } catch (e) {
@@ -122,7 +121,7 @@ describe("KintonePlugin", () => {
     );
 
     const callback = (filepath: string) => {
-      watching.suspend();
+      // watching.suspend();
       expect(filepath).toBe(pluginZipPath);
 
       verifyPluginZip(pluginZipPath);
@@ -133,12 +132,10 @@ describe("KintonePlugin", () => {
       expect(countPluginZipGenerated).toBe(countFileChanged + 1);
 
       if (countFileChanged > 2) {
-        watching.close(() =>
-          pluginZipWatcher.close().finally(() => setTimeout(() => done(), 1000))
-        );
+        watching.close(() => pluginZipWatcher.close().finally(() => done()));
       }
 
-      watching.resume();
+      // watching.resume();
       console.log("make file change.");
       countFileChanged++;
       fs.writeFileSync(

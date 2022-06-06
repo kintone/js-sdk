@@ -62,7 +62,6 @@ describe("KintonePlugin", () => {
     });
     const compiler = webpack(config);
     await promisify(compiler.run).bind(compiler)();
-    await promisify(setTimeout)(300);
     verifyPluginZip(pluginZipPath);
     await promisify(compiler.close).bind(compiler)();
   });
@@ -86,7 +85,6 @@ describe("KintonePlugin", () => {
     });
     const compiler = webpack(config);
     await promisify(compiler.run).bind(compiler)();
-    await promisify(setTimeout)(300);
     verifyPluginZip(pluginZipPath);
     await promisify(compiler.close).bind(compiler)();
   });
@@ -103,7 +101,6 @@ describe("KintonePlugin", () => {
     });
     const compiler = webpack(config);
     await promisify(compiler.run).bind(compiler)();
-    await promisify(setTimeout)(300);
     verifyPluginZip(pluginZipPath);
     await promisify(compiler.close).bind(compiler)();
   });
@@ -129,7 +126,6 @@ describe("KintonePlugin", () => {
     });
     const compiler = webpack(config);
     await promisify(compiler.run).bind(compiler)();
-    await promisify(setTimeout)(300);
     verifyPluginZip(pluginZipPath);
     await promisify(compiler.close).bind(compiler)();
   });
