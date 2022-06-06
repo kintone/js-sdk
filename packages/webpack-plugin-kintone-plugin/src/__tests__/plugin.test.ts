@@ -1,7 +1,7 @@
 import path from "path";
 import { getAssetPaths } from "../plugin";
 
-const SAMPLE_PLUGIN_PATH = path.resolve(__dirname, "sample/plugin");
+const SAMPLE_PLUGIN_PATH = path.resolve(__dirname, "fixtures/sample/plugin");
 const MANIFEST_JSON_FILE = path.resolve(SAMPLE_PLUGIN_PATH, "manifest.json");
 
 describe("plugin", () => {

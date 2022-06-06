@@ -12,7 +12,7 @@
     "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",
-    "test": "jest",
+    "test": "jest --runInBand",
     "test:ci": "jest --runInBand"
   },
   "keywords": [
@@ -45,7 +45,8 @@
     "adm-zip": "^0.5.9",
     "rimraf": "^3.0.2",
     "webpack": "^5.72.1",
-    "webpack-cli": "4.9.2"
+    "webpack-cli": "4.9.2",
+    "webpack-merge": "^5.8.0"
   },
   "peerDependencies": {
     "webpack": "^4.0.0 || ^5.0.0"

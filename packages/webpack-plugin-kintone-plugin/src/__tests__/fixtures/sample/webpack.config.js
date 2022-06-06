@@ -6,6 +6,7 @@ const KintonePlugin = require(path.resolve(
   "..",
   "..",
   "..",
+  "..",
   "dist",
   "index"
 ));
@@ -20,10 +21,5 @@ module.exports = {
     path: path.resolve(__dirname, "plugin", "js"),
     filename: "[name].js",
   },
-  plugins: [
-    new KintonePlugin({
-      pluginZipPath: (id, manifest) =>
-        `dist/new/to/${id}.${manifest.name.en.replace(/\s/g, ".")}.zip`,
-    }),
-  ],
+  plugins: [new KintonePlugin()],
 };

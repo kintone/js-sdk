@@ -4,7 +4,8 @@ const config = {
   testEnvironment: "node",
   testPathIgnorePatterns: [
     "<rootDir>/node_modules/",
-    "<rootDir>/src/__tests__/sample",
+    "<rootDir>/src/__tests__/fixtures",
+    "<rootDir>/src/__tests__/helpers",
   ],
   testTimeout: 30000,
 };
