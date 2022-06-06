@@ -10,17 +10,17 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "core-js": "^3.22.7",
-    "@kintone/rest-api-client": "^3.1.0"
+    "core-js": "^3.22.8",
+    "@kintone/rest-api-client": "^3.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.0",
-    "@babel/preset-env": "^7.18.0",
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
     "@cybozu/eslint-config": "^17.0.1",
-    "@kintone/dts-gen": "^6.1.0",
-    "@kintone/webpack-plugin-kintone-plugin": "^6.0.1",
+    "@kintone/dts-gen": "^6.1.1",
+    "@kintone/webpack-plugin-kintone-plugin": "^6.0.2",
     "babel-loader": "^8.2.5",
     "cross-env": "^7.0.3",
     "eslint": "^8.16.0",

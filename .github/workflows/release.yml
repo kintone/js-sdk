@@ -17,7 +17,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - run: yarn install
+          cache: yarn
+      - run: yarn install --immutable
       - name: Configure git user
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
