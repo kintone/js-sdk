@@ -1,12 +1,9 @@
 import fs from "fs";
-import { debounce } from "lodash";
 import mkdirp from "mkdirp";
 import path from "path";
 import { Compiler, WebpackPluginInstance } from "webpack";
 
 import { generatePlugin, getAssetPaths } from "./plugin";
-
-import { watchFiles } from "./watch";
 
 interface Option {
   manifestJSONPath: string;
@@ -20,10 +17,10 @@ type PluginZipPathFunction = (
 ) => string;
 
 class KintonePlugin implements WebpackPluginInstance {
-  private options: Option;
-  private name: string;
+  private readonly options: Option;
+  private readonly name: string;
   private privateKey: string | null;
-  constructor(options = {}) {
+  constructor(options: Partial<Option> = {}) {
     this.name = "KintonePlugin";
     this.privateKey = null;
     this.options = Object.assign(
@@ -45,40 +42,32 @@ class KintonePlugin implements WebpackPluginInstance {
         throw new Error(`privateKeyPath cannot found: ${privateKeyPath}`);
       }
       this.privateKey = fs.readFileSync(privateKeyPath, "utf-8");
-      if (compiler.options.watch) {
-        this.watchAssets();
-      } else {
-        compiler.hooks.afterEmit.tapPromise(this.name, () =>
-          this.generatePlugin()
-        );
-      }
-    });
-  }
-  /**
-   * Watch assets specified in manifest.json
-   */
-  private watchAssets(): void {
-    let unwatch: () => void;
-    const onFileChange = debounce((file: string) => {
-      console.log(`${file} was changed`);
-      this.generatePlugin().then(() => {
-        // If manifest.json has been updated we should reevaluate the target files and rewatch them
-        if (/manifest\.json$/.test(file)) {
-          if (typeof unwatch === "function") {
-            unwatch();
-          }
-          unwatch = watchFiles(
-            getAssetPaths(this.options.manifestJSONPath),
-            onFileChange
+
+      if (compiler.options.watch || compiler.watchMode) {
+        compiler.hooks.afterCompile.tap(this.name, (compilation) => {
+          // Watch assets specified in manifest.json
+          // https://webpack.js.org/contribute/plugin-patterns/#monitoring-the-watch-graph
+          const allAssetPaths = getAssetPaths(this.options.manifestJSONPath);
+          const chunkPaths = [...compilation.chunks]
+            .reduce<string[]>(
+              (paths, chunk) => paths.concat([...chunk.files]),
+              []
+            )
+            .map((chunkFile) => path.resolve(compiler.outputPath, chunkFile));
+          // exclude output chunks because afterEmit is triggered twice when js source file changed.
+          const assetPaths = allAssetPaths.filter(
+            (assetPath) => !chunkPaths.includes(assetPath)
           );
-        }
-      });
+          compilation.fileDependencies.addAll(assetPaths);
+        });
+      }
+
+      compiler.hooks.afterEmit.tapPromise(this.name, () =>
+        this.generatePlugin()
+      );
     });
-    unwatch = watchFiles(
-      getAssetPaths(this.options.manifestJSONPath),
-      onFileChange
-    );
   }
+
   /**
    * Generate a plugin zip
    */
@@ -107,5 +96,6 @@ class KintonePlugin implements WebpackPluginInstance {
   }
 }
 
+export default KintonePlugin;
 module.exports = KintonePlugin;
 module.exports.default = module.exports;

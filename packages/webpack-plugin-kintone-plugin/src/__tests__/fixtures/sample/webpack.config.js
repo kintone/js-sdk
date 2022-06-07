@@ -6,21 +6,20 @@ const KintonePlugin = require(path.resolve(
   "..",
   "..",
   "..",
+  "..",
   "dist",
   "index"
 ));
 
 module.exports = {
   entry: {
-    customize: "./src/customize.js",
+    desktop: "./src/desktop.js",
+    mobile: "./src/mobile.js",
+    config: "./src/config.js",
   },
   output: {
     path: path.resolve(__dirname, "plugin", "js"),
     filename: "[name].js",
   },
-  plugins: [
-    new KintonePlugin({
-      pluginZipPath: "dist/new/to/plugin.zip",
-    }),
-  ],
+  plugins: [new KintonePlugin()],
 };

@@ -12,8 +12,8 @@
     "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",
-    "test": "jest",
-    "test:ci": "test --runInBand"
+    "test": "jest --runInBand",
+    "test:ci": "jest --runInBand"
   },
   "keywords": [
     "webpack",
@@ -39,21 +39,20 @@
   "devDependencies": {
     "@types/adm-zip": "^0.5.0",
     "@types/chokidar": "^1.7.5",
-    "@types/lodash": "^4.14.182",
     "@types/mkdirp": "^1.0.2",
     "@types/rimraf": "^3.0.2",
     "adm-zip": "^0.5.9",
+    "chokidar": "^3.5.3",
     "rimraf": "^3.0.2",
     "webpack": "^5.72.1",
-    "webpack-cli": "4.9.2"
+    "webpack-cli": "4.9.2",
+    "webpack-merge": "^5.8.0"
   },
   "peerDependencies": {
     "webpack": "^4.0.0 || ^5.0.0"
   },
   "dependencies": {
     "@kintone/plugin-packer": "^6.0.2",
-    "chokidar": "^3.5.3",
-    "lodash": "^4.17.21",
     "mkdirp": "^1.0.4"
   }
 }
