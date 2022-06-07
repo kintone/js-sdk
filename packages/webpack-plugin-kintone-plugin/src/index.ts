@@ -37,7 +37,7 @@ class KintonePlugin implements WebpackPluginInstance {
   }
   public apply(compiler: Compiler) {
     const { manifestJSONPath, privateKeyPath } = this.options;
-    compiler.hooks.afterPlugins.tap("KintonePlugin", () => {
+    compiler.hooks.afterPlugins.tap(this.name, () => {
       if (!fs.existsSync(manifestJSONPath)) {
         throw new Error(`manifestJSONPath cannot found: ${manifestJSONPath}`);
       }
