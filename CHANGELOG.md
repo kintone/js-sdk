@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.2](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.1...@kintone/create-plugin@5.1.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^3.1.1 ([#1542](https://github.com/kintone/js-sdk/issues/1542)) ([ff66c02](https://github.com/kintone/js-sdk/commit/ff66c02eb67c44e6b91a8805ccaae9e96c6d8bfc))
+* **deps:** update dependency core-js to ^3.22.8 ([#1544](https://github.com/kintone/js-sdk/issues/1544)) ([535ba87](https://github.com/kintone/js-sdk/commit/535ba875d26d1069a220f4a119c786203d44b2ec))
+* **deps:** update dependency eslint to ^8.17.0 ([#1550](https://github.com/kintone/js-sdk/issues/1550)) ([f48ac6a](https://github.com/kintone/js-sdk/commit/f48ac6a10bf54399a810d6059357e4432180416a))
+
+
+
+
+
 ## [5.1.1](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.0...@kintone/create-plugin@5.1.1) (2022-06-01)
 
 
