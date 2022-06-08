@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.3](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@6.0.2...@kintone/webpack-plugin-kintone-plugin@6.0.3) (2022-06-08)
+
+
+### Bug Fixes
+
+* **webpack-plugin-kintone-plugin:** generate plugin.zip when watch begins ([#1529](https://github.com/kintone/js-sdk/issues/1529)) ([dcf914c](https://github.com/kintone/js-sdk/commit/dcf914cd1e08f617d26e2cd6aa059ae7457e95f3))
+
+
+
+
+
 ## [6.0.2](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@6.0.1...@kintone/webpack-plugin-kintone-plugin@6.0.2) (2022-06-01)
 
 **Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
