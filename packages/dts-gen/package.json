@@ -43,7 +43,7 @@
     "@types/prettier": "^2.6.3",
     "ts-loader": "^9.3.0",
     "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.10.0"
   },
   "bin": {
     "kintone-dts-gen": "dist/index.js"
