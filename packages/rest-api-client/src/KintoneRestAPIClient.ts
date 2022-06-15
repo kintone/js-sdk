@@ -71,6 +71,10 @@ export class KintoneRestAPIClient {
     this.baseUrl = platformDeps
       .buildBaseUrl(options.baseUrl)
       .replace(/\/+$/, ""); // Remove trailing slash
+    const url = new URL(this.baseUrl);
+    if (url.hostname !== "localhost" && url.protocol !== "https:") {
+      throw new Error('The protocol of baseUrl must be "https".');
+    }
 
     const auth = buildDiscriminatedAuth(options.auth ?? {});
     const requestConfigBuilder = new KintoneRequestConfigBuilder({
