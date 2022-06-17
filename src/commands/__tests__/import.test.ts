@@ -35,7 +35,7 @@ describe("import", () => {
         "oAuthToken",
         "basicAuthUser",
         "basicAuthPass",
-        "example.com",
+        "https://example.com",
         {
           proxy: "",
           guestSpaceId: 0,
