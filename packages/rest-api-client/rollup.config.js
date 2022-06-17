@@ -53,12 +53,11 @@ export default defineConfig({
             targets: {
               // see kintone's supported browsers https://get.kintone.help/general/en/user/list_start/webbrowser.html
               browsers: [
-                "IE 11",
                 "last 2 edge versions",
                 "last 2 firefox version",
                 "last 2 chrome versions",
                 "last 2 safari versions",
-                "iOS >= 11",
+                "iOS >= 14",
                 "last 2 and_chr versions",
               ],
             },
@@ -73,6 +72,6 @@ export default defineConfig({
     globals(),
     builtins(),
     isProd && terser(),
-    ecmaVersionValidator(),
+    ecmaVersionValidator({ ecmaVersion: 6 }),
   ],
 });
