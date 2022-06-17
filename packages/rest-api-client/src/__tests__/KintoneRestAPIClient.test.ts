@@ -13,6 +13,7 @@ describe("KintoneRestAPIClient", () => {
         getRequestToken: () => "dummy request token",
       };
       global.location = {
+        ...global.location,
         host: "example.com",
         protocol: "https:",
       };

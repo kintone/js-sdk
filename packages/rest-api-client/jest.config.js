@@ -1,7 +1,12 @@
-module.exports = {
+/** @type {import('@jest/types').Config.InitialOptions} */
+const config = {
   clearMocks: true,
-  rootDir: "src",
-  setupFilesAfterEnv: ["<rootDir>/__tests__/setup.ts"],
-  testPathIgnorePatterns: ["node_modules", "<rootDir>/__tests__/setup.ts"],
+  roots: ["<rootDir>/src"],
+  setupFilesAfterEnv: ["<rootDir>/src/__tests__/setup.ts"],
+  testPathIgnorePatterns: [
+    "<rootDir>/node_modules/",
+    "<rootDir>/src/__tests__/setup.ts",
+  ],
   testEnvironment: "node",
 };
+module.exports = config;

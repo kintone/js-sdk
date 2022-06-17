@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.1...@kintone/rest-api-client@3.1.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.22.8 ([#1544](https://github.com/kintone/js-sdk/issues/1544)) ([535ba87](https://github.com/kintone/js-sdk/commit/535ba875d26d1069a220f4a119c786203d44b2ec))
+* **deps:** update dependency qs to ^6.10.4 ([#1553](https://github.com/kintone/js-sdk/issues/1553)) ([2144990](https://github.com/kintone/js-sdk/commit/21449903d7cf803b22dbb3005c12452d1ce8f5b2))
+
+
+
+
+
+## [3.1.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.0...@kintone/rest-api-client@3.1.1) (2022-06-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.22.6 ([#1526](https://github.com/kintone/js-sdk/issues/1526)) ([e90f568](https://github.com/kintone/js-sdk/commit/e90f5683e9592ee62f98f562e14fabf463e3871b))
+* **deps:** update dependency core-js to ^3.22.7 ([#1528](https://github.com/kintone/js-sdk/issues/1528)) ([2292c9d](https://github.com/kintone/js-sdk/commit/2292c9d843c1bff1f50aac3669aaec1a9a64f365))
+
+
+
+
+
+# [3.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.0.0...@kintone/rest-api-client@3.1.0) (2022-05-20)
+
+
+### Features
+
+* **rest-api-client:** add `httpsAgent` property to constructor options ([#1495](https://github.com/kintone/js-sdk/issues/1495)) ([721d25e](https://github.com/kintone/js-sdk/commit/721d25e88988c66923523a7ba7a9c4f2ecddecb0))
+
+
+
+
+
+# [3.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.38...@kintone/rest-api-client@3.0.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.27.2 ([#1457](https://github.com/kintone/js-sdk/issues/1457)) ([a1f069c](https://github.com/kintone/js-sdk/commit/a1f069cd705129f58bb7149bad7738a7c90d903d))
+* **deps:** update dependency core-js to ^3.22.3 ([#1467](https://github.com/kintone/js-sdk/issues/1467)) ([c7329bc](https://github.com/kintone/js-sdk/commit/c7329bc54820059cb7e0c800d7b97749159fbdaf))
+* **deps:** update dependency core-js to ^3.22.4 ([#1480](https://github.com/kintone/js-sdk/issues/1480)) ([7b603ab](https://github.com/kintone/js-sdk/commit/7b603abe8f1334b350e11d85cfccf539720c600c))
+* **deps:** update dependency core-js to ^3.22.5 ([#1491](https://github.com/kintone/js-sdk/issues/1491)) ([0cd469a](https://github.com/kintone/js-sdk/commit/0cd469a2ae8d2f7ac191650d348af03dd8e5d13a))
+* **rest-api-client:** remove trailing slash from baseUrl automatically ([#1485](https://github.com/kintone/js-sdk/issues/1485)) ([6d52938](https://github.com/kintone/js-sdk/commit/6d52938e527942cdfb47c9429532258d8040b976))
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
 ## [2.0.38](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@2.0.37...@kintone/rest-api-client@2.0.38) (2022-04-28)
 
 

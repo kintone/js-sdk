@@ -25,8 +25,10 @@ declare const location:
     }
   | undefined;
 
+declare type BlobPart = unknown;
+
 declare class Blob {
-  constructor(array: unknown[]);
+  constructor(array: BlobPart[]);
 }
 
 declare const PACKAGE_VERSION: string;

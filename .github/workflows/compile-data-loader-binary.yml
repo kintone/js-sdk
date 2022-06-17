@@ -8,15 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 14.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
-          node-version: 14.x
-      - name: yarn install, and yarn workspace @kintone/data-loader pkg
-        run: |
-          yarn install
-          yarn build
-          yarn workspace @kintone/data-loader pkg
+          node-version: 16.x
+          cache: yarn
+      - run: yarn install --immutable
+      - run: yarn build
+      - run: yarn workspace @kintone/data-loader pkg
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

@@ -27,6 +27,14 @@ describe("generator", function () {
       );
       generatePlugin(outputDir, manifest, "ja", true, "minimum");
 
+      // test that `npm run lint` doesn't fail
+      const lintResult = spawnSync("npm", ["run", "lint"], {
+        cwd: outputDir,
+        stdio: "inherit",
+        shell: true,
+      });
+      assert(lintResult.status === 0);
+
       // test that `npm run build` doesn't fail
       const buildResult = spawnSync("npm", ["run", "build"], {
         cwd: outputDir,
@@ -71,6 +79,14 @@ describe("generator", function () {
         fs.readFileSync(path.resolve(__dirname, "manifest.json"), "utf8")
       );
       generatePlugin(outputDir, manifest, "ja", false, "modern");
+
+      // test that `npm run lint` doesn't fail
+      const lintResult = spawnSync("npm", ["run", "lint"], {
+        cwd: outputDir,
+        stdio: "inherit",
+        shell: true,
+      });
+      assert(lintResult.status === 0);
 
       // test that `npm run build` doesn't fail
       const buildResult = spawnSync("npm", ["run", "build"], {

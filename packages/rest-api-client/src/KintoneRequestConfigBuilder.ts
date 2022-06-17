@@ -11,6 +11,7 @@ import {
 } from "./http/HttpClientInterface";
 import { BasicAuth, DiscriminatedAuth } from "./types/auth";
 import { platformDeps } from "./platform/";
+import type { Agent as HttpsAgent } from "https";
 
 type Data = Params | FormData;
 
@@ -34,10 +35,11 @@ type KintoneAuthHeader =
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 
 export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
-  private baseUrl: string;
-  private headers: KintoneAuthHeader;
-  private auth: DiscriminatedAuth;
-  private clientCertAuth?:
+  private readonly baseUrl: string;
+  private readonly headers: KintoneAuthHeader;
+  private readonly auth: DiscriminatedAuth;
+  private readonly httpsAgent?: HttpsAgent;
+  private readonly clientCertAuth?:
     | {
         pfx: Buffer;
         password: string;
@@ -46,20 +48,15 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         pfxFilePath: string;
         password: string;
       };
-  private proxy?: ProxyConfig;
+  private readonly proxy?: ProxyConfig;
   private requestToken: string | null;
 
-  constructor({
-    baseUrl,
-    auth,
-    basicAuth,
-    clientCertAuth,
-    proxy,
-    userAgent,
-  }: {
+  constructor(options: {
     baseUrl: string;
     auth: DiscriminatedAuth;
     basicAuth?: BasicAuth;
+    proxy?: ProxyConfig;
+    httpsAgent?: HttpsAgent;
     clientCertAuth?:
       | {
           pfx: Buffer;
@@ -69,14 +66,24 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
           pfxFilePath: string;
           password: string;
         };
-    proxy?: ProxyConfig;
     userAgent?: string;
   }) {
-    this.baseUrl = baseUrl;
-    this.auth = auth;
-    this.headers = this.buildHeaders({ basicAuth, userAgent });
-    this.clientCertAuth = clientCertAuth;
-    this.proxy = proxy;
+    this.baseUrl = options.baseUrl;
+    this.auth = options.auth;
+    this.headers = this.buildHeaders({
+      basicAuth: options.basicAuth,
+      userAgent: options.userAgent,
+    });
+    if ("httpsAgent" in options) {
+      if ("clientCertAuth" in options) {
+        throw new Error("Cannot specify clientCertAuth along with httpsAgent.");
+      }
+      this.httpsAgent = options.httpsAgent;
+    } else if ("clientCertAuth" in options) {
+      this.clientCertAuth = options.clientCertAuth;
+    }
+
+    this.proxy = options.proxy;
     this.requestToken = null;
   }
 
@@ -92,6 +99,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       url: `${this.baseUrl}${path}`,
       ...(options ? options : {}),
       ...platformDeps.buildPlatformDependentConfig({
+        httpsAgent: this.httpsAgent,
         clientCertAuth: this.clientCertAuth,
       }),
       proxy: this.proxy,

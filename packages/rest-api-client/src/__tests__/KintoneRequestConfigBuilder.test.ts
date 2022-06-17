@@ -4,6 +4,7 @@ import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
 import os from "os";
 import { Base64 } from "js-base64";
+import https from "https";
 
 const packageJson = require("../../package.json");
 const nodeVersion = process.version;
@@ -366,6 +367,28 @@ describe("options", () => {
   });
 
   it("should build `requestConfig` having `httpsAgent` property", async () => {
+    const baseUrl = "https://example.kintone.com";
+    const apiToken = "apiToken";
+    const httpsAgent = new https.Agent();
+
+    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl,
+      httpsAgent,
+      auth: {
+        type: "apiToken",
+        apiToken,
+      },
+    });
+
+    const requestConfig = await kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toHaveProperty("httpsAgent");
+  });
+
+  it("should build `requestConfig` having `httpsAgent` property from clientCertAuth", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
     const clientCertAuth = {

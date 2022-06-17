@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.2](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.1...@kintone/create-plugin@5.1.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^3.1.1 ([#1542](https://github.com/kintone/js-sdk/issues/1542)) ([ff66c02](https://github.com/kintone/js-sdk/commit/ff66c02eb67c44e6b91a8805ccaae9e96c6d8bfc))
+* **deps:** update dependency core-js to ^3.22.8 ([#1544](https://github.com/kintone/js-sdk/issues/1544)) ([535ba87](https://github.com/kintone/js-sdk/commit/535ba875d26d1069a220f4a119c786203d44b2ec))
+* **deps:** update dependency eslint to ^8.17.0 ([#1550](https://github.com/kintone/js-sdk/issues/1550)) ([f48ac6a](https://github.com/kintone/js-sdk/commit/f48ac6a10bf54399a810d6059357e4432180416a))
+
+
+
+
+
+## [5.1.1](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.0...@kintone/create-plugin@5.1.1) (2022-06-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^3.1.0 ([#1521](https://github.com/kintone/js-sdk/issues/1521)) ([ed1e8c2](https://github.com/kintone/js-sdk/commit/ed1e8c27cd3ac0b65d98a9289bf4dcf4a941a752))
+* **deps:** update dependency core-js to ^3.22.6 ([#1526](https://github.com/kintone/js-sdk/issues/1526)) ([e90f568](https://github.com/kintone/js-sdk/commit/e90f5683e9592ee62f98f562e14fabf463e3871b))
+* **deps:** update dependency core-js to ^3.22.7 ([#1528](https://github.com/kintone/js-sdk/issues/1528)) ([2292c9d](https://github.com/kintone/js-sdk/commit/2292c9d843c1bff1f50aac3669aaec1a9a64f365))
+* **deps:** update dependency eslint to ^8.16.0 ([#1523](https://github.com/kintone/js-sdk/issues/1523)) ([561d273](https://github.com/kintone/js-sdk/commit/561d273c1c3d444a06a9c651b93307acfecf621b))
+
+
+
+
+
+# [5.1.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.0.0...@kintone/create-plugin@5.1.0) (2022-05-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to v3 ([#1504](https://github.com/kintone/js-sdk/issues/1504)) ([6d0b502](https://github.com/kintone/js-sdk/commit/6d0b5029925ae417a85b5d269a00c7716658b2ac))
+
+
+### Features
+
+* **create-plugin:** apply ESLint to generated project files ([#1514](https://github.com/kintone/js-sdk/issues/1514)) ([f101000](https://github.com/kintone/js-sdk/commit/f101000fceaa77cb2ca26b242f4fbef330a0450a))
+
+
+
+
+
+# [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.22...@kintone/create-plugin@5.0.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^2.0.38 ([#1466](https://github.com/kintone/js-sdk/issues/1466)) ([7899d9d](https://github.com/kintone/js-sdk/commit/7899d9deff2ee8cf7acddec6bcb0fb3dedd1c8e6))
+* **deps:** update dependency core-js to ^3.22.3 ([#1467](https://github.com/kintone/js-sdk/issues/1467)) ([c7329bc](https://github.com/kintone/js-sdk/commit/c7329bc54820059cb7e0c800d7b97749159fbdaf))
+* **deps:** update dependency core-js to ^3.22.4 ([#1480](https://github.com/kintone/js-sdk/issues/1480)) ([7b603ab](https://github.com/kintone/js-sdk/commit/7b603abe8f1334b350e11d85cfccf539720c600c))
+* **deps:** update dependency core-js to ^3.22.5 ([#1491](https://github.com/kintone/js-sdk/issues/1491)) ([0cd469a](https://github.com/kintone/js-sdk/commit/0cd469a2ae8d2f7ac191650d348af03dd8e5d13a))
+* **deps:** update dependency inquirer to ^8.2.4 ([#1468](https://github.com/kintone/js-sdk/issues/1468)) ([8a5316d](https://github.com/kintone/js-sdk/commit/8a5316d7a6492cfe7e07842bf4095f4ab25eebd2))
+* **deps:** update dependency sort-package-json to ^1.56.1 ([#1476](https://github.com/kintone/js-sdk/issues/1476)) ([99a9655](https://github.com/kintone/js-sdk/commit/99a96555be2a08c9c3ce1fe9ac80fdabad530921))
+* **deps:** update dependency sort-package-json to ^1.57.0 ([#1481](https://github.com/kintone/js-sdk/issues/1481)) ([feff270](https://github.com/kintone/js-sdk/commit/feff270090d2722bd4c92c06781b302c6a41ef13))
+* **examples:** Run examples by ts-node ([#1488](https://github.com/kintone/js-sdk/issues/1488)) ([3351773](https://github.com/kintone/js-sdk/commit/335177317c13d3ce7c7e273394f2985541a8e8dc))
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
 ## [4.1.22](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@4.1.21...@kintone/create-plugin@4.1.22) (2022-04-28)
 
 

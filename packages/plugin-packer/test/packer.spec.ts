@@ -22,12 +22,10 @@ describe("packer", () => {
   });
 
   describe("without privateKey", () => {
-    let output;
-    beforeEach(() => {
+    let output: Awaited<ReturnType<typeof packer>>;
+    beforeEach(async () => {
       const contentsZip = fs.readFileSync(contentsZipPath);
-      return packer(contentsZip).then((o) => {
-        output = o;
-      });
+      output = await packer(contentsZip);
     });
 
     it("the id is generated", () => {
@@ -42,29 +40,25 @@ describe("packer", () => {
       );
     });
 
-    it("the zip contains 3 files", (done) => {
-      readZipContentsNames(output.plugin).then((files) => {
-        expect(files.sort()).toStrictEqual(
-          ["contents.zip", "PUBKEY", "SIGNATURE"].sort()
-        );
-        done();
-      });
+    it("the zip contains 3 files", async () => {
+      const files = await readZipContentsNames(output.plugin);
+      expect(files.sort()).toStrictEqual(
+        ["contents.zip", "PUBKEY", "SIGNATURE"].sort()
+      );
     });
 
-    it("the zip passes signature verification", () => {
-      return verifyPlugin(output.plugin);
+    it("the zip passes signature verification", async () => {
+      await verifyPlugin(output.plugin);
     });
   });
 
   describe("with privateKey", () => {
-    let privateKey;
-    let output;
-    beforeEach(() => {
+    let privateKey: string;
+    let output: Awaited<ReturnType<typeof packer>>;
+    beforeEach(async () => {
       const contentsZip = fs.readFileSync(contentsZipPath);
       privateKey = fs.readFileSync(privateKeyPath, "utf8");
-      return packer(contentsZip, privateKey).then((o) => {
-        output = o;
-      });
+      output = await packer(contentsZip, privateKey);
     });
 
     it("the id is expected", () => {
@@ -75,34 +69,35 @@ describe("packer", () => {
       expect(output.privateKey).toBe(privateKey);
     });
 
-    it("the zip passes signature verification", () => {
-      return verifyPlugin(output.plugin);
+    it("the zip passes signature verification", async () => {
+      await verifyPlugin(output.plugin);
     });
   });
 
   describe("invalid contents.zip", () => {
-    it("throws an error if the contents.zip is invalid", (done) => {
+    it("throws an error if the contents.zip is invalid", async () => {
       const contentsZip = fs.readFileSync(invalidMaxFileSizeContentsZipPath);
-      packer(contentsZip).catch((error) => {
-        expect(error.message).toBe('"/icon" file size should be <= 20MB');
-        done();
-      });
+      await expect(packer(contentsZip)).rejects.toThrow(
+        '"/icon" file size should be <= 20MB'
+      );
     });
   });
 });
 
-const streamToBuffer = (stream) => {
-  return new Promise((resolve, reject) => {
-    const buffers = [];
+const streamToBuffer = (stream: NodeJS.ReadableStream) => {
+  return new Promise<Buffer>((resolve, reject) => {
+    const buffers: Buffer[] = [];
     stream.on("data", (data) => buffers.push(data));
     stream.on("end", () => resolve(Buffer.concat(buffers)));
     stream.on("error", reject);
   });
 };
 
-const readZipContents = (zipEntry): Promise<Map<any, Buffer>> => {
+const readZipContents = (
+  zipEntry: yauzl.ZipFile
+): Promise<Map<any, Buffer>> => {
   const zipContentsMap = new Map();
-  const streamToBufferPromises = [];
+  const streamToBufferPromises: Array<Promise<void>> = [];
   return new Promise((resolve, reject) => {
     zipEntry.on("entry", (entry) => {
       zipEntry.openReadStream(entry, (err, stream) => {
@@ -122,25 +117,38 @@ const readZipContents = (zipEntry): Promise<Map<any, Buffer>> => {
   });
 };
 
-const verifyPlugin = (plugin): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    yauzl.fromBuffer(plugin, (err, zipEntry) => {
-      if (err) {
-        reject(err);
-      }
-      readZipContents(zipEntry).then((zipContentsMap) => {
-        const verifier = crypto.createVerify("RSA-SHA1");
-        verifier.update(zipContentsMap.get("contents.zip"));
-        const publicKey = zipContentsMap.get("PUBKEY");
-        const signature = zipContentsMap.get("SIGNATURE");
-        expect(verifier.verify(derToPem(publicKey), signature)).toBe(true);
-        resolve();
+const verifyPlugin = async (plugin: Buffer): Promise<void> => {
+  const fromBuffer = (buffer: Buffer) =>
+    new Promise<yauzl.ZipFile>((resolve, reject) => {
+      yauzl.fromBuffer(buffer, (err, zipfile) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(zipfile);
       });
     });
-  });
+  const zipEntry = await fromBuffer(plugin);
+  const zipContentsMap = await readZipContents(zipEntry);
+  const contentZip = zipContentsMap.get("contents.zip");
+  expect(contentZip).toBeDefined();
+  if (contentZip === undefined) {
+    throw new Error("contentZip is undefined");
+  }
+  const verifier = crypto.createVerify("RSA-SHA1");
+  verifier.update(contentZip);
+
+  const publicKey = zipContentsMap.get("PUBKEY");
+  if (publicKey === undefined) {
+    throw new Error("PUBKEY is undefined");
+  }
+  const signature = zipContentsMap.get("SIGNATURE");
+  if (signature === undefined) {
+    throw new Error("SIGNATURE is undefined");
+  }
+  expect(verifier.verify(derToPem(publicKey), signature)).toBe(true);
 };
 
-const derToPem = (der) => {
+const derToPem = (der: Buffer) => {
   const key = new RSA(der, "pkcs8-public-der");
   return key.exportKey("pkcs1-public-pem");
 };

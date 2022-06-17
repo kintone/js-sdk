@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.2](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.1...@kintone/dts-gen@6.1.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to ^8.17.0 ([#1550](https://github.com/kintone/js-sdk/issues/1550)) ([f48ac6a](https://github.com/kintone/js-sdk/commit/f48ac6a10bf54399a810d6059357e4432180416a))
+
+
+
+
+
+## [6.1.1](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.0...@kintone/dts-gen@6.1.1) (2022-06-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to ^8.16.0 ([#1523](https://github.com/kintone/js-sdk/issues/1523)) ([561d273](https://github.com/kintone/js-sdk/commit/561d273c1c3d444a06a9c651b93307acfecf621b))
+
+
+
+
+
+# [6.1.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.0.0...@kintone/dts-gen@6.1.0) (2022-05-20)
+
+
+### Features
+
+* **dts-gen:** apply eslint to generated `*.d.ts file` ([#1266](https://github.com/kintone/js-sdk/issues/1266)) ([93f9455](https://github.com/kintone/js-sdk/commit/93f945536d2c1228836bd53ebbfac68916fc29f3))
+
+
+
+
+
+# [6.0.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.23...@kintone/dts-gen@6.0.0) (2022-05-13)
+
+
+* chore!: drop Node v12 support because of the EOL (BREAKING CHANGE) (#1493) ([0d9dae1](https://github.com/kintone/js-sdk/commit/0d9dae10582fc40d89a1af8db4a2efc1d776a456)), closes [#1493](https://github.com/kintone/js-sdk/issues/1493)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.27.2 ([#1457](https://github.com/kintone/js-sdk/issues/1457)) ([a1f069c](https://github.com/kintone/js-sdk/commit/a1f069cd705129f58bb7149bad7738a7c90d903d))
+
+
+### BREAKING CHANGES
+
+* drop Node v12 support because of the EOL.
+
+* ci: update Node version 14 -> 16
+
+* ci: remove Node 18.x from test workflow
+
+
+
+
+
 ## [5.0.23](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@5.0.22...@kintone/dts-gen@5.0.23) (2022-04-28)
 
 

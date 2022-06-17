@@ -24,7 +24,7 @@ describe("renderAsFile", () => {
       namespace: "kintone.types",
       fieldTypeGroups,
     };
-    t.renderAsFile(TEMP_TEST_TYPEDEF, input);
+    await t.renderAsFile(TEMP_TEST_TYPEDEF, input);
 
     const expected = fs
       .readFileSync(`./resources/test-renderAsFile-fields.d.ts`)
@@ -70,7 +70,7 @@ describe("fullWidthSymbol Test", () => {
       namespace: "kintone.types",
       fieldTypeGroups,
     };
-    t.renderAsFile(TEMP_TEST_TYPEDEF, input);
+    await t.renderAsFile(TEMP_TEST_TYPEDEF, input);
 
     const expected = fs
       .readFileSync("./resources/test-fullWidthSymbol-fields.d.ts")
