@@ -77,6 +77,22 @@ describe("KintoneRestAPIClient", () => {
         });
         expect(client.getBaseUrl()).toBe("https://example.com");
       });
+      it('should raise an error if the protocol of baseUrl is "http"', () => {
+        expect(
+          () =>
+            new KintoneRestAPIClient({
+              baseUrl: "http://example.com/",
+              auth,
+            })
+        ).toThrow('The protocol of baseUrl must be "https".');
+      });
+      it('should NOT raise an error if the protocol of baseUrl is "http" but hostname is localhost', () => {
+        const client = new KintoneRestAPIClient({
+          baseUrl: "http://localhost:8888",
+          auth,
+        });
+        expect(client.getBaseUrl()).toBe("http://localhost:8888");
+      });
       it("should raise an error in Node.js environment if baseUrl param is not specified", () => {
         expect(() => new KintoneRestAPIClient({ auth })).toThrow(
           "in Node.js environment, baseUrl is required"

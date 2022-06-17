@@ -121,7 +121,19 @@ export class KintoneRestAPIClient {
 }
 
 const validateOptions = (options: Options) => {
+  validateBaseUrl(options.baseUrl);
   validateGuestSpaceId(options.guestSpaceId);
+};
+
+const validateBaseUrl = (baseUrl: Options["baseUrl"]) => {
+  if (baseUrl === undefined) {
+    return;
+  }
+
+  const url = new URL(baseUrl);
+  if (url.hostname !== "localhost" && url.protocol !== "https:") {
+    throw new Error('The protocol of baseUrl must be "https".');
+  }
 };
 
 const validateGuestSpaceId = (guestSpaceId: Options["guestSpaceId"]) => {
