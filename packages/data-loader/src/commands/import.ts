@@ -70,7 +70,8 @@ export const builder = (args: yargs.Argv) =>
       demandOption: true,
     })
     .option("encoding", {
-      describe: "Character encoding",
+      describe:
+        "Character encoding\n(available only if the source file format is CSV)",
       default: "utf8" as SupportedImportEncoding,
       choices: encoding,
     })

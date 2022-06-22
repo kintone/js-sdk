@@ -9,13 +9,16 @@ export const readFile: (
   encoding?: SupportedImportEncoding
 ) => Promise<{ content: string; format: string }> = async (
   filePath,
-  encoding
+  encoding = "utf8"
 ) => {
+  const format = extractFileFormat(filePath);
+  if (format === "json" && encoding !== "utf8") {
+    throw new Error("source file is JSON and JSON MUST be encoded with UTF-8");
+  }
   const stream = fs
     .createReadStream(filePath)
-    .pipe(iconv.decodeStream(encoding || "utf8"));
+    .pipe(iconv.decodeStream(encoding));
   const content = await readStream(stream);
-  const format = extractFileFormat(filePath);
   return { content, format };
 };
 
