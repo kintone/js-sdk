@@ -1,9 +1,12 @@
 import { run } from "../controllers/import";
 import * as yargs from "yargs";
+import { SupportedImportEncoding } from "../utils/file";
 
 export const command = "import";
 
 export const desc = "import the records of the specified app";
+
+const encoding: SupportedImportEncoding[] = ["utf8", "sjis"];
 
 export const builder = (args: yargs.Argv) =>
   args
@@ -66,6 +69,12 @@ export const builder = (args: yargs.Argv) =>
       type: "string",
       demandOption: true,
     })
+    .option("encoding", {
+      describe:
+        "Character encoding\n(available only if the source file format is CSV)",
+      default: "utf8" as SupportedImportEncoding,
+      choices: encoding,
+    })
     .option("update-key", {
       describe: "The key to Bulk Update",
       type: "string",
@@ -96,6 +105,7 @@ export const handler = (args: Args) => {
     attachmentsDir: args["attachments-dir"],
     filePath: args["file-path"],
     updateKey: args["update-key"],
+    encoding: args.encoding,
     pfxFilePath: args["pfx-file-path"],
     pfxFilePassword: args["pfx-file-password"],
   });
