@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.4](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@6.0.3...@kintone/customize-uploader@6.0.4) (2022-06-22)
+
+
+### Bug Fixes
+
+* **rest-api-client:** throw an Error if baseUrl is `http` ([#1567](https://github.com/kintone/js-sdk/issues/1567)) ([671ee9a](https://github.com/kintone/js-sdk/commit/671ee9ad9585cf38b47310b5ff27f8883f258376))
+
+
+
+
+
 ## [6.0.3](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@6.0.2...@kintone/customize-uploader@6.0.3) (2022-06-08)
 
 **Note:** Version bump only for package @kintone/customize-uploader
