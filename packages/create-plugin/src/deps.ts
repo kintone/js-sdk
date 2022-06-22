@@ -8,6 +8,7 @@ import { getMessage } from "./messages";
 /**
  * Install specified dependencies
  * @param outputDirectory
+ * @param lang
  */
 export const installDependencies = (
   outputDirectory: string,
