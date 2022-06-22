@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.10.3...@kintone/data-loader@0.11.0) (2022-06-22)
+
+
+### Features
+
+* **data-loader:** support specify character encoding when import ([#1458](https://github.com/kintone/js-sdk/issues/1458)) ([1f55967](https://github.com/kintone/js-sdk/commit/1f5596770a73495a3ada12a7abf589946aeebdde))
+
+
+
+
+
 ## [0.10.3](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.10.2...@kintone/data-loader@0.10.3) (2022-06-08)
 
 **Note:** Version bump only for package @kintone/data-loader

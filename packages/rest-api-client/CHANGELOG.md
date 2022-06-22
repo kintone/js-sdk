@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.2...@kintone/rest-api-client@3.1.3) (2022-06-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency qs to ^6.10.5 ([#1556](https://github.com/kintone/js-sdk/issues/1556)) ([ab05ba0](https://github.com/kintone/js-sdk/commit/ab05ba023c24ef4ccb977467b9e60394a25cc836))
+* **rest-api-client:** throw an Error if baseUrl is `http` ([#1567](https://github.com/kintone/js-sdk/issues/1567)) ([671ee9a](https://github.com/kintone/js-sdk/commit/671ee9ad9585cf38b47310b5ff27f8883f258376))
+
+
+
+
+
 ## [3.1.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.1...@kintone/rest-api-client@3.1.2) (2022-06-08)
 
 
