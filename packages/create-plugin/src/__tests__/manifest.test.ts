@@ -1,9 +1,7 @@
-"use strict";
-
 import assert from "assert";
-import { buildManifest } from "../src/manifest";
+import { buildManifest } from "../manifest";
 
-import createBaseManifest from "./baseManifest";
+import createBaseManifest from "./helpers/baseManifest";
 
 describe("manifest", () => {
   describe("buildManifest", () => {
@@ -18,9 +16,9 @@ describe("manifest", () => {
         },
         templateType
       );
-      assert.equal(manifest.manifest_version, 1);
-      assert.equal(manifest.name.en, "sample");
-      assert.equal(manifest.mobile, undefined);
+      assert.strictEqual(manifest.manifest_version, 1);
+      assert.strictEqual(manifest.name.en, "sample");
+      assert.strictEqual(manifest.mobile, undefined);
     });
     it("should include mobile.js if the answers enable mobile", () => {
       // @ts-ignore We can fix this using conditional types

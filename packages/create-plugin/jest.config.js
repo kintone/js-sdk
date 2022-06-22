@@ -1,6 +1,7 @@
 /** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
-  testRegex: "/test/.*\\.ts$",
+  roots: ["<rootDir>/src"],
+  testRegex: "/__tests__/.*\\.test\\.ts$",
   testEnvironment: "node",
 };
 module.exports = config;

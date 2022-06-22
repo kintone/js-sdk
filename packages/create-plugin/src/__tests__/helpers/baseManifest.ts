@@ -1,6 +1,4 @@
-"use strict";
-
-import { Manifest } from "../src/manifest";
+import { Manifest } from "../../manifest";
 
 export default function createBaseManifest(): Manifest {
   return {
@@ -8,8 +6,8 @@ export default function createBaseManifest(): Manifest {
     version: 1,
     type: "APP",
     name: {
-      en: "sample"
+      en: "sample",
     },
-    icon: "image/icon.png"
+    icon: "image/icon.png",
   };
 }
