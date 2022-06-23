@@ -62,9 +62,9 @@ export const processTemplateFile = (
 
   if (path.basename(filePath).endsWith(".tmpl")) {
     const src = fs.readFileSync(filePath, "utf-8");
-    const destPath = destFilePath.replace(
-      new RegExp(path.basename(filePath) + "$"),
-      path.basename(filePath).replace(/\.tmpl$/, "")
+    const destPath = path.join(
+      path.dirname(destFilePath),
+      path.basename(destFilePath, ".tmpl")
     );
     fs.mkdirSync(path.dirname(destPath), { recursive: true });
     fs.writeFileSync(
