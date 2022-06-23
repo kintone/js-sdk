@@ -10,6 +10,7 @@ const DESCRIPTION_MAX_LENGTH = 200;
 /**
  * Build questions for creating a kintone plugin project
  * @param outputDir
+ * @param lang
  */
 export const buildQuestions = (outputDir: string, lang: Lang): Question[] => {
   const m = getBoundMessage(lang);
