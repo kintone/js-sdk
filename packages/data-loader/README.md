@@ -74,8 +74,10 @@ Options:
       --attachments-dir      Attachment file directory                  [string]
       --file-path            The path to source file. ".json" or ".csv"
                                                              [string] [required]
-      --update-key           The key to Bulk Update
-                                                                        [string]
+      --encoding             Character encoding
+                             (available only if the source file format is CSV)
+                                     [choices: "utf8", "sjis"] [default: "utf8"]
+      --update-key           The key to Bulk Update                     [string]
       --pfx-file-path        The path to client certificate file        [string]
       --pfx-file-password    The password of client certificate file    [string]
 ```
