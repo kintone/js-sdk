@@ -55,17 +55,15 @@ export const processTemplateFile = (
   manifest: Manifest,
   enablePluginUploader: boolean
 ): void => {
-  const destFilePath = filePath
-    // For Windows
-    .replace(/\//g, path.sep)
-    .replace(srcDir, destDir);
+  const destFilePath = path.join(destDir, path.relative(srcDir, filePath));
 
   if (path.basename(filePath).endsWith(".tmpl")) {
     const src = fs.readFileSync(filePath, "utf-8");
-    const destPath = destFilePath.replace(
-      new RegExp(path.basename(filePath) + "$"),
-      path.basename(filePath).replace(/\.tmpl$/, "")
+    const destPath = path.join(
+      path.dirname(destFilePath),
+      path.basename(destFilePath, ".tmpl")
     );
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
     fs.writeFileSync(
       destPath,
       _.template(src)(
@@ -76,7 +74,7 @@ export const processTemplateFile = (
         })
       )
     );
-  } else if (filePath === path.join(srcDir, "package.json")) {
+  } else if (path.resolve(filePath) === path.resolve(srcDir, "package.json")) {
     const packageJson: PackageJson = JSON.parse(
       fs.readFileSync(filePath, "utf-8")
     );

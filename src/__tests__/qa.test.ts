@@ -1,8 +1,6 @@
-"use strict";
-
 import assert from "assert";
 import { Answers, Question } from "inquirer";
-import { buildQuestions } from "../src/qa";
+import { buildQuestions } from "../qa";
 
 const getQuestion = (
   questions: Question[],

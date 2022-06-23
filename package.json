@@ -47,11 +47,11 @@
     "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts src",
-    "unittest": "jest --testRegex=/test/.*-test\\.ts$",
+    "unittest": "jest --testPathIgnorePatterns=/__tests__/e2e\\.test\\.ts$",
+    "e2e": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/e2e\\.test\\.ts$",
     "test": "yarn unittest",
     "test:all": "run-p test e2e",
-    "test:ci": "yarn test:all",
-    "e2e": "cross-env NODE_ENV=e2e jest ./test/e2e.ts"
+    "test:ci": "yarn test:all"
   },
   "keywords": [
     "kintone"

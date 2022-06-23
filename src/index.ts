@@ -15,6 +15,7 @@ import { TemplateType } from "./template";
 /**
  * Verify whether the output directory is valid
  * @param outputDirectory
+ * @param lang
  */
 const verifyOutputDirectory = (outputDirectory: string, lang: Lang): void => {
   if (fs.existsSync(outputDirectory)) {
@@ -27,6 +28,8 @@ const verifyOutputDirectory = (outputDirectory: string, lang: Lang): void => {
 /**
  * Run create-kintone-plugin script
  * @param outputDir
+ * @param lang
+ * @param templateType
  */
 const run = (outputDir: string, lang: Lang, templateType: TemplateType) => {
   const m = getBoundMessage(lang);

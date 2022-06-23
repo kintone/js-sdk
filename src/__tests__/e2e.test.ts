@@ -1,5 +1,3 @@
-"use strict";
-
 import assert from "assert";
 import { spawnSync } from "child_process";
 import * as fs from "fs";
@@ -7,7 +5,7 @@ import * as os from "os";
 import * as path from "path";
 import rimraf from "rimraf";
 
-import { generatePlugin } from "../src/generator";
+import { generatePlugin } from "../generator";
 
 describe("generator", function () {
   // This timeout is for npm install
@@ -23,7 +21,10 @@ describe("generator", function () {
   describe("minimum template", () => {
     it("should be able to create a plugin project based on the minimum template", () => {
       const manifest = JSON.parse(
-        fs.readFileSync(path.resolve(__dirname, "manifest.json"), "utf8")
+        fs.readFileSync(
+          path.resolve(__dirname, "fixtures", "manifest.json"),
+          "utf8"
+        )
       );
       generatePlugin(outputDir, manifest, "ja", true, "minimum");
 
@@ -62,6 +63,7 @@ describe("generator", function () {
           path.resolve(
             __dirname,
             "..",
+            "..",
             "templates",
             "minimum",
             "src",
@@ -71,12 +73,23 @@ describe("generator", function () {
           "utf8"
         )
       );
+      const packageJson = JSON.parse(
+        fs.readFileSync(path.resolve(outputDir, "package.json"), "utf8")
+      );
+      assert(
+        packageJson.devDependencies &&
+          packageJson.devDependencies["@kintone/plugin-uploader"]
+      );
+      assert(packageJson.scripts && packageJson.scripts.upload);
     });
   });
   describe("modern template", () => {
-    it("should be able to create a plugin project based on the minimum template", () => {
+    it("should be able to create a plugin project based on the modern template", () => {
       const manifest = JSON.parse(
-        fs.readFileSync(path.resolve(__dirname, "manifest.json"), "utf8")
+        fs.readFileSync(
+          path.resolve(__dirname, "fixtures", "manifest.json"),
+          "utf8"
+        )
       );
       generatePlugin(outputDir, manifest, "ja", false, "modern");
 

@@ -106,6 +106,7 @@ const answer2Manifest = (answers: Answers): Manifest => {
 /**
  * Build the manifest setting
  * @param answers
+ * @param templateType
  */
 export const buildManifest = (
   answers: Answers,

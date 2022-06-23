@@ -13,6 +13,9 @@ import { isNecessaryFile, processTemplateFile, TemplateType } from "./template";
  * Create a plugin project based on passed manifest and install dependencies
  * @param outputDirectory
  * @param manifest
+ * @param lang
+ * @param enablePluginUploader
+ * @param templateType
  */
 export const generatePlugin = (
   outputDirectory: string,
@@ -31,6 +34,8 @@ export const generatePlugin = (
  * Create a plugin project based on passed manifest
  * @param outputDirectory
  * @param manifest
+ * @param enablePluginUploader
+ * @param templateType
  */
 const buildProject = (
   outputDirectory: string,
