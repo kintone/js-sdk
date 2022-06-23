@@ -66,6 +66,7 @@ export const processTemplateFile = (
       new RegExp(path.basename(filePath) + "$"),
       path.basename(filePath).replace(/\.tmpl$/, "")
     );
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
     fs.writeFileSync(
       destPath,
       _.template(src)(
