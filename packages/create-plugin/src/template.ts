@@ -77,7 +77,7 @@ export const processTemplateFile = (
         })
       )
     );
-  } else if (filePath === path.join(srcDir, "package.json")) {
+  } else if (path.resolve(filePath) === path.resolve(srcDir, "package.json")) {
     const packageJson: PackageJson = JSON.parse(
       fs.readFileSync(filePath, "utf-8")
     );
