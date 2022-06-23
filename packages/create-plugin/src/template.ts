@@ -55,10 +55,7 @@ export const processTemplateFile = (
   manifest: Manifest,
   enablePluginUploader: boolean
 ): void => {
-  const destFilePath = filePath
-    // For Windows
-    .replace(/\//g, path.sep)
-    .replace(srcDir, destDir);
+  const destFilePath = path.join(destDir, path.relative(srcDir, filePath));
 
   if (path.basename(filePath).endsWith(".tmpl")) {
     const src = fs.readFileSync(filePath, "utf-8");
