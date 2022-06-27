@@ -2,7 +2,7 @@ import { run } from "../controllers/export";
 import * as yargs from "yargs";
 import { ExportFileFormat } from "../printers";
 
-const formats: ExportFileFormat[] = ["json", "csv"];
+const formats: ExportFileFormat[] = ["csv", "json"];
 
 export const command = "export";
 
@@ -65,8 +65,8 @@ export const builder = (args: yargs.Argv) =>
       type: "string",
     })
     .option("format", {
-      describe: 'Output format. "json" or "csv"',
-      default: "json" as ExportFileFormat,
+      describe: 'Output format. "csv" or "json"',
+      default: "csv" as ExportFileFormat,
       choices: formats,
     })
     .option("condition", {

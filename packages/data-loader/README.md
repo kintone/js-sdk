@@ -21,8 +21,8 @@ We plan to support them in the future release.
   - [export](#export)
     - [Options](#options-1)
 - [Supported file formats](#supported-file-formats)
-  - [JSON format](#json-format)
   - [CSV format](#csv-format)
+  - [JSON format](#json-format)
 - [LICENSE](#license)
 
 ## Installation
@@ -72,7 +72,7 @@ Options:
       --guest-space-id       The ID of guest space
                                       [string] [default: KINTONE_GUEST_SPACE_ID]
       --attachments-dir      Attachment file directory                  [string]
-      --file-path            The path to source file. ".json" or ".csv"
+      --file-path            The path to source file. ".csv" or ".json"
                                                              [string] [required]
       --encoding             Character encoding
                              (available only if the source file format is CSV)
@@ -138,8 +138,8 @@ Options:
       --guest-space-id       The ID of guest space
                                       [string] [default: KINTONE_GUEST_SPACE_ID]
       --attachments-dir      Attachment file directory                  [string]
-      --format               Output format. "json" or "csv"
-                                      [choices: "json", "csv"] [default: "json"]
+      --format               Output format. "csv" or "json"
+                                      [choices: "csv", "json"] [default: "csv"]
   -c, --condition            The query string                           [string]
       --order-by             The sort order as a query                  [string]
       --pfx-file-path        The path to client certificate file        [string]
@@ -156,11 +156,88 @@ If set `--attachments-dir` option, attachment files will be downloaded to local 
 
 ## Supported file formats
 
-data-loader supports JSON and CSV for both import/export commands.  
+data-loader supports CSV and JSON for both import/export commands.  
 When import, it determines the format automatically by the extension of the file (specified by `--file-path` option).  
 When export, you can specify the format by specifying `--format` option.
 
-The detailed formats of JSON / CSV files are as follows:
+The detailed formats of CSV / JSON files are as follows:
+
+### CSV format
+
+The first row (header row) lists the **field codes** of each field.  
+Each subsequent row corresponds to a record. Each value represents the value of the field.
+
+```csv
+"Record_number","FieldCode1","FieldCode2"
+"1","foo","bar"
+"2","baz","qux"
+```
+
+Here are considerations for some field types:
+
+#### Text area
+
+If the value contains line break, enclose the value in double quotes.
+
+```csv
+"TextAreaField"
+"multi
+line
+text"
+```
+
+#### Check box, Multi-choice
+
+Specify multiple values divided by line break (\n).
+
+```csv
+"CheckboxField"
+"value1
+value2"
+```
+
+#### User Selection, Department Selection, Group Selection
+
+If multiple value is selected, separated with line break (\n). (equivalent to `value.code` in REST API).
+
+```csv
+"userSelectionField","departmentSelectionField","groupSelectionField"
+"John
+Bob","Development Div","Administrators"
+```
+
+#### Created by, Updated by
+
+Specify the user's login name (equivalent to `value.code` in REST API).
+
+```csv
+"Created_by"
+"John"
+```
+
+#### Attachment
+
+Files in same Attachment field (in same Table row) are separated with line break (\n).
+
+```csv
+"file"
+"file-9/test.txt
+file-9/test (1).txt"
+```
+
+```csv
+"fileInTable"
+"fileInTable-1-0/test.txt
+fileInTable-1-0/test (1).txt"
+```
+
+When export, if NOT set `--attachments-dir` option, only the file name will be output.
+
+```csv
+"fileFieldCode"
+"test.txt
+test.txt"
+```
 
 ### JSON format
 
@@ -245,83 +322,6 @@ If set `--attachments-dir` option, the format of Attachment field will be change
   }
   ...
 ]
-```
-
-### CSV format
-
-The first row (header row) lists the **field codes** of each field.  
-Each subsequent row corresponds to a record. Each value represents the value of the field.
-
-```csv
-"Record_number","FieldCode1","FieldCode2"
-"1","foo","bar"
-"2","baz","qux"
-```
-
-Here are considerations for some field types:
-
-#### Text area
-
-If the value contains line break, enclose the value in double quotes.
-
-```csv
-"TextAreaField"
-"multi
-line
-text"
-```
-
-#### Check box, Multi-choice
-
-Specify multiple values divided by line break (\n).
-
-```csv
-"CheckboxField"
-"value1
-value2"
-```
-
-#### User Selection, Department Selection, Group Selection
-
-If multiple value is selected, separated with line break (\n). (equivalent to `value.code` in REST API).
-
-```csv
-"userSelectionField","departmentSelectionField","groupSelectionField"
-"John
-Bob","Development Div","Administrators"
-```
-
-#### Created by, Updated by
-
-Specify the user's login name (equivalent to `value.code` in REST API).
-
-```csv
-"Created_by"
-"John"
-```
-
-#### Attachment
-
-Files in same Attachment field (in same Table row) are separated with line break (\n).
-
-```csv
-"file"
-"file-9/test.txt
-file-9/test (1).txt"
-```
-
-```csv
-"fileInTable"
-"fileInTable-1-0/test.txt
-fileInTable-1-0/test (1).txt"
-```
-
-When export, if NOT set `--attachments-dir` option, only the file name will be output.
-
-```csv
-"fileFieldCode"
-"test.txt
-test.txt"
 ```
 
 ## LICENSE
