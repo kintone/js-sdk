@@ -49,7 +49,7 @@ export const buildBaseUrl = (baseUrl?: string) => {
   }
 
   if (location === undefined) {
-    throw new Error("in this environment, baseUrl is required");
+    throw new Error("The baseUrl parameter is required for this environment");
   }
 
   const { host, protocol } = location;
