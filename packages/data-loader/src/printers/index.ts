@@ -3,7 +3,7 @@ import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 import { printAsJson } from "./printAsJson";
 import { printAsCsv } from "./printAsCsv";
 
-export type ExportFileFormat = "json" | "csv";
+export type ExportFileFormat = "csv" | "json";
 
 export const printRecords: (options: {
   apiClient: KintoneRestAPIClient;

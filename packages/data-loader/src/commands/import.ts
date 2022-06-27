@@ -65,7 +65,7 @@ export const builder = (args: yargs.Argv) =>
       type: "string",
     })
     .option("file-path", {
-      describe: 'The path to source file. ".json" or ".csv"',
+      describe: 'The path to source file. ".csv" or ".json"',
       type: "string",
       demandOption: true,
     })
