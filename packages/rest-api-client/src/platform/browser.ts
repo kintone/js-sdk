@@ -48,8 +48,11 @@ export const buildBaseUrl = (baseUrl?: string) => {
     return baseUrl;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { host, protocol } = location!;
+  if (location === undefined) {
+    throw new Error("The baseUrl parameter is required for this environment");
+  }
+
+  const { host, protocol } = location;
 
   return `${protocol}//${host}`;
 };
