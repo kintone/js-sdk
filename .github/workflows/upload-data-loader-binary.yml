@@ -1,0 +1,43 @@
+
+name: upload-data-loader-binary
+
+on:
+  push:
+
+jobs:
+  upload:
+    name: upload-data-loader-binary
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
+      - run: yarn install --immutable
+      - run: yarn build
+      - run: yarn workspace @kintone/data-loader pkg
+      - run: echo "::set-output name=data-loader::$(jq -r '.version' ./packages/data-loader/package.json)"
+        id: version
+      - name: Upload macos binary file
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload \
+          "@kintone/data-loader@${{ steps.version.outputs.data-loader }}" \
+          ./packages/data-loader/bin/kintone-data-loader-macos
+      - name: Upload linux binary file
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload \
+          "@kintone/data-loader@${{ steps.version.outputs.data-loader }}" \
+          ./packages/data-loader/bin/kintone-data-loader-linux
+      - name: Upload win binary file
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload \
+          "@kintone/data-loader@${{ steps.version.outputs.data-loader }}" \
+          ./packages/data-loader/bin/kintone-data-loader-win.exe
