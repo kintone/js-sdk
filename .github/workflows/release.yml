@@ -45,7 +45,7 @@ jobs:
         run: |
           gh release upload \
           "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
-          ./packages/data-loader/bin/data-loader-macos#kintone-data-loader_mac
+          ./packages/data-loader/bin/kintone-data-loader-macos
       - name: Upload linux binary file
         if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader)"
         env:
@@ -53,7 +53,7 @@ jobs:
         run: |
           gh release upload \
           "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
-          ./packages/data-loader/bin/data-loader-linux#kintone-data-loader_linux
+          ./packages/data-loader/bin/kintone-data-loader-linux
       - name: Upload win binary file
         if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader)"
         env:
@@ -61,4 +61,4 @@ jobs:
         run: |
           gh release upload \
           "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
-          ./packages/data-loader/bin/data-loader-win.exe#kintone-data-loader_windows.exe
+          ./packages/data-loader/bin/kintone-data-loader-win.exe
