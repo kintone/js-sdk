@@ -25,8 +25,38 @@ jobs:
           git config --global user.name "github-actions[bot]"
       - name: Configure npm user
         run: npm config set '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'
+      - name: Store data-loader version before release
+        run: echo "::set-output name=data-loader::$(jq -r '.version' ./packages/data-loader/package.json)"
+        id: version_before_release
       - name: Release packages
         run: yarn release --no-verify-access --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Store data-loader version after release
+        run: echo "::set-output name=data-loader::$(jq -r '.version' ./packages/data-loader/package.json)"
+        id: version_after_release
+      - name: Upload macos binary file
+        if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload \
+          "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
+          ./packages/data-loader/bin/data-loader-macos#kintone-data-loader_mac
+      - name: Upload linux binary file
+        if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload \
+          "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
+          ./packages/data-loader/bin/data-loader-linux#kintone-data-loader_linux
+      - name: Upload win binary file
+        if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload \
+          "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
+          ./packages/data-loader/bin/data-loader-win.exe#kintone-data-loader_windows.exe
