@@ -17,10 +17,19 @@ jobs:
       with:
         node-version: 16.x
         cache: yarn
+    - name: download and validate Yamory script
+      run: |
+        cd /tmp
+        curl -sSf -L -o ./yamory-yarn.sh \
+        https://localscanner.yamory.io/script/yarn
+        curl -sSf -L -o ./yamory-yarn-sha512sum.txt \
+        https://cli.yamory.io/yamory-app-library-scan-scripts/yamory-yarn-sha512sum.txt
+        sha512sum --check ./yamory-yarn-sha512sum.txt
+        chmod +x ./yamory-yarn.sh
     - name: run Yamory
       run: |
-        ls -1 -d packages/*/ | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" --  --manifest {}/package.json
-        ls -1 -d examples/*/ | xargs -I {} bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)" -- --manifest {}/package.json
+        ls -1 -d packages/*/ | xargs -I {} /tmp/yamory-yarn.sh --manifest {}/package.json
+        ls -1 -d examples/*/ | xargs -I {} /tmp/yamory-yarn.sh --manifest {}/package.json
       env:
         CI: true
         PROJECT_GROUP_KEY: js-sdk
