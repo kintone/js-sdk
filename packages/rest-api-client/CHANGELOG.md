@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.3...@kintone/rest-api-client@3.1.4) (2022-06-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.23.2 ([#1565](https://github.com/kintone/js-sdk/issues/1565)) ([312185a](https://github.com/kintone/js-sdk/commit/312185a85caa1153227f1467ecd86a0dee4e092d))
+* **deps:** update dependency core-js to ^3.23.3 ([#1588](https://github.com/kintone/js-sdk/issues/1588)) ([0a279c6](https://github.com/kintone/js-sdk/commit/0a279c6d205758c9457c49243e398f15b9878633))
+* **rest-api-client:** throw an error if `location` is undefined on browser ([#1590](https://github.com/kintone/js-sdk/issues/1590)) ([adc67c5](https://github.com/kintone/js-sdk/commit/adc67c5bbf2614257b0092189dbbe987e80e2594))
+
+
+
+
+
 ## [3.1.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.2...@kintone/rest-api-client@3.1.3) (2022-06-22)
 
 

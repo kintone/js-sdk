@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.4](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.3...@kintone/create-plugin@5.1.4) (2022-06-29)
+
+
+### Bug Fixes
+
+* **create-plugin:** fix generation of the plugin project ([#1579](https://github.com/kintone/js-sdk/issues/1579)) ([2955e6a](https://github.com/kintone/js-sdk/commit/2955e6ac94c1d08a20fc1e535e25ceeab5087392))
+* **deps:** update dependency @kintone/rest-api-client to ^3.1.3 ([#1578](https://github.com/kintone/js-sdk/issues/1578)) ([749d7de](https://github.com/kintone/js-sdk/commit/749d7de7e985bb76b7e2162d530adf69d512b93c))
+* **deps:** update dependency core-js to ^3.23.2 ([#1565](https://github.com/kintone/js-sdk/issues/1565)) ([312185a](https://github.com/kintone/js-sdk/commit/312185a85caa1153227f1467ecd86a0dee4e092d))
+* **deps:** update dependency core-js to ^3.23.3 ([#1588](https://github.com/kintone/js-sdk/issues/1588)) ([0a279c6](https://github.com/kintone/js-sdk/commit/0a279c6d205758c9457c49243e398f15b9878633))
+* **deps:** update eslint and prettier ([#1566](https://github.com/kintone/js-sdk/issues/1566)) ([590886b](https://github.com/kintone/js-sdk/commit/590886bbe258906fff8ba9b8ecfea1bef887c5c6))
+
+
+
+
+
 ## [5.1.3](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.2...@kintone/create-plugin@5.1.3) (2022-06-22)
 
 
