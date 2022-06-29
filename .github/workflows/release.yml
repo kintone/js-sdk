@@ -36,6 +36,8 @@ jobs:
       - name: Store data-loader version after release
         run: echo "::set-output name=data-loader::$(jq -r '.version' ./packages/data-loader/package.json)"
         id: version_after_release
+      - run: yarn workspace @kintone/data-loader pkg
+        if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader)"
       - name: Upload macos binary file
         if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader)"
         env:
