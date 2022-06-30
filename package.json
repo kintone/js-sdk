@@ -21,7 +21,7 @@
     "test": "jest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf lib bin",
-    "pkg": "pkg . --out-path=bin",
+    "pkg": "pkg . -o bin/kintone-data-loader -t linux,macos,win",
     "fix:lint": "yarn lint:eslint -- --fix",
     "fix:md": "prettier --write README.md",
     "fix": "run-p fix:*",
