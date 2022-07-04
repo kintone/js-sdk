@@ -29,8 +29,8 @@ jobs:
         chmod +x ./yamory-yarn.sh
     - name: run Yamory
       run: |
-        ls -1 -d packages/*/ | xargs -I {} /tmp/yamory-yarn.sh --manifest {}/package.json
-        ls -1 -d examples/*/ | xargs -I {} /tmp/yamory-yarn.sh --manifest {}/package.json
+        ls -d packages/*/ | xargs -I {} /tmp/yamory-yarn.sh --manifest {}/package.json
+        ls -d examples/*/ | xargs -I {} /tmp/yamory-yarn.sh --manifest {}/package.json
       env:
         CI: true
         PROJECT_GROUP_KEY: js-sdk
