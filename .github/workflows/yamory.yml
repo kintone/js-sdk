@@ -18,13 +18,14 @@ jobs:
         node-version: 16.x
         cache: yarn
     - name: download and validate Yamory script
+      env:
+        # https://cli.yamory.io/yamory-app-library-scan-scripts/yamory-yarn-sha512sum.txt
+        YAMORY_YARN_SCRIPT_SHA512: "940f8755e77a9a19e7bbbb673936d8779bfd9f9871994e6f86855907917965e3ac732a39d761be4b384fefed696b9c72cfd6752a14fc417ebde4126a75b5f40e"
       run: |
         cd /tmp
         curl -sSf -L -o ./yamory-yarn.sh \
         https://localscanner.yamory.io/script/yarn
-        curl -sSf -L -o ./yamory-yarn-sha512sum.txt \
-        https://cli.yamory.io/yamory-app-library-scan-scripts/yamory-yarn-sha512sum.txt
-        sha512sum --check ./yamory-yarn-sha512sum.txt
+        echo "${YAMORY_YARN_SCRIPT_SHA512} yamory-yarn.sh" | sha512sum --check -
         chmod +x ./yamory-yarn.sh
     - name: run Yamory
       run: |
