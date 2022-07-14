@@ -19,6 +19,6 @@ jobs:
       with:
         node-version: 16.x
         cache: yarn
-    - run:  yarn install --immutable
+    - run:  yarn install --frozen-lockfile
     - run:  yarn build
     - run:  yarn lint
