@@ -24,6 +24,10 @@ const messages = {
     en: "An error occurred, retry with a new browser",
     ja: "エラーが発生しました。リトライします",
   },
+  Error_invalidLang: {
+    en: "Lang should be 'ja' or 'en'",
+    ja: "langオプションは'ja'か'en'のみ指定可能です",
+  },
   Error_requiredZipPath: {
     en: "Please specify the path of the Kintone plug-in zip file",
     ja: "kintoneプラグインのzipへのパスを指定してください",
