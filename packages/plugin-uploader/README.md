@@ -86,7 +86,7 @@ To avoid this issue, the plugin-uploader provides the `--puppeteer-ignore-defaul
 ```console
 $ kintone-plugin-uploader \
   ....
-  --puppeteer-ignore-default-args "--disable-extensions"
+  --puppeteer-ignore-default-args="--disable-extensions"
 ```
 
 ## LICENSE
