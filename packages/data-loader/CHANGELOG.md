@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.11.1...@kintone/data-loader@0.12.0) (2022-07-21)
+
+
+### Features
+
+* **data-loader:** add executables to releases ([#1601](https://github.com/kintone/js-sdk/issues/1601)) ([f766792](https://github.com/kintone/js-sdk/commit/f76679212cf6b8971d75526dc55a25282189e0be))
+
+
+
+
+
 ## [0.11.1](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.11.0...@kintone/data-loader@0.11.1) (2022-06-29)
 
 **Note:** Version bump only for package @kintone/data-loader
