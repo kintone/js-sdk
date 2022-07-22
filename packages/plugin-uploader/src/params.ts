@@ -9,12 +9,16 @@ interface Params {
   lang: Lang;
 }
 
-export const inquireParams = ({
+export const inquireParams = async ({
   username,
   password,
   baseUrl,
   lang,
-}: Params) => {
+}: Params): Promise<{
+  username: string;
+  password: string;
+  baseUrl: string;
+}> => {
   const m = getBoundMessage(lang);
   const questions: inquirer.Question[] = [
     {
@@ -43,7 +47,9 @@ export const inquireParams = ({
     },
   ];
 
-  return inquirer
-    .prompt(questions)
-    .then((answers) => Object.assign({ username, password, baseUrl }, answers));
+  return inquirer.prompt(questions).then((answers) => ({
+    username: answers.username ?? username,
+    password: answers.password ?? password,
+    baseUrl: answers.baseUrl ?? baseUrl,
+  }));
 };

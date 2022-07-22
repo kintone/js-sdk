@@ -56,6 +56,7 @@ You can create a project based on `@kintone/plugin-packer` using [@kintone/creat
     --basic-auth-password password for Basic Authentication
     --watch Watch the changes of plugin zip and re-run
     --lang Using language (en or ja)
+    --puppeteer-ignore-default-args Ignore default arguments of puppeteer
 
     You can set the values through environment variables
     base-url: KINTONE_BASE_URL
@@ -73,6 +74,19 @@ If you ommit the options, you can input the options interactively.
 ? Input your username: hoge
 ? Input your password: [hidden]
 ? Input your kintone's base URL: https://example.cybozu.com
+```
+
+If you encounter an error with the following message while uploading a plugin, chrome group policies in Windows might cause it:
+> Error: Failed to launch the browser process!
+>
+> TROUBLESHOOTING: https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
+
+The chrome group policy configured in Windows can enforce to install certain chrome extensions on browsers. The puppeteer fails to launch chrome when these policies are enabled.  See [puppeteer document](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md) for more detail.  
+To avoid this issue, the plugin-uploader provides the `--puppeteer-ignore-default-args` option. Try to run plugin-uploader with the following option:
+```console
+$ kintone-plugin-uploader \
+  ....
+  --puppeteer-ignore-default-args="--disable-extensions"
 ```
 
 ## LICENSE
