@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@7.0.1...@kintone/plugin-uploader@7.1.0) (2022-07-22)
+
+
+### Features
+
+* add `--puppeteer-ignore-default-args` option ([#1624](https://github.com/kintone/js-sdk/issues/1624)) ([154a7c6](https://github.com/kintone/js-sdk/commit/154a7c6d4bc44c7f0de52598fd824fa06451b5c0))
+
+
+
+
+
 ## [7.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@7.0.0...@kintone/plugin-uploader@7.0.1) (2022-06-29)
 
 
