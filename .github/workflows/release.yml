@@ -43,7 +43,7 @@ jobs:
       - name: Upload macos binary file
         if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload \
           "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
@@ -51,7 +51,7 @@ jobs:
       - name: Upload linux binary file
         if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload \
           "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
@@ -59,7 +59,7 @@ jobs:
       - name: Upload win binary file
         if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload \
           "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
