@@ -32,7 +32,7 @@
     "@cybozu/eslint-config": "^17.0.3",
     "axios": "^0.27.2",
     "commander": "^9.4.0",
-    "eslint": "^8.20.0",
+    "eslint": "^8.21.0",
     "form-data": "^4.0.0",
     "lodash": "^4.17.21",
     "prettier": "^2.7.1"
