@@ -24,7 +24,9 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
       - name: Configure npm user
-        run: npm config set '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'
+        run: npm config set "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Store data-loader version before release
         run: echo "::set-output name=data-loader::$(jq -r '.version' ./packages/data-loader/package.json)"
         id: version_before_release
@@ -41,7 +43,7 @@ jobs:
       - name: Upload macos binary file
         if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload \
           "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
@@ -49,7 +51,7 @@ jobs:
       - name: Upload linux binary file
         if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload \
           "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
@@ -57,7 +59,7 @@ jobs:
       - name: Upload win binary file
         if: "steps.version_after_release.outputs.data-loader == steps.version_before_release.outputs.data-loader"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload \
           "@kintone/data-loader@${{ steps.version_after_release.outputs.data-loader }}" \
