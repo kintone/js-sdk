@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.7](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.6...@kintone/dts-gen@6.1.7) (2022-08-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to ^8.21.0 ([#1645](https://github.com/kintone/js-sdk/issues/1645)) ([42e4863](https://github.com/kintone/js-sdk/commit/42e4863950bfacbdc250adcd01c0b19cee2ac828))
+* **deps:** update dependency eslint to ^8.22.0 ([#1671](https://github.com/kintone/js-sdk/issues/1671)) ([f315e44](https://github.com/kintone/js-sdk/commit/f315e44d6ef55bf2b2c09ea71f980f4756f527f0))
+
+
+
+
+
 ## [6.1.6](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.5...@kintone/dts-gen@6.1.6) (2022-08-03)
 
 
