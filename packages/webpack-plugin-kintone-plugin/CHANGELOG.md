@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.11](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@6.0.10...@kintone/webpack-plugin-kintone-plugin@6.0.11) (2022-08-31)
+
+**Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
+
+
+
+
+
 ## [6.0.10](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@6.0.9...@kintone/webpack-plugin-kintone-plugin@6.0.10) (2022-08-24)
 
 **Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
