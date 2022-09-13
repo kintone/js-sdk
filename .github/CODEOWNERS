@@ -1,2 +1,7 @@
 # This file controls default reviewers.
 * @kintone/dx
+
+# CODEOWNERS prevent automerge of Renovate
+# Following files should be owned by everyone
+**/*/package.json
+**/*/yarn.lock
