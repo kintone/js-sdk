@@ -50,7 +50,7 @@
     "node": ">=14"
   },
   "devDependencies": {
-    "@types/yargs": "^17.0.12",
+    "@types/yargs": "^17.0.13",
     "cross-env": "^7.0.3",
     "pkg": "^5.8.0"
   },
