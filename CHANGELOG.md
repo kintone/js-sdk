@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.15](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.14...@kintone/create-plugin@5.1.15) (2022-09-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.25.2 ([#1724](https://github.com/kintone/js-sdk/issues/1724)) ([e889788](https://github.com/kintone/js-sdk/commit/e889788e32e94648db778433f492198e0564a289))
+* **deps:** update dependency core-js to ^3.25.3 ([#1735](https://github.com/kintone/js-sdk/issues/1735)) ([5e01cba](https://github.com/kintone/js-sdk/commit/5e01cba9ddf1edcbe1720d3e2c995c01bb9d0e27))
+
+
+
+
+
 ## [5.1.14](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.13...@kintone/create-plugin@5.1.14) (2022-09-21)
 
 
