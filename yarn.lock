@@ -3560,10 +3560,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/inquirer@8.2.3", "@types/inquirer@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-8.2.3.tgz#985515d04879a0d0c1f5f49ec375767410ba9dab"
-  integrity sha512-ZlBqD+8WIVNy3KIVkl+Qne6bGLW2erwN0GJXY9Ri/9EMbyupee3xw3H0Mmv5kJoLyNpfd/oHlwKxO0DUDH7yWA==
+"@types/inquirer@8.2.4", "@types/inquirer@^8.2.4":
+  version "8.2.4"
+  resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-8.2.4.tgz#f7f0c76c65870c7bbc80a112c9c77ffcf7f158c1"
+  integrity sha512-Pxxx3i3AyK7vKAj3LRM/vF7ETcHKiLJ/u5CnNgbz/eYj/vB3xGAYtRxI5IKtq0hpe5iFHD22BKV3n6WHUu0k4Q==
   dependencies:
     "@types/through" "*"
 
