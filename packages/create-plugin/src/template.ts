@@ -5,6 +5,7 @@ import * as _ from "lodash";
 import * as path from "path";
 import { Manifest } from "./manifest";
 import sortPackageJson from "sort-package-json";
+import * as prettier from "prettier";
 
 export const SUPPORT_TEMPLATE_TYPE = ["minimum", "modern"];
 export type TemplateType = "minimum" | "modern";
@@ -23,20 +24,37 @@ export const getTemplateType = (manifest: Manifest): TemplateType => {
 };
 
 /**
+ * return `true` if `file` is a exclude file.
+ * @param file
+ */
+const isExcludedFiles = (file: string): boolean => {
+  const excludeFiles = [
+    "with-plugin-uploader.json",
+    "webpack.entry.json"
+  ]
+  const patterns = `${excludeFiles.join("|")}`;
+  const regexp = new RegExp(patterns, 'g');
+  return regexp.test(file);
+}
+
+/**
  * return `true` if `file` is necessary.
  * @param manifest
  * @param file
  */
 export const isNecessaryFile = (manifest: Manifest, file: string): boolean => {
-  if (/with-plugin-uploader.json/.test(file)) {
+  if(isExcludedFiles(file)){
     return false;
   }
+
   if (/mobile\..+/.test(file)) {
     return !!manifest.mobile;
   }
+
   if (/config\..+/.test(file)) {
     return !!manifest.config;
   }
+
   return true;
 };
 
@@ -106,6 +124,27 @@ export const processTemplateFile = (
       JSON.stringify(packageJson, null, 2)
     );
     fs.writeFileSync(destFilePath, sortedPackageJson);
+  } else if (path.resolve(filePath) === path.resolve(srcDir, "webpack.config.template.js")) {
+    const webpackEntryJson: WebpackEntryJson = JSON.parse(
+        fs.readFileSync(path.join(srcDir, "webpack.entry.json"), "utf-8")
+    );
+    let webpackEntry = !!manifest.mobile ? webpackEntryJson.mobile : webpackEntryJson.default;
+    let entries: Array<string> = [];
+    for (const [key, value] of Object.entries(webpackEntry)) {
+      const entryStr = `${key}: "${value}",`;
+      entries.push(entryStr)
+    }
+    const entriesStr = `{${entries.join('\n')}}`;
+    let webpackConfigContent: string = fs.readFileSync(filePath, "utf-8");
+    webpackConfigContent = webpackConfigContent.replace(/'%%replaced_webpack_entry%%'/g, entriesStr);
+    const prettySource = prettier.format(webpackConfigContent, {
+      parser: "typescript",
+    });
+    const destPath = path.join(
+        path.dirname(destFilePath),
+        'webpack.config.js'
+    );
+    fs.writeFileSync(destPath, prettySource);
   } else if (fs.statSync(filePath).isDirectory()) {
     fs.mkdirSync(destFilePath);
   } else {
@@ -127,4 +166,9 @@ type WithPluginUploaderJson = {
   scripts?: { [key: string]: string };
   dependencies?: { [key: string]: string };
   devDependencies?: { [key: string]: string };
+};
+
+type WebpackEntryJson = {
+  default: { [key: string]: string };
+  mobile: { [key: string]: string };
 };
