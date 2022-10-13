@@ -31,7 +31,7 @@ export const getTemplateType = (manifest: Manifest): TemplateType => {
 export const isNecessaryFile = (manifest: Manifest, file: string): boolean => {
   const excludedFiles = ["with-plugin-uploader.json", "webpack.entry.json"];
   const isExcludedFile = excludedFiles.some(
-      (excludeFile) => path.basename(file) === excludeFile
+    (excludeFile) => path.basename(file) === excludeFile
   );
   if (isExcludedFile) {
     return false;
