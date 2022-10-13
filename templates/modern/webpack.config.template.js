@@ -7,11 +7,7 @@ const isProduction = process.env.NODE_ENV === "production";
 module.exports = {
   mode: isProduction ? "production" : "development",
   devtool: isProduction ? false : "inline-cheap-module-source-map",
-  entry: {
-    config: "./src/js/config.ts",
-    desktop: "./src/js/desktop.ts",
-    mobile: "./src/js/mobile.ts",
-  },
+  entry: '%%placeholder_webpack_entry%%',
   output: {
     path: path.resolve(__dirname, "plugin", "js"),
     filename: "[name].js",

@@ -1,0 +1,11 @@
+{
+  "default": {
+    "config": "./src/js/config.ts",
+    "desktop": "./src/js/desktop.ts"
+  },
+  "mobile": {
+    "config": "./src/js/config.ts",
+    "desktop": "./src/js/desktop.ts",
+    "mobile": "./src/js/mobile.ts"
+  }
+}

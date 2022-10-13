@@ -11,13 +11,15 @@ import os from "os";
 
 describe("template", () => {
   describe("getTemplateType", () => {
-    it("should return be mimimum", () => {
+    it("should return be minimum", () => {
       assert.strictEqual(getTemplateType(createBaseManifest()), "minimum");
     });
   });
   describe("isNecessaryFile", () => {
     it("should returns a boolean that shows whether the file should include or not", () => {
       const manifest = createBaseManifest();
+      assert(!isNecessaryFile(manifest, "webpack.entry.json"));
+      assert(!isNecessaryFile(manifest, "with-plugin-uploader.json"));
       assert(!isNecessaryFile(manifest, "js/mobile.js"));
       assert(!isNecessaryFile(manifest, "js/config.js"));
       assert(isNecessaryFile(manifest, "js/other.js"));
@@ -44,7 +46,7 @@ describe("template", () => {
       ];
 
     it.each(patterns)(
-      "should convert package.json correctly (template: $template, $enablePluginUploader: $enablePluginUploader)",
+      "should convert package.json correctly (template: $template, enablePluginUploader: $enablePluginUploader)",
       async ({ template, enablePluginUploader }) => {
         const srcDir = path.resolve(
           __dirname,
@@ -77,8 +79,9 @@ describe("template", () => {
         }
       }
     );
+
     it.each(patterns)(
-      "should convert template file correctly (template: $template, $enablePluginUploader: $enablePluginUploader)",
+      "should convert template file correctly (template: $template, enablePluginUploader: $enablePluginUploader)",
       async ({ template, enablePluginUploader }) => {
         const srcDir = path.resolve(
           __dirname,
@@ -109,7 +112,7 @@ describe("template", () => {
       }
     );
     it.each(patterns)(
-      "should copy normal file correctly (template: $template, $enablePluginUploader: $enablePluginUploader)",
+      "should copy normal file correctly (template: $template, enablePluginUploader: $enablePluginUploader)",
       async ({ template, enablePluginUploader }) => {
         const srcDir = path.resolve(
           __dirname,
@@ -132,5 +135,19 @@ describe("template", () => {
         assert(await fs.stat(path.resolve(destDir, ".gitignore")));
       }
     );
+
+    it("should convert webpack.config.js correctly with modern template", async () => {
+      const srcDir = path.resolve(__dirname, "..", "..", "templates", "modern");
+
+      processTemplateFile(
+        path.resolve(srcDir, "webpack.config.template.js"),
+        srcDir,
+        destDir,
+        manifest,
+        false
+      );
+      const destFile = path.resolve(destDir, "webpack.config.js");
+      assert(await fs.stat(destFile));
+    });
   });
 });
