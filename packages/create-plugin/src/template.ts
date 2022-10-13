@@ -24,23 +24,16 @@ export const getTemplateType = (manifest: Manifest): TemplateType => {
 };
 
 /**
- * return `true` if `file` is a exclude file.
- * @param file
- */
-const isExcludedFiles = (file: string): boolean => {
-  const excludeFiles = ["with-plugin-uploader.json", "webpack.entry.json"];
-  return excludeFiles.some(
-      (excludeFile) => path.basename(file) === excludeFile
-  );
-};
-
-/**
  * return `true` if `file` is necessary.
  * @param manifest
  * @param file
  */
 export const isNecessaryFile = (manifest: Manifest, file: string): boolean => {
-  if (isExcludedFiles(file)) {
+  const excludedFiles = ["with-plugin-uploader.json", "webpack.entry.json"];
+  const isExcludedFile = excludedFiles.some(
+      (excludeFile) => path.basename(file) === excludeFile
+  );
+  if (isExcludedFile) {
     return false;
   }
 
