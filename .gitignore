@@ -1,3 +1,4 @@
 node_modules/
 *.tsbuildinfo
 yarn-error.log
+/.idea/
