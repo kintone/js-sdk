@@ -133,13 +133,13 @@ export const processTemplateFile = (
       : webpackEntryJson.default;
     const entries: string[] = [];
     for (const [key, value] of Object.entries(webpackEntry)) {
-      const entryStr = `${key}: "${value}",`;
+      const entryStr = `${key}: "${value}"`;
       entries.push(entryStr);
     }
-    const entriesStr = `{${entries.join("\n")}}`;
+    const entriesStr = `{${entries.join(",")}}`;
     let webpackConfigContent: string = fs.readFileSync(filePath, "utf-8");
     webpackConfigContent = webpackConfigContent.replace(
-      /'%%replaced_webpack_entry%%'/g,
+      /'%%placeholder_webpack_entry%%'/,
       entriesStr
     );
     const prettySource = prettier.format(webpackConfigContent, {
