@@ -29,9 +29,9 @@ export const getTemplateType = (manifest: Manifest): TemplateType => {
  */
 const isExcludedFiles = (file: string): boolean => {
   const excludeFiles = ["with-plugin-uploader.json", "webpack.entry.json"];
-  const patterns = `${excludeFiles.join("|")}`;
-  const regexp = new RegExp(patterns, "g");
-  return regexp.test(file);
+  return excludeFiles.some(
+      (excludeFile) => path.basename(file) === excludeFile
+  );
 };
 
 /**
