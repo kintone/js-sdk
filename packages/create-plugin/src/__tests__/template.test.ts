@@ -18,6 +18,7 @@ describe("template", () => {
   describe("isNecessaryFile", () => {
     it("should returns a boolean that shows whether the file should include or not", () => {
       const manifest = createBaseManifest();
+      assert(!isNecessaryFile(manifest, "webpack.entry.json"));
       assert(!isNecessaryFile(manifest, "with-plugin-uploader.json"));
       assert(!isNecessaryFile(manifest, "js/mobile.js"));
       assert(!isNecessaryFile(manifest, "js/config.js"));
