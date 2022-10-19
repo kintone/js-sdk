@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.18](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.17...@kintone/create-plugin@5.1.18) (2022-10-19)
+
+### Bug Fixes
+
+- **create-plugin:** fix generation of the wepack.config.js of the modern template ([#1778](https://github.com/kintone/js-sdk/issues/1778)) ([df008e1](https://github.com/kintone/js-sdk/commit/df008e1b10cc4eab08dbce322c6962cb04d1a217))
+- **deps:** update dependency @kintone/rest-api-client to ^3.1.14 ([#1782](https://github.com/kintone/js-sdk/issues/1782)) ([7b8dc7b](https://github.com/kintone/js-sdk/commit/7b8dc7bf4fb5a2c3989889b83cab4370fcd9a2cd))
+
 ## [5.1.17](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.16...@kintone/create-plugin@5.1.17) (2022-10-12)
 
 ### Bug Fixes

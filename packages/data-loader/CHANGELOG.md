@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.10](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.12.9...@kintone/data-loader@0.12.10) (2022-10-19)
+
+**Note:** Version bump only for package @kintone/data-loader
+
 ## [0.12.9](https://github.com/kintone/js-sdk/compare/@kintone/data-loader@0.12.8...@kintone/data-loader@0.12.9) (2022-10-12)
 
 ### Bug Fixes

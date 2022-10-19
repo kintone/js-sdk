@@ -1,6 +1,6 @@
 {
   "name": "@kintone/create-plugin",
-  "version": "5.1.17",
+  "version": "5.1.18",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": {
     "create-plugin": "bin/cli.js",
@@ -25,9 +25,9 @@
     "meow": "^9.0.0",
     "node-rsa": "^1.1.1",
     "os-locale": "^5.0.0",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "sort-package-json": "^1.57.0",
-    "prettier": "^2.7.1"
+    "sort-package-json": "^1.57.0"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
