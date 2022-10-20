@@ -16,12 +16,10 @@
   "scripts": {
     "prebuild": "yarn clean",
     "build": "tsc --build --force",
-    "postbuild": "yarn pkg",
     "lint": "run-p -l lint:*",
     "test": "jest",
     "test:ci": "jest --runInBand",
-    "clean": "rimraf lib bin",
-    "pkg": "pkg . -o bin/kintone-data-loader -t linux,macos,win",
+    "clean": "rimraf lib",
     "fix:lint": "yarn lint:eslint -- --fix",
     "fix:md": "prettier --write README.md",
     "fix": "run-p fix:*",
@@ -51,8 +49,7 @@
   },
   "devDependencies": {
     "@types/yargs": "^17.0.13",
-    "cross-env": "^7.0.3",
-    "pkg": "^5.8.0"
+    "cross-env": "^7.0.3"
   },
   "dependencies": {
     "@kintone/rest-api-client": "^3.1.15",
