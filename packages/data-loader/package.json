@@ -49,8 +49,7 @@
   },
   "devDependencies": {
     "@types/yargs": "^17.0.13",
-    "cross-env": "^7.0.3",
-    "pkg": "^5.8.0"
+    "cross-env": "^7.0.3"
   },
   "dependencies": {
     "@kintone/rest-api-client": "^3.1.15",
