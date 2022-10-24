@@ -4,7 +4,6 @@
   "references": [
     { "path": "./create-plugin"},
     { "path": "./customize-uploader"},
-    { "path": "./data-loader"},
     { "path": "./dts-gen"},
     { "path": "./plugin-packer"},
     { "path": "./plugin-manifest-validator"},

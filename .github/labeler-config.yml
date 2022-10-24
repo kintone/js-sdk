@@ -1,9 +1,7 @@
-"pkg: create-plugin": 
+"pkg: create-plugin":
   - packages/create-plugin/**/*
 "pkg: customize-uploader":
   - packages/customize-uploader/**/*
-"pkg: data-loader":
-  - packages/data-loader/**/*
 "pkg: dts-gen":
   - packages/dts-gen/**/*
 "pkg: plugin-manifest-validator":
