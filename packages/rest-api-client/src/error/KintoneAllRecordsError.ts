@@ -7,6 +7,7 @@ export class KintoneAllRecordsError extends Error {
   errorIndex?: number;
 
   private static parseErrorIndex(errors: { [k: string]: any }) {
+    // TODO: use matchAll after ES2020 support
     const errorIndexes: number[] = [];
     Object.keys(errors).forEach((errorKey: string) => {
       const result = errorKey.match(/records\[(\d+)\]/);
