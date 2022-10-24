@@ -143,5 +143,47 @@ describe("KintoneAllRecordsError", () => {
         numOfProcessedRecords + errorParseResult
       );
     });
+    it("should set errorIndex as the smallest value from the response errors", () => {
+      const largerErrorIndex = 9;
+      const smallestErrorIndex = 5;
+      errorResponse = {
+        data: {
+          results: [
+            {
+              id: "some id",
+              code: "some code",
+              message: "some error message",
+              errors: {
+                [`records[${largerErrorIndex}].Customer`]: {
+                  messages: ["key is missing"],
+                },
+                [`records[${smallestErrorIndex}].Customer`]: {
+                  messages: ["key is missing"],
+                },
+              },
+            },
+            {},
+            {},
+          ],
+        },
+        status: 500,
+        statusText: "Internal Server Error",
+        headers: {
+          "X-Some-Header": "error",
+        },
+      };
+      kintoneRestApiError = new KintoneRestAPIError(errorResponse);
+      kintoneAllRecordsError = new KintoneAllRecordsError(
+        processedRecordsResult,
+        unprocessedRecords,
+        numOfAllRecords,
+        kintoneRestApiError,
+        chunkLength
+      );
+
+      expect(kintoneAllRecordsError.errorIndex).toBe(
+        numOfProcessedRecords + smallestErrorIndex
+      );
+    });
   });
 });
