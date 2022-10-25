@@ -49,7 +49,7 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
   const prettySource = prettier.format(eslintOutput, {
     parser: "typescript",
   });
-  const outputPath = path.join(process.cwd(), output);
+  const outputPath = path.resolve(output);
 
   await fs.promises.mkdir(path.dirname(outputPath), { recursive: true });
   await fs.promises.writeFile(outputPath, prettySource);
