@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.13](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.12...@kintone/dts-gen@6.1.13) (2022-10-26)
+
+### Bug Fixes
+
+- **dts-gen:** dts-gen does not output with the absolute path ([#1808](https://github.com/kintone/js-sdk/issues/1808)) ([fc66f50](https://github.com/kintone/js-sdk/commit/fc66f50e9107b0e903aaf1a421e1520a291f3275))
+
 ## [6.1.12](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.11...@kintone/dts-gen@6.1.12) (2022-10-12)
 
 ### Bug Fixes

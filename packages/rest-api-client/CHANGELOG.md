@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.16](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.15...@kintone/rest-api-client@3.1.16) (2022-10-26)
+
+### Bug Fixes
+
+- **rest-api-client:** the errorIndex of KintoneAllRecordsError is incorrect ([#1806](https://github.com/kintone/js-sdk/issues/1806)) ([57034b6](https://github.com/kintone/js-sdk/commit/57034b6b073e41ab8ba48295d325b89574d08e5b))
+
 ## [3.1.15](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.14...@kintone/rest-api-client@3.1.15) (2022-10-19)
 
 **Note:** Version bump only for package @kintone/rest-api-client
