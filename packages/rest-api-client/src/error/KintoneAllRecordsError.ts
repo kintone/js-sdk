@@ -5,6 +5,8 @@ export class KintoneAllRecordsError extends Error {
   unprocessedRecords: any[];
   error: KintoneRestAPIError;
   errorIndex?: number;
+  numOfProcessedRecords: number;
+  numOfAllRecords: number;
 
   private static parseErrorIndex(errors: { [k: string]: any }) {
     // TODO: use matchAll after ES2020 support
@@ -81,6 +83,8 @@ export class KintoneAllRecordsError extends Error {
     this.error = error;
     this.errorIndex = errorIndex;
     this.message = message;
+    this.numOfProcessedRecords = numOfProcessedRecords;
+    this.numOfAllRecords = numOfAllRecords;
 
     // https://github.com/Microsoft/TypeScript/wiki/Breaking-Changes#extending-built-ins-like-error-array-and-map-may-no-longer-work
     // Set the prototype explicitly.
