@@ -43,6 +43,8 @@ The following methods could throw `KintoneAllRecordsError`.
 | ---------------------- | :-----------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | processedRecordsResult |                   Object                    | The result of the records that have been processed successfully. This is the same type specified in the **Returns** section of each method. |
 | unprocessedRecords     |                    Array                    | The records that have not been processed. This is a part of `records` passed as an argument.                                                |
+| numOfProcessedRecords  |                   Number                    | The number of records that have been processed successfully.                                                                                |
+| numOfAllRecords        |                   Number                    | The number of all records.                                                                                                                  |
 | error                  | [KintoneRestAPIError](#KintoneRestAPIError) | The instance of `KintoneRestAPIError`                                                                                                       |
 | errorIndex             |         Number or<br />`undefined`          | The index that an error ocurred.                                                                                                            |
 
@@ -65,6 +67,8 @@ Then the properties of `KintoneAllRecordsError` is:
 | ---------------------- | ------------------------------------------ |
 | processedRecordsResult | `{ records: results[0] - results[1999] }`  |
 | unprocessedRecords     | `records[2000] - records[4999]`            |
+| numOfProcessedRecords  | `2000`                                     |
+| numOfAllRecords        | `5000`                                     |
 | error                  | An instance of `KintoneRestAPIError`       |
 | errorIndex             | `2499` (If Kintone returns) or `undefined` |
 

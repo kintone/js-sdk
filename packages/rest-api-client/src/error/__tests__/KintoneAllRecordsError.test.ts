@@ -55,12 +55,18 @@ describe("KintoneAllRecordsError", () => {
           errorParseResult
       );
     });
-    it("should set processedRecordsResult, unprocessedRecords, and error properties", () => {
+    it("should set processedRecordsResult, unprocessedRecords, numOfAllRecords, numOfProcessedRecords, and error properties", () => {
       expect(kintoneAllRecordsError.processedRecordsResult).toStrictEqual(
         processedRecordsResult
       );
       expect(kintoneAllRecordsError.unprocessedRecords).toStrictEqual(
         unprocessedRecords
+      );
+      expect(kintoneAllRecordsError.numOfAllRecords).toStrictEqual(
+        numOfAllRecords
+      );
+      expect(kintoneAllRecordsError.numOfProcessedRecords).toStrictEqual(
+        numOfProcessedRecords
       );
       expect(kintoneAllRecordsError.error).toStrictEqual(kintoneRestApiError);
     });
