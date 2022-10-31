@@ -40,7 +40,7 @@ The following methods could throw `KintoneAllRecordsError`.
 `KintoneAllRecordsError` has the following properties.
 
 | Name                   |                    Type                     | Description                                                                                                                                 |
-|------------------------|:-------------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------------- | :-----------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | processedRecordsResult |                   Object                    | The result of the records that have been processed successfully. This is the same type specified in the **Returns** section of each method. |
 | unprocessedRecords     |                    Array                    | The records that have not been processed. This is a part of `records` passed as an argument.                                                |
 | numOfProcessedRecords  |                   Number                    | The number of records that have been processed successfully.                                                                                |
@@ -64,7 +64,7 @@ In this case, rest-api-client split the `records` into 3 chunks of records, and 
 Then the properties of `KintoneAllRecordsError` is:
 
 | Name                   | Content                                    |
-|------------------------|--------------------------------------------|
+| ---------------------- | ------------------------------------------ |
 | processedRecordsResult | `{ records: results[0] - results[1999] }`  |
 | unprocessedRecords     | `records[2000] - records[4999]`            |
 | numOfProcessedRecords  | `2000`                                     |
