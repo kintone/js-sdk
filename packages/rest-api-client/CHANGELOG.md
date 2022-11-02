@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.16...@kintone/rest-api-client@3.2.0) (2022-11-02)
+
+### Features
+
+- **rest-api-client:** add numOfProcessedRecords and numOfAllRecords to KintoneAllRecordsError ([#1816](https://github.com/kintone/js-sdk/issues/1816)) ([2b80f95](https://github.com/kintone/js-sdk/commit/2b80f95d412d079e7884c2e2b286a384a63d384d))
+
 ## [3.1.16](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.1.15...@kintone/rest-api-client@3.1.16) (2022-10-26)
 
 ### Bug Fixes
