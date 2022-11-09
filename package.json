@@ -1,6 +1,6 @@
 {
   "name": "@kintone/customize-uploader",
-  "version": "6.0.18",
+  "version": "6.0.19",
   "description": "A kintone customize uploader",
   "bin": {
     "kintone-customize-uploader": "bin/cli.js"
