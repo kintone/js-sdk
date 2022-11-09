@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.19](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@3.0.18...@kintone/rest-api-client-demo@3.0.19) (2022-11-09)
+
+### Bug Fixes
+
+- **deps:** update dependency yargs to ^17.6.1 ([#1823](https://github.com/kintone/js-sdk/issues/1823)) ([3cf0603](https://github.com/kintone/js-sdk/commit/3cf0603e9ff47fb020e444ce8e32831d5f31b0dd))
+- **deps:** update dependency yargs to ^17.6.2 ([#1825](https://github.com/kintone/js-sdk/issues/1825)) ([74d8303](https://github.com/kintone/js-sdk/commit/74d83033ff2363bfd8c2d9ebb096d57132a9906b))
+
 ## [3.0.18](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@3.0.17...@kintone/rest-api-client-demo@3.0.18) (2022-11-02)
 
 **Note:** Version bump only for package @kintone/rest-api-client-demo
