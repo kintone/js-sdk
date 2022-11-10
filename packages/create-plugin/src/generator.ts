@@ -8,6 +8,7 @@ import { Lang } from "./lang";
 import { Manifest } from "./manifest";
 import { generatePrivateKey } from "./privateKey";
 import { isNecessaryFile, processTemplateFile, TemplateType } from "./template";
+import normalize from "normalize-path";
 
 /**
  * Create a plugin project based on passed manifest and install dependencies
@@ -50,8 +51,9 @@ const buildProject = (
     __dirname.indexOf("dist") === -1
       ? path.join(__dirname, "..", "templates", templateType)
       : path.join(__dirname, "..", "..", "templates", templateType);
+  const templatePathPattern = normalize(path.resolve(templatePath, "**", "*"));
   glob
-    .sync(path.resolve(templatePath, "**", "*"), {
+    .sync(templatePathPattern, {
       dot: true,
     })
     .filter((file) => isNecessaryFile(manifest, file))
