@@ -6,6 +6,7 @@ import glob from "glob";
 import { readZipContentsNames } from "./helper/zip";
 import cli from "../src/cli";
 import console from "../src/console";
+import normalize from "normalize-path";
 
 const rimraf = promisify(_rimraf);
 
@@ -152,7 +153,8 @@ describe("cli", () => {
     });
 
     it("does not generate a private key file", () => {
-      const ppkFiles = glob.sync(`${sampleDir}/*.ppk`);
+      const ppkFilesPattern = normalize(`${sampleDir}/*.ppk`);
+      const ppkFiles = glob.sync(ppkFilesPattern);
       expect(ppkFiles).toStrictEqual([]);
     });
   });

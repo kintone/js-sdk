@@ -55,6 +55,7 @@
     "@types/stream-buffers": "^3.0.4",
     "@types/yauzl": "^2.10.0",
     "@types/yazl": "^2.4.2",
+    "@types/normalize-path": "^3.0.0",
     "ajv": "^6.12.6",
     "array-flatten": "^3.0.0",
     "assert": "^2.0.0",
@@ -81,7 +82,8 @@
     "util": "^0.12.5",
     "webpack": "^5.74.0",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "normalize-path": "^3.0.0"
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-packer",
   "repository": {
