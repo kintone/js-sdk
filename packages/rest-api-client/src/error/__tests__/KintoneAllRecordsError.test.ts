@@ -1,6 +1,6 @@
 import { KintoneAllRecordsError } from "../KintoneAllRecordsError";
 import { KintoneRestAPIError } from "../KintoneRestAPIError";
-import { ErrorResponse } from "../../http/HttpClientInterface";
+import type { ErrorResponse } from "../../http/HttpClientInterface";
 
 describe("KintoneAllRecordsError", () => {
   let kintoneAllRecordsError: KintoneAllRecordsError;

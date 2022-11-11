@@ -1,4 +1,5 @@
-import { MockClient, buildMockClient } from "../../http/MockClient";
+import type { MockClient } from "../../http/MockClient";
+import { buildMockClient } from "../../http/MockClient";
 import { FileClient } from "../FileClient";
 import FormData from "form-data";
 import { injectPlatformDeps } from "../../platform";

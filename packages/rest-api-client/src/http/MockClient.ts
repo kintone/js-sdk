@@ -1,10 +1,10 @@
-import {
+import type {
   HttpClient,
   RequestConfigBuilder,
   ResponseHandler,
-  Response,
 } from "./HttpClientInterface";
-import FormData from "form-data";
+import { Response } from "./HttpClientInterface";
+import type FormData from "form-data";
 import { KintoneResponseHandler } from "../KintoneResponseHandler";
 
 type Log = {

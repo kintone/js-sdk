@@ -1,5 +1,5 @@
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
-import { DiscriminatedAuth } from "../types/auth";
+import type { DiscriminatedAuth } from "../types/auth";
 
 export const readFileFromPath = (filePath: string) => {
   throw new UnsupportedPlatformError("Browser");

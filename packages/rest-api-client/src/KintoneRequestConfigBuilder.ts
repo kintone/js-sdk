@@ -2,14 +2,14 @@ import FormData from "form-data";
 import qs from "qs";
 import { Base64 } from "js-base64";
 
-import {
+import type {
   RequestConfigBuilder,
   RequestConfig,
   HttpMethod,
   Params,
   ProxyConfig,
 } from "./http/HttpClientInterface";
-import { BasicAuth, DiscriminatedAuth } from "./types/auth";
+import type { BasicAuth, DiscriminatedAuth } from "./types/auth";
 import { platformDeps } from "./platform/";
 import type { Agent as HttpsAgent } from "https";
 

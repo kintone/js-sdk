@@ -1,11 +1,11 @@
 import Axios from "axios";
-import {
+import type {
   HttpClient,
   RequestConfigBuilder,
   RequestConfig,
   ResponseHandler,
 } from "./HttpClientInterface";
-import FormData from "form-data";
+import type FormData from "form-data";
 
 export class AxiosClient implements HttpClient {
   private responseHandler: ResponseHandler;

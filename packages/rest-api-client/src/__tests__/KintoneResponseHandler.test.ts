@@ -1,6 +1,6 @@
 import { KintoneRestAPIError } from "../error/KintoneRestAPIError";
 import { KintoneAbortSearchError } from "../error/KintoneAbortSearchError";
-import {
+import type {
   ErrorResponse,
   Response,
   HttpClientError,
