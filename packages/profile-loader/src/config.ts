@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 import toml from "toml";
-import { Profile } from "./index";
+import type { Profile } from "./index";
 
 const KINTONE_CONFIG_DIR = path.resolve(os.homedir(), ".kintone");
 const CONFIG_FILE_NAME = "config";
