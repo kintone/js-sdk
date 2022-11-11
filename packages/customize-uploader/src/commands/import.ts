@@ -2,9 +2,9 @@ import fs from "fs";
 import mkdirp from "mkdirp";
 import { sep } from "path";
 import { Constans } from "../constants";
-import { CustomizeManifest } from "./index";
+import type { CustomizeManifest } from "./index";
 import KintoneApiClient, { AuthenticationError } from "../KintoneApiClient";
-import { Lang } from "../lang";
+import type { Lang } from "../lang";
 import { getBoundMessage } from "../messages";
 import { wait } from "../util";
 

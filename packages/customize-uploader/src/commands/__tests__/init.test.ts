@@ -1,7 +1,7 @@
 import assert from "assert";
 import fs from "fs";
 import rimraf from "rimraf";
-import { CustomizeManifest } from "../index";
+import type { CustomizeManifest } from "../index";
 import { generateCustomizeManifest, getInitCustomizeManifest } from "../init";
 
 describe("init", () => {
