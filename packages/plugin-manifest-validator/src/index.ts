@@ -1,6 +1,7 @@
 "use strict";
 
-import Ajv, { ErrorObject } from "ajv";
+import type { ErrorObject } from "ajv";
+import Ajv from "ajv";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";

@@ -1,4 +1,4 @@
-import { KintonePluginManifestJson } from "../manifest-schema";
+import type { KintonePluginManifestJson } from "../manifest-schema";
 
 const manifest: KintonePluginManifestJson = {
   manifest_version: 1,
