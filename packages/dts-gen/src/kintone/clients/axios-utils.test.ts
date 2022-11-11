@@ -1,5 +1,5 @@
 import { AxiosUtils, VisibleForTesting } from "./axios-utils";
-import { AxiosRequestConfig } from "axios";
+import type { AxiosRequestConfig } from "axios";
 
 describe("FormsClientImpl#constructor", () => {
   const baseUrl = "https://kintone.com";

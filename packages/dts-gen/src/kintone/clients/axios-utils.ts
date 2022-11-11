@@ -1,9 +1,10 @@
-import axios, {
+import type {
   AxiosInstance,
   AxiosProxyConfig,
   AxiosRequestConfig,
   AxiosRequestHeaders,
 } from "axios";
+import axios from "axios";
 import { IncomingHttpHeaders } from "http";
 
 export interface NewInstanceInput {

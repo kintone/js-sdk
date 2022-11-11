@@ -1,4 +1,7 @@
-import { FieldType, SubTableFieldType } from "../kintone/clients/forms-client";
+import type {
+  FieldType,
+  SubTableFieldType,
+} from "../kintone/clients/forms-client";
 import { objectValues } from "../utils/objectvalues";
 
 type FieldTypesOrSubTableFieldTypes = FieldType[] | SubTableFieldType[];

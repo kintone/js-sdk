@@ -1,11 +1,12 @@
-import {
+import type {
   FormsClient,
   FetchFormPropertiesInput,
   FieldNameAndFieldOrSubTableField,
 } from "./forms-client";
 
-import { AxiosUtils, NewInstanceInput } from "./axios-utils";
-import { AxiosInstance, AxiosRequestConfig } from "axios";
+import type { NewInstanceInput } from "./axios-utils";
+import { AxiosUtils } from "./axios-utils";
+import type { AxiosInstance, AxiosRequestConfig } from "axios";
 
 export class FormsClientImpl implements FormsClient {
   readonly client: AxiosInstance;

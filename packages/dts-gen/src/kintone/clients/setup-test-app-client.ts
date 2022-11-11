@@ -1,8 +1,9 @@
-import { AxiosInstance, AxiosRequestConfig } from "axios";
+import type { AxiosInstance, AxiosRequestConfig } from "axios";
 import FormData from "form-data";
-import fs from "fs";
+import type fs from "fs";
 
-import { NewInstanceInput, AxiosUtils } from "./axios-utils";
+import type { NewInstanceInput } from "./axios-utils";
+import { AxiosUtils } from "./axios-utils";
 
 interface CreateAppInput {
   name: string;
