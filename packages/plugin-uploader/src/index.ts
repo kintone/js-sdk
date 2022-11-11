@@ -3,7 +3,7 @@ import fs from "fs";
 import puppeteer from "puppeteer";
 import type { Browser, Page } from "puppeteer";
 
-import { Lang } from "./lang";
+import type { Lang } from "./lang";
 import { getBoundMessage } from "./messages";
 
 const TIMEOUT_MS = 10000;
