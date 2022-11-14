@@ -1,7 +1,7 @@
 import fs from "fs";
 import mkdirp from "mkdirp";
-import { CustomizeManifest } from "./index";
-import { Lang } from "../lang";
+import type { CustomizeManifest } from "./index";
+import type { Lang } from "../lang";
 import { getBoundMessage } from "../messages";
 
 export const getInitCustomizeManifest = (

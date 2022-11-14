@@ -1,7 +1,8 @@
-import KintoneApiClient, {
+import type {
   Option as ApiClientOption,
   UpdateAppCustomizeParameter,
 } from "../../KintoneApiClient";
+import KintoneApiClient from "../../KintoneApiClient";
 
 type MethodParameter = "GET" | "POST" | "PUT" | "DELETE";
 

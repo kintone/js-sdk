@@ -1,4 +1,4 @@
-import { Lang } from "./lang";
+import type { Lang } from "./lang";
 
 const messages = {
   E_requiredManifestFile: {
