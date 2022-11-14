@@ -1,4 +1,4 @@
-import { Manifest } from "../../manifest";
+import type { Manifest } from "../../manifest";
 
 export default function createBaseManifest(): Manifest {
   return {

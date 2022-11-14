@@ -4,10 +4,11 @@ import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
 import { installDependencies } from "./deps";
-import { Lang } from "./lang";
-import { Manifest } from "./manifest";
+import type { Lang } from "./lang";
+import type { Manifest } from "./manifest";
 import { generatePrivateKey } from "./privateKey";
-import { isNecessaryFile, processTemplateFile, TemplateType } from "./template";
+import type { TemplateType } from "./template";
+import { isNecessaryFile, processTemplateFile } from "./template";
 import normalize from "normalize-path";
 
 /**

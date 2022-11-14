@@ -1,7 +1,7 @@
 "use strict";
 
-import { Answers, Question } from "inquirer";
-import { Lang } from "./lang";
+import type { Answers, Question } from "inquirer";
+import type { Lang } from "./lang";
 import { getBoundMessage } from "./messages";
 
 const NAME_MAX_LENGTH = 64;
