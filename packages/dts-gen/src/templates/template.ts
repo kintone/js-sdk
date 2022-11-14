@@ -3,7 +3,7 @@ import * as path from "path";
 import * as prettier from "prettier";
 import { ESLint } from "eslint";
 
-import { FieldTypeGroups } from "../converters/fileldtype-converter";
+import type { FieldTypeGroups } from "../converters/fileldtype-converter";
 import { convertToTsExpression } from "./converter";
 
 interface RenderInput {

@@ -2,11 +2,8 @@ import assert from "assert";
 import * as fs from "fs";
 import { sep } from "path";
 import rimraf from "rimraf";
-import {
-  ImportCustomizeManifest,
-  importCustomizeSetting,
-  Option,
-} from "../import";
+import type { ImportCustomizeManifest, Option } from "../import";
+import { importCustomizeSetting } from "../import";
 import MockKintoneApiClient from "./MockKintoneApiClient";
 
 describe("import", () => {

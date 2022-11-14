@@ -2,7 +2,8 @@
   When you use this package, you can import them from package root like this:
   import { KintoneRestAPIClient, KintoneFormFieldProperty } from "@kintone/rest-api-client";
 */
-import { KintoneRestAPIClient, KintoneFormFieldProperty } from "../../../..";
+import type { KintoneFormFieldProperty } from "../../../..";
+import { KintoneRestAPIClient } from "../../../..";
 
 const client = new KintoneRestAPIClient({
   /* ... */

@@ -7,7 +7,7 @@ import * as streamBuffers from "stream-buffers";
 
 import { generateErrorMessages } from "./gen-error-msg";
 import { sourceList } from "./sourcelist";
-import internal from "stream";
+import type internal from "stream";
 
 type ManifestJson = any;
 type Entries = Map<string, any>;

@@ -1,5 +1,5 @@
 import { VisibleForTesting } from "./fileldtype-converter";
-import { SubTableFieldType } from "../kintone/clients/forms-client";
+import type { SubTableFieldType } from "../kintone/clients/forms-client";
 import { objectValues } from "../utils/objectvalues";
 
 describe("FileFieldTypeConverter", () => {

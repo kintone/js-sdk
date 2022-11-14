@@ -5,12 +5,12 @@ import * as fs from "fs";
 import * as inquirer from "inquirer";
 import rimraf from "rimraf";
 import { generatePlugin } from "./generator";
-import { Lang } from "./lang";
+import type { Lang } from "./lang";
 import { printError, printLog } from "./logger";
 import { buildManifest } from "./manifest";
 import { getBoundMessage, getMessage } from "./messages";
 import { buildQuestions } from "./qa";
-import { TemplateType } from "./template";
+import type { TemplateType } from "./template";
 
 /**
  * Verify whether the output directory is valid

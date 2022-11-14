@@ -1,7 +1,7 @@
 import chokidar from "chokidar";
 import fs from "fs";
 import KintoneApiClient, { AuthenticationError } from "../KintoneApiClient";
-import { Lang } from "../lang";
+import type { Lang } from "../lang";
 import { getBoundMessage } from "../messages";
 import { isUrlString, wait } from "../util";
 

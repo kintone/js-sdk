@@ -1,10 +1,11 @@
-import { BulkRequestClient, EndpointName } from "./client/BulkRequestClient";
+import type { EndpointName } from "./client/BulkRequestClient";
+import { BulkRequestClient } from "./client/BulkRequestClient";
 import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
-import { ProxyConfig } from "./http/HttpClientInterface";
-import { BasicAuth, DiscriminatedAuth } from "./types/auth";
+import type { ProxyConfig } from "./http/HttpClientInterface";
+import type { BasicAuth, DiscriminatedAuth } from "./types/auth";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
 import { KintoneResponseHandler } from "./KintoneResponseHandler";
 import { platformDeps } from "./platform";

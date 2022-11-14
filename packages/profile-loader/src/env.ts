@@ -1,4 +1,4 @@
-import { Profile } from ".";
+import type { Profile } from ".";
 
 export const loadEnv = <T extends Profile>(): Partial<T> => {
   const config: any = {

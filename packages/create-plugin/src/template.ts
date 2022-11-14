@@ -3,7 +3,7 @@
 import * as fs from "fs";
 import * as _ from "lodash";
 import * as path from "path";
-import { Manifest } from "./manifest";
+import type { Manifest } from "./manifest";
 import sortPackageJson from "sort-package-json";
 import * as prettier from "prettier";
 

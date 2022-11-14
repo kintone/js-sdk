@@ -1,5 +1,5 @@
 import * as inquirer from "inquirer";
-import { Lang } from "./lang";
+import type { Lang } from "./lang";
 import { getBoundMessage } from "./messages";
 
 interface Params {

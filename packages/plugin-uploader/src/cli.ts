@@ -2,7 +2,8 @@ import osLocale from "os-locale";
 import meow from "meow";
 
 import { inquireParams } from "./params";
-import { getDefaultLang, Lang } from "./lang";
+import type { Lang } from "./lang";
+import { getDefaultLang } from "./lang";
 import { getMessage } from "./messages";
 import { run } from "./index";
 

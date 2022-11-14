@@ -1,4 +1,4 @@
-import { KintoneRestAPIError } from "./KintoneRestAPIError";
+import type { KintoneRestAPIError } from "./KintoneRestAPIError";
 
 export class KintoneAllRecordsError extends Error {
   processedRecordsResult: any;

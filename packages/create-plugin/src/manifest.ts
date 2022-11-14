@@ -1,7 +1,7 @@
 "use strict";
 
-import { Answers } from "inquirer";
-import { TemplateType } from "./template";
+import type { Answers } from "inquirer";
+import type { TemplateType } from "./template";
 
 const jQueryURL = "https://js.cybozu.com/jquery/3.3.1/jquery.min.js";
 

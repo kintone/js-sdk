@@ -1,5 +1,5 @@
-import { Entity } from "../entity";
-import { AppID } from "../index";
+import type { Entity } from "../entity";
+import type { AppID } from "../index";
 
 // --- Types for request ---
 

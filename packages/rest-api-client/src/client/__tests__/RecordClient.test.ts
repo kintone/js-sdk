@@ -1,9 +1,10 @@
 import { RecordClient } from "../RecordClient";
 import { BulkRequestClient } from "../BulkRequestClient";
-import { MockClient, buildMockClient } from "../../http/MockClient";
+import type { MockClient } from "../../http/MockClient";
+import { buildMockClient } from "../../http/MockClient";
 import { KintoneAllRecordsError } from "../../error/KintoneAllRecordsError";
 import { KintoneRestAPIError } from "../../error/KintoneRestAPIError";
-import { Record } from "../types";
+import type { Record } from "../types";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
 describe("RecordClient", () => {

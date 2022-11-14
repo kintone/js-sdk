@@ -1,5 +1,5 @@
-import { TypeDefinition, SavedTypeDefinition } from "./typedefinitions";
-import { TsExpression } from "./expression";
+import type { TypeDefinition, SavedTypeDefinition } from "./typedefinitions";
+import type { TsExpression } from "./expression";
 
 export class Namespace implements TsExpression {
   constructor(

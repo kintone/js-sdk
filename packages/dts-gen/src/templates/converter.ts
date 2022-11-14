@@ -1,11 +1,11 @@
-import { FieldTypeGroups } from "../converters/fileldtype-converter";
+import type { FieldTypeGroups } from "../converters/fileldtype-converter";
 import * as F from "./expressions/fields";
 import { Namespace } from "./expressions/namespace";
 import {
   TypeDefinition,
   SavedTypeDefinition,
 } from "./expressions/typedefinitions";
-import { FieldType } from "../kintone/clients/forms-client";
+import type { FieldType } from "../kintone/clients/forms-client";
 
 export const convertToTsExpression = ({
   namespace,

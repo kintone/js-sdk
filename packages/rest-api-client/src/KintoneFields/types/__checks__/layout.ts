@@ -1,4 +1,4 @@
-import { Field, Row, Subtable, Group } from "../layout";
+import type { Field, Row, Subtable, Group } from "../layout";
 
 type Test_RowLayout_OK = Row<
   [

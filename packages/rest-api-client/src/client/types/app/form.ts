@@ -1,5 +1,5 @@
-import { OneOf as FieldProperty } from "../../../KintoneFields/types/property";
-import {
+import type { OneOf as FieldProperty } from "../../../KintoneFields/types/property";
+import type {
   Row,
   Subtable,
   Group,

@@ -2,7 +2,8 @@
   When you use this package, you can import them from package root like this:
   import { KintoneRestAPIClient, KintoneFormLayout } from "@kintone/rest-api-client";
 */
-import { KintoneRestAPIClient, KintoneFormLayout } from "../../../..";
+import type { KintoneFormLayout } from "../../../..";
+import { KintoneRestAPIClient } from "../../../..";
 
 const client = new KintoneRestAPIClient({
   /* ... */

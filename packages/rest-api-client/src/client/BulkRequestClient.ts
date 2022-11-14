@@ -1,4 +1,4 @@
-import { HttpClient } from "../http";
+import type { HttpClient } from "../http";
 import { buildPath } from "../url";
 
 export type EndpointName =

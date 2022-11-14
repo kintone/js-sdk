@@ -1,4 +1,4 @@
-import { ErrorResponse } from "../http/HttpClientInterface";
+import type { ErrorResponse } from "../http/HttpClientInterface";
 
 type SingleErrorResponseData = {
   id: string;

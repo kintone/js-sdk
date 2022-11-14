@@ -1,7 +1,7 @@
 "use strict";
 
 import { spawnSync } from "child_process";
-import { Lang } from "./lang";
+import type { Lang } from "./lang";
 import { printLog } from "./logger";
 import { getMessage } from "./messages";
 

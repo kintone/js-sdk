@@ -1,7 +1,7 @@
 import fs from "fs";
 import mkdirp from "mkdirp";
 import path from "path";
-import { Compiler, WebpackPluginInstance } from "webpack";
+import type { Compiler, WebpackPluginInstance } from "webpack";
 
 import { generatePlugin, getAssetPaths } from "./plugin";
 
