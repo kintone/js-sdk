@@ -1,6 +1,5 @@
 import assert from "assert";
 import type { Question } from "inquirer";
-import { Answers } from "inquirer";
 import { buildQuestions } from "../qa";
 
 const getQuestion = (
