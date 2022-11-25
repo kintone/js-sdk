@@ -3283,10 +3283,10 @@
     redux-thunk "^2.4.1"
     reselect "^4.1.5"
 
-"@rollup/plugin-babel@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-6.0.2.tgz#92ad7a00cc0e4a6b59e1498cda9f907a9c0d2db3"
-  integrity sha512-Vnt8XIWYwCf3MD7qhBWYlP9pjSZvcE++nlPXhQYw6YNehl5742AzFbrV6h4BHb20VAOVUlIksVLymQCTwVCGDg==
+"@rollup/plugin-babel@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-6.0.3.tgz#07ccde15de278c581673034ad6accdb4a153dfeb"
+  integrity sha512-fKImZKppa1A/gX73eg4JGo+8kQr/q1HBQaCGKECZ0v4YBBv3lFqi14+7xyApECzvkLTHCifx+7ntcrvtBIRcpg==
   dependencies:
     "@babel/helper-module-imports" "^7.18.6"
     "@rollup/pluginutils" "^5.0.1"
@@ -3847,10 +3847,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-15.0.0.tgz#cb3f9f741869e20cce330ffbeb9271590483882d"
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
-"@types/yargs@^17.0.13":
-  version "17.0.13"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.13.tgz#34cced675ca1b1d51fcf4d34c3c6f0fa142a5c76"
-  integrity sha512-9sWaruZk2JGxIQU+IhI1fhPYRcQ0UuTNuKuCW9bR5fp7qi2Llf7WDzNa17Cy7TKnh3cdxDOiyTu6gaLS0eDatg==
+"@types/yargs@^17.0.14":
+  version "17.0.14"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.14.tgz#0943473052c24bd8cf2d1de25f1a710259327237"
+  integrity sha512-9Pj7abXoW1RSTcZaL2Hk6G2XyLMlp5ECdVC/Zf2p/KBjC3srijLGgRAXOBjtFrJoIrvxdTKyKDA14bEcbxBaWw==
   dependencies:
     "@types/yargs-parser" "*"
 
