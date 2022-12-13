@@ -13,7 +13,7 @@
     "prebuild": "yarn clean",
     "build": "tsc --build --force",
     "lint": "eslint --ext .ts src",
-    "fix:lint": "yarn lint --fix",
+    "fix": "yarn lint --fix",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf dist",
