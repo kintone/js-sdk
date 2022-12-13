@@ -12,6 +12,7 @@
     "build": "tsc --build packages --force",
     "postbuild": "lerna run postbuild --parallel",
     "lint": "lerna run lint --parallel",
+    "fix": "lerna run fix --parallel",
     "preinitial:release": "yarn prerelease",
     "initial:release": "lerna publish from-package --conventional-commits",
     "prerelease": "npm-run-all -s build -p lint test",

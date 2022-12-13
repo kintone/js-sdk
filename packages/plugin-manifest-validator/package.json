@@ -24,6 +24,7 @@
     "test": "jest",
     "test:ci": "jest --runInBand",
     "lint": "eslint --ext .ts src",
+    "fix": "yarn lint --fix",
     "clean": "rimraf dist"
   },
   "dependencies": {

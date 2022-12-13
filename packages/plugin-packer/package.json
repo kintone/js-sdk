@@ -25,6 +25,7 @@
     "postbuild": "run-p js css",
     "clean": "rimraf dist",
     "lint": "eslint \"*.{js,ts}\" bin src site test",
+    "fix": "yarn lint --fix",
     "test": "run-p jest site:test",
     "test:ci": "yarn test",
     "build:dev": "tsc --build --force --watch",

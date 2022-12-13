@@ -50,6 +50,7 @@
     "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts src",
+    "fix": "yarn lint --fix",
     "unittest": "jest --testPathIgnorePatterns=/__tests__/e2e\\.test\\.ts$",
     "e2e": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/e2e\\.test\\.ts$",
     "test": "yarn unittest",

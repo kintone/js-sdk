@@ -12,6 +12,7 @@
     "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",
+    "fix": "yarn lint --fix",
     "test": "jest --runInBand",
     "test:ci": "jest --runInBand"
   },

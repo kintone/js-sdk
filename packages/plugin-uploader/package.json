@@ -15,6 +15,7 @@
     "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts' 'bin/*.js'",
+    "fix": "yarn lint --fix",
     "test": "echo 'no test'",
     "test:ci": "yarn test"
   },
