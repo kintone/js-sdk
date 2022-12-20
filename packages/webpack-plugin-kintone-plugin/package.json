@@ -42,7 +42,7 @@
     "@types/chokidar": "^1.7.5",
     "@types/mkdirp": "^1.0.2",
     "@types/rimraf": "^3.0.2",
-    "adm-zip": "^0.5.9",
+    "adm-zip": "^0.5.10",
     "chokidar": "^3.5.3",
     "rimraf": "^3.0.2",
     "webpack": "^5.74.0",
