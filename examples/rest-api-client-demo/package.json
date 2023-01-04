@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@kintone/customize-uploader": "^6.0.22",
-    "@types/yargs": "^17.0.18",
+    "@types/yargs": "^17.0.19",
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
     "webpack": "^5.74.0",
