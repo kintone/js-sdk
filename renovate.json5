@@ -1,36 +1,26 @@
 {
-  "extends": [
-    "github>cybozu/renovate-config",
-    ":prConcurrentLimitNone"
-  ],
-  "ignorePaths": [
+  extends: ["github>cybozu/renovate-config", ":prConcurrentLimitNone"],
+  ignorePaths: [
     "**/node_modules/**",
     "**/bower_components/**",
     "**/vendor/**",
     "**/__tests__/**",
     "**/test/**",
     "**/tests/**",
-    "**/__fixtures__/**"
+    "**/__fixtures__/**",
   ],
-  "npm": {
-    "fileMatch": [
-      "^packages/create-plugin/templates/([^/]+/)*with-plugin-uploader\\.json$"
+  npm: {
+    fileMatch: [
+      "^packages/create-plugin/templates/([^/]+/)*with-plugin-uploader\\.json$",
     ],
-    "packageRules": [
+    packageRules: [
       {
-        // automerge minor/patch updates of devDependencies
-        "matchPackagePatterns": [
-          "*"
-        ],
-        "matchDepTypes": [
-          "devDependencies",
-        ],
-        "matchUpdateTypes": [
-          "minor",
-          "patch"
-        ],
-        "automerge": true
-      }
-    ]
-  }
+        // automerge minor updates of devDependencies
+        matchPackagePatterns: ["*"],
+        matchDepTypes: ["devDependencies"],
+        matchUpdateTypes: ["minor"],
+        automerge: true,
+      },
+    ],
+  },
 }
