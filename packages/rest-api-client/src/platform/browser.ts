@@ -1,5 +1,6 @@
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import type { DiscriminatedAuth } from "../types/auth";
+import mime from "mime-types";
 
 export const readFileFromPath = (filePath: string) => {
   throw new UnsupportedPlatformError("Browser");
@@ -39,8 +40,13 @@ export const buildHeaders = () => {
   return {};
 };
 
-export const buildFormDataValue = (data: unknown) => {
-  return new Blob([data as BlobPart]);
+export const buildFormDataValue = (data: unknown, fileName?: string) => {
+  const options: BlobOptions = {};
+  if (fileName) {
+    options.type = mime.lookup(fileName) || undefined;
+  }
+
+  return new Blob([data as BlobPart], options);
 };
 
 export const buildBaseUrl = (baseUrl?: string) => {

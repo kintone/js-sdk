@@ -7,7 +7,7 @@ type PlatformDeps = {
   getDefaultAuth: () => DiscriminatedAuth;
   buildPlatformDependentConfig: (params: object) => object;
   buildHeaders: (params: { userAgent?: string }) => Record<string, string>;
-  buildFormDataValue: (data: unknown) => unknown;
+  buildFormDataValue: (data: unknown, fileName?: string) => unknown;
   buildBaseUrl: (baseUrl?: string) => string;
   getVersion: () => string;
 };
