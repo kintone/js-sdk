@@ -27,8 +27,10 @@ declare const location:
 
 declare type BlobPart = unknown;
 
+declare type BlobOptions = { type?: string };
+
 declare class Blob {
-  constructor(array: BlobPart[]);
+  constructor(array: BlobPart[], options?: BlobOptions);
 }
 
 declare const PACKAGE_VERSION: string;
