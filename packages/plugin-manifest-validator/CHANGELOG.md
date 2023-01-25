@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.8](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@7.0.7...@kintone/plugin-manifest-validator@7.0.8) (2023-01-25)
+
+### Bug Fixes
+
+- **plugin-manifest-validator:** rebuild schema file ([#1904](https://github.com/kintone/js-sdk/issues/1904)) ([20f86f6](https://github.com/kintone/js-sdk/commit/20f86f66b5008f9115735a5d9e43532ad8d010db))
+
 ## [7.0.7](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@7.0.6...@kintone/plugin-manifest-validator@7.0.7) (2022-12-21)
 
 **Note:** Version bump only for package @kintone/plugin-manifest-validator
