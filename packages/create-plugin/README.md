@@ -131,7 +131,7 @@ npm run lint
 kintoneプラグイン開発をはじめましょう！
 開発に関する情報はcybozu developer network:
 
-  https://developer.cybozu.io
+  https://cybozu.dev/ja/
 ```
 
 ## Templates (Experimental)
