@@ -38,7 +38,7 @@
     "prettier": "^2.7.1"
   },
   "devDependencies": {
-    "@types/eslint": "^8.21.0",
+    "@types/eslint": "^8.21.1",
     "@types/lodash": "^4.14.191",
     "@types/prettier": "^2.7.2",
     "ts-loader": "^9.4.2",
