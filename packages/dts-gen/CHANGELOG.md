@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.20](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.19...@kintone/dts-gen@6.1.20) (2023-02-15)
+
+**Note:** Version bump only for package @kintone/dts-gen
+
 ## [6.1.19](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.18...@kintone/dts-gen@6.1.19) (2023-02-01)
 
 ### Bug Fixes
