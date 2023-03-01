@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.30](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.29...@kintone/create-plugin@5.1.30) (2023-03-01)
+
+**Note:** Version bump only for package @kintone/create-plugin
+
 ## [5.1.29](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.28...@kintone/create-plugin@5.1.29) (2023-02-22)
 
 ### Bug Fixes
