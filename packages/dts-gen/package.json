@@ -31,7 +31,7 @@
   "dependencies": {
     "@cybozu/eslint-config": "^18.0.1",
     "axios": "^0.27.2",
-    "commander": "^9.5.0",
+    "commander": "^10.0.0",
     "eslint": "^8.25.0",
     "form-data": "^4.0.0",
     "lodash": "^4.17.21",
