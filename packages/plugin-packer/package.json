@@ -67,7 +67,7 @@
     "crypto-browserify": "^3.12.0",
     "cssnano": "^5.1.15",
     "execa": "^5.1.1",
-    "glob": "^8.0.3",
+    "glob": "^8.1.0",
     "jest-environment-jsdom": "^29.4.3",
     "normalize-path": "^3.0.0",
     "normalize.css": "^8.0.1",
