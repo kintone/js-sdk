@@ -19,7 +19,7 @@
   "bugs": "https://github.com/kintone/js-sdk/issues",
   "dependencies": {
     "chalk": "^4.1.2",
-    "glob": "^8.0.3",
+    "glob": "^8.1.0",
     "inquirer": "^8.2.5",
     "lodash": "^4.17.21",
     "meow": "^9.0.0",
@@ -31,7 +31,7 @@
     "sort-package-json": "^1.57.0"
   },
   "devDependencies": {
-    "@types/glob": "^8.0.1",
+    "@types/glob": "^8.1.0",
     "@types/inquirer": "^8.2.6",
     "@types/lodash": "^4.14.191",
     "@types/node-rsa": "^1.1.1",
