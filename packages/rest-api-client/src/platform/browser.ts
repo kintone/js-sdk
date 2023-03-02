@@ -1,6 +1,6 @@
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import type { DiscriminatedAuth } from "../types/auth";
-import mime from "mime";
+import mime from "mime/lite";
 
 export const readFileFromPath = (filePath: string) => {
   throw new UnsupportedPlatformError("Browser");
