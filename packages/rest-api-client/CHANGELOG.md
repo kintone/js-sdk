@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.3.2...@kintone/rest-api-client@3.3.3) (2023-03-03)
+
+### Bug Fixes
+
+- **deps:** update dependency core-js to ^3.29.0 ([#1921](https://github.com/kintone/js-sdk/issues/1921)) ([a563087](https://github.com/kintone/js-sdk/commit/a563087ed124d15075fc10d63ad56dd3cc24cf01))
+- replace mime-types by mime package ([#1943](https://github.com/kintone/js-sdk/issues/1943)) ([57646ce](https://github.com/kintone/js-sdk/commit/57646ce2f72e005f6065e9fbb9042868cb22598b))
+
 ## [3.3.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.3.1...@kintone/rest-api-client@3.3.2) (2023-02-15)
 
 ### Bug Fixes

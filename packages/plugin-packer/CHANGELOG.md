@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.26](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@6.0.25...@kintone/plugin-packer@6.0.26) (2023-03-03)
+
+### Bug Fixes
+
+- **deps:** update dependency mkdirp to v2 ([#1898](https://github.com/kintone/js-sdk/issues/1898)) ([b73bf6c](https://github.com/kintone/js-sdk/commit/b73bf6c0f0123c7346984d3bd21337e14ad0a36f))
+
 ## [6.0.25](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@6.0.24...@kintone/plugin-packer@6.0.25) (2023-02-22)
 
 **Note:** Version bump only for package @kintone/plugin-packer
