@@ -3,7 +3,6 @@
  */
 
 import { buildFormDataValue, getRequestToken } from "../browser";
-const Blob = require("blob-polyfill").Blob;
 
 describe("getRequestToken()", () => {
   let originalKintone: any;
@@ -44,8 +43,6 @@ describe("getRequestToken()", () => {
 });
 
 describe("buildFormDataValue", () => {
-  global.Blob = Blob;
-
   it("should detect MIME type correctly (PDF)", () => {
     const blob = buildFormDataValue("dummy data", "attachment/input.pdf");
     expect(blob.type).toBe("application/pdf");
