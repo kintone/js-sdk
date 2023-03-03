@@ -1,4 +1,8 @@
-import { getRequestToken } from "../browser";
+/**
+ * @jest-environment jsdom
+ */
+
+import { buildFormDataValue, getRequestToken } from "../browser";
 
 describe("getRequestToken()", () => {
   let originalKintone: any;
@@ -35,5 +39,12 @@ describe("getRequestToken()", () => {
     await expect(getRequestToken()).rejects.toThrow(
       "session authentication must specify a request token"
     );
+  });
+});
+
+describe("buildFormDataValue", () => {
+  it("should detect MIME type correctly (PDF)", () => {
+    const blob = buildFormDataValue("dummy data", "attachment/input.pdf");
+    expect(blob.type).toBe("application/pdf");
   });
 });
