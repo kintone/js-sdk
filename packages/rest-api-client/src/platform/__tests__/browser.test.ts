@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { buildFormDataValue, getRequestToken } from "../browser";
 const Blob = require("blob-polyfill").Blob;
 
