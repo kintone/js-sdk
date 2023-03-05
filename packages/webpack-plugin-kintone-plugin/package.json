@@ -54,6 +54,6 @@
   },
   "dependencies": {
     "@kintone/plugin-packer": "^6.0.26",
-    "mkdirp": "^2.1.4"
+    "mkdirp": "^2.1.5"
   }
 }
