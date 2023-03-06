@@ -68,7 +68,7 @@
     "cssnano": "^5.1.15",
     "execa": "^5.1.1",
     "glob": "^8.1.0",
-    "jest-environment-jsdom": "^29.4.3",
+    "jest-environment-jsdom": "^29.5.0",
     "normalize-path": "^3.0.0",
     "normalize.css": "^8.0.1",
     "path-browserify": "^1.0.1",
