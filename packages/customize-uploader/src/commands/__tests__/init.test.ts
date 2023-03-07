@@ -1,6 +1,6 @@
 import assert from "assert";
 import fs from "fs";
-import rimraf from "rimraf";
+import { rimrafSync } from "rimraf";
 import type { CustomizeManifest } from "../index";
 import { generateCustomizeManifest, getInitCustomizeManifest } from "../init";
 
@@ -9,7 +9,7 @@ describe("init", () => {
 
   describe("runInit", () => {
     afterEach(() => {
-      rimraf.sync(`${testDestDir}`);
+      rimrafSync(`${testDestDir}`);
     });
 
     const assertManifestContent = (buffer: Buffer) => {
