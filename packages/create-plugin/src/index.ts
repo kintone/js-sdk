@@ -83,7 +83,7 @@ ${m("developerSite")}
       `);
     })
     .catch((error: Error) => {
-      rimraf(outputDir).then(() => {
+      rimraf(outputDir, { glob: true }).then(() => {
         printError(m("Error_cannotCreatePlugin"), error.message);
       });
     });
