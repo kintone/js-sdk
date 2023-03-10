@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { promisify } from "util";
 import _rimraf from "rimraf";
-import glob from "glob";
+import { globSync } from "glob";
 import { readZipContentsNames } from "./helper/zip";
 import cli from "../src/cli";
 import console from "../src/console";
@@ -154,7 +154,7 @@ describe("cli", () => {
 
     it("does not generate a private key file", () => {
       const ppkFilesPattern = normalize(`${sampleDir}/*.ppk`);
-      const ppkFiles = glob.sync(ppkFilesPattern);
+      const ppkFiles = globSync(ppkFilesPattern);
       expect(ppkFiles).toStrictEqual([]);
     });
   });
