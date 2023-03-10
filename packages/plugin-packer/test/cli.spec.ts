@@ -5,11 +5,10 @@ import { globSync } from "glob";
 import { readZipContentsNames } from "./helper/zip";
 import cli from "../src/cli";
 import console from "../src/console";
-import normalize from "normalize-path";
 
-const fixturesDir = normalize(path.join(__dirname, "fixtures"));
-const sampleDir = normalize(path.join(fixturesDir, "sample-plugin"));
-const ppkPath = normalize(path.join(fixturesDir, "private.ppk"));
+const fixturesDir = path.posix.join(__dirname, "fixtures");
+const sampleDir = path.posix.join(fixturesDir, "sample-plugin");
+const ppkPath = path.posix.join(fixturesDir, "private.ppk");
 
 const ID = "aaa";
 const PRIVATE_KEY = "PRIVATE_KEY";
@@ -150,8 +149,7 @@ describe("cli", () => {
     });
 
     it("does not generate a private key file", () => {
-      const ppkFilesPattern = normalize(`${sampleDir}/*.ppk`);
-      const ppkFiles = globSync(ppkFilesPattern);
+      const ppkFiles = globSync(`${sampleDir}/*.ppk`);
       expect(ppkFiles).toStrictEqual([]);
     });
   });
