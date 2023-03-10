@@ -1,7 +1,7 @@
 "use strict";
 
 import * as fs from "fs";
-import * as glob from "glob";
+import { globSync } from "glob";
 import * as path from "path";
 import { installDependencies } from "./deps";
 import type { Lang } from "./lang";
@@ -53,10 +53,9 @@ const buildProject = (
       ? path.join(__dirname, "..", "templates", templateType)
       : path.join(__dirname, "..", "..", "templates", templateType);
   const templatePathPattern = normalize(path.resolve(templatePath, "**", "*"));
-  glob
-    .sync(templatePathPattern, {
-      dot: true,
-    })
+  globSync(templatePathPattern, {
+    dot: true,
+  })
     .filter((file) => isNecessaryFile(manifest, file))
     .forEach((file) =>
       processTemplateFile(

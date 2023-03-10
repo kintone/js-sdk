@@ -1,6 +1,6 @@
 {
   "name": "@kintone/create-plugin",
-  "version": "5.1.31",
+  "version": "5.1.32",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": {
     "create-plugin": "bin/cli.js",
@@ -19,7 +19,7 @@
   "bugs": "https://github.com/kintone/js-sdk/issues",
   "dependencies": {
     "chalk": "^4.1.2",
-    "glob": "^8.1.0",
+    "glob": "^9.2.1",
     "inquirer": "^8.2.5",
     "lodash": "^4.17.21",
     "meow": "^9.0.0",
