@@ -1,7 +1,6 @@
 import assert from "assert";
 import * as fs from "fs";
-import { sep } from "path";
-import rimraf from "rimraf";
+import { rimrafSync } from "rimraf";
 import type { ImportCustomizeManifest, Option } from "../import";
 import { importCustomizeSetting } from "../import";
 import MockKintoneApiClient from "./MockKintoneApiClient";
@@ -53,7 +52,7 @@ describe("import", () => {
     });
 
     afterEach(() => {
-      rimraf.sync(`${testDestDir}`);
+      rimrafSync(`${testDestDir}`);
     });
 
     const assertManifestContent = (buffer: Buffer) => {
