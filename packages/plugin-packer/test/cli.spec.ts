@@ -1,18 +1,14 @@
 import fs from "fs";
 import path from "path";
-import { promisify } from "util";
-import _rimraf from "rimraf";
+import { rimraf } from "rimraf";
 import { globSync } from "glob";
 import { readZipContentsNames } from "./helper/zip";
 import cli from "../src/cli";
 import console from "../src/console";
-import normalize from "normalize-path";
 
-const rimraf = promisify(_rimraf);
-
-const fixturesDir = path.join(__dirname, "fixtures");
-const sampleDir = path.join(fixturesDir, "sample-plugin");
-const ppkPath = path.join(fixturesDir, "private.ppk");
+const fixturesDir = path.posix.join(__dirname, "fixtures");
+const sampleDir = path.posix.join(fixturesDir, "sample-plugin");
+const ppkPath = path.posix.join(fixturesDir, "private.ppk");
 
 const ID = "aaa";
 const PRIVATE_KEY = "PRIVATE_KEY";
@@ -94,7 +90,7 @@ describe("cli", () => {
         plugin: PLUGIN_BUFFER,
       });
 
-      return rimraf(`${sampleDir}/*.*(ppk|zip)`)
+      return rimraf(`${sampleDir}/*.*(ppk|zip)`, { glob: true })
         .then(() => cli(pluginDir, { packerMock_: packer }))
         .then((filePath) => {
           resultPluginPath = filePath;
@@ -141,7 +137,7 @@ describe("cli", () => {
         plugin: PLUGIN_BUFFER,
       });
 
-      return rimraf(`${sampleDir}/*.*(ppk|zip)`).then(() =>
+      return rimraf(`${sampleDir}/*.*(ppk|zip)`, { glob: true }).then(() =>
         cli(pluginDir, { ppk: ppkPath, packerMock_: packer })
       );
     });
@@ -153,8 +149,7 @@ describe("cli", () => {
     });
 
     it("does not generate a private key file", () => {
-      const ppkFilesPattern = normalize(`${sampleDir}/*.ppk`);
-      const ppkFiles = globSync(ppkFilesPattern);
+      const ppkFiles = globSync(`${sampleDir}/*.ppk`);
       expect(ppkFiles).toStrictEqual([]);
     });
   });
@@ -167,7 +162,7 @@ describe("cli", () => {
       plugin: PLUGIN_BUFFER,
     });
 
-    return rimraf(`${sampleDir}/*.*(ppk|zip)`)
+    return rimraf(`${sampleDir}/*.*(ppk|zip)`, { glob: true })
       .then(() => cli(pluginDir, { packerMock_: packer }))
       .then(() => {
         return readZipContentsNames(packer.mock.calls[0][0]).then((files) => {
