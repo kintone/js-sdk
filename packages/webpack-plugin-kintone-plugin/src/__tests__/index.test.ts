@@ -1,7 +1,7 @@
 import fs from "fs";
 import os from "os";
 import path from "path";
-import rimraf from "rimraf";
+import { rimrafSync } from "rimraf";
 import webpack from "webpack";
 import { promisify } from "util";
 import { verifyPluginZip } from "./helpers";
@@ -36,7 +36,7 @@ const webpackBaseConfig: webpack.Configuration = {
 
 describe("KintonePlugin", () => {
   afterAll(() => {
-    rimraf.sync(tempDir);
+    rimrafSync(tempDir);
   });
 
   afterEach(() => {
