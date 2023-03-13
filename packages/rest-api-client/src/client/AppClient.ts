@@ -61,6 +61,11 @@ type NestedPartial<T> = T extends object
 
 type PropertiesForParameter = NestedPartial<Properties>;
 
+// TODO: should remove this type after adding types for SpaceResponseParameters
+type SpaceResponseParameters = {
+  defaultThread: string;
+};
+
 export class AppClient {
   private client: HttpClient;
   private guestSpaceId?: number | string;
@@ -212,9 +217,12 @@ export class AppClient {
       const spacePath = this.buildPathWithGuestSpaceId({
         endpointName: "space",
       });
-      const { defaultThread } = await this.client.get(spacePath, {
-        id: space,
-      });
+      const { defaultThread } = await this.client.get<SpaceResponseParameters>(
+        spacePath,
+        {
+          id: space,
+        }
+      );
       return this.client.post(path, { ...params, thread: defaultThread });
     }
     return this.client.post(path, { name });
