@@ -43,7 +43,7 @@
     "@types/yargs": "^17.0.22",
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
-    "webpack": "^5.76.0",
+    "webpack": "^5.76.1",
     "webpack-cli": "5.0.1"
   }
 }
