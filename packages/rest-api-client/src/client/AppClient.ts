@@ -61,7 +61,7 @@ type NestedPartial<T> = T extends object
 
 type PropertiesForParameter = NestedPartial<Properties>;
 
-// TODO: should remove this type after adding types for SpaceResponseParameters
+// TODO: should remove after we support types for space APIs
 type SpaceResponseParameters = {
   defaultThread: string;
 };
