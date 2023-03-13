@@ -3,7 +3,7 @@
 import chalk = require("chalk");
 import * as fs from "fs";
 import * as inquirer from "inquirer";
-import rimraf from "rimraf";
+import { rimraf } from "rimraf";
 import { generatePlugin } from "./generator";
 import type { Lang } from "./lang";
 import { printError, printLog } from "./logger";
@@ -83,7 +83,7 @@ ${m("developerSite")}
       `);
     })
     .catch((error: Error) => {
-      rimraf(outputDir, () => {
+      rimraf(outputDir, { glob: true }).then(() => {
         printError(m("Error_cannotCreatePlugin"), error.message);
       });
     });
