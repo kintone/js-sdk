@@ -1,7 +1,7 @@
 import fs from "fs";
 import os from "os";
 import path from "path";
-import rimraf from "rimraf";
+import { rimrafSync } from "rimraf";
 
 import webpack from "webpack";
 import { verifyPluginZip } from "./helpers";
@@ -66,7 +66,7 @@ describe("KintonePlugin", () => {
   });
 
   afterAll(() => {
-    rimraf.sync(tempDir);
+    rimrafSync(tempDir);
   });
 
   afterEach(() => {
