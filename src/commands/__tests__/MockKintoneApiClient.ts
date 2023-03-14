@@ -16,8 +16,9 @@ const ApiPreviewPath = {
   Deploy: "/k/v1/preview/app/deploy.json",
 } as const;
 
-type ApiPathValues = typeof ApiPath[keyof typeof ApiPath];
-type ApiPreviewPathValues = typeof ApiPreviewPath[keyof typeof ApiPreviewPath];
+type ApiPathValues = (typeof ApiPath)[keyof typeof ApiPath];
+type ApiPreviewPathValues =
+  (typeof ApiPreviewPath)[keyof typeof ApiPreviewPath];
 
 type PathParameter = ApiPathValues | ApiPreviewPathValues;
 
