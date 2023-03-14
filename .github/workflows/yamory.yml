@@ -20,7 +20,7 @@ jobs:
     - name: download and validate Yamory script
       env:
         # https://cli.yamory.io/yamory-app-library-scan-scripts/yamory-yarn-sha512sum.txt
-        YAMORY_YARN_SCRIPT_SHA512: "eb87a80a49f3127f9b048853b043b9f8484b33f2647223ab271f483f5e5297ec528e545dd98d9ca97b09971c7150fcfe262d7b08d65b2ad932d4cbde7679bcbd"
+        YAMORY_YARN_SCRIPT_SHA512: "fa35d9b188d98a5985e8be9a27b9f810fdc8868db0d5228c063f30ebbf3293bcbfe6fd14b02f26483cbe9d46499b3e7857266c62f57e568a741254d5d9720b3e"
       working-directory: /tmp
       run: |
         curl -sSf -L -o ./yamory-yarn.sh \
