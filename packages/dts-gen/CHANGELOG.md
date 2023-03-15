@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.22](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.21...@kintone/dts-gen@6.1.22) (2023-03-15)
+
+### Bug Fixes
+
+- **deps:** update eslint and prettier (minor) ([#1801](https://github.com/kintone/js-sdk/issues/1801)) ([62aa13a](https://github.com/kintone/js-sdk/commit/62aa13a86c6b77b10f91a97d1d0ca4355a57e186))
+
 ## [6.1.21](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.20...@kintone/dts-gen@6.1.21) (2023-03-03)
 
 ### Bug Fixes
