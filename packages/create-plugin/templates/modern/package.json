@@ -21,6 +21,7 @@
     "@cybozu/eslint-config": "^18.0.1",
     "@kintone/dts-gen": "^6.1.21",
     "@kintone/webpack-plugin-kintone-plugin": "^6.0.27",
+    "ajv": "^8.12.0",
     "babel-loader": "^9.1.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.25.0",
