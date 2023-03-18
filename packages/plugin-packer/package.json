@@ -82,7 +82,7 @@
     "util": "^0.12.5",
     "webpack": "^5.76.2",
     "webpack-cli": "5.0.1",
-    "webpack-dev-server": "^4.13.0"
+    "webpack-dev-server": "^4.13.1"
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-packer",
   "repository": {
