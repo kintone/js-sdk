@@ -4,8 +4,7 @@ import type {
   AxiosRequestConfig,
   AxiosRequestHeaders,
 } from "axios";
-import axios from "axios";
-import { IncomingHttpHeaders } from "http";
+import axios, { AxiosHeaders } from "axios";
 
 export interface NewInstanceInput {
   baseUrl: string;
@@ -33,21 +32,15 @@ const newAxiosInstance = (input: NewInstanceInput): AxiosInstance => {
     };
   }
 
-  let headers: AxiosRequestHeaders;
+  const headers: AxiosRequestHeaders = new AxiosHeaders();
   if (input.username && input.password) {
-    headers = {
-      "X-Cybozu-Authorization": Buffer.from(
-        `${input.username}:${input.password}`
-      ).toString("base64"),
-    };
+    headers["X-Cybozu-Authorization"] = Buffer.from(
+      `${input.username}:${input.password}`
+    ).toString("base64");
   } else if (input.apiToken) {
-    headers = {
-      "X-Cybozu-API-Token": input.apiToken,
-    };
+    headers["X-Cybozu-API-Token"] = input.apiToken;
   } else if (input.oAuthToken) {
-    headers = {
-      Authorization: `Bearer ${input.oAuthToken}`,
-    };
+    headers.Authorization = `Bearer ${input.oAuthToken}`;
   } else {
     throw new Error("cannot get an authentication input");
   }
