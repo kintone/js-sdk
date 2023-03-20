@@ -1,5 +1,6 @@
 import { AxiosUtils, VisibleForTesting } from "./axios-utils";
 import type { AxiosRequestConfig } from "axios";
+import { AxiosHeaders } from "axios";
 
 describe("FormsClientImpl#constructor", () => {
   const baseUrl = "https://kintone.com";
@@ -26,9 +27,9 @@ describe("FormsClientImpl#constructor", () => {
       basicAuthUsername: null,
     };
 
-    const headers = {
+    const headers = new AxiosHeaders({
       "X-Cybozu-Authorization": authToken,
-    };
+    });
     const expectedCalledWith = {
       headers,
       baseURL: baseUrl,
@@ -47,9 +48,9 @@ describe("FormsClientImpl#constructor", () => {
       basicAuthUsername: null,
     };
 
-    const headers = {
+    const headers = new AxiosHeaders({
       "X-Cybozu-Authorization": authToken,
-    };
+    });
     const expectedCalledWith = {
       headers,
       baseURL: baseUrl,
@@ -75,10 +76,10 @@ describe("FormsClientImpl#constructor", () => {
       basicAuthUsername: "basicPassword",
     };
 
-    const headers = {
+    const headers = new AxiosHeaders({
       "X-Cybozu-Authorization": authToken,
       Authorization: "Basic YmFzaWNQYXNzd29yZDpiYXNpY1VzZXJuYW1l",
-    };
+    });
     const expectedCalledWith = {
       headers,
       baseURL: baseUrl,
