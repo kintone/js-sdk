@@ -3352,10 +3352,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-15.0.0.tgz#cb3f9f741869e20cce330ffbeb9271590483882d"
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
-"@types/yargs@^17.0.22":
-  version "17.0.22"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.22.tgz#7dd37697691b5f17d020f3c63e7a45971ff71e9a"
-  integrity sha512-pet5WJ9U8yPVRhkwuEIp5ktAeAqRZOq4UdAyWLWzxbtpyXnzbtLdKiXAjJzi/KLmPGS9wk86lUFWZFN6sISo4g==
+"@types/yargs@^17.0.23":
+  version "17.0.23"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.23.tgz#a7db3a2062c95ca1a5e0d5d5ddb6521cbc649e35"
+  integrity sha512-yuogunc04OnzGQCrfHx+Kk883Q4X0aSwmYZhKjI21m+SVYzjIbrWl8dOOwSv5hf2Um2pdCOXWo9isteZTNXUZQ==
   dependencies:
     "@types/yargs-parser" "*"
 
@@ -11478,10 +11478,10 @@ prettier@^2.6.2:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
   integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
 
-prettier@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.5.tgz#3dd8ae1ebddc4f6aa419c9b64d8c8319a7e0d982"
-  integrity sha512-3gzuxrHbKUePRBB4ZeU08VNkUcqEHaUaouNt0m7LGP4Hti/NuB07C7PPTM/LkWqXoJYJn2McEo5+kxPNrtQkLQ==
+prettier@^2.8.6:
+  version "2.8.6"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.6.tgz#5c174b29befd507f14b83e3c19f83fdc0e974b71"
+  integrity sha512-mtuzdiBbHwPEgl7NxWlqOkithPyp4VN93V7VeHVWBF+ad3I5avc0RVDT4oImXQy9H/AqxA2NSQH8pSxHW6FYbQ==
 
 pretty-format@^29.0.0, pretty-format@^29.0.1:
   version "29.0.1"
