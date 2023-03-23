@@ -22,9 +22,9 @@ describe("validator", () => {
       valid: false,
       errors: [
         {
-          dataPath: "",
+          instancePath: "",
           keyword: "required",
-          message: "should have required property 'version'",
+          message: "must have required property 'version'",
           params: {
             missingProperty: "version",
           },
@@ -61,23 +61,23 @@ describe("validator", () => {
           valid: false,
           errors: [
             {
-              dataPath: "/version",
+              instancePath: "/version",
               keyword: "type",
-              message: "should be integer",
+              message: "must be integer",
               params: { type: "integer" },
               schemaPath: "#/properties/version/oneOf/0/type",
             },
             {
-              dataPath: "/version",
+              instancePath: "/version",
               keyword: "type",
-              message: "should be string",
+              message: "must be string",
               params: { type: "string" },
               schemaPath: "#/properties/version/oneOf/1/type",
             },
             {
-              dataPath: "/version",
+              instancePath: "/version",
               keyword: "oneOf",
-              message: "should match exactly one schema in oneOf",
+              message: "must match exactly one schema in oneOf",
               params: { passingSchemas: null },
               schemaPath: "#/properties/version/oneOf",
             },
@@ -91,23 +91,23 @@ describe("validator", () => {
           valid: false,
           errors: [
             {
-              dataPath: "/version",
+              instancePath: "/version",
               keyword: "minimum",
-              message: "should be >= 0",
+              message: "must be >= 0",
               params: { comparison: ">=", limit: 0 },
               schemaPath: "#/properties/version/oneOf/0/minimum",
             },
             {
-              dataPath: "/version",
+              instancePath: "/version",
               keyword: "type",
-              message: "should be string",
+              message: "must be string",
               params: { type: "string" },
               schemaPath: "#/properties/version/oneOf/1/type",
             },
             {
-              dataPath: "/version",
+              instancePath: "/version",
               keyword: "oneOf",
-              message: "should match exactly one schema in oneOf",
+              message: "must match exactly one schema in oneOf",
               params: { passingSchemas: null },
               schemaPath: "#/properties/version/oneOf",
             },
@@ -124,9 +124,9 @@ describe("validator", () => {
       valid: false,
       errors: [
         {
-          dataPath: "/type",
+          instancePath: "/type",
           keyword: "enum",
-          message: "should be equal to one of the allowed values",
+          message: "must be equal to one of the allowed values",
           params: {
             allowedValues: ["APP"],
           },
@@ -141,9 +141,9 @@ describe("validator", () => {
       valid: false,
       errors: [
         {
-          dataPath: "/description",
+          instancePath: "/description",
           keyword: "required",
-          message: "should have required property 'en'",
+          message: "must have required property 'en'",
           params: {
             missingProperty: "en",
           },
@@ -228,7 +228,7 @@ describe("validator", () => {
       assert(actual.valid === false);
       assert(actual.errors?.length === 1);
       assert.deepStrictEqual(actual.errors[0], {
-        dataPath: "/icon",
+        instancePath: "/icon",
         keyword: "maxFileSize",
         message: "file size should be <= 20MB",
         params: {
@@ -254,7 +254,7 @@ describe("validator", () => {
       assert(actual.valid === false);
       assert(actual.errors?.length === 3);
       assert.deepStrictEqual(actual.errors[1], {
-        dataPath: "/desktop/js/0",
+        instancePath: "/desktop/js/0",
         keyword: "maxFileSize",
         message: "file size should be <= 20MB",
         params: {
@@ -280,7 +280,7 @@ describe("validator", () => {
       assert(actual.valid === false);
       assert(actual.errors?.length === 3);
       assert.deepStrictEqual(actual.errors[1], {
-        dataPath: "/desktop/css/0",
+        instancePath: "/desktop/css/0",
         keyword: "maxFileSize",
         message: "file size should be <= 20MB",
         params: {
@@ -318,9 +318,9 @@ describe("validator", () => {
       assert.strictEqual(actual.valid, false);
       assert.strictEqual(actual.errors?.length, 1);
       assert.deepStrictEqual(actual.errors[0], {
-        dataPath: "/desktop/js",
+        instancePath: "/desktop/js",
         keyword: "maxItems",
-        message: "should NOT have more than 30 items",
+        message: "must NOT have more than 30 items",
         params: {
           limit: 30,
         },
