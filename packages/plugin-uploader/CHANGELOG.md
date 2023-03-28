@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.10](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@7.1.9...@kintone/plugin-uploader@7.1.10) (2023-03-22)
+
+### Bug Fixes
+
+- **deps:** update dependency puppeteer to v19 ([#1787](https://github.com/kintone/js-sdk/issues/1787)) ([8d1a3fd](https://github.com/kintone/js-sdk/commit/8d1a3fd48cd7516ef8c73c997326e21ee9089a0d))
+
 ## [7.1.9](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@7.1.8...@kintone/plugin-uploader@7.1.9) (2023-02-22)
 
 **Note:** Version bump only for package @kintone/plugin-uploader
