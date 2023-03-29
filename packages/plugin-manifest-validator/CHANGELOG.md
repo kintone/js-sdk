@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@7.0.9...@kintone/plugin-manifest-validator@8.0.0) (2023-03-29)
+
+### chore
+
+- **plugin-manifest-validator:** update dependency ajv to v8 ([06d9e03](https://github.com/kintone/js-sdk/commit/06d9e03ab87c7cc7cfc8be45dcdbbf1fefad5792))
+
+### BREAKING CHANGES
+
+- **plugin-manifest-validator:** the `ErrorObject` is changed according to Ajv v8 changes
+
 ## [7.0.9](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@7.0.8...@kintone/plugin-manifest-validator@7.0.9) (2023-02-22)
 
 **Note:** Version bump only for package @kintone/plugin-manifest-validator
