@@ -4,8 +4,7 @@ import type {
   AxiosRequestConfig,
   AxiosRequestHeaders,
 } from "axios";
-import axios from "axios";
-import { IncomingHttpHeaders } from "http";
+import axios, { AxiosHeaders } from "axios";
 
 export interface NewInstanceInput {
   baseUrl: string;
@@ -22,32 +21,32 @@ const newAxiosInstance = (input: NewInstanceInput): AxiosInstance => {
   let proxy: AxiosProxyConfig | undefined;
   // parse the proxy URL like http://admin:pass@localhost:8000
   if (input.proxy) {
-    const proxyUrl = new URL(input.proxy);
+    const { protocol, hostname, port, username, password } = new URL(
+      input.proxy
+    );
     proxy = {
-      host: proxyUrl.hostname,
-      port: parseInt(proxyUrl.port, 10),
-      auth: {
-        username: proxyUrl.username,
-        password: proxyUrl.password,
-      },
+      protocol,
+      host: hostname,
+      port: parseInt(port, 10),
     };
+
+    if (username.length > 0 && password.length > 0) {
+      proxy.auth = {
+        username,
+        password,
+      };
+    }
   }
 
-  let headers: AxiosRequestHeaders;
+  const headers: AxiosRequestHeaders = new AxiosHeaders();
   if (input.username && input.password) {
-    headers = {
-      "X-Cybozu-Authorization": Buffer.from(
-        `${input.username}:${input.password}`
-      ).toString("base64"),
-    };
+    headers["X-Cybozu-Authorization"] = Buffer.from(
+      `${input.username}:${input.password}`
+    ).toString("base64");
   } else if (input.apiToken) {
-    headers = {
-      "X-Cybozu-API-Token": input.apiToken,
-    };
+    headers["X-Cybozu-API-Token"] = input.apiToken;
   } else if (input.oAuthToken) {
-    headers = {
-      Authorization: `Bearer ${input.oAuthToken}`,
-    };
+    headers.Authorization = `Bearer ${input.oAuthToken}`;
   } else {
     throw new Error("cannot get an authentication input");
   }
