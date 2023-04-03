@@ -1,4 +1,3 @@
-import type { ProxyConfig } from "../http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "../KintoneRequestConfigBuilder";
 import FormData from "form-data";
 import { injectPlatformDeps } from "../platform";
@@ -336,7 +335,7 @@ describe("options", () => {
       "X-Cybozu-API-Token": apiToken,
       "User-Agent": expectedDefaultUa,
     };
-    const proxy: ProxyConfig = {
+    const proxy = {
       host: "localhost",
       port: 8000,
       auth: {
@@ -359,14 +358,11 @@ describe("options", () => {
       "/k/v1/record.json",
       { key: "value" }
     );
-    const expectedProxy = Object.assign({}, proxy);
-    expectedProxy.protocol = "http:";
-
     expect(requestConfig).toStrictEqual({
       method: "get",
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers,
-      proxy: expectedProxy,
+      proxy,
     });
   });
 
