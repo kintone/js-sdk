@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.8](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.3.7...@kintone/rest-api-client@3.3.8) (2023-04-04)
+
+### Bug Fixes
+
+- downgrade axios to 0.27.2 ([#2008](https://github.com/kintone/js-sdk/issues/2008)) ([b55da89](https://github.com/kintone/js-sdk/commit/b55da891fd93e59639ef94008bd507c6fd2a5e23))
+
 ## [3.3.7](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.3.6...@kintone/rest-api-client@3.3.7) (2023-03-29)
 
 ### Bug Fixes

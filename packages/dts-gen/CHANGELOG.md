@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.25](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.24...@kintone/dts-gen@6.1.25) (2023-04-04)
+
+### Bug Fixes
+
+- downgrade axios to 0.27.2 ([#2008](https://github.com/kintone/js-sdk/issues/2008)) ([b55da89](https://github.com/kintone/js-sdk/commit/b55da891fd93e59639ef94008bd507c6fd2a5e23))
+
 ## [6.1.24](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.23...@kintone/dts-gen@6.1.24) (2023-03-29)
 
 ### Bug Fixes

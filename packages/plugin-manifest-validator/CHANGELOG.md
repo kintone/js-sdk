@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@8.0.0...@kintone/plugin-manifest-validator@8.0.1) (2023-04-04)
+
+**Note:** Version bump only for package @kintone/plugin-manifest-validator
+
 # [8.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@7.0.9...@kintone/plugin-manifest-validator@8.0.0) (2023-03-29)
 
 ### chore
