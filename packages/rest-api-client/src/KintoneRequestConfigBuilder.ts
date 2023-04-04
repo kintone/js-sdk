@@ -15,8 +15,6 @@ import type { Agent as HttpsAgent } from "https";
 
 type Data = Params | FormData;
 
-const HTTP_PROXY_PROTOCOL = "http:";
-
 type KintoneAuthHeader =
   | {
       "X-Cybozu-Authorization": string;
@@ -104,7 +102,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         httpsAgent: this.httpsAgent,
         clientCertAuth: this.clientCertAuth,
       }),
-      proxy: this.buildProxy(this.proxy),
+      proxy: this.proxy,
     };
 
     switch (method) {
@@ -161,24 +159,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         throw new Error(`${method} method is not supported`);
       }
     }
-  }
-
-  private buildProxy(targetProxy?: ProxyConfig): ProxyConfig | undefined {
-    if (!targetProxy) {
-      return targetProxy;
-    }
-
-    const proxy: ProxyConfig = { ...targetProxy };
-    if (
-      proxy.auth &&
-      (proxy.auth.username.length === 0 || proxy.auth.password.length === 0)
-    ) {
-      proxy.auth = undefined;
-    }
-
-    proxy.protocol = proxy.protocol ?? HTTP_PROXY_PROTOCOL;
-
-    return proxy;
   }
 
   private buildRequestUrl(path: string, params: Data): string {

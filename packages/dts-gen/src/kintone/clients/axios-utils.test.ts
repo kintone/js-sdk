@@ -1,6 +1,5 @@
 import { AxiosUtils, VisibleForTesting } from "./axios-utils";
 import type { AxiosRequestConfig } from "axios";
-import { AxiosHeaders } from "axios";
 
 describe("FormsClientImpl#constructor", () => {
   const baseUrl = "https://kintone.com";
@@ -27,9 +26,9 @@ describe("FormsClientImpl#constructor", () => {
       basicAuthUsername: null,
     };
 
-    const headers = new AxiosHeaders({
+    const headers = {
       "X-Cybozu-Authorization": authToken,
-    });
+    };
     const expectedCalledWith = {
       headers,
       baseURL: baseUrl,
@@ -48,45 +47,19 @@ describe("FormsClientImpl#constructor", () => {
       basicAuthUsername: null,
     };
 
-    const headers = new AxiosHeaders({
+    const headers = {
       "X-Cybozu-Authorization": authToken,
-    });
+    };
     const expectedCalledWith = {
       headers,
       baseURL: baseUrl,
       proxy: {
-        protocol: "http:",
         host: "localhost",
         port: 1234,
         auth: {
           username: "admin",
           password: "password",
         },
-      },
-    };
-    assertConstructorWithArgs(input, expectedCalledWith);
-  });
-
-  test("with proxy option and empty proxy authorization", () => {
-    const input = {
-      baseUrl,
-      username: "username",
-      password: "password",
-      proxy: "https://localhost:1234",
-      basicAuthPassword: null,
-      basicAuthUsername: null,
-    };
-
-    const headers = new AxiosHeaders({
-      "X-Cybozu-Authorization": authToken,
-    });
-    const expectedCalledWith = {
-      headers,
-      baseURL: baseUrl,
-      proxy: {
-        protocol: "https:",
-        host: "localhost",
-        port: 1234,
       },
     };
     assertConstructorWithArgs(input, expectedCalledWith);
@@ -102,10 +75,10 @@ describe("FormsClientImpl#constructor", () => {
       basicAuthUsername: "basicPassword",
     };
 
-    const headers = new AxiosHeaders({
+    const headers = {
       "X-Cybozu-Authorization": authToken,
       Authorization: "Basic YmFzaWNQYXNzd29yZDpiYXNpY1VzZXJuYW1l",
-    });
+    };
     const expectedCalledWith = {
       headers,
       baseURL: baseUrl,
