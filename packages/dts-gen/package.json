@@ -29,7 +29,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@cybozu/eslint-config": "^18.0.2",
+    "@cybozu/eslint-config": "^18.0.3",
     "axios": "^0.27.2",
     "commander": "^10.0.0",
     "eslint": "^8.36.0",
