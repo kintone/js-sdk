@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.37](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.36...@kintone/create-plugin@5.1.37) (2023-04-06)
+
+### Bug Fixes
+
+- **deps:** update dependency @cybozu/eslint-config to ^18.0.3 ([#2019](https://github.com/kintone/js-sdk/issues/2019)) ([60cc327](https://github.com/kintone/js-sdk/commit/60cc327302206a0b5fdc8363c1308c7402e40fca))
+- **deps:** update dependency @kintone/rest-api-client to ^3.3.8 ([#2016](https://github.com/kintone/js-sdk/issues/2016)) ([d1bfbdc](https://github.com/kintone/js-sdk/commit/d1bfbdc27566f8b142764e4353c71fd6b26882f1))
+- **deps:** update dependency eslint to ^8.37.0 ([#2004](https://github.com/kintone/js-sdk/issues/2004)) ([26f0f05](https://github.com/kintone/js-sdk/commit/26f0f050f3473698f754075e0d79bdce6ccbfde3))
+
 ## [5.1.36](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.35...@kintone/create-plugin@5.1.36) (2023-04-04)
 
 ### Bug Fixes
