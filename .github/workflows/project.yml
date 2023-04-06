@@ -19,7 +19,7 @@ jobs:
         with:
           github_app_id: ${{ secrets.PROJECT_GITHUB_APP_ID}}
           github_app_private_key: ${{ secrets.PROJECT_GITHUB_APP_KEY }}
-      - uses: actions/add-to-project@v0.4.1
+      - uses: actions/add-to-project@v0.5.0
         with:
           project-url: ${{ secrets.PROJECT_URL }}
           github-token: ${{ steps.create-iat.outputs.token }}
