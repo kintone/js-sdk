@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.27](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.26...@kintone/dts-gen@6.1.27) (2023-04-10)
+
+### Bug Fixes
+
+- **dts-gen:** An error is caught, ends with exit status 1 ([#2009](https://github.com/kintone/js-sdk/issues/2009)) ([659aefa](https://github.com/kintone/js-sdk/commit/659aefa7c3cf0b5b9c1b944ebac8e331c2c8c987))
+
 ## [6.1.26](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.25...@kintone/dts-gen@6.1.26) (2023-04-06)
 
 ### Bug Fixes
