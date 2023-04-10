@@ -34,4 +34,8 @@ const handler = async () => {
   await TypeDefinitionTemplate.renderAsFile(args.output, input);
 };
 
-handler().catch((err) => console.error(err));
+handler().catch((err) => {
+  console.error(err);
+  // eslint-disable-next-line no-process-exit
+  process.exit(1);
+});
