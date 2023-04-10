@@ -37,5 +37,5 @@ const handler = async () => {
 handler().catch((err) => {
   console.error(err);
   // eslint-disable-next-line no-process-exit
-  process.exit(2);
+  process.exit(1);
 });
