@@ -4,6 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import { terser } from "rollup-plugin-terser";
 import replace from "rollup-plugin-replace";
+import license from "rollup-plugin-license";
 
 // TODO: After importing JSON module become stable, we can import package.json as follows
 // JSON module: https://github.com/tc39/proposal-json-modules
@@ -16,6 +17,10 @@ import builtins from "rollup-plugin-node-builtins";
 import globals from "rollup-plugin-node-globals";
 import babel from "@rollup/plugin-babel";
 import { ecmaVersionValidator } from "rollup-plugin-ecma-version-validator";
+import fs from "fs";
+
+const licenseTemplate = fs.readFileSync("LICENSE", "utf-8");
+const dependenciesTemplate = fs.readFileSync("DEPENDENCIES", "utf-8");
 
 const extensions = [".ts", ".js"];
 
@@ -80,5 +85,11 @@ export default defineConfig({
     builtins(),
     isProd && terser(),
     ecmaVersionValidator({ ecmaVersion: 6 }),
+    license({
+      banner: {
+        commentStyle: "regular",
+        content: licenseTemplate.concat("\n", dependenciesTemplate),
+      },
+    }),
   ],
 });
