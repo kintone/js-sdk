@@ -19,8 +19,15 @@ import babel from "@rollup/plugin-babel";
 import { ecmaVersionValidator } from "rollup-plugin-ecma-version-validator";
 import fs from "fs";
 
-const licenseTemplate = fs.readFileSync("LICENSE", "utf-8");
-const dependenciesTemplate = fs.readFileSync("DEPENDENCIES", "utf-8");
+const licenseText = fs.readFileSync("LICENSE", "utf-8");
+const licenseTemplate = `
+${licenseText}
+
+This bundle includes the following third-party libraries:
+<% _.forEach(dependencies, function (dependency) { %>
+  <%= dependency.name %>@<%= dependency.version %> -- <%= dependency.license %>
+<% }) %>
+`;
 
 const extensions = [".ts", ".js"];
 
@@ -88,7 +95,7 @@ export default defineConfig({
     license({
       banner: {
         commentStyle: "regular",
-        content: licenseTemplate.concat("\n", dependenciesTemplate),
+        content: licenseTemplate,
       },
     }),
   ],
