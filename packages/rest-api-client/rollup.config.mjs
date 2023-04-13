@@ -25,7 +25,9 @@ ${licenseText}
 
 This bundle includes the following third-party libraries:
 <% _.forEach(dependencies, function (dependency) { %>
+  =====
   <%= dependency.name %>@<%= dependency.version %> -- <%= dependency.license %>
+  -----
 
   <%= dependency.licenseText %>
 <% }) %>
