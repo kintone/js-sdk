@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/eslint": "^8.37.0",
-    "@types/lodash": "^4.14.192",
+    "@types/lodash": "^4.14.194",
     "@types/prettier": "^2.7.2",
     "ts-loader": "^9.4.2",
     "webpack": "^5.79.0",
