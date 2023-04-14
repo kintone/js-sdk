@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/inquirer": "^8.2.6",
-    "@types/lodash": "^4.14.192",
+    "@types/lodash": "^4.14.194",
     "@types/node-rsa": "^1.1.1",
     "@types/normalize-path": "^3.0.0",
     "@types/rimraf": "^3.0.2",
