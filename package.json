@@ -1,6 +1,6 @@
 {
   "name": "@kintone/customize-uploader",
-  "version": "6.0.33",
+  "version": "6.0.34",
   "description": "A kintone customize uploader",
   "bin": {
     "kintone-customize-uploader": "bin/cli.js"
@@ -46,7 +46,7 @@
     "@types/rimraf": "^3.0.2"
   },
   "dependencies": {
-    "@kintone/rest-api-client": "^3.3.9",
+    "@kintone/rest-api-client": "^3.3.10",
     "chokidar": "^3.5.3",
     "inquirer": "^8.2.5",
     "meow": "^9.0.0",
