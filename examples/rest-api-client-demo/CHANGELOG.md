@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.36](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@3.0.35...@kintone/rest-api-client-demo@3.0.36) (2023-04-21)
+
+**Note:** Version bump only for package @kintone/rest-api-client-demo
+
 ## [3.0.35](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@3.0.34...@kintone/rest-api-client-demo@3.0.35) (2023-04-10)
 
 **Note:** Version bump only for package @kintone/rest-api-client-demo
