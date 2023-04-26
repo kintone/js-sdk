@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.40](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.39...@kintone/create-plugin@5.1.40) (2023-04-26)
+
+### Bug Fixes
+
+- **deps:** update dependency @kintone/rest-api-client to ^3.3.10 ([#2053](https://github.com/kintone/js-sdk/issues/2053)) ([54db5ac](https://github.com/kintone/js-sdk/commit/54db5ac9ebdb6e5572fd8c6eae7f3a65b8434916))
+- **deps:** update dependency prettier to ^2.8.8 ([#2054](https://github.com/kintone/js-sdk/issues/2054)) ([b066f66](https://github.com/kintone/js-sdk/commit/b066f668169731e062e5ced04f97121c42a54a7c))
+
 ## [5.1.39](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.38...@kintone/create-plugin@5.1.39) (2023-04-21)
 
 **Note:** Version bump only for package @kintone/create-plugin

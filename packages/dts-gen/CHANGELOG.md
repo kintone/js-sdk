@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.29](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.28...@kintone/dts-gen@6.1.29) (2023-04-26)
+
+### Bug Fixes
+
+- **deps:** update dependency prettier to ^2.8.8 ([#2054](https://github.com/kintone/js-sdk/issues/2054)) ([b066f66](https://github.com/kintone/js-sdk/commit/b066f668169731e062e5ced04f97121c42a54a7c))
+
 ## [6.1.28](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.27...@kintone/dts-gen@6.1.28) (2023-04-21)
 
 ### Bug Fixes
