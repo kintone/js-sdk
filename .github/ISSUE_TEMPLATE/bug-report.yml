@@ -76,6 +76,6 @@ body:
         - Node.js version: ...
       description: |
         What environment did the bug occur on?
-        You can paste the output of `npx envinfo --system --npmPackages '@kintone/*' --binaries --browsers`.
+        You can paste the output of `npx envinfo --system --npmPackages '{typescript,@kintone/*}' --binaries --browsers`.
     validations:
       required: true
