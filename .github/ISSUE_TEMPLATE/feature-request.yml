@@ -28,7 +28,7 @@ body:
     id: why
     attributes:
       label: Why
-      description: Why do you want the feature and why does it make sense for the package?
+      description: Why do you want the feature, and why should it be in the package?
     validations:
       required: true
   - type: textarea
