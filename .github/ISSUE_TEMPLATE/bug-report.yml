@@ -21,14 +21,14 @@ body:
       description: Which package do you want to report a bug for?
       multiple: true
       options:
-        - @kintone/rest-api-client
-        - @kintone/customize-uploader
-        - @kintone/plugin-manifest-validator
-        - @kintone/create-plugin
-        - @kintone/plugin-packer
-        - @kintone/webpack-plugin-kintone-plugin
-        - @kintone/plugin-uploader
-        - @kintone/dts-gen
+        - "@kintone/rest-api-client"
+        - "@kintone/customize-uploader"
+        - "@kintone/plugin-manifest-validator"
+        - "@kintone/create-plugin"
+        - "@kintone/plugin-packer"
+        - "@kintone/webpack-plugin-kintone-plugin"
+        - "@kintone/plugin-uploader"
+        - "@kintone/dts-gen"
     validations:
       required: true
   - type: input
