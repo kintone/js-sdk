@@ -36,7 +36,7 @@ body:
     attributes:
       label: Target Version
       placeholder: e.g. vX.Y.Z
-      description: Which version of cli-kintone do you want to report a bug for? 
+      description: Which version of the package do you want to report a bug for? 
     validations:
       required: true
   - type: textarea
