@@ -1,0 +1,40 @@
+name: "🚀 Feature Request"
+description: Issue for a feature request
+labels: ["feature request"]
+title: "[Feature Request] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for sending a feature request! Please fill out the followings.
+  - type: dropdown
+    id: package
+    attributes:
+      label: Target Package
+      description: Which package do you want to add a feature for?
+      multiple: true
+      options:
+        - "@kintone/rest-api-client"
+        - "@kintone/customize-uploader"
+        - "@kintone/plugin-manifest-validator"
+        - "@kintone/create-plugin"
+        - "@kintone/plugin-packer"
+        - "@kintone/webpack-plugin-kintone-plugin"
+        - "@kintone/plugin-uploader"
+        - "@kintone/dts-gen"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: Why do you want the feature, and why should it be in the package?
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What
+      description: What is a solution you want to add?
+    validations:
+      required: true

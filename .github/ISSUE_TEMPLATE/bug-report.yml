@@ -1,0 +1,84 @@
+name: "🐛 Bug report"
+description: Report for reproducible bug of js-sdk
+labels: ["bug"]
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please fill out the followings.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Please describe what the bug is.
+    validations:
+      required: true
+  - type: dropdown
+    id: package
+    attributes:
+      label: Target Package
+      description: Which package do you want to report a bug for?
+      multiple: true
+      options:
+        - "@kintone/rest-api-client"
+        - "@kintone/customize-uploader"
+        - "@kintone/plugin-manifest-validator"
+        - "@kintone/create-plugin"
+        - "@kintone/plugin-packer"
+        - "@kintone/webpack-plugin-kintone-plugin"
+        - "@kintone/plugin-uploader"
+        - "@kintone/dts-gen"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Target Version
+      placeholder: e.g. vX.Y.Z
+      description: Which version of the package do you want to report a bug for? 
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: |
+        Please provide [minimum reproduction](https://stackoverflow.com/help/minimal-reproducible-example) steps of the bug.
+        If you have a reproduction repository, [GitHub Gist](https://gist.github.com/) snippet, or some external pages, please share the links.
+        
+        :warning: DO NOT SUBMIT CONFIDENTIAL INFORMATION SUCH AS YOUR SUBDOMAIN AND PASSWORD
+      placeholder: |
+        1. Install @kintone/...
+        2. Run the following code snippet
+        ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: What is the behavior you expected?
+    validations:
+      required: true
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: Actual Behavior
+      description: What is the actual behavior you saw?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: |
+        - Operating System: ...
+        - Browser: ...
+        - Node.js version: ...
+        - TypeScript version: ...
+      description: |
+        What environment did the bug occur on?
+        You can paste the output of `npx envinfo --system --npmPackages '{typescript,@kintone/*}' --binaries --browsers`.
+    validations:
+      required: true
