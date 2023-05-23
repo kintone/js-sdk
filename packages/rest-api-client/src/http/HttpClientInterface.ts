@@ -30,7 +30,7 @@ export type ProxyConfig = {
     username: string;
     password: string;
   };
-};
+} | false;
 
 export interface HttpClientError<T = ErrorResponse> extends Error {
   response?: T;
