@@ -366,6 +366,37 @@ describe("options", () => {
     });
   });
 
+  it("should accept false when specify false to proxy opption", async () => {
+    const baseUrl = "https://example.kintone.com";
+    const apiToken = "apiToken";
+    const headers = {
+      "X-Cybozu-API-Token": apiToken,
+      "User-Agent": expectedDefaultUa,
+    };
+    const proxy = false;
+
+    const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl,
+      auth: {
+        type: "apiToken",
+        apiToken,
+      },
+      proxy,
+    });
+
+    const requestConfig = await kintoneRequestConfigBuilder.build(
+      "get",
+      "/k/v1/record.json",
+      { key: "value" }
+    );
+    expect(requestConfig).toStrictEqual({
+      method: "get",
+      url: `${baseUrl}/k/v1/record.json?key=value`,
+      headers,
+      proxy,
+    });
+  });
+
   it("should build `requestConfig` having `httpsAgent` property", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
