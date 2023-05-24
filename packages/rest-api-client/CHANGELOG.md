@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.14](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.3.13...@kintone/rest-api-client@3.3.14) (2023-05-24)
+
+### Bug Fixes
+
+- **rest-api-client:** make the `proxy` option of `KintoneRestAPIClient` accept false ([#2102](https://github.com/kintone/js-sdk/issues/2102)) ([ea60f5b](https://github.com/kintone/js-sdk/commit/ea60f5bf0e6e90f9dad559ed4056dedb34b71ffc))
+
 ## [3.3.13](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.3.12...@kintone/rest-api-client@3.3.13) (2023-05-17)
 
 **Note:** Version bump only for package @kintone/rest-api-client
