@@ -60,7 +60,7 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@types/core-js": "^2.5.5",
     "@types/js-base64": "^3.0.0",
     "@types/mime": "^3.0.1",
