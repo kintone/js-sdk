@@ -54,7 +54,7 @@
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client#readme",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.3",
