@@ -21,7 +21,7 @@
     "build:integration": "webpack --mode development --config webpack.config.js"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "author": {
     "name": "Cybozu, Inc.",

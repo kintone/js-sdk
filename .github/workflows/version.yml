@@ -15,10 +15,10 @@ jobs:
         with:
           # fetch all commits and tags (https://github.com/lerna/lerna/issues/2542)
           fetch-depth: "0"
-      - name: Use Node.js 16.x
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: yarn
       - run: yarn install --frozen-lockfile
       - name: Generate next release (dry-run)
