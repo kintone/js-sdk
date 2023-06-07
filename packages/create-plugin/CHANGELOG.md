@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.44...@kintone/create-plugin@6.0.0) (2023-06-07)
+
+### Bug Fixes
+
+- **deps:** update dependency @kintone/rest-api-client to ^3.3.15 ([#2122](https://github.com/kintone/js-sdk/issues/2122)) ([fecbab0](https://github.com/kintone/js-sdk/commit/fecbab02d8dd2df998414f44c1c4ef54cb5c8dfa))
+
+- build!: drop Node v14 support because of the EOL (#2124) ([ef0e004](https://github.com/kintone/js-sdk/commit/ef0e004b40a518a1b5a3aa5d82446c556c742f02)), closes [#2124](https://github.com/kintone/js-sdk/issues/2124)
+
+### BREAKING CHANGES
+
+- We dropped Node v14 support. Now supported versions are v16, v18, and v20.
+
 ## [5.1.44](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.43...@kintone/create-plugin@5.1.44) (2023-05-31)
 
 ### Bug Fixes

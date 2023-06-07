@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.33...@kintone/dts-gen@7.0.0) (2023-06-07)
+
+- build!: drop Node v14 support because of the EOL (#2124) ([ef0e004](https://github.com/kintone/js-sdk/commit/ef0e004b40a518a1b5a3aa5d82446c556c742f02)), closes [#2124](https://github.com/kintone/js-sdk/issues/2124)
+
+### BREAKING CHANGES
+
+- We dropped Node v14 support. Now supported versions are v16, v18, and v20.
+
 ## [6.1.33](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@6.1.32...@kintone/dts-gen@6.1.33) (2023-05-31)
 
 **Note:** Version bump only for package @kintone/dts-gen

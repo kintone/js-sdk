@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@7.1.10...@kintone/plugin-uploader@8.0.0) (2023-06-07)
+
+- build!: drop Node v14 support because of the EOL (#2124) ([ef0e004](https://github.com/kintone/js-sdk/commit/ef0e004b40a518a1b5a3aa5d82446c556c742f02)), closes [#2124](https://github.com/kintone/js-sdk/issues/2124)
+
+### BREAKING CHANGES
+
+- We dropped Node v14 support. Now supported versions are v16, v18, and v20.
+
 ## [7.1.10](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@7.1.9...@kintone/plugin-uploader@7.1.10) (2023-03-22)
 
 ### Bug Fixes
