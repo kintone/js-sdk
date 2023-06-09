@@ -1,4 +1,4 @@
-import type { RenderInput } from "../types/template";
+import type { RenderInput } from "./template";
 import * as F from "./expressions/fields";
 import { Namespace } from "./expressions/namespace";
 import {

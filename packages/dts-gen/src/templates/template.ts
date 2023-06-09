@@ -3,8 +3,14 @@ import * as path from "path";
 import * as prettier from "prettier";
 import { ESLint } from "eslint";
 
-import type { RenderInput } from "../types/template";
+import type { FieldTypeGroups } from "../converters/fileldtype-converter";
 import { convertToTsExpression } from "./converter";
+
+export interface RenderInput {
+  typeName: string;
+  namespace: string;
+  fieldTypeGroups: FieldTypeGroups;
+}
 
 const renderAsFile = async (output: string, renderInput: RenderInput) => {
   const tsExpression = convertToTsExpression(renderInput);
