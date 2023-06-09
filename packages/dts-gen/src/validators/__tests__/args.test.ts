@@ -1,7 +1,10 @@
 import { validateArgs } from "../args";
 
-const invalidNamespaceMessage = "Invalid namespace option!";
-const invalidTypeNameMessage = "Invalid type-name option!";
+const identifierConventionMsg = `The namespace and type-name convention:
+- Starts with a letter (\`a-z\` or \`A-Z\`), underscore (\`_\`), or dollar sign (\`$\`).
+- Can be followed by any alphanumeric, underscores, or dollar signs.`;
+const invalidNamespaceMessage = `Invalid namespace option!\n${identifierConventionMsg}`;
+const invalidTypeNameMessage = `Invalid type-name option!\n${identifierConventionMsg}`;
 const baseInput = {
   baseUrl: "",
   preview: false,
@@ -87,7 +90,7 @@ describe("validateInput", () => {
     if (pattern.expected.failure !== undefined) {
       return expect(() => {
         validateArgs(pattern.input);
-      }).toThrow(pattern.expected.failure.errorMessage);
+      }).toThrow(new Error(pattern.expected.failure.errorMessage));
     }
 
     return expect(() => {
