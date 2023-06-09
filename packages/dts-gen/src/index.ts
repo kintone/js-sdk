@@ -1,3 +1,4 @@
+import type { RenderInput } from "./templates/template";
 import { FormsClientImpl } from "./kintone/clients/forms-client-impl";
 import { DemoClient } from "./kintone/clients/demo-client";
 import { FieldTypeConverter } from "./converters/fileldtype-converter";
@@ -26,7 +27,7 @@ const handler = async () => {
   const fieldTypeGroups = FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
     objectValues(properties)
   );
-  const input = {
+  const input: RenderInput = {
     typeName: args.typeName,
     namespace: args.namespace,
     fieldTypeGroups,

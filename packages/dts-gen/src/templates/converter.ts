@@ -1,4 +1,4 @@
-import type { FieldTypeGroups } from "../converters/fileldtype-converter";
+import type { RenderInput } from "./template";
 import * as F from "./expressions/fields";
 import { Namespace } from "./expressions/namespace";
 import {
@@ -11,17 +11,13 @@ export const convertToTsExpression = ({
   namespace,
   typeName,
   fieldTypeGroups,
-}: {
-  namespace: string;
-  typeName: string;
-  fieldTypeGroups: FieldTypeGroups;
-}): Namespace => {
+}: RenderInput): Namespace => {
   const fieldGroup = convertToFieldGroup(fieldTypeGroups);
   const subTableFields = fieldTypeGroups.subTableFields.map(
     (f) => new F.SubTableField(f.code, f.type, convertToFieldGroup(f.fields))
   );
 
-  const typeDefenition = new TypeDefinition(
+  const typeDefinition = new TypeDefinition(
     typeName,
     fieldGroup,
     subTableFields
@@ -36,13 +32,13 @@ export const convertToTsExpression = ({
       (f) => new F.TsDefinedField(f.code, f.type)
     );
 
-  const savedTypeDefenition = new SavedTypeDefinition(
+  const savedTypeDefinition = new SavedTypeDefinition(
     typeName,
     userFields,
     stringFieldsInSavedRecord
   );
 
-  return new Namespace(namespace, typeDefenition, savedTypeDefenition);
+  return new Namespace(namespace, typeDefinition, savedTypeDefinition);
 };
 
 interface ConvertToFieldGroupInput {
