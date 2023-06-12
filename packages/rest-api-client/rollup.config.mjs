@@ -3,7 +3,6 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import { terser } from "rollup-plugin-terser";
-import replace from "rollup-plugin-replace";
 import license from "rollup-plugin-license";
 
 // TODO: After importing JSON module become stable, we can import package.json as follows
@@ -89,9 +88,6 @@ export default defineConfig({
       ],
     }),
     json(),
-    replace({
-      PACKAGE_VERSION: JSON.stringify(pkgJson.version),
-    }),
     globals(),
     builtins(),
     isProd && terser(),
