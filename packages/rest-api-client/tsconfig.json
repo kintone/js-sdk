@@ -4,13 +4,14 @@
     "target": "es5",
     "lib": ["es5", "es2015.promise", "es2015.iterable", "es2015.symbol", "es2015.symbol.wellknown"],
     "outDir": "./lib",
-    "rootDir": "./src",
+    "rootDir": "./",
     "typeRoots": [
       "node_modules/@types",
       "../../node_modules/@types",
       "types"
-    ]
+    ],
+    "resolveJsonModule": true
   },
-  "include": ["src/"],
+  "include": ["src/**/*", "package.json"],
   "references": []
 }
