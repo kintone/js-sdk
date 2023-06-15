@@ -32,7 +32,7 @@
     "bytes": "^3.1.2"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.21.5",
+    "@babel/preset-typescript": "^7.22.5",
     "@types/bytes": "^3.1.1",
     "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "intelli-espower-loader": "^1.1.0",
