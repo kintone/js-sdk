@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@7.0.0...@kintone/webpack-plugin-kintone-plugin@7.0.1) (2023-06-15)
+
+**Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
+
 # [7.0.0](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@6.0.39...@kintone/webpack-plugin-kintone-plugin@7.0.0) (2023-06-07)
 
 - build!: drop Node v14 support because of the EOL (#2124) ([ef0e004](https://github.com/kintone/js-sdk/commit/ef0e004b40a518a1b5a3aa5d82446c556c742f02)), closes [#2124](https://github.com/kintone/js-sdk/issues/2124)

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@4.0.0...@kintone/rest-api-client@4.0.1) (2023-06-15)
+
+### Bug Fixes
+
+- **rest-api-client:** return version from package.json instead of hardcode ([#2143](https://github.com/kintone/js-sdk/issues/2143)) ([8d03252](https://github.com/kintone/js-sdk/commit/8d03252df96d63cac59938353c49909106e88c6e))
+
 # [4.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@3.3.15...@kintone/rest-api-client@4.0.0) (2023-06-07)
 
 - build!: drop Node v14 support because of the EOL (#2124) ([ef0e004](https://github.com/kintone/js-sdk/commit/ef0e004b40a518a1b5a3aa5d82446c556c742f02)), closes [#2124](https://github.com/kintone/js-sdk/issues/2124)
