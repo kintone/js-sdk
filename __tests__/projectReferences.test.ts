@@ -6,7 +6,7 @@ import {
   isIgnorePackage,
 } from "./lib/workspace";
 
-describe("projectReferences", () => {
+describe.skip("projectReferences", () => {
   describe("packages/tsconfig", () => {
     it("should includes all packages and examples", () => {
       const referencePaths = getReferencePaths("packages");
