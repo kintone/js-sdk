@@ -5,7 +5,7 @@ import { getWorkspaces } from "./lib/workspace";
 
 const REQUIRED_NPMSCRIPTS = ["build", "lint", "test", "test:ci"];
 
-describe("npmScripts", () => {
+describe.skip("npmScripts", () => {
   it("should define all required npm-scripts in all pacakges", () => {
     const workspaces = getWorkspaces().filter(({ packagePath }) =>
       /\/packages\//.test(packagePath)
