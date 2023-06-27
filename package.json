@@ -16,7 +16,7 @@
     "pretest": "jest",
     "start": "pnpm build:prod --watch",
     "test": "pnpm -r --parallel run test",
-    "test:ci": "pnpm pretest && pnpm -r run test:ci --stream"
+    "test:ci": "pnpm pretest && pnpm -r --stream run test:ci"
   },
   "repository": {
     "type": "git",
