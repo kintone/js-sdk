@@ -9,7 +9,7 @@
       "types"
     ],
   },
-  "indlude": ["src/**/*.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["templates/**/*.ts"],
   "references": []
 }

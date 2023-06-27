@@ -19,8 +19,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
       - name: Install Node modules
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Check licenses
         run: license_finder --decisions-file=license-finder-decisions.yml

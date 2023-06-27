@@ -3,25 +3,20 @@
   "version": "1.0.0",
   "description": "packages for kintone customizations",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
   "scripts": {
-    "prebuild": "lerna run prebuild --parallel",
-    "build": "tsc --build packages --force",
-    "postbuild": "lerna run postbuild --parallel",
-    "lint": "lerna run lint --parallel",
-    "fix": "lerna run fix --parallel",
-    "preinitial:release": "yarn prerelease",
-    "initial:release": "lerna publish from-package --conventional-commits",
+    "prebuild": "pnpm -r --parallel run prebuild",
+    "build": "pnpm prebuild && pnpm build:prod && pnpm postbuild",
+    "build:prod": "tsc --build packages --force",
+    "postbuild": "pnpm -r --parallel run postbuild",
+    "lint": "pnpm -r --parallel run lint",
+    "fix": "pnpm -r --parallel run fix",
+    "initial:release": "pnpm prerelease && lerna publish from-package --conventional-commits",
     "prerelease": "npm-run-all -s build -p lint test",
     "release": "lerna publish --conventional-commits --create-release github",
     "pretest": "jest",
-    "start": "yarn build --watch",
-    "test": "lerna run test --parallel",
-    "pretest:ci": "yarn pretest",
-    "test:ci": "lerna run test:ci --stream"
+    "start": "pnpm build:prod --watch",
+    "test": "pnpm -r --parallel run test",
+    "test:ci": "pnpm pretest && pnpm -r run test:ci --stream"
   },
   "repository": {
     "type": "git",
@@ -52,5 +47,6 @@
     "rimraf": "^4.4.1",
     "typescript": "^4.9.5"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "packageManager": "pnpm@8.6.3"
 }

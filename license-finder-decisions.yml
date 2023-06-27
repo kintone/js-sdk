@@ -119,3 +119,51 @@
     :why:
     :versions: []
     :when: 2023-03-10 05:51:54.174711000 Z
+- - :approve
+  - "@nrwl/nx-darwin-x64"
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:10:16.102637000 Z
+- - :approve
+  - browserify-fs
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:12:03.510809000 Z
+- - :approve
+  - fwd-stream
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:12:04.168556000 Z
+- - :approve
+  - indexof
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:12:04.807941000 Z
+- - :approve
+  - is
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:12:05.448944000 Z
+- - :approve
+  - level-blobs
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:12:06.089969000 Z
+- - :approve
+  - level-filesystem
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:12:06.728301000 Z
+- - :approve
+  - level-hooks
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:12:07.406760000 Z

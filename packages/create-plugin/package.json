@@ -45,17 +45,16 @@
     "templates"
   ],
   "scripts": {
-    "start": "yarn build --watch",
-    "prebuild": "yarn clean",
-    "build": "tsc --build --force",
+    "start": "pnpm build --watch",
+    "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts src",
-    "fix": "yarn lint --fix",
+    "fix": "pnpm lint --fix",
     "unittest": "jest --testPathIgnorePatterns=/__tests__/e2e\\.test\\.ts$",
     "e2e": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/e2e\\.test\\.ts$",
-    "test": "yarn unittest",
+    "test": "pnpm unittest",
     "test:all": "run-p test e2e",
-    "test:ci": "yarn test:all"
+    "test:ci": "pnpm test:all"
   },
   "keywords": [
     "kintone"

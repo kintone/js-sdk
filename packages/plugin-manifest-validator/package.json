@@ -16,15 +16,16 @@
   ],
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "start": "yarn build --watch",
-    "prebuild": "yarn clean",
-    "build": "tsc --build --force",
-    "postbuild": "yarn gen-dts",
+    "start": "pnpm build:prod --watch",
+    "prebuild": "pnpm clean",
+    "build": "pnpm clean && pnpm build:prod && pnpm postbuild",
+    "build:prod": "tsc --build --force",
+    "postbuild": "pnpm gen-dts",
     "gen-dts": "node script/generate-dts.js",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "lint": "eslint --ext .ts src",
-    "fix": "yarn lint --fix",
+    "fix": "pnpm lint --fix",
     "clean": "rimraf dist"
   },
   "dependencies": {
