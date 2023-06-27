@@ -167,3 +167,15 @@
     :why: Because we will not redistribute this package.
     :versions: []
     :when: 2023-06-27 12:12:07.406760000 Z
+- - :approve
+  - "@nrwl/nx-linux-x64-gnu"
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:38:28.507953000 Z
+- - :approve
+  - "@nrwl/nx-linux-x64-musl"
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-06-27 12:38:29.182591000 Z
