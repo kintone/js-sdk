@@ -5,8 +5,7 @@
   "private": true,
   "scripts": {
     "prebuild": "pnpm -r --parallel run prebuild",
-    "build": "pnpm prebuild && pnpm build:prod && pnpm postbuild",
-    "build:prod": "tsc --build packages --force",
+    "build": "pnpm -r --parallel run build",
     "postbuild": "pnpm -r --parallel run postbuild",
     "lint": "pnpm -r --parallel run lint",
     "fix": "pnpm -r --parallel run fix",
