@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "prebuild": "pnpm clean",
-    "build": "pnpm prebuild && tsc --build --force && npm-build.sh && pnpm build:integration",
-    "postbuild": "npm-build.sh && pnpm build:integration",
+    "build": "pnpm prebuild && tsc --build --force && pnpm npmbuild && pnpm build:integration",
+    "npmbuild": "bin/npm-build.sh",
+    "postbuild": "bin/npm-build.sh && pnpm build:integration",
     "clean": "rimraf dist",
     "fix:eslint": "pnpm lint:eslint --fix",
     "fix:prettier": "prettier --parser typescript --write \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
