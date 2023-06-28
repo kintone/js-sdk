@@ -46,7 +46,8 @@
   ],
   "scripts": {
     "start": "pnpm build --watch",
-    "build": "pnpm clean && tsc --build --force",
+    "prebuild": "pnpm clean",
+    "build": "pnpm prebuild && tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts src",
     "fix": "pnpm lint --fix",

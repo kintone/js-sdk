@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "prebuild": "pnpm -r --parallel run prebuild",
-    "build": "pnpm -r --parallel run build",
+    "build": "pnpm prebuild && tsc --build packages --force && pnpm postbuild",
     "postbuild": "pnpm -r --parallel run postbuild",
     "lint": "pnpm -r --parallel run lint",
     "fix": "pnpm -r --parallel run fix",

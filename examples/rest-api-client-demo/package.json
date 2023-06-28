@@ -13,7 +13,8 @@
     "directory": "examples/rest-api-client-demo"
   },
   "scripts": {
-    "build": "rimraf dist && tsc --build",
+    "prebuild": "rimraf dist",
+    "build": "pnpm prebuild && tsc --build",
     "fix:lint": "npm run lint:eslint -- --fix",
     "fix:md": "prettier --write README.md",
     "fix": "run-p fix:*",

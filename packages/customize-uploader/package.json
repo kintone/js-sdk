@@ -10,7 +10,8 @@
     "node": ">=16"
   },
   "scripts": {
-    "build": "pnpm clean && tsc --build --force",
+    "prebuild": "pnpm clean",
+    "build": "pnpm prebuild && tsc --build --force",
     "lint": "eslint --ext .ts src",
     "fix": "pnpm lint --fix",
     "test": "jest",

@@ -18,7 +18,7 @@
   "scripts": {
     "start": "pnpm build:prod --watch",
     "prebuild": "pnpm clean",
-    "build": "pnpm clean && pnpm build:prod && pnpm postbuild",
+    "build": "pnpm prebuild && pnpm build:prod && pnpm postbuild",
     "build:prod": "tsc --build --force",
     "postbuild": "pnpm gen-dts",
     "gen-dts": "node script/generate-dts.js",
