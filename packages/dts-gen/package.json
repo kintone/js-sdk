@@ -42,7 +42,7 @@
     "@types/lodash": "^4.14.195",
     "@types/prettier": "^2.7.3",
     "ts-loader": "^9.4.4",
-    "webpack": "^5.88.0",
+    "webpack": "^5.88.1",
     "webpack-cli": "^5.1.4"
   },
   "bin": {
