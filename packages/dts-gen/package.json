@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "pnpm prebuild && tsc --build --force && pnpm npmbuild && pnpm build:integration",
-    "npmbuild": "bin/npm-build.sh",
+    "npmbuild": "bash bin/npm-build.sh",
     "postbuild": "bin/npm-build.sh && pnpm build:integration",
     "clean": "rimraf dist",
     "fix:eslint": "pnpm lint:eslint --fix",
