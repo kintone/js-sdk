@@ -123,9 +123,6 @@ npx tsc --init
   ],
   "include": [
     "src/**/*"
-  ],
-  "exclude": [
-    "dist",
   ]
 }
 ```
