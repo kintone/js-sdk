@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.4](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@7.0.3...@kintone/dts-gen@7.0.4) (2023-07-05)
+
+### Bug Fixes
+
+- **dts-gen:** remove unnecessary `exclude` from tsconfig ([#2158](https://github.com/kintone/js-sdk/issues/2158)) ([26bd214](https://github.com/kintone/js-sdk/commit/26bd2143ea648f81ba3c2e655485137fc32b10ce))
+
 ## [7.0.3](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@7.0.2...@kintone/dts-gen@7.0.3) (2023-06-28)
 
 **Note:** Version bump only for package @kintone/dts-gen
