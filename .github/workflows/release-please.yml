@@ -1,0 +1,34 @@
+name: release-please
+on:
+  pull_request:
+    branches:
+      - 'ci/migrate-to-release-please'
+
+jobs:
+  release:
+    name: Create release
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@ee9822ec2c397e8a364d634464339ac43a06e042 # v3
+        id: release
+        with:
+          command: manifest
+
+  publish:
+    name: Publish release
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    needs: release
+    if: ${{ needs.release.outputs.release_created }}
+    env:
+      GH_REPO: ${{ github.repository }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - run: gh release edit ${{ needs.release.outputs.tag_name }} --draft=false
