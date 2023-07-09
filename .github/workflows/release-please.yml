@@ -1,5 +1,8 @@
 name: release-please
 on:
+  push:
+    branches:
+      - 'ci/migrate-to-release-please'
   pull_request:
     branches:
       - 'ci/migrate-to-release-please'
