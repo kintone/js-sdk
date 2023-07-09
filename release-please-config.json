@@ -9,6 +9,7 @@
   "versioning": "default",
   "include-v-in-tag": true,
   "tag-separator": "@",
+  "monorepo-tags": true,
   "plugins": ["node-workspace"],
   "group-pull-request-title-pattern": "chore: release ${branch}",
   "packages": {
