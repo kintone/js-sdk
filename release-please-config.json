@@ -8,6 +8,7 @@
   "changelog-path": "CHANGELOG.md",
   "versioning": "default",
   "include-v-in-tag": true,
+  "include-component-in-tag": false,
   "tag-separator": "@",
   "monorepo-tags": true,
   "plugins": ["node-workspace"],
