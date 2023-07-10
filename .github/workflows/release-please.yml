@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - 'ci/migrate-to-release-please'
-  pull_request:
-    branches:
-      - 'ci/migrate-to-release-please'
 
 jobs:
   release:
@@ -21,7 +18,8 @@ jobs:
       - uses: google-github-actions/release-please-action@ee9822ec2c397e8a364d634464339ac43a06e042 # v3
         id: release
         with:
-          command: manifest --target-branch ci/migrate-to-release-please
+          command: manifest --target-branch "ci/migrate-to-release-please"
+          default-branch: "ci/migrate-to-release-please"
 
   publish:
     name: Publish release
