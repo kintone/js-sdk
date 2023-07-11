@@ -11,7 +11,6 @@
   "tag-separator": "@",
   "monorepo-tags": true,
   "plugins": ["node-workspace"],
-  "group-pull-request-title-pattern": "chore: release ${branch}",
   "packages": {
     "examples/rest-api-client-demo": {
       "package-name": "@kintone/rest-api-client-demo",
