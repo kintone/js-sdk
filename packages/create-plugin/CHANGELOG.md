@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.4...@kintone/create-plugin@6.1.0) (2023-07-11)
+
+
+### Features
+
+* **create-plugin:** test commit ([9f0cff4](https://github.com/kintone/js-sdk/commit/9f0cff4f3482701a6f260289c85e5a6716778194))
+
+
+### Bug Fixes
+
+* **create-plugin:** test fix commit ([3bca5c0](https://github.com/kintone/js-sdk/commit/3bca5c09b5328f1ce039d26c516ed2389fc300db))
+
 ## [6.0.4](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.3...@kintone/create-plugin@6.0.4) (2023-07-05)
 
 ### Bug Fixes

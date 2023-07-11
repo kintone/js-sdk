@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@7.0.4...@kintone/dts-gen@8.0.0) (2023-07-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **dts-gen:** test breaking changes
+
+### Bug Fixes
+
+* **dts-gen:** test breaking changes ([ec628d0](https://github.com/kintone/js-sdk/commit/ec628d0f1264273358eabde3c874bfd769711e49))
+
 ## [7.0.4](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@7.0.3...@kintone/dts-gen@7.0.4) (2023-07-05)
 
 ### Bug Fixes
