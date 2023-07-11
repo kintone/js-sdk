@@ -1,7 +1,7 @@
 {
   "bootstrap-sha": "01e8e1d36121fac2df467eb0401c0eef83b2358d",
   "release-type": "node",
-  "draft": true,
+  "draft": false,
   "prerelease": false,
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": false,
