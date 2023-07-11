@@ -41,4 +41,5 @@ jobs:
         run: npm config set "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: yarn build
       - run: yarn run lerna publish from-package --no-push --no-verify-access --yes
