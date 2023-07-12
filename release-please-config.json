@@ -1,0 +1,57 @@
+{
+  "bootstrap-sha": "01e8e1d36121fac2df467eb0401c0eef83b2358d",
+  "release-type": "node",
+  "draft": false,
+  "prerelease": false,
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
+  "changelog-path": "CHANGELOG.md",
+  "versioning": "default",
+  "include-v-in-tag": false,
+  "tag-separator": "@",
+  "monorepo-tags": true,
+  "plugins": ["node-workspace"],
+  "packages": {
+    "examples/rest-api-client-demo": {
+      "package-name": "@kintone/rest-api-client-demo",
+      "component": "@kintone/rest-api-client-demo"
+    },
+    "packages/create-plugin": {
+      "package-name": "@kintone/create-plugin",
+      "component": "@kintone/create-plugin"
+    },
+    "packages/customize-uploader": {
+      "package-name": "@kintone/customize-uploader",
+      "component": "@kintone/customize-uploader"
+    },
+    "packages/dts-gen": {
+      "package-name": "@kintone/dts-gen",
+      "component": "@kintone/dts-gen"
+    },
+    "packages/plugin-manifest-validator": {
+      "package-name": "@kintone/plugin-manifest-validator",
+      "component": "@kintone/plugin-manifest-validator"
+    },
+    "packages/plugin-packer": {
+      "package-name": "@kintone/plugin-packer",
+      "component": "@kintone/plugin-packer"
+    },
+    "packages/plugin-uploader": {
+      "package-name": "@kintone/plugin-uploader",
+      "component": "@kintone/plugin-uploader"
+    },
+    "packages/profile-loader": {
+      "package-name": "@kintone/profile-loader",
+      "component": "@kintone/profile-loader"
+    },
+    "packages/rest-api-client": {
+      "package-name": "@kintone/rest-api-client",
+      "component": "@kintone/rest-api-client"
+    },
+    "packages/webpack-plugin-kintone-plugin": {
+      "package-name": "@kintone/webpack-plugin-kintone-plugin",
+      "component": "@kintone/webpack-plugin-kintone-plugin"
+    }
+  }
+}
+

@@ -55,12 +55,10 @@ feat(rest-api-client): add record.getRecord()
 
 ### Release
 
-```
-% cd js-sdk
-% yarn release
-```
+1. Verify the change log of the release PR `chore: release main`
+2. Merge the PR using **Squash and merge**
 
-If you'd like to release a new package.
+Note: If you'd like to release a new package.
 
 ```
 % cd js-sdk
