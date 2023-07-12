@@ -2,7 +2,7 @@ name: Release
 on:
   push:
     branches:
-      - 'ci/migrate-to-release-please'
+      - master
 
 jobs:
   release:
@@ -18,7 +18,6 @@ jobs:
         id: release
         with:
           command: manifest
-          default-branch: "ci/migrate-to-release-please"
 
   publish:
     name: Publish to npm
@@ -33,10 +32,6 @@ jobs:
           node-version: 18.x
           cache: yarn
       - run: yarn install --frozen-lockfile
-      - name: Configure git user
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
       - name: Configure npm user
         run: npm config set "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
         env:
