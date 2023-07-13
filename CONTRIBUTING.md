@@ -58,13 +58,6 @@ feat(rest-api-client): add record.getRecord()
 1. Verify the change log of the release PR `chore: release main`
 2. Merge the PR using **Squash and merge**
 
-Note: If you'd like to release a new package.
-
-```
-% cd js-sdk
-% yarn initial:release
-```
-
 ## Create a new package
 
 When you create a new package, you must define the following npm-scripts, otherwise CI would be failed.
