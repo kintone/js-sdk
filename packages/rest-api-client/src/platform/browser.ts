@@ -37,6 +37,10 @@ export const buildPlatformDependentConfig = () => {
   return {};
 };
 
+export const buildPlatformTimeout = () => {
+  return {};
+};
+
 export const buildHeaders = () => {
   return {};
 };

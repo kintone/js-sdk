@@ -56,6 +56,14 @@ export const buildPlatformDependentConfig = ({
   return {};
 };
 
+export const buildPlatformTimeout = (params: { socketTimeout?: number }) => {
+  if (params.socketTimeout) {
+    return { timeout: params.socketTimeout };
+  }
+
+  return {};
+};
+
 export const buildHeaders = (params: { userAgent?: string }) => {
   const { userAgent } = params;
   return {
