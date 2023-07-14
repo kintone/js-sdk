@@ -32,6 +32,25 @@ type KintoneAuthHeader =
       Authorization: string;
     };
 
+type Options = {
+  baseUrl: string;
+  auth: DiscriminatedAuth;
+  basicAuth?: BasicAuth;
+  proxy?: ProxyConfig;
+  httpsAgent?: HttpsAgent;
+  clientCertAuth?:
+    | {
+        pfx: Buffer;
+        password: string;
+      }
+    | {
+        pfxFilePath: string;
+        password: string;
+      };
+  userAgent?: string;
+  socketTimeout?: number;
+};
+
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 
 export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
@@ -49,25 +68,10 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         password: string;
       };
   private readonly proxy?: ProxyConfig;
+  private readonly socketTimeout?: number;
   private requestToken: string | null;
 
-  constructor(options: {
-    baseUrl: string;
-    auth: DiscriminatedAuth;
-    basicAuth?: BasicAuth;
-    proxy?: ProxyConfig;
-    httpsAgent?: HttpsAgent;
-    clientCertAuth?:
-      | {
-          pfx: Buffer;
-          password: string;
-        }
-      | {
-          pfxFilePath: string;
-          password: string;
-        };
-    userAgent?: string;
-  }) {
+  constructor(options: Options) {
     this.baseUrl = options.baseUrl;
     this.auth = options.auth;
     this.headers = this.buildHeaders({
@@ -85,6 +89,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
 
     this.proxy = options.proxy;
     this.requestToken = null;
+    this.socketTimeout = options.socketTimeout;
   }
 
   public async build(
@@ -101,6 +106,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       ...platformDeps.buildPlatformDependentConfig({
         httpsAgent: this.httpsAgent,
         clientCertAuth: this.clientCertAuth,
+        socketTimeout: this.socketTimeout,
       }),
       proxy: this.proxy,
     };
