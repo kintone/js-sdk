@@ -73,7 +73,7 @@ const buildHttpsAgentConfig = ({
   return {};
 };
 
-export const buildTimeoutConfig = (params: { socketTimeout?: number }) => {
+const buildTimeoutConfig = (params: { socketTimeout?: number }) => {
   if (params.socketTimeout) {
     return { timeout: params.socketTimeout };
   }
