@@ -106,8 +106,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       ...platformDeps.buildPlatformDependentConfig({
         httpsAgent: this.httpsAgent,
         clientCertAuth: this.clientCertAuth,
-      }),
-      ...platformDeps.buildPlatformTimeout({
         socketTimeout: this.socketTimeout,
       }),
       proxy: this.proxy,

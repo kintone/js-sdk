@@ -8,6 +8,16 @@ const packageJson = require("../../package.json");
 
 const readFile = promisify(fs.readFile);
 
+type ClientCertAuth =
+  | {
+      pfx: Buffer;
+      password: string;
+    }
+  | {
+      pfxFilePath: string;
+      password: string;
+    };
+
 export const readFileFromPath = async (filePath: string) => {
   const data = await readFile(filePath);
   const name = basename(filePath);
@@ -25,17 +35,24 @@ export const getDefaultAuth = () => {
 export const buildPlatformDependentConfig = ({
   httpsAgent,
   clientCertAuth,
+  socketTimeout,
 }: {
   httpsAgent?: https.Agent;
-  clientCertAuth?:
-    | {
-        pfx: Buffer;
-        password: string;
-      }
-    | {
-        pfxFilePath: string;
-        password: string;
-      };
+  clientCertAuth?: ClientCertAuth;
+  socketTimeout?: number;
+}) => {
+  return {
+    ...buildHttpsAgentConfig({ httpsAgent, clientCertAuth }),
+    ...buildTimeoutConfig({ socketTimeout }),
+  };
+};
+
+const buildHttpsAgentConfig = ({
+  httpsAgent,
+  clientCertAuth,
+}: {
+  httpsAgent?: https.Agent;
+  clientCertAuth?: ClientCertAuth;
 }) => {
   if (httpsAgent !== undefined) {
     return { httpsAgent };
@@ -56,7 +73,7 @@ export const buildPlatformDependentConfig = ({
   return {};
 };
 
-export const buildPlatformTimeout = (params: { socketTimeout?: number }) => {
+export const buildTimeoutConfig = (params: { socketTimeout?: number }) => {
   if (params.socketTimeout) {
     return { timeout: params.socketTimeout };
   }

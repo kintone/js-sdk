@@ -145,13 +145,15 @@ const validateGuestSpaceId = (guestSpaceId: Options["guestSpaceId"]) => {
   }
 };
 
-const validateSocketTimeout = (socketTimeout: Options["socketTimeout"]) => {
+const validateSocketTimeout = (
+  socketTimeout: Options["socketTimeout"] | string
+) => {
   if (socketTimeout === undefined) {
     return;
   }
 
   const number = parseFloat(socketTimeout.toString());
-  if (isNaN(number) || socketTimeout < 0) {
+  if (isNaN(number) || number < 0) {
     throw new Error(`Invalid socketTimeout. Must be a positive number.`);
   }
 };
