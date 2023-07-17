@@ -14,7 +14,8 @@
   "browser": "lib/src/index.browser.js",
   "types": "lib/src/index.d.ts",
   "scripts": {
-    "build": "run-s clean 'tsc --build --force' postBuild",
+    "build": "run-s clean build:ts postBuild",
+    "build:ts": "tsc --build --force",
     "postBuild": "run-p build:*",
     "lint": "run-p -l lint:*",
     "prepublishOnly": "run-p build:umd_*",
@@ -29,7 +30,7 @@
     "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md 'docs/**/*.md'",
-    "start": "pnpm build --watch"
+    "start": "run-p clean 'build:ts --watch'"
   },
   "repository": {
     "type": "git",
