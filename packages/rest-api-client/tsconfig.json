@@ -13,9 +13,4 @@
     "resolveJsonModule": true
   },
   "include": ["src/**/*", "package.json"],
-  "references": [
-    { "path": "../../packages/profile-loader" },
-    { "path": "../../packages/rest-api-client" },
-    { "path": "../../packages/customize-uploader" },
-  ]
 }
