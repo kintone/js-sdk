@@ -119,3 +119,28 @@
     :why:
     :versions: []
     :when: 2023-03-10 05:51:54.174711000 Z
+- - :approve
+  - browserify-fs-1.0.0
+  - &1
+    :who:
+    :why:
+    :versions: []
+    :when: 2023-07-17 09:10:43.522853000 Z
+- - :approve
+  - fwd-stream-1.0.4
+  - *1
+- - :approve
+  - indexof-0.0.1
+  - *1
+- - :approve
+  - is-0.2.7
+  - *1
+- - :approve
+  - level-blobs-0.1.7
+  - *1
+- - :approve
+  - level-filesystem-1.2.0
+  - *1
+- - :approve
+  - level-hooks-4.5.0
+  - *1

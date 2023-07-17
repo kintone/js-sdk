@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "run-s clean 'tsc --build --force' npm-build build:integration",
-    "npm-build": "bin/npm-build.sh",
+    "npm-build": "bash bin/npm-build.sh",
     "clean": "rimraf dist",
     "fix:eslint": "pnpm lint:eslint --fix",
     "fix:prettier": "prettier --parser typescript --write \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
