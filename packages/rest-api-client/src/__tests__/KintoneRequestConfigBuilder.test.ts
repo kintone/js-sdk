@@ -366,7 +366,7 @@ describe("options", () => {
     });
   });
 
-  it("should accept false when specify false to proxy opption", async () => {
+  it("should accept false when specify false to proxy option", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
     const headers = {

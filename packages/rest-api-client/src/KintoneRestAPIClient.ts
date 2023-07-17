@@ -35,6 +35,7 @@ type Options = {
     enableAbortSearchError: boolean;
   };
   userAgent?: string;
+  socketTimeout?: number;
 };
 
 const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
@@ -124,6 +125,7 @@ export class KintoneRestAPIClient {
 const validateOptions = (options: Options) => {
   validateBaseUrl(options.baseUrl);
   validateGuestSpaceId(options.guestSpaceId);
+  validateSocketTimeout(options.socketTimeout);
 };
 
 const validateBaseUrl = (baseUrl: Options["baseUrl"]) => {
@@ -140,5 +142,18 @@ const validateBaseUrl = (baseUrl: Options["baseUrl"]) => {
 const validateGuestSpaceId = (guestSpaceId: Options["guestSpaceId"]) => {
   if (guestSpaceId === "" || guestSpaceId === null) {
     throw new Error(`invalid guestSpaceId: got [${guestSpaceId}]`);
+  }
+};
+
+const validateSocketTimeout = (
+  socketTimeout: Options["socketTimeout"] | string
+) => {
+  if (socketTimeout === undefined) {
+    return;
+  }
+
+  const number = parseFloat(socketTimeout.toString());
+  if (isNaN(number) || number < 0) {
+    throw new Error(`Invalid socketTimeout. Must be a positive number.`);
   }
 };

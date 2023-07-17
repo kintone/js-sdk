@@ -108,6 +108,37 @@ describe("KintoneRestAPIClient", () => {
         );
       });
     });
+
+    describe("socketTimeout", () => {
+      const baseUrl = "https://example.com";
+      const auth = { apiToken: "foo" };
+
+      it("should not throw an error", () => {
+        const validSocketTimeout = [undefined, 100, "100"];
+        validSocketTimeout.forEach((socketTimeout) => {
+          expect(
+            () =>
+              new KintoneRestAPIClient({
+                baseUrl,
+                auth,
+                // @ts-ignore
+                socketTimeout,
+              })
+          ).not.toThrow();
+        });
+      });
+
+      it("should throw an error", () => {
+        const invalidSocketTimeout = ["abc", -100];
+        invalidSocketTimeout.forEach((socketTimeout) => {
+          expect(
+            () =>
+              // @ts-ignore
+              new KintoneRestAPIClient({ baseUrl, auth, socketTimeout })
+          ).toThrow("Invalid socketTimeout. Must be a positive number.");
+        });
+      });
+    });
   });
 
   describe("version", () => {
