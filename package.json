@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "packages for kintone customizations",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
   "scripts": {
     "prebuild": "lerna run prebuild --parallel",
     "build": "tsc --build packages --force",
