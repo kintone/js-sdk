@@ -20,14 +20,12 @@
     "from-manifest.js"
   ],
   "scripts": {
-    "prebuild": "yarn clean",
-    "build": "tsc --build --force",
-    "postbuild": "run-p js css",
+    "build": "run-s clean 'tsc --build --force'",
     "clean": "rimraf dist",
     "lint": "eslint \"*.{js,ts}\" bin src site test",
-    "fix": "yarn lint --fix",
+    "fix": "pnpm lint --fix",
     "test": "run-p jest site:test",
-    "test:ci": "yarn test",
+    "test:ci": "pnpm test",
     "build:dev": "tsc --build --force --watch",
     "css": "postcss --config postcss.config.js ../../node_modules/normalize.css/normalize.css > docs/dist/normalize.min.css",
     "js": "webpack --mode production",
