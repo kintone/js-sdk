@@ -1,12 +1,12 @@
 {
-  "examples/rest-api-client-demo": "4.0.4",
+  "examples/rest-api-client-demo": "4.0.5",
   "packages/create-plugin": "6.0.4",
-  "packages/customize-uploader": "7.0.3",
+  "packages/customize-uploader": "7.0.4",
   "packages/dts-gen": "7.0.4",
   "packages/plugin-manifest-validator": "9.0.1",
   "packages/plugin-packer": "7.0.4",
   "packages/plugin-uploader": "8.0.0",
   "packages/profile-loader": "4.0.0",
-  "packages/rest-api-client": "4.0.3",
+  "packages/rest-api-client": "4.1.0",
   "packages/webpack-plugin-kintone-plugin": "7.0.4"
 }
