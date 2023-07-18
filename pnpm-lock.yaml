@@ -58,7 +58,7 @@ importers:
         version: link:../../packages/profile-loader
       '@kintone/rest-api-client':
         specifier: ^4.0.3
-        version: link:../../packages/rest-api-client/lib
+        version: link:../../packages/rest-api-client
       yargs:
         specifier: ^17.7.2
         version: 17.7.2
@@ -74,7 +74,7 @@ importers:
         version: 9.4.4(typescript@4.9.5)(webpack@5.88.1)
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.1(@types/node@14.14.10)(typescript@4.9.5)
+        version: 10.9.1(@types/node@13.13.52)(typescript@4.9.5)
       webpack:
         specifier: ^5.88.1
         version: 5.88.1(webpack-cli@5.1.4)
@@ -214,7 +214,7 @@ importers:
     dependencies:
       '@kintone/rest-api-client':
         specifier: ^4.0.3
-        version: link:../rest-api-client/lib
+        version: link:../rest-api-client
       chokidar:
         specifier: ^3.5.3
         version: 3.5.3
@@ -480,134 +480,6 @@ importers:
         version: 3.0.0
 
   packages/rest-api-client:
-    dependencies:
-      axios:
-        specifier: ^0.27.2
-        version: 0.27.2
-      core-js:
-        specifier: ^3.29.1
-        version: 3.29.1
-      form-data:
-        specifier: ^4.0.0
-        version: 4.0.0
-      js-base64:
-        specifier: ^3.7.5
-        version: 3.7.5
-      mime:
-        specifier: ^3.0.0
-        version: 3.0.0
-      qs:
-        specifier: ^6.10.5
-        version: 6.10.5
-    devDependencies:
-      '@rollup/plugin-babel':
-        specifier: ^6.0.3
-        version: 6.0.3(@babel/core@7.22.9)(rollup@3.26.2)
-      '@rollup/plugin-commonjs':
-        specifier: ^24.1.0
-        version: 24.1.0(rollup@3.26.2)
-      '@rollup/plugin-json':
-        specifier: ^6.0.0
-        version: 6.0.0(rollup@3.26.2)
-      '@rollup/plugin-node-resolve':
-        specifier: ^15.1.0
-        version: 15.1.0(rollup@3.26.2)
-      '@types/core-js':
-        specifier: ^2.5.5
-        version: 2.5.5
-      '@types/js-base64':
-        specifier: ^3.0.0
-        version: 3.0.0
-      '@types/mime':
-        specifier: ^3.0.1
-        version: 3.0.1
-      '@types/qs':
-        specifier: ^6.9.7
-        version: 6.9.7
-      rollup:
-        specifier: ^3.26.2
-        version: 3.26.2
-      rollup-plugin-ecma-version-validator:
-        specifier: ^0.2.12
-        version: 0.2.12(rollup@3.26.2)
-      rollup-plugin-license:
-        specifier: ^3.0.1
-        version: 3.0.1(rollup@3.26.2)
-      rollup-plugin-node-builtins:
-        specifier: ^2.1.2
-        version: 2.1.2
-      rollup-plugin-node-globals:
-        specifier: ^1.4.0
-        version: 1.4.0
-      rollup-plugin-terser:
-        specifier: ^7.0.2
-        version: 7.0.2(rollup@3.26.2)
-
-  packages/rest-api-client/esm:
-    dependencies:
-      axios:
-        specifier: ^0.27.2
-        version: 0.27.2
-      core-js:
-        specifier: ^3.29.1
-        version: 3.29.1
-      form-data:
-        specifier: ^4.0.0
-        version: 4.0.0
-      js-base64:
-        specifier: ^3.7.5
-        version: 3.7.5
-      mime:
-        specifier: ^3.0.0
-        version: 3.0.0
-      qs:
-        specifier: ^6.10.5
-        version: 6.10.5
-    devDependencies:
-      '@rollup/plugin-babel':
-        specifier: ^6.0.3
-        version: 6.0.3(@babel/core@7.22.9)(rollup@3.26.2)
-      '@rollup/plugin-commonjs':
-        specifier: ^24.1.0
-        version: 24.1.0(rollup@3.26.2)
-      '@rollup/plugin-json':
-        specifier: ^6.0.0
-        version: 6.0.0(rollup@3.26.2)
-      '@rollup/plugin-node-resolve':
-        specifier: ^15.1.0
-        version: 15.1.0(rollup@3.26.2)
-      '@types/core-js':
-        specifier: ^2.5.5
-        version: 2.5.5
-      '@types/js-base64':
-        specifier: ^3.0.0
-        version: 3.0.0
-      '@types/mime':
-        specifier: ^3.0.1
-        version: 3.0.1
-      '@types/qs':
-        specifier: ^6.9.7
-        version: 6.9.7
-      rollup:
-        specifier: ^3.26.2
-        version: 3.26.2
-      rollup-plugin-ecma-version-validator:
-        specifier: ^0.2.12
-        version: 0.2.12(rollup@3.26.2)
-      rollup-plugin-license:
-        specifier: ^3.0.1
-        version: 3.0.1(rollup@3.26.2)
-      rollup-plugin-node-builtins:
-        specifier: ^2.1.2
-        version: 2.1.2
-      rollup-plugin-node-globals:
-        specifier: ^1.4.0
-        version: 1.4.0
-      rollup-plugin-terser:
-        specifier: ^7.0.2
-        version: 7.0.2(rollup@3.26.2)
-
-  packages/rest-api-client/lib:
     dependencies:
       axios:
         specifier: ^0.27.2
@@ -2869,10 +2741,6 @@ packages:
 
   /@types/node@13.13.52:
     resolution: {integrity: sha512-s3nugnZumCC//n4moGGe6tkNMyYEdaDBitVjwPxXmR5lnMG5dHePinH2EdxkG3Rh1ghFHHixAG4NJhpJW1rthQ==}
-
-  /@types/node@14.14.10:
-    resolution: {integrity: sha512-J32dgx2hw8vXrSbu4ZlVhn1Nm3GbeCFNw2FWL8S5QKucHGY0cyNwjdQdO+KMBZ4wpmC7KhLCiNsdk1RFRIYUQQ==}
-    dev: true
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -9932,7 +9800,7 @@ packages:
       webpack: 5.88.1(webpack-cli@5.1.4)
     dev: true
 
-  /ts-node@10.9.1(@types/node@14.14.10)(typescript@4.9.5):
+  /ts-node@10.9.1(@types/node@13.13.52)(typescript@4.9.5):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -9951,7 +9819,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 14.14.10
+      '@types/node': 13.13.52
       acorn: 8.10.0
       acorn-walk: 8.2.0
       arg: 4.1.3
