@@ -4,7 +4,9 @@
   "description": "packages for kintone customizations",
   "private": true,
   "scripts": {
-    "build": "tsc --build packages --force",
+    "prebuild": "pnpm -r --parallel run prebuild",
+    "build": "pnpm prebuild && tsc --build packages --force && pnpm postbuild",
+    "postbuild": "pnpm -r --parallel run postbuild",
     "lint": "run-p lint",
     "fix": "run-p fix",
     "pretest": "jest",

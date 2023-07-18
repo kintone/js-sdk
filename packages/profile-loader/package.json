@@ -33,7 +33,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "build": "run-s clean 'tsc --build --force'",
+    "build": "pnpm clean && tsc --build --force",
     "lint": "run-p -l lint:*",
     "test": "jest",
     "test:ci": "jest --runInBand",

@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "pnpm build --watch",
-    "build": "run-s clean 'tsc --build --force'",
+    "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts' 'bin/*.js'",
     "fix": "pnpm lint --fix",

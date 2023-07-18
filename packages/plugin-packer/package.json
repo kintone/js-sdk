@@ -20,7 +20,7 @@
     "from-manifest.js"
   ],
   "scripts": {
-    "build": "run-s clean 'tsc --build --force'",
+    "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint \"*.{js,ts}\" bin src site test",
     "fix": "pnpm lint --fix",

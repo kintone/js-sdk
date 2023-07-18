@@ -4,7 +4,8 @@
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
   "scripts": {
-    "build": "run-s clean 'tsc --build --force' npm-build build:integration",
+    "build": "run-s clean build:src npm-build build:integration",
+    "build:src": "tsc --build --force",
     "npm-build": "bash bin/npm-build.sh",
     "clean": "rimraf dist",
     "fix:eslint": "pnpm lint:eslint --fix",

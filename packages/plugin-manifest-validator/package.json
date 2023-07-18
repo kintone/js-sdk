@@ -17,8 +17,8 @@
   "types": "dist/src/index.d.ts",
   "scripts": {
     "start": "pnpm build --watch",
-    "prebuild": "yarn clean",
-    "build": "run-s clean 'tsc --build --force' gen-dts",
+    "prebuild": "pnpm clean",
+    "build": "pnpm clean && tsc --build --force && pnpm gen-dts",
     "gen-dts": "node script/generate-dts.js",
     "test": "jest",
     "test:ci": "jest --runInBand",
