@@ -2,13 +2,13 @@
   "files": [],
   "include": [],
   "references": [
+    { "path": "./rest-api-client" },
     { "path": "./create-plugin"},
     { "path": "./dts-gen"},
     { "path": "./plugin-packer"},
     { "path": "./plugin-manifest-validator"},
     { "path": "./plugin-uploader"},
     { "path": "./profile-loader"},
-    { "path": "./rest-api-client" },
     { "path": "./customize-uploader"},
     { "path": "./webpack-plugin-kintone-plugin"},
     { "path": "../examples/rest-api-client-demo"}

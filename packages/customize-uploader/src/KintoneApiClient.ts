@@ -106,9 +106,11 @@ export default class KintoneApiClient {
         apps: [appId],
       });
       const successedApps = resp.apps;
-      const successedAppsLength = successedApps.filter((r) => {
-        return r.status === "SUCCESS";
-      }).length;
+      const successedAppsLength = successedApps.filter(
+        (r: { status: string; app: string }) => {
+          return r.status === "SUCCESS";
+        }
+      ).length;
       deployed = successedAppsLength === resp.apps.length;
       if (!deployed) {
         await wait(1000);
