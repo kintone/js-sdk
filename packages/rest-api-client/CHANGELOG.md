@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@4.0.3...@kintone/rest-api-client@4.1.0) (2023-07-19)
+
+
+### Features
+
+* **rest-api-client:** adding socket timeout option ([#2181](https://github.com/kintone/js-sdk/issues/2181)) ([6e0fc6b](https://github.com/kintone/js-sdk/commit/6e0fc6bf420d281272f3f5d9da741e3cebe8c69e))
+
 ## [4.0.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@4.0.2...@kintone/rest-api-client@4.0.3) (2023-07-05)
 
 **Note:** Version bump only for package @kintone/rest-api-client
