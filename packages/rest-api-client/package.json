@@ -14,9 +14,10 @@
   "browser": "lib/src/index.browser.js",
   "types": "lib/src/index.d.ts",
   "scripts": {
-    "build": "run-s clean build:ts postBuild",
+    "prebuild": "pnpm clean",
+    "build": "run-s clean build:ts",
     "build:ts": "tsc --build --force",
-    "postBuild": "run-p build:*",
+    "postbuild": "run-p build:*",
     "lint": "run-p -l lint:*",
     "prepublishOnly": "run-p build:umd_*",
     "test": "jest",
