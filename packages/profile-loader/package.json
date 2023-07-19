@@ -33,7 +33,9 @@
     "node": ">=16"
   },
   "scripts": {
-    "build": "pnpm clean && tsc --build --force",
+    "preinstall": "npx only-allow pnpm",
+    "prebuild": "pnpm clean",
+    "build": "tsc --build --force",
     "lint": "run-p -l lint:*",
     "test": "jest",
     "test:ci": "jest --runInBand",

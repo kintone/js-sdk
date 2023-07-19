@@ -4,9 +4,10 @@
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
   "scripts": {
-    "build": "run-s clean build:src npm-build build:integration",
-    "build:src": "tsc --build --force",
-    "npm-build": "bash bin/npm-build.sh",
+    "preinstall": "npx only-allow pnpm",
+    "prebuild": "pnpm clean",
+    "build": "tsc --build --force",
+    "postbuild": "bash bin/npm-build.sh && pnpm build:integration",
     "clean": "rimraf dist",
     "fix:eslint": "pnpm lint:eslint --fix",
     "fix:prettier": "prettier --parser typescript --write \"src/**/*.{ts,tsx}\" ./kintone.d.ts",

@@ -14,9 +14,9 @@
   "browser": "lib/src/index.browser.js",
   "types": "lib/src/index.d.ts",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "prebuild": "pnpm clean",
-    "build": "run-s clean build:ts",
-    "build:ts": "tsc --build --force",
+    "build": "tsc --build --force",
     "postbuild": "run-p build:*",
     "lint": "run-p -l lint:*",
     "prepublishOnly": "run-p build:umd_*",

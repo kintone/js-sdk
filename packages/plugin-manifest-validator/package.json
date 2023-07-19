@@ -16,9 +16,11 @@
   ],
   "types": "dist/src/index.d.ts",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "start": "pnpm build --watch",
     "prebuild": "pnpm clean",
-    "build": "pnpm clean && tsc --build --force && pnpm gen-dts",
+    "build": "tsc --build --force",
+    "postbuild": "pnpm gen-dts",
     "gen-dts": "node script/generate-dts.js",
     "test": "jest",
     "test:ci": "jest --runInBand",

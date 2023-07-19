@@ -7,8 +7,10 @@
     "node": ">=16"
   },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "start": "pnpm build --watch",
-    "build": "pnpm clean && tsc --build --force",
+    "prebuild": "pnpm clean",
+    "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",
     "fix": "pnpm lint --fix",
