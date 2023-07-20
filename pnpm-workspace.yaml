@@ -3,3 +3,4 @@ packages:
   - 'examples/**'
   - '!**/lib/**'
   - '!**/esm/**'
+  - '!**/templates/**'
