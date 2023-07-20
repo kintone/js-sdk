@@ -31,7 +31,7 @@
     "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md 'docs/**/*.md'",
-    "start": "run-p clean 'build:ts --watch'"
+    "start": "pnpm build --watch"
   },
   "repository": {
     "type": "git",

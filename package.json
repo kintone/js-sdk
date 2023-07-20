@@ -13,7 +13,7 @@
     "start": "pnpm build --watch",
     "test": "pnpm -r --parallel run test",
     "pretest:ci": "pnpm pretest",
-    "test:ci": "pnpm run test:ci --stream"
+    "test:ci": "pnpm pretest && pnpm -r --stream run test:ci"
   },
   "repository": {
     "type": "git",
