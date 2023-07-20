@@ -38,6 +38,6 @@ jobs:
         path: ~/.pnpm-store
         key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-    - run: pnpm install --frozen-lockfile
+    - run: pnpm install --fetch-timeout 900000 --frozen-lockfile
     - run: pnpm build
     - run: pnpm test:ci
