@@ -491,7 +491,7 @@ Co-authored-by: Toru Kobayashi <koba0004@gmail.com>
 - do not run eslint for a test script ([972fa90](https://github.com/kintone/js-sdk/commit/972fa90936b2297953fc56e981e9803b1246889c))
 - npm-scripts for eslint ([3e19e03](https://github.com/kintone/js-sdk/commit/3e19e03fc2b6afffbe5fd8b8cbdc1128f046b142))
 - npm-scripts for eslint in plugin-packer ([049ff73](https://github.com/kintone/js-sdk/commit/049ff73bb4afc597baa511e35d731207c348a5b0))
-- pass yarn test in plugin-packer ([121ec33](https://github.com/kintone/js-sdk/commit/121ec33df675ea6a101b2cbd03b32752bb48259c))
+- pass pnpm test in plugin-packer ([121ec33](https://github.com/kintone/js-sdk/commit/121ec33df675ea6a101b2cbd03b32752bb48259c))
 
 ### Reverts
 
