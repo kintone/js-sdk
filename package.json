@@ -12,7 +12,7 @@
     "fix": "pnpm -r --parallel run fix",
     "test:root": "jest",
     "start": "pnpm build --watch",
-    "test": "pnpm -r --parallel run test",
+    "test": "pnpm test:root && pnpm -r --parallel run test",
     "test:ci": "pnpm test:root && pnpm -r --stream run test:ci"
   },
   "repository": {
