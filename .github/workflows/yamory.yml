@@ -6,7 +6,6 @@ on:
     branches:
       - master
       - yamory-*
-      - build/migrate-*
 jobs:
   build:
     name: Node.js ubuntu-latest 18.x
