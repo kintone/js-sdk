@@ -4,7 +4,6 @@
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "postbuild": "bash bin/npm-build.sh && pnpm build:integration",

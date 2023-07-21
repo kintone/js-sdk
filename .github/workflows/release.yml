@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - build/migrate-*
 
 jobs:
   release:
@@ -29,18 +28,11 @@ jobs:
       - uses: actions/checkout@v3
 
       - uses: pnpm/action-setup@v2
-        with:
-          version: 8.6.5
 
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: Set up pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile
       - name: Configure npm user
@@ -48,4 +40,4 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: pnpm build
-      - run: pnpm -r publish from-package --no-push --no-verify-access --yes
+      - run: pnpm -r publish

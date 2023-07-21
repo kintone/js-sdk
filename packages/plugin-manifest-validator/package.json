@@ -16,7 +16,6 @@
   ],
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "start": "pnpm build --watch",
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",

@@ -15,18 +15,11 @@ jobs:
     - uses: actions/checkout@v3
 
     - uses: pnpm/action-setup@v2
-      with:
-        version: 8.6.5
 
     - uses: actions/setup-node@v3
       with:
         node-version: '18'
-
-    - name: Set up pnpm cache
-      uses: actions/cache@v3
-      with:
-        path: ~/.pnpm-store
-        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        cache: 'pnpm'
 
     - name: download and validate Yamory script
       working-directory: /tmp

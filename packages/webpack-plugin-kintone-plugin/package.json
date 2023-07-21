@@ -7,7 +7,6 @@
     "node": ">=16"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "start": "pnpm build --watch",
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",

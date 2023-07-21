@@ -17,7 +17,7 @@ Please file an issue there.
 
 ### Setup
 
-This repository is a monorepo using PNPM.
+This repository is a monorepo using pnpm.
 
 ```sh
 % cd js-sdk

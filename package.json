@@ -4,16 +4,16 @@
   "description": "packages for kintone customizations",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "prebuild": "pnpm -r --parallel run prebuild",
     "build": "pnpm prebuild && tsc --build packages --force && pnpm postbuild",
     "postbuild": "pnpm -r --parallel run postbuild",
     "lint": "pnpm -r --parallel run lint",
     "fix": "pnpm -r --parallel run fix",
-    "pretest": "jest",
+    "test:root": "jest",
     "start": "pnpm build --watch",
     "test": "pnpm -r --parallel run test",
-    "pretest:ci": "pnpm pretest",
-    "test:ci": "pnpm pretest && pnpm -r --stream run test:ci"
+    "test:ci": "pnpm test:root && pnpm -r --stream run test:ci"
   },
   "repository": {
     "type": "git",

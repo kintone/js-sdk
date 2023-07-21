@@ -33,7 +33,6 @@
     "node": ">=16"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "lint": "run-p -l lint:*",

@@ -5,7 +5,7 @@
 This package is managed with `pnpm`, so you have to install `pnpm` to build `dts-gen`.
 
 ```
-$ pnpm
+$ pnpm install
 $ pnpm build
 ```
 

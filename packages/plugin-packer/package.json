@@ -20,7 +20,6 @@
     "from-manifest.js"
   ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "postbuild": "run-p js css",
