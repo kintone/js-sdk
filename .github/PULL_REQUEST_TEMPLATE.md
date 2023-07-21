@@ -10,6 +10,7 @@
 <!-- What is a solution you want to add? -->
 
 
+
 ## How to test
 
 <!-- How can we test this pull request? -->
@@ -19,4 +20,4 @@
 - [ ] Read [CONTRIBUTING.md](https://github.com/kintone/js-sdk/blob/master/CONTRIBUTING.md)
 - [ ] Updated documentation if it is required.
 - [ ] Added tests if it is required.
-- [ ] Passed `yarn lint` and `yarn test` on the root directory.
+- [ ] Passed `pnpm lint` and `pnpm test` on the root directory.

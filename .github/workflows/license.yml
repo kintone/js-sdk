@@ -19,8 +19,15 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Install Node modules
-        run: yarn install --frozen-lockfile
+      - uses: pnpm/action-setup@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Check licenses
         run: license_finder --decisions-file=license-finder-decisions.yml

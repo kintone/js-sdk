@@ -2,7 +2,7 @@
   "extends": "../tsconfig-base.json",
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es5", "es2015.promise", "es2015.iterable", "es2015.symbol", "es2015.symbol.wellknown"],
+    "lib": ["es5", "es2015.promise", "es2015.iterable", "es2015.symbol", "es2015.symbol.wellknown", "dom"],
     "outDir": "./lib",
     "rootDir": "./",
     "typeRoots": [
@@ -13,5 +13,4 @@
     "resolveJsonModule": true
   },
   "include": ["src/**/*", "package.json"],
-  "references": []
 }

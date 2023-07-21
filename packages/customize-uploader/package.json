@@ -10,14 +10,14 @@
     "node": ">=16"
   },
   "scripts": {
-    "prebuild": "yarn clean",
+    "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "lint": "eslint --ext .ts src",
-    "fix": "yarn lint --fix",
+    "fix": "pnpm lint --fix",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf dist",
-    "start": "yarn build --watch"
+    "start": "pnpm build --watch"
   },
   "files": [
     "bin",

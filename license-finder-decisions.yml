@@ -119,3 +119,45 @@
     :why:
     :versions: []
     :when: 2023-03-10 05:51:54.174711000 Z
+- - :approve
+  - browserify-fs
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-07-18 01:32:13.237225000 Z
+- - :approve
+  - fwd-stream
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-07-18 01:33:59.173509000 Z
+- - :approve
+  - indexof
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-07-18 01:34:11.309532000 Z
+- - :approve
+  - is
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-07-18 01:34:33.622743000 Z
+- - :approve
+  - level-blobs
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-07-18 01:34:45.930628000 Z
+- - :approve
+  - level-filesystem
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-07-18 01:35:03.444566000 Z
+- - :approve
+  - level-hooks
+  - :who:
+    :why: Because we will not redistribute this package.
+    :versions: []
+    :when: 2023-07-18 01:35:23.408523000 Z

@@ -26,15 +26,18 @@ jobs:
     if: ${{ needs.release.outputs.releases_created }}
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
+
+      - uses: pnpm/action-setup@v2
+
+      - uses: actions/setup-node@v3
         with:
-          node-version: 18.x
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+          node-version: '18'
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
       - name: Configure npm user
         run: npm config set "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: yarn build
-      - run: yarn run lerna publish from-package --no-push --no-verify-access --yes
+      - run: pnpm build
+      - run: pnpm -r publish

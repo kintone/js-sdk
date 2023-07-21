@@ -12,23 +12,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
+
+    - uses: pnpm/action-setup@v2
+
+    - uses: actions/setup-node@v3
       with:
-        node-version: 18.x
-        cache: yarn
+        node-version: '18'
+
     - name: download and validate Yamory script
       working-directory: /tmp
       run: |
-        curl -sSf -L -o ./yamory-yarn.sh https://localscanner.yamory.io/script/yarn
-        curl -sSf -L -o ./yamory-yarn-sha512sum.txt \
-          https://cli.yamory.io/yamory-app-library-scan-scripts/yamory-yarn-sha512sum.txt
-        sha512sum --check yamory-yarn-sha512sum.txt
-        chmod +x ./yamory-yarn.sh
+        curl -sSf -L -o ./yamory-pnpm.sh https://localscanner.yamory.io/script/pnpm
+        curl -sSf -L -o ./yamory-pnpm-sha512sum.txt \
+          https://cli.yamory.io/yamory-app-library-scan-scripts/yamory-pnpm-sha512sum.txt
+        sha512sum --check yamory-pnpm-sha512sum.txt
+        chmod +x ./yamory-pnpm.sh
     - name: run Yamory
       run: |
-        ls -d packages/*/ | xargs -I {} /tmp/yamory-yarn.sh --manifest {}/package.json
-        ls -d examples/*/ | xargs -I {} /tmp/yamory-yarn.sh --manifest {}/package.json
+        ls -d packages/*/ | xargs -I {} /tmp/yamory-pnpm.sh --manifest {}/package.json
+        ls -d examples/*/ | xargs -I {} /tmp/yamory-pnpm.sh --manifest {}/package.json
       env:
         CI: true
         PROJECT_GROUP_KEY: js-sdk

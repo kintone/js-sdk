@@ -2,11 +2,11 @@
 
 ## How to build
 
-This package is managed with `yarn`, so you have to install `yarn` to build `dts-gen`.
+This package is managed with `pnpm`, so you have to install `pnpm` to build `dts-gen`.
 
 ```
-$ yarn
-$ yarn build
+$ pnpm install
+$ pnpm build
 ```
 
 You can see the build files in `dist` directory.

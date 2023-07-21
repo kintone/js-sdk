@@ -7,12 +7,12 @@
     "node": ">=16"
   },
   "scripts": {
-    "start": "yarn build --watch",
-    "prebuild": "yarn clean",
+    "start": "pnpm build --watch",
+    "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.ts'",
-    "fix": "yarn lint --fix",
+    "fix": "pnpm lint --fix",
     "test": "jest --runInBand",
     "test:ci": "jest --runInBand"
   },

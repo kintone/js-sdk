@@ -33,18 +33,18 @@
     "node": ">=16"
   },
   "scripts": {
-    "prebuild": "yarn clean",
+    "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "lint": "run-p -l lint:*",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf lib esm umd",
-    "fix:lint": "yarn lint:eslint --fix",
+    "fix:lint": "pnpm lint:eslint --fix",
     "fix:md": "prettier --write README.md",
     "fix": "run-p fix:*",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:md": "prettier --check README.md",
-    "start": "yarn build --watch"
+    "start": "pnpm build --watch"
   },
   "dependencies": {
     "toml": "^3.0.0"

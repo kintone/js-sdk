@@ -10,7 +10,9 @@ describe("projectReferences", () => {
   describe("packages/tsconfig", () => {
     it("should includes all packages and examples", () => {
       const referencePaths = getReferencePaths("packages");
-      const workspaces = getTypeScriptWorkspaces();
+      const workspaces = getTypeScriptWorkspaces().filter(({ packagePath }) =>
+        /\/packages\//.test(packagePath)
+      );
 
       for (const { packageName, packagePath } of workspaces) {
         assert.ok(
@@ -21,7 +23,9 @@ describe("projectReferences", () => {
     });
     describe("packages/*/tsconfig", () => {
       it("should specify all internal dependencies in each Project References setting", async () => {
-        const workspaces = getTypeScriptWorkspaces();
+        const workspaces = getTypeScriptWorkspaces().filter(({ packagePath }) =>
+          /\/packages\//.test(packagePath)
+        );
         for (const { packageName, packagePath, dependencies } of workspaces) {
           const referencePaths = getReferencePaths(packagePath);
           for (const dependency of dependencies) {
