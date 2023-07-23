@@ -1,8 +1,7 @@
 {
   "scripts": {
-      "start": "node scripts/npm-start.js",
-      "upload":
-      "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 3000"
+    "start": "node scripts/npm-start.js",
+    "upload": "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 3000"
   },
   "devDependencies": {
     "@kintone/plugin-uploader": "^7.1.10",

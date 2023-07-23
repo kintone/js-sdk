@@ -17,29 +17,29 @@ const KintonePlugin = require("@kintone/webpack-plugin-kintone-plugin");
 module.exports = {
   entry: {
     desktop: "./src/desktop.js",
-    mobile: "./src/mobile.js"
+    mobile: "./src/mobile.js",
   },
   output: {
     path: path.resolve(__dirname, "plugin", "js"),
-    filename: "[name].js"
+    filename: "[name].js",
   },
   plugins: [
     new KintonePlugin({
       manifestJSONPath: "./plugin/manifest.json",
       privateKeyPath: "./private.ppk",
-      pluginZipPath: "./dist/plugin.zip"
-    })
-  ]
+      pluginZipPath: "./dist/plugin.zip",
+    }),
+  ],
 };
 ```
 
 The settings is the following structure.
 
-* `src/desktop.js` is an entry point of desktop javascript.
-* `src/mobild.js` is an entry point of desktop javascript.
-* `plugin` is the directory of the plugin, which includes `manifest.json` and other resources.
-* `private.ppk` is the private key for the plugin
-* `dist/plugin.zip` is the plugin zip file.
+- `src/desktop.js` is an entry point of desktop javascript.
+- `src/mobild.js` is an entry point of desktop javascript.
+- `plugin` is the directory of the plugin, which includes `manifest.json` and other resources.
+- `private.ppk` is the private key for the plugin
+- `dist/plugin.zip` is the plugin zip file.
 
 ## Install
 
@@ -69,19 +69,19 @@ const KintonePlugin = require("@kintone/webpack-plugin-kintone-plugin");
 module.exports = {
   entry: {
     desktop: "./src/desktop.js",
-    mobile: "./src/mobile.js"
+    mobile: "./src/mobile.js",
   },
   output: {
     path: path.resolve(__dirname, "plugin", "js"),
-    filename: "[name].js"
+    filename: "[name].js",
   },
   plugins: [
     new KintonePlugin({
       manifestJSONPath: "./plugin/manifest.json",
       privateKeyPath: "./private.ppk",
-      pluginZipPath: "./dist/plugin.zip"
-    })
-  ]
+      pluginZipPath: "./dist/plugin.zip",
+    }),
+  ],
 };
 ```
 
@@ -92,8 +92,8 @@ plugins: [
   new KintonePlugin({
     manifestJSONPath: "./plugin/manifest.json",
     privateKeyPath: "./private.ppk",
-    pluginZipPath: (id, manifest) => `${id}.${manifest.version}.plugin.zip`
-  })
+    pluginZipPath: (id, manifest) => `${id}.${manifest.version}.plugin.zip`,
+  }),
 ];
 ```
 
