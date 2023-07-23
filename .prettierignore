@@ -8,6 +8,9 @@ node_modules
 tsconfig.json
 tsconfig-base.json
 
+# Ignore package.json files
+package.json
+
 # Ignore auto generated files
 pnpm-lock.yaml
 CHANGELOG.md
