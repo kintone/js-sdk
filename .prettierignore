@@ -1,15 +1,11 @@
 # Ignore artifacts:
 lib
 dist
-node_modules
-.licenses/
+esm
 
 # Ignore tsconfig file
 tsconfig.json
 tsconfig-base.json
-
-# Ignore package.json files
-package.json
 
 # Ignore auto generated files
 pnpm-lock.yaml
