@@ -1,6 +1,6 @@
 name: "Pull Request Labeler"
 on:
-- pull_request_target
+  - pull_request_target
 
 jobs:
   triage:
@@ -9,7 +9,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-    - uses: actions/labeler@main
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        configuration-path: .github/labeler-config.yml
+      - uses: actions/labeler@main
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          configuration-path: .github/labeler-config.yml

@@ -17,7 +17,7 @@
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "postbuild": "run-p build:*",
-    "lint": "run-p -l lint:*",
+    "lint": "eslint 'src/**/*.ts'",
     "prepublishOnly": "run-p build:umd_*",
     "test": "jest",
     "test:ci": "jest --runInBand",
@@ -25,11 +25,7 @@
     "build:umd_prod": "rollup -c --environment BUILD:production",
     "build:esm": "tsc -p tsconfig.esm.json",
     "clean": "rimraf lib esm umd",
-    "fix:lint": "pnpm lint:eslint --fix",
-    "fix:md": "prettier --write README.md 'docs/**/*.md'",
-    "fix": "run-p fix:*",
-    "lint:eslint": "eslint 'src/**/*.ts'",
-    "lint:md": "prettier --check README.md 'docs/**/*.md'",
+    "fix": "pnpm lint --fix",
     "start": "pnpm build --watch"
   },
   "repository": {

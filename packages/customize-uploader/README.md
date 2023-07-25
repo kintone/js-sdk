@@ -7,6 +7,7 @@
 A kintone customize uploader
 
 ## Usage
+
 ```
 % npm install @kintone/customize-uploader
 
@@ -58,6 +59,7 @@ If you want to upload the customize files automatically when a file is updated, 
 ```
 
 ## Options
+
 ```
   Usage
     $ kintone-customize-uploader <manifestFile>
@@ -92,6 +94,7 @@ If you want to upload the customize files automatically when a file is updated, 
 ```
 
 If you omit the options, you can input the options interactively.
+
 ```
 % kintone-customize-uploader dest/customize-manifest.json
 ? Input your kintone's base URL: https://example.cybozu.com
@@ -109,33 +112,33 @@ If you use OAuth access token, you need to grant scopes corresponding to the com
 For the details; Please see [How to add OAuth clients](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/)
 
 ## Example
+
 This is an example of `customize-manifest.json` .
+
 ```json
 {
-    "app": "1",
-    "scope": "ALL",
-    "desktop": {
-        "js": [
-            "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
-            "sample/customize.js"
-        ],
-        "css": [
-            "sample/51-modern-default.css"
-        ]
-    },
-    "mobile": {
-        "js": [
-            "https://js.cybozu.com/jquery/3.3.1/jquery.min.js"
-        ]
-    }
+  "app": "1",
+  "scope": "ALL",
+  "desktop": {
+    "js": [
+      "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
+      "sample/customize.js"
+    ],
+    "css": ["sample/51-modern-default.css"]
+  },
+  "mobile": {
+    "js": ["https://js.cybozu.com/jquery/3.3.1/jquery.min.js"]
+  }
 }
 ```
+
 - `app` : The app id where to upload customize files to (`"APP_ID"`)
 - `scope`: The scope to apply your customization (`"ALL"` || `"ADMIN"` || `"NONE"`)
-- `desktop`: The customize files applied in PC view  (`"js": []` || `"css": []`)
+- `desktop`: The customize files applied in PC view (`"js": []` || `"css": []`)
 - `mobile`: The customize files applied in mobile view (`"js": []`)
 
 To upload files, run `kintone-customize-uploader <manifestFile>`.
+
 ```
 % kintone-customize-uploader dest/customize-manifest.json
 ? Input your kintone's base URL: https://example.cybozu.com

@@ -1,4 +1,3 @@
-
 name: yamory
 
 on:
@@ -11,27 +10,27 @@ jobs:
     name: Node.js ubuntu-latest 18.x
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v2
 
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
 
-    - name: download and validate Yamory script
-      working-directory: /tmp
-      run: |
-        curl -sSf -L -o ./yamory-pnpm.sh https://localscanner.yamory.io/script/pnpm
-        curl -sSf -L -o ./yamory-pnpm-sha512sum.txt \
-          https://cli.yamory.io/yamory-app-library-scan-scripts/yamory-pnpm-sha512sum.txt
-        sha512sum --check yamory-pnpm-sha512sum.txt
-        chmod +x ./yamory-pnpm.sh
-    - name: run Yamory
-      run: |
-        ls -d packages/*/ | xargs -I {} /tmp/yamory-pnpm.sh --manifest {}/package.json
-        ls -d examples/*/ | xargs -I {} /tmp/yamory-pnpm.sh --manifest {}/package.json
-      env:
-        CI: true
-        PROJECT_GROUP_KEY: js-sdk
-        YAMORY_API_KEY: ${{ secrets.YAMORY_API_KEY }}
+      - name: download and validate Yamory script
+        working-directory: /tmp
+        run: |
+          curl -sSf -L -o ./yamory-pnpm.sh https://localscanner.yamory.io/script/pnpm
+          curl -sSf -L -o ./yamory-pnpm-sha512sum.txt \
+            https://cli.yamory.io/yamory-app-library-scan-scripts/yamory-pnpm-sha512sum.txt
+          sha512sum --check yamory-pnpm-sha512sum.txt
+          chmod +x ./yamory-pnpm.sh
+      - name: run Yamory
+        run: |
+          ls -d packages/*/ | xargs -I {} /tmp/yamory-pnpm.sh --manifest {}/package.json
+          ls -d examples/*/ | xargs -I {} /tmp/yamory-pnpm.sh --manifest {}/package.json
+        env:
+          CI: true
+          PROJECT_GROUP_KEY: js-sdk
+          YAMORY_API_KEY: ${{ secrets.YAMORY_API_KEY }}

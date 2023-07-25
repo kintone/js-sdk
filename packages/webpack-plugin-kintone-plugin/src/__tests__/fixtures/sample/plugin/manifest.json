@@ -19,34 +19,17 @@
     "zh": "https://example.com/zn"
   },
   "desktop": {
-    "js": [
-      "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
-      "js/desktop.js"
-    ],
-    "css": [
-      "css/desktop.css"
-    ]
+    "js": ["https://js.cybozu.com/jquery/3.3.1/jquery.min.js", "js/desktop.js"],
+    "css": ["css/desktop.css"]
   },
   "mobile": {
-    "js": [
-      "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
-      "js/mobile.js"
-    ],
-    "css": [
-      "css/mobile.css"
-    ]
+    "js": ["https://js.cybozu.com/jquery/3.3.1/jquery.min.js", "js/mobile.js"],
+    "css": ["css/mobile.css"]
   },
   "config": {
     "html": "html/config.html",
-    "js": [
-      "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
-      "js/config.js"
-    ],
-    "css": [
-      "css/config.css"
-    ],
-    "required_params": [
-      "message"
-    ]
+    "js": ["https://js.cybozu.com/jquery/3.3.1/jquery.min.js", "js/config.js"],
+    "css": ["css/config.css"],
+    "required_params": ["message"]
   }
 }

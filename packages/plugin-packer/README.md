@@ -1,5 +1,4 @@
-kintone-plugin-packer
-====
+# kintone-plugin-packer
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-packer.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-packer)
 ![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/plugin-packer/package.json&label=node&query=$.engines.node&colorB=blue)
@@ -52,14 +51,14 @@ $ npm run package
 # Usage: Node.js API
 
 ```js
-const packer = require('@kintone/plugin-packer');
-const fs = require('fs');
+const packer = require("@kintone/plugin-packer");
+const fs = require("fs");
 
 const buffer = createContentsZipBufferInYourSelf();
-packer(buffer).then(output => {
+packer(buffer).then((output) => {
   console.log(output.id);
-  fs.writeFileSync('./private.ppk', output.privateKey);
-  fs.writeFileSync('./plugin.zip', output.plugin);
+  fs.writeFileSync("./private.ppk", output.privateKey);
+  fs.writeFileSync("./plugin.zip", output.plugin);
 });
 ```
 
