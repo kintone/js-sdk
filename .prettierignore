@@ -1,7 +1,7 @@
 # Ignore artifacts:
-lib
-dist
-esm
+/packages/*/lib
+/packages/*/dist
+/packages/*/esm
 
 # Ignore tsconfig file
 tsconfig.json
