@@ -14,7 +14,8 @@
           "type": "integer",
           "minimum": 0
         },
-        { "type": "string",
+        {
+          "type": "string",
           "pattern": "^(0|[1-9]\\d*)(?:\\.(0|[1-9]\\d*))?(?:\\.(0|[1-9]\\d*))?$"
         }
       ]
@@ -43,9 +44,7 @@
           "maxLength": 64
         }
       },
-      "required": [
-        "en"
-      ]
+      "required": ["en"]
     },
     "description": {
       "type": "object",
@@ -67,9 +66,7 @@
           "maxLength": 200
         }
       },
-      "required": [
-        "en"
-      ]
+      "required": ["en"]
     },
     "icon": {
       "type": "string",
@@ -118,7 +115,7 @@
         "js": {
           "$ref": "#/definitions/resources"
         },
-        "css":{
+        "css": {
           "$ref": "#/definitions/resources"
         }
       }
@@ -151,13 +148,7 @@
       }
     }
   },
-  "required": [
-    "manifest_version",
-    "version",
-    "type",
-    "name",
-    "icon"
-  ],
+  "required": ["manifest_version", "version", "type", "name", "icon"],
   "definitions": {
     "resources": {
       "$id": "#resources",
@@ -165,12 +156,15 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "anyOf": [{
-          "format": "https-url"
-        }, {
-          "format": "relative-path",
-          "maxFileSize": "20MB"
-        }]
+        "anyOf": [
+          {
+            "format": "https-url"
+          },
+          {
+            "format": "relative-path",
+            "maxFileSize": "20MB"
+          }
+        ]
       },
       "maxItems": 30
     }

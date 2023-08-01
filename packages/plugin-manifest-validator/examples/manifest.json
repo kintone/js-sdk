@@ -19,14 +19,8 @@
     "zh": "http://sample_cybozu.cn"
   },
   "desktop": {
-    "js": [
-      "js/customize.js",
-      "https://example.com/js/customize.js"
-    ],
-    "css": [
-      "https://example.com/css/customize.css",
-      "css/customize.css"
-    ]
+    "js": ["js/customize.js", "https://example.com/js/customize.js"],
+    "css": ["https://example.com/css/customize.css", "css/customize.css"]
   },
   "mobile": {
     "js": [
@@ -36,17 +30,8 @@
   },
   "config": {
     "html": "html/config.html",
-    "js": [
-      "https://example.com/js/config.js",
-      "js/config.js"
-    ],
-    "css": [
-      "css/config.css",
-      "https://example.com/css/config.css"
-    ],
-    "required_params": [
-      "Param1",
-      "Param2"
-    ]
+    "js": ["https://example.com/js/config.js", "js/config.js"],
+    "css": ["css/config.css", "https://example.com/css/config.css"],
+    "required_params": ["Param1", "Param2"]
   }
 }

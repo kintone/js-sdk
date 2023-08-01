@@ -19,38 +19,17 @@
     "zh": "http://zh.example.com"
   },
   "desktop": {
-    "js": [
-      "js/desktop.js",
-      "https://example.com/js/desktop.js"
-    ],
-    "css": [
-      "https://example.com/css/desktop.css",
-      "css/desktop.css"
-    ]
+    "js": ["js/desktop.js", "https://example.com/js/desktop.js"],
+    "css": ["https://example.com/css/desktop.css", "css/desktop.css"]
   },
   "mobile": {
-    "js": [
-      "js/mobile.js",
-      "https://example.com/js/mobile.js"
-    ],
-    "css": [
-      "https://example.com/css/mobile.css",
-      "css/mobile.css"
-    ]
+    "js": ["js/mobile.js", "https://example.com/js/mobile.js"],
+    "css": ["https://example.com/css/mobile.css", "css/mobile.css"]
   },
   "config": {
     "html": "html/config.html",
-    "js": [
-      "https://example.com/js/config.js",
-      "js/config.js"
-    ],
-    "css": [
-      "css/config.css",
-      "https://example.com/css/config.css"
-    ],
-    "required_params": [
-      "Param1",
-      "Param2"
-    ]
+    "js": ["https://example.com/js/config.js", "js/config.js"],
+    "css": ["css/config.css", "https://example.com/css/config.css"],
+    "required_params": ["Param1", "Param2"]
   }
 }
