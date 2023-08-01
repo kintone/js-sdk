@@ -1,16 +1,14 @@
-
 name: test
 
 on:
   push:
     branches:
       - master
-      - 'renovate/**'
+      - "renovate/**"
   pull_request:
 
 jobs:
   build:
-
     name: Node.js ${{ matrix.os }} ${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
 
@@ -20,17 +18,17 @@ jobs:
         os: [ubuntu-latest, windows-latest]
 
     steps:
-    - run: git config --global core.autocrlf false
-    - uses: actions/checkout@v3
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@v3
 
-    - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
 
-    - run: pnpm install --fetch-timeout 900000 --frozen-lockfile
-    - run: pnpm build
-    - run: pnpm test:ci
+      - run: pnpm install --fetch-timeout 900000 --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test:ci

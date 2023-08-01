@@ -15,11 +15,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc --build",
-    "fix:lint": "npm run lint:eslint -- --fix",
-    "fix:md": "prettier --write README.md",
-    "fix": "run-p fix:*",
+    "fix": "npm run lint:eslint -- --fix",
     "lint:eslint": "eslint 'src/**/*.ts'",
-    "lint:md": "prettier --check README.md",
     "lint:ts": "tsc --noEmit",
     "lint": "run-p -l lint:*",
     "deploy": "rimraf scripts/dist && run-s webpack upload",
