@@ -77,12 +77,14 @@ If you ommit the options, you can input the options interactively.
 ```
 
 If you encounter an error with the following message while uploading a plugin, chrome group policies in Windows might cause it:
+
 > Error: Failed to launch the browser process!
 >
 > TROUBLESHOOTING: https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
 
-The chrome group policy configured in Windows can enforce to install certain chrome extensions on browsers. The puppeteer fails to launch chrome when these policies are enabled.  See [puppeteer document](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md) for more detail.  
+The chrome group policy configured in Windows can enforce to install certain chrome extensions on browsers. The puppeteer fails to launch chrome when these policies are enabled. See [puppeteer document](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md) for more detail.  
 To avoid this issue, the plugin-uploader provides the `--puppeteer-ignore-default-args` option. Try to run plugin-uploader with the following option:
+
 ```console
 $ kintone-plugin-uploader \
   ....

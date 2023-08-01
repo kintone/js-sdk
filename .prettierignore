@@ -1,0 +1,12 @@
+# Ignore artifacts:
+/packages/*/lib
+/packages/*/dist
+/packages/*/esm
+
+# Ignore tsconfig file
+tsconfig.json
+tsconfig-base.json
+
+# Ignore auto generated files
+pnpm-lock.yaml
+CHANGELOG.md

@@ -1,21 +1,15 @@
 {
-    "app": "2",
-    "scope": "ALL",
-    "desktop": {
-        "js": [
-            "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
-            "sample/customize.js"
-        ],
-        "css": [
-            "sample/51-modern-default.css"
-        ]
-    },
-    "mobile": {
-        "js": [
-            "https://js.cybozu.com/jquery/3.3.1/jquery.min.js"
-        ],
-        "css": [
-          "sample/51-modern-default.css"
-        ]
-    }
+  "app": "2",
+  "scope": "ALL",
+  "desktop": {
+    "js": [
+      "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
+      "sample/customize.js"
+    ],
+    "css": ["sample/51-modern-default.css"]
+  },
+  "mobile": {
+    "js": ["https://js.cybozu.com/jquery/3.3.1/jquery.min.js"],
+    "css": ["sample/51-modern-default.css"]
+  }
 }

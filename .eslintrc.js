@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   extends: "@cybozu/eslint-config/presets/node-typescript-prettier",
   rules: {
     curly: ["error", "all"],

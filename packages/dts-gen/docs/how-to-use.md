@@ -3,7 +3,6 @@
 Type definition for kintone customize and
 Type definition generation tool from kintone form settings.
 
-
 ## Write kintone customize with TypeScript
 
 In kintone JavaScript customize, there are functions which are defined in kintone.
@@ -49,7 +48,6 @@ $ kintone-dts-gen --base-url https://***.cybozu.com \
                  -o sample-fields.d.ts
 ```
 
-
 You can set the values through environment variables.
 
 ```
@@ -86,6 +84,7 @@ $ kintone-dts-gen --base-url https://***.cybozu.com \
 In addition, you can use `HTTP_PROXY` and `HTTPS_PROXY` environment variables instead of the command line option.
 
 ### demo mode
+
 If you won't have a kintone, you can try with demo mode.
 you can generate demo type definition like below:
 
@@ -94,9 +93,10 @@ $ kintone-dts-gen --demo
 ```
 
 kintone-dts-gen generates demo record field definition from demo data.
-record field type definition(`kintone.types.Fields`)  is defined in `fields.d.ts`
+record field type definition(`kintone.types.Fields`) is defined in `fields.d.ts`
 
 ### command line options
+
 You can confirm command line options with `kintone-dts-gen --help`
 
 ### Write kintone JavaScript customize with TypeScript
@@ -133,17 +133,17 @@ Write Typescript code
 
 ```typescript
 interface Event {
-    appId: number;
-    recordId: number;
-    record: kintone.types.SavedDemoFields;
+  appId: number;
+  recordId: number;
+  record: kintone.types.SavedDemoFields;
 }
 
 (() => {
-    kintone.events.on("app.record.create.show", (event: Event) => {
-        const appId = event.appId;
-        const recordId = event.recordId;
-        const type = event.record.Record_number.value;
-    });
+  kintone.events.on("app.record.create.show", (event: Event) => {
+    const appId = event.appId;
+    const recordId = event.recordId;
+    const type = event.record.Record_number.value;
+  });
 })();
 ```
 
@@ -164,7 +164,7 @@ Compile Error:
 
 ![Compile error](compile-error.gif)
 
-Code completion in Subtable field: 
+Code completion in Subtable field:
 
 ![subtable](subtable.gif)
 
@@ -174,15 +174,16 @@ If there are some reasons why you can't use TypeScript, you can use the Type Def
 If you work with VSCode, WebStorm IDE or some editor, you can gain the power of code completion!
 
 1. Write triple slash comment in your kintone customize file
+
 ```javascript
 /// <reference path="../node_modules/@kintone/dts-gen/kintone.d.ts" />
 /// <reference path="./demo-field.d.ts" />
 (() => {
-    kintone.events.on("test", function(event){
-        /**
-         * @type {kintone.types.DemoField}
-         */
-        const record = event.record;
-    });
+  kintone.events.on("test", function (event) {
+    /**
+     * @type {kintone.types.DemoField}
+     */
+    const record = event.record;
+  });
 })();
 ```

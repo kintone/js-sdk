@@ -9,6 +9,7 @@ If you set options with `namespace=com.cybozu.kintone` and `type-name=AwesomeFie
 you will get definition like below:
 
 ## com.cybozu.kintone.AwesomeFields
+
 This fields type definition which defined in kintone app.
 
 ## com.cybozu.kintone.SavedAwesomeFields
@@ -21,5 +22,6 @@ This fields will be included when you refer to a saved record.
 ## Notes
 
 `namespace` and `type-name` convention:
+
 - Starts with a letter (`a-z` or `A-Z`), underscore (`_`), or dollar sign (`$`).
 - Can be followed by any alphanumeric, underscores, or dollar signs.
