@@ -3,7 +3,7 @@ import fs from "fs";
 import { promisify } from "util";
 import os from "os";
 import * as chokidar from "chokidar";
-import mkdirp from "mkdirp";
+import { mkdirp } from "mkdirp";
 import _debug from "debug";
 import validate from "@kintone/plugin-manifest-validator";
 import packer from ".";
