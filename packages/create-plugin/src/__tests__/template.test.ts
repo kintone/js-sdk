@@ -33,7 +33,7 @@ describe("template", () => {
 
     beforeEach(async () => {
       destDir = await fs.mkdtemp(
-        path.join(os.tmpdir(), "kintone-create-plugin-")
+        path.join(os.tmpdir(), "kintone-create-plugin-"),
       );
     });
 
@@ -53,7 +53,7 @@ describe("template", () => {
           "..",
           "..",
           "templates",
-          template
+          template,
         );
 
         processTemplateFile(
@@ -61,11 +61,11 @@ describe("template", () => {
           srcDir,
           destDir,
           manifest,
-          enablePluginUploader
+          enablePluginUploader,
         );
 
         const packageJson = JSON.parse(
-          await fs.readFile(path.resolve(destDir, "package.json"), "utf8")
+          await fs.readFile(path.resolve(destDir, "package.json"), "utf8"),
         );
 
         assert(packageJson.name);
@@ -77,7 +77,7 @@ describe("template", () => {
           assert(packageJson.scripts.upload);
           assert(packageJson.devDependencies["@kintone/plugin-uploader"]);
         }
-      }
+      },
     );
 
     it.each(patterns)(
@@ -88,7 +88,7 @@ describe("template", () => {
           "..",
           "..",
           "templates",
-          template
+          template,
         );
 
         const templateFile =
@@ -101,7 +101,7 @@ describe("template", () => {
           srcDir,
           destDir,
           manifest,
-          enablePluginUploader
+          enablePluginUploader,
         );
 
         const destFile =
@@ -109,7 +109,7 @@ describe("template", () => {
             ? path.resolve(destDir, "plugin", "html", "config.html")
             : path.resolve(destDir, "src", "html", "config.html");
         assert(await fs.stat(destFile));
-      }
+      },
     );
     it.each(patterns)(
       "should copy normal file correctly (template: $template, enablePluginUploader: $enablePluginUploader)",
@@ -119,7 +119,7 @@ describe("template", () => {
           "..",
           "..",
           "templates",
-          template
+          template,
         );
 
         const templateFile = path.resolve(srcDir, ".gitignore");
@@ -129,11 +129,11 @@ describe("template", () => {
           srcDir,
           destDir,
           manifest,
-          enablePluginUploader
+          enablePluginUploader,
         );
 
         assert(await fs.stat(path.resolve(destDir, ".gitignore")));
-      }
+      },
     );
 
     it("should convert webpack.config.js correctly with modern template", async () => {
@@ -144,7 +144,7 @@ describe("template", () => {
         srcDir,
         destDir,
         manifest,
-        false
+        false,
       );
       const destFile = path.resolve(destDir, "webpack.config.js");
       assert(await fs.stat(destFile));

@@ -31,7 +31,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       const requestConfig = await kintoneRequestConfigBuilder.build(
         "get",
         "/k/v1/record.json",
-        { key: "value" }
+        { key: "value" },
       );
       expect(requestConfig).toStrictEqual({
         method: "get",
@@ -58,7 +58,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       const requestConfig = await kintoneRequestConfigBuilder.build(
         "get",
         "/k/v1/record.json",
-        { key: "value" }
+        { key: "value" },
       );
       expect(requestConfig).toStrictEqual({
         method: "get",
@@ -75,7 +75,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       const requestConfig = await kintoneRequestConfigBuilder.build(
         "get",
         "/k/v1/record.json",
-        { key: value }
+        { key: value },
       );
       expect(requestConfig).toStrictEqual({
         method: "post",
@@ -94,7 +94,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
         "get",
         "/k/v1/record.json",
         { key: "value" },
-        { responseType: "arraybuffer" }
+        { responseType: "arraybuffer" },
       );
       expect(requestConfig).toStrictEqual({
         method: "get",
@@ -111,7 +111,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       const requestConfig = await kintoneRequestConfigBuilder.build(
         "post",
         "/k/v1/record.json",
-        { key: "value" }
+        { key: "value" },
       );
       expect(requestConfig).toStrictEqual({
         method: "post",
@@ -132,7 +132,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       const requestConfig = await kintoneRequestConfigBuilder.build(
         "post",
         "/k/v1/record.json",
-        formData
+        formData,
       );
       const { data, ...config } = requestConfig;
       expect(config).toStrictEqual({
@@ -151,7 +151,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       const requestConfig = await kintoneRequestConfigBuilder.build(
         "put",
         "/k/v1/record.json",
-        { key: "value" }
+        { key: "value" },
       );
       expect(requestConfig).toStrictEqual({
         method: "put",
@@ -170,7 +170,7 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       const requestConfig = await kintoneRequestConfigBuilder.build(
         "delete",
         "/k/v1/record.json",
-        { key: "value" }
+        { key: "value" },
       );
       expect(requestConfig).toStrictEqual({
         method: "delete",
@@ -206,7 +206,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      { key: "value" }
+      { key: "value" },
     );
     expect(requestConfig).toStrictEqual({
       method: "get",
@@ -222,7 +222,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      { key: value }
+      { key: value },
     );
     expect(requestConfig).toStrictEqual({
       method: "post",
@@ -240,7 +240,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
       "get",
       "/k/v1/record.json",
       { key: "value" },
-      { responseType: "arraybuffer" }
+      { responseType: "arraybuffer" },
     );
     expect(requestConfig).toStrictEqual({
       method: "get",
@@ -256,7 +256,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "post",
       "/k/v1/record.json",
-      { key: "value" }
+      { key: "value" },
     );
     expect(requestConfig).toStrictEqual({
       method: "post",
@@ -277,7 +277,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "post",
       "/k/v1/record.json",
-      formData
+      formData,
     );
     const { data, ...config } = requestConfig;
     expect(config).toStrictEqual({
@@ -295,7 +295,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "put",
       "/k/v1/record.json",
-      { key: "value" }
+      { key: "value" },
     );
     expect(requestConfig).toStrictEqual({
       method: "put",
@@ -314,7 +314,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "delete",
       "/k/v1/record.json",
-      { key: "value" }
+      { key: "value" },
     );
     expect(requestConfig).toStrictEqual({
       method: "delete",
@@ -356,7 +356,7 @@ describe("options", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      { key: "value" }
+      { key: "value" },
     );
     expect(requestConfig).toStrictEqual({
       method: "get",
@@ -387,7 +387,7 @@ describe("options", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      { key: "value" }
+      { key: "value" },
     );
     expect(requestConfig).toStrictEqual({
       method: "get",
@@ -414,7 +414,7 @@ describe("options", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      { key: "value" }
+      { key: "value" },
     );
     expect(requestConfig).toHaveProperty("httpsAgent");
   });
@@ -439,7 +439,7 @@ describe("options", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      { key: "value" }
+      { key: "value" },
     );
     expect(requestConfig).toHaveProperty("httpsAgent");
   });
@@ -462,7 +462,7 @@ describe("Headers", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      {}
+      {},
     );
     expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedDefaultUa,
@@ -482,7 +482,7 @@ describe("Headers", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      {}
+      {},
     );
     expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedDefaultUa,
@@ -503,7 +503,7 @@ describe("Headers", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      {}
+      {},
     );
     expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedDefaultUa,
@@ -524,7 +524,7 @@ describe("Headers", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      {}
+      {},
     );
     expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedDefaultUa,
@@ -542,7 +542,7 @@ describe("Headers", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      {}
+      {},
     );
     expect(requestConfig.headers).toStrictEqual({
       "User-Agent": expectedDefaultUa,
@@ -562,7 +562,7 @@ describe("Headers", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      {}
+      {},
     );
     expect(requestConfig.headers).toStrictEqual({
       Authorization: `Bearer ${oAuthToken}`,
@@ -582,7 +582,7 @@ describe("Headers", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      {}
+      {},
     );
     expect(requestConfig.headers).toStrictEqual({
       Authorization: `Basic ${Base64.encode("user:password")}`,
@@ -602,7 +602,7 @@ describe("Headers", () => {
     const requestConfig = await kintoneRequestConfigBuilder.build(
       "get",
       "/k/v1/record.json",
-      {}
+      {},
     );
     expect(requestConfig.headers["User-Agent"]).toBeUndefined();
   });

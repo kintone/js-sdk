@@ -80,7 +80,7 @@ describe("FileClient", () => {
       it("should raise an error on a browser environment", async () => {
         injectPlatformDeps(browserDeps);
         await expect(fileClient.uploadFile(params)).rejects.toThrow(
-          "uploadFile doesn't allow to accept a file path in Browser environment."
+          "uploadFile doesn't allow to accept a file path in Browser environment.",
         );
       });
     });
@@ -124,7 +124,7 @@ describe("FileClient with guestSpaceId", () => {
   });
   it("should pass the path to the http client", () => {
     expect(mockClient.getLogs()[0].path).toBe(
-      `/k/guest/${GUEST_SPACE_ID}/v1/file.json`
+      `/k/guest/${GUEST_SPACE_ID}/v1/file.json`,
     );
   });
 });

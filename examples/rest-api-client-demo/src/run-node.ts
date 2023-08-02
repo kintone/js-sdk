@@ -49,7 +49,7 @@ yargs
     (argv: any) => {
       // @ts-ignore
       new App(buildClient(argv))[argv.method]();
-    }
+    },
   )
   .command(
     "record [method]",
@@ -58,7 +58,7 @@ yargs
     (argv: any) => {
       // @ts-ignore
       new Record(buildClient(argv))[argv.method]();
-    }
+    },
   )
   .command(
     "file [method]",
@@ -67,7 +67,7 @@ yargs
     (argv: any) => {
       // @ts-ignore
       new File(buildClient(argv))[argv.method]();
-    }
+    },
   )
   .command(
     "bulkRequest [method]",
@@ -76,7 +76,7 @@ yargs
     (argv: any) => {
       // @ts-ignore
       new BulkRequest(buildClient(argv))[argv.method]();
-    }
+    },
   )
   .option("authType", {
     desc: "Auth type",

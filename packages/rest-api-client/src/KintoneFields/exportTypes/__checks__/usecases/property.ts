@@ -25,11 +25,11 @@ type MyAppProperty = {
 };
 
 declare function displayTitleFieldProperty(
-  property: KintoneFormFieldProperty.SingleLineText
+  property: KintoneFormFieldProperty.SingleLineText,
 ): void;
 
 declare function modifyDetailsProperty(
-  property: MyAppProperty["Details"]
+  property: MyAppProperty["Details"],
 ): MyAppProperty["Details"];
 
 const exampleGetAndUpdateProperties = async () => {

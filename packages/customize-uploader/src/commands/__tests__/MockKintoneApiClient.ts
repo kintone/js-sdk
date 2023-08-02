@@ -47,7 +47,7 @@ export default class MockKintoneApiClient extends KintoneApiClient {
   public willBeReturn(
     path: PathParameter,
     method: MethodParameter,
-    willBeReturn: string | object
+    willBeReturn: string | object,
   ) {
     let byPath: any = this.willBeReturnResponse[path];
     if (!byPath) {
@@ -120,7 +120,7 @@ export default class MockKintoneApiClient extends KintoneApiClient {
     const byPath = this.willBeReturnResponse[params.path];
     if (!byPath || !byPath[params.method]) {
       console.info(
-        `not mocked request: [${params.method}] ${params.path} returns {}`
+        `not mocked request: [${params.method}] ${params.path} returns {}`,
       );
       return {};
     }

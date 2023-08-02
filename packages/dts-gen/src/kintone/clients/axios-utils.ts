@@ -36,7 +36,7 @@ const newAxiosInstance = (input: NewInstanceInput): AxiosInstance => {
   if (input.username && input.password) {
     headers = {
       "X-Cybozu-Authorization": Buffer.from(
-        `${input.username}:${input.password}`
+        `${input.username}:${input.password}`,
       ).toString("base64"),
     };
   } else if (input.apiToken) {
@@ -55,7 +55,7 @@ const newAxiosInstance = (input: NewInstanceInput): AxiosInstance => {
     headers.Authorization =
       "Basic " +
       Buffer.from(
-        `${input.basicAuthUsername}:${input.basicAuthPassword}`
+        `${input.basicAuthUsername}:${input.basicAuthPassword}`,
       ).toString("base64");
   }
   return VisibleForTesting.newAxiosInstanceInternal({

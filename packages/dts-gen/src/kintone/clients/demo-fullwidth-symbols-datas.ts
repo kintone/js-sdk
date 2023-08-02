@@ -98,7 +98,7 @@ export const DemoDatas = {
   DemoFullWidthSymbolDataFields,
   DemoDataIncludingBuiltinFields: Object.assign(
     DemoDataBuiltinFields,
-    DemoFullWidthSymbolDataFields
+    DemoFullWidthSymbolDataFields,
   ),
   DemoFullWidthSymbolRecord,
 };

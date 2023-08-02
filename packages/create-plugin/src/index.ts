@@ -20,7 +20,7 @@ import type { TemplateType } from "./template";
 const verifyOutputDirectory = (outputDirectory: string, lang: Lang): void => {
   if (fs.existsSync(outputDirectory)) {
     throw new Error(
-      `${outputDirectory} ${getMessage(lang, "Error_alreadyExists")}`
+      `${outputDirectory} ${getMessage(lang, "Error_alreadyExists")}`,
     );
   }
 };
@@ -49,7 +49,7 @@ const run = (outputDir: string, lang: Lang, templateType: TemplateType) => {
         manifest,
         lang,
         answers.pluginUploader,
-        templateType
+        templateType,
       );
       return [manifest, answers.pluginUploader];
     })

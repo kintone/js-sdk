@@ -25,7 +25,7 @@ interface SchemaValidateFunction {
  */
 export default (
   json: Record<string, any>,
-  options: { [s: string]: (...args: any) => boolean } = {}
+  options: { [s: string]: (...args: any) => boolean } = {},
 ): ValidateResult => {
   let relativePath = (...args: any) => true;
   let maxFileSize = (...args: any) => true;
@@ -47,7 +47,7 @@ export default (
 
   const validateMaxFileSize: SchemaValidateFunction = (
     schema: string,
-    data: string
+    data: string,
   ) => {
     // schema: max file size like "512KB" or 123 (in bytes)
     // data: path to the file
@@ -82,7 +82,7 @@ export default (
  * @return {null|Array<Object>} shallow copy of the input or null
  */
 const transformErrors = (
-  errors: undefined | null | ErrorObject[]
+  errors: undefined | null | ErrorObject[],
 ): null | ErrorObject[] => {
   if (!errors) {
     return null;

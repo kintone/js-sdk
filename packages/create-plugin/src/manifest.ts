@@ -110,7 +110,7 @@ const answer2Manifest = (answers: Answers): Manifest => {
  */
 export const buildManifest = (
   answers: Answers,
-  templateType: TemplateType
+  templateType: TemplateType,
 ): Manifest => {
   let manifest = {
     ...(templateType === "modern" ? modernManifest : minimumManifest),

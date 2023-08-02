@@ -1,7 +1,7 @@
 import yauzl from "yauzl";
 
 export const readZipContentsNames = (
-  zipFilePath: Buffer
+  zipFilePath: Buffer,
 ): Promise<string[]> => {
   return new Promise((resolve, reject) => {
     yauzl.fromBuffer(zipFilePath, (err, zipFile) => {

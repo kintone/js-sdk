@@ -11,6 +11,6 @@ export const loadEnv = <T extends Profile>(): Partial<T> => {
   return Object.keys(config).reduce(
     (acc, key) =>
       config[key] !== undefined ? { ...acc, [key]: config[key] } : acc,
-    {}
+    {},
   );
 };

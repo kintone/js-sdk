@@ -101,8 +101,8 @@ const uploadPluginZipHandler = createFileHanlder((promise) => {
           uploadPlugin(
             result.name,
             () => readArrayBuffer(result),
-            validatePlugin
-          )
+            validatePlugin,
+          ),
         );
         // Uploading a directory
       } else if (result.entries instanceof Map) {
@@ -111,8 +111,8 @@ const uploadPluginZipHandler = createFileHanlder((promise) => {
             uploadPlugin(
               result.name,
               () => Promise.resolve(buffer),
-              validatePlugin
-            )
+              validatePlugin,
+            ),
           );
         });
       } else {
@@ -132,7 +132,7 @@ const uploadPPKHanlder = createFileHanlder((promise) => {
         // Uploading a directory
       } else if (result.entries instanceof Map) {
         store.dispatch(
-          uploadFailure(new Error("secret file should be a text file"))
+          uploadFailure(new Error("secret file should be a text file")),
         );
       } else {
         throw new Error("Something went wrong.");

@@ -41,7 +41,7 @@ export const upload = async (
     updateBody: any;
     updated: boolean;
   },
-  options: Option
+  options: Option,
 ): Promise<void> => {
   const m = getBoundMessage(options.lang);
   const appId = manifest.app;
@@ -100,7 +100,7 @@ export const upload = async (
     try {
       await kintoneApiClient.deploySetting(appId);
       await kintoneApiClient.waitFinishingDeploy(appId, () =>
-        console.log(m("M_Deploying"))
+        console.log(m("M_Deploying")),
       );
       console.log(m("M_Deployed"));
     } catch (e) {
@@ -119,7 +119,7 @@ export const upload = async (
         kintoneApiClient,
         manifest,
         { retryCount, updateBody, updated },
-        options
+        options,
       );
     } else {
       throw e;
@@ -135,12 +135,12 @@ export const run = async (
   basicAuthUsername: string | null,
   basicAuthPassword: string | null,
   manifestFile: string,
-  options: Option
+  options: Option,
 ): Promise<void> => {
   const m = getBoundMessage(options.lang);
 
   const manifest: CustomizeManifest = JSON.parse(
-    fs.readFileSync(manifestFile, "utf8")
+    fs.readFileSync(manifestFile, "utf8"),
   );
   const status = {
     retryCount: 0,
@@ -162,7 +162,7 @@ export const run = async (
     basicAuthUsername,
     basicAuthPassword,
     baseUrl,
-    options
+    options,
   );
   await upload(kintoneApiClient, manifest, status, options);
 
@@ -177,7 +177,7 @@ export const run = async (
     });
     console.log(m("M_Watching"));
     watcher.on("change", () =>
-      upload(kintoneApiClient, manifest, status, options)
+      upload(kintoneApiClient, manifest, status, options),
     );
   }
 };

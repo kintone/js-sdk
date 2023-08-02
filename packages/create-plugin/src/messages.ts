@@ -148,7 +148,7 @@ kintoneプラグインのプロジェクトを作成するために、いくつ�
  */
 export const getMessage = (
   lang: keyof LangMap,
-  key: keyof MessageMap
+  key: keyof MessageMap,
 ): string => {
   return messages[key][lang];
 };
@@ -158,7 +158,7 @@ export const getMessage = (
  * @param lang
  */
 export const getBoundMessage = (
-  lang: keyof LangMap
+  lang: keyof LangMap,
 ): ((key: keyof MessageMap) => string) => {
   return getMessage.bind(null, lang);
 };

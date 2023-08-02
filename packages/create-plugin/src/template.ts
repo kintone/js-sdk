@@ -31,7 +31,7 @@ export const getTemplateType = (manifest: Manifest): TemplateType => {
 export const isNecessaryFile = (manifest: Manifest, file: string): boolean => {
   const excludedFiles = ["with-plugin-uploader.json", "webpack.entry.json"];
   const isExcludedFile = excludedFiles.some(
-    (excludeFile) => path.basename(file) === excludeFile
+    (excludeFile) => path.basename(file) === excludeFile,
   );
   if (isExcludedFile) {
     return false;
@@ -61,7 +61,7 @@ export const processTemplateFile = (
   srcDir: string,
   destDir: string,
   manifest: Manifest,
-  enablePluginUploader: boolean
+  enablePluginUploader: boolean,
 ): void => {
   const destFilePath = path.join(destDir, path.relative(srcDir, filePath));
 
@@ -69,7 +69,7 @@ export const processTemplateFile = (
     const src = fs.readFileSync(filePath, "utf-8");
     const destPath = path.join(
       path.dirname(destFilePath),
-      path.basename(destFilePath, ".tmpl")
+      path.basename(destFilePath, ".tmpl"),
     );
     fs.mkdirSync(path.dirname(destPath), { recursive: true });
     fs.writeFileSync(
@@ -79,17 +79,20 @@ export const processTemplateFile = (
           enablePluginUploader,
           // It's a function to remove whitespaces for pacakge.json's name field
           normalizePackageName: (name: string) => name.replace(/\s/g, "-"),
-        })
-      )
+        }),
+      ),
     );
   } else if (path.resolve(filePath) === path.resolve(srcDir, "package.json")) {
     const packageJson: PackageJson = JSON.parse(
-      fs.readFileSync(filePath, "utf-8")
+      fs.readFileSync(filePath, "utf-8"),
     );
     packageJson.name = manifest.name.en.replace(/\s/g, "-");
     if (enablePluginUploader) {
       const withPluginUploaderJson: WithPluginUploaderJson = JSON.parse(
-        fs.readFileSync(path.join(srcDir, "with-plugin-uploader.json"), "utf-8")
+        fs.readFileSync(
+          path.join(srcDir, "with-plugin-uploader.json"),
+          "utf-8",
+        ),
       );
       if (withPluginUploaderJson.scripts) {
         packageJson.scripts = {
@@ -111,7 +114,7 @@ export const processTemplateFile = (
       }
     }
     const sortedPackageJson = sortPackageJson(
-      JSON.stringify(packageJson, null, 2)
+      JSON.stringify(packageJson, null, 2),
     );
     fs.writeFileSync(destFilePath, sortedPackageJson);
   } else if (
@@ -119,7 +122,7 @@ export const processTemplateFile = (
     path.resolve(srcDir, "webpack.config.template.js")
   ) {
     const webpackEntryJson: WebpackEntryJson = JSON.parse(
-      fs.readFileSync(path.join(srcDir, "webpack.entry.json"), "utf-8")
+      fs.readFileSync(path.join(srcDir, "webpack.entry.json"), "utf-8"),
     );
     const webpackEntry = manifest.mobile
       ? webpackEntryJson.mobile
@@ -133,7 +136,7 @@ export const processTemplateFile = (
     let webpackConfigContent: string = fs.readFileSync(filePath, "utf-8");
     webpackConfigContent = webpackConfigContent.replace(
       /'%%placeholder_webpack_entry%%'/,
-      entriesStr
+      entriesStr,
     );
     const prettySource = prettier.format(webpackConfigContent, {
       parser: "typescript",

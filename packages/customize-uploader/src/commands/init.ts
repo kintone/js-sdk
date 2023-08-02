@@ -6,7 +6,7 @@ import { getBoundMessage } from "../messages";
 
 export const getInitCustomizeManifest = (
   appId: string,
-  scope: "ALL" | "ADMIN" | "NONE"
+  scope: "ALL" | "ADMIN" | "NONE",
 ): CustomizeManifest => {
   return {
     app: appId,
@@ -24,7 +24,7 @@ export const getInitCustomizeManifest = (
 
 export const generateCustomizeManifest = (
   customizeManifest: CustomizeManifest,
-  destDir: string
+  destDir: string,
 ): Promise<any> => {
   if (!fs.existsSync(`${destDir}`)) {
     mkdirp.sync(`${destDir}`);
@@ -39,7 +39,7 @@ export const generateCustomizeManifest = (
         } else {
           resolve(JSON.stringify(customizeManifest, null, 4));
         }
-      }
+      },
     );
   });
 };
@@ -48,7 +48,7 @@ export const runInit = async (
   appId: string,
   scope: "ALL" | "ADMIN" | "NONE",
   lang: Lang,
-  destDir: string
+  destDir: string,
 ): Promise<any> => {
   const m = getBoundMessage(lang);
   const customizeManifest = getInitCustomizeManifest(appId, scope);

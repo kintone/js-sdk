@@ -33,7 +33,7 @@ describe("VisibleForTesting.constructUrl", () => {
         guestSpaceId,
       };
       expect(VisibleForTesting.constructUrl(input)).toEqual(expected);
-    }
+    },
   );
 });
 
@@ -49,7 +49,7 @@ describe("FormsClientImpl#fetchFormProperties", () => {
         data: {
           properties: {},
         },
-      })
+      }),
     );
 
     const mockNewAxiosInstance = jest.fn();

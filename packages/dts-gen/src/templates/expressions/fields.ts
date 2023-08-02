@@ -8,7 +8,7 @@ export class FieldGroup implements TsExpression {
     private calculatedFields: TsDefinedField[],
     private stringListFields: TsDefinedField[],
     private entityListFields: TsDefinedField[],
-    private fileFields: TsDefinedField[]
+    private fileFields: TsDefinedField[],
   ) {}
 
   tsExpression(): string {
@@ -33,7 +33,7 @@ export class TsDefinedField implements TsExpression {
 
   tsExpression(): string {
     return `"${this.fieldName}" : ${FieldTypeConverter.convert(
-      this.fieldType
+      this.fieldType,
     )};`.trim();
   }
 }
@@ -42,7 +42,7 @@ export class SubTableField implements TsExpression {
   constructor(
     private fieldName: string,
     private fieldType: string,
-    private fieldGroup: FieldGroup
+    private fieldGroup: FieldGroup,
   ) {}
   tsExpression(): string {
     return `

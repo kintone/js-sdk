@@ -40,7 +40,7 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
       });
     }
     throw new Error(
-      `Failed to fix lint errors on the generated type definition file.\n${errorMessage}`
+      `Failed to fix lint errors on the generated type definition file.\n${errorMessage}`,
     );
   }
   let eslintOutput = "";

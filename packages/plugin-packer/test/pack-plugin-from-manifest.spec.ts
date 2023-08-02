@@ -17,7 +17,7 @@ describe("pack-plugin-from-manifest", () => {
     Promise.all([
       packPluginFromManifest(manifestJSONPath, privateKey),
       createContentsZip(pluginDir, manifest).then((buffer) =>
-        packer(buffer as any, privateKey)
+        packer(buffer as any, privateKey),
       ),
     ]).then(([result1, result2]) => {
       expect(result1.id).toBe(result2.id);

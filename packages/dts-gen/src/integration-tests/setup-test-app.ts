@@ -20,7 +20,7 @@ const handleSetupApp = async (command) => {
   const client = new SetUpTestAppClient(newClientInput);
   const app = await SetupTestApp.createKintoneApp(
     client,
-    "dts-gen-integration-test"
+    "dts-gen-integration-test",
   );
   await SetupTestApp.addDemoField(client, app);
 
@@ -46,16 +46,16 @@ const handleSetupApp = async (command) => {
     .option(
       "--basic-auth-username [basicAuthUsername]",
       "username for basic authentication",
-      null
+      null,
     )
     .option(
       "--basic-auth-password [basicAuthPassword]",
       "password for basic authentication",
-      null
+      null,
     )
     .option(
       "--integration-test-js-file <integrationTestJsFile>",
-      "path to integration js file which will be uploaded to test kintone app"
+      "path to integration js file which will be uploaded to test kintone app",
     )
     .parse(process.argv);
 

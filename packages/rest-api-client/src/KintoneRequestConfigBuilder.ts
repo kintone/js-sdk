@@ -96,7 +96,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     method: HttpMethod,
     path: string,
     params: Data,
-    options?: { responseType: "arraybuffer" }
+    options?: { responseType: "arraybuffer" },
   ) {
     const requestConfig: RequestConfig = {
       method,
@@ -154,7 +154,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       case "delete": {
         const requestUrl = this.buildRequestUrl(
           path,
-          await this.buildData(params)
+          await this.buildData(params),
         );
         return {
           ...requestConfig,
@@ -194,7 +194,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     const basicAuthHeaders = basicAuth
       ? {
           Authorization: `Basic ${Base64.encode(
-            `${basicAuth.username}:${basicAuth.password}`
+            `${basicAuth.username}:${basicAuth.password}`,
           )}`,
         }
       : {};
@@ -207,7 +207,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         return {
           ...commonHeaders,
           "X-Cybozu-Authorization": Base64.encode(
-            `${this.auth.username}:${this.auth.password}`
+            `${this.auth.username}:${this.auth.password}`,
           ),
         };
       }

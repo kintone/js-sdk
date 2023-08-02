@@ -24,7 +24,7 @@ export const generatePlugin = (
   manifest: Manifest,
   lang: Lang,
   enablePluginUploader: boolean,
-  templateType: TemplateType
+  templateType: TemplateType,
 ): void => {
   // copy and build a project into the output diretory
   buildProject(outputDirectory, manifest, enablePluginUploader, templateType);
@@ -43,7 +43,7 @@ const buildProject = (
   outputDirectory: string,
   manifest: Manifest,
   enablePluginUploader: boolean,
-  templateType: TemplateType
+  templateType: TemplateType,
 ): void => {
   fs.mkdirSync(outputDirectory);
   // This is necessary for unit testing
@@ -63,19 +63,19 @@ const buildProject = (
         templatePath,
         outputDirectory,
         manifest,
-        enablePluginUploader
-      )
+        enablePluginUploader,
+      ),
     );
   fs.writeFileSync(
     path.resolve(outputDirectory, "private.ppk"),
-    generatePrivateKey()
+    generatePrivateKey(),
   );
   fs.writeFileSync(
     path.resolve(
       outputDirectory,
       templateType === "modern" ? "plugin" : "src",
-      "manifest.json"
+      "manifest.json",
     ),
-    JSON.stringify(manifest, null, 2)
+    JSON.stringify(manifest, null, 2),
   );
 };

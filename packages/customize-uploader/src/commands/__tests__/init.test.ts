@@ -16,9 +16,9 @@ describe("init", () => {
       const appCustomize = JSON.parse(
         fs
           .readFileSync(
-            "src/commands/__tests__/fixtures/get-appcustomize-init.json"
+            "src/commands/__tests__/fixtures/get-appcustomize-init.json",
           )
-          .toString()
+          .toString(),
       );
       assert.deepStrictEqual(JSON.parse(buffer.toString()), appCustomize);
     };
@@ -27,7 +27,7 @@ describe("init", () => {
       const manifestFile = `${testDestDir}/customize-manifest.json`;
       const manifestFileContent: CustomizeManifest = getInitCustomizeManifest(
         "1",
-        "ALL"
+        "ALL",
       );
       await generateCustomizeManifest(manifestFileContent, testDestDir);
       const content = fs.readFileSync(manifestFile);

@@ -35,7 +35,7 @@ describe("util", () => {
       const username = "USERNAME";
       const password = "PASSWORD";
       const result = parseProxy(
-        `http://${username}:${password}@${host}:${port}`
+        `http://${username}:${password}@${host}:${port}`,
       );
       expect(result).toStrictEqual({
         host,
