@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.5](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.4...@kintone/create-plugin@6.0.5) (2023-08-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to v4 ([#2136](https://github.com/kintone/js-sdk/issues/2136)) ([719fb4b](https://github.com/kintone/js-sdk/commit/719fb4bc538b0919d8c68706ae2855903663b9ea))
+
 ## [6.0.4](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.3...@kintone/create-plugin@6.0.4) (2023-07-05)
 
 ### Bug Fixes
