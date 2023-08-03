@@ -1,5 +1,5 @@
 import fs from "fs";
-import mkdirp from "mkdirp";
+import { mkdirp } from "mkdirp";
 import type { CustomizeManifest } from "./index";
 import type { Lang } from "../lang";
 import { getBoundMessage } from "../messages";

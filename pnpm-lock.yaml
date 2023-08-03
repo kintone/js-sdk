@@ -155,8 +155,8 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
       mkdirp:
-        specifier: ^2.1.6
-        version: 2.1.6
+        specifier: ^3.0.1
+        version: 3.0.1
       os-locale:
         specifier: ^5.0.0
         version: 5.0.0
@@ -167,12 +167,6 @@ importers:
       '@types/inquirer':
         specifier: 8.2.6
         version: 8.2.6
-      '@types/mkdirp':
-        specifier: ^1.0.2
-        version: 1.0.2
-      '@types/rimraf':
-        specifier: ^3.0.2
-        version: 3.0.2
 
   packages/dts-gen:
     dependencies:
@@ -263,8 +257,8 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
       mkdirp:
-        specifier: ^2.1.6
-        version: 2.1.6
+        specifier: ^3.0.1
+        version: 3.0.1
       node-rsa:
         specifier: ~1.1.1
         version: 1.1.1
@@ -479,8 +473,8 @@ importers:
         specifier: ^7.0.4
         version: link:../plugin-packer
       mkdirp:
-        specifier: ^2.1.6
-        version: 2.1.6
+        specifier: ^3.0.1
+        version: 3.0.1
     devDependencies:
       '@types/adm-zip':
         specifier: ^0.5.0
@@ -488,12 +482,6 @@ importers:
       '@types/chokidar':
         specifier: ^1.7.5
         version: 1.7.5
-      '@types/mkdirp':
-        specifier: ^1.0.2
-        version: 1.0.2
-      '@types/rimraf':
-        specifier: ^3.0.2
-        version: 3.0.2
       adm-zip:
         specifier: ^0.5.10
         version: 0.5.10
@@ -2560,12 +2548,6 @@ packages:
   /@types/minimist@1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: false
-
-  /@types/mkdirp@1.0.2:
-    resolution: {integrity: sha512-o0K1tSO0Dx5X6xlU5F1D6625FawhC3dU3iqr25lluNv/+/QIVH8RLNEiVokgIZo+mz+87w/3Mkg/VvQS+J51fQ==}
-    dependencies:
-      '@types/node': 13.13.52
-    dev: true
 
   /@types/ms@0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
@@ -7526,8 +7508,8 @@ packages:
     hasBin: true
     dev: true
 
-  /mkdirp@2.1.6:
-    resolution: {integrity: sha512-+hEnITedc8LAtIP9u3HJDFIdcLV2vXP33sqLLIzkv1Db1zO/1OxbvYf0Y1OC/S/Qo5dxHXepofhmxL02PsKe+A==}
+  /mkdirp@3.0.1:
+    resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
     engines: {node: '>=10'}
     hasBin: true
     dev: false
