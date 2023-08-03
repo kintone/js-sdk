@@ -233,8 +233,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       json-schema-to-typescript:
-        specifier: ^11.0.5
-        version: 11.0.5
+        specifier: ^13.0.2
+        version: 13.0.2
       power-assert:
         specifier: ^1.6.1
         version: 1.6.1
@@ -428,8 +428,8 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3(@babel/core@7.22.9)(rollup@3.27.0)
       '@rollup/plugin-commonjs':
-        specifier: ^24.1.0
-        version: 24.1.0(rollup@3.27.0)
+        specifier: ^25.0.3
+        version: 25.0.3(rollup@3.27.0)
       '@rollup/plugin-json':
         specifier: ^6.0.0
         version: 6.0.0(rollup@3.27.0)
@@ -2221,8 +2221,8 @@ packages:
       rollup: 3.27.0
     dev: true
 
-  /@rollup/plugin-commonjs@24.1.0(rollup@3.27.0):
-    resolution: {integrity: sha512-eSL45hjhCWI0jCCXcNtLVqM5N1JlBGvlFfY0m6oOYnLCJ6N0qEXoZql4sY2MOUArzhH4SA/qBpTxvvZp2Sc+DQ==}
+  /@rollup/plugin-commonjs@25.0.3(rollup@3.27.0):
+    resolution: {integrity: sha512-uBdtWr/H3BVcgm97MUdq2oJmqBR23ny1hOrWe2PKo9FTbjsGqg32jfasJUKYAI5ouqacjRnj65mBB/S79F+GQA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
@@ -6957,8 +6957,8 @@ packages:
   /json-parse-even-better-errors@2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
 
-  /json-schema-to-typescript@11.0.5:
-    resolution: {integrity: sha512-ZNlvngzlPzjYYECbR+uJ9aUWo25Gw/VuwUytvcuKiwc6NaiZhMyf7qBsxZE2eixmj8AoQEQJhSRG7btln0sUDw==}
+  /json-schema-to-typescript@13.0.2:
+    resolution: {integrity: sha512-TCaEVW4aI2FmMQe7f98mvr3/oiVmXEC1xZjkTZ9L/BSoTXFlC7p64mD5AD2d8XWycNBQZUnHwXL5iVXt1HWwNQ==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
