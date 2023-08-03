@@ -239,8 +239,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       json-schema-to-typescript:
-        specifier: ^11.0.5
-        version: 11.0.5
+        specifier: ^13.0.2
+        version: 13.0.2
       power-assert:
         specifier: ^1.6.1
         version: 1.6.1
@@ -6975,8 +6975,8 @@ packages:
   /json-parse-even-better-errors@2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
 
-  /json-schema-to-typescript@11.0.5:
-    resolution: {integrity: sha512-ZNlvngzlPzjYYECbR+uJ9aUWo25Gw/VuwUytvcuKiwc6NaiZhMyf7qBsxZE2eixmj8AoQEQJhSRG7btln0sUDw==}
+  /json-schema-to-typescript@13.0.2:
+    resolution: {integrity: sha512-TCaEVW4aI2FmMQe7f98mvr3/oiVmXEC1xZjkTZ9L/BSoTXFlC7p64mD5AD2d8XWycNBQZUnHwXL5iVXt1HWwNQ==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
