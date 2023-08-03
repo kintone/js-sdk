@@ -167,12 +167,6 @@ importers:
       '@types/inquirer':
         specifier: 8.2.6
         version: 8.2.6
-      '@types/mkdirp':
-        specifier: ^1.0.2
-        version: 1.0.2
-      '@types/rimraf':
-        specifier: ^3.0.2
-        version: 3.0.2
 
   packages/dts-gen:
     dependencies:
@@ -488,12 +482,6 @@ importers:
       '@types/chokidar':
         specifier: ^1.7.5
         version: 1.7.5
-      '@types/mkdirp':
-        specifier: ^1.0.2
-        version: 1.0.2
-      '@types/rimraf':
-        specifier: ^3.0.2
-        version: 3.0.2
       adm-zip:
         specifier: ^0.5.10
         version: 0.5.10
@@ -2560,12 +2548,6 @@ packages:
   /@types/minimist@1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: false
-
-  /@types/mkdirp@1.0.2:
-    resolution: {integrity: sha512-o0K1tSO0Dx5X6xlU5F1D6625FawhC3dU3iqr25lluNv/+/QIVH8RLNEiVokgIZo+mz+87w/3Mkg/VvQS+J51fQ==}
-    dependencies:
-      '@types/node': 13.13.52
-    dev: true
 
   /@types/ms@0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
