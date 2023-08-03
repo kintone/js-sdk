@@ -1,5 +1,5 @@
 import fs from "fs";
-import mkdirp from "mkdirp";
+import { mkdirp } from "mkdirp";
 import { sep } from "path";
 import { Constans } from "../constants";
 import type { CustomizeManifest } from "./index";
