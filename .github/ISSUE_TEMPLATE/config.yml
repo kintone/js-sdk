@@ -1,4 +1,4 @@
 contact_links:
-    - name: 🇯🇵 日本語はこちら
-      url: https://github.com/kintone/js-sdk-ja
-      about: 日本語でのバグ報告・機能提案はこちら
+  - name: 🇯🇵 日本語はこちら
+    url: https://github.com/kintone/js-sdk-ja
+    about: 日本語でのバグ報告・機能提案はこちら

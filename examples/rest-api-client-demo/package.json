@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client-demo",
-  "version": "4.0.0",
+  "version": "4.0.5",
   "private": true,
   "author": {
     "name": "Cybozu, Inc.",
@@ -15,11 +15,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc --build",
-    "fix:lint": "npm run lint:eslint -- --fix",
-    "fix:md": "prettier --write README.md",
-    "fix": "run-p fix:*",
+    "fix": "npm run lint:eslint -- --fix",
     "lint:eslint": "eslint 'src/**/*.ts'",
-    "lint:md": "prettier --check README.md",
     "lint:ts": "tsc --noEmit",
     "lint": "run-p -l lint:*",
     "deploy": "rimraf scripts/dist && run-s webpack upload",
@@ -35,15 +32,15 @@
   },
   "dependencies": {
     "@kintone/profile-loader": "^4.0.0",
-    "@kintone/rest-api-client": "^4.0.0",
+    "@kintone/rest-api-client": "^4.1.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@kintone/customize-uploader": "^7.0.0",
+    "@kintone/customize-uploader": "^7.0.4",
     "@types/yargs": "^17.0.24",
-    "ts-loader": "^9.4.3",
+    "ts-loader": "^9.4.4",
     "ts-node": "^10.9.1",
-    "webpack": "^5.85.1",
-    "webpack-cli": "5.1.3"
+    "webpack": "^5.88.2",
+    "webpack-cli": "5.1.4"
   }
 }

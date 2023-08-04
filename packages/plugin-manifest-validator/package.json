@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-manifest-validator",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
@@ -16,15 +16,15 @@
   ],
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "start": "yarn build --watch",
-    "prebuild": "yarn clean",
+    "start": "pnpm build --watch",
+    "prebuild": "pnpm clean",
     "build": "tsc --build --force",
-    "postbuild": "yarn gen-dts",
+    "postbuild": "pnpm gen-dts",
     "gen-dts": "node script/generate-dts.js",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "lint": "eslint --ext .ts src",
-    "fix": "yarn lint --fix",
+    "fix": "pnpm lint --fix",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -32,11 +32,11 @@
     "bytes": "^3.1.2"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.21.5",
+    "@babel/preset-typescript": "^7.22.5",
     "@types/bytes": "^3.1.1",
     "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "intelli-espower-loader": "^1.1.0",
-    "json-schema-to-typescript": "^11.0.5",
+    "json-schema-to-typescript": "^13.0.2",
     "power-assert": "^1.6.1"
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-manifest-validator#readme",

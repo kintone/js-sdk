@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kintone/rest-api-client bumped from ^4.0.3 to ^4.1.0
+
+## [7.0.3](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@7.0.2...@kintone/customize-uploader@7.0.3) (2023-07-05)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+## [7.0.2](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@7.0.1...@kintone/customize-uploader@7.0.2) (2023-06-28)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
+## [7.0.1](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@7.0.0...@kintone/customize-uploader@7.0.1) (2023-06-15)
+
+**Note:** Version bump only for package @kintone/customize-uploader
+
 # [7.0.0](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@6.0.39...@kintone/customize-uploader@7.0.0) (2023-06-07)
 
 - build!: drop Node v14 support because of the EOL (#2124) ([ef0e004](https://github.com/kintone/js-sdk/commit/ef0e004b40a518a1b5a3aa5d82446c556c742f02)), closes [#2124](https://github.com/kintone/js-sdk/issues/2124)

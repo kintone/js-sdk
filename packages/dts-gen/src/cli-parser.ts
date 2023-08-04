@@ -1,6 +1,7 @@
 import { Command } from "commander";
+import { validateArgs } from "./validators/args";
 
-interface ParsedArgs {
+export interface ParsedArgs {
   baseUrl: string;
   username: string | null;
   password: string | null;
@@ -82,6 +83,7 @@ export const parse = (argv: string[]): ParsedArgs => {
 
   const options = program.opts();
   const {
+    baseUrl,
     username,
     password,
     apiToken,
@@ -98,12 +100,7 @@ export const parse = (argv: string[]): ParsedArgs => {
     output,
   } = options;
 
-  const baseUrl = options.baseUrl;
-  if (baseUrl === null) {
-    throw new Error("--base-url (KINTONE_BASE_URL) must be specified");
-  }
-
-  return {
+  const parsedArgs: ParsedArgs = {
     baseUrl,
     username,
     password,
@@ -120,4 +117,8 @@ export const parse = (argv: string[]): ParsedArgs => {
     namespace,
     output,
   };
+
+  validateArgs(parsedArgs);
+
+  return parsedArgs;
 };

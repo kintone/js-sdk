@@ -1,5 +1,5 @@
 import fs from "fs";
-import mkdirp from "mkdirp";
+import { mkdirp } from "mkdirp";
 import path from "path";
 import type { Compiler, WebpackPluginInstance } from "webpack";
 

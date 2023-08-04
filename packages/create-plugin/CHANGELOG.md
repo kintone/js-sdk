@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.5](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.4...@kintone/create-plugin@6.0.5) (2023-08-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to v4 ([#2136](https://github.com/kintone/js-sdk/issues/2136)) ([719fb4b](https://github.com/kintone/js-sdk/commit/719fb4bc538b0919d8c68706ae2855903663b9ea))
+
+## [6.0.4](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.3...@kintone/create-plugin@6.0.4) (2023-07-05)
+
+### Bug Fixes
+
+- **create-plugin:** fix `include` of tsconfig ([#2159](https://github.com/kintone/js-sdk/issues/2159)) ([35dac00](https://github.com/kintone/js-sdk/commit/35dac0055fc8ea9e4d73c093990829bf3ad87a27))
+
+## [6.0.3](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.2...@kintone/create-plugin@6.0.3) (2023-06-28)
+
+**Note:** Version bump only for package @kintone/create-plugin
+
+## [6.0.2](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.1...@kintone/create-plugin@6.0.2) (2023-06-21)
+
+**Note:** Version bump only for package @kintone/create-plugin
+
+## [6.0.1](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.0...@kintone/create-plugin@6.0.1) (2023-06-15)
+
+**Note:** Version bump only for package @kintone/create-plugin
+
 # [6.0.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@5.1.44...@kintone/create-plugin@6.0.0) (2023-06-07)
 
 ### Bug Fixes

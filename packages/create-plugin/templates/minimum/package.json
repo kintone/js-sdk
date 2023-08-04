@@ -4,13 +4,12 @@
   "scripts": {
     "start": "npm run develop",
     "develop": "npm run build -- --watch",
-    "build":
-    "kintone-plugin-packer --ppk private.ppk --out dist/plugin.zip src",
+    "build": "kintone-plugin-packer --ppk private.ppk --out dist/plugin.zip src",
     "lint": "eslint src"
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^18.0.3",
-    "@kintone/plugin-packer": "^6.0.39",
+    "@kintone/plugin-packer": "^7.0.4",
     "eslint": "^8.37.0"
   }
 }

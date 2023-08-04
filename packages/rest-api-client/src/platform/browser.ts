@@ -1,6 +1,7 @@
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import type { DiscriminatedAuth } from "../types/auth";
 import mime from "mime/lite";
+import packageJson from "../../package.json";
 
 export const readFileFromPath = (filePath: string) => {
   throw new UnsupportedPlatformError("Browser");
@@ -64,5 +65,5 @@ export const buildBaseUrl = (baseUrl?: string) => {
 };
 
 export const getVersion = () => {
-  return PACKAGE_VERSION;
+  return packageJson.version;
 };

@@ -7,27 +7,48 @@ import commentJSON from "comment-json";
 
 const IGNORE_PACKAGES: string[] = [];
 
-let __cacheWorkspacesInfo: YarnWorkSpaceInfo;
+let __cacheWorkspacesInfo: PnpmWorkSpaceInfo;
 
-type YarnWorkSpaceInfo = {
+type PnpmWorkSpaceInfo = {
   [packageName: string]: {
     location: string;
-    workspaceDependencies: string[];
+    dependencies: string[];
   };
 };
 
-export const getYarnWorkspacesInfo = (): YarnWorkSpaceInfo => {
+export const getPnpmWorkspacesInfo = (): PnpmWorkSpaceInfo => {
   if (__cacheWorkspacesInfo) {
     return __cacheWorkspacesInfo;
   }
-  const workspaceInfo = JSON.parse(
-    JSON.parse(
-      spawnSync("yarn", ["workspaces", "--json", "info"], {
-        shell: true,
-      }).stdout.toString()
-    ).data
+
+  const spawnOutput = spawnSync(
+    "pnpm",
+    ["m", "ls", "--prod", "--depth 0", "--json", "--only-project"],
+    {
+      shell: true,
+    }
+  ).stdout.toString();
+
+  const parseSpawnOutput = JSON.parse(spawnOutput);
+
+  const workspaceInfoArray = parseSpawnOutput.map(
+    (packageItem: PnpmWorkSpaceInfo) => {
+      return [
+        packageItem.name,
+        {
+          location: packageItem.path,
+          dependencies: packageItem.dependencies
+            ? Object.keys(packageItem.dependencies)
+            : [],
+        },
+      ];
+    }
   );
+
+  // eslint-disable-next-line node/no-unsupported-features/es-builtins
+  const workspaceInfo = Object.fromEntries(workspaceInfoArray);
   __cacheWorkspacesInfo = workspaceInfo;
+
   return workspaceInfo;
 };
 
@@ -38,12 +59,13 @@ type WorkspaceInfo = {
 };
 
 export const getWorkspaces = (): WorkspaceInfo[] => {
-  const workspaceInfo = getYarnWorkspacesInfo();
-  return Object.entries<YarnWorkSpaceInfo[string]>(workspaceInfo).map(
-    ([packageName, { location, workspaceDependencies }]) => ({
+  const workspaceInfo = getPnpmWorkspacesInfo();
+
+  return Object.entries<PnpmWorkSpaceInfo[string]>(workspaceInfo).map(
+    ([packageName, { location, dependencies }]) => ({
       packageName,
       packagePath: path.resolve(location),
-      dependencies: workspaceDependencies,
+      dependencies,
     })
   );
 };

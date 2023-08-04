@@ -1,6 +1,6 @@
 {
   "name": "@kintone/create-plugin",
-  "version": "6.0.0",
+  "version": "6.0.5",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": {
     "create-plugin": "bin/cli.js",
@@ -20,20 +20,20 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "glob": "^9.3.5",
-    "inquirer": "^8.2.5",
+    "inquirer": "^8.2.6",
     "lodash": "^4.17.21",
     "meow": "^9.0.0",
     "node-rsa": "^1.1.1",
     "normalize-path": "^3.0.0",
     "os-locale": "^5.0.0",
     "prettier": "^2.8.8",
-    "rimraf": "^4.4.1",
+    "rimraf": "^5.0.1",
     "sort-package-json": "^1.57.0"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/inquirer": "^8.2.6",
-    "@types/lodash": "^4.14.195",
+    "@types/lodash": "^4.14.196",
     "@types/node-rsa": "^1.1.1",
     "@types/normalize-path": "^3.0.0",
     "@types/rimraf": "^3.0.2",
@@ -45,17 +45,16 @@
     "templates"
   ],
   "scripts": {
-    "start": "yarn build --watch",
-    "prebuild": "yarn clean",
-    "build": "tsc --build --force",
+    "start": "pnpm build --watch",
+    "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts src",
-    "fix": "yarn lint --fix",
+    "fix": "pnpm lint --fix",
     "unittest": "jest --testPathIgnorePatterns=/__tests__/e2e\\.test\\.ts$",
     "e2e": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/e2e\\.test\\.ts$",
-    "test": "yarn unittest",
+    "test": "pnpm unittest",
     "test:all": "run-p test e2e",
-    "test:ci": "yarn test:all"
+    "test:ci": "pnpm test:all"
   },
   "keywords": [
     "kintone"

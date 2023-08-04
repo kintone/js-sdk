@@ -6,7 +6,7 @@ import { ESLint } from "eslint";
 import type { FieldTypeGroups } from "../converters/fileldtype-converter";
 import { convertToTsExpression } from "./converter";
 
-interface RenderInput {
+export interface RenderInput {
   typeName: string;
   namespace: string;
   fieldTypeGroups: FieldTypeGroups;
@@ -32,8 +32,15 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
   });
   const eslintResult = (await eslint.lintText(tsExpression.tsExpression()))[0];
   if (eslintResult.fatalErrorCount > 0) {
+    let errorMessage = "";
+    if (eslintResult.messages.length > 0) {
+      errorMessage = `Causes:`;
+      eslintResult.messages.forEach((error) => {
+        errorMessage += `\n- ${error.message}`;
+      });
+    }
     throw new Error(
-      "failed to fix lint errors on generated type definition file."
+      `Failed to fix lint errors on the generated type definition file.\n${errorMessage}`
     );
   }
   let eslintOutput = "";
