@@ -57,6 +57,7 @@ describe("FormsClientImpl#constructor", () => {
       proxy: {
         host: "localhost",
         port: 1234,
+        protocol: "http:",
         auth: {
           username: "admin",
           password: "password",
