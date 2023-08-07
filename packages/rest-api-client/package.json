@@ -61,7 +61,7 @@
     "@types/js-base64": "^3.0.0",
     "@types/mime": "^3.0.1",
     "@types/qs": "^6.9.7",
-    "rollup": "^3.27.0",
+    "rollup": "^3.27.2",
     "rollup-plugin-ecma-version-validator": "^0.2.12",
     "rollup-plugin-license": "^3.0.1",
     "rollup-plugin-node-builtins": "^2.1.2",
@@ -70,11 +70,11 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
-    "core-js": "^3.29.1",
+    "core-js": "^3.32.0",
     "form-data": "^4.0.0",
     "js-base64": "^3.7.5",
     "mime": "^3.0.0",
-    "qs": "^6.10.5"
+    "qs": "^6.11.2"
   },
   "exports": {
     ".": {
