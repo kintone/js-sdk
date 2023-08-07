@@ -31,6 +31,7 @@ export type ProxyConfig =
         username: string;
         password: string;
       };
+      protocol?: string;
     }
   | false;
 
