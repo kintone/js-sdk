@@ -1,10 +1,11 @@
 import * as fs from "fs";
 import * as path from "path";
-import * as prettier from "prettier";
 import { ESLint } from "eslint";
 
 import type { FieldTypeGroups } from "../converters/fileldtype-converter";
 import { convertToTsExpression } from "./converter";
+
+const synchronizedPrettier = require("@prettier/sync");
 
 export interface RenderInput {
   typeName: string;
@@ -53,7 +54,7 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
     throw new Error("unexpected result");
   }
 
-  const prettySource = prettier.format(eslintOutput, {
+  const prettySource = synchronizedPrettier.format(eslintOutput, {
     parser: "typescript",
   });
   const outputPath = path.resolve(output);
