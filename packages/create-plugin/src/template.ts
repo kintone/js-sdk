@@ -5,7 +5,7 @@ import * as _ from "lodash";
 import * as path from "path";
 import type { Manifest } from "./manifest";
 import sortPackageJson from "sort-package-json";
-import * as prettier from "prettier";
+const synchronizedPrettier = require("@prettier/sync");
 
 export const SUPPORT_TEMPLATE_TYPE = ["minimum", "modern"];
 export type TemplateType = "minimum" | "modern";
@@ -138,7 +138,7 @@ export const processTemplateFile = (
       /'%%placeholder_webpack_entry%%'/,
       entriesStr,
     );
-    const prettySource = prettier.format(webpackConfigContent, {
+    const prettySource = synchronizedPrettier.format(webpackConfigContent, {
       parser: "typescript",
     });
     const destPath = path.join(path.dirname(destFilePath), "webpack.config.js");
