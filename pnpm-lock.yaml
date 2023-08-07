@@ -195,6 +195,9 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
     devDependencies:
+      '@prettier/sync':
+        specifier: ^0.3.0
+        version: 0.3.0(prettier@3.0.0)
       '@types/eslint':
         specifier: ^8.44.2
         version: 8.44.2
