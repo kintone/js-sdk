@@ -32,13 +32,13 @@
     "@cybozu/eslint-config": "^18.0.3",
     "axios": "^0.27.2",
     "commander": "^11.0.0",
-    "eslint": "^8.37.0",
+    "eslint": "^8.46.0",
     "form-data": "^4.0.0",
     "lodash": "^4.17.21",
     "prettier": "^2.8.8"
   },
   "devDependencies": {
-    "@types/eslint": "^8.44.1",
+    "@types/eslint": "^8.44.2",
     "@types/lodash": "^4.14.196",
     "@types/prettier": "^2.7.3",
     "ts-loader": "^9.4.4",
