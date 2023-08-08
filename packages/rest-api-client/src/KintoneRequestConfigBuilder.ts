@@ -110,7 +110,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         clientCertAuth: this.clientCertAuth,
         socketTimeout: this.socketTimeout,
       }),
-      proxy: this.buildProxy(this.proxy),
+      proxy: this.buildProxyConfig(this.proxy),
     };
 
     switch (method) {
@@ -169,12 +169,16 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     }
   }
 
-  private buildProxy(targetProxy?: ProxyConfig): ProxyConfig | undefined {
-    if (!targetProxy) {
-      return targetProxy;
+  private buildProxyConfig(proxyConfig?: ProxyConfig): ProxyConfig | undefined {
+    if (proxyConfig === undefined) {
+      return undefined;
     }
 
-    const proxy = targetProxy;
+    if (proxyConfig === false) {
+      return false;
+    }
+
+    const proxy = proxyConfig;
     if (
       proxy.auth &&
       (proxy.auth.username.length === 0 || proxy.auth.password.length === 0)

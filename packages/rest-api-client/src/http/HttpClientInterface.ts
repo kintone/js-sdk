@@ -25,13 +25,13 @@ export type Params = { [key: string]: unknown };
 
 export type ProxyConfig =
   | {
+      protocol?: string;
       host: string;
       port: number;
       auth?: {
         username: string;
         password: string;
       };
-      protocol?: string;
     }
   | false;
 
