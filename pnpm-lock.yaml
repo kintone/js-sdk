@@ -174,8 +174,8 @@ importers:
         specifier: ^18.0.3
         version: 18.0.3(eslint@8.46.0)(prettier@2.8.8)(typescript@4.9.5)
       axios:
-        specifier: ^0.27.2
-        version: 0.27.2
+        specifier: ^1.4.0
+        version: 1.4.0
       commander:
         specifier: ^11.0.0
         version: 11.0.0
@@ -406,8 +406,8 @@ importers:
   packages/rest-api-client:
     dependencies:
       axios:
-        specifier: ^0.27.2
-        version: 0.27.2
+        specifier: ^1.4.0
+        version: 1.4.0
       core-js:
         specifier: ^3.32.0
         version: 3.32.0
@@ -3340,11 +3340,12 @@ packages:
     resolution: {integrity: sha512-zIURGIS1E1Q4pcrMjp+nnEh+16G56eG/MUllJH8yEvw7asDo7Ac9uhC9KIH5jzpITueEZolfYglnCGIuSBz39g==}
     engines: {node: '>=4'}
 
-  /axios@0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+  /axios@1.4.0:
+    resolution: {integrity: sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==}
     dependencies:
       follow-redirects: 1.15.2(debug@4.3.4)
       form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: false
