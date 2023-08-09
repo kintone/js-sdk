@@ -11,6 +11,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * devDependencies
     * @kintone/customize-uploader bumped from ^7.0.3 to ^7.0.4
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kintone/rest-api-client bumped from ^4.1.0 to ^4.1.1
+  * devDependencies
+    * @kintone/customize-uploader bumped from ^7.0.4 to ^7.0.5
+
 ## [4.0.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@4.0.3...@kintone/rest-api-client-demo@4.0.4) (2023-07-05)
 
 **Note:** Version bump only for package @kintone/rest-api-client-demo
