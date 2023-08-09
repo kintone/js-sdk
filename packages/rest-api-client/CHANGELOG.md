@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@4.1.0...@kintone/rest-api-client@4.1.1) (2023-08-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1 ([#2148](https://github.com/kintone/js-sdk/issues/2148)) ([66f3d2b](https://github.com/kintone/js-sdk/commit/66f3d2be5debc05edda4e40738a7a33b677599cc))
+* **deps:** update dependency core-js to ^3.32.0 ([#2011](https://github.com/kintone/js-sdk/issues/2011)) ([54ddae6](https://github.com/kintone/js-sdk/commit/54ddae6031702c82ada252a6dd2c7f46a598a1cb))
+* **deps:** update dependency qs to ^6.11.2 ([#1952](https://github.com/kintone/js-sdk/issues/1952)) ([3e17dec](https://github.com/kintone/js-sdk/commit/3e17dec647e7cd7259d9f744a2dbfa5b53b6ddbb))
+
 ## [4.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@4.0.3...@kintone/rest-api-client@4.1.0) (2023-07-19)
 
 
