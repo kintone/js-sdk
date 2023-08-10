@@ -2,18 +2,10 @@ import fs from "fs";
 import { mkdirp } from "mkdirp";
 import { sep } from "path";
 import { Constans } from "../constants";
-import type { CustomizeManifest } from "./index";
+import type { CustomizeManifest, Option, InputParams } from "./index";
 import KintoneApiClient, { AuthenticationError } from "../KintoneApiClient";
-import type { Lang } from "../lang";
 import { getBoundMessage } from "../messages";
 import { wait } from "../util";
-
-export interface Option {
-  lang: Lang;
-  proxy: string;
-  guestSpaceId: number;
-  destDir: string;
-}
 
 export interface ImportCustomizeManifest {
   app: string;
@@ -95,7 +87,7 @@ export const importCustomizeSetting = async (
 
 const exportAsManifestFile = (
   appId: string,
-  destRootDir: string,
+  destRootDir: string | undefined,
   resp: GetAppCustomizeResp
 ): GetAppCustomizeResp => {
   const toNameOrUrl = (destDir: string) => (f: CustomizeFile) => {
@@ -136,7 +128,7 @@ const exportAsManifestFile = (
 const downloadCustomizeFiles = async (
   kintoneApiClient: KintoneApiClient,
   appId: string,
-  destDir: string,
+  destDir: string | undefined,
   { desktop, mobile }: GetAppCustomizeResp
 ): Promise<any> => {
   const desktopJs: CustomizeFile[] = desktop.js;
@@ -182,17 +174,18 @@ const downloadAndWriteFile = (
   };
 };
 
-export const runImport = async (
-  baseUrl: string,
-  username: string | null,
-  password: string | null,
-  oAuthToken: string | null,
-  basicAuthUsername: string | null,
-  basicAuthPassword: string | null,
-  manifestFile: string,
-  options: Option
-): Promise<void> => {
-  const m = getBoundMessage(options.lang);
+export const runImport = async (params: InputParams): Promise<void> => {
+  const {
+    username,
+    password,
+    oAuthToken,
+    basicAuthUsername,
+    basicAuthPassword,
+    baseUrl,
+    manifestFile,
+    options,
+  } = params;
+  const m = getBoundMessage(params.options.lang);
   const manifest: ImportCustomizeManifest = JSON.parse(
     fs.readFileSync(manifestFile, "utf8")
   );

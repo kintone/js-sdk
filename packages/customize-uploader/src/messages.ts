@@ -1,6 +1,6 @@
 import type { Lang } from "./lang";
 
-const messages = {
+export const messages = {
   E_requiredManifestFile: {
     en: "Please specify manifest file",
     ja: "マニフェストファイルを指定してください",

@@ -1,7 +1,8 @@
 import assert from "assert";
 import * as fs from "fs";
 import { rimrafSync } from "rimraf";
-import type { ImportCustomizeManifest, Option } from "../import";
+import type { ImportCustomizeManifest } from "../import";
+import type { Option } from "../index";
 import { importCustomizeSetting } from "../import";
 import MockKintoneApiClient from "./MockKintoneApiClient";
 
