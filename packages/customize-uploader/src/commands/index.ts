@@ -44,6 +44,28 @@ export interface InputParams {
   options: Option;
 }
 
+interface JsCssFilesInterface {
+  desktop: {
+    js: string[];
+    css: string[];
+  };
+  mobile: {
+    js: string[];
+    css: string[];
+  };
+}
+
+interface HandleUploadErrorInterface {
+  e: any;
+  manifest: CustomizeManifest;
+  updateBody: any;
+  updated: boolean;
+  retryCount: number;
+  options: Option;
+  boundMessage: (key: keyof typeof messages) => string;
+  kintoneApiClient: KintoneApiClient;
+}
+
 const MAX_RETRY_COUNT = 3;
 
 export const upload = async (
@@ -113,16 +135,6 @@ export const upload = async (
     await handleUploadError(params);
   }
 };
-interface JsCssFilesInterface {
-  desktop: {
-    js: string[];
-    css: string[];
-  };
-  mobile: {
-    js: string[];
-    css: string[];
-  };
-}
 
 const getJsCssFiles = (manifest: JsCssFilesInterface) => {
   return [
@@ -169,16 +181,7 @@ const createUpdatedManifest = (
     },
   });
 };
-interface HandleUploadErrorInterface {
-  e: any;
-  manifest: CustomizeManifest;
-  updateBody: any;
-  updated: boolean;
-  retryCount: number;
-  options: Option;
-  boundMessage: (key: keyof typeof messages) => string;
-  kintoneApiClient: KintoneApiClient;
-}
+
 const handleUploadError = async (params: HandleUploadErrorInterface) => {
   let {
     e,

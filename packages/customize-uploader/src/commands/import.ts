@@ -185,7 +185,7 @@ export const runImport = async (params: InputParams): Promise<void> => {
     manifestFile,
     options,
   } = params;
-  const m = getBoundMessage(params.options.lang);
+  const m = getBoundMessage(options.lang);
   const manifest: ImportCustomizeManifest = JSON.parse(
     fs.readFileSync(manifestFile, "utf8")
   );
