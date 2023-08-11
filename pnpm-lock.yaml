@@ -387,8 +387,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       puppeteer:
-        specifier: ^21.0.2
-        version: 21.0.2
+        specifier: ^21.0.3
+        version: 21.0.3
     devDependencies:
       '@types/inquirer':
         specifier: 8.2.6
@@ -2201,8 +2201,8 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@puppeteer/browsers@1.5.1:
-    resolution: {integrity: sha512-OY8S5/DIsCSn/jahxw+qhCKa6jYQff6yq1oenzakISLvGcwWpyMzshJ3BIR7iP0vG0RPJjvHRLRxbsWw4kah1w==}
+  /@puppeteer/browsers@1.6.0:
+    resolution: {integrity: sha512-R2ib8j329427jtKB/qlz0MJbwfJE/6I8ocJLiajsRqJ2PPI8DbjiNzC3lQZeISXEcjOBVhbG2RafN8SlHdcT+A==}
     engines: {node: '>=16.3.0'}
     hasBin: true
     dependencies:
@@ -8657,11 +8657,11 @@ packages:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
     engines: {node: '>=6'}
 
-  /puppeteer-core@21.0.2:
-    resolution: {integrity: sha512-6tRjB9RZmPApPhQhzXZxmPUBt+6KM2P/eCp8p2o0DvK3P1V2qYkRi6/EQJEBIFquqZ+kF1zaW9Tg69p0dQlqFg==}
+  /puppeteer-core@21.0.3:
+    resolution: {integrity: sha512-AGvopfkA0jLbW5Ba0m6kBuvRIpLo76PXUK3zJYkXOr9NI1LknJESyai6TtXc6GUSewMkinmyEDx1pFgq900hqg==}
     engines: {node: '>=16.3.0'}
     dependencies:
-      '@puppeteer/browsers': 1.5.1
+      '@puppeteer/browsers': 1.6.0
       chromium-bidi: 0.4.20(devtools-protocol@0.0.1147663)
       cross-fetch: 4.0.0
       debug: 4.3.4
@@ -8674,14 +8674,14 @@ packages:
       - utf-8-validate
     dev: false
 
-  /puppeteer@21.0.2:
-    resolution: {integrity: sha512-RAgbVjvwLABz8y+83xGdE+v7JLmvvcyGSlhQUX6k3rpBeRIO593E3DCaSY9VRUq3VJPMm7nWzDiZjUaK1tIpQg==}
+  /puppeteer@21.0.3:
+    resolution: {integrity: sha512-+eBNTEOOBrRBLJ1/jIuHcOoUUOVpUQjQFwp9L/sm/iBDqii+4jv9jxpPJSOmOHXuy++X7GWfhuDw4vz8crNzPw==}
     engines: {node: '>=16.3.0'}
     requiresBuild: true
     dependencies:
-      '@puppeteer/browsers': 1.5.1
+      '@puppeteer/browsers': 1.6.0
       cosmiconfig: 8.2.0
-      puppeteer-core: 21.0.2
+      puppeteer-core: 21.0.3
     transitivePeerDependencies:
       - bufferutil
       - encoding
