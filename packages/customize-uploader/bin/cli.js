@@ -139,6 +139,7 @@ if (!isInitCommand && !manifestFile) {
   cli.showHelp();
   process.exit(1);
 }
+debugger;
 
 if (isInitCommand) {
   inquireInitParams(lang)
@@ -156,27 +157,27 @@ if (isInitCommand) {
   })
     .then((params) => {
       if (isImportCommand) {
-        runImport(
-          params.baseUrl,
-          params.username,
-          params.password,
-          oauthToken,
+        runImport({
+          baseUrl: params.baseUrl,
+          username: params.username,
+          password: params.password,
+          oAuthToken: oauthToken,
           basicAuthUsername,
           basicAuthPassword,
           manifestFile,
-          options
-        );
+          options,
+        });
       } else {
-        run(
-          params.baseUrl,
-          params.username,
-          params.password,
+        run({
+          baseUrl: params.baseUrl,
+          username: params.username,
+          password: params.password,
           oauthToken,
           basicAuthUsername,
           basicAuthPassword,
           manifestFile,
-          options
-        );
+          options,
+        });
       }
     })
     .catch((error) => console.log(error.message));
