@@ -172,7 +172,7 @@ if (isInitCommand) {
           baseUrl: params.baseUrl,
           username: params.username,
           password: params.password,
-          oauthToken,
+          oAuthToken: oauthToken,
           basicAuthUsername,
           basicAuthPassword,
           manifestFile,
