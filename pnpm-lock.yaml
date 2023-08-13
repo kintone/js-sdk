@@ -452,8 +452,8 @@ importers:
         specifier: ^3.27.2
         version: 3.27.2
       rollup-plugin-ecma-version-validator:
-        specifier: ^0.2.12
-        version: 0.2.12(rollup@3.27.2)
+        specifier: ^0.2.13
+        version: 0.2.13(rollup@3.27.2)
       rollup-plugin-license:
         specifier: ^3.0.1
         version: 3.0.1(rollup@3.27.2)
@@ -9008,11 +9008,11 @@ packages:
       inherits: 2.0.4
     dev: true
 
-  /rollup-plugin-ecma-version-validator@0.2.12(rollup@3.27.2):
-    resolution: {integrity: sha512-lMv6DJcR7AUvfZGYgWlFDr9/vVtt+vCBqor8F+m0G05TO5mdfneazDBcpl90EV8Bej6EluqdXKgdk12yTSLqcw==}
+  /rollup-plugin-ecma-version-validator@0.2.13(rollup@3.27.2):
+    resolution: {integrity: sha512-J2k5xcLrJG4rInAFtJSzsjeE5WspXF/hgrheRm+A1pzdfar+lrbprzHVv+OKicF2yOgKF3mJlo3abBthIO8AwA==}
     engines: {node: '>=14'}
     peerDependencies:
-      rollup: ^2.16.1
+      rollup: ^2.16.1 || ^3.x
     dependencies:
       acorn: 8.10.0
       rollup: 3.27.2
