@@ -2,7 +2,7 @@ import fs from "fs";
 import { mkdirp } from "mkdirp";
 import { sep } from "path";
 import { Constans } from "../constants";
-import type { CustomizeManifest, InputParams } from "./index";
+import type { CustomizeManifest, GeneralInputParams } from "./index";
 import KintoneApiClient, { AuthenticationError } from "../KintoneApiClient";
 import type { Lang } from "../lang";
 import { getBoundMessage } from "../messages";
@@ -13,6 +13,10 @@ export interface ImportOption {
   proxy: string;
   guestSpaceId: number;
   destDir: string;
+}
+
+export interface ImportParams extends GeneralInputParams {
+  options: ImportOption;
 }
 
 export interface ImportCustomizeManifest {
@@ -182,7 +186,7 @@ const downloadAndWriteFile = (
   };
 };
 
-export const runImport = async (params: InputParams): Promise<void> => {
+export const runImport = async (params: ImportParams): Promise<void> => {
   const {
     username,
     password,
@@ -210,11 +214,6 @@ export const runImport = async (params: InputParams): Promise<void> => {
     baseUrl,
     options
   );
-  await importCustomizeSetting(
-    kintoneApiClient,
-    manifest,
-    status,
-    options as ImportOption
-  );
+  await importCustomizeSetting(kintoneApiClient, manifest, status, options);
   console.log(m("M_CommandImportFinish"));
 };

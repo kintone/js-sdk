@@ -5,7 +5,6 @@ import type { Lang } from "../lang";
 import type { messages } from "../messages";
 import { getBoundMessage } from "../messages";
 import { isUrlString, wait } from "../util";
-import { ImportOption } from "./import";
 
 export interface Option {
   watch?: string;
@@ -33,7 +32,7 @@ export interface CustomizeManifest {
   };
 }
 
-export interface InputParams {
+export interface GeneralInputParams {
   baseUrl: string;
   username: string | null;
   password: string | null;
@@ -41,6 +40,9 @@ export interface InputParams {
   basicAuthUsername: string | null;
   basicAuthPassword: string | null;
   manifestFile: string;
+}
+
+export interface InputParams extends GeneralInputParams {
   options: Option;
 }
 
