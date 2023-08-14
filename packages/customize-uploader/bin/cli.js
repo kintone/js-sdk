@@ -139,7 +139,6 @@ if (!isInitCommand && !manifestFile) {
   cli.showHelp();
   process.exit(1);
 }
-debugger;
 
 if (isInitCommand) {
   inquireInitParams(lang)
