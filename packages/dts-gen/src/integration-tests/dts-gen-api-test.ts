@@ -1,12 +1,33 @@
 import * as assert from "assert";
 
 const assertKintoneBuiltinFunctions = () => {
-  // assert function exists in kintone top-level
+  assertFunctionExistInKintoneTopLevel();
+  assertFunctionExistInKintonePromise();
+  assertFunctionExistInKintoneEvent();
+  assertFunctionExistInKintoneAPI();
+  assertFunctionExistInKintoneProxy();
+  assetFunctionExistInKintoneApp();
+  assertFunctionExistInKintoneAppRecord();
+  assertFunctionExistInKintoneMobileAppRecord();
+  assertSpaceAPI();
+};
+
+const assertFunction = (ref) => {
+  assert.ok(ref);
+  assert.ok(typeof ref === "function");
+};
+
+export const DTSGenApiTest = {
+  assertKintoneBuiltinFunctions,
+};
+
+const assertFunctionExistInKintoneTopLevel = () => {
   assertFunction(kintone.getRequestToken);
   assertFunction(kintone.getLoginUser);
   assertFunction(kintone.getUiVersion);
+};
 
-  // assert function exists in kintone.Promise
+const assertFunctionExistInKintonePromise = () => {
   assertFunction(kintone.Promise);
   assertFunction(kintone.Promise.all);
   assertFunction(kintone.Promise.resolve);
@@ -53,25 +74,29 @@ const assertKintoneBuiltinFunctions = () => {
     assert.ok(resolved[1] === 2);
     assert.ok(resolved[2] === 3);
   });
+};
 
-  // assert function exists in kintone.events
+const assertFunctionExistInKintoneEvent = () => {
   const e = kintone.events;
   assertFunction(e.on);
   assertFunction(e.off);
+};
 
-  // assert function exists in kintone.api
+const assertFunctionExistInKintoneAPI = () => {
   const a = kintone.api;
   assertFunction(a);
   assertFunction(a.url);
   assertFunction(a.urlForGet);
   assertFunction(a.getConcurrencyLimit);
+};
 
-  // assert function exists in kintone.proxy
+const assertFunctionExistInKintoneProxy = () => {
   const p = kintone.proxy;
   assertFunction(p);
   assertFunction(p.upload);
+};
 
-  // assert function exists in kintone.app
+const assetFunctionExistInKintoneApp = () => {
   const app = kintone.app;
   assertFunction(app.getFieldElements);
   assertFunction(app.getHeaderMenuSpaceElement);
@@ -81,8 +106,9 @@ const assertKintoneBuiltinFunctions = () => {
   assertFunction(app.getQuery);
   assertFunction(app.getQueryCondition);
   assertFunction(app.getRelatedRecordsTargetAppId);
+};
 
-  // assert function exists in kintone.app.record
+const assertFunctionExistInKintoneAppRecord = () => {
   const r = kintone.app.record;
   assertFunction(r.get);
   assertFunction(r.getHeaderMenuSpaceElement);
@@ -92,18 +118,9 @@ const assertKintoneBuiltinFunctions = () => {
   assertFunction(r.set);
   assertFunction(r.setFieldShown);
   assertFunction(r.setGroupFieldOpen);
+};
 
-  // assert function exists in kintone.mobile.app
-  const ma = kintone.mobile.app;
-  assertFunction(ma.getFieldElements);
-  assertFunction(ma.getHeaderSpaceElement);
-  assertFunction(ma.getId);
-  assertFunction(ma.getLookupTargetAppId);
-  assertFunction(ma.getQuery);
-  assertFunction(ma.getQueryCondition);
-  assertFunction(ma.getRelatedRecordsTargetAppId);
-
-  // assert function exists in kintone.mobile.app.record
+const assertFunctionExistInKintoneMobileAppRecord = () => {
   const mr = kintone.mobile.app.record;
   assertFunction(mr.get);
   assertFunction(mr.getId);
@@ -112,21 +129,9 @@ const assertKintoneBuiltinFunctions = () => {
   assertFunction(mr.set);
   assertFunction(mr.setFieldShown);
   assertFunction(mr.setGroupFieldOpen);
+};
 
-  // Portal API
-  assertFunction(kintone.portal.getContentSpaceElement);
-  assertFunction(kintone.mobile.portal.getContentSpaceElement);
-
-  // Space API
+const assertSpaceAPI = () => {
   assertFunction(kintone.space.portal.getContentSpaceElement);
   assertFunction(kintone.mobile.space.portal.getContentSpaceElement);
-};
-
-const assertFunction = (ref) => {
-  assert.ok(ref);
-  assert.ok(typeof ref === "function");
-};
-
-export const DTSGenApiTest = {
-  assertKintoneBuiltinFunctions,
 };
