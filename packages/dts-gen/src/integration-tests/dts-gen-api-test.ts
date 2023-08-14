@@ -8,7 +8,9 @@ const assertKintoneBuiltinFunctions = () => {
   assertFunctionExistInKintoneProxy();
   assetFunctionExistInKintoneApp();
   assertFunctionExistInKintoneAppRecord();
+  assertFunctionExistInKintoneMobileApp();
   assertFunctionExistInKintoneMobileAppRecord();
+  assertPortalAPI();
   assertSpaceAPI();
 };
 
@@ -120,6 +122,17 @@ const assertFunctionExistInKintoneAppRecord = () => {
   assertFunction(r.setGroupFieldOpen);
 };
 
+const assertFunctionExistInKintoneMobileApp = () => {
+  const ma = kintone.mobile.app;
+  assertFunction(ma.getFieldElements);
+  assertFunction(ma.getHeaderSpaceElement);
+  assertFunction(ma.getId);
+  assertFunction(ma.getLookupTargetAppId);
+  assertFunction(ma.getQuery);
+  assertFunction(ma.getQueryCondition);
+  assertFunction(ma.getRelatedRecordsTargetAppId);
+};
+
 const assertFunctionExistInKintoneMobileAppRecord = () => {
   const mr = kintone.mobile.app.record;
   assertFunction(mr.get);
@@ -129,6 +142,11 @@ const assertFunctionExistInKintoneMobileAppRecord = () => {
   assertFunction(mr.set);
   assertFunction(mr.setFieldShown);
   assertFunction(mr.setGroupFieldOpen);
+};
+
+const assertPortalAPI = () => {
+  assertFunction(kintone.portal.getContentSpaceElement);
+  assertFunction(kintone.mobile.portal.getContentSpaceElement);
 };
 
 const assertSpaceAPI = () => {
