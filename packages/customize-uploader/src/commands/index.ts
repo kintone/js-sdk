@@ -46,7 +46,7 @@ export interface InputParams extends GeneralInputParams {
   options: Option;
 }
 
-interface JsCssFilesInterface {
+interface JsCssManifest {
   desktop: {
     js: string[];
     css: string[];
@@ -57,7 +57,7 @@ interface JsCssFilesInterface {
   };
 }
 
-interface HandleUploadErrorInterface {
+interface HandleUploadErrorParameter {
   error: any;
   manifest: CustomizeManifest;
   updateBody: any;
@@ -138,7 +138,7 @@ export const upload = async (
   }
 };
 
-const getJsCssFiles = (manifest: JsCssFilesInterface) => {
+const getJsCssFiles = (manifest: JsCssManifest) => {
   return [
     manifest.desktop.js,
     manifest.desktop.css,
@@ -184,7 +184,7 @@ const createUpdatedManifest = (
   });
 };
 
-const handleUploadError = async (params: HandleUploadErrorInterface) => {
+const handleUploadError = async (params: HandleUploadErrorParameter) => {
   let {
     error,
     manifest,
