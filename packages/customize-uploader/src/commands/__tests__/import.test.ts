@@ -1,10 +1,9 @@
 import assert from "assert";
 import * as fs from "fs";
 import { rimrafSync } from "rimraf";
-import type { ImportCustomizeManifest, Option } from "../import";
+import type { ImportCustomizeManifest, ImportOption } from "../import";
 import { importCustomizeSetting } from "../import";
 import MockKintoneApiClient from "./MockKintoneApiClient";
-
 describe("import", () => {
   const testDestDir = "testDestDir";
   const filesToTestContent = [
@@ -23,7 +22,7 @@ describe("import", () => {
     let kintoneApiClient: MockKintoneApiClient;
     let manifest: ImportCustomizeManifest;
     let status: { retryCount: number };
-    let options: Option;
+    let options: ImportOption;
     beforeEach(() => {
       kintoneApiClient = new MockKintoneApiClient(
         "kintone",

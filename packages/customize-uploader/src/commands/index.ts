@@ -2,6 +2,7 @@ import chokidar from "chokidar";
 import fs from "fs";
 import KintoneApiClient, { AuthenticationError } from "../KintoneApiClient";
 import type { Lang } from "../lang";
+import type { messages } from "../messages";
 import { getBoundMessage } from "../messages";
 import { isUrlString, wait } from "../util";
 
@@ -31,6 +32,42 @@ export interface CustomizeManifest {
   };
 }
 
+export interface GeneralInputParams {
+  baseUrl: string;
+  username: string | null;
+  password: string | null;
+  oAuthToken: string | null;
+  basicAuthUsername: string | null;
+  basicAuthPassword: string | null;
+  manifestFile: string;
+}
+
+export interface InputParams extends GeneralInputParams {
+  options: Option;
+}
+
+interface JsCssManifest {
+  desktop: {
+    js: string[];
+    css: string[];
+  };
+  mobile: {
+    js: string[];
+    css: string[];
+  };
+}
+
+interface HandleUploadErrorParameter {
+  error: any;
+  manifest: CustomizeManifest;
+  updateBody: any;
+  updated: boolean;
+  retryCount: number;
+  options: Option;
+  boundMessage: (key: keyof typeof messages) => string;
+  kintoneApiClient: KintoneApiClient;
+}
+
 const MAX_RETRY_COUNT = 3;
 
 export const upload = async (
@@ -43,101 +80,151 @@ export const upload = async (
   },
   options: Option
 ): Promise<void> => {
-  const m = getBoundMessage(options.lang);
+  const boundMessage = getBoundMessage(options.lang);
   const appId = manifest.app;
   let { retryCount, updateBody, updated } = status;
 
   try {
     if (!updateBody) {
-      console.log(m("M_StartUploading"));
+      console.log(boundMessage("M_StartUploading"));
       try {
-        const uploadFilesResult = [];
-        for (const files of [
-          manifest.desktop.js,
-          manifest.desktop.css,
-          manifest.mobile.js,
-          manifest.mobile.css,
-        ]) {
-          const results = [];
-          for (const file of files) {
-            const result = await kintoneApiClient.prepareCustomizeFile(file);
-            if (result.type === "FILE") {
-              console.log(`${file} ` + m("M_Uploaded"));
-            }
-            results.push(result);
-          }
-          uploadFilesResult.push(results);
-        }
+        const uploadFilesResult = await getUploadFilesResult(
+          boundMessage,
+          kintoneApiClient,
+          manifest
+        );
 
-        updateBody = Object.assign({}, manifest, {
-          desktop: {
-            js: uploadFilesResult[0],
-            css: uploadFilesResult[1],
-          },
-          mobile: {
-            js: uploadFilesResult[2],
-            css: uploadFilesResult[3],
-          },
-        });
-        console.log(m("M_FileUploaded"));
-      } catch (e) {
-        console.log(m("E_FileUploaded"));
-        throw e;
+        updateBody = createUpdatedManifest(manifest, uploadFilesResult);
+        console.log(boundMessage("M_FileUploaded"));
+      } catch (error) {
+        console.log(boundMessage("E_FileUploaded"));
+        throw error;
       }
     }
 
     if (!updated) {
       try {
         await kintoneApiClient.updateCustomizeSetting(updateBody);
-        console.log(m("M_Updated"));
+        console.log(boundMessage("M_Updated"));
         updated = true;
-      } catch (e) {
-        console.log(m("E_Updated"));
-        throw e;
+      } catch (error) {
+        console.log(boundMessage("E_Updated"));
+        throw error;
       }
     }
 
     try {
       await kintoneApiClient.deploySetting(appId);
       await kintoneApiClient.waitFinishingDeploy(appId, () =>
-        console.log(m("M_Deploying"))
+        console.log(boundMessage("M_Deploying"))
       );
-      console.log(m("M_Deployed"));
-    } catch (e) {
-      console.log(m("E_Deployed"));
-      throw e;
+      console.log(boundMessage("M_Deployed"));
+    } catch (error) {
+      console.log(boundMessage("E_Deployed"));
+      throw error;
     }
-  } catch (e) {
-    const isAuthenticationError = e instanceof AuthenticationError;
-    retryCount++;
-    if (isAuthenticationError) {
-      throw new Error(m("E_Authentication"));
-    } else if (retryCount < MAX_RETRY_COUNT) {
-      await wait(1000);
-      console.log(m("E_Retry"));
-      await upload(
-        kintoneApiClient,
-        manifest,
-        { retryCount, updateBody, updated },
-        options
-      );
-    } else {
-      throw e;
-    }
+  } catch (error) {
+    const params = {
+      error,
+      manifest,
+      updateBody,
+      updated,
+      retryCount,
+      options,
+      boundMessage,
+      kintoneApiClient,
+    };
+    await handleUploadError(params);
   }
 };
 
-export const run = async (
-  baseUrl: string,
-  username: string | null,
-  password: string | null,
-  oAuthToken: string | null,
-  basicAuthUsername: string | null,
-  basicAuthPassword: string | null,
-  manifestFile: string,
-  options: Option
-): Promise<void> => {
-  const m = getBoundMessage(options.lang);
+const getJsCssFiles = (manifest: JsCssManifest) => {
+  return [
+    manifest.desktop.js,
+    manifest.desktop.css,
+    manifest.mobile.js,
+    manifest.mobile.css,
+  ];
+};
+
+const getUploadFilesResult = async (
+  boundMessage: (key: keyof typeof messages) => string,
+  kintoneApiClient: KintoneApiClient,
+  manifest: CustomizeManifest
+) => {
+  const uploadFilesResult = [];
+  for (const files of getJsCssFiles(manifest)) {
+    const results = [];
+    for (const file of files) {
+      const result = await kintoneApiClient.prepareCustomizeFile(file);
+      if (result.type === "FILE") {
+        console.log(`${file} ` + boundMessage("M_Uploaded"));
+      }
+      results.push(result);
+    }
+    uploadFilesResult.push(results);
+  }
+
+  return uploadFilesResult;
+};
+
+const createUpdatedManifest = (
+  manifest: CustomizeManifest,
+  uploadFilesResult: any
+) => {
+  return Object.assign({}, manifest, {
+    desktop: {
+      js: uploadFilesResult[0],
+      css: uploadFilesResult[1],
+    },
+    mobile: {
+      js: uploadFilesResult[2],
+      css: uploadFilesResult[3],
+    },
+  });
+};
+
+const handleUploadError = async (params: HandleUploadErrorParameter) => {
+  let {
+    error,
+    manifest,
+    updateBody,
+    updated,
+    retryCount,
+    options,
+    boundMessage,
+    kintoneApiClient,
+  } = params;
+  const isAuthenticationError = error instanceof AuthenticationError;
+  retryCount++;
+  if (isAuthenticationError) {
+    throw new Error(boundMessage("E_Authentication"));
+  } else if (retryCount < MAX_RETRY_COUNT) {
+    await wait(1000);
+    console.log(boundMessage("E_Retry"));
+    await upload(
+      kintoneApiClient,
+      manifest,
+      { retryCount, updateBody, updated },
+      options
+    );
+  } else {
+    throw error;
+  }
+};
+
+export const run = async (params: InputParams): Promise<void> => {
+  const {
+    username,
+    password,
+    oAuthToken,
+    basicAuthUsername,
+    basicAuthPassword,
+    baseUrl,
+    manifestFile,
+    options,
+  } = params;
+  const boundMessage = getBoundMessage(options.lang);
 
   const manifest: CustomizeManifest = JSON.parse(
     fs.readFileSync(manifestFile, "utf8")
@@ -175,7 +262,7 @@ export const run = async (
         pollInterval: 100,
       },
     });
-    console.log(m("M_Watching"));
+    console.log(boundMessage("M_Watching"));
     watcher.on("change", () =>
       upload(kintoneApiClient, manifest, status, options)
     );

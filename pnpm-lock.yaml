@@ -201,6 +201,9 @@ importers:
       '@types/prettier':
         specifier: ^2.7.3
         version: 2.7.3
+      assert:
+        specifier: ^2.0.0
+        version: 2.0.0
       ts-loader:
         specifier: ^9.4.4
         version: 9.4.4(typescript@5.1.6)(webpack@5.88.2)
