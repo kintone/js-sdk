@@ -2,10 +2,18 @@ import fs from "fs";
 import { mkdirp } from "mkdirp";
 import { sep } from "path";
 import { Constans } from "../constants";
-import type { CustomizeManifest, Option, InputParams } from "./index";
+import type { CustomizeManifest, InputParams } from "./index";
 import KintoneApiClient, { AuthenticationError } from "../KintoneApiClient";
+import type { Lang } from "../lang";
 import { getBoundMessage } from "../messages";
 import { wait } from "../util";
+
+export interface ImportOption {
+  lang: Lang;
+  proxy: string;
+  guestSpaceId: number;
+  destDir: string;
+}
 
 export interface ImportCustomizeManifest {
   app: string;
@@ -43,7 +51,7 @@ export const importCustomizeSetting = async (
   status: {
     retryCount: number;
   },
-  options: Option
+  options: ImportOption
 ): Promise<void> => {
   const m = getBoundMessage(options.lang);
   const appId = manifest.app;
@@ -87,7 +95,7 @@ export const importCustomizeSetting = async (
 
 const exportAsManifestFile = (
   appId: string,
-  destRootDir: string | undefined,
+  destRootDir: string,
   resp: GetAppCustomizeResp
 ): GetAppCustomizeResp => {
   const toNameOrUrl = (destDir: string) => (f: CustomizeFile) => {
@@ -128,7 +136,7 @@ const exportAsManifestFile = (
 const downloadCustomizeFiles = async (
   kintoneApiClient: KintoneApiClient,
   appId: string,
-  destDir: string | undefined,
+  destDir: string,
   { desktop, mobile }: GetAppCustomizeResp
 ): Promise<any> => {
   const desktopJs: CustomizeFile[] = desktop.js;
@@ -202,6 +210,11 @@ export const runImport = async (params: InputParams): Promise<void> => {
     baseUrl,
     options
   );
-  await importCustomizeSetting(kintoneApiClient, manifest, status, options);
+  await importCustomizeSetting(
+    kintoneApiClient,
+    manifest,
+    status,
+    options as ImportOption
+  );
   console.log(m("M_CommandImportFinish"));
 };

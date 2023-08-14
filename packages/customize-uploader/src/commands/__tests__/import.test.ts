@@ -2,7 +2,7 @@ import assert from "assert";
 import * as fs from "fs";
 import { rimrafSync } from "rimraf";
 import type { ImportCustomizeManifest } from "../import";
-import type { Option } from "../index";
+import type { ImportOption } from "../index";
 import { importCustomizeSetting } from "../import";
 import MockKintoneApiClient from "./MockKintoneApiClient";
 
@@ -24,7 +24,7 @@ describe("import", () => {
     let kintoneApiClient: MockKintoneApiClient;
     let manifest: ImportCustomizeManifest;
     let status: { retryCount: number };
-    let options: Option;
+    let options: ImportOption;
     beforeEach(() => {
       kintoneApiClient = new MockKintoneApiClient(
         "kintone",

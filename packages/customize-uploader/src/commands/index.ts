@@ -5,13 +5,13 @@ import type { Lang } from "../lang";
 import type { messages } from "../messages";
 import { getBoundMessage } from "../messages";
 import { isUrlString, wait } from "../util";
+import { ImportOption } from "./import";
 
 export interface Option {
   watch?: string;
   lang: Lang;
   proxy: string;
   guestSpaceId: number;
-  destDir?: string;
 }
 
 export interface Status {
@@ -56,7 +56,7 @@ interface JsCssFilesInterface {
 }
 
 interface HandleUploadErrorInterface {
-  e: any;
+  error: any;
   manifest: CustomizeManifest;
   updateBody: any;
   updated: boolean;
@@ -94,9 +94,9 @@ export const upload = async (
 
         updateBody = createUpdatedManifest(manifest, uploadFilesResult);
         console.log(boundMessage("M_FileUploaded"));
-      } catch (e) {
+      } catch (error) {
         console.log(boundMessage("E_FileUploaded"));
-        throw e;
+        throw error;
       }
     }
 
@@ -105,9 +105,9 @@ export const upload = async (
         await kintoneApiClient.updateCustomizeSetting(updateBody);
         console.log(boundMessage("M_Updated"));
         updated = true;
-      } catch (e) {
+      } catch (error) {
         console.log(boundMessage("E_Updated"));
-        throw e;
+        throw error;
       }
     }
 
@@ -117,13 +117,13 @@ export const upload = async (
         console.log(boundMessage("M_Deploying"))
       );
       console.log(boundMessage("M_Deployed"));
-    } catch (e) {
+    } catch (error) {
       console.log(boundMessage("E_Deployed"));
-      throw e;
+      throw error;
     }
-  } catch (e) {
+  } catch (error) {
     const params = {
-      e,
+      error,
       manifest,
       updateBody,
       updated,
@@ -184,7 +184,7 @@ const createUpdatedManifest = (
 
 const handleUploadError = async (params: HandleUploadErrorInterface) => {
   let {
-    e,
+    error,
     manifest,
     updateBody,
     updated,
@@ -193,7 +193,7 @@ const handleUploadError = async (params: HandleUploadErrorInterface) => {
     boundMessage,
     kintoneApiClient,
   } = params;
-  const isAuthenticationError = e instanceof AuthenticationError;
+  const isAuthenticationError = error instanceof AuthenticationError;
   retryCount++;
   if (isAuthenticationError) {
     throw new Error(boundMessage("E_Authentication"));
@@ -207,7 +207,7 @@ const handleUploadError = async (params: HandleUploadErrorInterface) => {
       options
     );
   } else {
-    throw e;
+    throw error;
   }
 };
 
