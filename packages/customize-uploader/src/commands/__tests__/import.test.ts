@@ -1,11 +1,9 @@
 import assert from "assert";
 import * as fs from "fs";
 import { rimrafSync } from "rimraf";
-import type { ImportCustomizeManifest } from "../import";
-import type { ImportOption } from "../index";
+import type { ImportCustomizeManifest, ImportOption } from "../import";
 import { importCustomizeSetting } from "../import";
 import MockKintoneApiClient from "./MockKintoneApiClient";
-
 describe("import", () => {
   const testDestDir = "testDestDir";
   const filesToTestContent = [
