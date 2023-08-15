@@ -115,6 +115,7 @@ const throwIfInvalidManifest = (manifest: any, pluginDir: string) => {
   const result = validate(manifest, {
     relativePath: validateRelativePath(pluginDir),
     maxFileSize: validateMaxFileSize(pluginDir),
+    fileExists: validateFileExists(pluginDir),
   });
   debug(result);
 
@@ -126,6 +127,16 @@ const throwIfInvalidManifest = (manifest: any, pluginDir: string) => {
     });
     throw new Error("Invalid manifest.json");
   }
+};
+
+const generateCustomErrorMessages = () => {
+  const messages: { [key: string]: string } = {
+    fileExists: "File not found.",
+    relativePath: "Format path is invalid.",
+    maxFileSize: "File size exceeds the limit.",
+  };
+
+  return messages;
 };
 
 /**
@@ -167,6 +178,30 @@ const validateMaxFileSize = (pluginDir: string) => {
       return stat.size <= maxBytes;
     } catch (e) {
       return false;
+    }
+  };
+};
+
+const validateFileExists = (pluginDir: string) => {
+  const message = generateCustomErrorMessages().fileExists ?? "";
+
+  return (filePath: string) => {
+    try {
+      const stat = fs.statSync(path.join(pluginDir, filePath));
+      if (stat.isFile()) {
+        return {
+          valid: true,
+        };
+      }
+      return {
+        valid: false,
+        message,
+      };
+    } catch (err) {
+      return {
+        valid: false,
+        message,
+      };
     }
   };
 };

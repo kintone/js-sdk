@@ -18,6 +18,11 @@ interface SchemaValidateFunction {
   errors?: Array<Partial<ErrorObject>>;
 }
 
+interface CustomErrorMessage {
+  valid: boolean;
+  message?: string;
+}
+
 /**
  * @param {Object} json
  * @param {Object=} options
@@ -25,15 +30,27 @@ interface SchemaValidateFunction {
  */
 export default (
   json: Record<string, any>,
-  options: { [s: string]: (...args: any) => boolean } = {}
+  options: {
+    [s: string]: (...args: any) => CustomErrorMessage | boolean;
+  } = {}
 ): ValidateResult => {
   let relativePath = (...args: any) => true;
   let maxFileSize = (...args: any) => true;
+  let fileExists = (...args: any) => {
+    return { valid: true, message: "" };
+  };
+
   if (typeof options.relativePath === "function") {
-    relativePath = options.relativePath;
+    relativePath = options.relativePath as () => boolean;
   }
   if (typeof options.maxFileSize === "function") {
-    maxFileSize = options.maxFileSize;
+    maxFileSize = options.maxFileSize as () => boolean;
+  }
+  if (typeof options.fileExists === "function") {
+    fileExists = options.fileExists as () => {
+      valid: boolean;
+      message: string;
+    };
   }
 
   const ajv = new Ajv({
@@ -67,9 +84,30 @@ export default (
     return valid;
   };
 
+  const validateFileExists: SchemaValidateFunction = (
+    schema: string,
+    data: string
+  ) => {
+    const { valid, message } = fileExists(data);
+    if (!valid) {
+      validateFileExists.errors = [
+        {
+          keyword: "fileExists",
+          message,
+        },
+      ];
+    }
+    return valid;
+  };
+
   ajv.addKeyword({
     keyword: "maxFileSize",
     validate: validateMaxFileSize,
+  });
+
+  ajv.addKeyword({
+    keyword: "fileExists",
+    validate: validateFileExists,
   });
 
   const validate = ajv.compile(jsonSchema);

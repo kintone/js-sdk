@@ -73,7 +73,8 @@
       "description": "internal only",
       "minLength": 1,
       "format": "relative-path",
-      "maxFileSize": "20MB"
+      "maxFileSize": "20MB",
+      "fileExists": true
     },
     "homepage_url": {
       "type": "object",
@@ -129,7 +130,8 @@
           "type": "string",
           "format": "relative-path",
           "maxFileSize": "65535B",
-          "minLength": 1
+          "minLength": 1,
+          "fileExists": true
         },
         "js": {
           "$ref": "#/definitions/resources"
@@ -162,7 +164,8 @@
           },
           {
             "format": "relative-path",
-            "maxFileSize": "20MB"
+            "maxFileSize": "20MB",
+            "fileExists": true
           }
         ]
       },
