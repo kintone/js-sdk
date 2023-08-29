@@ -18,6 +18,16 @@ interface SchemaValidateFunction {
   errors?: Array<Partial<ErrorObject>>;
 }
 
+type CustomErrorMessage =
+  | boolean
+  | { valid: true }
+  | { valid: false; message?: string };
+
+type FileExists = (filePath: string) => CustomErrorMessage;
+type RelativePath = (filePath: string) => CustomErrorMessage;
+type MaxFileSize = (maxBytes: number, filePath: string) => CustomErrorMessage;
+type Options = Record<string, FileExists | RelativePath | MaxFileSize>;
+
 /**
  * @param {Object} json
  * @param {Object=} options
@@ -25,15 +35,20 @@ interface SchemaValidateFunction {
  */
 export default (
   json: Record<string, any>,
-  options: { [s: string]: (...args: any) => boolean } = {}
+  options: Options = {}
 ): ValidateResult => {
-  let relativePath = (...args: any) => true;
-  let maxFileSize = (...args: any) => true;
+  let relativePath: RelativePath = () => true;
+  let maxFileSize: MaxFileSize = () => true;
+  let fileExists: FileExists = () => true;
+
   if (typeof options.relativePath === "function") {
-    relativePath = options.relativePath;
+    relativePath = options.relativePath as RelativePath;
   }
   if (typeof options.maxFileSize === "function") {
-    maxFileSize = options.maxFileSize;
+    maxFileSize = options.maxFileSize as MaxFileSize;
+  }
+  if (typeof options.fileExists === "function") {
+    fileExists = options.fileExists as FileExists;
   }
 
   const ajv = new Ajv({
@@ -41,19 +56,21 @@ export default (
     formats: {
       "http-url": (str: string) => validateUrl(str, true),
       "https-url": (str: string) => validateUrl(str),
-      "relative-path": relativePath,
+      "relative-path": relativePath as () => boolean,
     },
   });
 
   const validateMaxFileSize: SchemaValidateFunction = (
     schema: string,
-    data: string
+    filePath: string
   ) => {
     // schema: max file size like "512KB" or 123 (in bytes)
     // data: path to the file
     const maxBytes = bytes.parse(schema);
-    const valid = maxFileSize(maxBytes, data);
-    if (!valid) {
+    const result = maxFileSize(maxBytes, filePath);
+    let message = `file size should be <= ${maxBytes}`;
+
+    if (result === false) {
       validateMaxFileSize.errors = [
         {
           keyword: "maxFileSize",
@@ -63,13 +80,66 @@ export default (
           message: `file size should be <= ${schema}`,
         },
       ];
+      return false;
     }
-    return valid;
+
+    if (typeof result === "object" && !result.valid) {
+      if (result.message) {
+        message = result.message;
+      }
+
+      validateMaxFileSize.errors = [
+        {
+          keyword: "maxFileSize",
+          message,
+        },
+      ];
+      return false;
+    }
+    return true;
+  };
+
+  const validateFileExists: SchemaValidateFunction = (
+    schema: string,
+    filePath: string
+  ) => {
+    const result = fileExists(filePath);
+    let message = `File not found: ${filePath}`;
+
+    if (result === false) {
+      validateFileExists.errors = [
+        {
+          keyword: "fileExists",
+          message,
+        },
+      ];
+      return false;
+    }
+
+    if (typeof result === "object" && !result.valid) {
+      if (result.message) {
+        message = result.message;
+      }
+
+      validateFileExists.errors = [
+        {
+          keyword: "fileExists",
+          message,
+        },
+      ];
+      return false;
+    }
+    return true;
   };
 
   ajv.addKeyword({
     keyword: "maxFileSize",
     validate: validateMaxFileSize,
+  });
+
+  ajv.addKeyword({
+    keyword: "fileExists",
+    validate: validateFileExists,
   });
 
   const validate = ajv.compile(jsonSchema);

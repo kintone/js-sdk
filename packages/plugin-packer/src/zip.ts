@@ -126,7 +126,7 @@ const validateManifest = (
       .join(path.dirname(manifestPath), filePath)
       .replace(new RegExp(`\\${path.sep}`, "g"), "/");
   const result = validate(manifestJson, {
-    relativePath: (filePath) => entries.has(getEntryKey(filePath)),
+    relativePath: (filePath: string) => entries.has(getEntryKey(filePath)),
     maxFileSize: (maxBytes, filePath) => {
       const entry = entries.get(getEntryKey(filePath));
       if (entry) {
