@@ -404,16 +404,20 @@ describe("validator", () => {
         const path2 = properties[2];
 
         let source = {};
+        let errorIndex = 0;
         switch (path2) {
           case undefined:
             // "icon" config
             source = { [path1]: filePath };
+            errorIndex = 0;
             break;
           case "html":
             source = { [path1]: { [path2]: filePath } };
+            errorIndex = 0;
             break;
           default:
             source = { [path1]: { [path2]: [filePath] } };
+            errorIndex = 1;
         }
 
         const customMessage = "Custom message: File not found 404";
@@ -426,8 +430,7 @@ describe("validator", () => {
           },
         });
 
-        // The length of actual.errors is 1 if instance path is /icon or /config/html
-        const error = actual.errors?.[1] ?? actual.errors?.[0];
+        const error = actual.errors?.[errorIndex];
 
         assert(actual.valid === false);
         assert.deepStrictEqual(error, {
