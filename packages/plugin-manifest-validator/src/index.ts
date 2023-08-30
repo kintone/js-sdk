@@ -18,15 +18,16 @@ interface SchemaValidateFunction {
   errors?: Array<Partial<ErrorObject>>;
 }
 
-type CustomErrorMessage =
+type ValidatorResult =
   | boolean
   | { valid: true }
   | { valid: false; message?: string };
 
-type FileExists = (filePath: string) => CustomErrorMessage;
-type RelativePath = (filePath: string) => CustomErrorMessage;
-type MaxFileSize = (maxBytes: number, filePath: string) => CustomErrorMessage;
-type Options = Record<string, FileExists | RelativePath | MaxFileSize>;
+type Options = {
+  relativePath?: (filePath: string) => boolean;
+  maxFileSize?: (maxBytes: number, filePath: string) => ValidatorResult;
+  fileExists?: (filePath: string) => ValidatorResult;
+};
 
 /**
  * @param {Object} json
@@ -37,18 +38,18 @@ export default (
   json: Record<string, any>,
   options: Options = {}
 ): ValidateResult => {
-  let relativePath: RelativePath = () => true;
-  let maxFileSize: MaxFileSize = () => true;
-  let fileExists: FileExists = () => true;
+  let relativePath: Options["relativePath"] = () => true;
+  let maxFileSize: Options["maxFileSize"] = () => true;
+  let fileExists: Options["fileExists"] = () => true;
 
   if (typeof options.relativePath === "function") {
-    relativePath = options.relativePath as RelativePath;
+    relativePath = options.relativePath as Options["relativePath"];
   }
   if (typeof options.maxFileSize === "function") {
-    maxFileSize = options.maxFileSize as MaxFileSize;
+    maxFileSize = options.maxFileSize as Options["maxFileSize"];
   }
   if (typeof options.fileExists === "function") {
-    fileExists = options.fileExists as FileExists;
+    fileExists = options.fileExists as Options["fileExists"];
   }
 
   const ajv = new Ajv({
@@ -66,9 +67,13 @@ export default (
   ) => {
     // schema: max file size like "512KB" or 123 (in bytes)
     // data: path to the file
+    if (maxFileSize === undefined) {
+      return true;
+    }
+
     const maxBytes = bytes.parse(schema);
     const result = maxFileSize(maxBytes, filePath);
-    let message = `file size should be <= ${maxBytes}`;
+    const defaultMessage = `file size should be <= ${schema}`;
 
     if (result === false) {
       validateMaxFileSize.errors = [
@@ -77,25 +82,25 @@ export default (
           params: {
             limit: maxBytes,
           },
-          message: `file size should be <= ${schema}`,
+          message: defaultMessage,
         },
       ];
       return false;
     }
 
     if (typeof result === "object" && !result.valid) {
-      if (result.message) {
-        message = result.message;
-      }
-
       validateMaxFileSize.errors = [
         {
           keyword: "maxFileSize",
-          message,
+          params: {
+            limit: maxBytes,
+          },
+          message: result.message ?? defaultMessage,
         },
       ];
       return false;
     }
+
     return true;
   };
 
@@ -103,32 +108,33 @@ export default (
     schema: string,
     filePath: string
   ) => {
+    if (fileExists === undefined) {
+      return true;
+    }
+
     const result = fileExists(filePath);
-    let message = `File not found: ${filePath}`;
+    const defaultMessage = `File not found: ${filePath}`;
 
     if (result === false) {
       validateFileExists.errors = [
         {
           keyword: "fileExists",
-          message,
+          message: defaultMessage,
         },
       ];
       return false;
     }
 
     if (typeof result === "object" && !result.valid) {
-      if (result.message) {
-        message = result.message;
-      }
-
       validateFileExists.errors = [
         {
           keyword: "fileExists",
-          message,
+          message: result.message ?? defaultMessage,
         },
       ];
       return false;
     }
+
     return true;
   };
 
