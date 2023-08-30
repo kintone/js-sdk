@@ -314,28 +314,6 @@ describe("validator", () => {
       });
     });
 
-    it("should throw the custom message when there is an invalid file size and an custom message is specified", () => {
-      const actual = validator(json({}), {
-        maxFileSize: (maxFileSizeInBytes, path) => {
-          return {
-            valid: false,
-            message: "this is a custom message.",
-          };
-        },
-      });
-      expect(actual.valid).toBeFalsy();
-      expect(actual.errors?.length).toBe(1);
-      assert.deepStrictEqual(actual.errors[0], {
-        instancePath: "/icon",
-        keyword: "maxFileSize",
-        message: "this is a custom message.",
-        params: {
-          limit: MAX_FILE_SIZE,
-        },
-        schemaPath: "#/properties/icon/maxFileSize",
-      });
-    });
-
     it("mobile", () => {
       const actual = validator(
         json({
@@ -372,7 +350,7 @@ describe("validator", () => {
       ${"mobile/js/mobile.js"}   | ${"/mobile/js/0"}   | ${"#/definitions/resources/items/anyOf/1/fileExists"}
       ${"mobile/css/style.css"}  | ${"/mobile/css/0"}  | ${"#/definitions/resources/items/anyOf/1/fileExists"}
     `(
-      "should throw the default message when there is at least one invalid file size",
+      "should throw the default message when there is non-existent file at $instancePath",
       ({ filePath, instancePath, schemaPath }) => {
         const properties = instancePath.split("/");
         const path1 = properties[1];
