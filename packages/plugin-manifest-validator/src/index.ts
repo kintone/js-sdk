@@ -1,6 +1,6 @@
 "use strict";
 
-import type { ErrorObject } from "ajv";
+import type { ErrorObject, SchemaValidateFunction } from "ajv";
 import Ajv from "ajv";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
@@ -13,10 +13,6 @@ type ValidateResult = {
 
 // https://ajv.js.org/docs/keywords.html#define-keyword-with-validation-function
 // FIXME: use the type definition that Ajv provides if https://github.com/ajv-validator/ajv/pull/1460 has been merged
-interface SchemaValidateFunction {
-  (schema: string, data: string): boolean;
-  errors?: Array<Partial<ErrorObject>>;
-}
 
 type ValidatorResult =
   | boolean
@@ -39,17 +35,17 @@ export default (
   options: Options = {}
 ): ValidateResult => {
   let relativePath: Options["relativePath"] = () => true;
-  let maxFileSize: Options["maxFileSize"] = () => true;
-  let fileExists: Options["fileExists"] = () => true;
+  let maxFileSize: Options["maxFileSize"];
+  let fileExists: Options["fileExists"];
 
   if (typeof options.relativePath === "function") {
-    relativePath = options.relativePath as Options["relativePath"];
+    relativePath = options.relativePath;
   }
   if (typeof options.maxFileSize === "function") {
-    maxFileSize = options.maxFileSize as Options["maxFileSize"];
+    maxFileSize = options.maxFileSize;
   }
   if (typeof options.fileExists === "function") {
-    fileExists = options.fileExists as Options["fileExists"];
+    fileExists = options.fileExists;
   }
 
   const ajv = new Ajv({
@@ -57,7 +53,7 @@ export default (
     formats: {
       "http-url": (str: string) => validateUrl(str, true),
       "https-url": (str: string) => validateUrl(str),
-      "relative-path": relativePath as () => boolean,
+      "relative-path": relativePath,
     },
   });
 
@@ -105,10 +101,10 @@ export default (
   };
 
   const validateFileExists: SchemaValidateFunction = (
-    schema: string,
+    schema: boolean,
     filePath: string
   ) => {
-    if (fileExists === undefined) {
+    if (fileExists === undefined || !schema) {
       return true;
     }
 
