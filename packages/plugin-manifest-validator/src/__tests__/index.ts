@@ -397,7 +397,7 @@ describe("validator", () => {
       ${"mobile/js/mobile.js"}   | ${"/mobile/js/0"}   | ${"#/definitions/resources/items/anyOf/1/fileExists"}
       ${"mobile/css/style.css"}  | ${"/mobile/css/0"}  | ${"#/definitions/resources/items/anyOf/1/fileExists"}
     `(
-      `should throw the custom message when there is non-existent file at $instancePath and an custom message is specified`,
+      `should throw the custom message when there is non-existent file at $instancePath and the custom message is specified`,
       ({ filePath, instancePath, schemaPath }) => {
         const properties = instancePath.split("/");
         const path1 = properties[1];
@@ -425,6 +425,8 @@ describe("validator", () => {
             };
           },
         });
+
+        // The length of actual.errors is 1 if instance path is /icon or /config/html
         const error = actual.errors?.[1] ?? actual.errors?.[0];
 
         assert(actual.valid === false);
