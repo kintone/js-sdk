@@ -290,6 +290,30 @@ describe("validator", () => {
       });
     });
 
+    it("should throw the custom message when there is one invalid file size and the custom message is specified", () => {
+      const customMessage = "A custom message: invalid file size";
+      const actual = validator(json({}), {
+        maxFileSize: (maxFileSizeInBytes, path) => {
+          return {
+            valid: false,
+            message: customMessage,
+          };
+        },
+      });
+
+      assert(actual.valid === false);
+      assert(actual.errors?.length === 1);
+      assert.deepStrictEqual(actual.errors[0], {
+        instancePath: "/icon",
+        keyword: "maxFileSize",
+        message: customMessage,
+        params: {
+          limit: MAX_FILE_SIZE,
+        },
+        schemaPath: "#/properties/icon/maxFileSize",
+      });
+    });
+
     it("mobile", () => {
       const actual = validator(
         json({
@@ -303,6 +327,122 @@ describe("validator", () => {
       assert(actual.errors === null);
     });
   });
+
+  describe("fileExists", () => {
+    it("should return no error when all files exist", () => {
+      const actual = validator(json({}), {
+        fileExists: (path) => {
+          return true;
+        },
+      });
+      assert(actual.valid === true);
+      assert(actual.errors?.length === undefined);
+    });
+
+    it.each`
+      filePath                   | instancePath        | schemaPath
+      ${"icon.png"}              | ${"/icon"}          | ${"#/properties/icon/fileExists"}
+      ${"desktop/js/desktop.js"} | ${"/desktop/js/0"}  | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"desktop/css/style.css"} | ${"/desktop/css/0"} | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"config/config.html"}    | ${"/config/html"}   | ${"#/properties/config/properties/html/fileExists"}
+      ${"config/js/config.js"}   | ${"/config/js/0"}   | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"config/css/style.css"}  | ${"/config/css/0"}  | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"mobile/js/mobile.js"}   | ${"/mobile/js/0"}   | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"mobile/css/style.css"}  | ${"/mobile/css/0"}  | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+    `(
+      "should throw the default message when there is non-existent file at $instancePath",
+      ({ filePath, instancePath, schemaPath }) => {
+        const properties = instancePath.split("/");
+        const path1 = properties[1];
+        const path2 = properties[2];
+
+        let source = {};
+        switch (path2) {
+          case undefined:
+            // "icon" config
+            source = { [path1]: filePath };
+            break;
+          case "html":
+            source = { [path1]: { [path2]: filePath } };
+            break;
+          default:
+            source = { [path1]: { [path2]: [filePath] } };
+        }
+
+        const actual = validator(json(source), {
+          fileExists: (path) => {
+            return path.indexOf(filePath) === -1;
+          },
+        });
+        const error = actual.errors?.[1] ?? actual.errors?.[0];
+
+        assert(actual.valid === false);
+        assert.deepStrictEqual(error, {
+          instancePath,
+          keyword: "fileExists",
+          message: `File not found: ${filePath}`,
+          schemaPath,
+        });
+      }
+    );
+
+    it.each`
+      filePath                   | instancePath        | schemaPath
+      ${"icon.png"}              | ${"/icon"}          | ${"#/properties/icon/fileExists"}
+      ${"desktop/js/desktop.js"} | ${"/desktop/js/0"}  | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"desktop/css/style.css"} | ${"/desktop/css/0"} | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"config/config.html"}    | ${"/config/html"}   | ${"#/properties/config/properties/html/fileExists"}
+      ${"config/js/config.js"}   | ${"/config/js/0"}   | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"config/css/style.css"}  | ${"/config/css/0"}  | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"mobile/js/mobile.js"}   | ${"/mobile/js/0"}   | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+      ${"mobile/css/style.css"}  | ${"/mobile/css/0"}  | ${"#/definitions/resources/items/anyOf/1/fileExists"}
+    `(
+      `should throw the custom message when there is non-existent file at $instancePath and the custom message is specified`,
+      ({ filePath, instancePath, schemaPath }) => {
+        const properties = instancePath.split("/");
+        const path1 = properties[1];
+        const path2 = properties[2];
+
+        let source = {};
+        let errorIndex = 0;
+        switch (path2) {
+          case undefined:
+            // "icon" config
+            source = { [path1]: filePath };
+            errorIndex = 0;
+            break;
+          case "html":
+            source = { [path1]: { [path2]: filePath } };
+            errorIndex = 0;
+            break;
+          default:
+            source = { [path1]: { [path2]: [filePath] } };
+            errorIndex = 1;
+        }
+
+        const customMessage = "Custom message: File not found 404";
+        const actual = validator(json(source), {
+          fileExists: (path) => {
+            return {
+              valid: path.indexOf(filePath) === -1,
+              message: customMessage,
+            };
+          },
+        });
+
+        const error = actual.errors?.[errorIndex];
+
+        assert(actual.valid === false);
+        assert.deepStrictEqual(error, {
+          instancePath,
+          keyword: "fileExists",
+          message: customMessage,
+          schemaPath,
+        });
+      }
+    );
+  });
+
   describe("maxItems", () => {
     it("exceed the max item counts", () => {
       const urls = [...new Array(100)].map(
