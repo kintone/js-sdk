@@ -113,7 +113,6 @@ export = cli;
 
 const throwIfInvalidManifest = (manifest: any, pluginDir: string) => {
   const result = validate(manifest, {
-    relativePath: validateRelativePath(pluginDir),
     maxFileSize: validateMaxFileSize(pluginDir),
     fileExists: validateFileExists(pluginDir),
   });
@@ -145,20 +144,6 @@ const loadJson = (jsonPath: string) => {
 };
 
 /**
- * Return validator for `relative-path` format
- */
-const validateRelativePath = (pluginDir: string) => {
-  return (str: string) => {
-    try {
-      const stat = fs.statSync(path.join(pluginDir, str));
-      return stat.isFile();
-    } catch (e) {
-      return false;
-    }
-  };
-};
-
-/**
  * Return validator for `maxFileSize` keyword
  */
 const validateMaxFileSize = (pluginDir: string) => {
@@ -175,9 +160,9 @@ const validateMaxFileSize = (pluginDir: string) => {
 const validateFileExists = (pluginDir: string) => {
   return (filePath: string) => {
     try {
-      fs.accessSync(path.join(pluginDir, filePath), fs.constants.F_OK);
-      return true;
-    } catch (error) {
+      const stat = fs.statSync(path.join(pluginDir, filePath));
+      return stat.isFile();
+    } catch (e) {
       return false;
     }
   };
