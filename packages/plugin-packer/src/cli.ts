@@ -115,6 +115,7 @@ const throwIfInvalidManifest = (manifest: any, pluginDir: string) => {
   const result = validate(manifest, {
     relativePath: validateRelativePath(pluginDir),
     maxFileSize: validateMaxFileSize(pluginDir),
+    fileExists: validateFileExists(pluginDir),
   });
   debug(result);
 
@@ -166,6 +167,17 @@ const validateMaxFileSize = (pluginDir: string) => {
       const stat = fs.statSync(path.join(pluginDir, filePath));
       return stat.size <= maxBytes;
     } catch (e) {
+      return false;
+    }
+  };
+};
+
+const validateFileExists = (pluginDir: string) => {
+  return (filePath: string) => {
+    try {
+      fs.accessSync(path.join(pluginDir, filePath), fs.constants.F_OK);
+      return true;
+    } catch (error) {
       return false;
     }
   };
