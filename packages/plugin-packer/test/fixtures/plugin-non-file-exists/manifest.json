@@ -6,11 +6,7 @@
     "en": "sample extension"
   },
   "icon": "image/icon.png",
-  "config":{
-    "js": [
-      "js/config.js",
-      "js/desktop.js",
-      "js/non-existent-file.js"
-    ]
+  "config": {
+    "js": ["js/config.js", "js/desktop.js", "js/non-existent-file.js"]
   }
 }
