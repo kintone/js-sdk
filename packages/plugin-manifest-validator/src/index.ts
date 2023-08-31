@@ -109,7 +109,7 @@ export default (
     }
 
     const result = fileExists(filePath);
-    const defaultMessage = `File not found: ${filePath}`;
+    const defaultMessage = `file should exist ("${filePath}")`;
 
     if (result === false) {
       validateFileExists.errors = [
