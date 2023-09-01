@@ -1,0 +1,12 @@
+{
+  "manifest_version": 1,
+  "version": 1,
+  "type": "APP",
+  "name": {
+    "en": "sample extension"
+  },
+  "icon": "image/icon.png",
+  "config": {
+    "js": ["js/config.js", "js/desktop.js", "js/non-existent-file.js"]
+  }
+}
