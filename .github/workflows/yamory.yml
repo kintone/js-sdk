@@ -10,7 +10,7 @@ jobs:
     name: Node.js ubuntu-latest 18.x
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v2
 
