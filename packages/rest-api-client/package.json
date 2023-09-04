@@ -58,7 +58,7 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@rollup/plugin-terser": "^0.4.3",
-    "@types/core-js": "^2.5.5",
+    "@types/core-js": "^2.5.6",
     "@types/js-base64": "^3.0.0",
     "@types/mime": "^3.0.1",
     "@types/qs": "^6.9.8",
