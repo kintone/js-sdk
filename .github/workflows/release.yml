@@ -28,7 +28,7 @@ jobs:
     needs: release
     if: ${{ needs.release.outputs.releases_created }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v2
 
