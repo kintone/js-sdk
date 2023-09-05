@@ -143,7 +143,7 @@ importers:
   packages/customize-uploader:
     dependencies:
       '@kintone/rest-api-client':
-        specifier: ^4.1.0
+        specifier: workspace:*
         version: link:../rest-api-client
       chokidar:
         specifier: ^3.5.3
@@ -245,7 +245,7 @@ importers:
   packages/plugin-packer:
     dependencies:
       '@kintone/plugin-manifest-validator':
-        specifier: ^9.0.1
+        specifier: workspace:*
         version: link:../plugin-manifest-validator
       chokidar:
         specifier: ^3.5.3
@@ -473,7 +473,7 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/plugin-packer':
-        specifier: ^7.0.4
+        specifier: workspace:*
         version: link:../plugin-packer
       mkdirp:
         specifier: ^3.0.1
