@@ -380,7 +380,7 @@ describe("validator", () => {
         assert.deepStrictEqual(error, {
           instancePath,
           keyword: "fileExists",
-          message: `File not found: ${filePath}`,
+          message: `file should exist ("${filePath}")`,
           schemaPath,
         });
       }
@@ -420,7 +420,7 @@ describe("validator", () => {
             errorIndex = 1;
         }
 
-        const customMessage = "Custom message: File not found 404";
+        const customMessage = `Custom message: file should exist ("config/not_exist.js")`;
         const actual = validator(json(source), {
           fileExists: (path) => {
             return {

@@ -77,6 +77,15 @@ describe("cli", () => {
         done();
       });
     });
+
+    it("invalid `fileExists`", (done) => {
+      cli(path.join(fixturesDir, "plugin-non-file-exists"), {
+        packerMock_: packer,
+      }).catch((error) => {
+        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
+        done();
+      });
+    });
   });
 
   describe("without ppk", () => {
