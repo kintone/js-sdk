@@ -11,7 +11,7 @@
     "fix:eslint": "pnpm lint:eslint --fix",
     "fix:prettier": "prettier --parser typescript --write \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "fix": "run-p fix:*",
-    "lint:eslint": "eslint 'src/**/*.ts' ",
+    "lint:eslint": "eslint 'src/**/*.ts' --max-warnings 0",
     "lint:prettier": "prettier --parser typescript --check \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "lint": "run-p lint:*",
     "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",

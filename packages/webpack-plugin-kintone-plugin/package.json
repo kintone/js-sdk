@@ -11,7 +11,7 @@
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "clean": "rimraf dist",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "fix": "pnpm lint --fix",
     "test": "jest --runInBand",
     "test:ci": "jest --runInBand"

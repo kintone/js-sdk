@@ -24,7 +24,7 @@
     "build": "tsc --build --force",
     "postbuild": "run-p js css",
     "clean": "rimraf dist",
-    "lint": "eslint \"*.{js,ts}\" bin src site test",
+    "lint": "eslint \"*.{js,ts}\" bin src site test --max-warnings 0",
     "fix": "pnpm lint --fix",
     "test": "run-p jest site:test",
     "test:ci": "pnpm test",

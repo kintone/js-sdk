@@ -12,7 +12,7 @@
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
-    "lint": "eslint --ext .ts src",
+    "lint": "eslint --ext .ts src --max-warnings 0",
     "fix": "pnpm lint --fix",
     "test": "jest",
     "test:ci": "jest --runInBand",

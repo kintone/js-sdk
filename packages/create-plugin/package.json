@@ -48,7 +48,7 @@
     "start": "pnpm build --watch",
     "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
-    "lint": "eslint --ext .ts src",
+    "lint": "eslint --ext .ts src --max-warnings 0",
     "fix": "pnpm lint --fix",
     "unittest": "jest --testPathIgnorePatterns=/__tests__/e2e\\.test\\.ts$",
     "e2e": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/e2e\\.test\\.ts$",
