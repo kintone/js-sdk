@@ -35,7 +35,7 @@
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "clean": "rimraf lib esm umd",

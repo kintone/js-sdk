@@ -23,7 +23,7 @@
     "gen-dts": "node script/generate-dts.js",
     "test": "jest",
     "test:ci": "jest --runInBand",
-    "lint": "eslint --ext .ts src",
+    "lint": "eslint --ext .ts src --max-warnings 0",
     "fix": "pnpm lint --fix",
     "clean": "rimraf dist"
   },

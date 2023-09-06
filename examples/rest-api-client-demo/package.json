@@ -16,7 +16,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc --build",
     "fix": "npm run lint:eslint -- --fix",
-    "lint:eslint": "eslint 'src/**/*.ts'",
+    "lint:eslint": "eslint 'src/**/*.ts' --max-warnings 0",
     "lint:ts": "tsc --noEmit",
     "lint": "run-p -l lint:*",
     "deploy": "rimraf scripts/dist && run-s webpack upload",
