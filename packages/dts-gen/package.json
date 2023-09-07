@@ -44,7 +44,7 @@
     "ts-loader": "^9.4.4",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "assert": "^2.0.0"
+    "assert": "^2.1.0"
   },
   "bin": {
     "kintone-dts-gen": "dist/index.js"
