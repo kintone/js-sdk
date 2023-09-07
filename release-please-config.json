@@ -10,7 +10,6 @@
   "include-v-in-tag": false,
   "tag-separator": "@",
   "monorepo-tags": true,
-  "plugins": ["node-workspace"],
   "packages": {
     "examples/rest-api-client-demo": {
       "package-name": "@kintone/rest-api-client-demo",
