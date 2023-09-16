@@ -227,8 +227,8 @@ importers:
         specifier: ^7.22.15
         version: 7.22.15(@babel/core@7.22.19)
       '@types/bytes':
-        specifier: ^3.1.1
-        version: 3.1.1
+        specifier: ^3.1.2
+        version: 3.1.2
       babel-plugin-replace-ts-export-assignment:
         specifier: ^0.0.2
         version: 0.0.2
@@ -2500,8 +2500,8 @@ packages:
       '@types/node': 13.13.52
     dev: true
 
-  /@types/bytes@3.1.1:
-    resolution: {integrity: sha512-lOGyCnw+2JVPKU3wIV0srU0NyALwTBJlVSx5DfMQOFuuohA8y9S8orImpuIQikZ0uIQ8gehrRjxgQC1rLRi11w==}
+  /@types/bytes@3.1.2:
+    resolution: {integrity: sha512-92b6q7CSYBMVZDtMZh5PuKm3LjZwcU7s6H8e9sU20Z1tOrTuXN+Hz3VuP9E8axiQRaCoiEOMN1duqPCEIhamrQ==}
     dev: true
 
   /@types/chokidar@1.7.5:
