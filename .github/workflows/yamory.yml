@@ -7,7 +7,7 @@ on:
       - yamory-*
 jobs:
   build:
-    name: Node.js ubuntu-latest 18.x
+    name: Node.js ubuntu-latest 20.x
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
 
       - name: download and validate Yamory script
         working-directory: /tmp

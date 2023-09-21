@@ -16,7 +16,7 @@ jobs:
       matrix:
         # TODO: replace to 20.x once Node 20.6 is fixed
         # https://github.com/babel/babel/issues/15927
-        node-version: [16.x, 18.x, 20.5]
+        node-version: [18.x, 20.5]
         os: [ubuntu-latest, windows-latest]
 
     steps:

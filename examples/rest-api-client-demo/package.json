@@ -28,7 +28,7 @@
     "url": "https://github.com/kintone/js-sdk/issues"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "dependencies": {
     "@kintone/profile-loader": "^4.0.0",

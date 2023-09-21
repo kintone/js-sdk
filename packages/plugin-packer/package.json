@@ -7,7 +7,7 @@
     "url": "https://cybozu.co.jp"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "main": "dist/index.js",
   "bin": {
