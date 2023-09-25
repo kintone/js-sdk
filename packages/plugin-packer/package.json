@@ -51,7 +51,7 @@
     "yazl": "^2.5.1"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
+    "@reduxjs/toolkit": "^1.9.6",
     "@types/debug": "^4.1.9",
     "@types/node-rsa": "^1.1.2",
     "@types/stream-buffers": "^3.0.4",
