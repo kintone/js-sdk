@@ -55,7 +55,7 @@
     "@types/debug": "^4.1.9",
     "@types/node-rsa": "^1.1.2",
     "@types/stream-buffers": "^3.0.5",
-    "@types/yauzl": "^2.10.0",
+    "@types/yauzl": "^2.10.1",
     "@types/yazl": "^2.4.2",
     "ajv": "^8.12.0",
     "array-flatten": "^3.0.0",
