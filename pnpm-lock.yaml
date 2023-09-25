@@ -285,8 +285,8 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2
       '@types/stream-buffers':
-        specifier: ^3.0.4
-        version: 3.0.4
+        specifier: ^3.0.5
+        version: 3.0.5
       '@types/yauzl':
         specifier: ^2.10.0
         version: 2.10.0
@@ -2748,8 +2748,8 @@ packages:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
     dev: true
 
-  /@types/stream-buffers@3.0.4:
-    resolution: {integrity: sha512-qU/K1tb2yUdhXkLIATzsIPwbtX6BpZk0l3dPW6xqWyhfzzM1ECaQ/8faEnu3CNraLiQ9LHyQQPBGp7N9Fbs25w==}
+  /@types/stream-buffers@3.0.5:
+    resolution: {integrity: sha512-mEKCVRgR+0fM3FUcywARE6J50sz++u/KQL5sBMJKFzLTyX/WsKN2THr7vMic6fWoFfT454LXOnJYUMp8ANNBMw==}
     dependencies:
       '@types/node': 13.13.52
     dev: true
