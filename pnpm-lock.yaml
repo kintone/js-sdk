@@ -291,8 +291,8 @@ importers:
         specifier: ^2.10.1
         version: 2.10.1
       '@types/yazl':
-        specifier: ^2.4.2
-        version: 2.4.2
+        specifier: ^2.4.3
+        version: 2.4.3
       ajv:
         specifier: ^8.12.0
         version: 8.12.0
@@ -2785,8 +2785,8 @@ packages:
     dependencies:
       '@types/node': 13.13.52
 
-  /@types/yazl@2.4.2:
-    resolution: {integrity: sha512-T+9JH8O2guEjXNxqmybzQ92mJUh2oCwDDMSSimZSe1P+pceZiFROZLYmcbqkzV5EUwz6VwcKXCO2S2yUpra6XQ==}
+  /@types/yazl@2.4.3:
+    resolution: {integrity: sha512-pZtZPktPV+rN+6oje9Akz5kBwOhpjKlr7X74osNVtmYKcMdgoBtMFbNNPeS2+juE5aEVGZuIbHISqMCn2RupNw==}
     dependencies:
       '@types/node': 13.13.52
     dev: true
