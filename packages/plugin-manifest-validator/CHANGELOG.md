@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@9.0.1...@kintone/plugin-manifest-validator@9.1.0) (2023-09-26)
+
+
+### Features
+
+* **plugin-manifest-validator:** support custom validator for file existence ([#2246](https://github.com/kintone/js-sdk/issues/2246)) ([6301744](https://github.com/kintone/js-sdk/commit/63017444fe2feda481731a62c5d5f389109fa3ba))
+
+
+### Bug Fixes
+
+* **plugin-manifest-validator:** update default non-existent file message ([#2253](https://github.com/kintone/js-sdk/issues/2253)) ([8cbd044](https://github.com/kintone/js-sdk/commit/8cbd0446f0a10aa4d5197ba5d7cc5ba3955dfd5b))
+
 ## [9.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@9.0.0...@kintone/plugin-manifest-validator@9.0.1) (2023-06-21)
 
 **Note:** Version bump only for package @kintone/plugin-manifest-validator

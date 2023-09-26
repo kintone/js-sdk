@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.5](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@7.0.4...@kintone/dts-gen@7.0.5) (2023-09-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1 ([#2148](https://github.com/kintone/js-sdk/issues/2148)) ([66f3d2b](https://github.com/kintone/js-sdk/commit/66f3d2be5debc05edda4e40738a7a33b677599cc))
+* **deps:** update dependency commander to v11 ([#2150](https://github.com/kintone/js-sdk/issues/2150)) ([1f11179](https://github.com/kintone/js-sdk/commit/1f11179045b54a53cadb35c2c598c123a7b29265))
+* **deps:** update dependency eslint to ^8.46.0 ([#2025](https://github.com/kintone/js-sdk/issues/2025)) ([ab6f486](https://github.com/kintone/js-sdk/commit/ab6f486930deecbd2830eea0e3be5be7aeb2394d))
+
 ## [7.0.4](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@7.0.3...@kintone/dts-gen@7.0.4) (2023-07-05)
 
 ### Bug Fixes

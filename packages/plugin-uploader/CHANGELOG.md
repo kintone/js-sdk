@@ -11,6 +11,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - We dropped Node v14 support. Now supported versions are v16, v18, and v20.
 
+## [8.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@8.0.0...@kintone/plugin-uploader@8.0.1) (2023-09-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to ^8.2.6 ([#2201](https://github.com/kintone/js-sdk/issues/2201)) ([7a85f2f](https://github.com/kintone/js-sdk/commit/7a85f2f0e8683a05d5aa04b94c06d12516bb80d4))
+* **deps:** update dependency puppeteer to ^21.0.1 ([#2205](https://github.com/kintone/js-sdk/issues/2205)) ([6ad4855](https://github.com/kintone/js-sdk/commit/6ad485586570d061ab092f31305b3db232670831))
+* **deps:** update dependency puppeteer to ^21.0.2 ([#2210](https://github.com/kintone/js-sdk/issues/2210)) ([8cbb80a](https://github.com/kintone/js-sdk/commit/8cbb80aeff2e5fca7d63e357d8ab7d83600505e7))
+* **deps:** update dependency puppeteer to ^21.0.3 ([#2218](https://github.com/kintone/js-sdk/issues/2218)) ([156fe3c](https://github.com/kintone/js-sdk/commit/156fe3c3c75bfbcf0ea68ffd6ca210acb9e1a362))
+* **deps:** update dependency puppeteer to v21 ([#2200](https://github.com/kintone/js-sdk/issues/2200)) ([c4fa789](https://github.com/kintone/js-sdk/commit/c4fa789ced39a1465f75798c9cdef6d5a6847b33))
+* Ignore warning message in puppeteer ([#2212](https://github.com/kintone/js-sdk/issues/2212)) ([cd69d59](https://github.com/kintone/js-sdk/commit/cd69d59f3fb19aba18c5bf979f96420c855a9a0a))
+
 ## [7.1.10](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@7.1.9...@kintone/plugin-uploader@7.1.10) (2023-03-22)
 
 ### Bug Fixes

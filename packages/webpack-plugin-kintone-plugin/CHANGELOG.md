@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.5](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@7.0.4...@kintone/webpack-plugin-kintone-plugin@7.0.5) (2023-09-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency mkdirp to v3 ([#2034](https://github.com/kintone/js-sdk/issues/2034)) ([cb624ef](https://github.com/kintone/js-sdk/commit/cb624ef1a79df7dd30c716d8c3f7a92d781912c3))
+
 ## [7.0.4](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@7.0.3...@kintone/webpack-plugin-kintone-plugin@7.0.4) (2023-07-05)
 
 **Note:** Version bump only for package @kintone/webpack-plugin-kintone-plugin
