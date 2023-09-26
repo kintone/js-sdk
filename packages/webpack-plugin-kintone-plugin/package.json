@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/webpack-plugin-kintone-plugin#readme",
   "devDependencies": {
-    "@types/adm-zip": "^0.5.1",
+    "@types/adm-zip": "^0.5.2",
     "@types/chokidar": "^1.7.5",
     "adm-zip": "^0.5.10",
     "chokidar": "^3.5.3",
