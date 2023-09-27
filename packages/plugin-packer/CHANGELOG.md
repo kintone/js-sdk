@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@7.0.4...@kintone/plugin-packer@7.1.0) (2023-09-26)
+
+
+### Features
+
+* **plugin-packer:** Display the helpful message when manifest.json contains non-existent file ([#2254](https://github.com/kintone/js-sdk/issues/2254)) ([32d1db8](https://github.com/kintone/js-sdk/commit/32d1db878f8a9b5a8d6acdaa90772ee97117784a))
+
+
+### Bug Fixes
+
+* **deps:** update dependency mkdirp to v3 ([#2034](https://github.com/kintone/js-sdk/issues/2034)) ([cb624ef](https://github.com/kintone/js-sdk/commit/cb624ef1a79df7dd30c716d8c3f7a92d781912c3))
+
 ## [7.0.4](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@7.0.3...@kintone/plugin-packer@7.0.4) (2023-07-05)
 
 **Note:** Version bump only for package @kintone/plugin-packer
