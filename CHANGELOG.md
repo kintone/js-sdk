@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.6](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.5...@kintone/create-plugin@6.0.6) (2023-09-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.32.0 ([#2011](https://github.com/kintone/js-sdk/issues/2011)) ([54ddae6](https://github.com/kintone/js-sdk/commit/54ddae6031702c82ada252a6dd2c7f46a598a1cb))
+* **deps:** update dependency core-js to ^3.32.1 ([#2230](https://github.com/kintone/js-sdk/issues/2230)) ([9e7e92d](https://github.com/kintone/js-sdk/commit/9e7e92d840f896689772300fd96aa1b66a16bfc2))
+* **deps:** update dependency core-js to ^3.32.2 ([#2265](https://github.com/kintone/js-sdk/issues/2265)) ([cf2c195](https://github.com/kintone/js-sdk/commit/cf2c195f96bc3bf6d4fe53e09c4093433b3c0eb0))
+* **deps:** update dependency eslint to ^8.46.0 ([#2025](https://github.com/kintone/js-sdk/issues/2025)) ([ab6f486](https://github.com/kintone/js-sdk/commit/ab6f486930deecbd2830eea0e3be5be7aeb2394d))
+* **deps:** update dependency inquirer to ^8.2.6 ([#2201](https://github.com/kintone/js-sdk/issues/2201)) ([7a85f2f](https://github.com/kintone/js-sdk/commit/7a85f2f0e8683a05d5aa04b94c06d12516bb80d4))
+
 ## [6.0.5](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@6.0.4...@kintone/create-plugin@6.0.5) (2023-08-01)
 
 
