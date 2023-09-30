@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@kintone/profile-loader": "^4.0.0",
-    "@kintone/rest-api-client": "^4.1.0",
+    "@kintone/rest-api-client": "^4.1.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
