@@ -1,7 +1,7 @@
 {
   "name": "@kintone/plugin-packer",
   "description": "Package your kintone plugin with pure JavaScript",
-  "version": "7.1.0",
+  "version": "8.0.0",
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"

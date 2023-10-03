@@ -11,6 +11,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * devDependencies
     * @kintone/customize-uploader bumped from ^7.0.3 to ^7.0.4
 
+## [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@4.0.5...@kintone/rest-api-client-demo@5.0.0) (2023-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* We dropped Node v16 support. Now supported versions are v18 and v20.
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^4.1.1 ([#2300](https://github.com/kintone/js-sdk/issues/2300)) ([7e40f2d](https://github.com/kintone/js-sdk/commit/7e40f2d8fce0e50bcf0b828ee646b351ed193702))
+
+
+### Build System
+
+* Drop Node v16 support version ([#2294](https://github.com/kintone/js-sdk/issues/2294)) ([767d657](https://github.com/kintone/js-sdk/commit/767d65749be66b6c2509bb737d8f45085814cc44))
+
 ## [4.0.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@4.0.3...@kintone/rest-api-client-demo@4.0.4) (2023-07-05)
 
 **Note:** Version bump only for package @kintone/rest-api-client-demo

@@ -11,6 +11,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - We dropped Node v14 support. Now supported versions are v16, v18, and v20.
 
+## [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/profile-loader@4.0.0...@kintone/profile-loader@5.0.0) (2023-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* We dropped Node v16 support. Now supported versions are v18 and v20.
+
+### Build System
+
+* Drop Node v16 support version ([#2294](https://github.com/kintone/js-sdk/issues/2294)) ([767d657](https://github.com/kintone/js-sdk/commit/767d65749be66b6c2509bb737d8f45085814cc44))
+
 ## [3.0.2](https://github.com/kintone/js-sdk/compare/@kintone/profile-loader@3.0.1...@kintone/profile-loader@3.0.2) (2022-11-16)
 
 **Note:** Version bump only for package @kintone/profile-loader
