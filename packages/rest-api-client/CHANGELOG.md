@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@4.1.1...@kintone/rest-api-client@5.0.0) (2023-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* We dropped Node v16 support. Now supported versions are v18 and v20.
+
+### Build System
+
+* Drop Node v16 support version ([#2294](https://github.com/kintone/js-sdk/issues/2294)) ([767d657](https://github.com/kintone/js-sdk/commit/767d65749be66b6c2509bb737d8f45085814cc44))
+
 ## [4.1.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@4.1.0...@kintone/rest-api-client@4.1.1) (2023-09-26)
 
 
