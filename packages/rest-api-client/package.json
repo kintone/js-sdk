@@ -1,6 +1,6 @@
 {
-  "name": "@kintone/rest-api-client",
-  "version": "4.1.0",
+  "name": "test-rest-api-client",
+  "version": "5.0.10",
   "publishConfig": {
     "access": "public"
   },
@@ -78,6 +78,11 @@
   },
   "exports": {
     ".": {
+      "types": {
+        "require": "./lib/src/index.d.ts",
+        "import": "./esm/src/index.d.ts",
+        "default": "./lib/src/index.d.ts"
+      },
       "node": {
         "import": "./index.mjs",
         "require": "./lib/src/index.js",
