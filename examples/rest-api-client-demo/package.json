@@ -31,7 +31,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@kintone/profile-loader": "^4.0.0",
+    "@kintone/profile-loader": "workspace:*",
     "@kintone/rest-api-client": "^4.1.1",
     "yargs": "^17.7.2"
   },
