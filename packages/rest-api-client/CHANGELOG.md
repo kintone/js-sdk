@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.0.0...@kintone/rest-api-client@5.0.1) (2023-10-17)
+
+
+### Bug Fixes
+
+* **rest-api-client:** Fix type resolution error on `moduleResolution: bundler` ([#2334](https://github.com/kintone/js-sdk/issues/2334)) ([57f2e22](https://github.com/kintone/js-sdk/commit/57f2e227ad88520e3a2e3968868b66d497f635f0))
+
 ## [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@4.1.1...@kintone/rest-api-client@5.0.0) (2023-10-03)
 
 
