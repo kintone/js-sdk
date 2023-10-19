@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x]
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
       - run: git config --global core.autocrlf false

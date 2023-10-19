@@ -1,5 +1,5 @@
 {
-  "examples/rest-api-client-demo": "5.0.0",
+  "examples/rest-api-client-demo": "5.0.1",
   "packages/create-plugin": "7.0.0",
   "packages/customize-uploader": "8.0.0",
   "packages/dts-gen": "8.0.0",
@@ -7,6 +7,6 @@
   "packages/plugin-packer": "8.0.0",
   "packages/plugin-uploader": "9.0.0",
   "packages/profile-loader": "5.0.0",
-  "packages/rest-api-client": "5.0.0",
+  "packages/rest-api-client": "5.0.1",
   "packages/webpack-plugin-kintone-plugin": "8.0.0"
 }
