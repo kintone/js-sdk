@@ -122,8 +122,8 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0
       '@types/inquirer':
-        specifier: ^8.2.6
-        version: 8.2.6
+        specifier: ^8.2.9
+        version: 8.2.9
       '@types/lodash':
         specifier: ^4.14.199
         version: 4.14.199
@@ -165,8 +165,8 @@ importers:
         version: 5.0.5
     devDependencies:
       '@types/inquirer':
-        specifier: 8.2.6
-        version: 8.2.6
+        specifier: 8.2.9
+        version: 8.2.9
 
   packages/dts-gen:
     dependencies:
@@ -394,8 +394,8 @@ importers:
         version: 21.0.3
     devDependencies:
       '@types/inquirer':
-        specifier: 8.2.6
-        version: 8.2.6
+        specifier: 8.2.9
+        version: 8.2.9
       '@types/puppeteer':
         specifier: ^5.4.7
         version: 5.4.7
@@ -2591,8 +2591,8 @@ packages:
       '@types/node': 13.13.52
     dev: true
 
-  /@types/inquirer@8.2.6:
-    resolution: {integrity: sha512-3uT88kxg8lNzY8ay2ZjP44DKcRaTGztqeIvN2zHvhzIBH/uAPaL75aBtdNRKbA7xXoMbBt5kX0M00VKAnfOYlA==}
+  /@types/inquirer@8.2.9:
+    resolution: {integrity: sha512-5IEO2PwCy4NZDgj977dho4Qbdiw6dJZJzD4ZaB/9j7dfppf7z0xxFPKZz/FtTAUQbDjmWHJ6Jlz/gn0YzWHPsw==}
     dependencies:
       '@types/through': 0.0.30
       rxjs: 7.8.1
