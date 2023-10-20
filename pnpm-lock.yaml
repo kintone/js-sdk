@@ -193,8 +193,8 @@ importers:
         version: 2.8.8
     devDependencies:
       '@types/eslint':
-        specifier: ^8.44.3
-        version: 8.44.3
+        specifier: ^8.44.6
+        version: 8.44.6
       '@types/lodash':
         specifier: ^4.14.199
         version: 4.14.199
@@ -2525,12 +2525,12 @@ packages:
   /@types/eslint-scope@3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
-      '@types/eslint': 8.44.3
+      '@types/eslint': 8.44.6
       '@types/estree': 1.0.1
     dev: true
 
-  /@types/eslint@8.44.3:
-    resolution: {integrity: sha512-iM/WfkwAhwmPff3wZuPLYiHX18HI24jU8k1ZSH7P8FHwxTjZ2P6CoX2wnF43oprR+YXJM6UUxATkNvyv/JHd+g==}
+  /@types/eslint@8.44.6:
+    resolution: {integrity: sha512-P6bY56TVmX8y9J87jHNgQh43h6VVU+6H7oN7hgvivV81K2XY8qJZ5vqPy/HdUoVIelii2kChYVzQanlswPWVFw==}
     dependencies:
       '@types/estree': 1.0.1
       '@types/json-schema': 7.0.12
