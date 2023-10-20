@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.7",
-    "@types/debug": "^4.1.9",
+    "@types/debug": "^4.1.10",
     "@types/node-rsa": "^1.1.2",
     "@types/stream-buffers": "^3.0.5",
     "@types/yauzl": "^2.10.1",

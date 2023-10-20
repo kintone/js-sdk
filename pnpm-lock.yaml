@@ -279,8 +279,8 @@ importers:
         specifier: ^1.9.7
         version: 1.9.7
       '@types/debug':
-        specifier: ^4.1.9
-        version: 4.1.9
+        specifier: ^4.1.10
+        version: 4.1.10
       '@types/node-rsa':
         specifier: ^1.1.2
         version: 1.1.2
@@ -2516,8 +2516,8 @@ packages:
     resolution: {integrity: sha512-EhO4Lcd2Rs2bZvQwIDMZ1qsaZk8DpdOkQCbKpK0vt7fSjJGXrCA7EPauR/BZ7eJXks1een4FX7JtlhS136fklA==}
     dev: true
 
-  /@types/debug@4.1.9:
-    resolution: {integrity: sha512-8Hz50m2eoS56ldRlepxSBa6PWEVCtzUo/92HgLc2qTMnotJNIm7xP+UZhyWoYsyOdd5dxZ+NZLb24rsKyFs2ow==}
+  /@types/debug@4.1.10:
+    resolution: {integrity: sha512-tOSCru6s732pofZ+sMv9o4o3Zc+Sa8l3bxd/tweTQudFn06vAzb13ZX46Zi6m6EJ+RUbRTHvgQJ1gBtSgkaUYA==}
     dependencies:
       '@types/ms': 0.7.31
     dev: true
