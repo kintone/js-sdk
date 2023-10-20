@@ -443,8 +443,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@3.29.4)
       '@types/core-js':
-        specifier: ^2.5.6
-        version: 2.5.6
+        specifier: ^2.5.7
+        version: 2.5.7
       '@types/js-base64':
         specifier: ^3.0.0
         version: 3.0.0
@@ -2512,8 +2512,8 @@ packages:
       '@types/node': 13.13.52
     dev: true
 
-  /@types/core-js@2.5.6:
-    resolution: {integrity: sha512-zLzoC7avO4EYUUYCSzDaahSP1QJEpZQcPxqs91mPeFdh2NS4hQBcnRoEc9RuXfJ8cdN/KXUWukMmZGcKaWeOvw==}
+  /@types/core-js@2.5.7:
+    resolution: {integrity: sha512-EhO4Lcd2Rs2bZvQwIDMZ1qsaZk8DpdOkQCbKpK0vt7fSjJGXrCA7EPauR/BZ7eJXks1een4FX7JtlhS136fklA==}
     dev: true
 
   /@types/debug@4.1.9:
