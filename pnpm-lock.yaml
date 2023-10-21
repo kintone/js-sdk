@@ -128,8 +128,8 @@ importers:
         specifier: ^4.14.200
         version: 4.14.200
       '@types/node-rsa':
-        specifier: ^1.1.2
-        version: 1.1.2
+        specifier: ^1.1.3
+        version: 1.1.3
       '@types/normalize-path':
         specifier: ^3.0.0
         version: 3.0.0
@@ -282,8 +282,8 @@ importers:
         specifier: ^4.1.10
         version: 4.1.10
       '@types/node-rsa':
-        specifier: ^1.1.2
-        version: 1.1.2
+        specifier: ^1.1.3
+        version: 1.1.3
       '@types/stream-buffers':
         specifier: ^3.0.5
         version: 3.0.5
@@ -2661,8 +2661,8 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
-  /@types/node-rsa@1.1.2:
-    resolution: {integrity: sha512-9knJ07OLdOhD2EughqP+M4VPgASth9KodZT4Zdc78sAoyp5rXAwVg+gmTZ2ccQKbZic9cC0uCSCTcybWEINNsw==}
+  /@types/node-rsa@1.1.3:
+    resolution: {integrity: sha512-c3H4T71ccs+CtS97xBYJAZN+Yx5aYOnI+F48M26+aiJoHqK/X7LZdY9eEusDN9SMijYpKOzSQLZPsggrqR/Z0g==}
     dependencies:
       '@types/node': 13.13.52
     dev: true
