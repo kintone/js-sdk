@@ -473,8 +473,8 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/plugin-packer':
-        specifier: ^7.0.4
-        version: 7.0.4
+        specifier: ^8.0.0
+        version: link:../plugin-packer
       mkdirp:
         specifier: ^3.0.1
         version: 3.0.1
@@ -2186,25 +2186,6 @@ packages:
     dependencies:
       ajv: 8.12.0
       bytes: 3.1.2
-    dev: false
-
-  /@kintone/plugin-packer@7.0.4:
-    resolution: {integrity: sha512-B5BPURW4RFKvg/5TRCXNBAkTw7OODvnSwvfb0nwS3M0omxkYEuJtz0WsBHQu6hMmo9d1fyUgMRWLDWegaFNPXg==}
-    engines: {node: '>=16'}
-    hasBin: true
-    dependencies:
-      '@kintone/plugin-manifest-validator': 9.0.1
-      chokidar: 3.5.3
-      debug: 4.3.4
-      denodeify: 1.2.1
-      meow: 9.0.0
-      mkdirp: 2.1.6
-      node-rsa: 1.1.1
-      stream-buffers: 3.0.2
-      yauzl: 2.10.0
-      yazl: 2.5.1
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /@kintone/rest-api-client@4.1.1:
@@ -7483,12 +7464,6 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dev: true
-
-  /mkdirp@2.1.6:
-    resolution: {integrity: sha512-+hEnITedc8LAtIP9u3HJDFIdcLV2vXP33sqLLIzkv1Db1zO/1OxbvYf0Y1OC/S/Qo5dxHXepofhmxL02PsKe+A==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dev: false
 
   /mkdirp@3.0.1:
     resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
