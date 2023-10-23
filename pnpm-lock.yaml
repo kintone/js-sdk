@@ -288,8 +288,8 @@ importers:
         specifier: ^3.0.6
         version: 3.0.6
       '@types/yauzl':
-        specifier: ^2.10.1
-        version: 2.10.1
+        specifier: ^2.10.2
+        version: 2.10.2
       '@types/yazl':
         specifier: ^2.4.3
         version: 2.4.3
@@ -2846,8 +2846,8 @@ packages:
       '@types/yargs-parser': 21.0.0
     dev: true
 
-  /@types/yauzl@2.10.1:
-    resolution: {integrity: sha512-CHzgNU3qYBnp/O4S3yv2tXPlvMTq0YWSTVg2/JYLqWZGHwwgJGAwd00poay/11asPq8wLFwHzubyInqHIFmmiw==}
+  /@types/yauzl@2.10.2:
+    resolution: {integrity: sha512-Km7XAtUIduROw7QPgvcft0lIupeG8a8rdKL8RiSyKvlE7dYY31fEn41HVuQsRFDuROA8tA4K2UVL+WdfFmErBA==}
     dependencies:
       '@types/node': 13.13.52
 
@@ -5456,7 +5456,7 @@ packages:
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
-      '@types/yauzl': 2.10.1
+      '@types/yauzl': 2.10.2
     transitivePeerDependencies:
       - supports-color
     dev: false
