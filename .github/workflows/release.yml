@@ -14,8 +14,8 @@ jobs:
       - uses: actions/create-github-app-token@v1
         id: create-iat
         with:
-          github_app_id: ${{ secrets.RELEASE_GITHUB_APP_ID}}
-          github_app_private_key: ${{ secrets.RELEASE_GITHUB_APP_KEY }}
+          app-id: ${{ secrets.RELEASE_GITHUB_APP_ID}}
+          private-key: ${{ secrets.RELEASE_GITHUB_APP_KEY }}
       - uses: google-github-actions/release-please-action@ca6063f4ed81b55db15b8c42d1b6f7925866342d # v3
         id: release
         with:
