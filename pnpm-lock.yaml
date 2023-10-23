@@ -57,8 +57,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/profile-loader
       '@kintone/rest-api-client':
-        specifier: ^4.1.1
-        version: 4.1.1
+        specifier: ^5.0.1
+        version: link:../../packages/rest-api-client
       yargs:
         specifier: ^17.7.2
         version: 17.7.2
@@ -143,8 +143,8 @@ importers:
   packages/customize-uploader:
     dependencies:
       '@kintone/rest-api-client':
-        specifier: ^4.1.1
-        version: 4.1.1
+        specifier: ^5.0.1
+        version: link:../rest-api-client
       chokidar:
         specifier: ^3.5.3
         version: 3.5.3
@@ -2219,6 +2219,7 @@ packages:
       qs: 6.11.2
     transitivePeerDependencies:
       - debug
+    dev: true
 
   /@leichtgewicht/ip-codec@2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
