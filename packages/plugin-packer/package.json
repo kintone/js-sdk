@@ -39,7 +39,7 @@
     "start": "npm-run-all -l -s clean build -p build:dev site:dev"
   },
   "dependencies": {
-    "@kintone/plugin-manifest-validator": "^9.0.1",
+    "@kintone/plugin-manifest-validator": "^10.0.0",
     "chokidar": "^3.5.3",
     "debug": "^4.3.4",
     "denodeify": "^1.2.1",
