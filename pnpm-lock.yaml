@@ -412,8 +412,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       core-js:
-        specifier: ^3.32.2
-        version: 3.32.2
+        specifier: ^3.33.1
+        version: 3.33.1
       form-data:
         specifier: ^4.0.0
         version: 4.0.0
@@ -4140,8 +4140,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /core-js@3.32.2:
-    resolution: {integrity: sha512-pxXSw1mYZPDGvTQqEc5vgIb83jGQKFGYWY76z4a7weZXUolw3G+OvpZqSRcfYOoOVUQJYEPsWeQK8pKEnUtWxQ==}
+  /core-js@3.33.1:
+    resolution: {integrity: sha512-qVSq3s+d4+GsqN0teRCJtM6tdEEXyWxjzbhVrCHmBS5ZTM0FS2MOS0D13dUXAWDUN6a+lHI/N1hF9Ytz6iLl9Q==}
     requiresBuild: true
     dev: false
 
@@ -10168,7 +10168,7 @@ packages:
       rechoir: 0.8.0
       webpack: 5.89.0(webpack-cli@5.1.4)
       webpack-dev-server: 4.15.1(debug@4.3.4)(webpack-cli@5.1.4)(webpack@5.89.0)
-      webpack-merge: 5.10.0
+      webpack-merge: 5.9.0
     dev: true
 
   /webpack-cli@5.1.4(webpack@5.89.0):
