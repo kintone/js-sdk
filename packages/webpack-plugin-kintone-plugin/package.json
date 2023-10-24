@@ -43,15 +43,15 @@
     "adm-zip": "^0.5.10",
     "chokidar": "^3.5.3",
     "rimraf": "^5.0.5",
-    "webpack": "^5.88.2",
+    "webpack": "^5.89.0",
     "webpack-cli": "5.1.4",
-    "webpack-merge": "^5.9.0"
+    "webpack-merge": "^5.10.0"
   },
   "peerDependencies": {
     "webpack": "^4.0.0 || ^5.0.0"
   },
   "dependencies": {
-    "@kintone/plugin-packer": "^7.0.4",
+    "@kintone/plugin-packer": "^8.0.0",
     "mkdirp": "^3.0.1"
   }
 }
