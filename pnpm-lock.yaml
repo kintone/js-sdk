@@ -390,8 +390,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       puppeteer:
-        specifier: ^21.0.3
-        version: 21.0.3
+        specifier: ^21.4.0
+        version: 21.4.0(typescript@5.2.2)
     devDependencies:
       '@types/inquirer':
         specifier: 8.2.9
@@ -2192,18 +2192,18 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@puppeteer/browsers@1.6.0:
-    resolution: {integrity: sha512-R2ib8j329427jtKB/qlz0MJbwfJE/6I8ocJLiajsRqJ2PPI8DbjiNzC3lQZeISXEcjOBVhbG2RafN8SlHdcT+A==}
+  /@puppeteer/browsers@1.8.0:
+    resolution: {integrity: sha512-TkRHIV6k2D8OlUe8RtG+5jgOF/H98Myx0M6AOafC8DdNVOFiBSFa5cpRDtpm8LXOa9sVwe0+e6Q3FC56X/DZfg==}
     engines: {node: '>=16.3.0'}
     hasBin: true
     dependencies:
       debug: 4.3.4
       extract-zip: 2.0.1
       progress: 2.0.3
-      proxy-agent: 6.3.0
+      proxy-agent: 6.3.1
       tar-fs: 3.0.4
       unbzip2-stream: 1.4.3
-      yargs: 17.7.1
+      yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -3905,13 +3905,14 @@ packages:
     engines: {node: '>=6.0'}
     dev: true
 
-  /chromium-bidi@0.4.20(devtools-protocol@0.0.1147663):
-    resolution: {integrity: sha512-ruHgVZFEv00mAQMz1tQjfjdG63jiPWrQPF6HLlX2ucqLqVTJoWngeBEKHaJ6n1swV/HSvgnBNbtTRIlcVyW3Fw==}
+  /chromium-bidi@0.4.32(devtools-protocol@0.0.1191157):
+    resolution: {integrity: sha512-RJnw0PW3sNdx1WclINVfVVx8JUH+tWTHZNpnEzlcM+Qgvf40dUH34U7gJq+cc/0LE+rbPxeT6ldqWrCbUf4jeg==}
     peerDependencies:
       devtools-protocol: '*'
     dependencies:
-      devtools-protocol: 0.0.1147663
+      devtools-protocol: 0.0.1191157
       mitt: 3.0.1
+      urlpattern-polyfill: 9.0.0
     dev: false
 
   /ci-info@3.8.0:
@@ -4148,14 +4149,20 @@ packages:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: true
 
-  /cosmiconfig@8.2.0:
-    resolution: {integrity: sha512-3rTMnFJA1tCOPwRxtgF4wd7Ab2qvDbL8jX+3smjIbS4HlZBagTlpERbdN7iAbWlrfxE3M8c27kTwTawQ7st+OQ==}
+  /cosmiconfig@8.3.6(typescript@5.2.2):
+    resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
     engines: {node: '>=14'}
+    peerDependencies:
+      typescript: '>=4.9.5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
+      typescript: 5.2.2
     dev: false
 
   /create-ecdh@4.0.4:
@@ -4577,8 +4584,8 @@ packages:
     resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
     dev: true
 
-  /devtools-protocol@0.0.1147663:
-    resolution: {integrity: sha512-hyWmRrexdhbZ1tcJUGpO95ivbRhWXz++F4Ko+n21AY5PNln2ovoJw+8ZMNDTtip+CNFQfrtLVh/w4009dXO/eQ==}
+  /devtools-protocol@0.0.1191157:
+    resolution: {integrity: sha512-Fu2mUhX7zkzLHMJZk5wQTiHdl1eJrhK0GypUoSzogUt51MmYEv/46pCz4PtGGFlr0f2ZyYDzzx5CPtbEkuvcTA==}
     dev: false
 
   /diff-match-patch@1.0.5:
@@ -6043,8 +6050,8 @@ packages:
       - supports-color
     dev: true
 
-  /https-proxy-agent@7.0.1:
-    resolution: {integrity: sha512-Eun8zV0kcYS1g19r78osiQLEFIRspRUDd9tIfBCTBPBeMieF/EsJNL8VI3xOIdYRDEkjQnqOYPsZ2DsWsVsFwQ==}
+  /https-proxy-agent@7.0.2:
+    resolution: {integrity: sha512-NmLNjm6ucYwtcUmL7JQC1ZQ57LmHP4lT15FQ8D61nak1rO6DH+fz5qNK2Ap5UN4ZapYICE3/0KodcLYSPsPbaA==}
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.0
@@ -7833,8 +7840,8 @@ packages:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
 
-  /pac-proxy-agent@7.0.0:
-    resolution: {integrity: sha512-t4tRAMx0uphnZrio0S0Jw9zg3oDbz1zVhQ/Vy18FjLfP1XOLNUEjaVxYCYRI6NS+BsMBXKIzV6cTLOkO9AtywA==}
+  /pac-proxy-agent@7.0.1:
+    resolution: {integrity: sha512-ASV8yU4LLKBAjqIPMbrgtaKIvxQri/yh2OpI+S6hVa9JRkUI3Y3NPFbfngDtY7oFtSMD3w31Xns89mDa3Feo5A==}
     engines: {node: '>= 14'}
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
@@ -7842,9 +7849,9 @@ packages:
       debug: 4.3.4
       get-uri: 6.0.1
       http-proxy-agent: 7.0.0
-      https-proxy-agent: 7.0.1
+      https-proxy-agent: 7.0.2
       pac-resolver: 7.0.0
-      socks-proxy-agent: 8.0.1
+      socks-proxy-agent: 8.0.2
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -8526,18 +8533,18 @@ packages:
       ipaddr.js: 1.9.1
     dev: true
 
-  /proxy-agent@6.3.0:
-    resolution: {integrity: sha512-0LdR757eTj/JfuU7TL2YCuAZnxWXu3tkJbg4Oq3geW/qFNT/32T0sp2HnZ9O0lMR4q3vwAt0+xCA8SR0WAD0og==}
+  /proxy-agent@6.3.1:
+    resolution: {integrity: sha512-Rb5RVBy1iyqOtNl15Cw/llpeLH8bsb37gM1FUfKQ+Wck6xHlbAhWGUFiTRHtkjqGTA5pSHz6+0hrPW/oECihPQ==}
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.0
       debug: 4.3.4
       http-proxy-agent: 7.0.0
-      https-proxy-agent: 7.0.1
+      https-proxy-agent: 7.0.2
       lru-cache: 7.18.3
-      pac-proxy-agent: 7.0.0
+      pac-proxy-agent: 7.0.1
       proxy-from-env: 1.1.0
-      socks-proxy-agent: 8.0.1
+      socks-proxy-agent: 8.0.2
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -8572,16 +8579,16 @@ packages:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
     engines: {node: '>=6'}
 
-  /puppeteer-core@21.0.3:
-    resolution: {integrity: sha512-AGvopfkA0jLbW5Ba0m6kBuvRIpLo76PXUK3zJYkXOr9NI1LknJESyai6TtXc6GUSewMkinmyEDx1pFgq900hqg==}
+  /puppeteer-core@21.4.0:
+    resolution: {integrity: sha512-ONYjYgHItm6i9WdJf+MnRTRPB4HegwPbPfi1jjNN0LCW3rnNich/5hXgZFcn2oWvgFc8DWLDIcwly7C8z+EvIw==}
     engines: {node: '>=16.3.0'}
     dependencies:
-      '@puppeteer/browsers': 1.6.0
-      chromium-bidi: 0.4.20(devtools-protocol@0.0.1147663)
+      '@puppeteer/browsers': 1.8.0
+      chromium-bidi: 0.4.32(devtools-protocol@0.0.1191157)
       cross-fetch: 4.0.0
       debug: 4.3.4
-      devtools-protocol: 0.0.1147663
-      ws: 8.13.0
+      devtools-protocol: 0.0.1191157
+      ws: 8.14.2
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -8589,18 +8596,19 @@ packages:
       - utf-8-validate
     dev: false
 
-  /puppeteer@21.0.3:
-    resolution: {integrity: sha512-+eBNTEOOBrRBLJ1/jIuHcOoUUOVpUQjQFwp9L/sm/iBDqii+4jv9jxpPJSOmOHXuy++X7GWfhuDw4vz8crNzPw==}
+  /puppeteer@21.4.0(typescript@5.2.2):
+    resolution: {integrity: sha512-KkiDe39NJxlw7fyiN6fieM9SVsewzt037nUZRoffNuFtYdAl5rRLVtleBuVZ5i1swK/R4CmA6Pbka/ytpFCu4Q==}
     engines: {node: '>=16.3.0'}
     requiresBuild: true
     dependencies:
-      '@puppeteer/browsers': 1.6.0
-      cosmiconfig: 8.2.0
-      puppeteer-core: 21.0.3
+      '@puppeteer/browsers': 1.8.0
+      cosmiconfig: 8.3.6(typescript@5.2.2)
+      puppeteer-core: 21.4.0
     transitivePeerDependencies:
       - bufferutil
       - encoding
       - supports-color
+      - typescript
       - utf-8-validate
     dev: false
 
@@ -9237,8 +9245,8 @@ packages:
       websocket-driver: 0.7.4
     dev: true
 
-  /socks-proxy-agent@8.0.1:
-    resolution: {integrity: sha512-59EjPbbgg8U3x62hhKOFVAmySQUcfRQ4C7Q/D5sEHnZTQRrQlNKINks44DMR1gwXp0p4LaVIeccX2KHTTcHVqQ==}
+  /socks-proxy-agent@8.0.2:
+    resolution: {integrity: sha512-8zuqoLv1aP/66PHF5TqwJ7Czm3Yv32urJQHrVyhD7mmA6d61Zv8cIXQYPTWwmg6qlupnPvs/QKDmfa4P/qct2g==}
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.0
@@ -10032,6 +10040,10 @@ packages:
       requires-port: 1.0.0
     dev: true
 
+  /urlpattern-polyfill@9.0.0:
+    resolution: {integrity: sha512-WHN8KDQblxd32odxeIgo83rdVDE2bvdkb86it7bMhYZwWKJz0+O0RK/eZiHYnM+zgt/U7hAHOlCQGfjjvSkw2g==}
+    dev: false
+
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
@@ -10451,6 +10463,20 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+    dev: true
+
+  /ws@8.14.2:
+    resolution: {integrity: sha512-wEBG1ftX4jcglPxgFCMJmZ2PLtSbJ2Peg6TmpJFTbe9GZYOQCDPdMYu/Tm0/bGZkw8paZnJY45J4K2PZrLYq8g==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
 
   /xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
@@ -10490,19 +10516,6 @@ packages:
   /yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
-
-  /yargs@17.7.1:
-    resolution: {integrity: sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==}
-    engines: {node: '>=12'}
-    dependencies:
-      cliui: 8.0.1
-      escalade: 3.1.1
-      get-caller-file: 2.0.5
-      require-directory: 2.1.1
-      string-width: 4.2.3
-      y18n: 5.0.8
-      yargs-parser: 21.1.1
-    dev: false
 
   /yargs@17.7.2:
     resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
