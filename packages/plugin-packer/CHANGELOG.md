@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.0.0...@kintone/plugin-packer@8.0.1) (2023-10-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-manifest-validator to v10 ([#2313](https://github.com/kintone/js-sdk/issues/2313)) ([0a6a655](https://github.com/kintone/js-sdk/commit/0a6a655c8d130cc451a6117f0fb36a14bc678860))
+
 ## [8.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@7.1.0...@kintone/plugin-packer@8.0.0) (2023-10-03)
 
 
