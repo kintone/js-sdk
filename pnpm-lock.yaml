@@ -64,7 +64,7 @@ importers:
         version: 17.7.2
     devDependencies:
       '@kintone/customize-uploader':
-        specifier: ^8.0.0
+        specifier: ^8.0.1
         version: link:../../packages/customize-uploader
       '@types/yargs':
         specifier: ^17.0.29
