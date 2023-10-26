@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^18.0.3",
-    "@kintone/plugin-packer": "^8.0.0",
+    "@kintone/plugin-packer": "^8.0.1",
     "eslint": "^8.52.0"
   }
 }
