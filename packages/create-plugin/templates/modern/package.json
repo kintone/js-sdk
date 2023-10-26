@@ -20,7 +20,7 @@
     "@babel/preset-typescript": "^7.23.2",
     "@cybozu/eslint-config": "^18.0.3",
     "@kintone/dts-gen": "^8.0.1",
-    "@kintone/webpack-plugin-kintone-plugin": "^8.0.0",
+    "@kintone/webpack-plugin-kintone-plugin": "^8.0.1",
     "ajv": "^8.12.0",
     "babel-loader": "^9.1.3",
     "cross-env": "^7.0.3",
