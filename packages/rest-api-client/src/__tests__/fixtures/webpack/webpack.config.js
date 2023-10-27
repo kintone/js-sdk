@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   mode: "development",
   entry: {
-    index: "./index.ts",
+    index: "../index.ts",
   },
   output: {
     filename: "bundle.webpack.js",
