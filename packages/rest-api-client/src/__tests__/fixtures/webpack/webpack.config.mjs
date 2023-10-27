@@ -1,9 +1,12 @@
-const path = require("path");
+import path from "path";
+import {fileURLToPath} from 'node:url';
 
-module.exports = {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
   mode: "development",
   entry: {
-    index: "../index.ts",
+    index: path.resolve(__dirname, "../index.ts"),
   },
   output: {
     filename: "bundle.webpack.js",

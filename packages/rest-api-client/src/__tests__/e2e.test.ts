@@ -5,7 +5,7 @@ describe("Bundlers tests", function () {
   it("should be able to build the package with webpack successfully", () => {
     const buildResult = spawnSync(
       "webpack",
-      ["--config", "webpack.config.js"],
+      ["--config", "webpack.config.mjs"],
       {
         cwd: __dirname + "/fixtures/webpack",
         stdio: "inherit",
@@ -21,6 +21,19 @@ describe("Bundlers tests", function () {
       ["--config", "rollup.config.mjs", "--failAfterWarnings"],
       {
         cwd: __dirname + "/fixtures/rollup",
+        stdio: "inherit",
+        shell: true,
+      }
+    );
+    assert(buildResult.status === 0);
+  });
+
+  it("should be able to build the package with Vite successfully", () => {
+    const buildResult = spawnSync(
+      "vite build",
+      ["--config", "vite.config.mjs"],
+      {
+        cwd: __dirname + "/fixtures/vite",
         stdio: "inherit",
         shell: true,
       }

@@ -3,14 +3,17 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import json from "@rollup/plugin-json";
+import path from "path";
+import {fileURLToPath} from "node:url";
 
 const extensions = [".ts", ".js"];
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  input: "../index.ts",
+  input: path.resolve(__dirname, "../index.ts"),
   output: {
     extend: true,
-    file: `./dist/bundle.js`,
+    file: path.resolve(__dirname, "dist", "bundle.js"),
     format: "iife",
     name: "MyBundle",
   },
