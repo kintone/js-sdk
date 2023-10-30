@@ -1,6 +1,5 @@
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import type { DiscriminatedAuth } from "../types/auth";
-// import mime from "mime-types";
 import mime from "mime/lite";
 import packageJson from "../../package.json";
 
@@ -46,7 +45,6 @@ export const buildFormDataValue = (data: unknown, fileName?: string) => {
   const options: BlobOptions = {};
   if (fileName) {
     options.type = mime.getType(fileName) || undefined;
-    // options.type = mime.lookup(fileName) || undefined;
   }
 
   return new Blob([data as BlobPart], options);

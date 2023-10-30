@@ -62,7 +62,6 @@
     "@types/js-base64": "^3.0.0",
     "@types/mime": "^3.0.3",
     "@types/qs": "^6.9.9",
-    "@types/mime-types": "^2.1.3",
     "rollup": "^4.1.4",
     "rollup-plugin-ecma-version-validator": "^0.2.13",
     "rollup-plugin-license": "^3.2.0",
@@ -78,7 +77,6 @@
     "core-js": "^3.33.1",
     "form-data": "^4.0.0",
     "js-base64": "^3.7.5",
-    "mime-types": "^2.1.27",
     "mime": "^3.0.0",
     "qs": "^6.11.2"
   },
