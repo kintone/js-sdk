@@ -2,7 +2,7 @@ import assert from "assert";
 import { spawnSync } from "child_process";
 
 describe("Bundlers tests", function () {
-  it("should be able to build the package with webpack successfully", () => {
+  it("should be able to build with Webpack successfully", () => {
     const buildResult = spawnSync(
       "webpack",
       ["--config", "webpack.config.mjs"],
@@ -15,7 +15,7 @@ describe("Bundlers tests", function () {
     assert(buildResult.status === 0);
   });
 
-  it("should be able to build the package with rollup successfully", () => {
+  it("should be able to build with Rollup successfully", () => {
     const buildResult = spawnSync(
       "rollup",
       ["--config", "rollup.config.mjs", "--failAfterWarnings"],
@@ -28,7 +28,7 @@ describe("Bundlers tests", function () {
     assert(buildResult.status === 0);
   });
 
-  it("should be able to build the package with Vite successfully", () => {
+  it("should be able to build with Vite successfully", () => {
     const buildResult = spawnSync(
       "vite build",
       ["--config", "vite.config.mjs"],

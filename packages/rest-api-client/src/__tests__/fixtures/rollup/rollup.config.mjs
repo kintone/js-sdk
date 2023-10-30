@@ -4,7 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import json from "@rollup/plugin-json";
 import path from "path";
-import {fileURLToPath} from "node:url";
+import { fileURLToPath } from "node:url";
 
 const extensions = [".ts", ".js"];
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -13,8 +13,8 @@ export default defineConfig({
   input: path.resolve(__dirname, "../index.ts"),
   output: {
     extend: true,
-    file: path.resolve(__dirname, "dist", "bundle.js"),
-    format: "iife",
+    file: path.resolve(__dirname, "dist", "bundle.rollup.js"),
+    format: "umd",
     name: "MyBundle",
   },
   plugins: [
