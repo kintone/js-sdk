@@ -1,43 +1,30 @@
 import assert from "assert";
 import { spawnSync } from "child_process";
+import { pattern as RollupPattern } from "./fixtures/rollup";
+import { pattern as VitePattern } from "./fixtures/vite";
+import { pattern as WebpackPattern } from "./fixtures/webpack";
+
+export type TestPattern = {
+  bundlerName: string;
+  input: {
+    command: string;
+    args: string[];
+    cwd: string;
+  };
+};
+
+const patterns = [RollupPattern, VitePattern, WebpackPattern];
 
 describe("Bundlers tests", function () {
-  it("should be able to build with Webpack successfully", () => {
-    const buildResult = spawnSync(
-      "webpack",
-      ["--config", "webpack.config.mjs"],
-      {
-        cwd: __dirname + "/fixtures/webpack",
+  it.each(patterns)(
+    `should be able to build with $bundlerName successfully`,
+    async ({ input }) => {
+      const buildResult = spawnSync(input.command, input.args, {
+        cwd: input.cwd,
         stdio: "inherit",
         shell: true,
-      }
-    );
-    assert(buildResult.status === 0);
-  });
-
-  it("should be able to build with Rollup successfully", () => {
-    const buildResult = spawnSync(
-      "rollup",
-      ["--config", "rollup.config.mjs", "--failAfterWarnings"],
-      {
-        cwd: __dirname + "/fixtures/rollup",
-        stdio: "inherit",
-        shell: true,
-      }
-    );
-    assert(buildResult.status === 0);
-  });
-
-  it("should be able to build with Vite successfully", () => {
-    const buildResult = spawnSync(
-      "vite build",
-      ["--config", "vite.config.mjs"],
-      {
-        cwd: __dirname + "/fixtures/vite",
-        stdio: "inherit",
-        shell: true,
-      }
-    );
-    assert(buildResult.status === 0);
-  });
+      });
+      assert(buildResult.status === 0);
+    }
+  );
 });

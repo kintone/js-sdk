@@ -5,15 +5,20 @@ import babel from "@rollup/plugin-babel";
 import json from "@rollup/plugin-json";
 import path from "path";
 import { fileURLToPath } from "node:url";
+import fs from "fs";
+import os from "os";
 
 const extensions = [".ts", ".js"];
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const tempDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "kintone-rest-api-client-rollup-bundle-")
+);
 
 export default defineConfig({
   input: path.resolve(__dirname, "../index.ts"),
   output: {
     extend: true,
-    file: path.resolve(__dirname, "dist", "bundle.rollup.js"),
+    file: path.resolve(tempDir, "dist", "bundle.rollup.js"),
     format: "umd",
     name: "MyBundle",
   },
