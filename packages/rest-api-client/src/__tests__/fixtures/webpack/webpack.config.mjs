@@ -1,12 +1,7 @@
 import path from "path";
 import { fileURLToPath } from 'node:url';
-import fs from "fs";
-import os from "os";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const tempDir = fs.mkdtempSync(
-    path.join(os.tmpdir(), "kintone-rest-api-client-vite-bundle-")
-);
 
 export default {
   mode: "development",
@@ -15,7 +10,7 @@ export default {
   },
   output: {
     filename: "bundle.webpack.js",
-    path: path.resolve(tempDir, "dist"),
+    path: path.resolve(process.env.TEMP_DIR, "dist"),
   },
   module: {
     rules: [
