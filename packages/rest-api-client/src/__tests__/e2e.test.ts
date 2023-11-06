@@ -1,4 +1,3 @@
-import assert from "assert";
 import { spawnSync } from "child_process";
 import { pattern as RollupPattern } from "./fixtures/rollup";
 import { pattern as VitePattern } from "./fixtures/vite";
@@ -36,7 +35,7 @@ describe("Bundlers tests", function () {
           TEMP_DIR: tempDir,
         },
       });
-      assert(buildResult.status === 0);
+      expect(buildResult.status).toBe(0);
     }
   );
 
