@@ -15,7 +15,9 @@
   "types": "lib/src/index.d.ts",
   "scripts": {
     "prebuild": "pnpm clean",
-    "build": "tsc --build --force",
+    "build": "run-p compile:*",
+    "compile:browser": "tsc --build --force tsconfig.json",
+    "compile:node": "tsc --build --force tsconfig.node.json",
     "postbuild": "run-p build:*",
     "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "prepublishOnly": "run-p build:umd_*",

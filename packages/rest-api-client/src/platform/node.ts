@@ -6,6 +6,10 @@ import https from "https";
 import os from "os";
 const packageJson = require("../../package.json");
 
+document.getElementById("123");
+window.close();
+addEventListener("click", () => true);
+
 const readFile = promisify(fs.readFile);
 
 type ClientCertAuth =
