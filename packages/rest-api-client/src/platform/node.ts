@@ -6,9 +6,10 @@ import https from "https";
 import os from "os";
 const packageJson = require("../../package.json");
 
-document.getElementById("123");
-window.close();
-addEventListener("click", () => true);
+// TODO: Remove this testing code before merge.
+// document.getElementById("123");
+// window.close();
+// addEventListener("click", () => true);
 
 const readFile = promisify(fs.readFile);
 

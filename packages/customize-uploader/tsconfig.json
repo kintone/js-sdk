@@ -7,6 +7,6 @@
     "resolveJsonModule": true
   },
   "references": [
-    { "path": "../rest-api-client" }
+    { "path": "../rest-api-client/tsconfig.build.json" }
   ]
 }

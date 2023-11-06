@@ -15,9 +15,7 @@
   "types": "lib/src/index.d.ts",
   "scripts": {
     "prebuild": "pnpm clean",
-    "build": "run-p compile:*",
-    "compile:browser": "tsc --build --force tsconfig.json",
-    "compile:node": "tsc --build --force tsconfig.node.json",
+    "build": "tsc --build --force tsconfig.build.json",
     "postbuild": "run-p build:*",
     "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "prepublishOnly": "run-p build:umd_*",
@@ -25,7 +23,7 @@
     "test:ci": "jest --runInBand",
     "build:umd_dev": "rollup -c --environment BUILD:development",
     "build:umd_prod": "rollup -c --environment BUILD:production",
-    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:esm": "tsc -p tsconfig.build.esm.json",
     "clean": "rimraf lib esm umd",
     "fix": "pnpm lint --fix",
     "start": "pnpm build --watch"

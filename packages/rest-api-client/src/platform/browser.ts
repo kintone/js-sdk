@@ -7,6 +7,11 @@ export const readFileFromPath = (filePath: string) => {
   throw new UnsupportedPlatformError("Browser");
 };
 
+// TODO: Remove this testing code before merge.
+document.getElementById("123");
+window.close();
+addEventListener("click", () => true);
+
 export const getRequestToken = async () => {
   if (
     typeof kintone === "object" &&

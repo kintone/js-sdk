@@ -12,7 +12,7 @@
   },
   "references": [
     { "path": "../../packages/profile-loader" },
-    { "path": "../../packages/rest-api-client" },
+    { "path": "../../packages/rest-api-client/tsconfig.build.json" },
     { "path": "../../packages/customize-uploader" },
   ]
 }

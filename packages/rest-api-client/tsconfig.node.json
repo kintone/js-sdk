@@ -1,16 +1,21 @@
 {
-  "extends": "../tsconfig-base.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5", "es2015.promise", "es2015.iterable", "es2015.symbol", "es2015.symbol.wellknown"],
-    "outDir": "./lib",
-    "rootDir": "./",
-    "typeRoots": [
-      "node_modules/@types",
-      "../../node_modules/@types",
-      "types"
+    "lib": [
+      "es5",
+      "es2015.promise",
+      "es2015.iterable",
+      "es2015.symbol",
+      "es2015.symbol.wellknown"
     ],
-    "resolveJsonModule": true
   },
-  "include": ["src/**/node.ts", "src/**/./UnsupportedPlatformError.ts"],
+  "exclude": [
+    "src/index.browser.ts",
+    "src/platform/browser.ts",
+    "src/__tests__/index.browser.test.ts",
+    "src/__tests__/KintoneRestAPIClient.test.ts",
+    "src/__tests__/KintoneRequestConfigBuilder.test.ts",
+    "src/platform/__tests__/browser.test.ts",
+    "src/client/__tests__/File.test.ts"
+  ]
 }
