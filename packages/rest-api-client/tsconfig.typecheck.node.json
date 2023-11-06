@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.typecheck.json",
   "compilerOptions": {
     "lib": [
       "es5",
@@ -7,8 +7,9 @@
       "es2015.iterable",
       "es2015.symbol",
       "es2015.symbol.wellknown"
-    ],
+    ]
   },
+  // Files that use deps only available on Browser environment
   "exclude": [
     "src/index.browser.ts",
     "src/platform/browser.ts",

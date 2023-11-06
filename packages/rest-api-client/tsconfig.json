@@ -1,9 +1,15 @@
 {
   "extends": "../tsconfig-base.json",
   "compilerOptions": {
-    "noEmit": true,
     "target": "es5",
-    "lib": ["es5", "es2015.promise", "es2015.iterable", "es2015.symbol", "es2015.symbol.wellknown", "dom"],
+    "lib": [
+      "es5",
+      "es2015.promise",
+      "es2015.iterable",
+      "es2015.symbol",
+      "es2015.symbol.wellknown",
+      "dom"
+    ],
     "rootDir": "./",
     "outDir": "./lib",
     "typeRoots": [
@@ -13,10 +19,19 @@
     ],
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "package.json"],
+  "files": [],
   "references": [
     {
-      "path": "./tsconfig.node.json"
+      "path": "./tsconfig.build.json"
+    },
+    {
+      "path": "./tsconfig.build.esm.json"
+    },
+    {
+      "path": "./tsconfig.typecheck.json"
+    },
+    {
+      "path": "./tsconfig.typecheck.node.json"
     }
   ]
 }

@@ -4,8 +4,6 @@
     "noEmit": false,
     "outDir": "./lib"
   },
-  "exclude": [
-    "src/**/__tests__/*",
-    "src/**/*.test.ts"
-  ],
+  "include": ["src/**/*", "package.json"],
+  "exclude": ["src/**/__tests__/*", "src/**/*.test.ts"]
 }
