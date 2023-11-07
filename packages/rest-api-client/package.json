@@ -66,7 +66,12 @@
     "rollup-plugin-ecma-version-validator": "^0.2.13",
     "rollup-plugin-license": "^3.2.0",
     "rollup-plugin-node-globals": "^1.4.0",
-    "rollup-plugin-polyfill-node": "^0.12.0"
+    "rollup-plugin-polyfill-node": "^0.12.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "babel-loader": "^9.1.3",
+    "vite": "^4.4.5",
+    "rimraf": "^5.0.5"
   },
   "dependencies": {
     "axios": "^1.6.0",
