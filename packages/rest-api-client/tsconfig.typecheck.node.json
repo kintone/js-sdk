@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.typecheck.json",
   "compilerOptions": {
+    // Excluding DOM APIs
     "lib": [
       "es5",
       "es2015.promise",
