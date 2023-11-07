@@ -181,7 +181,7 @@ const downloadAndWriteFile = (
   return async (f) => {
     if (f.type !== "URL") {
       const resp = await kintoneApiClient.downloadFile(f.file.fileKey);
-      fs.writeFileSync(`${destDir}${sep}${f.file.name}`, resp);
+      fs.writeFileSync(`${destDir}${sep}${f.file.name}`, Buffer.from(resp));
     }
   };
 };

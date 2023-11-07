@@ -47,7 +47,7 @@ export const buildHeaders = () => {
 };
 
 export const buildFormDataValue = (data: unknown, fileName?: string) => {
-  const options: BlobOptions = {};
+  const options: BlobPropertyBag = {};
   if (fileName) {
     options.type = mime.getType(fileName) || undefined;
   }
