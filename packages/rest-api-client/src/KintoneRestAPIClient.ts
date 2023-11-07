@@ -133,9 +133,6 @@ const validateBaseUrl = (baseUrl: Options["baseUrl"]) => {
     return;
   }
 
-  // TODO: the URL() is DOM API but available in Node.js
-  // https://nodejs.org/api/url.html
-  // @ts-ignore
   const url = new URL(baseUrl);
   if (url.hostname !== "localhost" && url.protocol !== "https:") {
     throw new Error('The protocol of baseUrl must be "https".');
