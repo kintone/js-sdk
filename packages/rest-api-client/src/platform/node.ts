@@ -7,9 +7,9 @@ import os from "os";
 const packageJson = require("../../package.json");
 
 // TODO: Remove this testing code before merge.
-// document.getElementById("123");
-// window.close();
-// addEventListener("click", () => true);
+document.getElementById("123");
+window.close();
+addEventListener("click", () => true);
 
 const readFile = promisify(fs.readFile);
 
