@@ -17,6 +17,7 @@
     "src/__tests__/KintoneRestAPIClient.test.ts",
     "src/__tests__/KintoneRequestConfigBuilder.test.ts",
     "src/platform/__tests__/browser.test.ts",
-    "src/client/__tests__/File.test.ts"
+    "src/client/__tests__/File.test.ts",
+    "src/__tests__/fixtures/index.ts"
   ]
 }
