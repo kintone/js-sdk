@@ -1,39 +1,17 @@
-declare const kintone: {
+/* eslint-disable no-var,vars-on-top */
+// We cannot use let,const to declare global object:(
+// https://stackoverflow.com/a/69230938
+declare var kintone: {
   getRequestToken(): string;
 };
 
-declare const garoon: {
+declare var garoon: {
   connect: {
     kintone: {
       getRequestToken(): Promise<string>;
     };
   };
 };
-
-declare module NodeJS {
-  interface Global {
-    kintone: typeof kintone;
-    garoon: typeof garoon;
-    location: typeof location;
-  }
-}
-
-declare const location:
-  | {
-      host: string;
-      protocol: string;
-    }
-  | undefined;
-
-declare type BlobPart = unknown;
-
-declare type BlobOptions = { type?: string };
-
-declare class Blob {
-  constructor(array: BlobPart[], options?: BlobOptions);
-}
-
-declare const PACKAGE_VERSION: string;
 
 // see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24419
 declare interface Element {}

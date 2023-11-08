@@ -23,7 +23,6 @@
     "test:ci": "jest --runInBand",
     "build:umd_dev": "rollup -c --environment BUILD:development",
     "build:umd_prod": "rollup -c --environment BUILD:production",
-    "build:esm": "tsc -p tsconfig.esm.json",
     "clean": "rimraf lib esm umd",
     "fix": "pnpm lint --fix",
     "start": "pnpm build --watch"

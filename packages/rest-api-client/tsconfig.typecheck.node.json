@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.typecheck.json",
+  "compilerOptions": {
+    // Excluding DOM APIs
+    "lib": [
+      "es5",
+      "es2015.promise",
+      "es2015.iterable",
+      "es2015.symbol",
+      "es2015.symbol.wellknown"
+    ]
+  },
+  // Files that use deps only available on Browser environment
+  "exclude": [
+    "src/index.browser.ts",
+    "src/platform/browser.ts",
+    "src/__tests__/index.browser.test.ts",
+    "src/__tests__/KintoneRestAPIClient.test.ts",
+    "src/__tests__/KintoneRequestConfigBuilder.test.ts",
+    "src/platform/__tests__/browser.test.ts",
+    "src/client/__tests__/File.test.ts",
+    "src/__tests__/fixtures/index.ts"
+  ]
+}
