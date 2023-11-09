@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/customize-uploader#readme",
   "devDependencies": {
-    "@types/inquirer": "8.2.9"
+    "@types/inquirer": "8.2.10"
   },
   "dependencies": {
     "@kintone/rest-api-client": "^5.0.3",
