@@ -452,8 +452,8 @@ importers:
         specifier: ^3.0.4
         version: 3.0.4
       '@types/qs':
-        specifier: ^6.9.9
-        version: 6.9.9
+        specifier: ^6.9.10
+        version: 6.9.10
       babel-loader:
         specifier: ^9.1.3
         version: 9.1.3(@babel/core@7.23.3)(webpack@5.89.0)
@@ -2863,7 +2863,7 @@ packages:
     resolution: {integrity: sha512-wALWQwrgiB2AWTT91CB62b6Yt0sNHpznUXeZEcnPU3DRdlDIz74x8Qg1UUYKSVFi+va5vKOLYRBI1bRKiLLKIg==}
     dependencies:
       '@types/node': 18.0.6
-      '@types/qs': 6.9.9
+      '@types/qs': 6.9.10
       '@types/range-parser': 1.2.4
       '@types/send': 0.17.1
     dev: true
@@ -2873,7 +2873,7 @@ packages:
     dependencies:
       '@types/body-parser': 1.19.2
       '@types/express-serve-static-core': 4.17.35
-      '@types/qs': 6.9.9
+      '@types/qs': 6.9.10
       '@types/serve-static': 1.15.2
     dev: true
 
@@ -3007,8 +3007,8 @@ packages:
       '@types/node': 13.13.52
     dev: true
 
-  /@types/qs@6.9.9:
-    resolution: {integrity: sha512-wYLxw35euwqGvTDx6zfY1vokBFnsK0HNrzc6xNHchxfO2hpuRg74GbkEW7e3sSmPvj0TjCDT1VCa6OtHXnubsg==}
+  /@types/qs@6.9.10:
+    resolution: {integrity: sha512-3Gnx08Ns1sEoCrWssEgTSJs/rsT2vhGP+Ja9cnnk9k4ALxinORlQneLXFeFKOTJMOeZUFD1s7w+w2AphTpvzZw==}
     dev: true
 
   /@types/range-parser@1.2.4:
