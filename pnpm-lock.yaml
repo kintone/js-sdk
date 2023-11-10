@@ -131,8 +131,8 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4
       '@types/normalize-path':
-        specifier: ^3.0.1
-        version: 3.0.1
+        specifier: ^3.0.2
+        version: 3.0.2
       '@types/rimraf':
         specifier: ^3.0.2
         version: 3.0.2
@@ -2993,8 +2993,8 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: false
 
-  /@types/normalize-path@3.0.1:
-    resolution: {integrity: sha512-zELDXIlrZySwjFjU6HMUfvt0GqQPKSwBOyWgae9Tcsc/hFCkvYavZDXruVHyVasN2pCxnluh2S4rA0iuer7Z2g==}
+  /@types/normalize-path@3.0.2:
+    resolution: {integrity: sha512-DO++toKYPaFn0Z8hQ7Tx+3iT9t77IJo/nDiqTXilgEP+kPNIYdpS9kh3fXuc53ugqwp9pxC1PVjCpV1tQDyqMA==}
     dev: true
 
   /@types/prettier@2.7.3:
