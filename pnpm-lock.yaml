@@ -67,8 +67,8 @@ importers:
         specifier: ^8.0.3
         version: link:../../packages/customize-uploader
       '@types/yargs':
-        specifier: ^17.0.29
-        version: 17.0.29
+        specifier: ^17.0.31
+        version: 17.0.31
       ts-loader:
         specifier: ^9.5.0
         version: 9.5.0(typescript@5.2.2)(webpack@5.89.0)
@@ -2378,7 +2378,7 @@ packages:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
       '@types/node': 18.0.6
-      '@types/yargs': 17.0.29
+      '@types/yargs': 17.0.31
       chalk: 4.1.2
     dev: true
 
@@ -3090,8 +3090,8 @@ packages:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
     dev: true
 
-  /@types/yargs@17.0.29:
-    resolution: {integrity: sha512-nacjqA3ee9zRF/++a3FUY1suHTFKZeHba2n8WeDw9cCVdmzmHpIxyzOJBcpHvvEmS8E9KqWlSnWHUkOrkhWcvA==}
+  /@types/yargs@17.0.31:
+    resolution: {integrity: sha512-bocYSx4DI8TmdlvxqGpVNXOgCNR1Jj0gNPhhAY+iz1rgKDAaYrAYdFYnhDV1IFuiuVc9HkOwyDcFxaTElF3/wg==}
     dependencies:
       '@types/yargs-parser': 21.0.0
     dev: true
