@@ -291,8 +291,8 @@ importers:
         specifier: ^2.10.3
         version: 2.10.3
       '@types/yazl':
-        specifier: ^2.4.4
-        version: 2.4.4
+        specifier: ^2.4.5
+        version: 2.4.5
       ajv:
         specifier: ^8.12.0
         version: 8.12.0
@@ -3102,10 +3102,10 @@ packages:
     dependencies:
       '@types/node': 18.0.6
 
-  /@types/yazl@2.4.4:
-    resolution: {integrity: sha512-oIm9eKVrxukZgW05COfMzX9Zcz+cJmywKAULOVMr2ji9Bjly701zgjNDtFsVQsVlXsRMLwnIfUNqSpC1Uz+iaw==}
+  /@types/yazl@2.4.5:
+    resolution: {integrity: sha512-qpmPfx32HS7vlGJf7EsoM9qJnLZhXJBf1KH0hzfdc+D794rljQWh4H0I/UrZy+6Nhqn0l2jdBZXBGZtR1vnHqw==}
     dependencies:
-      '@types/node': 13.13.52
+      '@types/node': 18.0.6
     dev: true
 
   /@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.52.0)(typescript@5.2.2):
