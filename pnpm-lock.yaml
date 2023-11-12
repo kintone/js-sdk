@@ -476,7 +476,7 @@ importers:
         specifier: ^0.12.0
         version: 0.12.0(rollup@4.2.0)
       vite:
-        specifier: ^4.4.11
+        specifier: ^4.5.0
         version: 4.5.0(@types/node@18.0.6)
       webpack:
         specifier: ^5.89.0
