@@ -41,7 +41,7 @@
     "@types/eslint": "^8.44.7",
     "@types/lodash": "^4.14.201",
     "@types/prettier": "^2.7.3",
-    "ts-loader": "^9.5.0",
+    "ts-loader": "^9.5.1",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "assert": "^2.1.0"
