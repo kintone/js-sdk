@@ -14,6 +14,7 @@ export interface RenderInput {
 
 const renderAsFile = async (output: string, renderInput: RenderInput) => {
   const tsExpression = convertToTsExpression(renderInput);
+  const comtureCustomExpression = `import {kintone} from "@kintone/dts-gen/kintone-comture" \n`;
   const eslint = new ESLint({
     fix: true,
     useEslintrc: false,
@@ -59,7 +60,8 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
   const outputPath = path.resolve(output);
 
   await fs.promises.mkdir(path.dirname(outputPath), { recursive: true });
-  await fs.promises.writeFile(outputPath, prettySource);
+  const join_customString = comtureCustomExpression + "export " + prettySource;
+  await fs.promises.writeFile(outputPath, join_customString);
 };
 // definition
 export const TypeDefinitionTemplate = {

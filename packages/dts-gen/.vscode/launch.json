@@ -1,0 +1,20 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "./dist/index.js -u aoyagi_yuzan -p Yuzan08221 --base-url https://njn5d.cybozu.com --app-id 27635 --type-name test --namespace comture -o ./types/app.d.ts",
+      // "outFiles": [
+      //   "${workspaceFolder}/**/*.js"
+      // ]
+    }
+  ]
+}
