@@ -1,8 +1,12 @@
 {
-  "name": "@kintone/dts-gen",
-  "version": "8.0.2",
+  "name": "@comture-clb/dts-gen",
+  "version": "0.1.0",
   "description": "Types for kintone js api and Types generating tools",
   "main": "dist/index.js",
+  "publishConfig": {
+    "access": "restricted",
+    "@comture-clb:registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
@@ -51,7 +55,7 @@
   },
   "files": [
     "dist",
-    "kintone.d.ts"
+    "kintone-comture.d.ts"
   ],
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
