@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.0.3...@kintone/rest-api-client@5.0.4) (2023-11-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.33.3 ([#2413](https://github.com/kintone/js-sdk/issues/2413)) ([14de2b7](https://github.com/kintone/js-sdk/commit/14de2b7bd1a1c006e3e40227df3b28e833d31ba7))
+
 ## [5.0.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.0.2...@kintone/rest-api-client@5.0.3) (2023-10-31)
 
 
