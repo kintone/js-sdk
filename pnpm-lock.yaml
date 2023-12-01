@@ -572,6 +572,18 @@ importers:
         specifier: ^5.1.4
         version: 5.1.4(webpack@5.98.0)
 
+  packages/types:
+    devDependencies:
+      '@arethetypeswrong/cli':
+        specifier: ^0.18.2
+        version: 0.18.2
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1
+      publint:
+        specifier: ^0.3.12
+        version: 0.3.12
+
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/plugin-packer':
@@ -7957,7 +7969,7 @@ packages:
       dir-glob: 3.0.1
       fast-glob: 3.3.2
       glob: 7.2.3
-      ignore: 5.2.4
+      ignore: 5.3.2
       merge2: 1.4.1
       slash: 3.0.0
     dev: false
@@ -8257,11 +8269,6 @@ packages:
 
   /ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
-
-  /ignore@5.2.4:
-    resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
-    engines: {node: '>= 4'}
-    dev: false
 
   /ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
