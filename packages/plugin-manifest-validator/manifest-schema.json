@@ -42,6 +42,11 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 64
+        },
+        "es": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
         }
       },
       "required": ["en"]
@@ -61,6 +66,11 @@
           "maxLength": 200
         },
         "zh": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "es": {
           "type": "string",
           "minLength": 1,
           "maxLength": 200
@@ -91,6 +101,11 @@
           "format": "http-url"
         },
         "zh": {
+          "type": "string",
+          "minLength": 1,
+          "format": "http-url"
+        },
+        "es": {
           "type": "string",
           "minLength": 1,
           "format": "http-url"
