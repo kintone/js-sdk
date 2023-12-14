@@ -1,6 +1,6 @@
 name: "Pull Request Labeler"
 on:
-  - pull_request
+  - pull_request_target
 
 jobs:
   triage:
@@ -9,8 +9,6 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
       - uses: actions/labeler@v5
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
