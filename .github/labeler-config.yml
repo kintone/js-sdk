@@ -1,35 +1,35 @@
 "pkg: create-plugin":
-- changed-files:
-  - any-glob-to-any-file: 'packages/create-plugin/**/*'
+  - changed-files:
+      - any-glob-to-any-file: "packages/create-plugin/**/*"
 
 "pkg: customize-uploader":
-- changed-files:
-  - any-glob-to-any-file: 'packages/customize-uploader/**/*'
+  - changed-files:
+      - any-glob-to-any-file: "packages/customize-uploader/**/*"
 
 "pkg: dts-gen":
-- changed-files:
-  - any-glob-to-any-file: 'packages/dts-gen/**/*'
+  - changed-files:
+      - any-glob-to-any-file: "packages/dts-gen/**/*"
 
 "pkg: plugin-manifest-validator":
-- changed-files:
-  - any-glob-to-any-file: 'packages/plugin-manifest-validator/**/*'
+  - changed-files:
+      - any-glob-to-any-file: "packages/plugin-manifest-validator/**/*"
 
 "pkg: plugin-packer":
-- changed-files:
-  - any-glob-to-any-file: 'packages/plugin-packer/**/*'
+  - changed-files:
+      - any-glob-to-any-file: "packages/plugin-packer/**/*"
 
 "pkg: plugin-uploader":
-- changed-files:
-  - any-glob-to-any-file: 'packages/plugin-uploader/**/*'
+  - changed-files:
+      - any-glob-to-any-file: "packages/plugin-uploader/**/*"
 
 "pkg: profile-loader":
-- changed-files:
-  - any-glob-to-any-file: 'packages/profile-loader/**/*'
+  - changed-files:
+      - any-glob-to-any-file: "packages/profile-loader/**/*"
 
 "pkg: rest-api-client":
-- changed-files:
-  - any-glob-to-any-file: 'packages/rest-api-client/**/*'
+  - changed-files:
+      - any-glob-to-any-file: "packages/rest-api-client/**/*"
 
 "pkg: webpack-plugin-kintone-plugin":
-- changed-files:
-  - any-glob-to-any-file: 'packages/webpack-plugin-kintone-plugin/**/*'
+  - changed-files:
+      - any-glob-to-any-file: "packages/webpack-plugin-kintone-plugin/**/*"
