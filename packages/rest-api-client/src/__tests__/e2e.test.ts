@@ -19,7 +19,7 @@ export type TestPattern = {
 const patterns = [RollupPattern, VitePattern, WebpackPattern];
 
 const tempDir = fs.mkdtempSync(
-  path.join(os.tmpdir(), "kintone-rest-api-client-bundle-")
+  path.join(os.tmpdir(), "kintone-rest-api-client-bundle-"),
 );
 
 describe("Bundlers tests", function () {
@@ -36,7 +36,7 @@ describe("Bundlers tests", function () {
         },
       });
       expect(buildResult.status).toBe(0);
-    }
+    },
   );
 
   afterAll(() => {

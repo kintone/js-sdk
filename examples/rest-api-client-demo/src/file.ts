@@ -12,7 +12,7 @@ export class File {
     file: { name: string; data: string | ArrayBuffer } = {
       name: "Hello.text",
       data: "Hello World!",
-    }
+    },
   ) {
     const { fileKey } = await this.client.file.uploadFile({
       file,

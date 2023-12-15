@@ -603,7 +603,7 @@ export const DemoDatas = {
   DemoDataFields,
   DemoDataIncludingBuiltinFields: Object.assign(
     DemoDataBuiltinFields,
-    DemoDataFields
+    DemoDataFields,
   ),
   DemoRecord,
 };

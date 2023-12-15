@@ -15,9 +15,9 @@ describe("bin", () => {
       },
       (result) => {
         expect(/An argument `PLUGIN_DIR` is required/.test(result.stderr)).toBe(
-          true
+          true,
         );
-      }
+      },
     ));
 
   it("should recieve 1st arg as PLUGIN_DIR", () =>

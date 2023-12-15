@@ -3,7 +3,7 @@ declare namespace kintone {
     function on(event: string | string[], handler: (event: any) => any): void;
     function off(
       event: string | string[],
-      handler: (event: any) => any
+      handler: (event: any) => any,
     ): boolean;
     function off(event: string | string[]): boolean;
     function off(): boolean;
@@ -14,7 +14,7 @@ declare namespace kintone {
     function urlForGet(
       path: string,
       params: any,
-      detectGuestSpace?: boolean
+      detectGuestSpace?: boolean,
     ): string;
 
     function getConcurrencyLimit(): Promise<{
@@ -30,7 +30,7 @@ declare namespace kintone {
     method: string,
     params: any,
     callback: (resp: any) => void,
-    errback: (err: any) => void
+    errback: (err: any) => void,
   ): void;
 
   function getRequestToken(): string;
@@ -39,7 +39,7 @@ declare namespace kintone {
     url: string,
     method: string,
     headers: any,
-    data: any
+    data: any,
   ): Promise<any>;
 
   function proxy(
@@ -48,15 +48,15 @@ declare namespace kintone {
     headers: any,
     data: any,
     callback: (resp: any) => void,
-    errback: (err: any) => void
+    errback: (err: any) => void,
   ): void;
 
   class Promise<T> {
     constructor(
       callback: (
         resolve: (resolved: T) => any,
-        reject: (rejected: any) => any
-      ) => void
+        reject: (rejected: any) => any,
+      ) => void,
     );
 
     then(callback: (resolved: T) => any): Promise<any>;
@@ -74,14 +74,14 @@ declare namespace kintone {
       headers: any,
       data: any,
       callback: (resp: any) => void,
-      errback: (err: any) => void
+      errback: (err: any) => void,
     ): void;
 
     function upload(
       url: string,
       method: string,
       headers: any,
-      data: any
+      data: any,
     ): Promise<any>;
   }
 
@@ -149,7 +149,7 @@ declare namespace kintone {
         url: string,
         method: string,
         headers: any,
-        data: any
+        data: any,
       ): Promise<any>;
 
       function proxy(
@@ -159,7 +159,7 @@ declare namespace kintone {
         headers: any,
         data: any,
         callback: (resp: any) => void,
-        error: (err: any) => void
+        error: (err: any) => void,
       ): void;
 
       function setProxyConfig(
@@ -167,7 +167,7 @@ declare namespace kintone {
         method: string,
         headers: any,
         data: any,
-        callback?: () => void
+        callback?: () => void,
       ): void;
 
       function getProxyConfig(url: string, method: string): any;
@@ -178,7 +178,7 @@ declare namespace kintone {
           url: string,
           method: string,
           headers: any,
-          data: any
+          data: any,
         ): Promise<any>;
 
         function upload(
@@ -188,7 +188,7 @@ declare namespace kintone {
           headers: any,
           data: any,
           callback: (resp: any) => void,
-          error: (err: any) => void
+          error: (err: any) => void,
         ): void;
       }
     }

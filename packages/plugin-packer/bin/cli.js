@@ -32,7 +32,7 @@ Options
 `,
   {
     flags: flagSpec,
-  }
+  },
 );
 
 if (!cli.input[0]) {

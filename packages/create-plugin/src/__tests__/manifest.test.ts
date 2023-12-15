@@ -14,7 +14,7 @@ describe("manifest", () => {
           ja: false,
           cn: false,
         },
-        templateType
+        templateType,
       );
       assert.strictEqual(manifest.manifest_version, 1);
       assert.strictEqual(manifest.name.en, "sample");
@@ -29,7 +29,7 @@ describe("manifest", () => {
           cn: false,
           mobile: true,
         },
-        templateType
+        templateType,
       );
       assert(manifest.mobile && Array.isArray(manifest.mobile.js));
     });
@@ -42,7 +42,7 @@ describe("manifest", () => {
           cn: false,
           config: true,
         },
-        templateType
+        templateType,
       );
       assert.deepStrictEqual(manifest.config && Object.keys(manifest.config), [
         "html",

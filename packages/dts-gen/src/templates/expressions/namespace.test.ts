@@ -25,16 +25,16 @@ describe("Namespace", () => {
       new Namespace(
         "test.types",
         new TestTypeDefinition(),
-        new TestSavedTypeDefinition()
+        new TestSavedTypeDefinition(),
       )
         .tsExpression()
-        .trim()
+        .trim(),
     ).toEqual(
       `
 declare namespace test.types {
     interface TestType {}
     interface SavedTestType extends TestType {}
-}`.trim()
+}`.trim(),
     );
   });
 });

@@ -29,7 +29,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@cybozu/eslint-config": "^18.0.3",
+    "@cybozu/eslint-config": "^22.0.2",
     "axios": "^1.6.0",
     "commander": "^11.1.0",
     "eslint": "^8.52.0",
@@ -40,7 +40,6 @@
   "devDependencies": {
     "@types/eslint": "^8.44.8",
     "@types/lodash": "^4.14.202",
-    "@types/prettier": "^2.7.3",
     "ts-loader": "^9.5.1",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",

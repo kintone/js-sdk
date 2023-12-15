@@ -40,7 +40,7 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
       });
     }
     throw new Error(
-      `Failed to fix lint errors on the generated type definition file.\n${errorMessage}`
+      `Failed to fix lint errors on the generated type definition file.\n${errorMessage}`,
     );
   }
   let eslintOutput = "";
@@ -53,7 +53,7 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
     throw new Error("unexpected result");
   }
 
-  const prettySource = prettier.format(eslintOutput, {
+  const prettySource = await prettier.format(eslintOutput, {
     parser: "typescript",
   });
   const outputPath = path.resolve(output);

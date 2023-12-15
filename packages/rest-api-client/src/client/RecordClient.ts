@@ -32,7 +32,7 @@ export class RecordClient {
   constructor(
     client: HttpClient,
     bulkRequestClient: BulkRequestClient,
-    guestSpaceId?: number | string
+    guestSpaceId?: number | string,
   ) {
     this.client = client;
     this.bulkRequestClient = bulkRequestClient;
@@ -73,7 +73,7 @@ export class RecordClient {
           updateKey: UpdateKey;
           record?: RecordForParameter;
           revision?: Revision;
-        }
+        },
   ): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record",
@@ -99,7 +99,7 @@ export class RecordClient {
         return { id: records[0].$id.value, revision };
       }
       throw new Error(
-        "Missing `$id` in `getRecords` response. This error is likely caused by a bug in Kintone REST API Client. Please file an issue."
+        "Missing `$id` in `getRecords` response. This error is likely caused by a bug in Kintone REST API Client. Please file an issue.",
       );
     }
     return this.addRecord({
@@ -139,7 +139,7 @@ export class RecordClient {
       ) {
         this.didWarnMaximumOffsetValue = true;
         console.warn(
-          "Warning: The maximum offset value will be limited to 10,000 in the future. Please use `createCursor()` and `getRecordsByCursor()` instead."
+          "Warning: The maximum offset value will be limited to 10,000 in the future. Please use `createCursor()` and `getRecordsByCursor()` instead.",
         );
       }
     }
@@ -266,7 +266,7 @@ export class RecordClient {
       condition?: string;
     },
     id: string,
-    records: T[]
+    records: T[],
   ): Promise<T[]> {
     const GET_RECORDS_LIMIT = 500;
 
@@ -284,7 +284,7 @@ export class RecordClient {
       return this.getAllRecordsRecursiveWithId(params, lastId, allRecords);
     }
     throw new Error(
-      "Missing `$id` in `getRecords` response. This error is likely caused by a bug in Kintone REST API Client. Please file an issue."
+      "Missing `$id` in `getRecords` response. This error is likely caused by a bug in Kintone REST API Client. Please file an issue.",
     );
   }
 
@@ -305,7 +305,7 @@ export class RecordClient {
       orderBy?: string;
     },
     offset: number,
-    records: T[]
+    records: T[],
   ): Promise<T[]> {
     const GET_RECORDS_LIMIT = 500;
 
@@ -323,7 +323,7 @@ export class RecordClient {
     return this.getAllRecordsRecursiveWithOffset(
       params,
       offset + GET_RECORDS_LIMIT,
-      allRecords
+      allRecords,
     );
   }
 
@@ -343,7 +343,7 @@ export class RecordClient {
 
   private async getAllRecordsRecursiveByCursor<T extends Record>(
     id: string,
-    records: T[]
+    records: T[],
   ): Promise<T[]> {
     const result = await this.getRecordsByCursor<T>({ id });
     const allRecords = records.concat(result.records);
@@ -359,7 +359,7 @@ export class RecordClient {
   }): Promise<{ records: Array<{ id: string; revision: string }> }> {
     if (
       !params.records.every(
-        (record) => !Array.isArray(record) && record instanceof Object
+        (record) => !Array.isArray(record) && record instanceof Object,
       )
     ) {
       throw new Error("the `records` parameter must be an array of object.");
@@ -370,7 +370,7 @@ export class RecordClient {
   private async addAllRecordsRecursive(
     params: { app: AppID; records: RecordForParameter[] },
     numOfAllRecords: number,
-    results: Array<{ id: string; revision: string }>
+    results: Array<{ id: string; revision: string }>,
   ): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * ADD_RECORDS_LIMIT;
@@ -391,7 +391,7 @@ export class RecordClient {
         records,
         numOfAllRecords,
         e,
-        ADD_RECORDS_LIMIT
+        ADD_RECORDS_LIMIT,
       );
     }
     return this.addAllRecordsRecursive(
@@ -400,7 +400,7 @@ export class RecordClient {
         records: records.slice(CHUNK_LENGTH),
       },
       numOfAllRecords,
-      results.concat(newResults)
+      results.concat(newResults),
     );
   }
 
@@ -416,7 +416,7 @@ export class RecordClient {
     const separatedRecords = this.separateArrayRecursive(
       ADD_RECORDS_LIMIT,
       [],
-      params.records
+      params.records,
     );
     const requests = separatedRecords.map((records) => ({
       method: "POST",
@@ -465,7 +465,7 @@ export class RecordClient {
       >;
     },
     numOfAllRecords: number,
-    results: Array<{ id: string; revision: string }>
+    results: Array<{ id: string; revision: string }>,
   ): Promise<{ records: Array<{ id: string; revision: string }> }> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * UPDATE_RECORDS_LIMIT;
@@ -486,7 +486,7 @@ export class RecordClient {
         records,
         numOfAllRecords,
         e,
-        UPDATE_RECORDS_LIMIT
+        UPDATE_RECORDS_LIMIT,
       );
     }
     return this.updateAllRecordsRecursive(
@@ -495,7 +495,7 @@ export class RecordClient {
         records: records.slice(CHUNK_LENGTH),
       },
       numOfAllRecords,
-      results.concat(newResults)
+      results.concat(newResults),
     );
   }
 
@@ -513,7 +513,7 @@ export class RecordClient {
     const separatedRecords = this.separateArrayRecursive(
       UPDATE_RECORDS_LIMIT,
       [],
-      params.records
+      params.records,
     );
     const requests = separatedRecords.map((records) => ({
       method: "PUT",
@@ -550,7 +550,7 @@ export class RecordClient {
         revision?: Revision;
       }>;
     },
-    numOfAllRecords: number
+    numOfAllRecords: number,
   ): Promise<{}> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * DELETE_RECORDS_LIMIT;
@@ -570,7 +570,7 @@ export class RecordClient {
         records,
         numOfAllRecords,
         e,
-        DELETE_RECORDS_LIMIT
+        DELETE_RECORDS_LIMIT,
       );
     }
     return this.deleteAllRecordsRecursive(
@@ -578,7 +578,7 @@ export class RecordClient {
         app,
         records: records.slice(CHUNK_LENGTH),
       },
-      numOfAllRecords
+      numOfAllRecords,
     );
   }
 
@@ -592,7 +592,7 @@ export class RecordClient {
     const separatedRecords = this.separateArrayRecursive(
       DELETE_RECORDS_LIMIT,
       [],
-      params.records
+      params.records,
     );
     const requests = separatedRecords.map((records) => ({
       method: "DELETE",
@@ -609,7 +609,7 @@ export class RecordClient {
   private separateArrayRecursive<T>(
     size: number,
     separated: T[][],
-    array: T[]
+    array: T[],
   ): T[][] {
     const chunk = array.slice(0, size);
     if (chunk.length === 0) {
@@ -618,7 +618,7 @@ export class RecordClient {
     return this.separateArrayRecursive(
       size,
       [...separated, chunk],
-      array.slice(size)
+      array.slice(size),
     );
   }
 

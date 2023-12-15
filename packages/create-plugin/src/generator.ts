@@ -19,15 +19,20 @@ import normalize from "normalize-path";
  * @param enablePluginUploader
  * @param templateType
  */
-export const generatePlugin = (
+export const generatePlugin = async (
   outputDirectory: string,
   manifest: Manifest,
   lang: Lang,
   enablePluginUploader: boolean,
-  templateType: TemplateType
-): void => {
+  templateType: TemplateType,
+): Promise<void> => {
   // copy and build a project into the output diretory
-  buildProject(outputDirectory, manifest, enablePluginUploader, templateType);
+  await buildProject(
+    outputDirectory,
+    manifest,
+    enablePluginUploader,
+    templateType,
+  );
   // npm install
   installDependencies(outputDirectory, lang);
 };
@@ -39,12 +44,12 @@ export const generatePlugin = (
  * @param enablePluginUploader
  * @param templateType
  */
-const buildProject = (
+const buildProject = async (
   outputDirectory: string,
   manifest: Manifest,
   enablePluginUploader: boolean,
-  templateType: TemplateType
-): void => {
+  templateType: TemplateType,
+): Promise<void> => {
   fs.mkdirSync(outputDirectory);
   // This is necessary for unit testing
   // We use src/generator.ts directory instead of dist/src/generator.js when unit testing
@@ -53,29 +58,29 @@ const buildProject = (
       ? path.join(__dirname, "..", "templates", templateType)
       : path.join(__dirname, "..", "..", "templates", templateType);
   const templatePathPattern = normalize(path.resolve(templatePath, "**", "*"));
-  globSync(templatePathPattern, {
+  const templateFiles = globSync(templatePathPattern, {
     dot: true,
-  })
-    .filter((file) => isNecessaryFile(manifest, file))
-    .forEach((file) =>
-      processTemplateFile(
-        file,
-        templatePath,
-        outputDirectory,
-        manifest,
-        enablePluginUploader
-      )
+  }).filter((file) => isNecessaryFile(manifest, file));
+  for (const file of templateFiles) {
+    await processTemplateFile(
+      file,
+      templatePath,
+      outputDirectory,
+      manifest,
+      enablePluginUploader,
     );
+  }
+
   fs.writeFileSync(
     path.resolve(outputDirectory, "private.ppk"),
-    generatePrivateKey()
+    generatePrivateKey(),
   );
   fs.writeFileSync(
     path.resolve(
       outputDirectory,
       templateType === "modern" ? "plugin" : "src",
-      "manifest.json"
+      "manifest.json",
     ),
-    JSON.stringify(manifest, null, 2)
+    JSON.stringify(manifest, null, 2),
   );
 };

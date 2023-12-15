@@ -1,7 +1,7 @@
 import type { DiscriminatedAuth } from "../types/auth";
 type PlatformDeps = {
   readFileFromPath: (
-    filePath: string
+    filePath: string,
   ) => Promise<{ name: string; data: unknown }>;
   getRequestToken: () => Promise<string>;
   getDefaultAuth: () => DiscriminatedAuth;

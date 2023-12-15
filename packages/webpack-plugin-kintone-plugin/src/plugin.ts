@@ -55,7 +55,7 @@ const sourceList = (manifest: Manifest): string[] => {
 export const getAssetPaths = (manifestJSONPath: string): string[] => {
   const manifest = JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8"));
   return sourceList(manifest).map((file: string) =>
-    path.resolve(path.dirname(manifestJSONPath), file)
+    path.resolve(path.dirname(manifestJSONPath), file),
   );
 };
 /**
@@ -66,9 +66,9 @@ export const getAssetPaths = (manifestJSONPath: string): string[] => {
  */
 export const generatePlugin = (
   manifestJSONPath: string,
-  privateKey: string | null
+  privateKey: string | null,
 ): Promise<{ id: string; buffer: Buffer }> => {
   return packFromManifest(manifestJSONPath, privateKey).then(
-    (output: PackedPlugin) => ({ id: output.id, buffer: output.plugin })
+    (output: PackedPlugin) => ({ id: output.id, buffer: output.plugin }),
   );
 };

@@ -434,7 +434,7 @@ describe("RecordClient", () => {
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithId<Record>(params);
         expect(mockClient.getLogs()[0].params.fields.sort()).toEqual(
-          [...params.fields, "$id"].sort()
+          [...params.fields, "$id"].sort(),
         );
       });
 
@@ -565,7 +565,7 @@ describe("RecordClient", () => {
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithOffset<Record>(params);
         expect(mockClient.getLogs()[0].params.query).toBe(
-          `${fieldCode} = "foo" order by ${fieldCode} asc limit 500 offset 0`
+          `${fieldCode} = "foo" order by ${fieldCode} asc limit 500 offset 0`,
         );
       });
 
@@ -577,7 +577,7 @@ describe("RecordClient", () => {
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithOffset<Record>(params);
         expect(mockClient.getLogs()[0].params.query).toBe(
-          `${fieldCode} = "foo" limit 500 offset 0`
+          `${fieldCode} = "foo" limit 500 offset 0`,
         );
       });
 
@@ -589,7 +589,7 @@ describe("RecordClient", () => {
         mockClient.mockResponse({ records: [] });
         await recordClient.getAllRecordsWithOffset<Record>(params);
         expect(mockClient.getLogs()[0].params.query).toBe(
-          `order by ${fieldCode} asc limit 500 offset 0`
+          `order by ${fieldCode} asc limit 500 offset 0`,
         );
       });
 
@@ -827,7 +827,7 @@ describe("RecordClient", () => {
 
       it("should raise error", async () => {
         await expect(
-          recordClient.getAllRecordsWithCursor<Record>(params)
+          recordClient.getAllRecordsWithCursor<Record>(params),
         ).rejects.toThrow("failed");
         expect(mockClient.getLogs()[3]).toStrictEqual({
           path: "/k/v1/records/cursor.json",
@@ -846,7 +846,7 @@ describe("RecordClient", () => {
           [fieldCode]: {
             value,
           },
-        })
+        }),
       ),
     };
     let response: any;
@@ -856,7 +856,7 @@ describe("RecordClient", () => {
           (value) => ({
             ids: Array.from({ length: 100 }, (_, index) => index + 1),
             revisions: Array.from({ length: 100 }, () => 1),
-          })
+          }),
         ),
       };
       const mockResponse2 = {
@@ -864,7 +864,7 @@ describe("RecordClient", () => {
           (value) => ({
             ids: Array.from({ length: 100 }, (_, index) => index + 1),
             revisions: Array.from({ length: 100 }, () => 1),
-          })
+          }),
         ),
       };
       beforeEach(async () => {
@@ -881,13 +881,13 @@ describe("RecordClient", () => {
       it("should return merged result of each bulkRequest's result", () => {
         const accumulateResponse = (
           acc: Array<{ id: number; revision: number }>,
-          { ids, revisions }: { ids: number[]; revisions: number[] }
+          { ids, revisions }: { ids: number[]; revisions: number[] },
         ) =>
           acc.concat(
             ids.map((id, index) => ({
               id,
               revision: revisions[index],
-            }))
+            })),
           );
 
         const expected = [
@@ -912,11 +912,11 @@ describe("RecordClient", () => {
                   value,
                 },
               };
-            }
+            },
           ),
         };
         await expect(recordClient.addAllRecords(invalidParams)).rejects.toThrow(
-          "the `records` parameter must be an array of object."
+          "the `records` parameter must be an array of object.",
         );
       });
     });
@@ -927,7 +927,7 @@ describe("RecordClient", () => {
           (value) => ({
             ids: Array.from({ length: 100 }, (_, index) => index + 1),
             revisions: Array.from({ length: 100 }, () => 1),
-          })
+          }),
         ),
       };
       // failed
@@ -967,7 +967,7 @@ describe("RecordClient", () => {
       });
       it("should raise an KintoneAllRecordsError if an error occurs during bulkRequest", async () => {
         await expect(recordClient.addAllRecords(params)).rejects.toBeInstanceOf(
-          KintoneAllRecordsError
+          KintoneAllRecordsError,
         );
       });
     });
@@ -985,7 +985,7 @@ describe("RecordClient", () => {
             },
           },
           revision: 1,
-        })
+        }),
       ),
     };
     let response: any;
@@ -994,24 +994,24 @@ describe("RecordClient", () => {
         results: Array.from({ length: 20 }, (_, index) => index).map(
           (value) => ({
             records: Array.from({ length: 100 }, (_, index) =>
-              String(value * 100 + index + 1)
+              String(value * 100 + index + 1),
             ).map((id) => ({
               id,
               revision: "2",
             })),
-          })
+          }),
         ),
       };
       const mockResponse2 = {
         results: Array.from({ length: 10 }, (_, index) => index).map(
           (value) => ({
             records: Array.from({ length: 100 }, (_, index) =>
-              String(2000 + value * 100 + index + 1)
+              String(2000 + value * 100 + index + 1),
             ).map((id) => ({
               id,
               revision: "2",
             })),
-          })
+          }),
         ),
       };
       beforeEach(async () => {
@@ -1028,7 +1028,7 @@ describe("RecordClient", () => {
       it("should return merged result of each bulkRequest's result", () => {
         const accumulateResponse = (
           acc: Array<{ id: string; revision: string }>,
-          result: { records: Array<{ id: string; revision: string }> }
+          result: { records: Array<{ id: string; revision: string }> },
         ) => {
           return acc.concat(result.records);
         };
@@ -1047,12 +1047,12 @@ describe("RecordClient", () => {
         results: Array.from({ length: 20 }, (_, index) => index).map(
           (value) => ({
             records: Array.from({ length: 100 }, (_, index) =>
-              String(value * 100 + index + 1)
+              String(value * 100 + index + 1),
             ).map((id) => ({
               id,
               revision: "2",
             })),
-          })
+          }),
         ),
       };
       // failed
@@ -1092,7 +1092,7 @@ describe("RecordClient", () => {
       });
       it("should raise an KintoneAllRecordsError if an error occurs during bulkRequest", async () => {
         await expect(
-          recordClient.updateAllRecords(params)
+          recordClient.updateAllRecords(params),
         ).rejects.toBeInstanceOf(KintoneAllRecordsError);
       });
     });
@@ -1105,7 +1105,7 @@ describe("RecordClient", () => {
         (value) => ({
           id: value,
           revision: 1,
-        })
+        }),
       ),
     };
     let response: any;
@@ -1169,7 +1169,7 @@ describe("RecordClient", () => {
       });
       it("should raise an KintoneAllRecordsError if an error occurs during bulkRequest", async () => {
         await expect(
-          recordClient.deleteAllRecords(params)
+          recordClient.deleteAllRecords(params),
         ).rejects.toBeInstanceOf(KintoneAllRecordsError);
       });
     });
@@ -1330,12 +1330,12 @@ describe("RecordClient with guestSpaceId", () => {
     const recordClient = new RecordClient(
       mockClient,
       bulkRequestClient,
-      GUEST_SPACE_ID
+      GUEST_SPACE_ID,
     );
     const params = { app: APP_ID, id: RECORD_ID };
     await recordClient.getRecord(params);
     expect(mockClient.getLogs()[0].path).toBe(
-      `/k/guest/${GUEST_SPACE_ID}/v1/record.json`
+      `/k/guest/${GUEST_SPACE_ID}/v1/record.json`,
     );
   });
 });

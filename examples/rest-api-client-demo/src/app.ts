@@ -20,7 +20,7 @@ export class App {
   public async getFormFieldsPreview() {
     try {
       console.log(
-        await this.client.app.getFormFields({ app: APP_ID, preview: true })
+        await this.client.app.getFormFields({ app: APP_ID, preview: true }),
       );
     } catch (error) {
       console.log(error);
@@ -37,7 +37,7 @@ export class App {
     };
     try {
       console.log(
-        await this.client.app.addFormFields({ app: APP_ID, properties })
+        await this.client.app.addFormFields({ app: APP_ID, properties }),
       );
     } catch (error) {
       console.log(error);
@@ -53,7 +53,7 @@ export class App {
     };
     try {
       console.log(
-        await this.client.app.updateFormFields({ app: APP_ID, properties })
+        await this.client.app.updateFormFields({ app: APP_ID, properties }),
       );
     } catch (error) {
       console.log(error);
@@ -65,7 +65,7 @@ export class App {
 
     try {
       console.log(
-        await this.client.app.deleteFormFields({ app: APP_ID, fields })
+        await this.client.app.deleteFormFields({ app: APP_ID, fields }),
       );
     } catch (error) {
       console.log(error);
@@ -83,7 +83,7 @@ export class App {
   public async getFormLayoutPreview() {
     try {
       console.log(
-        await this.client.app.getFormLayout({ app: APP_ID, preview: true })
+        await this.client.app.getFormLayout({ app: APP_ID, preview: true }),
       );
     } catch (error) {
       console.log(error);
@@ -104,7 +104,7 @@ export class App {
           await this.client.app.updateFormLayout({
             app: APP_ID,
             layout: newLayout,
-          })
+          }),
         );
       }
     } catch (error) {
@@ -123,7 +123,7 @@ export class App {
   public async getViewsPreview() {
     try {
       console.log(
-        await this.client.app.getViews({ app: APP_ID, preview: true })
+        await this.client.app.getViews({ app: APP_ID, preview: true }),
       );
     } catch (error) {
       console.log(error);
@@ -135,7 +135,7 @@ export class App {
       const { views } = await this.client.app.getViews({ app: APP_ID });
       const newViews = views;
       console.log(
-        await this.client.app.updateViews({ app: APP_ID, views: newViews })
+        await this.client.app.updateViews({ app: APP_ID, views: newViews }),
       );
     } catch (error) {
       console.log(error);
@@ -153,7 +153,7 @@ export class App {
   public async getAppSettingsPreview() {
     try {
       console.log(
-        await this.client.app.getAppSettings({ app: APP_ID, preview: true })
+        await this.client.app.getAppSettings({ app: APP_ID, preview: true }),
       );
     } catch (error) {
       console.log(error);
@@ -179,7 +179,7 @@ export class App {
   public async updateProcessManagement() {
     try {
       console.log(
-        await this.client.app.updateProcessManagement({ app: APP_ID })
+        await this.client.app.updateProcessManagement({ app: APP_ID }),
       );
     } catch (error) {
       console.log(error);
@@ -205,7 +205,7 @@ export class App {
   public async addApp() {
     try {
       console.log(
-        await this.client.app.addApp({ name: "TEST_APP", space: SPACE_ID })
+        await this.client.app.addApp({ name: "TEST_APP", space: SPACE_ID }),
       );
     } catch (error) {
       console.log(error);
@@ -217,7 +217,7 @@ export class App {
       console.log(
         await this.client.app.getDeployStatus({
           apps: [APP_ID],
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -229,7 +229,7 @@ export class App {
       console.log(
         await this.client.app.deployApp({
           apps: [{ app: APP_ID }],
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -242,7 +242,7 @@ export class App {
         await this.client.app.deployApp({
           apps: [{ app: APP_ID }],
           revert: true,
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -260,7 +260,7 @@ export class App {
   public async getFieldAclPreview() {
     try {
       console.log(
-        await this.client.app.getFieldAcl({ app: APP_ID, preview: true })
+        await this.client.app.getFieldAcl({ app: APP_ID, preview: true }),
       );
     } catch (error) {
       console.log(error);
@@ -298,7 +298,7 @@ export class App {
         await this.client.app.updateRecordAcl({
           app: APP_ID,
           rights,
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -350,7 +350,7 @@ export class App {
       ids: [RECORD_ID],
     };
     console.log(
-      JSON.stringify(await this.client.app.evaluateRecordsAcl(params))
+      JSON.stringify(await this.client.app.evaluateRecordsAcl(params)),
     );
   }
 
@@ -378,7 +378,7 @@ export class App {
     ];
     try {
       console.log(
-        await this.client.app.updateFieldAcl({ app: APP_ID, rights })
+        await this.client.app.updateFieldAcl({ app: APP_ID, rights }),
       );
     } catch (error) {
       console.log(error);
@@ -388,7 +388,7 @@ export class App {
   public async getAppCustomize() {
     try {
       console.log(
-        JSON.stringify(await this.client.app.getAppCustomize({ app: APP_ID }))
+        JSON.stringify(await this.client.app.getAppCustomize({ app: APP_ID })),
       );
     } catch (error) {
       console.log(error);
@@ -411,7 +411,7 @@ export class App {
           scope: "ALL",
           desktop: resource,
           mobile: resource,
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -439,7 +439,7 @@ export class App {
           app: APP_ID,
           scope: "ALL",
           desktop: resource,
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -450,8 +450,8 @@ export class App {
     try {
       console.log(
         JSON.stringify(
-          await this.client.app.getGeneralNotifications({ app: APP_ID })
-        )
+          await this.client.app.getGeneralNotifications({ app: APP_ID }),
+        ),
       );
     } catch (error) {
       console.log(error);
@@ -491,7 +491,7 @@ export class App {
           app: APP_ID,
           notifications,
           notifyToCommenter: true,
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -509,7 +509,7 @@ export class App {
         console.log("targets:");
         notification.targets.forEach((target) => {
           console.log(
-            `  target.entity: (${target.entity.code}: ${target.entity.type})`
+            `  target.entity: (${target.entity.code}: ${target.entity.type})`,
           );
           console.log(`  target.includeSubs: ${target.includeSubs}`);
         });
@@ -531,7 +531,7 @@ export class App {
         console.log("targets:");
         notification.targets.forEach((target) => {
           console.log(
-            `  target.entity: (${target.entity.code}: ${target.entity.type})`
+            `  target.entity: (${target.entity.code}: ${target.entity.type})`,
           );
           console.log(`  target.includeSubs: ${target.includeSubs}`);
         });
@@ -562,7 +562,7 @@ export class App {
         await this.client.app.updatePerRecordNotifications({
           app: APP_ID,
           notifications,
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -572,7 +572,7 @@ export class App {
   public async getReminderNotifications() {
     try {
       console.log(
-        await this.client.app.getReminderNotifications({ app: APP_ID })
+        await this.client.app.getReminderNotifications({ app: APP_ID }),
       );
     } catch (error) {
       console.log(error);
@@ -585,7 +585,7 @@ export class App {
         await this.client.app.getReminderNotifications({
           app: APP_ID,
           preview: true,
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -617,7 +617,7 @@ export class App {
             },
           ],
           timezone: "Asia/Tokyo",
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -635,7 +635,7 @@ export class App {
   public async getReportsPreview() {
     try {
       console.log(
-        await this.client.app.getReports({ app: APP_ID, preview: true })
+        await this.client.app.getReports({ app: APP_ID, preview: true }),
       );
     } catch (error) {
       console.log(error);
@@ -697,7 +697,7 @@ export class App {
               ],
             },
           },
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -715,7 +715,7 @@ export class App {
   public async getAppActionsPreview() {
     try {
       console.log(
-        await this.client.app.getAppActions({ app: APP_ID, preview: true })
+        await this.client.app.getAppActions({ app: APP_ID, preview: true }),
       );
     } catch (error) {
       console.log(error);
@@ -758,7 +758,7 @@ export class App {
               ],
             },
           },
-        })
+        }),
       );
     } catch (error) {
       console.log(error);

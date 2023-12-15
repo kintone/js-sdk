@@ -26,7 +26,7 @@ export class KintoneRestAPIError extends Error {
   errors?: any;
 
   private static findErrorResponseDataWithIndex(
-    results: BulkRequestErrorResponseData["results"]
+    results: BulkRequestErrorResponseData["results"],
   ) {
     for (let i = 0; i < results.length; i++) {
       if (Object.keys(results[i]).length !== 0) {
@@ -36,7 +36,7 @@ export class KintoneRestAPIError extends Error {
     }
 
     throw Error(
-      "Missing response data in `results`. This error is likely caused by a bug in Kintone REST API Client. Please file an issue."
+      "Missing response data in `results`. This error is likely caused by a bug in Kintone REST API Client. Please file an issue.",
     );
   }
 
@@ -46,7 +46,7 @@ export class KintoneRestAPIError extends Error {
   } {
     if ("results" in error.data) {
       return KintoneRestAPIError.findErrorResponseDataWithIndex(
-        error.data.results
+        error.data.results,
       );
     }
     return { data: error.data };

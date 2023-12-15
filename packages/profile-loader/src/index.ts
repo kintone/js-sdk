@@ -46,7 +46,7 @@ const detectCredentialsValues = (config: Partial<Profile>) => {
     "oAuthToken",
   ]);
   const warnedProps = Object.keys(config).filter((key) =>
-    credentialsProps.has(key)
+    credentialsProps.has(key),
   );
   if (warnedProps.length > 0) {
     console.warn(`Do not include credentials values(${warnedProps.join(",")})`);

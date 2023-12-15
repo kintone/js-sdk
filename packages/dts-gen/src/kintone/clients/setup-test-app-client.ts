@@ -121,7 +121,7 @@ export class SetUpTestAppClient {
   }
 
   requestJsCustomizeUpdate(
-    input: JsCustomizeInput
+    input: JsCustomizeInput,
   ): Promise<JsCustomizeOutput> {
     const config: AxiosRequestConfig = {
       url: "/k/v1/preview/app/customize.json",
@@ -143,7 +143,7 @@ export class SetUpTestAppClient {
   }
 
   requestGetDeployStatus(
-    input: DeployStatusInput
+    input: DeployStatusInput,
   ): Promise<DeployStatusOutput> {
     const config: AxiosRequestConfig = {
       url: "/k/v1/preview/app/deploy.json",

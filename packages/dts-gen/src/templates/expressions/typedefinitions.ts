@@ -6,7 +6,7 @@ export class TypeDefinition implements TsExpression {
   constructor(
     private typeName: string,
     private fieldGroup: FieldGroup,
-    private subtableFields: SubTableField[]
+    private subtableFields: SubTableField[],
   ) {}
   tsExpression(): string {
     return `
@@ -21,7 +21,7 @@ export class SavedTypeDefinition implements TsExpression {
   constructor(
     private typeName: string,
     private userFields: TsDefinedField[],
-    private stringFieldsInSavedRecord: TsDefinedField[]
+    private stringFieldsInSavedRecord: TsDefinedField[],
   ) {}
 
   tsExpression(): string {

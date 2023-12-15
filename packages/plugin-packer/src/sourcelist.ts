@@ -3,7 +3,7 @@
  */
 export const sourceList = (
   // TODO: Define and use menifest type
-  manifest: any
+  manifest: any,
 ): string[] => {
   const sourceTypes = [
     ["desktop", "js"],

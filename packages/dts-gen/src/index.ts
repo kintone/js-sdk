@@ -25,7 +25,7 @@ const fetchFormPropertiesInput = {
 const handler = async () => {
   const properties = await client.fetchFormProperties(fetchFormPropertiesInput);
   const fieldTypeGroups = FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
-    objectValues(properties)
+    objectValues(properties),
   );
   const input: RenderInput = {
     typeName: args.typeName,
