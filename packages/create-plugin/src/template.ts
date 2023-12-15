@@ -5,7 +5,9 @@ import * as _ from "lodash";
 import * as path from "path";
 import type { Manifest } from "./manifest";
 import sortPackageJson from "sort-package-json";
-import * as prettier from "prettier";
+import { format } from "prettier/standalone";
+import * as prettierPluginTypescript from "prettier/plugins/typescript";
+import * as prettierPluginEstree from "prettier/plugins/estree";
 
 export const SUPPORT_TEMPLATE_TYPE = ["minimum", "modern"];
 export type TemplateType = "minimum" | "modern";
@@ -138,8 +140,9 @@ export const processTemplateFile = async (
       /'%%placeholder_webpack_entry%%'/,
       entriesStr,
     );
-    const prettySource = await prettier.format(webpackConfigContent, {
+    const prettySource = await format(webpackConfigContent, {
       parser: "typescript",
+      plugins: [prettierPluginTypescript, prettierPluginEstree],
     });
     const destPath = path.join(path.dirname(destFilePath), "webpack.config.js");
     fs.writeFileSync(destPath, prettySource);
