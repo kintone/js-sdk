@@ -499,7 +499,7 @@ describe("validator", () => {
           valid: true,
           errors: null,
         });
-      }
+      },
     );
   });
 });
