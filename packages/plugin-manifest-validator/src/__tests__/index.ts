@@ -468,6 +468,40 @@ describe("validator", () => {
       });
     });
   });
+
+  describe("supported language", () => {
+    it.each`
+      languageCode | name        | description | homepage_url
+      ${"ja"}      | ${"名前"}   | ${"説明"}   | ${"https://example.com/ja"}
+      ${"en"}      | ${"name"}   | ${"desc"}   | ${"https://example.com/en"}
+      ${"zh"}      | ${"名称"}   | ${"描述"}   | ${"https://example.com/zh"}
+      ${"es"}      | ${"nombre"} | ${"desc"}   | ${"https://example.com/es"}
+    `(
+      `should return no error when the supported language is specified: $languageCode`,
+      ({ languageCode, name, description, homepage_url }) => {
+        const source: Record<string, any> = {
+          name: {
+            [languageCode]: name,
+          },
+          description: {
+            [languageCode]: description,
+          },
+          homepage_url: {
+            [languageCode]: homepage_url,
+          },
+        };
+        if (languageCode !== "en") {
+          source.name.en = "name";
+          source.description.en = "desc";
+        }
+
+        assert.deepStrictEqual(validator(json(source)), {
+          valid: true,
+          errors: null,
+        });
+      }
+    );
+  });
 });
 
 /**

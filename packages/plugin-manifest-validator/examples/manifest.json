@@ -5,18 +5,21 @@
   "name": {
     "ja": "サンプルプラグイン",
     "en": "sample plugin",
-    "zh": "插件的例子"
+    "zh": "插件的例子",
+    "es": "complemento de muestra"
   },
   "description": {
     "ja": "これはサンプルプラグインです。",
     "en": "This is sample plugin.",
-    "zh": "这是插件的例子"
+    "zh": "这是插件的例子",
+    "es": "Este es un complemento de muestra."
   },
   "icon": "image/icon.png",
   "homepage_url": {
     "ja": "http://sample_cybozu.jp",
     "en": "http://sample_cybozu.com",
-    "zh": "http://sample_cybozu.cn"
+    "zh": "http://sample_cybozu.cn",
+    "es": "http://sample_cybozu.es"
   },
   "desktop": {
     "js": ["js/customize.js", "https://example.com/js/customize.js"],
