@@ -18,11 +18,13 @@ export interface KintonePluginManifestJson {
     ja?: string;
     en: string;
     zh?: string;
+    es?: string;
   };
   description?: {
     ja?: string;
     en: string;
     zh?: string;
+    es?: string;
   };
   /**
    * internal only
@@ -32,6 +34,7 @@ export interface KintonePluginManifestJson {
     ja?: string;
     en?: string;
     zh?: string;
+    es?: string;
   };
   desktop?: {
     js?: Resources;
