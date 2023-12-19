@@ -34,7 +34,7 @@ describe("import", () => {
         {
           proxy: "",
           guestSpaceId: 0,
-        }
+        },
       );
       manifest = {
         app: "1",
@@ -95,7 +95,7 @@ describe("import", () => {
     };
 
     const assertImportUseCaseApiRequest = (
-      mockKintoneApiClient: MockKintoneApiClient
+      mockKintoneApiClient: MockKintoneApiClient,
     ) => {
       const expected: any[] = [
         {
@@ -183,23 +183,23 @@ describe("import", () => {
       const getAppCustomizeResponse = JSON.parse(
         fs
           .readFileSync(
-            "src/commands/__tests__/fixtures/get-appcustomize-response.json"
+            "src/commands/__tests__/fixtures/get-appcustomize-response.json",
           )
-          .toString()
+          .toString(),
       );
 
       kintoneApiClient.willBeReturn("/k/v1/file.json", "GET", uploadFileBody);
       kintoneApiClient.willBeReturn(
         "/k/v1/app/customize.json",
         "GET",
-        getAppCustomizeResponse
+        getAppCustomizeResponse,
       );
 
       const execCommand = importCustomizeSetting(
         kintoneApiClient,
         manifest,
         status,
-        options
+        options,
       );
 
       return execCommand.then(() => {

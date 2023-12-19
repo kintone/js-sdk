@@ -28,7 +28,7 @@ const convert = (typeName: string) => {
     KintoneFieldTypeAndTypeScriptFieldTypeName[typeName];
   if (!typeScriptFieldType) {
     throw new Error(
-      `${typeName} is not mapped to kintone.fieldTypes[TypeName]`
+      `${typeName} is not mapped to kintone.fieldTypes[TypeName]`,
     );
   }
   return typeScriptFieldType;

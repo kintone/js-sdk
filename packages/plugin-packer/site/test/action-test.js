@@ -77,7 +77,7 @@ describe("action", () => {
       uploadPlugin(
         "hoge.zip",
         () => Promise.resolve("ok"),
-        () => Promise.resolve()
+        () => Promise.resolve(),
       )(dispatch);
       expect(dispatch.mock.calls.length).toBe(1);
       expect([...dispatch.mock.calls[0]]).toStrictEqual([
@@ -89,7 +89,7 @@ describe("action", () => {
       uploadPlugin(
         "hoge.zip",
         () => Promise.resolve("ok"),
-        validateManifestStub
+        validateManifestStub,
       )(dispatch);
       // In order to guarantee to execute assertion after uploadPlugin has finished
       setTimeout(() => {
@@ -112,7 +112,7 @@ describe("action", () => {
       uploadPlugin(
         "hoge.zip",
         () => Promise.resolve("ng"),
-        validateManifestStub
+        validateManifestStub,
       )(dispatch);
       // In order to guarantee to execute assertion after uploadPlugin has finished
       setTimeout(() => {

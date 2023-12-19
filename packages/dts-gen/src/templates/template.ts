@@ -1,7 +1,9 @@
 import * as fs from "fs";
 import * as path from "path";
-import * as prettier from "prettier";
 import { ESLint } from "eslint";
+import { format } from "prettier/standalone";
+import * as prettierPluginTypescript from "prettier/plugins/typescript";
+import * as prettierPluginEstree from "prettier/plugins/estree";
 
 import type { FieldTypeGroups } from "../converters/fileldtype-converter";
 import { convertToTsExpression } from "./converter";
@@ -40,7 +42,7 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
       });
     }
     throw new Error(
-      `Failed to fix lint errors on the generated type definition file.\n${errorMessage}`
+      `Failed to fix lint errors on the generated type definition file.\n${errorMessage}`,
     );
   }
   let eslintOutput = "";
@@ -53,8 +55,9 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
     throw new Error("unexpected result");
   }
 
-  const prettySource = prettier.format(eslintOutput, {
+  const prettySource = await format(eslintOutput, {
     parser: "typescript",
+    plugins: [prettierPluginTypescript, prettierPluginEstree],
   });
   const outputPath = path.resolve(output);
 

@@ -83,7 +83,7 @@ const cli = meow(
         type: "string",
       },
     },
-  }
+  },
 );
 
 const pluginPath = cli.input[0];
@@ -106,7 +106,7 @@ const isLang = (_lang: string): _lang is Lang => {
 
 if (!isLang(lang)) {
   throw new Error(
-    getMessage(getDefaultLang(osLocale.sync()), "Error_invalidLang")
+    getMessage(getDefaultLang(osLocale.sync()), "Error_invalidLang"),
   );
 }
 
@@ -140,6 +140,6 @@ wait(waitingDialogMs)
       answers.username,
       answers.password,
       pluginPath,
-      options
+      options,
     );
   });

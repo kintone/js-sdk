@@ -16,14 +16,14 @@ export class KintoneResponseHandler implements ResponseHandler {
   handle<T>(response: Promise<Response<T>>): Promise<T> {
     return response.then(
       (res) => this.handleSuccessResponse<T>(res),
-      (error) => this.handleErrorResponse(error)
+      (error) => this.handleErrorResponse(error),
     );
   }
   private handleSuccessResponse<T>(response: Response<T>): T {
     if (
       this.enableAbortSearchError &&
       /Filter aborted because of too many search results/.test(
-        response.headers["x-cybozu-warning"]
+        response.headers["x-cybozu-warning"],
       )
     ) {
       throw new KintoneAbortSearchError(response.headers["x-cybozu-warning"]);
@@ -31,7 +31,7 @@ export class KintoneResponseHandler implements ResponseHandler {
     return response.data;
   }
   private handleErrorResponse(
-    error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>
+    error: HttpClientError<ErrorResponse<string> | KintoneErrorResponse>,
   ): never {
     if (!error.response) {
       // FIXME: find a better way to handle this error

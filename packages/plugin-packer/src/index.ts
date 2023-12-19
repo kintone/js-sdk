@@ -10,7 +10,7 @@ const debug = _debug("packer");
 
 const packer = (
   contentsZip: Buffer,
-  privateKey_?: string
+  privateKey_?: string,
 ): Promise<{
   plugin: Buffer;
   privateKey: string;
@@ -47,7 +47,7 @@ export = packer;
 const zip = (
   contentsZip: Buffer,
   publicKey: Buffer,
-  signature: Buffer
+  signature: Buffer,
 ): Promise<Buffer> => {
   debug(`zip(): start`);
   return new Promise((res, rej) => {

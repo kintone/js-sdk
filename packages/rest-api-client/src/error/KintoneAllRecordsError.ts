@@ -24,11 +24,11 @@ export class KintoneAllRecordsError extends Error {
   private static extractErrorIndex(
     numOfProcessedRecords: number,
     error: KintoneRestAPIError,
-    chunkLength: number
+    chunkLength: number,
   ) {
     if (error.bulkRequestIndex !== undefined && error.errors) {
       const errorParseResult = KintoneAllRecordsError.parseErrorIndex(
-        error.errors
+        error.errors,
       );
       if (errorParseResult !== null) {
         return (
@@ -44,7 +44,7 @@ export class KintoneAllRecordsError extends Error {
   private static buildErrorMessage(
     numOfProcessedRecords: number,
     numOfAllRecords: number,
-    errorIndex: number | undefined
+    errorIndex: number | undefined,
   ) {
     let message = "";
     if (errorIndex !== undefined) {
@@ -60,20 +60,20 @@ export class KintoneAllRecordsError extends Error {
     unprocessedRecords: any[],
     numOfAllRecords: number,
     error: KintoneRestAPIError,
-    chunkLength: number
+    chunkLength: number,
   ) {
     const numOfProcessedRecords = numOfAllRecords - unprocessedRecords.length;
 
     const errorIndex = KintoneAllRecordsError.extractErrorIndex(
       numOfProcessedRecords,
       error,
-      chunkLength
+      chunkLength,
     );
 
     const message = KintoneAllRecordsError.buildErrorMessage(
       numOfProcessedRecords,
       numOfAllRecords,
-      errorIndex
+      errorIndex,
     );
     super(message);
 

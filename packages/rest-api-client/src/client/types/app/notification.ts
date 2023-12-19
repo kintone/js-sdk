@@ -87,6 +87,6 @@ export type ReminderNotificationForResponse = {
     {
       entity: Entity | { type: "FIELD_ENTITY"; code: string };
       includeSubs: boolean;
-    }
+    },
   ];
 };

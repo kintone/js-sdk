@@ -78,7 +78,7 @@ export const upload = async (
     updateBody: any;
     updated: boolean;
   },
-  options: Option
+  options: Option,
 ): Promise<void> => {
   const boundMessage = getBoundMessage(options.lang);
   const appId = manifest.app;
@@ -91,7 +91,7 @@ export const upload = async (
         const uploadFilesResult = await getUploadFilesResult(
           boundMessage,
           kintoneApiClient,
-          manifest
+          manifest,
         );
 
         updateBody = createUpdatedManifest(manifest, uploadFilesResult);
@@ -116,7 +116,7 @@ export const upload = async (
     try {
       await kintoneApiClient.deploySetting(appId);
       await kintoneApiClient.waitFinishingDeploy(appId, () =>
-        console.log(boundMessage("M_Deploying"))
+        console.log(boundMessage("M_Deploying")),
       );
       console.log(boundMessage("M_Deployed"));
     } catch (error) {
@@ -150,7 +150,7 @@ const getJsCssFiles = (manifest: JsCssManifest) => {
 const getUploadFilesResult = async (
   boundMessage: (key: keyof typeof messages) => string,
   kintoneApiClient: KintoneApiClient,
-  manifest: CustomizeManifest
+  manifest: CustomizeManifest,
 ) => {
   const uploadFilesResult = [];
   for (const files of getJsCssFiles(manifest)) {
@@ -170,7 +170,7 @@ const getUploadFilesResult = async (
 
 const createUpdatedManifest = (
   manifest: CustomizeManifest,
-  uploadFilesResult: any
+  uploadFilesResult: any,
 ) => {
   return Object.assign({}, manifest, {
     desktop: {
@@ -206,7 +206,7 @@ const handleUploadError = async (params: HandleUploadErrorParameter) => {
       kintoneApiClient,
       manifest,
       { retryCount, updateBody, updated },
-      options
+      options,
     );
   } else {
     throw error;
@@ -227,7 +227,7 @@ export const run = async (params: InputParams): Promise<void> => {
   const boundMessage = getBoundMessage(options.lang);
 
   const manifest: CustomizeManifest = JSON.parse(
-    fs.readFileSync(manifestFile, "utf8")
+    fs.readFileSync(manifestFile, "utf8"),
   );
   const status = {
     retryCount: 0,
@@ -249,7 +249,7 @@ export const run = async (params: InputParams): Promise<void> => {
     basicAuthUsername,
     basicAuthPassword,
     baseUrl,
-    options
+    options,
   );
   await upload(kintoneApiClient, manifest, status, options);
 
@@ -264,7 +264,7 @@ export const run = async (params: InputParams): Promise<void> => {
     });
     console.log(boundMessage("M_Watching"));
     watcher.on("change", () =>
-      upload(kintoneApiClient, manifest, status, options)
+      upload(kintoneApiClient, manifest, status, options),
     );
   }
 };

@@ -63,7 +63,7 @@ const cli = (pluginDir: string, options_?: Options) => {
       return Promise.all([
         mkdirp(outputDir),
         createContentsZip(pluginDir, manifest).then((contentsZip) =>
-          packerLocal(contentsZip, privateKey)
+          packerLocal(contentsZip, privateKey),
         ),
       ]).then((result) => {
         const output = result[1];
@@ -92,7 +92,7 @@ const cli = (pluginDir: string, options_?: Options) => {
               Object.assign({}, options, {
                 watch: false,
                 ppk: options.ppk || ppkFilePath,
-              })
+              }),
             );
           });
         }

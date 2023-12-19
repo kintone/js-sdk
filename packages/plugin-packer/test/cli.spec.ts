@@ -111,7 +111,7 @@ describe("cli", () => {
       expect(packer.mock.calls[0][0]).toBeTruthy();
       readZipContentsNames(packer.mock.calls[0][0]).then((files) => {
         expect(files.sort()).toStrictEqual(
-          ["image/icon.png", "manifest.json"].sort()
+          ["image/icon.png", "manifest.json"].sort(),
         );
         done();
       });
@@ -125,7 +125,7 @@ describe("cli", () => {
     it("generates a private key file", () => {
       const privateKey = fs.readFileSync(
         path.join(sampleDir, `${ID}.ppk`),
-        "utf8"
+        "utf8",
       );
       expect(privateKey).toBe(PRIVATE_KEY);
     });
@@ -147,7 +147,7 @@ describe("cli", () => {
       });
 
       return rimraf(`${sampleDir}/*.*(ppk|zip)`, { glob: true }).then(() =>
-        cli(pluginDir, { ppk: ppkPath, packerMock_: packer })
+        cli(pluginDir, { ppk: ppkPath, packerMock_: packer }),
       );
     });
 
@@ -186,7 +186,7 @@ describe("cli", () => {
               "js/desktop.js",
               "js/mobile.js",
               "manifest.json",
-            ].sort()
+            ].sort(),
           );
         });
       });
@@ -204,7 +204,7 @@ describe("cli", () => {
 
     return rimraf(outputDir)
       .then(() =>
-        cli(pluginDir, { packerMock_: packer, out: outputPluginPath })
+        cli(pluginDir, { packerMock_: packer, out: outputPluginPath }),
       )
       .then((resultPluginPath) => {
         expect(resultPluginPath).toBe(outputPluginPath);

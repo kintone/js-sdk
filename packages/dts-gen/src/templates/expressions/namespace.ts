@@ -5,7 +5,7 @@ export class Namespace implements TsExpression {
   constructor(
     private namespace: string,
     private typeDefinition: TypeDefinition,
-    private savedTypeDefinition: SavedTypeDefinition
+    private savedTypeDefinition: SavedTypeDefinition,
   ) {}
   tsExpression(): string {
     return `

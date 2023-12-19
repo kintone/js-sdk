@@ -14,7 +14,7 @@ const rethrow = (err) => Promise.reject(err);
 
 const createKintoneApp = async (
   client: Client,
-  name: string
+  name: string,
 ): Promise<string> => {
   return client
     .requestCreateNewApp({ name })
@@ -27,7 +27,7 @@ const createKintoneApp = async (
 
 const addDemoField = async (
   client: Client,
-  app: string
+  app: string,
 ): Promise<AddFormFieldOutput> => {
   log(`Preparing for field settings(ID:${app})`);
   const properties = DemoDatas.DemoDataFields;
@@ -45,7 +45,7 @@ const uploadFile = async (
   metadata: {
     name: string;
     contentType: string;
-  }
+  },
 ) => {
   log(`Uploading ${metadata.name}`);
   return client
@@ -68,7 +68,7 @@ const sleep = async (msec) => {
 const updateJsCustomize = async (
   client: Client,
   app: string,
-  fileKey: string
+  fileKey: string,
 ): Promise<JsCustomizeOutput> => {
   const scope = "ALL";
   const desktop = {
@@ -110,7 +110,7 @@ const deployApp = async (client: Client, app: string) => {
 const addDemoRecord = async (
   client: Client,
   app: string,
-  fileName: string
+  fileName: string,
 ): Promise<AddRecordOutput> => {
   const DemoRecord = DemoDatas.DemoRecord;
   const record = Object.assign(DemoRecord);

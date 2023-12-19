@@ -32,7 +32,7 @@ type Options = {
  */
 export default (
   json: Record<string, any>,
-  options: Options = {}
+  options: Options = {},
 ): ValidateResult => {
   let relativePath: Options["relativePath"] = () => true;
   let maxFileSize: Options["maxFileSize"];
@@ -59,7 +59,7 @@ export default (
 
   const validateMaxFileSize: SchemaValidateFunction = (
     schema: string,
-    filePath: string
+    filePath: string,
   ) => {
     // schema: max file size like "512KB" or 123 (in bytes)
     // data: path to the file
@@ -102,7 +102,7 @@ export default (
 
   const validateFileExists: SchemaValidateFunction = (
     schema: boolean,
-    filePath: string
+    filePath: string,
   ) => {
     if (fileExists === undefined || !schema) {
       return true;
@@ -154,7 +154,7 @@ export default (
  * @return {null|Array<Object>} shallow copy of the input or null
  */
 const transformErrors = (
-  errors: undefined | null | ErrorObject[]
+  errors: undefined | null | ErrorObject[],
 ): null | ErrorObject[] => {
   if (!errors) {
     return null;

@@ -60,7 +60,7 @@ const excludeLookupOrRelatedRecord = (field: FieldType | SubTableFieldType) => {
 
 const selectFieldsTypesIn = (
   types: string[],
-  fieldsToBeSelected: FieldTypesOrSubTableFieldTypes
+  fieldsToBeSelected: FieldTypesOrSubTableFieldTypes,
 ): FieldTypesOrSubTableFieldTypes => {
   const fields = fieldsToBeSelected as Array<FieldType | SubTableFieldType>;
   const typeIncludes = (fieldToTest) => types.indexOf(fieldToTest.type) >= 0;
@@ -70,7 +70,7 @@ const selectFieldsTypesIn = (
 
 const selectFieldsTypesEquals = (
   type: string,
-  fieldsToBeSelected: FieldTypesOrSubTableFieldTypes
+  fieldsToBeSelected: FieldTypesOrSubTableFieldTypes,
 ): FieldTypesOrSubTableFieldTypes => {
   const fields = fieldsToBeSelected as Array<FieldType | SubTableFieldType>;
 
@@ -80,41 +80,41 @@ const selectFieldsTypesEquals = (
 };
 
 const convertSubTableFields = (
-  subTableFields: SubTableFieldType[]
+  subTableFields: SubTableFieldType[],
 ): SubTableFieldTypeGroups[] => {
   return subTableFields.map((subTableField) => {
     return {
       code: subTableField.code,
       type: subTableField.type,
       fields: convertFieldTypesToFieldTypeGroups(
-        objectValues(subTableField.fields)
+        objectValues(subTableField.fields),
       ),
     };
   });
 };
 
 const convertFieldTypesToFieldTypeGroups = (
-  properties: FieldTypesOrSubTableFieldTypes
+  properties: FieldTypesOrSubTableFieldTypes,
 ): FieldTypeGroups => {
   const fieldTypes = objectValues(properties);
   const stringFields = selectFieldsTypesIn(SIMPLE_VALUE_TYPES, fieldTypes);
   const calculatedFields = selectFieldsTypesIn(
     CALCULATED_VALUE_TYPES,
-    fieldTypes
+    fieldTypes,
   );
   const stringFieldsInSavedRecord = selectFieldsTypesIn(
     SIMPLE_VALUE_IN_SAVED_RECORD,
-    fieldTypes
+    fieldTypes,
   );
   const userFieldsInSavedRecord = selectFieldsTypesIn(
     USER_TYPES_IN_SAVED_RECORD,
-    fieldTypes
+    fieldTypes,
   );
   const stringListFields = selectFieldsTypesIn(STRING_LIST_TYPES, fieldTypes);
   const entityListFields = selectFieldsTypesIn(ENTITY_LIST_TYPE, fieldTypes);
   const fileTypeFields = selectFieldsTypesEquals(FILE_TYPE, fieldTypes);
   const subTableFields = convertSubTableFields(
-    selectFieldsTypesEquals(SUB_TABLE_TYPE, fieldTypes) as SubTableFieldType[]
+    selectFieldsTypesEquals(SUB_TABLE_TYPE, fieldTypes) as SubTableFieldType[],
   );
 
   return {

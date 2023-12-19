@@ -55,7 +55,7 @@ export const importCustomizeSetting = async (
   status: {
     retryCount: number;
   },
-  options: ImportOption
+  options: ImportOption,
 ): Promise<void> => {
   const m = getBoundMessage(options.lang);
   const appId = manifest.app;
@@ -74,7 +74,7 @@ export const importCustomizeSetting = async (
           kintoneApiClient,
           appId,
           options.destDir,
-          resp
+          resp,
         );
       });
   } catch (e) {
@@ -89,7 +89,7 @@ export const importCustomizeSetting = async (
         kintoneApiClient,
         manifest,
         { retryCount },
-        options
+        options,
       );
     } else {
       throw e;
@@ -100,7 +100,7 @@ export const importCustomizeSetting = async (
 const exportAsManifestFile = (
   appId: string,
   destRootDir: string,
-  resp: GetAppCustomizeResp
+  resp: GetAppCustomizeResp,
 ): GetAppCustomizeResp => {
   const toNameOrUrl = (destDir: string) => (f: CustomizeFile) => {
     if (f.type === "FILE") {
@@ -132,7 +132,7 @@ const exportAsManifestFile = (
   }
   fs.writeFileSync(
     `${destRootDir}/customize-manifest.json`,
-    JSON.stringify(customizeJson, null, 4)
+    JSON.stringify(customizeJson, null, 4),
   );
   return resp;
 };
@@ -141,7 +141,7 @@ const downloadCustomizeFiles = async (
   kintoneApiClient: KintoneApiClient,
   appId: string,
   destDir: string,
-  { desktop, mobile }: GetAppCustomizeResp
+  { desktop, mobile }: GetAppCustomizeResp,
 ): Promise<any> => {
   const desktopJs: CustomizeFile[] = desktop.js;
   const desktopCss: CustomizeFile[] = desktop.css;
@@ -155,16 +155,16 @@ const downloadCustomizeFiles = async (
   ].forEach((path) => mkdirp.sync(path));
 
   const desktopJsPromise = desktopJs.map(
-    downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}desktop${sep}js`)
+    downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}desktop${sep}js`),
   );
   const desktopCssPromise = desktopCss.map(
-    downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}desktop${sep}css`)
+    downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}desktop${sep}css`),
   );
   const mobileJsPromise = mobileJs.map(
-    downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}mobile${sep}js`)
+    downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}mobile${sep}js`),
   );
   const mobileCssPromise = mobileCss.map(
-    downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}mobile${sep}css`)
+    downloadAndWriteFile(kintoneApiClient, `${destDir}${sep}mobile${sep}css`),
   );
   return [
     ...desktopJsPromise,
@@ -176,7 +176,7 @@ const downloadCustomizeFiles = async (
 
 const downloadAndWriteFile = (
   kintoneApiClient: KintoneApiClient,
-  destDir: string
+  destDir: string,
 ): ((f: CustomizeFile) => void) => {
   return async (f) => {
     if (f.type !== "URL") {
@@ -199,7 +199,7 @@ export const runImport = async (params: ImportParams): Promise<void> => {
   } = params;
   const m = getBoundMessage(options.lang);
   const manifest: ImportCustomizeManifest = JSON.parse(
-    fs.readFileSync(manifestFile, "utf8")
+    fs.readFileSync(manifestFile, "utf8"),
   );
   const status = {
     retryCount: 0,
@@ -212,7 +212,7 @@ export const runImport = async (params: ImportParams): Promise<void> => {
     basicAuthUsername,
     basicAuthPassword,
     baseUrl,
-    options
+    options,
   );
   await importCustomizeSetting(kintoneApiClient, manifest, status, options);
   console.log(m("M_CommandImportFinish"));

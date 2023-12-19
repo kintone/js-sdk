@@ -39,7 +39,7 @@ describe("KintoneRestAPIClient", () => {
         ];
         validGuestSpaceIds.forEach((guestSpaceId) => {
           expect(
-            () => new KintoneRestAPIClient({ baseUrl, auth, guestSpaceId })
+            () => new KintoneRestAPIClient({ baseUrl, auth, guestSpaceId }),
           ).not.toThrow();
         });
       });
@@ -50,7 +50,7 @@ describe("KintoneRestAPIClient", () => {
           expect(
             () =>
               // @ts-ignore
-              new KintoneRestAPIClient({ baseUrl, auth, guestSpaceId })
+              new KintoneRestAPIClient({ baseUrl, auth, guestSpaceId }),
           ).toThrow();
         });
       });
@@ -83,7 +83,7 @@ describe("KintoneRestAPIClient", () => {
             new KintoneRestAPIClient({
               baseUrl: "http://example.com/",
               auth,
-            })
+            }),
         ).toThrow('The protocol of baseUrl must be "https".');
       });
       it('should NOT raise an error if the protocol of baseUrl is "http" but hostname is localhost', () => {
@@ -95,7 +95,7 @@ describe("KintoneRestAPIClient", () => {
       });
       it("should raise an error in Node.js environment if baseUrl param is not specified", () => {
         expect(() => new KintoneRestAPIClient({ auth })).toThrow(
-          "in Node.js environment, baseUrl is required"
+          "in Node.js environment, baseUrl is required",
         );
       });
       it("should raise an error if trying to use session auth in Node.js environment", () => {
@@ -104,7 +104,7 @@ describe("KintoneRestAPIClient", () => {
             baseUrl,
           });
         }).toThrow(
-          "session authentication is not supported in Node.js environment."
+          "session authentication is not supported in Node.js environment.",
         );
       });
     });
@@ -123,7 +123,7 @@ describe("KintoneRestAPIClient", () => {
                 auth,
                 // @ts-ignore
                 socketTimeout,
-              })
+              }),
           ).not.toThrow();
         });
       });
@@ -134,7 +134,7 @@ describe("KintoneRestAPIClient", () => {
           expect(
             () =>
               // @ts-ignore
-              new KintoneRestAPIClient({ baseUrl, auth, socketTimeout })
+              new KintoneRestAPIClient({ baseUrl, auth, socketTimeout }),
           ).toThrow("Invalid socketTimeout. Must be a positive number.");
         });
       });
@@ -144,7 +144,7 @@ describe("KintoneRestAPIClient", () => {
   describe("version", () => {
     it("should provide this library version", () => {
       expect(KintoneRestAPIClient.version).toBe(
-        require("../../package.json").version
+        require("../../package.json").version,
       );
     });
   });

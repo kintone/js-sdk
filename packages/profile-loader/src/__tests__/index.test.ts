@@ -43,7 +43,7 @@ describe("index", () => {
     const credentialsFilePath = path.resolve(
       __dirname,
       "fixtures",
-      "credentials"
+      "credentials",
     );
     it("should return a profile", () => {
       expect(loadProfile({ config: false, credentials: false })).toEqual({
@@ -73,7 +73,7 @@ describe("index", () => {
         loadProfile({
           config: configFilePath,
           credentials: credentialsFilePath,
-        })
+        }),
       ).toEqual({
         username: "jim",
         password: "foo",
@@ -88,7 +88,7 @@ describe("index", () => {
           profile: "staging",
           config: configFilePath,
           credentials: credentialsFilePath,
-        })
+        }),
       ).toEqual({
         username: "staging-jim",
         password: "staging-foo",
@@ -103,7 +103,7 @@ describe("index", () => {
         loadProfile({
           config: configFilePath,
           credentials: credentialsFilePath,
-        })
+        }),
       ).toEqual({
         username: "staging-jim",
         password: "staging-foo",
@@ -118,7 +118,7 @@ describe("index", () => {
         loadProfile({
           config: configFilePath,
           credentials: credentialsFilePath,
-        })
+        }),
       ).toEqual({
         username: "admin",
         password: "foo",
