@@ -20,7 +20,7 @@ describe("index", () => {
         {
           proxy: "",
           guestSpaceId: 0,
-        }
+        },
       );
       manifest = {
         app: "1",
@@ -73,7 +73,7 @@ describe("index", () => {
           { method: "PUT", path: "/k/v1/preview/app/customize.json" },
           { method: "POST", path: "/k/v1/preview/app/deploy.json" },
           { method: "GET", path: "/k/v1/preview/app/deploy.json" },
-        ]
+        ],
       );
     });
   });

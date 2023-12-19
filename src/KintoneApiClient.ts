@@ -23,7 +23,7 @@ export default class KintoneApiClient {
     basicAuthUsername: string | null,
     basicAuthPassword: string | null,
     baseUrl: string,
-    public options: Option
+    public options: Option,
   ) {
     let auth;
     if (username && password) {
@@ -109,7 +109,7 @@ export default class KintoneApiClient {
       const successedAppsLength = successedApps.filter(
         (r: { status: string; app: string }) => {
           return r.status === "SUCCESS";
-        }
+        },
       ).length;
       deployed = successedAppsLength === resp.apps.length;
       if (!deployed) {
@@ -134,7 +134,7 @@ export default class KintoneApiClient {
 
   private getBase64EncodedCredentials(
     username: string,
-    password: string
+    password: string,
   ): string {
     const buffer = Buffer.from(username + ":" + password);
     return buffer.toString("base64");
@@ -142,11 +142,11 @@ export default class KintoneApiClient {
 
   private getBasicAuthorization(
     basicAuthUsername: string,
-    basicAuthPassword: string
+    basicAuthPassword: string,
   ): string {
     return `Basic ${this.getBase64EncodedCredentials(
       basicAuthUsername,
-      basicAuthPassword
+      basicAuthPassword,
     )}`;
   }
 }
