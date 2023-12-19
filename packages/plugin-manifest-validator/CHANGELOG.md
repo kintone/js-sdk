@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.0.0...@kintone/plugin-manifest-validator@10.1.0) (2023-12-19)
+
+
+### Features
+
+* **plugin-manifest-validator:** support es language ([#2458](https://github.com/kintone/js-sdk/issues/2458)) ([1b3d532](https://github.com/kintone/js-sdk/commit/1b3d532faad3fc87335ea29f77f0566614f6f2e0))
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3 ([#2457](https://github.com/kintone/js-sdk/issues/2457)) ([5a0b859](https://github.com/kintone/js-sdk/commit/5a0b859807530564732caa194e9251f37268b164))
+
 ## [10.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@9.1.0...@kintone/plugin-manifest-validator@10.0.0) (2023-10-03)
 
 

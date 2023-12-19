@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.0.1...@kintone/plugin-packer@8.0.2) (2023-12-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3 ([#2457](https://github.com/kintone/js-sdk/issues/2457)) ([5a0b859](https://github.com/kintone/js-sdk/commit/5a0b859807530564732caa194e9251f37268b164))
+
 ## [8.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.0.0...@kintone/plugin-packer@8.0.1) (2023-10-24)
 
 
