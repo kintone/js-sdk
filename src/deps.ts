@@ -12,7 +12,7 @@ import { getMessage } from "./messages";
  */
 export const installDependencies = (
   outputDirectory: string,
-  lang: Lang
+  lang: Lang,
 ): void => {
   printLog(getMessage(lang, "installDependencies"));
 

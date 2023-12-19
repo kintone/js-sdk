@@ -19,14 +19,14 @@ describe("generator", function () {
     rimraf.sync(outputDir);
   });
   describe("minimum template", () => {
-    it("should be able to create a plugin project based on the minimum template", () => {
+    it("should be able to create a plugin project based on the minimum template", async () => {
       const manifest = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "fixtures", "manifest.json"),
-          "utf8"
-        )
+          "utf8",
+        ),
       );
-      generatePlugin(outputDir, manifest, "ja", true, "minimum");
+      await generatePlugin(outputDir, manifest, "ja", true, "minimum");
 
       // test that `npm run lint` doesn't fail
       const lintResult = spawnSync("npm", ["run", "lint"], {
@@ -49,15 +49,15 @@ describe("generator", function () {
         JSON.parse(
           fs.readFileSync(
             path.resolve(outputDir, "src", "manifest.json"),
-            "utf8"
-          )
+            "utf8",
+          ),
         ),
-        manifest
+        manifest,
       );
       assert.deepStrictEqual(
         fs.readFileSync(
           path.resolve(outputDir, "src", "js", "desktop.js"),
-          "utf8"
+          "utf8",
         ),
         fs.readFileSync(
           path.resolve(
@@ -68,30 +68,30 @@ describe("generator", function () {
             "minimum",
             "src",
             "js",
-            "desktop.js"
+            "desktop.js",
           ),
-          "utf8"
-        )
+          "utf8",
+        ),
       );
       const packageJson = JSON.parse(
-        fs.readFileSync(path.resolve(outputDir, "package.json"), "utf8")
+        fs.readFileSync(path.resolve(outputDir, "package.json"), "utf8"),
       );
       assert(
         packageJson.devDependencies &&
-          packageJson.devDependencies["@kintone/plugin-uploader"]
+          packageJson.devDependencies["@kintone/plugin-uploader"],
       );
       assert(packageJson.scripts && packageJson.scripts.upload);
     });
   });
   describe("modern template", () => {
-    it("should be able to create a plugin project based on the modern template", () => {
+    it("should be able to create a plugin project based on the modern template", async () => {
       const manifest = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "fixtures", "manifest.json"),
-          "utf8"
-        )
+          "utf8",
+        ),
       );
-      generatePlugin(outputDir, manifest, "ja", false, "modern");
+      await generatePlugin(outputDir, manifest, "ja", false, "modern");
 
       // test that `npm run lint` doesn't fail
       const lintResult = spawnSync("npm", ["run", "lint"], {
@@ -114,13 +114,13 @@ describe("generator", function () {
         JSON.parse(
           fs.readFileSync(
             path.resolve(outputDir, "plugin", "manifest.json"),
-            "utf8"
-          )
+            "utf8",
+          ),
         ),
-        manifest
+        manifest,
       );
       assert.ok(
-        fs.existsSync(path.resolve(outputDir, "plugin", "js", "desktop.js"))
+        fs.existsSync(path.resolve(outputDir, "plugin", "js", "desktop.js")),
       );
     });
   });
