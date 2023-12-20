@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.6](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@7.0.5...@kintone/create-plugin@7.0.6) (2023-12-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3 ([#2457](https://github.com/kintone/js-sdk/issues/2457)) ([5a0b859](https://github.com/kintone/js-sdk/commit/5a0b859807530564732caa194e9251f37268b164))
+
 ## [7.0.5](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@7.0.4...@kintone/create-plugin@7.0.5) (2023-12-04)
 
 
