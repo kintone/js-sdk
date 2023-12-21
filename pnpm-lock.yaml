@@ -57,7 +57,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/profile-loader
       '@kintone/rest-api-client':
-        specifier: ^5.0.4
+        specifier: ^5.0.5
         version: link:../../packages/rest-api-client
       yargs:
         specifier: ^17.7.2
@@ -143,7 +143,7 @@ importers:
   packages/customize-uploader:
     dependencies:
       '@kintone/rest-api-client':
-        specifier: ^5.0.4
+        specifier: ^5.0.5
         version: link:../rest-api-client
       chokidar:
         specifier: ^3.5.3
