@@ -11,6 +11,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * devDependencies
     * @kintone/customize-uploader bumped from ^7.0.3 to ^7.0.4
 
+## [5.0.7](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@5.0.6...@kintone/rest-api-client-demo@5.0.7) (2023-12-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^5.0.5 ([#2467](https://github.com/kintone/js-sdk/issues/2467)) ([3a94a3a](https://github.com/kintone/js-sdk/commit/3a94a3a53615a82139f0bc1f603d411a71aaab49))
+
 ## [5.0.6](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@5.0.5...@kintone/rest-api-client-demo@5.0.6) (2023-12-19)
 
 
