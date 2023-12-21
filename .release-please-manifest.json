@@ -4,7 +4,7 @@
   "packages/customize-uploader": "8.0.5",
   "packages/dts-gen": "8.0.3",
   "packages/plugin-manifest-validator": "10.1.0",
-  "packages/plugin-packer": "8.0.2",
+  "packages/plugin-packer": "8.0.3",
   "packages/plugin-uploader": "9.0.2",
   "packages/profile-loader": "5.0.1",
   "packages/rest-api-client": "5.0.5",
