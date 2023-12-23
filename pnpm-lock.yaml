@@ -342,14 +342,14 @@ importers:
         specifier: ^0.11.10
         version: 0.11.10
       redux:
-        specifier: ^4.2.1
-        version: 4.2.1
+        specifier: ^5.0.1
+        version: 5.0.1
       redux-logger:
         specifier: ^3.0.6
         version: 3.0.6
       redux-thunk:
         specifier: ^2.4.2
-        version: 2.4.2(redux@4.2.1)
+        version: 2.4.2(redux@5.0.1)
       rimraf:
         specifier: ^5.0.5
         version: 5.0.5
@@ -9454,10 +9454,22 @@ packages:
       redux: 4.2.1
     dev: true
 
+  /redux-thunk@2.4.2(redux@5.0.1):
+    resolution: {integrity: sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==}
+    peerDependencies:
+      redux: ^4
+    dependencies:
+      redux: 5.0.1
+    dev: true
+
   /redux@4.2.1:
     resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==}
     dependencies:
       '@babel/runtime': 7.22.6
+    dev: true
+
+  /redux@5.0.1:
+    resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
     dev: true
 
   /reflect.getprototypeof@1.0.4:
