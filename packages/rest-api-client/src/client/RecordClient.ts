@@ -47,7 +47,6 @@ export class RecordClient {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "record",
     });
-    console.log("getRecord");
     return this.client.get(path, params);
   }
 
@@ -269,7 +268,7 @@ export class RecordClient {
     id: string,
     records: T[],
   ): Promise<T[]> {
-    const GET_RECORDS_LIMIT = 1;
+    const GET_RECORDS_LIMIT = 500;
     const { condition, ...rest } = params;
     const conditionQuery = condition ? `(${condition}) and ` : "";
     let allRecords: T[] = [];
@@ -314,10 +313,8 @@ export class RecordClient {
     records: T[],
   ): Promise<T[]> {
     const GET_RECORDS_LIMIT = 500;
-
     const { condition, orderBy, ...rest } = params;
     const conditionQuery = condition ? `${condition} ` : "";
-
     let allRecords: T[] = [];
     let updatedOffset = offset;
     // eslint-disable-next-line no-constant-condition
