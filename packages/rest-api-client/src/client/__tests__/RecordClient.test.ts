@@ -552,6 +552,34 @@ describe("RecordClient", () => {
         });
       });
     });
+
+    describe("error in missing $id", () => {
+      it("should throw error when missing $id in `getRecords` response.", async () => {
+        const records: Record[] = [];
+        for (let i = 1; i < 500; i++) {
+          records.push({
+            $id: {
+              type: "__ID__",
+              value: i.toString(),
+            },
+          });
+        }
+        records.push({
+          $id: {
+            type: "RECORD_NUMBER",
+            value: "2",
+          },
+        });
+        mockClient.mockResponse({ records });
+        const params = {
+          app: APP_ID,
+        };
+
+        await expect(recordClient.getAllRecordsWithId(params)).rejects.toThrow(
+          "Missing `$id` in `getRecords` response. This error is likely caused by a bug in Kintone REST API Client. Please file an issue.",
+        );
+      });
+    });
   });
 
   describe("getAllRecordsWithOffset", () => {
