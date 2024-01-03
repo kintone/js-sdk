@@ -3,14 +3,15 @@ import type { Configuration } from "webpack";
 import webpack from "webpack";
 import path from "path";
 import fs from "fs";
-import os from "os";
+// import os from "os";
 import { rimrafSync } from "rimraf";
 import { promisify } from "util";
 
-const tempDir = fs.mkdtempSync(
-  path.join(os.tmpdir(), "kintone-rest-api-client-webpack-bundle-"),
-);
+// const tempDir = fs.mkdtempSync(
+//   path.join(os.tmpdir(), "kintone-rest-api-client-webpack-bundle-"),
+// );
 
+const outputPath = path.resolve(__dirname, "dist");
 const TESTCASE_TIMEOUT = 20000;
 
 describe("Webpack Bundler tests", () => {
@@ -19,10 +20,10 @@ describe("Webpack Bundler tests", () => {
     async () => {
       const config: Configuration = {
         mode: "production",
-        entry: path.join(__dirname, "fixtures/index.ts"),
+        entry: path.resolve(__dirname, "fixtures/index.ts"),
         output: {
           filename: "bundle.js",
-          path: path.join(tempDir, "dist"),
+          path: outputPath,
         },
         module: {
           rules: [{ test: /\.([cm]?ts|tsx)$/, loader: "ts-loader" }],
@@ -49,7 +50,7 @@ describe("Webpack Bundler tests", () => {
               assert.fail(info.warnings[0].message);
             }
           });
-        assert.ok(fs.existsSync(path.resolve(tempDir, "dist", "bundle.js")));
+        assert.ok(fs.existsSync(path.resolve(outputPath, "bundle.js")));
         await promisify(compiler.close).bind(compiler)();
       } catch (error: any) {
         assert.fail(error);
