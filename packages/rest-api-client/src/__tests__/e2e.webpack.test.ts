@@ -60,6 +60,6 @@ describe("Webpack Bundler tests", () => {
   );
 
   afterAll(async () => {
-    rimrafSync(tempDir);
+    rimrafSync(outputPath);
   });
 });
