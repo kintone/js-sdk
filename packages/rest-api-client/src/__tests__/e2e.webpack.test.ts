@@ -19,9 +19,7 @@ describe("Webpack Bundler tests", () => {
     async () => {
       const config: Configuration = {
         mode: "production",
-        entry: {
-          index: path.resolve(__dirname, "fixtures/index.ts"),
-        },
+        entry: path.resolve(__dirname, "fixtures/index.ts"),
         output: {
           filename: "bundle.js",
           path: path.resolve(tempDir, "dist"),
