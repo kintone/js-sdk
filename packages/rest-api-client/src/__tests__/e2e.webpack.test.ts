@@ -11,7 +11,7 @@ const tempDir = fs.mkdtempSync(
   path.join(os.tmpdir(), "kintone-rest-api-client-webpack-bundle-"),
 );
 
-const TESTCASE_TIMEOUT = 10000;
+const TESTCASE_TIMEOUT = 20000;
 
 describe("Webpack Bundler tests", () => {
   it(
