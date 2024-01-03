@@ -19,10 +19,10 @@ describe("Webpack Bundler tests", () => {
     async () => {
       const config: Configuration = {
         mode: "production",
-        entry: path.normalize(path.resolve(__dirname, "fixtures/index.ts")),
+        entry: path.join(__dirname, "fixtures/index.ts"),
         output: {
           filename: "bundle.js",
-          path: path.resolve(tempDir, "dist"),
+          path: path.join(tempDir, "dist"),
         },
         module: {
           rules: [{ test: /\.([cm]?ts|tsx)$/, loader: "ts-loader" }],
