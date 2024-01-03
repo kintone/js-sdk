@@ -10,28 +10,36 @@ const tempDir = fs.mkdtempSync(
   path.join(os.tmpdir(), "kintone-rest-api-client-vite-bundle-"),
 );
 
-describe("Vite Bundler tests", function () {
-  it(`should be able to build with Vite successfully`, async () => {
-    const buildConfig: BuildOptions = {
-      lib: {
-        entry: path.resolve(__dirname, "fixtures/index.ts"),
-        fileName: "bundle",
-        formats: ["umd"],
-        name: "MyBundle",
-      },
-      outDir: path.resolve(tempDir, "dist"),
-    };
+const TESTCASE_TIMEOUT = 10000;
 
-    try {
-      await build({
-        mode: "production",
-        build: buildConfig,
-      });
-      assert.ok(fs.existsSync(path.resolve(tempDir, "dist", "bundle.umd.js")));
-    } catch (error: any) {
-      assert.fail(error);
-    }
-  });
+describe("Vite Bundler tests", function () {
+  it(
+    `should be able to build with Vite successfully`,
+    async () => {
+      const buildConfig: BuildOptions = {
+        lib: {
+          entry: path.resolve(__dirname, "fixtures/index.ts"),
+          fileName: "bundle",
+          formats: ["umd"],
+          name: "MyBundle",
+        },
+        outDir: path.resolve(tempDir, "dist"),
+      };
+
+      try {
+        await build({
+          mode: "production",
+          build: buildConfig,
+        });
+        assert.ok(
+          fs.existsSync(path.resolve(tempDir, "dist", "bundle.umd.js")),
+        );
+      } catch (error: any) {
+        assert.fail(error);
+      }
+    },
+    TESTCASE_TIMEOUT,
+  );
 
   afterAll(async () => {
     rimrafSync(tempDir);

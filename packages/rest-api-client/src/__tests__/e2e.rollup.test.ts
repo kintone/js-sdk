@@ -21,41 +21,47 @@ const tempDir = fs.mkdtempSync(
 
 const extensions = [".ts", ".js"];
 
+const TESTCASE_TIMEOUT = 10000;
+
 describe("Rollup Bundler tests", function () {
   let bundle: RollupBuild;
   const outputFile = path.resolve(tempDir, "dist", "bundle.js");
-  it(`should be able to build with Rollup successfully`, async () => {
-    const inputOptions: InputOptions = {
-      input: path.resolve(__dirname, "fixtures/index.ts"),
-      plugins: [
-        babel({
-          babelHelpers: "bundled",
-          presets: [["@babel/preset-env"], "@babel/preset-typescript"],
-          extensions,
-          include: ["../**/*"],
-        }),
-        resolve({ browser: true, preferBuiltins: false }),
-        commonjs({ extensions }),
-        json(),
-      ],
-      onwarn: (warning: RollupLog) => {
-        assert.fail(warning.message);
-      },
-    };
-    const outputOptions: OutputOptions = {
-      extend: true,
-      file: outputFile,
-      format: "umd",
-      name: "MyBundle",
-    };
-    try {
-      bundle = await rollup(inputOptions);
-      await bundle.write(outputOptions);
-      assert.ok(fs.existsSync(outputFile));
-    } catch (error: any) {
-      assert.fail(error);
-    }
-  });
+  it(
+    `should be able to build with Rollup successfully`,
+    async () => {
+      const inputOptions: InputOptions = {
+        input: path.resolve(__dirname, "fixtures/index.ts"),
+        plugins: [
+          babel({
+            babelHelpers: "bundled",
+            presets: [["@babel/preset-env"], "@babel/preset-typescript"],
+            extensions,
+            include: ["../**/*"],
+          }),
+          resolve({ browser: true, preferBuiltins: false }),
+          commonjs({ extensions }),
+          json(),
+        ],
+        onwarn: (warning: RollupLog) => {
+          assert.fail(warning.message);
+        },
+      };
+      const outputOptions: OutputOptions = {
+        extend: true,
+        file: outputFile,
+        format: "umd",
+        name: "MyBundle",
+      };
+      try {
+        bundle = await rollup(inputOptions);
+        await bundle.write(outputOptions);
+        assert.ok(fs.existsSync(outputFile));
+      } catch (error: any) {
+        assert.fail(error);
+      }
+    },
+    TESTCASE_TIMEOUT,
+  );
 
   afterAll(async () => {
     if (bundle) {
