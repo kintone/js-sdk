@@ -3,15 +3,10 @@ import type { Configuration } from "webpack";
 import webpack from "webpack";
 import path from "path";
 import fs from "fs";
-// import os from "os";
 import { rimrafSync } from "rimraf";
 import { promisify } from "util";
 
-// const tempDir = fs.mkdtempSync(
-//   path.join(os.tmpdir(), "kintone-rest-api-client-webpack-bundle-"),
-// );
-
-const outputPath = path.resolve(__dirname, "dist");
+const outputPath = path.resolve(__dirname, "../../dist");
 const TESTCASE_TIMEOUT = 20000;
 
 describe("Webpack Bundler tests", () => {
