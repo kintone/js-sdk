@@ -24,7 +24,7 @@ describe("Vite Bundler tests", function () {
 
     try {
       await build({
-        mode: "development",
+        mode: "production",
         build: buildConfig,
       });
       assert.ok(fs.existsSync(path.resolve(tempDir, "dist", "bundle.umd.js")));
