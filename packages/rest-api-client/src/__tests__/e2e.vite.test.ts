@@ -14,7 +14,7 @@ describe("Vite Bundler tests", function () {
   it(`should be able to build with Vite successfully`, async () => {
     const buildConfig: BuildOptions = {
       lib: {
-        entry: path.resolve(__dirname, "./fixtures/index.ts"),
+        entry: path.resolve(__dirname, "fixtures/index.ts"),
         fileName: "bundle",
         formats: ["umd"],
         name: "MyBundle",

@@ -26,7 +26,7 @@ describe("Rollup Bundler tests", function () {
   const outputFile = path.resolve(tempDir, "dist", "bundle.js");
   it(`should be able to build with Rollup successfully`, async () => {
     const inputOptions: InputOptions = {
-      input: path.resolve(__dirname, "./fixtures/index.ts"),
+      input: path.resolve(__dirname, "fixtures/index.ts"),
       plugins: [
         babel({
           babelHelpers: "bundled",
