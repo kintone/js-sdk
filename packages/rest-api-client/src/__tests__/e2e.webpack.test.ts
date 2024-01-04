@@ -5,9 +5,13 @@ import path from "path";
 import fs from "fs";
 import { rimrafSync } from "rimraf";
 import { promisify } from "util";
+import os from "os";
 
-const outputPath = path.resolve(__dirname, "../../dist");
-const TESTCASE_TIMEOUT = 20000;
+const tempDir = fs.mkdtempSync(
+  path.join(os.tmpdir(), "kintone-rest-api-client-webpack-bundle-"),
+);
+const outputPath = path.resolve(tempDir, "dist");
+const TESTCASE_TIMEOUT = 30000;
 
 describe("Webpack Bundler tests", () => {
   it(
@@ -21,7 +25,17 @@ describe("Webpack Bundler tests", () => {
           path: outputPath,
         },
         module: {
-          rules: [{ test: /\.([cm]?ts|tsx)$/, loader: "ts-loader" }],
+          // rules: [{ test: /\.([cm]?ts|tsx)$/, loader: "ts-loader" }],
+          rules: [
+            {
+              test: /\.[t|j]sx?$/,
+              loader: "babel-loader",
+              exclude: /node_modules/,
+              options: {
+                presets: [["@babel/preset-env"], "@babel/preset-typescript"],
+              },
+            },
+          ],
         },
         resolve: {
           extensions: [".ts", ".tsx", ".js"],
