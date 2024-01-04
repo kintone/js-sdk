@@ -16,6 +16,7 @@ import type {
 const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
 const DELETE_RECORDS_LIMIT = 100;
+const GET_RECORDS_LIMIT = 500;
 
 type RecordForParameter = {
   [fieldCode: string]: {
@@ -258,7 +259,6 @@ export class RecordClient {
     }
 
     const conditionQuery = condition ? `(${condition}) and ` : "";
-    const GET_RECORDS_LIMIT = 500;
     let allRecords: T[] = [];
     let lastId = "0";
     // eslint-disable-next-line no-constant-condition
@@ -288,7 +288,6 @@ export class RecordClient {
     condition?: string;
     orderBy?: string;
   }): Promise<T[]> {
-    const GET_RECORDS_LIMIT = 500;
     const { condition, orderBy, ...rest } = params;
     const conditionQuery = condition ? `${condition} ` : "";
     let allRecords: T[] = [];
