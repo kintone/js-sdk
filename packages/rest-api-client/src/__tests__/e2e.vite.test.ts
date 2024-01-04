@@ -13,7 +13,7 @@ const tempDir = fs.mkdtempSync(
 const TESTCASE_TIMEOUT = 30000;
 
 describe("Vite Bundler tests", function () {
-  it.skip(
+  it(
     `should be able to build with Vite successfully`,
     async () => {
       const buildConfig: BuildOptions = {
@@ -28,7 +28,6 @@ describe("Vite Bundler tests", function () {
 
       try {
         await build({
-          mode: "production",
           build: buildConfig,
         });
         assert.ok(
