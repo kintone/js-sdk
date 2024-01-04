@@ -475,9 +475,6 @@ importers:
       rollup-plugin-polyfill-node:
         specifier: ^0.13.0
         version: 0.13.0(rollup@4.9.2)
-      ts-loader:
-        specifier: ^9.5.1
-        version: 9.5.1(typescript@5.3.3)(webpack@5.89.0)
       vite:
         specifier: ^4.5.1
         version: 4.5.1(@types/node@18.19.4)

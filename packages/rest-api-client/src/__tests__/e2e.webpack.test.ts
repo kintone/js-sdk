@@ -10,7 +10,6 @@ import os from "os";
 const tempDir = fs.mkdtempSync(
   path.join(os.tmpdir(), "kintone-rest-api-client-webpack-bundle-"),
 );
-const outputPath = path.resolve(tempDir, "dist");
 const TESTCASE_TIMEOUT = 30000;
 
 describe("Webpack Bundler tests", () => {
@@ -22,10 +21,9 @@ describe("Webpack Bundler tests", () => {
         entry: path.resolve(__dirname, "fixtures/index.ts"),
         output: {
           filename: "bundle.js",
-          path: outputPath,
+          path: path.resolve(tempDir, "dist"),
         },
         module: {
-          // rules: [{ test: /\.([cm]?ts|tsx)$/, loader: "ts-loader" }],
           rules: [
             {
               test: /\.[t|j]sx?$/,
@@ -38,7 +36,7 @@ describe("Webpack Bundler tests", () => {
           ],
         },
         resolve: {
-          extensions: [".ts", ".tsx", ".js"],
+          extensions: [".ts", ".js"],
         },
       };
       try {
@@ -59,7 +57,7 @@ describe("Webpack Bundler tests", () => {
               assert.fail(info.warnings[0].message);
             }
           });
-        assert.ok(fs.existsSync(path.resolve(outputPath, "bundle.js")));
+        assert.ok(fs.existsSync(path.resolve(tempDir, "dist", "bundle.js")));
         await promisify(compiler.close).bind(compiler)();
       } catch (error: any) {
         assert.fail(error);
@@ -69,6 +67,6 @@ describe("Webpack Bundler tests", () => {
   );
 
   afterAll(async () => {
-    rimrafSync(outputPath);
+    rimrafSync(tempDir);
   });
 });
