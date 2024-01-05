@@ -28,7 +28,7 @@ describe("Vite Bundler tests", function () {
 
       try {
         await build({
-          mode: "production",
+          mode: "development",
           build: buildConfig,
         });
         assert.ok(
