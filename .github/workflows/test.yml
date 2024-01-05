@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
+
       - run: pnpm install --fetch-timeout 900000 --frozen-lockfile
       - run: pnpm build
       - run: pnpm test:ci
