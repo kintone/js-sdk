@@ -8,12 +8,12 @@ describe("FormsClientImpl#constructor", () => {
 
   const assertConstructorWithArgs = (
     input,
-    expectedInput: AxiosRequestConfig
+    expectedInput: AxiosRequestConfig,
   ) => {
     VisibleForTesting.newAxiosInstanceInternal = jest.fn();
     AxiosUtils.newAxiosInstance(input);
     expect(VisibleForTesting.newAxiosInstanceInternal).toBeCalledWith(
-      expectedInput
+      expectedInput,
     );
   };
 

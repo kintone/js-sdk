@@ -16,8 +16,8 @@ describe("renderAsFile", () => {
       })
       .then((properties) =>
         FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
-          objectValues(properties)
-        )
+          objectValues(properties),
+        ),
       );
     const input = {
       typeName: "TestFields",
@@ -62,8 +62,8 @@ describe("fullWidthSymbol Test", () => {
       })
       .then((properties) =>
         FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
-          objectValues(properties)
-        )
+          objectValues(properties),
+        ),
       );
     const input = {
       typeName: "TestFields",

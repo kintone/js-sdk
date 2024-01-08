@@ -11,6 +11,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - We dropped Node v14 support. Now supported versions are v16, v18, and v20.
 
+## [5.0.1](https://github.com/kintone/js-sdk/compare/@kintone/profile-loader@5.0.0...@kintone/profile-loader@5.0.1) (2023-12-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3 ([#2457](https://github.com/kintone/js-sdk/issues/2457)) ([5a0b859](https://github.com/kintone/js-sdk/commit/5a0b859807530564732caa194e9251f37268b164))
+
 ## [5.0.0](https://github.com/kintone/js-sdk/compare/@kintone/profile-loader@4.0.0...@kintone/profile-loader@5.0.0) (2023-10-03)
 
 

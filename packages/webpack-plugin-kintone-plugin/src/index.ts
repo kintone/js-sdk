@@ -13,7 +13,7 @@ interface Option {
 
 type PluginZipPathFunction = (
   id: string,
-  manifest: { [key: string]: any }
+  manifest: { [key: string]: any },
 ) => string;
 
 class KintonePlugin implements WebpackPluginInstance {
@@ -29,7 +29,7 @@ class KintonePlugin implements WebpackPluginInstance {
         privateKeyPath: "./private.ppk",
         pluginZipPath: "./dist/plugin.zip",
       },
-      options
+      options,
     );
   }
   public apply(compiler: Compiler) {
@@ -51,19 +51,19 @@ class KintonePlugin implements WebpackPluginInstance {
           const chunkPaths = [...compilation.chunks]
             .reduce<string[]>(
               (paths, chunk) => paths.concat([...chunk.files]),
-              []
+              [],
             )
             .map((chunkFile) => path.resolve(compiler.outputPath, chunkFile));
           // exclude output chunks because afterEmit is triggered twice when js source file changed.
           const assetPaths = allAssetPaths.filter(
-            (assetPath) => !chunkPaths.includes(assetPath)
+            (assetPath) => !chunkPaths.includes(assetPath),
           );
           compilation.fileDependencies.addAll(assetPaths);
         });
       }
 
       compiler.hooks.afterEmit.tapPromise(this.name, () =>
-        this.generatePlugin()
+        this.generatePlugin(),
       );
     });
   }
@@ -79,7 +79,7 @@ class KintonePlugin implements WebpackPluginInstance {
         typeof pluginZipPath === "function"
           ? pluginZipPath(
               result.id,
-              JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8"))
+              JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8")),
             )
           : pluginZipPath;
       const zipDir = path.dirname(zipPath);

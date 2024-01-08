@@ -27,7 +27,7 @@ type Test_RowLayout_OK = Row<
     Field.ReferenceTable,
     Field.Label,
     Field.HR,
-    Field.Spacer
+    Field.Spacer,
   ]
 >;
 
@@ -49,7 +49,7 @@ type Test_SubtableLayout_OK = Subtable<
     Field.DateTime,
     Field.UserSelect,
     Field.OrganizationSelect,
-    Field.GroupSelect
+    Field.GroupSelect,
   ]
 >;
 

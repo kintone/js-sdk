@@ -10,7 +10,7 @@ const CREDENTIALS_FILE_NAME = "credentials";
 
 const loadSettings = <T extends Profile>(
   profile: string,
-  filePath: string | null
+  filePath: string | null,
 ): Partial<T> => {
   if (!filePath) {
     return {};
@@ -22,7 +22,7 @@ const loadSettings = <T extends Profile>(
 
 export const loadConfig = <T extends Profile>(
   profile: string,
-  filePath: string | undefined | false
+  filePath: string | undefined | false,
 ): Partial<T> => {
   if (filePath === false) {
     return {};
@@ -32,7 +32,7 @@ export const loadConfig = <T extends Profile>(
 
 export const loadCredentials = <T extends Profile>(
   profile: string,
-  filePath: string | undefined | false
+  filePath: string | undefined | false,
 ): Partial<T> => {
   if (filePath === false) {
     return {};

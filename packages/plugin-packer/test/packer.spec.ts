@@ -13,7 +13,7 @@ const contentsZipPath = path.join(__dirname, "fixtures", "contents.zip");
 const invalidMaxFileSizeContentsZipPath = path.join(
   __dirname,
   "fixtures",
-  "invalid-maxFileSize-contents.zip"
+  "invalid-maxFileSize-contents.zip",
 );
 
 describe("packer", () => {
@@ -36,14 +36,14 @@ describe("packer", () => {
     it("the privateKey is generated", () => {
       expect(typeof output.privateKey).toBe("string");
       expect(/^-----BEGIN RSA PRIVATE KEY-----/.test(output.privateKey)).toBe(
-        true
+        true,
       );
     });
 
     it("the zip contains 3 files", async () => {
       const files = await readZipContentsNames(output.plugin);
       expect(files.sort()).toStrictEqual(
-        ["contents.zip", "PUBKEY", "SIGNATURE"].sort()
+        ["contents.zip", "PUBKEY", "SIGNATURE"].sort(),
       );
     });
 
@@ -78,7 +78,7 @@ describe("packer", () => {
     it("throws an error if the contents.zip is invalid", async () => {
       const contentsZip = fs.readFileSync(invalidMaxFileSizeContentsZipPath);
       await expect(packer(contentsZip)).rejects.toThrow(
-        '"/icon" file size should be <= 20MB'
+        '"/icon" file size should be <= 20MB',
       );
     });
   });
@@ -94,7 +94,7 @@ const streamToBuffer = (stream: NodeJS.ReadableStream) => {
 };
 
 const readZipContents = (
-  zipEntry: yauzl.ZipFile
+  zipEntry: yauzl.ZipFile,
 ): Promise<Map<any, Buffer>> => {
   const zipContentsMap = new Map();
   const streamToBufferPromises: Array<Promise<void>> = [];
@@ -107,7 +107,7 @@ const readZipContents = (
         streamToBufferPromises.push(
           streamToBuffer(stream).then((buffer) => {
             zipContentsMap.set(entry.fileName, buffer);
-          })
+          }),
         );
       });
     });

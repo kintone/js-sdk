@@ -221,7 +221,7 @@ export class AppClient {
         spacePath,
         {
           id: space,
-        }
+        },
       );
       return this.client.post(path, { ...params, thread: defaultThread });
     }

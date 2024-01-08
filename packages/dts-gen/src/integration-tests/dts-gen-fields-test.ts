@@ -211,7 +211,7 @@ const assertEntity = (
     type: string;
     value: { code: string; name: string };
   },
-  expectedType: string
+  expectedType: string,
 ) => {
   assertType(ref.type, expectedType);
   assertNotUndefined(ref.value);
@@ -230,7 +230,7 @@ const assertType = (type, expectedType) => {
   assert.strictEqual(
     type,
     expectedType,
-    `expected: ${expectedType}, actual:${type}`
+    `expected: ${expectedType}, actual:${type}`,
   );
 };
 

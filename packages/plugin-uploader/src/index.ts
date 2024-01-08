@@ -16,7 +16,7 @@ interface BasicAuth {
 
 const launchBrowser = (
   proxy?: string,
-  ignoreDefaultArgs?: string[]
+  ignoreDefaultArgs?: string[],
 ): Promise<Browser> => {
   const args = proxy ? [`--proxy-server=${proxy}`] : [];
   return puppeteer.launch({ args, ignoreDefaultArgs, headless: "new" });
@@ -28,7 +28,7 @@ const readyForUpload = async (
   userName: string,
   password: string,
   lang: Lang,
-  basicAuth?: BasicAuth
+  basicAuth?: BasicAuth,
 ): Promise<Page> => {
   const m = getBoundMessage(lang);
 
@@ -76,7 +76,7 @@ const readyForUpload = async (
 const upload = async (
   page: Page,
   pluginPath: string,
-  lang: Lang
+  lang: Lang,
 ): Promise<void> => {
   const m = getBoundMessage(lang);
   console.log(`Trying to upload ${pluginPath}`);
@@ -118,11 +118,11 @@ export const run = async (
   userName: string,
   password: string,
   pluginPath: string,
-  options: Option
+  options: Option,
 ): Promise<void> => {
   let browser = await launchBrowser(
     options.proxyServer,
-    options.puppeteerIgnoreDefaultArgs
+    options.puppeteerIgnoreDefaultArgs,
   );
   let page: Page;
   const { lang, basicAuth } = options;
@@ -134,7 +134,7 @@ export const run = async (
       userName,
       password,
       lang,
-      basicAuth
+      basicAuth,
     );
     await upload(page, pluginPath, lang);
     if (options.watch) {
@@ -157,7 +157,7 @@ export const run = async (
             userName,
             password,
             lang,
-            basicAuth
+            basicAuth,
           );
           await upload(page, pluginPath, lang);
         } finally {

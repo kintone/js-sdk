@@ -16,7 +16,7 @@ export class FormsClientImpl implements FormsClient {
   }
 
   fetchFormProperties(
-    input: FetchFormPropertiesInput
+    input: FetchFormPropertiesInput,
   ): Promise<FieldNameAndFieldOrSubTableField> {
     const config: AxiosRequestConfig = {
       method: "GET",
@@ -33,7 +33,7 @@ export class FormsClientImpl implements FormsClient {
             properties: FieldNameAndFieldOrSubTableField;
             revision: string;
           }
-        ).properties
+        ).properties,
     ) as Promise<FieldNameAndFieldOrSubTableField>;
   }
 }
