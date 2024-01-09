@@ -29,7 +29,7 @@ const cli = meow(
     --basic-auth-username username for Basic Authentication
     --basic-auth-password password for Basic Authentication
     --watch Watch the changes of plugin zip and re-run
-    --waiting-dialog-ms A ms for waiting show a input dialog
+    --waiting-dialog-ms The waiting time for showing the input dialog in milliseconds
     --lang Using language (en or ja)
     --puppeteer-ignore-default-args Ignore default arguments of puppeteer
 
