@@ -30,15 +30,15 @@
   "license": "MIT",
   "dependencies": {
     "@cybozu/eslint-config": "^22.0.2",
-    "axios": "^1.6.0",
+    "axios": "^1.6.5",
     "commander": "^11.1.0",
-    "eslint": "^8.52.0",
+    "eslint": "^8.56.0",
     "form-data": "^4.0.0",
     "lodash": "^4.17.21",
     "prettier": "^3.1.1"
   },
   "devDependencies": {
-    "@types/eslint": "^8.56.0",
+    "@types/eslint": "^8.56.1",
     "@types/lodash": "^4.14.202",
     "ts-loader": "^9.5.1",
     "webpack": "^5.89.0",
