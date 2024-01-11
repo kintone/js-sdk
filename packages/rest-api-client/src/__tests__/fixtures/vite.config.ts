@@ -1,11 +1,6 @@
 import { defineConfig } from "vite";
 import path from "path";
-import fs from "fs";
-import os from "os";
-
-export const tempDir = fs.mkdtempSync(
-  path.join(os.tmpdir(), "kintone-rest-api-client-vite-bundle-"),
-);
+import { tempDir } from "../e2e.vite.test";
 
 export default defineConfig({
   build: {

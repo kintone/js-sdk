@@ -3,9 +3,13 @@ import { build } from "vite";
 import path from "path";
 import fs from "fs";
 import { rimrafSync } from "rimraf";
-import { tempDir } from "./fixtures/vite.config";
+import os from "os";
 
 const TESTCASE_TIMEOUT = 30000;
+
+export const tempDir = fs.mkdtempSync(
+  path.join(os.tmpdir(), "kintone-rest-api-client-vite-bundle-"),
+);
 
 describe("Vite Bundler tests", function () {
   it(
@@ -21,7 +25,6 @@ describe("Vite Bundler tests", function () {
           fs.existsSync(path.resolve(tempDir, "dist", "bundle.vite.umd.js")),
         );
       } catch (error: any) {
-        console.log(error);
         assert.fail(error);
       }
     },
