@@ -83,7 +83,7 @@ export default defineConfig({
     globals(),
     nodePolyfills(),
     isProd && terser(),
-    ecmaVersionValidator({ ecmaVersion: 6 }),
+    ecmaVersionValidator({ ecmaVersion: 2018 }),
     license({
       banner: {
         commentStyle: "regular",
