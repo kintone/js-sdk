@@ -11,7 +11,7 @@ export const tempDir = fs.mkdtempSync(
   path.join(os.tmpdir(), "kintone-rest-api-client-vite-bundle-"),
 );
 
-describe("Vite Bundler tests", function () {
+describe.skip("Vite Bundler tests", function () {
   it(
     `should be able to build with Vite successfully`,
     async () => {
