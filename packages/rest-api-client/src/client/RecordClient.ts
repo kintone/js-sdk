@@ -16,6 +16,7 @@ import type {
 const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
 const DELETE_RECORDS_LIMIT = 100;
+const GET_RECORDS_LIMIT = 500;
 
 type RecordForParameter = {
   [fieldCode: string]: {
@@ -250,42 +251,35 @@ export class RecordClient {
     fields?: string[];
     condition?: string;
   }): Promise<T[]> {
-    const { fields: originalFields, ...rest } = params;
+    const { fields: originalFields, condition, ...rest } = params;
     let fields = originalFields;
     // Append $id if $id doesn't exist in fields
     if (fields && fields.length > 0 && fields.indexOf("$id") === -1) {
       fields = [...fields, "$id"];
     }
-    return this.getAllRecordsRecursiveWithId({ ...rest, fields }, "0", []);
-  }
 
-  private async getAllRecordsRecursiveWithId<T extends Record>(
-    params: {
-      app: AppID;
-      fields?: string[];
-      condition?: string;
-    },
-    id: string,
-    records: T[],
-  ): Promise<T[]> {
-    const GET_RECORDS_LIMIT = 500;
-
-    const { condition, ...rest } = params;
     const conditionQuery = condition ? `(${condition}) and ` : "";
-    const query = `${conditionQuery}$id > ${id} order by $id asc limit ${GET_RECORDS_LIMIT}`;
-    const result = await this.getRecords<T>({ ...rest, query });
-    const allRecords = records.concat(result.records);
-    if (result.records.length < GET_RECORDS_LIMIT) {
-      return allRecords;
+    let allRecords: T[] = [];
+    let lastId = "0";
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      const query = `${conditionQuery}$id > ${lastId} order by $id asc limit ${GET_RECORDS_LIMIT}`;
+      const result = await this.getRecords<T>({ ...rest, fields, query });
+      allRecords = allRecords.concat(result.records);
+      if (result.records.length < GET_RECORDS_LIMIT) {
+        break;
+      }
+      const lastRecord = result.records[result.records.length - 1];
+      if (lastRecord.$id.type === "__ID__") {
+        lastId = lastRecord.$id.value;
+      } else {
+        throw new Error(
+          "Missing `$id` in `getRecords` response. This error is likely caused by a bug in Kintone REST API Client. Please file an issue.",
+        );
+      }
     }
-    const lastRecord = result.records[result.records.length - 1];
-    if (lastRecord.$id.type === "__ID__") {
-      const lastId = lastRecord.$id.value;
-      return this.getAllRecordsRecursiveWithId(params, lastId, allRecords);
-    }
-    throw new Error(
-      "Missing `$id` in `getRecords` response. This error is likely caused by a bug in Kintone REST API Client. Please file an issue.",
-    );
+
+    return allRecords;
   }
 
   public async getAllRecordsWithOffset<T extends Record>(params: {
@@ -294,37 +288,26 @@ export class RecordClient {
     condition?: string;
     orderBy?: string;
   }): Promise<T[]> {
-    return this.getAllRecordsRecursiveWithOffset(params, 0, []);
-  }
-
-  private async getAllRecordsRecursiveWithOffset<T extends Record>(
-    params: {
-      app: AppID;
-      fields?: string[];
-      condition?: string;
-      orderBy?: string;
-    },
-    offset: number,
-    records: T[],
-  ): Promise<T[]> {
-    const GET_RECORDS_LIMIT = 500;
-
     const { condition, orderBy, ...rest } = params;
     const conditionQuery = condition ? `${condition} ` : "";
-    const query = `${conditionQuery}${
-      orderBy ? `order by ${orderBy} ` : ""
-    }limit ${GET_RECORDS_LIMIT} offset ${offset}`;
-    const result = await this.getRecords<T>({ ...rest, query });
-    const allRecords = records.concat(result.records);
-    if (result.records.length < GET_RECORDS_LIMIT) {
-      return allRecords;
+    let allRecords: T[] = [];
+    let offset = 0;
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      const query = `${conditionQuery}${
+        orderBy ? `order by ${orderBy} ` : ""
+      }limit ${GET_RECORDS_LIMIT} offset ${offset}`;
+
+      const result = await this.getRecords<T>({ ...rest, query });
+      allRecords = allRecords.concat(result.records);
+      if (result.records.length < GET_RECORDS_LIMIT) {
+        break;
+      }
+
+      offset += GET_RECORDS_LIMIT;
     }
 
-    return this.getAllRecordsRecursiveWithOffset(
-      params,
-      offset + GET_RECORDS_LIMIT,
-      allRecords,
-    );
+    return allRecords;
   }
 
   public async getAllRecordsWithCursor<T extends Record>(params: {
@@ -334,23 +317,21 @@ export class RecordClient {
   }): Promise<T[]> {
     const { id } = await this.createCursor(params);
     try {
-      return await this.getAllRecordsRecursiveByCursor<T>(id, []);
+      let allRecords: T[] = [];
+      // eslint-disable-next-line no-constant-condition
+      while (true) {
+        const result = await this.getRecordsByCursor<T>({ id });
+        allRecords = allRecords.concat(result.records);
+        if (!result.next) {
+          break;
+        }
+      }
+
+      return allRecords;
     } catch (error) {
       await this.deleteCursor({ id });
       throw error;
     }
-  }
-
-  private async getAllRecordsRecursiveByCursor<T extends Record>(
-    id: string,
-    records: T[],
-  ): Promise<T[]> {
-    const result = await this.getRecordsByCursor<T>({ id });
-    const allRecords = records.concat(result.records);
-    if (result.next) {
-      return this.getAllRecordsRecursiveByCursor(id, allRecords);
-    }
-    return allRecords;
   }
 
   public async addAllRecords(params: {
