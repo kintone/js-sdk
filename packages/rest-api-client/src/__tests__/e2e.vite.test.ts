@@ -39,6 +39,7 @@ describe("Vite Bundler tests", function () {
           fs.existsSync(path.resolve(tempDir, "dist", "bundle.vite.umd.js")),
         );
       } catch (error: any) {
+        console.log(error);
         assert.fail(error);
       }
     },
