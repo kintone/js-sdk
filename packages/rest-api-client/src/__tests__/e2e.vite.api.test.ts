@@ -16,29 +16,29 @@ describe("Vite API Bundler tests", function () {
   it(
     `should be able to build with Vite successfully`,
     () => {
-      try {
-        const buildConfig: BuildOptions = {
-          lib: {
-            entry: path.resolve(__dirname, "./fixtures/index.ts"),
-            formats: ["umd"],
-            name: "MyBundle",
-            fileName: "bundle.vite",
-          },
-          outDir: path.resolve(tempDir, "dist"),
-          emptyOutDir: true,
-        };
-        build({
-          envFile: false,
-          configFile: false,
-          build: buildConfig,
-        }).then(() => {
+      const buildConfig: BuildOptions = {
+        lib: {
+          entry: path.resolve(__dirname, "./fixtures/index.ts"),
+          formats: ["umd"],
+          name: "MyBundle",
+          fileName: "bundle.vite",
+        },
+        outDir: path.resolve(tempDir, "dist"),
+        emptyOutDir: true,
+      };
+      return build({
+        envFile: false,
+        configFile: false,
+        build: buildConfig,
+      })
+        .then(() => {
           assert.ok(
             fs.existsSync(path.resolve(tempDir, "dist", "bundle.vite.umd.js")),
           );
+        })
+        .catch((error: any) => {
+          assert.fail(error);
         });
-      } catch (error: any) {
-        assert.fail(error);
-      }
     },
     TESTCASE_TIMEOUT,
   );
