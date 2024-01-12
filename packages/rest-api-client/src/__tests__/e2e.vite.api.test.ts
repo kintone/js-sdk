@@ -3,14 +3,14 @@ import type { BuildOptions } from "vite";
 import { build } from "vite";
 import path from "path";
 import fs from "fs";
-import { rimrafSync } from "rimraf";
 import os from "os";
-
-const TESTCASE_TIMEOUT = 30000;
+import { rimrafSync } from "rimraf";
 
 const tempDir = fs.mkdtempSync(
   path.join(os.tmpdir(), "kintone-rest-api-client-vite-bundle-"),
 );
+
+const TESTCASE_TIMEOUT = 30000;
 
 describe("Vite API Bundler tests", function () {
   it(
@@ -26,6 +26,7 @@ describe("Vite API Bundler tests", function () {
         outDir: path.resolve(tempDir, "dist"),
         emptyOutDir: true,
       };
+      // Dev note: unstable build() API when using async/await
       return build({
         envFile: false,
         configFile: false,
