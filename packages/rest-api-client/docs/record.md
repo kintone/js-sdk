@@ -205,6 +205,8 @@ The returned array is sorted by `id` in ascending order.
 Retrieves details of all records from an app by specifying the app ID, fields, condition, and sort order.
 This method can retrieve the records exceeding the [REST API limitation](https://kintone.dev/en/docs/kintone/rest-api/overview/kintone-rest-api-overview/#limitations).
 
+:warning: **The maximum number of records that can be retrieved with the getAllRecordsWithOffset API is 10000.**
+
 #### Parameters
 
 | Name      |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
