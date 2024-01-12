@@ -19,7 +19,7 @@
     "postbuild": "run-p build:*",
     "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "prepublishOnly": "run-p build:umd_*",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --verbose",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
     "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand",
     "build:umd_dev": "rollup -c --environment BUILD:development",
     "build:umd_prod": "rollup -c --environment BUILD:production",
