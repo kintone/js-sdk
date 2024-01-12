@@ -15,7 +15,7 @@ const tempDir = fs.mkdtempSync(
 describe("Vite API Bundler tests", function () {
   it(
     `should be able to build with Vite successfully`,
-    async () => {
+    () => {
       try {
         const buildConfig: BuildOptions = {
           lib: {
@@ -27,14 +27,15 @@ describe("Vite API Bundler tests", function () {
           outDir: path.resolve(tempDir, "dist"),
           emptyOutDir: true,
         };
-        await build({
+        build({
           envFile: false,
           configFile: false,
           build: buildConfig,
+        }).then(() => {
+          assert.ok(
+            fs.existsSync(path.resolve(tempDir, "dist", "bundle.vite.umd.js")),
+          );
         });
-        assert.ok(
-          fs.existsSync(path.resolve(tempDir, "dist", "bundle.vite.umd.js")),
-        );
       } catch (error: any) {
         assert.fail(error);
       }
