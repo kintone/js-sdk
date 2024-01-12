@@ -3,8 +3,10 @@
 require("setimmediate"); // polyfill
 
 const { configureStore } = require("@reduxjs/toolkit");
-const { thunk } = require("redux-thunk");
+const { thunk, withExtraArgument } = require("redux-thunk");
 const logger = require("redux-logger").default;
+
+thunk.withExtraArgument = withExtraArgument;
 
 const {
   $,
