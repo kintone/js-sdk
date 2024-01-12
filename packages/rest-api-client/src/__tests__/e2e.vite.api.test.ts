@@ -26,7 +26,7 @@ describe("Vite API Bundler tests", function () {
         outDir: path.resolve(tempDir, "dist"),
         emptyOutDir: true,
       };
-      // Dev note: unstable build() API when using async/await
+      // Dev note: It's unstable when using async/await
       return build({
         envFile: false,
         configFile: false,
