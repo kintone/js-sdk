@@ -1,47 +1,32 @@
-import assert from "assert";
-import type { BuildOptions } from "vite";
-import { build } from "vite";
-import path from "path";
+import { spawnSync } from "child_process";
 import fs from "fs";
+import path from "path";
 import os from "os";
 import { rimrafSync } from "rimraf";
 
 const tempDir = fs.mkdtempSync(
-  path.join(os.tmpdir(), "kintone-rest-api-client-vite-bundle-"),
+  path.join(os.tmpdir(), "kintone-rest-api-client-bundle-"),
 );
 
-const TESTCASE_TIMEOUT = 30000;
-
-describe.skip("Vite Bundler tests", function () {
-  it(
-    `should be able to build with Vite successfully`,
-    async () => {
-      const buildConfig: BuildOptions = {
-        lib: {
-          entry: path.resolve(__dirname, "fixtures/index.ts"),
-          fileName: "bundle",
-          formats: ["umd"],
-          name: "MyBundle",
+describe("Vite CLI Bundler tests", function () {
+  it(`should be able to build with Vite successfully`, () => {
+    const buildResult = spawnSync(
+      "vite build",
+      ["--config", "fixtures/vite.config.mjs"],
+      {
+        cwd: __dirname,
+        stdio: "inherit",
+        shell: true,
+        env: {
+          ...process.env,
+          TEMP_DIR: tempDir,
         },
-        outDir: path.resolve(tempDir, "dist"),
-      };
+      },
+    );
+    expect(buildResult.status).toBe(0);
+  });
 
-      try {
-        await build({
-          mode: "production",
-          build: buildConfig,
-        });
-        assert.ok(
-          fs.existsSync(path.resolve(tempDir, "dist", "bundle.umd.js")),
-        );
-      } catch (error: any) {
-        assert.fail(error);
-      }
-    },
-    TESTCASE_TIMEOUT,
-  );
-
-  afterAll(async () => {
+  afterAll(() => {
     rimrafSync(tempDir);
   });
 });
