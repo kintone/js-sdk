@@ -88,7 +88,9 @@ if (process.env.NODE_ENV !== "production") {
 
 const store = configureStore({
   reducer,
-  middleware: middlewares,
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(middlewares);
+  },
 });
 
 store.subscribe(() => {
