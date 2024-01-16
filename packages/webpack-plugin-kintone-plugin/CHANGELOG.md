@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.4](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@8.0.3...@kintone/webpack-plugin-kintone-plugin@8.0.4) (2023-12-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-packer to ^8.0.3 ([#2466](https://github.com/kintone/js-sdk/issues/2466)) ([3ab988d](https://github.com/kintone/js-sdk/commit/3ab988d4d3f5a068aaaf4d99d39a7c35c8346e06))
+
+## [8.0.3](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@8.0.2...@kintone/webpack-plugin-kintone-plugin@8.0.3) (2023-12-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3 ([#2457](https://github.com/kintone/js-sdk/issues/2457)) ([5a0b859](https://github.com/kintone/js-sdk/commit/5a0b859807530564732caa194e9251f37268b164))
+
 ## [8.0.2](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@8.0.1...@kintone/webpack-plugin-kintone-plugin@8.0.2) (2023-10-31)
 
 

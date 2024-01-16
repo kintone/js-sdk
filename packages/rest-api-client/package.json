@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "publishConfig": {
     "access": "public"
   },
@@ -19,8 +19,8 @@
     "postbuild": "run-p build:*",
     "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "prepublishOnly": "run-p build:umd_*",
-    "test": "jest",
-    "test:ci": "jest --runInBand",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand",
     "build:umd_dev": "rollup -c --environment BUILD:development",
     "build:umd_prod": "rollup -c --environment BUILD:production",
     "clean": "rimraf lib esm umd",
@@ -60,8 +60,8 @@
     "@types/core-js": "^2.5.8",
     "@types/js-base64": "^3.0.0",
     "@types/mime": "^3.0.4",
-    "@types/qs": "^6.9.10",
-    "rollup": "^4.9.1",
+    "@types/qs": "^6.9.11",
+    "rollup": "^4.9.5",
     "rollup-plugin-ecma-version-validator": "^0.2.13",
     "rollup-plugin-license": "^3.2.0",
     "rollup-plugin-node-globals": "^1.4.0",
@@ -69,12 +69,13 @@
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "babel-loader": "^9.1.3",
-    "vite": "^4.5.1",
-    "rimraf": "^5.0.5"
+    "vite": "^5.0.11",
+    "rimraf": "^5.0.5",
+    "cross-env": "^7.0.3"
   },
   "dependencies": {
-    "axios": "^1.6.0",
-    "core-js": "^3.33.3",
+    "core-js": "^3.35.0",
+    "axios": "^1.6.5",
     "form-data": "^4.0.0",
     "js-base64": "^3.7.5",
     "mime": "^3.0.0",
