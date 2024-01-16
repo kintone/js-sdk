@@ -345,8 +345,8 @@ importers:
         specifier: ^3.0.6
         version: 3.0.6
       redux-thunk:
-        specifier: ^2.4.2
-        version: 2.4.2(redux@4.2.1)
+        specifier: ^3.1.0
+        version: 3.1.0(redux@5.0.0)
       rimraf:
         specifier: ^5.0.5
         version: 5.0.5
@@ -9453,26 +9453,12 @@ packages:
       deep-diff: 0.3.8
     dev: true
 
-  /redux-thunk@2.4.2(redux@4.2.1):
-    resolution: {integrity: sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==}
-    peerDependencies:
-      redux: ^4
-    dependencies:
-      redux: 4.2.1
-    dev: true
-
   /redux-thunk@3.1.0(redux@5.0.0):
     resolution: {integrity: sha512-NW2r5T6ksUKXCabzhL9z+h206HQw/NJkcLm1GPImRQ8IzfXwRGqjVhKJGauHirT0DAuyy6hjdnMZaRoAcy0Klw==}
     peerDependencies:
       redux: ^5.0.0
     dependencies:
       redux: 5.0.0
-    dev: true
-
-  /redux@4.2.1:
-    resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==}
-    dependencies:
-      '@babel/runtime': 7.22.6
     dev: true
 
   /redux@5.0.0:
