@@ -19,7 +19,7 @@ importers:
         version: 7.23.3(@babel/core@7.23.7)
       '@cybozu/eslint-config':
         specifier: ^22.0.2
-        version: 22.0.2(@types/eslint@8.56.2)(eslint@8.56.0)(prettier@3.1.1)(typescript@5.3.3)
+        version: 22.0.2(@types/eslint@8.56.2)(eslint@8.56.0)(prettier@3.2.2)(typescript@5.3.3)
       '@types/jest':
         specifier: ^29.5.11
         version: 29.5.11
@@ -42,8 +42,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       prettier:
-        specifier: ^3.1.1
-        version: 3.1.1
+        specifier: ^3.2.2
+        version: 3.2.2
       rimraf:
         specifier: ^5.0.5
         version: 5.0.5
@@ -109,8 +109,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       prettier:
-        specifier: ^3.1.1
-        version: 3.1.1
+        specifier: ^3.2.2
+        version: 3.2.2
       rimraf:
         specifier: ^5.0.5
         version: 5.0.5
@@ -172,7 +172,7 @@ importers:
     dependencies:
       '@cybozu/eslint-config':
         specifier: ^22.0.2
-        version: 22.0.2(@types/eslint@8.56.2)(eslint@8.56.0)(prettier@3.1.1)(typescript@5.3.3)
+        version: 22.0.2(@types/eslint@8.56.2)(eslint@8.56.0)(prettier@3.2.2)(typescript@5.3.3)
       axios:
         specifier: ^1.6.5
         version: 1.6.5
@@ -189,8 +189,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       prettier:
-        specifier: ^3.1.1
-        version: 3.1.1
+        specifier: ^3.2.2
+        version: 3.2.2
     devDependencies:
       '@types/eslint':
         specifier: ^8.56.2
@@ -1849,7 +1849,7 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@cybozu/eslint-config@22.0.2(@types/eslint@8.56.2)(eslint@8.56.0)(prettier@3.1.1)(typescript@5.3.3):
+  /@cybozu/eslint-config@22.0.2(@types/eslint@8.56.2)(eslint@8.56.0)(prettier@3.2.2)(typescript@5.3.3):
     resolution: {integrity: sha512-Zyrq31EKJPCAdsg7qVX54Ni1CsvgmHKHHXsMED/Y8bFyVErZgvhDg7vpY94k+kolItQ6kssFYgcH1JFD63NIBw==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -1863,7 +1863,7 @@ packages:
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.14.0)(eslint@8.56.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.56.0)
       eslint-plugin-node: 11.1.0(eslint@8.56.0)
-      eslint-plugin-prettier: 5.0.1(@types/eslint@8.56.2)(eslint-config-prettier@9.1.0)(eslint@8.56.0)(prettier@3.1.1)
+      eslint-plugin-prettier: 5.0.1(@types/eslint@8.56.2)(eslint-config-prettier@9.1.0)(eslint@8.56.0)(prettier@3.2.2)
       eslint-plugin-react: 7.33.2(eslint@8.56.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.56.0)
       typescript: 5.3.3
@@ -5557,7 +5557,7 @@ packages:
       resolve: 1.22.8
       semver: 6.3.1
 
-  /eslint-plugin-prettier@5.0.1(@types/eslint@8.56.2)(eslint-config-prettier@9.1.0)(eslint@8.56.0)(prettier@3.1.1):
+  /eslint-plugin-prettier@5.0.1(@types/eslint@8.56.2)(eslint-config-prettier@9.1.0)(eslint@8.56.0)(prettier@3.2.2):
     resolution: {integrity: sha512-m3u5RnR56asrwV/lDC4GHorlW75DsFfmUcjfCYylTUs85dBRnB7VM6xG8eCMJdeDRnppzmxZVf1GEPJvl1JmNg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -5574,7 +5574,7 @@ packages:
       '@types/eslint': 8.56.2
       eslint: 8.56.0
       eslint-config-prettier: 9.1.0(eslint@8.56.0)
-      prettier: 3.1.1
+      prettier: 3.2.2
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.6
 
@@ -9163,8 +9163,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier@3.1.1:
-    resolution: {integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==}
+  /prettier@3.2.2:
+    resolution: {integrity: sha512-HTByuKZzw7utPiDO523Tt2pLtEyK7OibUD9suEJQrPUCYQqrHr74GGX6VidMrovbf/I50mPqr8j/II6oBAuc5A==}
     engines: {node: '>=14'}
     hasBin: true
 

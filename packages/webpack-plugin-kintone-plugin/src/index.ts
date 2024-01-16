@@ -49,10 +49,9 @@ class KintonePlugin implements WebpackPluginInstance {
           // https://webpack.js.org/contribute/plugin-patterns/#monitoring-the-watch-graph
           const allAssetPaths = getAssetPaths(this.options.manifestJSONPath);
           const chunkPaths = [...compilation.chunks]
-            .reduce<string[]>(
-              (paths, chunk) => paths.concat([...chunk.files]),
-              [],
-            )
+            .reduce<
+              string[]
+            >((paths, chunk) => paths.concat([...chunk.files]), [])
             .map((chunkFile) => path.resolve(compiler.outputPath, chunkFile));
           // exclude output chunks because afterEmit is triggered twice when js source file changed.
           const assetPaths = allAssetPaths.filter(
