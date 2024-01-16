@@ -30,7 +30,7 @@ describe("KintoneRestAPIError", () => {
       expect(kintoneRestAPIError.bulkRequestIndex).toBe(undefined);
       expect(kintoneRestAPIError.headers).toEqual(errorResponse.headers);
       expect(kintoneRestAPIError.message).toBe(
-        `[${errorResponse.status}] [${errorResponse.data.code}] ${errorResponse.data.message} (${errorResponse.data.id})`
+        `[${errorResponse.status}] [${errorResponse.data.code}] ${errorResponse.data.message} (${errorResponse.data.id})`,
       );
     });
     it("should set properties from an BulkRequest error", () => {
@@ -65,7 +65,7 @@ describe("KintoneRestAPIError", () => {
       expect(kintoneRestAPIError.headers).toEqual(errorResponse.headers);
       expect(kintoneRestAPIError.bulkRequestIndex).toEqual(2);
       expect(kintoneRestAPIError.message).toBe(
-        `[${errorResponse.status}] [${errorResponseData.code}] ${errorResponseData.message} (${errorResponseData.id})`
+        `[${errorResponse.status}] [${errorResponseData.code}] ${errorResponseData.message} (${errorResponseData.id})`,
       );
     });
     it("should throw an error if there is no error object in the results", () => {
@@ -82,7 +82,7 @@ describe("KintoneRestAPIError", () => {
       expect(() => {
         new KintoneRestAPIError(errorResponse);
       }).toThrow(
-        "Missing response data in `results`. This error is likely caused by a bug in Kintone REST API Client. Please file an issue."
+        "Missing response data in `results`. This error is likely caused by a bug in Kintone REST API Client. Please file an issue.",
       );
     });
   });

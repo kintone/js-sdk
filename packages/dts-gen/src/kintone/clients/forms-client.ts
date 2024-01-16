@@ -24,6 +24,6 @@ export type FieldNameAndFieldOrSubTableField = {
 
 export interface FormsClient {
   fetchFormProperties(
-    input: FetchFormPropertiesInput
+    input: FetchFormPropertiesInput,
   ): Promise<FieldNameAndFieldOrSubTableField>;
 }

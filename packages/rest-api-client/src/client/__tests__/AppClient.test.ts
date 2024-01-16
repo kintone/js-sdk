@@ -170,7 +170,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/form/fields.json"
+          "/k/v1/preview/app/form/fields.json",
         );
       });
       it("should send a get request", () => {
@@ -189,7 +189,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/form/fields.json"
+        "/k/v1/preview/app/form/fields.json",
       );
     });
     it("should send a post request", () => {
@@ -207,7 +207,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/form/fields.json"
+        "/k/v1/preview/app/form/fields.json",
       );
     });
     it("should send a put request", () => {
@@ -226,7 +226,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/form/fields.json"
+        "/k/v1/preview/app/form/fields.json",
       );
     });
     it("should send a delete request", () => {
@@ -259,7 +259,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/form/layout.json"
+          "/k/v1/preview/app/form/layout.json",
         );
       });
       it("should send a get request", () => {
@@ -279,7 +279,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/form/layout.json"
+        "/k/v1/preview/app/form/layout.json",
       );
     });
     it("should send a put request", () => {
@@ -313,7 +313,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/views.json"
+          "/k/v1/preview/app/views.json",
         );
       });
       it("should send a get request", () => {
@@ -449,7 +449,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/status.json"
+          "/k/v1/preview/app/status.json",
         );
       });
       it("should send a get request", () => {
@@ -474,7 +474,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/status.json"
+        "/k/v1/preview/app/status.json",
       );
     });
     it("should send a put request", () => {
@@ -508,7 +508,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/settings.json"
+          "/k/v1/preview/app/settings.json",
         );
       });
       it("should send a get request", () => {
@@ -539,7 +539,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/settings.json"
+        "/k/v1/preview/app/settings.json",
       );
     });
     it("should send a put request", () => {
@@ -559,7 +559,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/deploy.json"
+        "/k/v1/preview/app/deploy.json",
       );
     });
     it("should send a get request", () => {
@@ -580,7 +580,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/deploy.json"
+        "/k/v1/preview/app/deploy.json",
       );
     });
     it("should send a post request", () => {
@@ -668,7 +668,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/record/acl.json"
+          "/k/v1/preview/record/acl.json",
         );
       });
       it("should send a get request", () => {
@@ -707,7 +707,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/record/acl.json"
+        "/k/v1/preview/record/acl.json",
       );
     });
     it("should send a put request", () => {
@@ -728,7 +728,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/app/notifications/perRecord.json"
+          "/k/v1/app/notifications/perRecord.json",
         );
       });
       it("should send a get request", () => {
@@ -744,7 +744,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/notifications/perRecord.json"
+          "/k/v1/preview/app/notifications/perRecord.json",
         );
       });
       it("should send a get request", () => {
@@ -833,7 +833,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/records/acl/evaluate.json"
+        "/k/v1/records/acl/evaluate.json",
       );
     });
     it("should send a get request", () => {
@@ -866,7 +866,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/customize.json"
+          "/k/v1/preview/app/customize.json",
         );
       });
       it("should send a get request", () => {
@@ -908,7 +908,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/customize.json"
+          "/k/v1/preview/app/customize.json",
         );
       });
       it("should send a put request", () => {
@@ -930,7 +930,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/app/notifications/general.json"
+          "/k/v1/app/notifications/general.json",
         );
       });
       it("should send a get request", () => {
@@ -946,7 +946,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/notifications/general.json"
+          "/k/v1/preview/app/notifications/general.json",
         );
       });
       it("should send a get request", () => {
@@ -1007,7 +1007,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/notifications/reminder.json"
+        "/k/v1/preview/app/notifications/reminder.json",
       );
     });
     it("should send a put request", () => {
@@ -1044,7 +1044,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/notifications/perRecord.json"
+        "/k/v1/preview/app/notifications/perRecord.json",
       );
     });
     it("should send a put request", () => {
@@ -1064,7 +1064,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/app/notifications/reminder.json"
+          "/k/v1/app/notifications/reminder.json",
         );
       });
       it("should send a get request", () => {
@@ -1083,7 +1083,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/notifications/reminder.json"
+          "/k/v1/preview/app/notifications/reminder.json",
         );
       });
       it("should send a get request", () => {
@@ -1119,7 +1119,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/notifications/general.json"
+        "/k/v1/preview/app/notifications/general.json",
       );
     });
     it("should send a put request", () => {
@@ -1156,7 +1156,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/reports.json"
+          "/k/v1/preview/app/reports.json",
         );
       });
       it("should send a get request", () => {
@@ -1211,7 +1211,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/reports.json"
+        "/k/v1/preview/app/reports.json",
       );
     });
     it("should send a put request", () => {
@@ -1248,7 +1248,7 @@ describe("AppClient", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
-          "/k/v1/preview/app/actions.json"
+          "/k/v1/preview/app/actions.json",
         );
       });
       it("should send a get request", () => {
@@ -1300,7 +1300,7 @@ describe("AppClient", () => {
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe(
-        "/k/v1/preview/app/actions.json"
+        "/k/v1/preview/app/actions.json",
       );
     });
     it("should send a put request", () => {
@@ -1325,7 +1325,7 @@ describe("AppClient with guestSpaceId", () => {
     const appClient = new AppClient(mockClient, GUEST_SPACE_ID);
     await appClient.getFormFields(params);
     expect(mockClient.getLogs()[0].path).toBe(
-      `/k/guest/${GUEST_SPACE_ID}/v1/app/form/fields.json`
+      `/k/guest/${GUEST_SPACE_ID}/v1/app/form/fields.json`,
     );
   });
 });

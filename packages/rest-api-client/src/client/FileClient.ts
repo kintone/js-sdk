@@ -24,13 +24,13 @@ export class FileClient {
     if ("path" in params.file) {
       try {
         const { name, data } = await platformDeps.readFileFromPath(
-          params.file.path
+          params.file.path,
         );
         formData.append("file", data, name);
       } catch (e) {
         if (e instanceof UnsupportedPlatformError) {
           throw new Error(
-            `uploadFile doesn't allow to accept a file path in ${e.platform} environment.`
+            `uploadFile doesn't allow to accept a file path in ${e.platform} environment.`,
           );
         }
 

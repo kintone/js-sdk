@@ -42,7 +42,7 @@ export class MockClient implements HttpClient {
     return this.responseHandler.handle(
       response.data instanceof Error
         ? Promise.reject(response.data)
-        : Promise.resolve(response)
+        : Promise.resolve(response),
     ) as T;
   }
 
@@ -50,7 +50,7 @@ export class MockClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "get",
       path,
-      params
+      params,
     );
     this.logs.push({ method: requestConfig.method, path, params });
     return this.createResponse<T>();
@@ -59,7 +59,7 @@ export class MockClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "get",
       path,
-      params
+      params,
     );
     this.logs.push({ method: requestConfig.method, path, params });
     return this.createResponse<ArrayBuffer>();
@@ -68,19 +68,19 @@ export class MockClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "post",
       path,
-      params
+      params,
     );
     this.logs.push({ method: requestConfig.method, path, params });
     return this.createResponse<T>();
   }
   public async postData<T extends object>(
     path: string,
-    formData: FormData
+    formData: FormData,
   ): Promise<T> {
     const requestConfig = await this.requestConfigBuilder.build(
       "post",
       path,
-      formData
+      formData,
     );
     this.logs.push({
       method: requestConfig.method,
@@ -93,7 +93,7 @@ export class MockClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "put",
       path,
-      params
+      params,
     );
     this.logs.push({ method: requestConfig.method, path, params });
     return this.createResponse<T>();
@@ -102,7 +102,7 @@ export class MockClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "delete",
       path,
-      params
+      params,
     );
     this.logs.push({ method: requestConfig.method, path, params });
     return this.createResponse<T>();
@@ -116,7 +116,7 @@ export const buildMockClient = (
   requestConfigBuilder: RequestConfigBuilder,
   responseHandler = new KintoneResponseHandler({
     enableAbortSearchError: true,
-  })
+  }),
 ) => {
   return new MockClient({ requestConfigBuilder, responseHandler });
 };

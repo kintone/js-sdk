@@ -11,7 +11,7 @@ const debug = _debug("create-contents-zip");
  */
 export const createContentsZip = (
   pluginDir: string,
-  manifest: any
+  manifest: any,
 ): Promise<Buffer> => {
   return new Promise((res, rej) => {
     const output = new streamBuffers.WritableStreamBuffer();

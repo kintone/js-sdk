@@ -26,7 +26,7 @@ export class AxiosClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "get",
       path,
-      params
+      params,
     );
     return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
@@ -38,7 +38,7 @@ export class AxiosClient implements HttpClient {
       params,
       {
         responseType: "arraybuffer",
-      }
+      },
     );
     return (await this.sendRequest(requestConfig)) as Promise<ArrayBuffer>;
   }
@@ -47,7 +47,7 @@ export class AxiosClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "post",
       path,
-      params
+      params,
     );
     return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
@@ -56,7 +56,7 @@ export class AxiosClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "post",
       path,
-      formData
+      formData,
     );
     return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
@@ -65,7 +65,7 @@ export class AxiosClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "put",
       path,
-      params
+      params,
     );
     return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
@@ -74,7 +74,7 @@ export class AxiosClient implements HttpClient {
     const requestConfig = await this.requestConfigBuilder.build(
       "delete",
       path,
-      params
+      params,
     );
     return (await this.sendRequest(requestConfig)) as Promise<T>;
   }
@@ -87,7 +87,7 @@ export class AxiosClient implements HttpClient {
 
         maxBodyLength: Infinity,
         maxContentLength: Infinity,
-      })
+      }),
     );
   }
 }

@@ -4,7 +4,7 @@ import { buildQuestions } from "../qa";
 
 const getQuestion = (
   questions: Question[],
-  predicate: (q: Question) => boolean
+  predicate: (q: Question) => boolean,
 ): Question => {
   return questions.find(predicate) as Question;
 };
@@ -20,7 +20,7 @@ describe("qa", () => {
         const questions = buildQuestions("foo/bar/dist", "en");
         const nameEn = getQuestion(
           questions,
-          ({ name }: Question) => name === "name.en"
+          ({ name }: Question) => name === "name.en",
         );
         assert.equal(nameEn.default, "dist");
       });
@@ -28,22 +28,22 @@ describe("qa", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "name.en"
+          ({ name }: Question) => name === "name.en",
         );
         assert(
-          typeof q.validate !== "undefined" && q.validate("hoge") === true
-        );
-        assert(
-          typeof q.validate !== "undefined" &&
-            q.validate("a".repeat(64)) === true
+          typeof q.validate !== "undefined" && q.validate("hoge") === true,
         );
         assert(
           typeof q.validate !== "undefined" &&
-            typeof q.validate("") === "string"
+            q.validate("a".repeat(64)) === true,
         );
         assert(
           typeof q.validate !== "undefined" &&
-            typeof q.validate("a".repeat(65)) === "string"
+            typeof q.validate("") === "string",
+        );
+        assert(
+          typeof q.validate !== "undefined" &&
+            typeof q.validate("a".repeat(65)) === "string",
         );
       });
     });
@@ -52,7 +52,7 @@ describe("qa", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "description.en"
+          ({ name }: Question) => name === "description.en",
         );
         assert.equal(q.default({ name: { en: "foo" } }), "foo");
       });
@@ -60,22 +60,22 @@ describe("qa", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "description.en"
+          ({ name }: Question) => name === "description.en",
         );
         assert(
-          typeof q.validate !== "undefined" && q.validate("hoge") === true
-        );
-        assert(
-          typeof q.validate !== "undefined" &&
-            q.validate("a".repeat(200)) === true
+          typeof q.validate !== "undefined" && q.validate("hoge") === true,
         );
         assert(
           typeof q.validate !== "undefined" &&
-            typeof q.validate("") === "string"
+            q.validate("a".repeat(200)) === true,
         );
         assert(
           typeof q.validate !== "undefined" &&
-            typeof q.validate("a".repeat(201)) === "string"
+            typeof q.validate("") === "string",
+        );
+        assert(
+          typeof q.validate !== "undefined" &&
+            typeof q.validate("a".repeat(201)) === "string",
         );
       });
     });
@@ -96,7 +96,7 @@ describe("qa", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "name.ja"
+          ({ name }: Question) => name === "name.ja",
         );
         assert(typeof q.when === "function" && q.when({ ja: false }) === false);
         assert(typeof q.when === "function" && q.when({ ja: true }) === true);
@@ -107,7 +107,7 @@ describe("qa", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "description.ja"
+          ({ name }: Question) => name === "description.ja",
         );
         assert(typeof q.when === "function" && q.when({ ja: false }) === false);
         assert(typeof q.when === "function" && q.when({ ja: true }) === true);
@@ -118,7 +118,7 @@ describe("qa", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "name.zh"
+          ({ name }: Question) => name === "name.zh",
         );
         assert(typeof q.when === "function" && q.when({ zh: false }) === false);
         assert(typeof q.when === "function" && q.when({ zh: true }) === true);
@@ -129,7 +129,7 @@ describe("qa", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "description.zh"
+          ({ name }: Question) => name === "description.zh",
         );
         assert(typeof q.when === "function" && q.when({ zh: false }) === false);
         assert(typeof q.when === "function" && q.when({ zh: true }) === true);
@@ -140,7 +140,7 @@ describe("qa", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "homepage_url.ja"
+          ({ name }: Question) => name === "homepage_url.ja",
         );
         assert(typeof q.when === "function" && q.when({ ja: false }) === false);
         assert(typeof q.when === "function" && q.when({ ja: true }) === true);
@@ -151,7 +151,7 @@ describe("qa", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
-          ({ name }: Question) => name === "homepage_url.zh"
+          ({ name }: Question) => name === "homepage_url.zh",
         );
         assert(typeof q.when === "function" && q.when({ zh: false }) === false);
         assert(typeof q.when === "function" && q.when({ zh: true }) === true);

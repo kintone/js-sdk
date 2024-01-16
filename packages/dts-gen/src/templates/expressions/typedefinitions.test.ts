@@ -27,14 +27,14 @@ describe("TypeDefinition", () => {
         new TestSubTableField(),
       ])
         .tsExpression()
-        .trim()
+        .trim(),
     ).toEqual(
       `
 interface TestType {
     // FieldGroup
     // SubTableField
 // SubTableField
-}`.trim()
+}`.trim(),
     );
   });
 });
@@ -61,10 +61,10 @@ describe("SavedTypeDefinition", () => {
       new SavedTypeDefinition(
         "TestType",
         [new TestUserField()],
-        [new TestStringFieldInSavedRecord()]
+        [new TestStringFieldInSavedRecord()],
       )
         .tsExpression()
-        .trim()
+        .trim(),
     ).toEqual(
       `
 interface SavedTestType extends TestType {
@@ -72,7 +72,7 @@ interface SavedTestType extends TestType {
     $revision: kintone.fieldTypes.Revision;
     // UserField
     // StringFieldInSavedRecord
-}`.trim()
+}`.trim(),
     );
   });
 });

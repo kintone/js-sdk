@@ -93,7 +93,7 @@ describe("FileFieldTypeConverter", () => {
     const type = VisibleForTesting.constants.FILE_TYPE;
     const output = VisibleForTesting.selectFieldsTypesEquals(
       type,
-      objectValues(input)
+      objectValues(input),
     );
     const expected = [
       {
@@ -108,7 +108,7 @@ describe("FileFieldTypeConverter", () => {
     const types = VisibleForTesting.constants.STRING_LIST_TYPES;
     const output = VisibleForTesting.selectFieldsTypesIn(
       types,
-      objectValues(input)
+      objectValues(input),
     );
     const expected = [
       {
@@ -199,7 +199,7 @@ describe("FileFieldTypeConverter", () => {
       },
     ];
     expect(output[0].fields.userFieldsInSavedRecord).toEqual(
-      expectedUserFields
+      expectedUserFields,
     );
 
     const expectedSimpleValueInSavedRecord = [
@@ -217,7 +217,7 @@ describe("FileFieldTypeConverter", () => {
       },
     ];
     expect(output[0].fields.stringFieldsInSavedRecord).toEqual(
-      expectedSimpleValueInSavedRecord
+      expectedSimpleValueInSavedRecord,
     );
 
     expect(output[0].fields.subTableFields).toEqual([]);

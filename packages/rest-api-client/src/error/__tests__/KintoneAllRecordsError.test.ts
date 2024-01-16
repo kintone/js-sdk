@@ -44,7 +44,7 @@ describe("KintoneAllRecordsError", () => {
       unprocessedRecords,
       numOfAllRecords,
       kintoneRestApiError,
-      chunkLength
+      chunkLength,
     );
   });
   describe("constructor", () => {
@@ -52,27 +52,27 @@ describe("KintoneAllRecordsError", () => {
       expect(kintoneAllRecordsError.errorIndex).toBe(
         numOfProcessedRecords +
           bulkRequestIndex * chunkLength +
-          errorParseResult
+          errorParseResult,
       );
     });
     it("should set processedRecordsResult, unprocessedRecords, numOfAllRecords, numOfProcessedRecords, and error properties", () => {
       expect(kintoneAllRecordsError.processedRecordsResult).toStrictEqual(
-        processedRecordsResult
+        processedRecordsResult,
       );
       expect(kintoneAllRecordsError.unprocessedRecords).toStrictEqual(
-        unprocessedRecords
+        unprocessedRecords,
       );
       expect(kintoneAllRecordsError.numOfAllRecords).toStrictEqual(
-        numOfAllRecords
+        numOfAllRecords,
       );
       expect(kintoneAllRecordsError.numOfProcessedRecords).toStrictEqual(
-        numOfProcessedRecords
+        numOfProcessedRecords,
       );
       expect(kintoneAllRecordsError.error).toStrictEqual(kintoneRestApiError);
     });
     it("should set a message that includes an error index if error.errors exists", () => {
       expect(kintoneAllRecordsError.message).toBe(
-        `An error occurred at records[${kintoneAllRecordsError.errorIndex}]. ${numOfProcessedRecords}/${numOfAllRecords} records are processed successfully`
+        `An error occurred at records[${kintoneAllRecordsError.errorIndex}]. ${numOfProcessedRecords}/${numOfAllRecords} records are processed successfully`,
       );
     });
     it("should set a message that includes the succeeded count", () => {
@@ -105,11 +105,11 @@ describe("KintoneAllRecordsError", () => {
         unprocessedRecords,
         numOfAllRecords,
         kintoneRestApiError,
-        chunkLength
+        chunkLength,
       );
 
       expect(kintoneAllRecordsError.message).toBe(
-        `${numOfProcessedRecords}/${numOfAllRecords} records are processed successfully`
+        `${numOfProcessedRecords}/${numOfAllRecords} records are processed successfully`,
       );
     });
     it("should set errorIndex even if bulkRequestIndex = 0", () => {
@@ -142,11 +142,11 @@ describe("KintoneAllRecordsError", () => {
         unprocessedRecords,
         numOfAllRecords,
         kintoneRestApiError,
-        chunkLength
+        chunkLength,
       );
 
       expect(kintoneAllRecordsError.errorIndex).toBe(
-        numOfProcessedRecords + errorParseResult
+        numOfProcessedRecords + errorParseResult,
       );
     });
     it("should set errorIndex as the smallest value from the response errors", () => {
@@ -184,11 +184,11 @@ describe("KintoneAllRecordsError", () => {
         unprocessedRecords,
         numOfAllRecords,
         kintoneRestApiError,
-        chunkLength
+        chunkLength,
       );
 
       expect(kintoneAllRecordsError.errorIndex).toBe(
-        numOfProcessedRecords + smallestErrorIndex
+        numOfProcessedRecords + smallestErrorIndex,
       );
     });
   });

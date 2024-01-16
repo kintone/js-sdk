@@ -5,7 +5,7 @@ import { createContentsZip } from "./create-contents-zip";
 
 export const packPluginFromManifest = (
   manifestJSONPath: string,
-  privateKey: string
+  privateKey: string,
 ): Promise<{ plugin: Buffer; privateKey: string; id: string }> => {
   return new Promise((resolve, reject) => {
     try {
@@ -15,7 +15,7 @@ export const packPluginFromManifest = (
     }
   })
     .then((manifest) =>
-      createContentsZip(path.dirname(manifestJSONPath), manifest)
+      createContentsZip(path.dirname(manifestJSONPath), manifest),
     )
     .then((buffer) => packer(buffer as any, privateKey));
 };

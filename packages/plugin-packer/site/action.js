@@ -42,7 +42,7 @@ const uploadPPK = (fileName, fileReader) => (dispatch) => {
     },
     (error) => {
       dispatch(uploadFailure(error));
-    }
+    },
   );
 };
 
@@ -69,7 +69,7 @@ const uploadPlugin = (fileName, fileReader, validateManifest) => (dispatch) => {
       },
       (error) => {
         dispatch(uploadFailure(error));
-      }
+      },
     );
 };
 
@@ -99,7 +99,7 @@ const createPluginZip = (generatePluginZip) => (dispatch, getState) => {
         type: CREATE_PLUGIN_ZIP_FAILURE,
         payload: error,
       });
-    }
+    },
   );
 };
 

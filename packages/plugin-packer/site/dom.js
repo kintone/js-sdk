@@ -33,12 +33,12 @@ const readEntries = (entry) =>
     if (entry.isFile) {
       // Convert the fullPath to the relative path from the plugin directory
       entry.file((file) =>
-        resolve({ path: entry.fullPath.replace(/^\/[^/]+?\//, ""), file })
+        resolve({ path: entry.fullPath.replace(/^\/[^/]+?\//, ""), file }),
       );
     } else if (entry.isDirectory) {
       entry.createReader().readEntries((childEntries) => {
         Promise.all(
-          childEntries.map((childEntry) => readEntries(childEntry))
+          childEntries.map((childEntry) => readEntries(childEntry)),
         ).then(resolve);
       });
     } else {
@@ -62,7 +62,7 @@ const getFileFromEvent = (e) => {
       // Get a uploaded directory name from webkitRelativePath
       name: files[0].webkitRelativePath.replace(/\/.*/, ""),
       entries: new Map(
-        Array.from(files).map((file) => [file.webkitRelativePath, file])
+        Array.from(files).map((file) => [file.webkitRelativePath, file]),
       ),
     });
   }
@@ -78,7 +78,7 @@ const getFileFromEvent = (e) => {
     // the upload file name doesn't have any dot so we can infer the file is a directory
     if (file.name.indexOf(".") === -1) {
       return Promise.reject(
-        new Error("Your browser doesn't support a directory upload")
+        new Error("Your browser doesn't support a directory upload"),
       );
     }
     return Promise.resolve(file);
@@ -98,7 +98,7 @@ const getFileFromEvent = (e) => {
           name: entry.name,
           // Create a Map<path, File>
           entries: new Map(
-            flatten(entries).map(({ path, file }) => [path, file])
+            flatten(entries).map(({ path, file }) => [path, file]),
           ),
         });
       });
@@ -169,8 +169,8 @@ const listen = (el, ...args) => {
 function fileMapToBuffer(fileMap) {
   return Promise.all(
     Array.from(fileMap.entries()).map(([path, file]) =>
-      readArrayBuffer(file).then((buffer) => ({ buffer, path }))
-    )
+      readArrayBuffer(file).then((buffer) => ({ buffer, path })),
+    ),
   )
     .then((results) => {
       const zipFile = new yazl.ZipFile();
@@ -188,7 +188,7 @@ function fileMapToBuffer(fileMap) {
             resolve(output.getContents());
           });
           zipFile.outputStream.pipe(output);
-        })
+        }),
     );
 }
 

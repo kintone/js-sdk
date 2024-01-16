@@ -46,7 +46,7 @@ describe("reducer", () => {
   describe("initial state", () => {
     it("should be initialized all values", () => {
       expect(reducer(undefined, { type: "INIT_TEST" })).toStrictEqual(
-        expectedInitialState
+        expectedInitialState,
       );
     });
   });
@@ -140,7 +140,7 @@ describe("reducer", () => {
       };
       const contents = { data: [], name: "hoge.zip" };
       expect(
-        reducer(state, { type: UPLOAD_PLUGIN, payload: contents })
+        reducer(state, { type: UPLOAD_PLUGIN, payload: contents }),
       ).toStrictEqual({
         contents,
       });
@@ -212,13 +212,13 @@ describe("reducer", () => {
         loading: true,
       };
       expect(
-        reducer(state, { type: UPLOAD_FAILURE, payload: "error" })
+        reducer(state, { type: UPLOAD_FAILURE, payload: "error" }),
       ).toStrictEqual({
         error: "error",
         loading: false,
       });
       expect(
-        reducer(state, { type: CREATE_PLUGIN_ZIP_FAILURE, payload: "error" })
+        reducer(state, { type: CREATE_PLUGIN_ZIP_FAILURE, payload: "error" }),
       ).toStrictEqual({
         error: "error",
         loading: false,
@@ -229,7 +229,7 @@ describe("reducer", () => {
     it("should reset all values", () => {
       const state = "dirty";
       expect(reducer(state, { type: RESET })).toStrictEqual(
-        expectedInitialState
+        expectedInitialState,
       );
     });
   });
@@ -243,7 +243,7 @@ describe("reducer", () => {
           plugin: {
             id: "abcd",
           },
-        })
+        }),
       ).toBe("awesome-plugin.abcd.plugin.zip");
     });
   });
@@ -260,7 +260,7 @@ describe("reducer", () => {
           plugin: {
             id: "abcd",
           },
-        })
+        }),
       ).toBe("awesome-plugin.abcd.private.ppk");
     });
   });

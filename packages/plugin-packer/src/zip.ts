@@ -27,7 +27,7 @@ export const rezip = (contentsZip: Buffer): Promise<Buffer> => {
     ({ zipFile, entries, manifestJson, manifestPath }) => {
       validateManifest(entries, manifestJson, manifestPath);
       return rezipContents(zipFile, entries, manifestJson, manifestPath);
-    }
+    },
   );
 };
 
@@ -37,7 +37,7 @@ export const rezip = (contentsZip: Buffer): Promise<Buffer> => {
 export const validateContentsZip = (contentsZip: Buffer): Promise<any> => {
   return preprocessToRezip(contentsZip).then(
     ({ entries, manifestJson, manifestPath }) =>
-      validateManifest(entries, manifestJson, manifestPath)
+      validateManifest(entries, manifestJson, manifestPath),
   );
 };
 
@@ -45,11 +45,11 @@ export const validateContentsZip = (contentsZip: Buffer): Promise<any> => {
  * Create an intermediate representation for contents.zip
  */
 const preprocessToRezip = (
-  contentsZip: Buffer
+  contentsZip: Buffer,
 ): Promise<PreprocessedContentsZip> => {
   return zipEntriesFromBuffer(contentsZip).then((result) => {
     const manifestList = Array.from(result.entries.keys()).filter(
-      (file) => path.basename(file) === "manifest.json"
+      (file) => path.basename(file) === "manifest.json",
     );
     if (manifestList.length === 0) {
       throw new Error("The zip file has no manifest.json");
@@ -59,20 +59,20 @@ const preprocessToRezip = (
     (result as any).manifestPath = manifestList[0];
     const manifestEntry = result.entries.get((result as any).manifestPath);
     return getManifestJsonFromEntry(result.zipFile, manifestEntry).then(
-      (json: any) => Object.assign(result, { manifestJson: json })
+      (json: any) => Object.assign(result, { manifestJson: json }),
     ) as any;
   });
 };
 
 const getManifestJsonFromEntry = (
   zipFile: yauzl.ZipFile,
-  zipEntry: yauzl.ZipFile
+  zipEntry: yauzl.ZipFile,
 ): Promise<string> => {
   return zipEntryToString(zipFile, zipEntry).then((str) => JSON.parse(str));
 };
 
 const zipEntriesFromBuffer = (
-  contentsZip: Buffer
+  contentsZip: Buffer,
 ): Promise<{
   zipFile: yauzl.ZipFile;
   entries: Entries;
@@ -92,13 +92,13 @@ const zipEntriesFromBuffer = (
           res(result);
         });
         zipFile?.on("error", rej);
-      })
+      }),
   ) as any;
 };
 
 const zipEntryToString = (
   zipFile: yauzl.ZipFile,
-  zipEntry: any
+  zipEntry: any,
 ): Promise<string> => {
   return new Promise((res, rej) => {
     zipFile.openReadStream(zipEntry, (e, stream) => {
@@ -118,7 +118,7 @@ const zipEntryToString = (
 const validateManifest = (
   entries: Entries,
   manifestJson: ManifestJson,
-  manifestPath: string
+  manifestPath: string,
 ) => {
   // entry.fileName is a relative path separated by posix style(/) so this makes separators always posix style.
   const getEntryKey = (filePath: string) =>
@@ -147,7 +147,7 @@ const rezipContents = (
   zipFile: yauzl.ZipFile,
   entries: Entries,
   manifestJson: ManifestJson,
-  manifestPath: string
+  manifestPath: string,
 ): Promise<Buffer> => {
   const manifestPrefix = path.dirname(manifestPath);
 
@@ -168,7 +168,7 @@ const rezipContents = (
             size: entry.uncompressedSize,
           });
         });
-      })
+      }),
     ).then(() => {
       newZipFile.end();
     });

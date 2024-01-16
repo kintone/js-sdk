@@ -37,7 +37,7 @@ describe("getRequestToken()", () => {
   });
   it("should throw an error in other service", async () => {
     await expect(getRequestToken()).rejects.toThrow(
-      "session authentication must specify a request token"
+      "session authentication must specify a request token",
     );
   });
 });

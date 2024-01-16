@@ -109,7 +109,7 @@ export const getMessage = (lang: Lang, key: keyof typeof messages) => {
  * @param lang
  */
 export const getBoundMessage = (
-  lang: Lang
+  lang: Lang,
 ): ((key: keyof typeof messages) => string) => {
   return (key) => getMessage(lang, key);
 };

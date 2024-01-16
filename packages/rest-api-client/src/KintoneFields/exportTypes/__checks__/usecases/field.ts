@@ -26,7 +26,7 @@ type MyAppRecord = {
 };
 
 declare function displayAuthorizers(
-  authorizers: Array<{ code: string; name: string }>
+  authorizers: Array<{ code: string; name: string }>,
 ): void;
 
 declare function displaySubtableRow(subtableRow: {

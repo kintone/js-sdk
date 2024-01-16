@@ -11,7 +11,7 @@ export class Record {
   public async getRecord() {
     try {
       console.log(
-        await this.client.record.getRecord({ app: APP_ID, id: RECORD_ID })
+        await this.client.record.getRecord({ app: APP_ID, id: RECORD_ID }),
       );
     } catch (error) {
       console.log(error);
@@ -20,7 +20,7 @@ export class Record {
   public async getRecordWithError() {
     try {
       console.log(
-        await this.client.record.getRecord({ app: 99999, id: RECORD_ID })
+        await this.client.record.getRecord({ app: 99999, id: RECORD_ID }),
       );
     } catch (error) {
       console.log(error);
@@ -30,7 +30,7 @@ export class Record {
     const ids = [21];
     const revisions = ["1"];
     console.log(
-      await this.client.record.deleteRecords({ app: APP_ID, ids, revisions })
+      await this.client.record.deleteRecords({ app: APP_ID, ids, revisions }),
     );
   }
   public async addRecord() {
@@ -42,7 +42,7 @@ export class Record {
     //   }
     // };
     console.log(
-      await this.client.record.addRecord({ app: APP_ID /* , record*/ })
+      await this.client.record.addRecord({ app: APP_ID /* , record*/ }),
     );
   }
   public async addRecordUsingMultipleApiTokens() {
@@ -91,7 +91,7 @@ export class Record {
         app: APP_ID,
         fields: [],
         totalCount: true,
-      })
+      }),
     );
   }
 
@@ -100,7 +100,7 @@ export class Record {
       await this.client.record.addRecords({
         app: APP_ID,
         records: [{}, {}, {}],
-      })
+      }),
     );
   }
 
@@ -139,7 +139,7 @@ export class Record {
         app: APP_ID,
         fields: ["Customer", "Person"],
         size: 10,
-      })
+      }),
     );
   }
 
@@ -161,7 +161,7 @@ export class Record {
         condition: 'Customer != "foo"',
         orderBy: "Customer desc",
         withCursor: false,
-      })
+      }),
     );
   }
 
@@ -171,7 +171,7 @@ export class Record {
         app: APP_ID,
         fields: [],
         condition: 'Customer != "foo"',
-      })
+      }),
     );
   }
 
@@ -181,7 +181,7 @@ export class Record {
         app: APP_ID,
         fields: [],
         condition: 'Customer != "foo"',
-      })
+      }),
     );
   }
 
@@ -190,7 +190,7 @@ export class Record {
       await this.client.record.getAllRecordsWithCursor({
         app: APP_ID,
         fields: ["Customer", "Person"],
-      })
+      }),
     );
   }
 
@@ -200,14 +200,14 @@ export class Record {
         Customer: {
           value,
         },
-      })
+      }),
     );
     console.dir(
       await this.client.record.addAllRecords({
         app: APP_ID,
         records,
       }),
-      { depth: 5 }
+      { depth: 5 },
     );
   }
 

@@ -7,7 +7,7 @@ export const wait = async (ms: number): Promise<void> => {
 };
 
 export const parseProxy = (
-  proxy: string
+  proxy: string,
 ): {
   host: string;
   port: number;

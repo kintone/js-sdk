@@ -20,27 +20,27 @@ type MyAppFormLayout = [
       KintoneFormLayout.Field.Date,
       KintoneFormLayout.Field.SingleLineText,
       KintoneFormLayout.Field.Dropdown,
-      KintoneFormLayout.Field.Number
+      KintoneFormLayout.Field.Number,
     ]
   >,
   KintoneFormLayout.Row<[KintoneFormLayout.Field.Number]>,
-  KintoneFormLayout.Row<[KintoneFormLayout.Field.MultiLineText]>
+  KintoneFormLayout.Row<[KintoneFormLayout.Field.MultiLineText]>,
 ];
 
 declare function displayMultiLineTextLayout(
-  field: KintoneFormLayout.Field.MultiLineText
+  field: KintoneFormLayout.Field.MultiLineText,
 ): void;
 
 declare function modifyRowLayout<T extends KintoneFormLayout.Field.OneOf[]>(
-  row: KintoneFormLayout.Row<T>
+  row: KintoneFormLayout.Row<T>,
 ): KintoneFormLayout.Row<T>;
 
 declare function modifySubtableLayout<
-  T extends KintoneFormLayout.Field.InSubtable[]
+  T extends KintoneFormLayout.Field.InSubtable[],
 >(subtable: KintoneFormLayout.Subtable<T>): KintoneFormLayout.Subtable<T>;
 
 declare function modifyGroupLayout<
-  T extends Array<KintoneFormLayout.Row<KintoneFormLayout.Field.OneOf[]>>
+  T extends Array<KintoneFormLayout.Row<KintoneFormLayout.Field.OneOf[]>>,
 >(group: KintoneFormLayout.Group<T>): KintoneFormLayout.Group<T>;
 
 const modifyRow = (row: KintoneFormLayout.OneOf) => {

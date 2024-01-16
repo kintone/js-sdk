@@ -45,7 +45,7 @@ describe("validator", () => {
         "2.0.3",
         0,
         10
-      ]
+      ],
     )("valid version: %s", (version) => {
       expect(validator(json({ version }))).toStrictEqual({
         valid: true,
@@ -158,24 +158,24 @@ describe("validator", () => {
       json({
         manifest_version: "a",
         version: -1,
-      })
+      }),
     );
     const invalidManifestVersion = validator(
       json({
         manifest_version: "a",
-      })
+      }),
     );
     const invalidVersion = validator(
       json({
         version: -1,
-      })
+      }),
     );
     expect(actual.valid).toBe(false);
     expect(actual.errors).toStrictEqual(
       expect.arrayContaining([
         ...(invalidManifestVersion.errors ?? []),
         ...(invalidVersion.errors ?? []),
-      ])
+      ]),
     );
   });
 
@@ -195,7 +195,7 @@ describe("validator", () => {
       }),
       {
         relativePath: (str) => !/^https?:/.test(str),
-      }
+      },
     );
     assert(actual.valid === false);
     assert(actual.errors?.length === 3);
@@ -249,7 +249,7 @@ describe("validator", () => {
           maxFileSize: (maxFileSizeInBytes, path) => {
             return path.indexOf("foo.js") === -1;
           },
-        }
+        },
       );
       assert(actual.valid === false);
       assert(actual.errors?.length === 3);
@@ -275,7 +275,7 @@ describe("validator", () => {
           maxFileSize: (maxFileSizeInBytes, path) => {
             return path.indexOf("foo.css") === -1;
           },
-        }
+        },
       );
       assert(actual.valid === false);
       assert(actual.errors?.length === 3);
@@ -321,7 +321,7 @@ describe("validator", () => {
             js: ["https://example.com/foo.js"],
             css: ["https://example.com/foo.css"],
           },
-        })
+        }),
       );
       assert(actual.valid === true);
       assert(actual.errors === null);
@@ -383,7 +383,7 @@ describe("validator", () => {
           message: `file should exist ("${filePath}")`,
           schemaPath,
         });
-      }
+      },
     );
 
     it.each`
@@ -439,21 +439,21 @@ describe("validator", () => {
           message: customMessage,
           schemaPath,
         });
-      }
+      },
     );
   });
 
   describe("maxItems", () => {
     it("exceed the max item counts", () => {
       const urls = [...new Array(100)].map(
-        (_, i) => `https://example.com/${i}.js`
+        (_, i) => `https://example.com/${i}.js`,
       );
       const actual = validator(
         json({
           desktop: {
             js: urls,
           },
-        })
+        }),
       );
       assert.strictEqual(actual.valid, false);
       assert.strictEqual(actual.errors?.length, 1);
@@ -467,6 +467,40 @@ describe("validator", () => {
         schemaPath: "#/definitions/resources/maxItems",
       });
     });
+  });
+
+  describe("supported language", () => {
+    it.each`
+      languageCode | name        | description | homepage_url
+      ${"ja"}      | ${"名前"}   | ${"説明"}   | ${"https://example.com/ja"}
+      ${"en"}      | ${"name"}   | ${"desc"}   | ${"https://example.com/en"}
+      ${"zh"}      | ${"名称"}   | ${"描述"}   | ${"https://example.com/zh"}
+      ${"es"}      | ${"nombre"} | ${"desc"}   | ${"https://example.com/es"}
+    `(
+      `should return no error when the supported language is specified: $languageCode`,
+      ({ languageCode, name, description, homepage_url }) => {
+        const source: Record<string, any> = {
+          name: {
+            [languageCode]: name,
+          },
+          description: {
+            [languageCode]: description,
+          },
+          homepage_url: {
+            [languageCode]: homepage_url,
+          },
+        };
+        if (languageCode !== "en") {
+          source.name.en = "name";
+          source.description.en = "desc";
+        }
+
+        assert.deepStrictEqual(validator(json(source)), {
+          valid: true,
+          errors: null,
+        });
+      },
+    );
   });
 });
 
@@ -487,6 +521,6 @@ const json = (source: Record<string, any>): { [s: string]: any } => {
       },
       icon: "image/icon.png",
     },
-    source
+    source,
   );
 };

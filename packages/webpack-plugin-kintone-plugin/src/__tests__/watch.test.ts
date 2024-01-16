@@ -26,7 +26,7 @@ const pluginJSPaths = [
 ];
 
 const tempDir = fs.mkdtempSync(
-  path.join(os.tmpdir(), "kintone-webpack-plugin-kintone-plugin-watch-")
+  path.join(os.tmpdir(), "kintone-webpack-plugin-kintone-plugin-watch-"),
 );
 const pluginZipPath = path.resolve(tempDir, "watch", "plugin.zip");
 fs.mkdirSync(path.dirname(pluginZipPath), { recursive: true });
@@ -60,7 +60,7 @@ describe("KintonePlugin", () => {
     ["desktop.js", "mobile.js", "config.js"].forEach((filename) => {
       fs.copyFileSync(
         path.resolve(pluginDir, "src", filename),
-        path.resolve(tempDir, "src", filename)
+        path.resolve(tempDir, "src", filename),
       );
     });
   });
@@ -83,7 +83,7 @@ describe("KintonePlugin", () => {
   it("should be able to create a plugin zip when watch mode started (fix #1299)", (done) => {
     const pluginZipWatcher = chokidar.watch(
       path.dirname(pluginZipPath),
-      watchOptions
+      watchOptions,
     );
 
     const callback = (filepath: string) => {
@@ -117,7 +117,7 @@ describe("KintonePlugin", () => {
 
     const pluginZipWatcher = chokidar.watch(
       path.dirname(pluginZipPath),
-      watchOptions
+      watchOptions,
     );
 
     const callback = (filepath: string) => {
@@ -140,7 +140,7 @@ describe("KintonePlugin", () => {
       countFileChanged++;
       fs.writeFileSync(
         path.resolve(tempDir, "src", "desktop.js"),
-        `const count = ${countFileChanged};`
+        `const count = ${countFileChanged};`,
       );
       console.log(`countFileChanged: ${countFileChanged}`);
     };
@@ -164,7 +164,7 @@ describe("KintonePlugin", () => {
       })
       .on("error", (err) => done(err))
       .on("ready", () =>
-        console.log("Initial scan complete. Ready for changes")
+        console.log("Initial scan complete. Ready for changes"),
       );
 
     compiler = webpack(webpackConfig);

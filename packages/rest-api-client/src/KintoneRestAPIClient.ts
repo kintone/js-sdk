@@ -53,7 +53,7 @@ const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
   } catch (e) {
     if (e instanceof UnsupportedPlatformError) {
       throw new Error(
-        `session authentication is not supported in ${e.platform} environment.`
+        `session authentication is not supported in ${e.platform} environment.`,
       );
     }
     throw e;
@@ -146,7 +146,7 @@ const validateGuestSpaceId = (guestSpaceId: Options["guestSpaceId"]) => {
 };
 
 const validateSocketTimeout = (
-  socketTimeout: Options["socketTimeout"] | string
+  socketTimeout: Options["socketTimeout"] | string,
 ) => {
   if (socketTimeout === undefined) {
     return;
