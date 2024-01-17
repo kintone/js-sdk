@@ -205,6 +205,8 @@ The returned array is sorted by `id` in ascending order.
 Retrieves details of all records from an app by specifying the app ID, fields, condition, and sort order.
 This method can retrieve the records exceeding the [REST API limitation](https://kintone.dev/en/docs/kintone/rest-api/overview/kintone-rest-api-overview/#limitations).
 
+:warning: **If the app has over 10,000 records, please consider using [getAllRecordsWithCursor](#getAllRecordsWithCursor) instead.**
+
 #### Parameters
 
 | Name      |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
