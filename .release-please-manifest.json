@@ -1,12 +1,12 @@
 {
   "examples/rest-api-client-demo": "5.0.7",
-  "packages/create-plugin": "7.0.8",
+  "packages/create-plugin": "7.0.9",
   "packages/customize-uploader": "8.0.6",
-  "packages/dts-gen": "8.0.3",
+  "packages/dts-gen": "8.0.4",
   "packages/plugin-manifest-validator": "10.1.0",
-  "packages/plugin-packer": "8.0.3",
-  "packages/plugin-uploader": "9.0.2",
+  "packages/plugin-packer": "8.0.4",
+  "packages/plugin-uploader": "9.0.3",
   "packages/profile-loader": "5.0.1",
-  "packages/rest-api-client": "5.0.5",
-  "packages/webpack-plugin-kintone-plugin": "8.0.4"
+  "packages/rest-api-client": "5.0.6",
+  "packages/webpack-plugin-kintone-plugin": "8.0.5"
 }

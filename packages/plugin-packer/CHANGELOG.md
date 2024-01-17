@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.4](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.0.3...@kintone/plugin-packer@8.0.4) (2024-01-17)
+
+
+### Bug Fixes
+
+* **plugin-packer:** Fix the vulnerability issue from browserify-sign ([#2503](https://github.com/kintone/js-sdk/issues/2503)) ([aa56d64](https://github.com/kintone/js-sdk/commit/aa56d640c9336e175800fbdb217ea980b3f1809d))
+
 ## [8.0.3](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.0.2...@kintone/plugin-packer@8.0.3) (2023-12-21)
 
 
