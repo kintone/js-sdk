@@ -44,7 +44,7 @@
     "@types/inquirer": "8.2.10"
   },
   "dependencies": {
-    "@kintone/rest-api-client": "^5.0.5",
+    "@kintone/rest-api-client": "^5.0.6",
     "chokidar": "^3.5.3",
     "inquirer": "^8.2.6",
     "meow": "^9.0.0",
