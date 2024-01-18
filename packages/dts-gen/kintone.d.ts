@@ -229,28 +229,28 @@ declare namespace kintone {
       type?: "SINGLE_LINE_TEXT";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface RichText {
       type?: "RICH_TEXT";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface MultiLineText {
       type?: "MULTI_LINE_TEXT";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface Number {
       type?: "NUMBER";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface Calc {
@@ -263,77 +263,77 @@ declare namespace kintone {
       type?: "RADIO_BUTTON";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface DropDown {
       type?: "DROP_DOWN";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface Date {
       type?: "DATE";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface Time {
       type?: "TIME";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface DateTime {
       type?: "DATETIME";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface Link {
       type?: "LINK";
       value: string;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface CheckBox {
       type?: "CHECK_BOX";
       value: string[];
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface MultiSelect {
       type?: "MULTI_SELECT";
       value: string[];
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface UserSelect {
       type?: "USER_SELECT";
       value: Array<{ code: string; name: string }>;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface OrganizationSelect {
       type?: "ORGANIZATION_SELECT";
       value: Array<{ code: string; name: string }>;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface GroupSelect {
       type?: "GROUP_SELECT";
       value: Array<{ code: string; name: string }>;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface File {
@@ -345,7 +345,7 @@ declare namespace kintone {
         size: string;
       }>;
       disabled?: boolean;
-      error?: string;
+      error?: string | null;
     }
 
     interface Id {
@@ -379,19 +379,19 @@ declare namespace kintone {
     interface RecordNumber {
       type: "RECORD_NUMBER";
       value: string;
-      error?: string;
+      error?: string | null;
     }
 
     interface UpdatedTime {
       type: "UPDATED_TIME";
       value: string;
-      error?: string;
+      error?: string | null;
     }
 
     interface CreatedTime {
       type: "CREATED_TIME";
       value: string;
-      error?: string;
+      error?: string | null;
     }
   }
 }
