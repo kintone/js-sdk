@@ -3,20 +3,18 @@
 import type { Answers } from "inquirer";
 import type { TemplateType } from "./template";
 
-const jQueryURL = "https://js.cybozu.com/jquery/3.3.1/jquery.min.js";
-
 const minimumManifest = {
   manifest_version: 1,
   version: 1,
   type: "APP",
   desktop: {
-    js: [jQueryURL, "js/desktop.js"],
+    js: ["js/desktop.js"],
     css: ["css/51-modern-default.css", "css/desktop.css"],
   },
   icon: "image/icon.png",
   config: {
     html: "html/config.html",
-    js: [jQueryURL, "js/config.js"],
+    js: ["js/config.js"],
     css: ["css/51-modern-default.css", "css/config.css"],
     required_params: ["message"],
   },
@@ -121,10 +119,7 @@ export const buildManifest = (
       ...manifest,
       ...{
         mobile: {
-          js:
-            templateType === "minimum"
-              ? [jQueryURL, "js/mobile.js"]
-              : ["js/mobile.js"],
+          js: templateType === "minimum" ? ["js/mobile.js"] : ["js/mobile.js"],
           css: ["css/mobile.css"],
         },
       },
