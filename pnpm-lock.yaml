@@ -488,7 +488,7 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/plugin-packer':
-        specifier: ^8.0.3
+        specifier: ^8.0.4
         version: link:../plugin-packer
       mkdirp:
         specifier: ^3.0.1
