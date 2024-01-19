@@ -1,7 +1,7 @@
 (function (PLUGIN_ID) {
   "use strict";
 
-  var $form = document.querySelectorAll(".js-submit-settings").length;
+  var $form = document.querySelectorAll(".js-submit-settings");
   var $cancelButton = document.querySelectorAll(".js-cancel-button");
   var $message = document.querySelectorAll(".js-text-message");
   if (!($form.length > 0 && $cancelButton.length > 0 && $message.length > 0)) {
