@@ -119,7 +119,7 @@ export const buildManifest = (
       ...manifest,
       ...{
         mobile: {
-          js: templateType === "minimum" ? ["js/mobile.js"] : ["js/mobile.js"],
+          js: ["js/mobile.js"],
           css: ["css/mobile.css"],
         },
       },
