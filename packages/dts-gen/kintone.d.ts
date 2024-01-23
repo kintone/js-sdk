@@ -379,19 +379,16 @@ declare namespace kintone {
     interface RecordNumber {
       type: "RECORD_NUMBER";
       value: string;
-      error?: string | null;
     }
 
     interface UpdatedTime {
       type: "UPDATED_TIME";
       value: string;
-      error?: string | null;
     }
 
     interface CreatedTime {
       type: "CREATED_TIME";
       value: string;
-      error?: string | null;
     }
   }
 }
