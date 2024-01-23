@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.5](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.0.4...@kintone/dts-gen@8.0.5) (2024-01-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to ^3.2.4 ([#2510](https://github.com/kintone/js-sdk/issues/2510)) ([7d729ad](https://github.com/kintone/js-sdk/commit/7d729ad63424354d63d13c2d7c24669274790bea))
+* **dts-gen:** adding type `null` to the error property ([#2512](https://github.com/kintone/js-sdk/issues/2512)) ([77e856e](https://github.com/kintone/js-sdk/commit/77e856e00b86a1db3bde404d9e67a37140388d9e))
+* **dts-gen:** remove unavailable `error` property ([#2519](https://github.com/kintone/js-sdk/issues/2519)) ([372159b](https://github.com/kintone/js-sdk/commit/372159b631b096d0aa89f6212e58e85644b443b3))
+
 ## [8.0.4](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.0.3...@kintone/dts-gen@8.0.4) (2024-01-17)
 
 
