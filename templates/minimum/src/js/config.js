@@ -1,27 +1,25 @@
-jQuery.noConflict();
-
-(function($, PLUGIN_ID) {
-  'use strict';
-
-  var $form = $('.js-submit-settings');
-  var $cancelButton = $('.js-cancel-button');
-  var $message = $('.js-text-message');
-  if (!($form.length > 0 && $cancelButton.length > 0 && $message.length > 0)) {
+(function (PLUGIN_ID) {
+  const formEl = document.querySelector('.js-submit-settings');
+  const cancelButtonEl = document.querySelector('.js-cancel-button');
+  const messageEl = document.querySelector('.js-text-message');
+  if (!(formEl && cancelButtonEl && messageEl)) {
     throw new Error('Required elements do not exist.');
   }
-  var config = kintone.plugin.app.getConfig(PLUGIN_ID);
 
+  const config = kintone.plugin.app.getConfig(PLUGIN_ID);
   if (config.message) {
-    $message.val(config.message);
+    messageEl.value = config.message;
   }
-  $form.on('submit', function(e) {
+
+  formEl.addEventListener('submit', (e) => {
     e.preventDefault();
-    kintone.plugin.app.setConfig({message: $message.val()}, function() {
+    kintone.plugin.app.setConfig({ message: messageEl.value }, () => {
       alert('The plug-in settings have been saved. Please update the app!');
       window.location.href = '../../flow?app=' + kintone.app.getId();
     });
   });
-  $cancelButton.on('click', function() {
+
+  cancelButtonEl.addEventListener('click', () => {
     window.location.href = '../../' + kintone.app.getId() + '/plugin/';
   });
-})(jQuery, kintone.$PLUGIN_ID);
+})(kintone.$PLUGIN_ID);
