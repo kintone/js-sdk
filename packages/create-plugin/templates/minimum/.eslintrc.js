@@ -9,4 +9,5 @@ module.exports = {
     'space-before-function-paren': 0,
     'object-curly-spacing': 0,
   },
+  plugins: ['eslint-plugin-prettier'],
 };
