@@ -2,9 +2,7 @@
   const formEl = document.querySelector('.js-submit-settings');
   const cancelButtonEl = document.querySelector('.js-cancel-button');
   const messageEl = document.querySelector('.js-text-message');
-  if (
-    !(formEl.length > 0 && cancelButtonEl.length > 0 && messageEl.length > 0)
-  ) {
+  if (!(formEl && cancelButtonEl && messageEl)) {
     throw new Error('Required elements do not exist.');
   }
 
