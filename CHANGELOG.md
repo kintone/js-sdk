@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.10](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@7.0.9...@kintone/create-plugin@7.0.10) (2024-01-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-packer to ^8.0.4 ([#2508](https://github.com/kintone/js-sdk/issues/2508)) ([2b7e93b](https://github.com/kintone/js-sdk/commit/2b7e93b274e8bf39172b4282c055a16be6e9594a))
+* **deps:** update dependency @kintone/rest-api-client to ^5.0.6 ([#2509](https://github.com/kintone/js-sdk/issues/2509)) ([3806377](https://github.com/kintone/js-sdk/commit/38063773c829ac2fcef0c5f1b9960bbb25b1f3b1))
+* **deps:** update dependency core-js to ^3.35.1 ([#2518](https://github.com/kintone/js-sdk/issues/2518)) ([984a324](https://github.com/kintone/js-sdk/commit/984a324725886b77abef27efa0ecb97d972ab924))
+* **deps:** update dependency prettier to ^3.2.4 ([#2510](https://github.com/kintone/js-sdk/issues/2510)) ([7d729ad](https://github.com/kintone/js-sdk/commit/7d729ad63424354d63d13c2d7c24669274790bea))
+
 ## [7.0.9](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@7.0.8...@kintone/create-plugin@7.0.9) (2024-01-17)
 
 
