@@ -1,26 +1,22 @@
-jQuery.noConflict();
-
-(function($, PLUGIN_ID) {
-  'use strict';
-
-  kintone.events.on('app.record.index.show', function() {
-    var config = kintone.plugin.app.getConfig(PLUGIN_ID);
-
-    var spaceElement = kintone.app.getHeaderSpaceElement();
-    if (spaceElement === null) {
-      throw new Error('The header element is unavailable on this page');
+(function (PLUGIN_ID) {
+  kintone.events.on('app.record.index.show', () => {
+    const spaceEl = kintone.app.getHeaderSpaceElement();
+    if (spaceEl === null) {
+      throw new Error('The header element is unavailable on this page.');
     }
-    var fragment = document.createDocumentFragment();
-    var headingEl = document.createElement('h3');
-    var messageEl = document.createElement('p');
 
-    messageEl.classList.add('plugin-space-message');
+    const fragment = document.createDocumentFragment();
+    const headingEl = document.createElement('h3');
+    const messageEl = document.createElement('p');
+
+    const config = kintone.plugin.app.getConfig(PLUGIN_ID);
     messageEl.textContent = config.message;
-    headingEl.classList.add('plugin-space-heading');
+    messageEl.classList.add('plugin-space-message');
     headingEl.textContent = 'Hello kintone plugin!';
+    headingEl.classList.add('plugin-space-heading');
 
     fragment.appendChild(headingEl);
     fragment.appendChild(messageEl);
-    spaceElement.appendChild(fragment);
+    spaceEl.appendChild(fragment);
   });
-})(jQuery, kintone.$PLUGIN_ID);
+})(kintone.$PLUGIN_ID);
