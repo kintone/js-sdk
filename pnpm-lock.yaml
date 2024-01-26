@@ -177,8 +177,8 @@ importers:
         specifier: ^22.0.2
         version: 22.0.2(@types/eslint@8.56.2)(eslint@8.56.0)(prettier@3.2.4)(typescript@5.3.3)
       axios:
-        specifier: ^1.6.6
-        version: 1.6.6
+        specifier: ^1.6.7
+        version: 1.6.7
       commander:
         specifier: ^11.1.0
         version: 11.1.0
@@ -409,8 +409,8 @@ importers:
   packages/rest-api-client:
     dependencies:
       axios:
-        specifier: ^1.6.6
-        version: 1.6.6
+        specifier: ^1.6.7
+        version: 1.6.7
       core-js:
         specifier: ^3.35.1
         version: 3.35.1
@@ -3823,8 +3823,8 @@ packages:
     resolution: {integrity: sha512-zIURGIS1E1Q4pcrMjp+nnEh+16G56eG/MUllJH8yEvw7asDo7Ac9uhC9KIH5jzpITueEZolfYglnCGIuSBz39g==}
     engines: {node: '>=4'}
 
-  /axios@1.6.6:
-    resolution: {integrity: sha512-XZLZDFfXKM9U/Y/B4nNynfCRUqNyVZ4sBC/n9GDRCkq9vd2mIvKjKKsbIh1WPmHmNbg6ND7cTBY3Y2+u1G3/2Q==}
+  /axios@1.6.7:
+    resolution: {integrity: sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==}
     dependencies:
       follow-redirects: 1.15.4(debug@4.3.4)
       form-data: 4.0.0
