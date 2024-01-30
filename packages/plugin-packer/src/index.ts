@@ -1,10 +1,8 @@
 import { ZipFile } from "yazl";
-// import RSA from "node-rsa";
 import streamBuffers from "stream-buffers";
 import _debug from "debug";
 import crypto from "crypto";
 import jose from "node-jose";
-// import { sign } from "./sign";
 import { uuid } from "./uuid";
 import { validateContentsZip } from "./zip";
 
@@ -18,30 +16,6 @@ const packer = async (
   privateKey: string;
   id: string;
 }> => {
-  // let privateKey = privateKey_;
-  // let key;
-  // if (privateKey) {
-  //   key = new RSA(privateKey);
-  // } else {
-  //   debug("generating a new key");
-  //   key = new RSA({ b: 1024 });
-  //   privateKey = key.exportKey("pkcs1-private");
-  // }
-  //
-  // const signature = sign(contentsZip, privateKey);
-  // const publicKey = key.exportKey("pkcs8-public-der");
-  // // const publicKey = Buffer.from("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRG0letFHTpCAJrxy8fTP3R3+K0LMAe4c2YykDNELzi2ndUGXMMM8T4mhG5k5FW+sMjW8+XDmzXR7bbquEtSmqSdH9WouPSn6SJ1");
-  // const id = uuid(publicKey);
-  // debug(`id : ${id}`);
-  // console.log("publicKey", Buffer.from(publicKey).toString("base64"));
-  // return validateContentsZip(contentsZip)
-  //   .then(() => zip(contentsZip, publicKey, signature))
-  //   .then((plugin) => ({
-  //     plugin,
-  //     privateKey,
-  //     id,
-  //   })) as any;
-
   let privateKey;
   let privateCryptoKey: crypto.webcrypto.CryptoKey;
   let publicKey: ArrayBuffer;
@@ -123,11 +97,11 @@ const generateKey = async (): Promise<crypto.webcrypto.CryptoKeyPair> => {
   return crypto.subtle.generateKey(
     {
       name: "RSASSA-PKCS1-v1_5",
-      modulusLength: 2048,
+      modulusLength: 1024,
       publicExponent: new Uint8Array([0x01, 0x00, 0x01]), // 65537
-      hash: { name: "SHA-256" },
+      hash: { name: "SHA-1" },
     },
-    true, // extractable
+    true,
     ["sign", "verify"],
   );
 };
@@ -142,9 +116,9 @@ const importPrivateKey = async (
     jwkKey,
     {
       name: "RSASSA-PKCS1-v1_5",
-      hash: "SHA-256",
+      hash: "SHA-1",
     },
-    true, // not extractable
+    true,
     ["sign"],
   );
 };
@@ -168,11 +142,10 @@ const exportPublicKeyFromPrivateKey = async (
   delete jwk.qi;
   jwk.key_ops = ["verify"];
 
-  // import public key
   return crypto.subtle.importKey(
     "jwk",
     jwk,
-    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-1" },
     true,
     ["verify"],
   );
@@ -191,6 +164,7 @@ const sign = async (
   return crypto.subtle.sign(
     {
       name: "RSASSA-PKCS1-v1_5",
+      hash: "SHA-1",
     },
     key,
     data,
@@ -205,6 +179,7 @@ const verify = async (
   return crypto.subtle.verify(
     {
       name: "RSASSA-PKCS1-v1_5",
+      hash: "SHA-1",
     },
     publicKey,
     signature,

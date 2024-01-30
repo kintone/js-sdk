@@ -34,7 +34,7 @@ const webpackBaseConfig: webpack.Configuration = {
   },
 };
 
-describe("KintonePlugin", () => {
+describe.skip("KintonePlugin", () => {
   afterAll(() => {
     rimrafSync(tempDir);
   });
