@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@7.0.10...@kintone/create-plugin@8.0.0) (2024-01-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **create-plugin:** The `minimum` template doesn't use jQuery anymore
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^5.0.7 ([#2526](https://github.com/kintone/js-sdk/issues/2526)) ([cd8273c](https://github.com/kintone/js-sdk/commit/cd8273c152ce88f4a0483b83b832cd7fb5a473b7))
+
+
+### Miscellaneous Chores
+
+* **create-plugin:** remove jQuery from the minimum template ([#2513](https://github.com/kintone/js-sdk/issues/2513)) ([4592ddd](https://github.com/kintone/js-sdk/commit/4592ddde683c8c107712e9faffc7c19f0576b2ca))
+
 ## [7.0.10](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@7.0.9...@kintone/create-plugin@7.0.10) (2024-01-23)
 
 
