@@ -25,11 +25,13 @@ module.exports = {
       fs: false,
       util: require.resolve("util"),
       path: require.resolve("path-browserify"),
-      crypto: require.resolve("crypto-browserify"),
       zlib: require.resolve("browserify-zlib"),
       stream: require.resolve("stream-browserify"),
       constants: require.resolve("constants-browserify"),
     },
+  },
+  externals: {
+    crypto: "crypto",
   },
   plugins: [
     new webpack.DefinePlugin({

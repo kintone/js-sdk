@@ -48,7 +48,8 @@
     "node-rsa": "~1.1.1",
     "stream-buffers": "^3.0.2",
     "yauzl": "^2.10.0",
-    "yazl": "^2.5.1"
+    "yazl": "^2.5.1",
+    "node-jose": "^2.2.0"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^2.1.0",
@@ -57,11 +58,11 @@
     "@types/stream-buffers": "^3.0.7",
     "@types/yauzl": "^2.10.3",
     "@types/yazl": "^2.4.5",
+    "@types/node-jose": "^1.1.13",
     "ajv": "^8.12.0",
     "array-flatten": "^3.0.0",
     "assert": "^2.1.0",
     "babel-plugin-replace-ts-export-assignment": "^0.0.2",
-    "browserify-sign": "^4.2.2",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "constants-browserify": "^1.0.0",
