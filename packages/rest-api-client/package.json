@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client",
-  "version": "5.0.7",
+  "version": "5.0.8",
   "publishConfig": {
     "access": "public"
   },
