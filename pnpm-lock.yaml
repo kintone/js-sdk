@@ -6,6 +6,7 @@ settings:
 
 overrides:
   follow-redirects@<1.15.4: '>=1.15.4'
+  browserify-sign@<4.2.2: '>=4.2.2'
 
 importers:
 
@@ -305,9 +306,6 @@ importers:
       babel-plugin-replace-ts-export-assignment:
         specifier: ^0.0.2
         version: 0.0.2
-      browserify-sign:
-        specifier: ^4.2.2
-        version: 4.2.2
       browserify-zlib:
         specifier: ^0.2.0
         version: 0.2.0
