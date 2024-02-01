@@ -41,7 +41,6 @@ describe("parse", () => {
                 "--base-url", "https://example2.kintone.com",
             ]);
 
-      expect(args.demo).toBe(false);
       expect(args.username).toBeNull();
       expect(args.password).toBeNull();
       expect(args.apiToken).toBeNull();
@@ -60,7 +59,6 @@ describe("parse", () => {
       const args = parse([
                 "node", "index.js",
                 "--base-url", "https://example2.kintone.com",
-                "--demo",
                 "--username", "USERNAME",
                 "--password", "PASSWORD",
                 "--api-token", "API_TOKEN",
@@ -75,7 +73,6 @@ describe("parse", () => {
                 "--output", "OUTPUT"
             ]);
 
-      expect(args.demo).toBe(true);
       expect(args.baseUrl).toBe("https://example2.kintone.com");
       expect(args.username).toBe("USERNAME");
       expect(args.password).toBe("PASSWORD");
