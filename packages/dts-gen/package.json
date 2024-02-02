@@ -41,7 +41,7 @@
     "@types/eslint": "^8.56.2",
     "@types/lodash": "^4.14.202",
     "ts-loader": "^9.5.1",
-    "webpack": "^5.90.0",
+    "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
     "assert": "^2.1.0"
   },
