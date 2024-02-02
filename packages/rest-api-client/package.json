@@ -66,7 +66,7 @@
     "rollup-plugin-license": "^3.2.0",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-polyfill-node": "^0.13.0",
-    "webpack": "^5.90.0",
+    "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
     "babel-loader": "^9.1.3",
     "vite": "^5.0.12",
