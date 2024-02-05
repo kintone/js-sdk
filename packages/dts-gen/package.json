@@ -14,7 +14,6 @@
     "lint:eslint": "eslint 'src/**/*.ts' --max-warnings 0",
     "lint:prettier": "prettier --parser typescript --check \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "lint": "run-p lint:*",
-    "demo": "node dist/index.js --demo --type-name DemoFields -o demo-fields.d.ts",
     "help": "node dist/index.js --help",
     "test": "jest",
     "test:ci": "jest --runInBand",
