@@ -28,4 +28,3 @@ jobs:
       - name: Check licenses
         run: |
           npx license-manager analyze
-          npx license-manager extract
