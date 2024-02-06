@@ -7,15 +7,13 @@ on:
   pull_request:
 
 jobs:
-  licensed:
-    name: Analyze and extract licenses
+  analyze:
+    name: Analyze the licenses
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v2
-
       - name: Use Node.js 18.x
         uses: actions/setup-node@v4
         with:
