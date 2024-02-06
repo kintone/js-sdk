@@ -8,7 +8,6 @@ const invalidTypeNameMessage = `Invalid type-name option!\n${identifierConventio
 const baseInput = {
   baseUrl: "",
   preview: false,
-  demo: false,
   output: "",
   username: null,
   password: null,

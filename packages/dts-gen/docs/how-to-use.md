@@ -83,18 +83,6 @@ $ kintone-dts-gen --base-url https://***.cybozu.com \
 
 In addition, you can use `HTTP_PROXY` and `HTTPS_PROXY` environment variables instead of the command line option.
 
-### demo mode
-
-If you won't have a kintone, you can try with demo mode.
-you can generate demo type definition like below:
-
-```bash
-$ kintone-dts-gen --demo
-```
-
-kintone-dts-gen generates demo record field definition from demo data.
-record field type definition(`kintone.types.Fields`) is defined in `fields.d.ts`
-
 ### command line options
 
 You can confirm command line options with `kintone-dts-gen --help`

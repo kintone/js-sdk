@@ -13,7 +13,6 @@ export interface ParsedArgs {
   appId: string | null;
   preview: boolean;
   guestSpaceId: string | null;
-  demo: boolean;
   typeName: string;
   namespace: string;
   output: string;
@@ -22,7 +21,6 @@ export interface ParsedArgs {
 export const parse = (argv: string[]): ParsedArgs => {
   const program = new Command();
   program
-    .option("--demo", "Generate Type definition from demo data.", false)
     .option(
       "--base-url [baseUrl]",
       "A base URL for the Kintone environment",
@@ -94,7 +92,6 @@ export const parse = (argv: string[]): ParsedArgs => {
     appId,
     preview,
     guestSpaceId,
-    demo,
     typeName,
     namespace,
     output,
@@ -112,7 +109,6 @@ export const parse = (argv: string[]): ParsedArgs => {
     appId,
     preview,
     guestSpaceId,
-    demo,
     typeName,
     namespace,
     output,

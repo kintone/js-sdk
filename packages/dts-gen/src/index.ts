@@ -1,6 +1,5 @@
 import type { RenderInput } from "./templates/template";
 import { FormsClientImpl } from "./kintone/clients/forms-client-impl";
-import { DemoClient } from "./kintone/clients/demo-client";
 import { FieldTypeConverter } from "./converters/fileldtype-converter";
 import { TypeDefinitionTemplate } from "./templates/template";
 import { objectValues } from "./utils/objectvalues";
@@ -14,7 +13,7 @@ process.on("uncaughtException", (e) => {
 
 const args = parse(process.argv);
 
-const client = args.demo ? new DemoClient() : new FormsClientImpl(args);
+const client = new FormsClientImpl(args);
 
 const fetchFormPropertiesInput = {
   appId: args.appId,
