@@ -27,4 +27,4 @@ jobs:
 
       - name: Check licenses
         run: |
-          npx license-manager analyze
+          pnpm license:analyze
