@@ -1,8 +1,8 @@
 {
-  "examples/rest-api-client-demo": "5.0.9",
-  "packages/create-plugin": "8.0.0",
-  "packages/customize-uploader": "8.0.8",
-  "packages/dts-gen": "8.0.6",
+  "examples/rest-api-client-demo": "5.0.10",
+  "packages/create-plugin": "8.0.1",
+  "packages/customize-uploader": "8.0.9",
+  "packages/dts-gen": "8.0.7",
   "packages/plugin-manifest-validator": "10.1.0",
   "packages/plugin-packer": "8.0.4",
   "packages/plugin-uploader": "9.0.3",
