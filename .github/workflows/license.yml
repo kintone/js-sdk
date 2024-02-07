@@ -7,27 +7,22 @@ on:
   pull_request:
 
 jobs:
-  license-finder:
-    name: License Finder
-
+  analyze:
+    name: Analyze the licenses
     runs-on: ubuntu-latest
-
     steps:
-      - name: Set up License Finder
-        run: sudo gem install license_finder
-
       - name: Check out repository
         uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v2
-
-      - uses: actions/setup-node@v4
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: 18.x
           cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Check licenses
-        run: license_finder --decisions-file=license-finder-decisions.yml
+        run: |
+          pnpm license:analyze

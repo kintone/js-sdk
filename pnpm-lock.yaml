@@ -23,6 +23,9 @@ importers:
       '@cybozu/eslint-config':
         specifier: ^22.0.2
         version: 22.0.2(@types/eslint@8.56.2)(eslint@8.56.0)(prettier@3.2.5)(typescript@5.3.3)
+      '@cybozu/license-manager':
+        specifier: ^1.1.0
+        version: 1.1.0
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -1880,6 +1883,16 @@ packages:
       - eslint-import-resolver-webpack
       - prettier
       - supports-color
+
+  /@cybozu/license-manager@1.1.0:
+    resolution: {integrity: sha512-+K0qfP5hAXCvowy5ymj0SLWvyXRiHB9YwtJnnaurGGJgejiXxQQGvyn1rVlgxT6YRM5szOsRXW++uR/ZJ5BwTQ==}
+    engines: {node: '>=18.14.0', npm: '>=9.3.1', pnpm: '>=8.10.0'}
+    hasBin: true
+    dependencies:
+      commander: 9.5.0
+      glob: 8.1.0
+      picocolors: 1.0.0
+    dev: true
 
   /@discoveryjs/json-ext@0.5.7:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
@@ -4427,6 +4440,11 @@ packages:
   /commander@7.2.0:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
     engines: {node: '>= 10'}
+    dev: true
+
+  /commander@9.5.0:
+    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
+    engines: {node: ^12.20.0 || >=14}
     dev: true
 
   /comment-json@4.2.3:
