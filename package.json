@@ -52,7 +52,8 @@
   "packageManager": "pnpm@8.14.3",
   "pnpm": {
     "overrides": {
-      "follow-redirects@<1.15.4": ">=1.15.4"
+      "follow-redirects@<1.15.4": ">=1.15.4",
+      "browserify-sign@<4.2.2": ">=4.2.2"
     }
   }
 }
