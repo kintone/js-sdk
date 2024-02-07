@@ -1,4 +1,14 @@
+blank_issues_enabled: false
 contact_links:
   - name: 🇯🇵 日本語はこちら
     url: https://github.com/kintone/js-sdk-ja
     about: 日本語でのバグ報告・機能提案はこちら
+  - name: 💬 Questions and Help (ja)
+    url: https://community.cybozu.dev/c/kintone/5
+    about: Ask questions and discuss with other users in Cybozu Developer Community
+  - name: 🌏 Questions and Help (en)
+    url: https://forum.kintone.dev/
+    about: Ask questions and discuss with other users in Kintone Developer Forum
+  - name: 📤 API Support
+    url: https://jp.cybozu.help/k/ja/trouble_shooting/developer/developer_qa.html
+    about: Contact with our API support. Suitable for API inquiries or inquiries including closed information.
