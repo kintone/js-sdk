@@ -38,4 +38,4 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !cancelled() }}
     steps:
-      - uses: Kesin11/actions-timeline@v2
+      - uses: Kesin11/actions-timeline@40b912d44677e158feec8015d092b5428f9c8247 # v2
