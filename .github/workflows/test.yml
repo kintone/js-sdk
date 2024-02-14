@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  test:
     name: Node.js ${{ matrix.os }} ${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
 
@@ -32,3 +32,9 @@ jobs:
       - run: pnpm install --fetch-timeout 900000 --frozen-lockfile
       - run: pnpm build
       - run: pnpm test:ci
+
+  actions-timeline:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Kesin11/actions-timeline@v2
