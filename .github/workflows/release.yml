@@ -43,3 +43,10 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: pnpm build
       - run: pnpm -r publish
+
+  actions-timeline:
+    needs: [publish]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Kesin11/actions-timeline@v2

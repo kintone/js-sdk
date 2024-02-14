@@ -6,10 +6,12 @@ on:
       - master
       - yamory-*
 jobs:
-  build:
+  check:
     name: Node.js ubuntu-latest 18.x
     runs-on: ubuntu-latest
     steps:
+      - uses: Kesin11/actions-timeline@v2
+
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v2
