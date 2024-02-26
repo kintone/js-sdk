@@ -1,6 +1,17 @@
 import type { App } from "../app";
 
-type AttachedApp = Omit<App, "spaceId">;
+type AttachedApp = Pick<
+  App,
+  | "appId"
+  | "code"
+  | "name"
+  | "description"
+  | "threadId"
+  | "createdAt"
+  | "creator"
+  | "modifiedAt"
+  | "modifier"
+>;
 
 export type Space = {
   id: string;
@@ -10,7 +21,7 @@ export type Space = {
   creator: { code: string; name: string };
   modifier: { code: string; name: string };
   memberCount: string;
-  coverType: string;
+  coverType: "BLOB" | "PRESET";
   coverKey: string;
   coverUrl: string;
   body: string;
