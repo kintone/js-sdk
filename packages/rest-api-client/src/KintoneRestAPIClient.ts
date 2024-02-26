@@ -2,6 +2,7 @@ import type { EndpointName } from "./client/BulkRequestClient";
 import { BulkRequestClient } from "./client/BulkRequestClient";
 import { AppClient } from "./client/AppClient";
 import { RecordClient } from "./client/RecordClient";
+import { SpaceClient } from "./client/SpaceClient";
 import { FileClient } from "./client/FileClient";
 import { DefaultHttpClient } from "./http/";
 import type { ProxyConfig } from "./http/HttpClientInterface";
@@ -63,6 +64,7 @@ const buildDiscriminatedAuth = (auth: Auth): DiscriminatedAuth => {
 export class KintoneRestAPIClient {
   record: RecordClient;
   app: AppClient;
+  space: SpaceClient;
   file: FileClient;
   private bulkRequest_: BulkRequestClient;
   private baseUrl?: string;
@@ -93,6 +95,7 @@ export class KintoneRestAPIClient {
     this.bulkRequest_ = new BulkRequestClient(httpClient, guestSpaceId);
     this.record = new RecordClient(httpClient, this.bulkRequest_, guestSpaceId);
     this.app = new AppClient(httpClient, guestSpaceId);
+    this.space = new SpaceClient(httpClient, guestSpaceId);
     this.file = new FileClient(httpClient, guestSpaceId);
   }
 

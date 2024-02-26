@@ -172,6 +172,7 @@ See [TypeScript Definitions](https://github.com/kintone/js-sdk/tree/master/packa
 
 - [Record](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/record.md)
 - [App](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/app.md)
+- [Space](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/space.md)
 - [File](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/file.md)
 - [BulkRequest](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/bulkRequest.md)
 

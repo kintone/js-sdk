@@ -4,9 +4,8 @@ import type {
   Response,
   ResponseHandler,
 } from "./http/HttpClientInterface";
-import { KintoneAbortSearchError } from "./error/KintoneAbortSearchError";
-import type { KintoneErrorResponse } from "./error/KintoneRestAPIError";
-import { KintoneRestAPIError } from "./error/KintoneRestAPIError";
+import { KintoneAbortSearchError, KintoneRestAPIError } from "./error";
+import type { KintoneErrorResponse } from "./error";
 
 export class KintoneResponseHandler implements ResponseHandler {
   private enableAbortSearchError: boolean;

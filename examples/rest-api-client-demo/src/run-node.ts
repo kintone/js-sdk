@@ -3,6 +3,7 @@ import { loadProfile } from "@kintone/profile-loader";
 import yargs from "yargs";
 import { Record } from "./record";
 import { App } from "./app";
+import { Space } from "./space";
 import { File } from "./file";
 import { BulkRequest } from "./bulkRequest";
 
@@ -58,6 +59,15 @@ yargs
     (argv: any) => {
       // @ts-ignore
       new Record(buildClient(argv))[argv.method]();
+    },
+  )
+  .command(
+    "space [method]",
+    "run script for SpaceClient",
+    prepareMethod,
+    (argv: any) => {
+      // @ts-ignore
+      new Space(buildClient(argv))[argv.method]();
     },
   )
   .command(
