@@ -17,7 +17,7 @@ const client = new KintoneRestAPIClient();
 ```
 
 - All methods are defined on the `space` property.
-- All method returns a Promise object that is resolved with an object having properties in each `Returns` section.
+- All methods return a Promise object that is resolved with an object having properties in each `Returns` section.
 - If the Space or Guest Space feature is turned off, an error will be returned.
 
 ## Methods
