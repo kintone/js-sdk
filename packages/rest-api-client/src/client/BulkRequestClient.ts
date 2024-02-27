@@ -1,5 +1,5 @@
 import type { HttpClient } from "../http";
-import { buildPath } from "../url";
+import { AbstractClient } from "./AbstractClient";
 
 export type EndpointName =
   | "record"
@@ -8,14 +8,11 @@ export type EndpointName =
   | "records/status"
   | "record/assignees";
 
-export class BulkRequestClient {
-  private client: HttpClient;
-  private guestSpaceId?: number | string;
+export class BulkRequestClient extends AbstractClient {
   public readonly REQUESTS_LENGTH_LIMIT: number;
 
   constructor(client: HttpClient, guestSpaceId?: number | string) {
-    this.client = client;
-    this.guestSpaceId = guestSpaceId;
+    super(client, guestSpaceId);
     this.REQUESTS_LENGTH_LIMIT = 20;
   }
 
@@ -50,12 +47,5 @@ export class BulkRequestClient {
       endpointName: "bulkRequest",
     });
     return this.client.post(path, { requests });
-  }
-
-  private buildPathWithGuestSpaceId(params: { endpointName: string }) {
-    return buildPath({
-      ...params,
-      guestSpaceId: this.guestSpaceId,
-    });
   }
 }

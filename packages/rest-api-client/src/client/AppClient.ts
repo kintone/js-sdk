@@ -1,5 +1,4 @@
 import type { HttpClient } from "../http";
-import { buildPath } from "../url";
 import type {
   AppID,
   RecordID,
@@ -36,6 +35,7 @@ import type {
   AppActionsForParameter,
   AppActionsForResponse,
 } from "./types";
+import { AbstractClient } from "./AbstractClient";
 type RowLayoutForParameter = {
   type: "ROW";
   fields: Array<{ [key: string]: unknown }>;
@@ -66,13 +66,10 @@ type SpaceResponseParameters = {
   defaultThread: string;
 };
 
-export class AppClient {
-  private client: HttpClient;
-  private guestSpaceId?: number | string;
-
+export class AppClient extends AbstractClient {
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(client: HttpClient, guestSpaceId?: number | string) {
-    this.client = client;
-    this.guestSpaceId = guestSpaceId;
+    super(client, guestSpaceId);
   }
 
   public getFormFields<T extends Properties>(params: {
@@ -624,15 +621,5 @@ export class AppClient {
       preview: true,
     });
     return this.client.put(path, params);
-  }
-
-  private buildPathWithGuestSpaceId(params: {
-    endpointName: string;
-    preview?: boolean;
-  }) {
-    return buildPath({
-      ...params,
-      guestSpaceId: this.guestSpaceId,
-    });
   }
 }

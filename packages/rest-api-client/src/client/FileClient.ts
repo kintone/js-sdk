@@ -1,16 +1,13 @@
 import type { HttpClient } from "../http";
-import { buildPath } from "../url";
 import FormData from "form-data";
 import { platformDeps } from "../platform";
 import { UnsupportedPlatformError } from "../platform/UnsupportedPlatformError";
+import { AbstractClient } from "./AbstractClient";
 
-export class FileClient {
-  private client: HttpClient;
-  private guestSpaceId?: number | string;
-
+export class FileClient extends AbstractClient {
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(client: HttpClient, guestSpaceId?: number | string) {
-    this.client = client;
-    this.guestSpaceId = guestSpaceId;
+    super(client, guestSpaceId);
   }
 
   public async uploadFile(params: {
@@ -49,12 +46,5 @@ export class FileClient {
       endpointName: "file",
     });
     return this.client.getData(path, params);
-  }
-
-  private buildPathWithGuestSpaceId(params: { endpointName: string }) {
-    return buildPath({
-      ...params,
-      guestSpaceId: this.guestSpaceId,
-    });
   }
 }

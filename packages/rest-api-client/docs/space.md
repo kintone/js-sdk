@@ -1,6 +1,7 @@
 # Space
 
 - [getSpace](#getSpace)
+- [deleteSpace](#deleteSpace)
 
 ## Overview
 
@@ -74,6 +75,21 @@ Gets general information of a space.
 | showMemberList               | Boolean | Display status of "People" for portals of spaces with "Enable multiple threads. Note: This setting cannot be reverted." enabled<br /><strong>true</strong>: display<br /><strong>false</strong>: not displayed<br />For spaces/guest spaces that use only one thread, "null" is returned.                |
 | showRelatedLinkList          | Boolean | Display status of "Related Apps & Spaces" for portals of spaces with "Enable multiple threads. Note: This setting cannot be reverted." enabled<br /><strong>true</strong>: display<br /><strong>false</strong>: not displayed<br />For spaces/guest spaces that use only one thread, "null" is returned. |
 
+### deleteSpace
+
+Deletes a space.
+
+#### Parameters
+
+| Name |       Type       | Required | Description   |
+| ---- | :--------------: | :------: | ------------- |
+| id   | Number or String |   Yes    | The space ID. |
+
+#### Returns
+
+An empty object.
+
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/get-space/
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/delete-space/
