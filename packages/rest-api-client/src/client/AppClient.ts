@@ -35,7 +35,7 @@ import type {
   AppActionsForParameter,
   AppActionsForResponse,
 } from "./types";
-import { AbstractClient } from "./AbstractClient";
+import { BaseClient } from "./BaseClient";
 type RowLayoutForParameter = {
   type: "ROW";
   fields: Array<{ [key: string]: unknown }>;
@@ -66,12 +66,7 @@ type SpaceResponseParameters = {
   defaultThread: string;
 };
 
-export class AppClient extends AbstractClient {
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
-  constructor(client: HttpClient, guestSpaceId?: number | string) {
-    super(client, guestSpaceId);
-  }
-
+export class AppClient extends BaseClient {
   public getFormFields<T extends Properties>(params: {
     app: AppID;
     lang?: Lang;

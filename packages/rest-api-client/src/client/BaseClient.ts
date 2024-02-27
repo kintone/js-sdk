@@ -1,11 +1,11 @@
 import type { HttpClient } from "../http";
 import { buildPath } from "../url";
 
-export abstract class AbstractClient {
+export abstract class BaseClient {
   protected client: HttpClient;
   protected guestSpaceId?: number | string;
 
-  protected constructor(client: HttpClient, guestSpaceId?: number | string) {
+  constructor(client: HttpClient, guestSpaceId?: number | string) {
     this.client = client;
     this.guestSpaceId = guestSpaceId;
   }

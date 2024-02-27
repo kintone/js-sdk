@@ -2,14 +2,9 @@ import type { HttpClient } from "../http";
 import FormData from "form-data";
 import { platformDeps } from "../platform";
 import { UnsupportedPlatformError } from "../platform/UnsupportedPlatformError";
-import { AbstractClient } from "./AbstractClient";
+import { BaseClient } from "./BaseClient";
 
-export class FileClient extends AbstractClient {
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
-  constructor(client: HttpClient, guestSpaceId?: number | string) {
-    super(client, guestSpaceId);
-  }
-
+export class FileClient extends BaseClient {
   public async uploadFile(params: {
     file: { name: string; data: unknown } | { path: string };
   }): Promise<{ fileKey: string }> {

@@ -1,5 +1,5 @@
 import type { HttpClient } from "../http";
-import { AbstractClient } from "./AbstractClient";
+import { BaseClient } from "./BaseClient";
 
 export type EndpointName =
   | "record"
@@ -8,7 +8,7 @@ export type EndpointName =
   | "records/status"
   | "record/assignees";
 
-export class BulkRequestClient extends AbstractClient {
+export class BulkRequestClient extends BaseClient {
   public readonly REQUESTS_LENGTH_LIMIT: number;
 
   constructor(client: HttpClient, guestSpaceId?: number | string) {

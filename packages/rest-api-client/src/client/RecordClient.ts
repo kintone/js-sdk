@@ -11,7 +11,7 @@ import type {
   Comment,
   Mention,
 } from "./types";
-import { AbstractClient } from "./AbstractClient";
+import { BaseClient } from "./BaseClient";
 
 const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
@@ -24,7 +24,7 @@ type RecordForParameter = {
   };
 };
 
-export class RecordClient extends AbstractClient {
+export class RecordClient extends BaseClient {
   private bulkRequestClient: BulkRequestClient;
   private didWarnMaximumOffsetValue: boolean;
 
