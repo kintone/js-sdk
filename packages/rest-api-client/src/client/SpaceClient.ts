@@ -16,4 +16,12 @@ export class SpaceClient extends BaseClient {
     });
     return this.client.delete(path, params);
   }
+
+  public updateSpaceBody(params: { id: SpaceID; body: string }): Promise<{}> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "space/body",
+    });
+    console.log(path);
+    return this.client.put(path, params);
+  }
 }
