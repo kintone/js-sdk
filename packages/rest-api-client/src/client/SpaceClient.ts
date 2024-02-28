@@ -21,7 +21,6 @@ export class SpaceClient extends BaseClient {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "space/body",
     });
-    console.log(path);
     return this.client.put(path, params);
   }
 }
