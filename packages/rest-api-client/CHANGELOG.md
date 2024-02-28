@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.0.8...@kintone/rest-api-client@5.1.0) (2024-02-28)
+
+
+### Features
+
+* **rest-api-client:** add `space.getSpace()` method ([#2582](https://github.com/kintone/js-sdk/issues/2582)) ([e417752](https://github.com/kintone/js-sdk/commit/e4177526a2910f94faaccba1d1fa9d53096d909a))
+
+
+### Bug Fixes
+
+* **deps:** update dependency js-base64 to ^3.7.7 ([#2580](https://github.com/kintone/js-sdk/issues/2580)) ([75b88ed](https://github.com/kintone/js-sdk/commit/75b88ed0b993d352ca9586ff6890148b65f6cc06))
+
 ## [5.0.8](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.0.7...@kintone/rest-api-client@5.0.8) (2024-01-30)
 
 
