@@ -1,4 +1,3 @@
-import type { HttpClient } from "../http";
 import type {
   AppID,
   RecordID,

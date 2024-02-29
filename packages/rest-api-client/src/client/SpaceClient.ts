@@ -1,4 +1,3 @@
-import type { HttpClient } from "../http";
 import type { SpaceID, Space } from "./types";
 import { BaseClient } from "./BaseClient";
 

@@ -1,6 +1,6 @@
-import type { HttpClient } from "./../http/";
+import type { HttpClient } from "../http";
 import type { BulkRequestClient } from "./BulkRequestClient";
-import { KintoneAllRecordsError } from "../error/KintoneAllRecordsError";
+import { KintoneAllRecordsError } from "../error";
 import type {
   AppID,
   RecordID,

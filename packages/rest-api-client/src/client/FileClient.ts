@@ -1,4 +1,3 @@
-import type { HttpClient } from "../http";
 import FormData from "form-data";
 import { platformDeps } from "../platform";
 import { UnsupportedPlatformError } from "../platform/UnsupportedPlatformError";
