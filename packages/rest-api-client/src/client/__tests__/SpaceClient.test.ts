@@ -28,7 +28,7 @@ describe("SpaceClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/space.json");
     });
-    it("should send a get request", () => {
+    it("should send a GET request", () => {
       expect(mockClient.getLogs()[0].method).toBe("get");
     });
     it("should pass id as a param to the http client", () => {
@@ -46,7 +46,7 @@ describe("SpaceClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/space.json");
     });
-    it("should send a delete request", () => {
+    it("should send a DELETE request", () => {
       expect(mockClient.getLogs()[0].method).toBe("delete");
     });
     it("should pass id as a param to the http client", () => {
@@ -65,7 +65,7 @@ describe("SpaceClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/space/body.json");
     });
-    it("should send a delete request", () => {
+    it("should send a PUT request", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
     it("should pass id, body to the http client", () => {
