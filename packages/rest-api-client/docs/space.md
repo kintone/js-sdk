@@ -75,6 +75,10 @@ Gets general information of a space.
 | showMemberList               | Boolean | Display status of "People" for portals of spaces with "Enable multiple threads. Note: This setting cannot be reverted." enabled<br /><strong>true</strong>: display<br /><strong>false</strong>: not displayed<br />For spaces/guest spaces that use only one thread, "null" is returned.                |
 | showRelatedLinkList          | Boolean | Display status of "Related Apps & Spaces" for portals of spaces with "Enable multiple threads. Note: This setting cannot be reverted." enabled<br /><strong>true</strong>: display<br /><strong>false</strong>: not displayed<br />For spaces/guest spaces that use only one thread, "null" is returned. |
 
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/get-space/
+
 ### deleteSpace
 
 Deletes a space.
@@ -88,6 +92,10 @@ Deletes a space.
 #### Returns
 
 An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/delete-space/
 
 ### updateSpaceBody
 
@@ -106,6 +114,30 @@ An empty object.
 
 #### Reference
 
-- https://kintone.dev/en/docs/kintone/rest-api/spaces/get-space/
-- https://kintone.dev/en/docs/kintone/rest-api/spaces/delete-space/
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-space-body/
+
+### getSpaceMembers
+
+Gets the list of Space Members of a Space.
+
+#### Parameters
+
+| Name |       Type       | Required | Description   |
+| ---- | :--------------: | :------: | ------------- |
+| id   | Number or String |   Yes    | The space ID. |
+
+#### Returns
+
+| Name                  |  Type   | Description                                                                                                                                                                                                                                                                                                                                        |
+| --------------------- | :-----: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| members               |  Array  | A list of Space members.<br />Guest users, inactive users and deleted users will not be included.                                                                                                                                                                                                                                                  |
+| members[].entity      | Object  | The entity information of the Space member.                                                                                                                                                                                                                                                                                                        |
+| members[].entity.type | String  | The entity type of the Space member.<br /><br /><strong>USER</strong>: User<br /><strong>GROUP</strong>: Group<br /><strong>ORGANIZATION</strong>: Department                                                                                                                                                                                      |
+| members[].entity.code | String  | The code of the Space member.                                                                                                                                                                                                                                                                                                                      |
+| members[].isAdmin     | Boolean | The Space Admin settings of the Space member.<br /><br /><strong>true</strong>: The Space Member is the Space Administrator.<br /><strong>false</strong>: The Space Member is not the Space Administrator.                                                                                                                                         |
+| members[].isImplicit  | Boolean | If the Space Member is added as a User or not.<br /><br /><strong>true</strong>: The Space Member is not added as a user, and is added as part of a Group or Department.<br /><strong>false</strong>: The Space Member is added as a User.<br /><br />This is not responded for <strong>GROUP</strong> and <strong>ORGANIZATION</strong> entities. |
+| members[].includeSubs | Boolean | The "Include Affiliated Departments" setting of the Department Space Member.<br /><br /><strong>true</strong>: Affiliated Departments are included.<br /><strong>false</strong>: Affiliated Departments are not included.                                                                                                                          |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/get-space-members/

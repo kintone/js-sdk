@@ -30,3 +30,17 @@ export type Space = {
   attachedApps: AttachedApp[];
   fixedMember: boolean;
 };
+
+export type SpaceMembers = {
+  members: SpaceMember[];
+};
+
+export type SpaceMember = {
+  entity: {
+    type: "USER" | "GROUP" | "ORGANIZATION";
+    code: string;
+  };
+  isAdmin: boolean;
+  isImplicit: boolean;
+  includeSubs: boolean;
+};
