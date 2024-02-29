@@ -1,18 +1,9 @@
-import type { HttpClient } from "../http";
-import { buildPath } from "../url";
 import FormData from "form-data";
 import { platformDeps } from "../platform";
 import { UnsupportedPlatformError } from "../platform/UnsupportedPlatformError";
+import { BaseClient } from "./BaseClient";
 
-export class FileClient {
-  private client: HttpClient;
-  private guestSpaceId?: number | string;
-
-  constructor(client: HttpClient, guestSpaceId?: number | string) {
-    this.client = client;
-    this.guestSpaceId = guestSpaceId;
-  }
-
+export class FileClient extends BaseClient {
   public async uploadFile(params: {
     file: { name: string; data: unknown } | { path: string };
   }): Promise<{ fileKey: string }> {
@@ -49,12 +40,5 @@ export class FileClient {
       endpointName: "file",
     });
     return this.client.getData(path, params);
-  }
-
-  private buildPathWithGuestSpaceId(params: { endpointName: string }) {
-    return buildPath({
-      ...params,
-      guestSpaceId: this.guestSpaceId,
-    });
   }
 }

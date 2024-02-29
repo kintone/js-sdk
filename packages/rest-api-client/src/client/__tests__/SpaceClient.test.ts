@@ -35,6 +35,24 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("deleteSpace", () => {
+    const params = {
+      id: SPACE_ID,
+    };
+    beforeEach(async () => {
+      await spaceClient.deleteSpace(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/space.json");
+    });
+    it("should send a delete request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("delete");
+    });
+    it("should pass id as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
 
 describe("SpaceClient with guestSpaceId", () => {

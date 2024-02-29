@@ -1,7 +1,6 @@
-import { buildPath } from "./../url";
-import type { HttpClient } from "./../http/";
+import type { HttpClient } from "../http";
 import type { BulkRequestClient } from "./BulkRequestClient";
-import { KintoneAllRecordsError } from "../error/KintoneAllRecordsError";
+import { KintoneAllRecordsError } from "../error";
 import type {
   AppID,
   RecordID,
@@ -12,6 +11,7 @@ import type {
   Comment,
   Mention,
 } from "./types";
+import { BaseClient } from "./BaseClient";
 
 const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;
@@ -24,10 +24,8 @@ type RecordForParameter = {
   };
 };
 
-export class RecordClient {
-  private client: HttpClient;
+export class RecordClient extends BaseClient {
   private bulkRequestClient: BulkRequestClient;
-  private guestSpaceId?: number | string;
   private didWarnMaximumOffsetValue: boolean;
 
   constructor(
@@ -35,9 +33,8 @@ export class RecordClient {
     bulkRequestClient: BulkRequestClient,
     guestSpaceId?: number | string,
   ) {
-    this.client = client;
+    super(client, guestSpaceId);
     this.bulkRequestClient = bulkRequestClient;
-    this.guestSpaceId = guestSpaceId;
     this.didWarnMaximumOffsetValue = false;
   }
 
@@ -679,12 +676,5 @@ export class RecordClient {
       endpointName: "records/status",
     });
     return this.client.put(path, params);
-  }
-
-  private buildPathWithGuestSpaceId(params: { endpointName: string }) {
-    return buildPath({
-      ...params,
-      guestSpaceId: this.guestSpaceId,
-    });
   }
 }

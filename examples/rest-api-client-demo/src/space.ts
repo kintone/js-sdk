@@ -14,4 +14,12 @@ export class Space {
       console.log(error);
     }
   }
+
+  public async deleteSpace() {
+    try {
+      console.log(await this.client.space.deleteSpace({ id: SPACE_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

@@ -1,6 +1,7 @@
 # Space
 
 - [getSpace](#getSpace)
+- [deleteSpace](#deleteSpace)
 
 ## Overview
 
@@ -77,3 +78,21 @@ Gets general information of a space.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/get-space/
+
+### deleteSpace
+
+Deletes a space.
+
+#### Parameters
+
+| Name |       Type       | Required | Description   |
+| ---- | :--------------: | :------: | ------------- |
+| id   | Number or String |   Yes    | The space ID. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/delete-space/
