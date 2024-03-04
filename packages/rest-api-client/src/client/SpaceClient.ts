@@ -16,20 +16,6 @@ export class SpaceClient extends BaseClient {
     return this.client.delete(path, params);
   }
 
-  public updateSpaceBody(params: { id: SpaceID; body: string }): Promise<{}> {
-    const path = this.buildPathWithGuestSpaceId({
-      endpointName: "space/body",
-    });
-    return this.client.put(path, params);
-  }
-
-  public getSpaceMembers(params: { id: SpaceID }): Promise<SpaceMembers> {
-    const path = this.buildPathWithGuestSpaceId({
-      endpointName: "space/members",
-    });
-    return this.client.get(path, params);
-  }
-
   public updateSpaceMembers(params: {
     id: SpaceID;
     members: SpaceMember[];
