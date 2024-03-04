@@ -40,7 +40,7 @@ export type SpaceMember = {
     type: "USER" | "GROUP" | "ORGANIZATION";
     code: string;
   };
-  isAdmin: boolean;
-  isImplicit: boolean;
-  includeSubs: boolean;
+  isAdmin?: boolean;
+  isImplicit?: boolean;
+  includeSubs?: boolean;
 };

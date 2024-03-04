@@ -118,7 +118,7 @@ An empty object.
 
 ### getSpaceMembers
 
-Gets the list of Space Members of a Space.
+Gets the list of space members of a Space.
 
 #### Parameters
 
@@ -141,3 +141,27 @@ Gets the list of Space Members of a Space.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/get-space-members/
+
+### updateSpaceMembers
+
+Updates the members of a Space.
+
+#### Parameters
+
+| Name                  |       Type       |  Required   | Description                                                                                                                                                                                                                                                                                                                                          |
+| --------------------- | :--------------: | :---------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                    | Number or String |     Yes     | The space ID.                                                                                                                                                                                                                                                                                                                                        |
+| members               |      Array       |     Yes     | A list of members of the Space. <br />At least one Space Administrator must be specified.<br /> Inactive and deleted users cannot be specified.                                                                                                                                                                                                      |
+| members[].entity      |      Object      |     Yes     | The entity information of the Space member. <br />Guest users cannot be specified.                                                                                                                                                                                                                                                                   |
+| members[].entity.type |      String      |     Yes     | The entity type of the Space member.<br /><ul><li><strong>USER</strong>: User</li><strong>Group</strong>: Group</li><strong>ORGANIZATION</strong>: Department</li><ul>                                                                                                                                                                               |
+| members[].entity.code |      String      |     Yes     | The code of the entity.                                                                                                                                                                                                                                                                                                                              |
+| members[].isAdmin     |     Boolean      | Conditional | The Space Administration settings of the user.<br /><ul><strong>true</strong>: The member will be the Administrator of the Space.<br /><li><strong>false</strong>: The member will not be the Administrator of the Space.<br />At least 1 Space Administrator is required to be set in the API call.</li></ul><br />If ignored, this value is false. |
+| members[].includeSubs |     Boolean      |  Optional   | The "Include Affiliated Departments" settings of the department.<br /><ul><strong>true</strong>: Affiliated departments will be included.<br /><li><strong>false</strong>: Affiliated departments will not be included.</li></ul><br />If ignored, this value is false.                                                                              |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/update-space-members/

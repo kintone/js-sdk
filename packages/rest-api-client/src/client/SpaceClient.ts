@@ -1,4 +1,4 @@
-import type { SpaceID, Space, SpaceMembers } from "./types";
+import type { SpaceID, Space, SpaceMembers, SpaceMember } from "./types";
 import { BaseClient } from "./BaseClient";
 
 export class SpaceClient extends BaseClient {
@@ -28,5 +28,15 @@ export class SpaceClient extends BaseClient {
       endpointName: "space/members",
     });
     return this.client.get(path, params);
+  }
+
+  public updateSpaceMembers(params: {
+    id: SpaceID;
+    members: SpaceMember[];
+  }): Promise<{}> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "space/members",
+    });
+    return this.client.put(path, params);
   }
 }
