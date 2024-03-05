@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.1.0...@kintone/rest-api-client@5.2.0) (2024-03-05)
+
+
+### Features
+
+* **rest-api-client:** add `space.deleteSpace()` method ([#2590](https://github.com/kintone/js-sdk/issues/2590)) ([3e8f3b9](https://github.com/kintone/js-sdk/commit/3e8f3b96ac48e63b9ddd6ba29b420ab99fcb2d5d))
+* **rest-api-client:** add `space.updateSpaceBody()` method ([#2598](https://github.com/kintone/js-sdk/issues/2598)) ([26151fb](https://github.com/kintone/js-sdk/commit/26151fbbb1177a5df490bf97fe88cf1d61d9dad4))
+
 ## [5.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.0.8...@kintone/rest-api-client@5.1.0) (2024-02-28)
 
 
