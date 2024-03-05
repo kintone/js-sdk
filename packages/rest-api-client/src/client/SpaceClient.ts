@@ -1,4 +1,4 @@
-import type { SpaceID, Space } from "./types";
+import type { SpaceID, Space, SpaceMemberForRequest } from "./types";
 import { BaseClient } from "./BaseClient";
 
 export class SpaceClient extends BaseClient {
