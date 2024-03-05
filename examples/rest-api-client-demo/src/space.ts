@@ -1,6 +1,6 @@
 import type { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
-const SPACE_ID = "8";
+const SPACE_ID = 8;
 
 export class Space {
   private client: KintoneRestAPIClient;
