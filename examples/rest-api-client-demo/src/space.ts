@@ -24,13 +24,24 @@ export class Space {
     }
   }
 
+  public async updateSpaceBody() {
+    const body = "<b>This is a updated space body</b>";
+    try {
+      console.log(
+        await this.client.space.updateSpaceBody({ id: SPACE_ID, body }),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async updateSpaceMembers() {
-    const spaceMembers: { id: string; members: SpaceMember[] } = {
+    const spaceMembers = {
       id: SPACE_ID,
       members: [
         {
           entity: {
-            type: "USER",
+            type: "USER" as const,
             code: "user1",
           },
           isAdmin: true,
@@ -38,7 +49,7 @@ export class Space {
         },
         {
           entity: {
-            type: "USER",
+            type: "USER" as const,
             code: "user2",
           },
           isAdmin: false,
@@ -46,7 +57,7 @@ export class Space {
         },
         {
           entity: {
-            type: "GROUP",
+            type: "GROUP" as const,
             code: "group1",
           },
           isAdmin: false,

@@ -2,7 +2,6 @@ import type { MockClient } from "../../http/MockClient";
 import { buildMockClient } from "../../http/MockClient";
 import { SpaceClient } from "../SpaceClient";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
-import type { SpaceMember } from "../types";
 
 const SPACE_ID = 1;
 
@@ -29,7 +28,7 @@ describe("SpaceClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/space.json");
     });
-    it("should send a get request", () => {
+    it("should send a GET request", () => {
       expect(mockClient.getLogs()[0].method).toBe("get");
     });
     it("should pass id as a param to the http client", () => {
@@ -47,7 +46,7 @@ describe("SpaceClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/space.json");
     });
-    it("should send a delete request", () => {
+    it("should send a DELETE request", () => {
       expect(mockClient.getLogs()[0].method).toBe("delete");
     });
     it("should pass id as a param to the http client", () => {
@@ -55,35 +54,53 @@ describe("SpaceClient", () => {
     });
   });
 
+  describe("updateSpaceBody", () => {
+    const params = {
+      id: SPACE_ID,
+      body: "<b>This is a space body</b>",
+    };
+    beforeEach(async () => {
+      await spaceClient.updateSpaceBody(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/space/body.json");
+    });
+    it("should send a PUT request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass id, body to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
   describe("updateSpaceMembers", () => {
-    const params: { id: number; members: SpaceMember[] } = {
+    const params = {
       id: SPACE_ID,
       members: [
         {
           entity: {
             code: "user1",
-            type: "USER",
+            type: "USER" as const,
           },
           isAdmin: true,
         },
         {
           entity: {
             code: "user2",
-            type: "USER",
+            type: "USER" as const,
           },
           isAdmin: false,
         },
         {
           entity: {
             code: "group1",
-            type: "GROUP",
+            type: "GROUP" as const,
           },
           isAdmin: false,
           includeSubs: true,
         },
       ],
     };
-
     beforeEach(async () => {
       await spaceClient.updateSpaceMembers(params);
     });
