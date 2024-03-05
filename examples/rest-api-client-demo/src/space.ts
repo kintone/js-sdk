@@ -33,13 +33,12 @@ export class Space {
       console.log(error);
     }
   }
-  
+
   public async getSpaceMembers() {
     try {
       console.log(await this.client.space.getSpaceMembers({ id: SPACE_ID }));
     } catch (error) {
-    console.log(error);
+      console.log(error);
     }
   }
-    
 }
