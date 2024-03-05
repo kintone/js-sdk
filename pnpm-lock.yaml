@@ -273,8 +273,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       yauzl:
-        specifier: ^2.10.0
-        version: 2.10.0
+        specifier: ^3.1.2
+        version: 3.1.2
       yazl:
         specifier: ^2.5.1
         version: 2.5.1
@@ -11402,6 +11402,14 @@ packages:
     dependencies:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
+    dev: false
+
+  /yauzl@3.1.2:
+    resolution: {integrity: sha512-621iCPgEG1wXViDZS/L3h9F8TgrdQV1eayJlJ8j5A2SZg8OdY/1DLf+VxNeD+q5QbMFEAbjjR8nITj7g4nKa0Q==}
+    engines: {node: '>=12'}
+    dependencies:
+      buffer-crc32: 0.2.13
+      pend: 1.2.0
     dev: false
 
   /yazl@2.5.1:
