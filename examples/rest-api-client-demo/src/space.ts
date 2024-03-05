@@ -1,5 +1,4 @@
 import type { KintoneRestAPIClient } from "@kintone/rest-api-client";
-import type { SpaceMember } from "@kintone/rest-api-client/src/client/types";
 
 const SPACE_ID = "8";
 
