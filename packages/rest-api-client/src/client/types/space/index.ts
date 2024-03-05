@@ -1,4 +1,5 @@
 import type { App } from "../app";
+import type { Entity } from "../entity";
 
 type AttachedApp = Pick<
   App,
@@ -31,15 +32,8 @@ export type Space = {
   fixedMember: boolean;
 };
 
-export type SpaceMembers = {
-  members: SpaceMember[];
-};
-
-export type SpaceMember = {
-  entity: {
-    type: "USER" | "GROUP" | "ORGANIZATION";
-    code: string;
-  };
+export type SpaceMemberForResponse = {
+  entity: Entity;
   isAdmin: boolean;
   isImplicit: boolean;
   includeSubs: boolean;
