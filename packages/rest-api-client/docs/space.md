@@ -2,6 +2,7 @@
 
 - [getSpace](#getSpace)
 - [deleteSpace](#deleteSpace)
+- [updateSpaceBody](#updateSpaceBody)
 
 ## Overview
 
