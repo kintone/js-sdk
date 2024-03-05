@@ -22,7 +22,7 @@ export class SpaceClient extends BaseClient {
     });
     return this.client.put(path, params);
   }
-  
+
   public getSpaceMembers(params: {
     id: SpaceID;
   }): Promise<{ members: SpaceMemberForResponse[] }> {

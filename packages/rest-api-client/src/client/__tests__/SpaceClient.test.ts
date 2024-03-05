@@ -72,7 +72,7 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
-  
+
   describe("getSpaceMembers", () => {
     const params = {
       id: SPACE_ID,
@@ -90,7 +90,6 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
-  
 });
 
 describe("SpaceClient with guestSpaceId", () => {
