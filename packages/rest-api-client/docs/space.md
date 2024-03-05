@@ -2,6 +2,7 @@
 
 - [getSpace](#getSpace)
 - [deleteSpace](#deleteSpace)
+- [updateSpaceBody](#updateSpaceBody)
 
 ## Overview
 
@@ -96,6 +97,25 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/delete-space/
+
+### updateSpaceBody
+
+Updates the body of a Space.
+
+#### Parameters
+
+| Name |       Type       | Required | Description                                                                                                                                                                                                                                    |
+| ---- | :--------------: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id   | Number or String |   Yes    | The space ID.                                                                                                                                                                                                                                  |
+| body |      String      |   Yes    | The contents of the body as an HTML string.<br />HTML tags that cannot be used will be automatically removed.<br />HTML can be used to attach Apps, files and Emoji.<br />The usage of the @ mark to mention a user will not notify that user. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/update-space-body/
 
 ### getSpaceMembers
 

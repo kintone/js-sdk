@@ -23,11 +23,23 @@ export class Space {
     }
   }
 
-  public async getSpaceMembers() {
+  public async updateSpaceBody() {
+    const body = "<b>This is a updated space body</b>";
     try {
-      console.log(await this.client.space.getSpaceMembers({ id: SPACE_ID }));
+      console.log(
+        await this.client.space.updateSpaceBody({ id: SPACE_ID, body }),
+      );
     } catch (error) {
       console.log(error);
     }
   }
+  
+  public async getSpaceMembers() {
+    try {
+      console.log(await this.client.space.getSpaceMembers({ id: SPACE_ID }));
+    } catch (error) {
+    console.log(error);
+    }
+  }
+    
 }
