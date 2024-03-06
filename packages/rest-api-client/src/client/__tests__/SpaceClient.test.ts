@@ -2,6 +2,7 @@ import type { MockClient } from "../../http/MockClient";
 import { buildMockClient } from "../../http/MockClient";
 import { SpaceClient } from "../SpaceClient";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
+import type { ThreadComment } from "../types";
 
 const SPACE_ID = 1;
 
@@ -69,6 +70,36 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
     it("should pass id, body to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("addThreadComment", () => {
+    const params: ThreadComment = {
+      space: "1",
+      thread: "2",
+      comment: {
+        text: "This is a comment",
+        mentions: [
+          {
+            code: "user1",
+            type: "USER",
+          },
+        ],
+      },
+    };
+    beforeEach(async () => {
+      await spaceClient.addThreadComment(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/space/thread/comment.json",
+      );
+    });
+    it("should send a POST request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass space, thread, comment to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });

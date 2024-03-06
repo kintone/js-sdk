@@ -1,4 +1,4 @@
-import type { SpaceID, Space } from "./types";
+import type { SpaceID, Space, ThreadComment } from "./types";
 import { BaseClient } from "./BaseClient";
 
 export class SpaceClient extends BaseClient {
@@ -21,5 +21,12 @@ export class SpaceClient extends BaseClient {
       endpointName: "space/body",
     });
     return this.client.put(path, params);
+  }
+
+  public addThreadComment(params: ThreadComment): Promise<{ id: string }> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "space/thread/comment",
+    });
+    return this.client.post(path, params);
   }
 }

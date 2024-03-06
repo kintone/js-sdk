@@ -1,4 +1,5 @@
 import type { App } from "../app";
+import type { Entity } from "../entity";
 
 type AttachedApp = Pick<
   App,
@@ -29,4 +30,28 @@ export type Space = {
   isGuest: boolean;
   attachedApps: AttachedApp[];
   fixedMember: boolean;
+};
+
+export type CommentWithText = {
+  text: string;
+  files?: Array<{
+    fileKey: string;
+    width?: string | number;
+  }>;
+  mentions?: Entity[];
+};
+
+export type CommentWithFiles = {
+  text?: string;
+  files: Array<{
+    fileKey: string;
+    width?: string | number;
+  }>;
+  mentions?: Entity[];
+};
+
+export type ThreadComment = {
+  space: string;
+  thread: string;
+  comment: CommentWithText | CommentWithFiles;
 };

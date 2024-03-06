@@ -33,4 +33,35 @@ export class Space {
       console.log(error);
     }
   }
+
+  public async addThreadComment() {
+    const params = {
+      space: "8",
+      thread: "1",
+      comment: {
+        text: "This is a comment",
+        files: [
+          {
+            fileKey: "file1",
+            width: 100,
+          },
+        ],
+        mentions: [
+          {
+            code: "user1",
+            type: "USER" as const,
+          },
+          {
+            code: "user2",
+            type: "USER" as const,
+          },
+        ],
+      },
+    };
+    try {
+      console.log(await this.client.space.addThreadComment(params));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
