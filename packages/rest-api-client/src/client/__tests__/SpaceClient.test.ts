@@ -110,7 +110,7 @@ describe("SpaceClient", () => {
     it("should send a PUT request", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
-    it("should pass id, body to the http client", () => {
+    it("should pass id, members parameters to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
