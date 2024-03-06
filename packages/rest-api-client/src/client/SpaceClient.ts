@@ -22,4 +22,15 @@ export class SpaceClient extends BaseClient {
     });
     return this.client.put(path, params);
   }
+
+  public updateThread(params: {
+    id: SpaceID;
+    name?: string;
+    body?: string;
+  }): Promise<{}> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "space/thread",
+    });
+    return this.client.put(path, params);
+  }
 }

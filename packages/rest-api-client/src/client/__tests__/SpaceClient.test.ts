@@ -72,6 +72,26 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("updateThread", () => {
+    const params = {
+      id: SPACE_ID,
+      name: "Updated Thread Name",
+      body: "<b>This is an updated space body</b>",
+    };
+    beforeEach(async () => {
+      await spaceClient.updateThread(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/space/thread.json");
+    });
+    it("should send a PUT request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass id, name, body to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
 
 describe("SpaceClient with guestSpaceId", () => {
