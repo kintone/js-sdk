@@ -3,6 +3,7 @@
 - [getSpace](#getSpace)
 - [deleteSpace](#deleteSpace)
 - [updateSpaceBody](#updateSpaceBody)
+- [updateThread](#updateThread)
 
 ## Overview
 
