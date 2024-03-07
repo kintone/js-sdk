@@ -39,7 +39,7 @@
     "@cybozu/eslint-config": "^22.0.2",
     "@cybozu/license-manager": "^1.1.0",
     "@types/jest": "^29.5.12",
-    "@types/node": "^18.19.21",
+    "@types/node": "^18.19.22",
     "babel-jest": "^29.7.0",
     "comment-json": "^4.2.3",
     "eslint": "^8.56.0",
