@@ -33,4 +33,42 @@ export class Space {
       console.log(error);
     }
   }
+
+  public async updateSpaceMembers() {
+    const spaceMembers = {
+      id: SPACE_ID,
+      members: [
+        {
+          entity: {
+            type: "USER" as const,
+            code: "user1",
+          },
+          isAdmin: true,
+          includeSubs: false,
+        },
+        {
+          entity: {
+            type: "USER" as const,
+            code: "user2",
+          },
+          isAdmin: false,
+          includeSubs: false,
+        },
+        {
+          entity: {
+            type: "GROUP" as const,
+            code: "group1",
+          },
+          isAdmin: false,
+          includeSubs: true,
+        },
+      ],
+    };
+
+    try {
+      console.log(await this.client.space.updateSpaceMembers(spaceMembers));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
