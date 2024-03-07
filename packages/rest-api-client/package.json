@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "publishConfig": {
     "access": "public"
   },
@@ -61,7 +61,7 @@
     "@types/js-base64": "^3.0.0",
     "@types/mime": "^3.0.4",
     "@types/qs": "^6.9.12",
-    "rollup": "^4.12.0",
+    "rollup": "^4.12.1",
     "rollup-plugin-ecma-version-validator": "^0.2.13",
     "rollup-plugin-license": "^3.2.0",
     "rollup-plugin-node-globals": "^1.4.0",
