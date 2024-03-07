@@ -1,5 +1,6 @@
 import type { App } from "../app";
 import type { Entity } from "../entity";
+import type { SpaceID, ThreadID } from "../index";
 
 type AttachedApp = Pick<
   App,
@@ -50,7 +51,7 @@ export type CommentWithFiles = {
 };
 
 export type ThreadComment = {
-  space: string;
-  thread: string;
+  space: SpaceID;
+  thread: ThreadID;
   comment: CommentWithText | CommentWithFiles;
 };
