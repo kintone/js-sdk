@@ -32,21 +32,20 @@ export type Space = {
   fixedMember: boolean;
 };
 
+type FileComment = {
+  fileKey: string;
+  width?: string | number;
+};
+
 export type CommentWithText = {
   text: string;
-  files?: Array<{
-    fileKey: string;
-    width?: string | number;
-  }>;
+  files?: FileComment[];
   mentions?: Entity[];
 };
 
 export type CommentWithFiles = {
   text?: string;
-  files: Array<{
-    fileKey: string;
-    width?: string | number;
-  }>;
+  files: FileComment[];
   mentions?: Entity[];
 };
 
