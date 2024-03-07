@@ -4,6 +4,7 @@ import { SpaceClient } from "../SpaceClient";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
 const SPACE_ID = 1;
+const THREAD_ID = 1;
 
 describe("SpaceClient", () => {
   let mockClient: MockClient;
@@ -75,9 +76,9 @@ describe("SpaceClient", () => {
 
   describe("updateThread", () => {
     const params = {
-      id: SPACE_ID,
+      id: THREAD_ID,
       name: "Updated Thread Name",
-      body: "<b>This is an updated space body</b>",
+      body: "<b>This is an updated thread body</b>",
     };
     beforeEach(async () => {
       await spaceClient.updateThread(params);

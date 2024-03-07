@@ -1,4 +1,4 @@
-import type { SpaceID, Space } from "./types";
+import type { SpaceID, Space, ThreadId } from "./types";
 import { BaseClient } from "./BaseClient";
 
 export class SpaceClient extends BaseClient {
@@ -24,7 +24,7 @@ export class SpaceClient extends BaseClient {
   }
 
   public updateThread(params: {
-    id: SpaceID;
+    id: ThreadId;
     name?: string;
     body?: string;
   }): Promise<{}> {
