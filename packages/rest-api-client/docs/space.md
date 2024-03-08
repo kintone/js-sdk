@@ -3,10 +3,8 @@
 - [getSpace](#getSpace)
 - [deleteSpace](#deleteSpace)
 - [updateSpaceBody](#updateSpaceBody)
-  <<<<<<< HEAD
-- # [getSpaceMembers](#getSpaceMembers)
+- [getSpaceMembers](#getSpaceMembers)
 - [updateSpaceMembers](#updateSpaceMembers)
-  > > > > > > > origin/master
 
 ## Overview
 
