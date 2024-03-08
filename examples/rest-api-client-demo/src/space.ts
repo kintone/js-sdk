@@ -34,6 +34,14 @@ export class Space {
     }
   }
 
+  public async getSpaceMembers() {
+    try {
+      console.log(await this.client.space.getSpaceMembers({ id: SPACE_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async updateSpaceMembers() {
     const spaceMembers = {
       id: SPACE_ID,

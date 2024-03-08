@@ -32,6 +32,13 @@ export type Space = {
   fixedMember: boolean;
 };
 
+export type SpaceMemberForResponse = {
+  entity: Entity;
+  isAdmin: boolean;
+  isImplicit: boolean;
+  includeSubs: boolean;
+};
+
 export type SpaceMemberForRequest = {
   entity: Entity;
   isAdmin?: boolean;

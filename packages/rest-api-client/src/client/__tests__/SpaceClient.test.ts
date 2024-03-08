@@ -73,6 +73,24 @@ describe("SpaceClient", () => {
     });
   });
 
+  describe("getSpaceMembers", () => {
+    const params = {
+      id: SPACE_ID,
+    };
+    beforeEach(async () => {
+      await spaceClient.getSpaceMembers(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/space/members.json");
+    });
+    it("should send a GET request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("get");
+    });
+    it("should pass id as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
   describe("updateSpaceMembers", () => {
     const params = {
       id: SPACE_ID,
