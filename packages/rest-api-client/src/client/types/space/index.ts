@@ -38,3 +38,9 @@ export type SpaceMemberForResponse = {
   isImplicit: boolean;
   includeSubs: boolean;
 };
+
+export type SpaceMemberForRequest = {
+  entity: Entity;
+  isAdmin?: boolean;
+  includeSubs?: boolean;
+};
