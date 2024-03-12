@@ -1,6 +1,7 @@
 import type { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 const SPACE_ID = 8;
+const THREAD_ID = 8;
 
 export class Space {
   private client: KintoneRestAPIClient;
@@ -75,6 +76,18 @@ export class Space {
 
     try {
       console.log(await this.client.space.updateSpaceMembers(spaceMembers));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateThread() {
+    const body = "<b>This is an updated thread body</b>";
+    const name = "Updated Thread Name";
+    try {
+      console.log(
+        await this.client.space.updateThread({ id: THREAD_ID, body, name }),
+      );
     } catch (error) {
       console.log(error);
     }

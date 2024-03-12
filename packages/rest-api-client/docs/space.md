@@ -5,6 +5,7 @@
 - [updateSpaceBody](#updateSpaceBody)
 - [getSpaceMembers](#getSpaceMembers)
 - [updateSpaceMembers](#updateSpaceMembers)
+- [updateThread](#updateThread)
 
 ## Overview
 
@@ -168,3 +169,23 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-space-members/
+
+### updateThread
+
+Updates a Thread of a Space.
+
+#### Parameters
+
+| Name |       Type       | Required | Description                                                                                                                                                                                                                                                                                            |
+| ---- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id   | Number or String |   Yes    | The Thread ID.<br />The Thread ID can be found in the URL of the Thread.<br />A Space with the URL of https://{domainname}.kintone.com/k/#/space/111/thread/222 has a Space ID of 111 and a Thread ID of 222.                                                                                          |
+| name |      String      |          | The new name of the Thread.<br />Must be between 1 - 128 characters.<br />The name will not be updated if this parameter is ignored.<br />The Thread name of single threaded Spaces cannot be updated.                                                                                                 |
+| body |      String      |          | The contents of the Thread body.<br />Write the contents as an HTML string, within 65535 characters<br />HTML tags that cannot be used will be automatically removed.<br />HTML can be used to attach Apps, files and Emoji.<br />The usage of the @ mark to mention a user will not notify that user. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/update-thread/

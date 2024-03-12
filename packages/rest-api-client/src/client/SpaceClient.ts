@@ -1,5 +1,6 @@
 import type {
   SpaceID,
+  ThreadID,
   Space,
   SpaceMemberForResponse,
   SpaceMemberForRequest,
@@ -43,6 +44,17 @@ export class SpaceClient extends BaseClient {
   }): Promise<{}> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "space/members",
+    });
+    return this.client.put(path, params);
+  }
+
+  public updateThread(params: {
+    id: ThreadID;
+    name?: string;
+    body?: string;
+  }): Promise<{}> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "space/thread",
     });
     return this.client.put(path, params);
   }
