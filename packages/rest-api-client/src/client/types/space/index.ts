@@ -1,4 +1,5 @@
 import type { App } from "../app";
+import type { Entity } from "../entity";
 
 type AttachedApp = Pick<
   App,
@@ -29,4 +30,17 @@ export type Space = {
   isGuest: boolean;
   attachedApps: AttachedApp[];
   fixedMember: boolean;
+};
+
+export type SpaceMemberForResponse = {
+  entity: Entity;
+  isAdmin: boolean;
+  isImplicit: boolean;
+  includeSubs: boolean;
+};
+
+export type SpaceMemberForRequest = {
+  entity: Entity;
+  isAdmin?: boolean;
+  includeSubs?: boolean;
 };

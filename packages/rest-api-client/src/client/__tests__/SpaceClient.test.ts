@@ -74,6 +74,66 @@ describe("SpaceClient", () => {
     });
   });
 
+  describe("getSpaceMembers", () => {
+    const params = {
+      id: SPACE_ID,
+    };
+    beforeEach(async () => {
+      await spaceClient.getSpaceMembers(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/space/members.json");
+    });
+    it("should send a GET request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("get");
+    });
+    it("should pass id as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("updateSpaceMembers", () => {
+    const params = {
+      id: SPACE_ID,
+      members: [
+        {
+          entity: {
+            code: "user1",
+            type: "USER" as const,
+          },
+          isAdmin: true,
+        },
+        {
+          entity: {
+            code: "user2",
+            type: "USER" as const,
+          },
+          isAdmin: false,
+        },
+        {
+          entity: {
+            code: "group1",
+            type: "GROUP" as const,
+          },
+          isAdmin: false,
+          includeSubs: true,
+        },
+      ],
+    };
+    beforeEach(async () => {
+      await spaceClient.updateSpaceMembers(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/space/members.json");
+    });
+    it("should send a PUT request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass id, members parameters to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
   describe("updateThread", () => {
     const params = {
       id: THREAD_ID,
