@@ -197,11 +197,11 @@ Deletes a Guest user from Kintone. If you would like to remove a user from a Gue
 
 #### Parameters
 
-#### Returns
-
 | Name   | Type  | Required | Description                                                                     |
 | ------ | :---: | :------: | ------------------------------------------------------------------------------- |
 | guests | Array |   Yes    | A list of email addresses of Guest users.<br />Up to 100 Guests can be deleted. |
+
+#### Returns
 
 An empty object.
 

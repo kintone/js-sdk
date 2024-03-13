@@ -1,7 +1,7 @@
 import type { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
-const SPACE_ID = 29;
-const THREAD_ID = 29;
+const SPACE_ID = 8;
+const THREAD_ID = 8;
 
 export class Space {
   private client: KintoneRestAPIClient;
@@ -94,7 +94,7 @@ export class Space {
   }
 
   public async deleteGuests() {
-    const params = ["tuanbk08vnair@gmail.com"];
+    const params = ["" + "abc1@gmail.com", "abc2@gmail.com", "abc3@gmail.com"];
     try {
       console.log(await this.client.space.deleteGuests({ guests: params }));
     } catch (error) {
