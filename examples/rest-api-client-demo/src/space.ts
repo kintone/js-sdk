@@ -92,4 +92,13 @@ export class Space {
       console.log(error);
     }
   }
+
+  public async deleteGuests() {
+    const params = ["abc1@gmail.com", "abc2@gmail.com", "abc3@gmail.com"];
+    try {
+      console.log(await this.client.space.deleteGuests({ guests: params }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

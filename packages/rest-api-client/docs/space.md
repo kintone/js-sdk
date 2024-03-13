@@ -6,6 +6,7 @@
 - [getSpaceMembers](#getSpaceMembers)
 - [updateSpaceMembers](#updateSpaceMembers)
 - [updateThread](#updateThread)
+- [deleteGuests](#deleteGuests)
 
 ## Overview
 
@@ -189,3 +190,21 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-thread/
+
+### deleteGuests
+
+Deletes a Guest user from Kintone. If you would like to remove a user from a Guest Space without deleting their account, use the Update Guest Members API.
+
+#### Parameters
+
+#### Returns
+
+| Name   | Type  | Required | Description                                                                     |
+| ------ | :---: | :------: | ------------------------------------------------------------------------------- |
+| guests | Array |   Yes    | A list of email addresses of Guest users.<br />Up to 100 Guests can be deleted. |
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/delete-guests/

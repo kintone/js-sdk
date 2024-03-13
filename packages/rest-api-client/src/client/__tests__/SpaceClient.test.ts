@@ -153,6 +153,24 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("deleteGuests", () => {
+    const params = {
+      guests: ["abc1@gmail.com", "abc2@gmail.com", "abc3@gmail.com"],
+    };
+    beforeEach(async () => {
+      await spaceClient.deleteGuests(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/guests.json");
+    });
+    it("should send a DELETE request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("delete");
+    });
+    it("should pass guests to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
 
 describe("SpaceClient with guestSpaceId", () => {
