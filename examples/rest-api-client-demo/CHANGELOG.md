@@ -11,6 +11,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * devDependencies
     * @kintone/customize-uploader bumped from ^7.0.3 to ^7.0.4
 
+## [5.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@5.2.0...@kintone/rest-api-client-demo@5.3.0) (2024-03-12)
+
+
+### Features
+
+* **rest-api-client:** add `space.getSpaceMembers()` method ([#2599](https://github.com/kintone/js-sdk/issues/2599)) ([2c05fa9](https://github.com/kintone/js-sdk/commit/2c05fa908d2a7244a454e61900eec54fc48008a3))
+* **rest-api-client:** add `space.updateSpaceMembers()` method  ([#2603](https://github.com/kintone/js-sdk/issues/2603)) ([5b28413](https://github.com/kintone/js-sdk/commit/5b28413ee902043fead2c5bc5a2539dcf540668a))
+* **rest-api-client:** add `space.updateThread()` method ([#2606](https://github.com/kintone/js-sdk/issues/2606)) ([139e504](https://github.com/kintone/js-sdk/commit/139e504df99f6f77ccdb0ee9e27ee62ac56ac10f))
+
 ## [5.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@5.1.0...@kintone/rest-api-client-demo@5.2.0) (2024-03-05)
 
 
