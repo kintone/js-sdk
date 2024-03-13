@@ -6,6 +6,7 @@
 - [getSpaceMembers](#getSpaceMembers)
 - [updateSpaceMembers](#updateSpaceMembers)
 - [updateThread](#updateThread)
+- [addGuests](#addGuests)
 
 ## Overview
 
