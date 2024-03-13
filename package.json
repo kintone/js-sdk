@@ -39,7 +39,7 @@
     "@cybozu/eslint-config": "^22.0.2",
     "@cybozu/license-manager": "^1.1.0",
     "@types/jest": "^29.5.12",
-    "@types/node": "^18.19.22",
+    "@types/node": "^18.19.23",
     "babel-jest": "^29.7.0",
     "comment-json": "^4.2.3",
     "eslint": "^8.56.0",
@@ -47,7 +47,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "packageManager": "pnpm@8.15.4",
   "pnpm": {

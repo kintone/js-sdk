@@ -3,6 +3,9 @@
 - [getSpace](#getSpace)
 - [deleteSpace](#deleteSpace)
 - [updateSpaceBody](#updateSpaceBody)
+- [getSpaceMembers](#getSpaceMembers)
+- [updateSpaceMembers](#updateSpaceMembers)
+- [updateThread](#updateThread)
 - [addThreadComment](#addThreadComment)
 
 ## Overview
@@ -117,6 +120,76 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-space-body/
+
+### getSpaceMembers
+
+Gets the list of Space Members of a Space.
+
+#### Parameters
+
+| Name |       Type       | Required | Description   |
+| ---- | :--------------: | :------: | ------------- |
+| id   | Number or String |   Yes    | The space ID. |
+
+#### Returns
+
+| Name                  |  Type   | Description                                                                                                                                                                                                                                                                                                                                        |
+| --------------------- | :-----: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| members               |  Array  | A list of Space members.<br />Guest users, inactive users and deleted users will not be included.                                                                                                                                                                                                                                                  |
+| members[].entity      | Object  | The entity information of the Space member.                                                                                                                                                                                                                                                                                                        |
+| members[].entity.type | String  | The entity type of the Space member.<br /><br /><strong>USER</strong>: User<br /><strong>GROUP</strong>: Group<br /><strong>ORGANIZATION</strong>: Department                                                                                                                                                                                      |
+| members[].entity.code | String  | The code of the Space member.                                                                                                                                                                                                                                                                                                                      |
+| members[].isAdmin     | Boolean | The Space Admin settings of the Space member.<br /><br /><strong>true</strong>: The Space Member is the Space Administrator.<br /><strong>false</strong>: The Space Member is not the Space Administrator.                                                                                                                                         |
+| members[].isImplicit  | Boolean | If the Space Member is added as a User or not.<br /><br /><strong>true</strong>: The Space Member is not added as a user, and is added as part of a Group or Department.<br /><strong>false</strong>: The Space Member is added as a User.<br /><br />This is not responded for <strong>GROUP</strong> and <strong>ORGANIZATION</strong> entities. |
+| members[].includeSubs | Boolean | The "Include Affiliated Departments" setting of the Department Space Member.<br /><br /><strong>true</strong>: Affiliated Departments are included.<br /><strong>false</strong>: Affiliated Departments are not included.                                                                                                                          |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/get-space-members/
+
+### updateSpaceMembers
+
+Updates the members of a Space.
+
+#### Parameters
+
+| Name                  |       Type       |  Required   | Description                                                                                                                                                                                                                                                                                                                                          |
+| --------------------- | :--------------: | :---------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                    | Number or String |     Yes     | The space ID.                                                                                                                                                                                                                                                                                                                                        |
+| members               |      Array       |     Yes     | A list of members of the Space. <br />At least one Space Administrator must be specified.<br /> Inactive and deleted users cannot be specified.                                                                                                                                                                                                      |
+| members[].entity      |      Object      |     Yes     | The entity information of the Space member. <br />Guest users cannot be specified.                                                                                                                                                                                                                                                                   |
+| members[].entity.type |      String      |     Yes     | The entity type of the Space member.<br /><ul><li><strong>USER</strong>: User</li><strong>Group</strong>: Group</li><strong>ORGANIZATION</strong>: Department</li><ul>                                                                                                                                                                               |
+| members[].entity.code |      String      |     Yes     | The code of the entity.                                                                                                                                                                                                                                                                                                                              |
+| members[].isAdmin     |     Boolean      | Conditional | The Space Administration settings of the user.<br /><ul><strong>true</strong>: The member will be the Administrator of the Space.<br /><li><strong>false</strong>: The member will not be the Administrator of the Space.<br />At least 1 Space Administrator is required to be set in the API call.</li></ul><br />If ignored, this value is false. |
+| members[].includeSubs |     Boolean      |  Optional   | The "Include Affiliated Departments" settings of the department.<br /><ul><strong>true</strong>: Affiliated departments will be included.<br /><li><strong>false</strong>: Affiliated departments will not be included.</li></ul><br />If ignored, this value is false.                                                                              |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/update-space-members/
+
+### updateThread
+
+Updates a Thread of a Space.
+
+#### Parameters
+
+| Name |       Type       | Required | Description                                                                                                                                                                                                                                                                                            |
+| ---- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id   | Number or String |   Yes    | The Thread ID.<br />The Thread ID can be found in the URL of the Thread.<br />A Space with the URL of https://{domainname}.kintone.com/k/#/space/111/thread/222 has a Space ID of 111 and a Thread ID of 222.                                                                                          |
+| name |      String      |          | The new name of the Thread.<br />Must be between 1 - 128 characters.<br />The name will not be updated if this parameter is ignored.<br />The Thread name of single threaded Spaces cannot be updated.                                                                                                 |
+| body |      String      |          | The contents of the Thread body.<br />Write the contents as an HTML string, within 65535 characters<br />HTML tags that cannot be used will be automatically removed.<br />HTML can be used to attach Apps, files and Emoji.<br />The usage of the @ mark to mention a user will not notify that user. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/update-thread/
 
 ### addThreadComment
 
