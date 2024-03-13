@@ -153,6 +153,39 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("addGuests", () => {
+    const params = {
+      guests: [
+        {
+          name: "John Doe",
+          code: "johndoe@gmail.com",
+          password: "password123",
+          timezone: "America/Los_Angeles",
+          locale: "en" as const,
+          image: "image",
+          surNameReading: "Doe",
+          givenNameReading: "John",
+          company: "company",
+          division: "division",
+          phone: "phone",
+          callto: "callto",
+        },
+      ],
+    };
+    beforeEach(async () => {
+      await spaceClient.addGuests(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/guests.json");
+    });
+    it("should send a POST request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass guests to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
 
 describe("SpaceClient with guestSpaceId", () => {

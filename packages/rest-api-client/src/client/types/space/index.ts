@@ -44,3 +44,18 @@ export type SpaceMemberForRequest = {
   isAdmin?: boolean;
   includeSubs?: boolean;
 };
+
+export type Guest = {
+  name: string;
+  code: string;
+  password: string;
+  timezone: string;
+  locale?: "auto" | "en" | "zh" | "ja";
+  image?: string;
+  surNameReading?: string;
+  givenNameReading?: string;
+  company?: string;
+  division?: string;
+  phone?: string;
+  callto?: string;
+};

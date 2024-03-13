@@ -189,3 +189,37 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-thread/
+
+### addGuests
+
+Adds Guest users to Kintone.
+
+This does not affiliate Guest users with any Guest Spaces, and does not send any invitation emails.
+
+To affiliate a Guest user with a Guest Space, use the Update Guest Members API.
+
+#### Parameters
+
+| Name                      |  Type  | Required | Description                                                                                                                                                                                                                                                       |
+| ------------------------- | :----: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| guests                    | Array  |   Yes    | A list of Guest user data.                                                                                                                                                                                                                                        |
+| guests[].name             | String |   Yes    | The display name of the user.<br />Must be between 1 - 128 characters.                                                                                                                                                                                            |
+| guests[].code             | String |   Yes    | The email address (log in name) of the Guest user.                                                                                                                                                                                                                |
+| guests[].password         | String |   Yes    | The log in password of the Guest user.                                                                                                                                                                                                                            |
+| guests[].timezone         | String |   Yes    | The timezone of the Guest user.                                                                                                                                                                                                                                   |
+| guests[].locale           | String |          | The language settings of the Guest user.<br/>- <strong>auto</strong>: Use web browser settings.<br />- <strong>en</strong>: English<br />- <strong>zh</strong>: Chinese<br />- <strong>ja</strong>: Japanese<br />If ignored, <strong>auto</strong> will be set.  |
+| guests[].image            | String |          | The profile image of the Guest user.<br />Specify a fileKey of an uploaded file. fileKeys can be found from the response of the [Upload File API](https://kintone.dev/en/docs/kintone/rest-api/files/upload-file/).<br />If ignored, a default image will be set. |
+| guests[].surNameReading   | String |          | The Phonetic Surname settings of the Guest User. The maximum limit is 64 characters.                                                                                                                                                                              |
+| guests[].givenNameReading | String |          | The Phonetic Given Name settings of the Guest User. The maximum limit is 64 characters.                                                                                                                                                                           |
+| guests[].company          | String |          | The Company name to display on the Guest User's profile.<br />The maximum limit is 100 characters.                                                                                                                                                                |
+| guests[].division         | String |          | The Department name to display on the Guest User's profile.<br />The maximum limit is 100 characters.                                                                                                                                                             |
+| guests[].phone            | String |          | The Phone number to display on the Guest User's profile.<br />The maximum limit is 100 characters.                                                                                                                                                                |
+| guests[].callto           | String |          | The Skype Name of the Guest user.<br />The maximum limit is 256 characters.                                                                                                                                                                                       |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/add-guests/
