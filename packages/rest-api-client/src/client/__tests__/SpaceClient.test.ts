@@ -156,7 +156,7 @@ describe("SpaceClient", () => {
 
   describe("updateSpaceGuests", () => {
     const params = {
-      id: THREAD_ID,
+      id: 2,
       guests: [
         "guestUser1@gmail.com",
         "guestUser2@gmail.com",
