@@ -193,11 +193,9 @@ An empty object.
 
 ### addGuests
 
-Adds Guest users to Kintone.
-
-This does not affiliate Guest users with any Guest Spaces, and does not send any invitation emails.
-
-To affiliate a Guest user with a Guest Space, use the Update Guest Members API.
+Adds Guest users to Kintone.<br>
+This does not affiliate Guest users with any Guest Spaces, and does not send any invitation emails.<br>
+To affiliate a Guest user with a Guest Space, use the Update Guest Members API.<br>
 
 #### Parameters
 
