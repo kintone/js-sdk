@@ -153,6 +153,29 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("updateSpaceGuests", () => {
+    const params = {
+      id: THREAD_ID,
+      guests: [
+        "guestUser1@gmail.com",
+        "guestUser2@gmail.com",
+        "guestUser3@gmail.com",
+      ],
+    };
+    beforeEach(async () => {
+      await spaceClient.updateSpaceGuests(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/space/guests.json");
+    });
+    it("should send a PUT request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass id, guests to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
 
 describe("SpaceClient with guestSpaceId", () => {

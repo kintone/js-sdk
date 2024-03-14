@@ -1,6 +1,7 @@
 import type { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 const SPACE_ID = 8;
+const GUEST_SPACE_ID = 9;
 const THREAD_ID = 8;
 
 export class Space {
@@ -38,6 +39,18 @@ export class Space {
   public async getSpaceMembers() {
     try {
       console.log(await this.client.space.getSpaceMembers({ id: SPACE_ID }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateThread() {
+    const body = "<b>This is an updated thread body</b>";
+    const name = "Updated Thread Name";
+    try {
+      console.log(
+        await this.client.space.updateThread({ id: THREAD_ID, body, name }),
+      );
     } catch (error) {
       console.log(error);
     }
@@ -81,12 +94,19 @@ export class Space {
     }
   }
 
-  public async updateThread() {
-    const body = "<b>This is an updated thread body</b>";
-    const name = "Updated Thread Name";
+  public async updateSpaceGuests() {
+    const guests = [
+      "guestUser1@gmail.com",
+      "guestUser2@gmail.com",
+      "guestUser3@gmail.com",
+    ];
+
     try {
       console.log(
-        await this.client.space.updateThread({ id: THREAD_ID, body, name }),
+        await this.client.space.updateSpaceGuests({
+          id: GUEST_SPACE_ID,
+          guests,
+        }),
       );
     } catch (error) {
       console.log(error);

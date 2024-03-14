@@ -6,6 +6,7 @@
 - [getSpaceMembers](#getSpaceMembers)
 - [updateSpaceMembers](#updateSpaceMembers)
 - [updateThread](#updateThread)
+- [updateSpaceGuests](#updateSpaceGuests)
 
 ## Overview
 
@@ -189,3 +190,22 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-thread/
+
+### updateSpaceGuests
+
+Updates the Guest Members of a Space.
+
+#### Parameters
+
+| Name   |       Type       | Required | Description                                                                                                                                                                                                                                                                                           |
+| ------ | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id     | Number or String |   Yes    | The Guest Space ID.                                                                                                                                                                                                                                                                                   |
+| guests |      Array       |   Yes    | A list of email addresses of Guest users.<br />Guest users must first be added as a Guest user of Kintone before they can be affiliated with Spaces. To do this, use the [Add Guests API](#addGuests).<br />Users who are not Guest users, or are inactive/deleted users cannot be added to the list. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/update-guest-members/
