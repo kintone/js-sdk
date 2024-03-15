@@ -26,7 +26,7 @@ describe("generator", function () {
           "utf8",
         ),
       );
-      await generatePlugin(outputDir, manifest, "ja", false, "minimum");
+      await generatePlugin(outputDir, manifest, "ja", true, "minimum");
 
       // test that `npm run lint` doesn't fail
       const lintResult = spawnSync("npm", ["run", "lint"], {
@@ -73,14 +73,14 @@ describe("generator", function () {
           "utf8",
         ),
       );
-      // const packageJson = JSON.parse(
-      //   fs.readFileSync(path.resolve(outputDir, "package.json"), "utf8"),
-      // );
-      // assert(
-      //   packageJson.devDependencies &&
-      //     packageJson.devDependencies["@kintone/plugin-uploader"],
-      // );
-      // assert(packageJson.scripts && packageJson.scripts.upload);
+      const packageJson = JSON.parse(
+        fs.readFileSync(path.resolve(outputDir, "package.json"), "utf8"),
+      );
+      assert(
+        packageJson.devDependencies &&
+          packageJson.devDependencies["@kintone/plugin-uploader"],
+      );
+      assert(packageJson.scripts && packageJson.scripts.upload);
     });
   });
   describe("modern template", () => {
