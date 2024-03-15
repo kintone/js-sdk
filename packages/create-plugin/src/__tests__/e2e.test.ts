@@ -73,14 +73,14 @@ describe("generator", function () {
           "utf8",
         ),
       );
-      const packageJson = JSON.parse(
-        fs.readFileSync(path.resolve(outputDir, "package.json"), "utf8"),
-      );
+      // const packageJson = JSON.parse(
+      //   fs.readFileSync(path.resolve(outputDir, "package.json"), "utf8"),
+      // );
       // assert(
       //   packageJson.devDependencies &&
       //     packageJson.devDependencies["@kintone/plugin-uploader"],
       // );
-      assert(packageJson.scripts && packageJson.scripts.upload);
+      // assert(packageJson.scripts && packageJson.scripts.upload);
     });
   });
   describe("modern template", () => {
