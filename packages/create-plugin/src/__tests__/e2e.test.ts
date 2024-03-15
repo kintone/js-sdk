@@ -26,7 +26,7 @@ describe("generator", function () {
           "utf8",
         ),
       );
-      await generatePlugin(outputDir, manifest, "ja", true, "minimum");
+      await generatePlugin(outputDir, manifest, "ja", false, "minimum");
 
       // test that `npm run lint` doesn't fail
       const lintResult = spawnSync("npm", ["run", "lint"], {
