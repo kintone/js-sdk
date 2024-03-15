@@ -19,7 +19,7 @@ const launchBrowser = (
   ignoreDefaultArgs?: string[],
 ): Promise<Browser> => {
   const args = proxy ? [`--proxy-server=${proxy}`] : [];
-  return puppeteer.launch({ args, ignoreDefaultArgs, headless: "new" });
+  return puppeteer.launch({ args, ignoreDefaultArgs, headless: 'shell' });
 };
 
 const readyForUpload = async (
