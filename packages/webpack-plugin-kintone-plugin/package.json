@@ -40,7 +40,7 @@
   "devDependencies": {
     "@types/adm-zip": "^0.5.5",
     "@types/chokidar": "^1.7.5",
-    "adm-zip": "^0.5.10",
+    "adm-zip": "^0.5.12",
     "chokidar": "^3.5.3",
     "rimraf": "^5.0.5",
     "webpack": "^5.90.3",
