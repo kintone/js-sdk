@@ -28,6 +28,7 @@ const buildClient = (argv: any): KintoneRestAPIClient => {
 
   return new KintoneRestAPIClient({
     baseUrl: baseUrl || undefined,
+    guestSpaceId: argv.guestSpaceId || undefined,
     auth,
     featureFlags: {
       enableAbortSearchError: true,
@@ -96,4 +97,9 @@ yargs
   .option("profile", {
     desc: "Profile",
     type: "string",
+  })
+  .option("guest-space-id", {
+    describe: "The ID of guest space",
+    type: "string",
+    requiresArg: true,
   }).argv;
