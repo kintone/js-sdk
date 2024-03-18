@@ -49,7 +49,7 @@
     "rimraf": "^5.0.5",
     "typescript": "^5.4.2"
   },
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@8.15.5",
   "pnpm": {
     "overrides": {
       "follow-redirects@<1.15.4": ">=1.15.4",
