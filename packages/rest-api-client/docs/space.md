@@ -6,6 +6,9 @@
 - [getSpaceMembers](#getSpaceMembers)
 - [updateSpaceMembers](#updateSpaceMembers)
 - [updateThread](#updateThread)
+- [addThreadComment](#addThreadComment)
+- [addGuests](#addGuests)
+- [deleteGuests](#deleteGuests)
 - [updateSpaceGuests](#updateSpaceGuests)
 
 ## Overview
@@ -190,6 +193,85 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-thread/
+
+### addThreadComment
+
+Adds a comment to a Thread of a Space.
+
+#### Parameters
+
+| Name                    |       Type       |          Required           | Description                                                                                                                                                                                                                                                                                                                                          |
+| ----------------------- | :--------------: | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                      | Number or String |             Yes             | The space ID.                                                                                                                                                                                                                                                                                                                                        |
+| thread                  | Number or String |             Yes             | The thread ID.                                                                                                                                                                                                                                                                                                                                       |
+| comment                 |      Object      |                             | An object including comment details.                                                                                                                                                                                                                                                                                                                 |
+| comment.text            |      String      | Conditionally<br />Required | The comment contents.<br />A line break can be specified by LF.<br />The maximum characters of the comment is 65535. Required, if comment.files is not set.                                                                                                                                                                                          |
+| comment.files           |      Array       | Conditionally<br />Required | An array including data of attachment files.<br />The maximum number of the files is 5.<br />Required, if comment.text is not set.                                                                                                                                                                                                                   |
+| comment.files[].fileKey |      String      |                             | The fileKey of the attachment file.<br />Use the fileKey that is responded from the [Upload File API](https://kintone.dev/en/docs/kintone/rest-api/files/upload-file/).                                                                                                                                                                              |
+| comment.files[].width   | Number or String |                             | A width can be specified if the attachment file is an image.<br />The minimum is 100, and the maximum is 750.<br />If this parameter is ignored, the original width will be set (this width is the same size as the size when "Original" is chosen when adding an image to a thread via GUI). This parameter is ignored if the file is not an image. |
+| comment.mentions        |      Array       |                             | An array including mentions, that notify other Kintone users.                                                                                                                                                                                                                                                                                        |
+| comment.mentions[].code |      String      |                             | The code of the user, group or department that will be mentioned.<br />The maximum number of mentions is 10.<br />The mentioned users will be placed in front of the comment text in the output.                                                                                                                                                     |
+| comment.mentions[].type |      String      |                             | The entity type of the mentioned target.<br><ul><li><strong>USER</strong>: User<li><strong>GROUP</strong>: Group<li><strong>ORGANIZATION</strong>: Department                                                                                                                                                                                        |
+
+#### Returns
+
+| Name |  Type  | Description                            |
+| ---- | :----: | -------------------------------------- |
+| id   | String | The comment ID of the created comment. |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/add-thread-comment/
+
+### addGuests
+
+Adds Guest users to Kintone.<br>
+This does not affiliate Guest users with any Guest Spaces, and does not send any invitation emails.<br>
+To affiliate a Guest user with a Guest Space, use the Update Guest Members API.<br>
+
+#### Parameters
+
+| Name                      |  Type  | Required | Description                                                                                                                                                                                                                                                       |
+| ------------------------- | :----: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| guests                    | Array  |   Yes    | A list of Guest user data.                                                                                                                                                                                                                                        |
+| guests[].name             | String |   Yes    | The display name of the user.<br />Must be between 1 - 128 characters.                                                                                                                                                                                            |
+| guests[].code             | String |   Yes    | The email address (log in name) of the Guest user.                                                                                                                                                                                                                |
+| guests[].password         | String |   Yes    | The log in password of the Guest user.                                                                                                                                                                                                                            |
+| guests[].timezone         | String |   Yes    | The timezone of the Guest user.                                                                                                                                                                                                                                   |
+| guests[].locale           | String |          | The language settings of the Guest user.<br/>- <strong>auto</strong>: Use web browser settings.<br />- <strong>en</strong>: English<br />- <strong>zh</strong>: Chinese<br />- <strong>ja</strong>: Japanese<br />If ignored, <strong>auto</strong> will be set.  |
+| guests[].image            | String |          | The profile image of the Guest user.<br />Specify a fileKey of an uploaded file. fileKeys can be found from the response of the [Upload File API](https://kintone.dev/en/docs/kintone/rest-api/files/upload-file/).<br />If ignored, a default image will be set. |
+| guests[].surNameReading   | String |          | The Phonetic Surname settings of the Guest User. The maximum limit is 64 characters.                                                                                                                                                                              |
+| guests[].givenNameReading | String |          | The Phonetic Given Name settings of the Guest User. The maximum limit is 64 characters.                                                                                                                                                                           |
+| guests[].company          | String |          | The Company name to display on the Guest User's profile.<br />The maximum limit is 100 characters.                                                                                                                                                                |
+| guests[].division         | String |          | The Department name to display on the Guest User's profile.<br />The maximum limit is 100 characters.                                                                                                                                                             |
+| guests[].phone            | String |          | The Phone number to display on the Guest User's profile.<br />The maximum limit is 100 characters.                                                                                                                                                                |
+| guests[].callto           | String |          | The Skype Name of the Guest user.<br />The maximum limit is 256 characters.                                                                                                                                                                                       |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/add-guests/
+
+### deleteGuests
+
+Deletes a Guest user from Kintone. If you would like to remove a user from a Guest Space without deleting their account, use the Update Guest Members API.
+
+#### Parameters
+
+| Name   | Type  | Required | Description                                                                     |
+| ------ | :---: | :------: | ------------------------------------------------------------------------------- |
+| guests | Array |   Yes    | A list of email addresses of Guest users.<br />Up to 100 Guests can be deleted. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/delete-guests/
 
 ### updateSpaceGuests
 

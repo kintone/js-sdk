@@ -1,5 +1,6 @@
 import type { App } from "../app";
 import type { Entity } from "../entity";
+import type { SpaceID, ThreadID } from "../index";
 
 type AttachedApp = Pick<
   App,
@@ -43,4 +44,42 @@ export type SpaceMemberForRequest = {
   entity: Entity;
   isAdmin?: boolean;
   includeSubs?: boolean;
+};
+
+type FileComment = {
+  fileKey: string;
+  width?: string | number;
+};
+
+export type CommentWithText = {
+  text: string;
+  files?: FileComment[];
+  mentions?: Entity[];
+};
+
+export type CommentWithFiles = {
+  text?: string;
+  files: FileComment[];
+  mentions?: Entity[];
+};
+
+export type ThreadComment = {
+  space: SpaceID;
+  thread: ThreadID;
+  comment: CommentWithText | CommentWithFiles;
+};
+
+export type Guest = {
+  name: string;
+  code: string;
+  password: string;
+  timezone: string;
+  locale?: "auto" | "en" | "zh" | "ja";
+  image?: string;
+  surNameReading?: string;
+  givenNameReading?: string;
+  company?: string;
+  division?: string;
+  phone?: string;
+  callto?: string;
 };

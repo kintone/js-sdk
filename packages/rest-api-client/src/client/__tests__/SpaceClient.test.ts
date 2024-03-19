@@ -2,6 +2,7 @@ import type { MockClient } from "../../http/MockClient";
 import { buildMockClient } from "../../http/MockClient";
 import { SpaceClient } from "../SpaceClient";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
+import type { ThreadComment } from "../types";
 
 const SPACE_ID = 1;
 const THREAD_ID = 1;
@@ -150,6 +151,87 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
     it("should pass id, name, body to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("addThreadComment", () => {
+    const params: ThreadComment = {
+      space: "1",
+      thread: "2",
+      comment: {
+        text: "This is a comment",
+        mentions: [
+          {
+            code: "user1",
+            type: "USER",
+          },
+        ],
+      },
+    };
+    beforeEach(async () => {
+      await spaceClient.addThreadComment(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/space/thread/comment.json",
+      );
+    });
+    it("should send a POST request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass space, thread, comment to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("addGuests", () => {
+    const params = {
+      guests: [
+        {
+          name: "John Doe",
+          code: "johndoe@gmail.com",
+          password: "password123",
+          timezone: "America/Los_Angeles",
+          locale: "en" as const,
+          image: "image",
+          surNameReading: "Doe",
+          givenNameReading: "John",
+          company: "company",
+          division: "division",
+          phone: "phone",
+          callto: "callto",
+        },
+      ],
+    };
+    beforeEach(async () => {
+      await spaceClient.addGuests(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/guests.json");
+    });
+    it("should send a POST request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass guests to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("deleteGuests", () => {
+    const params = {
+      guests: ["abc1@gmail.com", "abc2@gmail.com", "abc3@gmail.com"],
+    };
+    beforeEach(async () => {
+      await spaceClient.deleteGuests(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/guests.json");
+    });
+    it("should send a DELETE request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("delete");
+    });
+    it("should pass guests to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });

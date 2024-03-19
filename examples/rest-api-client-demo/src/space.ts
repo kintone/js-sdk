@@ -94,6 +94,68 @@ export class Space {
     }
   }
 
+  public async addThreadComment() {
+    const params = {
+      space: "8",
+      thread: "1",
+      comment: {
+        text: "This is a comment",
+        files: [
+          {
+            fileKey: "file1",
+            width: 100,
+          },
+        ],
+        mentions: [
+          {
+            code: "user1",
+            type: "USER" as const,
+          },
+          {
+            code: "user2",
+            type: "USER" as const,
+          },
+        ],
+      },
+    };
+    try {
+      console.log(await this.client.space.addThreadComment(params));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async addGuests() {
+    const guests = [
+      {
+        code: "guest1@example.com",
+        password: "password123",
+        timezone: "America/Los_Angeles",
+        locale: "en" as const,
+        image: "78a586f2-e73e-4a70-bec2-43976a60746e", // replace with the fileKey of the uploaded file
+        name: "John Doe",
+        company: "Company Name",
+        division: "Sales",
+        phone: "999-456-7890",
+        callto: "skypecallto",
+      },
+    ];
+    try {
+      console.log(await this.client.space.addGuests({ guests }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async deleteGuests() {
+    const guests = ["abc1@gmail.com", "abc2@gmail.com", "abc3@gmail.com"];
+    try {
+      console.log(await this.client.space.deleteGuests({ guests }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async updateSpaceGuests() {
     const guests = [
       "guestUser1@gmail.com",
