@@ -6,6 +6,7 @@
 - [getSpaceMembers](#getSpaceMembers)
 - [updateSpaceMembers](#updateSpaceMembers)
 - [updateThread](#updateThread)
+- [addThreadComment](#addThreadComment)
 - [addGuests](#addGuests)
 
 ## Overview
@@ -190,6 +191,35 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-thread/
+
+### addThreadComment
+
+Adds a comment to a Thread of a Space.
+
+#### Parameters
+
+| Name                    |       Type       |          Required           | Description                                                                                                                                                                                                                                                                                                                                          |
+| ----------------------- | :--------------: | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                      | Number or String |             Yes             | The space ID.                                                                                                                                                                                                                                                                                                                                        |
+| thread                  | Number or String |             Yes             | The thread ID.                                                                                                                                                                                                                                                                                                                                       |
+| comment                 |      Object      |                             | An object including comment details.                                                                                                                                                                                                                                                                                                                 |
+| comment.text            |      String      | Conditionally<br />Required | The comment contents.<br />A line break can be specified by LF.<br />The maximum characters of the comment is 65535. Required, if comment.files is not set.                                                                                                                                                                                          |
+| comment.files           |      Array       | Conditionally<br />Required | An array including data of attachment files.<br />The maximum number of the files is 5.<br />Required, if comment.text is not set.                                                                                                                                                                                                                   |
+| comment.files[].fileKey |      String      |                             | The fileKey of the attachment file.<br />Use the fileKey that is responded from the [Upload File API](https://kintone.dev/en/docs/kintone/rest-api/files/upload-file/).                                                                                                                                                                              |
+| comment.files[].width   | Number or String |                             | A width can be specified if the attachment file is an image.<br />The minimum is 100, and the maximum is 750.<br />If this parameter is ignored, the original width will be set (this width is the same size as the size when "Original" is chosen when adding an image to a thread via GUI). This parameter is ignored if the file is not an image. |
+| comment.mentions        |      Array       |                             | An array including mentions, that notify other Kintone users.                                                                                                                                                                                                                                                                                        |
+| comment.mentions[].code |      String      |                             | The code of the user, group or department that will be mentioned.<br />The maximum number of mentions is 10.<br />The mentioned users will be placed in front of the comment text in the output.                                                                                                                                                     |
+| comment.mentions[].type |      String      |                             | The entity type of the mentioned target.<br><ul><li><strong>USER</strong>: User<li><strong>GROUP</strong>: Group<li><strong>ORGANIZATION</strong>: Department                                                                                                                                                                                        |
+
+#### Returns
+
+| Name |  Type  | Description                            |
+| ---- | :----: | -------------------------------------- |
+| id   | String | The comment ID of the created comment. |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/add-thread-comment/
 
 ### addGuests
 
