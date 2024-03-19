@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.8](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.0.7...@kintone/dts-gen@8.0.8) (2024-03-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^1.6.8 ([#2627](https://github.com/kintone/js-sdk/issues/2627)) ([fb4d141](https://github.com/kintone/js-sdk/commit/fb4d141d23dbb397e2846fd51f5a220d6a8609ae))
+
 ## [8.0.7](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.0.6...@kintone/dts-gen@8.0.7) (2024-02-07)
 
 
