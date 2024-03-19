@@ -74,4 +74,11 @@ export class SpaceClient extends BaseClient {
     });
     return this.client.post(path, params);
   }
+
+  public deleteGuests(params: { guests: string[] }): Promise<{}> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "guests",
+    });
+    return this.client.delete(path, params);
+  }
 }
