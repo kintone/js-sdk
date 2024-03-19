@@ -35,7 +35,7 @@ We have an app ID in `customize-manifest.json`, so you have to update the app ID
 #### yarn
 
 ```
-% yarn run demo record getRecord
+% yarn demo record getRecord
 ```
 
 #### npm
@@ -47,7 +47,7 @@ We have an app ID in `customize-manifest.json`, so you have to update the app ID
 #### pnpm
 
 ```
-% pnpm run demo record getRecord
+% pnpm demo record getRecord
 ```
 
 ### Upload scripts to your Kintone environment
@@ -55,7 +55,7 @@ We have an app ID in `customize-manifest.json`, so you have to update the app ID
 #### yarn
 
 ```
-% yarn run deploy
+% yarn deploy
 ```
 
 #### npm
@@ -67,7 +67,7 @@ We have an app ID in `customize-manifest.json`, so you have to update the app ID
 #### pnpm
 
 ```
-% pnpm run deploy
+% pnpm deploy
 ```
 
 ## License
