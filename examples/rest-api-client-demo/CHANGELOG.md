@@ -11,6 +11,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * devDependencies
     * @kintone/customize-uploader bumped from ^7.0.3 to ^7.0.4
 
+## [5.4.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@5.3.0...@kintone/rest-api-client-demo@5.4.0) (2024-03-19)
+
+
+### Features
+
+* **rest-api-client:** add `space.addGuests()` method ([#2622](https://github.com/kintone/js-sdk/issues/2622)) ([210f2c4](https://github.com/kintone/js-sdk/commit/210f2c4242183e6ff0718e1dddaeff498ecc3499))
+* **rest-api-client:** add `space.addThreadComment()` method ([#2619](https://github.com/kintone/js-sdk/issues/2619)) ([981e6b6](https://github.com/kintone/js-sdk/commit/981e6b6002f004320574f9ce129483c3b253c247))
+* **rest-api-client:** add `space.deleteGuests()` method ([#2621](https://github.com/kintone/js-sdk/issues/2621)) ([ac96002](https://github.com/kintone/js-sdk/commit/ac960025c1f863c0801d973fa76d03cb88ae4245))
+* **rest-api-client:** add `space.updateSpaceGuests()` method ([#2625](https://github.com/kintone/js-sdk/issues/2625)) ([978ed3c](https://github.com/kintone/js-sdk/commit/978ed3ced2f289d9ec55eee994d0a518e8272ca5))
+
+
+### Bug Fixes
+
+* **rest-api-client-demo:** add npm, pnpm support in rest-api-client-demo ([#2626](https://github.com/kintone/js-sdk/issues/2626)) ([52dd902](https://github.com/kintone/js-sdk/commit/52dd902d76e2843d78fb2054a9c9149b7be61591))
+
 ## [5.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@5.2.0...@kintone/rest-api-client-demo@5.3.0) (2024-03-12)
 
 
