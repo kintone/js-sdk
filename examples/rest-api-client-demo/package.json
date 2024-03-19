@@ -21,7 +21,7 @@
     "lint": "run-p -l lint:*",
     "deploy": "rimraf scripts/dist && run-s webpack upload",
     "upload": "kintone-customize-uploader customize-manifest.json",
-    "run-script": "ts-node src/run-node.ts",
+    "demo": "ts-node src/run-node.ts",
     "webpack": "webpack"
   },
   "bugs": {
