@@ -19,4 +19,8 @@ export abstract class BaseClient {
       guestSpaceId: this.guestSpaceId,
     });
   }
+
+  protected buildPath(params: { endpointName: string; preview?: boolean }) {
+    return buildPath(params);
+  }
 }

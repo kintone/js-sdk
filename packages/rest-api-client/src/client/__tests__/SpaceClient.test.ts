@@ -5,6 +5,7 @@ import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 import type { ThreadComment } from "../types";
 
 const SPACE_ID = 1;
+const SPACE_TEMPLATE_ID = 1;
 const THREAD_ID = 1;
 
 describe("SpaceClient", () => {
@@ -255,6 +256,51 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("put");
     });
     it("should pass id, guests to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("addSpaceFromTemplate", () => {
+    const params = {
+      id: SPACE_TEMPLATE_ID,
+      name: "Space from Template",
+      members: [
+        {
+          entity: {
+            code: "user1",
+            type: "USER" as const,
+          },
+          isAdmin: true,
+        },
+        {
+          entity: {
+            code: "user2",
+            type: "USER" as const,
+          },
+          isAdmin: false,
+        },
+        {
+          entity: {
+            code: "group1",
+            type: "GROUP" as const,
+          },
+          isAdmin: false,
+          includeSubs: true,
+        },
+      ],
+      isPrivate: true,
+      isGuest: false,
+    };
+    beforeEach(async () => {
+      await spaceClient.addSpaceFromTemplate(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/template/space.json");
+    });
+    it("should send a POST request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass correct parameters to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });

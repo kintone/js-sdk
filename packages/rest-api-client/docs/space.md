@@ -10,6 +10,7 @@
 - [addGuests](#addGuests)
 - [deleteGuests](#deleteGuests)
 - [updateSpaceGuests](#updateSpaceGuests)
+- [addSpaceFromTemplate](#addSpaceFromTemplate)
 
 ## Overview
 
@@ -291,3 +292,33 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-guest-members/
+
+### addSpaceFromTemplate
+
+Creates a Space from a Space template.
+
+#### Parameters
+
+| Name                  |       Type       |  Required   | Description                                                                                                                                                                                                                                                                                                                                                |
+| --------------------- | :--------------: | :---------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                    | Number or String |     Yes     | The Space Template ID.<br />[Check here](https://get.kintone.help/k/en/admin/space_admin/manage_spacetemplate/add_spacetemplate.html) for instructions on creating Space Templates.<br />The Space Template ID is listed on the Space Templates list page, found under https://{domainname}.kintone.com/k/admin/system/spacetemplate/                      |
+| name                  |      String      |     Yes     | The new name of the Space.                                                                                                                                                                                                                                                                                                                                 |
+| members               |      Array       |     Yes     | A list of members of the Space.<br />At least one Space Administrator must be specified.<br />Inactive and deleted users cannot be specified.                                                                                                                                                                                                              |
+| members[].entity      |      Object      |     Yes     | The entity information of the Space member.<br />Guest users cannot be specified.                                                                                                                                                                                                                                                                          |
+| members[].entity.type |      String      |     Yes     | The entity type of the Space member.<br />- **USER**: User<br />- **Group**: Group<br />- **ORGANIZATION**: Department                                                                                                                                                                                                                                     |
+| members[].entity.code |      String      |     Yes     | The code of the entity.                                                                                                                                                                                                                                                                                                                                    |
+| members[].isAdmin     |     Boolean      | Conditional | The Space Administration settings of the user.<br />- **true**: The member will be the Administrator of the Space.<br />- **false**: The member will not be the Administrator of the Space.<br />At least 1 Space Administrator is required to be set in the API call.<br/>If ignored, this value is **false**.                                            |
+| members[].includeSubs |     Boolean      |             | The "**Include Affiliated Departments**" settings of the department.<br />- **true**: Affiliated departments will be included.<br />- **false**: Affiliated departments will not be included.<br />If ignored, this value is **false**.                                                                                                                    |
+| isPrivate             |     Boolean      |             | The "Private" settings of the Space.<br />- **true**: The Space will be Private.<br />- **false**: The Space will not be Private.<br />If the isGuest parameter is set to **true**, this value is also **true**.<br />If ignored, this value is **false**.                                                                                                 |
+| isGuest               |     Boolean      |             | The Guest Space settings of the Space.<br />- **true**: The Space will be a Guest Space<br />- **false**: The Space will be a normal Space.<br />If ignored, this value is **false**.                                                                                                                                                                      |
+| fixedMember           |     Boolean      |             | The "**Block users from joining or leaving the space and following or unfollowing the threads.\***" settings of the Space.<br />- **true**: Users will not be able to join/leave the Space or follow/unfollow threads.<br />- **false**: Users will be able to join/leave the Space and follow/unfollow threads.<br />If ignored, this value is **false**. |
+
+#### Returns
+
+| Name |  Type  | Description                        |
+| ---- | :----: | ---------------------------------- |
+| id   | String | The Space ID of the created Space. |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/add-space/
