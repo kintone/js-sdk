@@ -36,7 +36,7 @@
     "@types/lodash": "^4.17.0",
     "@types/node-rsa": "^1.1.4",
     "@types/normalize-path": "^3.0.2",
-    "@types/rimraf": "^3.0.2",
+    "@types/rimraf": "^4.0.5",
     "cross-env": "^7.0.3"
   },
   "files": [
