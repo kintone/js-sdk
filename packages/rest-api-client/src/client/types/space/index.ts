@@ -1,6 +1,6 @@
 import type { App } from "../app";
 import type { Entity } from "../entity";
-import type { SpaceID, ThreadID, SpaceTemplateID } from "../index";
+import type { SpaceID, ThreadID } from "../index";
 
 type AttachedApp = Pick<
   App,
@@ -31,15 +31,6 @@ export type Space = {
   isGuest: boolean;
   attachedApps: AttachedApp[];
   fixedMember: boolean;
-};
-
-export type SpaceTemplate = {
-  id: SpaceTemplateID;
-  name: string;
-  members: SpaceMemberForRequest[];
-  isPrivate?: boolean;
-  isGuest?: boolean;
-  fixedMember?: boolean;
 };
 
 export type SpaceMemberForResponse = {

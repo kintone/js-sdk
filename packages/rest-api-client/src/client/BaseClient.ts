@@ -20,6 +20,12 @@ export abstract class BaseClient {
     });
   }
 
+  /**
+   * This method is used to build the endpoint for the API that does not support the guest space URL.
+   * Otherwise, please use `buildPathWithGuestSpaceId` instead.
+   * @param params
+   * @protected
+   */
   protected buildPath(params: { endpointName: string; preview?: boolean }) {
     return buildPath(params);
   }

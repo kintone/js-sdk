@@ -7,7 +7,7 @@ import type {
   SpaceMemberForRequest,
   GuestSpaceID,
   Guest,
-  SpaceTemplate,
+  SpaceTemplateID,
 } from "./types";
 import { BaseClient } from "./BaseClient";
 
@@ -94,7 +94,14 @@ export class SpaceClient extends BaseClient {
     return this.client.put(path, params);
   }
 
-  public addSpaceFromTemplate(params: SpaceTemplate): Promise<{ id: SpaceID }> {
+  public addSpaceFromTemplate(params: {
+    id: SpaceTemplateID;
+    name: string;
+    members: SpaceMemberForRequest[];
+    isPrivate?: boolean;
+    isGuest?: boolean;
+    fixedMember?: boolean;
+  }): Promise<{ id: SpaceID }> {
     const path = this.buildPath({
       endpointName: "template/space",
     });
