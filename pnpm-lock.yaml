@@ -447,8 +447,8 @@ importers:
         specifier: ^2.5.8
         version: 2.5.8
       '@types/js-base64':
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^3.3.1
+        version: 3.3.1
       '@types/mime':
         specifier: ^3.0.4
         version: 3.0.4
@@ -2982,8 +2982,11 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /@types/js-base64@3.0.0:
-    resolution: {integrity: sha512-BnEyOcDE4H6bkg8m84xhdbkYoAoCg8sYERmAvE4Ff50U8jTfbmOinRdJpauBn1P9XsCCQgCLuSiyz3PM4WHYOA==}
+  /@types/js-base64@3.3.1:
+    resolution: {integrity: sha512-Zw33oQNAvDdAN9b0IE5stH0y2MylYvtU7VVTKEJPxhyM2q57CVaNJhtJW258ah24NRtaiA23tptUmVn3dmTKpw==}
+    deprecated: This is a stub types definition. js-base64 provides its own type definitions, so you do not need this installed.
+    dependencies:
+      js-base64: 3.7.7
     dev: true
 
   /@types/jsdom@20.0.1:
@@ -7543,7 +7546,6 @@ packages:
 
   /js-base64@3.7.7:
     resolution: {integrity: sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==}
-    dev: false
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
