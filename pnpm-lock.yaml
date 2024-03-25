@@ -140,9 +140,6 @@ importers:
       '@types/normalize-path':
         specifier: ^3.0.2
         version: 3.0.2
-      '@types/rimraf':
-        specifier: ^3.0.2
-        version: 3.0.2
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -3073,13 +3070,6 @@ packages:
 
   /@types/retry@0.12.0:
     resolution: {integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==}
-    dev: true
-
-  /@types/rimraf@3.0.2:
-    resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
-    dependencies:
-      '@types/glob': 8.1.0
-      '@types/node': 13.13.52
     dev: true
 
   /@types/semver@7.5.0:
