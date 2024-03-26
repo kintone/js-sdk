@@ -25,8 +25,8 @@ importers:
         specifier: ^22.0.2
         version: 22.0.2(@types/eslint@8.56.6)(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.3)
       '@cybozu/license-manager':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.2.0
+        version: 1.2.0
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -1847,8 +1847,8 @@ packages:
       - prettier
       - supports-color
 
-  /@cybozu/license-manager@1.1.0:
-    resolution: {integrity: sha512-+K0qfP5hAXCvowy5ymj0SLWvyXRiHB9YwtJnnaurGGJgejiXxQQGvyn1rVlgxT6YRM5szOsRXW++uR/ZJ5BwTQ==}
+  /@cybozu/license-manager@1.2.0:
+    resolution: {integrity: sha512-9MPmvAIC1C8kZDlK4N7oKA4lRhO9Qnux3Q6wj5WCblJ+/ewh5Ynij+kOFW1BhswrLieE/IlW3MUE5oEjhcH2ng==}
     engines: {node: '>=18.14.0', npm: '>=9.3.1', pnpm: '>=8.10.0'}
     hasBin: true
     dependencies:
