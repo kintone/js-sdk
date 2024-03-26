@@ -394,9 +394,6 @@ importers:
       '@types/inquirer':
         specifier: 8.2.10
         version: 8.2.10
-      '@types/puppeteer':
-        specifier: ^5.4.7
-        version: 5.4.7
 
   packages/profile-loader:
     dependencies:
@@ -3044,12 +3041,6 @@ packages:
 
   /@types/prettier@2.7.3:
     resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
-    dev: true
-
-  /@types/puppeteer@5.4.7:
-    resolution: {integrity: sha512-JdGWZZYL0vKapXF4oQTC5hLVNfOgdPrqeZ1BiQnGk5cB7HeE91EWUiTdVSdQPobRN8rIcdffjiOgCYJ/S8QrnQ==}
-    dependencies:
-      '@types/node': 13.13.52
     dev: true
 
   /@types/qs@6.9.14:
