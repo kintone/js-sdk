@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.3.0...@kintone/rest-api-client@5.4.0) (2024-03-19)
+
+
+### Features
+
+* **rest-api-client:** add `space.addGuests()` method ([#2622](https://github.com/kintone/js-sdk/issues/2622)) ([210f2c4](https://github.com/kintone/js-sdk/commit/210f2c4242183e6ff0718e1dddaeff498ecc3499))
+* **rest-api-client:** add `space.addThreadComment()` method ([#2619](https://github.com/kintone/js-sdk/issues/2619)) ([981e6b6](https://github.com/kintone/js-sdk/commit/981e6b6002f004320574f9ce129483c3b253c247))
+* **rest-api-client:** add `space.deleteGuests()` method ([#2621](https://github.com/kintone/js-sdk/issues/2621)) ([ac96002](https://github.com/kintone/js-sdk/commit/ac960025c1f863c0801d973fa76d03cb88ae4245))
+* **rest-api-client:** add `space.updateSpaceGuests()` method ([#2625](https://github.com/kintone/js-sdk/issues/2625)) ([978ed3c](https://github.com/kintone/js-sdk/commit/978ed3ced2f289d9ec55eee994d0a518e8272ca5))
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^1.6.8 ([#2627](https://github.com/kintone/js-sdk/issues/2627)) ([fb4d141](https://github.com/kintone/js-sdk/commit/fb4d141d23dbb397e2846fd51f5a220d6a8609ae))
+
+## [5.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.2.0...@kintone/rest-api-client@5.3.0) (2024-03-12)
+
+
+### Features
+
+* **rest-api-client:** add `space.getSpaceMembers()` method ([#2599](https://github.com/kintone/js-sdk/issues/2599)) ([2c05fa9](https://github.com/kintone/js-sdk/commit/2c05fa908d2a7244a454e61900eec54fc48008a3))
+* **rest-api-client:** add `space.updateSpaceMembers()` method  ([#2603](https://github.com/kintone/js-sdk/issues/2603)) ([5b28413](https://github.com/kintone/js-sdk/commit/5b28413ee902043fead2c5bc5a2539dcf540668a))
+* **rest-api-client:** add `space.updateThread()` method ([#2606](https://github.com/kintone/js-sdk/issues/2606)) ([139e504](https://github.com/kintone/js-sdk/commit/139e504df99f6f77ccdb0ee9e27ee62ac56ac10f))
+
 ## [5.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.1.0...@kintone/rest-api-client@5.2.0) (2024-03-05)
 
 

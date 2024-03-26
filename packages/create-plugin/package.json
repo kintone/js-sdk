@@ -33,10 +33,9 @@
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/inquirer": "^8.2.10",
-    "@types/lodash": "^4.14.202",
+    "@types/lodash": "^4.17.0",
     "@types/node-rsa": "^1.1.4",
     "@types/normalize-path": "^3.0.2",
-    "@types/rimraf": "^3.0.2",
     "cross-env": "^7.0.3"
   },
   "files": [
