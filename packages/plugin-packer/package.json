@@ -51,7 +51,7 @@
     "yazl": "^2.5.1"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^2.2.1",
+    "@reduxjs/toolkit": "^2.2.2",
     "@types/debug": "^4.1.12",
     "@types/node-rsa": "^1.1.4",
     "@types/stream-buffers": "^3.0.7",
@@ -80,9 +80,9 @@
     "setimmediate": "^1.0.5",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.5",
-    "webpack": "^5.90.3",
+    "webpack": "^5.91.0",
     "webpack-cli": "5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.2"
   },
   "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-packer",
   "repository": {

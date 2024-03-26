@@ -227,7 +227,7 @@ Adds a comment to a Thread of a Space.
 
 Adds Guest users to Kintone.<br>
 This does not affiliate Guest users with any Guest Spaces, and does not send any invitation emails.<br>
-To affiliate a Guest user with a Guest Space, use the Update Guest Members API.<br>
+To affiliate a Guest user with a Guest Space, use the [Update Guest Members API](#updateSpaceGuests).<br>
 
 #### Parameters
 
@@ -257,7 +257,7 @@ An empty object.
 
 ### deleteGuests
 
-Deletes a Guest user from Kintone. If you would like to remove a user from a Guest Space without deleting their account, use the Update Guest Members API.
+Deletes a Guest user from Kintone. If you would like to remove a user from a Guest Space without deleting their account, use the [Update Guest Members API](#updateSpaceGuests).
 
 #### Parameters
 
