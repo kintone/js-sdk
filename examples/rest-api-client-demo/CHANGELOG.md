@@ -11,6 +11,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * devDependencies
     * @kintone/customize-uploader bumped from ^7.0.3 to ^7.0.4
 
+## [5.5.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@5.4.0...@kintone/rest-api-client-demo@5.5.0) (2024-03-27)
+
+
+### Features
+
+* **rest-api-client:** add `space.addSpaceFromTemplate()` method ([#2638](https://github.com/kintone/js-sdk/issues/2638)) ([4df57dd](https://github.com/kintone/js-sdk/commit/4df57dd3d1d9ad744c3c6ac06e4aa74e2407cc7d))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^5.4.0 ([#2597](https://github.com/kintone/js-sdk/issues/2597)) ([723987a](https://github.com/kintone/js-sdk/commit/723987af0034a5593c2e4172976ef1d6173ce3ae))
+
 ## [5.4.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client-demo@5.3.0...@kintone/rest-api-client-demo@5.4.0) (2024-03-19)
 
 
