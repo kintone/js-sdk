@@ -1,6 +1,7 @@
 import type { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 const SPACE_ID = 8;
+const SPACE_TEMPLATE_ID = 1;
 const GUEST_SPACE_ID = 9;
 const THREAD_ID = 8;
 
@@ -170,6 +171,45 @@ export class Space {
           guests,
         }),
       );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async addSpaceFromTemplate() {
+    const spaceTemplate = {
+      id: SPACE_TEMPLATE_ID,
+      name: "New Space from Template",
+      members: [
+        {
+          entity: {
+            code: "cybozu",
+            type: "USER" as const,
+          },
+          isAdmin: true,
+        },
+        {
+          entity: {
+            code: "user1",
+            type: "USER" as const,
+          },
+          isAdmin: false,
+        },
+        {
+          entity: {
+            code: "group1",
+            type: "GROUP" as const,
+          },
+          isAdmin: false,
+          includeSubs: true,
+        },
+      ],
+      isPrivate: false,
+      isGuest: false,
+    };
+
+    try {
+      console.log(await this.client.space.addSpaceFromTemplate(spaceTemplate));
     } catch (error) {
       console.log(error);
     }
