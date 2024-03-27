@@ -7,6 +7,7 @@ import type {
   SpaceMemberForRequest,
   GuestSpaceID,
   Guest,
+  SpaceTemplateID,
 } from "./types";
 import { BaseClient } from "./BaseClient";
 
@@ -70,14 +71,14 @@ export class SpaceClient extends BaseClient {
   }
 
   public addGuests(params: { guests: Guest[] }): Promise<{}> {
-    const path = this.buildPathWithGuestSpaceId({
+    const path = this.buildPath({
       endpointName: "guests",
     });
     return this.client.post(path, params);
   }
 
   public deleteGuests(params: { guests: string[] }): Promise<{}> {
-    const path = this.buildPathWithGuestSpaceId({
+    const path = this.buildPath({
       endpointName: "guests",
     });
     return this.client.delete(path, params);
@@ -91,5 +92,19 @@ export class SpaceClient extends BaseClient {
       endpointName: "space/guests",
     });
     return this.client.put(path, params);
+  }
+
+  public addSpaceFromTemplate(params: {
+    id: SpaceTemplateID;
+    name: string;
+    members: SpaceMemberForRequest[];
+    isPrivate?: boolean;
+    isGuest?: boolean;
+    fixedMember?: boolean;
+  }): Promise<{ id: SpaceID }> {
+    const path = this.buildPath({
+      endpointName: "template/space",
+    });
+    return this.client.post(path, params);
   }
 }
