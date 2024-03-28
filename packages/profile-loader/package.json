@@ -44,8 +44,5 @@
   },
   "dependencies": {
     "toml": "^3.0.0"
-  },
-  "devDependencies": {
-    "rimraf": "^5.0.5"
   }
 }
