@@ -42,7 +42,8 @@
     "ts-loader": "^9.5.1",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
-    "assert": "^2.1.0"
+    "assert": "^2.1.0",
+    "rimraf": "^5.0.5"
   },
   "bin": {
     "kintone-dts-gen": "dist/index.js"

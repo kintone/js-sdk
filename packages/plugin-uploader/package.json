@@ -48,6 +48,7 @@
     "puppeteer": "^22.6.1"
   },
   "devDependencies": {
-    "@types/inquirer": "8.2.10"
+    "@types/inquirer": "8.2.10",
+    "rimraf": "^5.0.5"
   }
 }

@@ -76,6 +76,9 @@ importers:
       '@types/yargs':
         specifier: ^17.0.32
         version: 17.0.32
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.1(typescript@5.4.3)(webpack@5.91.0)
@@ -205,6 +208,9 @@ importers:
       assert:
         specifier: ^2.1.0
         version: 2.1.0
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.1(typescript@5.4.3)(webpack@5.91.0)
@@ -242,6 +248,9 @@ importers:
       power-assert:
         specifier: ^1.6.1
         version: 1.6.1
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
 
   packages/plugin-packer:
     dependencies:
@@ -394,12 +403,19 @@ importers:
       '@types/inquirer':
         specifier: 8.2.10
         version: 8.2.10
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
 
   packages/profile-loader:
     dependencies:
       toml:
         specifier: ^3.0.0
         version: 3.0.0
+    devDependencies:
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
 
   packages/rest-api-client:
     dependencies:
