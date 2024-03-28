@@ -13,8 +13,9 @@
     "directory": "examples/rest-api-client-demo"
   },
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "pnpm clean",
     "build": "tsc --build",
+    "clean": "rimraf dist",
     "fix": "npm run lint:eslint -- --fix",
     "lint:eslint": "eslint 'src/**/*.ts' --max-warnings 0",
     "lint:ts": "tsc --noEmit",
