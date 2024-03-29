@@ -13,8 +13,7 @@
     "directory": "examples/rest-api-client-demo"
   },
   "scripts": {
-    "prebuild": "npm run clean",
-    "clean": "rimraf dist",
+    "prebuild": "rimraf dist",
     "build": "tsc --build",
     "fix": "npm run lint:eslint -- --fix",
     "lint:eslint": "eslint 'src/**/*.ts' --max-warnings 0",
