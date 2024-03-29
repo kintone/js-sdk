@@ -56,7 +56,7 @@ NOTE: The UMD links are using the `latest` tag to point to the latest version of
 
 ## Usage
 
-Here is a sample code that retrieves records of an app.
+Here is a sample code that retrieves app records.
 
 ```js
 const client = new KintoneRestAPIClient({
