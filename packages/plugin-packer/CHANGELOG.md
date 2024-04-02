@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.5](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.0.4...@kintone/plugin-packer@8.0.5) (2024-04-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yauzl to v3 ([#2576](https://github.com/kintone/js-sdk/issues/2576)) ([3f568c8](https://github.com/kintone/js-sdk/commit/3f568c8d16f0b7a6da493f9b16a630f1f5c54b13))
+
 ## [8.0.4](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.0.3...@kintone/plugin-packer@8.0.4) (2024-01-17)
 
 
