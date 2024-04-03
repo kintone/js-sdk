@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.10](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.0.9...@kintone/dts-gen@8.0.10) (2024-04-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @cybozu/eslint-config to v23 ([#2664](https://github.com/kintone/js-sdk/issues/2664)) ([b68c6a2](https://github.com/kintone/js-sdk/commit/b68c6a283727ee790591d2d950e98a633b7fa803))
+
 ## [8.0.9](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.0.8...@kintone/dts-gen@8.0.9) (2024-03-27)
 
 
