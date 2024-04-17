@@ -3,6 +3,8 @@ import type { Lang } from "./lang";
 type LangMap = { [lang in Lang]: string };
 type MessageMap = { [key in keyof typeof messages]: LangMap };
 
+export type BoundMessage = (key: keyof MessageMap) => string;
+
 const messages = {
   Q_BaseUrl: {
     en: "Input your kintone's base URL (https://example.cybozu.com):",
@@ -44,6 +46,10 @@ const messages = {
     en: "Cannot navigate to the plug-ins page, please retry with an account with administrator privileges",
     ja: "kintone管理者権限のあるユーザーで実行してください",
   },
+  Error_notDisplayImportButton: {
+    en: "Import Button is not displayed.",
+    ja: "Import Button is not displayed.",
+  },
   Uploaded: {
     en: "has been uploaded!",
     ja: "をアップロードしました!",
@@ -66,8 +72,6 @@ export const getMessage = (
  * Returns a function bound lang to getMessage
  * @param lang
  */
-export const getBoundMessage = (
-  lang: keyof LangMap,
-): ((key: keyof MessageMap) => string) => {
+export const getBoundMessage = (lang: keyof LangMap): BoundMessage => {
   return getMessage.bind(null, lang);
 };
