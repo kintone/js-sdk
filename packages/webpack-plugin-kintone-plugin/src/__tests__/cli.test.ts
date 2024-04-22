@@ -19,6 +19,7 @@ const runWebpack = (config = "webpack.config.js") => {
     ["--config", config, "--mode", "production"],
     {
       cwd: pluginDir,
+      shell: true,
     },
   );
 };
