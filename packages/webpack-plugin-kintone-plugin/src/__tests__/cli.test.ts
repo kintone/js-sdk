@@ -13,14 +13,14 @@ const pluginJsOutputPaths = [
 ];
 
 const runWebpack = (config = "webpack.config.js") => {
-  const webpackCommand = `webpack${os.platform() === "win32" ? ".cmd" : ""}`;
-  const shell = os.platform() === "win32";
+  const isWindows = os.platform() === "win32";
+  const webpackCommand = `webpack${isWindows ? ".cmd" : ""}`;
   return spawnSync(
     webpackCommand,
     ["--config", config, "--mode", "production"],
     {
       cwd: pluginDir,
-      shell,
+      shell: isWindows,
     },
   );
 };
