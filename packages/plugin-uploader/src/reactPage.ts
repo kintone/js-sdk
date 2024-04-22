@@ -5,7 +5,7 @@ import chalk from "chalk";
 import type { Lang } from "./lang";
 import type { PageInterface } from "./PageInterface";
 
-const TIMEOUT_MS = 15000;
+const TIMEOUT_MS = 10000;
 const UPLOAD_TIMEOUT_MS = 60000;
 
 const IMPORT_BUTTON_SELECTOR = "button[data-testid='PluginImportButton']";
