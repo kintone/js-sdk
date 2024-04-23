@@ -5,8 +5,9 @@ import { QUESTION_LIST } from "./constants";
 import { getWorkingDir } from "./generateWorkingDir";
 
 export type Response = {
-  statusCode: number;
-  error?: Error;
+  stdout?: Buffer;
+  stderr?: Buffer;
+  status?: number;
 };
 
 export const getCommands = (): { [key: string]: string } => {
@@ -36,10 +37,7 @@ export const execCommand = (
   });
 };
 
-const parseArgs = (
-  args: string,
-  envVars: { [key: string]: string } | undefined,
-) => {
+const parseArgs = (args: string, envVars?: { [key: string]: string }) => {
   const replacedArgs = replaceTokenWithEnvVars(args, envVars).match(
     /(?:[^\s'"]+|"[^"]*"|'[^']*')+/g,
   );
@@ -63,7 +61,7 @@ export const interactivePrompt = async (
   command: string,
   outputDir: string,
   answers: string[],
-) => {
+): Promise<Response> => {
   const commands = getCommands();
   if (!commands[command]) {
     throw new Error(`Command ${command} not found.`);
@@ -75,22 +73,26 @@ export const interactivePrompt = async (
     cwd: workingDir,
   });
 
+  let stdout: Buffer;
+  let stderr: Buffer;
+
   const cliExitPromise = new Promise<Response>((resolve, reject) => {
-    cliProcess.on("exit", (code: number) =>
+    cliProcess.on("exit", (code: number) => {
       resolve({
-        statusCode: code,
-      }),
-    );
-    cliProcess.on("error", (error) =>
-      resolve({
-        statusCode: 1,
+        status: code,
+        stdout: stdout,
+        stderr: stderr,
+      });
+    });
+    cliProcess.on("error", (error) => {
+      reject({
         error,
-      }),
-    );
+      });
+    });
   });
 
   let currentStep = 0;
-  cliProcess.stdout.on("data", async (data) => {
+  cliProcess.stdout.on("data", async (data: Buffer) => {
     const output = data.toString();
     // console.log(output.trim());
     if (output.includes(QUESTION_LIST[currentStep])) {
@@ -100,7 +102,12 @@ export const interactivePrompt = async (
 
     if (currentStep === QUESTION_LIST.length) {
       cliProcess.stdin.end();
+      stdout = data;
     }
+  });
+
+  cliProcess.stderr.on("data", async (data: Buffer) => {
+    stderr = data;
   });
 
   return cliExitPromise;

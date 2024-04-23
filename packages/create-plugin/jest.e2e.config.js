@@ -4,6 +4,6 @@ const config = {
   setupFilesAfterEnv: ["<rootDir>/__e2e__/setup.ts"],
   testRegex: "/__e2e__/.*\\.test\\.ts$",
   testEnvironment: "node",
-  testTimeout: 1000,
+  testTimeout: 120000,
 };
 module.exports = config;
