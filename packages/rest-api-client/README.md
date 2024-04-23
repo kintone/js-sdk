@@ -36,17 +36,21 @@ const { KintoneRestAPIClient } = require("@kintone/rest-api-client");
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 ```
 
-### 2. UMD files (for browser environment)
+### 2. Load UMD files from CDN (for browser environment)
 
-This library also provides two Universal Module Definition (UMD) files:
+> [!IMPORTANT]
+> To avoid cascading failures from the CDN, we recommend using the npm package and bundling it to your plugin/customization.
 
-- https://unpkg.com/@kintone/rest-api-client@latest/umd/KintoneRestAPIClient.js
-- minified one: https://unpkg.com/@kintone/rest-api-client@latest/umd/KintoneRestAPIClient.min.js
+You can also load Universal Module Definition (UMD) files directly from Cybozu CDN:
 
-After loading this, you can use `KintoneRestAPIClient` directly.
-In Kintone customization, please add this URL in "JavaScript and CSS Customization" setting of your app.
+- https://cybozu.dev/ja/kintone/sdk/library/cybozu-cdn/#kintone-rest-api-client
 
-NOTE: The UMD links are using the `latest` tag to point to the latest version of the library. This pointer is unstable, it shifts as we release new versions. You should consider pointing to a specific version, such as [`1.0.0`](https://unpkg.com/@kintone/rest-api-client@1.0.0/umd/KintoneRestAPIClient.js).
+Regarding restrictions and availability, please check Cybozu CDN Policy:
+
+- https://cybozu.dev/ja/policy/cybozu-cdn-policy/
+
+After loading the UMD file, you can use `KintoneRestAPIClient` in your environment.
+In Kintone customization, please add the UMD file URL in the "JavaScript and CSS Customization" setting of your app.
 
 ## Browsers support
 
