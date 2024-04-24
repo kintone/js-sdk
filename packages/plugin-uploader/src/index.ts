@@ -1,11 +1,10 @@
 import fs from "fs";
-
 import { getBoundMessage } from "./messages";
-import type { BasicAuth } from "./pluginSystemPage";
-import { PluginSystemPage } from "./pluginSystemPage";
+import type { BasicAuth } from "./pages/PluginSystemPage";
+import { PluginSystemPage } from "./pages/PluginSystemPage";
 import type { Lang } from "./lang";
 
-export interface Option {
+interface Option {
   proxyServer?: string;
   watch?: boolean;
   lang: Lang;
@@ -38,8 +37,9 @@ export const run = async (
     basicAuth,
   };
   try {
-    let page = await pluginSystemPage.readyForUpload(params);
-    await pluginSystemPage.upload(page, pluginPath, lang);
+    await pluginSystemPage.openNewPage(browser);
+    await pluginSystemPage.readyForUpload(params);
+    await pluginSystemPage.upload(pluginPath, lang);
     if (options.watch) {
       let uploading = false;
       fs.watch(pluginPath, async () => {
@@ -48,21 +48,21 @@ export const run = async (
         }
         try {
           uploading = true;
-          await pluginSystemPage.upload(page, pluginPath, lang);
+          await pluginSystemPage.upload(pluginPath, lang);
         } catch (e) {
           console.log(e);
           console.log(boundMessage("Error_retry"));
           await browser.close();
           browser = await pluginSystemPage.launchBrowser(options.proxyServer);
-          page = await pluginSystemPage.readyForUpload({
-            browser,
+          await pluginSystemPage.openNewPage(browser);
+          await pluginSystemPage.readyForUpload({
             baseUrl,
             userName,
             password,
             lang,
             basicAuth,
           });
-          await pluginSystemPage.upload(page, pluginPath, lang);
+          await pluginSystemPage.upload(pluginPath, lang);
         } finally {
           uploading = false;
         }

@@ -1,17 +1,19 @@
 import type { Page } from "puppeteer";
-import type { BoundMessage } from "./messages";
-import { getBoundMessage } from "./messages";
+import type { BoundMessage } from "../messages";
+import { getBoundMessage } from "../messages";
 import chalk from "chalk";
-import type { Lang } from "./lang";
-import type { PageInterface } from "./PageInterface";
+import type { Lang } from "../lang";
+import type { PluginSystemPageBase } from "./PluginSystemPageBase";
 
 const TIMEOUT_MS = 10000;
 const UPLOAD_TIMEOUT_MS = 60000;
 
 export const IMPORT_BUTTON_SELECTOR =
   "#page-admin-system-plugin-index-addplugin";
+const IMPORT_PLUGIN_DIALOG_SELECTOR = ".ocean-ui-dialog";
+const FILE_SELECTOR = '.plupload > input[type="file"]';
 
-export class OldPage implements PageInterface {
+export class OldPluginSystemPage implements PluginSystemPageBase {
   public async readyForImportButton(
     page: Page,
     boundMessage: BoundMessage,
@@ -33,9 +35,11 @@ export class OldPage implements PageInterface {
     const boundMessage = getBoundMessage(lang);
     console.log(`Trying to upload ${pluginPath}`);
     await page.click(IMPORT_BUTTON_SELECTOR);
-
-    const file = await page.$('.plupload > input[type="file"]');
-    if (file == null) {
+    await page.waitForSelector(IMPORT_PLUGIN_DIALOG_SELECTOR, {
+      timeout: TIMEOUT_MS,
+    });
+    const file = await page.$(FILE_SELECTOR);
+    if (file === null) {
       throw new Error('input[type="file"] is not found');
     }
     await file.uploadFile(pluginPath);
