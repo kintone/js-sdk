@@ -388,7 +388,7 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       puppeteer:
-        specifier: ^22.6.5
+        specifier: ^22.7.0
         version: 22.7.0(typescript@5.4.5)
     devDependencies:
       '@types/inquirer':
