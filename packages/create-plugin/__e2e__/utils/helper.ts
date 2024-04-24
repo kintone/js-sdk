@@ -59,6 +59,7 @@ const replaceTokenWithEnvVars = (
 
 export const interactivePrompt = async (
   command: string,
+  workingDir: string,
   outputDir: string,
   answers: string[],
 ): Promise<Response> => {
@@ -67,7 +68,6 @@ export const interactivePrompt = async (
     throw new Error(`Command ${command} not found.`);
   }
 
-  const workingDir = getWorkingDir();
   const commandString = `${commands[command]} ${workingDir}/${outputDir}`;
   const cliProcess = execCommand("node", commandString, {
     cwd: workingDir,
@@ -135,4 +135,13 @@ const inputEnvReplacer = (envVars: { [key: string]: string } | undefined) => {
     }
     return value;
   };
+};
+
+export const readManifestJson = (pluginDir: string) => {
+  const fileFS = fs.readFileSync(
+    path.resolve(pluginDir, "src", "manifest.json"),
+    "utf8",
+  );
+
+  return JSON.parse(fileFS);
 };
