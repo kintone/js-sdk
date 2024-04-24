@@ -4,11 +4,12 @@ import { CREATE_PLUGIN_COMMAND, DEFAULT_ANSWER } from "./utils/constants";
 import path from "path";
 import { generateWorkingDir, getWorkingDir } from "./utils/generateWorkingDir";
 import fs from "fs";
+import { afterEach } from "node:test";
 
 describe("create-plugin", function () {
   it("Should able create plugin with specified output directory and required options successfully", async () => {
     const outputDir = "test1";
-    const workingDir = generateWorkingDir();
+    const workingDir = getWorkingDir();
 
     const ANSWER = [
       DEFAULT_ANSWER,
@@ -34,5 +35,11 @@ describe("create-plugin", function () {
     const manifestJson = readManifestJson(pluginDir);
     assert.deepEqual(manifestJson.name, { en: "test1" });
     assert.deepEqual(manifestJson.description, { en: "test1" });
+  });
+
+  afterEach(() => {
+    const workingDir = getWorkingDir();
+    console.log("@@@@@", path.resolve(workingDir));
+    fs.rmdirSync(path.resolve(workingDir), { recursive: true });
   });
 });
