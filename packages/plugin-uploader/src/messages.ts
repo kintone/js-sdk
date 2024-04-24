@@ -48,7 +48,7 @@ const messages = {
   },
   Error_notDisplayImportButton: {
     en: "Import Button is not displayed.",
-    ja: "Import Button is not displayed.",
+    ja: "「読み込む」ボタンが表示されていません。",
   },
   Uploaded: {
     en: "has been uploaded!",

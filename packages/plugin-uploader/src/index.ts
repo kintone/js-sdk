@@ -1,7 +1,7 @@
 import fs from "fs";
 import { getBoundMessage } from "./messages";
-import type { BasicAuth } from "./pages/PluginSystemPage";
-import { PluginSystemPage } from "./pages/PluginSystemPage";
+import type { BasicAuth } from "./controllers/ControllerBase";
+import PluginSystemController from "./controllers/PluginSystemController";
 import type { Lang } from "./lang";
 
 interface Option {
@@ -19,27 +19,26 @@ export const run = async (
   pluginPath: string,
   options: Option,
 ): Promise<void> => {
-  const pluginSystemPage = new PluginSystemPage();
-  let browser = await pluginSystemPage.launchBrowser(
-    options.proxyServer,
-    options.puppeteerIgnoreDefaultArgs,
-  );
-
   const { lang, basicAuth } = options;
   const boundMessage = getBoundMessage(lang);
 
-  const params = {
-    browser,
-    baseUrl,
-    userName,
-    password,
-    lang,
-    basicAuth,
+  const browserOptions = {
+    proxy: options.proxyServer,
+    ignoreDefaultArgs: options.puppeteerIgnoreDefaultArgs,
   };
+  const pluginSystemController = new PluginSystemController();
+  await pluginSystemController.launchBrowser(browserOptions);
+
   try {
-    await pluginSystemPage.openNewPage(browser);
-    await pluginSystemPage.readyForUpload(params);
-    await pluginSystemPage.upload(pluginPath, lang);
+    await pluginSystemController.openNewPage();
+    await pluginSystemController.readyForUpload({
+      baseUrl,
+      userName,
+      password,
+      lang,
+      basicAuth,
+    });
+    await pluginSystemController.upload(pluginPath, lang);
     if (options.watch) {
       let uploading = false;
       fs.watch(pluginPath, async () => {
@@ -48,30 +47,30 @@ export const run = async (
         }
         try {
           uploading = true;
-          await pluginSystemPage.upload(pluginPath, lang);
+          await pluginSystemController.upload(pluginPath, lang);
         } catch (e) {
           console.log(e);
           console.log(boundMessage("Error_retry"));
-          await browser.close();
-          browser = await pluginSystemPage.launchBrowser(options.proxyServer);
-          await pluginSystemPage.openNewPage(browser);
-          await pluginSystemPage.readyForUpload({
+          await pluginSystemController.closeBrowser();
+          await pluginSystemController.launchBrowser(browserOptions);
+          await pluginSystemController.openNewPage();
+          await pluginSystemController.readyForUpload({
             baseUrl,
             userName,
             password,
             lang,
             basicAuth,
           });
-          await pluginSystemPage.upload(pluginPath, lang);
+          await pluginSystemController.upload(pluginPath, lang);
         } finally {
           uploading = false;
         }
       });
     } else {
-      await browser.close();
+      await pluginSystemController.closeBrowser();
     }
   } catch (e) {
     console.error(boundMessage("Error"), e);
-    await browser.close();
+    await pluginSystemController.closeBrowser();
   }
 };

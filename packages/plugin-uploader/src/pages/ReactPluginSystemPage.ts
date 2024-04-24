@@ -3,7 +3,7 @@ import type { BoundMessage } from "../messages";
 import { getBoundMessage } from "../messages";
 import chalk from "chalk";
 import type { Lang } from "../lang";
-import type { PluginSystemPageBase } from "./PluginSystemPageBase";
+import type { PluginSystemPageInterface } from "./PluginSystemPageInterface";
 
 const TIMEOUT_MS = 10000;
 const UPLOAD_TIMEOUT_MS = 60000;
@@ -15,7 +15,7 @@ const FILE_SELECTOR = "label[data-testid='FileSelector'] > input[type='file']";
 const IMPORT_BUTTON_IN_DIALOG_SELECTOR =
   "//div[@data-testid='ImportDialog']//div[contains(@class,'_footer')]//button[1]";
 
-export class ReactPluginSystemPage implements PluginSystemPageBase {
+export class ReactPluginSystemPage implements PluginSystemPageInterface {
   public async readyForImportButton(
     page: Page,
     boundMessage: BoundMessage,

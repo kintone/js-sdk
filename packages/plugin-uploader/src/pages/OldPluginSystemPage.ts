@@ -3,7 +3,7 @@ import type { BoundMessage } from "../messages";
 import { getBoundMessage } from "../messages";
 import chalk from "chalk";
 import type { Lang } from "../lang";
-import type { PluginSystemPageBase } from "./PluginSystemPageBase";
+import type { PluginSystemPageInterface } from "./PluginSystemPageInterface";
 
 const TIMEOUT_MS = 10000;
 const UPLOAD_TIMEOUT_MS = 60000;
@@ -13,7 +13,7 @@ export const IMPORT_BUTTON_SELECTOR =
 const IMPORT_PLUGIN_DIALOG_SELECTOR = ".ocean-ui-dialog";
 const FILE_SELECTOR = '.plupload > input[type="file"]';
 
-export class OldPluginSystemPage implements PluginSystemPageBase {
+export class OldPluginSystemPage implements PluginSystemPageInterface {
   public async readyForImportButton(
     page: Page,
     boundMessage: BoundMessage,
