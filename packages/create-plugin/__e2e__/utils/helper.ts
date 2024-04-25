@@ -2,7 +2,7 @@ import { spawn } from "child_process";
 import fs from "fs";
 import path from "path";
 import { QUESTION_LIST } from "./constants";
-import { getWorkingDir } from "./generateWorkingDir";
+import { promisify } from "util";
 
 export type Response = {
   stdout?: Buffer;
@@ -57,7 +57,7 @@ const replaceTokenWithEnvVars = (
     .replace(/\$\$[a-zA-Z0-9_]+/g, processEnvReplacer)
     .replace(/\$[a-zA-Z0-9_]+/g, inputEnvReplacer(envVars));
 
-export const interactivePrompt = async (
+export const executeCommandWithInteractiveInput = async (
   command: string,
   workingDir: string,
   outputDir: string,
@@ -145,3 +145,5 @@ export const readManifestJson = (pluginDir: string) => {
 
   return JSON.parse(fileFS);
 };
+
+export const rmAsync = promisify(fs.rm);

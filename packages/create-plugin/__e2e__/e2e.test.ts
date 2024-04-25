@@ -1,15 +1,17 @@
 import assert from "assert";
-import { interactivePrompt, readManifestJson } from "./utils/helper";
+import {
+  executeCommandWithInteractiveInput,
+  readManifestJson,
+} from "./utils/helper";
 import { CREATE_PLUGIN_COMMAND, DEFAULT_ANSWER } from "./utils/constants";
 import path from "path";
-import { generateWorkingDir, getWorkingDir } from "./utils/generateWorkingDir";
+import { generateWorkingDir } from "./utils/generateWorkingDir";
 import fs from "fs";
-import { afterEach } from "node:test";
 
 describe("create-plugin", function () {
   it("Should able create plugin with specified output directory and required options successfully", async () => {
     const outputDir = "test1";
-    const workingDir = getWorkingDir();
+    const workingDir = generateWorkingDir();
 
     const ANSWER = [
       DEFAULT_ANSWER,
@@ -20,7 +22,7 @@ describe("create-plugin", function () {
       DEFAULT_ANSWER,
       "No",
     ];
-    const response = await interactivePrompt(
+    const response = await executeCommandWithInteractiveInput(
       CREATE_PLUGIN_COMMAND,
       workingDir,
       outputDir,
@@ -35,11 +37,5 @@ describe("create-plugin", function () {
     const manifestJson = readManifestJson(pluginDir);
     assert.deepEqual(manifestJson.name, { en: "test1" });
     assert.deepEqual(manifestJson.description, { en: "test1" });
-  });
-
-  afterEach(() => {
-    const workingDir = getWorkingDir();
-    console.log("@@@@@", path.resolve(workingDir));
-    fs.rmdirSync(path.resolve(workingDir), { recursive: true });
   });
 });
