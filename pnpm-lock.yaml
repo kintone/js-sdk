@@ -388,8 +388,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       puppeteer:
-        specifier: ^22.7.0
-        version: 22.7.0(typescript@5.4.5)
+        specifier: ^22.7.1
+        version: 22.7.1(typescript@5.4.5)
     devDependencies:
       '@types/inquirer':
         specifier: 8.2.10
@@ -2504,8 +2504,8 @@ packages:
       picocolors: 1.0.0
       tslib: 2.6.2
 
-  /@puppeteer/browsers@2.2.2:
-    resolution: {integrity: sha512-hZ/JhxPIceWaGSEzUZp83/8M49CoxlkuThfTR7t4AoCu5+ZvJ3vktLm60Otww2TXeROB5igiZ8D9oPQh6ckBVg==}
+  /@puppeteer/browsers@2.2.3:
+    resolution: {integrity: sha512-bJ0UBsk0ESOs6RFcLXOt99a3yTDcOKlzfjad+rhFwdaG1Lu/Wzq58GHYCDTlZ9z6mldf4g+NTb+TXEfe0PpnsQ==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
@@ -4390,8 +4390,8 @@ packages:
     engines: {node: '>=6.0'}
     dev: true
 
-  /chromium-bidi@0.5.17(devtools-protocol@0.0.1273771):
-    resolution: {integrity: sha512-BqOuIWUgTPj8ayuBFJUYCCuwIcwjBsb3/614P7tt1bEPJ4i1M0kCdIl0Wi9xhtswBXnfO2bTpTMkHD71H8rJMg==}
+  /chromium-bidi@0.5.19(devtools-protocol@0.0.1273771):
+    resolution: {integrity: sha512-UA6zL77b7RYCjJkZBsZ0wlvCTD+jTjllZ8f6wdO4buevXgTZYjV+XLB9CiEa2OuuTGGTLnI7eN9I60YxuALGQg==}
     peerDependencies:
       devtools-protocol: '*'
     dependencies:
@@ -9567,12 +9567,12 @@ packages:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
     engines: {node: '>=6'}
 
-  /puppeteer-core@22.7.0:
-    resolution: {integrity: sha512-9Q+L3VD7cfhXnxv6AqwTHsVb/+/uXENByhPrgvwQ49wvzQwtf1d6b7v6gpoG3tpRdwYjxoV1eHTD8tFahww09g==}
+  /puppeteer-core@22.7.1:
+    resolution: {integrity: sha512-jD7T7yN7PWGuJmNT0TAEboA26s0VVnvbgCxqgQIF+eNQW2u71ENaV2JwzSJiCHO+e72H4Ue6AgKD9USQ8xAcOQ==}
     engines: {node: '>=18'}
     dependencies:
-      '@puppeteer/browsers': 2.2.2
-      chromium-bidi: 0.5.17(devtools-protocol@0.0.1273771)
+      '@puppeteer/browsers': 2.2.3
+      chromium-bidi: 0.5.19(devtools-protocol@0.0.1273771)
       debug: 4.3.4
       devtools-protocol: 0.0.1273771
       ws: 8.16.0
@@ -9582,16 +9582,16 @@ packages:
       - utf-8-validate
     dev: false
 
-  /puppeteer@22.7.0(typescript@5.4.5):
-    resolution: {integrity: sha512-s1ulKFZKW3lwWCtNu0VrRLfRaanFHxIv7F8UFYpLo8dPTZcI4wB4EAOD0sKT3SKP+1Rsjodb9WFsK78yKQ6i9Q==}
+  /puppeteer@22.7.1(typescript@5.4.5):
+    resolution: {integrity: sha512-JBCBCwQ9+dyPp5haqeecgv0N0vgWFx44woUeKJaPeJT8CU3RXrd8F/tqJQbuAmcWlbMhYJSlTJkIFrwVAs6BNA==}
     engines: {node: '>=18'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@puppeteer/browsers': 2.2.2
+      '@puppeteer/browsers': 2.2.3
       cosmiconfig: 9.0.0(typescript@5.4.5)
       devtools-protocol: 0.0.1273771
-      puppeteer-core: 22.7.0
+      puppeteer-core: 22.7.1
     transitivePeerDependencies:
       - bufferutil
       - supports-color
