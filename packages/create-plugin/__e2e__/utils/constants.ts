@@ -1,4 +1,6 @@
-export const DEFAULT_ANSWER = "\n";
+export const DEFAULT_ANSWER = "";
+export const YES = "Yes";
+export const NO = "No";
 
 export const CREATE_PLUGIN_COMMAND = "create-plugin";
 

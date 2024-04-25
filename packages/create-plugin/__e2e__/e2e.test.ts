@@ -1,6 +1,6 @@
 import assert from "assert";
 import { executeCommandWithInteractiveInput } from "./utils/helper";
-import { CREATE_PLUGIN_COMMAND, DEFAULT_ANSWER } from "./utils/constants";
+import { CREATE_PLUGIN_COMMAND, DEFAULT_ANSWER, NO } from "./utils/constants";
 import path from "path";
 import { generateWorkingDir } from "./utils/generateWorkingDir";
 import fs from "fs";
@@ -24,8 +24,8 @@ describe("create-plugin", function () {
       DEFAULT_ANSWER,
       DEFAULT_ANSWER,
       DEFAULT_ANSWER,
-      "No",
-      "No",
+      NO,
+      NO,
     ];
     const response = await executeCommandWithInteractiveInput(
       CREATE_PLUGIN_COMMAND,
