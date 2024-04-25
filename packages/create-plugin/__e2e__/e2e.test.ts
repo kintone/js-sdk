@@ -9,7 +9,7 @@ import { generateWorkingDir } from "./utils/generateWorkingDir";
 import fs from "fs";
 
 describe("create-plugin", function () {
-  it("Should able create plugin with specified output directory and required options successfully", async () => {
+  it("Should able to create a plugin with specified output directory and required options successfully", async () => {
     const outputDir = "test1";
     const workingDir = generateWorkingDir();
 
