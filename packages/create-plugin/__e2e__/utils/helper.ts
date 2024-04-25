@@ -2,7 +2,6 @@ import { spawn } from "child_process";
 import fs from "fs";
 import path from "path";
 import { QUESTION_LIST } from "./constants";
-import { promisify } from "util";
 
 export type Response = {
   stdout?: Buffer;
@@ -94,9 +93,9 @@ export const executeCommandWithInteractiveInput = async (
   let currentStep = 0;
   cliProcess.stdout.on("data", async (data: Buffer) => {
     const output = data.toString();
-    // console.log(output.trim());
     if (output.includes(QUESTION_LIST[currentStep])) {
       cliProcess.stdin.write(answers[currentStep]);
+      cliProcess.stdin.write("\n");
       currentStep++;
     }
 
@@ -136,14 +135,3 @@ const inputEnvReplacer = (envVars: { [key: string]: string } | undefined) => {
     return value;
   };
 };
-
-export const readManifestJson = (pluginDir: string) => {
-  const fileFS = fs.readFileSync(
-    path.resolve(pluginDir, "src", "manifest.json"),
-    "utf8",
-  );
-
-  return JSON.parse(fileFS);
-};
-
-export const rmAsync = promisify(fs.rm);
