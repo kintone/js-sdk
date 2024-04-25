@@ -21,7 +21,7 @@ describe("create-plugin", function () {
     console.log(`Working directory: ${workingDir}`);
   });
 
-  it("Should able to create a plugin with specified output directory and required options successfully", async () => {
+  it("#JsSdkTest-1 Should able to create a plugin with specified output directory and required options successfully", async () => {
     const outputDir = "test1";
     const ANSWERS = [
       "test1-name",
