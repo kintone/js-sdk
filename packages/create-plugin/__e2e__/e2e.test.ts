@@ -1,6 +1,10 @@
 import assert from "assert";
 import { executeCommandWithInteractiveInput } from "./utils/helper";
-import { CREATE_PLUGIN_COMMAND, DEFAULT_ANSWER, NO } from "./utils/constants";
+import {
+  CREATE_PLUGIN_COMMAND,
+  DEFAULT_ANSWER,
+  ANSWER_NO,
+} from "./utils/constants";
 import path from "path";
 import { generateWorkingDir } from "./utils/generateWorkingDir";
 import fs from "fs";
@@ -14,24 +18,25 @@ describe("create-plugin", function () {
   let workingDir: string;
   beforeEach(() => {
     workingDir = generateWorkingDir();
+    console.log(`Working directory: ${workingDir}`);
   });
 
   it("Should able to create a plugin with specified output directory and required options successfully", async () => {
     const outputDir = "test1";
-    const ANSWER = [
+    const ANSWERS = [
       "test1-name",
       "test1-description",
       DEFAULT_ANSWER,
       DEFAULT_ANSWER,
       DEFAULT_ANSWER,
-      NO,
-      NO,
+      ANSWER_NO,
+      ANSWER_NO,
     ];
     const response = await executeCommandWithInteractiveInput(
       CREATE_PLUGIN_COMMAND,
       workingDir,
       outputDir,
-      ANSWER,
+      ANSWERS,
     );
 
     assert(response.status === 0, "Failed to create plugin");
