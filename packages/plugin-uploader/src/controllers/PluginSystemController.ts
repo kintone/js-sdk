@@ -10,7 +10,7 @@ import {
 import { ControllerBase } from "./ControllerBase";
 
 const DETECT_PAGE_TIMEOUT_MS = 10000;
-const NO_PRIVILEGE_STATUS_CODE = "403";
+const NO_PRIVILEGE_STATUS_CODE = "CB_NO02";
 
 export interface BasicAuth {
   username: string;
@@ -69,7 +69,11 @@ export default class PluginSystemController extends ControllerBase {
     });
 
     const response = await this.goToPluginSystemPage(baseUrl);
-    if (!response || response.headers().status === NO_PRIVILEGE_STATUS_CODE) {
+    if (
+      !response ||
+      (response.headers()["x-cybozu-error"] &&
+        response.headers()["x-cybozu-error"] === NO_PRIVILEGE_STATUS_CODE)
+    ) {
       throw chalk.red(boundMessage("Error_adminPrivilege"));
     }
 
