@@ -61,13 +61,15 @@ const replaceTokenWithEnvVars = (
     .replace(/\$\$[a-zA-Z0-9_]+/g, processEnvReplacer)
     .replace(/\$[a-zA-Z0-9_]+/g, inputEnvReplacer(envVars));
 
-export const executeCommandWithInteractiveInput = async (
-  command: string,
-  workingDir: string,
-  outputDir: string,
-  questionsInput: QuestionInput[],
-  commandArguments?: string,
-) => {
+export const executeCommandWithInteractiveInput = async (options: {
+  command: string;
+  workingDir: string;
+  outputDir: string;
+  questionsInput: QuestionInput[];
+  commandArguments?: string;
+}) => {
+  const { command, workingDir, outputDir, questionsInput, commandArguments } =
+    options;
   const commands = getCommands();
   if (!commands[command]) {
     throw new Error(`Command ${command} not found.`);
