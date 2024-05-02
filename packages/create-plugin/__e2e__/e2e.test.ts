@@ -78,7 +78,20 @@ describe("create-plugin", function () {
   });
 
   afterEach(() => {
-    rimrafSync(workingDir);
-    console.log(`Working directory ${workingDir} has been removed`);
+    const testName = expect.getState().currentTestName;
+    if (!testName || !workingDir) {
+      return;
+    }
+
+    // @ts-ignore
+    const match = Object.keys(globalThis.testStatuses).find((item: string) =>
+      testName.includes(item),
+    );
+
+    // @ts-ignore
+    if (match && globalThis.testStatuses[match] === "success") {
+      rimrafSync(workingDir);
+      console.log(`Working directory ${workingDir} has been removed`);
+    }
   });
 });
