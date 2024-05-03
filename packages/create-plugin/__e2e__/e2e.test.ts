@@ -15,6 +15,7 @@ import {
   readPluginManifestJson,
 } from "./utils/verification";
 import { getBoundMessage } from "../src/messages";
+import { generateRandomString } from "./utils/helper";
 
 describe("create-plugin", function () {
   let workingDir: string;
@@ -73,6 +74,116 @@ describe("create-plugin", function () {
     const expectedManifestJson = {
       name: { en: "test1-name" },
       description: { en: "test1-description" },
+    };
+    assertObjectIncludes(actualManifestJson, expectedManifestJson);
+  });
+
+  it("#JsSdkTest-2 Should able to create a plugin with plugin-in name contains 64 characters", async () => {
+    const m = getBoundMessage("en");
+    const outputDir = "test2";
+    const pluginName = generateRandomString(64);
+    const questionsInput: QuestionInput[] = [
+      {
+        question: m("Q_NameEn"),
+        answer: pluginName,
+      },
+      {
+        question: m("Q_DescriptionEn"),
+        answer: "64characters",
+      },
+      {
+        question: m("Q_SupportJa"),
+        answer: ANSWER_NO,
+      },
+      {
+        question: m("Q_SupportZh"),
+        answer: ANSWER_NO,
+      },
+      {
+        question: m("Q_websiteUrlEn"),
+        answer: DEFAULT_ANSWER,
+      },
+      {
+        question: m("Q_MobileSupport"),
+        answer: ANSWER_NO,
+      },
+      {
+        question: m("Q_enablePluginUploader"),
+        answer: ANSWER_NO,
+      },
+    ];
+
+    const response = await executeCommandWithInteractiveInput({
+      command: CREATE_PLUGIN_COMMAND,
+      workingDir,
+      outputDir,
+      questionsInput,
+    });
+
+    assert(response.status === 0, "Failed to create plugin");
+
+    const pluginDir = path.resolve(workingDir, outputDir);
+    assert.ok(fs.existsSync(pluginDir), "plugin dir is not created.");
+
+    const actualManifestJson = readPluginManifestJson(pluginDir);
+    const expectedManifestJson = {
+      name: { en: pluginName },
+      description: { en: "64characters" },
+    };
+    assertObjectIncludes(actualManifestJson, expectedManifestJson);
+  });
+
+  it("#JsSdkTest-3 Should able to create a plugin with plugin-in description contains 200 characters", async () => {
+    const m = getBoundMessage("en");
+    const outputDir = "test3";
+    const pluginDescription = generateRandomString(200);
+    const questionsInput: QuestionInput[] = [
+      {
+        question: m("Q_NameEn"),
+        answer: "200characters",
+      },
+      {
+        question: m("Q_DescriptionEn"),
+        answer: pluginDescription,
+      },
+      {
+        question: m("Q_SupportJa"),
+        answer: ANSWER_NO,
+      },
+      {
+        question: m("Q_SupportZh"),
+        answer: ANSWER_NO,
+      },
+      {
+        question: m("Q_websiteUrlEn"),
+        answer: DEFAULT_ANSWER,
+      },
+      {
+        question: m("Q_MobileSupport"),
+        answer: ANSWER_NO,
+      },
+      {
+        question: m("Q_enablePluginUploader"),
+        answer: ANSWER_NO,
+      },
+    ];
+
+    const response = await executeCommandWithInteractiveInput({
+      command: CREATE_PLUGIN_COMMAND,
+      workingDir,
+      outputDir,
+      questionsInput,
+    });
+
+    assert(response.status === 0, "Failed to create plugin");
+
+    const pluginDir = path.resolve(workingDir, outputDir);
+    assert.ok(fs.existsSync(pluginDir), "plugin dir is not created.");
+
+    const actualManifestJson = readPluginManifestJson(pluginDir);
+    const expectedManifestJson = {
+      name: { en: "200characters" },
+      description: { en: pluginDescription },
     };
     assertObjectIncludes(actualManifestJson, expectedManifestJson);
   });
