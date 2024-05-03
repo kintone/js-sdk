@@ -53,7 +53,8 @@
     "e2e": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/e2e\\.test\\.ts$",
     "test": "pnpm unittest",
     "test:all": "run-p test e2e",
-    "test:ci": "pnpm test:all"
+    "test:ci": "pnpm test:all",
+    "test:e2e": "cross-env NODE_ENV=e2e jest --config=jest.e2e.config.js"
   },
   "keywords": [
     "kintone"
