@@ -26,7 +26,7 @@ describe("create-plugin", function () {
   it("#JsSdkTest-1 Should able to create a plugin with specified output directory and required options successfully", async () => {
     const m = getBoundMessage("en");
     const outputDir = "test1";
-    const questionInput: QuestionInput[] = [
+    const questionsInput: QuestionInput[] = [
       {
         question: m("Q_NameEn"),
         answer: "test1-name",
@@ -57,12 +57,12 @@ describe("create-plugin", function () {
       },
     ];
 
-    const response = await executeCommandWithInteractiveInput(
-      CREATE_PLUGIN_COMMAND,
+    const response = await executeCommandWithInteractiveInput({
+      command: CREATE_PLUGIN_COMMAND,
       workingDir,
       outputDir,
-      questionInput,
-    );
+      questionsInput,
+    });
 
     assert(response.status === 0, "Failed to create plugin");
 

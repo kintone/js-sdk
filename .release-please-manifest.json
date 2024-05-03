@@ -5,8 +5,8 @@
   "packages/dts-gen": "8.0.10",
   "packages/plugin-manifest-validator": "10.1.0",
   "packages/plugin-packer": "8.0.5",
-  "packages/plugin-uploader": "9.0.6",
+  "packages/plugin-uploader": "9.0.7",
   "packages/profile-loader": "5.0.1",
-  "packages/rest-api-client": "5.5.0",
+  "packages/rest-api-client": "5.5.1",
   "packages/webpack-plugin-kintone-plugin": "8.0.7"
 }

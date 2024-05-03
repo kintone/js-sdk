@@ -3,9 +3,9 @@ import fs from "fs";
 import path from "path";
 
 export type Response = {
-  status?: number;
-  stdout?: Buffer;
-  stderr?: Buffer;
+  status: number;
+  stdout: Buffer;
+  stderr: Buffer;
   error?: Error;
 };
 
@@ -61,13 +61,15 @@ const replaceTokenWithEnvVars = (
     .replace(/\$\$[a-zA-Z0-9_]+/g, processEnvReplacer)
     .replace(/\$[a-zA-Z0-9_]+/g, inputEnvReplacer(envVars));
 
-export const executeCommandWithInteractiveInput = async (
-  command: string,
-  workingDir: string,
-  outputDir: string,
-  questionsInput: QuestionInput[],
-  commandArguments?: string,
-) => {
+export const executeCommandWithInteractiveInput = async (options: {
+  command: string;
+  workingDir: string;
+  outputDir: string;
+  questionsInput: QuestionInput[];
+  commandArguments?: string;
+}) => {
+  const { command, workingDir, outputDir, questionsInput, commandArguments } =
+    options;
   const commands = getCommands();
   if (!commands[command]) {
     throw new Error(`Command ${command} not found.`);
@@ -99,9 +101,9 @@ export const executeCommandWithInteractiveInput = async (
   let currentStep = 0;
   cliProcess.stdout.on("data", async (data: Buffer) => {
     const output = data.toString();
+    stdout = stdout ? Buffer.concat([stdout, data]) : data;
     if (currentStep === questionsInput.length || !questionsInput[currentStep]) {
       cliProcess.stdin.end();
-      stdout = data;
       return;
     }
 
