@@ -18,7 +18,8 @@
     "test:root": "jest",
     "start": "pnpm build --watch",
     "test": "pnpm test:root && pnpm -r --parallel run test",
-    "test:ci": "pnpm test:root && pnpm -r --stream run test:ci"
+    "test:ci": "pnpm test:root && pnpm -r --stream run test:ci",
+    "test:e2e": "pnpm -r --parallel run test:e2e"
   },
   "repository": {
     "type": "git",
