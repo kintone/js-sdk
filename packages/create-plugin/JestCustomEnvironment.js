@@ -13,7 +13,7 @@ class JestCustomEnvironment extends TestEnvironment {
 
     if (event.name === "test_fn_success") {
       const testName = event.test.name;
-      this.global.testStatuses[testName] = "success";
+      this.global.testStatuses[testName] = "passed";
     }
   }
 }

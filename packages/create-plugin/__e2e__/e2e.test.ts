@@ -89,7 +89,7 @@ describe("create-plugin", function () {
     );
 
     // @ts-ignore
-    if (match && globalThis.testStatuses[match] === "success") {
+    if (match && globalThis.testStatuses[match] === "passed") {
       rimrafSync(workingDir);
       console.log(`Working directory ${workingDir} has been removed`);
     }
