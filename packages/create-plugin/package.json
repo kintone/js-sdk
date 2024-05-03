@@ -49,12 +49,11 @@
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts src --max-warnings 0",
     "fix": "pnpm lint --fix",
-    "unittest": "jest --testPathIgnorePatterns=/__tests__/e2e\\.test\\.ts$",
-    "e2e": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/e2e\\.test\\.ts$",
-    "test": "pnpm unittest",
-    "test:all": "run-p test e2e",
-    "test:ci": "pnpm test:all",
-    "test:e2e": "cross-env NODE_ENV=e2e jest --config=jest.e2e.config.js"
+    "test": "jest --testPathIgnorePatterns=/__tests__/generator\\.test\\.ts$",
+    "test:generator": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/generator\\.test\\.ts$",
+    "test:ci": "pnpm test test:generator",
+    "test:e2e": "cross-env NODE_ENV=e2e jest --config=jest.e2e.config.js",
+    "test:all": "run-p test test:generator test:e2e"
   },
   "keywords": [
     "kintone"
