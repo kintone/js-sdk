@@ -147,76 +147,6 @@ importers:
         specifier: ^29.7.0
         version: 29.7.0
 
-  packages/create-plugin/modern-plugin:
-    dependencies:
-      '@kintone/rest-api-client':
-        specifier: ^5.5.0
-        version: link:../../rest-api-client
-      core-js:
-        specifier: ^3.36.1
-        version: 3.36.1
-    devDependencies:
-      '@babel/core':
-        specifier: ^7.24.4
-        version: 7.24.5
-      '@babel/preset-env':
-        specifier: ^7.24.4
-        version: 7.24.5(@babel/core@7.24.5)
-      '@babel/preset-react':
-        specifier: ^7.24.1
-        version: 7.24.1(@babel/core@7.24.5)
-      '@babel/preset-typescript':
-        specifier: ^7.24.1
-        version: 7.24.1(@babel/core@7.24.5)
-      '@cybozu/eslint-config':
-        specifier: ^23.0.0
-        version: 23.0.0(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)
-      '@kintone/dts-gen':
-        specifier: ^8.0.10
-        version: link:../../dts-gen
-      '@kintone/webpack-plugin-kintone-plugin':
-        specifier: ^8.0.7
-        version: link:../../webpack-plugin-kintone-plugin
-      ajv:
-        specifier: ^8.12.0
-        version: 8.12.0
-      babel-loader:
-        specifier: ^9.1.3
-        version: 9.1.3(@babel/core@7.24.5)(webpack@5.91.0)
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      npm-run-all:
-        specifier: ^4.1.5
-        version: 4.1.5
-      prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
-      webpack:
-        specifier: ^5.91.0
-        version: 5.91.0(webpack-cli@5.1.4)
-      webpack-cli:
-        specifier: ^5.1.4
-        version: 5.1.4(webpack@5.91.0)
-
-  packages/create-plugin/my-plugin:
-    devDependencies:
-      '@cybozu/eslint-config':
-        specifier: ^23.0.0
-        version: 23.0.0(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)
-      '@kintone/plugin-packer':
-        specifier: ^8.0.5
-        version: link:../../plugin-packer
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-
   packages/customize-uploader:
     dependencies:
       '@kintone/rest-api-client':
@@ -1647,51 +1577,6 @@ packages:
       '@babel/helper-plugin-utils': 7.24.5
     dev: true
 
-  /@babel/plugin-transform-react-display-name@7.24.1(@babel/core@7.24.5):
-    resolution: {integrity: sha512-mvoQg2f9p2qlpDQRBC7M3c3XTr0k7cp/0+kFKKO/7Gtu0LSw16eKB+Fabe2bDT/UpsyasTBBkAnbdsLrkD5XMw==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/helper-plugin-utils': 7.24.5
-    dev: true
-
-  /@babel/plugin-transform-react-jsx-development@7.22.5(@babel/core@7.24.5):
-    resolution: {integrity: sha512-bDhuzwWMuInwCYeDeMzyi7TaBgRQei6DqxhbyniL7/VG4RSS7HtSL2QbY4eESy1KJqlWt8g3xeEBGPuo+XqC8A==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/plugin-transform-react-jsx': 7.23.4(@babel/core@7.24.5)
-    dev: true
-
-  /@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.24.5):
-    resolution: {integrity: sha512-5xOpoPguCZCRbo/JeHlloSkTA8Bld1J/E1/kLfD1nsuiW1m8tduTA1ERCgIZokDflX/IBzKcqR3l7VlRgiIfHA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-module-imports': 7.24.3
-      '@babel/helper-plugin-utils': 7.24.5
-      '@babel/plugin-syntax-jsx': 7.24.1(@babel/core@7.24.5)
-      '@babel/types': 7.24.5
-    dev: true
-
-  /@babel/plugin-transform-react-pure-annotations@7.24.1(@babel/core@7.24.5):
-    resolution: {integrity: sha512-+pWEAaDJvSm9aFvJNpLiM2+ktl2Sn2U5DdyiWdZBxmLc6+xGt88dvFqsHiAiDS+8WqUwbDfkKz9jRxK3M0k+kA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-plugin-utils': 7.24.5
-    dev: true
-
   /@babel/plugin-transform-regenerator@7.24.1(@babel/core@7.24.5):
     resolution: {integrity: sha512-sJwZBCzIBE4t+5Q4IGLaaun5ExVMRY0lYwos/jNecjMrVCygCdph3IKv0tkP5Fc87e/1+bebAmEAGBfnRD+cnw==}
     engines: {node: '>=6.9.0'}
@@ -1921,21 +1806,6 @@ packages:
       '@babel/helper-plugin-utils': 7.24.5
       '@babel/types': 7.24.5
       esutils: 2.0.3
-    dev: true
-
-  /@babel/preset-react@7.24.1(@babel/core@7.24.5):
-    resolution: {integrity: sha512-eFa8up2/8cZXLIpkafhaADTXSnl7IsUFCYenRWrARBz0/qZwcT0RBXpys0LJU4+WfPoF2ZG6ew6s2V6izMCwRA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/helper-plugin-utils': 7.24.5
-      '@babel/helper-validator-option': 7.23.5
-      '@babel/plugin-transform-react-display-name': 7.24.1(@babel/core@7.24.5)
-      '@babel/plugin-transform-react-jsx': 7.23.4(@babel/core@7.24.5)
-      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.24.5)
-      '@babel/plugin-transform-react-pure-annotations': 7.24.1(@babel/core@7.24.5)
     dev: true
 
   /@babel/preset-typescript@7.24.1(@babel/core@7.24.5):
@@ -11551,7 +11421,7 @@ packages:
       rechoir: 0.8.0
       webpack: 5.91.0(webpack-cli@5.1.4)
       webpack-dev-server: 5.0.4(debug@4.3.4)(webpack-cli@5.1.4)(webpack@5.91.0)
-      webpack-merge: 5.10.0
+      webpack-merge: 5.9.0
     dev: true
 
   /webpack-cli@5.1.4(webpack@5.91.0):
