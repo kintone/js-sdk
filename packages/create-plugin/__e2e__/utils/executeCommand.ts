@@ -3,9 +3,9 @@ import fs from "fs";
 import path from "path";
 
 export type Response = {
-  status?: number;
-  stdout?: Buffer;
-  stderr?: Buffer;
+  status: number;
+  stdout: Buffer;
+  stderr: Buffer;
   error?: Error;
 };
 
@@ -101,9 +101,9 @@ export const executeCommandWithInteractiveInput = async (options: {
   let currentStep = 0;
   cliProcess.stdout.on("data", async (data: Buffer) => {
     const output = data.toString();
+    stdout = stdout ? Buffer.concat([stdout, data]) : data;
     if (currentStep === questionsInput.length || !questionsInput[currentStep]) {
       cliProcess.stdin.end();
-      stdout = data;
       return;
     }
 
