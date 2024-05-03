@@ -36,7 +36,8 @@
     "@types/lodash": "^4.17.0",
     "@types/node-rsa": "^1.1.4",
     "@types/normalize-path": "^3.0.2",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "jest-environment-node": "^29.7.0"
   },
   "files": [
     "bin",
