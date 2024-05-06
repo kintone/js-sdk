@@ -18,12 +18,15 @@ import { getBoundMessage } from "../src/messages";
 import { pattern as requiredOptions } from "./fixtures/requiredOptions";
 import { pattern as pluginNameContain64Chars } from "./fixtures/pluginNameContain64Chars";
 import { pattern as pluginDescriptionContain200Chars } from "./fixtures/pluginDescriptionContain200Chars";
+import { pattern as allOptions } from "./fixtures/allOptions";
 import { pattern as emptyOutputDir } from "./fixtures/emptyOutputDir";
 import { pattern as pluginNameContain65Chars } from "./fixtures/pluginNameContain65Chars";
 import { pattern as pluginDescriptionContain201Chars } from "./fixtures/pluginDescriptionContain201Chars";
+import { pattern as existOutputDir } from "./fixtures/existOutputDir";
 
 export type TestPattern = {
   description: string;
+  prepareFn?: (...arg: any[]) => void;
   input: {
     command: string;
     outputDir: string;
@@ -52,12 +55,18 @@ describe("create-plugin", function () {
     requiredOptions,
     pluginNameContain64Chars,
     pluginDescriptionContain200Chars,
+    allOptions,
     emptyOutputDir,
+    existOutputDir,
     pluginNameContain65Chars,
     pluginDescriptionContain201Chars,
   ];
 
-  it.each(patterns)("$description", async ({ input, expected }) => {
+  it.each(patterns)("$description", async ({ prepareFn, input, expected }) => {
+    if (prepareFn) {
+      prepareFn({ workingDir });
+    }
+
     const response = await executeCommandWithInteractiveInput({
       command: input.command,
       workingDir,
@@ -92,24 +101,6 @@ describe("create-plugin", function () {
         );
       }
     }
-  });
-
-  it("#JsSdkTest-10 Should throw an error when the output directory is duplicated with the existent directory", async () => {
-    const outputDir = "created-folder";
-    fs.mkdirSync(`${workingDir}/${outputDir}`);
-
-    const response = await executeCommandWithInteractiveInput({
-      command: CREATE_PLUGIN_COMMAND,
-      workingDir,
-      outputDir,
-      questionsInput: [],
-    });
-
-    assert.notEqual(response.status, 0, "The command should throw an error.");
-    const regex = new RegExp(
-      `Error: ${outputDir} already exists. Choose a different directory`,
-    );
-    assert.match(response.stderr.toString().trim(), regex);
   });
 
   it("#JsSdkTest-11 Should throw an error when the output directory contains forbidden characters", async () => {
