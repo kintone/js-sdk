@@ -23,6 +23,7 @@ import { pattern as emptyOutputDir } from "./fixtures/emptyOutputDir";
 import { pattern as pluginNameContain65Chars } from "./fixtures/pluginNameContain65Chars";
 import { pattern as pluginDescriptionContain201Chars } from "./fixtures/pluginDescriptionContain201Chars";
 import { pattern as existOutputDir } from "./fixtures/existOutputDir";
+import { pattern as createKintonePluginCommand } from "./fixtures/createKintonePluginCommand";
 
 export type TestPattern = {
   description: string;
@@ -60,6 +61,7 @@ describe("create-plugin", function () {
     existOutputDir,
     pluginNameContain65Chars,
     pluginDescriptionContain201Chars,
+    createKintonePluginCommand,
   ];
 
   it.each(patterns)("$description", async ({ prepareFn, input, expected }) => {
@@ -116,11 +118,11 @@ describe("create-plugin", function () {
     const questionsInput: QuestionInput[] = [
       {
         question: m("Q_NameEn"),
-        answer: "test1-name",
+        answer: "test11-name",
       },
       {
         question: m("Q_DescriptionEn"),
-        answer: "test1-description",
+        answer: "test11-description",
       },
       {
         question: m("Q_SupportJa"),
