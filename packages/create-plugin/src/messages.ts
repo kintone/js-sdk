@@ -62,15 +62,15 @@ const messages = {
     en: "Plug-in description must be within 64chars",
     ja: "プラグインの中国語の説明を64文字以内で入力してください",
   },
-  Q_websiteUrlEn: {
+  Q_WebsiteUrlEn: {
     en: "Input your home page url for English (Optional)",
     ja: "プラグインの英語のWebサイトURLを入力してください (省略可)",
   },
-  Q_websiteUrlJa: {
+  Q_WebsiteUrlJa: {
     en: "Input your home page url for Japanese (Optional)",
     ja: "プラグインの日本語のWebサイトURLを入力してください (省略可)",
   },
-  Q_websiteUrlZh: {
+  Q_WebsiteUrlZh: {
     en: "Input your home page url for Chinese (Optional)",
     ja: "プラグインの中国語のWebサイトURLを入力してください (省略可)",
   },
@@ -78,7 +78,7 @@ const messages = {
     en: "Does your plug-in support mobile views?",
     ja: "モバイルページをサポートしますか？",
   },
-  Q_enablePluginUploader: {
+  Q_EnablePluginUploader: {
     en: "Would you like to use @kintone/plugin-uploader?",
     ja: "@kintone/plugin-uploaderを使いますか？",
   },

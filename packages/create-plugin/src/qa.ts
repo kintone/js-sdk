@@ -90,19 +90,19 @@ export const buildQuestions = (outputDir: string, lang: Lang): Question[] => {
     {
       type: "input",
       name: "homepage_url.en",
-      message: m("Q_websiteUrlEn"),
+      message: m("Q_WebsiteUrlEn"),
     },
     {
       type: "input",
       name: "homepage_url.ja",
       when: (answers) => answers.ja,
-      message: m("Q_websiteUrlJa"),
+      message: m("Q_WebsiteUrlJa"),
     },
     {
       type: "input",
       name: "homepage_url.zh",
       when: (answers) => answers.zh,
-      message: m("Q_websiteUrlZh"),
+      message: m("Q_WebsiteUrlZh"),
     },
     {
       type: "confirm",
@@ -114,7 +114,7 @@ export const buildQuestions = (outputDir: string, lang: Lang): Question[] => {
       type: "confirm",
       name: "pluginUploader",
       default: true,
-      message: m("Q_enablePluginUploader"),
+      message: m("Q_EnablePluginUploader"),
     },
   ];
 };

@@ -2,16 +2,23 @@ import fs from "fs";
 import path from "path";
 import assert from "assert";
 
-export const readPluginManifestJson = (pluginDir: string) => {
+type PluginTemplate = "minimum" | "modern";
+
+export const readPluginManifestJson = (
+  pluginDir: string,
+  template: PluginTemplate = "minimum",
+) => {
   try {
-    const fileContent = fs.readFileSync(
-      path.resolve(pluginDir, "src", "manifest.json"),
-      "utf8",
+    const manifestJsonPath = path.resolve(
+      pluginDir,
+      template === "modern" ? "plugin" : "src",
+      "manifest.json",
     );
 
+    const fileContent = fs.readFileSync(manifestJsonPath, "utf8");
     return JSON.parse(fileContent);
   } catch (e) {
-    assert.fail(`Failed to read manifest.json\n${e}`);
+    throw new Error(`Failed to read manifest.json\n${e}`);
   }
 };
 
