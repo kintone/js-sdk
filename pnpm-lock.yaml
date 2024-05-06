@@ -132,8 +132,8 @@ importers:
         specifier: ^8.2.10
         version: 8.2.10
       '@types/lodash':
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.17.1
+        version: 4.17.1
       '@types/node-rsa':
         specifier: ^1.1.4
         version: 1.1.4
@@ -203,8 +203,8 @@ importers:
         specifier: ^8.56.10
         version: 8.56.10
       '@types/lodash':
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.17.1
+        version: 4.17.1
       assert:
         specifier: ^2.1.0
         version: 2.1.0
@@ -3078,8 +3078,8 @@ packages:
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  /@types/lodash@4.17.0:
-    resolution: {integrity: sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==}
+  /@types/lodash@4.17.1:
+    resolution: {integrity: sha512-X+2qazGS3jxLAIz5JDXDzglAF3KpijdhFxlf/V1+hEsOUc+HnWi81L/uv/EvGuV90WY+7mPGFCUDGfQC3Gj95Q==}
     dev: true
 
   /@types/mime@1.3.2:
@@ -7977,7 +7977,7 @@ packages:
     dependencies:
       '@bcherny/json-schema-ref-parser': 10.0.5-fork
       '@types/json-schema': 7.0.12
-      '@types/lodash': 4.17.0
+      '@types/lodash': 4.17.1
       '@types/prettier': 2.7.3
       cli-color: 2.0.3
       get-stdin: 8.0.0
