@@ -360,7 +360,7 @@ describe("create-plugin", function () {
     ];
 
     const response = await executeCommandWithInteractiveInput({
-      command: CREATE_PLUGIN_COMMAND,
+      command: CREATE_KINTONE_PLUGIN_COMMAND,
       workingDir,
       outputDir,
       questionsInput,
