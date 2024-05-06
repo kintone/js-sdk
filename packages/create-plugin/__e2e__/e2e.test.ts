@@ -6,6 +6,7 @@ import {
   DEFAULT_ANSWER,
   ANSWER_NO,
   ANSWER_YES,
+  CREATE_KINTONE_PLUGIN_COMMAND,
 } from "./utils/constants";
 import path from "path";
 import { generateWorkingDir } from "./utils/generateWorkingDir";
@@ -298,6 +299,101 @@ describe("create-plugin", function () {
       response.stderr.toString().trim(),
       "Please specify the output directory",
     );
+  });
+
+  it("#JsSdkTest-14 Should able to create plugin with `create-kintone-plugin` command and all options", async () => {
+    const m = getBoundMessage("en");
+    const outputDir = "test14";
+    const questionsInput: QuestionInput[] = [
+      {
+        question: m("Q_NameEn"),
+        answer: "test14-name",
+      },
+      {
+        question: m("Q_DescriptionEn"),
+        answer: "test14-description",
+      },
+      {
+        question: m("Q_SupportJa"),
+        answer: ANSWER_YES,
+      },
+      {
+        question: m("Q_NameJa"),
+        answer: "私のプラグイン",
+      },
+      {
+        question: m("Q_DescriptionJa"),
+        answer: "私のプラグイン",
+      },
+      {
+        question: m("Q_SupportZh"),
+        answer: ANSWER_YES,
+      },
+      {
+        question: m("Q_NameZh"),
+        answer: "我的插件",
+      },
+      {
+        question: m("Q_DescriptionZh"),
+        answer: "我的插件",
+      },
+      {
+        question: m("Q_WebsiteUrlEn"),
+        answer: "https://github.com",
+      },
+      {
+        question: m("Q_WebsiteUrlJa"),
+        answer: "https://github.jp",
+      },
+      {
+        question: m("Q_WebsiteUrlZh"),
+        answer: "https://github.cn",
+      },
+      {
+        question: m("Q_MobileSupport"),
+        answer: ANSWER_YES,
+      },
+      {
+        question: m("Q_EnablePluginUploader"),
+        answer: ANSWER_YES,
+      },
+    ];
+
+    const response = await executeCommandWithInteractiveInput({
+      command: CREATE_KINTONE_PLUGIN_COMMAND,
+      workingDir,
+      outputDir,
+      questionsInput,
+    });
+
+    assert(response.status === 0, "Failed to create plugin");
+
+    const pluginDir = path.resolve(workingDir, outputDir);
+    assert.ok(fs.existsSync(pluginDir), "plugin dir is not created.");
+
+    const actualManifestJson = readPluginManifestJson(pluginDir);
+    const expectedManifestJson = {
+      name: {
+        en: "test14-name",
+        ja: "私のプラグイン",
+        zh: "我的插件",
+      },
+      description: {
+        en: "test14-description",
+        ja: "私のプラグイン",
+        zh: "我的插件",
+      },
+      homepage_url: {
+        en: "https://github.com",
+        ja: "https://github.jp",
+        zh: "https://github.cn",
+      },
+      mobile: {
+        js: ["js/mobile.js"],
+        css: ["css/mobile.css"],
+      },
+    };
+    assertObjectIncludes(actualManifestJson, expectedManifestJson);
   });
 
   afterEach(() => {
