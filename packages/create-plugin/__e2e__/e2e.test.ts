@@ -45,7 +45,7 @@ describe("create-plugin", function () {
         answer: DEFAULT_ANSWER,
       },
       {
-        question: m("Q_websiteUrlEn"),
+        question: m("Q_WebsiteUrlEn"),
         answer: DEFAULT_ANSWER,
       },
       {
@@ -53,7 +53,7 @@ describe("create-plugin", function () {
         answer: ANSWER_NO,
       },
       {
-        question: m("Q_enablePluginUploader"),
+        question: m("Q_EnablePluginUploader"),
         answer: ANSWER_NO,
       },
     ];
@@ -100,7 +100,7 @@ describe("create-plugin", function () {
         answer: ANSWER_NO,
       },
       {
-        question: m("Q_websiteUrlEn"),
+        question: m("Q_WebsiteUrlEn"),
         answer: DEFAULT_ANSWER,
       },
       {
@@ -108,7 +108,7 @@ describe("create-plugin", function () {
         answer: ANSWER_NO,
       },
       {
-        question: m("Q_enablePluginUploader"),
+        question: m("Q_EnablePluginUploader"),
         answer: ANSWER_NO,
       },
     ];
@@ -155,7 +155,7 @@ describe("create-plugin", function () {
         answer: ANSWER_NO,
       },
       {
-        question: m("Q_websiteUrlEn"),
+        question: m("Q_WebsiteUrlEn"),
         answer: DEFAULT_ANSWER,
       },
       {
@@ -163,7 +163,7 @@ describe("create-plugin", function () {
         answer: ANSWER_NO,
       },
       {
-        question: m("Q_enablePluginUploader"),
+        question: m("Q_EnablePluginUploader"),
         answer: ANSWER_NO,
       },
     ];
@@ -188,7 +188,7 @@ describe("create-plugin", function () {
     assertObjectIncludes(actualManifestJson, expectedManifestJson);
   });
 
-  afterEach(() => {
+  afterEach(() => {ư~
     const testName = expect.getState().currentTestName;
     if (!testName || !workingDir) {
       return;
