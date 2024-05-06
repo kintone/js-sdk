@@ -188,7 +188,7 @@ describe("create-plugin", function () {
     assertObjectIncludes(actualManifestJson, expectedManifestJson);
   });
 
-  afterEach(() => {ư~
+  afterEach(() => {
     const testName = expect.getState().currentTestName;
     if (!testName || !workingDir) {
       return;
