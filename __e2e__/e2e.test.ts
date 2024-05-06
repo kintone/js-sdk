@@ -188,6 +188,22 @@ describe("create-plugin", function () {
     assertObjectIncludes(actualManifestJson, expectedManifestJson);
   });
 
+  it("#JsSdkTest-9 Should throw an error when the output directory is empty", async () => {
+    const outputDir = "";
+    const response = await executeCommandWithInteractiveInput({
+      command: CREATE_PLUGIN_COMMAND,
+      workingDir,
+      outputDir,
+      questionsInput: [],
+    });
+
+    assert.notEqual(response.status, 0, "The command should throw an error.");
+    assert.equal(
+      response.stderr.toString().trim(),
+      "Please specify the output directory",
+    );
+  });
+
   afterEach(() => {
     const testName = expect.getState().currentTestName;
     if (!testName || !workingDir) {
