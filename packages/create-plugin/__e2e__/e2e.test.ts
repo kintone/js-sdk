@@ -155,7 +155,7 @@ describe("create-plugin", function () {
       assert.equal(response.status, 0);
       assert.match(
         response.stderr.toString().trim(),
-        /Could not create a plug-in project. Error:\nEINVAL: invalid argument, mkdir ':'/,
+        /Could not create a plug-in project. Error:\nEINVAL: invalid argument, mkdir '.*:'/,
       );
     } else {
       assert.notEqual(response.status, 0);
