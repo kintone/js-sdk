@@ -33,6 +33,7 @@ export type TestPattern = {
     outputDir: string;
     questionsInput: QuestionInput[];
     commandArgument?: string;
+    template?: "minimum" | "modern";
   };
   expected: {
     success?: {
@@ -83,7 +84,10 @@ describe("create-plugin", function () {
       const pluginDir = path.resolve(workingDir, input.outputDir);
       assert.ok(fs.existsSync(pluginDir), "plugin dir is not created.");
 
-      const actualManifestJson = readPluginManifestJson(pluginDir);
+      const actualManifestJson = readPluginManifestJson(
+        pluginDir,
+        input.template,
+      );
       assertObjectIncludes(actualManifestJson, expected.success.manifestJson);
     }
 
