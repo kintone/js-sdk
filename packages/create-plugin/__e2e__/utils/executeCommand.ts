@@ -75,7 +75,7 @@ export const executeCommandWithInteractiveInput = async (options: {
     throw new Error(`Command ${command} not found.`);
   }
 
-  const commandString = `${commands[command]} ${commandArguments || ""} ${outputDir}`;
+  const commandString = `${commands[command]} ${commandArguments || ""} "${outputDir}"`;
   const cliProcess = execCommand("node", commandString, {
     cwd: workingDir,
   });
@@ -115,7 +115,7 @@ export const executeCommandWithInteractiveInput = async (options: {
   });
 
   cliProcess.stderr.on("data", async (data: Buffer) => {
-    stderr = data;
+    stderr = stderr ? Buffer.concat([stderr, data]) : data;
     cliProcess.stdin.end();
   });
 
