@@ -33,10 +33,11 @@
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/inquirer": "^8.2.10",
-    "@types/lodash": "^4.17.0",
+    "@types/lodash": "^4.17.1",
     "@types/node-rsa": "^1.1.4",
     "@types/normalize-path": "^3.0.2",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "jest-environment-node": "^29.7.0"
   },
   "files": [
     "bin",
@@ -49,11 +50,11 @@
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts src --max-warnings 0",
     "fix": "pnpm lint --fix",
-    "unittest": "jest --testPathIgnorePatterns=/__tests__/e2e\\.test\\.ts$",
-    "e2e": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/e2e\\.test\\.ts$",
-    "test": "pnpm unittest",
-    "test:all": "run-p test e2e",
-    "test:ci": "pnpm test:all"
+    "test": "jest --testPathIgnorePatterns=/__tests__/generator\\.test\\.ts$",
+    "test:generator": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/generator\\.test\\.ts$",
+    "test:ci": "pnpm test test:generator",
+    "test:e2e": "cross-env NODE_ENV=e2e jest --config=jest.e2e.config.js",
+    "test:all": "run-p test test:generator test:e2e"
   },
   "keywords": [
     "kintone"
