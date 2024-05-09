@@ -1,4 +1,4 @@
-blank_issues_enabled: false
+blank_issues_enabled: true # Only for maintainers
 contact_links:
   - name: 🇯🇵 日本語はこちら
     url: https://github.com/kintone/js-sdk-ja
