@@ -1,3 +1,7 @@
+import fs from "fs";
+import path from "path";
+import os from "os";
+
 export const generateRandomString = (length: number) => {
   let result = "";
   const characters =
@@ -9,4 +13,10 @@ export const generateRandomString = (length: number) => {
     counter += 1;
   }
   return result;
+};
+
+export const generateWorkingDir = (): string => {
+  return fs.mkdtempSync(
+    path.join(os.tmpdir(), `create-plugin-e2e-test-${new Date().valueOf()}-`),
+  );
 };
