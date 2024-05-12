@@ -52,8 +52,8 @@ importers:
         specifier: ^3.2.5
         version: 3.2.5
       rimraf:
-        specifier: ^5.0.6
-        version: 5.0.6
+        specifier: ^5.0.7
+        version: 5.0.7
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -119,8 +119,8 @@ importers:
         specifier: ^3.2.5
         version: 3.2.5
       rimraf:
-        specifier: ^5.0.6
-        version: 5.0.6
+        specifier: ^5.0.7
+        version: 5.0.7
       sort-package-json:
         specifier: ^1.57.0
         version: 1.57.0
@@ -168,8 +168,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       rimraf:
-        specifier: ^5.0.6
-        version: 5.0.6
+        specifier: ^5.0.7
+        version: 5.0.7
     devDependencies:
       '@types/inquirer':
         specifier: 8.2.10
@@ -355,8 +355,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(redux@5.0.1)
       rimraf:
-        specifier: ^5.0.6
-        version: 5.0.6
+        specifier: ^5.0.7
+        version: 5.0.7
       setimmediate:
         specifier: ^1.0.5
         version: 1.0.5
@@ -459,8 +459,8 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       rimraf:
-        specifier: ^5.0.6
-        version: 5.0.6
+        specifier: ^5.0.7
+        version: 5.0.7
       rollup:
         specifier: ^4.17.2
         version: 4.17.2
@@ -505,8 +505,8 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       rimraf:
-        specifier: ^5.0.6
-        version: 5.0.6
+        specifier: ^5.0.7
+        version: 5.0.7
       webpack:
         specifier: ^5.91.0
         version: 5.91.0(webpack-cli@5.1.4)
@@ -9973,9 +9973,9 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rimraf@5.0.6:
-    resolution: {integrity: sha512-X72SgyOf+1lFnGM6gYcmZ4+jMOwuT4E4SajKQzUIlI7EoR5eFHMhS/wf8Ll0mN+w2bxcIVldrJQ6xT7HFQywjg==}
-    engines: {node: '>=14'}
+  /rimraf@5.0.7:
+    resolution: {integrity: sha512-nV6YcJo5wbLW77m+8KjH8aB/7/rxQy9SZ0HY5shnwULfS+9nmTtVXAJET5NdZmCzA4fPI/Hm1wo/Po/4mopOdg==}
+    engines: {node: '>=14.18'}
     hasBin: true
     dependencies:
       glob: 10.3.15
@@ -11516,7 +11516,7 @@ packages:
       launch-editor: 2.6.1
       open: 10.1.0
       p-retry: 6.2.0
-      rimraf: 5.0.6
+      rimraf: 5.0.7
       schema-utils: 4.2.0
       selfsigned: 2.4.1
       serve-index: 1.9.1
