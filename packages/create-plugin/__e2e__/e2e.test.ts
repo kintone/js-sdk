@@ -1,5 +1,6 @@
 import assert from "assert";
 import type { QuestionInput } from "./utils/CreatePlugin";
+import type { PluginTemplate } from "./utils/verification";
 import {
   CREATE_PLUGIN_COMMAND,
   DEFAULT_ANSWER,
@@ -25,6 +26,8 @@ import { pattern as pluginNameContain65Chars } from "./fixtures/pluginNameContai
 import { pattern as pluginDescriptionContain201Chars } from "./fixtures/pluginDescriptionContain201Chars";
 import { pattern as existOutputDir } from "./fixtures/existOutputDir";
 import { pattern as createKintonePluginCommand } from "./fixtures/createKintonePluginCommand";
+import { pattern as minimumTemplate } from "./fixtures/minimumTemplate";
+import { pattern as modernTemplate } from "./fixtures/modernTemplate";
 import { CreatePlugin } from "./utils/CreatePlugin";
 
 export type TestPattern = {
@@ -35,7 +38,7 @@ export type TestPattern = {
     outputDir: string;
     questionsInput: QuestionInput[];
     commandArgument?: string;
-    template?: "minimum" | "modern";
+    template?: PluginTemplate;
   };
   expected: {
     success?: {
@@ -62,6 +65,8 @@ describe("create-plugin", function () {
     allOptions,
     languageEN,
     languageJA,
+    minimumTemplate,
+    modernTemplate,
     emptyOutputDir,
     existOutputDir,
     pluginNameContain65Chars,

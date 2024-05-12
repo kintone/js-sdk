@@ -47,7 +47,7 @@ export class CreatePlugin {
   public get childProcess() {
     if (this._childProcess === undefined) {
       throw new Error(
-        "No child process found. Please call the 'start' method first.",
+        "No child process found. Please call 'executeCommand' first.",
       );
     }
     return this._childProcess;
@@ -59,9 +59,7 @@ export class CreatePlugin {
 
   public get response() {
     if (this._response === undefined) {
-      throw new Error(
-        "No response found. Please call the 'start' method first.",
-      );
+      throw new Error("No response found. Please call 'executeCommand' first.");
     }
     return this._response;
   }
