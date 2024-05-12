@@ -27,7 +27,7 @@
     "normalize-path": "^3.0.0",
     "os-locale": "^5.0.0",
     "prettier": "^3.2.5",
-    "rimraf": "^5.0.6",
+    "rimraf": "^5.0.7",
     "sort-package-json": "^1.57.0"
   },
   "devDependencies": {
