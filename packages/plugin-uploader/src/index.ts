@@ -72,5 +72,8 @@ export const run = async (
   } catch (e) {
     console.error(boundMessage("Error"), e);
     await pluginSystemController.closeBrowser();
+
+    // eslint-disable-next-line no-process-exit
+    process.exit(1);
   }
 };
