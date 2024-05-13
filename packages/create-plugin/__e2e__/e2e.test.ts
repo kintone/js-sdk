@@ -23,6 +23,7 @@ import { pattern as emptyOutputDir } from "./fixtures/emptyOutputDir";
 import { pattern as pluginNameContain65Chars } from "./fixtures/pluginNameContain65Chars";
 import { pattern as pluginDescriptionContain201Chars } from "./fixtures/pluginDescriptionContain201Chars";
 import { pattern as existOutputDir } from "./fixtures/existOutputDir";
+import { pattern as forbiddenCharacters } from "./fixtures/forbiddenCharacters";
 import { pattern as createKintonePluginCommand } from "./fixtures/createKintonePluginCommand";
 
 export type TestPattern = {
@@ -62,6 +63,7 @@ describe("create-plugin", function () {
     existOutputDir,
     pluginNameContain65Chars,
     pluginDescriptionContain201Chars,
+    forbiddenCharacters,
     createKintonePluginCommand,
   ];
 
@@ -106,69 +108,6 @@ describe("create-plugin", function () {
           new RegExp(expected.failure.stderr),
         );
       }
-    }
-  });
-
-  it("#JsSdkTest-11 Should throw an error when the output directory contains forbidden characters", async () => {
-    const m = getBoundMessage("en");
-    let outputDir: string;
-    const isWindows = process.platform === "win32";
-    if (isWindows) {
-      outputDir = ":";
-    } else {
-      outputDir = "/";
-    }
-
-    const questionsInput: QuestionInput[] = [
-      {
-        question: m("Q_NameEn"),
-        answer: "test11-name",
-      },
-      {
-        question: m("Q_DescriptionEn"),
-        answer: "test11-description",
-      },
-      {
-        question: m("Q_SupportJa"),
-        answer: DEFAULT_ANSWER,
-      },
-      {
-        question: m("Q_SupportZh"),
-        answer: DEFAULT_ANSWER,
-      },
-      {
-        question: m("Q_WebsiteUrlEn"),
-        answer: DEFAULT_ANSWER,
-      },
-      {
-        question: m("Q_MobileSupport"),
-        answer: ANSWER_NO,
-      },
-      {
-        question: m("Q_EnablePluginUploader"),
-        answer: ANSWER_NO,
-      },
-    ];
-
-    const response = await executeCommandWithInteractiveInput({
-      command: CREATE_PLUGIN_COMMAND,
-      workingDir,
-      outputDir,
-      questionsInput,
-    });
-
-    if (isWindows) {
-      assert.equal(response.status, 0);
-      assert.match(
-        response.stderr.toString().trim(),
-        /Could not create a plug-in project. Error:\nEINVAL: invalid argument, mkdir '.*:'/,
-      );
-    } else {
-      assert.notEqual(response.status, 0);
-      assert.match(
-        response.stderr.toString().trim(),
-        /Error: \/ already exists. Choose a different directory/,
-      );
     }
   });
 
