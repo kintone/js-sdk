@@ -17,6 +17,7 @@ export interface RenderInput {
 const renderAsFile = async (output: string, renderInput: RenderInput) => {
   const tsExpression = convertToTsExpression(renderInput);
   const eslint = new ESLint({
+    cwd: path.resolve(__dirname, "..", ".."),
     fix: true,
     useEslintrc: false,
     baseConfig: {
