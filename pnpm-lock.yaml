@@ -468,8 +468,8 @@ importers:
         specifier: ^0.2.13
         version: 0.2.13(rollup@4.17.2)
       rollup-plugin-license:
-        specifier: ^3.3.1
-        version: 3.3.1(rollup@4.17.2)
+        specifier: ^3.4.0
+        version: 3.4.0(rollup@4.17.2)
       rollup-plugin-node-globals:
         specifier: ^1.4.0
         version: 1.4.0
@@ -9997,8 +9997,8 @@ packages:
       rollup: 4.17.2
     dev: true
 
-  /rollup-plugin-license@3.3.1(rollup@4.17.2):
-    resolution: {integrity: sha512-lwZ/J8QgSnP0unVOH2FQuOBkeiyp0EBvrbYdNU33lOaYD8xP9Zoki+PGoWMD31EUq8Q07GGocSABTYlWMKkwuw==}
+  /rollup-plugin-license@3.4.0(rollup@4.17.2):
+    resolution: {integrity: sha512-Nwx4dDjoPlzR7QWcsswezxFAOC000+JLACganH3L+5toit0TEAfD4SF1DsvJR/kunHWJgqnhmzvOO+iLI1oKPw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
