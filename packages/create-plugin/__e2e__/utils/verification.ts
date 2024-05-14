@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import assert from "assert";
 
-type PluginTemplate = "minimum" | "modern";
+export type PluginTemplate = "minimum" | "modern";
 
 export const readPluginManifestJson = (
   pluginDir: string,
