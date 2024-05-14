@@ -15,20 +15,22 @@ import {
   readPluginManifestJson,
 } from "./utils/verification";
 import { getBoundMessage } from "../src/messages";
-import { pattern as requiredOptions } from "./fixtures/requiredOptions";
-import { pattern as pluginNameContain64Chars } from "./fixtures/pluginNameContain64Chars";
-import { pattern as pluginDescriptionContain200Chars } from "./fixtures/pluginDescriptionContain200Chars";
-import { pattern as allOptions } from "./fixtures/allOptions";
-import { pattern as languageEN } from "./fixtures/languageEN";
-import { pattern as languageJA } from "./fixtures/languageJA";
-import { pattern as emptyOutputDir } from "./fixtures/emptyOutputDir";
-import { pattern as pluginNameContain65Chars } from "./fixtures/pluginNameContain65Chars";
-import { pattern as pluginDescriptionContain201Chars } from "./fixtures/pluginDescriptionContain201Chars";
-import { pattern as existOutputDir } from "./fixtures/existOutputDir";
-import { pattern as createKintonePluginCommand } from "./fixtures/createKintonePluginCommand";
-import { pattern as minimumTemplate } from "./fixtures/minimumTemplate";
-import { pattern as modernTemplate } from "./fixtures/modernTemplate";
 import { CreatePlugin } from "./utils/CreatePlugin";
+import {
+  requiredOptions,
+  pluginNameContain64Chars,
+  pluginDescriptionContain200Chars,
+  allOptions,
+  languageEN,
+  languageJA,
+  emptyOutputDir,
+  pluginNameContain65Chars,
+  pluginDescriptionContain201Chars,
+  existOutputDir,
+  createKintonePluginCommand,
+  minimumTemplate,
+  modernTemplate,
+} from "./fixtures";
 
 export type TestPattern = {
   description: string;
