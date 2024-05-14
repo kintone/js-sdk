@@ -1,13 +1,13 @@
 import assert from "assert";
-import type { QuestionInput } from "./utils/executeCommand";
-import { executeCommandWithInteractiveInput } from "./utils/executeCommand";
+import type { QuestionInput } from "./utils/CreatePlugin";
+import type { PluginTemplate } from "./utils/verification";
 import {
   CREATE_PLUGIN_COMMAND,
   DEFAULT_ANSWER,
   ANSWER_NO,
 } from "./utils/constants";
 import path from "path";
-import { generateWorkingDir } from "./utils/generateWorkingDir";
+import { generateWorkingDir } from "./utils/helper";
 import fs from "fs";
 import { rimrafSync } from "rimraf";
 import {
@@ -15,15 +15,22 @@ import {
   readPluginManifestJson,
 } from "./utils/verification";
 import { getBoundMessage } from "../src/messages";
-import { pattern as requiredOptions } from "./fixtures/requiredOptions";
-import { pattern as pluginNameContain64Chars } from "./fixtures/pluginNameContain64Chars";
-import { pattern as pluginDescriptionContain200Chars } from "./fixtures/pluginDescriptionContain200Chars";
-import { pattern as allOptions } from "./fixtures/allOptions";
-import { pattern as emptyOutputDir } from "./fixtures/emptyOutputDir";
-import { pattern as pluginNameContain65Chars } from "./fixtures/pluginNameContain65Chars";
-import { pattern as pluginDescriptionContain201Chars } from "./fixtures/pluginDescriptionContain201Chars";
-import { pattern as existOutputDir } from "./fixtures/existOutputDir";
-import { pattern as createKintonePluginCommand } from "./fixtures/createKintonePluginCommand";
+import { CreatePlugin } from "./utils/CreatePlugin";
+import {
+  requiredOptions,
+  pluginNameContain64Chars,
+  pluginDescriptionContain200Chars,
+  allOptions,
+  languageEN,
+  languageJA,
+  emptyOutputDir,
+  pluginNameContain65Chars,
+  pluginDescriptionContain201Chars,
+  existOutputDir,
+  createKintonePluginCommand,
+  minimumTemplate,
+  modernTemplate,
+} from "./fixtures";
 
 export type TestPattern = {
   description: string;
@@ -33,7 +40,7 @@ export type TestPattern = {
     outputDir: string;
     questionsInput: QuestionInput[];
     commandArgument?: string;
-    template?: "minimum" | "modern";
+    template?: PluginTemplate;
   };
   expected: {
     success?: {
@@ -58,6 +65,10 @@ describe("create-plugin", function () {
     pluginNameContain64Chars,
     pluginDescriptionContain200Chars,
     allOptions,
+    languageEN,
+    languageJA,
+    minimumTemplate,
+    modernTemplate,
     emptyOutputDir,
     existOutputDir,
     pluginNameContain65Chars,
@@ -70,13 +81,14 @@ describe("create-plugin", function () {
       prepareFn({ workingDir });
     }
 
-    const response = await executeCommandWithInteractiveInput({
+    const createPlugin = new CreatePlugin({
       command: input.command,
       workingDir,
       outputDir: input.outputDir,
       questionsInput: input.questionsInput,
       commandArguments: input.commandArgument,
     });
+    const response = await createPlugin.executeCommand();
 
     if (expected.success !== undefined) {
       assert(response.status === 0, "Failed to create plugin");
@@ -95,14 +107,14 @@ describe("create-plugin", function () {
       assert.notEqual(response.status, 0, "The command should throw an error.");
       if (expected.failure.stdout) {
         assert.match(
-          response.stdout.toString().trim(),
+          response.stdout.trim(),
           new RegExp(expected.failure.stdout),
         );
       }
 
       if (expected.failure.stderr) {
         assert.match(
-          response.stderr.toString().trim(),
+          response.stderr.trim(),
           new RegExp(expected.failure.stderr),
         );
       }
@@ -150,23 +162,24 @@ describe("create-plugin", function () {
       },
     ];
 
-    const response = await executeCommandWithInteractiveInput({
+    const createPlugin = new CreatePlugin({
       command: CREATE_PLUGIN_COMMAND,
       workingDir,
       outputDir,
       questionsInput,
     });
+    const response = await createPlugin.executeCommand();
 
     if (isWindows) {
       assert.equal(response.status, 0);
       assert.match(
-        response.stderr.toString().trim(),
+        response.stderr.trim(),
         /Could not create a plug-in project. Error:\nEINVAL: invalid argument, mkdir '.*:'/,
       );
     } else {
       assert.notEqual(response.status, 0);
       assert.match(
-        response.stderr.toString().trim(),
+        response.stderr.trim(),
         /Error: \/ already exists. Choose a different directory/,
       );
     }
