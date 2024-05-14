@@ -22,10 +22,9 @@ export class CreatePlugin {
   private readonly commandArguments: string;
   private readonly questionsInput: QuestionInput[];
   private _childProcess?: ChildProcessByStdio<Writable, Readable, Readable>;
-  private currentStep: number;
-  private _response?: Response;
-  private _stdout: string;
-  private _stderr: string;
+  private currentStep: number = 0;
+  private stdout: string = "";
+  private stderr: string = "";
 
   constructor(options: {
     command: string;
@@ -39,9 +38,6 @@ export class CreatePlugin {
     this.outputDir = options.outputDir;
     this.questionsInput = options.questionsInput;
     this.commandArguments = options.commandArguments ?? "";
-    this.currentStep = 0;
-    this._stdout = "";
-    this._stderr = "";
   }
 
   public get childProcess() {
@@ -57,18 +53,7 @@ export class CreatePlugin {
     this._childProcess = value;
   }
 
-  public get response() {
-    if (this._response === undefined) {
-      throw new Error("No response found. Please call 'executeCommand' first.");
-    }
-    return this._response;
-  }
-
-  public set response(value) {
-    this._response = value;
-  }
-
-  async executeCommand(): Promise<Response> {
+  public async executeCommand(): Promise<Response> {
     const commands = this._getCommands();
     if (!commands[this.command]) {
       throw new Error(`Command ${this.command} not found.`);
@@ -81,12 +66,11 @@ export class CreatePlugin {
 
     const cliExitPromise = new Promise<Response>((resolve, reject) => {
       this.childProcess.on("exit", (code: number) => {
-        this.response = {
+        resolve({
           status: code,
-          stdout: this._stdout ? this._stdout.toString() : "",
-          stderr: this._stderr ? this._stderr.toString() : "",
-        };
-        resolve(this.response);
+          stdout: this.stdout ? this.stdout.toString() : "",
+          stderr: this.stderr ? this.stderr.toString() : "",
+        });
       });
       this.childProcess.on("error", (error) => {
         reject({
@@ -96,14 +80,14 @@ export class CreatePlugin {
     });
 
     this.childProcess.stdout.on("data", (data: Buffer) => {
-      this._stdout = this._stdout.concat(data.toString());
+      this.stdout = this.stdout.concat(data.toString());
       if (process.env.VERBOSE && ["true", "1"].includes(process.env.VERBOSE)) {
-        console.log(this._stdout);
+        console.log(this.stdout);
       }
     });
 
     this.childProcess.stderr.on("data", (data: Buffer) => {
-      this._stderr = this._stderr.concat(data.toString());
+      this.stderr = this.stderr.concat(data.toString());
       this.done();
     });
 
@@ -125,12 +109,8 @@ export class CreatePlugin {
     return cliExitPromise;
   }
 
-  done() {
+  private done() {
     this.childProcess.stdin.end();
-  }
-
-  getResponse(): Response {
-    return this.response;
   }
 
   private _getCommands = (): { [key: string]: string } => {
@@ -166,7 +146,7 @@ export class CreatePlugin {
 
       const regex = new RegExp(this.escape(message));
       timer = setInterval(() => {
-        if (regex.test(this._stdout) || this._isProcessExited()) {
+        if (regex.test(this.stdout) || this._isProcessExited()) {
           clearInterval(timer);
           clearTimeout(timeoutTimer);
           resolve();
