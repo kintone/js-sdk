@@ -410,8 +410,8 @@ importers:
         specifier: ^1.6.8
         version: 1.6.8
       core-js:
-        specifier: ^3.36.1
-        version: 3.36.1
+        specifier: ^3.37.1
+        version: 3.37.1
       form-data:
         specifier: ^4.0.0
         version: 4.0.0
@@ -4679,8 +4679,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /core-js@3.36.1:
-    resolution: {integrity: sha512-BTvUrwxVBezj5SZ3f10ImnX2oRByMxql3EimVqMysepbC9EeMUOpLwdy6Eoili2x6E4kf+ZUB5k/+Jv55alPfA==}
+  /core-js@3.37.1:
+    resolution: {integrity: sha512-Xn6qmxrQZyB0FFY8E3bgRXei3lWDJHhvI+u0q9TKIYM49G8pAr0FgnnrFRAmsbptZL1yxRADVXn+x5AGsbBfyw==}
     requiresBuild: true
     dev: false
 
