@@ -83,9 +83,14 @@ ${m("developerSite")}
       `);
     })
     .catch((error: Error) => {
-      rimraf(outputDir, { glob: true }).then(() => {
-        printError(m("Error_cannotCreatePlugin"), error.message);
-      });
+      rimraf(outputDir, { glob: true })
+        .then(() => {
+          printError(m("Error_cannotCreatePlugin"), error.message);
+        })
+        .finally(() => {
+          // eslint-disable-next-line no-process-exit
+          process.exit(1);
+        });
     });
 };
 
