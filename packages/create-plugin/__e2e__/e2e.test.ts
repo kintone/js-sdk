@@ -171,7 +171,7 @@ describe("create-plugin", function () {
     const response = await createPlugin.executeCommand();
 
     if (isWindows) {
-      assert.equal(response.status, 0);
+      assert.equal(response.status, 1);
       assert.match(
         response.stderr.trim(),
         /Could not create a plug-in project. Error:\nEINVAL: invalid argument, mkdir '.*:'/,
