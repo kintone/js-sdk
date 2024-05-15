@@ -25,7 +25,7 @@ export class ReactPluginSystemPage implements PluginSystemPageInterface {
         timeout: TIMEOUT_MS,
       });
     } catch (e) {
-      throw chalk.blue(boundMessage("Error_notDisplayImportButton"));
+      throw chalk.red(boundMessage("Error_notDisplayImportButton"));
     }
   }
 
