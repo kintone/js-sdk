@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
-    "postbuild": "bash bin/npm-build.sh && pnpm build:integration",
+    "postbuild": "node bin/npm-build.js && pnpm build:integration",
     "clean": "rimraf dist",
     "fix:eslint": "pnpm lint:eslint --fix",
     "fix:prettier": "prettier --parser typescript --write \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
