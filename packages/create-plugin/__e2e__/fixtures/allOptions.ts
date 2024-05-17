@@ -49,11 +49,11 @@ export const pattern: TestPattern = {
       },
       {
         question: m("Q_NameEs"),
-        answer: "test14-nombre",
+        answer: "test4-nombre",
       },
       {
         question: m("Q_DescriptionEs"),
-        answer: "test14-descripción",
+        answer: "test4-descripción",
       },
       {
         question: m("Q_WebsiteUrlEn"),
