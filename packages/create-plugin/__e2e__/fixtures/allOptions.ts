@@ -68,6 +68,10 @@ export const pattern: TestPattern = {
         answer: "https://github.cn",
       },
       {
+        question: m("Q_WebsiteUrlEs"),
+        answer: "https://github.",
+      },
+      {
         question: m("Q_MobileSupport"),
         answer: ANSWER_YES,
       },
