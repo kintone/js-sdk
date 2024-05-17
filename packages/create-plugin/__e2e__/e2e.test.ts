@@ -149,6 +149,10 @@ describe("create-plugin", function () {
         answer: DEFAULT_ANSWER,
       },
       {
+        question: m("Q_SupportEs"),
+        answer: DEFAULT_ANSWER,
+      },
+      {
         question: m("Q_WebsiteUrlEn"),
         answer: DEFAULT_ANSWER,
       },
