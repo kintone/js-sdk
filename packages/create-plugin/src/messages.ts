@@ -39,8 +39,8 @@ const messages = {
     ja: "プラグインの日本語の説明を入力してください [1-200文字] (省略可)",
   },
   Q_DescriptionJaError: {
-    en: "Plug-in description must be within 64chars",
-    ja: "プラグインの日本語の説明を64文字以内で入力してください",
+    en: "Plug-in description must be within 200chars",
+    ja: "プラグインの日本語の説明を100文字以内で入力してください",
   },
   Q_SupportZh: {
     en: "Does your plug-in support Chinese?",
@@ -59,16 +59,16 @@ const messages = {
     ja: "プラグインの中国語の説明を入力してください [1-200文字] (省略可)",
   },
   Q_DescriptionZhError: {
-    en: "Plug-in description must be within 64chars",
-    ja: "プラグインの中国語の説明を64文字以内で入力してください",
+    en: "Plug-in description must be within 200chars",
+    ja: "プラグインの中国語の説明を200文字以内で入力してください",
   },
   Q_SupportEs: {
     en: "Does your plug-in support Spanish?",
-    ja: "プラグインはスペイン語に対応していますか？",
+    ja: "スペイン語をサポートしますか？",
   },
   Q_NameEs: {
     en: "Input your plug-in name in Spanish [1-64chars] (Optional)",
-    ja: "プラグインの名前を入力してください (スペイン語) [1-64文字] (省略可)",
+    ja: "プラグインのスペイン語名を入力してください [1-64文字] (省略可)",
   },
   Q_NameEsError: {
     en: "Plug-in name must be within 64chars",
@@ -76,11 +76,11 @@ const messages = {
   },
   Q_DescriptionEs: {
     en: "Input your plug-in description in Spanish [1-200chars] (Optional)",
-    ja: "プラグインの説明を入力してください (スペイン語) [1-200文字] (省略可)",
+    ja: "プラグインのスペイン語の説明を入力してください [1-200文字] (省略可)",
   },
   Q_DescriptionEsError: {
-    en: "Plug-in description must be within 64chars",
-    ja: "プラグインの中国語の説明を64文字以内で入力してください",
+    en: "Plug-in description must be within 200chars",
+    ja: "プラグインのスペイン語の説明を200文字以内で入力してください",
   },
   Q_WebsiteUrlEn: {
     en: "Input your home page url for English (Optional)",
@@ -96,7 +96,7 @@ const messages = {
   },
   Q_WebsiteUrlEs: {
     en: "Input your home page url for Spanish (Optional)",
-    ja: "スペイン語のホームページURLを入力してください (省略可)",
+    ja: "プラグインのスペイン語のWebサイトURLを入力してください (省略可)",
   },
   Q_MobileSupport: {
     en: "Does your plug-in support mobile views?",
