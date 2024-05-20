@@ -181,5 +181,16 @@ describe("qa", () => {
         assert(typeof q.when === "function" && q.when({ zh: true }) === true);
       });
     });
+    describe("homepage_url.es", () => {
+      it("should be enabled only in answer.es is true", () => {
+        const questions = buildQuestions("dist", "en");
+        const q = getQuestion(
+          questions,
+          ({ name }: Question) => name === "homepage_url.es",
+        );
+        assert(typeof q.when === "function" && q.when({ es: false }) === false);
+        assert(typeof q.when === "function" && q.when({ es: true }) === true);
+      });
+    });
   });
 });

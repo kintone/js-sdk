@@ -1,11 +1,6 @@
 import assert from "assert";
 import type { QuestionInput } from "./utils/CreatePlugin";
 import type { PluginTemplate } from "./utils/verification";
-import {
-  CREATE_PLUGIN_COMMAND,
-  DEFAULT_ANSWER,
-  ANSWER_NO,
-} from "./utils/constants";
 import path from "path";
 import { generateWorkingDir } from "./utils/helper";
 import fs from "fs";
@@ -14,7 +9,6 @@ import {
   assertObjectIncludes,
   readPluginManifestJson,
 } from "./utils/verification";
-import { getBoundMessage } from "../src/messages";
 import { CreatePlugin } from "./utils/CreatePlugin";
 import {
   requiredOptions,
@@ -24,9 +18,10 @@ import {
   languageEN,
   languageJA,
   emptyOutputDir,
+  existOutputDir,
+  forbiddenCharacters,
   pluginNameContain65Chars,
   pluginDescriptionContain201Chars,
-  existOutputDir,
   createKintonePluginCommand,
   minimumTemplate,
   modernTemplate,
@@ -71,6 +66,7 @@ describe("create-plugin", function () {
     modernTemplate,
     emptyOutputDir,
     existOutputDir,
+    forbiddenCharacters,
     pluginNameContain65Chars,
     pluginDescriptionContain201Chars,
     createKintonePluginCommand,
@@ -118,74 +114,6 @@ describe("create-plugin", function () {
           new RegExp(expected.failure.stderr),
         );
       }
-    }
-  });
-
-  it("#JsSdkTest-11 Should throw an error when the output directory contains forbidden characters", async () => {
-    const m = getBoundMessage("en");
-    let outputDir: string;
-    const isWindows = process.platform === "win32";
-    if (isWindows) {
-      outputDir = ":";
-    } else {
-      outputDir = "/";
-    }
-
-    const questionsInput: QuestionInput[] = [
-      {
-        question: m("Q_NameEn"),
-        answer: "test11-name",
-      },
-      {
-        question: m("Q_DescriptionEn"),
-        answer: "test11-description",
-      },
-      {
-        question: m("Q_SupportJa"),
-        answer: DEFAULT_ANSWER,
-      },
-      {
-        question: m("Q_SupportZh"),
-        answer: DEFAULT_ANSWER,
-      },
-      {
-        question: m("Q_SupportEs"),
-        answer: DEFAULT_ANSWER,
-      },
-      {
-        question: m("Q_WebsiteUrlEn"),
-        answer: DEFAULT_ANSWER,
-      },
-      {
-        question: m("Q_MobileSupport"),
-        answer: ANSWER_NO,
-      },
-      {
-        question: m("Q_EnablePluginUploader"),
-        answer: ANSWER_NO,
-      },
-    ];
-
-    const createPlugin = new CreatePlugin({
-      command: CREATE_PLUGIN_COMMAND,
-      workingDir,
-      outputDir,
-      questionsInput,
-    });
-    const response = await createPlugin.executeCommand();
-
-    if (isWindows) {
-      assert.equal(response.status, 1);
-      assert.match(
-        response.stderr.trim(),
-        /Could not create a plug-in project. Error:\nEINVAL: invalid argument, mkdir '.*:'/,
-      );
-    } else {
-      assert.notEqual(response.status, 0);
-      assert.match(
-        response.stderr.trim(),
-        /Error: \/ already exists. Choose a different directory/,
-      );
     }
   });
 

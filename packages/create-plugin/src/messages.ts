@@ -40,7 +40,7 @@ const messages = {
   },
   Q_DescriptionJaError: {
     en: "Plug-in description must be within 200chars",
-    ja: "プラグインの日本語の説明を100文字以内で入力してください",
+    ja: "プラグインの日本語の説明を200文字以内で入力してください",
   },
   Q_SupportZh: {
     en: "Does your plug-in support Chinese?",
