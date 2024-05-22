@@ -9,7 +9,7 @@ import validateUrl from "./validate-https-url";
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
   errors: null | ErrorObject[];
-  warnings?: string[];
+  warnings: null | string[];
 };
 
 type RequiredProperties = {
@@ -218,7 +218,11 @@ export default (
 
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);
-  return { valid, errors: transformErrors(validate.errors), warnings };
+  return {
+    valid,
+    errors: transformErrors(validate.errors),
+    warnings: warnings.length === 0 ? null : warnings,
+  };
 };
 
 /**

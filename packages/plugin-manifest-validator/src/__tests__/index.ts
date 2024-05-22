@@ -12,7 +12,11 @@ describe("validator", () => {
   });
 
   it("minimal valid JSON", () => {
-    assert.deepStrictEqual(validator(json({})), { valid: true, errors: null });
+    assert.deepStrictEqual(validator(json({})), {
+      valid: true,
+      errors: null,
+      warnings: null,
+    });
   });
 
   it("missing property", () => {
@@ -31,6 +35,7 @@ describe("validator", () => {
           schemaPath: "#/required",
         },
       ],
+      warnings: null,
     });
   });
 
@@ -50,6 +55,7 @@ describe("validator", () => {
       expect(validator(json({ version }))).toStrictEqual({
         valid: true,
         errors: null,
+        warnings: null,
       });
     });
 
@@ -82,6 +88,7 @@ describe("validator", () => {
               schemaPath: "#/properties/version/oneOf",
             },
           ],
+          warnings: null,
         },
       },
       {
@@ -112,6 +119,7 @@ describe("validator", () => {
               schemaPath: "#/properties/version/oneOf",
             },
           ],
+          warnings: null,
         },
       },
     ])("invalid version: $description", ({ version, expected }) => {
@@ -133,6 +141,7 @@ describe("validator", () => {
           schemaPath: "#/properties/type/enum",
         },
       ],
+      warnings: null,
     });
   });
 
@@ -150,6 +159,7 @@ describe("validator", () => {
           schemaPath: "#/properties/description/required",
         },
       ],
+      warnings: null,
     });
   });
 
@@ -493,11 +503,13 @@ describe("validator", () => {
         if (languageCode !== "en") {
           source.name.en = "name";
           source.description.en = "desc";
+          source.homepage_url.en = homepage_url;
         }
 
         assert.deepStrictEqual(validator(json(source)), {
           valid: true,
           errors: null,
+          warnings: null,
         });
       },
     );
