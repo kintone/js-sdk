@@ -34,6 +34,10 @@ export const pattern: TestPattern = {
         answer: ANSWER_NO,
       },
       {
+        question: m("Q_SupportEs"),
+        answer: ANSWER_NO,
+      },
+      {
         question: m("Q_WebsiteUrlEn"),
         answer: DEFAULT_ANSWER,
       },
