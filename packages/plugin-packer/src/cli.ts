@@ -118,8 +118,8 @@ const throwIfInvalidManifest = (manifest: any, pluginDir: string) => {
   });
   debug(result);
 
-  if (result.warns && result.warns.length > 0) {
-    result.warns.forEach((msg) => {
+  if (result.warnings && result.warnings.length > 0) {
+    result.warnings.forEach((msg) => {
       console.warn(`WARN: ${msg}`);
     });
   }

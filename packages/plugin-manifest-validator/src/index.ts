@@ -9,7 +9,7 @@ import validateUrl from "./validate-https-url";
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
   errors: null | ErrorObject[];
-  warns?: string[];
+  warnings?: string[];
 };
 
 type RequiredProperties = {
@@ -44,7 +44,7 @@ export default (
   let relativePath: Options["relativePath"] = () => true;
   let maxFileSize: Options["maxFileSize"];
   let fileExists: Options["fileExists"];
-  const warns: string[] = [];
+  const warnings: string[] = [];
 
   if (typeof options.relativePath === "function") {
     relativePath = options.relativePath;
@@ -187,7 +187,7 @@ export default (
 
     if (errors.length > 0) {
       if (schema.warn) {
-        warns.push(...errors.map((error) => error));
+        warnings.push(...errors.map((error) => error));
       } else {
         validateRequiredProperties.errors = errors.map((error) => ({
           keyword: "requiredProperties",
@@ -218,7 +218,7 @@ export default (
 
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);
-  return { valid, errors: transformErrors(validate.errors), warns };
+  return { valid, errors: transformErrors(validate.errors), warnings };
 };
 
 /**
