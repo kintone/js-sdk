@@ -37,9 +37,13 @@ Let's start!
 ? Does your plugin support Chinese? Yes
 ? Input your plugin name in Chinese [1-64chars] (Optional)
 ? Input your plugin description in Chinese [1-200chars] (Optional)
+? Does your plug-in support Spanish?
+? Input your plug-in name in Spanish [1-64chars] (Optional)
+? Input your plug-in description in Spanish [1-200chars] (Optional)
 ? Input your home page url for English (Optional)
 ? Input your home page url for Japanese (Optional)
 ? Input your home page url for Chinese (Optional)
+? Input your home page url for Spanish (Optional)
 ? Does your plugin support mobile views? Yes
 ? Do you use @kintone/plugin-uploader? Yes
 :

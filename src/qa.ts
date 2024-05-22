@@ -88,6 +88,32 @@ export const buildQuestions = (outputDir: string, lang: Lang): Question[] => {
           : m("Q_DescriptionZhError"),
     },
     {
+      type: "confirm",
+      name: "es",
+      default: false,
+      message: m("Q_SupportEs"),
+    },
+    {
+      type: "input",
+      name: "name.es",
+      when: (answers) => answers.es,
+      message: m("Q_NameEs"),
+      validate: (value) =>
+        value.length === 0 || value.length <= NAME_MAX_LENGTH
+          ? true
+          : m("Q_NameEsError"),
+    },
+    {
+      type: "input",
+      name: "description.es",
+      when: (answers) => answers.es,
+      message: m("Q_DescriptionEs"),
+      validate: (value) =>
+        value.length === 0 || value.length <= DESCRIPTION_MAX_LENGTH
+          ? true
+          : m("Q_DescriptionEsError"),
+    },
+    {
       type: "input",
       name: "homepage_url.en",
       message: m("Q_WebsiteUrlEn"),
@@ -103,6 +129,12 @@ export const buildQuestions = (outputDir: string, lang: Lang): Question[] => {
       name: "homepage_url.zh",
       when: (answers) => answers.zh,
       message: m("Q_WebsiteUrlZh"),
+    },
+    {
+      type: "input",
+      name: "homepage_url.es",
+      when: (answers) => answers.es,
+      message: m("Q_WebsiteUrlEs"),
     },
     {
       type: "confirm",
