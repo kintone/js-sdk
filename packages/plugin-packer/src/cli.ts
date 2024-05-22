@@ -118,6 +118,12 @@ const throwIfInvalidManifest = (manifest: any, pluginDir: string) => {
   });
   debug(result);
 
+  if (result.warns && result.warns.length > 0) {
+    result.warns.forEach((msg) => {
+      console.warn(`WARN: ${msg}`);
+    });
+  }
+
   if (!result.valid) {
     const msgs = generateErrorMessages(result.errors ?? []);
     console.error("Invalid manifest.json:");

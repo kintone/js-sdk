@@ -9,6 +9,13 @@ import validateUrl from "./validate-https-url";
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
   errors: null | ErrorObject[];
+  warns?: string[];
+};
+
+type RequiredProperties = {
+  items: Array<{ [key: string]: { properties: string[] } } | string>;
+  warn?: boolean;
+  error?: boolean;
 };
 
 // https://ajv.js.org/docs/keywords.html#define-keyword-with-validation-function
@@ -37,6 +44,7 @@ export default (
   let relativePath: Options["relativePath"] = () => true;
   let maxFileSize: Options["maxFileSize"];
   let fileExists: Options["fileExists"];
+  const warns: string[] = [];
 
   if (typeof options.relativePath === "function") {
     relativePath = options.relativePath;
@@ -134,6 +142,65 @@ export default (
     return true;
   };
 
+  const validateRequiredProperties: SchemaValidateFunction = (
+    schema: RequiredProperties,
+    data: string,
+  ) => {
+    if (
+      !schema ||
+      !schema.items ||
+      schema.items.length === 0 ||
+      data.length === 0
+    ) {
+      return true;
+    }
+
+    const errors: string[] = [];
+    const generateErrorMessage = (
+      property: string,
+      warning: boolean = false,
+    ): string =>
+      `Property "${property}" is ${warning ? "missing" : "required"}.`;
+    for (let i = 0; i < schema.items.length; i++) {
+      const item = schema.items[i];
+      if (typeof item === "object") {
+        for (const property in item) {
+          if (
+            !item[property].properties ||
+            item[property].properties.length === 0
+          ) {
+            continue;
+          }
+
+          item[property].properties.forEach((prop: string) => {
+            if (!json[property] || !json[property][prop]) {
+              errors.push(
+                generateErrorMessage(`${property}.${prop}`, schema.warn),
+              );
+            }
+          });
+        }
+      } else if (!json[item]) {
+        errors.push(generateErrorMessage(item, schema.warn));
+      }
+    }
+
+    if (errors.length > 0) {
+      if (schema.warn) {
+        warns.push(...errors.map((error) => error));
+      } else {
+        validateRequiredProperties.errors = errors.map((error) => ({
+          keyword: "requiredProperties",
+          message: error,
+        }));
+
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   ajv.addKeyword({
     keyword: "maxFileSize",
     validate: validateMaxFileSize,
@@ -144,9 +211,14 @@ export default (
     validate: validateFileExists,
   });
 
+  ajv.addKeyword({
+    keyword: "requiredProperties",
+    validate: validateRequiredProperties,
+  });
+
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);
-  return { valid, errors: transformErrors(validate.errors) };
+  return { valid, errors: transformErrors(validate.errors), warns };
 };
 
 /**
