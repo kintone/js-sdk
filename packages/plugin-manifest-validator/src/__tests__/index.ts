@@ -502,6 +502,40 @@ describe("validator", () => {
       },
     );
   });
+
+  it("should show warning if homepage_url of the specified language is missing", () => {
+    const actual = validator(
+      json({
+        name: {
+          en: "sample plugin",
+          ja: "サンプルプラグイン",
+        },
+      }),
+    );
+
+    assert.deepStrictEqual(actual, {
+      valid: true,
+      errors: null,
+      warnings: ['Property "homepage_url.ja" is missing.'],
+    });
+  });
+
+  it("should show warning if name of the specified language is missing", () => {
+    const actual = validator(
+      json({
+        homepage_url: {
+          en: "https://example.com",
+          ja: "https://example.com",
+        },
+      }),
+    );
+
+    assert.deepStrictEqual(actual, {
+      valid: true,
+      errors: null,
+      warnings: ['Property "name.ja" is missing.'],
+    });
+  });
 });
 
 /**
@@ -520,6 +554,9 @@ const json = (source: Record<string, any>): { [s: string]: any } => {
         en: "sample plugin",
       },
       icon: "image/icon.png",
+      homepage_url: {
+        en: "https://example.com",
+      },
     },
     source,
   );
