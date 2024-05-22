@@ -33,11 +33,13 @@
           "minLength": 1,
           "maxLength": 64,
           "requiredProperties": {
-            "items": [{
-              "homepage_url": {
-                "properties": ["ja"]
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["ja"]
+                }
               }
-            }],
+            ],
             "warn": true
           }
         },
@@ -46,11 +48,13 @@
           "minLength": 1,
           "maxLength": 64,
           "requiredProperties": {
-            "items": [{
-              "homepage_url": {
-                "properties": ["en"]
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["en"]
+                }
               }
-            }],
+            ],
             "warn": true
           }
         },
@@ -59,11 +63,13 @@
           "minLength": 1,
           "maxLength": 64,
           "requiredProperties": {
-            "items": [{
-              "homepage_url": {
-                "properties": ["zh"]
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["zh"]
+                }
               }
-            }],
+            ],
             "warn": true
           }
         },
@@ -72,11 +78,13 @@
           "minLength": 1,
           "maxLength": 64,
           "requiredProperties": {
-            "items": [{
-              "homepage_url": {
-                "properties": ["es"]
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["es"]
+                }
               }
-            }],
+            ],
             "warn": true
           }
         }
@@ -127,11 +135,13 @@
           "minLength": 1,
           "format": "http-url",
           "requiredProperties": {
-            "items": [{
-              "name": {
-                "properties": ["ja"]
+            "items": [
+              {
+                "name": {
+                  "properties": ["ja"]
+                }
               }
-            }],
+            ],
             "warn": true
           }
         },
@@ -140,11 +150,13 @@
           "minLength": 1,
           "format": "http-url",
           "requiredProperties": {
-            "items": [{
-              "name": {
-                "properties": ["en"]
+            "items": [
+              {
+                "name": {
+                  "properties": ["en"]
+                }
               }
-            }],
+            ],
             "warn": true
           }
         },
@@ -153,11 +165,13 @@
           "minLength": 1,
           "format": "http-url",
           "requiredProperties": {
-            "items": [{
-              "name": {
-                "properties": ["zh"]
+            "items": [
+              {
+                "name": {
+                  "properties": ["zh"]
+                }
               }
-            }],
+            ],
             "warn": true
           }
         },
@@ -166,11 +180,13 @@
           "minLength": 1,
           "format": "http-url",
           "requiredProperties": {
-            "items": [{
-              "name": {
-                "properties": ["es"]
+            "items": [
+              {
+                "name": {
+                  "properties": ["es"]
+                }
               }
-            }],
+            ],
             "warn": true
           }
         }
