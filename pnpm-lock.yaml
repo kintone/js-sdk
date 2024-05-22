@@ -429,8 +429,8 @@ importers:
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.24.5)(rollup@4.17.2)
       '@rollup/plugin-commonjs':
-        specifier: ^25.0.7
-        version: 25.0.7(rollup@4.17.2)
+        specifier: ^25.0.8
+        version: 25.0.8(rollup@4.17.2)
       '@rollup/plugin-json':
         specifier: ^6.1.0
         version: 6.1.0(rollup@4.17.2)
@@ -2601,8 +2601,8 @@ packages:
       rollup: 4.17.2
     dev: true
 
-  /@rollup/plugin-commonjs@25.0.7(rollup@4.17.2):
-    resolution: {integrity: sha512-nEvcR+LRjEjsaSsc4x3XZfCCvZIaSMenZu/OiwOKGN2UhQpAYI7ru7czFvyWbErlpoGjnSX3D5Ch5FcMA3kRWQ==}
+  /@rollup/plugin-commonjs@25.0.8(rollup@4.17.2):
+    resolution: {integrity: sha512-ZEZWTK5n6Qde0to4vS9Mr5x/0UZoqCxPVR9KRUjU4kA2sO7GEUn1fop0DAwpO6z0Nw/kJON9bDmSxdWxO/TT1A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0||^4.0.0
@@ -2610,7 +2610,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@4.17.2)
+      '@rollup/pluginutils': 5.1.0(rollup@4.17.2)
       commondir: 1.0.1
       estree-walker: 2.0.2
       glob: 8.1.0
@@ -2628,7 +2628,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@4.17.2)
+      '@rollup/pluginutils': 5.1.0(rollup@4.17.2)
       estree-walker: 2.0.2
       magic-string: 0.30.3
       rollup: 4.17.2
