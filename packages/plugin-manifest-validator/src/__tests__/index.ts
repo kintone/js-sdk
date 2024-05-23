@@ -6,7 +6,7 @@ import validator from "../index";
 // 20MB
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
 const VALID_SCHEMA_PATTERN =
-  "^(https:\\/\\/[^\\s/$.?#].[^\\s]*|\\/[^\\s]*|(\\.\\/|\\.\\.\\/|)(?!http:\\/\\/)[^\\s]*)$";
+  "^(https:\\/\\/|(\\.\\.?\\/)+)?([^\\s\\/]+\\/)*[^\\s\\/]+\\.[^\\s\\/]+$";
 
 describe("validator", () => {
   it("is a function", () => {
