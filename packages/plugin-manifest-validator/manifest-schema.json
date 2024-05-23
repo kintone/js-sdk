@@ -6,7 +6,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "pattern": "^(https:\\/\\/[^\\s/$.?#].[^\\s]*|\\/[^\\s]*|(\\.\\/|\\.\\.\\/|)(?!http:\\/\\/)[^\\s]*)$"
+      "pattern": "^(https:\\/\\/|(\\.\\.?\\/)+)?([^\\s\\/]+\\/)*[^\\s\\/]+\\.[^\\s\\/]+$"
     },
     "manifest_version": {
       "type": "integer",
