@@ -1,7 +1,7 @@
 "use strict";
 
 import assert from "assert";
-import validator from "../index";
+import validator, { checkRequiredProperties } from "../index";
 
 // 20MB
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
@@ -546,6 +546,130 @@ describe("validator", () => {
       valid: true,
       errors: null,
       warnings: ['Property "name.ja" is missing.'],
+    });
+  });
+
+  describe("validate required properties", () => {
+    it.each`
+      languageCode | name
+      ${"ja"}      | ${"名前"}
+      ${"en"}      | ${"name"}
+      ${"zh"}      | ${"名称"}
+      ${"es"}      | ${"nombre"}
+    `(
+      `should return warnings when the name of the language "$languageCode" is specified and homepage_url is missing`,
+      ({ languageCode, name }) => {
+        const source: Record<string, any> = {
+          name: {
+            [languageCode]: name,
+          },
+          description: {
+            en: "desc",
+          },
+          homepage_url: {},
+        };
+        if (languageCode !== "en") {
+          source.name.en = "name";
+          source.homepage_url.en = "https://example.com";
+        }
+
+        assert.deepStrictEqual(validator(json(source)), {
+          valid: true,
+          errors: null,
+          warnings: [`Property "homepage_url.${languageCode}" is missing.`],
+        });
+      },
+    );
+
+    it.each`
+      languageCode | homepage_url
+      ${"ja"}      | ${"https://example.com/ja"}
+      ${"zh"}      | ${"https://example.com/zh"}
+      ${"es"}      | ${"https://example.com/es"}
+    `(
+      `should return warnings when the homepage_url of the language "$languageCode" is specified and name is missing`,
+      ({ languageCode, homepage_url }) => {
+        const source: Record<string, any> = {
+          name: {
+            en: "name", // name.en is required property
+          },
+          description: {
+            en: "desc",
+          },
+          homepage_url: {
+            en: "https://example.com",
+            [languageCode]: homepage_url,
+          },
+        };
+
+        assert.deepStrictEqual(validator(json(source)), {
+          valid: true,
+          errors: null,
+          warnings: [`Property "name.${languageCode}" is missing.`],
+        });
+      },
+    );
+  });
+
+  describe("checkRequiredProperties", () => {
+    it(`should return errors when missing the required properties`, () => {
+      const source: Record<string, any> = {
+        name: {
+          en: "名前",
+        },
+        description: {
+          en: "desc",
+        },
+        homepage_url: {},
+        icon: "image/icon.png",
+      };
+
+      const jsonSchema = {
+        items: [
+          {
+            homepage_url: {
+              properties: ["en"],
+            },
+          },
+          "icon",
+          "none-exist-property",
+        ],
+        warn: true,
+      };
+      assert.deepStrictEqual(
+        checkRequiredProperties(json(source), jsonSchema),
+        [
+          `Property "homepage_url.en" is missing.`,
+          `Property "none-exist-property" is missing.`,
+        ],
+      );
+    });
+
+    it(`should return the correct error message when the "warn" setting is false`, () => {
+      const source: Record<string, any> = {
+        name: {
+          en: "名前",
+        },
+        description: {
+          en: "desc",
+        },
+        homepage_url: {},
+      };
+
+      const jsonSchema = {
+        items: [
+          {
+            homepage_url: {
+              properties: ["en"],
+            },
+          },
+        ],
+        warn: false,
+      };
+      assert.deepStrictEqual(
+        checkRequiredProperties(json(source), jsonSchema),
+        [`Property "homepage_url.en" is required.`],
+      );
     });
   });
 });
