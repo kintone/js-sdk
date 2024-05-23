@@ -5,7 +5,8 @@ import validator from "../index";
 
 // 20MB
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
-const VALID_SCHEMA_PATTERN = '^(https:\\/\\/[^\\s/$.?#].[^\\s]*|\\/[^\\s]*|(\\.\\/|\\.\\.\\/|)(?!http:\\/\\/)[^\\s]*)$';
+const VALID_SCHEMA_PATTERN =
+  "^(https:\\/\\/[^\\s/$.?#].[^\\s]*|\\/[^\\s]*|(\\.\\/|\\.\\.\\/|)(?!http:\\/\\/)[^\\s]*)$";
 
 describe("validator", () => {
   it("is a function", () => {
@@ -40,14 +41,18 @@ describe("validator", () => {
       it("https url", () => {
         assert.deepStrictEqual(
           validator(json({ $schema: "https://secure-url.com/schema.json" })),
-          { valid: true, errors: null },
+          { valid: true, errors: null }
         );
-
       });
       it("relative path", () => {
         assert.deepStrictEqual(
-          validator(json({ $schema: "./node_modules/@kintone/plugin-manifest-validator/manifest-schema.json" })),
-          { valid: true, errors: null },
+          validator(
+            json({
+              $schema:
+                "./node_modules/@kintone/plugin-manifest-validator/manifest-schema.json",
+            })
+          ),
+          { valid: true, errors: null }
         );
       });
     });
@@ -69,11 +74,11 @@ describe("validator", () => {
                 schemaPath: "#/properties/%24schema/pattern",
               },
             ],
-          },
+          }
         );
       });
     });
-  })
+  });
 
   describe("version", () => {
     it.each(
@@ -86,7 +91,7 @@ describe("validator", () => {
         "2.0.3",
         0,
         10
-      ],
+      ]
     )("valid version: %s", (version) => {
       expect(validator(json({ version }))).toStrictEqual({
         valid: true,
@@ -199,24 +204,24 @@ describe("validator", () => {
       json({
         manifest_version: "a",
         version: -1,
-      }),
+      })
     );
     const invalidManifestVersion = validator(
       json({
         manifest_version: "a",
-      }),
+      })
     );
     const invalidVersion = validator(
       json({
         version: -1,
-      }),
+      })
     );
     expect(actual.valid).toBe(false);
     expect(actual.errors).toStrictEqual(
       expect.arrayContaining([
         ...(invalidManifestVersion.errors ?? []),
         ...(invalidVersion.errors ?? []),
-      ]),
+      ])
     );
   });
 
@@ -236,7 +241,7 @@ describe("validator", () => {
       }),
       {
         relativePath: (str) => !/^https?:/.test(str),
-      },
+      }
     );
     assert(actual.valid === false);
     assert(actual.errors?.length === 3);
@@ -290,7 +295,7 @@ describe("validator", () => {
           maxFileSize: (maxFileSizeInBytes, path) => {
             return path.indexOf("foo.js") === -1;
           },
-        },
+        }
       );
       assert(actual.valid === false);
       assert(actual.errors?.length === 3);
@@ -316,7 +321,7 @@ describe("validator", () => {
           maxFileSize: (maxFileSizeInBytes, path) => {
             return path.indexOf("foo.css") === -1;
           },
-        },
+        }
       );
       assert(actual.valid === false);
       assert(actual.errors?.length === 3);
@@ -362,7 +367,7 @@ describe("validator", () => {
             js: ["https://example.com/foo.js"],
             css: ["https://example.com/foo.css"],
           },
-        }),
+        })
       );
       assert(actual.valid === true);
       assert(actual.errors === null);
@@ -424,7 +429,7 @@ describe("validator", () => {
           message: `file should exist ("${filePath}")`,
           schemaPath,
         });
-      },
+      }
     );
 
     it.each`
@@ -480,21 +485,21 @@ describe("validator", () => {
           message: customMessage,
           schemaPath,
         });
-      },
+      }
     );
   });
 
   describe("maxItems", () => {
     it("exceed the max item counts", () => {
       const urls = [...new Array(100)].map(
-        (_, i) => `https://example.com/${i}.js`,
+        (_, i) => `https://example.com/${i}.js`
       );
       const actual = validator(
         json({
           desktop: {
             js: urls,
           },
-        }),
+        })
       );
       assert.strictEqual(actual.valid, false);
       assert.strictEqual(actual.errors?.length, 1);
@@ -540,7 +545,7 @@ describe("validator", () => {
           valid: true,
           errors: null,
         });
-      },
+      }
     );
   });
 });
@@ -562,6 +567,6 @@ const json = (source: Record<string, any>): { [s: string]: any } => {
       },
       icon: "image/icon.png",
     },
-    source,
+    source
   );
 };
