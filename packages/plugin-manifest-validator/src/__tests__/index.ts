@@ -67,7 +67,7 @@ describe("validator", () => {
               {
                 instancePath: "/$schema",
                 keyword: "pattern",
-                message: `must match pattern \"${VALID_SCHEMA_PATTERN}\"`,
+                message: `must match pattern "${VALID_SCHEMA_PATTERN}"`,
                 params: {
                   pattern: `${VALID_SCHEMA_PATTERN}`,
                 },
