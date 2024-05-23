@@ -4,6 +4,10 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "$schema": {
+      "type": "string",
+      "pattern": "^(https:\\/\\/[^\\s/$.?#].[^\\s]*|\\/[^\\s]*|(\\.\\/|\\.\\.\\/|)(?!http:\\/\\/)[^\\s]*)$"
+    },
     "manifest_version": {
       "type": "integer",
       "minimum": 1

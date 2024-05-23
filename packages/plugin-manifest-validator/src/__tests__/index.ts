@@ -5,6 +5,7 @@ import validator from "../index";
 
 // 20MB
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
+const VALID_SCHEMA_PATTERN = '^(https:\\/\\/[^\\s/$.?#].[^\\s]*|\\/[^\\s]*|(\\.\\/|\\.\\.\\/|)(?!http:\\/\\/)[^\\s]*)$';
 
 describe("validator", () => {
   it("is a function", () => {
@@ -33,6 +34,46 @@ describe("validator", () => {
       ],
     });
   });
+
+  describe("$schema", () => {
+    describe("valid", () => {
+      it("https url", () => {
+        assert.deepStrictEqual(
+          validator(json({ $schema: "https://secure-url.com/schema.json" })),
+          { valid: true, errors: null },
+        );
+
+      });
+      it("relative path", () => {
+        assert.deepStrictEqual(
+          validator(json({ $schema: "./node_modules/@kintone/plugin-manifest-validator/manifest-schema.json" })),
+          { valid: true, errors: null },
+        );
+      });
+    });
+
+    describe("invalid", () => {
+      it("http", () => {
+        assert.deepStrictEqual(
+          validator(json({ $schema: "http://unsecure-url.com/schema.json" })),
+          {
+            valid: false,
+            errors: [
+              {
+                instancePath: "/$schema",
+                keyword: "pattern",
+                message: `must match pattern \"${VALID_SCHEMA_PATTERN}\"`,
+                params: {
+                  pattern: `${VALID_SCHEMA_PATTERN}`,
+                },
+                schemaPath: "#/properties/%24schema/pattern",
+              },
+            ],
+          },
+        );
+      });
+    });
+  })
 
   describe("version", () => {
     it.each(

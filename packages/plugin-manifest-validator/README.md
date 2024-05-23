@@ -55,6 +55,9 @@ import { KintonePluginManifestJson } from "@kintone/plugin-manifest-validator/ma
 let manifest: KintonePluginManifestJson;
 ```
 
+## `$schema` property
+Recommend setting: `./node_modules/@kintone/plugin-manifest-validator/manifest-schema.json`
+
 ## License
 
 MIT License
