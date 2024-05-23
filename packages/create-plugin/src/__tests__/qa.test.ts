@@ -47,7 +47,7 @@ describe("qa", () => {
         );
       });
     });
-    describe("descripiion.en", () => {
+    describe("description.en", () => {
       it("should be set the default value of description.en based on name.en", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
@@ -92,7 +92,7 @@ describe("qa", () => {
       });
     });
     describe("name.ja", () => {
-      it("should be enabled only in anwers.ja is true", () => {
+      it("should be enabled only in answer.ja is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
@@ -103,7 +103,7 @@ describe("qa", () => {
       });
     });
     describe("description.ja", () => {
-      it("should be enabled only in anwers.ja is true", () => {
+      it("should be enabled only in answer.ja is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
@@ -114,7 +114,7 @@ describe("qa", () => {
       });
     });
     describe("name.zh", () => {
-      it("should be enabled only in anwers.zh is true", () => {
+      it("should be enabled only in answer.zh is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
@@ -125,7 +125,7 @@ describe("qa", () => {
       });
     });
     describe("description.zh", () => {
-      it("should be enabled only in anwers.zh is true", () => {
+      it("should be enabled only in answer.zh is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
@@ -135,8 +135,32 @@ describe("qa", () => {
         assert(typeof q.when === "function" && q.when({ zh: true }) === true);
       });
     });
+
+    describe("name.es", () => {
+      it("should be enabled only in answer.es is true", () => {
+        const questions = buildQuestions("dist", "en");
+        const q = getQuestion(
+          questions,
+          ({ name }: Question) => name === "name.es",
+        );
+        assert(typeof q.when === "function" && q.when({ es: false }) === false);
+        assert(typeof q.when === "function" && q.when({ es: true }) === true);
+      });
+    });
+    describe("description.es", () => {
+      it("should be enabled only in answer.es is true", () => {
+        const questions = buildQuestions("dist", "en");
+        const q = getQuestion(
+          questions,
+          ({ name }: Question) => name === "description.es",
+        );
+        assert(typeof q.when === "function" && q.when({ es: false }) === false);
+        assert(typeof q.when === "function" && q.when({ es: true }) === true);
+      });
+    });
+
     describe("homepage_url.ja", () => {
-      it("should be enabled only in anwers.ja is true", () => {
+      it("should be enabled only in answer.ja is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
@@ -147,7 +171,7 @@ describe("qa", () => {
       });
     });
     describe("homepage_url.zh", () => {
-      it("should be enabled only in anwers.zh is true", () => {
+      it("should be enabled only in answer.zh is true", () => {
         const questions = buildQuestions("dist", "en");
         const q = getQuestion(
           questions,
@@ -155,6 +179,17 @@ describe("qa", () => {
         );
         assert(typeof q.when === "function" && q.when({ zh: false }) === false);
         assert(typeof q.when === "function" && q.when({ zh: true }) === true);
+      });
+    });
+    describe("homepage_url.es", () => {
+      it("should be enabled only in answer.es is true", () => {
+        const questions = buildQuestions("dist", "en");
+        const q = getQuestion(
+          questions,
+          ({ name }: Question) => name === "homepage_url.es",
+        );
+        assert(typeof q.when === "function" && q.when({ es: false }) === false);
+        assert(typeof q.when === "function" && q.when({ es: true }) === true);
       });
     });
   });

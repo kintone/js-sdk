@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@8.0.6...@kintone/create-plugin@8.1.0) (2024-05-22)
+
+
+### Features
+
+* **create-plugin:** show prompt to choose Spanish support ([#2770](https://github.com/kintone/js-sdk/issues/2770)) ([c98ab15](https://github.com/kintone/js-sdk/commit/c98ab15db5531a2200ca2625d848981bb3a9c57b))
+
 ## [8.0.6](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@8.0.5...@kintone/create-plugin@8.0.6) (2024-05-15)
 
 

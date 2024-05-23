@@ -16,7 +16,7 @@ jobs:
         with:
           app-id: ${{ secrets.RELEASE_GITHUB_APP_ID}}
           private-key: ${{ secrets.RELEASE_GITHUB_APP_KEY }}
-      - uses: google-github-actions/release-please-action@a37ac6e4f6449ce8b3f7607e4d97d0146028dc0b # v4
+      - uses: googleapis/release-please-action@f3969c04a4ec81d7a9aa4010d84ae6a7602f86a7 # v4
         id: release
         with:
           token: ${{ steps.create-iat.outputs.token }}
