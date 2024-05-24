@@ -515,40 +515,6 @@ describe("validator", () => {
     );
   });
 
-  it("should show warning if homepage_url of the specified language is missing", () => {
-    const actual = validator(
-      json({
-        name: {
-          en: "sample plugin",
-          ja: "サンプルプラグイン",
-        },
-      }),
-    );
-
-    assert.deepStrictEqual(actual, {
-      valid: true,
-      errors: null,
-      warnings: ['Property "homepage_url.ja" is missing.'],
-    });
-  });
-
-  it("should show warning if name of the specified language is missing", () => {
-    const actual = validator(
-      json({
-        homepage_url: {
-          en: "https://example.com",
-          ja: "https://example.com",
-        },
-      }),
-    );
-
-    assert.deepStrictEqual(actual, {
-      valid: true,
-      errors: null,
-      warnings: ['Property "name.ja" is missing.'],
-    });
-  });
-
   describe("validate required properties", () => {
     it.each`
       languageCode | name
@@ -587,7 +553,7 @@ describe("validator", () => {
       ${"zh"}      | ${"https://example.com/zh"}
       ${"es"}      | ${"https://example.com/es"}
     `(
-      `should return warnings when the homepage_url of the language "$languageCode" is specified and name is missing`,
+      `should return errors when the homepage_url of the language "$languageCode" is specified and name is missing`,
       ({ languageCode, homepage_url }) => {
         const source: Record<string, any> = {
           name: {
@@ -603,9 +569,16 @@ describe("validator", () => {
         };
 
         assert.deepStrictEqual(validator(json(source)), {
-          valid: true,
-          errors: null,
-          warnings: [`Property "name.${languageCode}" is missing.`],
+          valid: false,
+          errors: [
+            {
+              instancePath: `/homepage_url/${languageCode}`,
+              keyword: "requiredProperties",
+              message: `Property "name.${languageCode}" is required.`,
+              schemaPath: `#/properties/homepage_url/properties/${languageCode}/requiredProperties`,
+            },
+          ],
+          warnings: null,
         });
       },
     );

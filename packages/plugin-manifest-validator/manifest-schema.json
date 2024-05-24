@@ -141,8 +141,7 @@
                   "properties": ["ja"]
                 }
               }
-            ],
-            "warn": true
+            ]
           }
         },
         "en": {
@@ -156,8 +155,7 @@
                   "properties": ["en"]
                 }
               }
-            ],
-            "warn": true
+            ]
           }
         },
         "zh": {
@@ -171,8 +169,7 @@
                   "properties": ["zh"]
                 }
               }
-            ],
-            "warn": true
+            ]
           }
         },
         "es": {
@@ -186,8 +183,7 @@
                   "properties": ["es"]
                 }
               }
-            ],
-            "warn": true
+            ]
           }
         }
       }
