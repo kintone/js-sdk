@@ -1,5 +1,5 @@
 import assert from "assert";
-import checkRequiredProperties from "../check-required-properties";
+import { checkRequiredProperties } from "../check-required-properties";
 
 describe("checkRequiredProperties", () => {
   it(`should return errors when missing the required properties`, () => {

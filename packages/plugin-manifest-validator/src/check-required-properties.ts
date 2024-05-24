@@ -1,6 +1,6 @@
-import type { RequiredProperties } from "./index";
+import type { RequiredObjectProperty, RequiredProperties } from "./index";
 
-const checkRequiredProperties = (
+export const checkRequiredProperties = (
   json: Record<string, any>,
   schema: RequiredProperties,
 ): string[] => {
@@ -8,37 +8,46 @@ const checkRequiredProperties = (
     return [];
   }
 
-  const errors: string[] = [];
-  for (let i = 0; i < schema.items.length; i++) {
-    const item = schema.items[i];
+  const missingProperties: string[] = [];
+  schema.items.forEach((item) => {
     if (typeof item === "object") {
-      for (const property in item) {
-        if (
-          !item[property].properties ||
-          item[property].properties.length === 0
-        ) {
-          continue;
-        }
-
-        item[property].properties.forEach((prop: string) => {
-          if (!json[property] || !json[property][prop]) {
-            errors.push(
-              generateErrorMessage(`${property}.${prop}`, schema.warn),
-            );
-          }
-        });
-      }
-    } else if (!json[item]) {
-      errors.push(generateErrorMessage(item, schema.warn));
+      missingProperties.push(...getMissingPropertiesInObjectItem(json, item));
+    } else if (isMissingProperty(json, item)) {
+      missingProperties.push(item);
     }
-  }
+  });
 
-  return errors;
+  return missingProperties.map((property) =>
+    generateErrorMessage(property, schema.warn),
+  );
+};
+
+const getMissingPropertiesInObjectItem = (
+  json: Record<string, any>,
+  items: RequiredObjectProperty,
+): string[] => {
+  const missingProperties: string[] = [];
+  Object.keys(items).forEach((key) => {
+    const properties = items[key].properties;
+    if (!properties || properties.length === 0) {
+      return;
+    }
+
+    properties.forEach((prop: string) => {
+      if (isMissingProperty(json, key) || isMissingProperty(json[key], prop)) {
+        missingProperties.push(`${key}.${prop}`);
+      }
+    });
+  });
+
+  return missingProperties;
+};
+
+const isMissingProperty = (json: Record<string, any>, property: string) => {
+  return !json[property];
 };
 
 const generateErrorMessage = (
   property: string,
   warning: boolean = false,
 ): string => `Property "${property}" is ${warning ? "missing" : "required"}.`;
-
-export default checkRequiredProperties;

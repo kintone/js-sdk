@@ -5,7 +5,7 @@ import Ajv from "ajv";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
-import checkRequiredProperties from "./check-required-properties";
+import { checkRequiredProperties } from "./check-required-properties";
 
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
@@ -13,8 +13,12 @@ type ValidateResult = {
   warnings: null | string[];
 };
 
+export type RequiredObjectProperty = {
+  [key: string]: { properties: string[] };
+};
+
 export type RequiredProperties = {
-  items: Array<{ [key: string]: { properties: string[] } } | string>;
+  items: Array<RequiredObjectProperty | string>;
   warn?: boolean;
 };
 
