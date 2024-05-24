@@ -5,6 +5,7 @@ import Ajv from "ajv";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
+import checkRequiredProperties from "./check-required-properties";
 
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
@@ -12,7 +13,7 @@ type ValidateResult = {
   warnings: null | string[];
 };
 
-type RequiredProperties = {
+export type RequiredProperties = {
   items: Array<{ [key: string]: { properties: string[] } } | string>;
   warn?: boolean;
 };
@@ -145,31 +146,26 @@ export default (
     schema: RequiredProperties,
     data: string,
   ) => {
-    if (
-      !schema ||
-      !schema.items ||
-      schema.items.length === 0 ||
-      !data ||
-      data.length === 0
-    ) {
+    if (!data || data.length === 0) {
       return true;
     }
 
     const errors = checkRequiredProperties(json, schema);
-    if (errors.length > 0) {
-      if (schema.warn) {
-        warnings.push(...errors.map((error) => error));
-      } else {
-        validateRequiredProperties.errors = errors.map((error) => ({
-          keyword: "requiredProperties",
-          message: error,
-        }));
-
-        return false;
-      }
+    if (errors.length === 0) {
+      return true;
     }
 
-    return true;
+    if (schema.warn) {
+      warnings.push(...errors.map((error) => error));
+      return true;
+    }
+
+    validateRequiredProperties.errors = errors.map((error) => ({
+      keyword: "requiredProperties",
+      message: error,
+    }));
+
+    return false;
   };
 
   ajv.addKeyword({
@@ -208,45 +204,4 @@ const transformErrors = (
   }
   // shallow copy
   return errors.slice();
-};
-
-export const checkRequiredProperties = (
-  json: Record<string, any>,
-  schema: RequiredProperties,
-): string[] => {
-  if (!schema.items || schema.items.length === 0) {
-    return [];
-  }
-
-  const errors: string[] = [];
-  const generateErrorMessage = (
-    property: string,
-    warning: boolean = false,
-  ): string => `Property "${property}" is ${warning ? "missing" : "required"}.`;
-
-  for (let i = 0; i < schema.items.length; i++) {
-    const item = schema.items[i];
-    if (typeof item === "object") {
-      for (const property in item) {
-        if (
-          !item[property].properties ||
-          item[property].properties.length === 0
-        ) {
-          continue;
-        }
-
-        item[property].properties.forEach((prop: string) => {
-          if (!json[property] || !json[property][prop]) {
-            errors.push(
-              generateErrorMessage(`${property}.${prop}`, schema.warn),
-            );
-          }
-        });
-      }
-    } else if (!json[item]) {
-      errors.push(generateErrorMessage(item, schema.warn));
-    }
-  }
-
-  return errors;
 };

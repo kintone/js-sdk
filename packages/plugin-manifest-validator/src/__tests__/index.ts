@@ -1,7 +1,7 @@
 "use strict";
 
 import assert from "assert";
-import validator, { checkRequiredProperties } from "../index";
+import validator from "../index";
 
 // 20MB
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
@@ -582,68 +582,6 @@ describe("validator", () => {
         });
       },
     );
-  });
-
-  describe("checkRequiredProperties", () => {
-    it(`should return errors when missing the required properties`, () => {
-      const source: Record<string, any> = {
-        name: {
-          en: "名前",
-        },
-        description: {
-          en: "desc",
-        },
-        homepage_url: {},
-        icon: "image/icon.png",
-      };
-
-      const jsonSchema = {
-        items: [
-          {
-            homepage_url: {
-              properties: ["en"],
-            },
-          },
-          "icon",
-          "none-exist-property",
-        ],
-        warn: true,
-      };
-      assert.deepStrictEqual(
-        checkRequiredProperties(json(source), jsonSchema),
-        [
-          `Property "homepage_url.en" is missing.`,
-          `Property "none-exist-property" is missing.`,
-        ],
-      );
-    });
-
-    it(`should return the correct error message when the "warn" setting is false`, () => {
-      const source: Record<string, any> = {
-        name: {
-          en: "名前",
-        },
-        description: {
-          en: "desc",
-        },
-        homepage_url: {},
-      };
-
-      const jsonSchema = {
-        items: [
-          {
-            homepage_url: {
-              properties: ["en"],
-            },
-          },
-        ],
-        warn: false,
-      };
-      assert.deepStrictEqual(
-        checkRequiredProperties(json(source), jsonSchema),
-        [`Property "homepage_url.en" is required.`],
-      );
-    });
   });
 });
 
