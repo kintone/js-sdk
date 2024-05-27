@@ -5,6 +5,7 @@ import Ajv from "ajv";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
+import { validateUriReference } from "./validate-uri-reference";
 
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
@@ -54,6 +55,7 @@ export default (
       "http-url": (str: string) => validateUrl(str, true),
       "https-url": (str: string) => validateUrl(str),
       "relative-path": relativePath,
+      "uri-reference": validateUriReference,
     },
   });
 
