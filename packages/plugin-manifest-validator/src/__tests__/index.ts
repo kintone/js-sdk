@@ -58,20 +58,20 @@ describe("validator", () => {
     });
 
     describe("invalid", () => {
-      it("http", () => {
+      it("invalid URI", () => {
         assert.deepStrictEqual(
-          validator(json({ $schema: "http://unsecure-url.com/schema.json" })),
+          validator(json({ $schema: "https://have space-in-url.com" })),
           {
             valid: false,
             errors: [
               {
                 instancePath: "/$schema",
-                keyword: "pattern",
-                message: `must match pattern "${VALID_SCHEMA_PATTERN}"`,
+                keyword: "format",
+                message: `must match format "uri-reference"`,
                 params: {
-                  pattern: `${VALID_SCHEMA_PATTERN}`,
+                  format: "uri-reference",
                 },
-                schemaPath: "#/properties/%24schema/pattern",
+                schemaPath: "#/properties/%24schema/format",
               },
             ],
           },
