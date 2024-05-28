@@ -39,7 +39,7 @@
     "json-schema-to-typescript": "^13.1.2",
     "power-assert": "^1.6.1"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-manifest-validator#readme",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-manifest-validator#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kintone/js-sdk.git",

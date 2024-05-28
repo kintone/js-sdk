@@ -1,7 +1,7 @@
 # @kintone/plugin-manifest-validator
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-manifest-validator.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-manifest-validator)
-![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/create-plugin/package.json&label=node&query=$.engines.node&colorB=blue)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/main/packages/create-plugin/package.json&label=node&query=$.engines.node&colorB=blue)
 ![License](https://img.shields.io/npm/l/@kintone/plugin-manifest-validator.svg)
 
 Validate `manifest.json` of kintone plugin. Used in [@kintone/plugin-packer](https://github.com/kintone/plugin-packer).

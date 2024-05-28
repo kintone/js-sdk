@@ -84,7 +84,7 @@
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "^5.0.4"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-packer",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-packer",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kintone/js-sdk.git",

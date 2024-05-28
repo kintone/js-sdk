@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-uploader#readme",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-uploader#readme",
   "dependencies": {
     "chalk": "^4.1.2",
     "inquirer": "^8.2.6",
