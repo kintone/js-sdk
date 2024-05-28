@@ -2,6 +2,7 @@
 
 import type { ErrorObject, SchemaValidateFunction } from "ajv";
 import Ajv from "ajv";
+import addFormats from "ajv-formats";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
@@ -55,9 +56,9 @@ export default (
       "http-url": (str: string) => validateUrl(str, true),
       "https-url": (str: string) => validateUrl(str),
       "relative-path": relativePath,
-      uri: validateUri,
     },
   });
+  addFormats(ajv, { mode: "fast", formats: ["uri"] });
 
   const validateMaxFileSize: SchemaValidateFunction = (
     schema: string,
