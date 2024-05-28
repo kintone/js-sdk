@@ -21,6 +21,7 @@ const manifestJson = require("./path/to/your/manifest.json");
 const result = validator(manifestJson);
 console.log(result.valid); // true or false
 console.log(result.errors); // array of ajv error objects
+console.log(result.warnings); // string array
 ```
 
 [ajv error objects](https://ajv.js.org/api.html#error-objects) is like:

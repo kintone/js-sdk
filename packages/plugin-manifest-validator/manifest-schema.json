@@ -35,22 +35,62 @@
         "ja": {
           "type": "string",
           "minLength": 1,
-          "maxLength": 64
+          "maxLength": 64,
+          "requiredProperties": {
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["ja"]
+                }
+              }
+            ],
+            "warn": true
+          }
         },
         "en": {
           "type": "string",
           "minLength": 1,
-          "maxLength": 64
+          "maxLength": 64,
+          "requiredProperties": {
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["en"]
+                }
+              }
+            ],
+            "warn": true
+          }
         },
         "zh": {
           "type": "string",
           "minLength": 1,
-          "maxLength": 64
+          "maxLength": 64,
+          "requiredProperties": {
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["zh"]
+                }
+              }
+            ],
+            "warn": true
+          }
         },
         "es": {
           "type": "string",
           "minLength": 1,
-          "maxLength": 64
+          "maxLength": 64,
+          "requiredProperties": {
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["es"]
+                }
+              }
+            ],
+            "warn": true
+          }
         }
       },
       "required": ["en"]
@@ -97,22 +137,58 @@
         "ja": {
           "type": "string",
           "minLength": 1,
-          "format": "http-url"
+          "format": "http-url",
+          "requiredProperties": {
+            "items": [
+              {
+                "name": {
+                  "properties": ["ja"]
+                }
+              }
+            ]
+          }
         },
         "en": {
           "type": "string",
           "minLength": 1,
-          "format": "http-url"
+          "format": "http-url",
+          "requiredProperties": {
+            "items": [
+              {
+                "name": {
+                  "properties": ["en"]
+                }
+              }
+            ]
+          }
         },
         "zh": {
           "type": "string",
           "minLength": 1,
-          "format": "http-url"
+          "format": "http-url",
+          "requiredProperties": {
+            "items": [
+              {
+                "name": {
+                  "properties": ["zh"]
+                }
+              }
+            ]
+          }
         },
         "es": {
           "type": "string",
           "minLength": 1,
-          "format": "http-url"
+          "format": "http-url",
+          "requiredProperties": {
+            "items": [
+              {
+                "name": {
+                  "properties": ["es"]
+                }
+              }
+            ]
+          }
         }
       }
     },

@@ -12,7 +12,11 @@ describe("validator", () => {
   });
 
   it("minimal valid JSON", () => {
-    assert.deepStrictEqual(validator(json({})), { valid: true, errors: null });
+    assert.deepStrictEqual(validator(json({})), {
+      valid: true,
+      errors: null,
+      warnings: null,
+    });
   });
 
   it("missing property", () => {
@@ -31,6 +35,7 @@ describe("validator", () => {
           schemaPath: "#/required",
         },
       ],
+      warnings: null,
     });
   });
 
@@ -83,6 +88,7 @@ describe("validator", () => {
       expect(validator(json({ version }))).toStrictEqual({
         valid: true,
         errors: null,
+        warnings: null,
       });
     });
 
@@ -115,6 +121,7 @@ describe("validator", () => {
               schemaPath: "#/properties/version/oneOf",
             },
           ],
+          warnings: null,
         },
       },
       {
@@ -145,6 +152,7 @@ describe("validator", () => {
               schemaPath: "#/properties/version/oneOf",
             },
           ],
+          warnings: null,
         },
       },
     ])("invalid version: $description", ({ version, expected }) => {
@@ -166,6 +174,7 @@ describe("validator", () => {
           schemaPath: "#/properties/type/enum",
         },
       ],
+      warnings: null,
     });
   });
 
@@ -183,6 +192,7 @@ describe("validator", () => {
           schemaPath: "#/properties/description/required",
         },
       ],
+      warnings: null,
     });
   });
 
@@ -526,11 +536,84 @@ describe("validator", () => {
         if (languageCode !== "en") {
           source.name.en = "name";
           source.description.en = "desc";
+          source.homepage_url.en = homepage_url;
         }
 
         assert.deepStrictEqual(validator(json(source)), {
           valid: true,
           errors: null,
+          warnings: null,
+        });
+      },
+    );
+  });
+
+  describe("validate required properties", () => {
+    it.each`
+      languageCode | name
+      ${"ja"}      | ${"名前"}
+      ${"en"}      | ${"name"}
+      ${"zh"}      | ${"名称"}
+      ${"es"}      | ${"nombre"}
+    `(
+      `should return warnings when the name of the language "$languageCode" is specified and homepage_url is missing`,
+      ({ languageCode, name }) => {
+        const source: Record<string, any> = {
+          name: {
+            [languageCode]: name,
+          },
+          description: {
+            en: "desc",
+          },
+          homepage_url: {},
+        };
+        if (languageCode !== "en") {
+          source.name.en = "name";
+          source.homepage_url.en = "https://example.com";
+        }
+
+        assert.deepStrictEqual(validator(json(source)), {
+          valid: true,
+          errors: null,
+          warnings: [
+            { message: `Property "homepage_url.${languageCode}" is missing.` },
+          ],
+        });
+      },
+    );
+
+    it.each`
+      languageCode | homepage_url
+      ${"ja"}      | ${"https://example.com/ja"}
+      ${"zh"}      | ${"https://example.com/zh"}
+      ${"es"}      | ${"https://example.com/es"}
+    `(
+      `should return errors when the homepage_url of the language "$languageCode" is specified and name is missing`,
+      ({ languageCode, homepage_url }) => {
+        const source: Record<string, any> = {
+          name: {
+            en: "name", // name.en is required property
+          },
+          description: {
+            en: "desc",
+          },
+          homepage_url: {
+            en: "https://example.com",
+            [languageCode]: homepage_url,
+          },
+        };
+
+        assert.deepStrictEqual(validator(json(source)), {
+          valid: false,
+          errors: [
+            {
+              instancePath: `/homepage_url/${languageCode}`,
+              keyword: "requiredProperties",
+              message: `Property "name.${languageCode}" is required.`,
+              schemaPath: `#/properties/homepage_url/properties/${languageCode}/requiredProperties`,
+            },
+          ],
+          warnings: null,
         });
       },
     );
@@ -553,6 +636,9 @@ const json = (source: Record<string, any>): { [s: string]: any } => {
         en: "sample plugin",
       },
       icon: "image/icon.png",
+      homepage_url: {
+        en: "https://example.com",
+      },
     },
     source,
   );
