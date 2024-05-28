@@ -542,7 +542,9 @@ describe("validator", () => {
         assert.deepStrictEqual(validator(json(source)), {
           valid: true,
           errors: null,
-          warnings: [`Property "homepage_url.${languageCode}" is missing.`],
+          warnings: [
+            { message: `Property "homepage_url.${languageCode}" is missing.` },
+          ],
         });
       },
     );

@@ -7,10 +7,14 @@ import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
 import { checkRequiredProperties } from "./check-required-properties";
 
+type WarningObject = {
+  message: string;
+};
+
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
   errors: null | ErrorObject[];
-  warnings: null | string[];
+  warnings: null | WarningObject[];
 };
 
 export type RequiredObjectProperty = {
@@ -48,7 +52,7 @@ export default (
   let relativePath: Options["relativePath"] = () => true;
   let maxFileSize: Options["maxFileSize"];
   let fileExists: Options["fileExists"];
-  const warnings: string[] = [];
+  const warnings: WarningObject[] = [];
 
   if (typeof options.relativePath === "function") {
     relativePath = options.relativePath;
@@ -160,7 +164,11 @@ export default (
     }
 
     if (schema.warn) {
-      warnings.push(...errors.map((error) => error));
+      warnings.push(
+        ...errors.map((error) => {
+          return { message: error };
+        }),
+      );
       return true;
     }
 
