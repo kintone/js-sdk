@@ -62,7 +62,7 @@ We recommend setting the $schema property to the following uri in your manifest.
 
 ```
 https://raw.githubusercontent.com/kintone/js-sdk/main/packages/plugin-manifest-validator/manifest-schema.json
-``` 
+```
 
 Note: Add or update the $schema property at the top of the manifest.json.
 
