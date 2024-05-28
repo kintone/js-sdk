@@ -55,7 +55,7 @@ export default (
       "http-url": (str: string) => validateUrl(str, true),
       "https-url": (str: string) => validateUrl(str),
       "relative-path": relativePath,
-      "uri": validateUri,
+      uri: validateUri,
     },
   });
 
