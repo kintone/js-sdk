@@ -43,11 +43,11 @@ describe("validator", () => {
     it("valid", () => {
       assert.deepStrictEqual(
         validator(json({ $schema: "https://secure-url.com/schema.json" })),
-        { valid: true, errors: null },
+        { valid: true, errors: null, warnings: null },
       );
       assert.deepStrictEqual(
         validator(json({ $schema: "http://unsecure-url.com/schema.json" })),
-        { valid: true, errors: null },
+        { valid: true, errors: null, warnings: null },
       );
     });
 
@@ -67,6 +67,7 @@ describe("validator", () => {
               schemaPath: "#/properties/%24schema/format",
             },
           ],
+          warnings: null,
         },
       );
     });
