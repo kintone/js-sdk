@@ -6,7 +6,6 @@ import addFormats from "ajv-formats";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
-import { validateUri } from "./validate-uri";
 
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
