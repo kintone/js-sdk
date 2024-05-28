@@ -4,6 +4,10 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
     "manifest_version": {
       "type": "integer",
       "minimum": 1

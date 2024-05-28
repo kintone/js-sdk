@@ -34,6 +34,39 @@ describe("validator", () => {
     });
   });
 
+  describe("$schema", () => {
+    it("valid", () => {
+      assert.deepStrictEqual(
+        validator(json({ $schema: "https://secure-url.com/schema.json" })),
+        { valid: true, errors: null },
+      );
+      assert.deepStrictEqual(
+        validator(json({ $schema: "http://unsecure-url.com/schema.json" })),
+        { valid: true, errors: null },
+      );
+    });
+
+    it("invalid", () => {
+      assert.deepStrictEqual(
+        validator(json({ $schema: "./local-file-path.ext" })),
+        {
+          valid: false,
+          errors: [
+            {
+              instancePath: "/$schema",
+              keyword: "format",
+              message: `must match format "uri"`,
+              params: {
+                format: "uri",
+              },
+              schemaPath: "#/properties/%24schema/format",
+            },
+          ],
+        },
+      );
+    });
+  });
+
   describe("version", () => {
     it.each(
       // prettier-ignore
