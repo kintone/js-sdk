@@ -6,7 +6,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "format": "uri-reference"
+      "format": "uri"
     },
     "manifest_version": {
       "type": "integer",

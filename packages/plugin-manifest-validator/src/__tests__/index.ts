@@ -35,46 +35,35 @@ describe("validator", () => {
   });
 
   describe("$schema", () => {
-    describe("valid", () => {
-      it("https url", () => {
-        assert.deepStrictEqual(
-          validator(json({ $schema: "https://secure-url.com/schema.json" })),
-          { valid: true, errors: null },
-        );
-      });
-      it("relative path", () => {
-        assert.deepStrictEqual(
-          validator(
-            json({
-              $schema:
-                "./node_modules/@kintone/plugin-manifest-validator/manifest-schema.json",
-            }),
-          ),
-          { valid: true, errors: null },
-        );
-      });
+    it("valid", () => {
+      assert.deepStrictEqual(
+        validator(json({ $schema: "https://secure-url.com/schema.json" })),
+        { valid: true, errors: null },
+      );
+      assert.deepStrictEqual(
+        validator(json({ $schema: "http://unsecure-url.com/schema.json" })),
+        { valid: true, errors: null },
+      );
     });
 
-    describe("invalid", () => {
-      it("invalid URI", () => {
-        assert.deepStrictEqual(
-          validator(json({ $schema: "https://have space-in-url.com" })),
-          {
-            valid: false,
-            errors: [
-              {
-                instancePath: "/$schema",
-                keyword: "format",
-                message: `must match format "uri-reference"`,
-                params: {
-                  format: "uri-reference",
-                },
-                schemaPath: "#/properties/%24schema/format",
+    it("invalid", () => {
+      assert.deepStrictEqual(
+        validator(json({ $schema: "./local-file-path.ext" })),
+        {
+          valid: false,
+          errors: [
+            {
+              instancePath: "/$schema",
+              keyword: "format",
+              message: `must match format "uri"`,
+              params: {
+                format: "uri",
               },
-            ],
-          },
-        );
-      });
+              schemaPath: "#/properties/%24schema/format",
+            },
+          ],
+        },
+      );
     });
   });
 
