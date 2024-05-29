@@ -4,6 +4,8 @@ import type { Answers } from "inquirer";
 import type { TemplateType } from "./template";
 
 const minimumManifest = {
+  $schema:
+    "https://raw.githubusercontent.com/kintone/js-sdk/main/packages/plugin-manifest-validator/manifest-schema.json",
   manifest_version: 1,
   version: 1,
   type: "APP",
@@ -21,6 +23,8 @@ const minimumManifest = {
 };
 
 const modernManifest = {
+  $schema:
+    "https://raw.githubusercontent.com/kintone/js-sdk/main/packages/plugin-manifest-validator/manifest-schema.json",
   manifest_version: 1,
   version: 1,
   type: "APP",
