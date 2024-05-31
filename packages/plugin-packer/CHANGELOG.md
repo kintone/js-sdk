@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.0.6...@kintone/plugin-packer@8.1.0) (2024-05-31)
+
+
+### Features
+
+* **plugin-packer:** print warning messages ([#2789](https://github.com/kintone/js-sdk/issues/2789)) ([0371583](https://github.com/kintone/js-sdk/commit/037158324f7f7ba84d552a74c2c1c49bc7e5a9b1))
+
 ## [8.0.6](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.0.5...@kintone/plugin-packer@8.0.6) (2024-05-08)
 
 
