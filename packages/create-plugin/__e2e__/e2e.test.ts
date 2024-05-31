@@ -72,52 +72,63 @@ describe("create-plugin", function () {
     createKintonePluginCommand,
   ];
 
+  let createPlugin: CreatePlugin;
+
   it.each(patterns)("$description", async ({ prepareFn, input, expected }) => {
     if (prepareFn) {
       prepareFn({ workingDir });
     }
 
-    const createPlugin = new CreatePlugin({
-      command: input.command,
-      workingDir,
-      outputDir: input.outputDir,
-      questionsInput: input.questionsInput,
-      commandArguments: input.commandArgument,
-    });
-    const response = await createPlugin.executeCommand();
+    try {
+      createPlugin = new CreatePlugin({
+        command: input.command,
+        workingDir,
+        outputDir: input.outputDir,
+        questionsInput: input.questionsInput,
+        commandArguments: input.commandArgument,
+      });
+      const response = await createPlugin.executeCommand();
 
-    if (expected.success !== undefined) {
-      assert(response.status === 0, "Failed to create plugin");
+      if (expected.success !== undefined) {
+        assert(response.status === 0, "Failed to create plugin");
 
-      const pluginDir = path.resolve(workingDir, input.outputDir);
-      assert.ok(fs.existsSync(pluginDir), "plugin dir is not created.");
+        const pluginDir = path.resolve(workingDir, input.outputDir);
+        assert.ok(fs.existsSync(pluginDir), "plugin dir is not created.");
 
-      const actualManifestJson = readPluginManifestJson(
-        pluginDir,
-        input.template,
-      );
-      assertObjectIncludes(actualManifestJson, expected.success.manifestJson);
-    }
-
-    if (expected.failure !== undefined) {
-      assert.notEqual(response.status, 0, "The command should throw an error.");
-      if (expected.failure.stdout) {
-        assert.match(
-          response.stdout.trim(),
-          new RegExp(expected.failure.stdout),
+        const actualManifestJson = readPluginManifestJson(
+          pluginDir,
+          input.template,
         );
+        assertObjectIncludes(actualManifestJson, expected.success.manifestJson);
       }
 
-      if (expected.failure.stderr) {
-        assert.match(
-          response.stderr.trim(),
-          new RegExp(expected.failure.stderr),
+      if (expected.failure !== undefined) {
+        assert.notEqual(
+          response.status,
+          0,
+          "The command should throw an error.",
         );
+        if (expected.failure.stdout) {
+          assert.match(
+            response.stdout.trim(),
+            new RegExp(expected.failure.stdout),
+          );
+        }
+
+        if (expected.failure.stderr) {
+          assert.match(
+            response.stderr.trim(),
+            new RegExp(expected.failure.stderr),
+          );
+        }
       }
+    } catch (e: any) {
+      assert.fail(e);
     }
   });
 
-  afterEach(() => {
+  afterEach(async () => {
+    await createPlugin?.teardownProcess();
     const testName = expect.getState().currentTestName;
     if (!testName || !workingDir) {
       return;
