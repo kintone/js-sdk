@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.2.0...@kintone/plugin-manifest-validator@10.2.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* update plugin `manifest-schema.json` URL ([#2791](https://github.com/kintone/js-sdk/issues/2791)) ([39bae0f](https://github.com/kintone/js-sdk/commit/39bae0f415d3adac9601dba5627ea123a7947158))
+
 ## [10.2.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.1.0...@kintone/plugin-manifest-validator@10.2.0) (2024-05-29)
 
 
