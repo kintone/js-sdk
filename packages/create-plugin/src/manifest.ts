@@ -5,7 +5,7 @@ import type { TemplateType } from "./template";
 
 const minimumManifest = {
   $schema:
-    "https://raw.githubusercontent.com/kintone/js-sdk/main/packages/plugin-manifest-validator/manifest-schema.json",
+    "https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4010.2.0/packages/plugin-manifest-validator/manifest-schema.json",
   manifest_version: 1,
   version: 1,
   type: "APP",
@@ -24,7 +24,7 @@ const minimumManifest = {
 
 const modernManifest = {
   $schema:
-    "https://raw.githubusercontent.com/kintone/js-sdk/main/packages/plugin-manifest-validator/manifest-schema.json",
+    "https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4010.2.0/packages/plugin-manifest-validator/manifest-schema.json",
   manifest_version: 1,
   version: 1,
   type: "APP",
