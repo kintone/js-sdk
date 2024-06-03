@@ -24,7 +24,7 @@ module.exports = [
   },
   {
     nodePrettier,
-    files: ["plugin-packer/bin/**/*.ts"],
+    files: ["plugin-packer/bin/**/*.ts", "plugin-packer/bin/**/*.js"],
   },
   {
     prettier,
@@ -32,6 +32,13 @@ module.exports = [
     env: {
       jest: true,
       node: true,
+    },
+  },
+  {
+    prettier,
+    files: ["plugin-packer/test/**/*.ts", "plugin-packer/test/**/*.js"],
+    env: {
+      jest: true,
     },
   },
   {
