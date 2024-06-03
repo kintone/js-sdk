@@ -1,7 +1,7 @@
 import fs from "fs";
 import { mkdirp } from "mkdirp";
 import { sep } from "path";
-import { Constans } from "../constants";
+import { Constant } from "../constants";
 import type { CustomizeManifest, GeneralInputParams } from "./index";
 import KintoneApiClient, { AuthenticationError } from "../KintoneApiClient";
 import type { Lang } from "../lang";
@@ -82,7 +82,7 @@ export const importCustomizeSetting = async (
     retryCount++;
     if (isAuthenticationError) {
       throw new Error(m("E_Authentication"));
-    } else if (retryCount < Constans.MAX_RETRY_COUNT) {
+    } else if (retryCount < Constant.MAX_RETRY_COUNT) {
       await wait(1000);
       console.log(m("E_Retry"));
       return importCustomizeSetting(

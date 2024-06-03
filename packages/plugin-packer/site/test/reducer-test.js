@@ -1,4 +1,5 @@
 "use strict";
+/* globals describe, expect, it, beforeEach, afterEach */
 
 const {
   reducer,
