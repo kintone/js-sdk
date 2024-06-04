@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/customize-uploader#readme",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/customize-uploader#readme",
   "devDependencies": {
     "@types/inquirer": "8.2.10"
   },

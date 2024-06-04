@@ -1,7 +1,7 @@
 # create-kintone-plugin
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fcreate-plugin.svg)](https://badge.fury.io/js/%40kintone%2Fcreate-plugin)
-![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/create-plugin/package.json&label=node&query=$.engines.node&colorB=blue)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/main/packages/create-plugin/package.json&label=node&query=$.engines.node&colorB=blue)
 ![License](https://img.shields.io/npm/l/@kintone/create-plugin.svg)
 
 A CLI tool for creating a kintone plugin!
@@ -37,9 +37,13 @@ Let's start!
 ? Does your plugin support Chinese? Yes
 ? Input your plugin name in Chinese [1-64chars] (Optional)
 ? Input your plugin description in Chinese [1-200chars] (Optional)
+? Does your plug-in support Spanish?
+? Input your plug-in name in Spanish [1-64chars] (Optional)
+? Input your plug-in description in Spanish [1-200chars] (Optional)
 ? Input your home page url for English (Optional)
 ? Input your home page url for Japanese (Optional)
 ? Input your home page url for Chinese (Optional)
+? Input your home page url for Spanish (Optional)
 ? Does your plugin support mobile views? Yes
 ? Do you use @kintone/plugin-uploader? Yes
 :

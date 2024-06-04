@@ -3,7 +3,7 @@ name: yamory
 on:
   push:
     branches:
-      - master
+      - main
       - yamory-*
 jobs:
   check:

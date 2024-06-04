@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-manifest-validator",
-  "version": "10.1.0",
+  "version": "10.2.1",
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
     "bytes": "^3.1.2"
   },
   "devDependencies": {
@@ -39,7 +40,7 @@
     "json-schema-to-typescript": "^13.1.2",
     "power-assert": "^1.6.1"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-manifest-validator#readme",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-manifest-validator#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kintone/js-sdk.git",

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.1](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@8.2.0...@kintone/create-plugin@8.2.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* update plugin `manifest-schema.json` URL ([#2791](https://github.com/kintone/js-sdk/issues/2791)) ([39bae0f](https://github.com/kintone/js-sdk/commit/39bae0f415d3adac9601dba5627ea123a7947158))
+
+## [8.2.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@8.1.0...@kintone/create-plugin@8.2.0) (2024-05-29)
+
+
+### Features
+
+* **create-plugin:** add default `$schema` value to project templates ([#2782](https://github.com/kintone/js-sdk/issues/2782)) ([12d2b27](https://github.com/kintone/js-sdk/commit/12d2b2752566acb1aef246338a5c758d6f6073df))
+
+## [8.1.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@8.0.6...@kintone/create-plugin@8.1.0) (2024-05-22)
+
+
+### Features
+
+* **create-plugin:** show prompt to choose Spanish support ([#2770](https://github.com/kintone/js-sdk/issues/2770)) ([c98ab15](https://github.com/kintone/js-sdk/commit/c98ab15db5531a2200ca2625d848981bb3a9c57b))
+
 ## [8.0.6](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@8.0.5...@kintone/create-plugin@8.0.6) (2024-05-15)
 
 
