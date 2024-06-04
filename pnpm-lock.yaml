@@ -104,7 +104,7 @@ importers:
         specifier: ^4.1.2
         version: 4.1.2
       glob:
-        specifier: ^10.3.15
+        specifier: ^10.3.16
         version: 10.3.16
       inquirer:
         specifier: ^8.2.6
@@ -141,7 +141,7 @@ importers:
         specifier: ^8.2.10
         version: 8.2.10
       '@types/lodash':
-        specifier: ^4.17.1
+        specifier: ^4.17.4
         version: 4.17.4
       '@types/node-rsa':
         specifier: ^1.1.4
@@ -212,7 +212,7 @@ importers:
         specifier: ^8.56.10
         version: 8.56.10
       '@types/lodash':
-        specifier: ^4.17.1
+        specifier: ^4.17.4
         version: 4.17.4
       assert:
         specifier: ^2.1.0
@@ -232,6 +232,9 @@ importers:
       ajv:
         specifier: ^8.12.0
         version: 8.12.0
+      ajv-formats:
+        specifier: ^2.1.1
+        version: 2.1.1(ajv@8.12.0)
       bytes:
         specifier: ^3.1.2
         version: 3.1.2
@@ -258,13 +261,13 @@ importers:
   packages/plugin-packer:
     dependencies:
       '@kintone/plugin-manifest-validator':
-        specifier: ^10.1.0
-        version: 10.2.1
+        specifier: ^10.2.1
+        version: link:../plugin-manifest-validator
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
       debug:
-        specifier: ^4.3.4
+        specifier: ^4.3.5
         version: 4.3.5
       denodeify:
         specifier: ^1.2.1
@@ -289,7 +292,7 @@ importers:
         version: 2.5.1
     devDependencies:
       '@reduxjs/toolkit':
-        specifier: ^2.2.4
+        specifier: ^2.2.5
         version: 2.2.5
       '@types/debug':
         specifier: ^4.1.12
@@ -337,7 +340,7 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1
       glob:
-        specifier: ^10.3.15
+        specifier: ^10.3.16
         version: 10.3.16
       jest-environment-jsdom:
         specifier: ^29.7.0
@@ -438,7 +441,7 @@ importers:
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.24.5)(rollup@4.18.0)
       '@rollup/plugin-commonjs':
-        specifier: ^25.0.7
+        specifier: ^25.0.8
         version: 25.0.8(rollup@4.18.0)
       '@rollup/plugin-json':
         specifier: ^6.1.0
@@ -471,7 +474,7 @@ importers:
         specifier: ^5.0.7
         version: 5.0.7
       rollup:
-        specifier: ^4.17.2
+        specifier: ^4.18.0
         version: 4.18.0
       rollup-plugin-ecma-version-validator:
         specifier: ^0.2.13
@@ -486,7 +489,7 @@ importers:
         specifier: ^0.13.0
         version: 0.13.0(rollup@4.18.0)
       vite:
-        specifier: ^5.2.11
+        specifier: ^5.2.12
         version: 5.2.12(@types/node@18.19.33)
       webpack:
         specifier: ^5.91.0
@@ -499,7 +502,7 @@ importers:
     dependencies:
       '@kintone/plugin-packer':
         specifier: ^8.0.6
-        version: 8.1.1
+        version: link:../plugin-packer
       mkdirp:
         specifier: ^3.0.1
         version: 3.0.1
@@ -2531,34 +2534,6 @@ packages:
   /@jsdevtools/ono@7.1.3:
     resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
     dev: true
-
-  /@kintone/plugin-manifest-validator@10.2.1:
-    resolution: {integrity: sha512-UZO0jdL+IvdAR34Ua8ZM+Wq6YINW95zJDQGBPnV5zUGDjKYMCqzJWwMnFF86GenqyhuB9R49EHEopr/qEHy9TQ==}
-    engines: {node: '>=18'}
-    dependencies:
-      ajv: 8.12.0
-      ajv-formats: 2.1.1(ajv@8.12.0)
-      bytes: 3.1.2
-    dev: false
-
-  /@kintone/plugin-packer@8.1.1:
-    resolution: {integrity: sha512-75/9DNMRYJyq/yG8G4gk5XE2ZbGqsdxRR6GsIrpZsgYDyrJa2VRYwQsVxPHYKv3I6TgFG+2saDHtd9aUKPQ6iw==}
-    engines: {node: '>=18'}
-    hasBin: true
-    dependencies:
-      '@kintone/plugin-manifest-validator': 10.2.1
-      chokidar: 3.6.0
-      debug: 4.3.5
-      denodeify: 1.2.1
-      meow: 9.0.0
-      mkdirp: 3.0.1
-      node-rsa: 1.1.1
-      stream-buffers: 3.0.2
-      yauzl: 3.1.3
-      yazl: 2.5.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /@leichtgewicht/ip-codec@2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
@@ -6677,7 +6652,7 @@ packages:
     dependencies:
       foreground-child: 3.1.1
       jackspeak: 3.1.2
-      minimatch: 9.0.3
+      minimatch: 9.0.4
       minipass: 7.0.4
       path-scurry: 1.11.0
 
