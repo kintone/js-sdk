@@ -3005,7 +3005,8 @@ packages:
     dependencies:
       '@types/minimatch': 5.1.2
       '@types/node': 18.19.34
-      
+    dev: false
+
   /@types/glob@8.1.0:
     resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
     dependencies:
@@ -8019,7 +8020,7 @@ packages:
       '@types/json-schema': 7.0.15
       '@types/lodash': 4.17.4
       cli-color: 2.0.4
-      glob: 10.3.15
+      glob: 10.3.16
       is-glob: 4.0.3
       js-yaml: 4.1.0
       lodash: 4.17.21
