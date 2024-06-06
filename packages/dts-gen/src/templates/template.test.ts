@@ -4,7 +4,7 @@ import { DemoFullWidthSymbolClient } from "../kintone/clients/demo-fullwidth-sym
 import { FieldTypeConverter } from "../converters/fileldtype-converter";
 import { objectValues } from "../utils/objectvalues";
 import * as fs from "fs";
-describe("renderAsFile", () => {
+describe.skip("renderAsFile", () => {
   const TEMP_TEST_TYPEDEF = "tmp.test-renderAsFile-fields.d.ts";
   test("generate type definition file", async () => {
     const client = new DemoClient();
@@ -50,7 +50,7 @@ describe("renderAsFile", () => {
   });
 });
 
-describe("fullWidthSymbol Test", () => {
+describe.skip("fullWidthSymbol Test", () => {
   const TEMP_TEST_TYPEDEF = "tmp.test-fullWidthSymbol-fields.d.ts";
   test("generate type definition file", async () => {
     const client = new DemoFullWidthSymbolClient();

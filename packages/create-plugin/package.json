@@ -48,7 +48,7 @@
     "start": "pnpm build --watch",
     "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
-    "lint": "eslint --ext .ts src --max-warnings 0",
+    "lint": "eslint src --max-warnings 0",
     "fix": "pnpm lint --fix",
     "test": "jest --testPathIgnorePatterns=/__tests__/generator\\.test\\.ts$",
     "test:generator": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/generator\\.test\\.ts$",

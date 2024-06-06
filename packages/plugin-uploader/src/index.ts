@@ -63,6 +63,7 @@ export const run = async (
           });
           await pluginSystemController.upload(pluginPath, lang);
         } finally {
+          // eslint-disable-next-line require-atomic-updates
           uploading = false;
         }
       });
