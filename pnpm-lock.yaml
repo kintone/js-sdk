@@ -221,7 +221,7 @@ importers:
   packages/plugin-manifest-validator:
     dependencies:
       ajv:
-        specifier: ^8.14.0
+        specifier: ^8.16.0
         version: 8.16.0
       ajv-formats:
         specifier: ^3.0.1
@@ -301,7 +301,7 @@ importers:
         specifier: ^2.4.5
         version: 2.4.5
       ajv:
-        specifier: ^8.14.0
+        specifier: ^8.16.0
         version: 8.16.0
       array-flatten:
         specifier: ^3.0.0
