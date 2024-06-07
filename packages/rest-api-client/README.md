@@ -1,7 +1,7 @@
 # kintone-rest-api-client
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Frest-api-client.svg)](https://badge.fury.io/js/%40kintone%2Frest-api-client)
-![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/rest-api-client/package.json&label=node&query=$.engines.node&colorB=blue)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/main/packages/rest-api-client/package.json&label=node&query=$.engines.node&colorB=blue)
 ![License](https://img.shields.io/npm/l/@kintone/rest-api-client.svg)
 
 API client for Kintone REST API.
@@ -166,24 +166,24 @@ Session authentication is available in Garoon customization.
 
 ## Error Handling
 
-See [Error Handling](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/errorHandling.md)
+See [Error Handling](https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client/docs/errorHandling.md)
 
 ## TypeScript
 
-See [TypeScript Definitions](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/typescript.md)
+See [TypeScript Definitions](https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client/docs/typescript.md)
 
 ## References
 
-- [Record](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/record.md)
-- [App](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/app.md)
-- [Space](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/space.md)
-- [File](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/file.md)
-- [BulkRequest](https://github.com/kintone/js-sdk/tree/master/packages/rest-api-client/docs/bulkRequest.md)
+- [Record](https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client/docs/record.md)
+- [App](https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client/docs/app.md)
+- [Space](https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client/docs/space.md)
+- [File](https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client/docs/file.md)
+- [BulkRequest](https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client/docs/bulkRequest.md)
 
 ## Contribution Guide
 
-- [CONTRIBUTING.md](https://github.com/kintone/js-sdk/tree/master/CONTRIBUTING.md)
+- [CONTRIBUTING.md](https://github.com/kintone/js-sdk/tree/main/CONTRIBUTING.md)
 
 ## License
 
-- [MIT](https://github.com/kintone/js-sdk/tree/master/LICENSE)
+- [MIT](https://github.com/kintone/js-sdk/tree/main/LICENSE)

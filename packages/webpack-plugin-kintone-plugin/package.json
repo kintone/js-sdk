@@ -36,10 +36,10 @@
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/webpack-plugin-kintone-plugin#readme",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/webpack-plugin-kintone-plugin#readme",
   "devDependencies": {
     "@types/adm-zip": "^0.5.5",
-    "adm-zip": "^0.5.12",
+    "adm-zip": "^0.5.14",
     "chokidar": "^3.6.0",
     "rimraf": "^5.0.7",
     "webpack": "^5.91.0",

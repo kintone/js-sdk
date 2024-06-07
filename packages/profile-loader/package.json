@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/profile-loader#readme",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/profile-loader#readme",
   "engines": {
     "node": ">=18"
   },

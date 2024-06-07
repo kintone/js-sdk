@@ -54,7 +54,7 @@
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/dts-gen#readme",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/dts-gen#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kintone/js-sdk.git",

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.2.0...@kintone/plugin-manifest-validator@10.2.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* update plugin `manifest-schema.json` URL ([#2791](https://github.com/kintone/js-sdk/issues/2791)) ([39bae0f](https://github.com/kintone/js-sdk/commit/39bae0f415d3adac9601dba5627ea123a7947158))
+
+## [10.2.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.1.0...@kintone/plugin-manifest-validator@10.2.0) (2024-05-29)
+
+
+### Features
+
+* **plugin-manifest-validator:** allow and recommend developers to set `$schema` property to manifest.json ([#2781](https://github.com/kintone/js-sdk/issues/2781)) ([a41014f](https://github.com/kintone/js-sdk/commit/a41014f9e897dc0841f168c20acb97ad5797ba77))
+
+
+### Bug Fixes
+
+* **plugin-manifest-validator:** return warning message if `homepage_url` or `name` is empty ([#2776](https://github.com/kintone/js-sdk/issues/2776)) ([af3533b](https://github.com/kintone/js-sdk/commit/af3533bfb51d52dbc6abc6d511bf39cc9d6d0a8d))
+
 ## [10.1.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.0.0...@kintone/plugin-manifest-validator@10.1.0) (2023-12-19)
 
 

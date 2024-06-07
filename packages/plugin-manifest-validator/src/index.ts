@@ -2,13 +2,29 @@
 
 import type { ErrorObject, SchemaValidateFunction } from "ajv";
 import Ajv from "ajv";
+import addFormats from "ajv-formats";
 import bytes from "bytes";
 import jsonSchema from "../manifest-schema.json";
 import validateUrl from "./validate-https-url";
+import { checkRequiredProperties } from "./check-required-properties";
+
+type WarningObject = {
+  message: string;
+};
 
 type ValidateResult = {
   valid: boolean | PromiseLike<any>;
   errors: null | ErrorObject[];
+  warnings: null | WarningObject[];
+};
+
+export type RequiredObjectProperty = {
+  [key: string]: { properties: string[] };
+};
+
+export type RequiredProperties = {
+  items: Array<RequiredObjectProperty | string>;
+  warn?: boolean;
 };
 
 // https://ajv.js.org/docs/keywords.html#define-keyword-with-validation-function
@@ -37,6 +53,7 @@ export default (
   let relativePath: Options["relativePath"] = () => true;
   let maxFileSize: Options["maxFileSize"];
   let fileExists: Options["fileExists"];
+  const warnings: WarningObject[] = [];
 
   if (typeof options.relativePath === "function") {
     relativePath = options.relativePath;
@@ -56,6 +73,7 @@ export default (
       "relative-path": relativePath,
     },
   });
+  addFormats(ajv, { mode: "fast", formats: ["uri"] });
 
   const validateMaxFileSize: SchemaValidateFunction = (
     schema: string,
@@ -134,6 +152,36 @@ export default (
     return true;
   };
 
+  const validateRequiredProperties: SchemaValidateFunction = (
+    schema: RequiredProperties,
+    data: string,
+  ) => {
+    if (!data || data.length === 0) {
+      return true;
+    }
+
+    const errors = checkRequiredProperties(json, schema);
+    if (errors.length === 0) {
+      return true;
+    }
+
+    if (schema.warn) {
+      warnings.push(
+        ...errors.map((error) => {
+          return { message: error };
+        }),
+      );
+      return true;
+    }
+
+    validateRequiredProperties.errors = errors.map((error) => ({
+      keyword: "requiredProperties",
+      message: error,
+    }));
+
+    return false;
+  };
+
   ajv.addKeyword({
     keyword: "maxFileSize",
     validate: validateMaxFileSize,
@@ -144,9 +192,18 @@ export default (
     validate: validateFileExists,
   });
 
+  ajv.addKeyword({
+    keyword: "requiredProperties",
+    validate: validateRequiredProperties,
+  });
+
   const validate = ajv.compile(jsonSchema);
   const valid = validate(json);
-  return { valid, errors: transformErrors(validate.errors) };
+  return {
+    valid,
+    errors: transformErrors(validate.errors),
+    warnings: warnings.length === 0 ? null : warnings,
+  };
 };
 
 /**
