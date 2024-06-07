@@ -14,7 +14,7 @@
 
 ## Checklist
 
-- [ ] Read [CONTRIBUTING.md](https://github.com/kintone/js-sdk/blob/master/CONTRIBUTING.md)
+- [ ] Read [CONTRIBUTING.md](https://github.com/kintone/js-sdk/blob/main/CONTRIBUTING.md)
 - [ ] Updated documentation if it is required.
 - [ ] Added tests if it is required.
 - [ ] Passed `pnpm lint` and `pnpm test` on the root directory.

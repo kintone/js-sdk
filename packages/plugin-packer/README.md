@@ -1,7 +1,7 @@
 # kintone-plugin-packer
 
 [![npm version](https://badge.fury.io/js/%40kintone%2Fplugin-packer.svg)](https://badge.fury.io/js/%40kintone%2Fplugin-packer)
-![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/plugin-packer/package.json&label=node&query=$.engines.node&colorB=blue)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/main/packages/plugin-packer/package.json&label=node&query=$.engines.node&colorB=blue)
 ![License](https://img.shields.io/npm/l/@kintone/plugin-packer.svg)
 
 [kintone plugin package.sh](https://github.com/kintone-samples/plugin-samples) in JavaScript
@@ -10,7 +10,7 @@ It's written in pure JavaScript, so
 
 - The CLI works with Node.js in Mac/Windows/Linux
 - [The web page](https://plugin-packer.kintone.dev/) works in any modern browsers
-- Validate your `manifest.json` with [JSON Schema](https://github.com/kintone/js-sdk/tree/master/packages/plugin-manifest-validator)
+- Validate your `manifest.json` with [JSON Schema](https://github.com/kintone/js-sdk/tree/main/packages/plugin-manifest-validator)
 
 # How to install
 

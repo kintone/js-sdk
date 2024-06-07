@@ -44,6 +44,18 @@ export const pattern: TestPattern = {
         answer: "我的插件",
       },
       {
+        question: m("Q_SupportEs"),
+        answer: ANSWER_YES,
+      },
+      {
+        question: m("Q_NameEs"),
+        answer: "test14-nombre",
+      },
+      {
+        question: m("Q_DescriptionEs"),
+        answer: "test14-descripción",
+      },
+      {
         question: m("Q_WebsiteUrlEn"),
         answer: "https://github.com",
       },
@@ -54,6 +66,10 @@ export const pattern: TestPattern = {
       {
         question: m("Q_WebsiteUrlZh"),
         answer: "https://github.cn",
+      },
+      {
+        question: m("Q_WebsiteUrlEs"),
+        answer: "https://github.es",
       },
       {
         question: m("Q_MobileSupport"),
@@ -72,16 +88,19 @@ export const pattern: TestPattern = {
           en: "test14-name",
           ja: "私のプラグイン",
           zh: "我的插件",
+          es: "test14-nombre",
         },
         description: {
           en: "test14-description",
           ja: "私のプラグイン",
           zh: "我的插件",
+          es: "test14-descripción",
         },
         homepage_url: {
           en: "https://github.com",
           ja: "https://github.jp",
           zh: "https://github.cn",
+          es: "https://github.es",
         },
         mobile: {
           js: ["js/mobile.js"],

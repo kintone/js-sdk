@@ -28,7 +28,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "ajv": "^8.12.0",
+    "ajv": "^8.14.0",
+    "ajv-formats": "^3.0.1",
     "bytes": "^3.1.2"
   },
   "devDependencies": {
@@ -36,10 +37,10 @@
     "@types/bytes": "^3.1.4",
     "babel-plugin-replace-ts-export-assignment": "^0.0.2",
     "intelli-espower-loader": "^1.1.0",
-    "json-schema-to-typescript": "^13.1.2",
+    "json-schema-to-typescript": "^14.0.5",
     "power-assert": "^1.6.1"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/plugin-manifest-validator#readme",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-manifest-validator#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kintone/js-sdk.git",

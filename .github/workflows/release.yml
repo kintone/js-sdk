@@ -2,7 +2,7 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   release:
@@ -16,7 +16,7 @@ jobs:
         with:
           app-id: ${{ secrets.RELEASE_GITHUB_APP_ID}}
           private-key: ${{ secrets.RELEASE_GITHUB_APP_KEY }}
-      - uses: google-github-actions/release-please-action@a37ac6e4f6449ce8b3f7607e4d97d0146028dc0b # v4
+      - uses: googleapis/release-please-action@f3969c04a4ec81d7a9aa4010d84ae6a7602f86a7 # v4
         id: release
         with:
           token: ${{ steps.create-iat.outputs.token }}
@@ -49,4 +49,4 @@ jobs:
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     steps:
-      - uses: Kesin11/actions-timeline@b03a6aa289adef5534c84ccb6fbef7c975973574 # v2
+      - uses: Kesin11/actions-timeline@1c2ab3f28225878ae4dd1f76d31279f16ea29e29 # v2
