@@ -14,10 +14,10 @@
     "@kintone/rest-api-client": "^5.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.5",
-    "@babel/preset-env": "^7.24.5",
-    "@babel/preset-react": "^7.24.1",
-    "@babel/preset-typescript": "^7.24.1",
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-react": "^7.24.6",
+    "@babel/preset-typescript": "^7.24.6",
     "@cybozu/eslint-config": "^23.0.0",
     "@kintone/dts-gen": "^8.0.11",
     "@kintone/webpack-plugin-kintone-plugin": "^8.0.8",
