@@ -9,7 +9,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: Kesin11/actions-timeline@b03a6aa289adef5534c84ccb6fbef7c975973574 # v2
+      - uses: Kesin11/actions-timeline@1c2ab3f28225878ae4dd1f76d31279f16ea29e29 # v2
       - uses: actions/labeler@v5
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"

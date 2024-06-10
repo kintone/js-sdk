@@ -17,15 +17,18 @@ const PLUGIN_BUFFER = Buffer.from("foo");
 describe("cli", () => {
   const consoleLog = console.log;
   const consoleError = console.error;
+  const consoleWarn = console.warn;
   beforeEach(() => {
     /* eslint-disable @typescript-eslint/no-empty-function -- This is mock functions */
     console.log = () => {};
     console.error = () => {};
+    console.warn = () => {};
     /* eslint-enable @typescript-eslint/no-empty-function */
   });
   afterEach(() => {
     console.log = consoleLog;
     console.error = consoleError;
+    console.warn = consoleWarn;
   });
 
   it("is a function", () => {

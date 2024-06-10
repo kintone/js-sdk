@@ -25,7 +25,7 @@ interface Manifest {
   icon: string;
 }
 
-// Taken from https://github.com/kintone/plugin-packer/blob/master/src/sourcelist.js
+// Taken from https://github.com/kintone/plugin-packer/blob/main/src/sourcelist.js
 const sourceList = (manifest: Manifest): string[] => {
   const sourceTypes = [
     ["desktop", "js"],

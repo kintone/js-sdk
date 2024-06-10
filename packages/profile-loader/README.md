@@ -1,7 +1,7 @@
 # `@kintone/profile-loader`
 
-![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/profile-loader/package.json&label=node&query=$.engines.node&colorB=blue)
-![License](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/master/packages/profile-loader/package.json&label=license&query=$.license&colorB=green)
+![Node.js version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/main/packages/profile-loader/package.json&label=node&query=$.engines.node&colorB=blue)
+![License](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/kintone/js-sdk/main/packages/profile-loader/package.json&label=license&query=$.license&colorB=green)
 
 A loader to retrive Kintone settings like `username`, `password`, `baseUrl`, and whatever you want.
 

@@ -1,6 +1,6 @@
 {
   "name": "@kintone/create-plugin",
-  "version": "8.1.0",
+  "version": "8.2.1",
   "description": "A CLI tool for creating a kintone plugin!",
   "bin": {
     "create-plugin": "bin/cli.js",
@@ -15,25 +15,25 @@
     "url": "git+https://github.com/kintone/js-sdk.git",
     "directory": "packages/create-plugin"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/create-plugin",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/create-plugin",
   "bugs": "https://github.com/kintone/js-sdk/issues",
   "dependencies": {
     "chalk": "^4.1.2",
-    "glob": "^10.3.16",
+    "glob": "^10.4.1",
     "inquirer": "^8.2.6",
     "lodash": "^4.17.21",
     "meow": "^9.0.0",
     "node-rsa": "^1.1.1",
     "normalize-path": "^3.0.0",
     "os-locale": "^5.0.0",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.1",
     "rimraf": "^5.0.7",
     "sort-package-json": "^1.57.0"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/inquirer": "^8.2.10",
-    "@types/lodash": "^4.17.4",
+    "@types/lodash": "^4.17.5",
     "@types/node-rsa": "^1.1.4",
     "@types/normalize-path": "^3.0.2",
     "cross-env": "^7.0.3",
