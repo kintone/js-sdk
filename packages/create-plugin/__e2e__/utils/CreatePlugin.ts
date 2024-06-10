@@ -25,7 +25,7 @@ export class CreatePlugin {
   private currentStep: number = 0;
   private stdout: string = "";
   private stderr: string = "";
-  private processExited: boolean = false;
+  private hasProcessExited: boolean = false;
 
   constructor(options: {
     command: string;
@@ -70,7 +70,7 @@ export class CreatePlugin {
 
     const cliExitPromise = new Promise<Response>((resolve, reject) => {
       this.childProcess.on("exit", (code: number, signal) => {
-        this.processExited = true;
+        this.hasProcessExited = true;
         if (this._isProcessTimedOut(code, signal)) {
           reject(new Error(`Process timed out!`));
           return;
@@ -127,7 +127,7 @@ export class CreatePlugin {
       }
 
       this.childProcess.on("exit", () => {
-        this.processExited = true;
+        this.hasProcessExited = true;
         resolve();
       });
       this.finishProcess();
@@ -135,7 +135,9 @@ export class CreatePlugin {
   }
 
   private finishProcess() {
-    this.childProcess.stdin.end();
+    if (this.childProcess.stdin) {
+      this.childProcess.stdin.end();
+    }
   }
 
   private _getCommands = (): { [key: string]: string } => {
@@ -185,7 +187,7 @@ export class CreatePlugin {
   }
 
   private _isProcessExited() {
-    return this.childProcess.exitCode !== null || this.processExited;
+    return this.childProcess.exitCode !== null || this.hasProcessExited;
   }
 
   private _isProcessTimedOut(
