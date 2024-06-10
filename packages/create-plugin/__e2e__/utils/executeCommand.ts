@@ -10,7 +10,10 @@ export const execCommand = (
 ) => {
   return spawn(command, parseArgs(args, options?.env), {
     stdio: ["pipe", "pipe", "pipe"],
-    env: options?.env ?? process.env,
+    env: {
+      ...process.env,
+      ...options.env,
+    },
     cwd: options?.cwd ?? process.cwd(),
     shell: true,
   });

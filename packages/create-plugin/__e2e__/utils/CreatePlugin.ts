@@ -25,6 +25,7 @@ export class CreatePlugin {
   private currentStep: number = 0;
   private stdout: string = "";
   private stderr: string = "";
+  private processExited: boolean = false;
 
   constructor(options: {
     command: string;
@@ -62,10 +63,19 @@ export class CreatePlugin {
     const commandString = `${commands[this.command]} ${this.commandArguments || ""} "${this.outputDir}"`;
     this.childProcess = execCommand("node", commandString, {
       cwd: this.workingDir,
+      env: {
+        NODE_ENV: "production",
+      },
     });
 
     const cliExitPromise = new Promise<Response>((resolve, reject) => {
-      this.childProcess.on("exit", (code: number) => {
+      this.childProcess.on("exit", (code: number, signal) => {
+        this.processExited = true;
+        if (this._isProcessTimedOut(code, signal)) {
+          reject(new Error(`Process timed out!`));
+          return;
+        }
+
         resolve({
           status: code,
           stdout: this.stdout ? this.stdout.toString() : "",
@@ -88,7 +98,7 @@ export class CreatePlugin {
 
     this.childProcess.stderr.on("data", (data: Buffer) => {
       this.stderr = this.stderr.concat(data.toString());
-      this.done();
+      this.finishProcess();
     });
 
     while (this.currentStep < this.questionsInput.length) {
@@ -102,14 +112,29 @@ export class CreatePlugin {
           `${this.questionsInput[this.currentStep].question}`,
         );
       } else {
-        this.done();
+        this.finishProcess();
       }
     }
 
     return cliExitPromise;
   }
 
-  private done() {
+  public async teardownProcess() {
+    return new Promise<void>((resolve) => {
+      if (this._isProcessExited()) {
+        resolve();
+        return;
+      }
+
+      this.childProcess.on("exit", () => {
+        this.processExited = true;
+        resolve();
+      });
+      this.finishProcess();
+    });
+  }
+
+  private finishProcess() {
     this.childProcess.stdin.end();
   }
 
@@ -128,7 +153,7 @@ export class CreatePlugin {
     message: string,
     options: { timeout: number; interval: number } = {
       timeout: 10000,
-      interval: 500,
+      interval: 100,
     },
   ): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -136,7 +161,7 @@ export class CreatePlugin {
       let timer: NodeJS.Timeout;
       const timeoutTimer = setTimeout(() => {
         clearInterval(timer);
-        this.done();
+        this.finishProcess();
         reject(
           new Error(
             `Timeout (${timeout}ms) exceeded when waiting for stdout: ${message}`,
@@ -160,6 +185,13 @@ export class CreatePlugin {
   }
 
   private _isProcessExited() {
-    return this.childProcess.exitCode !== null;
+    return this.childProcess.exitCode !== null || this.processExited;
+  }
+
+  private _isProcessTimedOut(
+    code: number | null,
+    signal: NodeJS.Signals | null,
+  ) {
+    return code === null && signal === "SIGTERM";
   }
 }
