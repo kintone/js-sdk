@@ -40,7 +40,7 @@
     "@types/eslint": "^8.56.10",
     "@types/lodash": "^4.17.5",
     "ts-loader": "^9.5.1",
-    "webpack": "^5.91.0",
+    "webpack": "^5.92.0",
     "webpack-cli": "^5.1.4",
     "assert": "^2.1.0"
   },
