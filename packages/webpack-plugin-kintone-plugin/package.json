@@ -42,7 +42,7 @@
     "adm-zip": "^0.5.14",
     "chokidar": "^3.6.0",
     "rimraf": "^5.0.7",
-    "webpack": "^5.91.0",
+    "webpack": "^5.92.0",
     "webpack-cli": "5.1.4",
     "webpack-merge": "^5.10.0"
   },
