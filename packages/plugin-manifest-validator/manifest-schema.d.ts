@@ -11,6 +11,7 @@
 export type Resources = string[];
 
 export interface KintonePluginManifestJson {
+  $schema?: string;
   manifest_version: number;
   version: number | string;
   type: "APP";

@@ -3,7 +3,7 @@ name: test e2e
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -37,4 +37,4 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !cancelled() }}
     steps:
-      - uses: Kesin11/actions-timeline@b03a6aa289adef5534c84ccb6fbef7c975973574 # v2
+      - uses: Kesin11/actions-timeline@1c2ab3f28225878ae4dd1f76d31279f16ea29e29 # v2
