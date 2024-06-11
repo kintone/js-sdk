@@ -34,7 +34,7 @@
     "eslint": "^8.57.0",
     "form-data": "^4.0.0",
     "lodash": "^4.17.21",
-    "prettier": "^3.3.1"
+    "prettier": "^3.3.2"
   },
   "devDependencies": {
     "@types/eslint": "^8.56.10",
