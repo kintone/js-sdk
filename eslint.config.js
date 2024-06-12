@@ -5,6 +5,7 @@ const FlatCompat = require("@eslint/eslintrc").FlatCompat;
 const js = require("@eslint/js");
 const { fixupConfigRules } = require("@eslint/compat");
 const eslintPluginNode = require("eslint-plugin-node");
+const globals = require("globals");
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
@@ -12,42 +13,10 @@ const compat = new FlatCompat({
 });
 
 module.exports = [
-  {
-    files: ["plugin-uploader/**/*.ts"],
-    rules: {
-      /* ref
-       * - https://github.com/eslint/eslint/issues/11899
-       * - https://github.com/eslint/eslint/issues/11954
-       */
-      "require-atomic-updates": "off",
-    },
-  },
-  {
-    nodePrettier,
-    files: ["plugin-packer/bin/**/*.ts", "plugin-packer/bin/**/*.js"],
-  },
-  {
-    prettier,
-    files: ["plugin-packer/site/**/*.ts", "plugin-packer/site/**/*.js"],
-    env: {
-      jest: true,
-      node: true,
-    },
-  },
-  {
-    prettier,
-    files: ["plugin-packer/test/**/*.ts", "plugin-packer/test/**/*.js"],
-    env: {
-      jest: true,
-    },
-  },
-  {
-    typescriptPrettier,
-    files: ["create-plugin/template/modern/**/*.ts"],
-    globals: {
-      kintone: false,
-    },
-  },
+  ...fixupConfigRules(
+    compat.extends("@cybozu/eslint-config/presets/node-typescript-prettier"),
+    eslintPluginNode,
+  ),
   {
     files: ["**/*.ts"],
     rules: {
@@ -70,8 +39,46 @@ module.exports = [
       ],
     },
   },
-  ...fixupConfigRules(
-    compat.extends("@cybozu/eslint-config/presets/node-typescript-prettier"),
-    eslintPluginNode,
-  ),
+  {
+    files: ["plugin-uploader/**/*.ts"],
+    rules: {
+      /* ref
+       * - https://github.com/eslint/eslint/issues/11899
+       * - https://github.com/eslint/eslint/issues/11954
+       */
+      "require-atomic-updates": "off",
+    },
+  },
+  {
+    nodePrettier,
+    files: ["plugin-packer/bin/**/*.ts", "plugin-packer/bin/**/*.js"],
+  },
+  {
+    prettier,
+    files: ["plugin-packer/site/**/*.ts", "plugin-packer/site/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+        ...globals.node,
+      },
+    },
+  },
+  {
+    prettier,
+    files: ["plugin-packer/test/**/*.ts", "plugin-packer/test/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+  },
+  {
+    typescriptPrettier,
+    files: ["create-plugin/template/modern/**/*.ts"],
+    languageOptions: {
+      globals: {
+        kintone: false,
+      },
+    },
+  },
 ];
