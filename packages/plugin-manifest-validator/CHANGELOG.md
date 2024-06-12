@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.2.1...@kintone/plugin-manifest-validator@10.2.2) (2024-06-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv-formats to v3 ([#2788](https://github.com/kintone/js-sdk/issues/2788)) ([2480cf8](https://github.com/kintone/js-sdk/commit/2480cf8106f53475faaa9e81d22db3924a1c256b))
+
 ## [10.2.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.2.0...@kintone/plugin-manifest-validator@10.2.1) (2024-05-31)
 
 
