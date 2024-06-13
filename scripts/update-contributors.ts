@@ -37,7 +37,7 @@ const file = "README.md";
         `[<img src="${contributor.avatar_url}" alt="${contributor.login} avatar" width="50" />](${contributor.html_url})`,
     )
     .join(" ");
-  const newCredits = `<!-- credits-begin -->\n${contributorIcons}\n<!-- credits-end -->`;
+  const newCredits = `<!-- credits-begin -->\n\n${contributorIcons}\n\n<!-- credits-end -->`;
 
   const content = await fs.readFile(file, { encoding: "utf-8" });
   const newContent = content.replace(
