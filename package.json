@@ -19,7 +19,8 @@
     "start": "pnpm build --watch",
     "test": "pnpm test:root && pnpm -r --parallel run test",
     "test:ci": "pnpm test:root && pnpm -r --stream run test:ci",
-    "test:e2e": "pnpm -r --parallel run test:e2e"
+    "test:e2e": "pnpm -r --parallel run test:e2e",
+    "update-contributors": "ts-node ./scripts/update-contributors.ts"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@cybozu/eslint-config": "^23.0.0",
     "@cybozu/license-manager": "^1.2.1",
+    "@octokit/rest": "^20.1.1",
     "@types/jest": "^29.5.12",
     "@types/node": "^18.19.34",
     "babel-jest": "^29.7.0",
@@ -48,6 +50,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.3.2",
     "rimraf": "^5.0.7",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "packageManager": "pnpm@8.15.8",
