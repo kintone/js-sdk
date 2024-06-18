@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.3](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.1.2...@kintone/plugin-packer@8.1.3) (2024-06-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-manifest-validator to ^10.2.2 ([#2819](https://github.com/kintone/js-sdk/issues/2819)) ([0bda241](https://github.com/kintone/js-sdk/commit/0bda2416ba162b2f4d9b4e997f03388b02bfc9c7))
+* **deps:** update dependency stream-buffers to ^3.0.3 ([#2828](https://github.com/kintone/js-sdk/issues/2828)) ([689489d](https://github.com/kintone/js-sdk/commit/689489d48e0a86ce9a7fe462080da525e8e65fe8))
+
 ## [8.1.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.1.1...@kintone/plugin-packer@8.1.2) (2024-06-04)
 
 
