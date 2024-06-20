@@ -502,7 +502,7 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/plugin-packer':
-        specifier: ^8.1.2
+        specifier: ^8.1.3
         version: link:../plugin-packer
       mkdirp:
         specifier: ^3.0.1
