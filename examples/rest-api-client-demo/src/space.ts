@@ -83,6 +83,15 @@ export class Space {
     }
   }
 
+  public async addThread() {
+    const name = "Added Thread Name";
+    try {
+      console.log(await this.client.space.addThread({ space: SPACE_ID, name }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async updateThread() {
     const body = "<b>This is an updated thread body</b>";
     const name = "Updated Thread Name";

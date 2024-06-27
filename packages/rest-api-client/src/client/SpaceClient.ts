@@ -52,6 +52,16 @@ export class SpaceClient extends BaseClient {
     return this.client.put(path, params);
   }
 
+  public addThread(params: {
+    space: SpaceID;
+    name: string;
+  }): Promise<{ id: string }> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "space/thread",
+    });
+    return this.client.post(path, params);
+  }
+
   public updateThread(params: {
     id: ThreadID;
     name?: string;

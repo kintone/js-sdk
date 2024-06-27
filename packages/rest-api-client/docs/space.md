@@ -5,6 +5,7 @@
 - [updateSpaceBody](#updateSpaceBody)
 - [getSpaceMembers](#getSpaceMembers)
 - [updateSpaceMembers](#updateSpaceMembers)
+- [addThread](#addThread)
 - [updateThread](#updateThread)
 - [addThreadComment](#addThreadComment)
 - [addGuests](#addGuests)
@@ -174,6 +175,26 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/update-space-members/
+
+### addThread
+
+Adds a Thread of a Space.<br />
+The Enable multiple threads option must be enabled in the space settings.
+
+#### Parameters
+
+| Name  |       Type       | Required | Description                                                          |
+| ----- | :--------------: | :------: | -------------------------------------------------------------------- |
+| space | Number or String |   Yes    | The space ID.                                                        |
+| name  |      String      |   Yes    | The new name of the Thread.<br />Must be between 1 - 128 characters. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/add-thread/
 
 ### updateThread
 
