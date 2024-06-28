@@ -190,7 +190,9 @@ The Enable multiple threads option must be enabled in the space settings.
 
 #### Returns
 
-An empty object.
+| Name |  Type  | Description                          |
+| ---- | :----: | ------------------------------------ |
+| id   | String | The thread ID of the created Thread. |
 
 #### Reference
 
