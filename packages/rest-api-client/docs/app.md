@@ -36,6 +36,7 @@
 - [updateReports](#updateReports)
 - [getAppActions](#getAppActions)
 - [updateAppActions](#updateAppActions)
+- [getAdminNotes](#getAdminNotes)
 
 ## Overview
 
@@ -1353,3 +1354,26 @@ Updates the [Action](https://get.kintone.help/k/en/user/app_settings/appaction/s
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/update-action-settings/
+
+### getAdminNotes
+
+Gets notes for app administrators and their settings.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                     |
+| ------- | :--------------: | :------: | --------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The App ID.                                                     |
+| preview |     Boolean      |          | A flag whether to get the app actions for pre-live environment. |
+
+#### Returns
+
+| Name                           |  Type   | Description                                                                  |
+| ------------------------------ | :-----: | ---------------------------------------------------------------------------- |
+| content                        | String  | The content of the notes. If not set, an empty string is returned.           |
+| includeInTemplateAndDuplicates | Boolean | The permission settings to include this note in app templates or duplicates. |
+| revision                       | String  | The revision number of the App settings.                                     |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/apps/get-app-admin-notes/

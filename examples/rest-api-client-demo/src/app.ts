@@ -764,4 +764,14 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getAdminNotes() {
+    try {
+      console.log(
+        await this.client.app.getAdminNotes({ app: APP_ID, preview: false }),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

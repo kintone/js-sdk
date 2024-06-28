@@ -33,6 +33,7 @@ import type {
   ReportForResponse,
   AppActionsForParameter,
   AppActionsForResponse,
+  AdminNotes,
 } from "./types";
 import { BaseClient } from "./BaseClient";
 type RowLayoutForParameter = {
@@ -615,5 +616,18 @@ export class AppClient extends BaseClient {
       preview: true,
     });
     return this.client.put(path, params);
+  }
+
+  public getAdminNotes(params: { app: AppID; preview?: boolean }): Promise<
+    AdminNotes & {
+      revision: string;
+    }
+  > {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/adminNotes",
+      preview,
+    });
+    return this.client.get(path, rest);
   }
 }
