@@ -37,6 +37,7 @@
 - [getAppActions](#getAppActions)
 - [updateAppActions](#updateAppActions)
 - [getAdminNotes](#getAdminNotes)
+- [updateAdminNotes](#updateAdminNotes)
 
 ## Overview
 
@@ -1377,3 +1378,26 @@ Gets notes for app administrators and their settings.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/get-app-admin-notes/
+
+### updateAdminNotes
+
+Updates the notes for App administrators and their settings.
+
+#### Parameters
+
+| Name                           |       Type       | Required | Description                                                                                                                                      |
+| ------------------------------ | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app                            | Number or String |   Yes    | The App ID.                                                                                                                                      |
+| content                        |      String      |          | The content of the notes.<br />The content must be between 0 to 10000 characters.<br />If the parameter is omitted, the content will not change. |
+| includeInTemplateAndDuplicates |     Boolean      |          | The permission settings to include this note in app templates or duplicates.                                                                     |
+| revision                       |      String      |          | The revision number of the App settings.                                                                                                         |
+
+#### Returns
+
+| Name     |  Type  | Description                                          |
+| -------- | :----: | ---------------------------------------------------- |
+| revision | String | The revision number after changing the app settings. |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/apps/update-app-admin-notes/

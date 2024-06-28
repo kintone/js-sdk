@@ -774,4 +774,19 @@ export class App {
       console.log(error);
     }
   }
+
+  public async updateAdminNotes() {
+    try {
+      console.log(
+        await this.client.app.updateAdminNotes({
+          app: APP_ID,
+          content: "updated content via rest-api-client",
+          includeInTemplateAndDuplicates: true,
+          revision: -1,
+        }),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
