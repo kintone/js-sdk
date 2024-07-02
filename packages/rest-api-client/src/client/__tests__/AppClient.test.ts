@@ -1312,7 +1312,7 @@ describe("AppClient", () => {
   });
 });
 
-describe("AppClient: AdminNodes", () => {
+describe("AppClient: AdminNotes", () => {
   let mockClient: MockClient;
   let appClient: AppClient;
 
