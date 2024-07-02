@@ -5,7 +5,7 @@ export type AdminNotes = {
   includeInTemplateAndDuplicates: boolean;
 };
 
-export type AdminNoteForParameter = Partial<AdminNotes> & {
+export type AdminNotesForParameter = Partial<AdminNotes> & {
   app: AppID;
   revision?: Revision;
 };
