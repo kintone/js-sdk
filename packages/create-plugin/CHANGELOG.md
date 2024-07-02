@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.4](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@8.2.3...@kintone/create-plugin@8.2.4) (2024-07-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/plugin-packer to ^8.1.3 ([#2833](https://github.com/kintone/js-sdk/issues/2833)) ([670fb21](https://github.com/kintone/js-sdk/commit/670fb21ac9974dda5e49151893ef2c357167ceb5))
+
 ## [8.2.3](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@8.2.2...@kintone/create-plugin@8.2.3) (2024-06-18)
 
 
