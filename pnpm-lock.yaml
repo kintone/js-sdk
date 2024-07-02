@@ -527,8 +527,8 @@ importers:
         specifier: 5.1.4
         version: 5.1.4(webpack@5.92.1)
       webpack-merge:
-        specifier: ^5.10.0
-        version: 5.10.0
+        specifier: ^6.0.1
+        version: 6.0.1
 
 packages:
 
@@ -11627,7 +11627,7 @@ packages:
       rechoir: 0.8.0
       webpack: 5.92.1(webpack-cli@5.1.4)
       webpack-dev-server: 5.0.4(debug@4.3.5)(webpack-cli@5.1.4)(webpack@5.92.1)
-      webpack-merge: 5.9.0
+      webpack-merge: 5.10.0
     dev: true
 
   /webpack-cli@5.1.4(webpack@5.92.1):
@@ -11747,6 +11747,15 @@ packages:
     engines: {node: '>=10.0.0'}
     dependencies:
       clone-deep: 4.0.1
+      wildcard: 2.0.1
+    dev: true
+
+  /webpack-merge@6.0.1:
+    resolution: {integrity: sha512-hXXvrjtx2PLYx4qruKl+kyRSLc52V+cCvMxRjmKwoA+CBbbF5GfIBtR6kCvl0fYGqTUPKB+1ktVmTHqMOzgCBg==}
+    engines: {node: '>=18.0.0'}
+    dependencies:
+      clone-deep: 4.0.1
+      flat: 5.0.2
       wildcard: 2.0.1
     dev: true
 
