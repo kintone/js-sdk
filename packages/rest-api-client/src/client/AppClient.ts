@@ -35,6 +35,7 @@ import type {
   AppActionsForResponse,
 } from "./types";
 import { BaseClient } from "./BaseClient";
+import type { AppPlugin } from "./types/app/plugin";
 type RowLayoutForParameter = {
   type: "ROW";
   fields: Array<{ [key: string]: unknown }>;
@@ -615,5 +616,21 @@ export class AppClient extends BaseClient {
       preview: true,
     });
     return this.client.put(path, params);
+  }
+
+  public getPlugins(params: {
+    app: AppID;
+    lang?: Lang;
+    preview?: boolean;
+  }): Promise<{
+    plugins: AppPlugin[];
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/plugins",
+      preview,
+    });
+    return this.client.get(path, rest);
   }
 }

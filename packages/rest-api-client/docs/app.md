@@ -36,6 +36,7 @@
 - [updateReports](#updateReports)
 - [getAppActions](#getAppActions)
 - [updateAppActions](#updateAppActions)
+- [getPlugins](#getPlugins)
 
 ## Overview
 
@@ -1353,3 +1354,26 @@ Updates the [Action](https://get.kintone.help/k/en/user/app_settings/appaction/s
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/update-action-settings/
+
+### getPlugins
+
+Gets the list of Plug-ins added to an App.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                |
+| ------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                |
+| lang    |      String      |          | The localized language to retrieve the data in: <ul> <li>`en`: retrieves the localized English names</li> <li>`zh`: retrieves the localized Chinese names</li> <li>`ja`: retrieves the localized Japanese names</li> </ul>If ignored, the default names will be retrieved. |
+| preview |     Boolean      |          | A flag whether to get the app actions for pre-live environment                                                                                                                                                                                                             |
+
+#### Returns
+
+| Name     |  Type  | Description                                                                                                                                                                                 |
+| -------- | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| revision | String | The revision number of the App settings.                                                                                                                                                    |
+| plugins  | Object | An object listing Plug-ins. <br/>For each property of this object, see “Response Parameters” section of [the reference](https://kintone.dev/en/docs/kintone/rest-api/apps/get-app-plugins/) |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/apps/get-app-plugins/
