@@ -1321,10 +1321,10 @@ Get the [Action](https://get.kintone.help/k/en/user/app_settings/appaction/set_a
 
 #### Returns
 
-| Name     |  Type  | Description                                                                                                                                                                                                                               |
-| -------- | :----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| revision | String | The revision number of the App settings.                                                                                                                                                                                                  |
-| actions  | Object | An object listing Action settings. An object listing Action settings. <br/>For each property of this object, see “Response Parameters” section of [the reference](https://kintone.dev/en/docs/kintone/rest-api/apps/get-action-settings/) |
+| Name     |  Type  | Description                                                                                                                                                                                            |
+| -------- | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| revision | String | The revision number of the App settings.                                                                                                                                                               |
+| actions  | Object | An object listing Action settings. <br/>For each property of this object, see “Response Parameters” section of [the reference](https://kintone.dev/en/docs/kintone/rest-api/apps/get-action-settings/) |
 
 #### Reference
 
