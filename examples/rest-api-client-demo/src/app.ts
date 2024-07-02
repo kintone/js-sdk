@@ -767,7 +767,9 @@ export class App {
 
   public async getPlugins() {
     try {
-      console.log(await this.client.app.getPlugins({ app: APP_ID }));
+      console.log(
+        await this.client.app.getPlugins({ app: APP_ID, lang: "en" }),
+      );
     } catch (error) {
       console.log(error);
     }

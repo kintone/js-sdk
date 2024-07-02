@@ -1325,7 +1325,7 @@ describe("AppClient: plugins", () => {
     appClient = new AppClient(mockClient);
   });
   describe("getPlugins", () => {
-    const params = { app: APP_ID } as const;
+    const params = { app: APP_ID, lang: "en" } as const;
     describe("without preview", () => {
       beforeEach(async () => {
         await appClient.getPlugins(params);

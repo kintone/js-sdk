@@ -620,7 +620,7 @@ export class AppClient extends BaseClient {
 
   public getPlugins(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: Exclude<Lang, "default" | "user">;
     preview?: boolean;
   }): Promise<{
     plugins: AppPlugin[];
