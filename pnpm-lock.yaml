@@ -335,8 +335,8 @@ importers:
         specifier: ^3.12.0
         version: 3.12.0
       cssnano:
-        specifier: ^7.0.3
-        version: 7.0.3(postcss@8.4.39)
+        specifier: ^7.0.4
+        version: 7.0.4(postcss@8.4.39)
       execa:
         specifier: ^5.1.1
         version: 5.1.1
@@ -4987,8 +4987,8 @@ packages:
     hasBin: true
     dev: true
 
-  /cssnano-preset-default@7.0.3(postcss@8.4.39):
-    resolution: {integrity: sha512-dQ3Ba1p/oewICp/szF1XjFFgql8OlOBrI2YNBUUwhHQnJNoMOcQTa+Bi7jSJN8r/eM1egW0Ud1se/S7qlduWKA==}
+  /cssnano-preset-default@7.0.4(postcss@8.4.39):
+    resolution: {integrity: sha512-jQ6zY9GAomQX7/YNLibMEsRZguqMUGuupXcEk2zZ+p3GUxwCAsobqPYE62VrJ9qZ0l9ltrv2rgjwZPBIFIjYtw==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.31
@@ -4999,7 +4999,7 @@ packages:
       postcss: 8.4.39
       postcss-calc: 10.0.0(postcss@8.4.39)
       postcss-colormin: 7.0.1(postcss@8.4.39)
-      postcss-convert-values: 7.0.1(postcss@8.4.39)
+      postcss-convert-values: 7.0.2(postcss@8.4.39)
       postcss-discard-comments: 7.0.1(postcss@8.4.39)
       postcss-discard-duplicates: 7.0.0(postcss@8.4.39)
       postcss-discard-empty: 7.0.0(postcss@8.4.39)
@@ -5035,13 +5035,13 @@ packages:
       postcss: 8.4.39
     dev: true
 
-  /cssnano@7.0.3(postcss@8.4.39):
-    resolution: {integrity: sha512-lsekJctOTqdCn4cNrtrSwsuMR/fHC+oiVMHkp/OugBWtwjH8XJag1/OtGaYJGtz0un1fQcRy4ryfYTQsfh+KSQ==}
+  /cssnano@7.0.4(postcss@8.4.39):
+    resolution: {integrity: sha512-rQgpZra72iFjiheNreXn77q1haS2GEy69zCMbu4cpXCFPMQF+D4Ik5V7ktMzUF/sA7xCIgcqHwGPnCD+0a1vHg==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.31
     dependencies:
-      cssnano-preset-default: 7.0.3(postcss@8.4.39)
+      cssnano-preset-default: 7.0.4(postcss@8.4.39)
       lilconfig: 3.1.2
       postcss: 8.4.39
     dev: true
@@ -8288,11 +8288,6 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  /lilconfig@3.1.1:
-    resolution: {integrity: sha512-O18pf7nyvHTckunPWCV1XUNXU1piu01y2b7ATJ0ppkUkk8ocqVWBrYjJBCwHDjD/ZWcfyrA0P4gKhzWGi5EINQ==}
-    engines: {node: '>=14'}
-    dev: true
-
   /lilconfig@3.1.2:
     resolution: {integrity: sha512-eop+wDAvpItUys0FWkHIKeC9ybYrTGbU41U5K7+bttZZeohvnY7M9dZ5kB21GNWiFT2q1OoPTvncPCgSOVO5ow==}
     engines: {node: '>=14'}
@@ -9298,8 +9293,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-convert-values@7.0.1(postcss@8.4.39):
-    resolution: {integrity: sha512-9x2ofb+hYPwHWMlWAzyWys2yMDZYGfkX9LodbaVTmLdlupmtH2AGvj8Up95wzzNPRDEzPIxQIkUaPJew3bT6xA==}
+  /postcss-convert-values@7.0.2(postcss@8.4.39):
+    resolution: {integrity: sha512-MuZIF6HJ4izko07Q0TgW6pClalI4al6wHRNPkFzqQdwAwG7hPn0lA58VZdxyb2Vl5AYjJ1piO+jgF9EnTjQwQQ==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.31
@@ -9358,7 +9353,7 @@ packages:
       postcss:
         optional: true
     dependencies:
-      lilconfig: 3.1.1
+      lilconfig: 3.1.2
       postcss: 8.4.39
       yaml: 2.3.4
     dev: true
