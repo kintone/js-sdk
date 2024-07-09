@@ -1361,10 +1361,10 @@ Changes the Space to which an App belongs.
 
 #### Parameters
 
-| Name  |           Type           | Required | Description                                                                                                           |
-| ----- | :----------------------: | :------: | --------------------------------------------------------------------------------------------------------------------- |
-| app   |     Number or String     |   Yes    | The App ID.                                                                                                           |
-| space | Number or String or null |   Yes    | The Space ID of where the App will be moved to. <br />To remove an App from its current space, null can be specified. |
+| Name  |           Type           | Required | Description                                                                                                             |
+| ----- | :----------------------: | :------: | ----------------------------------------------------------------------------------------------------------------------- |
+| app   |     Number or String     |   Yes    | The App ID.                                                                                                             |
+| space | Number or String or null |   Yes    | The Space ID of where the App will be moved to. <br />To remove an App from its current space, `null` can be specified. |
 
 #### Returns
 
