@@ -16,7 +16,7 @@
     "fix:workspace": "pnpm -r --parallel run fix",
     "fix:prettier": "pnpm lint:prettier --write",
     "test:root": "jest",
-    "start": "pnpm build --watch",
+    "start": "pnpm -r --parallel run start",
     "test": "pnpm test:root && pnpm -r --parallel run test",
     "test:ci": "pnpm test:root && pnpm -r --stream run test:ci",
     "test:e2e": "pnpm -r --parallel run test:e2e",
