@@ -36,6 +36,7 @@
 - [updateReports](#updateReports)
 - [getAppActions](#getAppActions)
 - [updateAppActions](#updateAppActions)
+- [moveToSpace](#moveToSpace)
 - [getPlugins](#getPlugins)
 
 ## Overview
@@ -1354,6 +1355,25 @@ Updates the [Action](https://get.kintone.help/k/en/user/app_settings/appaction/s
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/update-action-settings/
+
+### moveToSpace
+
+Changes the Space to which an App belongs.
+
+#### Parameters
+
+| Name  |           Type           | Required | Description                                                                                                             |
+| ----- | :----------------------: | :------: | ----------------------------------------------------------------------------------------------------------------------- |
+| app   |     Number or String     |   Yes    | The App ID.                                                                                                             |
+| space | Number or String or null |   Yes    | The Space ID of where the App will be moved to. <br />To remove an App from its current space, `null` can be specified. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/apps/move-app-to-space/
 
 ### getPlugins
 

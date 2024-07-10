@@ -1312,6 +1312,35 @@ describe("AppClient", () => {
   });
 });
 
+describe("AppClient: moveToSpace", () => {
+  let mockClient: MockClient;
+  let appClient: AppClient;
+
+  beforeEach(() => {
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = buildMockClient(requestConfigBuilder);
+    appClient = new AppClient(mockClient);
+  });
+  describe("moveToSpace", () => {
+    const params = { app: APP_ID, space: 1 } as const;
+    beforeEach(async () => {
+      await appClient.moveToSpace(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/move.json");
+    });
+    it("should send a post request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass app and space as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+});
+
 describe("AppClient: plugins", () => {
   let mockClient: MockClient;
   let appClient: AppClient;

@@ -765,6 +765,16 @@ export class App {
     }
   }
 
+  public async moveToSpace() {
+    try {
+      console.log(
+        await this.client.app.moveToSpace({ app: APP_ID, space: SPACE_ID }),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async getPlugins() {
     try {
       console.log(

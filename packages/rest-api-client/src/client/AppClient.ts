@@ -33,6 +33,7 @@ import type {
   ReportForResponse,
   AppActionsForParameter,
   AppActionsForResponse,
+  SpaceID,
   PluginLocale,
 } from "./types";
 import { BaseClient } from "./BaseClient";
@@ -617,6 +618,16 @@ export class AppClient extends BaseClient {
       preview: true,
     });
     return this.client.put(path, params);
+  }
+
+  public moveToSpace(params: {
+    app: AppID;
+    space: SpaceID | null;
+  }): Promise<{}> {
+    const path = this.buildPath({
+      endpointName: "app/move",
+    });
+    return this.client.post(path, params);
   }
 
   public getPlugins(params: {
