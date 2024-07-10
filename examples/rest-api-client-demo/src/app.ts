@@ -764,4 +764,14 @@ export class App {
       console.log(error);
     }
   }
+
+  public async getPlugins() {
+    try {
+      console.log(
+        await this.client.app.getPlugins({ app: APP_ID, lang: "en" }),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

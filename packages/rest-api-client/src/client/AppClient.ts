@@ -3,7 +3,7 @@ import type {
   RecordID,
   Revision,
   Properties,
-  Lang,
+  AppLang,
   Layout,
   ViewForResponse,
   ViewForParameter,
@@ -33,8 +33,10 @@ import type {
   ReportForResponse,
   AppActionsForParameter,
   AppActionsForResponse,
+  PluginLocale,
 } from "./types";
 import { BaseClient } from "./BaseClient";
+import type { AppPlugin } from "./types/app/plugin";
 type RowLayoutForParameter = {
   type: "ROW";
   fields: Array<{ [key: string]: unknown }>;
@@ -68,7 +70,7 @@ type SpaceResponseParameters = {
 export class AppClient extends BaseClient {
   public getFormFields<T extends Properties>(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: AppLang;
     preview?: boolean;
   }): Promise<{ properties: T; revision: string }> {
     const { preview, ...rest } = params;
@@ -141,7 +143,7 @@ export class AppClient extends BaseClient {
 
   public getViews(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: AppLang;
     preview?: boolean;
   }): Promise<{
     views: { [viewName: string]: ViewForResponse };
@@ -221,7 +223,7 @@ export class AppClient extends BaseClient {
 
   public getAppSettings(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: AppLang;
     preview?: boolean;
   }): Promise<{
     name: string;
@@ -292,7 +294,7 @@ export class AppClient extends BaseClient {
 
   public getProcessManagement(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: AppLang;
     preview?: boolean;
   }): Promise<{
     enable: boolean;
@@ -413,7 +415,7 @@ export class AppClient extends BaseClient {
 
   public getRecordAcl(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: AppLang;
     preview?: boolean;
   }): Promise<{ rights: RecordRightForResponse[]; revision: string }> {
     const { preview, ...rest } = params;
@@ -499,7 +501,7 @@ export class AppClient extends BaseClient {
 
   public getPerRecordNotifications(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: AppLang;
     preview?: boolean;
   }): Promise<{
     notifications: PerRecordNotificationForResponse[];
@@ -527,7 +529,7 @@ export class AppClient extends BaseClient {
 
   public getReminderNotifications(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: AppLang;
     preview?: boolean;
   }): Promise<{
     notifications: ReminderNotificationForResponse[];
@@ -557,7 +559,7 @@ export class AppClient extends BaseClient {
 
   public getReports(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: AppLang;
     preview?: boolean;
   }): Promise<{
     reports: { [reportName: string]: ReportForResponse };
@@ -588,7 +590,7 @@ export class AppClient extends BaseClient {
 
   public getAppActions(params: {
     app: AppID;
-    lang?: Lang;
+    lang?: AppLang;
     preview?: boolean;
   }): Promise<{
     actions: AppActionsForResponse;
@@ -615,5 +617,21 @@ export class AppClient extends BaseClient {
       preview: true,
     });
     return this.client.put(path, params);
+  }
+
+  public getPlugins(params: {
+    app: AppID;
+    lang?: PluginLocale;
+    preview?: boolean;
+  }): Promise<{
+    plugins: AppPlugin[];
+    revision: string;
+  }> {
+    const { preview, ...rest } = params;
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/plugins",
+      preview,
+    });
+    return this.client.get(path, rest);
   }
 }
