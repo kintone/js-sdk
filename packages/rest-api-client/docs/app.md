@@ -37,6 +37,7 @@
 - [getAppActions](#getAppActions)
 - [updateAppActions](#updateAppActions)
 - [moveToSpace](#moveToSpace)
+- [getPlugins](#getPlugins)
 
 ## Overview
 
@@ -1322,10 +1323,10 @@ Get the [Action](https://get.kintone.help/k/en/user/app_settings/appaction/set_a
 
 #### Returns
 
-| Name     |  Type  | Description                                                                                                                                                                                                                               |
-| -------- | :----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| revision | String | The revision number of the App settings.                                                                                                                                                                                                  |
-| actions  | Object | An object listing Action settings. An object listing Action settings. <br/>For each property of this object, see “Response Parameters” section of [the reference](https://kintone.dev/en/docs/kintone/rest-api/apps/get-action-settings/) |
+| Name     |  Type  | Description                                                                                                                                                                                            |
+| -------- | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| revision | String | The revision number of the App settings.                                                                                                                                                               |
+| actions  | Object | An object listing Action settings. <br/>For each property of this object, see “Response Parameters” section of [the reference](https://kintone.dev/en/docs/kintone/rest-api/apps/get-action-settings/) |
 
 #### Reference
 
@@ -1373,3 +1374,26 @@ An empty object.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/move-app-to-space/
+
+### getPlugins
+
+Gets the list of Plug-ins added to an App.
+
+#### Parameters
+
+| Name    |       Type       | Required | Description                                                                                                                                                                                                                                                                |
+| ------- | :--------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app     | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                                                |
+| lang    |      String      |          | The localized language to retrieve the data in: <ul> <li>`en`: retrieves the localized English names</li> <li>`zh`: retrieves the localized Chinese names</li> <li>`ja`: retrieves the localized Japanese names</li> </ul>If ignored, the default names will be retrieved. |
+| preview |     Boolean      |          | A flag whether to get the app actions for pre-live environment                                                                                                                                                                                                             |
+
+#### Returns
+
+| Name     |  Type  | Description                                                                                                                                                                                 |
+| -------- | :----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| revision | String | The revision number of the App settings.                                                                                                                                                    |
+| plugins  | Object | An object listing Plug-ins. <br/>For each property of this object, see “Response Parameters” section of [the reference](https://kintone.dev/en/docs/kintone/rest-api/apps/get-app-plugins/) |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/apps/get-app-plugins/
