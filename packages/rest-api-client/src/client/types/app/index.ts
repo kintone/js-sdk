@@ -1,4 +1,6 @@
-export type Lang = "ja" | "en" | "zh" | "user" | "default";
+type Lang = "ja" | "en" | "zh";
+export type AppLang = Lang | "default" | "user";
+export type PluginLocale = Lang;
 export type DeployStatus = "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
 
 export type App = {
