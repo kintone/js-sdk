@@ -765,11 +765,9 @@ export class App {
     }
   }
 
-  public async moveToSpace() {
+  public async move() {
     try {
-      console.log(
-        await this.client.app.moveToSpace({ app: APP_ID, space: SPACE_ID }),
-      );
+      console.log(await this.client.app.move({ app: APP_ID, space: SPACE_ID }));
     } catch (error) {
       console.log(error);
     }
