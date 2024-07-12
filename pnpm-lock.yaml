@@ -68,37 +68,6 @@ importers:
         specifier: ^5.5.3
         version: 5.5.3
 
-  examples/rest-api-client-demo:
-    dependencies:
-      '@kintone/profile-loader':
-        specifier: workspace:*
-        version: link:../../packages/profile-loader
-      '@kintone/rest-api-client':
-        specifier: ^5.5.2
-        version: link:../../packages/rest-api-client
-      yargs:
-        specifier: ^17.7.2
-        version: 17.7.2
-    devDependencies:
-      '@kintone/customize-uploader':
-        specifier: ^8.0.13
-        version: link:../../packages/customize-uploader
-      '@types/yargs':
-        specifier: ^17.0.32
-        version: 17.0.32
-      ts-loader:
-        specifier: ^9.5.1
-        version: 9.5.1(typescript@5.5.3)(webpack@5.93.0)
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@18.19.39)(typescript@5.5.3)
-      webpack:
-        specifier: ^5.93.0
-        version: 5.93.0(webpack-cli@5.1.4)
-      webpack-cli:
-        specifier: 5.1.4
-        version: 5.1.4(webpack@5.93.0)
-
   packages/create-plugin:
     dependencies:
       chalk:
