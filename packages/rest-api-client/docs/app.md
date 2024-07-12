@@ -36,7 +36,7 @@
 - [updateReports](#updateReports)
 - [getAppActions](#getAppActions)
 - [updateAppActions](#updateAppActions)
-- [moveToSpace](#moveToSpace)
+- [move](#move)
 - [getPlugins](#getPlugins)
 
 ## Overview
@@ -1356,7 +1356,7 @@ Updates the [Action](https://get.kintone.help/k/en/user/app_settings/appaction/s
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/update-action-settings/
 
-### moveToSpace
+### move
 
 Changes the Space to which an App belongs.
 
