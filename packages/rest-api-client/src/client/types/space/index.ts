@@ -31,6 +31,11 @@ export type Space = {
   isGuest: boolean;
   attachedApps: AttachedApp[];
   fixedMember: boolean;
+  showAnnouncement: boolean;
+  showThreadList: boolean;
+  showAppList: boolean;
+  showMemberList: boolean;
+  showRelatedLinkList: boolean;
 };
 
 export type SpaceMemberForResponse = {
