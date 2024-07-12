@@ -15,6 +15,10 @@ type AttachedApp = Pick<
   | "modifier"
 >;
 
+type Permissions = {
+  createApp: "EVERYONE" | "ADMIN";
+};
+
 export type Space = {
   id: string;
   name: string;
@@ -36,6 +40,7 @@ export type Space = {
   showAppList: boolean;
   showMemberList: boolean;
   showRelatedLinkList: boolean;
+  permissions: Permissions;
 };
 
 export type SpaceMemberForResponse = {
