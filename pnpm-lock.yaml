@@ -139,8 +139,8 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0
       '@types/inquirer':
-        specifier: ^8.2.10
-        version: 8.2.10
+        specifier: ^9.0.7
+        version: 9.0.7
       '@types/lodash':
         specifier: ^4.17.7
         version: 4.17.7
@@ -182,8 +182,8 @@ importers:
         version: 5.0.9
     devDependencies:
       '@types/inquirer':
-        specifier: 8.2.10
-        version: 8.2.10
+        specifier: 9.0.7
+        version: 9.0.7
 
   packages/dts-gen:
     dependencies:
@@ -408,8 +408,8 @@ importers:
         version: 22.10.1(typescript@5.5.3)
     devDependencies:
       '@types/inquirer':
-        specifier: 8.2.10
-        version: 8.2.10
+        specifier: 9.0.7
+        version: 9.0.7
 
   packages/profile-loader:
     dependencies:
@@ -3303,8 +3303,8 @@ packages:
       '@types/node': 18.19.39
     dev: true
 
-  /@types/inquirer@8.2.10:
-    resolution: {integrity: sha512-IdD5NmHyVjWM8SHWo/kPBgtzXatwPkfwzyP3fN1jF2g9BWt5WO+8hL2F4o2GKIYsU40PpqeevuUWvkS/roXJkA==}
+  /@types/inquirer@9.0.7:
+    resolution: {integrity: sha512-Q0zyBupO6NxGRZut/JdmqYKOnN95Eg5V8Csg3PGKkP+FnvsUZx1jAyK7fztIszxxMuoBA6E3KXWvdZVXIpx60g==}
     dependencies:
       '@types/through': 0.0.30
       rxjs: 7.8.1
