@@ -35,11 +35,11 @@ export type Space = {
   isGuest: boolean;
   attachedApps: AttachedApp[];
   fixedMember: boolean;
-  showAnnouncement: boolean;
-  showThreadList: boolean;
-  showAppList: boolean;
-  showMemberList: boolean;
-  showRelatedLinkList: boolean;
+  showAnnouncement: boolean | null;
+  showThreadList: boolean | null;
+  showAppList: boolean | null;
+  showMemberList: boolean | null;
+  showRelatedLinkList: boolean | null;
   permissions: Permissions;
 };
 
