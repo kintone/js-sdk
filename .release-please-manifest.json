@@ -1,5 +1,4 @@
 {
-  "examples/rest-api-client-demo": "5.5.3",
   "packages/create-plugin": "8.2.3",
   "packages/customize-uploader": "8.0.13",
   "packages/dts-gen": "8.0.12",
