@@ -1,13 +1,14 @@
 import type {
   SpaceID,
   ThreadID,
-  Space,
   ThreadComment,
   SpaceMemberForResponse,
   SpaceMemberForRequest,
   GuestSpaceID,
   Guest,
   SpaceTemplateID,
+  UpdateSpaceForRequest,
+  Space,
 } from "./types";
 import { BaseClient } from "./BaseClient";
 
@@ -17,6 +18,13 @@ export class SpaceClient extends BaseClient {
       endpointName: "space",
     });
     return this.client.get(path, params);
+  }
+
+  public updateSpace(params: UpdateSpaceForRequest): Promise<{}> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "space",
+    });
+    return this.client.put(path, params);
   }
 
   public deleteSpace(params: { id: SpaceID }): Promise<{}> {
