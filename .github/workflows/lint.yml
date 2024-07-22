@@ -12,7 +12,7 @@ jobs:
     name: Node.js ubuntu-latest 18.x
     runs-on: ubuntu-latest
     steps:
-      - uses: Kesin11/actions-timeline@1c2ab3f28225878ae4dd1f76d31279f16ea29e29 # v2
+      - uses: Kesin11/actions-timeline@da70beff098ff89b15d279e8bf2f60519a8dadd7 # v2
 
       - uses: actions/checkout@v4
 

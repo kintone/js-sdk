@@ -1312,7 +1312,7 @@ describe("AppClient", () => {
   });
 });
 
-describe("AppClient: moveToSpace", () => {
+describe("AppClient: move", () => {
   let mockClient: MockClient;
   let appClient: AppClient;
 
@@ -1324,10 +1324,10 @@ describe("AppClient: moveToSpace", () => {
     mockClient = buildMockClient(requestConfigBuilder);
     appClient = new AppClient(mockClient);
   });
-  describe("moveToSpace", () => {
+  describe("move", () => {
     const params = { app: APP_ID, space: 1 } as const;
     beforeEach(async () => {
-      await appClient.moveToSpace(params);
+      await appClient.move(params);
     });
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/move.json");
