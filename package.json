@@ -51,7 +51,7 @@
     "prettier": "^3.3.3",
     "rimraf": "^5.0.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "packageManager": "pnpm@8.15.9",
   "pnpm": {
