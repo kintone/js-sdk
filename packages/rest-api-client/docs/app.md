@@ -38,7 +38,7 @@
 - [updateAppActions](#updateAppActions)
 - [getAdminNotes](#getAdminNotes)
 - [updateAdminNotes](#updateAdminNotes)
-- [moveToSpace](#moveToSpace)
+- [move](#move)
 - [getPlugins](#getPlugins)
 
 ## Overview
@@ -1404,7 +1404,7 @@ Updates the notes for App administrators and their settings.
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/update-app-admin-notes/
 
-### moveToSpace
+### move
 
 Changes the Space to which an App belongs.
 

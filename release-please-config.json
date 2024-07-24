@@ -11,10 +11,6 @@
   "tag-separator": "@",
   "monorepo-tags": true,
   "packages": {
-    "examples/rest-api-client-demo": {
-      "package-name": "@kintone/rest-api-client-demo",
-      "component": "@kintone/rest-api-client-demo"
-    },
     "packages/create-plugin": {
       "package-name": "@kintone/create-plugin",
       "component": "@kintone/create-plugin"

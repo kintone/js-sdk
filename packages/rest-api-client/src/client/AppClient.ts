@@ -645,10 +645,7 @@ export class AppClient extends BaseClient {
     return this.client.put(path, params);
   }
 
-  public moveToSpace(params: {
-    app: AppID;
-    space: SpaceID | null;
-  }): Promise<{}> {
+  public move(params: { app: AppID; space: SpaceID | null }): Promise<{}> {
     const path = this.buildPath({
       endpointName: "app/move",
     });
