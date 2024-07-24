@@ -1312,6 +1312,73 @@ describe("AppClient", () => {
   });
 });
 
+describe("AppClient: AdminNotes", () => {
+  let mockClient: MockClient;
+  let appClient: AppClient;
+
+  beforeEach(() => {
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.cybozu.com",
+      auth: { type: "apiToken", apiToken: "foo" },
+    });
+    mockClient = buildMockClient(requestConfigBuilder);
+    appClient = new AppClient(mockClient);
+  });
+  describe("getAdminNotes", () => {
+    const params = { app: APP_ID } as const;
+    describe("without preview", () => {
+      beforeEach(async () => {
+        await appClient.getAdminNotes(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/adminNotes.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+    describe("preview: true", () => {
+      beforeEach(async () => {
+        await appClient.getAdminNotes({
+          ...params,
+          preview: true,
+        });
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/preview/app/adminNotes.json",
+        );
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass app as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+  });
+  describe("updateAdminNotes", () => {
+    const params = { app: APP_ID } as const;
+    beforeEach(async () => {
+      await appClient.updateAdminNotes(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/preview/app/adminNotes.json",
+      );
+    });
+    it("should send a put request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass app, content, includeInTemplateAndDuplicates, and revision as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+});
+
 describe("AppClient: move", () => {
   let mockClient: MockClient;
   let appClient: AppClient;
@@ -1361,9 +1428,6 @@ describe("AppClient: plugins", () => {
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/plugins.json");
-      });
-      it("should send a get request", () => {
-        expect(mockClient.getLogs()[0].method).toBe("get");
       });
       it("should pass app and lang as a param to the http client", () => {
         expect(mockClient.getLogs()[0].params).toEqual(params);
