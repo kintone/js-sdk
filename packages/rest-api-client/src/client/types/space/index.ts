@@ -43,6 +43,20 @@ export type Space = {
   permissions: Permissions;
 };
 
+export type UpdateSpaceForRequest = {
+  id: SpaceID;
+  name?: string;
+  isPrivate?: boolean;
+  useMultiThread?: boolean;
+  fixedMember?: boolean;
+  showAnnouncement?: boolean;
+  showThreadList?: boolean;
+  showAppList?: boolean;
+  showMemberList?: boolean;
+  showRelatedLinkList?: boolean;
+  permissions?: Permissions;
+};
+
 export type SpaceMemberForResponse = {
   entity: Entity;
   isAdmin: boolean;

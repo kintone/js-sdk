@@ -1,6 +1,7 @@
 # Space
 
 - [getSpace](#getSpace)
+- [updateSpace](#updateSpace)
 - [deleteSpace](#deleteSpace)
 - [updateSpaceBody](#updateSpaceBody)
 - [getSpaceMembers](#getSpaceMembers)
@@ -90,6 +91,35 @@ Gets general information of a space.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/get-space/
+
+### updateSpace
+
+Updates the settings of a Space.
+
+#### Parameters
+
+| Name                  |       Type       | Required | Description                                                                                                                                                                                                                                                                               |
+| --------------------- | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                    | Number or String |   Yes    | The space ID.                                                                                                                                                                                                                                                                             |
+| name                  |      String      |          | The new name of the space.                                                                                                                                                                                                                                                                |
+| isPrivate             |     Boolean      |          | The "Private" settings of the Space.<br /><strong>true</strong>: The Space is private.<br /><strong>false</strong>: The Space is not private.                                                                                                                                             |
+| fixedMember           |     Boolean      |          | The "Block users from joining or leaving the space and following or unfollowing the threads." setting.<br /><strong>true</strong>: Users cannot join/leave the Space or follow/unfollow threads.<br /><strong>false</strong>: Users can join/leave the Space and follow/unfollow threads. |
+| useMultiThread        |     Boolean      |          | The Enable multiple threads setting.<br /><strong>true</strong>: The Space is a Multi-threaded Space.<br />If this parameter is ignored or false is specified, this parameter will not be updated.                                                                                        |
+| showAnnouncement      |     Boolean      |          | The display status for the Announcement widget.<br /><strong>true</strong>: The Announcement widget is displayed.<br /><strong>false</strong>: The Announcement widget is not displayed.                                                                                                  |
+| showThreadList        |     Boolean      |          | The display status for the Threads widget.<br /><strong>true</strong>: The Threads widget is displayed.<br /><strong>false</strong>: The Threads widget is not displayed.                                                                                                                 |
+| showAppList           |     Boolean      |          | The display status for the Apps widget.<br /><strong>true</strong>: The Apps widget is displayed.<br /><strong>false</strong>: The Apps widget is not displayed.                                                                                                                          |
+| showMemberList        |     Boolean      |          | The display status for the People widget.<br /><strong>true</strong>: The People widget is displayed.<br /><strong>false</strong>: The People widget is not displayed.                                                                                                                    |
+| showRelatedLinkList   |     Boolean      |          | The display status for the Related Apps & Spaces widget.<br /><strong>true</strong>: The Related Apps & Spaces widget is displayed.<br /><strong>false</strong>: The Related Apps & Spaces widget is not displayed.                                                                       |
+| permissions           |      Object      |          | An object containing information of the space's permission settings.                                                                                                                                                                                                                      |
+| permissions.createApp |      String      |          | The option set for the Only Allow Space Administrators to Create Apps setting.<br /><strong>EVERYONE</strong>: all users can create apps.<br /><strong>ADMIN</strong>: only administrators can create apps.                                                                               |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/spaces/update-space/
 
 ### deleteSpace
 
