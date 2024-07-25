@@ -1,6 +1,7 @@
 # Plug-in
 
 - [getPlugins](#getPlugins)
+- [getRequiredPlugins](#getRequiredPlugins)
 
 ## Overview
 
@@ -45,3 +46,28 @@ Gets the list of plug-ins imported into Kintone.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/plugins/get-installed-plugins/
+
+### getRequiredPlugins
+
+Gets the list of plug-ins that have been deleted from Kintone, but have already been added to Apps.
+This can occur when a plug-in is installed, added to an App, and then proceeded to be uninstalled from the Kintone environment.
+
+#### Parameters
+
+| Name   |  Type  | Required | Description                                                                                                |
+| ------ | :----: | :------: | ---------------------------------------------------------------------------------------------------------- |
+| offset | Number |          | The number of plug-ins to skip from the list of required plug-ins.<br />If ignored, this value is 0.       |
+| limit  | Number |          | The maximum number of plug-ins to retrieve.<br />Must be between 1 and 100.The default<br />number is 100. |
+
+#### Returns
+
+| Name                     |  Type   | Description                                                                                                                                                                                          |
+| ------------------------ | :-----: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| plugins                  |  Array  | A list of Plug-ins that needs to be installed.                                                                                                                                                       |
+| plugins[].id             | String  | The Plugin ID.                                                                                                                                                                                       |
+| plugins[].name           | String  | The name of the Plugin.                                                                                                                                                                              |
+| plugins[].isMarketPlugin | Boolean | States whether or not the plug-in is a Marketplace plug-in.<br /><strong>true</strong>: The plug-in is a Marketplace plug-in.<br /><strong>false</strong>: The plug-in is not a Marketplace plug-in. |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/plugins/get-required-plugins/
