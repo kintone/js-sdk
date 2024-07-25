@@ -11,6 +11,5 @@
     { "path": "./profile-loader"},
     { "path": "./rest-api-client" },
     { "path": "./webpack-plugin-kintone-plugin"},
-    { "path": "../examples/rest-api-client-demo"}
   ]
 }

@@ -27,3 +27,4 @@ export * from "./customize";
 export * from "./notification";
 export * from "./report";
 export * from "./action";
+export * from "./adminNotes";
