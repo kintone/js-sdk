@@ -2,7 +2,7 @@ type Plugin = {
   id: string;
   name: string;
   isMarketPlugin: boolean;
-  revision: string;
+  version: string;
 };
 
 type RequiredPlugin = Omit<Plugin, "revision">;
