@@ -18,12 +18,9 @@
     ],
     packageRules: [
       {
-        // set `chore` to the commit for updating deps and devDeps
+        // set `chore` to the commit for updating packages
         matchPackagePatterns: [
           "*"
-        ],
-        matchDepTypes: [
-          "devDependencies"
         ],
         semanticCommitType: "chore",
       },
