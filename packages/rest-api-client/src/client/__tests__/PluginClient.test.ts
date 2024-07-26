@@ -10,7 +10,11 @@ describe("PluginClient", () => {
   beforeEach(() => {
     const requestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl: "https://example.cybozu.com",
-      auth: { type: "apiToken", apiToken: "foo" },
+      auth: {
+        type: "password",
+        username: "hoge",
+        password: "foo",
+      },
     });
     mockClient = buildMockClient(requestConfigBuilder);
     pluginClient = new PluginClient(mockClient);
