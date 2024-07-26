@@ -18,6 +18,13 @@
     ],
     packageRules: [
       {
+        // set `chore` to the commit for updating packages
+        matchPackagePatterns: [
+          "*"
+        ],
+        semanticCommitType: "chore",
+      },
+      {
         // automerge minor updates of devDependencies
         matchPackagePatterns: [
           "*"
