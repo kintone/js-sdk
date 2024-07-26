@@ -83,7 +83,7 @@ Gets Apps that have the specified plug-in added.
 | ------ | :----: | :------: | ------------------------------------------------------------------------------------------------------ |
 | id     | String |   Yes    | The ID of the plug-in.                                                                                 |
 | offset | Number |          | The number of apps to skip from the list of app.<br />If ignored, this value is 0.                     |
-| limit  | Number |          | The maximum number of apps to retrieve.<br />Must be between 1 and 100.The default<br />number is 100. |
+| limit  | Number |          | The maximum number of apps to retrieve.<br />Must be between 1 and 500.The default<br />number is 100. |
 
 #### Returns
 
