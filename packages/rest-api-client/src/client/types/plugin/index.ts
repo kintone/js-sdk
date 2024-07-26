@@ -1,3 +1,5 @@
+import type { PluginID } from "..";
+
 type Plugin = {
   id: string;
   name: string;
@@ -23,4 +25,14 @@ export type GetRequiredPluginsForRequest = {
 
 export type GetRequiredPluginsForResponse = {
   plugins: RequiredPlugin[];
+};
+
+export type GetAppsForRequest = {
+  id: PluginID;
+  offset?: number;
+  limit?: number;
+};
+
+export type GetAppsForResponse = {
+  apps: Array<{ id: string; name: string }>;
 };
