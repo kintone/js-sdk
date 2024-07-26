@@ -9,3 +9,4 @@ export type ThreadID = string | number;
 export * from "./record";
 export * from "./app";
 export * from "./space";
+export * from "./plugin";
