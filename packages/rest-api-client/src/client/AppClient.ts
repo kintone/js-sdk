@@ -667,4 +667,16 @@ export class AppClient extends BaseClient {
     });
     return this.client.get(path, rest);
   }
+
+  public addPlugins(params: {
+    app: AppID;
+    ids: string[];
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
+    const path = this.buildPathWithGuestSpaceId({
+      endpointName: "app/plugins",
+      preview: true,
+    });
+    return this.client.post(path, params);
+  }
 }
