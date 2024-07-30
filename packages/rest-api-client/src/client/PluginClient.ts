@@ -1,5 +1,7 @@
 import { BaseClient } from "./BaseClient";
 import type {
+  GetAppsForRequest,
+  GetAppsForResponse,
   GetPluginsForRequest,
   GetPluginsForResponse,
   GetRequiredPluginsForRequest,
@@ -18,6 +20,11 @@ export class PluginClient extends BaseClient {
     params: GetRequiredPluginsForRequest,
   ): Promise<GetRequiredPluginsForResponse> {
     const path = this.buildPath({ endpointName: "plugins/required" });
+    return this.client.get(path, params);
+  }
+
+  public getApps(params: GetAppsForRequest): Promise<GetAppsForResponse> {
+    const path = this.buildPath({ endpointName: "plugin/apps" });
     return this.client.get(path, params);
   }
 }

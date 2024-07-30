@@ -2,6 +2,7 @@
 
 - [getPlugins](#getPlugins)
 - [getRequiredPlugins](#getRequiredPlugins)
+- [getApps](#getApps)
 
 ## Overview
 
@@ -71,3 +72,27 @@ This can occur when a plug-in is installed, added to an App, and then proceeded 
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/plugins/get-required-plugins/
+
+### getApps
+
+Gets Apps that have the specified plug-in added.
+
+#### Parameters
+
+| Name   |  Type  | Required | Description                                                                                            |
+| ------ | :----: | :------: | ------------------------------------------------------------------------------------------------------ |
+| id     | String |   Yes    | The ID of the plug-in.                                                                                 |
+| offset | Number |          | The number of apps to skip from the list of app.<br />If ignored, this value is 0.                     |
+| limit  | Number |          | The maximum number of apps to retrieve.<br />Must be between 1 and 500.The default<br />number is 100. |
+
+#### Returns
+
+| Name        |  Type  | Description                                                                                                    |
+| ----------- | :----: | -------------------------------------------------------------------------------------------------------------- |
+| apps        | Array  | A list of objects containing the App ID and name.<br />Objects are listed in ascending order of their App IDs. |
+| apps[].id   | String | The App ID.                                                                                                    |
+| apps[].name | String | The name of the App.                                                                                           |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/plugins/get-plugin-apps/

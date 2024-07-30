@@ -57,4 +57,24 @@ describe("PluginClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("getApps", () => {
+    const params = {
+      id: "pluginId",
+      offset: 1,
+      limit: 2,
+    };
+    beforeEach(async () => {
+      await pluginClient.getApps(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/plugin/apps.json");
+    });
+    it("should send a GET request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("get");
+    });
+    it("should pass the param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
