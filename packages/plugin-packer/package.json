@@ -41,7 +41,7 @@
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^10.2.2",
     "chokidar": "^3.6.0",
-    "debug": "^4.3.5",
+    "debug": "^4.3.6",
     "denodeify": "^1.2.1",
     "meow": "^9.0.0",
     "mkdirp": "^3.0.1",
@@ -51,7 +51,7 @@
     "yazl": "^2.5.1"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^2.2.6",
+    "@reduxjs/toolkit": "^2.2.7",
     "@types/debug": "^4.1.12",
     "@types/node-rsa": "^1.1.4",
     "@types/stream-buffers": "^3.0.7",
@@ -71,7 +71,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "normalize.css": "^8.0.1",
     "path-browserify": "^1.0.1",
-    "postcss": "^8.4.39",
+    "postcss": "^8.4.40",
     "postcss-cli": "^11.0.0",
     "process": "^0.11.10",
     "redux-logger": "^3.0.6",

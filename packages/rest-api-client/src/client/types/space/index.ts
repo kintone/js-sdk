@@ -15,6 +15,10 @@ type AttachedApp = Pick<
   | "modifier"
 >;
 
+type Permissions = {
+  createApp: "EVERYONE" | "ADMIN";
+};
+
 export type Space = {
   id: string;
   name: string;
@@ -31,6 +35,26 @@ export type Space = {
   isGuest: boolean;
   attachedApps: AttachedApp[];
   fixedMember: boolean;
+  showAnnouncement: boolean | null;
+  showThreadList: boolean | null;
+  showAppList: boolean | null;
+  showMemberList: boolean | null;
+  showRelatedLinkList: boolean | null;
+  permissions: Permissions;
+};
+
+export type UpdateSpaceForRequest = {
+  id: SpaceID;
+  name?: string;
+  isPrivate?: boolean;
+  useMultiThread?: boolean;
+  fixedMember?: boolean;
+  showAnnouncement?: boolean;
+  showThreadList?: boolean;
+  showAppList?: boolean;
+  showMemberList?: boolean;
+  showRelatedLinkList?: boolean;
+  permissions?: Permissions;
 };
 
 export type SpaceMemberForResponse = {

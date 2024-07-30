@@ -2,7 +2,7 @@ import type { MockClient } from "../../http/MockClient";
 import { buildMockClient } from "../../http/MockClient";
 import { SpaceClient } from "../SpaceClient";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
-import type { ThreadComment } from "../types";
+import type { ThreadComment, UpdateSpaceForRequest } from "../types";
 
 const SPACE_ID = 1;
 const SPACE_TEMPLATE_ID = 1;
@@ -39,6 +39,36 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].method).toBe("get");
     });
     it("should pass id as a param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
+
+  describe("updateSpace", () => {
+    const params = {
+      id: SPACE_ID,
+      name: "updated",
+      isPrivate: false,
+      useMultiThread: false,
+      fixedMember: false,
+      showAnnouncement: false,
+      showThreadList: false,
+      showAppList: false,
+      showMemberList: false,
+      showRelatedLinkList: false,
+      permissions: {
+        createApp: "EVERYONE",
+      },
+    } as UpdateSpaceForRequest;
+    beforeEach(async () => {
+      await spaceClient.updateSpace(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/space.json");
+    });
+    it("should send a PUT request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass params to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
