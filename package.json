@@ -35,7 +35,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.24.9",
+    "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.2",
     "@babel/preset-typescript": "^7.24.7",
     "@cybozu/eslint-config": "^23.0.0",
