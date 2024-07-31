@@ -49,4 +49,22 @@ describe("AppClient: plugins", () => {
       });
     });
   });
+
+  describe("addPlugins", () => {
+    const params = { app: APP_ID, ids: ["abc", "xyz"], revision: 1 };
+    beforeEach(async () => {
+      await appClient.addPlugins(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe(
+        "/k/v1/preview/app/plugins.json",
+      );
+    });
+    it("should send a post request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
+    });
+    it("should pass the param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });
