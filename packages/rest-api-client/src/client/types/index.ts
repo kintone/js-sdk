@@ -5,7 +5,9 @@ export type SpaceID = string | number;
 export type SpaceTemplateID = string | number;
 export type GuestSpaceID = string | number;
 export type ThreadID = string | number;
+export type PluginID = string;
 
 export * from "./record";
 export * from "./app";
 export * from "./space";
+export * from "./plugin";
