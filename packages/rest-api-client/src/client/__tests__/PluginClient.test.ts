@@ -77,4 +77,23 @@ describe("PluginClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("updatePlugin", () => {
+    const params = {
+      id: "pluginId",
+      fileKey: "fileKey",
+    };
+    beforeEach(async () => {
+      await pluginClient.updatePlugin(params);
+    });
+    it("should pass the path to the http client", () => {
+      expect(mockClient.getLogs()[0].path).toBe("/k/v1/plugin.json");
+    });
+    it("should send a PUT request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("put");
+    });
+    it("should pass the param to the http client", () => {
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+  });
 });

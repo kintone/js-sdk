@@ -36,3 +36,13 @@ export type GetAppsForRequest = {
 export type GetAppsForResponse = {
   apps: Array<{ id: string; name: string }>;
 };
+
+export type UpdatePluginForRequest = {
+  id: PluginID;
+  fileKey: string;
+};
+
+export type UpdatePluginForResponse = {
+  id: PluginID;
+  version: string;
+};

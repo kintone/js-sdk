@@ -3,6 +3,7 @@
 - [getPlugins](#getPlugins)
 - [getRequiredPlugins](#getRequiredPlugins)
 - [getApps](#getApps)
+- [updatePlugin](#updatePlugin)
 
 ## Overview
 
@@ -96,3 +97,25 @@ Gets Apps that have the specified plug-in added.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/plugins/get-plugin-apps/
+
+### updatePlugin
+
+Updates an imported plug-in in the Kintone environment.
+
+#### Parameters
+
+| Name    |  Type  | Required | Description                                                                                                                                                                                       |
+| ------- | :----: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id      | String |   Yes    | The ID of the plug-in to be updated.                                                                                                                                                              |
+| fileKey | String |   Yes    | The fileKey representing an uploaded file.<br />Use the following API to upload the file and retrieve the fileKey: [Upload File](https://kintone.dev/en/docs/kintone/rest-api/files/upload-file/) |
+
+#### Returns
+
+| Name    |  Type  | Description                            |
+| ------- | :----: | -------------------------------------- |
+| id      | String | The plug-in ID of the updated plug-in. |
+| version | String | The version number of the plug-in      |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/plugins/update-plugin/
