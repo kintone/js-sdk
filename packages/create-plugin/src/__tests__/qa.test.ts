@@ -1,195 +1,142 @@
 import assert from "assert";
-import type { Question } from "inquirer";
-import { buildQuestions } from "../qa";
-
-const getQuestion = (
-  questions: Question[],
-  predicate: (q: Question) => boolean,
-): Question => {
-  return questions.find(predicate) as Question;
-};
+import * as prompt from "../qa/prompt";
+import { validateForDescription, validateForName } from "../qa/validator";
+import { getDefaultName, runPrompt } from "../qa";
+import type { BoundMessage } from "../messages";
+import { getBoundMessage } from "../messages";
 
 describe("qa", () => {
-  describe("buildQuestions", () => {
-    it("should return questions", () => {
-      const questions = buildQuestions("dist", "en");
-      assert(Array.isArray(questions));
-    });
+  describe("prompt", () => {
     describe("name.en", () => {
       it("should be set the default value of name.en based on the passed directory", () => {
-        const questions = buildQuestions("foo/bar/dist", "en");
-        const nameEn = getQuestion(
-          questions,
-          ({ name }: Question) => name === "name.en",
-        );
-        assert.equal(nameEn.default, "dist");
+        assert.equal(getDefaultName("foo/bar/dist"), "dist");
       });
       it("should be able to validate name.en", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "name.en",
-        );
-        assert(
-          typeof q.validate !== "undefined" && q.validate("hoge") === true,
-        );
-        assert(
-          typeof q.validate !== "undefined" &&
-            q.validate("a".repeat(64)) === true,
-        );
-        assert(
-          typeof q.validate !== "undefined" &&
-            typeof q.validate("") === "string",
-        );
-        assert(
-          typeof q.validate !== "undefined" &&
-            typeof q.validate("a".repeat(65)) === "string",
-        );
+        assert(validateForName("hoge"));
+        assert(validateForName("a".repeat(64)));
+        assert(!validateForName(""));
+        assert(!validateForName("a".repeat(65)));
       });
     });
     describe("description.en", () => {
-      it("should be set the default value of description.en based on name.en", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "description.en",
-        );
-        assert.equal(q.default({ name: { en: "foo" } }), "foo");
-      });
       it("should be able to validate description.en", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "description.en",
-        );
-        assert(
-          typeof q.validate !== "undefined" && q.validate("hoge") === true,
-        );
-        assert(
-          typeof q.validate !== "undefined" &&
-            q.validate("a".repeat(200)) === true,
-        );
-        assert(
-          typeof q.validate !== "undefined" &&
-            typeof q.validate("") === "string",
-        );
-        assert(
-          typeof q.validate !== "undefined" &&
-            typeof q.validate("a".repeat(201)) === "string",
-        );
-      });
-    });
-    describe("ja", () => {
-      it("should be true by default if the lang is ja", () => {
-        const questions = buildQuestions("dist", "ja");
-        const q = getQuestion(questions, ({ name }: Question) => name === "ja");
-        assert(q.default === true);
-      });
-      it("should be false by default if the lang is not ja", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(questions, ({ name }: Question) => name === "ja");
-        assert(q.default === false);
+        assert(validateForDescription("hoge"));
+        assert(validateForDescription("a".repeat(200)));
+        assert(!validateForDescription(""));
+        assert(!validateForDescription("a".repeat(201)));
       });
     });
     describe("name.ja", () => {
-      it("should be enabled only in answer.ja is true", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "name.ja",
-        );
-        assert(typeof q.when === "function" && q.when({ ja: false }) === false);
-        assert(typeof q.when === "function" && q.when({ ja: true }) === true);
+      beforeEach(() => {
+        jest.spyOn(prompt, "promptForName").mockResolvedValue("pass");
+        jest.spyOn(prompt, "promptForDescription").mockResolvedValue("pass");
+        jest.spyOn(prompt, "promptForOptionalName").mockResolvedValue("pass");
+        jest
+          .spyOn(prompt, "promptForOptionalDescription")
+          .mockResolvedValue("pass");
+        jest.spyOn(prompt, "promptForHomepage").mockResolvedValue("pass");
+        jest.spyOn(prompt, "promptForSupportLang").mockResolvedValue(true);
+        jest.spyOn(prompt, "promptForSupportMobile").mockResolvedValue(true);
+        jest
+          .spyOn(prompt, "promptForEnablePluginUploader")
+          .mockResolvedValue(true);
       });
-    });
-    describe("description.ja", () => {
-      it("should be enabled only in answer.ja is true", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "description.ja",
+      it("should be enabled only in answer.ja is true", async () => {
+        jest
+          .spyOn(prompt, "promptForSupportLang")
+          .mockImplementation(
+            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+              return supportLang === "Ja";
+            },
+          );
+        const result1 = await runPrompt(
+          getBoundMessage("ja"),
+          "foo/bar/dist",
+          "ja",
         );
-        assert(typeof q.when === "function" && q.when({ ja: false }) === false);
-        assert(typeof q.when === "function" && q.when({ ja: true }) === true);
-      });
-    });
-    describe("name.zh", () => {
-      it("should be enabled only in answer.zh is true", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "name.zh",
-        );
-        assert(typeof q.when === "function" && q.when({ zh: false }) === false);
-        assert(typeof q.when === "function" && q.when({ zh: true }) === true);
-      });
-    });
-    describe("description.zh", () => {
-      it("should be enabled only in answer.zh is true", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "description.zh",
-        );
-        assert(typeof q.when === "function" && q.when({ zh: false }) === false);
-        assert(typeof q.when === "function" && q.when({ zh: true }) === true);
-      });
-    });
+        assert.notEqual(result1.name.ja, undefined);
+        assert.notEqual(result1.description.ja, undefined);
+        assert.notEqual(result1.homepage_url, undefined);
+        assert.notEqual(result1.homepage_url?.ja, undefined);
 
-    describe("name.es", () => {
-      it("should be enabled only in answer.es is true", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "name.es",
+        jest
+          .spyOn(prompt, "promptForSupportLang")
+          .mockImplementation(
+            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+              return !(supportLang === "Ja");
+            },
+          );
+        const result2 = await runPrompt(
+          getBoundMessage("en"),
+          "foo/bar/dist",
+          "en",
         );
-        assert(typeof q.when === "function" && q.when({ es: false }) === false);
-        assert(typeof q.when === "function" && q.when({ es: true }) === true);
+        assert.equal(result2.name.ja, undefined);
+        assert.equal(result2.description.ja, undefined);
       });
-    });
-    describe("description.es", () => {
-      it("should be enabled only in answer.es is true", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "description.es",
-        );
-        assert(typeof q.when === "function" && q.when({ es: false }) === false);
-        assert(typeof q.when === "function" && q.when({ es: true }) === true);
-      });
-    });
 
-    describe("homepage_url.ja", () => {
-      it("should be enabled only in answer.ja is true", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "homepage_url.ja",
+      it("should be enabled only in answer.zh is true", async () => {
+        jest
+          .spyOn(prompt, "promptForSupportLang")
+          .mockImplementation(
+            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+              return supportLang === "Zh";
+            },
+          );
+        const result1 = await runPrompt(
+          getBoundMessage("ja"),
+          "foo/bar/dist",
+          "ja",
         );
-        assert(typeof q.when === "function" && q.when({ ja: false }) === false);
-        assert(typeof q.when === "function" && q.when({ ja: true }) === true);
+        assert.notEqual(result1.name.zh, undefined);
+        assert.notEqual(result1.description.zh, undefined);
+
+        jest
+          .spyOn(prompt, "promptForSupportLang")
+          .mockImplementation(
+            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+              return !(supportLang === "Zh");
+            },
+          );
+        const result2 = await runPrompt(
+          getBoundMessage("en"),
+          "foo/bar/dist",
+          "en",
+        );
+        assert.equal(result2.name.zh, undefined);
+        assert.equal(result2.description.zh, undefined);
       });
-    });
-    describe("homepage_url.zh", () => {
-      it("should be enabled only in answer.zh is true", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "homepage_url.zh",
+
+      it("should be enabled only in answer.es is true", async () => {
+        jest
+          .spyOn(prompt, "promptForSupportLang")
+          .mockImplementation(
+            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+              return supportLang === "Es";
+            },
+          );
+        const result1 = await runPrompt(
+          getBoundMessage("ja"),
+          "foo/bar/dist",
+          "ja",
         );
-        assert(typeof q.when === "function" && q.when({ zh: false }) === false);
-        assert(typeof q.when === "function" && q.when({ zh: true }) === true);
-      });
-    });
-    describe("homepage_url.es", () => {
-      it("should be enabled only in answer.es is true", () => {
-        const questions = buildQuestions("dist", "en");
-        const q = getQuestion(
-          questions,
-          ({ name }: Question) => name === "homepage_url.es",
+        assert.notEqual(result1.name.es, undefined);
+        assert.notEqual(result1.description.es, undefined);
+
+        jest
+          .spyOn(prompt, "promptForSupportLang")
+          .mockImplementation(
+            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+              return !(supportLang === "Es");
+            },
+          );
+        const result2 = await runPrompt(
+          getBoundMessage("en"),
+          "foo/bar/dist",
+          "en",
         );
-        assert(typeof q.when === "function" && q.when({ es: false }) === false);
-        assert(typeof q.when === "function" && q.when({ es: true }) === true);
+        assert.equal(result2.name.es, undefined);
+        assert.equal(result2.description.es, undefined);
       });
     });
   });

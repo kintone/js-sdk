@@ -18,6 +18,7 @@
   "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/create-plugin",
   "bugs": "https://github.com/kintone/js-sdk/issues",
   "dependencies": {
+    "@inquirer/prompts": "^5.3.7",
     "chalk": "^4.1.2",
     "glob": "^10.4.5",
     "inquirer": "^10.1.6",

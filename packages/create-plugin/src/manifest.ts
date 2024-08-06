@@ -1,6 +1,6 @@
 "use strict";
 
-import type { Answers } from "inquirer";
+import type { Answers } from "./qa";
 import type { TemplateType } from "./template";
 
 const minimumManifest = {
@@ -49,17 +49,20 @@ export interface Manifest {
     ja?: string;
     en: string;
     zh?: string;
+    es?: string;
   };
   description?: {
     ja?: string;
     en: string;
     zh?: string;
+    es?: string;
   };
   icon: string;
   homepage_url?: {
     ja?: string;
     en?: string;
     zh?: string;
+    es?: string;
   };
   desktop?: {
     js?: string[];
@@ -88,9 +91,6 @@ const answer2Manifest = (answers: Answers): Manifest => {
     ) {
       return acc;
     }
-    if (typeof answers[key] === "object" && !Array.isArray(answers[key])) {
-      return { ...acc, [key]: answer2Manifest(answers[key]) };
-    }
     return { ...acc, ...{ [key]: answers[key] } };
   }, {}) as { [key: string]: string };
   return Object.keys(filteredAnswer).reduce((acc, key) => {
@@ -118,7 +118,7 @@ export const buildManifest = (
     ...(templateType === "modern" ? modernManifest : minimumManifest),
     ...answer2Manifest(answers),
   };
-  if (answers.mobile) {
+  if (answers.supportMobile) {
     manifest = {
       ...manifest,
       ...{
