@@ -132,6 +132,9 @@ importers:
 
   packages/customize-uploader:
     dependencies:
+      '@inquirer/prompts':
+        specifier: ^5.3.7
+        version: 5.3.7
       '@kintone/rest-api-client':
         specifier: ^5.5.2
         version: link:../rest-api-client

@@ -44,6 +44,7 @@
     "@types/inquirer": "8.2.10"
   },
   "dependencies": {
+    "@inquirer/prompts": "^5.3.7",
     "@kintone/rest-api-client": "^5.5.2",
     "chokidar": "^3.6.0",
     "inquirer": "^10.1.6",
