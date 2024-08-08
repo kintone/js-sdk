@@ -15,7 +15,11 @@ describe("SpaceClient", () => {
   beforeEach(() => {
     const requestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl: "https://example.cybozu.com",
-      auth: { type: "apiToken", apiToken: "foo" },
+      auth: {
+        type: "password",
+        username: "hoge",
+        password: "foo",
+      },
     });
     mockClient = buildMockClient(requestConfigBuilder);
     spaceClient = new SpaceClient(mockClient);

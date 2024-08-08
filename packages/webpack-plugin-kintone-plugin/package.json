@@ -39,9 +39,9 @@
   "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/webpack-plugin-kintone-plugin#readme",
   "devDependencies": {
     "@types/adm-zip": "^0.5.5",
-    "adm-zip": "^0.5.14",
+    "adm-zip": "^0.5.15",
     "chokidar": "^3.6.0",
-    "rimraf": "^5.0.9",
+    "rimraf": "^5.0.10",
     "webpack": "^5.93.0",
     "webpack-cli": "5.1.4",
     "webpack-merge": "^6.0.1"

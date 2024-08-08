@@ -40,6 +40,7 @@
 - [updateAdminNotes](#updateAdminNotes)
 - [move](#move)
 - [getPlugins](#getPlugins)
+- [addPlugins](#addPlugins)
 
 ## Overview
 
@@ -1445,3 +1446,25 @@ Gets the list of Plug-ins added to an App.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/get-app-plugins/
+
+### addPlugins
+
+Adds Plug-ins to an App.
+
+#### Parameters
+
+| Name     |       Type       | Required | Description                                                                                                                                                                                                                                      |
+| -------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app      | Number or String |   Yes    | The App ID.                                                                                                                                                                                                                                      |
+| ids      | Array of String  |   Yes    | The Plug-in IDs that will be added to the App.                                                                                                                                                                                                   |
+| revision | Number or String |          | Specify the revision number of the settings that will be deployed.<br />The request will fail if the stated revision number is not the latest revision.<br />The revision will not be checked if this parameter is ignored or `-1` is specified. |
+
+#### Returns
+
+| Name     |  Type  | Description                              |
+| -------- | :----: | ---------------------------------------- |
+| revision | String | The revision number of the App settings. |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/apps/add-plugins/
