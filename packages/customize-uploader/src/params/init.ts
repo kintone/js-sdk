@@ -8,4 +8,3 @@ export const inquireInitParams = async (lang: Lang) => {
   const scope = await promptForScope(m);
   return { appId, scope, lang };
 };
-

@@ -1,5 +1,5 @@
 import { input, select } from "@inquirer/prompts";
-import { BoundMessage } from "../../messages";
+import type { BoundMessage } from "../../messages";
 
 const validateForAppId = (v: string) => !!v;
 
@@ -14,11 +14,9 @@ export const promptForScope = async (m: BoundMessage) => {
   return select({
     message: m("Q_Scope"),
     choices: [
-      { name: "ALL", value: "ALL"},
-      { name: "ADMIN", value: "ADMIN"},
-      { name: "NONE", value: "NONE"},
-    ]
+      { name: "ALL", value: "ALL" },
+      { name: "ADMIN", value: "ADMIN" },
+      { name: "NONE", value: "NONE" },
+    ],
   });
 };
-
-

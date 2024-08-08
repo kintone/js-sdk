@@ -110,8 +110,6 @@ export type BoundMessage = (key: keyof typeof messages) => string;
  * Returns a function bound lang to getMessage
  * @param lang
  */
-export const getBoundMessage = (
-  lang: Lang,
-): BoundMessage => {
+export const getBoundMessage = (lang: Lang): BoundMessage => {
   return (key) => getMessage(lang, key);
 };
