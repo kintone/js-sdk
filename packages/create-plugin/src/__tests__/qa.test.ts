@@ -6,27 +6,27 @@ import type { BoundMessage } from "../messages";
 import { getBoundMessage } from "../messages";
 
 describe("qa", () => {
-  describe("prompt", () => {
-    describe("name.en", () => {
-      it("should be set the default value of name.en based on the passed directory", () => {
-        assert.equal(getDefaultName("foo/bar/dist"), "dist");
-      });
-      it("should be able to validate name.en", () => {
-        assert(validateForName("hoge"));
-        assert(validateForName("a".repeat(64)));
-        assert(!validateForName(""));
-        assert(!validateForName("a".repeat(65)));
-      });
+  describe("validator", () => {
+    it("should be able to validate by validateForName", () => {
+      assert(validateForName("hoge"));
+      assert(validateForName("a".repeat(64)));
+      assert(!validateForName(""));
+      assert(!validateForName("a".repeat(65)));
     });
-    describe("description.en", () => {
-      it("should be able to validate description.en", () => {
-        assert(validateForDescription("hoge"));
-        assert(validateForDescription("a".repeat(200)));
-        assert(!validateForDescription(""));
-        assert(!validateForDescription("a".repeat(201)));
-      });
+    it("should be able to validate by validateForDescription", () => {
+      assert(validateForDescription("hoge"));
+      assert(validateForDescription("a".repeat(200)));
+      assert(!validateForDescription(""));
+      assert(!validateForDescription("a".repeat(201)));
     });
-    describe("name.ja", () => {
+  });
+  describe("getDefaultName", () => {
+    it("should be set the default value of name.en based on the passed directory", () => {
+      assert.equal(getDefaultName("foo/bar/dist"), "dist");
+    });
+  });
+  describe("runPrompt", () => {
+    describe("optional lang parameters", () => {
       beforeEach(() => {
         jest.spyOn(prompt, "promptForName").mockResolvedValue("pass");
         jest.spyOn(prompt, "promptForDescription").mockResolvedValue("pass");
@@ -41,7 +41,7 @@ describe("qa", () => {
           .spyOn(prompt, "promptForEnablePluginUploader")
           .mockResolvedValue(true);
       });
-      it("should be enabled only in answer.ja is true", async () => {
+      it("should be set ja parameters in supportJa is true", async () => {
         jest
           .spyOn(prompt, "promptForSupportLang")
           .mockImplementation(
@@ -58,7 +58,8 @@ describe("qa", () => {
         assert.notEqual(result1.description.ja, undefined);
         assert.notEqual(result1.homepage_url, undefined);
         assert.notEqual(result1.homepage_url?.ja, undefined);
-
+      });
+      it("should not be set ja parameters in supportJa is false", async () => {
         jest
           .spyOn(prompt, "promptForSupportLang")
           .mockImplementation(
@@ -74,8 +75,7 @@ describe("qa", () => {
         assert.equal(result2.name.ja, undefined);
         assert.equal(result2.description.ja, undefined);
       });
-
-      it("should be enabled only in answer.zh is true", async () => {
+      it("should be set zh parameters in supportZh is true", async () => {
         jest
           .spyOn(prompt, "promptForSupportLang")
           .mockImplementation(
@@ -90,7 +90,10 @@ describe("qa", () => {
         );
         assert.notEqual(result1.name.zh, undefined);
         assert.notEqual(result1.description.zh, undefined);
-
+        assert.notEqual(result1.homepage_url, undefined);
+        assert.notEqual(result1.homepage_url?.zh, undefined);
+      });
+      it("should not be set zh parameters in supportZh is false", async () => {
         jest
           .spyOn(prompt, "promptForSupportLang")
           .mockImplementation(
@@ -106,8 +109,7 @@ describe("qa", () => {
         assert.equal(result2.name.zh, undefined);
         assert.equal(result2.description.zh, undefined);
       });
-
-      it("should be enabled only in answer.es is true", async () => {
+      it("should be set es parameters in supportEs is true", async () => {
         jest
           .spyOn(prompt, "promptForSupportLang")
           .mockImplementation(
@@ -122,7 +124,10 @@ describe("qa", () => {
         );
         assert.notEqual(result1.name.es, undefined);
         assert.notEqual(result1.description.es, undefined);
-
+        assert.notEqual(result1.homepage_url, undefined);
+        assert.notEqual(result1.homepage_url?.es, undefined);
+      });
+      it("should not be set es parameters in supportEs is false", async () => {
         jest
           .spyOn(prompt, "promptForSupportLang")
           .mockImplementation(
