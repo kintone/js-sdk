@@ -367,6 +367,9 @@ importers:
 
   packages/plugin-uploader:
     dependencies:
+      '@inquirer/prompts':
+        specifier: ^5.3.7
+        version: 5.3.7
       chalk:
         specifier: ^4.1.2
         version: 4.1.2
