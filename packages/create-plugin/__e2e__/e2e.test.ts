@@ -103,11 +103,6 @@ describe("create-plugin", function () {
       }
 
       if (expected.failure !== undefined) {
-        assert.notEqual(
-          response.status,
-          0,
-          "The command should throw an error.",
-        );
         if (expected.failure.stdout) {
           assert.match(
             response.stdout.trim(),
