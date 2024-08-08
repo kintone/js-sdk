@@ -25,7 +25,7 @@ const verifyOutputDirectory = (outputDirectory: string, lang: Lang): void => {
   }
 };
 
-const getPrintLogMessage = (
+const getSuccessCreatedPluginMessage = (
   manifest: Manifest,
   outputDir: string,
   enablePluginUploader: boolean,
@@ -90,7 +90,12 @@ const run = (outputDir: string, lang: Lang, templateType: TemplateType) => {
     })
     .then(([manifest, enablePluginUploader]) => {
       printLog(
-        getPrintLogMessage(manifest, outputDir, enablePluginUploader, lang),
+        getSuccessCreatedPluginMessage(
+          manifest,
+          outputDir,
+          enablePluginUploader,
+          lang,
+        ),
       );
     })
     .catch((error: Error) => {
