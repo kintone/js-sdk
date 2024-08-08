@@ -1,6 +1,10 @@
-import * as inquirer from "inquirer";
 import type { Lang } from "../lang";
 import { getBoundMessage } from "../messages";
+import {
+  promptForBaseUrl,
+  promptForPassword,
+  promptForUsername,
+} from "./prompts";
 
 interface Params {
   username?: string;
@@ -10,7 +14,9 @@ interface Params {
   lang: Lang;
 }
 
-export const inquireParams = ({
+const isSet = (v: string | null | undefined) => typeof v === "string";
+
+export const inquireParams = async ({
   username,
   password,
   baseUrl,
@@ -18,36 +24,21 @@ export const inquireParams = ({
   oAuthToken,
 }: Params) => {
   const m = getBoundMessage(lang);
-  const questions = [
-    {
-      type: "input",
-      message: m("Q_BaseUrl"),
-      name: "baseUrl",
-      default: baseUrl,
-      when: () => !baseUrl,
-      validate: (v: string) => !!v,
-    },
-    {
-      type: "input",
-      name: "username",
-      message: m("Q_UserName"),
-      default: username,
-      when: () => !oAuthToken && !username,
-      validate: (v: string) => !!v,
-    },
-    {
-      type: "password",
-      name: "password",
-      message: m("Q_Password"),
-      default: password,
-      when: () => !oAuthToken && !password,
-      validate: (v: string) => !!v,
-    },
-  ];
+  const _baseUrl = isSet(baseUrl) ? baseUrl : await promptForBaseUrl(m);
+  const _username =
+    isSet(oAuthToken) || isSet(username)
+      ? username
+      : await promptForUsername(m);
+  const _password =
+    isSet(oAuthToken) || isSet(password)
+      ? password
+      : await promptForPassword(m);
 
-  return inquirer
-    .prompt(questions)
-    .then((answers) => Object.assign({ username, password, baseUrl }, answers));
+  return {
+    username: _username,
+    password: _password,
+    baseUrl: _baseUrl,
+  };
 };
 
 export * from "./init";

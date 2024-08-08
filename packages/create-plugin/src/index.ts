@@ -2,15 +2,15 @@
 
 import chalk = require("chalk");
 import * as fs from "fs";
-import * as inquirer from "inquirer";
 import { rimraf } from "rimraf";
 import { generatePlugin } from "./generator";
 import type { Lang } from "./lang";
 import { printError, printLog } from "./logger";
+import type { Manifest } from "./manifest";
 import { buildManifest } from "./manifest";
 import { getBoundMessage, getMessage } from "./messages";
-import { buildQuestions } from "./qa";
 import type { TemplateType } from "./template";
+import { runPrompt } from "./qa";
 
 /**
  * Verify whether the output directory is valid
@@ -25,36 +25,14 @@ const verifyOutputDirectory = (outputDirectory: string, lang: Lang): void => {
   }
 };
 
-/**
- * Run create-kintone-plugin script
- * @param outputDir
- * @param lang
- * @param templateType
- */
-const run = (outputDir: string, lang: Lang, templateType: TemplateType) => {
+const getSuccessCreatedPluginMessage = (
+  manifest: Manifest,
+  outputDir: string,
+  enablePluginUploader: boolean,
+  lang: Lang,
+) => {
   const m = getBoundMessage(lang);
-  verifyOutputDirectory(outputDir, lang);
-  printLog(`
-
-  ${m("introduction")}
-
-  `);
-
-  inquirer
-    .prompt(buildQuestions(outputDir, lang))
-    .then(async (answers) => {
-      const manifest = buildManifest(answers, templateType);
-      await generatePlugin(
-        outputDir,
-        manifest,
-        lang,
-        answers.pluginUploader,
-        templateType,
-      );
-      return [manifest, answers.pluginUploader];
-    })
-    .then(([manifest, enablePluginUploader]) => {
-      printLog(`
+  return `
 
 Success! Created ${manifest.name.en} at ${outputDir}
 
@@ -80,7 +58,45 @@ ${enablePluginUploader ? m("howToUsePluginUploader") : ""}
 ${m("lastMessage")}
 ${m("developerSite")}
 
-      `);
+      `;
+};
+
+/**
+ * Run create-kintone-plugin script
+ * @param outputDir
+ * @param lang
+ * @param templateType
+ */
+const run = (outputDir: string, lang: Lang, templateType: TemplateType) => {
+  const m = getBoundMessage(lang);
+  verifyOutputDirectory(outputDir, lang);
+  printLog(`
+
+  ${m("introduction")}
+
+  `);
+
+  runPrompt(m, outputDir, lang)
+    .then(async (answers): Promise<[Manifest, boolean]> => {
+      const manifest = buildManifest(answers, templateType);
+      await generatePlugin(
+        outputDir,
+        manifest,
+        lang,
+        answers.enablePluginUploader,
+        templateType,
+      );
+      return [manifest, answers.enablePluginUploader];
+    })
+    .then(([manifest, enablePluginUploader]) => {
+      printLog(
+        getSuccessCreatedPluginMessage(
+          manifest,
+          outputDir,
+          enablePluginUploader,
+          lang,
+        ),
+      );
     })
     .catch((error: Error) => {
       rimraf(outputDir, { glob: true })
