@@ -8,6 +8,8 @@ import type {
   GetRequiredPluginsForResponse,
   UpdatePluginForRequest,
   UpdatePluginForResponse,
+  InstallPluginForRequest,
+  InstallPluginForResponse,
 } from "./types/plugin";
 
 export class PluginClient extends BaseClient {
@@ -35,5 +37,12 @@ export class PluginClient extends BaseClient {
   ): Promise<UpdatePluginForResponse> {
     const path = this.buildPath({ endpointName: "plugin" });
     return this.client.put(path, params);
+  }
+
+  public installPlugin(
+    params: InstallPluginForRequest,
+  ): Promise<InstallPluginForResponse> {
+    const path = this.buildPath({ endpointName: "plugin" });
+    return this.client.post(path, params);
   }
 }
