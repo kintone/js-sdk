@@ -46,3 +46,12 @@ export type UpdatePluginForResponse = {
   id: PluginID;
   version: string;
 };
+
+export type InstallPluginForRequest = {
+  fileKey: string;
+};
+
+export type InstallPluginForResponse = {
+  id: PluginID;
+  version: string;
+};
