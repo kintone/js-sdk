@@ -45,6 +45,9 @@ export type TestPattern = {
       stdout?: string;
       stderr?: string;
     };
+    validation?: {
+      stdout?: string;
+    }
   };
 };
 
@@ -103,6 +106,11 @@ describe("create-plugin", function () {
       }
 
       if (expected.failure !== undefined) {
+        assert.notEqual(
+          response.status,
+          0,
+          "The command should throw an error.",
+        );
         if (expected.failure.stdout) {
           assert.match(
             response.stdout.trim(),
@@ -114,6 +122,15 @@ describe("create-plugin", function () {
           assert.match(
             response.stderr.trim(),
             new RegExp(expected.failure.stderr),
+          );
+        }
+      }
+
+      if (expected.validation !== undefined) {
+        if (expected.validation.stdout) {
+          assert.match(
+            response.stdout.trim(),
+            new RegExp(expected.validation.stdout),
           );
         }
       }

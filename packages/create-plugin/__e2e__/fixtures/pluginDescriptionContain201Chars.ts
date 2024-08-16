@@ -23,6 +23,6 @@ export const pattern: TestPattern = {
     ],
   },
   expected: {
-    failure: { stdout: "> Plug-in description must be 1-200chars" },
+    validation: { stdout: "> Plug-in description must be 1-200chars" },
   },
 };
