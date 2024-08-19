@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "core-js": "^3.37.1",
-    "axios": "^1.7.3",
+    "axios": "^1.7.4",
     "form-data": "^4.0.0",
     "js-base64": "^3.7.7",
     "mime": "^3.0.0",
