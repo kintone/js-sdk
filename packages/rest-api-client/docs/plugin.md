@@ -4,6 +4,7 @@
 - [getRequiredPlugins](#getRequiredPlugins)
 - [getApps](#getApps)
 - [updatePlugin](#updatePlugin)
+- [installPlugin](#installPlugin)
 
 ## Overview
 
@@ -119,3 +120,24 @@ Updates an imported plug-in in the Kintone environment.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/plugins/update-plugin/
+
+### installPlugin
+
+Install an imported plug-in in the Kintone environment.
+
+#### Parameters
+
+| Name    |  Type  | Required | Description                                                                                                                                                                                       |
+| ------- | :----: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| fileKey | String |   Yes    | The fileKey representing an uploaded file.<br />Use the following API to upload the file and retrieve the fileKey: [Upload File](https://kintone.dev/en/docs/kintone/rest-api/files/upload-file/) |
+
+#### Returns
+
+| Name    |  Type  | Description                        |
+| ------- | :----: | ---------------------------------- |
+| id      | String | The installed plug-in ID.          |
+| version | String | The version number of the plug-in. |
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/plugins/install-plugin/
