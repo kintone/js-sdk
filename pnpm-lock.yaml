@@ -72,7 +72,7 @@ importers:
   packages/create-plugin:
     dependencies:
       '@inquirer/prompts':
-        specifier: ^5.3.7
+        specifier: ^5.3.8
         version: 5.3.8
       chalk:
         specifier: ^4.1.2
@@ -130,7 +130,7 @@ importers:
   packages/customize-uploader:
     dependencies:
       '@inquirer/prompts':
-        specifier: ^5.3.7
+        specifier: ^5.3.8
         version: 5.3.8
       '@kintone/rest-api-client':
         specifier: ^5.5.2
@@ -362,7 +362,7 @@ importers:
   packages/plugin-uploader:
     dependencies:
       '@inquirer/prompts':
-        specifier: ^5.3.7
+        specifier: ^5.3.8
         version: 5.3.8
       chalk:
         specifier: ^4.1.2
