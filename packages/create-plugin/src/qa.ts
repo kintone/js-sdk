@@ -1,152 +1,102 @@
 "use strict";
 
-import type { Answers, Question } from "inquirer";
 import type { Lang } from "./lang";
-import { getBoundMessage } from "./messages";
+import type { BoundMessage } from "./messages";
+import {
+  promptForDescription,
+  promptForEnablePluginUploader,
+  promptForHomepage,
+  promptForName,
+  promptForOptionalDescription,
+  promptForOptionalName,
+  promptForSupportLang,
+  promptForSupportMobile,
+} from "./qa/prompt";
 
-const NAME_MAX_LENGTH = 64;
-const DESCRIPTION_MAX_LENGTH = 200;
+export type Answers = {
+  name: {
+    ja?: string;
+    en: string;
+    zh?: string;
+    es?: string;
+  };
+  description: {
+    ja?: string;
+    en: string;
+    zh?: string;
+    es?: string;
+  };
+  homepage_url?: {
+    ja?: string;
+    en?: string;
+    zh?: string;
+    es?: string;
+  };
+  supportMobile: boolean;
+  enablePluginUploader: boolean;
+  [key: string]: unknown;
+};
 
-/**
- * Build questions for creating a kintone plugin project
- * @param outputDir
- * @param lang
- */
-export const buildQuestions = (outputDir: string, lang: Lang): Question[] => {
-  const m = getBoundMessage(lang);
-  return [
-    {
-      type: "input",
-      name: "name.en",
-      message: m("Q_NameEn"),
-      default: outputDir.replace(/.*\//, ""),
-      validate: (value) =>
-        value.length > 0 && value.length <= NAME_MAX_LENGTH
-          ? true
-          : m("Q_NameEnError"),
+export const getDefaultName = (outputDir: string) =>
+  outputDir.replace(/.*\//, "");
+
+export const runPrompt = async (
+  m: BoundMessage,
+  outputDir: string,
+  lang: Lang,
+): Promise<Answers> => {
+  const enName = await promptForName(m, "En", getDefaultName(outputDir));
+  const enDescription = await promptForDescription(m, "En", enName);
+
+  const supportJa = await promptForSupportLang(m, "Ja", lang === "ja");
+  const jaName = supportJa ? await promptForOptionalName(m, "Ja") : undefined;
+  const jaDescription = supportJa
+    ? await promptForOptionalDescription(m, "Ja")
+    : undefined;
+
+  const supportZh = await promptForSupportLang(m, "Zh");
+  const zhName = supportZh ? await promptForOptionalName(m, "Zh") : undefined;
+  const zhDescription = supportZh
+    ? await promptForOptionalDescription(m, "Zh")
+    : undefined;
+
+  const supportEs = await promptForSupportLang(m, "Es");
+  const esName = supportEs ? await promptForOptionalName(m, "Es") : undefined;
+  const esDescription = supportEs
+    ? await promptForOptionalDescription(m, "Es")
+    : undefined;
+
+  const enHomepage = await promptForHomepage(m, "En");
+  const jaHomepage = supportJa ? await promptForHomepage(m, "Ja") : undefined;
+  const zhHomepage = supportZh ? await promptForHomepage(m, "Zh") : undefined;
+  const esHomepage = supportEs ? await promptForHomepage(m, "Es") : undefined;
+
+  const supportMobile = await promptForSupportMobile(m);
+  const enablePluginUploader = await promptForEnablePluginUploader(m);
+
+  const result = {
+    name: {
+      en: enName,
+      ja: jaName,
+      zh: zhName,
+      es: esName,
     },
-    {
-      type: "input",
-      name: "description.en",
-      message: m("Q_DescriptionEn"),
-      default: (answers: Answers) => answers.name.en,
-      validate: (value) =>
-        value.length > 0 && value.length <= DESCRIPTION_MAX_LENGTH
-          ? true
-          : m("Q_DescriptionEnError"),
+    description: {
+      en: enDescription,
+      ja: jaDescription,
+      zh: zhDescription,
+      es: esDescription,
     },
-    {
-      type: "confirm",
-      name: "ja",
-      default: lang === "ja",
-      message: m("Q_SupportJa"),
-    },
-    {
-      type: "input",
-      name: "name.ja",
-      when: (answers) => answers.ja,
-      message: m("Q_NameJa"),
-      validate: (value) =>
-        value.length === 0 || value.length <= NAME_MAX_LENGTH
-          ? true
-          : m("Q_NameJaError"),
-    },
-    {
-      type: "input",
-      name: "description.ja",
-      when: (answers) => answers.ja,
-      message: m("Q_DescriptionJa"),
-      validate: (value) =>
-        value.length === 0 || value.length <= DESCRIPTION_MAX_LENGTH
-          ? true
-          : m("Q_DescriptionJaError"),
-    },
-    {
-      type: "confirm",
-      name: "zh",
-      default: false,
-      message: m("Q_SupportZh"),
-    },
-    {
-      type: "input",
-      name: "name.zh",
-      when: (answers) => answers.zh,
-      message: m("Q_NameZh"),
-      validate: (value) =>
-        value.length === 0 || value.length <= NAME_MAX_LENGTH
-          ? true
-          : m("Q_NameZhError"),
-    },
-    {
-      type: "input",
-      name: "description.zh",
-      when: (answers) => answers.zh,
-      message: m("Q_DescriptionZh"),
-      validate: (value) =>
-        value.length === 0 || value.length <= DESCRIPTION_MAX_LENGTH
-          ? true
-          : m("Q_DescriptionZhError"),
-    },
-    {
-      type: "confirm",
-      name: "es",
-      default: false,
-      message: m("Q_SupportEs"),
-    },
-    {
-      type: "input",
-      name: "name.es",
-      when: (answers) => answers.es,
-      message: m("Q_NameEs"),
-      validate: (value) =>
-        value.length === 0 || value.length <= NAME_MAX_LENGTH
-          ? true
-          : m("Q_NameEsError"),
-    },
-    {
-      type: "input",
-      name: "description.es",
-      when: (answers) => answers.es,
-      message: m("Q_DescriptionEs"),
-      validate: (value) =>
-        value.length === 0 || value.length <= DESCRIPTION_MAX_LENGTH
-          ? true
-          : m("Q_DescriptionEsError"),
-    },
-    {
-      type: "input",
-      name: "homepage_url.en",
-      message: m("Q_WebsiteUrlEn"),
-    },
-    {
-      type: "input",
-      name: "homepage_url.ja",
-      when: (answers) => answers.ja,
-      message: m("Q_WebsiteUrlJa"),
-    },
-    {
-      type: "input",
-      name: "homepage_url.zh",
-      when: (answers) => answers.zh,
-      message: m("Q_WebsiteUrlZh"),
-    },
-    {
-      type: "input",
-      name: "homepage_url.es",
-      when: (answers) => answers.es,
-      message: m("Q_WebsiteUrlEs"),
-    },
-    {
-      type: "confirm",
-      name: "mobile",
-      default: true,
-      message: m("Q_MobileSupport"),
-    },
-    {
-      type: "confirm",
-      name: "pluginUploader",
-      default: true,
-      message: m("Q_EnablePluginUploader"),
-    },
-  ];
+    supportMobile: supportMobile,
+    enablePluginUploader: enablePluginUploader,
+  } as Answers;
+  if (enHomepage) {
+    result.homepage_url = {
+      en: enHomepage,
+      ja: jaHomepage,
+      zh: zhHomepage,
+      es: esHomepage,
+    };
+  }
+  return result;
 };

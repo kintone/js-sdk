@@ -177,12 +177,12 @@ export const getMessage = (
   return messages[key][lang];
 };
 
+export type BoundMessage = (key: keyof MessageMap) => string;
+
 /**
  * Returns a function bound lang to getMessage
  * @param lang
  */
-export const getBoundMessage = (
-  lang: keyof LangMap,
-): ((key: keyof MessageMap) => string) => {
+export const getBoundMessage = (lang: keyof LangMap): BoundMessage => {
   return getMessage.bind(null, lang);
 };
