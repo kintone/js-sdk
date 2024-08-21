@@ -7,12 +7,15 @@ describe("manifest", () => {
   describe("buildManifest", () => {
     const templateType = "minimum";
     it("should include basic settings", () => {
+      const baseManifest = createBaseManifest();
       // @ts-ignore We can fix this using conditional types
       const manifest = buildManifest(
         {
-          ...createBaseManifest(),
-          ja: false,
-          cn: false,
+          name: baseManifest.name,
+          description: baseManifest.name,
+          homepage_url: {},
+          supportMobile: false,
+          enablePluginUploader: false,
         },
         templateType,
       );
@@ -21,26 +24,30 @@ describe("manifest", () => {
       assert.strictEqual(manifest.mobile, undefined);
     });
     it("should include mobile.js if the answers enable mobile", () => {
+      const baseManifest = createBaseManifest();
       // @ts-ignore We can fix this using conditional types
       const manifest = buildManifest(
         {
-          ...createBaseManifest(),
-          ja: false,
-          cn: false,
-          mobile: true,
+          name: baseManifest.name,
+          description: baseManifest.name,
+          homepage_url: {},
+          supportMobile: true,
+          enablePluginUploader: false,
         },
         templateType,
       );
       assert(manifest.mobile && Array.isArray(manifest.mobile.js));
     });
     it("should include config if the answers enable config", () => {
+      const baseManifest = createBaseManifest();
       // @ts-ignore We can fix this using conditional types
       const manifest = buildManifest(
         {
-          ...createBaseManifest(),
-          ja: false,
-          cn: false,
-          config: true,
+          name: baseManifest.name,
+          description: baseManifest.name,
+          homepage_url: {},
+          supportMobile: false,
+          enablePluginUploader: false,
         },
         templateType,
       );

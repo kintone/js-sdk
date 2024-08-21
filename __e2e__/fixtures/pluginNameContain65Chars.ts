@@ -19,6 +19,6 @@ export const pattern: TestPattern = {
     ],
   },
   expected: {
-    failure: { stdout: ">> Plug-in name must be 1-64chars" },
+    validation: { stdout: "> Plug-in name must be 1-64chars" },
   },
 };
