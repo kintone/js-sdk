@@ -37,7 +37,7 @@
     "prettier": "^3.3.3"
   },
   "devDependencies": {
-    "@types/eslint": "^8.56.11",
+    "@types/eslint": "^8.56.12",
     "@types/lodash": "^4.17.7",
     "ts-loader": "^9.5.1",
     "webpack": "^5.94.0",
