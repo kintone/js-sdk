@@ -40,6 +40,12 @@ import type {
 } from "./types";
 import { BaseClient } from "./BaseClient";
 import type { AppPlugin } from "./types/app/plugin";
+import type {
+  GetAppSettingsForRequest,
+  GetAppSettingsForResponse,
+  UpdateAppSettingsForRequest,
+  UpdateAppSettingsForResponse,
+} from "./types/app/setting";
 type RowLayoutForParameter = {
   type: "ROW";
   fields: Array<{ [key: string]: unknown }>;
@@ -224,37 +230,9 @@ export class AppClient extends BaseClient {
     return this.client.post(path, { name });
   }
 
-  public getAppSettings(params: {
-    app: AppID;
-    lang?: AppLang;
-    preview?: boolean;
-  }): Promise<{
-    name: string;
-    description: string;
-    icon:
-      | {
-          type: "FILE";
-          file: {
-            contentType: string;
-            fileKey: string;
-            name: string;
-            size: string;
-          };
-        }
-      | { type: "PRESET"; key: string };
-    theme:
-      | "WHITE"
-      | "CLIPBOARD"
-      | "BINDER"
-      | "PENCIL"
-      | "CLIPS"
-      | "RED"
-      | "BLUE"
-      | "GREEN"
-      | "YELLOW"
-      | "BLACK";
-    revision: string;
-  }> {
+  public getAppSettings(
+    params: GetAppSettingsForRequest,
+  ): Promise<GetAppSettingsForResponse> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/settings",
@@ -263,31 +241,9 @@ export class AppClient extends BaseClient {
     return this.client.get(path, rest);
   }
 
-  public updateAppSettings(params: {
-    app: AppID;
-    name?: string;
-    description?: string;
-    icon?:
-      | {
-          type: "FILE";
-          file: {
-            fileKey: string;
-          };
-        }
-      | { type: "PRESET"; key: string };
-    theme?:
-      | "WHITE"
-      | "CLIPBOARD"
-      | "BINDER"
-      | "PENCIL"
-      | "CLIPS"
-      | "RED"
-      | "BLUE"
-      | "GREEN"
-      | "YELLOW"
-      | "BLACK";
-    revision?: Revision;
-  }): Promise<{ revision: string }> {
+  public updateAppSettings(
+    params: UpdateAppSettingsForRequest,
+  ): Promise<UpdateAppSettingsForResponse> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/settings",
       preview: true,

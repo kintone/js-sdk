@@ -60,6 +60,20 @@ describe("AppSettings", () => {
         },
       },
       theme: "WHITE" as const,
+      titleField: {
+        selectionMode: "AUTO" as const,
+        code: "titleFieldCode",
+      },
+      enableThumbnails: true,
+      enableBulkDeletion: true,
+      enableComments: true,
+      enableDuplicateRecord: true,
+      numberPrecision: {
+        digits: 30,
+        decimalPlaces: "10",
+        roundingMode: "HALF_EVEN" as const,
+      },
+      firstMonthOfFiscalYear: 12,
     };
     beforeEach(async () => {
       await appClient.updateAppSettings(params);
