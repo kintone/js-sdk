@@ -71,7 +71,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "normalize.css": "^8.0.1",
     "path-browserify": "^1.0.1",
-    "postcss": "^8.4.41",
+    "postcss": "^8.4.44",
     "postcss-cli": "^11.0.0",
     "process": "^0.11.10",
     "redux-logger": "^3.0.6",
