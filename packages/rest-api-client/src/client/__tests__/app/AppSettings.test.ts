@@ -61,7 +61,7 @@ describe("AppSettings", () => {
       },
       theme: "WHITE" as const,
       titleField: {
-        selectionMode: "AUTO" as const,
+        selectionMode: "MANUAL" as const,
         code: "titleFieldCode",
       },
       enableThumbnails: true,

@@ -11,10 +11,14 @@ type Theme =
   | "YELLOW"
   | "BLACK";
 
-type TitleField = {
-  selectionMode: "AUTO" | "MANUAL";
-  code: string;
-};
+type TitleField =
+  | {
+      selectionMode: "AUTO";
+    }
+  | {
+      selectionMode: "MANUAL";
+      code: string;
+    };
 
 export type GetAppSettingsForRequest = {
   app: AppID;
@@ -64,17 +68,17 @@ export type UpdateAppSettingsForRequest = {
       }
     | { type: "PRESET"; key: string };
   theme?: Theme;
-  titleField: TitleField;
-  enableThumbnails: boolean;
-  enableBulkDeletion: boolean;
-  enableComments: boolean;
-  enableDuplicateRecord: boolean;
-  numberPrecision: {
-    digits: string | number;
-    decimalPlaces: string | number;
-    roundingMode: "HALF_EVEN" | "UP" | "DOWN";
+  titleField?: TitleField;
+  enableThumbnails?: boolean;
+  enableBulkDeletion?: boolean;
+  enableComments?: boolean;
+  enableDuplicateRecord?: boolean;
+  numberPrecision?: {
+    digits?: string | number;
+    decimalPlaces?: string | number;
+    roundingMode?: "HALF_EVEN" | "UP" | "DOWN";
   };
-  firstMonthOfFiscalYear: string | number;
+  firstMonthOfFiscalYear?: string | number;
   revision?: Revision;
 };
 
