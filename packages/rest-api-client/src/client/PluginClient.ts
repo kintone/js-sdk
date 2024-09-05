@@ -10,6 +10,7 @@ import type {
   UpdatePluginForResponse,
   InstallPluginForRequest,
   InstallPluginForResponse,
+  UninstallPluginForRequest,
 } from "./types/plugin";
 
 export class PluginClient extends BaseClient {
@@ -44,5 +45,10 @@ export class PluginClient extends BaseClient {
   ): Promise<InstallPluginForResponse> {
     const path = this.buildPath({ endpointName: "plugin" });
     return this.client.post(path, params);
+  }
+
+  public uninstallPlugin(params: UninstallPluginForRequest): Promise<{}> {
+    const path = this.buildPath({ endpointName: "plugin" });
+    return this.client.delete(path, params);
   }
 }

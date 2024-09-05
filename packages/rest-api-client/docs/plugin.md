@@ -5,6 +5,7 @@
 - [getApps](#getApps)
 - [updatePlugin](#updatePlugin)
 - [installPlugin](#installPlugin)
+- [uninstallPlugin](#uninstallPlugin)
 
 ## Overview
 
@@ -141,3 +142,21 @@ Install an imported plug-in in the Kintone environment.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/plugins/install-plugin/
+
+### uninstallPlugin
+
+Uninstalls a plug-in from the Kintone environment.
+
+#### Parameters
+
+| Name |  Type  | Required | Description            |
+| ---- | :----: | :------: | ---------------------- |
+| id   | String |   Yes    | The ID of the plug-in. |
+
+#### Returns
+
+An empty object.
+
+#### Reference
+
+- https://kintone.dev/en/docs/kintone/rest-api/plugins/uninstall-plugin/

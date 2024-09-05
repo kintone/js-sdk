@@ -55,3 +55,7 @@ export type InstallPluginForResponse = {
   id: PluginID;
   version: string;
 };
+
+export type UninstallPluginForRequest = {
+  id: PluginID;
+};
