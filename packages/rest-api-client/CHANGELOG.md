@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.5.2...@kintone/rest-api-client@5.6.0) (2024-09-09)
+
+
+### Features
+
+* **rest-api-client:** add app.getPlugins method ([#2854](https://github.com/kintone/js-sdk/issues/2854)) ([e88b9f5](https://github.com/kintone/js-sdk/commit/e88b9f569df02485c1f91dcf9fb094d751efbb17))
+* **rest-api-client:** add app.moveToSpace method ([#2855](https://github.com/kintone/js-sdk/issues/2855)) ([be0e5a4](https://github.com/kintone/js-sdk/commit/be0e5a4d6a2d990e7dd7d0ae7b713d4e146ee0be))
+* **rest-api-client:** add get and update methods for admin notes ([#2849](https://github.com/kintone/js-sdk/issues/2849)) ([2a298e1](https://github.com/kintone/js-sdk/commit/2a298e167b7aaf22649fbee6435c666f10aa243d))
+* **rest-api-client:** Add method for uninstall plugin ([#2950](https://github.com/kintone/js-sdk/issues/2950)) ([4bcc99b](https://github.com/kintone/js-sdk/commit/4bcc99b964761bab2cffabd4c917d6d638358bb1))
+* **rest-api-client:** add method of plugin.installPlugin ([#2931](https://github.com/kintone/js-sdk/issues/2931)) ([510a580](https://github.com/kintone/js-sdk/commit/510a580a668c094de180dbd1c3d598c7354318c2))
+* **rest-api-client:** add method of plugin.updatePlugin ([#2918](https://github.com/kintone/js-sdk/issues/2918)) ([305693f](https://github.com/kintone/js-sdk/commit/305693f6f92766abbc4ef48b3c36931c6de73b0c))
+* **rest-api-client:** add new properties to get/updateAppSettings ([#2949](https://github.com/kintone/js-sdk/issues/2949)) ([da91ede](https://github.com/kintone/js-sdk/commit/da91edec504dadc03a132e7bc627e37d904a754f))
+* **rest-api-client:** add plugin.getPlugins, getRequiredPlugins, and getApps ([#2896](https://github.com/kintone/js-sdk/issues/2896)) ([4b0d2d2](https://github.com/kintone/js-sdk/commit/4b0d2d23109aa9a6fc916125721a98e05f04372f))
+* **rest-api-client:** add space.addThread() method ([#2846](https://github.com/kintone/js-sdk/issues/2846)) ([e08575a](https://github.com/kintone/js-sdk/commit/e08575ad4e62abfbe48e000e68b761d88204263c))
+* **rest-api-client:** add the method of app.addPlugins ([#2910](https://github.com/kintone/js-sdk/issues/2910)) ([37c3a45](https://github.com/kintone/js-sdk/commit/37c3a45ccd20e7abb412ef81c5a061f9e03532c8))
+* **rest-api-client:** update space.getSpace method ([#2876](https://github.com/kintone/js-sdk/issues/2876)) ([8ecc4d1](https://github.com/kintone/js-sdk/commit/8ecc4d155d2363b6f69ff4db294aeb20ee7e06f7))
+
+
+### Bug Fixes
+
+* **deps:** update dependency qs to ^6.12.2 ([#2853](https://github.com/kintone/js-sdk/issues/2853)) ([659912e](https://github.com/kintone/js-sdk/commit/659912ef627db6ed23867e9e7d8a405a76b8827e))
+* **deps:** update dependency qs to ^6.12.3 ([#2869](https://github.com/kintone/js-sdk/issues/2869)) ([068fde7](https://github.com/kintone/js-sdk/commit/068fde7fc5dbc2519ad011132738b6dc48e49961))
+* **rest-api-client:** rename moveToSpace method to move ([#2872](https://github.com/kintone/js-sdk/issues/2872)) ([ca902a7](https://github.com/kintone/js-sdk/commit/ca902a7be9e7e1674d4138966049afee7716b149))
+
 ## [5.5.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.5.1...@kintone/rest-api-client@5.5.2) (2024-06-12)
 
 
