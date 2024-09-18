@@ -10,6 +10,7 @@
   "include-v-in-tag": false,
   "tag-separator": "@",
   "monorepo-tags": true,
+  "group-pull-request-title-pattern": "chore: release from ${branch}",
   "packages": {
     "packages/create-plugin": {
       "package-name": "@kintone/create-plugin",
