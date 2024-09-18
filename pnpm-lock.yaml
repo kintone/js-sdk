@@ -460,7 +460,7 @@ importers:
         specifier: ^0.13.0
         version: 0.13.0(rollup@4.21.3)
       vite:
-        specifier: ^5.4.5
+        specifier: ^5.4.6
         version: 5.4.6(@types/node@18.19.50)
       webpack:
         specifier: ^5.94.0
