@@ -112,8 +112,8 @@ importers:
         specifier: ^8.2.10
         version: 8.2.10
       '@types/lodash':
-        specifier: ^4.17.7
-        version: 4.17.7
+        specifier: ^4.17.9
+        version: 4.17.9
       '@types/node-rsa':
         specifier: ^1.1.4
         version: 1.1.4
@@ -183,8 +183,8 @@ importers:
         specifier: ^8.56.12
         version: 8.56.12
       '@types/lodash':
-        specifier: ^4.17.7
-        version: 4.17.7
+        specifier: ^4.17.9
+        version: 4.17.9
       assert:
         specifier: ^2.1.0
         version: 2.1.0
@@ -3393,8 +3393,8 @@ packages:
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  /@types/lodash@4.17.7:
-    resolution: {integrity: sha512-8wTvZawATi/lsmNu10/j2hk1KEP0IvjubqPE3cu1Xz7xfXXt5oCq3SNUz4fMIP4XGF9Ky+Ue2tBA3hcS7LSBlA==}
+  /@types/lodash@4.17.9:
+    resolution: {integrity: sha512-w9iWudx1XWOHW5lQRS9iKpK/XuRhnN+0T7HvdCCd802FYkT1AMTnxndJHGrNJwRoRHkslGr4S29tjm1cT7x/7w==}
     dev: true
 
   /@types/mime@1.3.2:
@@ -8220,7 +8220,7 @@ packages:
     dependencies:
       '@apidevtools/json-schema-ref-parser': 11.6.4
       '@types/json-schema': 7.0.15
-      '@types/lodash': 4.17.7
+      '@types/lodash': 4.17.9
       glob: 10.4.5
       is-glob: 4.0.3
       js-yaml: 4.1.0
