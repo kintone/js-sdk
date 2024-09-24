@@ -451,8 +451,8 @@ importers:
         specifier: ^0.2.13
         version: 0.2.13(rollup@4.22.4)
       rollup-plugin-license:
-        specifier: ^3.5.2
-        version: 3.5.2(rollup@4.22.4)
+        specifier: ^3.5.3
+        version: 3.5.3(rollup@4.22.4)
       rollup-plugin-node-globals:
         specifier: ^1.4.0
         version: 1.4.0
@@ -6608,10 +6608,10 @@ packages:
       pend: 1.2.0
     dev: false
 
-  /fdir@6.1.1:
-    resolution: {integrity: sha512-QfKBVg453Dyn3mr0Q0O+Tkr1r79lOTAKSi9f/Ot4+qVEwxWhav2Z+SudrG9vQjM2aYRMQQZ2/Q1zdA8ACM1pDg==}
+  /fdir@6.3.0:
+    resolution: {integrity: sha512-QOnuT+BOtivR77wYvCWHfGt9s4Pz1VIMbD463vegT5MLqNXy8rYFT/lPVEqf/bhYeT6qmqrNHhsX+rWwe3rOCQ==}
     peerDependencies:
-      picomatch: 3.x
+      picomatch: ^3 || ^4
     peerDependenciesMeta:
       picomatch:
         optional: true
@@ -10170,14 +10170,14 @@ packages:
       rollup: 4.22.4
     dev: true
 
-  /rollup-plugin-license@3.5.2(rollup@4.22.4):
-    resolution: {integrity: sha512-NNeXBcE6RyQdZdSC8Vxe8Cheax2aUa/K0Ok6JDZwr9isjkSDer4aMg0sovas1Ua76ojLZX1BrNQ6ZFspztKkZQ==}
+  /rollup-plugin-license@3.5.3(rollup@4.22.4):
+    resolution: {integrity: sha512-r3wImZSo2d6sEk9BRJtlzeI/upjyjnpthy06Fdl0EzqRrlg3ULb9KQR7xHJI0zuayW/8bchEXSF5dO6dha4OyA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
       commenting: 1.1.0
-      fdir: 6.1.1
+      fdir: 6.3.0
       lodash: 4.17.21
       magic-string: 0.30.3
       moment: 2.30.1
