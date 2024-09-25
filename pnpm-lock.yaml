@@ -460,8 +460,8 @@ importers:
         specifier: ^0.13.0
         version: 0.13.0(rollup@4.22.4)
       vite:
-        specifier: ^5.4.7
-        version: 5.4.7(@types/node@18.19.51)
+        specifier: ^5.4.8
+        version: 5.4.8(@types/node@18.19.51)
       webpack:
         specifier: ^5.94.0
         version: 5.94.0(webpack-cli@5.1.4)
@@ -11513,8 +11513,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@5.4.7(@types/node@18.19.51):
-    resolution: {integrity: sha512-5l2zxqMEPVENgvzTuBpHer2awaetimj2BGkhBPdnwKbPNOlHsODU+oiazEZzLK7KhAnOrO+XGYJYn4ZlUhDtDQ==}
+  /vite@5.4.8(@types/node@18.19.51):
+    resolution: {integrity: sha512-FqrItQ4DT1NC4zCUqMB4c4AZORMKIa0m8/URVCZ77OZ/QSNeJ54bU1vrFADbDsuwfIPcgknRkmqakQcgnL4GiQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
