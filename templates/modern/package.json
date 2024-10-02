@@ -16,8 +16,8 @@
   "devDependencies": {
     "@babel/core": "^7.25.7",
     "@babel/preset-env": "^7.25.7",
-    "@babel/preset-react": "^7.24.7",
-    "@babel/preset-typescript": "^7.24.7",
+    "@babel/preset-react": "^7.25.7",
+    "@babel/preset-typescript": "^7.25.7",
     "@cybozu/eslint-config": "^23.0.0",
     "@kintone/dts-gen": "^8.0.13",
     "@kintone/webpack-plugin-kintone-plugin": "^8.0.10",
