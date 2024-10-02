@@ -412,8 +412,8 @@ importers:
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.25.2)(rollup@4.24.0)
       '@rollup/plugin-commonjs':
-        specifier: ^26.0.3
-        version: 26.0.3(rollup@4.24.0)
+        specifier: ^28.0.0
+        version: 28.0.0(rollup@4.24.0)
       '@rollup/plugin-json':
         specifier: ^6.1.0
         version: 6.1.0(rollup@4.24.0)
@@ -2923,8 +2923,8 @@ packages:
       rollup: 4.24.0
     dev: true
 
-  /@rollup/plugin-commonjs@26.0.3(rollup@4.24.0):
-    resolution: {integrity: sha512-2BJcolt43MY+y5Tz47djHkodCC3c1VKVrBDKpVqHKpQ9z9S158kCCqB8NF6/gzxLdNlYW9abB3Ibh+kOWLp8KQ==}
+  /@rollup/plugin-commonjs@28.0.0(rollup@4.24.0):
+    resolution: {integrity: sha512-BJcu+a+Mpq476DMXG+hevgPSl56bkUoi88dKT8t3RyUp8kGuOh+2bU8Gs7zXDlu+fyZggnJ+iOBGrb/O1SorYg==}
     engines: {node: '>=16.0.0 || 14 >= 14.17'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0||^4.0.0
@@ -2935,9 +2935,10 @@ packages:
       '@rollup/pluginutils': 5.1.0(rollup@4.24.0)
       commondir: 1.0.1
       estree-walker: 2.0.2
-      glob: 10.4.5
+      fdir: 6.3.0(picomatch@2.3.1)
       is-reference: 1.2.1
       magic-string: 0.30.3
+      picomatch: 2.3.1
       rollup: 4.24.0
     dev: true
 
@@ -6612,13 +6613,15 @@ packages:
       pend: 1.2.0
     dev: false
 
-  /fdir@6.3.0:
+  /fdir@6.3.0(picomatch@2.3.1):
     resolution: {integrity: sha512-QOnuT+BOtivR77wYvCWHfGt9s4Pz1VIMbD463vegT5MLqNXy8rYFT/lPVEqf/bhYeT6qmqrNHhsX+rWwe3rOCQ==}
     peerDependencies:
       picomatch: ^3 || ^4
     peerDependenciesMeta:
       picomatch:
         optional: true
+    dependencies:
+      picomatch: 2.3.1
     dev: true
 
   /file-entry-cache@6.0.1:
@@ -10178,7 +10181,7 @@ packages:
       rollup: ^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
       commenting: 1.1.0
-      fdir: 6.3.0
+      fdir: 6.3.0(picomatch@2.3.1)
       lodash: 4.17.21
       magic-string: 0.30.3
       moment: 2.30.1
