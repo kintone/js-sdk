@@ -109,8 +109,8 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0
       '@types/inquirer':
-        specifier: ^8.2.10
-        version: 8.2.10
+        specifier: ^9.0.7
+        version: 9.0.7
       '@types/lodash':
         specifier: ^4.17.10
         version: 4.17.10
@@ -152,8 +152,8 @@ importers:
         version: 5.0.10
     devDependencies:
       '@types/inquirer':
-        specifier: 8.2.10
-        version: 8.2.10
+        specifier: 9.0.7
+        version: 9.0.7
 
   packages/dts-gen:
     dependencies:
@@ -378,8 +378,8 @@ importers:
         version: 23.1.1(typescript@5.6.2)
     devDependencies:
       '@types/inquirer':
-        specifier: 8.2.10
-        version: 8.2.10
+        specifier: 9.0.7
+        version: 9.0.7
 
   packages/profile-loader:
     dependencies:
@@ -3274,8 +3274,8 @@ packages:
       '@types/node': 18.19.54
     dev: true
 
-  /@types/inquirer@8.2.10:
-    resolution: {integrity: sha512-IdD5NmHyVjWM8SHWo/kPBgtzXatwPkfwzyP3fN1jF2g9BWt5WO+8hL2F4o2GKIYsU40PpqeevuUWvkS/roXJkA==}
+  /@types/inquirer@9.0.7:
+    resolution: {integrity: sha512-Q0zyBupO6NxGRZut/JdmqYKOnN95Eg5V8Csg3PGKkP+FnvsUZx1jAyK7fztIszxxMuoBA6E3KXWvdZVXIpx60g==}
     dependencies:
       '@types/through': 0.0.30
       rxjs: 7.8.1
@@ -10238,7 +10238,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.6.0
+      tslib: 2.6.2
     dev: true
 
   /safe-array-concat@1.0.1:
@@ -11178,10 +11178,6 @@ packages:
       json5: 1.0.2
       minimist: 1.2.8
       strip-bom: 3.0.0
-
-  /tslib@2.6.0:
-    resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
-    dev: true
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
