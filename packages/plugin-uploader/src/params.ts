@@ -13,7 +13,7 @@ interface Params {
   lang: Lang;
 }
 
-const isSet = (v: string | null | undefined) => typeof v === "string";
+const isSet = (v: string | null | undefined) => typeof v === "string" && v;
 
 export const inquireParams = async ({
   username,
