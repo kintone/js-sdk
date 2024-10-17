@@ -7,9 +7,9 @@ import {
 } from "./prompts/params";
 
 interface Params {
-  username?: string;
-  password?: string;
-  baseUrl?: string;
+  username: string;
+  password: string;
+  baseUrl: string;
   lang: Lang;
 }
 
