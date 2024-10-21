@@ -7,13 +7,13 @@ import {
 } from "./prompts/params";
 
 interface Params {
-  username?: string;
-  password?: string;
-  baseUrl?: string;
+  username: string;
+  password: string;
+  baseUrl: string;
   lang: Lang;
 }
 
-const isSet = (v: string | null | undefined) => typeof v === "string";
+const isSet = (v: string | null | undefined) => typeof v === "string" && v;
 
 export const inquireParams = async ({
   username,
