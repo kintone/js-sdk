@@ -43,7 +43,7 @@
     "chokidar": "^3.6.0",
     "debug": "^4.3.7",
     "denodeify": "^1.2.1",
-    "meow": "^9.0.0",
+    "meow": "^13.2.0",
     "mkdirp": "^3.0.1",
     "node-rsa": "~1.1.1",
     "stream-buffers": "^3.0.3",
