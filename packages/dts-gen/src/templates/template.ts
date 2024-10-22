@@ -7,6 +7,7 @@ import * as prettierPluginEstree from "prettier/plugins/estree";
 
 import type { FieldTypeGroups } from "../converters/fileldtype-converter";
 import { convertToTsExpression } from "./converter";
+import tsPreset from "@cybozu/eslint-config/flat/presets/typescript";
 
 export interface RenderInput {
   typeName: string;
@@ -19,12 +20,8 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
   const eslint = new ESLint({
     cwd: path.resolve(__dirname, "..", ".."),
     fix: true,
-    useEslintrc: false,
-    baseConfig: {
-      extends: "@cybozu/eslint-config/presets/typescript",
-      globals: {
-        kintone: true,
-      },
+    baseConfig: tsPreset,
+    overrideConfig: {
       rules: {
         "@typescript-eslint/no-namespace": [
           "error",

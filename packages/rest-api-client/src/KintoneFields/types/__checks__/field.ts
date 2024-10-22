@@ -31,7 +31,7 @@ import type {
 
 type Test_SubtableField_OK = Subtable<{
   SingleLineText: SingleLineText;
-  Number: Number; // eslint-disable-line
+  Number: Number;
   Calc: Calc;
   MultiLineText: MultiLineText;
   RichText: RichText;
