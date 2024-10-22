@@ -22,7 +22,6 @@ describe("action", () => {
   beforeEach(() => {
     dispatch = jest.fn();
   });
-  afterEach(() => {});
   describe("uploadFailure", () => {
     it("should dispatch an UPLOAD_FAILURE action with an error", () => {
       const error = { message: "error" };

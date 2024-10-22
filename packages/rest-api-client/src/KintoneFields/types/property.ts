@@ -315,8 +315,7 @@ export type Lookup = {
 
 export type InSubtable =
   | SingleLineText
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  | Number // Although ESLint recognizes it as primitive type, this type is defined above in this file.
+  | Number
   | Calc
   | MultiLineText
   | RichText
@@ -352,8 +351,7 @@ export type OneOf =
   | Status
   | StatusAssignee
   | SingleLineText
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  | Number // Although ESLint recognizes it as primitive type, this type is defined above in this file.
+  | Number
   | Calc
   | MultiLineText
   | RichText

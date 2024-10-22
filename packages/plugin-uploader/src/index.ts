@@ -73,7 +73,7 @@ export const run = async (
     console.error(boundMessage("Error"), e);
     await pluginSystemController.closeBrowser();
 
-    // eslint-disable-next-line no-process-exit
+    // eslint-disable-next-line n/no-process-exit
     process.exit(1);
   }
 };

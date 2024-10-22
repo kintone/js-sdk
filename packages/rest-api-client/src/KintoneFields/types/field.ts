@@ -51,8 +51,7 @@ export type StatusAssignee = FieldWith<"STATUS_ASSIGNEE", Entity[]>;
 
 export type InSubtable =
   | SingleLineText
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  | Number // Although ESLint recognizes it as primitive type, this type is defined above in this file.
+  | Number
   | Calc
   | MultiLineText
   | RichText
@@ -88,8 +87,7 @@ export type OneOf =
   | Modifier
   | UpdatedTime
   | SingleLineText
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  | Number // Although ESLint recognizes it as primitive type, this type is defined above in this file.
+  | Number
   | Calc
   | MultiLineText
   | RichText

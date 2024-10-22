@@ -258,7 +258,6 @@ export class RecordClient extends BaseClient {
     const conditionQuery = condition ? `(${condition}) and ` : "";
     let allRecords: T[] = [];
     let lastId = "0";
-    // eslint-disable-next-line no-constant-condition
     while (true) {
       const query = `${conditionQuery}$id > ${lastId} order by $id asc limit ${GET_RECORDS_LIMIT}`;
       const result = await this.getRecords<T>({ ...rest, fields, query });
@@ -289,7 +288,6 @@ export class RecordClient extends BaseClient {
     const conditionQuery = condition ? `${condition} ` : "";
     let allRecords: T[] = [];
     let offset = 0;
-    // eslint-disable-next-line no-constant-condition
     while (true) {
       const query = `${conditionQuery}${
         orderBy ? `order by ${orderBy} ` : ""
@@ -315,7 +313,6 @@ export class RecordClient extends BaseClient {
     const { id } = await this.createCursor(params);
     try {
       let allRecords: T[] = [];
-      // eslint-disable-next-line no-constant-condition
       while (true) {
         const result = await this.getRecordsByCursor<T>({ id });
         allRecords = allRecords.concat(result.records);
