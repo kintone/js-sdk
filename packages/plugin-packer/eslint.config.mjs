@@ -1,6 +1,7 @@
 import rootConfig from "../../eslint.config.mjs";
 import siteConfig from "./site/eslint.config.mjs";
 import binConfig from "./bin/eslint.config.mjs";
+import globals from "globals";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -16,4 +17,12 @@ export default [
     ignores: ["site/*", "bin/*"],
     ...configObject,
   })),
+  {
+    files: ["test/**/*.{js,ts}"],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+  },
 ];
