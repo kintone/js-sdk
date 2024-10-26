@@ -30,15 +30,18 @@ export type RequiredProperties = {
 // https://ajv.js.org/docs/keywords.html#define-keyword-with-validation-function
 // FIXME: use the type definition that Ajv provides if https://github.com/ajv-validator/ajv/pull/1460 has been merged
 
-type ValidatorResult =
+export type ValidatorResult =
   | boolean
   | { valid: true }
   | { valid: false; message?: string };
 
-type Options = {
-  relativePath?: (filePath: string) => boolean;
-  maxFileSize?: (maxBytes: number, filePath: string) => ValidatorResult;
-  fileExists?: (filePath: string) => ValidatorResult;
+export type Options = {
+  relativePath?: (filePath: string) => boolean | Promise<boolean>;
+  maxFileSize?: (
+    maxBytes: number,
+    filePath: string,
+  ) => ValidatorResult | Promise<ValidatorResult>;
+  fileExists?: (filePath: string) => ValidatorResult | Promise<ValidatorResult>;
 };
 
 /**
@@ -70,12 +73,15 @@ export default (
     formats: {
       "http-url": (str: string) => validateUrl(str, true),
       "https-url": (str: string) => validateUrl(str),
-      "relative-path": relativePath,
+      "relative-path": {
+        validate: async (filePath: string) => relativePath(filePath),
+        async: true,
+      },
     },
   });
   addFormats(ajv, { mode: "fast", formats: ["uri"] });
 
-  const validateMaxFileSize: SchemaValidateFunction = (
+  const validateMaxFileSize: SchemaValidateFunction = async (
     schema: string,
     filePath: string,
   ) => {
@@ -86,7 +92,7 @@ export default (
     }
 
     const maxBytes = bytes.parse(schema);
-    const result = maxFileSize(maxBytes, filePath);
+    const result = await maxFileSize(maxBytes, filePath);
     const defaultMessage = `file size should be <= ${schema}`;
 
     if (result === false) {
@@ -118,7 +124,7 @@ export default (
     return true;
   };
 
-  const validateFileExists: SchemaValidateFunction = (
+  const validateFileExists: SchemaValidateFunction = async (
     schema: boolean,
     filePath: string,
   ) => {
@@ -126,7 +132,7 @@ export default (
       return true;
     }
 
-    const result = fileExists(filePath);
+    const result = await fileExists(filePath);
     const defaultMessage = `file should exist ("${filePath}")`;
 
     if (result === false) {
