@@ -482,8 +482,8 @@ importers:
         version: 3.0.1
     devDependencies:
       '@types/adm-zip':
-        specifier: ^0.5.5
-        version: 0.5.5
+        specifier: ^0.5.6
+        version: 0.5.6
       adm-zip:
         specifier: ^0.5.16
         version: 0.5.16
@@ -3163,10 +3163,10 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
-  /@types/adm-zip@0.5.5:
-    resolution: {integrity: sha512-YCGstVMjc4LTY5uK9/obvxBya93axZOVOyf2GSUulADzmLhYE45u2nAssCs/fWBs1Ifq5Vat75JTPwd5XZoPJw==}
+  /@types/adm-zip@0.5.6:
+    resolution: {integrity: sha512-lRlcSLg5Yoo7C2H2AUiAoYlvifWoCx/se7iUNiCBTfEVVYFVn+Tr9ZGed4K73tYgLe9O4PjdJvbxlkdAOx/qiw==}
     dependencies:
-      '@types/node': 18.19.34
+      '@types/node': 18.19.59
     dev: true
 
   /@types/babel__core@7.20.1:
