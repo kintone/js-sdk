@@ -16,7 +16,7 @@
     "lint": "run-p lint:*",
     "help": "node dist/index.js --help",
     "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
-    "test:ci": "jest --runInBand",
+    "test:ci": "NODE_OPTIONS='--experimental-vm-modules' jest --runInBand",
     "build:integration": "webpack --mode development --config webpack.config.js"
   },
   "engines": {
