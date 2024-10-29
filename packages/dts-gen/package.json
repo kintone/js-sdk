@@ -15,7 +15,7 @@
     "lint:prettier": "prettier --parser typescript --check \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "lint": "run-p lint:*",
     "help": "node dist/index.js --help",
-    "test": "jest",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "test:ci": "jest --runInBand",
     "build:integration": "webpack --mode development --config webpack.config.js"
   },
