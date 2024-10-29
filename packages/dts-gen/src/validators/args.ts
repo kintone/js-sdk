@@ -5,9 +5,7 @@ export const validateArgs = (args: ParsedArgs) => {
     throw new Error("--base-url (KINTONE_BASE_URL) must be specified");
   }
 
-  const identifierConventionMsg = `The namespace and type-name convention:
-- Starts with a letter (\`a-z\` or \`A-Z\`), underscore (\`_\`), or dollar sign (\`$\`).
-- Can be followed by any alphanumeric, underscores, or dollar signs.`;
+  const identifierConventionMsg = `In the ECMA262 specification, this is an invalid string as IdentifierName.`;
 
   if (args.namespace && !isValidIdentifier(args.namespace)) {
     throw new Error(`Invalid namespace option!\n${identifierConventionMsg}`);
@@ -19,11 +17,11 @@ export const validateArgs = (args: ParsedArgs) => {
 };
 
 /**
- * https://developer.mozilla.org/en-US/docs/Glossary/Identifier
+ * https://262.ecma-international.org/14.0/index.html#prod-IdentifierName
  * @param targetIdentifier
  */
 const isValidIdentifier = (targetIdentifier: string): boolean => {
   const identifiers = targetIdentifier.split(".");
-  const identifierRegex = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
+  const identifierRegex = /^[\p{ID_Start}_$][\p{ID_Continue}$\u200C\u200D]*$/u;
   return identifiers.every((identifier) => identifierRegex.test(identifier));
 };
