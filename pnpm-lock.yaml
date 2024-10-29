@@ -188,6 +188,9 @@ importers:
       assert:
         specifier: ^2.1.0
         version: 2.1.0
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.1(typescript@5.6.3)(webpack@5.95.0)
