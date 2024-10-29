@@ -15,8 +15,8 @@
     "lint:prettier": "prettier --parser typescript --check \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
     "lint": "run-p lint:*",
     "help": "node dist/index.js --help",
-    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
-    "test:ci": "NODE_OPTIONS='--experimental-vm-modules' jest --runInBand",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand",
     "build:integration": "webpack --mode development --config webpack.config.js"
   },
   "engines": {
@@ -39,10 +39,11 @@
   "devDependencies": {
     "@types/eslint": "^9.6.1",
     "@types/lodash": "^4.17.12",
+    "assert": "^2.1.0",
+    "cross-env": "^7.0.3",
     "ts-loader": "^9.5.1",
     "webpack": "^5.95.0",
-    "webpack-cli": "^5.1.4",
-    "assert": "^2.1.0"
+    "webpack-cli": "^5.1.4"
   },
   "bin": {
     "kintone-dts-gen": "dist/index.js"
