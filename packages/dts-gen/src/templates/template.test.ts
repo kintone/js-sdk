@@ -63,7 +63,7 @@ describe("convertToTsExpression", () => {
     await writeAndLint(TEMP_TEST_TYPEDEF, tsExpression);
 
     const expected = fs
-      .readFileSync(`./resources/test-renderAsFile-fields.d.ts`)
+      .readFileSync(`./resources/test-convertToTsExpression-fields.d.ts`)
       .toString()
       .trim()
       .replace(/\r?\n/g, "");
