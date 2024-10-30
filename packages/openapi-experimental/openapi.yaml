@@ -1,0 +1,883 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Kintone REST API
+tags:
+  - name: App
+  - name: Record
+  - name: Space
+  - name: File
+  - name: Plugin
+  - name: Apis
+security:
+  - PasswordAuth: []
+  - SessionAuth: []
+  - ApiTokenAuth: []
+paths:
+  /k/v1/app.json:
+    post: # X-HTTP-Method-Overrideを試すためにpostにしてみる
+      tags:
+        - App
+      description: 1件のアプリの情報を取得する。
+      operationId: getApp
+      # parameters:
+      #   - name: id
+      #     in: query
+      #     description: アプリID
+      #     required: true
+      #     schema:
+      #       type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: string
+            example:
+              id: "123"
+      parameters:
+        - name: X-HTTP-Method-Override
+          in: header
+          nullable: true
+          description: メソッドをGETにする
+          schema:
+            type: string
+            enum: [GET]
+            default: GET
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  appId:
+                    type: string
+                    examples:
+                      - "123"
+                  code:
+                    type: string
+                    examples:
+                      - ""
+                  name:
+                    type: string
+                    examples:
+                      - "案件管理"
+                  description:
+                    type: string
+                    examples:
+                      - "案件ごとに、受注の確度や金額はもちろん、活動の履歴も記録できるアプリです。"
+                  spaceId:
+                    type: string
+                    examples:
+                      - "2"
+                  threadId:
+                    type: string
+                    examples:
+                      - "3"
+                  createdAt:
+                    type: string
+                    examples:
+                      - "2021-10-01T05:14:05.000Z"
+                  creator:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        examples:
+                          - "tanaka"
+                      name:
+                        type: string
+                        examples:
+                          - "田中太郎"
+                  modifiedAt:
+                    type: string
+                    examples:
+                      - "2021-10-02T05:22:05.000Z"
+                  modifier:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        examples:
+                          - "tanaka"
+                      name:
+                        type: string
+                        examples:
+                          - "田中太郎"
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+  /k/v1/preview/app.json:
+    post:
+      tags:
+        - App
+      description: 動作テスト環境にアプリを作成する。
+      operationId: addApp
+      requestBody:
+        description: response body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddAppRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddAppResponse'
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+  /k/v1/app/settings.json:
+    get:
+      tags:
+        - App
+      summary: Get general app settings
+      description: Retrieves the general settings of an app in Kintone.
+      operationId: getGeneralAppSettings
+      parameters:
+        - name: app
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The ID of the app.
+        - name: lang
+          in: query
+          schema:
+            type: string
+            enum:
+              - en
+              - ja
+              - zh
+              - user
+              - default
+          description: The language of the response.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGeneralAppSettingsResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+  /k/v1/preview/app/deploy.json:
+    get:
+      tags:
+        - App
+      summary: Get app deploy status
+      description: Retrieves the deployment status of an app in Kintone.
+      operationId: getAppDeployStatus
+      parameters:
+        - name: apps
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+          description: The IDs of the apps.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAppDeployStatusResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+    post:
+      tags:
+        - App
+      summary: Deploy App Settings
+      description: Deploys the settings of an app.
+      operationId: deployApp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                apps:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      app:
+                        type: string
+                      revision:
+                        type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        app:
+                          type: string
+                        revision:
+                          type: string
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /k/v1/apis.json:
+    get:
+      tags:
+        - Apis
+      description: REST APIの一覧を取得する。
+      operationId: getApis
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  baseUrl:
+                    type: string
+                    examples:
+                      - "http://kintone.example.com"
+                  apis:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        link:
+                          type: string
+                    examples:
+                      - "app/acl/get":
+                          link: "apis/app/acl/get.json"
+                      - "app/acl/put":
+                          link: "apis/app/acl/get.json"
+  /k/v1/apis/{apiId}.json:
+    get:
+      tags:
+        - Apis
+      description: REST APIの一覧を取得する。
+      operationId: getApi
+      parameters:
+        - in: path
+          name: apiId
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    examples:
+                      - records/get
+                  baseUrl:
+                    type: string
+                    examples:
+                      - "http://kintone.example.com/k/v1"
+                  path:
+                    type: string
+                    examples:
+                      - "records.json"
+                  httpMethod:
+                    type: string
+                    examples:
+                      - "GET"
+                  request:
+                    type: object
+                    additionalProperties: {}
+                  response:
+                    type: object
+                    additionalProperties: {}
+                  schemas:
+                    type: object
+                    additionalProperties: {}
+  /k/v1/app/adminNotes.json:
+    get:
+      operationId: getAdminNotes
+      tags:
+        - App
+      summary: Get App Admin Notes
+      description: Gets notes for app administrators and their settings.
+      parameters:
+        - in: query
+          name: query
+          style: form
+          explode: true
+          schema:
+            $ref: '#/components/schemas/GetAppAdminNotesRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAppAdminNotesResponse'
+  /guest/{SpaceID}/k/v1/app/adminNotes.json:
+    get:
+      operationId: getAdminNotesGuest
+      tags:
+        - App
+      parameters:
+        - $ref: '#/components/parameters/SpaceID'
+        - in: query
+          name: query
+          style: form
+          explode: true
+          schema:
+            $ref: '#/components/schemas/GetAppAdminNotesRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAppAdminNotesResponse'
+  /k/v1/preview/app/adminNotes.json:
+    get:
+      operationId: getAdminNotesPreview
+      tags:
+        - App
+      summary: Get App Admin Notes
+      description: Gets notes for app administrators and their settings.
+      parameters:
+        - in: query
+          name: query
+          style: form
+          explode: true
+          schema:
+            $ref: '#/components/schemas/GetAppAdminNotesRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAppAdminNotesResponse'
+    put:
+      operationId: updateAdminNotes
+      tags:
+        - App
+      summary: Update App Admin Notes
+      description: Update notes for app administrators and their settings.
+      requestBody:
+        description: response body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAppAdminNotesRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAppAdminNotesResponse'
+  /guest/{SpaceID}/k/v1/preview/app/adminNotes.json:
+    get:
+      operationId: getAdminNotesGuestPreview
+      tags:
+        - App
+      parameters:
+        - $ref: '#/components/parameters/SpaceID'
+        - in: query
+          name: query
+          style: form
+          explode: true
+          schema:
+            $ref: '#/components/schemas/GetAppAdminNotesRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAppAdminNotesResponse'
+    put:
+      operationId: updateAdminNotesPreview
+      tags:
+        - App
+      summary: Update App Admin Notes For Preview
+      description: Update notes for preview app administrators and their settings.
+      requestBody:
+        description: response body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAppAdminNotesRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAppAdminNotesResponse'
+  /k/v1/file.json:
+    get:
+      tags:
+        - File
+      summary: Download a file
+      description: Downloads a file from Kintone.
+      operationId: downloadFile
+      parameters:
+        - name: fileKey
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The key of the file to download.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: File not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+        - File
+      summary: Upload a file
+      description: Uploads a file to Kintone.
+      operationId: uploadFile
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadFileRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadFileResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+  /app/form/fields.json:
+    tags:
+      - App
+    get:
+      summary: Get Form Fields
+      description: Retrieve the form fields of an app in Kintone
+      parameters:
+        - name: app
+          in: query
+          required: true
+          description: The App ID
+          schema:
+            type: integer
+        - name: lang
+          in: query
+          required: false
+          description: The language setting for the response
+          schema:
+            type: string
+            enum: [default, en, ja, zh, user]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  revision:
+                    type: string
+                  properties:
+                    $ref: '#/components/schemas/FieldProperties'
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+components:
+  securitySchemes:
+    PasswordAuth:
+      type: http
+      scheme: header
+      name: X-Cybozu-Authorization
+    ApiTokenAuth:
+      type: apiKey
+      in: header
+      name: X-Cybozu-API-Token
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: SESSIONID
+    # OAuth:
+    #   type: oauth2
+    #   flows:
+    #     implicit:
+    #       authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
+    #       scopes:
+    #         'write:pets': modify pets in your account
+    #         'read:pets': read your pets
+  parameters:
+    SpaceID:
+      name: SpaceID
+      in: path
+      description: The Guest Space ID.
+      required: true
+      deprecated: false
+      schema:
+        type: integer
+  schemas:
+    AdminNotes:
+      title: App Admin Notes
+      description: App Admin Notes
+      type: object
+      properties:
+        content:
+          type: string
+          examples:
+            - "test"
+        includeInTemplateAndDuplicates:
+          type: boolean
+          examples:
+            - true
+    GetAppAdminNotesRequest:
+      type: object
+      properties:
+        app:
+          type: string
+          description: The App ID.
+          examples:
+            - "123"
+    GetAppAdminNotesResponse:
+      allOf:
+        - $ref: '#/components/schemas/AdminNotes'
+        - type: object
+          properties:
+            revision:
+              type: string
+              examples:
+                - "2"
+    UpdateAppAdminNotesRequest:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/AdminNotes'
+        - type: object
+          properties:
+            app:
+              type: string
+              examples:
+                - "123"
+            revision:
+              type: string
+              examples:
+                - "2"
+    UpdateAppAdminNotesResponse:
+      type: object
+      properties:
+        revision:
+          type: string
+          examples:
+            - "2"
+    AddAppRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the app.
+        space:
+          type: integer
+          description: The ID of the space where the app will be created.
+        thread:
+          type: integer
+          description: The ID of the thread where the app will be created.
+      required:
+        - name
+    AddAppResponse:
+      type: object
+      properties:
+        app:
+          type: string
+          description: The ID of the created app.
+        revision:
+          type: string
+          description: The revision number of the app.
+    DeployAppSettingsRequest:
+      type: object
+      properties:
+        apps:
+          type: array
+          items:
+            type: object
+            properties:
+              app:
+                type: string
+                description: The ID of the app.
+              revision:
+                type: string
+                description: The revision number of the app.
+      required:
+        - apps
+    DeployAppSettingsResponse:
+      type: object
+      properties:
+        apps:
+          type: array
+          items:
+            type: object
+            properties:
+              app:
+                type: string
+                description: The ID of the app.
+              status:
+                type: string
+                description: The deployment status of the app.
+    GetGeneralAppSettingsResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the app.
+        description:
+          type: string
+          description: The description of the app.
+        icon:
+          type: object
+          properties:
+            type:
+              type: string
+              description: The type of the icon.
+            key:
+              type: string
+              description: The key of the icon.
+        theme:
+          type: string
+          description: The theme of the app.
+        revision:
+          type: string
+          description: The revision number of the app.
+    GetAppDeployStatusResponse:
+      type: object
+      properties:
+        apps:
+          type: array
+          items:
+            type: object
+            properties:
+              app:
+                type: string
+                description: The ID of the app.
+              status:
+                type: string
+                description: The deployment status of the app.
+                enum:
+                  - PROCESSING
+                  - SUCCESS
+                  - FAIL
+                  - CANCEL
+    UploadFileRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+          description: The file to upload.
+      required:
+        - file
+    UploadFileResponse:
+      type: object
+      properties:
+        fileKey:
+          type: string
+          description: The key of the uploaded file.
+    FieldProperties:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          type:
+            type: string
+          code:
+            type: string
+          label:
+            type: string
+          noLabel:
+            type: boolean
+          required:
+            type: boolean
+          unique:
+            type: boolean
+          maxValue:
+            type: string
+          minValue:
+            type: string
+          maxLength:
+            type: string
+          minLength:
+            type: string
+          defaultValue:
+            type: string
+          defaultNowValue:
+            type: boolean
+          align:
+            type: string
+          expression:
+            type: string
+          hideExpression:
+            type: boolean
+          digit:
+            type: boolean
+          thumbnailSize:
+            type: string
+          protocol:
+            type: string
+          format:
+            type: string
+          displayScale:
+            type: string
+          unit:
+            type: string
+          unitPosition:
+            type: string
+          entities:
+            type: array
+            items:
+              type: object
+              properties:
+                code:
+                  type: string
+                type:
+                  type: string
+          referenceTSable:
+            type: object
+            properties:
+              relatedApp:
+                type: object
+                properties:
+                  app:
+                    type: string
+                  code:
+                    type: string
+              condition:
+                type: object
+                properties:
+                  field:
+                    type: string
+                  relatedField:
+                    type: string
+              filterCond:
+                type: string
+              displayFields:
+                type: array
+              sort:
+                type: string
+              size:
+                type: string
+          lookup:
+            type: object
+            properties:
+              relatedApp:
+                type: object
+                properties:
+                  app:
+                    type: string
+                  code:
+                    type: string
+              relatedKeyField:
+                type: string
+              fieldMappings:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    field:
+                      type: string
+                    relatedField:
+                      type: string
+              lookupPickerFields:
+                type: array
+              filterCond:
+                type: string
+              sort:
+                type: string
+          openGroup:
+            type: boolean
+          fields:
+            type: object
+            $ref: '#/components/schemas/FieldProperties'
+          enabled:
+            type: boolean
+          options:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                label:
+                  type: string
+                index:
+                  type: integer

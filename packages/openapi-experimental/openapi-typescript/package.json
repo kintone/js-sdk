@@ -1,0 +1,20 @@
+{
+  "name": "openapi-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/main.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:ts": "tsc --noEmit"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "openapi-typescript": "^7.4.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.13.0"
+  }
+}
