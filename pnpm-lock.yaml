@@ -28,7 +28,7 @@ importers:
         version: 7.26.0(@babel/core@7.26.0)
       '@cybozu/eslint-config':
         specifier: ^24.0.0-beta.0
-        version: 24.0.0-beta.0(@types/eslint@9.6.1)(eslint@9.13.0)(prettier@3.3.3)(typescript@5.6.3)
+        version: 24.0.0-beta.0(eslint@9.13.0)(prettier@3.3.3)(typescript@5.6.3)
       '@cybozu/license-manager':
         specifier: ^1.2.1
         version: 1.2.1
@@ -317,8 +317,8 @@ importers:
         specifier: ^10.4.5
         version: 10.4.5
       globals:
-        specifier: ^15.11.0
-        version: 15.11.0
+        specifier: ^15.12.0
+        version: 15.12.0
       jest-environment-jsdom:
         specifier: ^29.7.0
         version: 29.7.0
@@ -1934,6 +1934,34 @@ packages:
       - '@types/eslint'
       - prettier
       - supports-color
+    dev: false
+
+  /@cybozu/eslint-config@24.0.0-beta.0(eslint@9.13.0)(prettier@3.3.3)(typescript@5.6.3):
+    resolution: {integrity: sha512-ie4ux28m0ZI6lLrpBkL/HDIkx42lWMORffYxgAUd5PeXsez+CwUumG8eHK+4UkxCnTcmPFWpM/cJ6omfn9xPCw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      eslint: ^8.56.0 || ^9.0.0-0
+      typescript: '>=4.7.5 || ^5.0.0'
+    dependencies:
+      '@stylistic/eslint-plugin-ts': 2.9.0(eslint@9.13.0)(typescript@5.6.3)
+      '@typescript-eslint/eslint-plugin': 8.11.0(@typescript-eslint/parser@8.11.0)(eslint@9.13.0)(typescript@5.6.3)
+      '@typescript-eslint/parser': 8.11.0(eslint@9.13.0)(typescript@5.6.3)
+      eslint: 9.13.0
+      eslint-config-prettier: 9.1.0(eslint@9.13.0)
+      eslint-plugin-import-x: 3.1.0(eslint@9.13.0)(typescript@5.6.3)
+      eslint-plugin-jsx-a11y: 6.10.1(eslint@9.13.0)
+      eslint-plugin-n: 17.11.1(eslint@9.13.0)
+      eslint-plugin-prettier: 5.2.1(@types/eslint@9.6.1)(eslint-config-prettier@9.1.0)(eslint@9.13.0)(prettier@3.3.3)
+      eslint-plugin-react: 7.37.1(eslint@9.13.0)
+      eslint-plugin-react-hooks: 5.1.0-rc-fb9a90fa48-20240614(eslint@9.13.0)
+      globals: 15.12.0
+      typescript: 5.6.3
+      typescript-eslint: 8.11.0(eslint@9.13.0)(typescript@5.6.3)
+    transitivePeerDependencies:
+      - '@types/eslint'
+      - prettier
+      - supports-color
+    dev: true
 
   /@cybozu/license-manager@1.2.1:
     resolution: {integrity: sha512-my0f4N/e6XVNZ5q9vJlkA/MBiY7scy7neBRhf2dXpdaYGR5Ti1Xjig4dkKlgy/u0+h4hnkE/8sd5MlhjPNqwuw==}
@@ -6056,7 +6084,7 @@ packages:
       eslint: 9.13.0
       eslint-plugin-es-x: 7.8.0(eslint@9.13.0)
       get-tsconfig: 4.8.1
-      globals: 15.11.0
+      globals: 15.12.0
       ignore: 5.2.4
       minimatch: 9.0.5
       semver: 7.6.3
@@ -6830,6 +6858,11 @@ packages:
 
   /globals@15.11.0:
     resolution: {integrity: sha512-yeyNSjdbyVaWurlwCpcA6XNBrHTMIeDdj0/hnvX/OLJ9ekOXYbLsLinH/MucQyGvNnXhidTdNhTtJaffL2sMfw==}
+    engines: {node: '>=18'}
+    dev: false
+
+  /globals@15.12.0:
+    resolution: {integrity: sha512-1+gLErljJFhbOVyaetcwJiJ4+eLe45S2E7P5UiZ9xGfeq3ATQf5DOv9G7MH3gGbKQLkzmNh2DxfZwLdw+j6oTQ==}
     engines: {node: '>=18'}
 
   /globalthis@1.0.3:
