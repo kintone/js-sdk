@@ -1,8 +1,6 @@
 import { validateArgs } from "../args";
 
-const identifierConventionMsg = `The namespace and type-name convention:
-- Starts with a letter (\`a-z\` or \`A-Z\`), underscore (\`_\`), or dollar sign (\`$\`).
-- Can be followed by any alphanumeric, underscores, or dollar signs.`;
+const identifierConventionMsg = `In the ECMA262 specification, this is an invalid string as IdentifierName.`;
 const invalidNamespaceMessage = `Invalid namespace option!\n${identifierConventionMsg}`;
 const invalidTypeNameMessage = `Invalid type-name option!\n${identifierConventionMsg}`;
 const baseInput = {
@@ -76,6 +74,35 @@ const patterns = [
   {
     description: "should error when type-name contains invalid characters",
     input: { ...baseInput, typeName: "te-st" },
+    expected: {
+      failure: {
+        errorMessage: invalidTypeNameMessage,
+      },
+    },
+  },
+  {
+    description: "should not error when type-name contains japanese characters",
+    input: {
+      ...baseInput,
+      typeName: "案件管理",
+    },
+    expected: {
+      failure: undefined,
+    },
+  },
+  {
+    description: "should not error when type-name is only symbols",
+    input: {
+      ...baseInput,
+      typeName: "$$$",
+    },
+    expected: {
+      failure: undefined,
+    },
+  },
+  {
+    description: "should error when type-name starts with a space",
+    input: { ...baseInput, typeName: " test" },
     expected: {
       failure: {
         errorMessage: invalidTypeNameMessage,
