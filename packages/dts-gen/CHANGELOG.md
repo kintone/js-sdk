@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.0.13...@kintone/dts-gen@8.1.0) (2024-11-05)
+
+
+### Features
+
+* **dts-gen:** Characters check for typename compliant with ECMA262. ([#3042](https://github.com/kintone/js-sdk/issues/3042)) ([fefe7c9](https://github.com/kintone/js-sdk/commit/fefe7c937f8f41b38a43b80986eef6ba3578902f))
+
 ## [8.0.13](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.0.12...@kintone/dts-gen@8.0.13) (2024-09-09)
 
 
