@@ -27,6 +27,7 @@ const writeAndLint = async (filepath: string, expression: string) => {
         ],
       },
     },
+    overrideConfigFile: true,
   });
   const eslintResult = (await eslint.lintFiles(filepath))[0];
   const eslintOutput = eslintResult.output;
