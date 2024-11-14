@@ -29,6 +29,7 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
         ],
       },
     },
+    overrideConfigFile: true,
   });
   const eslintResult = (await eslint.lintText(tsExpression.tsExpression()))[0];
   if (eslintResult.fatalErrorCount > 0) {
