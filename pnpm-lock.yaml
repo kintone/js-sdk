@@ -268,8 +268,8 @@ importers:
         version: 2.5.1
     devDependencies:
       '@reduxjs/toolkit':
-        specifier: ^2.3.0
-        version: 2.3.0
+        specifier: ^2.4.0
+        version: 2.4.0
       '@types/debug':
         specifier: ^4.1.12
         version: 4.1.12
@@ -2843,8 +2843,8 @@ packages:
       - supports-color
     dev: false
 
-  /@reduxjs/toolkit@2.3.0:
-    resolution: {integrity: sha512-WC7Yd6cNGfHx8zf+iu+Q1UPTfEcXhQ+ATi7CV1hlrSAaQBdlPzg7Ww/wJHNQem7qG9rxmWoFCDCPubSvFObGzA==}
+  /@reduxjs/toolkit@2.4.0:
+    resolution: {integrity: sha512-wJZEuSKj14tvNfxiIiJws0tQN77/rDqucBq528ApebMIRHyWpCanJVQRxQ8WWZC19iCDKxDsGlbAir3F1layxA==}
     peerDependencies:
       react: ^16.9.0 || ^17.0.0 || ^18
       react-redux: ^7.2.1 || ^8.1.3 || ^9.0.0
