@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.1](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.1.0...@kintone/dts-gen@8.1.1) (2024-12-05)
+
+
+### Bug Fixes
+
+* **dts-gen:** Fix to not read eslint.config ([#3066](https://github.com/kintone/js-sdk/issues/3066)) ([4f0048f](https://github.com/kintone/js-sdk/commit/4f0048fbabb452860cecd85716f1ccb20ef68e55))
+
 ## [8.1.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.0.13...@kintone/dts-gen@8.1.0) (2024-11-05)
 
 
