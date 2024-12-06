@@ -61,7 +61,7 @@
       "braces": ">=3.0.3",
       "pac-resolver": ">=7.0.1",
       "socks": ">=2.8.3",
-      "express": ">=4.19.2",
+      "express": ">=4.20.0",
       "ws": ">=8.18.0",
       "body-parser": ">=1.20.3",
       "cross-spawn": ">=7.0.6"
