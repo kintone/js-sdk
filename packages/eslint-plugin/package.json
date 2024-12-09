@@ -1,0 +1,73 @@
+{
+  "name": "@kintone/eslint-plugin",
+  "version": "0.0.0",
+  "description": "An ESLint plugin for kintone.",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "lib",
+    "!**/*.tsbuildinfo"
+  ],
+  "scripts": {
+    "prebuild": "pnpm clean",
+    "build": "tsc --build ./tsconfig.build.json",
+    "start": "run-s clean 'build -- --watch'",
+    "test": "vitest",
+    "lint": "run-p -l lint:*",
+    "lint:eslint": "eslint ./ --cache --cache-location ./node_modules/.cache/eslint/",
+    "lint:prettier": "prettier --check '**/*.{json,md,yml,yaml}' --cache",
+    "fix": "run-p fix:*",
+    "fix:lint": "run-s 'lint:eslint -- --fix'",
+    "fix:prettier": "run-s 'lint:prettier -- --write'",
+    "clean": "rimraf lib"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "kintone"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/eslint-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/eslint-plugin#readme",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@typescript-eslint/utils": "^8.17.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.16.0"
+  },
+  "devDependencies": {
+    "@cybozu/eslint-config": "^24.0.0-beta.0",
+    "@cybozu/license-manager": "^1.2.1",
+    "@types/node": "^22.10.1",
+    "@typescript-eslint/rule-tester": "^8.17.0",
+    "eslint": "^9.16.0",
+    "globals": "^15.13.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.4.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

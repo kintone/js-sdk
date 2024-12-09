@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    /* Projects */
+    "composite": true /* Enable constraints that allow a TypeScript project to be used with project references. */
+  },
+  "include": ["src", "tests", "vitest.config.ts"]
+}
