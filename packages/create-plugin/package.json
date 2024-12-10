@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
-    "@types/inquirer": "^8.2.10",
+    "@types/inquirer": "^9.0.7",
     "@types/lodash": "^4.17.13",
     "@types/node-rsa": "^1.1.4",
     "@types/normalize-path": "^3.0.2",
