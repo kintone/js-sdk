@@ -219,8 +219,8 @@ importers:
         specifier: ^7.26.0
         version: 7.26.0(@babel/core@7.26.0)
       '@types/bytes':
-        specifier: ^3.1.4
-        version: 3.1.4
+        specifier: ^3.1.5
+        version: 3.1.5
       babel-plugin-replace-ts-export-assignment:
         specifier: ^0.0.2
         version: 0.0.2
@@ -3252,8 +3252,8 @@ packages:
       '@types/node': 18.19.68
     dev: true
 
-  /@types/bytes@3.1.4:
-    resolution: {integrity: sha512-A0uYgOj3zNc4hNjHc5lYUfJQ/HVyBXiUMKdXd7ysclaE6k9oJdavQzODHuwjpUu2/boCP8afjQYi8z/GtvNCWA==}
+  /@types/bytes@3.1.5:
+    resolution: {integrity: sha512-VgZkrJckypj85YxEsEavcMmmSOIzkUHqWmM4CCyia5dc54YwsXzJ5uT4fYxBQNEXx+oF1krlhgCbvfubXqZYsQ==}
     dev: true
 
   /@types/connect-history-api-fallback@1.5.4:
