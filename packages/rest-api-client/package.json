@@ -59,7 +59,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@types/core-js": "^2.5.8",
     "@types/js-base64": "^3.3.1",
-    "@types/mime": "^3.0.4",
+    "@types/mime": "^4.0.0",
     "@types/qs": "^6.9.17",
     "rollup": "^4.28.1",
     "rollup-plugin-ecma-version-validator": "^0.2.13",
@@ -78,7 +78,7 @@
     "axios": "^1.7.9",
     "form-data": "^4.0.1",
     "js-base64": "^3.7.7",
-    "mime": "^3.0.0",
+    "mime": "^4.0.4",
     "qs": "^6.12.3"
   },
   "exports": {
