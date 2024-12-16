@@ -46,7 +46,7 @@
   "dependencies": {
     "@inquirer/prompts": "^5.3.8",
     "@kintone/rest-api-client": "^5.5.2",
-    "chokidar": "^3.6.0",
+    "chokidar": "^4.0.2",
     "meow": "^9.0.0",
     "mkdirp": "^3.0.1",
     "os-locale": "^5.0.0",
