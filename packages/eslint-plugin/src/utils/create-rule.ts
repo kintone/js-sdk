@@ -9,5 +9,5 @@ export interface PluginDocs {
 
 export const createRule = ruleCreator<PluginDocs>(
   (name) =>
-    `https://github.com/tasshi-me/eslint-plugin-roro/tree/main/docs/rules/${name}.md`,
+    `https://github.com/kintone/js-sdk/tree/main/packages/eslint-plugin/docs/rules/${name}.md`,
 );
