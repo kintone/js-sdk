@@ -1,6 +1,6 @@
 import { rules } from "./rules/index.js";
 import module from "node:module";
-import type { ESLint, Linter } from "eslint";
+import type { TSESLint } from "@typescript-eslint/utils";
 const require = module.createRequire(import.meta.url);
 
 const name = "@kintone/eslint-plugin";
@@ -28,10 +28,12 @@ const configs = {
     rules: {
       [`${name}/permissions`]: "error",
     } satisfies {
-      [key in `${typeof name}/${keyof typeof rules}`]: Linter.StringSeverity;
+      [key in `${typeof name}/${keyof typeof rules}`]: TSESLint.FlatConfig.SeverityString;
     },
   },
-} satisfies ESLint.Plugin["configs"];
+} satisfies TSESLint.FlatConfig.Plugin["configs"];
 
-const plugin = Object.assign(base, { configs }) satisfies ESLint.Plugin;
+const plugin = Object.assign(base, {
+  configs,
+}) satisfies TSESLint.FlatConfig.Plugin;
 export default plugin;
