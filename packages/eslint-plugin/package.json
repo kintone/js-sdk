@@ -2,10 +2,32 @@
   "name": "@kintone/eslint-plugin",
   "version": "0.0.0",
   "description": "An ESLint plugin for kintone.",
-  "type": "module",
-  "publishConfig": {
-    "access": "public"
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "kintone"
+  ],
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/eslint-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/eslint-plugin"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "type": "module",
+  "files": [
+    "CHANGELOG.md",
+    "lib",
+    "!**/*.tsbuildinfo"
+  ],
   "main": "lib/index.js",
   "exports": {
     ".": {
@@ -13,44 +35,15 @@
       "default": "./lib/index.js"
     }
   },
-  "files": [
-    "CHANGELOG.md",
-    "lib",
-    "!**/*.tsbuildinfo"
-  ],
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build ./tsconfig.build.json",
     "start": "run-s clean 'build -- --watch'",
     "test": "vitest",
-    "lint": "run-p -l lint:*",
-    "lint:eslint": "eslint ./ --cache --cache-location ./node_modules/.cache/eslint/",
-    "lint:prettier": "prettier --check '**/*.{json,md,yml,yaml}' --cache",
-    "fix": "run-p fix:*",
-    "fix:lint": "run-s 'lint:eslint -- --fix'",
-    "fix:prettier": "run-s 'lint:prettier -- --write'",
+    "lint": "eslint ./ --max-warnings 0",
+    "fix": "pnpm lint --fix",
     "clean": "rimraf lib"
   },
-  "keywords": [
-    "eslint",
-    "eslintplugin",
-    "eslint-plugin",
-    "kintone"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kintone/js-sdk.git",
-    "directory": "packages/eslint-plugin"
-  },
-  "bugs": {
-    "url": "https://github.com/kintone/js-sdk/issues"
-  },
-  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/eslint-plugin#readme",
-  "author": {
-    "name": "Cybozu, Inc.",
-    "url": "https://cybozu.co.jp"
-  },
-  "license": "Apache-2.0",
   "dependencies": {
     "@typescript-eslint/utils": "^8.17.0"
   },
@@ -69,5 +62,8 @@
     "rimraf": "^6.0.1",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
