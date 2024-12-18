@@ -1,5 +1,5 @@
-import { rule as permissions } from "./permissions.js";
+import { rule as onlyAllowedJsApi } from "./only-allowed-js-api.js";
 
 export const rules = {
-  permissions: permissions,
+  "only-allowed-js-api": onlyAllowedJsApi,
 };

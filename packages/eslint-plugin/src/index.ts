@@ -15,7 +15,7 @@ const base = {
 
 const configs = {
   recommended: {
-    files: ["**/*.{ts,cts,mts,tsx}"],
+    files: ["**/*.{js,cjs,mjs,ts,cts,mts,jsx,tsx}"],
     plugins: {
       [name]: base,
     },
@@ -26,7 +26,7 @@ const configs = {
       },
     },
     rules: {
-      [`${name}/permissions`]: "error",
+      [`${name}/only-allowed-js-api`]: "error",
     } satisfies {
       [key in `${typeof name}/${keyof typeof rules}`]: TSESLint.FlatConfig.SeverityString;
     },
