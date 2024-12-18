@@ -1,0 +1,30 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+.node_modules/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# testing
+coverage/
+/test-dashboard.md
+
+# artifacts
+lib/
+dist/
+
+# editors
+**/.vs
+**/.vscode
+!**/.vscode/tasks.json
+.idea
+
+# secrets
+.env
+.envrc
+
+# misc
+**/.DS_Store
