@@ -3,9 +3,12 @@
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
+    /* Modules */
+    "rootDir": "./src" /* Specify the root folder within your source files. */,
+
     /* Projects */
     "composite": true /* Enable constraints that allow a TypeScript project to be used with project references. */,
-    "tsBuildInfoFile": "./lib/.tsbuildinfo" /* Specify the path to .tsbuildinfo incremental compilation file. */,
+    "tsBuildInfoFile": "./node_modules/.build.tsbuildinfo" /* Specify the path to .tsbuildinfo incremental compilation file. */,
 
     /* Emit */
     "declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */,
