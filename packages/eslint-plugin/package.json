@@ -39,7 +39,9 @@
     "prebuild": "pnpm clean",
     "build": "tsc --build ./tsconfig.build.json",
     "start": "run-s clean 'build -- --watch'",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ci": "vitest run",
     "lint": "eslint ./ --max-warnings 0",
     "fix": "pnpm lint --fix",
     "clean": "rimraf lib"
