@@ -395,6 +395,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
 
+  packages/rest: {}
+
   packages/rest-api-client:
     dependencies:
       axios:
