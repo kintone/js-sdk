@@ -5,6 +5,7 @@
     { "path": "./create-plugin"},
     { "path": "./customize-uploader"},
     { "path": "./dts-gen"},
+    { "path": "./eslint-plugin"},
     { "path": "./plugin-packer"},
     { "path": "./plugin-manifest-validator"},
     { "path": "./plugin-uploader"},
