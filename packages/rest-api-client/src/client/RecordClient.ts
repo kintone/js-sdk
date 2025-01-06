@@ -10,6 +10,7 @@ import type {
   CommentID,
   Comment,
   Mention,
+  UpdateRecordsForResponse,
 } from "./types";
 import { BaseClient } from "./BaseClient";
 
@@ -177,10 +178,7 @@ export class RecordClient extends BaseClient {
         }
     >;
   }): Promise<{
-    records: Array<
-      | { id: string; revision: string }
-      | { id: string; operation: "INSERT" | "UPDATE"; revision: string }
-    >;
+    records: UpdateRecordsForResponse;
   }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records",
@@ -431,10 +429,7 @@ export class RecordClient extends BaseClient {
         }
     >;
   }): Promise<{
-    records: Array<
-      | { id: string; revision: string }
-      | { id: string; operation: "INSERT" | "UPDATE"; revision: string }
-    >;
+    records: UpdateRecordsForResponse;
   }> {
     return this.updateAllRecordsRecursive(params, params.records.length, []);
   }
@@ -453,15 +448,9 @@ export class RecordClient extends BaseClient {
       >;
     },
     numOfAllRecords: number,
-    results: Array<
-      | { id: string; revision: string }
-      | { id: string; operation: "INSERT" | "UPDATE"; revision: string }
-    >,
+    results: UpdateRecordsForResponse,
   ): Promise<{
-    records: Array<
-      | { id: string; revision: string }
-      | { id: string; operation: "INSERT" | "UPDATE"; revision: string }
-    >;
+    records: UpdateRecordsForResponse;
   }> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * UPDATE_RECORDS_LIMIT;
@@ -507,12 +496,7 @@ export class RecordClient extends BaseClient {
           revision?: Revision;
         }
     >;
-  }): Promise<
-    Array<
-      | { id: string; revision: string }
-      | { id: string; operation: "INSERT" | "UPDATE"; revision: string }
-    >
-  > {
+  }): Promise<UpdateRecordsForResponse> {
     const separatedRecords = this.separateArrayRecursive(
       UPDATE_RECORDS_LIMIT,
       [],
@@ -529,10 +513,7 @@ export class RecordClient extends BaseClient {
     }));
     const results = (await this.bulkRequestClient.send({ requests }))
       .results as Array<{
-      records: Array<
-        | { id: string; revision: string }
-        | { id: string; operation: "INSERT" | "UPDATE"; revision: string }
-      >;
+      records: UpdateRecordsForResponse;
     }>;
     return results
       .map((result) => result.records)
