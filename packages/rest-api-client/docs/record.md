@@ -297,7 +297,7 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 #### Parameters
 
 | Name                      |       Type       |          Required           | Description                                                                                                                                                                                                     |
-|---------------------------|:----------------:|:---------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app                       | Number or String |             Yes             | The app ID.                                                                                                                                                                                                     |
 | upsert                    |     Boolean      |             No              | Whether to execute in UPSERT mode. If trueis specified, it will be executed in UPSERT mode.                                                                                                                     |
 | records                   |      Array       |             Yes             | Holds an array of objects that include `id`/`updateKey`, `revision` and `record` objects.<br />Up to 100 records can be specified.                                                                              |
@@ -311,7 +311,7 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 #### Returns
 
 | Name                |  Type  | Description                                                                                                                        |
-|---------------------| :----: |------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------- | :----: | ---------------------------------------------------------------------------------------------------------------------------------- |
 | records             | Array  | Holds an array of objects that include `id` and `revision` of updated records.                                                     |
 | records[].id        | String | The ID of the record.                                                                                                              |
 | records[].revision  | String | The revision number of the record.                                                                                                 |
@@ -332,7 +332,7 @@ For more information, please see [an example of KintoneAllRecordsError](errorHan
 #### Parameters
 
 | Name                      |       Type       |          Required           | Description                                                                                                                                                                                                     |
-|---------------------------|:----------------:|:---------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app                       | Number or String |             Yes             | The app ID.                                                                                                                                                                                                     |
 | upsert                    |     boolean      |             No              | Whether to execute in UPSERT mode. If trueis specified, it will be executed in UPSERT mode.                                                                                                                     |
 | records                   |      Array       |             Yes             | Holds an array of objects that include `id`/`updateKey`, `revision` and `record` objects.<br />Over 100 records can be specified.                                                                               |
@@ -346,7 +346,7 @@ For more information, please see [an example of KintoneAllRecordsError](errorHan
 #### Returns
 
 | Name                |  Type  | Description                                                                                                                        |
-|---------------------|:------:|------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------- | :----: | ---------------------------------------------------------------------------------------------------------------------------------- |
 | records             | Array  | Holds an array of objects that include `id` and `revision` of updated records.                                                     |
 | records[].id        | String | The ID of the record.                                                                                                              |
 | records[].revision  | String | The revision number of the record.                                                                                                 |
