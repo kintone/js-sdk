@@ -57,7 +57,7 @@ export default defineConfig({
       browser: true,
       preferBuiltins: false,
     }),
-    commonjs({ extensions }),
+    commonjs({ extensions, strictRequires: "auto" }),
     babel({
       babelHelpers: "bundled",
       presets: [
