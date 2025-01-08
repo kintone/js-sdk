@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.6.0...@kintone/rest-api-client@5.7.0) (2025-01-08)
+
+
+### Features
+
+* **rest-api-client:** supports the upsert option ([#3118](https://github.com/kintone/js-sdk/issues/3118)) ([3de0173](https://github.com/kintone/js-sdk/commit/3de0173ccdb950efbbf0c40811a33e01f215f3fd))
+
 ## [5.6.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.5.2...@kintone/rest-api-client@5.6.0) (2024-09-09)
 
 
