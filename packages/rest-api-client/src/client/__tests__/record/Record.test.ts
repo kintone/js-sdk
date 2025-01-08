@@ -298,6 +298,7 @@ describe("RecordTest", () => {
   describe("updateRecords", () => {
     const params = {
       app: APP_ID,
+      upsert: false,
       records: [{ id: RECORD_ID, record, revision: 5 }],
     };
     beforeEach(async () => {

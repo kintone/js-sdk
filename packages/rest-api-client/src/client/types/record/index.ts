@@ -26,3 +26,8 @@ export type Comment = {
 };
 
 export type CommentID = string | number;
+
+export type UpdateRecordsForResponse = Array<
+  | { id: string; revision: string }
+  | { id: string; operation: "INSERT" | "UPDATE"; revision: string }
+>;
