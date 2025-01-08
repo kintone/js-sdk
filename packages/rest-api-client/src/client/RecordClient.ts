@@ -478,6 +478,7 @@ export class RecordClient extends BaseClient {
     return this.updateAllRecordsRecursive(
       {
         app,
+        upsert,
         records: records.slice(CHUNK_LENGTH),
       },
       numOfAllRecords,
