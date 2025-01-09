@@ -11,7 +11,7 @@ jobs:
     name: Analyze the licenses
     runs-on: ubuntu-latest
     steps:
-      - uses: Kesin11/actions-timeline@da70beff098ff89b15d279e8bf2f60519a8dadd7 # v2
+      - uses: Kesin11/actions-timeline@3046833d9aacfd7745c5264b7f3af851c3e2a619 # v2
       - name: Check out repository
         uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
