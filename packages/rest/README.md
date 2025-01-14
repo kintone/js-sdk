@@ -57,8 +57,7 @@ const client = createClient<paths>({
   headers: {
     "X-Cybozu-Authorization": procecc.env.KINTONE_AUTHORIZATION,
     // Use API token authentication
-    // auth: { apiToken: process.env.KINTONE_API_TOKEN }
-    // "X-Cybozu-API-Token": procecc.env.KINTONE_AUTHORIZATION,
+    // "X-Cybozu-API-Token": procecc.env.KINTONE_API_TOKEN,
     // Use OAuth token authentication
     // "Authorization: `Basic ${process.env.KINTONE_OAUTH_TOKEN}`,
   },
