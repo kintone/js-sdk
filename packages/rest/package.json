@@ -9,6 +9,9 @@
   "keywords": [
     "kintone"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
