@@ -55,9 +55,9 @@ import { createClient, paths } from "@kintone/rest";
 const client = createClient<paths>({
   baseUrl: "https://example.cybozu.com",
   headers: {
-    "X-Cybozu-Authorization": procecc.env.KINTONE_AUTHORIZATION,
+    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
     // Use API token authentication
-    // "X-Cybozu-API-Token": procecc.env.KINTONE_API_TOKEN,
+    // "X-Cybozu-API-Token": process.env.KINTONE_API_TOKEN,
     // Use OAuth token authentication
     // "Authorization: `Basic ${process.env.KINTONE_OAUTH_TOKEN}`,
   },
@@ -83,7 +83,7 @@ import { createClient } from "@kintone/rest";
 const client = createClient({
   baseUrl: "https://example.cybozu.com",
   headers: {
-    "X-Cybozu-Authorization": procecc.env.KINTONE_AUTHORIZATION,
+    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
   },
 });
 ```
