@@ -453,8 +453,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       qs:
-        specifier: ^6.12.3
-        version: 6.12.3
+        specifier: ^6.13.1
+        version: 6.13.1
     devDependencies:
       '@rollup/plugin-babel':
         specifier: ^6.0.4
@@ -10318,8 +10318,8 @@ packages:
       side-channel: 1.0.6
     dev: true
 
-  /qs@6.12.3:
-    resolution: {integrity: sha512-AWJm14H1vVaO/iNZ4/hO+HyaTehuy9nRqVdkTqlJt0HWvBiBIEXFmb4C0DGeYo3Xes9rrEW+TxHsaigCbN5ICQ==}
+  /qs@6.13.1:
+    resolution: {integrity: sha512-EJPeIn0CYrGu+hli1xilKAPXODtJ12T0sP63Ijx2/khC2JtuaN3JyNIpvmnkmaEtha9ocbG4A4cMcr+TvqvwQg==}
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.0.6
