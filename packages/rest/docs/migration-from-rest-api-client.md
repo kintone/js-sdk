@@ -68,6 +68,48 @@ const client = createClient({
 });
 ```
 
+#### Session Authentication in Browser
+
+As well as `@kintone/rest-api-client`, Session Authentication is supported in browser environment only.
+
+In `@kintone/rest-api-client`, you have imported the client via CDN, and the client was created without `auth` property.
+
+```ts
+import { KintoneRestAPIClient } from "@kintone/rest-api-client";
+
+const client = new KintoneRestAPIClient();
+```
+
+`@kintone/rest` also provides via CDN, 
+but you need to use `Middleware` feature for Session Authentication as follows:
+
+```ts
+const createClient = OpenAPIFetch.default; // defaultがcreateClient
+const client = createClient({
+  baseUrl: "https://example.cybozu.com",
+  headers: {
+    "X-Requested-With": "XMLHttpRequest",
+  },
+});
+
+const csrfMiddleware = {
+  async onRequest({ request }) {
+    const body = await request.json();
+    body["__REQUEST_TOKEN__"] = kintone.getRequestToken();
+    return new Request(request.url, {
+      method: request.method,
+      headers: request.headers,
+      body: JSON.stringify(body),
+    });
+  },
+};
+client.use(csrfMiddleware);
+```
+Middleware, which is one of the openapi-typescript features, allows you to modify either the request, response, or error handling.
+To use this feature and [`kintone.getRequestToken()`](https://kintone.dev/en/docs/kintone/js-api/internal-api-requests/get-csrf-token/), you can use Session Authentication in the browser environment.
+
+For details on Middleware feature, see openapi-typescript [specification](https://openapi-ts.dev/openapi-fetch/middleware-auth#middleware-auth).
+
 #### Timeout
 
 In `@kintone/rest-api-client`, `socketTimeout` option was provided to set the timeout.
@@ -312,11 +354,6 @@ const getAppAclResponse = await client.GET("/k/v1/preview/app/acl.json", {
 ### Unsupported Features
 
 In `@kintone/rest-api-client`, the following features were provided, but they are not available in `@kintone/rest`.
-
-#### Session Authentication in Browser
-
-Session authentication is not supported.
-Please use other authentication methods such as API tokens.
 
 #### Feature Flags
 
