@@ -1,0 +1,34 @@
+{
+    "name": "@kintone/rest",
+    "version": "0.0.1",
+    "description": "",
+    "main": "lib/src/index.js",
+    "module": "esm/src/index.js",
+    "types": "lib/src/index.d.ts",
+    "scripts": {
+        "prebuild": "pnpm clean",
+        "build": "tsc --build --force && cp -R src/schemas lib/src/schemas",
+        "clean": "rimraf lib esm umd",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "files": [
+        "esm",
+        "lib"
+    ],
+    "keywords": [
+        "kintone"
+    ],
+    "engines": {
+        "node": ">=18"
+    },
+    "author": {
+        "name": "Cybozu, Inc.",
+        "url": "https://cybozu.co.jp"
+    },
+    "license": "Apache-2.0",
+    "dependencies": {
+        "openapi-fetch": "^0.13.4",
+        "openapi-typescript": "^7.6.0",
+        "openapi-typescript-helpers": "^0.0.15"
+    }
+}
