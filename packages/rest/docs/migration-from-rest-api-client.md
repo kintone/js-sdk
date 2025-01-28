@@ -80,7 +80,7 @@ import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 const client = new KintoneRestAPIClient();
 ```
 
-`@kintone/rest` also provides from CDN, 
+`@kintone/rest` also provides from CDN,
 but you need to use `Middleware` feature for Session Authentication as follows:
 
 ```ts
@@ -105,6 +105,7 @@ const csrfMiddleware = {
 };
 client.use(csrfMiddleware);
 ```
+
 Middleware, which is one of the openapi-typescript features, allows you to modify either the request, response, or error handling.
 To use this feature and [`kintone.getRequestToken()`](https://kintone.dev/en/docs/kintone/js-api/internal-api-requests/get-csrf-token/), you can use Session Authentication in the browser environment.
 
@@ -246,27 +247,46 @@ const client = createClient<paths>({
 
 #### Client Certificate Authentication
 
-TODO
+In `@kintone/rest-api-client`, an option was provided to set the `clientCertAuth`.
 
-<!-- ```ts -->
-<!-- import { ProxyAgent } from "undici"; -->
-<!-- import { fs } from "fs"; -->
-<!---->
-<!-- // クライアント証明書と秘密鍵の読み込み -->
-<!-- const cert = fs.readFileSync('path/to/client-cert.pem'); -->
-<!-- const key = fs.readFileSync('path/to/client-key.pem'); -->
-<!-- const ca = fs.readFileSync('path/to/ca-cert.pem'); // オプション -->
-<!---->
-<!-- // カスタムエージェントを作成 -->
-<!-- const agent = new Agent({ -->
-<!--   connect: { -->
-<!--     key,           // クライアント証明書の秘密鍵 -->
-<!--     cert,          // クライアント証明書 -->
-<!--     ca,            // 信頼するCA証明書（必要に応じて） -->
-<!--     rejectUnauthorized: true, // 証明書の検証を有効にする（デフォルト:true） -->
-<!--   }, -->
-<!-- }); -->
-<!-- ``` -->
+```ts
+const client = new KintoneRestAPIClient({
+  baseUrl: "https://example.cybozu.com",
+  auth: {
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD,
+  },
+  clientCertAuth: {
+    pfxFilePath: "path/to/client-cert.pfx",
+    password: "password",
+  },
+});
+```
+
+With `@kintone/rest`, the settings are not provided directly.
+If you want to use the authentication, use `undici` and set `dispatcher` in the `requestInitExt` property.
+
+```ts
+import { Agent } from "undici";
+import { fs } from "fs";
+
+const agent = new Agent({
+  connect: {
+    pfx: fs.readFileSync("path/to/client-cert.pfx"),
+    passphrase: "passphrase",
+  },
+});
+
+const client = createClient<paths>({
+  baseUrl: "https://bozuman.s.cybozu.com",
+  headers: {
+    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
+  },
+  requestInitExt: {
+    dispatcher: agent,
+  },
+});
+```
 
 ### Call API
 
