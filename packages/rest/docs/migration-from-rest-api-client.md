@@ -70,7 +70,7 @@ const client = createClient({
 
 #### Session Authentication in Browser
 
-As well as `@kintone/rest-api-client`, the session authentication is supported in browser environment only.
+As well as `@kintone/rest-api-client`, session authentication is supported in browser environment only.
 
 In `@kintone/rest-api-client`, you have imported the client from CDN, and the client was created without `auth` property.
 
@@ -81,7 +81,7 @@ const client = new KintoneRestAPIClient();
 ```
 
 `@kintone/rest` also provides from CDN,
-but you need to use `Middleware` feature for the session authentication as follows:
+but you need to use `Middleware` feature for session authentication as follows:
 
 ```ts
 const createClient = OpenAPIFetch.default;
@@ -107,7 +107,7 @@ client.use(csrfMiddleware);
 ```
 
 Middleware, which is one of the openapi-typescript features, allows you to modify either the request, response, or error handling.
-To use this feature and [`kintone.getRequestToken()`](https://kintone.dev/en/docs/kintone/js-api/internal-api-requests/get-csrf-token/), you can use the session authentication in the browser environment.
+To use this feature and [`kintone.getRequestToken()`](https://kintone.dev/en/docs/kintone/js-api/internal-api-requests/get-csrf-token/), you can use session authentication in the browser environment.
 
 For details on Middleware feature, see openapi-typescript [specification](https://openapi-ts.dev/openapi-fetch/middleware-auth#middleware-auth).
 
@@ -264,7 +264,7 @@ const client = new KintoneRestAPIClient({
 ```
 
 With `@kintone/rest`, the settings are not provided directly.
-If you want to use the client certificate authentication, use `undici` and set `dispatcher` in the `requestInitExt` property.
+If you want to use client certificate authentication, use `undici` and set `dispatcher` in the `requestInitExt` property.
 
 ```ts
 import { Agent } from "undici";
