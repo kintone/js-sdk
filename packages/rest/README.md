@@ -47,7 +47,7 @@ TODO
 
 ## Usage
 
-Here is a sample code that retrieves app records.
+Here is a sample code that retrieves app records in TypeScript.
 
 ```ts
 import { createClient, paths } from "@kintone/rest";
@@ -75,7 +75,9 @@ try {
 }
 ```
 
-When you use JavScript, the Client can be created as follows:
+We recommend using TypeScript because it benefits from completions for paths, params, etc.
+
+When you use JavaScript without their benefits, the Client can be created as follows:
 
 ```js
 import { createClient } from "@kintone/rest";
