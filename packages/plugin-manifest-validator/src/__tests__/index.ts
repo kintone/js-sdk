@@ -515,11 +515,14 @@ describe("validator", () => {
 
   describe("supported language", () => {
     it.each`
-      languageCode | name        | description | homepage_url
-      ${"ja"}      | ${"名前"}   | ${"説明"}   | ${"https://example.com/ja"}
-      ${"en"}      | ${"name"}   | ${"desc"}   | ${"https://example.com/en"}
-      ${"zh"}      | ${"名称"}   | ${"描述"}   | ${"https://example.com/zh"}
-      ${"es"}      | ${"nombre"} | ${"desc"}   | ${"https://example.com/es"}
+      languageCode | name        | description    | homepage_url
+      ${"ja"}      | ${"名前"}   | ${"説明"}      | ${"https://example.com/ja"}
+      ${"en"}      | ${"name"}   | ${"desc"}      | ${"https://example.com/en"}
+      ${"zh"}      | ${"名称"}   | ${"描述"}      | ${"https://example.com/zh"}
+      ${"zh-TW"}   | ${"名稱"}   | ${"描述"}      | ${"https://example.com/zh-TW"}
+      ${"es"}      | ${"nombre"} | ${"desc"}      | ${"https://example.com/es"}
+      ${"th"}      | ${"ชื่อ"}   | ${"คำอธิบาย"}  | ${"https://example.com/th"}
+      ${"pt-BR"}   | ${"nome"}   | ${"descrição"} | ${"https://example.com/pt-BR"}
     `(
       `should return no error when the supported language is specified: $languageCode`,
       ({ languageCode, name, description, homepage_url }) => {
@@ -555,7 +558,10 @@ describe("validator", () => {
       ${"ja"}      | ${"名前"}
       ${"en"}      | ${"name"}
       ${"zh"}      | ${"名称"}
+      ${"zh-TW"}   | ${"名稱"}
       ${"es"}      | ${"nombre"}
+      ${"th"}      | ${"ชื่อ"}
+      ${"pt-BR"}   | ${"nome"}
     `(
       `should return warnings when the name of the language "$languageCode" is specified and homepage_url is missing`,
       ({ languageCode, name }) => {
@@ -587,7 +593,10 @@ describe("validator", () => {
       languageCode | homepage_url
       ${"ja"}      | ${"https://example.com/ja"}
       ${"zh"}      | ${"https://example.com/zh"}
+      ${"zh-TW"}   | ${"https://example.com/zh-TW"}
       ${"es"}      | ${"https://example.com/es"}
+      ${"th"}      | ${"https://example.com/th"}
+      ${"pt-BR"}   | ${"https://example.com/pt-BR"}
     `(
       `should return errors when the homepage_url of the language "$languageCode" is specified and name is missing`,
       ({ languageCode, homepage_url }) => {

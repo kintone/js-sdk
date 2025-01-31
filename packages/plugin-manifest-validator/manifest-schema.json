@@ -77,6 +77,21 @@
             "warn": true
           }
         },
+        "zh-TW": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "requiredProperties": {
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["zh-TW"]
+                }
+              }
+            ],
+            "warn": true
+          }
+        },
         "es": {
           "type": "string",
           "minLength": 1,
@@ -86,6 +101,36 @@
               {
                 "homepage_url": {
                   "properties": ["es"]
+                }
+              }
+            ],
+            "warn": true
+          }
+        },
+        "th": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "requiredProperties": {
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["th"]
+                }
+              }
+            ],
+            "warn": true
+          }
+        },
+        "pt-BR": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "requiredProperties": {
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["pt-BR"]
                 }
               }
             ],
@@ -114,7 +159,22 @@
           "minLength": 1,
           "maxLength": 200
         },
+        "zh-TW": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
         "es": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "th": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "pt-BR": {
           "type": "string",
           "minLength": 1,
           "maxLength": 200
@@ -176,6 +236,20 @@
             ]
           }
         },
+        "zh-TW": {
+          "type": "string",
+          "minLength": 1,
+          "format": "http-url",
+          "requiredProperties": {
+            "items": [
+              {
+                "name": {
+                  "properties": ["zh-TW"]
+                }
+              }
+            ]
+          }
+        },
         "es": {
           "type": "string",
           "minLength": 1,
@@ -185,6 +259,34 @@
               {
                 "name": {
                   "properties": ["es"]
+                }
+              }
+            ]
+          }
+        },
+        "th": {
+          "type": "string",
+          "minLength": 1,
+          "format": "http-url",
+          "requiredProperties": {
+            "items": [
+              {
+                "name": {
+                  "properties": ["th"]
+                }
+              }
+            ]
+          }
+        },
+        "pt-BR": {
+          "type": "string",
+          "minLength": 1,
+          "format": "http-url",
+          "requiredProperties": {
+            "items": [
+              {
+                "name": {
+                  "properties": ["pt-BR"]
                 }
               }
             ]

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4010.2.0/packages/plugin-manifest-validator/manifest-schema.json",
+  "$schema": "https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4010.3.0/packages/plugin-manifest-validator/manifest-schema.json",
   "manifest_version": 1,
   "version": 1,
   "type": "APP",
@@ -7,20 +7,29 @@
     "ja": "サンプルプラグイン",
     "en": "sample plugin",
     "zh": "插件的例子",
-    "es": "complemento de muestra"
+    "zh-TW": "插件的例子",
+    "es": "complemento de muestra",
+    "pt-BR": "complemento de amostra",
+    "th": "ปลั๊กอินตัวอย่าง"
   },
   "description": {
     "ja": "これはサンプルプラグインです。",
     "en": "This is sample plugin.",
     "zh": "这是插件的例子",
-    "es": "Este es un complemento de muestra."
+    "zh-TW": "這是插件的例子",
+    "es": "Este es un complemento de muestra.",
+    "pt-BR": "Este é um complemento de amostra.",
+    "th": "นี่คือปลั๊กอินตัวอย่าง"
   },
   "icon": "image/icon.png",
   "homepage_url": {
     "ja": "http://sample_cybozu.jp",
     "en": "http://sample_cybozu.com",
     "zh": "http://sample_cybozu.cn",
-    "es": "http://sample_cybozu.es"
+    "zh-TW": "http://sample_cybozu.tw",
+    "es": "http://sample_cybozu.es",
+    "pt-BR": "http://sample_cybozu.br",
+    "th": "http://sample_cybozu.th"
   },
   "desktop": {
     "js": ["js/customize.js", "https://example.com/js/customize.js"],
