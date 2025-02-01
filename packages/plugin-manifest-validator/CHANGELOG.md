@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.2.2...@kintone/plugin-manifest-validator@10.3.0) (2025-02-01)
+
+
+### Features
+
+* **plugin-manifest-validator:** add locales ([#3138](https://github.com/kintone/js-sdk/issues/3138)) ([f8ebb2b](https://github.com/kintone/js-sdk/commit/f8ebb2b1a039a8ac3a082930216b221a3bf9bcfa))
+
 ## [10.2.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.2.1...@kintone/plugin-manifest-validator@10.2.2) (2024-06-12)
 
 
