@@ -277,7 +277,7 @@ importers:
   packages/plugin-packer:
     dependencies:
       '@kintone/plugin-manifest-validator':
-        specifier: ^10.2.2
+        specifier: ^10.3.0
         version: link:../plugin-manifest-validator
       chokidar:
         specifier: ^3.6.0
