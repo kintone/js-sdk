@@ -519,7 +519,7 @@ describe("validator", () => {
       ${"ja"}      | ${"名前"}   | ${"説明"}      | ${"https://example.com/ja"}
       ${"en"}      | ${"name"}   | ${"desc"}      | ${"https://example.com/en"}
       ${"zh"}      | ${"名称"}   | ${"描述"}      | ${"https://example.com/zh"}
-      ${"zh-TW"}   | ${"名称"}   | ${"描述"}      | ${"https://example.com/zh-TW"}
+      ${"zh-TW"}   | ${"名稱"}   | ${"描述"}      | ${"https://example.com/zh-TW"}
       ${"es"}      | ${"nombre"} | ${"desc"}      | ${"https://example.com/es"}
       ${"th"}      | ${"ชื่อ"}   | ${"คำอธิบาย"}  | ${"https://example.com/th"}
       ${"pt-BR"}   | ${"nome"}   | ${"descrição"} | ${"https://example.com/pt-BR"}
@@ -558,7 +558,7 @@ describe("validator", () => {
       ${"ja"}      | ${"名前"}
       ${"en"}      | ${"name"}
       ${"zh"}      | ${"名称"}
-      ${"zh-TW"}   | ${"名称"}
+      ${"zh-TW"}   | ${"名稱"}
       ${"es"}      | ${"nombre"}
       ${"th"}      | ${"ชื่อ"}
       ${"pt-BR"}   | ${"nome"}
