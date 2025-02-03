@@ -11,15 +11,6 @@ type Theme =
   | "YELLOW"
   | "BLACK";
 
-type TitleField =
-  | {
-      selectionMode: "AUTO";
-    }
-  | {
-      selectionMode: "MANUAL";
-      code: string;
-    };
-
 export type GetAppSettingsForRequest = {
   app: AppID;
   lang?: AppLang;
@@ -41,7 +32,10 @@ export type GetAppSettingsForResponse = {
       }
     | { type: "PRESET"; key: string };
   theme: Theme;
-  titleField: TitleField;
+  titleField: {
+    selectionMode: "AUTO" | "MANUAL";
+    code: string;
+  };
   enableThumbnails: boolean;
   enableBulkDeletion: boolean;
   enableComments: boolean;
@@ -68,7 +62,9 @@ export type UpdateAppSettingsForRequest = {
       }
     | { type: "PRESET"; key: string };
   theme?: Theme;
-  titleField?: TitleField;
+  titleField?:
+    | { selectionMode: "AUTO" }
+    | { selectionMode: "MANUAL"; code: string };
   enableThumbnails?: boolean;
   enableBulkDeletion?: boolean;
   enableComments?: boolean;
