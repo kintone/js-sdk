@@ -29,6 +29,7 @@ module.exports = {
       zlib: require.resolve("browserify-zlib"),
       stream: require.resolve("stream-browserify"),
       constants: require.resolve("constants-browserify"),
+      vm: false,
     },
   },
   plugins: [
