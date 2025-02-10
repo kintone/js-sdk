@@ -9,4 +9,3 @@
   "include": ["src/**/*", "package.json"],
   "exclude": ["src/**/__tests__/*", "src/**/*.test.ts"]
 }
-
