@@ -1,3 +1,5 @@
+FIXME: クライアントをモックしてテスト実行できるようにする
+
 import createClient from "openapi-fetch";
 import type { paths } from "../schemas/schema";
 import { iterator } from "../helpers/iterator";
