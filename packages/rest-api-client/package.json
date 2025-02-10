@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest-api-client",
-  "version": "5.6.0",
+  "version": "5.7.0",
   "publishConfig": {
     "access": "public"
   },
@@ -60,8 +60,8 @@
     "@types/core-js": "^2.5.8",
     "@types/js-base64": "^3.3.1",
     "@types/mime": "^3.0.4",
-    "@types/qs": "^6.9.17",
-    "rollup": "^4.28.1",
+    "@types/qs": "^6.9.18",
+    "rollup": "^4.34.6",
     "rollup-plugin-ecma-version-validator": "^0.2.13",
     "rollup-plugin-license": "^3.5.3",
     "rollup-plugin-node-globals": "^1.4.0",
@@ -69,17 +69,17 @@
     "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4",
     "babel-loader": "^9.2.1",
-    "vite": "^5.4.11",
+    "vite": "^5.4.14",
     "rimraf": "^5.0.10",
     "cross-env": "^7.0.3"
   },
   "dependencies": {
-    "core-js": "^3.38.1",
+    "core-js": "^3.40.0",
     "axios": "^1.7.9",
     "form-data": "^4.0.1",
     "js-base64": "^3.7.7",
     "mime": "^3.0.0",
-    "qs": "^6.12.3"
+    "qs": "^6.13.1"
   },
   "exports": {
     ".": {

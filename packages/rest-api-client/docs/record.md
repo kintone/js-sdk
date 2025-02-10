@@ -299,6 +299,7 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 | Name                      |       Type       |          Required           | Description                                                                                                                                                                                                     |
 | ------------------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app                       | Number or String |             Yes             | The app ID.                                                                                                                                                                                                     |
+| upsert                    |     Boolean      |             No              | Whether to execute in UPSERT mode. If true is specified, it will be executed in UPSERT mode.                                                                                                                    |
 | records                   |      Array       |             Yes             | Holds an array of objects that include `id`/`updateKey`, `revision` and `record` objects.<br />Up to 100 records can be specified.                                                                              |
 | records[].id              | Number or String | Conditionally<br />Required | The record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
 | records[].updateKey       |      Object      | Conditionally<br />Required | The unique key of the record to be updated. Required, if `id` will not be specified. To specify this field, the field must have the "Prohibit duplicate values" option turned on.                               |
@@ -309,11 +310,12 @@ If you'd like to update over 100 records, please consider using [updateAllRecord
 
 #### Returns
 
-| Name               |  Type  | Description                                                                    |
-| ------------------ | :----: | ------------------------------------------------------------------------------ |
-| records            | Array  | Holds an array of objects that include `id` and `revision` of updated records. |
-| records[].id       | String | The ID of the record.                                                          |
-| records[].revision | String | The revision number of the record.                                             |
+| Name                |  Type  | Description                                                                                                                        |
+| ------------------- | :----: | ---------------------------------------------------------------------------------------------------------------------------------- |
+| records             | Array  | Holds an array of objects that include `id` and `revision` of updated records.                                                     |
+| records[].id        | String | The ID of the record.                                                                                                              |
+| records[].revision  | String | The revision number of the record.                                                                                                 |
+| records[].operation | String | The operation performed on the record. This is output when UPSERT mode is enabled. `INSERT` : New registration / `UPDATE` : Update |
 
 #### Reference
 
@@ -332,6 +334,7 @@ For more information, please see [an example of KintoneAllRecordsError](errorHan
 | Name                      |       Type       |          Required           | Description                                                                                                                                                                                                     |
 | ------------------------- | :--------------: | :-------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | app                       | Number or String |             Yes             | The app ID.                                                                                                                                                                                                     |
+| upsert                    |     boolean      |             No              | Whether to execute in UPSERT mode. If true is specified, it will be executed in UPSERT mode.                                                                                                                    |
 | records                   |      Array       |             Yes             | Holds an array of objects that include `id`/`updateKey`, `revision` and `record` objects.<br />Over 100 records can be specified.                                                                               |
 | records[].id              | Number or String | Conditionally<br />Required | The record ID of the record to be updated. Required, if `updateKey` will not be specified.                                                                                                                      |
 | records[].updateKey       |      Object      | Conditionally<br />Required | The unique key of the record to be updated. Required, if `id` will not be specified. To specify this field, the field must have the "Prohibit duplicate values" option turned on.                               |
@@ -342,11 +345,12 @@ For more information, please see [an example of KintoneAllRecordsError](errorHan
 
 #### Returns
 
-| Name               |  Type  | Description                                                                    |
-| ------------------ | :----: | ------------------------------------------------------------------------------ |
-| records            | Array  | Holds an array of objects that include `id` and `revision` of updated records. |
-| records[].id       | String | The ID of the record.                                                          |
-| records[].revision | String | The revision number of the record.                                             |
+| Name                |  Type  | Description                                                                                                                        |
+| ------------------- | :----: | ---------------------------------------------------------------------------------------------------------------------------------- |
+| records             | Array  | Holds an array of objects that include `id` and `revision` of updated records.                                                     |
+| records[].id        | String | The ID of the record.                                                                                                              |
+| records[].revision  | String | The revision number of the record.                                                                                                 |
+| records[].operation | String | The operation performed on the record. This is output when UPSERT mode is enabled. `INSERT` : New registration / `UPDATE` : Update |
 
 ### deleteRecords
 

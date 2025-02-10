@@ -620,6 +620,7 @@ describe("AllRecordsTest", () => {
   describe("updateAllRecords", () => {
     const params = {
       app: APP_ID,
+      upsert: false,
       records: Array.from({ length: 3000 }, (_, index) => index + 1).map(
         (value) => ({
           id: value,

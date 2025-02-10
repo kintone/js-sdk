@@ -1,0 +1,70 @@
+{
+  "name": "@kintone/eslint-plugin",
+  "version": "0.0.1",
+  "description": "An ESLint plugin for kintone.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "kintone"
+  ],
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/eslint-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/eslint-plugin"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "type": "module",
+  "files": [
+    "CHANGELOG.md",
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    }
+  },
+  "scripts": {
+    "prebuild": "pnpm clean",
+    "build": "tsc --build ./tsconfig.build.json",
+    "start": "run-s clean 'build --watch'",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ci": "vitest run",
+    "lint": "eslint ./ --max-warnings 0",
+    "fix": "pnpm lint --fix",
+    "clean": "rimraf lib"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "^8.20.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.16.0"
+  },
+  "devDependencies": {
+    "@cybozu/eslint-config": "^24.0.0",
+    "@cybozu/license-manager": "^1.2.1",
+    "@types/node": "^22.13.1",
+    "@typescript-eslint/rule-tester": "^8.20.0",
+    "eslint": "^9.18.0",
+    "globals": "^15.14.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.4.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

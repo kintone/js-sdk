@@ -5,6 +5,7 @@
   "prerelease": false,
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": false,
+  "initial-version": "0.0.1",
   "changelog-path": "CHANGELOG.md",
   "versioning": "default",
   "include-v-in-tag": false,
@@ -23,6 +24,10 @@
     "packages/dts-gen": {
       "package-name": "@kintone/dts-gen",
       "component": "@kintone/dts-gen"
+    },
+    "packages/eslint-plugin": {
+      "package-name": "@kintone/eslint-plugin",
+      "component": "@kintone/eslint-plugin"
     },
     "packages/plugin-manifest-validator": {
       "package-name": "@kintone/plugin-manifest-validator",

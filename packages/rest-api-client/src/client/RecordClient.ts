@@ -10,6 +10,7 @@ import type {
   CommentID,
   Comment,
   Mention,
+  UpdateRecordsForResponse,
 } from "./types";
 import { BaseClient } from "./BaseClient";
 
@@ -167,6 +168,7 @@ export class RecordClient extends BaseClient {
 
   public updateRecords(params: {
     app: AppID;
+    upsert?: boolean;
     records: Array<
       | { id: RecordID; record?: RecordForParameter; revision?: Revision }
       | {
@@ -175,7 +177,9 @@ export class RecordClient extends BaseClient {
           revision?: Revision;
         }
     >;
-  }): Promise<{ records: Array<{ id: string; revision: string }> }> {
+  }): Promise<{
+    records: UpdateRecordsForResponse;
+  }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "records",
     });
@@ -415,6 +419,7 @@ export class RecordClient extends BaseClient {
 
   public async updateAllRecords(params: {
     app: AppID;
+    upsert?: boolean;
     records: Array<
       | { id: RecordID; record?: RecordForParameter; revision?: Revision }
       | {
@@ -423,13 +428,16 @@ export class RecordClient extends BaseClient {
           revision?: Revision;
         }
     >;
-  }): Promise<{ records: Array<{ id: string; revision: string }> }> {
+  }): Promise<{
+    records: UpdateRecordsForResponse;
+  }> {
     return this.updateAllRecordsRecursive(params, params.records.length, []);
   }
 
   private async updateAllRecordsRecursive(
     params: {
       app: AppID;
+      upsert?: boolean;
       records: Array<
         | { id: RecordID; record?: RecordForParameter; revision?: Revision }
         | {
@@ -440,11 +448,13 @@ export class RecordClient extends BaseClient {
       >;
     },
     numOfAllRecords: number,
-    results: Array<{ id: string; revision: string }>,
-  ): Promise<{ records: Array<{ id: string; revision: string }> }> {
+    results: UpdateRecordsForResponse,
+  ): Promise<{
+    records: UpdateRecordsForResponse;
+  }> {
     const CHUNK_LENGTH =
       this.bulkRequestClient.REQUESTS_LENGTH_LIMIT * UPDATE_RECORDS_LIMIT;
-    const { app, records } = params;
+    const { app, upsert, records } = params;
     const recordsChunk = records.slice(0, CHUNK_LENGTH);
     if (recordsChunk.length === 0) {
       return { records: results };
@@ -453,6 +463,7 @@ export class RecordClient extends BaseClient {
     try {
       newResults = await this.updateAllRecordsWithBulkRequest({
         app,
+        upsert,
         records: recordsChunk,
       });
     } catch (e: any) {
@@ -467,6 +478,7 @@ export class RecordClient extends BaseClient {
     return this.updateAllRecordsRecursive(
       {
         app,
+        upsert,
         records: records.slice(CHUNK_LENGTH),
       },
       numOfAllRecords,
@@ -476,6 +488,7 @@ export class RecordClient extends BaseClient {
 
   private async updateAllRecordsWithBulkRequest(params: {
     app: AppID;
+    upsert?: boolean;
     records: Array<
       | { id: RecordID; record?: RecordForParameter; revision?: Revision }
       | {
@@ -484,7 +497,7 @@ export class RecordClient extends BaseClient {
           revision?: Revision;
         }
     >;
-  }): Promise<Array<{ id: string; revision: string }>> {
+  }): Promise<UpdateRecordsForResponse> {
     const separatedRecords = this.separateArrayRecursive(
       UPDATE_RECORDS_LIMIT,
       [],
@@ -495,11 +508,14 @@ export class RecordClient extends BaseClient {
       endpointName: "records" as const,
       payload: {
         app: params.app,
+        upsert: params.upsert,
         records,
       },
     }));
     const results = (await this.bulkRequestClient.send({ requests }))
-      .results as Array<{ records: Array<{ id: string; revision: string }> }>;
+      .results as Array<{
+      records: UpdateRecordsForResponse;
+    }>;
     return results
       .map((result) => result.records)
       .reduce((acc, records) => {
