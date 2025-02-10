@@ -1,8 +1,13 @@
 {
-  "extends": "./tsconfig.build.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022"],
     "module": "es2022",
     "outDir": "./esm"
-  }
+  },
+  "include": ["src/**/*", "package.json"],
+  "exclude": ["src/**/__tests__/*", "src/**/*.test.ts"]
+
 }
 
