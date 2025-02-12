@@ -22,7 +22,9 @@
     "!**/*.tsbuildinfo"
   ],
   "keywords": [
-    "kintone"
+    "kintone",
+    "rest",
+    "api-client"
   ],
   "engines": {
     "node": ">=18"
@@ -31,10 +33,22 @@
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/rest#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/rest"
+  },
   "license": "Apache-2.0",
   "dependencies": {
     "openapi-fetch": "^0.13.4",
     "openapi-typescript": "^7.6.0",
     "openapi-typescript-helpers": "^0.0.15"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
