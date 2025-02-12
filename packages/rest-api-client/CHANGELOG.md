@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.7.0...@kintone/rest-api-client@5.7.1) (2025-02-11)
+
+
+### Bug Fixes
+
+* **rest:** Separate titleField type between GET and UPDATE ([#3159](https://github.com/kintone/js-sdk/issues/3159)) ([9ed8f0d](https://github.com/kintone/js-sdk/commit/9ed8f0d843b774e9f8851ed23d2ae96e46adf3c8))
+
 ## [5.7.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.6.0...@kintone/rest-api-client@5.7.0) (2025-01-11)
 
 
