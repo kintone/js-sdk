@@ -12,7 +12,8 @@
     "lint": "eslint . --max-warnings 0",
     "fix": "pnpm lint --fix",
     "clean": "rimraf lib esm umd",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:ci": "echo \"TODO: no test specified\""
   },
   "files": [
     "esm",
