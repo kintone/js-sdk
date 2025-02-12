@@ -16,8 +16,10 @@
     "test:ci": "echo \"TODO: no test specified\""
   },
   "files": [
+    "CHANGELOG.md",
     "esm",
-    "lib"
+    "lib",
+    "!**/*.tsbuildinfo"
   ],
   "keywords": [
     "kintone"
