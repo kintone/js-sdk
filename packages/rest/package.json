@@ -45,7 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "openapi-fetch": "^0.13.4",
-    "openapi-typescript": "^7.6.0",
+    "openapi-typescript": "^7.6.1",
     "openapi-typescript-helpers": "^0.0.15"
   },
   "publishConfig": {
