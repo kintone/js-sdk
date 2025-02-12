@@ -7,9 +7,8 @@
   "types": "lib/src/index.d.ts",
   "scripts": {
     "prebuild": "pnpm clean",
-    "build": "pnpm build:lib && pnpm build:esm",
-    "build:lib": "tsc --build ./tsconfig.build.lib.json && cp -R src/schemas lib/src/schemas",
-    "build:esm": "tsc --build ./tsconfig.build.esm.json && cp -R src/schemas esm/src/schemas",
+    "build": "tsc --build . && pnpm postbuild",
+    "postbuild": "cp -R src/schemas lib/src/schemas && cp -R src/schemas esm/src/schemas",
     "lint": "eslint . --max-warnings 0",
     "fix": "pnpm lint --fix",
     "clean": "rimraf lib esm umd",

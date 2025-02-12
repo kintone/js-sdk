@@ -3,14 +3,19 @@
   "compilerOptions": {
     "outDir": "./lib",
     "rootDir": "./",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noEmit": true
   },
+  "files": [],
   "references": [
     {
-      "path": "./tsconfig.build.json"
+      "path": "./tsconfig.build.lib.json"
     },
     {
       "path": "./tsconfig.build.esm.json"
+    },
+    {
+      "path": "./tsconfig.typecheck.json"
     }
   ]
 }

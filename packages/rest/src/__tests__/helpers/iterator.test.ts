@@ -1,8 +1,8 @@
-クライアントをモックしてテスト実行できるようにする;
+// FIXME: クライアントをモックしてテスト実行できるようにする
 
 import createClient from "openapi-fetch";
-import type { paths } from "../schemas/schema";
-import { iterator } from "../helpers/iterator";
+import type { paths } from "../../schemas/schema";
+import { iterator } from "../../helpers/iterator";
 
 const main = async () => {
   const client = createClient<paths>({
