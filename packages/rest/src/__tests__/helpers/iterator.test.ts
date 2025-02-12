@@ -1,4 +1,4 @@
-FIXME: クライアントをモックしてテスト実行できるようにする
+クライアントをモックしてテスト実行できるようにする;
 
 import createClient from "openapi-fetch";
 import type { paths } from "../schemas/schema";
@@ -13,7 +13,7 @@ const main = async () => {
   });
 
   // アプリ作成
-  const apps: { app: string }[] = [];
+  const apps: Array<{ app: string }> = [];
   for (let i = 0; i < 10; i++) {
     const addAppResp = await client.POST("/k/v1/preview/app.json", {
       body: { name: `my app ${i}` },
@@ -32,7 +32,9 @@ const main = async () => {
     "/k/v1/preview/app/deploy.json",
     (init) => init,
     (_init, resp) => {
-      if (!resp) return true;
+      if (!resp) {
+        return true;
+      }
       for (const status of resp?.data!.apps!) {
         if (
           apps.some((a) => a.app === status.app) &&
@@ -47,21 +49,22 @@ const main = async () => {
       params: {
         query: { apps: appIdList },
       },
-    }
+    },
   );
-  deploy_check: while (true) {
+  while (true) {
     const result = await deployCheckIterator.next();
-    if (result.done) break deploy_check;
+    if (result.done) {
+      break;
+    }
     console.log("deploying...");
     await new Promise((resolve) => setTimeout(resolve, 500));
   }
 
   // アプリ一覧取得
-  const handleRequest = (
-    previousInit: any,
-    previousResp: any
-  ) => {
-    if (!previousResp) return previousInit;
+  const handleRequest = (previousInit: any, previousResp: any) => {
+    if (!previousResp) {
+      return previousInit;
+    }
     const prevOffset = parseInt(previousInit.params!.query!.offset);
     const limit = parseInt(previousInit.params!.query!.limit);
     return {
@@ -74,11 +77,15 @@ const main = async () => {
         },
       },
     };
-  }
+  };
   const hasNext = (init: any, resp: any) => {
-    if (!resp) return true;
-    return parseInt(resp.data!.apps!.length) >= parseInt(init.params.query.limit);
-  }
+    if (!resp) {
+      return true;
+    }
+    return (
+      parseInt(resp.data!.apps!.length) >= parseInt(init.params.query.limit)
+    );
+  };
 
   const getAppsIterator = iterator(client).GET(
     "/k/v1/apps.json",
@@ -92,7 +99,7 @@ const main = async () => {
           limit: 3,
         },
       },
-    }
+    },
   );
   const allResp = [];
   for await (const resp of getAppsIterator) {

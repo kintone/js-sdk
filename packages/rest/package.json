@@ -10,6 +10,8 @@
     "build": "pnpm build:lib && pnpm build:esm",
     "build:lib": "tsc --build ./tsconfig.build.lib.json && cp -R src/schemas lib/src/schemas",
     "build:esm": "tsc --build ./tsconfig.build.esm.json && cp -R src/schemas esm/src/schemas",
+    "lint": "eslint . --max-warnings 0",
+    "fix": "pnpm lint --fix",
     "clean": "rimraf lib esm umd",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
