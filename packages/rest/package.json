@@ -1,0 +1,54 @@
+{
+  "name": "@kintone/rest",
+  "version": "0.0.1",
+  "description": "kintone REST API Client for JavaScript",
+  "main": "lib/src/index.js",
+  "module": "esm/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "scripts": {
+    "prebuild": "pnpm clean",
+    "build": "tsc --build . && pnpm postbuild",
+    "postbuild": "cp -R src/schemas lib/src/schemas && cp -R src/schemas esm/src/schemas",
+    "lint": "eslint . --max-warnings 0",
+    "fix": "pnpm lint --fix",
+    "clean": "rimraf lib esm umd",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:ci": "echo \"TODO: no test specified\""
+  },
+  "files": [
+    "CHANGELOG.md",
+    "esm",
+    "lib",
+    "!**/*.tsbuildinfo"
+  ],
+  "keywords": [
+    "kintone",
+    "rest",
+    "api-client"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/rest#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/rest"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "openapi-fetch": "^0.13.4",
+    "openapi-typescript": "^7.6.0",
+    "openapi-typescript-helpers": "^0.0.15"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
