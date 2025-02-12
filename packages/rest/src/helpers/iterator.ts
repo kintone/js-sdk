@@ -46,9 +46,10 @@ interface ClientIterator<
   TRACE: CreateIteratorMethod<Paths, "trace", Media>;
 }
 
-export function iterator<Paths extends {} = any, Media extends MediaType = any>(
+export const iterator = <Paths extends {} = any, Media extends MediaType = any>(
   client: Client<Paths, Media>,
-): ClientIterator<Paths, Media> {
+): ClientIterator<Paths, Media> => {
+  // eslint-disable-next-line func-style
   async function* createIteratorMethod<Method extends HttpMethod>(
     url: any,
     handleRequest: (init: any, previousResult: any) => any,
@@ -134,4 +135,4 @@ export function iterator<Paths extends {} = any, Media extends MediaType = any>(
         client.TRACE,
       ),
   };
-}
+};
