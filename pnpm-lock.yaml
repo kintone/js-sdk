@@ -9,7 +9,7 @@ overrides:
   browserify-sign@<4.2.2: '>=4.2.2'
   braces: '>=3.0.3'
   pac-resolver: '>=7.0.1'
-  socks: '>=2.8.3'
+  socks: '>=2.8.4'
   express: '>=4.19.2'
   ws: '>=8.18.0'
   body-parser: '>=1.20.3'
@@ -11043,13 +11043,13 @@ packages:
     dependencies:
       agent-base: 7.1.0
       debug: 4.4.0(supports-color@9.4.0)
-      socks: 2.8.3
+      socks: 2.8.4
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /socks@2.8.3:
-    resolution: {integrity: sha512-l5x7VUUWbjVFbafGLxPWkYsHIhEvmF85tbIeFZWc8ZPtoMyybuEhL7Jye/ooC4/d48FgOjSJXgsF/AJPYCW8Zw==}
+  /socks@2.8.4:
+    resolution: {integrity: sha512-D3YaD0aRxR3mEcqnidIs7ReYJFVzWdd6fXJYUM8ixcQcJRGTka/b3saV0KflYhyVJXKhb947GndU35SxYNResQ==}
     engines: {node: '>= 10.0.0', npm: '>= 3.0.0'}
     dependencies:
       ip-address: 9.0.5
