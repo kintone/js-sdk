@@ -63,7 +63,7 @@
     "@types/qs": "^6.9.18",
     "rollup": "^4.34.8",
     "rollup-plugin-ecma-version-validator": "^0.2.13",
-    "rollup-plugin-license": "^3.5.3",
+    "rollup-plugin-license": "^3.6.0",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-polyfill-node": "^0.13.0",
     "webpack": "^5.98.0",
