@@ -1,18 +1,15 @@
 import { ClientOptions } from "openapi-fetch";
-import type { DiscriminatedAuth, BasicAuth } from "../types/auth";
-import type { Proxy } from "../types/proxy";
 import { Agent as HttpsAgent } from "undici";
-import { buildAuth } from "./auth";
-import { buildProxy } from "./proxy";
-import { buildCertAuth } from "./certauth";
-import { ClientCertAuth } from "../types/certauth";
-
-type OmitTypePropertyFromUnion<T> = T extends unknown ? Omit<T, "type"> : never;
-type Auth = OmitTypePropertyFromUnion<DiscriminatedAuth>;
+import type { Proxy } from "./types/Proxy";
+import type { ClientCertAuth } from "./types/CertAuth";
+import type { AuthOption, BasicAuthOption } from "./types/Auth";
+import { buildAuth } from "./Auth";
+import { buildProxy } from "./Proxy";
+import { buildCertAuth } from "./CertAuth";
 
 export interface KintoneClientOptions extends ClientOptions {
-  auth?: Auth;
-  basicAuth?: BasicAuth;
+  auth?: AuthOption;
+  basicAuth?: BasicAuthOption;
   proxy?: Proxy;
   httpsAgent?: HttpsAgent;
   clientCertAuth?: ClientCertAuth;

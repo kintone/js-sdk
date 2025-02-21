@@ -1,6 +1,6 @@
 import { Agent } from "undici";
 import fs from "fs";
-import { ClientCertAuth } from "../types/certauth";
+import type { ClientCertAuth } from "./types/CertAuth";
 
 export const buildCertAuth = (
   certAuth: ClientCertAuth,

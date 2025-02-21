@@ -4,7 +4,6 @@
   "description": "kintone REST API Client for JavaScript",
   "main": "lib/src/index.js",
   "module": "esm/src/index.js",
-  "browser": "lib/src/index.browser.js",
   "types": "lib/src/index.d.ts",
   "scripts": {
     "prebuild": "pnpm clean",

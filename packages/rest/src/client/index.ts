@@ -1,10 +1,9 @@
-import _createClient, { MiddlewareCallbackParams } from "openapi-fetch";
-import { platformDeps } from "../platform";
-
+import _createClient from "openapi-fetch";
 import type { Client } from "openapi-fetch";
 import type { MediaType } from "openapi-typescript-helpers";
 import { buildNativeClientOptions, KintoneClientOptions } from "./KintoneClientOptions";
-import { isSession } from "./auth";
+import { isSession } from "./KintoneClientOptions/Auth";
+import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
 
 export const createClient = <
   Paths extends {},
@@ -14,25 +13,11 @@ export const createClient = <
 ): Client<Paths, Media> => {
 
   const nativeClientOptions = buildNativeClientOptions(clientOptions);
-
   const client = _createClient<Paths, Media>(nativeClientOptions);
 
   if (isSession(clientOptions.auth ?? {})) {
-    client.use(csrfMiddleware);
+    client.use(getCsrfMiddleware());
   }
   return client;
-};
-
-const csrfMiddleware = {
-  async onRequest({ request }: MiddlewareCallbackParams) {
-    const body: any = await request.json();
-
-    body["__REQUEST_TOKEN__"] = await platformDeps.getRequestToken();
-    return new Request(request.url, {
-      method: request.method,
-      headers: request.headers,
-      body: JSON.stringify(body),
-    });
-  },
 };
 
