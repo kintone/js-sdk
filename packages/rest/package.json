@@ -45,10 +45,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "fs": "0.0.1-security",
     "js-base64": "^3.7.7",
     "openapi-fetch": "^0.13.4",
     "openapi-typescript": "^7.6.1",
-    "openapi-typescript-helpers": "^0.0.15"
+    "openapi-typescript-helpers": "^0.0.15",
+    "undici": "^7.3.0"
   },
   "publishConfig": {
     "access": "public"

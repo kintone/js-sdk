@@ -1,18 +1,10 @@
-import _createClient, { ClientOptions, MiddlewareCallbackParams } from "openapi-fetch";
+import _createClient, { MiddlewareCallbackParams } from "openapi-fetch";
 import { platformDeps } from "../platform";
 
-import type {
-  DiscriminatedAuth,
-  BasicAuth,
-  ClientCertAuth,
-} from "../types/auth";
 import type { Client } from "openapi-fetch";
 import type { MediaType } from "openapi-typescript-helpers";
 import { buildNativeClientOptions, KintoneClientOptions } from "./KintoneClientOptions";
 import { isSession } from "./auth";
-
-type OmitTypePropertyFromUnion<T> = T extends unknown ? Omit<T, "type"> : never;
-type Auth = OmitTypePropertyFromUnion<DiscriminatedAuth>;
 
 export const createClient = <
   Paths extends {},
