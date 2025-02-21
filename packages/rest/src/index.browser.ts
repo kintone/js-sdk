@@ -2,8 +2,8 @@ import createClient from "openapi-fetch";
 import { paths } from "./schemas/schema";
 import { iterator } from "./helpers/iterator";
 import { injectPlatformDeps } from "./platform";
-import * as node from "./platform/node";
+import * as browser from "./platform/browser";
 
-injectPlatformDeps(node);
+injectPlatformDeps(browser);
 
 export { createClient, iterator, paths };

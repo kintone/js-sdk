@@ -4,6 +4,7 @@
   "description": "kintone REST API Client for JavaScript",
   "main": "lib/src/index.js",
   "module": "esm/src/index.js",
+  "browser": "lib/src/index.browser.js",
   "types": "lib/src/index.d.ts",
   "scripts": {
     "prebuild": "pnpm clean",
@@ -44,6 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "js-base64": "^3.7.7",
     "openapi-fetch": "^0.13.4",
     "openapi-typescript": "^7.6.1",
     "openapi-typescript-helpers": "^0.0.15"
