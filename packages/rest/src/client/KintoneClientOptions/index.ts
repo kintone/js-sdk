@@ -6,6 +6,9 @@ import type { AuthOption, BasicAuthOption } from "./types/Auth";
 import { buildAuth } from "./Auth";
 import { buildProxy } from "./Proxy";
 import { buildCertAuth } from "./CertAuth";
+import { buildUserAgent } from "./UserAgent";
+import { buildTimeout } from "./SocketTimeout";
+import { buildHttpsAgent } from "./HttpsAgent";
 
 export interface KintoneClientOptions extends ClientOptions {
   auth?: AuthOption;
@@ -24,23 +27,33 @@ export const buildNativeClientOptions = (
     _clientOptions.auth !== undefined ? buildAuth(_clientOptions.auth) : {};
   const userAgentHeader =
     _clientOptions.userAgent !== undefined
-      ? { "User-Agent": _clientOptions.userAgent }
+      ? buildUserAgent(_clientOptions.userAgent)
       : {};
   const timeoutOption =
     _clientOptions.socketTimeout !== undefined
-      ? { signal: AbortSignal.timeout(_clientOptions.socketTimeout) }
+      ? buildTimeout(_clientOptions.socketTimeout)
       : {};
   const proxyOption =
     _clientOptions.proxy !== undefined ? buildProxy(_clientOptions.proxy) : {};
   // TODO: dispatcherを２つ以上定義していたらエラーにした方が良い
   const httpsAgentOption =
     _clientOptions.httpsAgent !== undefined
-      ? { dispatcher: _clientOptions.httpsAgent }
+      ? buildHttpsAgent(_clientOptions.httpsAgent)
       : {};
   const clientCertAuthOption =
     _clientOptions.clientCertAuth !== undefined
       ? buildCertAuth(_clientOptions.clientCertAuth)
       : {};
+
+  const dispatcherCount =
+    Object.keys(proxyOption).length +
+    Object.keys(httpsAgentOption).length +
+    Object.keys(clientCertAuthOption).length;
+  if (dispatcherCount > 1) {
+    throw new Error(
+      "You can't set proxy, httpsAgent and clientCertAuth at the same time.",
+    );
+  }
 
   return {
     fetch: _clientOptions.fetch,
