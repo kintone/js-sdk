@@ -11,7 +11,7 @@ overrides:
   pac-resolver: '>=7.0.1'
   socks: '>=2.8.4'
   express: '>=4.19.2'
-  ws: '>=8.18.0'
+  ws: '>=8.18.1'
   body-parser: '>=1.20.3'
   cross-spawn: '>=7.0.6'
 
@@ -8556,7 +8556,7 @@ packages:
       whatwg-encoding: 2.0.0
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
-      ws: 8.18.0
+      ws: 8.18.1
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -10248,7 +10248,7 @@ packages:
       debug: 4.4.0(supports-color@9.4.0)
       devtools-protocol: 0.0.1312386
       typed-query-selector: 2.12.0
-      ws: 8.18.0
+      ws: 8.18.1
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -12402,7 +12402,7 @@ packages:
       webpack: 5.98.0(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack-dev-server@5.2.0)(webpack@5.98.0)
       webpack-dev-middleware: 7.4.2(webpack@5.98.0)
-      ws: 8.18.0
+      ws: 8.18.1
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -12645,8 +12645,8 @@ packages:
       signal-exit: 3.0.7
     dev: true
 
-  /ws@8.18.0:
-    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+  /ws@8.18.1:
+    resolution: {integrity: sha512-RKW2aJZMXeMxVpnZ6bck+RswznaxmzdULiBr6KY7XkTnW8uvt0iT9H5DkHUChXrc+uurzwa0rVI16n/Xzjdz1w==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
