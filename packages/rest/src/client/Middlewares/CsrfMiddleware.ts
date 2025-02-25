@@ -1,11 +1,12 @@
-import { Middleware, MiddlewareCallbackParams } from "openapi-fetch";
+/* eslint-disable n/no-unsupported-features/node-builtins */
+import type { Middleware, MiddlewareCallbackParams } from "openapi-fetch";
 
 export const getCsrfMiddleware = (): Middleware => {
   return {
     async onRequest({ request }: MiddlewareCallbackParams) {
       const body: any = await request.json();
 
-      body["__REQUEST_TOKEN__"] = await getRequestToken();
+      body.__REQUEST_TOKEN__ = await getRequestToken();
       return new Request(request.url, {
         method: request.method,
         headers: request.headers,
@@ -15,7 +16,7 @@ export const getCsrfMiddleware = (): Middleware => {
   };
 };
 
-declare var kintone: any;
+declare let kintone: any;
 const getRequestToken = async () => {
   if (
     typeof kintone === "object" &&

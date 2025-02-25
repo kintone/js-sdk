@@ -1,9 +1,9 @@
 import { ProxyAgent } from "undici";
-import type { Proxy } from "./types/Proxy";
+import { Proxy } from "./types/Proxy";
 
 export const buildProxy = (proxy: Proxy): { dispatcher: ProxyAgent } => {
   const protocol = proxy.protocol ?? "http";
-  if (proxy.auth == undefined) {
+  if (proxy.auth === undefined) {
     return {
       dispatcher: new ProxyAgent({
         uri: `${protocol}://${proxy.host}:${proxy.port}`,
