@@ -298,6 +298,23 @@ const getRecordsResponse = await client.GET("/k/v1/records.json", {
 
 For details on API paths and requests, see [specification](https://kintone.dev/en/).
 
+#### Kintone API Like
+
+You also can use `api` method like [`kintone.api`](https://kintone.dev/en/docs/kintone/js-api/internal-api-requests/kintone-rest-api-request/).
+
+```ts
+const kintone = createClient<paths>({
+  baseUrl: "https://example.cybozu.com",
+  auth: {
+    type: "password",
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD,
+  },
+});
+
+const resp = await kintone.api("/k/v1/records.json", "get", { app: 1 });
+```
+
 #### Guest Space
 
 In `@kintone/rest-api-client`, a client for a guest space was created.

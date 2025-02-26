@@ -78,6 +78,9 @@ try {
     },
   });
   console.log(resp.data?.records);
+  // or you can write code like kintone.api
+  const resp2 = await client.api("/k/v1/records.json", "get", { app: 1 });
+  console.log(resp2.data?.records);
 } catch (e) {
   console.error(e);
 }
