@@ -10,7 +10,7 @@ export const buildCertAuth = (
       pfx:
         "pfx" in certAuth
           ? certAuth.pfx
-          : fs.readFileSync("path/to/client-cert.pfx"),
+          : fs.readFileSync(certAuth.pfxFilePath),
       passphrase: certAuth.password,
     },
   });
