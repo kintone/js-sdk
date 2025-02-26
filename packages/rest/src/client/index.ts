@@ -1,19 +1,14 @@
-import _createClient, {
-  FetchResponse,
-  MaybeOptionalInit,
-} from "openapi-fetch";
-import type {
-  HttpMethod,
-  MediaType,
-} from "openapi-typescript-helpers";
+import _createClient from "openapi-fetch";
+import type { MediaType } from "openapi-typescript-helpers";
 import type { KintoneClientOptions } from "./KintoneClientOptions";
 import { buildNativeClientOptions } from "./KintoneClientOptions";
 import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
-import { KintoneClient, MethodWithPath } from "./KintoneClient";
+import { KintoneClient } from "./KintoneClient";
 import { isSessionAuth } from "./KintoneClientOptions/Auth";
+import { NativeInitParam } from "./KintoneClient/types/methods";
 
 export const createClient = <
-  Paths extends Record<string, Record<HttpMethod, {}>>,
+  Paths extends {},
   Media extends MediaType = MediaType,
 >(
   clientOptions: KintoneClientOptions,
@@ -27,17 +22,20 @@ export const createClient = <
     client.use(getCsrfMiddleware());
   }
 
-  client.api = async <
-    Path extends keyof Paths,
-    Method extends MethodWithPath<Paths[Path]>,
-    Init extends MaybeOptionalInit<Paths[Path], Method>,
-  >(
-    url: any,
-    method: any,
-    body: any,
-  ): Promise<FetchResponse<Paths[Path][Method], Init, Media>> => {
-    return client.request(method, url, body);
+  return {
+    ...client,
+    api: async (url, method, body) => {
+      const _body =
+        method === "get"
+          ? ({
+              params: {
+                query: body,
+              },
+            } as NativeInitParam<Paths, typeof url, typeof method>)
+          : ({
+              body: body,
+            } as NativeInitParam<Paths, typeof url, typeof method>);
+      return client.request(method, url, _body);
+    },
   };
-
-  return client;
 };
