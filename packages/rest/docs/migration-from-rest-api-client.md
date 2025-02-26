@@ -41,16 +41,17 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, the client is created as follows.
-Set the authorization information directly in `headers` instead of taking `auth`as an argument.
+With `@kintone/rest`, the client is also set the `auth` argument, but the `auth.type` is required.
 
 ```ts
 import { createClient, paths } from "@kintone/rest";
 
 const client = createClient<paths>({
   baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
+  auth: {
+    type: "password",
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD,
   },
 });
 ```
@@ -62,8 +63,10 @@ import { createClient } from "@kintone/rest";
 
 const client = createClient({
   baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
+  auth: {
+    type: "password",
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD,
   },
 });
 ```
@@ -81,35 +84,23 @@ const client = new KintoneRestAPIClient();
 ```
 
 `@kintone/rest` also provides from CDN,
-but you need to use `Middleware` feature for session authentication as follows:
+and you can create a client without the `auth` property, or with `session auth` property.
 
 ```ts
 const createClient = OpenAPIFetch.default;
 const client = createClient({
   baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Requested-With": "XMLHttpRequest",
-  },
 });
 
-const csrfMiddleware = {
-  async onRequest({ request }) {
-    const body = await request.json();
-    body["__REQUEST_TOKEN__"] = kintone.getRequestToken();
-    return new Request(request.url, {
-      method: request.method,
-      headers: request.headers,
-      body: JSON.stringify(body),
-    });
+// or
+
+const client = createClient({
+  baseUrl: "https://example.cybozu.com",
+  auth: {
+    type: "session",
   },
-};
-client.use(csrfMiddleware);
+});
 ```
-
-Middleware, which is one of the openapi-typescript features, allows you to modify either the request, response, or error handling.
-To use this feature and [`kintone.getRequestToken()`](https://kintone.dev/en/docs/kintone/js-api/internal-api-requests/get-csrf-token/), you can use session authentication in the browser environment.
-
-For details on Middleware feature, see openapi-typescript [specification](https://openapi-ts.dev/openapi-fetch/middleware-auth#middleware-auth).
 
 #### Timeout
 
@@ -126,16 +117,18 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, set `AbortSignal.timeout` in the `signal` property.
+With `@kintone/rest`, you can also write the code similarly as follows:
 
 ```ts
 import { createClient } from "@kintone/rest";
 const client = createClient<paths>({
   baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
+  auth: {
+    type: "password",
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD,
   },
-  signal: AbortSignal.timeout(1000),
+  socketTimeout: 1000,
 });
 ```
 
@@ -154,16 +147,18 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, set `User-Agent` directly in `headers`.
+With `@kintone/rest`, you can also write the code similarly as follows:
 
 ```ts
 import { createClient } from "@kintone/rest";
 const client = createClient<paths>]({
   baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
-    "User-Agent": "your-user-agent",
-    },
+  auth: {
+    type: "password",
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD,
+  },
+  userAgent: "your-user-agent",
 });
 ```
 
@@ -174,7 +169,6 @@ In `@kintone/rest-api-client`, an option was provided to set the `proxy`.
 ```ts
 const client = new KintoneRestAPIClient({
   baseUrl: "https://example.cybozu.com",
-  // Use password authentication
   auth: {
     username: process.env.KINTONE_USERNAME,
     password: process.env.KINTONE_PASSWORD,
@@ -187,22 +181,22 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, proxy settings are not provided directly.
-If you want to use a proxy, use `undici` and set `dispatcher` in the `requestInitExt` property.
+With `@kintone/rest`, you can also write the code similarly as follows:
 
 ```ts
-import { ProxyAgent } from "undici";
-import { createClient } from "openapi-fetch";
+import { createClient } from "@kintone/rest";
 
 const client = createClient<paths>({
   baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
+  auth: {
+    type: "password",
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD,
   },
-  requestInitExt: {
-    dispatcher: new ProxyAgent({
-      uri: "http://your-proxy-server:port",
-    }),
+  proxy: {
+    protocol: "http",
+    host: "your.proxy.host",
+    port: 1234,
   },
 });
 ```
@@ -227,8 +221,7 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, https.Agent settings are not provided directly.
-If you want to use a https.Agent, use `undici` and set `dispatcher` in the `requestInitExt` property.
+With `@kintone/rest`, instead of `https`, you use `undici` to set `httpsAgent`.
 
 ```ts
 import { Agent } from "undici";
@@ -236,12 +229,14 @@ import { createClient } from "openapi-fetch";
 
 const client = createClient<paths>({
   baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
+  auth: {
+    type: "password",
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD,
   },
-  requestInitExt: {
-    dispatcher: new Agent({}),
-  },
+  httpsAgent: new Agent({
+    keepAlive: true,
+  }),
 });
 ```
 
@@ -263,30 +258,25 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, the settings are not provided directly.
-If you want to use client certificate authentication, use `undici` and set `dispatcher` in the `requestInitExt` property.
+With `@kintone/rest`, you can use the same parameters.
 
 ```ts
-import { Agent } from "undici";
-import { fs } from "fs";
-
-const agent = new Agent({
-  connect: {
-    pfx: fs.readFileSync("path/to/client-cert.pfx"),
-    passphrase: "passphrase",
-  },
-});
-
 const client = createClient<paths>({
   baseUrl: "https://example.s.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
+  auth: {
+    type: "password",
+    username: process.env.KINTONE_USERNAME,
+    password: process.env.KINTONE_PASSWORD,
   },
-  requestInitExt: {
-    dispatcher: agent,
+  clientCertAuth: {
+    pfxFilePath: "path/to/client-cert.pfx",
+    password: "password",
   },
 });
 ```
+
+> [!NOTE]
+> You can select only one of these property: `proxy`, `httpsAgent`, `clientCertAuth`.
 
 ### Call API
 
@@ -313,26 +303,12 @@ For details on API paths and requests, see [specification](https://kintone.dev/e
 In `@kintone/rest-api-client`, a client for a guest space was created.
 
 ```ts
-const client = createClient({
-  baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
-  },
-  guestSpaceId: 1,
-});
 const getRecordsResponse = await client.record.getRecords({ app: "1" }));
 ```
 
 With `@kintone/rest`, specify an endpoint for a guest space in `path`.
 
 ```ts
-const client = createClient({
-  baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
-  },
-});
-
 const getRecordsResponse = await client.GET("/k/guest/1/v1/records.json", {
   params: {
     query: { app: 1 },
@@ -345,25 +321,12 @@ const getRecordsResponse = await client.GET("/k/guest/1/v1/records.json", {
 In `@kintone/rest-api-client`, operations on pre-deployment apps were performed by specifying `preview: true` in the method arguments.
 
 ```ts
-const client = createClient({
-  baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
-  },
-});
 const getAppAcl = await client.app.getAppAcl({ app: "1", preview: true }));
 ```
 
 With `@kintone/rest`, specify an endpoint for preview in `path`.
 
 ```ts
-const client = createClient({
-  baseUrl: "https://example.cybozu.com",
-  headers: {
-    "X-Cybozu-Authorization": process.env.KINTONE_AUTHORIZATION,
-  },
-});
-
 const getAppAclResponse = await client.GET("/k/v1/preview/app/acl.json", {
   params: {
     query: { app: 1 },

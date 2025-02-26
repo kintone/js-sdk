@@ -4,6 +4,7 @@ import type { KintoneClientOptions } from "./KintoneClientOptions";
 import { buildNativeClientOptions } from "./KintoneClientOptions";
 import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
 import { KintoneClient } from "./KintoneClient";
+import { isSessionAuth } from "./KintoneClientOptions/Auth";
 
 export const createClient = <
   Paths extends {},
@@ -14,7 +15,7 @@ export const createClient = <
   const nativeClientOptions = buildNativeClientOptions(clientOptions);
   const client = _createClient<Paths, Media>(nativeClientOptions);
 
-  if (clientOptions.auth?.type == "session") {
+  if (isSessionAuth(clientOptions.auth)) {
     client.use(getCsrfMiddleware());
   }
   return client;

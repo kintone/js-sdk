@@ -37,8 +37,7 @@ export type KintoneClientOptions = ClientOptions & {
 export const buildNativeClientOptions = (
   _clientOptions: KintoneClientOptions,
 ): ClientOptions => {
-  const authHeader =
-    _clientOptions.auth !== undefined ? buildAuth(_clientOptions.auth) : {};
+  const authHeader = buildAuth(_clientOptions.auth ?? { type: "session" });
   const userAgentHeader =
     _clientOptions.userAgent !== undefined
       ? buildUserAgent(_clientOptions.userAgent)

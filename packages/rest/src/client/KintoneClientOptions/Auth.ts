@@ -1,4 +1,4 @@
-import type { AuthOption } from "./types/Auth";
+import type { AuthOption, SessionAuth } from "./types/Auth";
 
 import { Base64 } from "js-base64";
 
@@ -45,4 +45,14 @@ export const buildAuth = (_auth: AuthOption): AuthHeader => {
         "X-Requested-With": "XMLHttpRequest",
       };
   }
+};
+
+export const isSessionAuth = (
+  _auth: AuthOption | undefined,
+): _auth is SessionAuth => {
+  return (
+    _auth === undefined ||
+    Object.keys(_auth).length === 0 ||
+    _auth.type === "session"
+  );
 };
