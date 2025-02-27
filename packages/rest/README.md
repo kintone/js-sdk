@@ -37,10 +37,6 @@ const { createClient } = require("@kintone/rest");
 import { createClient } from "@kintone/rest";
 ```
 
-```ts
-import { createClient, paths } from "@kintone/rest";
-```
-
 ## Browser support
 
 TODO
@@ -50,9 +46,9 @@ TODO
 Here is a sample code that retrieves app records in TypeScript.
 
 ```ts
-import { createClient, paths } from "@kintone/rest";
+import { createClient } from "@kintone/rest";
 
-const client = createClient<paths>({
+const client = createClient({
   baseUrl: "https://example.cybozu.com",
   auth: {
     type: "password",
@@ -74,12 +70,12 @@ const client = createClient<paths>({
 try {
   const resp = await client.GET("/k/v1/records.json", {
     params: {
-      query: { app: 1 },
+      query: { app: "1" },
     },
   });
   console.log(resp.data?.records);
   // or you can write code like kintone.api
-  const resp2 = await client.api("/k/v1/records.json", "get", { app: 1 });
+  const resp2 = await client.api("/k/v1/records.json", "get", { app: "1" });
   console.log(resp2.data?.records);
 } catch (e) {
   console.error(e);
@@ -87,21 +83,7 @@ try {
 ```
 
 We recommend using TypeScript because it benefits from completions for paths, params, etc.
-
-When you use JavaScript without their benefits, the Client can be created as follows:
-
-```js
-import { createClient } from "@kintone/rest";
-
-const client = createClient({
-  baseUrl: "https://example.cybozu.com",
-  auth: {
-    type: "password",
-    username: process.env.KINTONE_USERNAME,
-    password: process.env.KINTONE_PASSWORD,
-  },
-});
-```
+If you use JavaScript without their benefits, the Client can be created in the same code.
 
 ## Contribution Guide
 
