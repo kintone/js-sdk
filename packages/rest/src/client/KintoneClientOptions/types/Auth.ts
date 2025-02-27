@@ -28,4 +28,3 @@ export type BasicAuthOption = {
   username: string;
   password: string;
 };
-

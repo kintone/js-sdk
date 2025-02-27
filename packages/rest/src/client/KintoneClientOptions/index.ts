@@ -1,4 +1,4 @@
-import { Agent as HttpsAgent } from "undici";
+import type { Agent as HttpsAgent } from "undici";
 import { buildAuth } from "./Auth";
 import { buildUserAgent } from "./UserAgent";
 import { buildTimeout } from "./SocketTimeout";
