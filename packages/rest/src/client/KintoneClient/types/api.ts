@@ -35,7 +35,7 @@ export type NativeInitParam<
 
 type KintoneMethodType = Extract<HttpMethod, "get" | "post" | "put" | "delete">;
 
-type MethodOfPath<Path extends Record<string, any>> = {
+export type MethodOfPath<Path extends Record<string, any>> = {
   [Method in keyof Path]: Path[Method] extends never | undefined
     ? never
     : Method extends KintoneMethodType
@@ -43,12 +43,12 @@ type MethodOfPath<Path extends Record<string, any>> = {
       : never;
 }[keyof Path];
 
-type KintoneBody<T, Method extends KintoneMethodType> = Method extends "get"
+export type KintoneBody<T, Method extends KintoneMethodType> = Method extends "get"
   ? KintoneParams<T>
   : KintoneRequestBody<T>;
 
 type KintoneParams<T> = T extends {
-  parameters: { query: any };
+  parameters: { query?: any };
 }
   ? T["parameters"]["query"]
   : DefaultParamsOption;
