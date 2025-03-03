@@ -43,9 +43,10 @@ export type MethodOfPath<Path extends Record<string, any>> = {
       : never;
 }[keyof Path];
 
-export type KintoneBody<T, Method extends KintoneMethodType> = Method extends "get"
-  ? KintoneParams<T>
-  : KintoneRequestBody<T>;
+export type KintoneBody<
+  T,
+  Method extends KintoneMethodType,
+> = Method extends "get" ? KintoneParams<T> : KintoneRequestBody<T>;
 
 type KintoneParams<T> = T extends {
   parameters: { query?: any };

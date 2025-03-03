@@ -4,13 +4,17 @@ import type {
   MaybeOptionalInit,
 } from "openapi-fetch";
 import type {
-    FilterKeys,
+  FilterKeys,
   HttpMethod,
   MediaType,
   PathsWithMethod,
 } from "openapi-typescript-helpers";
-import { KintoneBody, MethodOfPath, NativeInitParam } from "../client/KintoneClient/types/api";
-import { KintoneClient } from "../client/KintoneClient";
+import type {
+  KintoneBody,
+  MethodOfPath,
+  NativeInitParam,
+} from "../client/KintoneClient/types/api";
+import type { KintoneClient } from "../client/KintoneClient";
 
 type InitParam<Init> = Init & { [key: string]: unknown };
 
@@ -48,7 +52,11 @@ type CreateKintoneApiIteratorMethod<
   body: ParamOrRequest,
   handleRequest: (
     previousInit: ParamOrRequest,
-    previousResult: FetchResponse<Paths[Path][Method], NativeInit, Media> | null,
+    previousResult: FetchResponse<
+      Paths[Path][Method],
+      NativeInit,
+      Media
+    > | null,
   ) => ParamOrRequest,
   hasNext: (
     init: ParamOrRequest,
@@ -95,6 +103,7 @@ export const iterator = <Paths extends {} = any, Media extends MediaType = any>(
     }
   }
 
+  // eslint-disable-next-line func-style
   async function* createKintoneApiIteratorMethod(
     url: any,
     handleRequest: (init: any, previousResult: any) => any,

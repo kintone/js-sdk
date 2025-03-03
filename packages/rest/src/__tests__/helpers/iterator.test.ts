@@ -119,7 +119,6 @@ const main = async () => {
   console.log(allResp.length);
 };
 
-
 const mainForKintoneApi = async () => {
   const kintone = createClient({
     baseUrl: "http://localhost",
@@ -133,7 +132,6 @@ const mainForKintoneApi = async () => {
   // アプリ作成
   const apps: Array<{ app: string }> = [];
   for (let i = 0; i < 10; i++) {
-    // eslint-disable-next-line new-cap
     const addAppResp = await kintone.api("/k/v1/preview/app.json", "post", {
       name: `my app ${i}`,
     });
@@ -142,7 +140,7 @@ const mainForKintoneApi = async () => {
     apps.push({ app: addAppResp.data!.app! });
   }
   // デプロイ
-  // eslint-disable-next-line new-cap
+
   await kintone.api("/k/v1/preview/app/deploy.json", "post", {
     apps: apps,
   });
@@ -150,7 +148,7 @@ const mainForKintoneApi = async () => {
   const appIdList = apps.map((a) => a.app);
 
   // デプロイ確認
-  // eslint-disable-next-line new-cap
+
   const deployCheckIterator = iterator(kintone).api(
     "/k/v1/preview/app/deploy.json",
     "get",
@@ -202,7 +200,6 @@ const mainForKintoneApi = async () => {
     return parseInt(resp.data?.apps?.length, 10) >= parseInt(init.limit, 10);
   };
 
-  // eslint-disable-next-line new-cap
   const getAppsIterator = iterator(kintone).api(
     "/k/v1/apps.json",
     "get",
