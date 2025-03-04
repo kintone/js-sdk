@@ -10,6 +10,7 @@ import type { KintoneClient } from "./KintoneClient";
 import { buildNativeClientOptions } from "./KintoneClientOptions";
 import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
 import { isSessionAuth } from "./KintoneClientOptions/Auth";
+import { getHttpMethodOverrideMiddleware } from "./Middlewares/HttpMethodOverrideMiddleware";
 
 export const createClient = (clientOptions: KintoneClientOptions) => {
   return _createClient<paths>(clientOptions);
@@ -26,6 +27,7 @@ const _createClient = <Paths extends {}, Media extends MediaType = MediaType>(
   if (isSessionAuth(clientOptions.auth)) {
     client.use(getCsrfMiddleware());
   }
+  client.use(getHttpMethodOverrideMiddleware());
 
   const api: KintoneApiMethod<Paths, Media> = async (url, method, body) => {
     const _body =
