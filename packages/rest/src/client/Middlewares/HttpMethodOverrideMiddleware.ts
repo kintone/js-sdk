@@ -1,15 +1,16 @@
-import type { Middleware, MiddlewareCallbackParams } from "openapi-fetch";
+/* eslint-disable n/no-unsupported-features/node-builtins */
+import type { Middleware } from "openapi-fetch";
 
 const THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE = 4096;
 
 export const getHttpMethodOverrideMiddleware = (): Middleware => {
   return {
-    async onRequest({ request, params }: MiddlewareCallbackParams) {
+    async onRequest({ request, params }) {
       if (request.method !== "GET") {
-        return;
+        return request;
       }
       if (request.url.length <= THRESHOLD_AVOID_REQUEST_URL_TOO_LARGE) {
-        return;
+        return request;
       }
       const _url = new URL(request.url);
       const body = params.query;
