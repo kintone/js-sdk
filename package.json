@@ -56,7 +56,7 @@
   "packageManager": "pnpm@8.15.9",
   "pnpm": {
     "overrides": {
-      "follow-redirects@<1.15.4": ">=1.15.4",
+      "follow-redirects@<1.15.4": ">=1.15.9",
       "browserify-sign@<4.2.2": ">=4.2.2",
       "braces": ">=3.0.3",
       "pac-resolver": ">=7.0.1",
