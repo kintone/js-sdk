@@ -453,7 +453,7 @@ importers:
         specifier: ^0.0.15
         version: 0.0.15
       undici:
-        specifier: ^7.3.0
+        specifier: ^7.4.0
         version: 7.4.0
 
   packages/rest-api-client:
