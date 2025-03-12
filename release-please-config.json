@@ -45,10 +45,6 @@
       "package-name": "@kintone/profile-loader",
       "component": "@kintone/profile-loader"
     },
-    "packages/rest": {
-      "package-name": "@kintone/rest",
-      "component": "@kintone/rest"
-    },
     "packages/rest-api-client": {
       "package-name": "@kintone/rest-api-client",
       "component": "@kintone/rest-api-client"
