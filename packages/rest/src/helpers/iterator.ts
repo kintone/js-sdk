@@ -13,6 +13,8 @@ import type {
   KintoneBody,
   MethodOfPath,
   NativeInitParam,
+  PathExcludeGuestSpace,
+  PathForGuestSpace,
 } from "../client/KintoneClient/types/api";
 import type { KintoneClient } from "../client/KintoneClient";
 
@@ -42,10 +44,20 @@ type CreateKintoneApiIteratorMethod<
   Paths extends Record<string, Record<HttpMethod, {}>>,
   Media extends MediaType,
 > = <
-  Path extends PathsWithMethod<Paths, Method>,
-  Method extends MethodOfPath<Paths[Path]>,
-  ParamOrRequest extends KintoneBody<FilterKeys<Paths[Path], Method>, Method>,
-  NativeInit extends NativeInitParam<Paths, Path, Method>,
+  Path extends
+    | PathExcludeGuestSpace<Paths>
+    | { path: PathForGuestSpace<Paths>; guestSpaceId: number },
+  SelectedPath extends Path extends { path: infer P }
+    ? P extends keyof Paths
+      ? P
+      : never
+    : Path,
+  Method extends MethodOfPath<Paths[SelectedPath]>,
+  ParamOrRequest extends KintoneBody<
+    FilterKeys<Paths[SelectedPath], Method>,
+    Method
+  >,
+  NativeInit extends NativeInitParam<Paths[SelectedPath], Method>,
 >(
   url: Path,
   method: Method,
@@ -53,16 +65,22 @@ type CreateKintoneApiIteratorMethod<
   handleRequest: (
     previousInit: ParamOrRequest,
     previousResult: FetchResponse<
-      Paths[Path][Method],
+      Paths[SelectedPath][Method],
       NativeInit,
       Media
     > | null,
   ) => ParamOrRequest,
   hasNext: (
     init: ParamOrRequest,
-    response: FetchResponse<Paths[Path][Method], NativeInit, Media> | null,
+    response: FetchResponse<
+      Paths[SelectedPath][Method],
+      NativeInit,
+      Media
+    > | null,
   ) => boolean,
-) => AsyncGenerator<FetchResponse<Paths[Path][Method], NativeInit, Media>>;
+) => AsyncGenerator<
+  FetchResponse<Paths[SelectedPath][Method], NativeInit, Media>
+>;
 
 interface ClientIterator<
   Paths extends {} = any,
