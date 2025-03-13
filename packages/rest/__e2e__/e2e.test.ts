@@ -55,7 +55,6 @@ describe("kintone/rest", () => {
     });
 
     it("file.json", async () => {
-      // TODO install form-data
       // eslint-disable-next-line n/no-unsupported-features/node-builtins
       const formData = new FormData();
       formData.append("file", new Blob(["test data"]), "test.txt");
