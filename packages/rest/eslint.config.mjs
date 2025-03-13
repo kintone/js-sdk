@@ -5,13 +5,21 @@ export default [
   ...rootConfig,
   {
     ignores: ["lib", "esm", "src/schemas"],
+  },
+  {
     rules: {
-      "new-cap": ["warn", {
-        "capIsNewExceptions": [
-          "Deferred", // Because it is defined in the inheritance source.
-          "GET", "POST", "PUT", "DELETE"
-        ]
-      }]
-    }
+      "new-cap": [
+        "warn",
+        {
+          capIsNewExceptions: [
+            "Deferred", // Because it is defined in the inheritance source.
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE",
+          ],
+        },
+      ],
+    },
   },
 ];

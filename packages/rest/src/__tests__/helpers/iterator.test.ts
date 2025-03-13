@@ -16,7 +16,6 @@ const main = async () => {
   // アプリ作成
   const apps: Array<{ app: number }> = [];
   for (let i = 0; i < 10; i++) {
-    // eslint-disable-next-line new-cap
     const addAppResp = await client.POST("/k/v1/preview/app.json", {
       body: { name: `my app ${i}` },
     });
@@ -25,7 +24,7 @@ const main = async () => {
     apps.push({ app: addAppResp.data!.app! });
   }
   // デプロイ
-  // eslint-disable-next-line new-cap
+
   await client.POST("/k/v1/preview/app/deploy.json", {
     body: { apps: apps },
   });
@@ -33,7 +32,7 @@ const main = async () => {
   const appIdList = apps.map((a) => a.app);
 
   // デプロイ確認
-  // eslint-disable-next-line new-cap
+
   const deployCheckIterator = iterator(client).GET(
     "/k/v1/preview/app/deploy.json",
     (init) => init,
@@ -95,7 +94,6 @@ const main = async () => {
     );
   };
 
-  // eslint-disable-next-line new-cap
   const getAppsIterator = iterator(client).GET(
     "/k/v1/apps.json",
     handleRequest,
