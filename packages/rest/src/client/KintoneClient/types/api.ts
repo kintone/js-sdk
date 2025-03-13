@@ -3,35 +3,38 @@ import type {
   HttpMethod,
   MediaType,
   OperationRequestBodyContent,
-  PathsWithMethod,
 } from "openapi-typescript-helpers";
 import type {
   DefaultParamsOption,
+  FetchOptions,
   FetchResponse,
-  MaybeOptionalInit,
 } from "openapi-fetch";
 
 export type KintoneApiMethod<
   Paths extends Record<string, Record<HttpMethod, {}>>,
   Media extends MediaType,
 > = <
-  Path extends PathsWithMethod<Paths, Method>,
-  Method extends MethodOfPath<Paths[Path]>,
-  ParamOrRequest extends KintoneBody<FilterKeys<Paths[Path], Method>, Method>,
-  NativeInit extends NativeInitParam<Paths, Path, Method>,
+  Path extends
+    | PathExcludeGuestSpace<Paths>
+    | { path: PathForGuestSpace<Paths>; guestSpaceId: number },
+  SelectedPath extends Path extends { path: infer P }
+    ? P extends keyof Paths
+      ? P
+      : never
+    : Path,
+  Method extends MethodOfPath<Paths[SelectedPath]>,
+  ParamOrRequest extends KintoneBody<FilterKeys<Paths[SelectedPath], Method>, Method>,
+  NativeInit extends NativeInitParam<Paths[SelectedPath], Method>,
 >(
   url: Path,
   method: Method,
-  body: ParamOrRequest,
-) => Promise<FetchResponse<Paths[Path][Method], NativeInit, Media>>;
+  body: ParamOrRequest
+) => Promise<FetchResponse<Paths[SelectedPath][Method], NativeInit, Media>>;
 
 export type NativeInitParam<
-  Paths extends Record<string, Record<HttpMethod, {}>>,
-  Path extends PathsWithMethod<Paths, Method>,
-  Method extends HttpMethod,
-> = MaybeOptionalInit<Paths[Path], Method> & {
-  [key: string]: unknown;
-};
+  Path extends Record<KintoneMethodType, {}>,
+  Method extends KintoneMethodType,
+> = FetchOptions<Path[Method]>;
 
 type KintoneMethodType = Extract<HttpMethod, "get" | "post" | "put" | "delete">;
 
@@ -49,12 +52,21 @@ export type KintoneBody<
 > = Method extends "get" ? KintoneParams<T> : KintoneRequestBody<T>;
 
 type KintoneParams<T> = T extends {
-  parameters: { query?: any };
+  parameters: { query?: infer U };
 }
-  ? T["parameters"]["query"]
+  ? U
   : DefaultParamsOption;
 
-type KintoneRequestBody<T> =
-  OperationRequestBodyContent<T> extends never
+type KintoneRequestBody<T> = OperationRequestBodyContent<T>;
+
+export type PathExcludeGuestSpace<Paths extends {}> = {
+  [Path in keyof Paths]: Path extends `${infer _}{guestSpaceId}${infer _}`
     ? never
-    : OperationRequestBodyContent<T>;
+    : Path;
+}[keyof Paths];
+
+export type PathForGuestSpace<Paths extends {}> = {
+  [Path in keyof Paths]: Path extends `${infer _}{guestSpaceId}${infer _}`
+    ? Path
+    : never;
+}[keyof Paths];
