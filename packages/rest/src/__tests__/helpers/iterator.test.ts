@@ -14,7 +14,7 @@ const main = async () => {
   });
 
   // アプリ作成
-  const apps: Array<{ app: string }> = [];
+  const apps: Array<{ app: number }> = [];
   for (let i = 0; i < 10; i++) {
     // eslint-disable-next-line new-cap
     const addAppResp = await client.POST("/k/v1/preview/app.json", {
@@ -130,7 +130,7 @@ const mainForKintoneApi = async () => {
   });
 
   // アプリ作成
-  const apps: Array<{ app: string }> = [];
+  const apps: Array<{ app: number }> = [];
   for (let i = 0; i < 10; i++) {
     const addAppResp = await kintone.api("/k/v1/preview/app.json", "post", {
       name: `my app ${i}`,
