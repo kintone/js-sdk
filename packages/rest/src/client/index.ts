@@ -2,7 +2,7 @@ import createNativeClient from "openapi-fetch";
 import type { paths } from "../schemas/schema";
 import type { MediaType } from "openapi-typescript-helpers";
 import type { KintoneClientOptions } from "./KintoneClientOptions";
-import type { NativeInitParam } from "./KintoneClient/types/api";
+import type { KintoneApiMethod, NativeInitParam } from "./KintoneClient/types/api";
 import type { KintoneClient } from "./KintoneClient";
 import { buildNativeClientOptions } from "./KintoneClientOptions";
 import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
@@ -26,13 +26,14 @@ const _createClient = <Paths extends {}, Media extends MediaType = MediaType>(
   }
   client.use(getHttpMethodOverrideMiddleware());
 
-  const api = async (url: any, method: any, body: any) => {
+  const api: KintoneApiMethod<Paths, Media> = async (url, method, body) => {
     const urlPath = typeof url === "object" && "path" in url ? url.path : url;
     const pathParams =
       typeof url === "object" && "guestSpaceId" in url
         ? { guestSpaceId: url.guestSpaceId }
         : null;
-    let _body;
+    let _body: NativeInitParam<Paths[typeof urlPath], typeof method>;
+
     if (pathParams == null) {
       switch (method) {
         case "get": {
@@ -43,12 +44,16 @@ const _createClient = <Paths extends {}, Media extends MediaType = MediaType>(
           } as NativeInitParam<Paths[typeof urlPath], typeof method>;
           break;
         }
-        default: {
+        case "post":
+        case "put":
+        case "delete":
           _body = {
             body: body,
           } as NativeInitParam<Paths[typeof urlPath], typeof method>;
           break;
-        }
+        default: {
+          throw new Error(method satisfies never);
+      }
       }
     } else {
       switch (method) {
@@ -67,7 +72,7 @@ const _createClient = <Paths extends {}, Media extends MediaType = MediaType>(
               path: pathParams,
             },
             body: body,
-          } as unknown as NativeInitParam<Paths[typeof urlPath], typeof method>;
+          } as NativeInitParam<Paths[typeof urlPath], typeof method>;
           break;
         }
       }
