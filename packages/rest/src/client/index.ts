@@ -67,7 +67,7 @@ const _createClient = <Paths extends {}, Media extends MediaType = MediaType>(
               path: pathParams,
             },
             body: body,
-          } as unknown as NativeInitParam<Paths[typeof urlPath] , typeof method>;
+          } as unknown as NativeInitParam<Paths[typeof urlPath], typeof method>;
           break;
         }
       }

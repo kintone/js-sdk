@@ -23,12 +23,15 @@ export type KintoneApiMethod<
       : never
     : Path,
   Method extends MethodOfPath<Paths[SelectedPath]>,
-  ParamOrRequest extends KintoneBody<FilterKeys<Paths[SelectedPath], Method>, Method>,
+  ParamOrRequest extends KintoneBody<
+    FilterKeys<Paths[SelectedPath], Method>,
+    Method
+  >,
   NativeInit extends NativeInitParam<Paths[SelectedPath], Method>,
 >(
   url: Path,
   method: Method,
-  body: ParamOrRequest
+  body: ParamOrRequest,
 ) => Promise<FetchResponse<Paths[SelectedPath][Method], NativeInit, Media>>;
 
 export type NativeInitParam<
