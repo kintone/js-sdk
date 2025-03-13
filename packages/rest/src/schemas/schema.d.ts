@@ -4,6 +4,1030 @@
  */
 
 export interface paths {
+    "/k/guest/{guestSpaceId}/v1/app.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/acl.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppAclForGuestSpace"];
+        put: operations["putAppAclForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/actions.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppActionsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/adminNotes.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppAdminNotesForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/customize.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppCustomizeForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/form/fields.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppFormFieldsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/form/layout.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppFormLayoutForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/move.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["postAppMoveForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/notifications/general.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppNotificationsGeneralForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/notifications/perRecord.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppNotificationsPerRecordForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/notifications/reminder.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppNotificationsReminderForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/plugins.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppPluginsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/reports.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppReportsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/settings.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppSettingsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/status.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppStatusForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/app/views.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppViewsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/apps.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/apps/statistics.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getAppsStatisticsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/bulkRequest.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["postBulkRequestForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/field/acl.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getFieldAclForGuestSpace"];
+        put: operations["putFieldAclForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/file.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getFileForGuestSpace"];
+        put?: never;
+        post: operations["postFileForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/form.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getFormForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/guests.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["postGuestsForGuestSpace"];
+        delete: operations["deleteGuestsForGuestSpace"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/plugin.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["putPluginForGuestSpace"];
+        post: operations["postPluginForGuestSpace"];
+        delete: operations["deletePluginForGuestSpace"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/plugin/apps.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPluginAppsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/plugins.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPluginsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/plugins/required.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPluginsRequiredForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["postPreviewAppForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/acl.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppAclForGuestSpace"];
+        put: operations["putPreviewAppAclForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/actions.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppActionsForGuestSpace"];
+        put: operations["putPreviewAppActionsForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/adminNotes.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppAdminNotesForGuestSpace"];
+        put: operations["putPreviewAppAdminNotesForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/customize.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppCustomizeForGuestSpace"];
+        put: operations["putPreviewAppCustomizeForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/deploy.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppDeployForGuestSpace"];
+        put?: never;
+        post: operations["postPreviewAppDeployForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/form/fields.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppFormFieldsForGuestSpace"];
+        put: operations["putPreviewAppFormFieldsForGuestSpace"];
+        post: operations["postPreviewAppFormFieldsForGuestSpace"];
+        delete: operations["deletePreviewAppFormFieldsForGuestSpace"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/form/layout.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppFormLayoutForGuestSpace"];
+        put: operations["putPreviewAppFormLayoutForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/notifications/general.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppNotificationsGeneralForGuestSpace"];
+        put: operations["putPreviewAppNotificationsGeneralForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/notifications/perRecord.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppNotificationsPerRecordForGuestSpace"];
+        put: operations["putPreviewAppNotificationsPerRecordForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/notifications/reminder.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppNotificationsReminderForGuestSpace"];
+        put: operations["putPreviewAppNotificationsReminderForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/plugins.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppPluginsForGuestSpace"];
+        put?: never;
+        post: operations["postPreviewAppPluginsForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/reports.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppReportsForGuestSpace"];
+        put: operations["putPreviewAppReportsForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/settings.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppSettingsForGuestSpace"];
+        put: operations["putPreviewAppSettingsForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/status.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppStatusForGuestSpace"];
+        put: operations["putPreviewAppStatusForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/app/views.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewAppViewsForGuestSpace"];
+        put: operations["putPreviewAppViewsForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/field/acl.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewFieldAclForGuestSpace"];
+        put: operations["putPreviewFieldAclForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/form.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewFormForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/preview/record/acl.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getPreviewRecordAclForGuestSpace"];
+        put: operations["putPreviewRecordAclForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/record.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getRecordForGuestSpace"];
+        put: operations["putRecordForGuestSpace"];
+        post: operations["postRecordForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/record/acl.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getRecordAclForGuestSpace"];
+        put: operations["putRecordAclForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/record/assignees.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["putRecordAssigneesForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/record/comment.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["postRecordCommentForGuestSpace"];
+        delete: operations["deleteRecordCommentForGuestSpace"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/record/comments.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getRecordCommentsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/record/status.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["putRecordStatusForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/records.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getRecordsForGuestSpace"];
+        put: operations["putRecordsForGuestSpace"];
+        post: operations["postRecordsForGuestSpace"];
+        delete: operations["deleteRecordsForGuestSpace"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/records/acl/evaluate.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getRecordsAclEvaluateForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/records/cursor.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getRecordsCursorForGuestSpace"];
+        put?: never;
+        post: operations["postRecordsCursorForGuestSpace"];
+        delete: operations["deleteRecordsCursorForGuestSpace"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/records/status.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["putRecordsStatusForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/space.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getSpaceForGuestSpace"];
+        put: operations["putSpaceForGuestSpace"];
+        post?: never;
+        delete: operations["deleteSpaceForGuestSpace"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/space/body.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["putSpaceBodyForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/space/guests.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["putSpaceGuestsForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/space/members.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getSpaceMembersForGuestSpace"];
+        put: operations["putSpaceMembersForGuestSpace"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/space/thread.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["putSpaceThreadForGuestSpace"];
+        post: operations["postSpaceThreadForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/space/thread/comment.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["postSpaceThreadCommentForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/spaces/statistics.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getSpacesStatisticsForGuestSpace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/k/guest/{guestSpaceId}/v1/template/space.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["postTemplateSpaceForGuestSpace"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/k/v1/app.json": {
         parameters: {
             query?: never;
@@ -11,57 +1035,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    id: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            appId?: string;
-                            code?: string;
-                            /** Format: date-time */
-                            createdAt?: string;
-                            creator?: {
-                                code?: string;
-                                name?: string;
-                            };
-                            description?: string;
-                            /** Format: date-time */
-                            modifiedAt?: string;
-                            modifier?: {
-                                code?: string;
-                                name?: string;
-                            };
-                            name?: string;
-                            /** Format: long */
-                            spaceId?: string;
-                            /** Format: long */
-                            threadId?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getApp"];
         put?: never;
         post?: never;
         delete?: never;
@@ -77,72 +1051,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/acl/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                            rights?: components["schemas"]["AppAclGetRight"][];
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** Format: long */
-                        revision?: string;
-                        rights: components["schemas"]["AppAclPutRight"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/acl/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppAcl"];
+        put: operations["putAppAcl"];
         post?: never;
         delete?: never;
         options?: never;
@@ -157,44 +1067,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/actions/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            actions?: {
-                                [key: string]: components["schemas"]["AppActionsGetAction"];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppActions"];
         put?: never;
         post?: never;
         delete?: never;
@@ -210,39 +1083,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/adminNotes/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            content?: string;
-                            includeInTemplateAndDuplicates?: boolean;
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppAdminNotes"];
         put?: never;
         post?: never;
         delete?: never;
@@ -258,48 +1099,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/customize/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            desktop?: {
-                                css?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
-                                js?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
-                            };
-                            mobile?: {
-                                css?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
-                                js?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                            /** @enum {string} */
-                            scope?: "ALL" | "ADMIN" | "NONE";
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppCustomize"];
         put?: never;
         post?: never;
         delete?: never;
@@ -315,44 +1115,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/form/fields/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            properties?: {
-                                [key: string]: components["schemas"]["AppFormFieldsGetCalcFieldForm"] | components["schemas"]["AppFormFieldsGetCategoryFieldForm"] | components["schemas"]["AppFormFieldsGetDateFieldForm"] | components["schemas"]["AppFormFieldsGetDatetimeFieldForm"] | components["schemas"]["AppFormFieldsGetDecimalFieldForm"] | components["schemas"]["AppFormFieldsGetEditorFieldForm"] | components["schemas"]["AppFormFieldsGetFileFieldForm"] | components["schemas"]["AppFormFieldsGetGroupFieldForm"] | components["schemas"]["AppFormFieldsGetGroupSelectFieldForm"] | components["schemas"]["AppFormFieldsGetLinkFieldForm"] | components["schemas"]["AppFormFieldsGetLookupFieldForm"] | components["schemas"]["AppFormFieldsGetModifiedAtFieldForm"] | components["schemas"]["AppFormFieldsGetModifierFieldForm"] | components["schemas"]["AppFormFieldsGetMultipleCheckFieldForm"] | components["schemas"]["AppFormFieldsGetMultipleLineTextFieldForm"] | components["schemas"]["AppFormFieldsGetMultipleSelectFieldForm"] | components["schemas"]["AppFormFieldsGetOrganizationSelectFieldForm"] | components["schemas"]["AppFormFieldsGetRecordIdFieldForm"] | components["schemas"]["AppFormFieldsGetReferenceTableFieldForm"] | components["schemas"]["AppFormFieldsGetSingleCheckFieldForm"] | components["schemas"]["AppFormFieldsGetSingleLineTextFieldForm"] | components["schemas"]["AppFormFieldsGetSingleSelectFieldForm"] | components["schemas"]["AppFormFieldsGetStatusAssigneeFieldForm"] | components["schemas"]["AppFormFieldsGetStatusFieldForm"] | components["schemas"]["AppFormFieldsGetTableForm"] | components["schemas"]["AppFormFieldsGetTimeFieldForm"] | components["schemas"]["AppFormFieldsGetUserSelectFieldForm"];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppFormFields"];
         put?: never;
         post?: never;
         delete?: never;
@@ -368,39 +1131,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/form/layout/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            layout?: (components["schemas"]["AppFormLayoutGetRow"] | components["schemas"]["AppFormLayoutGetGroupRow"] | components["schemas"]["AppFormLayoutGetSubtableRow"])[];
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppFormLayout"];
         put?: never;
         post?: never;
         delete?: never;
@@ -418,35 +1149,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** Format: long */
-                        space?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/move/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        post: operations["postAppMove"];
         delete?: never;
         options?: never;
         head?: never;
@@ -460,40 +1163,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/notifications/general/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            notifications?: components["schemas"]["AppNotificationsGeneralGetNotification"][];
-                            notifyToCommenter?: boolean;
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppNotificationsGeneral"];
         put?: never;
         post?: never;
         delete?: never;
@@ -509,42 +1179,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/notifications/perRecord/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            notifications?: components["schemas"]["AppNotificationsPerRecordGetNotification"][];
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppNotificationsPerRecord"];
         put?: never;
         post?: never;
         delete?: never;
@@ -560,44 +1195,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/notifications/reminder/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            notifications?: components["schemas"]["AppNotificationsReminderGetNotification"][];
-                            /** Format: long */
-                            revision?: string;
-                            /** Format: timezone */
-                            timezone?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppNotificationsReminder"];
         put?: never;
         post?: never;
         delete?: never;
@@ -613,42 +1211,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "JA" | "EN" | "ZH" | "ES";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "JA" | "EN" | "ZH" | "ES";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/plugins/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            plugins?: components["schemas"]["AppPluginsGetPluginForm"][];
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppPlugins"];
         put?: never;
         post?: never;
         delete?: never;
@@ -664,44 +1227,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/reports/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            reports?: {
-                                [key: string]: components["schemas"]["AppReportsGetReport"] | components["schemas"]["AppReportsGetReportWithChartMode"];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppReports"];
         put?: never;
         post?: never;
         delete?: never;
@@ -717,54 +1243,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/settings/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            description?: string;
-                            enableBulkDeletion?: boolean;
-                            enableComments?: boolean;
-                            enableDuplicateRecord?: boolean;
-                            enableInlineRecordEditing?: boolean;
-                            enableThumbnails?: boolean;
-                            firstMonthOfFiscalYear?: string;
-                            icon?: components["schemas"]["AppSettingsGetIconPresetForm"] | components["schemas"]["AppSettingsGetIconFileForm"];
-                            name?: string;
-                            numberPrecision?: components["schemas"]["AppSettingsGetNumberPrecision"];
-                            /** Format: long */
-                            revision?: string;
-                            /** @enum {string} */
-                            theme?: "WHITE" | "CLIPBOARD" | "BINDER" | "PENCIL" | "CLIPS" | "RED" | "GREEN" | "BLUE" | "YELLOW" | "BLACK";
-                            titleField?: components["schemas"]["AppSettingsGetTitleField"];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppSettings"];
         put?: never;
         post?: never;
         delete?: never;
@@ -780,46 +1259,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/status/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            actions?: components["schemas"]["AppStatusGetActionForm"][];
-                            enable?: boolean;
-                            /** Format: long */
-                            revision?: string;
-                            states?: {
-                                [key: string]: components["schemas"]["AppStatusGetStateForm"];
-                            };
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppStatus"];
         put?: never;
         post?: never;
         delete?: never;
@@ -835,44 +1275,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of app/views/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                            views?: {
-                                [key: string]: components["schemas"]["AppViewsGetBuiltinListViewOutputForm"] | components["schemas"]["AppViewsGetBuiltinCalendarViewOutputForm"] | components["schemas"]["AppViewsGetListViewOutputForm"] | components["schemas"]["AppViewsGetCalendarViewOutputForm"] | components["schemas"]["AppViewsGetCustomViewOutputForm"];
-                            };
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppViews"];
         put?: never;
         post?: never;
         delete?: never;
@@ -888,48 +1291,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query?: {
-                    codes?: string[];
-                    offset?: string;
-                    name?: string;
-                    limit?: string;
-                    ids?: string[];
-                    spaceIds?: string[];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        codes?: string[];
-                        ids?: string[];
-                        /** Format: long */
-                        limit?: string;
-                        name?: string;
-                        /** Format: long */
-                        offset?: string;
-                        spaceIds?: string[];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of apps/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            apps?: components["schemas"]["AppsGetAppWithSpaceIdForm"][];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getApps"];
         put?: never;
         post?: never;
         delete?: never;
@@ -945,38 +1307,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query?: {
-                    offset?: string;
-                    limit?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        limit?: string;
-                        offset?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of apps/statistics/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            apps?: components["schemas"]["AppsStatisticsGetAppForm"][];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getAppsStatistics"];
         put?: never;
         post?: never;
         delete?: never;
@@ -994,34 +1325,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        requests: components["schemas"]["BulkRequestPostRequestForm"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of bulkRequest/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            results?: (components["schemas"]["BulkRequestPostRecordPostOutputForm"] | components["schemas"]["BulkRequestPostRecordPutOutputForm"] | components["schemas"]["BulkRequestPostRecordStatusPutOutputForm"] | components["schemas"]["BulkRequestPostRecordAssigneesPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsDeleteOutputForm"] | components["schemas"]["BulkRequestPostRecordsPostOutputForm"] | components["schemas"]["BulkRequestPostRecordsPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsStatusPutOutputForm"])[];
-                        };
-                    };
-                };
-            };
-        };
+        post: operations["postBulkRequest"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1035,74 +1339,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of field/acl/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                            rights?: components["schemas"]["FieldAclGetRight"][];
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app?: string;
-                        /** Format: long */
-                        id?: string;
-                        /** Format: long */
-                        revision?: string;
-                        rights: components["schemas"]["FieldAclPutRight"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of field/acl/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getFieldAcl"];
+        put: operations["putFieldAcl"];
         post?: never;
         delete?: never;
         options?: never;
@@ -1117,61 +1355,9 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    fileKey: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        fileKey: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of file/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
+        get: operations["getFile"];
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        file?: unknown;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of file/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            fileKey?: string;
-                        };
-                    };
-                };
-            };
-        };
+        post: operations["postFile"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1185,37 +1371,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of form/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            properties?: (components["schemas"]["FormGetLayoutProperties"] | components["schemas"]["FormGetLabelProperties"] | components["schemas"]["FormGetBultinProperties"] | components["schemas"]["FormGetCalcSimpleProperties"] | components["schemas"]["FormGetDateSimpleProperties"] | components["schemas"]["FormGetDatetimeSimpleProperties"] | components["schemas"]["FormGetDecimalSimpleProperties"] | components["schemas"]["FormGetEditorSimpleProperties"] | components["schemas"]["FormGetFileSimpleProperties"] | components["schemas"]["FormGetLinkSimpleProperties"] | components["schemas"]["FormGetMultipleLineTextSimpleProperties"] | components["schemas"]["FormGetMultipleSelectSimpleProperties"] | components["schemas"]["FormGetSingleLineTextSimpleProperties"] | components["schemas"]["FormGetSingleSelectSimpleProperties"] | components["schemas"]["FormGetTimeSimpleProperties"] | components["schemas"]["FormGetUserSelectSimpleProperties"] | components["schemas"]["FormGetOrganizationSelectSimpleProperties"] | components["schemas"]["FormGetGroupSelectSimpleProperties"] | components["schemas"]["FormGetLookupSimpleProperties"] | components["schemas"]["FormGetReferenceTableLayoutProperties"] | components["schemas"]["FormGetSubTableLayoutProperties"] | components["schemas"]["FormGetSpacerProperties"])[];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getForm"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1233,60 +1389,8 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        guests: components["schemas"]["GuestsPostGuestUserForm"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of guests/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
-        delete: {
-            parameters: {
-                query: {
-                    guests: string[];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        guests: string[];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of guests/delete */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        post: operations["postGuests"];
+        delete: operations["deleteGuests"];
         options?: never;
         head?: never;
         patch?: never;
@@ -1300,93 +1404,9 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        fileKey: string;
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of plugin/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            id?: string;
-                            version?: string;
-                        };
-                    };
-                };
-            };
-        };
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        fileKey: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of plugin/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            id?: string;
-                            version?: string;
-                        };
-                    };
-                };
-            };
-        };
-        delete: {
-            parameters: {
-                query: {
-                    id: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of plugin/delete */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        put: operations["putPlugin"];
+        post: operations["postPlugin"];
+        delete: operations["deletePlugin"];
         options?: never;
         head?: never;
         patch?: never;
@@ -1399,40 +1419,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    offset?: string;
-                    limit?: string;
-                    id: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        id: string;
-                        limit?: string;
-                        offset?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of plugin/apps/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            apps?: components["schemas"]["PluginAppsGetAppDto"][];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPluginApps"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1448,40 +1435,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query?: {
-                    offset?: string;
-                    limit?: string;
-                    ids?: string[];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        ids?: string[];
-                        limit?: string;
-                        offset?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of plugins/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            plugins?: components["schemas"]["PluginsGetPluginDto"][];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPlugins"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1497,38 +1451,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query?: {
-                    offset?: string;
-                    limit?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        limit?: string;
-                        offset?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of plugins/required/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            plugins?: components["schemas"]["PluginsRequiredGetPluginDto"][];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPluginsRequired"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1546,41 +1469,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        name: string;
-                        /** Format: long */
-                        space?: string;
-                        /** Format: long */
-                        thread?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            app?: string;
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        post: operations["postPreviewApp"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1594,72 +1483,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/acl/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                            rights?: components["schemas"]["PreviewAppAclGetRight"][];
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** Format: long */
-                        revision?: string;
-                        rights: components["schemas"]["PreviewAppAclPutRight"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/acl/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppAcl"];
+        put: operations["putPreviewAppAcl"];
         post?: never;
         delete?: never;
         options?: never;
@@ -1674,82 +1499,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/actions/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            actions?: {
-                                [key: string]: components["schemas"]["PreviewAppActionsGetAction"];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        actions: {
-                            [key: string]: components["schemas"]["PreviewAppActionsPutAction"];
-                        };
-                        /** Format: long */
-                        app: string;
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/actions/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            actions?: {
-                                [key: string]: components["schemas"]["PreviewAppActionsPutActionResult"];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppActions"];
+        put: operations["putPreviewAppActions"];
         post?: never;
         delete?: never;
         options?: never;
@@ -1764,73 +1515,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/adminNotes/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            content?: string;
-                            includeInTemplateAndDuplicates?: boolean;
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        content?: string;
-                        includeInTemplateAndDuplicates?: string;
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/adminNotes/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppAdminNotes"];
+        put: operations["putPreviewAppAdminNotes"];
         post?: never;
         delete?: never;
         options?: never;
@@ -1845,90 +1531,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/customize/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            desktop?: {
-                                css?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
-                                js?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
-                            };
-                            mobile?: {
-                                css?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
-                                js?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                            /** @enum {string} */
-                            scope?: "ALL" | "ADMIN" | "NONE";
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        desktop?: {
-                            css?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
-                            js?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
-                        };
-                        mobile?: {
-                            css?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
-                            js?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
-                        };
-                        /** Format: long */
-                        revision?: string;
-                        /** @enum {string} */
-                        scope?: "ALL" | "ADMIN" | "NONE";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/customize/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppCustomize"];
+        put: operations["putPreviewAppCustomize"];
         post?: never;
         delete?: never;
         options?: never;
@@ -1943,65 +1547,9 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    apps: string[];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        apps: string[];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/deploy/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            apps?: components["schemas"]["PreviewAppDeployGetAppForm"][];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppDeploy"];
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        apps: components["schemas"]["PreviewAppDeployPostAppForm"][];
-                        /** Format: boolean */
-                        revert?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/deploy/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        post: operations["postPreviewAppDeploy"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2015,151 +1563,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/form/fields/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            properties?: {
-                                [key: string]: components["schemas"]["PreviewAppFormFieldsGetCalcFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetCategoryFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetDateFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetDatetimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetDecimalFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetEditorFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetFileFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetGroupFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetGroupSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetLinkFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetLookupFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetModifiedAtFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetModifierFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetMultipleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetMultipleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetMultipleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetOrganizationSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetRecordIdFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetReferenceTableFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetSingleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetSingleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetSingleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetStatusAssigneeFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetStatusFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetTableForm"] | components["schemas"]["PreviewAppFormFieldsGetTimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetUserSelectFieldForm"];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        properties: {
-                            [key: string]: components["schemas"]["PreviewAppFormFieldsPutCalcFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutCategoryFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutDateFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutDatetimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutDecimalFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutEditorFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutFileFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutGroupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutGroupSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutLinkFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutLookupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutModifiedAtFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutModifierFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutMultipleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutMultipleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutMultipleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutOrganizationSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutRecordIdFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutReferenceTableFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutSingleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutSingleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutSingleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutStatusAssigneeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutStatusFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutTableForm"] | components["schemas"]["PreviewAppFormFieldsPutTimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutUserSelectFieldForm"];
-                        };
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/form/fields/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        properties: {
-                            [key: string]: components["schemas"]["PreviewAppFormFieldsPostCalcFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostCategoryFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostDateFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostDatetimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostDecimalFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostEditorFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostFileFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostGroupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostGroupSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostLinkFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostLookupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostModifiedAtFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostModifierFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostMultipleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostMultipleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostMultipleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostOrganizationSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostRecordIdFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostReferenceTableFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostSingleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostSingleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostSingleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostStatusAssigneeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostStatusFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostTableForm"] | components["schemas"]["PreviewAppFormFieldsPostTimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostUserSelectFieldForm"];
-                        };
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/form/fields/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        delete: {
-            parameters: {
-                query: {
-                    app: string;
-                    fields: string[];
-                    revision?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        fields: string[];
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/form/fields/delete */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppFormFields"];
+        put: operations["putPreviewAppFormFields"];
+        post: operations["postPreviewAppFormFields"];
+        delete: operations["deletePreviewAppFormFields"];
         options?: never;
         head?: never;
         patch?: never;
@@ -2172,72 +1579,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/form/layout/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            layout?: (components["schemas"]["PreviewAppFormLayoutGetRow"] | components["schemas"]["PreviewAppFormLayoutGetGroupRow"] | components["schemas"]["PreviewAppFormLayoutGetSubtableRow"])[];
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        layout: (components["schemas"]["PreviewAppFormLayoutPutRow"] | components["schemas"]["PreviewAppFormLayoutPutGroupRow"] | components["schemas"]["PreviewAppFormLayoutPutSubtableRow"])[];
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/form/layout/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppFormLayout"];
+        put: operations["putPreviewAppFormLayout"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2252,75 +1595,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/notifications/general/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            notifications?: components["schemas"]["PreviewAppNotificationsGeneralGetNotification"][];
-                            notifyToCommenter?: boolean;
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        notifications?: components["schemas"]["PreviewAppNotificationsGeneralPutNotification"][];
-                        /** Format: boolean */
-                        notifyToCommenter?: string;
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/notifications/general/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppNotificationsGeneral"];
+        put: operations["putPreviewAppNotificationsGeneral"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2335,75 +1611,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/notifications/perRecord/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            notifications?: components["schemas"]["PreviewAppNotificationsPerRecordGetNotification"][];
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        notifications: components["schemas"]["PreviewAppNotificationsPerRecordPutNotification"][];
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/notifications/perRecord/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppNotificationsPerRecord"];
+        put: operations["putPreviewAppNotificationsPerRecord"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2418,79 +1627,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/notifications/reminder/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            notifications?: components["schemas"]["PreviewAppNotificationsReminderGetNotification"][];
-                            /** Format: long */
-                            revision?: string;
-                            /** Format: timezone */
-                            timezone?: string;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        notifications?: components["schemas"]["PreviewAppNotificationsReminderPutNotification"][];
-                        /** Format: long */
-                        revision?: string;
-                        /** Format: timezone */
-                        timezone?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/notifications/reminder/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppNotificationsReminder"];
+        put: operations["putPreviewAppNotificationsReminder"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2505,76 +1643,9 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "JA" | "EN" | "ZH" | "ES";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "JA" | "EN" | "ZH" | "ES";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/plugins/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            plugins?: components["schemas"]["PreviewAppPluginsGetPluginForm"][];
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppPlugins"];
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        ids: string[];
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/plugins/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        post: operations["postPreviewAppPlugins"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2588,82 +1659,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/reports/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            reports?: {
-                                [key: string]: components["schemas"]["PreviewAppReportsGetReport"] | components["schemas"]["PreviewAppReportsGetReportWithChartMode"];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        reports: {
-                            [key: string]: components["schemas"]["PreviewAppReportsPutReport"] | components["schemas"]["PreviewAppReportsPutReportWithChartMode"];
-                        };
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/reports/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            reports?: {
-                                [key: string]: components["schemas"]["PreviewAppReportsPutReportResult"];
-                            };
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppReports"];
+        put: operations["putPreviewAppReports"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2678,99 +1675,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/settings/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            description?: string;
-                            enableBulkDeletion?: boolean;
-                            enableComments?: boolean;
-                            enableDuplicateRecord?: boolean;
-                            enableInlineRecordEditing?: boolean;
-                            enableThumbnails?: boolean;
-                            firstMonthOfFiscalYear?: string;
-                            icon?: components["schemas"]["PreviewAppSettingsGetIconPresetForm"] | components["schemas"]["PreviewAppSettingsGetIconFileForm"];
-                            name?: string;
-                            numberPrecision?: components["schemas"]["PreviewAppSettingsGetNumberPrecision"];
-                            /** Format: long */
-                            revision?: string;
-                            /** @enum {string} */
-                            theme?: "WHITE" | "CLIPBOARD" | "BINDER" | "PENCIL" | "CLIPS" | "RED" | "GREEN" | "BLUE" | "YELLOW" | "BLACK";
-                            titleField?: components["schemas"]["PreviewAppSettingsGetTitleField"];
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        description?: string;
-                        enableBulkDeletion?: string;
-                        enableComments?: string;
-                        enableDuplicateRecord?: string;
-                        enableInlineRecordEditing?: string;
-                        enableThumbnails?: string;
-                        firstMonthOfFiscalYear?: string;
-                        icon?: components["schemas"]["PreviewAppSettingsPutIconPresetForm"] | components["schemas"]["PreviewAppSettingsPutIconFileForm"];
-                        name?: string;
-                        numberPrecision?: components["schemas"]["PreviewAppSettingsPutNumberPrecision"];
-                        /** Format: long */
-                        revision?: string;
-                        /** @enum {string} */
-                        theme?: "WHITE" | "CLIPBOARD" | "BINDER" | "PENCIL" | "CLIPS" | "RED" | "GREEN" | "BLUE" | "YELLOW" | "BLACK";
-                        titleField?: components["schemas"]["PreviewAppSettingsPutTitleField"];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/settings/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppSettings"];
+        put: operations["putPreviewAppSettings"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2785,84 +1691,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/status/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            actions?: components["schemas"]["PreviewAppStatusGetActionForm"][];
-                            enable?: boolean;
-                            /** Format: long */
-                            revision?: string;
-                            states?: {
-                                [key: string]: components["schemas"]["PreviewAppStatusGetStateForm"];
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        actions?: components["schemas"]["PreviewAppStatusPutActionForm"][];
-                        /** Format: long */
-                        app: string;
-                        /** Format: boolean */
-                        enable?: string;
-                        /** Format: long */
-                        revision?: string;
-                        states?: {
-                            [key: string]: components["schemas"]["PreviewAppStatusPutStateForm"];
-                        };
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/status/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppStatus"];
+        put: operations["putPreviewAppStatus"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2877,82 +1707,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/views/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                            views?: {
-                                [key: string]: components["schemas"]["PreviewAppViewsGetBuiltinListViewOutputForm"] | components["schemas"]["PreviewAppViewsGetBuiltinCalendarViewOutputForm"] | components["schemas"]["PreviewAppViewsGetListViewOutputForm"] | components["schemas"]["PreviewAppViewsGetCalendarViewOutputForm"] | components["schemas"]["PreviewAppViewsGetCustomViewOutputForm"];
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** Format: long */
-                        revision?: string;
-                        views: {
-                            [key: string]: components["schemas"]["PreviewAppViewsPutListViewForm"] | components["schemas"]["PreviewAppViewsPutCalendarViewForm"] | components["schemas"]["PreviewAppViewsPutCustomViewForm"];
-                        };
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/app/views/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                            views?: {
-                                [key: string]: components["schemas"]["PreviewAppViewsPutResult"];
-                            };
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewAppViews"];
+        put: operations["putPreviewAppViews"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2967,74 +1723,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/field/acl/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                            rights?: components["schemas"]["PreviewFieldAclGetRight"][];
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app?: string;
-                        /** Format: long */
-                        id?: string;
-                        /** Format: long */
-                        revision?: string;
-                        rights: components["schemas"]["PreviewFieldAclPutRight"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/field/acl/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewFieldAcl"];
+        put: operations["putPreviewFieldAcl"];
         post?: never;
         delete?: never;
         options?: never;
@@ -3049,37 +1739,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/form/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            properties?: (components["schemas"]["PreviewFormGetLayoutProperties"] | components["schemas"]["PreviewFormGetLabelProperties"] | components["schemas"]["PreviewFormGetBultinProperties"] | components["schemas"]["PreviewFormGetCalcSimpleProperties"] | components["schemas"]["PreviewFormGetDateSimpleProperties"] | components["schemas"]["PreviewFormGetDatetimeSimpleProperties"] | components["schemas"]["PreviewFormGetDecimalSimpleProperties"] | components["schemas"]["PreviewFormGetEditorSimpleProperties"] | components["schemas"]["PreviewFormGetFileSimpleProperties"] | components["schemas"]["PreviewFormGetLinkSimpleProperties"] | components["schemas"]["PreviewFormGetMultipleLineTextSimpleProperties"] | components["schemas"]["PreviewFormGetMultipleSelectSimpleProperties"] | components["schemas"]["PreviewFormGetSingleLineTextSimpleProperties"] | components["schemas"]["PreviewFormGetSingleSelectSimpleProperties"] | components["schemas"]["PreviewFormGetTimeSimpleProperties"] | components["schemas"]["PreviewFormGetUserSelectSimpleProperties"] | components["schemas"]["PreviewFormGetOrganizationSelectSimpleProperties"] | components["schemas"]["PreviewFormGetGroupSelectSimpleProperties"] | components["schemas"]["PreviewFormGetLookupSimpleProperties"] | components["schemas"]["PreviewFormGetReferenceTableLayoutProperties"] | components["schemas"]["PreviewFormGetSubTableLayoutProperties"] | components["schemas"]["PreviewFormGetSpacerProperties"])[];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewForm"];
         put?: never;
         post?: never;
         delete?: never;
@@ -3095,77 +1755,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/record/acl/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                            rights?: components["schemas"]["PreviewRecordAclGetRight"][];
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app?: string;
-                        /** Format: long */
-                        id?: string;
-                        /** Format: long */
-                        revision?: string;
-                        rights: components["schemas"]["PreviewRecordAclPutRightForm"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of preview/record/acl/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getPreviewRecordAcl"];
+        put: operations["putPreviewRecordAcl"];
         post?: never;
         delete?: never;
         options?: never;
@@ -3180,115 +1771,9 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    id: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** Format: long */
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            record?: {
-                                [key: string]: components["schemas"]["RecordGetCalcSimpleValue"] | components["schemas"]["RecordGetCategorySimpleValue"] | components["schemas"]["RecordGetDateSimpleValue"] | components["schemas"]["RecordGetDatetimeSimpleValue"] | components["schemas"]["RecordGetDecimalSimpleValue"] | components["schemas"]["RecordGetEditorSimpleValue"] | components["schemas"]["RecordGetFileSimpleValue"] | components["schemas"]["RecordGetGroupSimpleValue"] | components["schemas"]["RecordGetLinkSimpleValue"] | components["schemas"]["RecordGetModifiedAtSimpleValue"] | components["schemas"]["RecordGetModifierSimpleValue"] | components["schemas"]["RecordGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordGetMultipleSelectSimpleValue"] | components["schemas"]["RecordGetRecordIdSimpleValue"] | components["schemas"]["RecordGetReferenceTableSimpleValue"] | components["schemas"]["RecordGetSimpleTableValue"] | components["schemas"]["RecordGetSingleLineTextSimpleValue"] | components["schemas"]["RecordGetSingleSelectSimpleValue"] | components["schemas"]["RecordGetStatusSimpleValue"] | components["schemas"]["RecordGetTimeSimpleValue"] | components["schemas"]["RecordGetUserSelectSimpleValue"] | components["schemas"]["RecordGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordGetGroupSelectSimpleValue"] | components["schemas"]["RecordGetRevisionSimpleValue"] | components["schemas"]["RecordGetRawRecordIdSimpleValue"];
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** Format: long */
-                        id?: string;
-                        record?: {
-                            [key: string]: components["schemas"]["RecordPutCalcSimpleValue"] | components["schemas"]["RecordPutCategorySimpleValue"] | components["schemas"]["RecordPutDateSimpleValue"] | components["schemas"]["RecordPutDatetimeSimpleValue"] | components["schemas"]["RecordPutDecimalSimpleValue"] | components["schemas"]["RecordPutEditorSimpleValue"] | components["schemas"]["RecordPutFileSimpleValue"] | components["schemas"]["RecordPutGroupSimpleValue"] | components["schemas"]["RecordPutLinkSimpleValue"] | components["schemas"]["RecordPutModifiedAtSimpleValue"] | components["schemas"]["RecordPutModifierSimpleValue"] | components["schemas"]["RecordPutMultipleLineTextSimpleValue"] | components["schemas"]["RecordPutMultipleSelectSimpleValue"] | components["schemas"]["RecordPutRecordIdSimpleValue"] | components["schemas"]["RecordPutReferenceTableSimpleValue"] | components["schemas"]["RecordPutSimpleTableValue"] | components["schemas"]["RecordPutSingleLineTextSimpleValue"] | components["schemas"]["RecordPutSingleSelectSimpleValue"] | components["schemas"]["RecordPutStatusSimpleValue"] | components["schemas"]["RecordPutTimeSimpleValue"] | components["schemas"]["RecordPutUserSelectSimpleValue"] | components["schemas"]["RecordPutOrganizationSelectSimpleValue"] | components["schemas"]["RecordPutGroupSelectSimpleValue"] | components["schemas"]["RecordPutRevisionSimpleValue"] | components["schemas"]["RecordPutRawRecordIdSimpleValue"];
-                        };
-                        /** Format: long */
-                        revision?: string;
-                        updateKey?: components["schemas"]["RecordPutUpdateKey"];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        record: {
-                            [key: string]: components["schemas"]["RecordPostCalcSimpleValue"] | components["schemas"]["RecordPostCategorySimpleValue"] | components["schemas"]["RecordPostDateSimpleValue"] | components["schemas"]["RecordPostDatetimeSimpleValue"] | components["schemas"]["RecordPostDecimalSimpleValue"] | components["schemas"]["RecordPostEditorSimpleValue"] | components["schemas"]["RecordPostFileSimpleValue"] | components["schemas"]["RecordPostGroupSimpleValue"] | components["schemas"]["RecordPostLinkSimpleValue"] | components["schemas"]["RecordPostModifiedAtSimpleValue"] | components["schemas"]["RecordPostModifierSimpleValue"] | components["schemas"]["RecordPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordPostMultipleSelectSimpleValue"] | components["schemas"]["RecordPostRecordIdSimpleValue"] | components["schemas"]["RecordPostReferenceTableSimpleValue"] | components["schemas"]["RecordPostSimpleTableValue"] | components["schemas"]["RecordPostSingleLineTextSimpleValue"] | components["schemas"]["RecordPostSingleSelectSimpleValue"] | components["schemas"]["RecordPostStatusSimpleValue"] | components["schemas"]["RecordPostTimeSimpleValue"] | components["schemas"]["RecordPostUserSelectSimpleValue"] | components["schemas"]["RecordPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordPostGroupSelectSimpleValue"] | components["schemas"]["RecordPostRevisionSimpleValue"] | components["schemas"]["RecordPostRawRecordIdSimpleValue"];
-                        };
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            id?: string;
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getRecord"];
+        put: operations["putRecord"];
+        post: operations["postRecord"];
         delete?: never;
         options?: never;
         head?: never;
@@ -3302,77 +1787,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    lang?: "default" | "user" | "ja" | "en" | "zh";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** @enum {string} */
-                        lang?: "default" | "user" | "ja" | "en" | "zh";
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/acl/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                            rights?: components["schemas"]["RecordAclGetRight"][];
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app?: string;
-                        /** Format: long */
-                        id?: string;
-                        /** Format: long */
-                        revision?: string;
-                        rights: components["schemas"]["RecordAclPutRightForm"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/acl/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getRecordAcl"];
+        put: operations["putRecordAcl"];
         post?: never;
         delete?: never;
         options?: never;
@@ -3388,41 +1804,7 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        assignees: string[];
-                        /** Format: long */
-                        id: string;
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/assignees/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        put: operations["putRecordAssignees"];
         post?: never;
         delete?: never;
         options?: never;
@@ -3439,77 +1821,8 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        comment: {
-                            mentions?: components["schemas"]["RecordCommentPostMentionForm"][];
-                            text: string;
-                        };
-                        /** Format: long */
-                        record: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/comment/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            id?: string;
-                        };
-                    };
-                };
-            };
-        };
-        delete: {
-            parameters: {
-                query: {
-                    app: string;
-                    record: string;
-                    comment: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** Format: long */
-                        comment: string;
-                        /** Format: long */
-                        record: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/comment/delete */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        post: operations["postRecordComment"];
+        delete: operations["deleteRecordComment"];
         options?: never;
         head?: never;
         patch?: never;
@@ -3522,51 +1835,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    offset?: string;
-                    record: string;
-                    limit?: string;
-                    order?: "ASC" | "DESC";
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        /** Format: long */
-                        limit?: string;
-                        /** Format: long */
-                        offset?: string;
-                        /** @enum {string} */
-                        order?: "ASC" | "DESC";
-                        /** Format: long */
-                        record: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/comments/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            comments?: components["schemas"]["RecordCommentsGetCommentOutputForm"][];
-                            newer?: boolean;
-                            older?: boolean;
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getRecordComments"];
         put?: never;
         post?: never;
         delete?: never;
@@ -3583,42 +1852,7 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        action: string;
-                        /** Format: long */
-                        app: string;
-                        assignee?: string;
-                        /** Format: long */
-                        id: string;
-                        /** Format: long */
-                        revision?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of record/status/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            revision?: string;
-                        };
-                    };
-                };
-            };
-        };
+        put: operations["putRecordStatus"];
         post?: never;
         delete?: never;
         options?: never;
@@ -3633,149 +1867,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    query?: string;
-                    fields?: string[];
-                    totalCount?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        fields?: string[];
-                        /** Format: query */
-                        query?: string;
-                        /** Format: boolean */
-                        totalCount?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of records/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            records?: {
-                                [key: string]: components["schemas"]["RecordsGetCalcSimpleValue"] | components["schemas"]["RecordsGetCategorySimpleValue"] | components["schemas"]["RecordsGetDateSimpleValue"] | components["schemas"]["RecordsGetDatetimeSimpleValue"] | components["schemas"]["RecordsGetDecimalSimpleValue"] | components["schemas"]["RecordsGetEditorSimpleValue"] | components["schemas"]["RecordsGetFileSimpleValue"] | components["schemas"]["RecordsGetGroupSimpleValue"] | components["schemas"]["RecordsGetLinkSimpleValue"] | components["schemas"]["RecordsGetModifiedAtSimpleValue"] | components["schemas"]["RecordsGetModifierSimpleValue"] | components["schemas"]["RecordsGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsGetRecordIdSimpleValue"] | components["schemas"]["RecordsGetReferenceTableSimpleValue"] | components["schemas"]["RecordsGetSimpleTableValue"] | components["schemas"]["RecordsGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsGetSingleSelectSimpleValue"] | components["schemas"]["RecordsGetStatusSimpleValue"] | components["schemas"]["RecordsGetTimeSimpleValue"] | components["schemas"]["RecordsGetUserSelectSimpleValue"] | components["schemas"]["RecordsGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsGetGroupSelectSimpleValue"] | components["schemas"]["RecordsGetRevisionSimpleValue"] | components["schemas"]["RecordsGetRawRecordIdSimpleValue"];
-                            }[];
-                            /** Format: long */
-                            totalCount?: string;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        records: components["schemas"]["RecordsPutRecordForm"][];
-                        /** Format: boolean */
-                        upsert?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of records/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            records?: {
-                                [key: string]: components["schemas"]["RecordsPutRecordBean"];
-                            }[];
-                        };
-                    };
-                };
-            };
-        };
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        records: {
-                            [key: string]: components["schemas"]["RecordsPostCalcSimpleValue"] | components["schemas"]["RecordsPostCategorySimpleValue"] | components["schemas"]["RecordsPostDateSimpleValue"] | components["schemas"]["RecordsPostDatetimeSimpleValue"] | components["schemas"]["RecordsPostDecimalSimpleValue"] | components["schemas"]["RecordsPostEditorSimpleValue"] | components["schemas"]["RecordsPostFileSimpleValue"] | components["schemas"]["RecordsPostGroupSimpleValue"] | components["schemas"]["RecordsPostLinkSimpleValue"] | components["schemas"]["RecordsPostModifiedAtSimpleValue"] | components["schemas"]["RecordsPostModifierSimpleValue"] | components["schemas"]["RecordsPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordsPostMultipleSelectSimpleValue"] | components["schemas"]["RecordsPostRecordIdSimpleValue"] | components["schemas"]["RecordsPostReferenceTableSimpleValue"] | components["schemas"]["RecordsPostSimpleTableValue"] | components["schemas"]["RecordsPostSingleLineTextSimpleValue"] | components["schemas"]["RecordsPostSingleSelectSimpleValue"] | components["schemas"]["RecordsPostStatusSimpleValue"] | components["schemas"]["RecordsPostTimeSimpleValue"] | components["schemas"]["RecordsPostUserSelectSimpleValue"] | components["schemas"]["RecordsPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordsPostGroupSelectSimpleValue"] | components["schemas"]["RecordsPostRevisionSimpleValue"] | components["schemas"]["RecordsPostRawRecordIdSimpleValue"];
-                        }[];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of records/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            ids?: string[];
-                            revisions?: string[];
-                        };
-                    };
-                };
-            };
-        };
-        delete: {
-            parameters: {
-                query: {
-                    app: string;
-                    ids: string[];
-                    revisions?: string[];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        ids: string[];
-                        revisions?: string[];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of records/delete */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        get: operations["getRecords"];
+        put: operations["putRecords"];
+        post: operations["postRecords"];
+        delete: operations["deleteRecords"];
         options?: never;
         head?: never;
         patch?: never;
@@ -3788,39 +1883,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    app: string;
-                    ids: string[];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        ids: string[];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of records/acl/evaluate/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            rights?: components["schemas"]["RecordsAclEvaluateGetRight"][];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getRecordsAclEvaluate"];
         put?: never;
         post?: never;
         delete?: never;
@@ -3836,104 +1899,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    id: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of records/cursor/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            next?: boolean;
-                            records?: {
-                                [key: string]: components["schemas"]["RecordsCursorGetCalcSimpleValue"] | components["schemas"]["RecordsCursorGetCategorySimpleValue"] | components["schemas"]["RecordsCursorGetDateSimpleValue"] | components["schemas"]["RecordsCursorGetDatetimeSimpleValue"] | components["schemas"]["RecordsCursorGetDecimalSimpleValue"] | components["schemas"]["RecordsCursorGetEditorSimpleValue"] | components["schemas"]["RecordsCursorGetFileSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSimpleValue"] | components["schemas"]["RecordsCursorGetLinkSimpleValue"] | components["schemas"]["RecordsCursorGetModifiedAtSimpleValue"] | components["schemas"]["RecordsCursorGetModifierSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRecordIdSimpleValue"] | components["schemas"]["RecordsCursorGetReferenceTableSimpleValue"] | components["schemas"]["RecordsCursorGetSimpleTableValue"] | components["schemas"]["RecordsCursorGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetSingleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetStatusSimpleValue"] | components["schemas"]["RecordsCursorGetTimeSimpleValue"] | components["schemas"]["RecordsCursorGetUserSelectSimpleValue"] | components["schemas"]["RecordsCursorGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRevisionSimpleValue"] | components["schemas"]["RecordsCursorGetRawRecordIdSimpleValue"];
-                            }[];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getRecordsCursor"];
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        fields?: string[];
-                        /** Format: query */
-                        query?: string;
-                        /** Format: long */
-                        size?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of records/cursor/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            id?: string;
-                            /** Format: long */
-                            totalCount?: string;
-                        };
-                    };
-                };
-            };
-        };
-        delete: {
-            parameters: {
-                query: {
-                    id: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of records/cursor/delete */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        post: operations["postRecordsCursor"];
+        delete: operations["deleteRecordsCursor"];
         options?: never;
         head?: never;
         patch?: never;
@@ -3947,36 +1916,7 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        app: string;
-                        records: components["schemas"]["RecordsStatusPutRecordsStatusPutFormRecord"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of records/status/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            records?: components["schemas"]["RecordsStatusPutRecordsStatusPutOutputFormRecord"][];
-                        };
-                    };
-                };
-            };
-        };
+        put: operations["putRecordsStatus"];
         post?: never;
         delete?: never;
         options?: never;
@@ -3991,148 +1931,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    id: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            attachedApps?: components["schemas"]["SpaceGetAttachedApp"][];
-                            body?: string;
-                            coverKey?: string;
-                            /** @enum {string} */
-                            coverType?: "BLOB" | "PRESET";
-                            coverUrl?: string;
-                            creator?: {
-                                code?: string;
-                                name?: string;
-                            };
-                            /** Format: long */
-                            defaultThread?: string;
-                            fixedMember?: boolean;
-                            /** Format: long */
-                            id?: string;
-                            isGuest?: boolean;
-                            isPrivate?: boolean;
-                            /** Format: long */
-                            memberCount?: string;
-                            modifier?: {
-                                code?: string;
-                                name?: string;
-                            };
-                            name?: string;
-                            permissions?: {
-                                /** @enum {string} */
-                                createApp?: "EVERYONE" | "ADMIN";
-                            };
-                            showAnnouncement?: boolean;
-                            showAppList?: boolean;
-                            showMemberList?: boolean;
-                            showRelatedLinkList?: boolean;
-                            showThreadList?: boolean;
-                            useMultiThread?: boolean;
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: boolean */
-                        fixedMember?: string;
-                        /** Format: long */
-                        id: string;
-                        /** Format: boolean */
-                        isPrivate?: string;
-                        name?: string;
-                        permissions?: {
-                            /** @enum {string} */
-                            createApp?: "EVERYONE" | "ADMIN";
-                        };
-                        /** Format: boolean */
-                        showAnnouncement?: string;
-                        /** Format: boolean */
-                        showAppList?: string;
-                        /** Format: boolean */
-                        showMemberList?: string;
-                        /** Format: boolean */
-                        showRelatedLinkList?: string;
-                        /** Format: boolean */
-                        showThreadList?: string;
-                        /** Format: boolean */
-                        useMultiThread?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        get: operations["getSpace"];
+        put: operations["putSpace"];
         post?: never;
-        delete: {
-            parameters: {
-                query: {
-                    id: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/delete */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        delete: operations["deleteSpace"];
         options?: never;
         head?: never;
         patch?: never;
@@ -4146,34 +1948,7 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        body: string;
-                        /** Format: long */
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/body/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        put: operations["putSpaceBody"];
         post?: never;
         delete?: never;
         options?: never;
@@ -4189,34 +1964,7 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        guests: string[];
-                        /** Format: long */
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/guests/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        put: operations["putSpaceGuests"];
         post?: never;
         delete?: never;
         options?: never;
@@ -4231,65 +1979,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query: {
-                    id: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        id: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/members/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            members?: (components["schemas"]["SpaceMembersGetUserBean"] | components["schemas"]["SpaceMembersGetOrganizationBean"] | components["schemas"]["SpaceMembersGetGroupBean"])[];
-                        };
-                    };
-                };
-            };
-        };
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: long */
-                        id: string;
-                        members?: components["schemas"]["SpaceMembersPutMemberForm"][];
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/members/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
+        get: operations["getSpaceMembers"];
+        put: operations["putSpaceMembers"];
         post?: never;
         delete?: never;
         options?: never;
@@ -4305,66 +1996,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        body?: string;
-                        /** Format: long */
-                        id: string;
-                        name?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/thread/put */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": unknown;
-                    };
-                };
-            };
-        };
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        name: string;
-                        /** Format: long */
-                        space: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/thread/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            id?: string;
-                        };
-                    };
-                };
-            };
-        };
+        put: operations["putSpaceThread"];
+        post: operations["postSpaceThread"];
         delete?: never;
         options?: never;
         head?: never;
@@ -4380,43 +2013,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        comment: {
-                            files?: components["schemas"]["SpaceThreadCommentPostFileForm"][];
-                            mentions?: components["schemas"]["SpaceThreadCommentPostMentionForm"][];
-                            text?: string;
-                        };
-                        /** Format: long */
-                        space: string;
-                        /** Format: long */
-                        thread: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of space/thread/comment/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            id?: string;
-                        };
-                    };
-                };
-            };
-        };
+        post: operations["postSpaceThreadComment"];
         delete?: never;
         options?: never;
         head?: never;
@@ -4430,38 +2027,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: {
-            parameters: {
-                query?: {
-                    offset?: string;
-                    limit?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        limit?: string;
-                        offset?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of spaces/statistics/get */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            spaces?: components["schemas"]["SpacesStatisticsGetSpaceForm"][];
-                        };
-                    };
-                };
-            };
-        };
+        get: operations["getSpacesStatistics"];
         put?: never;
         post?: never;
         delete?: never;
@@ -4479,44 +2045,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        /** Format: boolean */
-                        fixedMember?: string;
-                        /** Format: long */
-                        id: string;
-                        /** Format: boolean */
-                        isGuest?: string;
-                        /** Format: boolean */
-                        isPrivate?: string;
-                        members?: components["schemas"]["TemplateSpacePostMemberForm"][];
-                        name: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description success case of template/space/post */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** Format: long */
-                            id?: string;
-                        };
-                    };
-                };
-            };
-        };
+        post: operations["postTemplateSpace"];
         delete?: never;
         options?: never;
         head?: never;
@@ -4544,38 +2073,38 @@ export interface components {
         };
         AppAclPutRight: {
             /** Format: boolean */
-            appEditable?: string;
+            appEditable?: boolean;
             entity: {
                 code?: string;
                 /** @enum {string} */
                 type: "USER" | "ORGANIZATION" | "GROUP" | "CREATOR";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
             /** Format: boolean */
-            recordAddable?: string;
+            recordAddable?: boolean;
             /** Format: boolean */
-            recordDeletable?: string;
+            recordDeletable?: boolean;
             /** Format: boolean */
-            recordEditable?: string;
+            recordEditable?: boolean;
             /** Format: boolean */
-            recordExportable?: string;
+            recordExportable?: boolean;
             /** Format: boolean */
-            recordImportable?: string;
+            recordImportable?: boolean;
             /** Format: boolean */
-            recordViewable?: string;
+            recordViewable?: boolean;
         };
         AppActionsGetAction: {
             destApp?: {
                 /** Format: long */
-                app?: string;
+                app?: number;
                 code?: string;
             };
             entities?: components["schemas"]["AppActionsGetEntity"][];
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             mappings?: (components["schemas"]["AppActionsGetUrlMapping"] | components["schemas"]["AppActionsGetFieldMapping"])[];
             name?: string;
         };
@@ -4613,7 +2142,7 @@ export interface components {
         AppFormFieldsGetCalcFieldForm: {
             code?: string;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             expression?: string;
             /** @enum {string} */
             format?: "NUMBER" | "NUMBER_DIGIT" | "DATETIME" | "DATE" | "TIME" | "HOUR_MINUTE" | "DAY_HOUR_MINUTE";
@@ -4674,12 +2203,12 @@ export interface components {
             /** Format: boolean */
             digit?: boolean;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             label?: string;
             /** Format: long */
-            maxValue?: string;
+            maxValue?: number;
             /** Format: long */
-            minValue?: string;
+            minValue?: number;
             /** Format: boolean */
             noLabel?: boolean;
             /** Format: boolean */
@@ -4720,7 +2249,7 @@ export interface components {
             /** Format: boolean */
             required?: boolean;
             /** Format: long */
-            thumbnailSize?: string;
+            thumbnailSize?: number;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -4751,9 +2280,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
             noLabel?: boolean;
             /** @enum {string} */
@@ -4774,7 +2303,7 @@ export interface components {
                 lookupPickerFields?: string[];
                 relatedApp?: {
                     /** Format: long */
-                    app?: string;
+                    app?: number;
                     code?: string;
                 };
                 relatedKeyField?: string;
@@ -4846,7 +2375,7 @@ export interface components {
         };
         AppFormFieldsGetOptionForm: {
             /** Format: long */
-            index: string;
+            index: number;
             label?: string;
         };
         AppFormFieldsGetOrganizationSelectFieldForm: {
@@ -4883,11 +2412,11 @@ export interface components {
                 filterCond?: string;
                 relatedApp?: {
                     /** Format: long */
-                    app?: string;
+                    app?: number;
                     code?: string;
                 };
                 /** Format: long */
-                size?: string;
+                size?: number;
                 sort?: string;
             };
             /** @enum {string} */
@@ -4917,9 +2446,9 @@ export interface components {
             hideExpression?: boolean;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
             noLabel?: boolean;
             /** Format: boolean */
@@ -4999,7 +2528,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5008,7 +2537,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5017,7 +2546,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5026,7 +2555,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5035,7 +2564,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5044,7 +2573,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5053,9 +2582,9 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                innerHeight?: string;
+                innerHeight?: number;
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5064,7 +2593,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5078,7 +2607,7 @@ export interface components {
         AppFormLayoutGetHrField: {
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5087,7 +2616,7 @@ export interface components {
             label?: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5096,7 +2625,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5105,7 +2634,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5114,7 +2643,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5123,7 +2652,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5132,7 +2661,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5141,9 +2670,9 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                innerHeight?: string;
+                innerHeight?: number;
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5152,7 +2681,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5161,7 +2690,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5180,7 +2709,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5189,7 +2718,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5198,7 +2727,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5207,9 +2736,9 @@ export interface components {
             elementId?: string;
             size?: {
                 /** Format: long */
-                height?: string;
+                height?: number;
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5224,7 +2753,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5233,7 +2762,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -5283,15 +2812,15 @@ export interface components {
         AppNotificationsReminderGetTimingAbsolute: {
             code?: string;
             /** Format: long */
-            daysLater?: string;
+            daysLater?: number;
             time?: string;
         };
         AppNotificationsReminderGetTimingRelative: {
             code?: string;
             /** Format: long */
-            daysLater?: string;
+            daysLater?: number;
             /** Format: long */
-            hoursLater?: string;
+            hoursLater?: number;
         };
         AppPluginsGetPluginForm: {
             enabled?: boolean;
@@ -5330,7 +2859,7 @@ export interface components {
             /** @enum {string} */
             every?: "HOUR";
             /** Format: long */
-            minute?: string;
+            minute?: number;
         };
         AppReportsGetPeriodMonth: {
             dayOfMonth?: string;
@@ -5355,11 +2884,11 @@ export interface components {
         };
         AppReportsGetPeriodYear: {
             /** Format: long */
-            dayOfMonth?: string;
+            dayOfMonth?: number;
             /** @enum {string} */
             every?: "YEAR";
             /** Format: long */
-            month?: string;
+            month?: number;
             time?: string;
         };
         AppReportsGetRecordAggregation: {
@@ -5374,9 +2903,9 @@ export interface components {
             filterCond?: string;
             groups?: (components["schemas"]["AppReportsGetGroup"] | components["schemas"]["AppReportsGetGroupDateTime"] | components["schemas"]["AppReportsGetGroupDate"] | components["schemas"]["AppReportsGetGroupTime"])[];
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             periodicReport?: {
                 active?: boolean;
@@ -5394,9 +2923,9 @@ export interface components {
             filterCond?: string;
             groups?: (components["schemas"]["AppReportsGetGroup"] | components["schemas"]["AppReportsGetGroupDateTime"] | components["schemas"]["AppReportsGetGroupDate"] | components["schemas"]["AppReportsGetGroupTime"])[];
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             periodicReport?: {
                 active?: boolean;
@@ -5460,7 +2989,7 @@ export interface components {
                 type?: "ONE" | "ALL" | "ANY";
             };
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
         };
         AppViewsGetBuiltinCalendarViewOutputForm: {
@@ -5469,9 +2998,9 @@ export interface components {
             date?: string;
             filterCond?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             sort?: string;
             title?: string;
@@ -5484,9 +3013,9 @@ export interface components {
             fields?: string[];
             filterCond?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             sort?: string;
             /** @enum {string} */
@@ -5496,9 +3025,9 @@ export interface components {
             date?: string;
             filterCond?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             sort?: string;
             title?: string;
@@ -5511,9 +3040,9 @@ export interface components {
             filterCond?: string;
             html?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             pager?: boolean;
             sort?: string;
@@ -5524,9 +3053,9 @@ export interface components {
             fields?: string[];
             filterCond?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             sort?: string;
             /** @enum {string} */
@@ -5534,7 +3063,7 @@ export interface components {
         };
         AppsGetAppWithSpaceIdForm: {
             /** Format: long */
-            appId?: string;
+            appId?: number;
             code?: string;
             /** Format: date-time */
             createdAt?: string;
@@ -5551,9 +3080,9 @@ export interface components {
             };
             name?: string;
             /** Format: long */
-            spaceId?: string;
+            spaceId?: number;
             /** Format: long */
-            threadId?: string;
+            threadId?: number;
         };
         AppsStatisticsGetAppForm: {
             appGroup?: string;
@@ -5565,11 +3094,11 @@ export interface components {
             };
             customized?: boolean;
             /** Format: long */
-            dailyRequestCount?: string;
+            dailyRequestCount?: number;
             /** Format: long */
-            fieldCount?: string;
+            fieldCount?: number;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: date-time */
             modifiedAt?: string;
             modifier?: {
@@ -5578,18 +3107,18 @@ export interface components {
             };
             name?: string;
             /** Format: long */
-            recordCount?: string;
+            recordCount?: number;
             /** Format: date-time */
             recordUpdatedAt?: string;
             space?: {
                 /** Format: long */
-                id?: string;
+                id?: number;
                 name?: string;
             };
             /** @enum {string} */
             status?: "NOT_ACTIVATED" | "ACTIVATED" | "CHANGED";
             /** Format: long */
-            storageUsage?: string;
+            storageUsage?: number;
         };
         BulkRequestPostCalcSimpleValue: {
             /** @enum {string} */
@@ -5688,31 +3217,31 @@ export interface components {
         };
         BulkRequestPostRecordAssigneesPutForm: {
             /** Format: long */
-            app: string;
+            app: number;
             assignees: string[];
             /** Format: long */
-            id: string;
+            id: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         BulkRequestPostRecordAssigneesPutOutputForm: {
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         BulkRequestPostRecordBean: {
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         BulkRequestPostRecordForm: {
             /** Format: long */
-            id?: string;
+            id?: number;
             record?: {
                 [key: string]: components["schemas"]["BulkRequestPostCalcSimpleValue"] | components["schemas"]["BulkRequestPostCategorySimpleValue"] | components["schemas"]["BulkRequestPostDateSimpleValue"] | components["schemas"]["BulkRequestPostDatetimeSimpleValue"] | components["schemas"]["BulkRequestPostDecimalSimpleValue"] | components["schemas"]["BulkRequestPostEditorSimpleValue"] | components["schemas"]["BulkRequestPostFileSimpleValue"] | components["schemas"]["BulkRequestPostGroupSimpleValue"] | components["schemas"]["BulkRequestPostLinkSimpleValue"] | components["schemas"]["BulkRequestPostModifiedAtSimpleValue"] | components["schemas"]["BulkRequestPostModifierSimpleValue"] | components["schemas"]["BulkRequestPostMultipleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostMultipleSelectSimpleValue"] | components["schemas"]["BulkRequestPostRecordIdSimpleValue"] | components["schemas"]["BulkRequestPostReferenceTableSimpleValue"] | components["schemas"]["BulkRequestPostSimpleTableValue"] | components["schemas"]["BulkRequestPostSingleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostSingleSelectSimpleValue"] | components["schemas"]["BulkRequestPostStatusSimpleValue"] | components["schemas"]["BulkRequestPostTimeSimpleValue"] | components["schemas"]["BulkRequestPostUserSelectSimpleValue"] | components["schemas"]["BulkRequestPostOrganizationSelectSimpleValue"] | components["schemas"]["BulkRequestPostGroupSelectSimpleValue"] | components["schemas"]["BulkRequestPostRevisionSimpleValue"] | components["schemas"]["BulkRequestPostRawRecordIdSimpleValue"];
             };
             /** Format: long */
-            revision?: string;
+            revision?: number;
             updateKey?: components["schemas"]["BulkRequestPostUpdateKey"];
         };
         BulkRequestPostRecordIdSimpleValue: {
@@ -5722,71 +3251,71 @@ export interface components {
         };
         BulkRequestPostRecordPostForm: {
             /** Format: long */
-            app: string;
+            app: number;
             record: {
                 [key: string]: components["schemas"]["BulkRequestPostCalcSimpleValue"] | components["schemas"]["BulkRequestPostCategorySimpleValue"] | components["schemas"]["BulkRequestPostDateSimpleValue"] | components["schemas"]["BulkRequestPostDatetimeSimpleValue"] | components["schemas"]["BulkRequestPostDecimalSimpleValue"] | components["schemas"]["BulkRequestPostEditorSimpleValue"] | components["schemas"]["BulkRequestPostFileSimpleValue"] | components["schemas"]["BulkRequestPostGroupSimpleValue"] | components["schemas"]["BulkRequestPostLinkSimpleValue"] | components["schemas"]["BulkRequestPostModifiedAtSimpleValue"] | components["schemas"]["BulkRequestPostModifierSimpleValue"] | components["schemas"]["BulkRequestPostMultipleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostMultipleSelectSimpleValue"] | components["schemas"]["BulkRequestPostRecordIdSimpleValue"] | components["schemas"]["BulkRequestPostReferenceTableSimpleValue"] | components["schemas"]["BulkRequestPostSimpleTableValue"] | components["schemas"]["BulkRequestPostSingleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostSingleSelectSimpleValue"] | components["schemas"]["BulkRequestPostStatusSimpleValue"] | components["schemas"]["BulkRequestPostTimeSimpleValue"] | components["schemas"]["BulkRequestPostUserSelectSimpleValue"] | components["schemas"]["BulkRequestPostOrganizationSelectSimpleValue"] | components["schemas"]["BulkRequestPostGroupSelectSimpleValue"] | components["schemas"]["BulkRequestPostRevisionSimpleValue"] | components["schemas"]["BulkRequestPostRawRecordIdSimpleValue"];
             };
         };
         BulkRequestPostRecordPostOutputForm: {
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         BulkRequestPostRecordPutForm: {
             /** Format: long */
-            app: string;
+            app: number;
             /** Format: long */
-            id?: string;
+            id?: number;
             record?: {
                 [key: string]: components["schemas"]["BulkRequestPostCalcSimpleValue"] | components["schemas"]["BulkRequestPostCategorySimpleValue"] | components["schemas"]["BulkRequestPostDateSimpleValue"] | components["schemas"]["BulkRequestPostDatetimeSimpleValue"] | components["schemas"]["BulkRequestPostDecimalSimpleValue"] | components["schemas"]["BulkRequestPostEditorSimpleValue"] | components["schemas"]["BulkRequestPostFileSimpleValue"] | components["schemas"]["BulkRequestPostGroupSimpleValue"] | components["schemas"]["BulkRequestPostLinkSimpleValue"] | components["schemas"]["BulkRequestPostModifiedAtSimpleValue"] | components["schemas"]["BulkRequestPostModifierSimpleValue"] | components["schemas"]["BulkRequestPostMultipleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostMultipleSelectSimpleValue"] | components["schemas"]["BulkRequestPostRecordIdSimpleValue"] | components["schemas"]["BulkRequestPostReferenceTableSimpleValue"] | components["schemas"]["BulkRequestPostSimpleTableValue"] | components["schemas"]["BulkRequestPostSingleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostSingleSelectSimpleValue"] | components["schemas"]["BulkRequestPostStatusSimpleValue"] | components["schemas"]["BulkRequestPostTimeSimpleValue"] | components["schemas"]["BulkRequestPostUserSelectSimpleValue"] | components["schemas"]["BulkRequestPostOrganizationSelectSimpleValue"] | components["schemas"]["BulkRequestPostGroupSelectSimpleValue"] | components["schemas"]["BulkRequestPostRevisionSimpleValue"] | components["schemas"]["BulkRequestPostRawRecordIdSimpleValue"];
             };
             /** Format: long */
-            revision?: string;
+            revision?: number;
             updateKey?: components["schemas"]["BulkRequestPostUpdateKey"];
         };
         BulkRequestPostRecordPutOutputForm: {
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         BulkRequestPostRecordStatusPutForm: {
             action: string;
             /** Format: long */
-            app: string;
+            app: number;
             assignee?: string;
             /** Format: long */
-            id: string;
+            id: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         BulkRequestPostRecordStatusPutOutputForm: {
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         BulkRequestPostRecordsDeleteForm: {
             /** Format: long */
-            app: string;
-            ids: string[];
-            revisions?: string[];
+            app: number;
+            ids: number[];
+            revisions?: number[];
         };
         BulkRequestPostRecordsDeleteOutputForm: unknown;
         BulkRequestPostRecordsPostForm: {
             /** Format: long */
-            app: string;
+            app: number;
             records: {
                 [key: string]: components["schemas"]["BulkRequestPostCalcSimpleValue"] | components["schemas"]["BulkRequestPostCategorySimpleValue"] | components["schemas"]["BulkRequestPostDateSimpleValue"] | components["schemas"]["BulkRequestPostDatetimeSimpleValue"] | components["schemas"]["BulkRequestPostDecimalSimpleValue"] | components["schemas"]["BulkRequestPostEditorSimpleValue"] | components["schemas"]["BulkRequestPostFileSimpleValue"] | components["schemas"]["BulkRequestPostGroupSimpleValue"] | components["schemas"]["BulkRequestPostLinkSimpleValue"] | components["schemas"]["BulkRequestPostModifiedAtSimpleValue"] | components["schemas"]["BulkRequestPostModifierSimpleValue"] | components["schemas"]["BulkRequestPostMultipleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostMultipleSelectSimpleValue"] | components["schemas"]["BulkRequestPostRecordIdSimpleValue"] | components["schemas"]["BulkRequestPostReferenceTableSimpleValue"] | components["schemas"]["BulkRequestPostSimpleTableValue"] | components["schemas"]["BulkRequestPostSingleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostSingleSelectSimpleValue"] | components["schemas"]["BulkRequestPostStatusSimpleValue"] | components["schemas"]["BulkRequestPostTimeSimpleValue"] | components["schemas"]["BulkRequestPostUserSelectSimpleValue"] | components["schemas"]["BulkRequestPostOrganizationSelectSimpleValue"] | components["schemas"]["BulkRequestPostGroupSelectSimpleValue"] | components["schemas"]["BulkRequestPostRevisionSimpleValue"] | components["schemas"]["BulkRequestPostRawRecordIdSimpleValue"];
             }[];
         };
         BulkRequestPostRecordsPostOutputForm: {
-            ids?: string[];
-            revisions?: string[];
+            ids?: number[];
+            revisions?: number[];
         };
         BulkRequestPostRecordsPutForm: {
             /** Format: long */
-            app: string;
+            app: number;
             records: components["schemas"]["BulkRequestPostRecordForm"][];
             /** Format: boolean */
-            upsert?: string;
+            upsert?: boolean;
         };
         BulkRequestPostRecordsPutOutputForm: {
             records?: {
@@ -5795,25 +3324,25 @@ export interface components {
         };
         BulkRequestPostRecordsStatusPutForm: {
             /** Format: long */
-            app: string;
+            app: number;
             records: components["schemas"]["BulkRequestPostRecordsStatusPutFormRecord"][];
         };
         BulkRequestPostRecordsStatusPutFormRecord: {
             action: string;
             assignee?: string;
             /** Format: long */
-            id: string;
+            id: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         BulkRequestPostRecordsStatusPutOutputForm: {
             records?: components["schemas"]["BulkRequestPostRecordsStatusPutOutputFormRecord"][];
         };
         BulkRequestPostRecordsStatusPutOutputFormRecord: {
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         BulkRequestPostReferenceTableSimpleValue: {
             /** @enum {string} */
@@ -5833,7 +3362,7 @@ export interface components {
         };
         BulkRequestPostSimpleRowValue: {
             /** Format: long */
-            id?: string;
+            id?: number;
             value?: {
                 [key: string]: components["schemas"]["BulkRequestPostCalcSimpleValue"] | components["schemas"]["BulkRequestPostCategorySimpleValue"] | components["schemas"]["BulkRequestPostDateSimpleValue"] | components["schemas"]["BulkRequestPostDatetimeSimpleValue"] | components["schemas"]["BulkRequestPostDecimalSimpleValue"] | components["schemas"]["BulkRequestPostEditorSimpleValue"] | components["schemas"]["BulkRequestPostFileSimpleValue"] | components["schemas"]["BulkRequestPostGroupSimpleValue"] | components["schemas"]["BulkRequestPostLinkSimpleValue"] | components["schemas"]["BulkRequestPostModifiedAtSimpleValue"] | components["schemas"]["BulkRequestPostModifierSimpleValue"] | components["schemas"]["BulkRequestPostMultipleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostMultipleSelectSimpleValue"] | components["schemas"]["BulkRequestPostRecordIdSimpleValue"] | components["schemas"]["BulkRequestPostReferenceTableSimpleValue"] | components["schemas"]["BulkRequestPostSimpleTableValue"] | components["schemas"]["BulkRequestPostSingleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostSingleSelectSimpleValue"] | components["schemas"]["BulkRequestPostStatusSimpleValue"] | components["schemas"]["BulkRequestPostTimeSimpleValue"] | components["schemas"]["BulkRequestPostUserSelectSimpleValue"] | components["schemas"]["BulkRequestPostOrganizationSelectSimpleValue"] | components["schemas"]["BulkRequestPostGroupSelectSimpleValue"] | components["schemas"]["BulkRequestPostRevisionSimpleValue"] | components["schemas"]["BulkRequestPostRawRecordIdSimpleValue"];
             };
@@ -5906,7 +3435,7 @@ export interface components {
                 type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
         };
         FieldAclPutRight: {
             code: string;
@@ -5916,24 +3445,24 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
         FormGetCalcSimpleProperties: {
             code?: string;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             expression?: string;
             /** @enum {string} */
             format?: "NUMBER" | "NUMBER_DIGIT" | "DATETIME" | "DATE" | "TIME" | "HOUR_MINUTE" | "DAY_HOUR_MINUTE";
             /** Format: boolean */
-            hideExpression?: string;
+            hideExpression?: boolean;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             unit?: string;
@@ -5945,13 +3474,13 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         FormGetDatetimeSimpleProperties: {
             code?: string;
@@ -5959,34 +3488,34 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         FormGetDecimalSimpleProperties: {
             code?: string;
             defaultValue?: string;
             /** Format: boolean */
-            digit?: string;
+            digit?: boolean;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             label?: string;
             /** Format: long */
-            maxValue?: string;
+            maxValue?: number;
             /** Format: long */
-            minValue?: string;
+            minValue?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
             unit?: string;
             unitPosition?: string;
         };
@@ -5995,9 +3524,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6005,9 +3534,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6015,9 +3544,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6035,29 +3564,29 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             protocol?: "WEB" | "CALL" | "MAIL";
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         FormGetLookupSimpleProperties: {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: long */
-            relatedApp?: string;
+            relatedApp?: number;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6066,9 +3595,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6077,10 +3606,10 @@ export interface components {
             defaultValue?: string[];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: string[];
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6088,9 +3617,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6098,9 +3627,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: long */
-            relatedApp?: string;
+            relatedApp?: number;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6109,30 +3638,30 @@ export interface components {
             defaultValue?: string;
             expression?: string;
             /** Format: boolean */
-            hideExpression?: string;
+            hideExpression?: boolean;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         FormGetSingleSelectSimpleProperties: {
             code?: string;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: string[];
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6146,7 +3675,7 @@ export interface components {
             fields?: (components["schemas"]["FormGetLayoutProperties"] | components["schemas"]["FormGetLabelProperties"] | components["schemas"]["FormGetBultinProperties"] | components["schemas"]["FormGetCalcSimpleProperties"] | components["schemas"]["FormGetDateSimpleProperties"] | components["schemas"]["FormGetDatetimeSimpleProperties"] | components["schemas"]["FormGetDecimalSimpleProperties"] | components["schemas"]["FormGetEditorSimpleProperties"] | components["schemas"]["FormGetFileSimpleProperties"] | components["schemas"]["FormGetLinkSimpleProperties"] | components["schemas"]["FormGetMultipleLineTextSimpleProperties"] | components["schemas"]["FormGetMultipleSelectSimpleProperties"] | components["schemas"]["FormGetSingleLineTextSimpleProperties"] | components["schemas"]["FormGetSingleSelectSimpleProperties"] | components["schemas"]["FormGetTimeSimpleProperties"] | components["schemas"]["FormGetUserSelectSimpleProperties"] | components["schemas"]["FormGetOrganizationSelectSimpleProperties"] | components["schemas"]["FormGetGroupSelectSimpleProperties"] | components["schemas"]["FormGetLookupSimpleProperties"] | components["schemas"]["FormGetReferenceTableLayoutProperties"] | components["schemas"]["FormGetSubTableLayoutProperties"] | components["schemas"]["FormGetSpacerProperties"])[];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6156,9 +3685,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6166,9 +3695,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -6222,38 +3751,38 @@ export interface components {
         };
         PreviewAppAclPutRight: {
             /** Format: boolean */
-            appEditable?: string;
+            appEditable?: boolean;
             entity: {
                 code?: string;
                 /** @enum {string} */
                 type: "USER" | "ORGANIZATION" | "GROUP" | "CREATOR";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
             /** Format: boolean */
-            recordAddable?: string;
+            recordAddable?: boolean;
             /** Format: boolean */
-            recordDeletable?: string;
+            recordDeletable?: boolean;
             /** Format: boolean */
-            recordEditable?: string;
+            recordEditable?: boolean;
             /** Format: boolean */
-            recordExportable?: string;
+            recordExportable?: boolean;
             /** Format: boolean */
-            recordImportable?: string;
+            recordImportable?: boolean;
             /** Format: boolean */
-            recordViewable?: string;
+            recordViewable?: boolean;
         };
         PreviewAppActionsGetAction: {
             destApp?: {
                 /** Format: long */
-                app?: string;
+                app?: number;
                 code?: string;
             };
             entities?: components["schemas"]["PreviewAppActionsGetEntity"][];
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             mappings?: (components["schemas"]["PreviewAppActionsGetUrlMapping"] | components["schemas"]["PreviewAppActionsGetFieldMapping"])[];
             name?: string;
         };
@@ -6276,18 +3805,18 @@ export interface components {
         PreviewAppActionsPutAction: {
             destApp?: {
                 /** Format: long */
-                app?: string;
+                app?: number;
                 code?: string;
             };
             entities?: components["schemas"]["PreviewAppActionsPutEntity"][];
             /** Format: long */
-            index: string;
+            index: number;
             mappings?: (components["schemas"]["PreviewAppActionsPutFieldMapping"] | components["schemas"]["PreviewAppActionsPutUrlMapping"])[];
             name?: string;
         };
         PreviewAppActionsPutActionResult: {
             /** Format: long */
-            id?: string;
+            id?: number;
         };
         PreviewAppActionsPutEntity: {
             code: string;
@@ -6337,20 +3866,20 @@ export interface components {
         };
         PreviewAppDeployGetAppForm: {
             /** Format: long */
-            app?: string;
+            app?: number;
             /** @enum {string} */
             status?: "PROCESSING" | "SUCCESS" | "FAIL" | "CANCEL";
         };
         PreviewAppDeployPostAppForm: {
             /** Format: long */
-            app: string;
+            app: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         PreviewAppFormFieldsGetCalcFieldForm: {
             code?: string;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             expression?: string;
             /** @enum {string} */
             format?: "NUMBER" | "NUMBER_DIGIT" | "DATETIME" | "DATE" | "TIME" | "HOUR_MINUTE" | "DAY_HOUR_MINUTE";
@@ -6411,12 +3940,12 @@ export interface components {
             /** Format: boolean */
             digit?: boolean;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             label?: string;
             /** Format: long */
-            maxValue?: string;
+            maxValue?: number;
             /** Format: long */
-            minValue?: string;
+            minValue?: number;
             /** Format: boolean */
             noLabel?: boolean;
             /** Format: boolean */
@@ -6457,7 +3986,7 @@ export interface components {
             /** Format: boolean */
             required?: boolean;
             /** Format: long */
-            thumbnailSize?: string;
+            thumbnailSize?: number;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6488,9 +4017,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
             noLabel?: boolean;
             /** @enum {string} */
@@ -6511,7 +4040,7 @@ export interface components {
                 lookupPickerFields?: string[];
                 relatedApp?: {
                     /** Format: long */
-                    app?: string;
+                    app?: number;
                     code?: string;
                 };
                 relatedKeyField?: string;
@@ -6583,7 +4112,7 @@ export interface components {
         };
         PreviewAppFormFieldsGetOptionForm: {
             /** Format: long */
-            index: string;
+            index: number;
             label?: string;
         };
         PreviewAppFormFieldsGetOrganizationSelectFieldForm: {
@@ -6620,11 +4149,11 @@ export interface components {
                 filterCond?: string;
                 relatedApp?: {
                     /** Format: long */
-                    app?: string;
+                    app?: number;
                     code?: string;
                 };
                 /** Format: long */
-                size?: string;
+                size?: number;
                 sort?: string;
             };
             /** @enum {string} */
@@ -6654,9 +4183,9 @@ export interface components {
             hideExpression?: boolean;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
             noLabel?: boolean;
             /** Format: boolean */
@@ -6735,17 +4264,17 @@ export interface components {
         PreviewAppFormFieldsPostCalcFieldForm: {
             code?: string;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             expression?: string;
             /** @enum {string} */
             format?: "NUMBER" | "NUMBER_DIGIT" | "DATETIME" | "DATE" | "TIME" | "HOUR_MINUTE" | "DAY_HOUR_MINUTE";
             /** Format: boolean */
-            hideExpression?: string;
+            hideExpression?: boolean;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             unit?: string;
@@ -6755,7 +4284,7 @@ export interface components {
         PreviewAppFormFieldsPostCategoryFieldForm: {
             code?: string;
             /** Format: boolean */
-            enabled?: string;
+            enabled?: boolean;
             label?: string;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
@@ -6763,53 +4292,53 @@ export interface components {
         PreviewAppFormFieldsPostDateFieldForm: {
             code?: string;
             /** Format: boolean */
-            defaultNowValue?: string;
+            defaultNowValue?: boolean;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewAppFormFieldsPostDatetimeFieldForm: {
             code?: string;
             /** Format: boolean */
-            defaultNowValue?: string;
+            defaultNowValue?: boolean;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewAppFormFieldsPostDecimalFieldForm: {
             code?: string;
             defaultValue?: string;
             /** Format: boolean */
-            digit?: string;
+            digit?: boolean;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             label?: string;
             /** Format: long */
-            maxValue?: string;
+            maxValue?: number;
             /** Format: long */
-            minValue?: string;
+            minValue?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
             unit?: string;
             /** @enum {string} */
             unitPosition?: "BEFORE" | "AFTER";
@@ -6819,9 +4348,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6838,11 +4367,11 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** Format: long */
-            thumbnailSize?: string;
+            thumbnailSize?: number;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6850,9 +4379,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            openGroup?: string;
+            openGroup?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6862,9 +4391,9 @@ export interface components {
             entities?: components["schemas"]["PreviewAppFormFieldsPostEntityForm"][];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6873,19 +4402,19 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             protocol?: "WEB" | "CALL" | "MAIL";
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewAppFormFieldsPostLookupFieldForm: {
             code?: string;
@@ -6896,16 +4425,16 @@ export interface components {
                 lookupPickerFields?: string[];
                 relatedApp?: {
                     /** Format: long */
-                    app?: string;
+                    app?: number;
                     code?: string;
                 };
                 relatedKeyField?: string;
                 sort?: string;
             };
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6913,7 +4442,7 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6921,7 +4450,7 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6932,12 +4461,12 @@ export interface components {
             defaultValue?: string[];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: {
                 [key: string]: components["schemas"]["PreviewAppFormFieldsPostOptionForm"];
             };
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6946,9 +4475,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6957,18 +4486,18 @@ export interface components {
             defaultValue?: string[];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: {
                 [key: string]: components["schemas"]["PreviewAppFormFieldsPostOptionForm"];
             };
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
         PreviewAppFormFieldsPostOptionForm: {
             /** Format: long */
-            index: string;
+            index: number;
             label?: string;
         };
         PreviewAppFormFieldsPostOrganizationSelectFieldForm: {
@@ -6977,9 +4506,9 @@ export interface components {
             entities?: components["schemas"]["PreviewAppFormFieldsPostEntityForm"][];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6987,7 +4516,7 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -6995,7 +4524,7 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             referenceTable?: {
                 condition?: {
                     field?: string;
@@ -7005,11 +4534,11 @@ export interface components {
                 filterCond?: string;
                 relatedApp?: {
                     /** Format: long */
-                    app?: string;
+                    app?: number;
                     code?: string;
                 };
                 /** Format: long */
-                size?: string;
+                size?: number;
                 sort?: string;
             };
             /** @enum {string} */
@@ -7022,12 +4551,12 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: {
                 [key: string]: components["schemas"]["PreviewAppFormFieldsPostOptionForm"];
             };
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7036,39 +4565,39 @@ export interface components {
             defaultValue?: string;
             expression?: string;
             /** Format: boolean */
-            hideExpression?: string;
+            hideExpression?: boolean;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewAppFormFieldsPostSingleSelectFieldForm: {
             code?: string;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: {
                 [key: string]: components["schemas"]["PreviewAppFormFieldsPostOptionForm"];
             };
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
         PreviewAppFormFieldsPostStatusAssigneeFieldForm: {
             code?: string;
             /** Format: boolean */
-            enabled?: string;
+            enabled?: boolean;
             label?: string;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
@@ -7076,7 +4605,7 @@ export interface components {
         PreviewAppFormFieldsPostStatusFieldForm: {
             code?: string;
             /** Format: boolean */
-            enabled?: string;
+            enabled?: boolean;
             label?: string;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
@@ -7088,20 +4617,20 @@ export interface components {
             };
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
         PreviewAppFormFieldsPostTimeFieldForm: {
             code?: string;
             /** Format: boolean */
-            defaultNowValue?: string;
+            defaultNowValue?: boolean;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7111,26 +4640,26 @@ export interface components {
             entities?: components["schemas"]["PreviewAppFormFieldsPostEntityForm"][];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
         PreviewAppFormFieldsPutCalcFieldForm: {
             code?: string;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             expression?: string;
             /** @enum {string} */
             format?: "NUMBER" | "NUMBER_DIGIT" | "DATETIME" | "DATE" | "TIME" | "HOUR_MINUTE" | "DAY_HOUR_MINUTE";
             /** Format: boolean */
-            hideExpression?: string;
+            hideExpression?: boolean;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             unit?: string;
@@ -7140,7 +4669,7 @@ export interface components {
         PreviewAppFormFieldsPutCategoryFieldForm: {
             code?: string;
             /** Format: boolean */
-            enabled?: string;
+            enabled?: boolean;
             label?: string;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
@@ -7148,53 +4677,53 @@ export interface components {
         PreviewAppFormFieldsPutDateFieldForm: {
             code?: string;
             /** Format: boolean */
-            defaultNowValue?: string;
+            defaultNowValue?: boolean;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewAppFormFieldsPutDatetimeFieldForm: {
             code?: string;
             /** Format: boolean */
-            defaultNowValue?: string;
+            defaultNowValue?: boolean;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewAppFormFieldsPutDecimalFieldForm: {
             code?: string;
             defaultValue?: string;
             /** Format: boolean */
-            digit?: string;
+            digit?: boolean;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             label?: string;
             /** Format: long */
-            maxValue?: string;
+            maxValue?: number;
             /** Format: long */
-            minValue?: string;
+            minValue?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
             unit?: string;
             /** @enum {string} */
             unitPosition?: "BEFORE" | "AFTER";
@@ -7204,9 +4733,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7223,11 +4752,11 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** Format: long */
-            thumbnailSize?: string;
+            thumbnailSize?: number;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7235,9 +4764,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            openGroup?: string;
+            openGroup?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7247,9 +4776,9 @@ export interface components {
             entities?: components["schemas"]["PreviewAppFormFieldsPutEntityForm"][];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7258,19 +4787,19 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             protocol?: "WEB" | "CALL" | "MAIL";
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewAppFormFieldsPutLookupFieldForm: {
             code?: string;
@@ -7281,16 +4810,16 @@ export interface components {
                 lookupPickerFields?: string[];
                 relatedApp?: {
                     /** Format: long */
-                    app?: string;
+                    app?: number;
                     code?: string;
                 };
                 relatedKeyField?: string;
                 sort?: string;
             };
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7298,7 +4827,7 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7306,7 +4835,7 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7317,12 +4846,12 @@ export interface components {
             defaultValue?: string[];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: {
                 [key: string]: components["schemas"]["PreviewAppFormFieldsPutOptionForm"];
             };
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7331,9 +4860,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7342,18 +4871,18 @@ export interface components {
             defaultValue?: string[];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: {
                 [key: string]: components["schemas"]["PreviewAppFormFieldsPutOptionForm"];
             };
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
         PreviewAppFormFieldsPutOptionForm: {
             /** Format: long */
-            index: string;
+            index: number;
             label?: string;
         };
         PreviewAppFormFieldsPutOrganizationSelectFieldForm: {
@@ -7362,9 +4891,9 @@ export interface components {
             entities?: components["schemas"]["PreviewAppFormFieldsPutEntityForm"][];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7372,7 +4901,7 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7380,7 +4909,7 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             referenceTable?: {
                 condition?: {
                     field?: string;
@@ -7390,11 +4919,11 @@ export interface components {
                 filterCond?: string;
                 relatedApp?: {
                     /** Format: long */
-                    app?: string;
+                    app?: number;
                     code?: string;
                 };
                 /** Format: long */
-                size?: string;
+                size?: number;
                 sort?: string;
             };
             /** @enum {string} */
@@ -7407,12 +4936,12 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: {
                 [key: string]: components["schemas"]["PreviewAppFormFieldsPutOptionForm"];
             };
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7421,39 +4950,39 @@ export interface components {
             defaultValue?: string;
             expression?: string;
             /** Format: boolean */
-            hideExpression?: string;
+            hideExpression?: boolean;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewAppFormFieldsPutSingleSelectFieldForm: {
             code?: string;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: {
                 [key: string]: components["schemas"]["PreviewAppFormFieldsPutOptionForm"];
             };
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
         PreviewAppFormFieldsPutStatusAssigneeFieldForm: {
             code?: string;
             /** Format: boolean */
-            enabled?: string;
+            enabled?: boolean;
             label?: string;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
@@ -7461,7 +4990,7 @@ export interface components {
         PreviewAppFormFieldsPutStatusFieldForm: {
             code?: string;
             /** Format: boolean */
-            enabled?: string;
+            enabled?: boolean;
             label?: string;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
@@ -7473,20 +5002,20 @@ export interface components {
             };
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
         PreviewAppFormFieldsPutTimeFieldForm: {
             code?: string;
             /** Format: boolean */
-            defaultNowValue?: string;
+            defaultNowValue?: boolean;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7496,9 +5025,9 @@ export interface components {
             entities?: components["schemas"]["PreviewAppFormFieldsPutEntityForm"][];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type: "CALC" | "CATEGORY" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "GROUP" | "GROUP_SELECT" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "ORGANIZATION_SELECT" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "STATUS" | "STATUS_ASSIGNEE" | "SUBTABLE" | "TIME" | "UPDATED_TIME" | "USER_SELECT";
         };
@@ -7506,7 +5035,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7515,7 +5044,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7524,7 +5053,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7533,7 +5062,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7542,7 +5071,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7551,7 +5080,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7560,9 +5089,9 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                innerHeight?: string;
+                innerHeight?: number;
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7571,7 +5100,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7585,7 +5114,7 @@ export interface components {
         PreviewAppFormLayoutGetHrField: {
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7594,7 +5123,7 @@ export interface components {
             label?: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7603,7 +5132,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7612,7 +5141,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7621,7 +5150,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7630,7 +5159,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7639,7 +5168,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7648,9 +5177,9 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                innerHeight?: string;
+                innerHeight?: number;
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7659,7 +5188,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7668,7 +5197,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7687,7 +5216,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7696,7 +5225,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7705,7 +5234,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7714,9 +5243,9 @@ export interface components {
             elementId?: string;
             size?: {
                 /** Format: long */
-                height?: string;
+                height?: number;
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7731,7 +5260,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7740,7 +5269,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7749,7 +5278,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7758,7 +5287,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7767,7 +5296,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7776,7 +5305,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7785,7 +5314,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7794,7 +5323,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7803,9 +5332,9 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                innerHeight?: string;
+                innerHeight?: number;
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7814,7 +5343,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7828,7 +5357,7 @@ export interface components {
         PreviewAppFormLayoutPutHrField: {
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7837,7 +5366,7 @@ export interface components {
             label?: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7846,7 +5375,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7855,7 +5384,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7864,7 +5393,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7873,7 +5402,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7882,7 +5411,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7891,9 +5420,9 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                innerHeight?: string;
+                innerHeight?: number;
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7902,7 +5431,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7911,7 +5440,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7930,7 +5459,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7939,7 +5468,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7948,7 +5477,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7957,9 +5486,9 @@ export interface components {
             elementId?: string;
             size?: {
                 /** Format: long */
-                height?: string;
+                height?: number;
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7974,7 +5503,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -7983,7 +5512,7 @@ export interface components {
             code: string;
             size?: {
                 /** Format: long */
-                width?: string;
+                width?: number;
             };
             /** @enum {string} */
             type: "CALC" | "CHECK_BOX" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "DROP_DOWN" | "FILE" | "HR" | "LABEL" | "LINK" | "MODIFIER" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "NUMBER" | "RADIO_BUTTON" | "RECORD_NUMBER" | "REFERENCE_TABLE" | "RICH_TEXT" | "SINGLE_LINE_TEXT" | "SPACER" | "TIME" | "UPDATED_TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT";
@@ -8003,22 +5532,22 @@ export interface components {
         };
         PreviewAppNotificationsGeneralPutNotification: {
             /** Format: boolean */
-            commentAdded?: string;
+            commentAdded?: boolean;
             entity: {
                 code: string;
                 /** @enum {string} */
                 type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
             };
             /** Format: boolean */
-            fileImported?: string;
+            fileImported?: boolean;
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
             /** Format: boolean */
-            recordAdded?: string;
+            recordAdded?: boolean;
             /** Format: boolean */
-            recordEdited?: string;
+            recordEdited?: boolean;
             /** Format: boolean */
-            statusChanged?: string;
+            statusChanged?: boolean;
         };
         PreviewAppNotificationsPerRecordGetNotification: {
             /** Format: query */
@@ -8047,7 +5576,7 @@ export interface components {
                 type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
         };
         PreviewAppNotificationsReminderGetNotification: {
             /** Format: query */
@@ -8067,15 +5596,15 @@ export interface components {
         PreviewAppNotificationsReminderGetTimingAbsolute: {
             code?: string;
             /** Format: long */
-            daysLater?: string;
+            daysLater?: number;
             time?: string;
         };
         PreviewAppNotificationsReminderGetTimingRelative: {
             code?: string;
             /** Format: long */
-            daysLater?: string;
+            daysLater?: number;
             /** Format: long */
-            hoursLater?: string;
+            hoursLater?: number;
         };
         PreviewAppNotificationsReminderPutNotification: {
             /** Format: query */
@@ -8091,20 +5620,20 @@ export interface components {
                 type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
         };
         PreviewAppNotificationsReminderPutTimingAbsolute: {
             code: string;
             /** Format: long */
-            daysLater: string;
+            daysLater: number;
             time: string;
         };
         PreviewAppNotificationsReminderPutTimingRelative: {
             code: string;
             /** Format: long */
-            daysLater: string;
+            daysLater: number;
             /** Format: long */
-            hoursLater: string;
+            hoursLater: number;
         };
         PreviewAppPluginsGetPluginForm: {
             enabled?: boolean;
@@ -8143,7 +5672,7 @@ export interface components {
             /** @enum {string} */
             every?: "HOUR";
             /** Format: long */
-            minute?: string;
+            minute?: number;
         };
         PreviewAppReportsGetPeriodMonth: {
             dayOfMonth?: string;
@@ -8168,11 +5697,11 @@ export interface components {
         };
         PreviewAppReportsGetPeriodYear: {
             /** Format: long */
-            dayOfMonth?: string;
+            dayOfMonth?: number;
             /** @enum {string} */
             every?: "YEAR";
             /** Format: long */
-            month?: string;
+            month?: number;
             time?: string;
         };
         PreviewAppReportsGetRecordAggregation: {
@@ -8187,9 +5716,9 @@ export interface components {
             filterCond?: string;
             groups?: (components["schemas"]["PreviewAppReportsGetGroup"] | components["schemas"]["PreviewAppReportsGetGroupDateTime"] | components["schemas"]["PreviewAppReportsGetGroupDate"] | components["schemas"]["PreviewAppReportsGetGroupTime"])[];
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             periodicReport?: {
                 active?: boolean;
@@ -8207,9 +5736,9 @@ export interface components {
             filterCond?: string;
             groups?: (components["schemas"]["PreviewAppReportsGetGroup"] | components["schemas"]["PreviewAppReportsGetGroupDateTime"] | components["schemas"]["PreviewAppReportsGetGroupDate"] | components["schemas"]["PreviewAppReportsGetGroupTime"])[];
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             periodicReport?: {
                 active?: boolean;
@@ -8242,7 +5771,7 @@ export interface components {
             /** @enum {string} */
             every: "YEAR" | "QUARTER" | "MONTH" | "WEEK" | "DAY" | "HOUR";
             /** Format: long */
-            minute: string;
+            minute: number;
         };
         PreviewAppReportsPutPeriodMonth: {
             dayOfMonth: string;
@@ -8267,16 +5796,16 @@ export interface components {
         };
         PreviewAppReportsPutPeriodYear: {
             /** Format: long */
-            dayOfMonth: string;
+            dayOfMonth: number;
             /** @enum {string} */
             every: "YEAR" | "QUARTER" | "MONTH" | "WEEK" | "DAY" | "HOUR";
             /** Format: long */
-            month: string;
+            month: number;
             time: string;
         };
         PreviewAppReportsPutPeriodicReport: {
             /** Format: boolean */
-            active?: string;
+            active?: boolean;
             period?: components["schemas"]["PreviewAppReportsPutPeriodYear"] | components["schemas"]["PreviewAppReportsPutPeriodQuarter"] | components["schemas"]["PreviewAppReportsPutPeriodMonth"] | components["schemas"]["PreviewAppReportsPutPeriodWeek"] | components["schemas"]["PreviewAppReportsPutPeriodDay"] | components["schemas"]["PreviewAppReportsPutPeriodHour"];
         };
         PreviewAppReportsPutRecordAggregation: {
@@ -8291,14 +5820,14 @@ export interface components {
             filterCond?: string;
             groups?: components["schemas"]["PreviewAppReportsPutGroup"][];
             /** Format: long */
-            index: string;
+            index: number;
             name?: string;
             periodicReport?: components["schemas"]["PreviewAppReportsPutPeriodicReport"];
             sorts?: components["schemas"]["PreviewAppReportsPutSort"][];
         };
         PreviewAppReportsPutReportResult: {
             /** Format: long */
-            id?: string;
+            id?: number;
         };
         PreviewAppReportsPutReportWithChartMode: {
             aggregations?: (components["schemas"]["PreviewAppReportsPutRecordAggregation"] | components["schemas"]["PreviewAppReportsPutFieldAggregation"])[];
@@ -8310,7 +5839,7 @@ export interface components {
             filterCond?: string;
             groups?: components["schemas"]["PreviewAppReportsPutGroup"][];
             /** Format: long */
-            index: string;
+            index: number;
             name?: string;
             periodicReport?: components["schemas"]["PreviewAppReportsPutPeriodicReport"];
             sorts?: components["schemas"]["PreviewAppReportsPutSort"][];
@@ -8400,7 +5929,7 @@ export interface components {
                 type?: "ONE" | "ALL" | "ANY";
             };
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
         };
         PreviewAppStatusPutActionForm: {
@@ -8416,7 +5945,7 @@ export interface components {
                 type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY" | "CREATOR" | "CUSTOM_FIELD";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
         };
         PreviewAppStatusPutStateForm: {
             assignee?: {
@@ -8425,7 +5954,7 @@ export interface components {
                 type: "ONE" | "ALL" | "ANY";
             };
             /** Format: long */
-            index: string;
+            index: number;
             name?: string;
         };
         PreviewAppViewsGetBuiltinCalendarViewOutputForm: {
@@ -8434,9 +5963,9 @@ export interface components {
             date?: string;
             filterCond?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             sort?: string;
             title?: string;
@@ -8449,9 +5978,9 @@ export interface components {
             fields?: string[];
             filterCond?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             sort?: string;
             /** @enum {string} */
@@ -8461,9 +5990,9 @@ export interface components {
             date?: string;
             filterCond?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             sort?: string;
             title?: string;
@@ -8476,9 +6005,9 @@ export interface components {
             filterCond?: string;
             html?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             pager?: boolean;
             sort?: string;
@@ -8489,9 +6018,9 @@ export interface components {
             fields?: string[];
             filterCond?: string;
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            index?: string;
+            index?: number;
             name?: string;
             sort?: string;
             /** @enum {string} */
@@ -8503,7 +6032,7 @@ export interface components {
             date?: string;
             filterCond?: string;
             /** Format: long */
-            index: string;
+            index: number;
             name?: string;
             sort?: string;
             title?: string;
@@ -8518,10 +6047,10 @@ export interface components {
             filterCond?: string;
             html?: string;
             /** Format: long */
-            index: string;
+            index: number;
             name?: string;
             /** Format: boolean */
-            pager?: string;
+            pager?: boolean;
             sort?: string;
             /** @enum {string} */
             type: "LIST" | "CALENDAR" | "CUSTOM";
@@ -8532,7 +6061,7 @@ export interface components {
             fields?: string[];
             filterCond?: string;
             /** Format: long */
-            index: string;
+            index: number;
             name?: string;
             sort?: string;
             /** @enum {string} */
@@ -8540,7 +6069,7 @@ export interface components {
         };
         PreviewAppViewsPutResult: {
             /** Format: long */
-            id?: string;
+            id?: number;
         };
         PreviewFieldAclGetEntityRight: {
             /** @enum {string} */
@@ -8565,7 +6094,7 @@ export interface components {
                 type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
         };
         PreviewFieldAclPutRight: {
             code: string;
@@ -8575,24 +6104,24 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
         PreviewFormGetCalcSimpleProperties: {
             code?: string;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             expression?: string;
             /** @enum {string} */
             format?: "NUMBER" | "NUMBER_DIGIT" | "DATETIME" | "DATE" | "TIME" | "HOUR_MINUTE" | "DAY_HOUR_MINUTE";
             /** Format: boolean */
-            hideExpression?: string;
+            hideExpression?: boolean;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             unit?: string;
@@ -8604,13 +6133,13 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewFormGetDatetimeSimpleProperties: {
             code?: string;
@@ -8618,34 +6147,34 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewFormGetDecimalSimpleProperties: {
             code?: string;
             defaultValue?: string;
             /** Format: boolean */
-            digit?: string;
+            digit?: boolean;
             /** Format: long */
-            displayScale?: string;
+            displayScale?: number;
             label?: string;
             /** Format: long */
-            maxValue?: string;
+            maxValue?: number;
             /** Format: long */
-            minValue?: string;
+            minValue?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
             unit?: string;
             unitPosition?: string;
         };
@@ -8654,9 +6183,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8664,9 +6193,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8674,9 +6203,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8694,29 +6223,29 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             protocol?: "WEB" | "CALL" | "MAIL";
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewFormGetLookupSimpleProperties: {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: long */
-            relatedApp?: string;
+            relatedApp?: number;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8725,9 +6254,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8736,10 +6265,10 @@ export interface components {
             defaultValue?: string[];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: string[];
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8747,9 +6276,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8757,9 +6286,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: long */
-            relatedApp?: string;
+            relatedApp?: number;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8768,30 +6297,30 @@ export interface components {
             defaultValue?: string;
             expression?: string;
             /** Format: boolean */
-            hideExpression?: string;
+            hideExpression?: boolean;
             label?: string;
             /** Format: long */
-            maxLength?: string;
+            maxLength?: number;
             /** Format: long */
-            minLength?: string;
+            minLength?: number;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
             /** Format: boolean */
-            unique?: string;
+            unique?: boolean;
         };
         PreviewFormGetSingleSelectSimpleProperties: {
             code?: string;
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             options?: string[];
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8805,7 +6334,7 @@ export interface components {
             fields?: (components["schemas"]["PreviewFormGetLayoutProperties"] | components["schemas"]["PreviewFormGetLabelProperties"] | components["schemas"]["PreviewFormGetBultinProperties"] | components["schemas"]["PreviewFormGetCalcSimpleProperties"] | components["schemas"]["PreviewFormGetDateSimpleProperties"] | components["schemas"]["PreviewFormGetDatetimeSimpleProperties"] | components["schemas"]["PreviewFormGetDecimalSimpleProperties"] | components["schemas"]["PreviewFormGetEditorSimpleProperties"] | components["schemas"]["PreviewFormGetFileSimpleProperties"] | components["schemas"]["PreviewFormGetLinkSimpleProperties"] | components["schemas"]["PreviewFormGetMultipleLineTextSimpleProperties"] | components["schemas"]["PreviewFormGetMultipleSelectSimpleProperties"] | components["schemas"]["PreviewFormGetSingleLineTextSimpleProperties"] | components["schemas"]["PreviewFormGetSingleSelectSimpleProperties"] | components["schemas"]["PreviewFormGetTimeSimpleProperties"] | components["schemas"]["PreviewFormGetUserSelectSimpleProperties"] | components["schemas"]["PreviewFormGetOrganizationSelectSimpleProperties"] | components["schemas"]["PreviewFormGetGroupSelectSimpleProperties"] | components["schemas"]["PreviewFormGetLookupSimpleProperties"] | components["schemas"]["PreviewFormGetReferenceTableLayoutProperties"] | components["schemas"]["PreviewFormGetSubTableLayoutProperties"] | components["schemas"]["PreviewFormGetSpacerProperties"])[];
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8815,9 +6344,9 @@ export interface components {
             defaultValue?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8825,9 +6354,9 @@ export interface components {
             code?: string;
             label?: string;
             /** Format: boolean */
-            noLabel?: string;
+            noLabel?: boolean;
             /** Format: boolean */
-            required?: string;
+            required?: boolean;
             /** @enum {string} */
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
@@ -8848,18 +6377,18 @@ export interface components {
         };
         PreviewRecordAclPutEntityRightForm: {
             /** Format: boolean */
-            deletable?: string;
+            deletable?: boolean;
             /** Format: boolean */
-            editable?: string;
+            editable?: boolean;
             entity: {
                 code?: string;
                 /** @enum {string} */
                 type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
             /** Format: boolean */
-            viewable?: string;
+            viewable?: boolean;
         };
         PreviewRecordAclPutRightForm: {
             entities: components["schemas"]["PreviewRecordAclPutEntityRightForm"][];
@@ -8883,18 +6412,18 @@ export interface components {
         };
         RecordAclPutEntityRightForm: {
             /** Format: boolean */
-            deletable?: string;
+            deletable?: boolean;
             /** Format: boolean */
-            editable?: string;
+            editable?: boolean;
             entity: {
                 code?: string;
                 /** @enum {string} */
                 type: "USER" | "GROUP" | "ORGANIZATION" | "FIELD_ENTITY";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
             /** Format: boolean */
-            viewable?: string;
+            viewable?: boolean;
         };
         RecordAclPutRightForm: {
             entities: components["schemas"]["RecordAclPutEntityRightForm"][];
@@ -8914,7 +6443,7 @@ export interface components {
                 name?: string;
             };
             /** Format: long */
-            id?: string;
+            id?: number;
             mentions?: components["schemas"]["RecordCommentsGetMentionOutputForm"][];
             text?: string;
         };
@@ -9036,7 +6565,7 @@ export interface components {
         };
         RecordGetSimpleRowValue: {
             /** Format: long */
-            id?: string;
+            id?: number;
             value?: {
                 [key: string]: components["schemas"]["RecordGetCalcSimpleValue"] | components["schemas"]["RecordGetCategorySimpleValue"] | components["schemas"]["RecordGetDateSimpleValue"] | components["schemas"]["RecordGetDatetimeSimpleValue"] | components["schemas"]["RecordGetDecimalSimpleValue"] | components["schemas"]["RecordGetEditorSimpleValue"] | components["schemas"]["RecordGetFileSimpleValue"] | components["schemas"]["RecordGetGroupSimpleValue"] | components["schemas"]["RecordGetLinkSimpleValue"] | components["schemas"]["RecordGetModifiedAtSimpleValue"] | components["schemas"]["RecordGetModifierSimpleValue"] | components["schemas"]["RecordGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordGetMultipleSelectSimpleValue"] | components["schemas"]["RecordGetRecordIdSimpleValue"] | components["schemas"]["RecordGetReferenceTableSimpleValue"] | components["schemas"]["RecordGetSimpleTableValue"] | components["schemas"]["RecordGetSingleLineTextSimpleValue"] | components["schemas"]["RecordGetSingleSelectSimpleValue"] | components["schemas"]["RecordGetStatusSimpleValue"] | components["schemas"]["RecordGetTimeSimpleValue"] | components["schemas"]["RecordGetUserSelectSimpleValue"] | components["schemas"]["RecordGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordGetGroupSelectSimpleValue"] | components["schemas"]["RecordGetRevisionSimpleValue"] | components["schemas"]["RecordGetRawRecordIdSimpleValue"];
             };
@@ -9195,7 +6724,7 @@ export interface components {
         };
         RecordPostSimpleRowValue: {
             /** Format: long */
-            id?: string;
+            id?: number;
             value?: {
                 [key: string]: components["schemas"]["RecordPostCalcSimpleValue"] | components["schemas"]["RecordPostCategorySimpleValue"] | components["schemas"]["RecordPostDateSimpleValue"] | components["schemas"]["RecordPostDatetimeSimpleValue"] | components["schemas"]["RecordPostDecimalSimpleValue"] | components["schemas"]["RecordPostEditorSimpleValue"] | components["schemas"]["RecordPostFileSimpleValue"] | components["schemas"]["RecordPostGroupSimpleValue"] | components["schemas"]["RecordPostLinkSimpleValue"] | components["schemas"]["RecordPostModifiedAtSimpleValue"] | components["schemas"]["RecordPostModifierSimpleValue"] | components["schemas"]["RecordPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordPostMultipleSelectSimpleValue"] | components["schemas"]["RecordPostRecordIdSimpleValue"] | components["schemas"]["RecordPostReferenceTableSimpleValue"] | components["schemas"]["RecordPostSimpleTableValue"] | components["schemas"]["RecordPostSingleLineTextSimpleValue"] | components["schemas"]["RecordPostSingleSelectSimpleValue"] | components["schemas"]["RecordPostStatusSimpleValue"] | components["schemas"]["RecordPostTimeSimpleValue"] | components["schemas"]["RecordPostUserSelectSimpleValue"] | components["schemas"]["RecordPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordPostGroupSelectSimpleValue"] | components["schemas"]["RecordPostRevisionSimpleValue"] | components["schemas"]["RecordPostRawRecordIdSimpleValue"];
             };
@@ -9354,7 +6883,7 @@ export interface components {
         };
         RecordPutSimpleRowValue: {
             /** Format: long */
-            id?: string;
+            id?: number;
             value?: {
                 [key: string]: components["schemas"]["RecordPutCalcSimpleValue"] | components["schemas"]["RecordPutCategorySimpleValue"] | components["schemas"]["RecordPutDateSimpleValue"] | components["schemas"]["RecordPutDatetimeSimpleValue"] | components["schemas"]["RecordPutDecimalSimpleValue"] | components["schemas"]["RecordPutEditorSimpleValue"] | components["schemas"]["RecordPutFileSimpleValue"] | components["schemas"]["RecordPutGroupSimpleValue"] | components["schemas"]["RecordPutLinkSimpleValue"] | components["schemas"]["RecordPutModifiedAtSimpleValue"] | components["schemas"]["RecordPutModifierSimpleValue"] | components["schemas"]["RecordPutMultipleLineTextSimpleValue"] | components["schemas"]["RecordPutMultipleSelectSimpleValue"] | components["schemas"]["RecordPutRecordIdSimpleValue"] | components["schemas"]["RecordPutReferenceTableSimpleValue"] | components["schemas"]["RecordPutSimpleTableValue"] | components["schemas"]["RecordPutSingleLineTextSimpleValue"] | components["schemas"]["RecordPutSingleSelectSimpleValue"] | components["schemas"]["RecordPutStatusSimpleValue"] | components["schemas"]["RecordPutTimeSimpleValue"] | components["schemas"]["RecordPutUserSelectSimpleValue"] | components["schemas"]["RecordPutOrganizationSelectSimpleValue"] | components["schemas"]["RecordPutGroupSelectSimpleValue"] | components["schemas"]["RecordPutRevisionSimpleValue"] | components["schemas"]["RecordPutRawRecordIdSimpleValue"];
             };
@@ -9413,7 +6942,7 @@ export interface components {
                 [key: string]: components["schemas"]["RecordsAclEvaluateGetField"];
             };
             /** Format: long */
-            id?: string;
+            id?: number;
             record?: {
                 deletable?: boolean;
                 editable?: boolean;
@@ -9533,7 +7062,7 @@ export interface components {
         };
         RecordsCursorGetSimpleRowValue: {
             /** Format: long */
-            id?: string;
+            id?: number;
             value?: {
                 [key: string]: components["schemas"]["RecordsCursorGetCalcSimpleValue"] | components["schemas"]["RecordsCursorGetCategorySimpleValue"] | components["schemas"]["RecordsCursorGetDateSimpleValue"] | components["schemas"]["RecordsCursorGetDatetimeSimpleValue"] | components["schemas"]["RecordsCursorGetDecimalSimpleValue"] | components["schemas"]["RecordsCursorGetEditorSimpleValue"] | components["schemas"]["RecordsCursorGetFileSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSimpleValue"] | components["schemas"]["RecordsCursorGetLinkSimpleValue"] | components["schemas"]["RecordsCursorGetModifiedAtSimpleValue"] | components["schemas"]["RecordsCursorGetModifierSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRecordIdSimpleValue"] | components["schemas"]["RecordsCursorGetReferenceTableSimpleValue"] | components["schemas"]["RecordsCursorGetSimpleTableValue"] | components["schemas"]["RecordsCursorGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetSingleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetStatusSimpleValue"] | components["schemas"]["RecordsCursorGetTimeSimpleValue"] | components["schemas"]["RecordsCursorGetUserSelectSimpleValue"] | components["schemas"]["RecordsCursorGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRevisionSimpleValue"] | components["schemas"]["RecordsCursorGetRawRecordIdSimpleValue"];
             };
@@ -9692,7 +7221,7 @@ export interface components {
         };
         RecordsGetSimpleRowValue: {
             /** Format: long */
-            id?: string;
+            id?: number;
             value?: {
                 [key: string]: components["schemas"]["RecordsGetCalcSimpleValue"] | components["schemas"]["RecordsGetCategorySimpleValue"] | components["schemas"]["RecordsGetDateSimpleValue"] | components["schemas"]["RecordsGetDatetimeSimpleValue"] | components["schemas"]["RecordsGetDecimalSimpleValue"] | components["schemas"]["RecordsGetEditorSimpleValue"] | components["schemas"]["RecordsGetFileSimpleValue"] | components["schemas"]["RecordsGetGroupSimpleValue"] | components["schemas"]["RecordsGetLinkSimpleValue"] | components["schemas"]["RecordsGetModifiedAtSimpleValue"] | components["schemas"]["RecordsGetModifierSimpleValue"] | components["schemas"]["RecordsGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsGetRecordIdSimpleValue"] | components["schemas"]["RecordsGetReferenceTableSimpleValue"] | components["schemas"]["RecordsGetSimpleTableValue"] | components["schemas"]["RecordsGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsGetSingleSelectSimpleValue"] | components["schemas"]["RecordsGetStatusSimpleValue"] | components["schemas"]["RecordsGetTimeSimpleValue"] | components["schemas"]["RecordsGetUserSelectSimpleValue"] | components["schemas"]["RecordsGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsGetGroupSelectSimpleValue"] | components["schemas"]["RecordsGetRevisionSimpleValue"] | components["schemas"]["RecordsGetRawRecordIdSimpleValue"];
             };
@@ -9851,7 +7380,7 @@ export interface components {
         };
         RecordsPostSimpleRowValue: {
             /** Format: long */
-            id?: string;
+            id?: number;
             value?: {
                 [key: string]: components["schemas"]["RecordsPostCalcSimpleValue"] | components["schemas"]["RecordsPostCategorySimpleValue"] | components["schemas"]["RecordsPostDateSimpleValue"] | components["schemas"]["RecordsPostDatetimeSimpleValue"] | components["schemas"]["RecordsPostDecimalSimpleValue"] | components["schemas"]["RecordsPostEditorSimpleValue"] | components["schemas"]["RecordsPostFileSimpleValue"] | components["schemas"]["RecordsPostGroupSimpleValue"] | components["schemas"]["RecordsPostLinkSimpleValue"] | components["schemas"]["RecordsPostModifiedAtSimpleValue"] | components["schemas"]["RecordsPostModifierSimpleValue"] | components["schemas"]["RecordsPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordsPostMultipleSelectSimpleValue"] | components["schemas"]["RecordsPostRecordIdSimpleValue"] | components["schemas"]["RecordsPostReferenceTableSimpleValue"] | components["schemas"]["RecordsPostSimpleTableValue"] | components["schemas"]["RecordsPostSingleLineTextSimpleValue"] | components["schemas"]["RecordsPostSingleSelectSimpleValue"] | components["schemas"]["RecordsPostStatusSimpleValue"] | components["schemas"]["RecordsPostTimeSimpleValue"] | components["schemas"]["RecordsPostUserSelectSimpleValue"] | components["schemas"]["RecordsPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordsPostGroupSelectSimpleValue"] | components["schemas"]["RecordsPostRevisionSimpleValue"] | components["schemas"]["RecordsPostRawRecordIdSimpleValue"];
             };
@@ -9994,18 +7523,18 @@ export interface components {
         };
         RecordsPutRecordBean: {
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         RecordsPutRecordForm: {
             /** Format: long */
-            id?: string;
+            id?: number;
             record?: {
                 [key: string]: components["schemas"]["RecordsPutCalcSimpleValue"] | components["schemas"]["RecordsPutCategorySimpleValue"] | components["schemas"]["RecordsPutDateSimpleValue"] | components["schemas"]["RecordsPutDatetimeSimpleValue"] | components["schemas"]["RecordsPutDecimalSimpleValue"] | components["schemas"]["RecordsPutEditorSimpleValue"] | components["schemas"]["RecordsPutFileSimpleValue"] | components["schemas"]["RecordsPutGroupSimpleValue"] | components["schemas"]["RecordsPutLinkSimpleValue"] | components["schemas"]["RecordsPutModifiedAtSimpleValue"] | components["schemas"]["RecordsPutModifierSimpleValue"] | components["schemas"]["RecordsPutMultipleLineTextSimpleValue"] | components["schemas"]["RecordsPutMultipleSelectSimpleValue"] | components["schemas"]["RecordsPutRecordIdSimpleValue"] | components["schemas"]["RecordsPutReferenceTableSimpleValue"] | components["schemas"]["RecordsPutSimpleTableValue"] | components["schemas"]["RecordsPutSingleLineTextSimpleValue"] | components["schemas"]["RecordsPutSingleSelectSimpleValue"] | components["schemas"]["RecordsPutStatusSimpleValue"] | components["schemas"]["RecordsPutTimeSimpleValue"] | components["schemas"]["RecordsPutUserSelectSimpleValue"] | components["schemas"]["RecordsPutOrganizationSelectSimpleValue"] | components["schemas"]["RecordsPutGroupSelectSimpleValue"] | components["schemas"]["RecordsPutRevisionSimpleValue"] | components["schemas"]["RecordsPutRawRecordIdSimpleValue"];
             };
             /** Format: long */
-            revision?: string;
+            revision?: number;
             updateKey?: components["schemas"]["RecordsPutUpdateKey"];
         };
         RecordsPutRecordIdSimpleValue: {
@@ -10026,7 +7555,7 @@ export interface components {
         };
         RecordsPutSimpleRowValue: {
             /** Format: long */
-            id?: string;
+            id?: number;
             value?: {
                 [key: string]: components["schemas"]["RecordsPutCalcSimpleValue"] | components["schemas"]["RecordsPutCategorySimpleValue"] | components["schemas"]["RecordsPutDateSimpleValue"] | components["schemas"]["RecordsPutDatetimeSimpleValue"] | components["schemas"]["RecordsPutDecimalSimpleValue"] | components["schemas"]["RecordsPutEditorSimpleValue"] | components["schemas"]["RecordsPutFileSimpleValue"] | components["schemas"]["RecordsPutGroupSimpleValue"] | components["schemas"]["RecordsPutLinkSimpleValue"] | components["schemas"]["RecordsPutModifiedAtSimpleValue"] | components["schemas"]["RecordsPutModifierSimpleValue"] | components["schemas"]["RecordsPutMultipleLineTextSimpleValue"] | components["schemas"]["RecordsPutMultipleSelectSimpleValue"] | components["schemas"]["RecordsPutRecordIdSimpleValue"] | components["schemas"]["RecordsPutReferenceTableSimpleValue"] | components["schemas"]["RecordsPutSimpleTableValue"] | components["schemas"]["RecordsPutSingleLineTextSimpleValue"] | components["schemas"]["RecordsPutSingleSelectSimpleValue"] | components["schemas"]["RecordsPutStatusSimpleValue"] | components["schemas"]["RecordsPutTimeSimpleValue"] | components["schemas"]["RecordsPutUserSelectSimpleValue"] | components["schemas"]["RecordsPutOrganizationSelectSimpleValue"] | components["schemas"]["RecordsPutGroupSelectSimpleValue"] | components["schemas"]["RecordsPutRevisionSimpleValue"] | components["schemas"]["RecordsPutRawRecordIdSimpleValue"];
             };
@@ -10080,19 +7609,19 @@ export interface components {
             action: string;
             assignee?: string;
             /** Format: long */
-            id: string;
+            id: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         RecordsStatusPutRecordsStatusPutOutputFormRecord: {
             /** Format: long */
-            id?: string;
+            id?: number;
             /** Format: long */
-            revision?: string;
+            revision?: number;
         };
         SpaceGetAttachedApp: {
             /** Format: long */
-            appId?: string;
+            appId?: number;
             code?: string;
             /** Format: date-time */
             createdAt?: string;
@@ -10109,7 +7638,7 @@ export interface components {
             };
             name?: string;
             /** Format: long */
-            threadId?: string;
+            threadId?: number;
         };
         SpaceMembersGetGroupBean: {
             entity?: {
@@ -10141,9 +7670,9 @@ export interface components {
                 type: "USER" | "GROUP" | "ORGANIZATION";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
             /** Format: boolean */
-            isAdmin?: string;
+            isAdmin?: boolean;
         };
         SpaceThreadCommentPostFileForm: {
             fileKey: string;
@@ -10156,7 +7685,7 @@ export interface components {
         };
         SpacesStatisticsGetSpaceForm: {
             /** Format: long */
-            administratorCount?: string;
+            administratorCount?: number;
             /** Format: date-time */
             createdAt?: string;
             creator?: {
@@ -10164,11 +7693,11 @@ export interface components {
                 name?: string;
             };
             /** Format: long */
-            id?: string;
+            id?: number;
             isGuest?: boolean;
             isPrivate?: boolean;
             /** Format: long */
-            memberCount?: string;
+            memberCount?: number;
             /** Format: date-time */
             modifiedAt?: string;
             modifier?: {
@@ -10184,9 +7713,9 @@ export interface components {
                 type: "USER" | "GROUP" | "ORGANIZATION";
             };
             /** Format: boolean */
-            includeSubs?: string;
+            includeSubs?: boolean;
             /** Format: boolean */
-            isAdmin?: string;
+            isAdmin?: boolean;
         };
     };
     responses: never;
@@ -10196,4 +7725,6577 @@ export interface components {
     pathItems: never;
 }
 export type $defs = Record<string, never>;
-export type operations = Record<string, never>;
+export interface operations {
+    getAppForGuestSpace: {
+        parameters: {
+            query: {
+                id: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        appId?: number;
+                        code?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        creator?: {
+                            code?: string;
+                            name?: string;
+                        };
+                        description?: string;
+                        /** Format: date-time */
+                        modifiedAt?: string;
+                        modifier?: {
+                            code?: string;
+                            name?: string;
+                        };
+                        name?: string;
+                        /** Format: long */
+                        spaceId?: number;
+                        /** Format: long */
+                        threadId?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppAclForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["AppAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putAppAclForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["AppAclPutRight"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of app/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppActionsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/actions/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: {
+                            [key: string]: components["schemas"]["AppActionsGetAction"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppAdminNotesForGuestSpace: {
+        parameters: {
+            query: {
+                app: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/adminNotes/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        content?: string;
+                        includeInTemplateAndDuplicates?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppCustomizeForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/customize/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        desktop?: {
+                            css?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
+                            js?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
+                        };
+                        mobile?: {
+                            css?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
+                            js?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                        /** @enum {string} */
+                        scope?: "ALL" | "ADMIN" | "NONE";
+                    };
+                };
+            };
+        };
+    };
+    getAppFormFieldsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/form/fields/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        properties?: {
+                            [key: string]: components["schemas"]["AppFormFieldsGetCalcFieldForm"] | components["schemas"]["AppFormFieldsGetCategoryFieldForm"] | components["schemas"]["AppFormFieldsGetDateFieldForm"] | components["schemas"]["AppFormFieldsGetDatetimeFieldForm"] | components["schemas"]["AppFormFieldsGetDecimalFieldForm"] | components["schemas"]["AppFormFieldsGetEditorFieldForm"] | components["schemas"]["AppFormFieldsGetFileFieldForm"] | components["schemas"]["AppFormFieldsGetGroupFieldForm"] | components["schemas"]["AppFormFieldsGetGroupSelectFieldForm"] | components["schemas"]["AppFormFieldsGetLinkFieldForm"] | components["schemas"]["AppFormFieldsGetLookupFieldForm"] | components["schemas"]["AppFormFieldsGetModifiedAtFieldForm"] | components["schemas"]["AppFormFieldsGetModifierFieldForm"] | components["schemas"]["AppFormFieldsGetMultipleCheckFieldForm"] | components["schemas"]["AppFormFieldsGetMultipleLineTextFieldForm"] | components["schemas"]["AppFormFieldsGetMultipleSelectFieldForm"] | components["schemas"]["AppFormFieldsGetOrganizationSelectFieldForm"] | components["schemas"]["AppFormFieldsGetRecordIdFieldForm"] | components["schemas"]["AppFormFieldsGetReferenceTableFieldForm"] | components["schemas"]["AppFormFieldsGetSingleCheckFieldForm"] | components["schemas"]["AppFormFieldsGetSingleLineTextFieldForm"] | components["schemas"]["AppFormFieldsGetSingleSelectFieldForm"] | components["schemas"]["AppFormFieldsGetStatusAssigneeFieldForm"] | components["schemas"]["AppFormFieldsGetStatusFieldForm"] | components["schemas"]["AppFormFieldsGetTableForm"] | components["schemas"]["AppFormFieldsGetTimeFieldForm"] | components["schemas"]["AppFormFieldsGetUserSelectFieldForm"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppFormLayoutForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/form/layout/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        layout?: (components["schemas"]["AppFormLayoutGetRow"] | components["schemas"]["AppFormLayoutGetGroupRow"] | components["schemas"]["AppFormLayoutGetSubtableRow"])[];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postAppMoveForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    space?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of app/move/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getAppNotificationsGeneralForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/notifications/general/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["AppNotificationsGeneralGetNotification"][];
+                        notifyToCommenter?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppNotificationsPerRecordForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/notifications/perRecord/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["AppNotificationsPerRecordGetNotification"][];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppNotificationsReminderForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/notifications/reminder/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["AppNotificationsReminderGetNotification"][];
+                        /** Format: long */
+                        revision?: number;
+                        /** Format: timezone */
+                        timezone?: string;
+                    };
+                };
+            };
+        };
+    };
+    getAppPluginsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "JA" | "EN" | "ZH" | "ES";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/plugins/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        plugins?: components["schemas"]["AppPluginsGetPluginForm"][];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppReportsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/reports/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        reports?: {
+                            [key: string]: components["schemas"]["AppReportsGetReport"] | components["schemas"]["AppReportsGetReportWithChartMode"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppSettingsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/settings/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        description?: string;
+                        enableBulkDeletion?: boolean;
+                        enableComments?: boolean;
+                        enableDuplicateRecord?: boolean;
+                        enableInlineRecordEditing?: boolean;
+                        enableThumbnails?: boolean;
+                        firstMonthOfFiscalYear?: string;
+                        icon?: components["schemas"]["AppSettingsGetIconPresetForm"] | components["schemas"]["AppSettingsGetIconFileForm"];
+                        name?: string;
+                        numberPrecision?: components["schemas"]["AppSettingsGetNumberPrecision"];
+                        /** Format: long */
+                        revision?: number;
+                        /** @enum {string} */
+                        theme?: "WHITE" | "CLIPBOARD" | "BINDER" | "PENCIL" | "CLIPS" | "RED" | "GREEN" | "BLUE" | "YELLOW" | "BLACK";
+                        titleField?: components["schemas"]["AppSettingsGetTitleField"];
+                    };
+                };
+            };
+        };
+    };
+    getAppStatusForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/status/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: components["schemas"]["AppStatusGetActionForm"][];
+                        enable?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                        states?: {
+                            [key: string]: components["schemas"]["AppStatusGetStateForm"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getAppViewsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/views/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        views?: {
+                            [key: string]: components["schemas"]["AppViewsGetBuiltinListViewOutputForm"] | components["schemas"]["AppViewsGetBuiltinCalendarViewOutputForm"] | components["schemas"]["AppViewsGetListViewOutputForm"] | components["schemas"]["AppViewsGetCalendarViewOutputForm"] | components["schemas"]["AppViewsGetCustomViewOutputForm"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getAppsForGuestSpace: {
+        parameters: {
+            query?: {
+                codes?: string[];
+                offset?: number;
+                name?: string;
+                limit?: number;
+                ids?: number[];
+                spaceIds?: number[];
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of apps/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        apps?: components["schemas"]["AppsGetAppWithSpaceIdForm"][];
+                    };
+                };
+            };
+        };
+    };
+    getAppsStatisticsForGuestSpace: {
+        parameters: {
+            query?: {
+                offset?: string;
+                limit?: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of apps/statistics/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        apps?: components["schemas"]["AppsStatisticsGetAppForm"][];
+                    };
+                };
+            };
+        };
+    };
+    postBulkRequestForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    requests: components["schemas"]["BulkRequestPostRequestForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of bulkRequest/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        results?: (components["schemas"]["BulkRequestPostRecordPostOutputForm"] | components["schemas"]["BulkRequestPostRecordPutOutputForm"] | components["schemas"]["BulkRequestPostRecordStatusPutOutputForm"] | components["schemas"]["BulkRequestPostRecordAssigneesPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsDeleteOutputForm"] | components["schemas"]["BulkRequestPostRecordsPostOutputForm"] | components["schemas"]["BulkRequestPostRecordsPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsStatusPutOutputForm"])[];
+                    };
+                };
+            };
+        };
+    };
+    getFieldAclForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of field/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["FieldAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putFieldAclForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app?: number;
+                    /** Format: long */
+                    id?: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["FieldAclPutRight"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of field/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getFileForGuestSpace: {
+        parameters: {
+            query: {
+                fileKey: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of file/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    postFileForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    file?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of file/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        fileKey?: string;
+                    };
+                };
+            };
+        };
+    };
+    getFormForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of form/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        properties?: (components["schemas"]["FormGetLayoutProperties"] | components["schemas"]["FormGetLabelProperties"] | components["schemas"]["FormGetBultinProperties"] | components["schemas"]["FormGetCalcSimpleProperties"] | components["schemas"]["FormGetDateSimpleProperties"] | components["schemas"]["FormGetDatetimeSimpleProperties"] | components["schemas"]["FormGetDecimalSimpleProperties"] | components["schemas"]["FormGetEditorSimpleProperties"] | components["schemas"]["FormGetFileSimpleProperties"] | components["schemas"]["FormGetLinkSimpleProperties"] | components["schemas"]["FormGetMultipleLineTextSimpleProperties"] | components["schemas"]["FormGetMultipleSelectSimpleProperties"] | components["schemas"]["FormGetSingleLineTextSimpleProperties"] | components["schemas"]["FormGetSingleSelectSimpleProperties"] | components["schemas"]["FormGetTimeSimpleProperties"] | components["schemas"]["FormGetUserSelectSimpleProperties"] | components["schemas"]["FormGetOrganizationSelectSimpleProperties"] | components["schemas"]["FormGetGroupSelectSimpleProperties"] | components["schemas"]["FormGetLookupSimpleProperties"] | components["schemas"]["FormGetReferenceTableLayoutProperties"] | components["schemas"]["FormGetSubTableLayoutProperties"] | components["schemas"]["FormGetSpacerProperties"])[];
+                    };
+                };
+            };
+        };
+    };
+    postGuestsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    guests: components["schemas"]["GuestsPostGuestUserForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of guests/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    deleteGuestsForGuestSpace: {
+        parameters: {
+            query: {
+                guests: string[];
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of guests/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putPluginForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    fileKey: string;
+                    id: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of plugin/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        id?: string;
+                        version?: string;
+                    };
+                };
+            };
+        };
+    };
+    postPluginForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    fileKey: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of plugin/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        id?: string;
+                        version?: string;
+                    };
+                };
+            };
+        };
+    };
+    deletePluginForGuestSpace: {
+        parameters: {
+            query: {
+                id: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of plugin/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getPluginAppsForGuestSpace: {
+        parameters: {
+            query: {
+                offset?: string;
+                limit?: string;
+                id: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of plugin/apps/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        apps?: components["schemas"]["PluginAppsGetAppDto"][];
+                    };
+                };
+            };
+        };
+    };
+    getPluginsForGuestSpace: {
+        parameters: {
+            query?: {
+                offset?: string;
+                limit?: string;
+                ids?: string[];
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of plugins/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        plugins?: components["schemas"]["PluginsGetPluginDto"][];
+                    };
+                };
+            };
+        };
+    };
+    getPluginsRequiredForGuestSpace: {
+        parameters: {
+            query?: {
+                offset?: string;
+                limit?: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of plugins/required/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        plugins?: components["schemas"]["PluginsRequiredGetPluginDto"][];
+                    };
+                };
+            };
+        };
+    };
+    postPreviewAppForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    /** Format: long */
+                    space?: number;
+                    /** Format: long */
+                    thread?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        app?: number;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppAclForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["PreviewAppAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppAclForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["PreviewAppAclPutRight"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppActionsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/actions/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: {
+                            [key: string]: components["schemas"]["PreviewAppActionsGetAction"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppActionsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    actions: {
+                        [key: string]: components["schemas"]["PreviewAppActionsPutAction"];
+                    };
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/actions/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: {
+                            [key: string]: components["schemas"]["PreviewAppActionsPutActionResult"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppAdminNotesForGuestSpace: {
+        parameters: {
+            query: {
+                app: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/adminNotes/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        content?: string;
+                        includeInTemplateAndDuplicates?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppAdminNotesForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    content?: string;
+                    includeInTemplateAndDuplicates?: string;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/adminNotes/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppCustomizeForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/customize/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        desktop?: {
+                            css?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
+                            js?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
+                        };
+                        mobile?: {
+                            css?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
+                            js?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                        /** @enum {string} */
+                        scope?: "ALL" | "ADMIN" | "NONE";
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppCustomizeForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    desktop?: {
+                        css?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
+                        js?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
+                    };
+                    mobile?: {
+                        css?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
+                        js?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                    /** @enum {string} */
+                    scope?: "ALL" | "ADMIN" | "NONE";
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/customize/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppDeployForGuestSpace: {
+        parameters: {
+            query: {
+                apps: number[];
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/deploy/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        apps?: components["schemas"]["PreviewAppDeployGetAppForm"][];
+                    };
+                };
+            };
+        };
+    };
+    postPreviewAppDeployForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    apps: components["schemas"]["PreviewAppDeployPostAppForm"][];
+                    /** Format: boolean */
+                    revert?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/deploy/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getPreviewAppFormFieldsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/form/fields/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        properties?: {
+                            [key: string]: components["schemas"]["PreviewAppFormFieldsGetCalcFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetCategoryFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetDateFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetDatetimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetDecimalFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetEditorFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetFileFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetGroupFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetGroupSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetLinkFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetLookupFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetModifiedAtFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetModifierFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetMultipleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetMultipleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetMultipleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetOrganizationSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetRecordIdFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetReferenceTableFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetSingleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetSingleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetSingleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetStatusAssigneeFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetStatusFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetTableForm"] | components["schemas"]["PreviewAppFormFieldsGetTimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetUserSelectFieldForm"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppFormFieldsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    properties: {
+                        [key: string]: components["schemas"]["PreviewAppFormFieldsPutCalcFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutCategoryFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutDateFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutDatetimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutDecimalFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutEditorFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutFileFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutGroupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutGroupSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutLinkFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutLookupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutModifiedAtFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutModifierFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutMultipleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutMultipleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutMultipleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutOrganizationSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutRecordIdFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutReferenceTableFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutSingleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutSingleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutSingleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutStatusAssigneeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutStatusFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutTableForm"] | components["schemas"]["PreviewAppFormFieldsPutTimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutUserSelectFieldForm"];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/form/fields/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postPreviewAppFormFieldsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    properties: {
+                        [key: string]: components["schemas"]["PreviewAppFormFieldsPostCalcFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostCategoryFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostDateFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostDatetimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostDecimalFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostEditorFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostFileFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostGroupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostGroupSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostLinkFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostLookupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostModifiedAtFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostModifierFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostMultipleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostMultipleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostMultipleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostOrganizationSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostRecordIdFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostReferenceTableFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostSingleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostSingleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostSingleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostStatusAssigneeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostStatusFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostTableForm"] | components["schemas"]["PreviewAppFormFieldsPostTimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostUserSelectFieldForm"];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/form/fields/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    deletePreviewAppFormFieldsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                fields: string[];
+                revision?: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/form/fields/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppFormLayoutForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/form/layout/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        layout?: (components["schemas"]["PreviewAppFormLayoutGetRow"] | components["schemas"]["PreviewAppFormLayoutGetGroupRow"] | components["schemas"]["PreviewAppFormLayoutGetSubtableRow"])[];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppFormLayoutForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    layout: (components["schemas"]["PreviewAppFormLayoutPutRow"] | components["schemas"]["PreviewAppFormLayoutPutGroupRow"] | components["schemas"]["PreviewAppFormLayoutPutSubtableRow"])[];
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/form/layout/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppNotificationsGeneralForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/notifications/general/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["PreviewAppNotificationsGeneralGetNotification"][];
+                        notifyToCommenter?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppNotificationsGeneralForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    notifications?: components["schemas"]["PreviewAppNotificationsGeneralPutNotification"][];
+                    /** Format: boolean */
+                    notifyToCommenter?: boolean;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/notifications/general/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppNotificationsPerRecordForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/notifications/perRecord/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["PreviewAppNotificationsPerRecordGetNotification"][];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppNotificationsPerRecordForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    notifications: components["schemas"]["PreviewAppNotificationsPerRecordPutNotification"][];
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/notifications/perRecord/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppNotificationsReminderForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/notifications/reminder/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["PreviewAppNotificationsReminderGetNotification"][];
+                        /** Format: long */
+                        revision?: number;
+                        /** Format: timezone */
+                        timezone?: string;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppNotificationsReminderForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    notifications?: components["schemas"]["PreviewAppNotificationsReminderPutNotification"][];
+                    /** Format: long */
+                    revision?: number;
+                    /** Format: timezone */
+                    timezone?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/notifications/reminder/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppPluginsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "JA" | "EN" | "ZH" | "ES";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/plugins/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        plugins?: components["schemas"]["PreviewAppPluginsGetPluginForm"][];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postPreviewAppPluginsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    ids: string[];
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/plugins/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppReportsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/reports/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        reports?: {
+                            [key: string]: components["schemas"]["PreviewAppReportsGetReport"] | components["schemas"]["PreviewAppReportsGetReportWithChartMode"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppReportsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    reports: {
+                        [key: string]: components["schemas"]["PreviewAppReportsPutReport"] | components["schemas"]["PreviewAppReportsPutReportWithChartMode"];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/reports/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        reports?: {
+                            [key: string]: components["schemas"]["PreviewAppReportsPutReportResult"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppSettingsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/settings/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        description?: string;
+                        enableBulkDeletion?: boolean;
+                        enableComments?: boolean;
+                        enableDuplicateRecord?: boolean;
+                        enableInlineRecordEditing?: boolean;
+                        enableThumbnails?: boolean;
+                        firstMonthOfFiscalYear?: string;
+                        icon?: components["schemas"]["PreviewAppSettingsGetIconPresetForm"] | components["schemas"]["PreviewAppSettingsGetIconFileForm"];
+                        name?: string;
+                        numberPrecision?: components["schemas"]["PreviewAppSettingsGetNumberPrecision"];
+                        /** Format: long */
+                        revision?: number;
+                        /** @enum {string} */
+                        theme?: "WHITE" | "CLIPBOARD" | "BINDER" | "PENCIL" | "CLIPS" | "RED" | "GREEN" | "BLUE" | "YELLOW" | "BLACK";
+                        titleField?: components["schemas"]["PreviewAppSettingsGetTitleField"];
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppSettingsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    description?: string;
+                    enableBulkDeletion?: string;
+                    enableComments?: string;
+                    enableDuplicateRecord?: string;
+                    enableInlineRecordEditing?: string;
+                    enableThumbnails?: string;
+                    firstMonthOfFiscalYear?: string;
+                    icon?: components["schemas"]["PreviewAppSettingsPutIconPresetForm"] | components["schemas"]["PreviewAppSettingsPutIconFileForm"];
+                    name?: string;
+                    numberPrecision?: components["schemas"]["PreviewAppSettingsPutNumberPrecision"];
+                    /** Format: long */
+                    revision?: number;
+                    /** @enum {string} */
+                    theme?: "WHITE" | "CLIPBOARD" | "BINDER" | "PENCIL" | "CLIPS" | "RED" | "GREEN" | "BLUE" | "YELLOW" | "BLACK";
+                    titleField?: components["schemas"]["PreviewAppSettingsPutTitleField"];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/settings/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppStatusForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/status/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: components["schemas"]["PreviewAppStatusGetActionForm"][];
+                        enable?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                        states?: {
+                            [key: string]: components["schemas"]["PreviewAppStatusGetStateForm"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppStatusForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    actions?: components["schemas"]["PreviewAppStatusPutActionForm"][];
+                    /** Format: long */
+                    app: number;
+                    /** Format: boolean */
+                    enable?: boolean;
+                    /** Format: long */
+                    revision?: number;
+                    states?: {
+                        [key: string]: components["schemas"]["PreviewAppStatusPutStateForm"];
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/status/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppViewsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/views/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        views?: {
+                            [key: string]: components["schemas"]["PreviewAppViewsGetBuiltinListViewOutputForm"] | components["schemas"]["PreviewAppViewsGetBuiltinCalendarViewOutputForm"] | components["schemas"]["PreviewAppViewsGetListViewOutputForm"] | components["schemas"]["PreviewAppViewsGetCalendarViewOutputForm"] | components["schemas"]["PreviewAppViewsGetCustomViewOutputForm"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppViewsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    revision?: number;
+                    views: {
+                        [key: string]: components["schemas"]["PreviewAppViewsPutListViewForm"] | components["schemas"]["PreviewAppViewsPutCalendarViewForm"] | components["schemas"]["PreviewAppViewsPutCustomViewForm"];
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/views/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        views?: {
+                            [key: string]: components["schemas"]["PreviewAppViewsPutResult"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getPreviewFieldAclForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/field/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["PreviewFieldAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putPreviewFieldAclForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app?: number;
+                    /** Format: long */
+                    id?: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["PreviewFieldAclPutRight"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/field/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewFormForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/form/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        properties?: (components["schemas"]["PreviewFormGetLayoutProperties"] | components["schemas"]["PreviewFormGetLabelProperties"] | components["schemas"]["PreviewFormGetBultinProperties"] | components["schemas"]["PreviewFormGetCalcSimpleProperties"] | components["schemas"]["PreviewFormGetDateSimpleProperties"] | components["schemas"]["PreviewFormGetDatetimeSimpleProperties"] | components["schemas"]["PreviewFormGetDecimalSimpleProperties"] | components["schemas"]["PreviewFormGetEditorSimpleProperties"] | components["schemas"]["PreviewFormGetFileSimpleProperties"] | components["schemas"]["PreviewFormGetLinkSimpleProperties"] | components["schemas"]["PreviewFormGetMultipleLineTextSimpleProperties"] | components["schemas"]["PreviewFormGetMultipleSelectSimpleProperties"] | components["schemas"]["PreviewFormGetSingleLineTextSimpleProperties"] | components["schemas"]["PreviewFormGetSingleSelectSimpleProperties"] | components["schemas"]["PreviewFormGetTimeSimpleProperties"] | components["schemas"]["PreviewFormGetUserSelectSimpleProperties"] | components["schemas"]["PreviewFormGetOrganizationSelectSimpleProperties"] | components["schemas"]["PreviewFormGetGroupSelectSimpleProperties"] | components["schemas"]["PreviewFormGetLookupSimpleProperties"] | components["schemas"]["PreviewFormGetReferenceTableLayoutProperties"] | components["schemas"]["PreviewFormGetSubTableLayoutProperties"] | components["schemas"]["PreviewFormGetSpacerProperties"])[];
+                    };
+                };
+            };
+        };
+    };
+    getPreviewRecordAclForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/record/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["PreviewRecordAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putPreviewRecordAclForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app?: number;
+                    /** Format: long */
+                    id?: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["PreviewRecordAclPutRightForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/record/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getRecordForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                id: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of record/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        record?: {
+                            [key: string]: components["schemas"]["RecordGetCalcSimpleValue"] | components["schemas"]["RecordGetCategorySimpleValue"] | components["schemas"]["RecordGetDateSimpleValue"] | components["schemas"]["RecordGetDatetimeSimpleValue"] | components["schemas"]["RecordGetDecimalSimpleValue"] | components["schemas"]["RecordGetEditorSimpleValue"] | components["schemas"]["RecordGetFileSimpleValue"] | components["schemas"]["RecordGetGroupSimpleValue"] | components["schemas"]["RecordGetLinkSimpleValue"] | components["schemas"]["RecordGetModifiedAtSimpleValue"] | components["schemas"]["RecordGetModifierSimpleValue"] | components["schemas"]["RecordGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordGetMultipleSelectSimpleValue"] | components["schemas"]["RecordGetRecordIdSimpleValue"] | components["schemas"]["RecordGetReferenceTableSimpleValue"] | components["schemas"]["RecordGetSimpleTableValue"] | components["schemas"]["RecordGetSingleLineTextSimpleValue"] | components["schemas"]["RecordGetSingleSelectSimpleValue"] | components["schemas"]["RecordGetStatusSimpleValue"] | components["schemas"]["RecordGetTimeSimpleValue"] | components["schemas"]["RecordGetUserSelectSimpleValue"] | components["schemas"]["RecordGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordGetGroupSelectSimpleValue"] | components["schemas"]["RecordGetRevisionSimpleValue"] | components["schemas"]["RecordGetRawRecordIdSimpleValue"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    putRecordForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    id?: number;
+                    record?: {
+                        [key: string]: components["schemas"]["RecordPutCalcSimpleValue"] | components["schemas"]["RecordPutCategorySimpleValue"] | components["schemas"]["RecordPutDateSimpleValue"] | components["schemas"]["RecordPutDatetimeSimpleValue"] | components["schemas"]["RecordPutDecimalSimpleValue"] | components["schemas"]["RecordPutEditorSimpleValue"] | components["schemas"]["RecordPutFileSimpleValue"] | components["schemas"]["RecordPutGroupSimpleValue"] | components["schemas"]["RecordPutLinkSimpleValue"] | components["schemas"]["RecordPutModifiedAtSimpleValue"] | components["schemas"]["RecordPutModifierSimpleValue"] | components["schemas"]["RecordPutMultipleLineTextSimpleValue"] | components["schemas"]["RecordPutMultipleSelectSimpleValue"] | components["schemas"]["RecordPutRecordIdSimpleValue"] | components["schemas"]["RecordPutReferenceTableSimpleValue"] | components["schemas"]["RecordPutSimpleTableValue"] | components["schemas"]["RecordPutSingleLineTextSimpleValue"] | components["schemas"]["RecordPutSingleSelectSimpleValue"] | components["schemas"]["RecordPutStatusSimpleValue"] | components["schemas"]["RecordPutTimeSimpleValue"] | components["schemas"]["RecordPutUserSelectSimpleValue"] | components["schemas"]["RecordPutOrganizationSelectSimpleValue"] | components["schemas"]["RecordPutGroupSelectSimpleValue"] | components["schemas"]["RecordPutRevisionSimpleValue"] | components["schemas"]["RecordPutRawRecordIdSimpleValue"];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                    updateKey?: components["schemas"]["RecordPutUpdateKey"];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postRecordForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    record: {
+                        [key: string]: components["schemas"]["RecordPostCalcSimpleValue"] | components["schemas"]["RecordPostCategorySimpleValue"] | components["schemas"]["RecordPostDateSimpleValue"] | components["schemas"]["RecordPostDatetimeSimpleValue"] | components["schemas"]["RecordPostDecimalSimpleValue"] | components["schemas"]["RecordPostEditorSimpleValue"] | components["schemas"]["RecordPostFileSimpleValue"] | components["schemas"]["RecordPostGroupSimpleValue"] | components["schemas"]["RecordPostLinkSimpleValue"] | components["schemas"]["RecordPostModifiedAtSimpleValue"] | components["schemas"]["RecordPostModifierSimpleValue"] | components["schemas"]["RecordPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordPostMultipleSelectSimpleValue"] | components["schemas"]["RecordPostRecordIdSimpleValue"] | components["schemas"]["RecordPostReferenceTableSimpleValue"] | components["schemas"]["RecordPostSimpleTableValue"] | components["schemas"]["RecordPostSingleLineTextSimpleValue"] | components["schemas"]["RecordPostSingleSelectSimpleValue"] | components["schemas"]["RecordPostStatusSimpleValue"] | components["schemas"]["RecordPostTimeSimpleValue"] | components["schemas"]["RecordPostUserSelectSimpleValue"] | components["schemas"]["RecordPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordPostGroupSelectSimpleValue"] | components["schemas"]["RecordPostRevisionSimpleValue"] | components["schemas"]["RecordPostRawRecordIdSimpleValue"];
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getRecordAclForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of record/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["RecordAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putRecordAclForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app?: number;
+                    /** Format: long */
+                    id?: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["RecordAclPutRightForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putRecordAssigneesForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    assignees: string[];
+                    /** Format: long */
+                    id: number;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/assignees/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postRecordCommentForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    comment: {
+                        mentions?: components["schemas"]["RecordCommentPostMentionForm"][];
+                        text: string;
+                    };
+                    /** Format: long */
+                    record: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/comment/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                    };
+                };
+            };
+        };
+    };
+    deleteRecordCommentForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                record: number;
+                comment: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of record/comment/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getRecordCommentsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                offset?: number;
+                record: number;
+                limit?: number;
+                order?: "ASC" | "DESC";
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of record/comments/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        comments?: components["schemas"]["RecordCommentsGetCommentOutputForm"][];
+                        newer?: boolean;
+                        older?: boolean;
+                    };
+                };
+            };
+        };
+    };
+    putRecordStatusForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    action: string;
+                    /** Format: long */
+                    app: number;
+                    assignee?: string;
+                    /** Format: long */
+                    id: number;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/status/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getRecordsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                query?: string;
+                fields?: string[];
+                totalCount?: boolean;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        records?: {
+                            [key: string]: components["schemas"]["RecordsGetCalcSimpleValue"] | components["schemas"]["RecordsGetCategorySimpleValue"] | components["schemas"]["RecordsGetDateSimpleValue"] | components["schemas"]["RecordsGetDatetimeSimpleValue"] | components["schemas"]["RecordsGetDecimalSimpleValue"] | components["schemas"]["RecordsGetEditorSimpleValue"] | components["schemas"]["RecordsGetFileSimpleValue"] | components["schemas"]["RecordsGetGroupSimpleValue"] | components["schemas"]["RecordsGetLinkSimpleValue"] | components["schemas"]["RecordsGetModifiedAtSimpleValue"] | components["schemas"]["RecordsGetModifierSimpleValue"] | components["schemas"]["RecordsGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsGetRecordIdSimpleValue"] | components["schemas"]["RecordsGetReferenceTableSimpleValue"] | components["schemas"]["RecordsGetSimpleTableValue"] | components["schemas"]["RecordsGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsGetSingleSelectSimpleValue"] | components["schemas"]["RecordsGetStatusSimpleValue"] | components["schemas"]["RecordsGetTimeSimpleValue"] | components["schemas"]["RecordsGetUserSelectSimpleValue"] | components["schemas"]["RecordsGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsGetGroupSelectSimpleValue"] | components["schemas"]["RecordsGetRevisionSimpleValue"] | components["schemas"]["RecordsGetRawRecordIdSimpleValue"];
+                        }[];
+                        /** Format: long */
+                        totalCount?: number;
+                    };
+                };
+            };
+        };
+    };
+    putRecordsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    records: components["schemas"]["RecordsPutRecordForm"][];
+                    /** Format: boolean */
+                    upsert?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of records/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        records?: {
+                            [key: string]: components["schemas"]["RecordsPutRecordBean"];
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    postRecordsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    records: {
+                        [key: string]: components["schemas"]["RecordsPostCalcSimpleValue"] | components["schemas"]["RecordsPostCategorySimpleValue"] | components["schemas"]["RecordsPostDateSimpleValue"] | components["schemas"]["RecordsPostDatetimeSimpleValue"] | components["schemas"]["RecordsPostDecimalSimpleValue"] | components["schemas"]["RecordsPostEditorSimpleValue"] | components["schemas"]["RecordsPostFileSimpleValue"] | components["schemas"]["RecordsPostGroupSimpleValue"] | components["schemas"]["RecordsPostLinkSimpleValue"] | components["schemas"]["RecordsPostModifiedAtSimpleValue"] | components["schemas"]["RecordsPostModifierSimpleValue"] | components["schemas"]["RecordsPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordsPostMultipleSelectSimpleValue"] | components["schemas"]["RecordsPostRecordIdSimpleValue"] | components["schemas"]["RecordsPostReferenceTableSimpleValue"] | components["schemas"]["RecordsPostSimpleTableValue"] | components["schemas"]["RecordsPostSingleLineTextSimpleValue"] | components["schemas"]["RecordsPostSingleSelectSimpleValue"] | components["schemas"]["RecordsPostStatusSimpleValue"] | components["schemas"]["RecordsPostTimeSimpleValue"] | components["schemas"]["RecordsPostUserSelectSimpleValue"] | components["schemas"]["RecordsPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordsPostGroupSelectSimpleValue"] | components["schemas"]["RecordsPostRevisionSimpleValue"] | components["schemas"]["RecordsPostRawRecordIdSimpleValue"];
+                    }[];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of records/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ids?: number[];
+                        revisions?: number[];
+                    };
+                };
+            };
+        };
+    };
+    deleteRecordsForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                ids: number[];
+                revisions?: number[];
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getRecordsAclEvaluateForGuestSpace: {
+        parameters: {
+            query: {
+                app: number;
+                ids: number[];
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/acl/evaluate/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        rights?: components["schemas"]["RecordsAclEvaluateGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    getRecordsCursorForGuestSpace: {
+        parameters: {
+            query: {
+                id: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/cursor/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        next?: boolean;
+                        records?: {
+                            [key: string]: components["schemas"]["RecordsCursorGetCalcSimpleValue"] | components["schemas"]["RecordsCursorGetCategorySimpleValue"] | components["schemas"]["RecordsCursorGetDateSimpleValue"] | components["schemas"]["RecordsCursorGetDatetimeSimpleValue"] | components["schemas"]["RecordsCursorGetDecimalSimpleValue"] | components["schemas"]["RecordsCursorGetEditorSimpleValue"] | components["schemas"]["RecordsCursorGetFileSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSimpleValue"] | components["schemas"]["RecordsCursorGetLinkSimpleValue"] | components["schemas"]["RecordsCursorGetModifiedAtSimpleValue"] | components["schemas"]["RecordsCursorGetModifierSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRecordIdSimpleValue"] | components["schemas"]["RecordsCursorGetReferenceTableSimpleValue"] | components["schemas"]["RecordsCursorGetSimpleTableValue"] | components["schemas"]["RecordsCursorGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetSingleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetStatusSimpleValue"] | components["schemas"]["RecordsCursorGetTimeSimpleValue"] | components["schemas"]["RecordsCursorGetUserSelectSimpleValue"] | components["schemas"]["RecordsCursorGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRevisionSimpleValue"] | components["schemas"]["RecordsCursorGetRawRecordIdSimpleValue"];
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    postRecordsCursorForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    fields?: string[];
+                    /** Format: query */
+                    query?: string;
+                    /** Format: long */
+                    size?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of records/cursor/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        id?: string;
+                        /** Format: long */
+                        totalCount?: number;
+                    };
+                };
+            };
+        };
+    };
+    deleteRecordsCursorForGuestSpace: {
+        parameters: {
+            query: {
+                id: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/cursor/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putRecordsStatusForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    records: components["schemas"]["RecordsStatusPutRecordsStatusPutFormRecord"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of records/status/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        records?: components["schemas"]["RecordsStatusPutRecordsStatusPutOutputFormRecord"][];
+                    };
+                };
+            };
+        };
+    };
+    getSpaceForGuestSpace: {
+        parameters: {
+            query: {
+                id: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of space/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        attachedApps?: components["schemas"]["SpaceGetAttachedApp"][];
+                        body?: string;
+                        coverKey?: string;
+                        /** @enum {string} */
+                        coverType?: "BLOB" | "PRESET";
+                        coverUrl?: string;
+                        creator?: {
+                            code?: string;
+                            name?: string;
+                        };
+                        /** Format: long */
+                        defaultThread?: number;
+                        fixedMember?: boolean;
+                        /** Format: long */
+                        id?: number;
+                        isGuest?: boolean;
+                        isPrivate?: boolean;
+                        /** Format: long */
+                        memberCount?: number;
+                        modifier?: {
+                            code?: string;
+                            name?: string;
+                        };
+                        name?: string;
+                        permissions?: {
+                            /** @enum {string} */
+                            createApp?: "EVERYONE" | "ADMIN";
+                        };
+                        showAnnouncement?: boolean;
+                        showAppList?: boolean;
+                        showMemberList?: boolean;
+                        showRelatedLinkList?: boolean;
+                        showThreadList?: boolean;
+                        useMultiThread?: boolean;
+                    };
+                };
+            };
+        };
+    };
+    putSpaceForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: boolean */
+                    fixedMember?: boolean;
+                    /** Format: long */
+                    id: number;
+                    /** Format: boolean */
+                    isPrivate?: boolean;
+                    name?: string;
+                    permissions?: {
+                        /** @enum {string} */
+                        createApp?: "EVERYONE" | "ADMIN";
+                    };
+                    /** Format: boolean */
+                    showAnnouncement?: boolean;
+                    /** Format: boolean */
+                    showAppList?: boolean;
+                    /** Format: boolean */
+                    showMemberList?: boolean;
+                    /** Format: boolean */
+                    showRelatedLinkList?: boolean;
+                    /** Format: boolean */
+                    showThreadList?: boolean;
+                    /** Format: boolean */
+                    useMultiThread?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    deleteSpaceForGuestSpace: {
+        parameters: {
+            query: {
+                id: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of space/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putSpaceBodyForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    body: string;
+                    /** Format: long */
+                    id: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/body/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putSpaceGuestsForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    guests: string[];
+                    /** Format: long */
+                    id: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/guests/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getSpaceMembersForGuestSpace: {
+        parameters: {
+            query: {
+                id: number;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of space/members/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        members?: (components["schemas"]["SpaceMembersGetUserBean"] | components["schemas"]["SpaceMembersGetOrganizationBean"] | components["schemas"]["SpaceMembersGetGroupBean"])[];
+                    };
+                };
+            };
+        };
+    };
+    putSpaceMembersForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    id: number;
+                    members?: components["schemas"]["SpaceMembersPutMemberForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/members/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putSpaceThreadForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    body?: string;
+                    /** Format: long */
+                    id: number;
+                    name?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/thread/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    postSpaceThreadForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    /** Format: long */
+                    space: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/thread/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                    };
+                };
+            };
+        };
+    };
+    postSpaceThreadCommentForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    comment: {
+                        files?: components["schemas"]["SpaceThreadCommentPostFileForm"][];
+                        mentions?: components["schemas"]["SpaceThreadCommentPostMentionForm"][];
+                        text?: string;
+                    };
+                    /** Format: long */
+                    space: number;
+                    /** Format: long */
+                    thread: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/thread/comment/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                    };
+                };
+            };
+        };
+    };
+    getSpacesStatisticsForGuestSpace: {
+        parameters: {
+            query?: {
+                offset?: string;
+                limit?: string;
+            };
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of spaces/statistics/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        spaces?: components["schemas"]["SpacesStatisticsGetSpaceForm"][];
+                    };
+                };
+            };
+        };
+    };
+    postTemplateSpaceForGuestSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description guest space id */
+                guestSpaceId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: boolean */
+                    fixedMember?: boolean;
+                    /** Format: long */
+                    id: number;
+                    /** Format: boolean */
+                    isGuest?: boolean;
+                    /** Format: boolean */
+                    isPrivate?: boolean;
+                    members?: components["schemas"]["TemplateSpacePostMemberForm"][];
+                    name: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of template/space/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                    };
+                };
+            };
+        };
+    };
+    getApp: {
+        parameters: {
+            query: {
+                id: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        appId?: number;
+                        code?: string;
+                        /** Format: date-time */
+                        createdAt?: string;
+                        creator?: {
+                            code?: string;
+                            name?: string;
+                        };
+                        description?: string;
+                        /** Format: date-time */
+                        modifiedAt?: string;
+                        modifier?: {
+                            code?: string;
+                            name?: string;
+                        };
+                        name?: string;
+                        /** Format: long */
+                        spaceId?: number;
+                        /** Format: long */
+                        threadId?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppAcl: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["AppAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putAppAcl: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["AppAclPutRight"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of app/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppActions: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/actions/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: {
+                            [key: string]: components["schemas"]["AppActionsGetAction"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppAdminNotes: {
+        parameters: {
+            query: {
+                app: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/adminNotes/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        content?: string;
+                        includeInTemplateAndDuplicates?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppCustomize: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/customize/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        desktop?: {
+                            css?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
+                            js?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
+                        };
+                        mobile?: {
+                            css?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
+                            js?: (components["schemas"]["AppCustomizeGetUrlContentForm"] | components["schemas"]["AppCustomizeGetFileContentForm"])[];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                        /** @enum {string} */
+                        scope?: "ALL" | "ADMIN" | "NONE";
+                    };
+                };
+            };
+        };
+    };
+    getAppFormFields: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/form/fields/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        properties?: {
+                            [key: string]: components["schemas"]["AppFormFieldsGetCalcFieldForm"] | components["schemas"]["AppFormFieldsGetCategoryFieldForm"] | components["schemas"]["AppFormFieldsGetDateFieldForm"] | components["schemas"]["AppFormFieldsGetDatetimeFieldForm"] | components["schemas"]["AppFormFieldsGetDecimalFieldForm"] | components["schemas"]["AppFormFieldsGetEditorFieldForm"] | components["schemas"]["AppFormFieldsGetFileFieldForm"] | components["schemas"]["AppFormFieldsGetGroupFieldForm"] | components["schemas"]["AppFormFieldsGetGroupSelectFieldForm"] | components["schemas"]["AppFormFieldsGetLinkFieldForm"] | components["schemas"]["AppFormFieldsGetLookupFieldForm"] | components["schemas"]["AppFormFieldsGetModifiedAtFieldForm"] | components["schemas"]["AppFormFieldsGetModifierFieldForm"] | components["schemas"]["AppFormFieldsGetMultipleCheckFieldForm"] | components["schemas"]["AppFormFieldsGetMultipleLineTextFieldForm"] | components["schemas"]["AppFormFieldsGetMultipleSelectFieldForm"] | components["schemas"]["AppFormFieldsGetOrganizationSelectFieldForm"] | components["schemas"]["AppFormFieldsGetRecordIdFieldForm"] | components["schemas"]["AppFormFieldsGetReferenceTableFieldForm"] | components["schemas"]["AppFormFieldsGetSingleCheckFieldForm"] | components["schemas"]["AppFormFieldsGetSingleLineTextFieldForm"] | components["schemas"]["AppFormFieldsGetSingleSelectFieldForm"] | components["schemas"]["AppFormFieldsGetStatusAssigneeFieldForm"] | components["schemas"]["AppFormFieldsGetStatusFieldForm"] | components["schemas"]["AppFormFieldsGetTableForm"] | components["schemas"]["AppFormFieldsGetTimeFieldForm"] | components["schemas"]["AppFormFieldsGetUserSelectFieldForm"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppFormLayout: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/form/layout/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        layout?: (components["schemas"]["AppFormLayoutGetRow"] | components["schemas"]["AppFormLayoutGetGroupRow"] | components["schemas"]["AppFormLayoutGetSubtableRow"])[];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postAppMove: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    space?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of app/move/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getAppNotificationsGeneral: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/notifications/general/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["AppNotificationsGeneralGetNotification"][];
+                        notifyToCommenter?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppNotificationsPerRecord: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/notifications/perRecord/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["AppNotificationsPerRecordGetNotification"][];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppNotificationsReminder: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/notifications/reminder/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["AppNotificationsReminderGetNotification"][];
+                        /** Format: long */
+                        revision?: number;
+                        /** Format: timezone */
+                        timezone?: string;
+                    };
+                };
+            };
+        };
+    };
+    getAppPlugins: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "JA" | "EN" | "ZH" | "ES";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/plugins/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        plugins?: components["schemas"]["AppPluginsGetPluginForm"][];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppReports: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/reports/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        reports?: {
+                            [key: string]: components["schemas"]["AppReportsGetReport"] | components["schemas"]["AppReportsGetReportWithChartMode"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getAppSettings: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/settings/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        description?: string;
+                        enableBulkDeletion?: boolean;
+                        enableComments?: boolean;
+                        enableDuplicateRecord?: boolean;
+                        enableInlineRecordEditing?: boolean;
+                        enableThumbnails?: boolean;
+                        firstMonthOfFiscalYear?: string;
+                        icon?: components["schemas"]["AppSettingsGetIconPresetForm"] | components["schemas"]["AppSettingsGetIconFileForm"];
+                        name?: string;
+                        numberPrecision?: components["schemas"]["AppSettingsGetNumberPrecision"];
+                        /** Format: long */
+                        revision?: number;
+                        /** @enum {string} */
+                        theme?: "WHITE" | "CLIPBOARD" | "BINDER" | "PENCIL" | "CLIPS" | "RED" | "GREEN" | "BLUE" | "YELLOW" | "BLACK";
+                        titleField?: components["schemas"]["AppSettingsGetTitleField"];
+                    };
+                };
+            };
+        };
+    };
+    getAppStatus: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/status/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: components["schemas"]["AppStatusGetActionForm"][];
+                        enable?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                        states?: {
+                            [key: string]: components["schemas"]["AppStatusGetStateForm"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getAppViews: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of app/views/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        views?: {
+                            [key: string]: components["schemas"]["AppViewsGetBuiltinListViewOutputForm"] | components["schemas"]["AppViewsGetBuiltinCalendarViewOutputForm"] | components["schemas"]["AppViewsGetListViewOutputForm"] | components["schemas"]["AppViewsGetCalendarViewOutputForm"] | components["schemas"]["AppViewsGetCustomViewOutputForm"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getApps: {
+        parameters: {
+            query?: {
+                codes?: string[];
+                offset?: number;
+                name?: string;
+                limit?: number;
+                ids?: number[];
+                spaceIds?: number[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of apps/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        apps?: components["schemas"]["AppsGetAppWithSpaceIdForm"][];
+                    };
+                };
+            };
+        };
+    };
+    getAppsStatistics: {
+        parameters: {
+            query?: {
+                offset?: string;
+                limit?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of apps/statistics/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        apps?: components["schemas"]["AppsStatisticsGetAppForm"][];
+                    };
+                };
+            };
+        };
+    };
+    postBulkRequest: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    requests: components["schemas"]["BulkRequestPostRequestForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of bulkRequest/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        results?: (components["schemas"]["BulkRequestPostRecordPostOutputForm"] | components["schemas"]["BulkRequestPostRecordPutOutputForm"] | components["schemas"]["BulkRequestPostRecordStatusPutOutputForm"] | components["schemas"]["BulkRequestPostRecordAssigneesPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsDeleteOutputForm"] | components["schemas"]["BulkRequestPostRecordsPostOutputForm"] | components["schemas"]["BulkRequestPostRecordsPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsStatusPutOutputForm"])[];
+                    };
+                };
+            };
+        };
+    };
+    getFieldAcl: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of field/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["FieldAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putFieldAcl: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app?: number;
+                    /** Format: long */
+                    id?: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["FieldAclPutRight"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of field/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getFile: {
+        parameters: {
+            query: {
+                fileKey: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of file/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    postFile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    file?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of file/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        fileKey?: string;
+                    };
+                };
+            };
+        };
+    };
+    getForm: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of form/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        properties?: (components["schemas"]["FormGetLayoutProperties"] | components["schemas"]["FormGetLabelProperties"] | components["schemas"]["FormGetBultinProperties"] | components["schemas"]["FormGetCalcSimpleProperties"] | components["schemas"]["FormGetDateSimpleProperties"] | components["schemas"]["FormGetDatetimeSimpleProperties"] | components["schemas"]["FormGetDecimalSimpleProperties"] | components["schemas"]["FormGetEditorSimpleProperties"] | components["schemas"]["FormGetFileSimpleProperties"] | components["schemas"]["FormGetLinkSimpleProperties"] | components["schemas"]["FormGetMultipleLineTextSimpleProperties"] | components["schemas"]["FormGetMultipleSelectSimpleProperties"] | components["schemas"]["FormGetSingleLineTextSimpleProperties"] | components["schemas"]["FormGetSingleSelectSimpleProperties"] | components["schemas"]["FormGetTimeSimpleProperties"] | components["schemas"]["FormGetUserSelectSimpleProperties"] | components["schemas"]["FormGetOrganizationSelectSimpleProperties"] | components["schemas"]["FormGetGroupSelectSimpleProperties"] | components["schemas"]["FormGetLookupSimpleProperties"] | components["schemas"]["FormGetReferenceTableLayoutProperties"] | components["schemas"]["FormGetSubTableLayoutProperties"] | components["schemas"]["FormGetSpacerProperties"])[];
+                    };
+                };
+            };
+        };
+    };
+    postGuests: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    guests: components["schemas"]["GuestsPostGuestUserForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of guests/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    deleteGuests: {
+        parameters: {
+            query: {
+                guests: string[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of guests/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putPlugin: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    fileKey: string;
+                    id: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of plugin/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        id?: string;
+                        version?: string;
+                    };
+                };
+            };
+        };
+    };
+    postPlugin: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    fileKey: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of plugin/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        id?: string;
+                        version?: string;
+                    };
+                };
+            };
+        };
+    };
+    deletePlugin: {
+        parameters: {
+            query: {
+                id: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of plugin/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getPluginApps: {
+        parameters: {
+            query: {
+                offset?: string;
+                limit?: string;
+                id: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of plugin/apps/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        apps?: components["schemas"]["PluginAppsGetAppDto"][];
+                    };
+                };
+            };
+        };
+    };
+    getPlugins: {
+        parameters: {
+            query?: {
+                offset?: string;
+                limit?: string;
+                ids?: string[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of plugins/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        plugins?: components["schemas"]["PluginsGetPluginDto"][];
+                    };
+                };
+            };
+        };
+    };
+    getPluginsRequired: {
+        parameters: {
+            query?: {
+                offset?: string;
+                limit?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of plugins/required/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        plugins?: components["schemas"]["PluginsRequiredGetPluginDto"][];
+                    };
+                };
+            };
+        };
+    };
+    postPreviewApp: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    /** Format: long */
+                    space?: number;
+                    /** Format: long */
+                    thread?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        app?: number;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppAcl: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["PreviewAppAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppAcl: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["PreviewAppAclPutRight"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppActions: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/actions/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: {
+                            [key: string]: components["schemas"]["PreviewAppActionsGetAction"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppActions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    actions: {
+                        [key: string]: components["schemas"]["PreviewAppActionsPutAction"];
+                    };
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/actions/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: {
+                            [key: string]: components["schemas"]["PreviewAppActionsPutActionResult"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppAdminNotes: {
+        parameters: {
+            query: {
+                app: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/adminNotes/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        content?: string;
+                        includeInTemplateAndDuplicates?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppAdminNotes: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    content?: string;
+                    includeInTemplateAndDuplicates?: string;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/adminNotes/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppCustomize: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/customize/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        desktop?: {
+                            css?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
+                            js?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
+                        };
+                        mobile?: {
+                            css?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
+                            js?: (components["schemas"]["PreviewAppCustomizeGetUrlContentForm"] | components["schemas"]["PreviewAppCustomizeGetFileContentForm"])[];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                        /** @enum {string} */
+                        scope?: "ALL" | "ADMIN" | "NONE";
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppCustomize: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    desktop?: {
+                        css?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
+                        js?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
+                    };
+                    mobile?: {
+                        css?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
+                        js?: (components["schemas"]["PreviewAppCustomizePutUrlContentForm"] | components["schemas"]["PreviewAppCustomizePutFileContentForm"])[];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                    /** @enum {string} */
+                    scope?: "ALL" | "ADMIN" | "NONE";
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/customize/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppDeploy: {
+        parameters: {
+            query: {
+                apps: number[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/deploy/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        apps?: components["schemas"]["PreviewAppDeployGetAppForm"][];
+                    };
+                };
+            };
+        };
+    };
+    postPreviewAppDeploy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    apps: components["schemas"]["PreviewAppDeployPostAppForm"][];
+                    /** Format: boolean */
+                    revert?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/deploy/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getPreviewAppFormFields: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/form/fields/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        properties?: {
+                            [key: string]: components["schemas"]["PreviewAppFormFieldsGetCalcFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetCategoryFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetDateFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetDatetimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetDecimalFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetEditorFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetFileFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetGroupFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetGroupSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetLinkFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetLookupFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetModifiedAtFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetModifierFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetMultipleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetMultipleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetMultipleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetOrganizationSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetRecordIdFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetReferenceTableFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetSingleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetSingleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetSingleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetStatusAssigneeFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetStatusFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetTableForm"] | components["schemas"]["PreviewAppFormFieldsGetTimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsGetUserSelectFieldForm"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppFormFields: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    properties: {
+                        [key: string]: components["schemas"]["PreviewAppFormFieldsPutCalcFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutCategoryFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutDateFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutDatetimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutDecimalFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutEditorFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutFileFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutGroupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutGroupSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutLinkFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutLookupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutModifiedAtFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutModifierFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutMultipleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutMultipleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutMultipleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutOrganizationSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutRecordIdFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutReferenceTableFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutSingleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutSingleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutSingleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutStatusAssigneeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutStatusFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutTableForm"] | components["schemas"]["PreviewAppFormFieldsPutTimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPutUserSelectFieldForm"];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/form/fields/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postPreviewAppFormFields: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    properties: {
+                        [key: string]: components["schemas"]["PreviewAppFormFieldsPostCalcFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostCategoryFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostDateFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostDatetimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostDecimalFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostEditorFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostFileFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostGroupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostGroupSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostLinkFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostLookupFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostModifiedAtFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostModifierFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostMultipleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostMultipleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostMultipleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostOrganizationSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostRecordIdFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostReferenceTableFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostSingleCheckFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostSingleLineTextFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostSingleSelectFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostStatusAssigneeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostStatusFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostTableForm"] | components["schemas"]["PreviewAppFormFieldsPostTimeFieldForm"] | components["schemas"]["PreviewAppFormFieldsPostUserSelectFieldForm"];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/form/fields/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    deletePreviewAppFormFields: {
+        parameters: {
+            query: {
+                app: number;
+                fields: string[];
+                revision?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/form/fields/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppFormLayout: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/form/layout/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        layout?: (components["schemas"]["PreviewAppFormLayoutGetRow"] | components["schemas"]["PreviewAppFormLayoutGetGroupRow"] | components["schemas"]["PreviewAppFormLayoutGetSubtableRow"])[];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppFormLayout: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    layout: (components["schemas"]["PreviewAppFormLayoutPutRow"] | components["schemas"]["PreviewAppFormLayoutPutGroupRow"] | components["schemas"]["PreviewAppFormLayoutPutSubtableRow"])[];
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/form/layout/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppNotificationsGeneral: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/notifications/general/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["PreviewAppNotificationsGeneralGetNotification"][];
+                        notifyToCommenter?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppNotificationsGeneral: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    notifications?: components["schemas"]["PreviewAppNotificationsGeneralPutNotification"][];
+                    /** Format: boolean */
+                    notifyToCommenter?: boolean;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/notifications/general/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppNotificationsPerRecord: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/notifications/perRecord/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["PreviewAppNotificationsPerRecordGetNotification"][];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppNotificationsPerRecord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    notifications: components["schemas"]["PreviewAppNotificationsPerRecordPutNotification"][];
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/notifications/perRecord/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppNotificationsReminder: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/notifications/reminder/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        notifications?: components["schemas"]["PreviewAppNotificationsReminderGetNotification"][];
+                        /** Format: long */
+                        revision?: number;
+                        /** Format: timezone */
+                        timezone?: string;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppNotificationsReminder: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    notifications?: components["schemas"]["PreviewAppNotificationsReminderPutNotification"][];
+                    /** Format: long */
+                    revision?: number;
+                    /** Format: timezone */
+                    timezone?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/notifications/reminder/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppPlugins: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "JA" | "EN" | "ZH" | "ES";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/plugins/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        plugins?: components["schemas"]["PreviewAppPluginsGetPluginForm"][];
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postPreviewAppPlugins: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    ids: string[];
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/plugins/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppReports: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/reports/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        reports?: {
+                            [key: string]: components["schemas"]["PreviewAppReportsGetReport"] | components["schemas"]["PreviewAppReportsGetReportWithChartMode"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppReports: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    reports: {
+                        [key: string]: components["schemas"]["PreviewAppReportsPutReport"] | components["schemas"]["PreviewAppReportsPutReportWithChartMode"];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/reports/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        reports?: {
+                            [key: string]: components["schemas"]["PreviewAppReportsPutReportResult"];
+                        };
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppSettings: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/settings/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        description?: string;
+                        enableBulkDeletion?: boolean;
+                        enableComments?: boolean;
+                        enableDuplicateRecord?: boolean;
+                        enableInlineRecordEditing?: boolean;
+                        enableThumbnails?: boolean;
+                        firstMonthOfFiscalYear?: string;
+                        icon?: components["schemas"]["PreviewAppSettingsGetIconPresetForm"] | components["schemas"]["PreviewAppSettingsGetIconFileForm"];
+                        name?: string;
+                        numberPrecision?: components["schemas"]["PreviewAppSettingsGetNumberPrecision"];
+                        /** Format: long */
+                        revision?: number;
+                        /** @enum {string} */
+                        theme?: "WHITE" | "CLIPBOARD" | "BINDER" | "PENCIL" | "CLIPS" | "RED" | "GREEN" | "BLUE" | "YELLOW" | "BLACK";
+                        titleField?: components["schemas"]["PreviewAppSettingsGetTitleField"];
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppSettings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    description?: string;
+                    enableBulkDeletion?: string;
+                    enableComments?: string;
+                    enableDuplicateRecord?: string;
+                    enableInlineRecordEditing?: string;
+                    enableThumbnails?: string;
+                    firstMonthOfFiscalYear?: string;
+                    icon?: components["schemas"]["PreviewAppSettingsPutIconPresetForm"] | components["schemas"]["PreviewAppSettingsPutIconFileForm"];
+                    name?: string;
+                    numberPrecision?: components["schemas"]["PreviewAppSettingsPutNumberPrecision"];
+                    /** Format: long */
+                    revision?: number;
+                    /** @enum {string} */
+                    theme?: "WHITE" | "CLIPBOARD" | "BINDER" | "PENCIL" | "CLIPS" | "RED" | "GREEN" | "BLUE" | "YELLOW" | "BLACK";
+                    titleField?: components["schemas"]["PreviewAppSettingsPutTitleField"];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/settings/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppStatus: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/status/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        actions?: components["schemas"]["PreviewAppStatusGetActionForm"][];
+                        enable?: boolean;
+                        /** Format: long */
+                        revision?: number;
+                        states?: {
+                            [key: string]: components["schemas"]["PreviewAppStatusGetStateForm"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppStatus: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    actions?: components["schemas"]["PreviewAppStatusPutActionForm"][];
+                    /** Format: long */
+                    app: number;
+                    /** Format: boolean */
+                    enable?: boolean;
+                    /** Format: long */
+                    revision?: number;
+                    states?: {
+                        [key: string]: components["schemas"]["PreviewAppStatusPutStateForm"];
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/status/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewAppViews: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/app/views/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        views?: {
+                            [key: string]: components["schemas"]["PreviewAppViewsGetBuiltinListViewOutputForm"] | components["schemas"]["PreviewAppViewsGetBuiltinCalendarViewOutputForm"] | components["schemas"]["PreviewAppViewsGetListViewOutputForm"] | components["schemas"]["PreviewAppViewsGetCalendarViewOutputForm"] | components["schemas"]["PreviewAppViewsGetCustomViewOutputForm"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    putPreviewAppViews: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    revision?: number;
+                    views: {
+                        [key: string]: components["schemas"]["PreviewAppViewsPutListViewForm"] | components["schemas"]["PreviewAppViewsPutCalendarViewForm"] | components["schemas"]["PreviewAppViewsPutCustomViewForm"];
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/app/views/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        views?: {
+                            [key: string]: components["schemas"]["PreviewAppViewsPutResult"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getPreviewFieldAcl: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/field/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["PreviewFieldAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putPreviewFieldAcl: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app?: number;
+                    /** Format: long */
+                    id?: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["PreviewFieldAclPutRight"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/field/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getPreviewForm: {
+        parameters: {
+            query: {
+                app: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/form/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        properties?: (components["schemas"]["PreviewFormGetLayoutProperties"] | components["schemas"]["PreviewFormGetLabelProperties"] | components["schemas"]["PreviewFormGetBultinProperties"] | components["schemas"]["PreviewFormGetCalcSimpleProperties"] | components["schemas"]["PreviewFormGetDateSimpleProperties"] | components["schemas"]["PreviewFormGetDatetimeSimpleProperties"] | components["schemas"]["PreviewFormGetDecimalSimpleProperties"] | components["schemas"]["PreviewFormGetEditorSimpleProperties"] | components["schemas"]["PreviewFormGetFileSimpleProperties"] | components["schemas"]["PreviewFormGetLinkSimpleProperties"] | components["schemas"]["PreviewFormGetMultipleLineTextSimpleProperties"] | components["schemas"]["PreviewFormGetMultipleSelectSimpleProperties"] | components["schemas"]["PreviewFormGetSingleLineTextSimpleProperties"] | components["schemas"]["PreviewFormGetSingleSelectSimpleProperties"] | components["schemas"]["PreviewFormGetTimeSimpleProperties"] | components["schemas"]["PreviewFormGetUserSelectSimpleProperties"] | components["schemas"]["PreviewFormGetOrganizationSelectSimpleProperties"] | components["schemas"]["PreviewFormGetGroupSelectSimpleProperties"] | components["schemas"]["PreviewFormGetLookupSimpleProperties"] | components["schemas"]["PreviewFormGetReferenceTableLayoutProperties"] | components["schemas"]["PreviewFormGetSubTableLayoutProperties"] | components["schemas"]["PreviewFormGetSpacerProperties"])[];
+                    };
+                };
+            };
+        };
+    };
+    getPreviewRecordAcl: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of preview/record/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["PreviewRecordAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putPreviewRecordAcl: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app?: number;
+                    /** Format: long */
+                    id?: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["PreviewRecordAclPutRightForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of preview/record/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getRecord: {
+        parameters: {
+            query: {
+                app: number;
+                id: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of record/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        record?: {
+                            [key: string]: components["schemas"]["RecordGetCalcSimpleValue"] | components["schemas"]["RecordGetCategorySimpleValue"] | components["schemas"]["RecordGetDateSimpleValue"] | components["schemas"]["RecordGetDatetimeSimpleValue"] | components["schemas"]["RecordGetDecimalSimpleValue"] | components["schemas"]["RecordGetEditorSimpleValue"] | components["schemas"]["RecordGetFileSimpleValue"] | components["schemas"]["RecordGetGroupSimpleValue"] | components["schemas"]["RecordGetLinkSimpleValue"] | components["schemas"]["RecordGetModifiedAtSimpleValue"] | components["schemas"]["RecordGetModifierSimpleValue"] | components["schemas"]["RecordGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordGetMultipleSelectSimpleValue"] | components["schemas"]["RecordGetRecordIdSimpleValue"] | components["schemas"]["RecordGetReferenceTableSimpleValue"] | components["schemas"]["RecordGetSimpleTableValue"] | components["schemas"]["RecordGetSingleLineTextSimpleValue"] | components["schemas"]["RecordGetSingleSelectSimpleValue"] | components["schemas"]["RecordGetStatusSimpleValue"] | components["schemas"]["RecordGetTimeSimpleValue"] | components["schemas"]["RecordGetUserSelectSimpleValue"] | components["schemas"]["RecordGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordGetGroupSelectSimpleValue"] | components["schemas"]["RecordGetRevisionSimpleValue"] | components["schemas"]["RecordGetRawRecordIdSimpleValue"];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    putRecord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    /** Format: long */
+                    id?: number;
+                    record?: {
+                        [key: string]: components["schemas"]["RecordPutCalcSimpleValue"] | components["schemas"]["RecordPutCategorySimpleValue"] | components["schemas"]["RecordPutDateSimpleValue"] | components["schemas"]["RecordPutDatetimeSimpleValue"] | components["schemas"]["RecordPutDecimalSimpleValue"] | components["schemas"]["RecordPutEditorSimpleValue"] | components["schemas"]["RecordPutFileSimpleValue"] | components["schemas"]["RecordPutGroupSimpleValue"] | components["schemas"]["RecordPutLinkSimpleValue"] | components["schemas"]["RecordPutModifiedAtSimpleValue"] | components["schemas"]["RecordPutModifierSimpleValue"] | components["schemas"]["RecordPutMultipleLineTextSimpleValue"] | components["schemas"]["RecordPutMultipleSelectSimpleValue"] | components["schemas"]["RecordPutRecordIdSimpleValue"] | components["schemas"]["RecordPutReferenceTableSimpleValue"] | components["schemas"]["RecordPutSimpleTableValue"] | components["schemas"]["RecordPutSingleLineTextSimpleValue"] | components["schemas"]["RecordPutSingleSelectSimpleValue"] | components["schemas"]["RecordPutStatusSimpleValue"] | components["schemas"]["RecordPutTimeSimpleValue"] | components["schemas"]["RecordPutUserSelectSimpleValue"] | components["schemas"]["RecordPutOrganizationSelectSimpleValue"] | components["schemas"]["RecordPutGroupSelectSimpleValue"] | components["schemas"]["RecordPutRevisionSimpleValue"] | components["schemas"]["RecordPutRawRecordIdSimpleValue"];
+                    };
+                    /** Format: long */
+                    revision?: number;
+                    updateKey?: components["schemas"]["RecordPutUpdateKey"];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postRecord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    record: {
+                        [key: string]: components["schemas"]["RecordPostCalcSimpleValue"] | components["schemas"]["RecordPostCategorySimpleValue"] | components["schemas"]["RecordPostDateSimpleValue"] | components["schemas"]["RecordPostDatetimeSimpleValue"] | components["schemas"]["RecordPostDecimalSimpleValue"] | components["schemas"]["RecordPostEditorSimpleValue"] | components["schemas"]["RecordPostFileSimpleValue"] | components["schemas"]["RecordPostGroupSimpleValue"] | components["schemas"]["RecordPostLinkSimpleValue"] | components["schemas"]["RecordPostModifiedAtSimpleValue"] | components["schemas"]["RecordPostModifierSimpleValue"] | components["schemas"]["RecordPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordPostMultipleSelectSimpleValue"] | components["schemas"]["RecordPostRecordIdSimpleValue"] | components["schemas"]["RecordPostReferenceTableSimpleValue"] | components["schemas"]["RecordPostSimpleTableValue"] | components["schemas"]["RecordPostSingleLineTextSimpleValue"] | components["schemas"]["RecordPostSingleSelectSimpleValue"] | components["schemas"]["RecordPostStatusSimpleValue"] | components["schemas"]["RecordPostTimeSimpleValue"] | components["schemas"]["RecordPostUserSelectSimpleValue"] | components["schemas"]["RecordPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordPostGroupSelectSimpleValue"] | components["schemas"]["RecordPostRevisionSimpleValue"] | components["schemas"]["RecordPostRawRecordIdSimpleValue"];
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getRecordAcl: {
+        parameters: {
+            query: {
+                app: number;
+                lang?: "default" | "user" | "ja" | "en" | "zh";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of record/acl/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                        rights?: components["schemas"]["RecordAclGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    putRecordAcl: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app?: number;
+                    /** Format: long */
+                    id?: number;
+                    /** Format: long */
+                    revision?: number;
+                    rights: components["schemas"]["RecordAclPutRightForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/acl/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    putRecordAssignees: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    assignees: string[];
+                    /** Format: long */
+                    id: number;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/assignees/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    postRecordComment: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    comment: {
+                        mentions?: components["schemas"]["RecordCommentPostMentionForm"][];
+                        text: string;
+                    };
+                    /** Format: long */
+                    record: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/comment/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                    };
+                };
+            };
+        };
+    };
+    deleteRecordComment: {
+        parameters: {
+            query: {
+                app: number;
+                record: number;
+                comment: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of record/comment/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getRecordComments: {
+        parameters: {
+            query: {
+                app: number;
+                offset?: number;
+                record: number;
+                limit?: number;
+                order?: "ASC" | "DESC";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of record/comments/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        comments?: components["schemas"]["RecordCommentsGetCommentOutputForm"][];
+                        newer?: boolean;
+                        older?: boolean;
+                    };
+                };
+            };
+        };
+    };
+    putRecordStatus: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    action: string;
+                    /** Format: long */
+                    app: number;
+                    assignee?: string;
+                    /** Format: long */
+                    id: number;
+                    /** Format: long */
+                    revision?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of record/status/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        revision?: number;
+                    };
+                };
+            };
+        };
+    };
+    getRecords: {
+        parameters: {
+            query: {
+                app: number;
+                query?: string;
+                fields?: string[];
+                totalCount?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        records?: {
+                            [key: string]: components["schemas"]["RecordsGetCalcSimpleValue"] | components["schemas"]["RecordsGetCategorySimpleValue"] | components["schemas"]["RecordsGetDateSimpleValue"] | components["schemas"]["RecordsGetDatetimeSimpleValue"] | components["schemas"]["RecordsGetDecimalSimpleValue"] | components["schemas"]["RecordsGetEditorSimpleValue"] | components["schemas"]["RecordsGetFileSimpleValue"] | components["schemas"]["RecordsGetGroupSimpleValue"] | components["schemas"]["RecordsGetLinkSimpleValue"] | components["schemas"]["RecordsGetModifiedAtSimpleValue"] | components["schemas"]["RecordsGetModifierSimpleValue"] | components["schemas"]["RecordsGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsGetRecordIdSimpleValue"] | components["schemas"]["RecordsGetReferenceTableSimpleValue"] | components["schemas"]["RecordsGetSimpleTableValue"] | components["schemas"]["RecordsGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsGetSingleSelectSimpleValue"] | components["schemas"]["RecordsGetStatusSimpleValue"] | components["schemas"]["RecordsGetTimeSimpleValue"] | components["schemas"]["RecordsGetUserSelectSimpleValue"] | components["schemas"]["RecordsGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsGetGroupSelectSimpleValue"] | components["schemas"]["RecordsGetRevisionSimpleValue"] | components["schemas"]["RecordsGetRawRecordIdSimpleValue"];
+                        }[];
+                        /** Format: long */
+                        totalCount?: number;
+                    };
+                };
+            };
+        };
+    };
+    putRecords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    records: components["schemas"]["RecordsPutRecordForm"][];
+                    /** Format: boolean */
+                    upsert?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of records/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        records?: {
+                            [key: string]: components["schemas"]["RecordsPutRecordBean"];
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    postRecords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    records: {
+                        [key: string]: components["schemas"]["RecordsPostCalcSimpleValue"] | components["schemas"]["RecordsPostCategorySimpleValue"] | components["schemas"]["RecordsPostDateSimpleValue"] | components["schemas"]["RecordsPostDatetimeSimpleValue"] | components["schemas"]["RecordsPostDecimalSimpleValue"] | components["schemas"]["RecordsPostEditorSimpleValue"] | components["schemas"]["RecordsPostFileSimpleValue"] | components["schemas"]["RecordsPostGroupSimpleValue"] | components["schemas"]["RecordsPostLinkSimpleValue"] | components["schemas"]["RecordsPostModifiedAtSimpleValue"] | components["schemas"]["RecordsPostModifierSimpleValue"] | components["schemas"]["RecordsPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordsPostMultipleSelectSimpleValue"] | components["schemas"]["RecordsPostRecordIdSimpleValue"] | components["schemas"]["RecordsPostReferenceTableSimpleValue"] | components["schemas"]["RecordsPostSimpleTableValue"] | components["schemas"]["RecordsPostSingleLineTextSimpleValue"] | components["schemas"]["RecordsPostSingleSelectSimpleValue"] | components["schemas"]["RecordsPostStatusSimpleValue"] | components["schemas"]["RecordsPostTimeSimpleValue"] | components["schemas"]["RecordsPostUserSelectSimpleValue"] | components["schemas"]["RecordsPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordsPostGroupSelectSimpleValue"] | components["schemas"]["RecordsPostRevisionSimpleValue"] | components["schemas"]["RecordsPostRawRecordIdSimpleValue"];
+                    }[];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of records/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ids?: number[];
+                        revisions?: number[];
+                    };
+                };
+            };
+        };
+    };
+    deleteRecords: {
+        parameters: {
+            query: {
+                app: number;
+                ids: number[];
+                revisions?: number[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getRecordsAclEvaluate: {
+        parameters: {
+            query: {
+                app: number;
+                ids: number[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/acl/evaluate/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        rights?: components["schemas"]["RecordsAclEvaluateGetRight"][];
+                    };
+                };
+            };
+        };
+    };
+    getRecordsCursor: {
+        parameters: {
+            query: {
+                id: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/cursor/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        next?: boolean;
+                        records?: {
+                            [key: string]: components["schemas"]["RecordsCursorGetCalcSimpleValue"] | components["schemas"]["RecordsCursorGetCategorySimpleValue"] | components["schemas"]["RecordsCursorGetDateSimpleValue"] | components["schemas"]["RecordsCursorGetDatetimeSimpleValue"] | components["schemas"]["RecordsCursorGetDecimalSimpleValue"] | components["schemas"]["RecordsCursorGetEditorSimpleValue"] | components["schemas"]["RecordsCursorGetFileSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSimpleValue"] | components["schemas"]["RecordsCursorGetLinkSimpleValue"] | components["schemas"]["RecordsCursorGetModifiedAtSimpleValue"] | components["schemas"]["RecordsCursorGetModifierSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRecordIdSimpleValue"] | components["schemas"]["RecordsCursorGetReferenceTableSimpleValue"] | components["schemas"]["RecordsCursorGetSimpleTableValue"] | components["schemas"]["RecordsCursorGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetSingleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetStatusSimpleValue"] | components["schemas"]["RecordsCursorGetTimeSimpleValue"] | components["schemas"]["RecordsCursorGetUserSelectSimpleValue"] | components["schemas"]["RecordsCursorGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRevisionSimpleValue"] | components["schemas"]["RecordsCursorGetRawRecordIdSimpleValue"];
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    postRecordsCursor: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    fields?: string[];
+                    /** Format: query */
+                    query?: string;
+                    /** Format: long */
+                    size?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of records/cursor/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        id?: string;
+                        /** Format: long */
+                        totalCount?: number;
+                    };
+                };
+            };
+        };
+    };
+    deleteRecordsCursor: {
+        parameters: {
+            query: {
+                id: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of records/cursor/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putRecordsStatus: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    app: number;
+                    records: components["schemas"]["RecordsStatusPutRecordsStatusPutFormRecord"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of records/status/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        records?: components["schemas"]["RecordsStatusPutRecordsStatusPutOutputFormRecord"][];
+                    };
+                };
+            };
+        };
+    };
+    getSpace: {
+        parameters: {
+            query: {
+                id: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of space/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        attachedApps?: components["schemas"]["SpaceGetAttachedApp"][];
+                        body?: string;
+                        coverKey?: string;
+                        /** @enum {string} */
+                        coverType?: "BLOB" | "PRESET";
+                        coverUrl?: string;
+                        creator?: {
+                            code?: string;
+                            name?: string;
+                        };
+                        /** Format: long */
+                        defaultThread?: number;
+                        fixedMember?: boolean;
+                        /** Format: long */
+                        id?: number;
+                        isGuest?: boolean;
+                        isPrivate?: boolean;
+                        /** Format: long */
+                        memberCount?: number;
+                        modifier?: {
+                            code?: string;
+                            name?: string;
+                        };
+                        name?: string;
+                        permissions?: {
+                            /** @enum {string} */
+                            createApp?: "EVERYONE" | "ADMIN";
+                        };
+                        showAnnouncement?: boolean;
+                        showAppList?: boolean;
+                        showMemberList?: boolean;
+                        showRelatedLinkList?: boolean;
+                        showThreadList?: boolean;
+                        useMultiThread?: boolean;
+                    };
+                };
+            };
+        };
+    };
+    putSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: boolean */
+                    fixedMember?: boolean;
+                    /** Format: long */
+                    id: number;
+                    /** Format: boolean */
+                    isPrivate?: boolean;
+                    name?: string;
+                    permissions?: {
+                        /** @enum {string} */
+                        createApp?: "EVERYONE" | "ADMIN";
+                    };
+                    /** Format: boolean */
+                    showAnnouncement?: boolean;
+                    /** Format: boolean */
+                    showAppList?: boolean;
+                    /** Format: boolean */
+                    showMemberList?: boolean;
+                    /** Format: boolean */
+                    showRelatedLinkList?: boolean;
+                    /** Format: boolean */
+                    showThreadList?: boolean;
+                    /** Format: boolean */
+                    useMultiThread?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    deleteSpace: {
+        parameters: {
+            query: {
+                id: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of space/delete */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putSpaceBody: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    body: string;
+                    /** Format: long */
+                    id: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/body/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putSpaceGuests: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    guests: string[];
+                    /** Format: long */
+                    id: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/guests/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    getSpaceMembers: {
+        parameters: {
+            query: {
+                id: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of space/members/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        members?: (components["schemas"]["SpaceMembersGetUserBean"] | components["schemas"]["SpaceMembersGetOrganizationBean"] | components["schemas"]["SpaceMembersGetGroupBean"])[];
+                    };
+                };
+            };
+        };
+    };
+    putSpaceMembers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: long */
+                    id: number;
+                    members?: components["schemas"]["SpaceMembersPutMemberForm"][];
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/members/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    putSpaceThread: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    body?: string;
+                    /** Format: long */
+                    id: number;
+                    name?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/thread/put */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    postSpaceThread: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    /** Format: long */
+                    space: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/thread/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                    };
+                };
+            };
+        };
+    };
+    postSpaceThreadComment: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    comment: {
+                        files?: components["schemas"]["SpaceThreadCommentPostFileForm"][];
+                        mentions?: components["schemas"]["SpaceThreadCommentPostMentionForm"][];
+                        text?: string;
+                    };
+                    /** Format: long */
+                    space: number;
+                    /** Format: long */
+                    thread: number;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of space/thread/comment/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                    };
+                };
+            };
+        };
+    };
+    getSpacesStatistics: {
+        parameters: {
+            query?: {
+                offset?: string;
+                limit?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description success case of spaces/statistics/get */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        spaces?: components["schemas"]["SpacesStatisticsGetSpaceForm"][];
+                    };
+                };
+            };
+        };
+    };
+    postTemplateSpace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: boolean */
+                    fixedMember?: boolean;
+                    /** Format: long */
+                    id: number;
+                    /** Format: boolean */
+                    isGuest?: boolean;
+                    /** Format: boolean */
+                    isPrivate?: boolean;
+                    members?: components["schemas"]["TemplateSpacePostMemberForm"][];
+                    name: string;
+                };
+            };
+        };
+        responses: {
+            /** @description success case of template/space/post */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: long */
+                        id?: number;
+                    };
+                };
+            };
+        };
+    };
+}
