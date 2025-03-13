@@ -37,6 +37,7 @@ jobs:
           token: ${{ secrets.REST_API_SPEC_READ_TOKEN }}
 
       - name: Start mock server
+        shell: bash
         run: |
           npx @stoplight/prism-cli mock rest-api-spec/kintone/$(ls rest-api-spec/kintone | sort | tail -n 1)/openapi.yaml &
           npx wait-on -t 180s tcp:127.0.0.1:4010
