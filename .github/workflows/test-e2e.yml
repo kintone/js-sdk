@@ -23,6 +23,7 @@ jobs:
           repository: kintone/rest-api-spec
           ref: main
           path: rest-api-spec
+          token: ${{ secrets.REST_API_SPEC_TOKEN }}
 
       - name: Start mock server
         run: |
