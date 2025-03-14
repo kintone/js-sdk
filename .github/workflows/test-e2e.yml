@@ -28,6 +28,20 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
 
+      - name: Checkout kintone/rest-api-spec
+        uses: actions/checkout@v4
+        with:
+          repository: kintone/rest-api-spec
+          ref: main
+          path: rest-api-spec
+          token: ${{ secrets.REST_API_SPEC_READ_TOKEN }}
+
+      - name: Start mock server
+        shell: bash
+        run: |
+          npx @stoplight/prism-cli mock rest-api-spec/kintone/$(ls rest-api-spec/kintone | sort | tail -n 1)/openapi.yaml &
+          npx wait-on -t 180s tcp:127.0.0.1:4010
+
       - run: pnpm install --fetch-timeout 900000 --frozen-lockfile
       - run: pnpm build
       - run: pnpm test:e2e
