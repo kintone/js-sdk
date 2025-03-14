@@ -23,14 +23,15 @@ export type KintoneApiMethod<
       : never
     : Path,
   Method extends MethodOfPath<Paths[SelectedPath]>,
+  ParamOrRequest extends KintoneBody<
+    FilterKeys<Paths[SelectedPath], Method>,
+    Method
+  >,
   NativeInit extends NativeInitParam<Paths[SelectedPath], Method>,
 >(
   url: Path,
   method: Method,
-  params: Params<
-    FilterKeys<Paths[SelectedPath], Method>,
-    Method
-  >
+  body: ParamOrRequest,
 ) => Promise<FetchResponse<Paths[SelectedPath][Method], NativeInit, Media>>;
 
 export type NativeInitParam<
@@ -48,12 +49,12 @@ export type MethodOfPath<Path extends Record<string, any>> = {
       : never;
 }[keyof Path];
 
-export type Params<
+export type KintoneBody<
   T,
   Method extends KintoneMethodType,
-> = Method extends "get" ? KintoneQueryParameters<T> : KintoneRequestBody<T>;
+> = Method extends "get" ? KintoneParams<T> : KintoneRequestBody<T>;
 
-type KintoneQueryParameters<T> = T extends {
+type KintoneParams<T> = T extends {
   parameters: { query?: infer U };
 }
   ? U
