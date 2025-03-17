@@ -1,13 +1,14 @@
 import createNativeClient from "openapi-fetch";
-import type { paths } from "../schemas/schema";
-import type { MediaType } from "openapi-typescript-helpers";
-import type { KintoneClientOptions } from "./KintoneClientOptions";
-import type { NativeInitParam } from "./KintoneClient/types/api";
-import type { KintoneClient } from "./KintoneClient";
 import { buildNativeClientOptions } from "./KintoneClientOptions";
 import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
 import { isSessionAuth } from "./KintoneClientOptions/Auth";
 import { getHttpMethodOverrideMiddleware } from "./Middlewares/HttpMethodOverrideMiddleware";
+import type { paths } from "../schemas/schema";
+import type { MediaType } from "openapi-typescript-helpers";
+import type { KintoneClientOptions } from "./KintoneClientOptions";
+import type { KintoneApiMethod } from "./KintoneClient/types/api";
+import type { KintoneClient } from "./KintoneClient";
+import type { GuestSpaceParams } from "./KintoneClient/types/param";
 
 export const createClient = (clientOptions: KintoneClientOptions) => {
   return _createClient<paths>(clientOptions);
@@ -26,28 +27,36 @@ const _createClient = <Paths extends {}, Media extends MediaType = MediaType>(
   }
   client.use(getHttpMethodOverrideMiddleware());
 
-  const api = async (url: any, method: any, body: any) => {
-    const urlPath = typeof url === "object" && "path" in url ? url.path : url;
-    const pathParams =
-      typeof url === "object" && "guestSpaceId" in url
-        ? { guestSpaceId: url.guestSpaceId }
-        : null;
+  const api: KintoneApiMethod<Paths, Media> = async (url, method, body) => {
+    const isGuestSpaceApi = (_url: any): _url is GuestSpaceParams<Paths> => {
+      return typeof _url === "object" && "guestSpaceId" in _url;
+    };
     let _body;
-    if (pathParams == null) {
+    if (isGuestSpaceApi(url)) {
+      const pathParams = { guestSpaceId: url.guestSpaceId };
       switch (method) {
         case "get": {
           _body = {
             params: {
+              path: pathParams,
               query: body,
             },
-          } as NativeInitParam<Paths[typeof urlPath], typeof method>;
-          break;
+          };
+          return client.request(method, url.path as any, _body as any);
+        }
+        case "post":
+        case "put":
+        case "delete": {
+          _body = {
+            params: {
+              path: pathParams,
+            },
+            body: body,
+          };
+          return client.request(method, url.path as any, _body as any);
         }
         default: {
-          _body = {
-            body: body,
-          } as NativeInitParam<Paths[typeof urlPath], typeof method>;
-          break;
+          throw new Error(method satisfies never);
         }
       }
     } else {
@@ -55,24 +64,24 @@ const _createClient = <Paths extends {}, Media extends MediaType = MediaType>(
         case "get": {
           _body = {
             params: {
-              path: pathParams,
               query: body,
             },
-          } as NativeInitParam<Paths[typeof urlPath], typeof method>;
-          break;
+          };
+          return client.request(method, url as any, _body as any);
+        }
+        case "post":
+        case "put":
+        case "delete": {
+          _body = {
+            body: body,
+          };
+          return client.request(method, url as any, _body as any);
         }
         default: {
-          _body = {
-            params: {
-              path: pathParams,
-            },
-            body: body,
-          } as unknown as NativeInitParam<Paths[typeof urlPath], typeof method>;
-          break;
+          throw new Error(method satisfies never);
         }
       }
     }
-    return client.request(method, urlPath, _body);
   };
 
   return {

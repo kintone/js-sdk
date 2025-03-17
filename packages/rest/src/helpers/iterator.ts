@@ -1,5 +1,6 @@
 import type {
   ClientMethod,
+  FetchOptions,
   FetchResponse,
   MaybeOptionalInit,
 } from "openapi-fetch";
@@ -9,14 +10,15 @@ import type {
   MediaType,
   PathsWithMethod,
 } from "openapi-typescript-helpers";
+import type {} from "../client/KintoneClient/types/api";
+import type { KintoneClient } from "../client/KintoneClient";
 import type {
-  KintoneBody,
-  MethodOfPath,
-  NativeInitParam,
   PathExcludeGuestSpace,
   PathForGuestSpace,
-} from "../client/KintoneClient/types/api";
-import type { KintoneClient } from "../client/KintoneClient";
+} from "../client/KintoneClient/types/path";
+import type { MethodOfPath } from "../client/KintoneClient/types/util";
+import type { KintoneMethodType } from "../client/KintoneClient/types/method";
+import type { KintoneParams } from "../client/KintoneClient/types/param";
 
 type InitParam<Init> = Init & { [key: string]: unknown };
 
@@ -52,12 +54,12 @@ type CreateKintoneApiIteratorMethod<
       ? P
       : never
     : Path,
-  Method extends MethodOfPath<Paths[SelectedPath]>,
-  ParamOrRequest extends KintoneBody<
+  Method extends MethodOfPath<Paths[SelectedPath], KintoneMethodType>,
+  ParamOrRequest extends KintoneParams<
     FilterKeys<Paths[SelectedPath], Method>,
     Method
   >,
-  NativeInit extends NativeInitParam<Paths[SelectedPath], Method>,
+  NativeInit extends FetchOptions<Paths[SelectedPath][Method]>,
 >(
   url: Path,
   method: Method,
