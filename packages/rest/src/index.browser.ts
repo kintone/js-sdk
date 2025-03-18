@@ -1,7 +1,7 @@
 import { injectPlatformDeps } from "./platform/";
-import nodeDeps from "./platform/node";
+import browserDeps from "./platform/node";
 
-injectPlatformDeps(nodeDeps);
+injectPlatformDeps(browserDeps);
 
 import { createClient } from "./client";
 import { iterator } from "./helpers/iterator";
