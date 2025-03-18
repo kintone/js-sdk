@@ -1,11 +1,12 @@
-import { defineConfig } from "rollup";
+import { defineConfig } from "vite";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
-import terser from '@rollup/plugin-terser';
+import terser from "@rollup/plugin-terser";
 import license from "rollup-plugin-license";
-import nodePolyfills from "rollup-plugin-polyfill-node";
 import globals from "rollup-plugin-node-globals";
+import builtins from "rollup-plugin-node-builtins";
+import nodePolyfills from "rollup-plugin-polyfill-node";
 import babel from "@rollup/plugin-babel";
 import { ecmaVersionValidator } from "rollup-plugin-ecma-version-validator";
 import fs from "fs";
@@ -25,17 +26,23 @@ This bundle includes the following third-party libraries:
 `;
 
 const extensions = [".ts", ".js"];
-
 const isProd = process.env.BUILD === "production";
 
 export default defineConfig({
-  input: "./src/index.browser.ts",
-  output: {
-    extend: true,
-    file: `./umd/KintoneRestAPIClient${isProd ? ".min" : ""}.js`,
-    format: "umd",
-    name: "window",
-    sourcemap: isProd ? false : "inline",
+  build: {
+    lib: {
+      // extend: true,
+      entry: "./src/index.browser.ts",
+      name: "KintoneRest",
+      format: "umd",
+      fileName: `KintoneRest`,
+      sourcemap: "inline",
+    },
+    target: "es2022",
+    outDir: "./umd",
+    rollupOptions: {
+      external: ["./src/index.ts", "./src/platform/node.ts"],
+    },
   },
   plugins: [
     babel({
@@ -83,7 +90,7 @@ export default defineConfig({
     // globals(),
     nodePolyfills(),
     isProd && terser(),
-    ecmaVersionValidator({ ecmaVersion: 2022 }),
+    // ecmaVersionValidator({ ecmaVersion: 2022 }),
     license({
       banner: {
         commentStyle: "regular",

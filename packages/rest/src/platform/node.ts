@@ -1,10 +1,10 @@
-import fs from "fs";
+import fs from "node:fs";
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import os from "os";
 import { Agent } from "undici";
 import type { PlatformDeps } from ".";
 import type { ClientCertAuth } from "../client/KintoneClientOptions/types/CertAuth";
-const packageJson = require("../../package.json");
+import packageJson from "../../package.json";
 
 const getRequestToken = () => {
   throw new UnsupportedPlatformError("Node.js");

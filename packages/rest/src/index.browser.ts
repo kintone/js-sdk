@@ -1,5 +1,5 @@
 import { injectPlatformDeps } from "./platform/";
-import browserDeps from "./platform/node";
+import browserDeps from "./platform/browser";
 
 injectPlatformDeps(browserDeps);
 

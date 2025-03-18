@@ -2,12 +2,13 @@ import { defineConfig } from "rollup";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
-import terser from '@rollup/plugin-terser';
+import terser from "@rollup/plugin-terser";
 import license from "rollup-plugin-license";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import globals from "rollup-plugin-node-globals";
 import babel from "@rollup/plugin-babel";
 import { ecmaVersionValidator } from "rollup-plugin-ecma-version-validator";
+import builtins from "rollup-plugin-node-builtins";
 import fs from "fs";
 
 const licenseText = fs.readFileSync("LICENSE", "utf-8");
@@ -32,11 +33,12 @@ export default defineConfig({
   input: "./src/index.browser.ts",
   output: {
     extend: true,
-    file: `./umd/KintoneRestAPIClient${isProd ? ".min" : ""}.js`,
+    file: `./umd/KintoneRest${isProd ? ".min" : ""}.js`,
     format: "umd",
-    name: "window",
+    name: "KintoneRest",
     sourcemap: isProd ? false : "inline",
   },
+  external: ["./src/index.ts", "./src/platform/node.ts"],
   plugins: [
     babel({
       babelHelpers: "bundled",
@@ -80,10 +82,10 @@ export default defineConfig({
       ],
     }),
     json(),
-    // globals(),
+    globals(),
     nodePolyfills(),
     isProd && terser(),
-    ecmaVersionValidator({ ecmaVersion: 2022 }),
+    ecmaVersionValidator({ ecmaVersion: 2018 }),
     license({
       banner: {
         commentStyle: "regular",
