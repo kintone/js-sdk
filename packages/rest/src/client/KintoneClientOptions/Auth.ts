@@ -1,3 +1,5 @@
+import { platformDeps } from "../../platform";
+import { UnsupportedPlatformError } from "../../platform/UnsupportedPlatformError";
 import type { AuthOption, SessionAuth } from "./types/Auth";
 
 import { Base64 } from "js-base64";
