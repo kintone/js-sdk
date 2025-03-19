@@ -8486,7 +8486,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": {
+                "multipart/form-data": {
                     file?: unknown;
                 };
             };
@@ -11853,7 +11853,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": {
+                "multipart/form-data": {
                     file?: unknown;
                 };
             };
