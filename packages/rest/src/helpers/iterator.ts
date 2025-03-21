@@ -1,20 +1,14 @@
 import type {
+  Client,
   ClientMethod,
   FetchResponse,
   MaybeOptionalInit,
 } from "openapi-fetch";
 import type {
-  FilterKeys,
   HttpMethod,
   MediaType,
   PathsWithMethod,
 } from "openapi-typescript-helpers";
-import type {
-  KintoneBody,
-  MethodOfPath,
-  NativeInitParam,
-} from "../client/KintoneClient/types/api";
-import type { KintoneClient } from "../client/KintoneClient";
 
 type InitParam<Init> = Init & { [key: string]: unknown };
 
@@ -38,32 +32,6 @@ type CreateIteratorMethod<
   init: InitParam<Init>,
 ) => AsyncGenerator<FetchResponse<Paths[Path][Method], Init, Media>>;
 
-type CreateKintoneApiIteratorMethod<
-  Paths extends Record<string, Record<HttpMethod, {}>>,
-  Media extends MediaType,
-> = <
-  Path extends PathsWithMethod<Paths, Method>,
-  Method extends MethodOfPath<Paths[Path]>,
-  ParamOrRequest extends KintoneBody<FilterKeys<Paths[Path], Method>, Method>,
-  NativeInit extends NativeInitParam<Paths, Path, Method>,
->(
-  url: Path,
-  method: Method,
-  body: ParamOrRequest,
-  handleRequest: (
-    previousInit: ParamOrRequest,
-    previousResult: FetchResponse<
-      Paths[Path][Method],
-      NativeInit,
-      Media
-    > | null,
-  ) => ParamOrRequest,
-  hasNext: (
-    init: ParamOrRequest,
-    response: FetchResponse<Paths[Path][Method], NativeInit, Media> | null,
-  ) => boolean,
-) => AsyncGenerator<FetchResponse<Paths[Path][Method], NativeInit, Media>>;
-
 interface ClientIterator<
   Paths extends {} = any,
   Media extends MediaType = any,
@@ -76,11 +44,10 @@ interface ClientIterator<
   HEAD: CreateIteratorMethod<Paths, "head", Media>;
   PATCH: CreateIteratorMethod<Paths, "patch", Media>;
   TRACE: CreateIteratorMethod<Paths, "trace", Media>;
-  api: CreateKintoneApiIteratorMethod<Paths, Media>;
 }
 
 export const iterator = <Paths extends {} = any, Media extends MediaType = any>(
-  client: KintoneClient<Paths, Media>,
+  client: Client<Paths, Media>,
 ): ClientIterator<Paths, Media> => {
   // eslint-disable-next-line func-style
   async function* createIteratorMethod<Method extends HttpMethod>(
@@ -99,27 +66,6 @@ export const iterator = <Paths extends {} = any, Media extends MediaType = any>(
       _init = handleRequest(_init, response);
 
       response = await method(url, _init);
-      yield response;
-    }
-  }
-
-  // eslint-disable-next-line func-style
-  async function* createKintoneApiIteratorMethod(
-    url: any,
-    handleRequest: (init: any, previousResult: any) => any,
-    hasNext: (init: any, response: any) => boolean,
-    init: any,
-    method: any,
-  ) {
-    let _init = init;
-    let response = null;
-    while (true) {
-      if (!hasNext(_init, response)) {
-        return;
-      }
-      _init = handleRequest(_init, response);
-
-      response = await client.api(url, method, _init);
       yield response;
     }
   }
@@ -189,7 +135,5 @@ export const iterator = <Paths extends {} = any, Media extends MediaType = any>(
         init,
         client.TRACE,
       ),
-    api: (url, method, init, handleRequest, hasNext) =>
-      createKintoneApiIteratorMethod(url, handleRequest, hasNext, init, method),
   };
 };
