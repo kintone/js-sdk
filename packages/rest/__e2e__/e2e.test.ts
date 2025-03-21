@@ -12,9 +12,13 @@ const client = createClient({
 describe("kintone/rest", () => {
   describe("REST API", () => {
     it("record.json", async () => {
-      const { data } = await client.api("/k/v1/record.json", "get", {
-        app: 91593,
-        id: 1,
+      const { data } = await client.request("get", "/k/v1/record.json", {
+        params: {
+          query: {
+            app: 91593,
+            id: 1,
+          },
+        },
       });
       expect(data).toEqual({
         record: {
@@ -31,7 +35,8 @@ describe("kintone/rest", () => {
     });
 
     it("record.json with guest space", async () => {
-      const { data } = await client.GET(
+      const { data } = await client.request(
+        "get",
         "/k/guest/{guestSpaceId}/v1/record.json",
         {
           params: {
@@ -59,7 +64,7 @@ describe("kintone/rest", () => {
       const formData = new FormData();
       formData.append("file", new Blob(["test data"]), "test.txt");
 
-      const { data } = await client.POST("/k/v1/file.json", {
+      const { data } = await client.request("post", "/k/v1/file.json", {
         body: {
           file: formData,
         },
@@ -71,7 +76,7 @@ describe("kintone/rest", () => {
     });
 
     it("bulkRequest.json", async () => {
-      const { data } = await client.POST("/k/v1/bulkRequest.json", {
+      const { data } = await client.request("post", "/k/v1/bulkRequest.json", {
         body: {
           requests: [
             {
