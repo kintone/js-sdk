@@ -1,4 +1,5 @@
-import createNativeClient, { Client } from "openapi-fetch";
+import type { Client } from "openapi-fetch";
+import createNativeClient from "openapi-fetch";
 import type { paths } from "../schemas/schema";
 import type { MediaType } from "openapi-typescript-helpers";
 import {
