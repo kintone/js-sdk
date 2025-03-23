@@ -12,7 +12,20 @@ import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
 import { isSessionAuth } from "./KintoneClientOptions/Auth";
 import { getHttpMethodOverrideMiddleware } from "./Middlewares/HttpMethodOverrideMiddleware";
 
+const validateClientOptions = (options: KintoneClientOptions) => {
+  if (!options.baseUrl) {
+    throw new Error("baseUrl is required");
+  }
+
+  if (options.auth?.type === "password") {
+    if (!options.auth.username || !options.auth.password) {
+      throw new Error("username and password are required for password authentication");
+    }
+  }
+};
+
 export const createClient = (clientOptions: KintoneClientOptions) => {
+  validateClientOptions(clientOptions);
   return _createClient<paths>(clientOptions);
 };
 
