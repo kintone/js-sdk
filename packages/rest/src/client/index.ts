@@ -11,7 +11,7 @@ import { buildNativeClientOptions } from "./KintoneClientOptions";
 import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
 import { isSessionAuth } from "./KintoneClientOptions/Auth";
 import { getHttpMethodOverrideMiddleware } from "./Middlewares/HttpMethodOverrideMiddleware";
-import { getFormDataBodySerializer } from "./BodySerializer/FormDataSerializer";
+import { getFormDataBodySerializer } from "./BodySerializer/FormDataBodySerializer";
 
 export const createClient = (clientOptions: KintoneClientOptions) => {
   return _createClient<paths>(clientOptions);
