@@ -63,9 +63,6 @@ describe("kintone/rest", () => {
         body: {
           file: formData,
         },
-        bodySerializer: (body) => {
-          return body.file;
-        },
       });
       expect(data).toEqual({ fileKey: "string" });
     });
