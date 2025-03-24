@@ -4,6 +4,7 @@ describe("getFormDataBodySerializer", () => {
   const serializer = getFormDataBodySerializer();
 
   it("should return FormData when object contains FormData", () => {
+    // eslint-disable-next-line n/no-unsupported-features/node-builtins
     const formData = new FormData();
     formData.append("test", "value");
 
@@ -29,4 +30,4 @@ describe("getFormDataBodySerializer", () => {
     const result = serializer(undefined);
     expect(result).toBe(undefined);
   });
-}); 
+});

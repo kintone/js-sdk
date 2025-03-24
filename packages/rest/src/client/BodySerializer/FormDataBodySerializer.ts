@@ -7,6 +7,7 @@ export const getFormDataBodySerializer = (): BodySerializer => {
     if (body && typeof body === "object") {
       const obj = body as Record<string, unknown>;
       for (const key in obj) {
+        // eslint-disable-next-line n/no-unsupported-features/node-builtins
         if (obj[key] instanceof FormData) {
           return obj[key];
         }
@@ -14,4 +15,4 @@ export const getFormDataBodySerializer = (): BodySerializer => {
     }
     return defaultBodySerializer(body);
   };
-}; 
+};
