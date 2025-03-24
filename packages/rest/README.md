@@ -70,7 +70,7 @@ const client = createClient({
 try {
   const resp = await client.request("get", "/k/v1/records.json", {
     params: {
-      query: { app: "1" },
+      query: { app: 1 },
     },
   });
   console.log(resp.data?.records);

@@ -1,9 +1,4 @@
-import type {
-  Client,
-  ClientMethod,
-  FetchResponse,
-  MaybeOptionalInit,
-} from "openapi-fetch";
+import type { Client, FetchResponse, MaybeOptionalInit } from "openapi-fetch";
 import type {
   HttpMethod,
   MediaType,
@@ -32,10 +27,32 @@ type CreateIteratorMethod<
   init: InitParam<Init>,
 ) => AsyncGenerator<FetchResponse<Paths[Path][Method], Init, Media>>;
 
+type CreateRequestIteratorMethod<
+  Paths extends Record<string, Record<HttpMethod, {}>>,
+  Media extends MediaType,
+> = <
+  Method extends HttpMethod,
+  Path extends PathsWithMethod<Paths, Method>,
+  Init extends MaybeOptionalInit<Paths[Path], Method>,
+>(
+  method: Method,
+  url: Path,
+  handleRequest: (
+    previousInit: InitParam<Init>,
+    previousResult: FetchResponse<Paths[Path][Method], Init, Media> | null,
+  ) => InitParam<Init>,
+  hasNext: (
+    init: InitParam<Init>,
+    response: FetchResponse<Paths[Path][Method], Init, Media> | null,
+  ) => boolean,
+  init: InitParam<Init>,
+) => AsyncGenerator<FetchResponse<Paths[Path][Method], Init, Media>>;
+
 interface ClientIterator<
   Paths extends {} = any,
   Media extends MediaType = any,
 > {
+  request: CreateRequestIteratorMethod<Paths, Media>;
   GET: CreateIteratorMethod<Paths, "get", Media>;
   PUT: CreateIteratorMethod<Paths, "put", Media>;
   POST: CreateIteratorMethod<Paths, "post", Media>;
@@ -50,12 +67,12 @@ export const iterator = <Paths extends {} = any, Media extends MediaType = any>(
   client: Client<Paths, Media>,
 ): ClientIterator<Paths, Media> => {
   // eslint-disable-next-line func-style
-  async function* createIteratorMethod<Method extends HttpMethod>(
+  async function* createRequestIteratorMethod(
+    method: HttpMethod,
     url: any,
     handleRequest: (init: any, previousResult: any) => any,
     hasNext: (init: any, response: any) => boolean,
     init: any,
-    method: ClientMethod<Paths, Method, Media>,
   ) {
     let _init = init;
     let response = null;
@@ -65,75 +82,29 @@ export const iterator = <Paths extends {} = any, Media extends MediaType = any>(
       }
       _init = handleRequest(_init, response);
 
-      response = await method(url, _init);
+      response = await client.request(method, url, _init);
       yield response;
     }
   }
 
   return {
+    request: (method, url, handleRequest, hasNext, init) =>
+      createRequestIteratorMethod(method, url, handleRequest, hasNext, init),
     GET: (url, handleRequest, hasNext, init) =>
-      createIteratorMethod<"get">(
-        url,
-        handleRequest,
-        hasNext,
-        init,
-        client.GET,
-      ),
+      createRequestIteratorMethod("get", url, handleRequest, hasNext, init),
     PUT: (url, handleRequest, hasNext, init) =>
-      createIteratorMethod<"put">(
-        url,
-        handleRequest,
-        hasNext,
-        init,
-        client.PUT,
-      ),
+      createRequestIteratorMethod("put", url, handleRequest, hasNext, init),
     POST: (url, handleRequest, hasNext, init) =>
-      createIteratorMethod<"post">(
-        url,
-        handleRequest,
-        hasNext,
-        init,
-        client.POST,
-      ),
+      createRequestIteratorMethod("post", url, handleRequest, hasNext, init),
     DELETE: (url, handleRequest, hasNext, init) =>
-      createIteratorMethod<"delete">(
-        url,
-        handleRequest,
-        hasNext,
-        init,
-        client.DELETE,
-      ),
+      createRequestIteratorMethod("delete", url, handleRequest, hasNext, init),
     OPTIONS: (url, handleRequest, hasNext, init) =>
-      createIteratorMethod<"options">(
-        url,
-        handleRequest,
-        hasNext,
-        init,
-        client.OPTIONS,
-      ),
+      createRequestIteratorMethod("options", url, handleRequest, hasNext, init),
     HEAD: (url, handleRequest, hasNext, init) =>
-      createIteratorMethod<"head">(
-        url,
-        handleRequest,
-        hasNext,
-        init,
-        client.HEAD,
-      ),
+      createRequestIteratorMethod("head", url, handleRequest, hasNext, init),
     PATCH: (url, handleRequest, hasNext, init) =>
-      createIteratorMethod<"patch">(
-        url,
-        handleRequest,
-        hasNext,
-        init,
-        client.PATCH,
-      ),
+      createRequestIteratorMethod("patch", url, handleRequest, hasNext, init),
     TRACE: (url, handleRequest, hasNext, init) =>
-      createIteratorMethod<"trace">(
-        url,
-        handleRequest,
-        hasNext,
-        init,
-        client.TRACE,
-      ),
+      createRequestIteratorMethod("trace", url, handleRequest, hasNext, init),
   };
 };
