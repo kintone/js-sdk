@@ -4,8 +4,25 @@ import type { Middleware, MiddlewareCallbackParams } from "openapi-fetch";
 export const getCsrfMiddleware = (): Middleware => {
   return {
     async onRequest({ request }: MiddlewareCallbackParams) {
-      const body: any = await request.json();
+      if (request.method === "GET") {
+        return request;
+      }
 
+      if (
+        request.headers.get("content-type")?.includes("multipart/form-data")
+      ) {
+        const formData = await request.formData();
+        if (!formData.has("__REQUEST_TOKEN__")) {
+          formData.append("__REQUEST_TOKEN__", await getRequestToken());
+        }
+        return new Request(request.url, {
+          method: request.method,
+          headers: request.headers,
+          body: formData,
+        });
+      }
+
+      const body = (await request.json()) as Record<string, unknown>;
       body.__REQUEST_TOKEN__ = await getRequestToken();
       return new Request(request.url, {
         method: request.method,
