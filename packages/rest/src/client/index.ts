@@ -9,6 +9,7 @@ import {
 import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
 import { isSessionAuth } from "./KintoneClientOptions/Auth";
 import { getHttpMethodOverrideMiddleware } from "./Middlewares/HttpMethodOverrideMiddleware";
+import { getFormDataBodySerializer } from "./BodySerializer/FormDataBodySerializer";
 
 export const createClient = (
   clientOptions: KintoneClientOptions,
@@ -20,6 +21,7 @@ const _createClient = <Paths extends {}, Media extends MediaType = MediaType>(
   clientOptions: KintoneClientOptions,
 ): Client<Paths, Media> => {
   const nativeClientOptions = buildNativeClientOptions(clientOptions);
+  nativeClientOptions.bodySerializer = getFormDataBodySerializer();
   const client = createNativeClient<Paths, Media>(nativeClientOptions);
 
   if (isSessionAuth(clientOptions.auth)) {
