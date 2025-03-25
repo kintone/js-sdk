@@ -530,7 +530,7 @@ importers:
         version: 0.13.0(rollup@4.37.0)
       vite:
         specifier: ^5.4.14
-        version: 5.4.14(@types/node@18.19.83)
+        version: 5.4.15(@types/node@18.19.83)
       webpack:
         specifier: ^5.98.0
         version: 5.98.0(webpack-cli@5.1.4)
@@ -12332,45 +12332,6 @@ packages:
       - terser
     dev: true
 
-  /vite@5.4.14(@types/node@18.19.83):
-    resolution: {integrity: sha512-EK5cY7Q1D8JNhSaPKVK4pwBFvaTmZxEnoKXLG/U9gmdDcihQGNzFlgIvaxezFR4glP1LsuiedwMBqCXH3wZccA==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      sass-embedded: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 18.19.83
-      esbuild: 0.21.5
-      postcss: 8.5.3
-      rollup: 4.37.0
-    optionalDependencies:
-      fsevents: 2.3.3
-    dev: true
-
   /vite@5.4.14(@types/node@22.13.13):
     resolution: {integrity: sha512-EK5cY7Q1D8JNhSaPKVK4pwBFvaTmZxEnoKXLG/U9gmdDcihQGNzFlgIvaxezFR4glP1LsuiedwMBqCXH3wZccA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -12403,6 +12364,45 @@ packages:
         optional: true
     dependencies:
       '@types/node': 22.13.13
+      esbuild: 0.21.5
+      postcss: 8.5.3
+      rollup: 4.37.0
+    optionalDependencies:
+      fsevents: 2.3.3
+    dev: true
+
+  /vite@5.4.15(@types/node@18.19.83):
+    resolution: {integrity: sha512-6ANcZRivqL/4WtwPGTKNaosuNJr5tWiftOC7liM7G9+rMb8+oeJeyzymDu4rTN93seySBmbjSfsS3Vzr19KNtA==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || >=20.0.0
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      sass-embedded: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': 18.19.83
       esbuild: 0.21.5
       postcss: 8.5.3
       rollup: 4.37.0
