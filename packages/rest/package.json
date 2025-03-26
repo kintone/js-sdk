@@ -7,14 +7,15 @@
   "types": "lib/src/index.d.ts",
   "scripts": {
     "prebuild": "pnpm clean",
-    "build": "tsc --build . && pnpm postbuild",
-    "postbuild": "cp -R src/schemas lib/src/schemas && cp -R src/schemas esm/src/schemas",
+    "build": "tsc --build --force && pnpm postbuild",
+    "postbuild": "node scripts/copy-schemas.js",
     "lint": "eslint . --max-warnings 0",
     "fix": "pnpm lint --fix",
     "clean": "rimraf lib esm umd",
     "test": "jest",
     "test:ci": "jest --runInBand",
-    "test:e2e": "jest --config=jest.e2e.config.js"
+    "test:e2e": "jest --config=jest.e2e.config.js",
+    "start": "tsc --build --force --watch"
   },
   "files": [
     "CHANGELOG.md",
