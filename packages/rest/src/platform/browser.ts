@@ -1,7 +1,7 @@
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import type { AuthOption } from "../client/KintoneClientOptions/types/Auth";
 import type { PlatformDeps } from ".";
-const packageJson = require("../../package.json");
+import packageJson from "../../package.json";
 
 declare let kintone: {
   getRequestToken(): string;
