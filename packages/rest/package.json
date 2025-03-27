@@ -51,7 +51,7 @@
     "openapi-fetch": "^0.13.5",
     "openapi-typescript": "^7.6.1",
     "openapi-typescript-helpers": "^0.0.15",
-    "undici": "^7.4.0"
+    "undici": "^7.6.0"
   },
   "publishConfig": {
     "access": "public"
