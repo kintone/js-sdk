@@ -5,7 +5,6 @@ import type { ClientOptions } from "openapi-fetch";
 import type { AuthOption, BasicAuthOption } from "./types/Auth";
 import type { Proxy } from "./types/Proxy";
 import type { ClientCertAuth } from "./types/CertAuth";
-import { buildProxy } from "./Proxy";
 import { buildHttpsAgent } from "./HttpsAgent";
 import { platformDeps } from "../../platform";
 
@@ -50,8 +49,10 @@ export const buildNativeClientOptions = (
           socketTimeout: _clientOptions.socketTimeout,
         })
       : {};
-  const proxyOption =
-    _clientOptions.proxy !== undefined ? buildProxy(_clientOptions.proxy) : {};
+  const proxyOption = {};
+  // FIXME umdのビルドエラーが出るためコメントアウト
+  // const proxyOption =
+  //   _clientOptions.proxy !== undefined ? buildProxy(_clientOptions.proxy) : {};
   const httpsAgentOption =
     _clientOptions.httpsAgent !== undefined
       ? buildHttpsAgent(_clientOptions.httpsAgent)

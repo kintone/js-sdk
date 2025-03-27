@@ -37,17 +37,7 @@ export default defineConfig({
     format: "umd",
     name: "KintoneRest",
     sourcemap: isProd ? false : "inline",
-    globals: {
-      "undici": "undici",
-      "openapi-fetch": "createNativeClient",
-    },
   },
-  external: [
-    "./src/index.ts",
-    "./src/platform/node.ts",
-    "undici",
-    "openapi-fetch"
-  ],
   plugins: [
     babel({
       babelHelpers: "bundled",
@@ -91,10 +81,9 @@ export default defineConfig({
       ],
     }),
     json(),
-    globals(),
     nodePolyfills(),
     isProd && terser(),
-    ecmaVersionValidator({ ecmaVersion: 2018 }),
+    ecmaVersionValidator({ ecmaVersion: 2022 }),
     license({
       banner: {
         commentStyle: "regular",
