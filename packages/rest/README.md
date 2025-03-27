@@ -68,15 +68,12 @@ const client = createClient({
 });
 
 try {
-  const resp = await client.GET("/k/v1/records.json", {
+  const resp = await client.request("get", "/k/v1/records.json", {
     params: {
-      query: { app: "1" },
+      query: { app: 1 },
     },
   });
   console.log(resp.data?.records);
-  // or you can write code like kintone.api
-  const resp2 = await client.api("/k/v1/records.json", "get", { app: "1" });
-  console.log(resp2.data?.records);
 } catch (e) {
   console.error(e);
 }
