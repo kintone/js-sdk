@@ -8,7 +8,6 @@ import nodePolyfills from "rollup-plugin-polyfill-node";
 import globals from "rollup-plugin-node-globals";
 import babel from "@rollup/plugin-babel";
 import { ecmaVersionValidator } from "rollup-plugin-ecma-version-validator";
-import builtins from "rollup-plugin-node-builtins";
 import fs from "fs";
 
 const licenseText = fs.readFileSync("LICENSE", "utf-8");
