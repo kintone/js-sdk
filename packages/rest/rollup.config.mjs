@@ -37,8 +37,17 @@ export default defineConfig({
     format: "umd",
     name: "KintoneRest",
     sourcemap: isProd ? false : "inline",
+    globals: {
+      "undici": "undici",
+      "openapi-fetch": "createNativeClient",
+    },
   },
-  external: ["./src/index.ts", "./src/platform/node.ts"],
+  external: [
+    "./src/index.ts",
+    "./src/platform/node.ts",
+    "undici",
+    "openapi-fetch"
+  ],
   plugins: [
     babel({
       babelHelpers: "bundled",
