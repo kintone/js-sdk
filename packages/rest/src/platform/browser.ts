@@ -2,6 +2,7 @@ import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import type { AuthOption } from "../client/KintoneClientOptions/types/Auth";
 import type { PlatformDeps } from ".";
 import packageJson from "../../package.json";
+import type { Proxy } from "../client/KintoneClientOptions/types/Proxy";
 
 declare let kintone: {
   getRequestToken(): string;
@@ -73,6 +74,10 @@ const getVersion = () => {
   return packageJson.version;
 };
 
+const buildProxy = (proxy: Proxy) => {
+  throw new UnsupportedPlatformError("Browser");
+};
+
 export default {
   getRequestToken,
   getDefaultAuth,
@@ -81,4 +86,5 @@ export default {
   buildTimeoutHeader,
   buildBaseUrl,
   getVersion,
+  buildProxy,
 } as PlatformDeps;

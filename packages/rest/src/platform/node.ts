@@ -1,10 +1,12 @@
 import fs from "node:fs";
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import os from "os";
-import { Agent } from "undici";
+import { Agent, ProxyAgent } from "undici";
 import type { PlatformDeps } from ".";
 import type { ClientCertAuth } from "../client/KintoneClientOptions/types/CertAuth";
 import packageJson from "../../package.json";
+import type { Proxy } from "../client/KintoneClientOptions/types/Proxy";
+import { buildProxy as _buildProxy } from "../client/KintoneClientOptions/Proxy";
 
 const getRequestToken = () => {
   throw new UnsupportedPlatformError("Node.js");
@@ -58,6 +60,10 @@ const getVersion = () => {
   return packageJson.version;
 };
 
+const buildProxy = (proxy: Proxy) => {
+  return _buildProxy(proxy);
+};
+
 export default {
   getRequestToken,
   getDefaultAuth,
@@ -66,4 +72,5 @@ export default {
   buildTimeoutHeader,
   buildBaseUrl,
   getVersion,
+  buildProxy,
 } as PlatformDeps;

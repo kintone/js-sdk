@@ -1,6 +1,7 @@
-import type { Agent } from "undici";
+import type { Agent, ProxyAgent } from "undici";
 import { type AuthOption } from "../client/KintoneClientOptions/types/Auth";
 import type { ClientCertAuth } from "../client/KintoneClientOptions/types/CertAuth";
+import type { Proxy } from "../client/KintoneClientOptions/types/Proxy";
 
 export type PlatformDeps = {
   getRequestToken: () => Promise<string>;
@@ -13,6 +14,7 @@ export type PlatformDeps = {
     timeout?: number;
   };
   buildBaseUrl: (baseUrl?: string) => string;
+  buildProxy: (proxy: Proxy) => { dispatcher: ProxyAgent };
   getVersion: () => string;
 };
 
@@ -38,6 +40,9 @@ export const platformDeps: PlatformDeps = {
   buildTimeoutHeader: () => {
     throw new Error("not implemented");
   },
+  buildProxy: () => {
+    throw new Error("not implemented");
+  },
 };
 
 export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
@@ -61,5 +66,8 @@ export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   }
   if (deps.getVersion) {
     platformDeps.getVersion = deps.getVersion;
+  }
+  if (deps.buildProxy) {
+    platformDeps.buildProxy = deps.buildProxy;
   }
 };

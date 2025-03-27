@@ -49,10 +49,10 @@ export const buildNativeClientOptions = (
           socketTimeout: _clientOptions.socketTimeout,
         })
       : {};
-  const proxyOption = {};
-  // FIXME umdのビルドエラーが出るためコメントアウト
-  // const proxyOption =
-  //   _clientOptions.proxy !== undefined ? buildProxy(_clientOptions.proxy) : {};
+  const proxyOption =
+    _clientOptions.proxy !== undefined
+      ? platformDeps.buildProxy(_clientOptions.proxy)
+      : {};
   const httpsAgentOption =
     _clientOptions.httpsAgent !== undefined
       ? buildHttpsAgent(_clientOptions.httpsAgent)
