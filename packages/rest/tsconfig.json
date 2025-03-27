@@ -22,9 +22,9 @@
     {
       "path": "./tsconfig.build.esm.json"
     },
-    {
-      "path": "./tsconfig.build.umd.json"
-    },
+    // {
+    //   "path": "./tsconfig.build.umd.json"
+    // },
     {
       "path": "./tsconfig.typecheck.json"
     }
