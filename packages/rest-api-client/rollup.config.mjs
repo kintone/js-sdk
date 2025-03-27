@@ -80,10 +80,10 @@ export default defineConfig({
       ],
     }),
     json(),
-    // globals(),
+    globals(),
     nodePolyfills(),
     isProd && terser(),
-    ecmaVersionValidator({ ecmaVersion: 2022 }),
+    ecmaVersionValidator({ ecmaVersion: 2018 }),
     license({
       banner: {
         commentStyle: "regular",
