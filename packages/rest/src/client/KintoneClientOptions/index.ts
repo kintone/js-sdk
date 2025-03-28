@@ -1,15 +1,12 @@
 import type { Agent as HttpsAgent } from "undici";
 import { buildAuth } from "./Auth";
-import { buildUserAgent } from "./UserAgent";
-import { buildTimeout } from "./SocketTimeout";
 
 import type { ClientOptions } from "openapi-fetch";
 import type { AuthOption, BasicAuthOption } from "./types/Auth";
 import type { Proxy } from "./types/Proxy";
 import type { ClientCertAuth } from "./types/CertAuth";
-import { buildProxy } from "./Proxy";
 import { buildHttpsAgent } from "./HttpsAgent";
-import { buildCertAuth } from "./CertAuth";
+import { platformDeps } from "../../platform";
 
 export type KintoneClientOptions = ClientOptions & {
   auth?: AuthOption;
@@ -37,24 +34,32 @@ export type KintoneClientOptions = ClientOptions & {
 export const buildNativeClientOptions = (
   _clientOptions: KintoneClientOptions,
 ): ClientOptions => {
-  const authHeader = buildAuth(_clientOptions.auth ?? { type: "session" });
-  const userAgentHeader =
-    _clientOptions.userAgent !== undefined
-      ? buildUserAgent(_clientOptions.userAgent)
-      : {};
+  const baseUrl = platformDeps
+    .buildBaseUrl(_clientOptions.baseUrl)
+    .replace(/\/+$/, ""); // Remove trailing slash
+  const authHeader = buildAuth(
+    _clientOptions.auth ?? platformDeps.getDefaultAuth(),
+  );
+  const userAgentHeader = platformDeps.buildUserAgentHeader({
+    userAgent: _clientOptions.userAgent,
+  });
   const timeoutOption =
     _clientOptions.socketTimeout !== undefined
-      ? buildTimeout(_clientOptions.socketTimeout)
+      ? platformDeps.buildTimeoutHeader({
+          socketTimeout: _clientOptions.socketTimeout,
+        })
       : {};
   const proxyOption =
-    _clientOptions.proxy !== undefined ? buildProxy(_clientOptions.proxy) : {};
+    _clientOptions.proxy !== undefined
+      ? platformDeps.buildProxy(_clientOptions.proxy)
+      : {};
   const httpsAgentOption =
     _clientOptions.httpsAgent !== undefined
       ? buildHttpsAgent(_clientOptions.httpsAgent)
       : {};
   const certAuthOption =
     _clientOptions.certAuth !== undefined
-      ? buildCertAuth(_clientOptions.certAuth)
+      ? platformDeps.buildCertAuth(_clientOptions.certAuth)
       : {};
 
   return {
@@ -62,7 +67,7 @@ export const buildNativeClientOptions = (
     Request: _clientOptions.Request,
     querySerializer: _clientOptions.querySerializer,
     bodySerializer: _clientOptions.bodySerializer,
-    baseUrl: _clientOptions.baseUrl,
+    baseUrl: baseUrl,
     headers: {
       ..._clientOptions.headers,
       ...authHeader,

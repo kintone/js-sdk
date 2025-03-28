@@ -4,7 +4,15 @@
     "outDir": "./lib",
     "rootDir": "./",
     "resolveJsonModule": true,
-    "noEmit": true
+    "noEmit": true,
+    "lib": [
+      "dom"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "../../node_modules/@types",
+      "types"
+    ],
   },
   "files": [],
   "references": [
@@ -14,6 +22,9 @@
     {
       "path": "./tsconfig.build.esm.json"
     },
+    // {
+    //   "path": "./tsconfig.build.umd.json"
+    // },
     {
       "path": "./tsconfig.typecheck.json"
     }
