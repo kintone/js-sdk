@@ -529,8 +529,8 @@ importers:
         specifier: ^0.13.0
         version: 0.13.0(rollup@4.38.0)
       vite:
-        specifier: ^5.4.15
-        version: 5.4.15(@types/node@18.19.84)
+        specifier: ^5.4.16
+        version: 5.4.16(@types/node@18.19.84)
       webpack:
         specifier: ^5.98.0
         version: 5.98.0(webpack-cli@5.1.4)
@@ -12323,7 +12323,7 @@ packages:
       debug: 4.4.0(supports-color@9.4.0)
       es-module-lexer: 1.5.4
       pathe: 1.1.2
-      vite: 5.4.15(@types/node@22.13.14)
+      vite: 5.4.16(@types/node@22.13.14)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -12375,8 +12375,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@5.4.15(@types/node@18.19.84):
-    resolution: {integrity: sha512-6ANcZRivqL/4WtwPGTKNaosuNJr5tWiftOC7liM7G9+rMb8+oeJeyzymDu4rTN93seySBmbjSfsS3Vzr19KNtA==}
+  /vite@5.4.16(@types/node@18.19.84):
+    resolution: {integrity: sha512-Y5gnfp4NemVfgOTDQAunSD4346fal44L9mszGGY/e+qxsRT5y1sMlS/8tiQ8AFAp+MFgYNSINdfEchJiPm41vQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -12414,8 +12414,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@5.4.15(@types/node@22.13.14):
-    resolution: {integrity: sha512-6ANcZRivqL/4WtwPGTKNaosuNJr5tWiftOC7liM7G9+rMb8+oeJeyzymDu4rTN93seySBmbjSfsS3Vzr19KNtA==}
+  /vite@5.4.16(@types/node@22.13.14):
+    resolution: {integrity: sha512-Y5gnfp4NemVfgOTDQAunSD4346fal44L9mszGGY/e+qxsRT5y1sMlS/8tiQ8AFAp+MFgYNSINdfEchJiPm41vQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
