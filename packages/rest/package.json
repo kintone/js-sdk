@@ -16,7 +16,7 @@
     "build:vite_umd_prod": "BUILD=production vite build",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --max-warnings 0",
-    "lint:package": "publint",
+    "lint:package": "publint --strict",
     "fix": "pnpm lint:eslint --fix",
     "clean": "rimraf lib esm umd",
     "test": "jest",
