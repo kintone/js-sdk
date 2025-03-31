@@ -23,30 +23,33 @@
     "url": "https://cybozu.co.jp"
   },
   "type": "module",
+  "files": [
+    "CHANGELOG.md",
+    "lib"
+  ],
+  "main": "lib/index.js",
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     }
   },
-  "main": "lib/index.js",
-  "files": [
-    "CHANGELOG.md",
-    "lib"
-  ],
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build ./tsconfig.build.json",
-    "clean": "rimraf lib",
-    "fix": "pnpm lint --fix",
-    "lint": "eslint ./ --max-warnings 0",
     "start": "run-s clean 'build --watch'",
     "test": "vitest run",
+    "test:watch": "vitest",
     "test:ci": "vitest run",
-    "test:watch": "vitest"
+    "lint": "eslint ./ --max-warnings 0",
+    "fix": "pnpm lint --fix",
+    "clean": "rimraf lib"
   },
   "dependencies": {
     "@typescript-eslint/utils": "^8.20.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.16.0"
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^24.0.0",
@@ -60,9 +63,6 @@
     "rimraf": "^6.0.1",
     "typescript": "^5.8.2",
     "vitest": "^2.1.9"
-  },
-  "peerDependencies": {
-    "eslint": ">=9.16.0"
   },
   "publishConfig": {
     "access": "public"

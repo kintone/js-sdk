@@ -28,6 +28,10 @@ export default [
     rules: {
       ...packageJson.configs.recommended.rules,
       "@typescript-eslint/consistent-type-imports": "off",
+      // Disable sorting rules because package.json format is changed on release
+      // https://github.com/googleapis/release-please/issues/2319
+      "package-json/sort-collections": "off",
+      "package-json/order-properties": "off"
     }
   },
 ];
