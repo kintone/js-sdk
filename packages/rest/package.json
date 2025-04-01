@@ -4,11 +4,16 @@
   "description": "kintone REST API Client for JavaScript",
   "main": "lib/src/index.js",
   "module": "esm/src/index.js",
+  "browser": "lib/src/index.browser.js",
   "types": "lib/src/index.d.ts",
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build --force && pnpm postbuild",
     "postbuild": "node scripts/copy-schemas.js",
+    "build:rollup_umd_dev": "rollup -c --environment BUILD:development",
+    "build:rollup_umd_prod": "rollup -c --environment BUILD:production",
+    "build:vite_umd_dev": "BUILD=development vite build",
+    "build:vite_umd_prod": "BUILD=production vite build",
     "lint": "eslint . --max-warnings 0",
     "fix": "pnpm lint --fix",
     "clean": "rimraf lib esm umd",
@@ -45,7 +50,21 @@
     "directory": "packages/rest"
   },
   "license": "Apache-2.0",
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.3.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.34.9",
+    "rollup-plugin-ecma-version-validator": "^0.2.13",
+    "rollup-plugin-license": "^3.6.0",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "vite": "^5.4.15"
+  },
   "dependencies": {
+    "core-js": "^3.41.0",
     "fs": "0.0.1-security",
     "js-base64": "^3.7.7",
     "openapi-fetch": "^0.13.5",
@@ -55,5 +74,21 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./esm/src/index.d.ts",
+        "require": "./lib/src/index.d.ts",
+        "default": "./lib/src/index.d.ts"
+      },
+      "node": {
+        "import": "./index.mjs",
+        "require": "./lib/src/index.js",
+        "default": "./lib/src/index.js"
+      },
+      "browser": "./lib/src/index.browser.js"
+    },
+    "./package.json": "./package.json"
   }
 }

@@ -1,5 +1,6 @@
 /* eslint-disable n/no-unsupported-features/node-builtins */
 import type { Middleware, MiddlewareCallbackParams } from "openapi-fetch";
+import { platformDeps } from "../../platform";
 
 export const getCsrfMiddleware = (): Middleware => {
   return {
@@ -13,7 +14,10 @@ export const getCsrfMiddleware = (): Middleware => {
       ) {
         const formData = await request.formData();
         if (!formData.has("__REQUEST_TOKEN__")) {
-          formData.append("__REQUEST_TOKEN__", await getRequestToken());
+          formData.append(
+            "__REQUEST_TOKEN__",
+            await platformDeps.getRequestToken(),
+          );
         }
         return new Request(request.url, {
           method: request.method,
@@ -23,7 +27,7 @@ export const getCsrfMiddleware = (): Middleware => {
       }
 
       const body = (await request.json()) as Record<string, unknown>;
-      body.__REQUEST_TOKEN__ = await getRequestToken();
+      body.__REQUEST_TOKEN__ = await platformDeps.getRequestToken();
       return new Request(request.url, {
         method: request.method,
         headers: request.headers,
@@ -31,17 +35,4 @@ export const getCsrfMiddleware = (): Middleware => {
       });
     },
   };
-};
-
-declare let kintone: any;
-const getRequestToken = async () => {
-  if (
-    typeof kintone === "object" &&
-    kintone !== null &&
-    typeof kintone.getRequestToken === "function"
-  ) {
-    return kintone.getRequestToken();
-  }
-
-  throw new Error("session authentication must specify a request token");
 };

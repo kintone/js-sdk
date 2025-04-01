@@ -437,6 +437,9 @@ importers:
 
   packages/rest:
     dependencies:
+      core-js:
+        specifier: ^3.41.0
+        version: 3.41.0
       fs:
         specifier: 0.0.1-security
         version: 0.0.1-security
@@ -455,6 +458,40 @@ importers:
       undici:
         specifier: ^7.4.0
         version: 7.4.0
+    devDependencies:
+      '@rollup/plugin-babel':
+        specifier: ^6.0.4
+        version: 6.0.4(@babel/core@7.26.10)(rollup@4.38.0)
+      '@rollup/plugin-commonjs':
+        specifier: ^26.0.3
+        version: 26.0.3(rollup@4.38.0)
+      '@rollup/plugin-json':
+        specifier: ^6.1.0
+        version: 6.1.0(rollup@4.38.0)
+      '@rollup/plugin-node-resolve':
+        specifier: ^15.3.1
+        version: 15.3.1(rollup@4.38.0)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.38.0)
+      rollup:
+        specifier: ^4.34.9
+        version: 4.38.0
+      rollup-plugin-ecma-version-validator:
+        specifier: ^0.2.13
+        version: 0.2.13(rollup@4.38.0)
+      rollup-plugin-license:
+        specifier: ^3.6.0
+        version: 3.6.0(rollup@4.38.0)
+      rollup-plugin-node-globals:
+        specifier: ^1.4.0
+        version: 1.4.0
+      rollup-plugin-polyfill-node:
+        specifier: ^0.13.0
+        version: 0.13.0(rollup@4.38.0)
+      vite:
+        specifier: ^5.4.15
+        version: 5.4.16(@types/node@18.19.84)
 
   packages/rest-api-client:
     dependencies:
@@ -771,19 +808,12 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/helper-module-imports@7.22.15:
-    resolution: {integrity: sha512-0pYVBnDKZO2fnSPCrgM/6WMc7eS20Fbok+0r88fp+YtWVLZrp4CkafFGIp+W0VKw4a22sgebPT99y+FDNMdP4w==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.26.9
-    dev: true
-
   /@babel/helper-module-imports@7.25.9:
     resolution: {integrity: sha512-tnUA4RsrmflIM6W6RFTLFSXITtl0wKjgpnLgXyowocVPrbYrLUXSBXDgTs8BlbmIzIdlBySRQjINYs2BAkiLtw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/traverse': 7.25.9
-      '@babel/types': 7.26.0
+      '@babel/traverse': 7.27.0
+      '@babel/types': 7.27.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3034,9 +3064,11 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.26.10
-      '@babel/helper-module-imports': 7.22.15
-      '@rollup/pluginutils': 5.0.2(rollup@4.38.0)
+      '@babel/helper-module-imports': 7.25.9
+      '@rollup/pluginutils': 5.1.0(rollup@4.38.0)
       rollup: 4.38.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@rollup/plugin-commonjs@26.0.3(rollup@4.38.0):
@@ -3112,24 +3144,9 @@ packages:
         optional: true
     dependencies:
       rollup: 4.38.0
-      serialize-javascript: 6.0.1
+      serialize-javascript: 6.0.2
       smob: 1.4.0
-      terser: 5.19.1
-    dev: true
-
-  /@rollup/pluginutils@5.0.2(rollup@4.38.0):
-    resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@types/estree': 1.0.6
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-      rollup: 4.38.0
+      terser: 5.39.0
     dev: true
 
   /@rollup/pluginutils@5.1.0(rollup@4.38.0):
@@ -3141,7 +3158,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.7
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 4.38.0
@@ -5396,6 +5413,11 @@ packages:
 
   /core-js@3.40.0:
     resolution: {integrity: sha512-7vsMc/Lty6AGnn7uFpYT56QesI5D2Y/UkgKounk87OP9Z2H9Z8kj6jzcSGAxFmUtDOS0ntK6lbQz+Nsa0Jj6mQ==}
+    requiresBuild: true
+    dev: false
+
+  /core-js@3.41.0:
+    resolution: {integrity: sha512-SJ4/EHwS36QMJd6h/Rg+GyR4A5xE0FSI3eZ+iBVpfqf1x0eTSg1smWLHrA+2jQThZSh97fmSgFSU8B61nxosxA==}
     requiresBuild: true
     dev: false
 
@@ -8036,7 +8058,7 @@ packages:
   /is-reference@1.2.1:
     resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.7
     dev: true
 
   /is-regex@1.1.4:
@@ -10817,7 +10839,7 @@ packages:
     peerDependencies:
       rollup: ^2.16.1 || ^3.x
     dependencies:
-      acorn: 8.10.0
+      acorn: 8.14.0
       rollup: 4.38.0
     dev: true
 
@@ -11036,12 +11058,6 @@ packages:
       statuses: 2.0.1
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /serialize-javascript@6.0.1:
-    resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
-    dependencies:
-      randombytes: 2.1.0
     dev: true
 
   /serialize-javascript@6.0.2:
@@ -11727,17 +11743,6 @@ packages:
       serialize-javascript: 6.0.2
       terser: 5.39.0
       webpack: 5.98.0(webpack-cli@5.1.4)
-    dev: true
-
-  /terser@5.19.1:
-    resolution: {integrity: sha512-27hxBUVdV6GoNg1pKQ7Z5cbR6V9txPVyBA+FQw3BaZ1Wuzvztce5p156DaP0NVZNrMZZ+6iG9Syf7WgMNKDg2Q==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      '@jridgewell/source-map': 0.3.5
-      acorn: 8.10.0
-      commander: 2.20.3
-      source-map-support: 0.5.21
     dev: true
 
   /terser@5.39.0:
