@@ -475,7 +475,7 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.38.0)
       rollup:
-        specifier: ^4.34.9
+        specifier: ^4.38.0
         version: 4.38.0
       rollup-plugin-ecma-version-validator:
         specifier: ^0.2.13
@@ -6838,7 +6838,7 @@ packages:
   /estree-walker@3.0.3:
     resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.7
     dev: true
 
   /esutils@2.0.3:
