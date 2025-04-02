@@ -29,7 +29,7 @@
         "default": "./lib/src/index.d.ts"
       },
       "node": {
-        "import": "./index.mjs",
+        "import": "./lib/src/index.js",
         "require": "./lib/src/index.js",
         "default": "./lib/src/index.js"
       },
