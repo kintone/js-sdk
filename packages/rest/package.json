@@ -21,6 +21,7 @@
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
+  "type": "commonjs",
   "exports": {
     ".": {
       "types": {
