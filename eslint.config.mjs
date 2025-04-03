@@ -1,5 +1,5 @@
 import presetsNodeTypescriptPrettier from "@cybozu/eslint-config/flat/presets/node-typescript-prettier.js";
-import packageJson from "eslint-plugin-package-json";
+import eslintPluginPackageJson from "eslint-plugin-package-json";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -24,10 +24,10 @@ export default [
     },
   },
   {
-    ...packageJson.configs.recommended,
+    ...eslintPluginPackageJson.configs.recommended,
     rules: {
-      ...packageJson.configs.recommended.rules,
+      ...eslintPluginPackageJson.configs.recommended.rules,
       "@typescript-eslint/consistent-type-imports": "off",
-    }
+    },
   },
 ];
