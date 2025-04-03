@@ -502,8 +502,8 @@ importers:
         specifier: ^0.13.0
         version: 0.13.0(rollup@4.39.0)
       vite:
-        specifier: ^5.4.15
-        version: 5.4.16(@types/node@18.19.86)
+        specifier: ^5.4.17
+        version: 5.4.17(@types/node@18.19.86)
 
   packages/rest-api-client:
     dependencies:
@@ -578,8 +578,8 @@ importers:
         specifier: ^0.13.0
         version: 0.13.0(rollup@4.39.0)
       vite:
-        specifier: ^5.4.16
-        version: 5.4.16(@types/node@18.19.86)
+        specifier: ^5.4.17
+        version: 5.4.17(@types/node@18.19.86)
       webpack:
         specifier: ^5.98.0
         version: 5.98.0(webpack-cli@5.1.4)
@@ -12416,7 +12416,7 @@ packages:
       debug: 4.4.0(supports-color@9.4.0)
       es-module-lexer: 1.5.4
       pathe: 1.1.2
-      vite: 5.4.16(@types/node@22.13.17)
+      vite: 5.4.17(@types/node@22.13.17)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -12468,8 +12468,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@5.4.16(@types/node@18.19.86):
-    resolution: {integrity: sha512-Y5gnfp4NemVfgOTDQAunSD4346fal44L9mszGGY/e+qxsRT5y1sMlS/8tiQ8AFAp+MFgYNSINdfEchJiPm41vQ==}
+  /vite@5.4.17(@types/node@18.19.86):
+    resolution: {integrity: sha512-5+VqZryDj4wgCs55o9Lp+p8GE78TLVg0lasCH5xFZ4jacZjtqZa6JUw9/p0WeAojaOfncSM6v77InkFPGnvPvg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -12507,8 +12507,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@5.4.16(@types/node@22.13.17):
-    resolution: {integrity: sha512-Y5gnfp4NemVfgOTDQAunSD4346fal44L9mszGGY/e+qxsRT5y1sMlS/8tiQ8AFAp+MFgYNSINdfEchJiPm41vQ==}
+  /vite@5.4.17(@types/node@22.13.17):
+    resolution: {integrity: sha512-5+VqZryDj4wgCs55o9Lp+p8GE78TLVg0lasCH5xFZ4jacZjtqZa6JUw9/p0WeAojaOfncSM6v77InkFPGnvPvg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
