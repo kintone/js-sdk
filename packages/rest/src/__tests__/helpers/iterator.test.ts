@@ -1,5 +1,7 @@
 // FIXME: クライアントをモックしてテスト実行できるようにする
 
+import { describe, it } from "vitest";
+
 import { createClient } from "../../client/index.js";
 import { iterator } from "../../helpers/iterator.js";
 

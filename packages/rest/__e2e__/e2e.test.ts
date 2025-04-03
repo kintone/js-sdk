@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 import { createClient } from "../src/index.js";
 
 const client = createClient({
