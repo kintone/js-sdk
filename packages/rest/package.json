@@ -21,26 +21,21 @@
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     ".": {
-      "types": {
-        "import": "./esm/src/index.d.ts",
-        "require": "./lib/src/index.d.ts",
-        "default": "./lib/src/index.d.ts"
-      },
       "node": {
-        "import": "./lib/src/index.js",
-        "require": "./lib/src/index.js",
-        "default": "./lib/src/index.js"
+        "import": "./lib/index.js",
+        "require": "./lib/index.cjs",
+        "default": "./lib/index.js"
       },
-      "browser": "./lib/src/index.browser.js"
+      "browser": "./lib/index.browser.js"
     },
     "./package.json": "./package.json"
   },
-  "main": "lib/src/index.js",
-  "module": "esm/src/index.js",
-  "types": "lib/src/index.d.ts",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "CHANGELOG.md",
     "esm",
@@ -50,6 +45,8 @@
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build --force && pnpm postbuild",
+    "build:vite": "vite build",
+    "build:tsup": "tsup",
     "postbuild": "node scripts/copy-schemas.js",
     "build:rollup_umd_dev": "rollup -c --environment BUILD:development",
     "build:rollup_umd_prod": "rollup -c --environment BUILD:production",
@@ -80,12 +77,17 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.3.1",
     "@rollup/plugin-terser": "^0.4.4",
+    "@types/rollup-plugin-node-builtins": "^2.1.5",
+    "@types/rollup-plugin-node-globals": "^1.4.5",
     "rollup": "^4.39.0",
     "rollup-plugin-ecma-version-validator": "^0.2.13",
     "rollup-plugin-license": "^3.6.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-polyfill-node": "^0.13.0",
-    "vite": "^5.4.15"
+    "tsup": "^8.4.0",
+    "vite": "^5.4.15",
+    "vite-plugin-dts": "^4.5.3"
   },
   "engines": {
     "node": ">=18"

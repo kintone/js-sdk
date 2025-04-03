@@ -1,8 +1,8 @@
-import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
-import type { AuthOption } from "../client/KintoneClientOptions/types/Auth";
-import type { PlatformDeps } from ".";
+import { UnsupportedPlatformError } from "./UnsupportedPlatformError.js";
+import type { AuthOption } from "../client/KintoneClientOptions/types/Auth.js";
+import type { PlatformDeps } from "./index.js";
 import packageJson from "../../package.json";
-import type { Proxy } from "../client/KintoneClientOptions/types/Proxy";
+import type { Proxy } from "../client/KintoneClientOptions/types/Proxy.js";
 
 declare let kintone: {
   getRequestToken(): string;
