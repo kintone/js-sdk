@@ -1,4 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*", "package.json"]
+  "compilerOptions": { "module": "esnext", "moduleResolution": "bundler" },
+  "include": ["src/**/*", "vite.config.ts", "package.json"]
 }

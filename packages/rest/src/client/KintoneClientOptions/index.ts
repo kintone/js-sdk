@@ -1,12 +1,12 @@
 import type { Agent as HttpsAgent } from "undici";
-import { buildAuth } from "./Auth";
+import { buildAuth } from "./Auth.js";
 
 import type { ClientOptions } from "openapi-fetch";
-import type { AuthOption, BasicAuthOption } from "./types/Auth";
-import type { Proxy } from "./types/Proxy";
-import type { ClientCertAuth } from "./types/CertAuth";
-import { buildHttpsAgent } from "./HttpsAgent";
-import { platformDeps } from "../../platform";
+import type { AuthOption, BasicAuthOption } from "./types/Auth.js";
+import type { Proxy } from "./types/Proxy.js";
+import type { ClientCertAuth } from "./types/CertAuth.js";
+import { buildHttpsAgent } from "./HttpsAgent.js";
+import { platformDeps } from "../../platform/index.js";
 
 export type KintoneClientOptions = ClientOptions & {
   auth?: AuthOption;

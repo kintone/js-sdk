@@ -1,6 +1,6 @@
 /* eslint-disable n/no-unsupported-features/node-builtins */
 import type { Middleware, MiddlewareCallbackParams } from "openapi-fetch";
-import { platformDeps } from "../../platform";
+import { platformDeps } from "../../platform/index.js";
 
 export const getCsrfMiddleware = (): Middleware => {
   return {

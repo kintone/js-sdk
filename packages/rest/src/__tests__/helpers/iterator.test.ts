@@ -1,7 +1,7 @@
 // FIXME: クライアントをモックしてテスト実行できるようにする
 
-import { createClient } from "../../client";
-import { iterator } from "../../helpers/iterator";
+import { createClient } from "../../client/index.js";
+import { iterator } from "../../helpers/iterator.js";
 
 describe("iterator", () => {
   it.skip("should iterate until hasNext returns false", async () => {

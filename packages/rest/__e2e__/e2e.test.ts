@@ -1,4 +1,4 @@
-import { createClient } from "../src";
+import { createClient } from "../src/index.js";
 
 const client = createClient({
   baseUrl: "http://127.0.0.1:4010/",
