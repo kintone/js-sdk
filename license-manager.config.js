@@ -1,4 +1,6 @@
-const config = {
+const { isMatchName, createConfig } = require("@cybozu/license-manager");
+
+const config = createConfig({
   analyze: {
     allowLicenses: [
       "MIT",
@@ -21,11 +23,24 @@ const config = {
       "(BSD-3-Clause OR GPL-2.0)",
       "Unlicense",
     ],
-    allowPackages: [
-      "indexof",
-    ],
+    allowPackages: ["indexof"],
+  },
+  overrideLicense: (dep) => {
+    // https://github.com/mafintosh/browserify-fs?tab=readme-ov-file#license
+    if (dep.name === "browserify-fs") {
+      return "MIT";
+    }
+    // https://github.com/mafintosh/fwd-stream?tab=readme-ov-file#license
+    if (dep.name === "fwd-stream") {
+      return "MIT";
+    }
+    // https://github.com/dominictarr/level-hooks/blob/master/LICENSE
+    if (dep.name === "level-hooks") {
+      return "MIT";
+    }
+    return undefined;
   },
   packageManager: "pnpm",
-};
+});
 
 module.exports = config;
