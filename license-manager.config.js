@@ -1,4 +1,4 @@
-const { isMatchName, createConfig } = require("@cybozu/license-manager");
+const { createConfig } = require("@cybozu/license-manager");
 
 const config = createConfig({
   analyze: {
