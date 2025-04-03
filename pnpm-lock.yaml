@@ -492,9 +492,6 @@ importers:
       '@types/rollup-plugin-node-globals':
         specifier: ^1.4.5
         version: 1.4.5
-      jest:
-        specifier: ^29.7.0
-        version: 29.7.0(@types/node@18.19.86)(ts-node@10.9.2)
       rollup:
         specifier: ^4.39.0
         version: 4.39.0
@@ -3987,7 +3984,7 @@ packages:
       '@vitest/spy': 2.1.9
       estree-walker: 3.0.3
       magic-string: 0.30.14
-      vite: 5.4.16(@types/node@18.19.86)
+      vite: 5.4.16(@types/node@22.13.17)
     dev: true
 
   /@vitest/pretty-format@2.1.9:
