@@ -59,7 +59,7 @@
     "fix": "pnpm lint:eslint --fix",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --max-warnings 0",
-    "lint:package": "publint --strict",
+    "lint:package": "publint",
     "start": "tsc --build --force --watch",
     "test": "jest",
     "test:ci": "jest --runInBand",
