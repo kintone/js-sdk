@@ -1,39 +1,39 @@
 {
   "name": "@kintone/js-sdk",
   "version": "1.0.0",
-  "description": "packages for kintone customizations",
   "private": true,
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "prebuild": "pnpm -r --parallel run prebuild",
-    "build": "pnpm prebuild && tsc --build packages --force && pnpm postbuild",
-    "postbuild": "pnpm -r --parallel run postbuild",
-    "license:analyze": "license-manager analyze -c license-manager.config.js",
-    "lint": "run-s lint:*",
-    "lint:workspace": "pnpm -r --parallel run lint",
-    "lint:prettier": "prettier --check '**/*.{json,md,yml,yaml}' --cache",
-    "fix": "run-s fix:*",
-    "fix:workspace": "pnpm -r --parallel run fix",
-    "fix:prettier": "pnpm lint:prettier --write",
-    "test:root": "jest",
-    "start": "pnpm -r --parallel run start",
-    "test": "pnpm test:root && pnpm -r --parallel run test",
-    "test:ci": "pnpm test:root && pnpm -r --stream run test:ci",
-    "test:e2e": "pnpm -r --parallel run test:e2e",
-    "update-contributors": "ts-node ./scripts/update-contributors.ts"
-  },
+  "description": "packages for kintone customizations",
+  "keywords": [
+    "kintone"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kintone/js-sdk.git"
   },
-  "keywords": [
-    "kintone"
-  ],
+  "license": "MIT",
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
-  "license": "MIT",
+  "scripts": {
+    "prebuild": "pnpm -r --parallel run prebuild",
+    "build": "pnpm prebuild && tsc --build packages --force && pnpm postbuild",
+    "postbuild": "pnpm -r --parallel run postbuild",
+    "fix": "run-s fix:*",
+    "fix:prettier": "pnpm lint:prettier --write",
+    "fix:workspace": "pnpm -r --parallel run fix",
+    "license:analyze": "license-manager analyze -c license-manager.config.js",
+    "lint": "run-s lint:*",
+    "lint:prettier": "prettier --check '**/*.{json,md,yml,yaml}' --cache",
+    "lint:workspace": "pnpm -r --parallel run lint",
+    "preinstall": "npx only-allow pnpm",
+    "start": "pnpm -r --parallel run start",
+    "test": "pnpm test:root && pnpm -r --parallel run test",
+    "test:ci": "pnpm test:root && pnpm -r --stream run test:ci",
+    "test:e2e": "pnpm -r --parallel run test:e2e",
+    "test:root": "jest",
+    "update-contributors": "ts-node ./scripts/update-contributors.ts"
+  },
   "devDependencies": {
     "@babel/core": "^7.26.10",
     "@babel/preset-env": "^7.26.9",
@@ -46,9 +46,13 @@
     "babel-jest": "^29.7.0",
     "comment-json": "^4.2.5",
     "eslint": "^9.20.1",
+    "eslint-plugin-package-json": "^0.29.0",
     "jest": "^29.7.0",
+    "jsonc-eslint-parser": "^2.4.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.4.2",
+    "prettier-plugin-packagejson": "^2.5.10",
+    "publint": "^0.3.9",
     "rimraf": "^5.0.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
@@ -56,15 +60,15 @@
   "packageManager": "pnpm@8.15.9",
   "pnpm": {
     "overrides": {
-      "follow-redirects@<1.15.4": ">=1.15.4",
-      "browserify-sign@<4.2.2": ">=4.2.2",
+      "body-parser": ">=1.20.3",
       "braces": ">=3.0.3",
+      "browserify-sign@<4.2.2": ">=4.2.2",
+      "cross-spawn": ">=7.0.6",
+      "express": ">=4.19.2",
+      "follow-redirects@<1.15.4": ">=1.15.4",
       "pac-resolver": ">=7.0.1",
       "socks": ">=2.8.4",
-      "express": ">=4.19.2",
-      "ws": ">=8.18.1",
-      "body-parser": ">=1.20.3",
-      "cross-spawn": ">=7.0.6"
+      "ws": ">=8.18.1"
     }
   }
 }

@@ -2,44 +2,11 @@
   "name": "@kintone/rest",
   "version": "0.0.1",
   "description": "kintone REST API Client for JavaScript",
-  "main": "lib/src/index.js",
-  "module": "esm/src/index.js",
-  "browser": "lib/src/index.browser.js",
-  "types": "lib/src/index.d.ts",
-  "scripts": {
-    "prebuild": "pnpm clean",
-    "build": "tsc --build --force && pnpm postbuild",
-    "postbuild": "node scripts/copy-schemas.js",
-    "build:rollup_umd_dev": "rollup -c --environment BUILD:development",
-    "build:rollup_umd_prod": "rollup -c --environment BUILD:production",
-    "build:vite_umd_dev": "BUILD=development vite build",
-    "build:vite_umd_prod": "BUILD=production vite build",
-    "lint": "eslint . --max-warnings 0",
-    "fix": "pnpm lint --fix",
-    "clean": "rimraf lib esm umd",
-    "test": "jest",
-    "test:ci": "jest --runInBand",
-    "test:e2e": "jest --config=jest.e2e.config.js",
-    "start": "tsc --build --force --watch"
-  },
-  "files": [
-    "CHANGELOG.md",
-    "esm",
-    "lib",
-    "!**/*.tsbuildinfo"
-  ],
   "keywords": [
     "kintone",
     "rest",
     "api-client"
   ],
-  "engines": {
-    "node": ">=18"
-  },
-  "author": {
-    "name": "Cybozu, Inc.",
-    "url": "https://cybozu.co.jp"
-  },
   "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/rest#readme",
   "bugs": {
     "url": "https://github.com/kintone/js-sdk/issues"
@@ -50,6 +17,63 @@
     "directory": "packages/rest"
   },
   "license": "Apache-2.0",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./esm/src/index.d.ts",
+        "require": "./lib/src/index.d.ts",
+        "default": "./lib/src/index.d.ts"
+      },
+      "node": {
+        "import": "./lib/src/index.js",
+        "require": "./lib/src/index.js",
+        "default": "./lib/src/index.js"
+      },
+      "browser": "./lib/src/index.browser.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib/src/index.js",
+  "module": "esm/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "files": [
+    "CHANGELOG.md",
+    "esm",
+    "lib",
+    "!**/*.tsbuildinfo"
+  ],
+  "scripts": {
+    "prebuild": "pnpm clean",
+    "build": "tsc --build --force && pnpm postbuild",
+    "postbuild": "node scripts/copy-schemas.js",
+    "build:rollup_umd_dev": "rollup -c --environment BUILD:development",
+    "build:rollup_umd_prod": "rollup -c --environment BUILD:production",
+    "build:vite_umd_dev": "BUILD=development vite build",
+    "build:vite_umd_prod": "BUILD=production vite build",
+    "clean": "rimraf lib esm umd",
+    "fix": "pnpm lint:eslint --fix",
+    "lint": "run-s lint:*",
+    "lint:eslint": "eslint . --max-warnings 0",
+    "lint:package": "publint",
+    "start": "tsc --build --force --watch",
+    "test": "jest",
+    "test:ci": "jest --runInBand",
+    "test:e2e": "jest --config=jest.e2e.config.js"
+  },
+  "dependencies": {
+    "core-js": "^3.41.0",
+    "fs": "0.0.1-security",
+    "js-base64": "^3.7.7",
+    "openapi-fetch": "^0.13.5",
+    "openapi-typescript": "^7.6.1",
+    "openapi-typescript-helpers": "^0.0.15",
+    "undici": "^7.4.0"
+  },
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^26.0.3",
@@ -63,32 +87,10 @@
     "rollup-plugin-polyfill-node": "^0.13.0",
     "vite": "^5.4.15"
   },
-  "dependencies": {
-    "core-js": "^3.41.0",
-    "fs": "0.0.1-security",
-    "js-base64": "^3.7.7",
-    "openapi-fetch": "^0.13.5",
-    "openapi-typescript": "^7.6.1",
-    "openapi-typescript-helpers": "^0.0.15",
-    "undici": "^7.4.0"
+  "engines": {
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "exports": {
-    ".": {
-      "types": {
-        "import": "./esm/src/index.d.ts",
-        "require": "./lib/src/index.d.ts",
-        "default": "./lib/src/index.d.ts"
-      },
-      "node": {
-        "import": "./index.mjs",
-        "require": "./lib/src/index.js",
-        "default": "./lib/src/index.js"
-      },
-      "browser": "./lib/src/index.browser.js"
-    },
-    "./package.json": "./package.json"
   }
 }
