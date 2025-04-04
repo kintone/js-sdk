@@ -1,7 +1,7 @@
 import type { Agent, ProxyAgent } from "undici";
-import { type AuthOption } from "../client/KintoneClientOptions/types/Auth";
-import type { ClientCertAuth } from "../client/KintoneClientOptions/types/CertAuth";
-import type { Proxy } from "../client/KintoneClientOptions/types/Proxy";
+import { type AuthOption } from "../client/KintoneClientOptions/types/Auth.js";
+import type { ClientCertAuth } from "../client/KintoneClientOptions/types/CertAuth.js";
+import type { Proxy } from "../client/KintoneClientOptions/types/Proxy.js";
 
 export type PlatformDeps = {
   getRequestToken: () => Promise<string>;

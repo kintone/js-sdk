@@ -1,12 +1,12 @@
 import fs from "node:fs";
-import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
+import { UnsupportedPlatformError } from "./UnsupportedPlatformError.js";
 import os from "os";
-import { Agent, ProxyAgent } from "undici";
-import type { PlatformDeps } from ".";
-import type { ClientCertAuth } from "../client/KintoneClientOptions/types/CertAuth";
+import { Agent } from "undici";
+import type { PlatformDeps } from "./index.js";
+import type { ClientCertAuth } from "../client/KintoneClientOptions/types/CertAuth.js";
 import packageJson from "../../package.json";
-import type { Proxy } from "../client/KintoneClientOptions/types/Proxy";
-import { buildProxy as _buildProxy } from "../client/KintoneClientOptions/Proxy";
+import type { Proxy } from "../client/KintoneClientOptions/types/Proxy.js";
+import { buildProxy as _buildProxy } from "../client/KintoneClientOptions/Proxy.js";
 
 const getRequestToken = () => {
   throw new UnsupportedPlatformError("Node.js");

@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import resolve from "@rollup/plugin-node-resolve";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import terser from "@rollup/plugin-terser";
@@ -7,9 +7,10 @@ import license from "rollup-plugin-license";
 import globals from "rollup-plugin-node-globals";
 import builtins from "rollup-plugin-node-builtins";
 import nodePolyfills from "rollup-plugin-polyfill-node";
-import babel from "@rollup/plugin-babel";
+import { babel } from "@rollup/plugin-babel";
 import { ecmaVersionValidator } from "rollup-plugin-ecma-version-validator";
 import fs from "fs";
+import path from "node:path";
 
 const licenseText = fs.readFileSync("LICENSE", "utf-8");
 const licenseTemplate = `
@@ -32,12 +33,15 @@ export default defineConfig({
   build: {
     lib: {
       // extend: true,
-      entry: "./src/index.browser.ts",
+      entry: {
+        node: path.resolve(__dirname, "src/index.ts"),
+        browser: path.resolve(__dirname, "src/index.browser.ts"),
+      },
       name: "KintoneRest",
-      format: "umd",
+      formats: ["es", "cjs", "umd"],
       fileName: `KintoneRest`,
-      sourcemap: "inline",
     },
+    sourcemap: "inline",
     target: "es2022",
     outDir: "./umd",
     rollupOptions: {
@@ -60,7 +64,7 @@ export default defineConfig({
       extensions,
       include: ["src/**/*"],
     }),
-    resolve({
+    nodeResolve({
       browser: true,
       preferBuiltins: false,
     }),

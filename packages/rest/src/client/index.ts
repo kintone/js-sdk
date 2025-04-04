@@ -1,15 +1,15 @@
 import type { Client } from "openapi-fetch";
 import createNativeClient from "openapi-fetch";
-import type { paths } from "../schemas/schema";
+import type { paths } from "../schemas/schema.js";
 import type { MediaType } from "openapi-typescript-helpers";
 import {
   buildNativeClientOptions,
   type KintoneClientOptions,
-} from "./KintoneClientOptions";
-import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware";
-import { isSessionAuth } from "./KintoneClientOptions/Auth";
-import { getHttpMethodOverrideMiddleware } from "./Middlewares/HttpMethodOverrideMiddleware";
-import { getFormDataBodySerializer } from "./BodySerializer/FormDataBodySerializer";
+} from "./KintoneClientOptions/index.js";
+import { getCsrfMiddleware } from "./Middlewares/CsrfMiddleware.js";
+import { isSessionAuth } from "./KintoneClientOptions/Auth.js";
+import { getHttpMethodOverrideMiddleware } from "./Middlewares/HttpMethodOverrideMiddleware.js";
+import { getFormDataBodySerializer } from "./BodySerializer/FormDataBodySerializer.js";
 
 export const createClient = (
   clientOptions: KintoneClientOptions,
