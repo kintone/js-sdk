@@ -1,9 +1,9 @@
-import { injectPlatformDeps } from "./platform/";
-import browserDeps from "./platform/browser";
+import { injectPlatformDeps } from "./platform/index.js";
+import browserDeps from "./platform/browser.js";
 
 injectPlatformDeps(browserDeps);
 
-import { createClient } from "./client";
-import { iterator } from "./helpers/iterator";
+import { createClient } from "./client/index.js";
+import { iterator } from "./helpers/iterator.js";
 
 export { createClient, iterator };

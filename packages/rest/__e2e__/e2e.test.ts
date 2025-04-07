@@ -1,4 +1,6 @@
-import { createClient } from "../src";
+import { describe, it, expect } from "vitest";
+
+import { createClient } from "../src/index.js";
 
 const client = createClient({
   baseUrl: "http://127.0.0.1:4010/",

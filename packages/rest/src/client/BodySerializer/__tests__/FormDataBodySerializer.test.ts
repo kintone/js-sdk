@@ -1,4 +1,6 @@
-import { getFormDataBodySerializer } from "../FormDataBodySerializer";
+import { describe, it, expect } from "vitest";
+
+import { getFormDataBodySerializer } from "../FormDataBodySerializer.js";
 
 describe("getFormDataBodySerializer", () => {
   const serializer = getFormDataBodySerializer();
