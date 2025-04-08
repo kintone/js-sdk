@@ -33,7 +33,6 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       dts({
-        // tsconfigPath: "tsconfig.build.vite.json",
         outDir: [path.join(outDir, "es"), path.join(outDir, "cjs")],
         exclude: ["**/__tests__/*", "**/*.test.ts"],
       }),
