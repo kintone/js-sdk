@@ -4,7 +4,7 @@ import rootConfig from "../../eslint.config.mjs";
 export default [
   ...rootConfig,
   {
-    ignores: ["lib", "esm", "umd", "src/schemas"],
+    ignores: ["lib", "umd", "src/schemas"],
   },
   {
     rules: {

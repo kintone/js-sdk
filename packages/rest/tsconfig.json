@@ -11,11 +11,6 @@
     "lib": [
       "dom"
     ],
-    "typeRoots": [
-      "node_modules/@types",
-      "../../node_modules/@types",
-      "types"
-    ]
   },
   "files": [],
   "references": [
@@ -28,9 +23,9 @@
     // {
     //   "path": "./tsconfig.build.umd.json"
     // },
-     {
-       "path": "./tsconfig.build.tsup.json"
-     },
+//     {
+//       "path": "./tsconfig.build.tsup.json"
+//     },
     {
       "path": "./tsconfig.typecheck.json"
     }

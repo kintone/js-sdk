@@ -1,12 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node10",
-    "target": "es2018",
-    "lib": ["es2018", "dom"],
-    "noEmit": false,
-    "outDir": "./lib"
+    "target": "es2022",
+    "lib": ["es2022", "dom"]
   },
   "include": ["src/**/*", "package.json"],
   "exclude": ["src/**/__tests__/*", "src/**/*.test.ts"]

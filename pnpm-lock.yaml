@@ -519,6 +519,9 @@ importers:
       vite-plugin-dts:
         specifier: ^4.5.3
         version: 4.5.3(@types/node@18.19.86)(rollup@4.39.0)(typescript@5.8.2)(vite@5.4.16)
+      vite-plugin-static-copy:
+        specifier: ^2.3.0
+        version: 2.3.0(vite@5.4.16)
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@18.19.86)
@@ -4328,7 +4331,7 @@ packages:
       '@vitest/spy': 2.1.9
       estree-walker: 3.0.3
       magic-string: 0.30.14
-      vite: 5.4.16(@types/node@22.13.17)
+      vite: 5.4.16(@types/node@18.19.86)
     dev: true
 
   /@vitest/pretty-format@2.1.9:
@@ -10481,6 +10484,11 @@ packages:
       p-limit: 4.0.0
     dev: true
 
+  /p-map@7.0.3:
+    resolution: {integrity: sha512-VkndIv2fIB99swvQoA65bm+fsmt6UNdGeIB0oxBs+WhAhdh08QA04JXpI7rbB9r08/nkbysKoya9rtDERYOYMA==}
+    engines: {node: '>=18'}
+    dev: true
+
   /p-retry@6.2.0:
     resolution: {integrity: sha512-JA6nkq6hKyWLLasXQXUrO4z8BUZGUt/LjlJxx8Gb2+2ntodU/SS63YZ8b0LUTbQ8ZB9iwOfhEPhg4ykKnn2KsA==}
     engines: {node: '>=16.17'}
@@ -11443,6 +11451,10 @@ packages:
     dependencies:
       side-channel: 1.1.0
     dev: false
+
+  /quansync@0.2.10:
+    resolution: {integrity: sha512-t41VRkMYbkHyCYmOvx/6URnN80H7k4X0lLdBMGsz+maAwrJQYB1djpV6vHrQIBE0WBSGqhtEHrK9U3DWWH8v7A==}
+    dev: true
 
   /querystringify@2.2.0:
     resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
@@ -13518,6 +13530,20 @@ packages:
       - '@types/node'
       - rollup
       - supports-color
+    dev: true
+
+  /vite-plugin-static-copy@2.3.0(vite@5.4.16):
+    resolution: {integrity: sha512-LLKwhhHetGaCnWz4mas4qqjjguDka6/6b4+SeIohRroj8aCE7QTfiZECfPecslFQkWZ3HdQuq5kOPmWZjNYlKA==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      vite: ^5.0.0 || ^6.0.0
+    dependencies:
+      chokidar: 3.6.0
+      fast-glob: 3.3.2
+      fs-extra: 11.3.0
+      p-map: 7.0.3
+      picocolors: 1.1.1
+      vite: 5.4.16(@types/node@18.19.86)
     dev: true
 
   /vite@5.4.16(@types/node@18.19.86):
