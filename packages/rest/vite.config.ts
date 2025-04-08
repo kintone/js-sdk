@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         output: {
           exports: "named",
+          // ref. https://zenn.dev/nissy_dev/articles/how-to-make-tree-shakeable-libraries
           preserveModules: true,
           preserveModulesRoot: "src",
           entryFileNames: "[format]/[name].js",
