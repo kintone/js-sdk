@@ -4,6 +4,7 @@
     "composite": false,
     "module": "node16",
     "moduleResolution": "node16",
+    "target": "esnext",
     "outDir": "./lib",
     "rootDir": "./src",
     "resolveJsonModule": true,
@@ -12,22 +13,8 @@
       "dom"
     ],
   },
-  "files": [],
-  "references": [
-//    {
-//      "path": "./tsconfig.build.lib.json"
-//    },
-//    {
-//      "path": "./tsconfig.build.esm.json"
-//    },
-    // {
-    //   "path": "./tsconfig.build.umd.json"
-    // },
-//     {
-//       "path": "./tsconfig.build.tsup.json"
-//     },
-    {
-      "path": "./tsconfig.typecheck.json"
-    }
+  "include": [
+    "*.ts",
+    "**/*"
   ]
 }

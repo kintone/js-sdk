@@ -19,6 +19,7 @@ export default defineConfig({
     outDir: outDir,
     rollupOptions: {
       output: {
+        exports: "named",
         preserveModules: true,
         preserveModulesRoot: "src",
         entryFileNames: "[format]/[name].js",
@@ -28,8 +29,9 @@ export default defineConfig({
   },
   plugins: [
     dts({
-      tsconfigPath: "tsconfig.build.vite.json",
+      // tsconfigPath: "tsconfig.build.vite.json",
       outDir: [path.join(outDir, "es"), path.join(outDir, "cjs")],
+      exclude: ["**/__tests__/*", "**/*.test.ts"],
     }),
     viteStaticCopy({
       targets: [
