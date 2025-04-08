@@ -51,7 +51,7 @@
     "fix": "pnpm lint:eslint --fix",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --max-warnings 0",
-    "lint:package": "publint",
+    "lint:package": "publint --strict",
     "start": "pnpm run watch",
     "test": "vitest",
     "test:ci": "vitest",
