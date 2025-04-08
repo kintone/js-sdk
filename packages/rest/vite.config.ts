@@ -1,6 +1,3 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="vite/client" />
-
 import { defineConfig } from "vite";
 import path from "node:path";
 import dts from "vite-plugin-dts";
