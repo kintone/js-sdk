@@ -49,7 +49,6 @@
     "build:umd": "vite build --config vite.config.umd.ts",
     "clean": "rimraf lib esm umd",
     "fix": "pnpm lint:eslint --fix",
-    "license": "license-manager extract -w '@kintone/rest' --cwd ../../ --config ../../license-manager.config.js",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --max-warnings 0",
     "lint:package": "publint",
