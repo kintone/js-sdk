@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => {
         entry: path.resolve(__dirname, "src/index.browser.ts"),
         name: "KintoneRest",
         formats: ["umd"],
-        fileName: `KintoneRest`,
+        fileName: () => `KintoneRest${isProd ? ".min" : ""}.js`,
       },
       // https://vite.dev/guide/build#browser-compatibility
       target: "modules",
