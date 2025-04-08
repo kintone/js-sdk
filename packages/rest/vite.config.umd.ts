@@ -42,7 +42,6 @@ export default defineConfig(({ mode }) => {
       outDir: "umd",
       rollupOptions: {
         external: ["./src/index.ts", "./src/platform/node.ts"],
-        output: { banner: "test" },
       },
     },
     plugins: [
