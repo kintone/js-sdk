@@ -52,12 +52,12 @@
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --max-warnings 0",
     "lint:package": "publint",
-    "start": "tsc --build --force --watch",
+    "start": "pnpm run watch",
     "test": "vitest",
     "test:ci": "vitest",
     "test:e2e": "vitest --config=vitest.e2e.config.ts",
     "watch": "pnpm run \"/^watch:.*/\"",
-    "watch:lib": "pnpm run build:lib --watch",
+    "watch:lib": "pnpm run build:lib --mode development --watch",
     "watch:umd": "pnpm run build:umd --mode development --watch"
   },
   "dependencies": {
