@@ -1,34 +1,20 @@
 {
   "extends": "../tsconfig-base.json",
   "compilerOptions": {
+    "composite": false,
     "module": "node16",
     "moduleResolution": "node16",
+    "target": "esnext",
     "outDir": "./lib",
-    "rootDir": "./",
+    "rootDir": "./src",
     "resolveJsonModule": true,
     "noEmit": true,
     "lib": [
       "dom"
     ],
-    "typeRoots": [
-      "node_modules/@types",
-      "../../node_modules/@types",
-      "types"
-    ],
   },
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.build.lib.json"
-    },
-    {
-      "path": "./tsconfig.build.esm.json"
-    },
-    // {
-    //   "path": "./tsconfig.build.umd.json"
-    // },
-    {
-      "path": "./tsconfig.typecheck.json"
-    }
+  "include": [
+    "*.ts",
+    "**/*"
   ]
 }

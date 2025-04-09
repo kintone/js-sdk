@@ -10,7 +10,7 @@
     { "path": "./plugin-manifest-validator"},
     { "path": "./plugin-uploader"},
     { "path": "./profile-loader"},
-    { "path":  "./rest" },
+//    { "path":  "./rest" }, // using Vite to build
     { "path": "./rest-api-client" },
     { "path": "./webpack-plugin-kintone-plugin"},
   ]

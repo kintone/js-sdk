@@ -17,7 +17,8 @@
   },
   "scripts": {
     "prebuild": "pnpm -r --parallel run prebuild",
-    "build": "pnpm prebuild && tsc --build packages --force && pnpm postbuild",
+    "build": "pnpm prebuild && tsc --build packages --force && pnpm build:rest && pnpm postbuild",
+    "build:rest": "pnpm --filter @kintone/rest build",
     "postbuild": "pnpm -r --parallel run postbuild",
     "fix": "run-s fix:*",
     "fix:prettier": "pnpm lint:prettier --write",
