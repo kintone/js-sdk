@@ -39,6 +39,7 @@
   "files": [
     "CHANGELOG.md",
     "lib",
+    "umd",
     "!**/*.tsbuildinfo"
   ],
   "scripts": {
