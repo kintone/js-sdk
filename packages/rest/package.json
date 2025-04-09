@@ -38,7 +38,6 @@
   "types": "lib/es/index.d.ts",
   "files": [
     "CHANGELOG.md",
-    "esm",
     "lib",
     "!**/*.tsbuildinfo"
   ],
@@ -47,7 +46,7 @@
     "build": "pnpm run \"/^build:.*/\"",
     "build:lib": "vite build",
     "build:umd": "vite build --config vite.config.umd.ts",
-    "clean": "rimraf lib esm umd",
+    "clean": "rimraf lib umd",
     "fix": "pnpm lint:eslint --fix",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --max-warnings 0",
