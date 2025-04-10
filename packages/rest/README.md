@@ -22,6 +22,7 @@ See [Migration Guide](docs/migration-from-rest-api-client.md)
 ## Installation
 
 ### 1. Install with npm
+
 This library is distributed on `npm`.
 
 ```shell
@@ -91,7 +92,7 @@ If you use JavaScript without their benefits, the Client can be created in the s
 ## Parameters for `KintoneRest`
 
 | Name                 |                               Type                               |          Required           | Description                                                                                                                                                                                                                                                                                                                                                  |
-|----------------------|:----------------------------------------------------------------:| :-------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| -------------------- | :--------------------------------------------------------------: | :-------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | baseUrl              |                              String                              | Conditionally<br />Required | The base URL for your Kintone environment.<br />It must start with `https`. (e.g. https://example.kintone.com) <br />Required in Node.js environment. If you omit it in browser environment, `location.origin` will be used.<br />The protocol of baseUrl must be `https` except when hostname is `localhost`.                                               |
 | auth                 |                              Object                              | Conditionally<br />Required | The object for authentication. See [Authentication](#Authentication).                                                                                                                                                                                                                                                                                        |
 | basicAuth            |                              Object                              |                             | If your Kintone environment uses Basic authentication, please specify its username and password.                                                                                                                                                                                                                                                             |
@@ -102,7 +103,7 @@ If you use JavaScript without their benefits, the Client can be created in the s
 | certAuth.pfx         | [Buffer](https://nodejs.org/api/buffer.html#buffer_class_buffer) |                             | The [client certificate file](https://jp.cybozu.help/general/en/user/list_access/remote/webbrowser.html). Required, unless you specify `pfxFilePath`.                                                                                                                                                                                                        |
 | certAuth.pfxFilePath |                              String                              |                             | The path to [client certificate file](https://jp.cybozu.help/general/en/user/list_access/remote/webbrowser.html). Required, unless you specify `pfx`.                                                                                                                                                                                                        |
 | certAuth.password    |                              String                              |                             | The password of client certificate.                                                                                                                                                                                                                                                                                                                          |
-| proxy                |                              Object                              |                             | **This parameter is available only in Node.js environment.**<br />If you use a proxy, please specify its configuration.                                                                                                                                                |
+| proxy                |                              Object                              |                             | **This parameter is available only in Node.js environment.**<br />If you use a proxy, please specify its configuration.                                                                                                                                                                                                                                      |
 | proxy.protocol       |                              String                              |                             | The protocol of the proxy server. Default is `http`.                                                                                                                                                                                                                                                                                                         |
 | proxy.host           |                              String                              |                             | The host of the proxy server.                                                                                                                                                                                                                                                                                                                                |
 | proxy.port           |                              Number                              |                             | The port of the proxy server.                                                                                                                                                                                                                                                                                                                                |
@@ -124,7 +125,7 @@ The client supports three authentication methods:
 #### 1. Parameters for [Password authentication](https://kintone.dev/en/docs/common/authentication/#password-authentication)
 
 | Name     |  Type  | Required | Description                |
-|----------|:------:|:--------:|----------------------------|
+| -------- | :----: | :------: | -------------------------- |
 | type     | String |   Yes    | Please specify "password". |
 | username | String |   Yes    |                            |
 | password | String |   Yes    |                            |
@@ -132,22 +133,22 @@ The client supports three authentication methods:
 #### 2. Parameters for [API token authentication](https://kintone.dev/en/docs/common/authentication/#api-token-authentication)
 
 | Name     |        Type        | Required | Description                                             |
-| -------- |:------------------:| :------: |---------------------------------------------------------|
-| type     |      String        |   Yes    | Please specify “apiToken”.                                             |
+| -------- | :----------------: | :------: | ------------------------------------------------------- |
+| type     |       String       |   Yes    | Please specify “apiToken”.                              |
 | apiToken | String or String[] |   Yes    | You can pass multiple api tokens as an array of string. |
 
 #### 3. Parameters for [OAuth authentication](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/)
 
 | Name       |  Type  | Required | Description                                                                                                                                                                |
-|------------|:------:| :------: |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| type       | String |   Yes    | Please specify “oauth”.                                                                                                                                                                 |
+| ---------- | :----: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type       | String |   Yes    | Please specify “oauth”.                                                                                                                                                    |
 | oAuthToken | String |   Yes    | An OAuth access token you get through the [OAuth process flow](https://kintone.dev/en/docs/common/authentication/how-to-add-oauth-clients/#authorization-code-grant-flow). |
 
 #### 4. [Session authentication](https://kintone.dev/en/docs/common/authentication/#session-authentication)
 
-| Name       |  Type  | Required | Description               |
-|------------|:------:| :------: |---------------------------|
-| type       | String |   Yes    | Please specify "session". |
+| Name |  Type  | Required | Description               |
+| ---- | :----: | :------: | ------------------------- |
+| type | String |   Yes    | Please specify "session". |
 
 Supported in browser environment only.
 If you omit `auth` parameter, the client uses Session authentication.
@@ -156,8 +157,8 @@ If you omit `auth` parameter, the client uses Session authentication.
 
 ### Iterator helper
 
-You can use the iterator to retrieve the API execution results efficiently. 
-For detailed usage examples, please refer to [https://github.com/kintone/js-sdk/blob/main/packages/rest/src/__tests__/helpers/iterator.test.ts](https://github.com/kintone/js-sdk/blob/main/packages/rest/src/__tests__/helpers/iterator.test.ts).
+You can use the iterator to retrieve the API execution results efficiently.
+For detailed usage examples, please refer to [https://github.com/kintone/js-sdk/blob/main/packages/rest/src/**tests**/helpers/iterator.test.ts](https://github.com/kintone/js-sdk/blob/main/packages/rest/src/__tests__/helpers/iterator.test.ts).
 
 ## Contribution Guide
 
