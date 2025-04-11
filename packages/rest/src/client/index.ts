@@ -12,7 +12,7 @@ import { getHttpMethodOverrideMiddleware } from "./Middlewares/HttpMethodOverrid
 import { getFormDataBodySerializer } from "./BodySerializer/FormDataBodySerializer.js";
 
 export const createClient = (
-  clientOptions: KintoneClientOptions,
+  clientOptions: KintoneClientOptions = {},
 ): Client<paths> => {
   return _createClient<paths>(clientOptions);
 };
