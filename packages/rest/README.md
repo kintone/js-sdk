@@ -7,8 +7,7 @@
 **@kintone/rest** is a client library for accessing the kintone REST API from JavaScript or TypeScript applications.  
 It is automatically generated using [openapi-typescript](https://github.com/openapi-ts/openapi-typescript).
 
-> [!WARNING]
-> **Experimental**: This package is in early development and subject to change.
+> [!WARNING] **Experimental**: This package is in early development and subject to change.
 
 - [Migration](#migration)
 - [Installation](#installation)
