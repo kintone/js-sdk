@@ -230,6 +230,7 @@ In `@kintone/rest-api-client`, the `httpsAgent` parameter accepts an instance of
 In `@kintone/rest`, the `httpsAgent` parameter must be an instance of `undici.Agent`, because the client is built on the `undici` HTTP library instead of Node’s default HTTP/HTTPS modules.
 
 `@kintone/rest-api-client`:
+
 ```ts
 import https from "https";
 
