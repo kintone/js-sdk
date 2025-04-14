@@ -95,23 +95,17 @@ In `@kintone/rest`, the client is also created via the CDN. The `auth` parameter
 `@kintone/rest-api-client`:
 
 ```ts
-import { KintoneRestAPIClient } from "@kintone/rest-api-client";
-
 const client = new KintoneRestAPIClient();
 ```
 
 **`@kintone/rest`:**
 
 ```ts
-const createClient = OpenAPIFetch.default;
-const client = createClient({
-  baseUrl: "https://example.cybozu.com",
-});
+const client = KintoneRest.createClient();
 
 // or
 
-const client = createClient({
-  baseUrl: "https://example.cybozu.com",
+const client = KintoneRest.createClient({
   auth: {
     type: "session",
   },
