@@ -41,7 +41,19 @@ import { createClient } from "@kintone/rest";
 
 ### 2. Load UMD files from CDN (for browser environment)
 
-TODO
+> [!IMPORTANT]
+> To avoid cascading failures from the CDN, we recommend using the npm package and bundling it to your plugin/customization.
+
+You can also load Universal Module Definition (UMD) files directly from Cybozu CDN:
+
+- https://cybozu.dev/ja/kintone/sdk/library/cybozu-cdn/#kintone-rest
+
+Regarding restrictions and availability, please check Cybozu CDN Policy:
+
+- https://cybozu.dev/ja/policy/cybozu-cdn-policy/
+
+After loading the UMD file, you can use `KintoneRest` in your environment.
+In Kintone customization, please add the UMD file URL in the "JavaScript and CSS Customization" setting of your app.
 
 ## Browsers support
 
