@@ -17,17 +17,17 @@ export type KintoneClientOptions = ClientOptions & {
     | {
         proxy?: Proxy;
         httpsAgent?: never;
-        certAuth?: never;
+        clientCertAuth?: never;
       }
     | {
         proxy?: never;
         httpsAgent?: HttpsAgent;
-        certAuth?: never;
+        clientCertAuth?: never;
       }
     | {
         proxy?: never;
         httpsAgent?: never;
-        certAuth?: ClientCertAuth;
+        clientCertAuth?: ClientCertAuth;
       }
   );
 
@@ -58,8 +58,8 @@ export const buildNativeClientOptions = (
       ? buildHttpsAgent(_clientOptions.httpsAgent)
       : {};
   const certAuthOption =
-    _clientOptions.certAuth !== undefined
-      ? platformDeps.buildCertAuth(_clientOptions.certAuth)
+    _clientOptions.clientCertAuth !== undefined
+      ? platformDeps.buildCertAuth(_clientOptions.clientCertAuth)
       : {};
 
   return {
