@@ -1,20 +1,31 @@
-# Migration from @kintone/rest-api-client
+# Migrating from `@kintone/rest-api-client`
 
-This topic provides instructions for migrating from `@kintone/rest-api-client` to `@kintone/rest`.
+This guide explains how to migrate from `@kintone/rest-api-client` to `@kintone/rest`.
 
-- [Why New API Client?](#Why New API Client?)
-- [Installation](#Installation)
-- [Updating Codes](#Updating Codes)
+- [Why a New API Client?](#why-a-new-api-client)
+- [Installation](#installation)
+- [Updating Code](#updating-code)
+  - [Client](#client)
+  - [Session Authentication in Browser](#session-authentication-in-browser)
+  - [Timeout](#timeout)
+  - [User Agent](#user-agent)
+  - [Proxy](#proxy)
+  - [HTTPS Agent](#https-agent)
+  - [Client Certificate Authentication](#client-certificate-authentication)
+  - [Calling the API](#calling-the-api)
+  - [Guest Space](#guest-space)
+  - [Pre-Live App Settings](#pre-live-app-settings)
+  - [Unsupported Features](#unsupported-features)
 
-## Why New API Client?
+---
 
-`@kintone/rest-api-client` was developed to provide a simple and easy-to-use API client for the kintone REST API.
-However, we could not keep all methods updated along with the latest API specification because `@kintone/rest-api-client` has been developed manually.
+## Why a New API Client?
 
-On the other hand, API methods in `@kintone/rest` are automatically generated using [`openapi-ts/openapi-typescript`](https://github.com/openapi-ts/openapi-typescript).
-So we can provide the latest API methods to you more immediately.
+`@kintone/rest-api-client` was originally developed to offer a simple and user-friendly client for interacting with the kintone REST API. However, because the client was maintained manually, it became difficult to keep all API methods fully aligned with the latest kintone API specifications.
 
-This migration allows you to always use the latest REST API with `js-sdk`.
+In contrast, `@kintone/rest` automatically generates API methods using [`openapi-ts/openapi-typescript`](https://github.com/openapi-ts/openapi-typescript). This ensures that developers can always use the latest API methods via the `js-sdk`.
+
+---
 
 ## Installation
 
@@ -22,11 +33,13 @@ This migration allows you to always use the latest REST API with `js-sdk`.
 npm install @kintone/rest
 ```
 
-## Updating Codes
+## Updating Code
 
 ### Client
 
-In `@kintone/rest-api-client`, the client was created as follows:
+`@kintone/rest` introduces a new method for client creation using `createClient`, and it requires an explicit `auth.type` parameter (e.g., `"password"`).
+
+`@kintone/rest-api-client`:
 
 ```ts
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
@@ -41,7 +54,7 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, the client is also set the `auth` argument, but the `auth.type` is required.
+**`@kintone/rest`:**
 
 ```ts
 import { createClient } from "@kintone/rest";
@@ -56,7 +69,7 @@ const client = createClient({
 });
 ```
 
-If you are using JavaScript, the sample code is as follows:
+If you're using JavaScript, the following snippet shows how to create the client:
 
 ```js
 import { createClient } from "@kintone/rest";
@@ -73,29 +86,26 @@ const client = createClient({
 
 #### Session Authentication in Browser
 
-As well as `@kintone/rest-api-client`, session authentication is supported in browser environment only.
+Both clients support session authentication in browser environments only.
 
-In `@kintone/rest-api-client`, you have imported the client from CDN, and the client was created without `auth` property.
+In `@kintone/rest-api-client`, the client is created via the CDN without the `auth` parameter.
+
+In `@kintone/rest`, the client is also created via the CDN. The `auth` parameter may be omitted or explicitly set to `{ type: "session" }`.
+
+`@kintone/rest-api-client`:
 
 ```ts
-import { KintoneRestAPIClient } from "@kintone/rest-api-client";
-
 const client = new KintoneRestAPIClient();
 ```
 
-`@kintone/rest` also provides from CDN,
-and you can create a client without the `auth` property, or with `session auth` property.
+**`@kintone/rest`:**
 
 ```ts
-const createClient = OpenAPIFetch.default;
-const client = createClient({
-  baseUrl: "https://example.cybozu.com",
-});
+const client = KintoneRest.createClient();
 
 // or
 
-const client = createClient({
-  baseUrl: "https://example.cybozu.com",
+const client = KintoneRest.createClient({
   auth: {
     type: "session",
   },
@@ -104,7 +114,9 @@ const client = createClient({
 
 #### Timeout
 
-In `@kintone/rest-api-client`, `socketTimeout` option was provided to set the timeout.
+Both clients support the `socketTimeout` parameter.
+
+`@kintone/rest-api-client`:
 
 ```ts
 const client = new KintoneRestAPIClient({
@@ -117,7 +129,7 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, you can also write the code similarly as follows:
+**`@kintone/rest`:**
 
 ```ts
 import { createClient } from "@kintone/rest";
@@ -134,7 +146,9 @@ const client = createClient({
 
 #### User Agent
 
-In `@kintone/rest-api-client`, an option was provided to set the User Agent.
+Both clients support the `userAgent` parameter.
+
+`@kintone/rest-api-client`:
 
 ```ts
 const client = new KintoneRestAPIClient({
@@ -147,11 +161,11 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, you can also write the code similarly as follows:
+**`@kintone/rest`:**
 
 ```ts
 import { createClient } from "@kintone/rest";
-const client = createClient]({
+const client = createClient({
   baseUrl: "https://example.cybozu.com",
   auth: {
     type: "password",
@@ -164,7 +178,9 @@ const client = createClient]({
 
 #### Proxy
 
-In `@kintone/rest-api-client`, an option was provided to set the `proxy`.
+Both clients support the `proxy` parameter with `protocol`, `host`, and `port`.
+
+`@kintone/rest-api-client`:
 
 ```ts
 const client = new KintoneRestAPIClient({
@@ -181,7 +197,7 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, you can also write the code similarly as follows:
+**`@kintone/rest`:**
 
 ```ts
 import { createClient } from "@kintone/rest";
@@ -201,9 +217,13 @@ const client = createClient({
 });
 ```
 
-#### Https.Agent
+#### HTTPS Agent
 
-In `@kintone/rest-api-client`, an option was provided to set `httpsAgent`.
+In `@kintone/rest-api-client`, the `httpsAgent` parameter accepts an instance of Node.js's `https.Agent`, which is part of Node.js's built-in `https` module.
+
+In `@kintone/rest`, the `httpsAgent` parameter must be an instance of `undici.Agent`, because the client is built on the `undici` HTTP library instead of Node’s default HTTP/HTTPS modules.
+
+`@kintone/rest-api-client`:
 
 ```ts
 import https from "https";
@@ -221,7 +241,7 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, instead of `https`, you use `undici` to set `httpsAgent`.
+**`@kintone/rest`:**
 
 ```ts
 import { Agent } from "undici";
@@ -242,7 +262,9 @@ const client = createClient({
 
 #### Client Certificate Authentication
 
-In `@kintone/rest-api-client`, an option was provided to set the `clientCertAuth`.
+Both clients support the `clientCertAuth` parameter with `pfxFilePath` and `password`.
+
+`@kintone/rest-api-client`:
 
 ```ts
 const client = new KintoneRestAPIClient({
@@ -258,7 +280,7 @@ const client = new KintoneRestAPIClient({
 });
 ```
 
-With `@kintone/rest`, you can use the same parameters.
+**`@kintone/rest`:**
 
 ```ts
 const client = createClient({
@@ -276,17 +298,21 @@ const client = createClient({
 ```
 
 > [!NOTE]
-> You can select only one of these property: `proxy`, `httpsAgent`, `clientCertAuth`.
+> Only one of the following parameters can be specified: `proxy`, `httpsAgent`, or `clientCertAuth`.
 
-### Call API
+### Calling the API
 
-In `@kintone/rest-api-client`, methods were provided as part of the `client` instance.
+In `@kintone/rest-api-client`, API methods are grouped by service and accessed as methods on the client instance, such as `client.record.getRecords()`.
+
+In contrast, `@kintone/rest`, generated using `openapi-ts/openapi-typescript`, uses a request-based approach where you specify the HTTP method and path directly.
+
+`@kintone/rest-api-client`:
 
 ```ts
 const getRecordsResponse = await client.record.getRecords({ app: "1" });
 ```
 
-On the other hand, `@kintone/rest` generated by `openapi-ts/openapi-typescript` provides REST API paths as functions.
+**`@kintone/rest`:**
 
 ```ts
 const getRecordsResponse = await client.request("get", "/k/v1/records.json", {
@@ -296,17 +322,24 @@ const getRecordsResponse = await client.request("get", "/k/v1/records.json", {
 });
 ```
 
-For details on API paths and requests, see [specification](https://kintone.dev/en/).
+For details on API paths and requests, see the [specifications](https://kintone.dev/en/).
 
 #### Guest Space
 
-In `@kintone/rest-api-client`, a client for a guest space was created.
+In `@kintone/rest-api-client`, the guest space ID is passed as a method parameter.
+
+In `@kintone/rest`, the guest space ID must be specified in the API path and provided via the `params.path` object.
+
+`@kintone/rest-api-client`:
 
 ```ts
-const getRecordsResponse = await client.record.getRecords({ app: "1" }));
+const getRecordsResponse = await client.record.getRecords({
+  app: "1",
+  guestSpaceId: 1,
+});
 ```
 
-With `@kintone/rest`, specify an endpoint for a guest space in `path`.
+**`@kintone/rest`:**
 
 ```ts
 const getRecordsResponse = await client.request(
@@ -321,15 +354,19 @@ const getRecordsResponse = await client.request(
 );
 ```
 
-#### Pre-live App Settings
+#### Pre-Live App Settings
 
-In `@kintone/rest-api-client`, operations on pre-deployment apps were performed by specifying `preview: true` in the method arguments.
+In `@kintone/rest-api-client`, the `preview: true` parameter is passed to target pre-deployment apps.
+
+In `@kintone/rest`, you must explicitly use the preview endpoint in the API path.
+
+`@kintone/rest-api-client`:
 
 ```ts
-const getAppAcl = await client.app.getAppAcl({ app: "1", preview: true }));
+const getAppAcl = await client.app.getAppAcl({ app: "1", preview: true });
 ```
 
-With `@kintone/rest`, specify an endpoint for preview in `path`.
+**`@kintone/rest`:**
 
 ```ts
 const getAppAclResponse = await client.request(
@@ -345,8 +382,9 @@ const getAppAclResponse = await client.request(
 
 ### Unsupported Features
 
-In `@kintone/rest-api-client`, the following features were provided, but they are not available in `@kintone/rest`.
+The following feature is unavailable in `@kintone/rest`.
 
 #### Feature Flags
 
-`@kintone/rest-api-client` provided [featureFlags](https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client#feature-flags), but `@kintone/rest` does not offer this feature.
+`@kintone/rest-api-client` supports feature flags via the [featureFlags](https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client#feature-flags) parameter.
+This is not supported in `@kintone/rest`.
