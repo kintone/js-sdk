@@ -319,7 +319,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Gets a list of the usage status of Apps.
+        /** @description Gets the list of the usage status of Apps.
          *      */
         get: operations["getAppsStatisticsForGuestSpace"];
         put?: never;
@@ -1513,7 +1513,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Gets a list of the usage status of Apps.
+        /** @description Gets the list of the usage status of Apps.
          *      */
         get: operations["getAppsStatistics"];
         put?: never;
