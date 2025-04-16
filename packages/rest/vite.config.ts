@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
         formats: ["es", "cjs"],
         fileName: "[format]/[name]",
       },
+      ssr: true,
       sourcemap: isProd ? false : "inline",
       outDir: outDir,
       rollupOptions: {
