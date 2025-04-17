@@ -3049,7 +3049,7 @@ packages:
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.40.0)
       estree-walker: 2.0.2
-      magic-string: 0.30.14
+      magic-string: 0.30.17
       rollup: 4.40.0
     dev: true
 
@@ -3107,7 +3107,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.7
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 4.40.0
@@ -4190,7 +4190,7 @@ packages:
     dependencies:
       '@vitest/spy': 2.1.9
       estree-walker: 3.0.3
-      magic-string: 0.30.14
+      magic-string: 0.30.17
       vite: 5.4.16(@types/node@22.13.17)
     dev: true
 
@@ -4211,7 +4211,7 @@ packages:
     resolution: {integrity: sha512-oBO82rEjsxLNJincVhLhaxxZdEtV0EFHMK5Kmx5sJ6H9L183dHECjiefOAdnqpIgT5eZwT04PoggUnW88vOBNQ==}
     dependencies:
       '@vitest/pretty-format': 2.1.9
-      magic-string: 0.30.14
+      magic-string: 0.30.17
       pathe: 1.1.2
     dev: true
 
@@ -8412,7 +8412,7 @@ packages:
   /is-reference@1.2.1:
     resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.7
     dev: true
 
   /is-regex@1.1.4:
@@ -13072,7 +13072,7 @@ packages:
       '@types/node': 22.13.17
       esbuild: 0.21.5
       postcss: 8.5.3
-      rollup: 4.40.0
+      rollup: 4.39.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
