@@ -38,6 +38,10 @@ const config = createConfig({
     if (dep.name === "level-hooks") {
       return "MIT";
     }
+    // https://www.npmjs.com/package/@braidai/lang?activeTab=code
+    if (dep.name === "@braidai/lang") {
+      return "MIT";
+    }
     return undefined;
   },
   packageManager: "pnpm",

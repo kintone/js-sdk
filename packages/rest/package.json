@@ -24,12 +24,10 @@
   "type": "module",
   "exports": {
     ".": {
-      "node": {
-        "import": "./lib/es/index.js",
-        "require": "./lib/cjs/index.js",
-        "default": "./lib/es/index.js"
-      },
-      "browser": "./lib/es/index.browser.js"
+      "browser": "./lib/es/index.browser.js",
+      "import": "./lib/es/index.js",
+      "require": "./lib/cjs/index.js",
+      "default": "./lib/es/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -49,7 +47,8 @@
     "build:umd": "vite build --config vite.config.umd.ts",
     "clean": "rimraf lib umd",
     "fix": "pnpm lint:eslint --fix",
-    "lint": "run-s lint:*",
+    "lint": "pnpm \"/^lint:.*/\"",
+    "lint:attw": "attw --pack .",
     "lint:eslint": "eslint . --max-warnings 0",
     "lint:package": "publint --strict",
     "start": "pnpm run watch",
@@ -70,6 +69,7 @@
     "undici": "^7.4.0"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.4",
     "vite": "^5.4.15",
     "vite-plugin-dts": "^4.5.3",
     "vite-plugin-license": "^0.0.1",
