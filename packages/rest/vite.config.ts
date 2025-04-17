@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import path from "node:path";
 import dts from "vite-plugin-dts";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import { cjsInterop } from "vite-plugin-cjs-interop";
 
 const outDir = "lib";
 
@@ -33,6 +34,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [
+      cjsInterop({ dependencies: ["*"] }),
       dts({
         outDir: [path.join(outDir, "es"), path.join(outDir, "cjs")],
         exclude: ["**/__tests__/*", "**/*.test.ts"],
