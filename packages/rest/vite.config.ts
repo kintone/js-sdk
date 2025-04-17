@@ -18,10 +18,13 @@ export default defineConfig(({ mode }) => {
         formats: ["es", "cjs"],
         fileName: "[format]/[name]",
       },
+      ssr: true,
       sourcemap: isProd ? false : "inline",
       outDir: outDir,
       rollupOptions: {
         output: {
+          // ref. https://github.com/vitejs/vite/discussions/16201
+          interop: "auto",
           exports: "named",
           // ref. https://zenn.dev/nissy_dev/articles/how-to-make-tree-shakeable-libraries
           preserveModules: true,
