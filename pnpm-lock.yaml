@@ -474,9 +474,6 @@ importers:
       vite:
         specifier: ^5.4.15
         version: 5.4.16(@types/node@18.19.86)
-      vite-plugin-cjs-interop:
-        specifier: ^2.2.0
-        version: 2.2.0(vite@5.4.16)
       vite-plugin-dts:
         specifier: ^4.5.3
         version: 4.5.3(@types/node@18.19.86)(rollup@4.40.0)(typescript@5.8.2)(vite@5.4.16)
@@ -2923,74 +2920,6 @@ packages:
       '@octokit/openapi-types': 23.0.1
     dev: true
 
-  /@oxc-parser/binding-darwin-arm64@0.36.0:
-    resolution: {integrity: sha512-i49m1L++ZAeAjNob5qho2ir3nflhIzgQl9hsFvmMBzG+we4OKseGlUAd/nEXJ2XnNvu1TEi/EocsE9XgWM5xlg==}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@oxc-parser/binding-darwin-x64@0.36.0:
-    resolution: {integrity: sha512-+UYnDyItrh76gp7JNiTwCYyipwD1f1GkXlVkFt7L4y8GI2nMkTsvS1kUrYVsZTi33GHq4d7janrEN9HUTHqfGg==}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@oxc-parser/binding-linux-arm64-gnu@0.36.0:
-    resolution: {integrity: sha512-ZZXcl9FD77EbAENTpYXCYr/zZS1Ab+qomiKIhXVRC1PXIP8qqcYpFl2NtrJHKy0ScIqNHYjzB2F9pj84howN3w==}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@oxc-parser/binding-linux-arm64-musl@0.36.0:
-    resolution: {integrity: sha512-2PqTw3uiazv4vp8pGSNWDAp8DSHAxFPh3rIub5colRlu4lLGZJNXm9fgFIp0fS5Z6BFYyhnYzWNZm8bc0q2tYA==}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@oxc-parser/binding-linux-x64-gnu@0.36.0:
-    resolution: {integrity: sha512-kmRgQj/48VaBf4R9P0ccZdpgepz4F2k7nJgg5L+oPenrJhnZeD9eUzImBlN27XcpBZhDxsvj7jOTp5xSVZ7E/Q==}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@oxc-parser/binding-linux-x64-musl@0.36.0:
-    resolution: {integrity: sha512-hxpR0DdK2Zm6Gt3m/bqVLw4nZJdzkr5SsPc6sv0rPtsABx8Q6zxAf300+9mWxUm/Bf4hGHoWsCWFgWN0n87dBA==}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@oxc-parser/binding-win32-arm64-msvc@0.36.0:
-    resolution: {integrity: sha512-IsarNWJhsbtARGa/7L2X2FfJt3mdQVH/CASWv99SowVaO62kLZ1lYHtU2Ps0F8dzfCwQUsWo5XnDtmfhd5nAkw==}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@oxc-parser/binding-win32-x64-msvc@0.36.0:
-    resolution: {integrity: sha512-NSlWyqWtmWA78nPWRWWzc4W6A8zY0YdX2yjbGg5PnEMiTXrW7NdVTyXdffX59ERDxtC3BT6E78e/sKS9u983pQ==}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@oxc-project/types@0.36.0:
-    resolution: {integrity: sha512-VAv7ANBGE6glvOX5PEhGcca8hqBeGGDXt3xfPApZg7GhkrvbI8YCf01HojlpdIewixN2rnNpfO6cFgHS6Ixe5A==}
-    dev: true
-
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -4262,7 +4191,7 @@ packages:
       '@vitest/spy': 2.1.9
       estree-walker: 3.0.3
       magic-string: 0.30.17
-      vite: 5.4.16(@types/node@18.19.86)
+      vite: 5.4.16(@types/node@22.13.17)
     dev: true
 
   /@vitest/pretty-format@2.1.9:
@@ -10103,21 +10032,6 @@ packages:
       object-keys: 1.1.1
       safe-push-apply: 1.0.0
 
-  /oxc-parser@0.36.0:
-    resolution: {integrity: sha512-dcjn+8WvWVbIO0Bb0qAJcfq8JwdkbPflYyFBg3rcDb83awlXAQLnhZuheGUxuWEh18oQFAcxkgdUdObS6DvA7A==}
-    dependencies:
-      '@oxc-project/types': 0.36.0
-    optionalDependencies:
-      '@oxc-parser/binding-darwin-arm64': 0.36.0
-      '@oxc-parser/binding-darwin-x64': 0.36.0
-      '@oxc-parser/binding-linux-arm64-gnu': 0.36.0
-      '@oxc-parser/binding-linux-arm64-musl': 0.36.0
-      '@oxc-parser/binding-linux-x64-gnu': 0.36.0
-      '@oxc-parser/binding-linux-x64-musl': 0.36.0
-      '@oxc-parser/binding-win32-arm64-msvc': 0.36.0
-      '@oxc-parser/binding-win32-x64-msvc': 0.36.0
-    dev: true
-
   /p-defer@1.0.0:
     resolution: {integrity: sha512-wB3wfAxZpk2AzOfUMJNL+d36xothRSyj8EXOa4f6GMqYDN9BJaaSISbsk+wS9abmnebVw95C2Kb5t85UmpCxuw==}
     engines: {node: '>=4'}
@@ -13031,18 +12945,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: true
-
-  /vite-plugin-cjs-interop@2.2.0(vite@5.4.16):
-    resolution: {integrity: sha512-6r7AZMpz2kstspRiK78+4xPvK9GyiGau1uT4GOgxrdzmFFgwLTj/sF9tZiB1VyN24nHGO96wicsRoROEfPGOQg==}
-    peerDependencies:
-      vite: 4 || 5 || 6
-    dependencies:
-      estree-walker: 3.0.3
-      magic-string: 0.30.17
-      minimatch: 10.0.1
-      oxc-parser: 0.36.0
-      vite: 5.4.16(@types/node@18.19.86)
     dev: true
 
   /vite-plugin-dts@4.5.3(@types/node@18.19.86)(rollup@4.40.0)(typescript@5.8.2)(vite@5.4.16):
