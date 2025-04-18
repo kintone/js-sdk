@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.1.0...@kintone/rest@0.1.1) (2025-04-17)
+
+
+### Bug Fixes
+
+* **rest:** fix exports field of package.json ([#3279](https://github.com/kintone/js-sdk/issues/3279)) ([0fdb770](https://github.com/kintone/js-sdk/commit/0fdb770fc782764bf4bb20c90d09b9c53be07fa9))
+* **rest:** update client ([#3273](https://github.com/kintone/js-sdk/issues/3273)) ([cbe47a1](https://github.com/kintone/js-sdk/commit/cbe47a1785b4759c4c7c037aecb8bc41fa0640ed))
+
 ## [0.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.0.1...@kintone/rest@0.1.0) (2025-04-17)
 
 
