@@ -339,6 +339,8 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Runs multiple API requests sequentially to multiple Apps.
+         *      */
         post: operations["postBulkRequestForGuestSpace"];
         delete?: never;
         options?: never;
@@ -909,8 +911,14 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Retrieves details of 1 record from an App by specifying the App ID and Record ID.
+         *      */
         get: operations["getRecordForGuestSpace"];
+        /** @description Updates details of 1 record in an App by specifying its record number, or a different unique key.
+         *      */
         put: operations["putRecordForGuestSpace"];
+        /** @description Adds 1 record to an App.
+         *      */
         post: operations["postRecordForGuestSpace"];
         delete?: never;
         options?: never;
@@ -948,6 +956,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the Assignees of a Record status, that was set with Process Management.
+         *      */
         put: operations["putRecordAssigneesForGuestSpace"];
         post?: never;
         delete?: never;
@@ -965,7 +975,11 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Add a comment to a record in an app.
+         *      */
         post: operations["postRecordCommentForGuestSpace"];
+        /** @description Delete a comment in a record in an app.
+         *      */
         delete: operations["deleteRecordCommentForGuestSpace"];
         options?: never;
         head?: never;
@@ -979,6 +993,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Retrieves multiple comments from a record in an app.
+         *      */
         get: operations["getRecordCommentsForGuestSpace"];
         put?: never;
         post?: never;
@@ -996,6 +1012,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the Status of a record of an App, that was set with Process Management.
+         *      */
         put: operations["putRecordStatusForGuestSpace"];
         post?: never;
         delete?: never;
@@ -1011,9 +1029,18 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Retrieves details of multiple records from an App by specifying the App ID and a query string.
+         *      */
         get: operations["getRecordsForGuestSpace"];
+        /** @description Updates details of multiple records in an App, by specifying their record numbers, or their unique keys.
+         *     If the upsert parameter is set to true, it also adds new records to the App.
+         *      */
         put: operations["putRecordsForGuestSpace"];
+        /** @description Adds multiple records to an App.
+         *      */
         post: operations["postRecordsForGuestSpace"];
+        /** @description Deletes multiple records in an app.
+         *      */
         delete: operations["deleteRecordsForGuestSpace"];
         options?: never;
         head?: never;
@@ -1045,9 +1072,15 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Retrieves multiple records from an App by specifying the cursor ID.
+         *      */
         get: operations["getRecordsCursorForGuestSpace"];
         put?: never;
+        /** @description Adds a cursor so that large amount of records can be obtained from an App.
+         *      */
         post: operations["postRecordsCursorForGuestSpace"];
+        /** @description Deletes a cursor by specifying the cursor ID.
+         *      */
         delete: operations["deleteRecordsCursorForGuestSpace"];
         options?: never;
         head?: never;
@@ -1062,6 +1095,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the Statuses of Multiple records of an App, that was set with Process Management.
+         *      */
         put: operations["putRecordsStatusForGuestSpace"];
         post?: never;
         delete?: never;
@@ -1533,6 +1568,8 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Runs multiple API requests sequentially to multiple Apps.
+         *      */
         post: operations["postBulkRequest"];
         delete?: never;
         options?: never;
@@ -2103,8 +2140,14 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Retrieves details of 1 record from an App by specifying the App ID and Record ID.
+         *      */
         get: operations["getRecord"];
+        /** @description Updates details of 1 record in an App by specifying its record number, or a different unique key.
+         *      */
         put: operations["putRecord"];
+        /** @description Adds 1 record to an App.
+         *      */
         post: operations["postRecord"];
         delete?: never;
         options?: never;
@@ -2142,6 +2185,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the Assignees of a Record status, that was set with Process Management.
+         *      */
         put: operations["putRecordAssignees"];
         post?: never;
         delete?: never;
@@ -2159,7 +2204,11 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Add a comment to a record in an app.
+         *      */
         post: operations["postRecordComment"];
+        /** @description Delete a comment in a record in an app.
+         *      */
         delete: operations["deleteRecordComment"];
         options?: never;
         head?: never;
@@ -2173,6 +2222,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Retrieves multiple comments from a record in an app.
+         *      */
         get: operations["getRecordComments"];
         put?: never;
         post?: never;
@@ -2190,6 +2241,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the Status of a record of an App, that was set with Process Management.
+         *      */
         put: operations["putRecordStatus"];
         post?: never;
         delete?: never;
@@ -2205,9 +2258,18 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Retrieves details of multiple records from an App by specifying the App ID and a query string.
+         *      */
         get: operations["getRecords"];
+        /** @description Updates details of multiple records in an App, by specifying their record numbers, or their unique keys.
+         *     If the upsert parameter is set to true, it also adds new records to the App.
+         *      */
         put: operations["putRecords"];
+        /** @description Adds multiple records to an App.
+         *      */
         post: operations["postRecords"];
+        /** @description Deletes multiple records in an app.
+         *      */
         delete: operations["deleteRecords"];
         options?: never;
         head?: never;
@@ -2239,9 +2301,15 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Retrieves multiple records from an App by specifying the cursor ID.
+         *      */
         get: operations["getRecordsCursor"];
         put?: never;
+        /** @description Adds a cursor so that large amount of records can be obtained from an App.
+         *      */
         post: operations["postRecordsCursor"];
+        /** @description Deletes a cursor by specifying the cursor ID.
+         *      */
         delete: operations["deleteRecordsCursor"];
         options?: never;
         head?: never;
@@ -2256,6 +2324,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the Statuses of Multiple records of an App, that was set with Process Management.
+         *      */
         put: operations["putRecordsStatus"];
         post?: never;
         delete?: never;
@@ -7131,11 +7201,9 @@ export interface components {
              *      */
             creator?: {
                 /** @description The log in name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 code?: string;
                 /** @description The display name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 name?: string;
             };
@@ -7154,11 +7222,9 @@ export interface components {
              *      */
             modifier?: {
                 /** @description The log in name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 code?: string;
                 /** @description The display name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 name?: string;
             };
@@ -7198,11 +7264,9 @@ export interface components {
              *      */
             creator?: {
                 /** @description The log in name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 code?: string;
                 /** @description The display name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 name?: string;
             };
@@ -7241,11 +7305,9 @@ export interface components {
              *      */
             modifier?: {
                 /** @description The log in name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 code?: string;
                 /** @description The display name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 name?: string;
             };
@@ -7392,31 +7454,76 @@ export interface components {
             value?: string;
         };
         BulkRequestPostRecordAssigneesPutForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The App ID.
+             *
+             */
             app: number;
+            /** @description The user code(s) (log in names) of the Assignee(s). If empty, no users will be assigned. The maximum number of Assignees is 100.
+             *      */
             assignees: string[];
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The record ID.
+             *
+             */
             id: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision number of the record before updating the Assignees.
+             *     If the specified revision is not the latest revision, the request will result in an error.
+             *     The revision will not be checked if this parameter is ignored, or -1 is specified.
+             *
+             */
             revision?: number;
         };
         BulkRequestPostRecordAssigneesPutOutputForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision number of the record after updating the Assignees.
+             *
+             */
             revision?: number;
         };
         BulkRequestPostRecordBean: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record IDs of the updated/created Records.
+             *
+             */
             id?: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision numbers of the Records.
+             *
+             */
             revision?: number;
         };
         BulkRequestPostRecordForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record ID of the record to be updated. Required, if `updateKey` will not be specified.
+             *
+             *     If `upsert` is set to `true`:
+             *     - If the record exists, the record will be updated
+             *     - If the record does not exist, it will be added as a new record. The specified ID will be ignored, and a new ID will be set to the new record.
+             *
+             */
             id?: number;
+            /** @description Field codes and values are specified in this object.
+             *     If ignored, the record will not be updated.
+             *      */
             record?: {
                 [key: string]: components["schemas"]["BulkRequestPostCalcSimpleValue"] | components["schemas"]["BulkRequestPostCategorySimpleValue"] | components["schemas"]["BulkRequestPostDateSimpleValue"] | components["schemas"]["BulkRequestPostDatetimeSimpleValue"] | components["schemas"]["BulkRequestPostDecimalSimpleValue"] | components["schemas"]["BulkRequestPostEditorSimpleValue"] | components["schemas"]["BulkRequestPostFileSimpleValue"] | components["schemas"]["BulkRequestPostGroupSimpleValue"] | components["schemas"]["BulkRequestPostLinkSimpleValue"] | components["schemas"]["BulkRequestPostModifiedAtSimpleValue"] | components["schemas"]["BulkRequestPostModifierSimpleValue"] | components["schemas"]["BulkRequestPostMultipleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostMultipleSelectSimpleValue"] | components["schemas"]["BulkRequestPostRecordIdSimpleValue"] | components["schemas"]["BulkRequestPostReferenceTableSimpleValue"] | components["schemas"]["BulkRequestPostSimpleTableValue"] | components["schemas"]["BulkRequestPostSingleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostSingleSelectSimpleValue"] | components["schemas"]["BulkRequestPostStatusSimpleValue"] | components["schemas"]["BulkRequestPostTimeSimpleValue"] | components["schemas"]["BulkRequestPostUserSelectSimpleValue"] | components["schemas"]["BulkRequestPostOrganizationSelectSimpleValue"] | components["schemas"]["BulkRequestPostGroupSelectSimpleValue"] | components["schemas"]["BulkRequestPostRevisionSimpleValue"] | components["schemas"]["BulkRequestPostRawRecordIdSimpleValue"];
             };
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The expected revision number.
+             *     If the value does not match, an error will occur and all records will not be updated.
+             *     If the value is not specified or is -1, the revision number will not be checked.
+             *
+             */
             revision?: number;
             updateKey?: components["schemas"]["BulkRequestPostUpdateKey"];
         };
@@ -7426,27 +7533,61 @@ export interface components {
             value?: string;
         };
         BulkRequestPostRecordPostForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The App ID.
+             *
+             */
             app: number;
+            /** @description Field codes and values are specified in this object.
+             *     If ignored, the record will be added with default field values.
+             *     If field codes that don't exist are specified, these will be ignored.
+             *      */
             record: {
                 [key: string]: components["schemas"]["BulkRequestPostCalcSimpleValue"] | components["schemas"]["BulkRequestPostCategorySimpleValue"] | components["schemas"]["BulkRequestPostDateSimpleValue"] | components["schemas"]["BulkRequestPostDatetimeSimpleValue"] | components["schemas"]["BulkRequestPostDecimalSimpleValue"] | components["schemas"]["BulkRequestPostEditorSimpleValue"] | components["schemas"]["BulkRequestPostFileSimpleValue"] | components["schemas"]["BulkRequestPostGroupSimpleValue"] | components["schemas"]["BulkRequestPostLinkSimpleValue"] | components["schemas"]["BulkRequestPostModifiedAtSimpleValue"] | components["schemas"]["BulkRequestPostModifierSimpleValue"] | components["schemas"]["BulkRequestPostMultipleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostMultipleSelectSimpleValue"] | components["schemas"]["BulkRequestPostRecordIdSimpleValue"] | components["schemas"]["BulkRequestPostReferenceTableSimpleValue"] | components["schemas"]["BulkRequestPostSimpleTableValue"] | components["schemas"]["BulkRequestPostSingleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostSingleSelectSimpleValue"] | components["schemas"]["BulkRequestPostStatusSimpleValue"] | components["schemas"]["BulkRequestPostTimeSimpleValue"] | components["schemas"]["BulkRequestPostUserSelectSimpleValue"] | components["schemas"]["BulkRequestPostOrganizationSelectSimpleValue"] | components["schemas"]["BulkRequestPostGroupSelectSimpleValue"] | components["schemas"]["BulkRequestPostRevisionSimpleValue"] | components["schemas"]["BulkRequestPostRawRecordIdSimpleValue"];
             };
         };
         BulkRequestPostRecordPostOutputForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record ID of the created Record.
+             *
+             */
             id?: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision number of the Record.
+             *
+             */
             revision?: number;
         };
         BulkRequestPostRecordPutForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The App ID.
+             *
+             */
             app: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record ID of the record to be updated.
+             *     Required, if updateKey will not be specified.
+             *
+             */
             id?: number;
+            /** @description Field codes and values are specified in this object.
+             *     If ignored, the record will not be updated.
+             *      */
             record?: {
                 [key: string]: components["schemas"]["BulkRequestPostCalcSimpleValue"] | components["schemas"]["BulkRequestPostCategorySimpleValue"] | components["schemas"]["BulkRequestPostDateSimpleValue"] | components["schemas"]["BulkRequestPostDatetimeSimpleValue"] | components["schemas"]["BulkRequestPostDecimalSimpleValue"] | components["schemas"]["BulkRequestPostEditorSimpleValue"] | components["schemas"]["BulkRequestPostFileSimpleValue"] | components["schemas"]["BulkRequestPostGroupSimpleValue"] | components["schemas"]["BulkRequestPostLinkSimpleValue"] | components["schemas"]["BulkRequestPostModifiedAtSimpleValue"] | components["schemas"]["BulkRequestPostModifierSimpleValue"] | components["schemas"]["BulkRequestPostMultipleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostMultipleSelectSimpleValue"] | components["schemas"]["BulkRequestPostRecordIdSimpleValue"] | components["schemas"]["BulkRequestPostReferenceTableSimpleValue"] | components["schemas"]["BulkRequestPostSimpleTableValue"] | components["schemas"]["BulkRequestPostSingleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostSingleSelectSimpleValue"] | components["schemas"]["BulkRequestPostStatusSimpleValue"] | components["schemas"]["BulkRequestPostTimeSimpleValue"] | components["schemas"]["BulkRequestPostUserSelectSimpleValue"] | components["schemas"]["BulkRequestPostOrganizationSelectSimpleValue"] | components["schemas"]["BulkRequestPostGroupSelectSimpleValue"] | components["schemas"]["BulkRequestPostRevisionSimpleValue"] | components["schemas"]["BulkRequestPostRawRecordIdSimpleValue"];
             };
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The expected revision number.
+             *     If the value does not match, an error will occur and the record will not be updated.
+             *     If the value is not specified or is -1, the revision number will not be checked.
+             *
+             */
             revision?: number;
             updateKey?: components["schemas"]["BulkRequestPostUpdateKey"];
         };
@@ -7455,67 +7596,167 @@ export interface components {
             revision?: number;
         };
         BulkRequestPostRecordStatusPutForm: {
+            /** @description The Action name of the action to run.
+             *     If the localization feature has been used to apply multiple translations of the Action name,
+             *     specify the name of the Action in the language settings of the user that will run the API.
+             *     API Tokens follow the language settings set in the User & System Administration settings.
+             *      */
             action: string;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The App ID.
+             *
+             */
             app: number;
+            /** @description The next Assignee. Specify the Assignee's log in name.
+             *     Required, if the "Assignee List" of the current status is set to "User chooses one assignee from the list to take action",
+             *     and a selectable assignee exists.
+             *      */
             assignee?: string;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The record ID.
+             *
+             */
             id: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision number of the record before updating the status.
+             *     If the specified revision is not the latest revision, the request will result in an error.
+             *     The revision will not be checked if this parameter is ignored, or -1 is specified.
+             *
+             */
             revision?: number;
         };
         BulkRequestPostRecordStatusPutOutputForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision number of the record after updating the status.
+             *     The revision number will increase by 2, as two operations are preformed - running the action, and updating the status.
+             *
+             */
             revision?: number;
         };
         BulkRequestPostRecordsDeleteForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The app ID.
+             *
+             */
             app: number;
+            /** @description Array of record IDs that will be deleted.
+             *     Up to 100 records can be specified.
+             *      */
             ids: number[];
+            /** @description The Expected revision number.
+             *     The first id number will correspond to the first revision number in the array, the second id to the second revision number, and so on.
+             *     If the revision number does not match, an error will occur and no records will be deleted.
+             *     If the revision number is left blank or is -1, the revision number will not be checked for the corresponding record ID.
+             *      */
             revisions?: number[];
         };
         BulkRequestPostRecordsDeleteOutputForm: unknown;
         BulkRequestPostRecordsPostForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The App ID.
+             *
+             */
             app: number;
+            /** @description Holds an array of record objects, that contains field codes and their values.
+             *
+             *     Fields that are not included in the objects are added with their default value.
+             *     Objects containing field codes that do not exist are ignored.
+             *      */
             records: {
                 [key: string]: components["schemas"]["BulkRequestPostCalcSimpleValue"] | components["schemas"]["BulkRequestPostCategorySimpleValue"] | components["schemas"]["BulkRequestPostDateSimpleValue"] | components["schemas"]["BulkRequestPostDatetimeSimpleValue"] | components["schemas"]["BulkRequestPostDecimalSimpleValue"] | components["schemas"]["BulkRequestPostEditorSimpleValue"] | components["schemas"]["BulkRequestPostFileSimpleValue"] | components["schemas"]["BulkRequestPostGroupSimpleValue"] | components["schemas"]["BulkRequestPostLinkSimpleValue"] | components["schemas"]["BulkRequestPostModifiedAtSimpleValue"] | components["schemas"]["BulkRequestPostModifierSimpleValue"] | components["schemas"]["BulkRequestPostMultipleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostMultipleSelectSimpleValue"] | components["schemas"]["BulkRequestPostRecordIdSimpleValue"] | components["schemas"]["BulkRequestPostReferenceTableSimpleValue"] | components["schemas"]["BulkRequestPostSimpleTableValue"] | components["schemas"]["BulkRequestPostSingleLineTextSimpleValue"] | components["schemas"]["BulkRequestPostSingleSelectSimpleValue"] | components["schemas"]["BulkRequestPostStatusSimpleValue"] | components["schemas"]["BulkRequestPostTimeSimpleValue"] | components["schemas"]["BulkRequestPostUserSelectSimpleValue"] | components["schemas"]["BulkRequestPostOrganizationSelectSimpleValue"] | components["schemas"]["BulkRequestPostGroupSelectSimpleValue"] | components["schemas"]["BulkRequestPostRevisionSimpleValue"] | components["schemas"]["BulkRequestPostRawRecordIdSimpleValue"];
             }[];
         };
         BulkRequestPostRecordsPostOutputForm: {
+            /** @description The Record IDs of the created records.
+             *      */
             ids?: number[];
+            /** @description The revision numbers of the records.
+             *      */
             revisions?: number[];
         };
         BulkRequestPostRecordsPutForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The App ID.
+             *
+             */
             app: number;
+            /** @description Holds an array of objects that include id/updateKey, revision and record objects.
+             *      */
             records: components["schemas"]["BulkRequestPostRecordForm"][];
-            /** Format: boolean */
+            /**
+             * Format: boolean
+             * @description A mode where adding and updating records can be processed at the same time.
+             *
+             */
             upsert?: boolean;
         };
         BulkRequestPostRecordsPutOutputForm: {
             records?: components["schemas"]["BulkRequestPostRecordBean"][] | components["schemas"]["BulkRequestPostUpsertRecordBean"][];
         };
         BulkRequestPostRecordsStatusPutForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The App ID.
+             *
+             */
             app: number;
+            /** @description An array including information of the record to be updated. Up to 100 records can be specified.
+             *     Specifying more than 100 records will result in an error.
+             *      */
             records: components["schemas"]["BulkRequestPostRecordsStatusPutFormRecord"][];
         };
         BulkRequestPostRecordsStatusPutFormRecord: {
+            /** @description The Action name of the action to run.
+             *     If the localization feature has been used to apply multiple translations of the Action name,
+             *     specify the name of the Action in the language settings of the user that will run the API.
+             *     API Tokens follow the language settings set in the User & System Administration settings.
+             *      */
             action: string;
+            /** @description The next Assignee. Specify the Assignee's log in name.
+             *     Required, if the "Assignee List" of the current status is set to "User chooses one assignee from the list to take action",
+             *     and a selectable assignee exists.
+             *      */
             assignee?: string;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The record ID.
+             *
+             */
             id: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision number of the record before updating the status.
+             *     If the specified revision is not the latest revision, the request will result in an error.
+             *     The revision will not be checked if this parameter is ignored, or -1 is specified.
+             *
+             */
             revision?: number;
         };
         BulkRequestPostRecordsStatusPutOutputForm: {
+            /** @description An array including information of the updated records.
+             *      */
             records?: components["schemas"]["BulkRequestPostRecordsStatusPutOutputFormRecord"][];
         };
         BulkRequestPostRecordsStatusPutOutputFormRecord: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record ID.
+             *
+             */
             id?: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision number of the record after updating the status.
+             *     The revision number will increase by 2, as two operations are preformed - running the action, and updating the status.
+             *
+             */
             revision?: number;
         };
         BulkRequestPostReferenceTableSimpleValue: {
@@ -7524,7 +7765,11 @@ export interface components {
             value?: string;
         };
         BulkRequestPostRequestForm: {
+            /** @description The path of the API for the request.
+             *      */
             api: string;
+            /** @description The API method for the request.
+             *      */
             method: string;
             payload: components["schemas"]["BulkRequestPostRecordPostForm"] | components["schemas"]["BulkRequestPostRecordPutForm"] | components["schemas"]["BulkRequestPostRecordStatusPutForm"] | components["schemas"]["BulkRequestPostRecordAssigneesPutForm"] | components["schemas"]["BulkRequestPostRecordsDeleteForm"] | components["schemas"]["BulkRequestPostRecordsPostForm"] | components["schemas"]["BulkRequestPostRecordsPutForm"] | components["schemas"]["BulkRequestPostRecordsStatusPutForm"];
         };
@@ -7582,15 +7827,31 @@ export interface components {
             value?: string;
         };
         BulkRequestPostUpdateKey: {
+            /** @description The field code of the unique key.
+             *      */
             field: string;
+            /** @description The value of the unique key.
+             *      */
             value: string;
         };
         BulkRequestPostUpsertRecordBean: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record IDs of the updated/created Records.
+             *
+             */
             id?: number;
-            /** @enum {string} */
+            /**
+             * @description The revision numbers of the Records.
+             *
+             * @enum {string}
+             */
             operation?: "INSERT" | "UPDATE";
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision numbers of the Records.
+             *
+             */
             revision?: number;
         };
         BulkRequestPostUserEntitySimpleValue: {
@@ -20026,31 +20287,64 @@ export interface components {
             filterCond?: string;
         };
         RecordCommentPostMentionForm: {
+            /** @description The code the user, group or organization that will be mentioned.
+             *     The maximum number of mentions is 10.
+             *     The mentioned users will be placed in front of the comment text when the API succeeds.
+             *      */
             code: string;
-            /** @enum {string} */
+            /**
+             * @description The type of the mentioned target.
+             *     - USER: User
+             *     - GROUP: Group
+             *     - ORGANIZATION: Department
+             *
+             * @enum {string}
+             */
             type: "USER" | "ORGANIZATION" | "GROUP";
         };
         RecordCommentsGetCommentOutputForm: {
-            /** Format: date-time */
+            /**
+             * Format: date-time
+             * @description The created date and time of the comment.
+             *
+             */
             createdAt?: string;
+            /** @description An object including information of the comment creator.
+             *      */
             creator?: {
                 /** @description The log in name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 code?: string;
                 /** @description The display name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 name?: string;
             };
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Comment ID.
+             *
+             */
             id?: number;
+            /** @description An array including information of mentioned users.
+             *      */
             mentions?: components["schemas"]["RecordCommentsGetMentionOutputForm"][];
+            /** @description The comment including the line feed codes.
+             *     If a user is mentioned within a comment, the "@" symbol will be omitted from the String.
+             *      */
             text?: string;
         };
         RecordCommentsGetMentionOutputForm: {
+            /** @description The code of the mentioned user, group or organization.
+             *      */
             code?: string;
-            /** @enum {string} */
+            /**
+             * @description The type of the mention.
+             *     - USER: User
+             *     - GROUP: Group
+             *     - ORGANIZATION: Department
+             *
+             * @enum {string}
+             */
             type?: "USER" | "ORGANIZATION" | "GROUP";
         };
         RecordGetCalcSimpleValue: {
@@ -20546,7 +20840,11 @@ export interface components {
             value?: string;
         };
         RecordPutUpdateKey: {
+            /** @description The field code of the unique key.
+             *      */
             field: string;
+            /** @description The value of the unique key.
+             *      */
             value: string;
         };
         RecordPutUserEntitySimpleValue: {
@@ -21201,18 +21499,43 @@ export interface components {
             value?: string;
         };
         RecordsPutRecordBean: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record IDs of the updated/created Records.
+             *
+             */
             id?: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision numbers of the Records.
+             *
+             */
             revision?: number;
         };
         RecordsPutRecordForm: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record ID of the record to be updated. Required, if `updateKey` will not be specified.
+             *
+             *     If `upsert` is set to `true`:
+             *     - If the record exists, the record will be updated
+             *     - If the record does not exist, it will be added as a new record. The specified ID will be ignored, and a new ID will be set to the new record.
+             *
+             */
             id?: number;
+            /** @description Field codes and values are specified in this object.
+             *     If ignored, the record will not be updated.
+             *      */
             record?: {
                 [key: string]: components["schemas"]["RecordsPutCalcSimpleValue"] | components["schemas"]["RecordsPutCategorySimpleValue"] | components["schemas"]["RecordsPutDateSimpleValue"] | components["schemas"]["RecordsPutDatetimeSimpleValue"] | components["schemas"]["RecordsPutDecimalSimpleValue"] | components["schemas"]["RecordsPutEditorSimpleValue"] | components["schemas"]["RecordsPutFileSimpleValue"] | components["schemas"]["RecordsPutGroupSimpleValue"] | components["schemas"]["RecordsPutLinkSimpleValue"] | components["schemas"]["RecordsPutModifiedAtSimpleValue"] | components["schemas"]["RecordsPutModifierSimpleValue"] | components["schemas"]["RecordsPutMultipleLineTextSimpleValue"] | components["schemas"]["RecordsPutMultipleSelectSimpleValue"] | components["schemas"]["RecordsPutRecordIdSimpleValue"] | components["schemas"]["RecordsPutReferenceTableSimpleValue"] | components["schemas"]["RecordsPutSimpleTableValue"] | components["schemas"]["RecordsPutSingleLineTextSimpleValue"] | components["schemas"]["RecordsPutSingleSelectSimpleValue"] | components["schemas"]["RecordsPutStatusSimpleValue"] | components["schemas"]["RecordsPutTimeSimpleValue"] | components["schemas"]["RecordsPutUserSelectSimpleValue"] | components["schemas"]["RecordsPutOrganizationSelectSimpleValue"] | components["schemas"]["RecordsPutGroupSelectSimpleValue"] | components["schemas"]["RecordsPutRevisionSimpleValue"] | components["schemas"]["RecordsPutRawRecordIdSimpleValue"];
             };
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The expected revision number.
+             *     If the value does not match, an error will occur and all records will not be updated.
+             *     If the value is not specified or is -1, the revision number will not be checked.
+             *
+             */
             revision?: number;
             updateKey?: components["schemas"]["RecordsPutUpdateKey"];
         };
@@ -21280,15 +21603,31 @@ export interface components {
             value?: string;
         };
         RecordsPutUpdateKey: {
+            /** @description The field code of the unique key.
+             *      */
             field: string;
+            /** @description The value of the unique key.
+             *      */
             value: string;
         };
         RecordsPutUpsertRecordBean: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record IDs of the updated/created Records.
+             *
+             */
             id?: number;
-            /** @enum {string} */
+            /**
+             * @description The revision numbers of the Records.
+             *
+             * @enum {string}
+             */
             operation?: "INSERT" | "UPDATE";
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision numbers of the Records.
+             *
+             */
             revision?: number;
         };
         RecordsPutUserEntitySimpleValue: {
@@ -21301,17 +21640,45 @@ export interface components {
             value: components["schemas"]["RecordsPutUserEntitySimpleValue"][];
         };
         RecordsStatusPutRecordsStatusPutFormRecord: {
+            /** @description The Action name of the action to run.
+             *     If the localization feature has been used to apply multiple translations of the Action name,
+             *     specify the name of the Action in the language settings of the user that will run the API.
+             *     API Tokens follow the language settings set in the User & System Administration settings.
+             *      */
             action: string;
+            /** @description The next Assignee. Specify the Assignee's log in name.
+             *     Required, if the "Assignee List" of the current status is set to "User chooses one assignee from the list to take action",
+             *     and a selectable assignee exists.
+             *      */
             assignee?: string;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The record ID.
+             *
+             */
             id: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision number of the record before updating the status.
+             *     If the specified revision is not the latest revision, the request will result in an error.
+             *     The revision will not be checked if this parameter is ignored, or -1 is specified.
+             *
+             */
             revision?: number;
         };
         RecordsStatusPutRecordsStatusPutOutputFormRecord: {
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Record ID.
+             *
+             */
             id?: number;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The revision number of the record after updating the status.
+             *     The revision number will increase by 2, as two operations are preformed - running the action, and updating the status.
+             *
+             */
             revision?: number;
         };
         SpaceGetAttachedApp: {
@@ -21335,11 +21702,9 @@ export interface components {
              *      */
             creator?: {
                 /** @description The log in name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 code?: string;
                 /** @description The display name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 name?: string;
             };
@@ -21358,11 +21723,9 @@ export interface components {
              *      */
             modifier?: {
                 /** @description The log in name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 code?: string;
                 /** @description The display name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 name?: string;
             };
@@ -21413,8 +21776,19 @@ export interface components {
             width?: string;
         };
         SpaceThreadCommentPostMentionForm: {
+            /** @description The code the user, group or organization that will be mentioned.
+             *     The maximum number of mentions is 10.
+             *     The mentioned users will be placed in front of the comment text when the API succeeds.
+             *      */
             code: string;
-            /** @enum {string} */
+            /**
+             * @description The type of the mentioned target.
+             *     - USER: User
+             *     - GROUP: Group
+             *     - ORGANIZATION: Department
+             *
+             * @enum {string}
+             */
             type: "USER" | "ORGANIZATION" | "GROUP";
         };
         SpacesStatisticsGetSpaceForm: {
@@ -21424,11 +21798,9 @@ export interface components {
             createdAt?: string;
             creator?: {
                 /** @description The log in name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 code?: string;
                 /** @description The display name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 name?: string;
             };
@@ -21442,11 +21814,9 @@ export interface components {
             modifiedAt?: string;
             modifier?: {
                 /** @description The log in name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 code?: string;
                 /** @description The display name of the creator.
-                 *     An empty string is returned for inactive users and deleted users.
                  *      */
                 name?: string;
             };
@@ -21514,11 +21884,9 @@ export interface operations {
                          *      */
                         creator?: {
                             /** @description The log in name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             code?: string;
                             /** @description The display name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             name?: string;
                         };
@@ -21537,11 +21905,9 @@ export interface operations {
                          *      */
                         modifier?: {
                             /** @description The log in name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             code?: string;
                             /** @description The display name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             name?: string;
                         };
@@ -22487,6 +22853,8 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description An array of requests. The maximum number of requests is 20.
+                     *      */
                     requests: components["schemas"]["BulkRequestPostRequestForm"][];
                 };
             };
@@ -22499,6 +22867,10 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The response from each API request. The order of the response is the same as the order of the requests.
+                         *     If an API request fails, an error will be included in the index of the failed API.
+                         *     In this case, all other indexes will be responded with {} (empty objects).
+                         *      */
                         results?: (components["schemas"]["BulkRequestPostRecordPostOutputForm"] | components["schemas"]["BulkRequestPostRecordPutOutputForm"] | components["schemas"]["BulkRequestPostRecordStatusPutOutputForm"] | components["schemas"]["BulkRequestPostRecordAssigneesPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsDeleteOutputForm"] | components["schemas"]["BulkRequestPostRecordsPostOutputForm"] | components["schemas"]["BulkRequestPostRecordsPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsStatusPutOutputForm"])[];
                     };
                 };
@@ -24926,7 +25298,11 @@ export interface operations {
     getRecordForGuestSpace: {
         parameters: {
             query: {
+                /** @description The App ID.
+                 *      */
                 app: number;
+                /** @description The Record ID.
+                 *      */
                 id: number;
             };
             header?: never;
@@ -24945,6 +25321,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The type and value of all fields within the record are included in the object.
+                         *      */
                         record?: {
                             [key: string]: components["schemas"]["RecordGetCalcSimpleValue"] | components["schemas"]["RecordGetCategorySimpleValue"] | components["schemas"]["RecordGetDateSimpleValue"] | components["schemas"]["RecordGetDatetimeSimpleValue"] | components["schemas"]["RecordGetDecimalSimpleValue"] | components["schemas"]["RecordGetEditorSimpleValue"] | components["schemas"]["RecordGetFileSimpleValue"] | components["schemas"]["RecordGetGroupSimpleValue"] | components["schemas"]["RecordGetLinkSimpleValue"] | components["schemas"]["RecordGetModifiedAtSimpleValue"] | components["schemas"]["RecordGetModifierSimpleValue"] | components["schemas"]["RecordGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordGetMultipleSelectSimpleValue"] | components["schemas"]["RecordGetRecordIdSimpleValue"] | components["schemas"]["RecordGetReferenceTableSimpleValue"] | components["schemas"]["RecordGetSimpleTableValue"] | components["schemas"]["RecordGetSingleLineTextSimpleValue"] | components["schemas"]["RecordGetSingleSelectSimpleValue"] | components["schemas"]["RecordGetStatusSimpleValue"] | components["schemas"]["RecordGetTimeSimpleValue"] | components["schemas"]["RecordGetUserSelectSimpleValue"] | components["schemas"]["RecordGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordGetGroupSelectSimpleValue"] | components["schemas"]["RecordGetRevisionSimpleValue"] | components["schemas"]["RecordGetRawRecordIdSimpleValue"];
                         };
@@ -24966,14 +25344,32 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Record ID of the record to be updated.
+                     *     Required, if updateKey will not be specified.
+                     *
+                     */
                     id?: number;
+                    /** @description Field codes and values are specified in this object.
+                     *     If ignored, the record will not be updated.
+                     *      */
                     record?: {
                         [key: string]: components["schemas"]["RecordPutCalcSimpleValue"] | components["schemas"]["RecordPutCategorySimpleValue"] | components["schemas"]["RecordPutDateSimpleValue"] | components["schemas"]["RecordPutDatetimeSimpleValue"] | components["schemas"]["RecordPutDecimalSimpleValue"] | components["schemas"]["RecordPutEditorSimpleValue"] | components["schemas"]["RecordPutFileSimpleValue"] | components["schemas"]["RecordPutGroupSimpleValue"] | components["schemas"]["RecordPutLinkSimpleValue"] | components["schemas"]["RecordPutModifiedAtSimpleValue"] | components["schemas"]["RecordPutModifierSimpleValue"] | components["schemas"]["RecordPutMultipleLineTextSimpleValue"] | components["schemas"]["RecordPutMultipleSelectSimpleValue"] | components["schemas"]["RecordPutRecordIdSimpleValue"] | components["schemas"]["RecordPutReferenceTableSimpleValue"] | components["schemas"]["RecordPutSimpleTableValue"] | components["schemas"]["RecordPutSingleLineTextSimpleValue"] | components["schemas"]["RecordPutSingleSelectSimpleValue"] | components["schemas"]["RecordPutStatusSimpleValue"] | components["schemas"]["RecordPutTimeSimpleValue"] | components["schemas"]["RecordPutUserSelectSimpleValue"] | components["schemas"]["RecordPutOrganizationSelectSimpleValue"] | components["schemas"]["RecordPutGroupSelectSimpleValue"] | components["schemas"]["RecordPutRevisionSimpleValue"] | components["schemas"]["RecordPutRawRecordIdSimpleValue"];
                     };
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The expected revision number.
+                     *     If the value does not match, an error will occur and the record will not be updated.
+                     *     If the value is not specified or is -1, the revision number will not be checked.
+                     *
+                     */
                     revision?: number;
                     updateKey?: components["schemas"]["RecordPutUpdateKey"];
                 };
@@ -25007,8 +25403,16 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description Field codes and values are specified in this object.
+                     *     If ignored, the record will be added with default field values.
+                     *     If field codes that don't exist are specified, these will be ignored.
+                     *      */
                     record: {
                         [key: string]: components["schemas"]["RecordPostCalcSimpleValue"] | components["schemas"]["RecordPostCategorySimpleValue"] | components["schemas"]["RecordPostDateSimpleValue"] | components["schemas"]["RecordPostDatetimeSimpleValue"] | components["schemas"]["RecordPostDecimalSimpleValue"] | components["schemas"]["RecordPostEditorSimpleValue"] | components["schemas"]["RecordPostFileSimpleValue"] | components["schemas"]["RecordPostGroupSimpleValue"] | components["schemas"]["RecordPostLinkSimpleValue"] | components["schemas"]["RecordPostModifiedAtSimpleValue"] | components["schemas"]["RecordPostModifierSimpleValue"] | components["schemas"]["RecordPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordPostMultipleSelectSimpleValue"] | components["schemas"]["RecordPostRecordIdSimpleValue"] | components["schemas"]["RecordPostReferenceTableSimpleValue"] | components["schemas"]["RecordPostSimpleTableValue"] | components["schemas"]["RecordPostSingleLineTextSimpleValue"] | components["schemas"]["RecordPostSingleSelectSimpleValue"] | components["schemas"]["RecordPostStatusSimpleValue"] | components["schemas"]["RecordPostTimeSimpleValue"] | components["schemas"]["RecordPostUserSelectSimpleValue"] | components["schemas"]["RecordPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordPostGroupSelectSimpleValue"] | components["schemas"]["RecordPostRevisionSimpleValue"] | components["schemas"]["RecordPostRawRecordIdSimpleValue"];
                     };
@@ -25023,9 +25427,17 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Record ID of the created Record.
+                         *
+                         */
                         id?: number;
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The revision number of the Record.
+                         *
+                         */
                         revision?: number;
                     };
                 };
@@ -25146,12 +25558,28 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description The user code(s) (log in names) of the Assignee(s). If empty, no users will be assigned. The maximum number of Assignees is 100.
+                     *      */
                     assignees: string[];
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The record ID.
+                     *
+                     */
                     id: number;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The revision number of the record before updating the Assignees.
+                     *     If the specified revision is not the latest revision, the request will result in an error.
+                     *     The revision will not be checked if this parameter is ignored, or -1 is specified.
+                     *
+                     */
                     revision?: number;
                 };
             };
@@ -25164,7 +25592,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The revision number of the record after updating the Assignees.
+                         *
+                         */
                         revision?: number;
                     };
                 };
@@ -25184,13 +25616,27 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description An object including comment details.
+                     *      */
                     comment: {
+                        /** @description An array including information to mention other users.
+                         *      */
                         mentions?: components["schemas"]["RecordCommentPostMentionForm"][];
+                        /** @description The comment text. The maximum characters of the comment is 65535.
+                         *      */
                         text: string;
                     };
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Record ID.
+                     *
+                     */
                     record: number;
                 };
             };
@@ -25203,7 +25649,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Comment ID.
+                         *
+                         */
                         id?: number;
                     };
                 };
@@ -25213,8 +25663,14 @@ export interface operations {
     deleteRecordCommentForGuestSpace: {
         parameters: {
             query: {
+                /** @description The App ID.
+                 *      */
                 app: number;
+                /** @description The Record ID.
+                 *      */
                 record: number;
+                /** @description The Comment ID.
+                 *      */
                 comment: number;
             };
             header?: never;
@@ -25240,10 +25696,23 @@ export interface operations {
     getRecordCommentsForGuestSpace: {
         parameters: {
             query: {
+                /** @description The App ID.
+                 *      */
                 app: number;
+                /** @description This skips the retrieval of the first number of comments.
+                 *     "offset": 30 skips the first 30 comments, and retrieves from the 31st comment. There is no maximum for this value.
+                 *      */
                 offset?: number;
+                /** @description The Record ID.
+                 *      */
                 record: number;
+                /** @description The number of records to retrieve.
+                 *     "limit": 5 will retrieve the first 5 comments. The default and maximum is 10 comments.
+                 *      */
                 limit?: number;
+                /** @description The sort order of the Comment ID. Specifying "asc" will sort the comments in ascending order, and "desc" will sort the comments in descending order.
+                 *     If ignored, "desc" will be set.
+                 *      */
                 order?: "ASC" | "DESC";
             };
             header?: never;
@@ -25262,8 +25731,18 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description An array of comments. An empty array is returned if no conditions are met.
+                         *      */
                         comments?: components["schemas"]["RecordCommentsGetCommentOutputForm"][];
+                        /** @description Information of newer comments:
+                         *     - true: Newer comments exist.
+                         *     - false: Newer comments do not exist. (i.e. the last comment)
+                         *      */
                         newer?: boolean;
+                        /** @description Information of older comments:
+                         *     - true: Older comments exist.
+                         *     - false: Older comments do not exist (i.e. the first comment)
+                         *      */
                         older?: boolean;
                     };
                 };
@@ -25283,13 +25762,36 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The Action name of the action to run.
+                     *     If the localization feature has been used to apply multiple translations of the Action name,
+                     *     specify the name of the Action in the language settings of the user that will run the API.
+                     *     API Tokens follow the language settings set in the User & System Administration settings.
+                     *      */
                     action: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description The next Assignee. Specify the Assignee's log in name.
+                     *     Required, if the "Assignee List" of the current status is set to "User chooses one assignee from the list to take action",
+                     *     and a selectable assignee exists.
+                     *      */
                     assignee?: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The record ID.
+                     *
+                     */
                     id: number;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The revision number of the record before updating the status.
+                     *     If the specified revision is not the latest revision, the request will result in an error.
+                     *     The revision will not be checked if this parameter is ignored, or -1 is specified.
+                     *
+                     */
                     revision?: number;
                 };
             };
@@ -25302,7 +25804,12 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The revision number of the record after updating the status.
+                         *     The revision number will increase by 2, as two operations are preformed - running the action, and updating the status.
+                         *
+                         */
                         revision?: number;
                     };
                 };
@@ -25312,9 +25819,20 @@ export interface operations {
     getRecordsForGuestSpace: {
         parameters: {
             query: {
+                /** @description The App ID.
+                 *      */
                 app: number;
+                /** @description The query string that specifies what records to include in the response.
+                 *     Ignoring this parameter will return all accessible records from the App.
+                 *      */
                 query?: string;
+                /** @description The field codes to be included in the response.
+                 *     Ignoring this parameter will return all accessible fields that exist in the App.
+                 *      */
                 fields?: string[];
+                /** @description If set to true, the total count of records that match the query conditions will be included in the response.
+                 *     If ignored, null is returned for the totalCount value.
+                 *      */
                 totalCount?: boolean;
             };
             header?: never;
@@ -25333,10 +25851,17 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description An array of objects, including field types and field values within the matching records.
+                         *      */
                         records?: {
                             [key: string]: components["schemas"]["RecordsGetCalcSimpleValue"] | components["schemas"]["RecordsGetCategorySimpleValue"] | components["schemas"]["RecordsGetDateSimpleValue"] | components["schemas"]["RecordsGetDatetimeSimpleValue"] | components["schemas"]["RecordsGetDecimalSimpleValue"] | components["schemas"]["RecordsGetEditorSimpleValue"] | components["schemas"]["RecordsGetFileSimpleValue"] | components["schemas"]["RecordsGetGroupSimpleValue"] | components["schemas"]["RecordsGetLinkSimpleValue"] | components["schemas"]["RecordsGetModifiedAtSimpleValue"] | components["schemas"]["RecordsGetModifierSimpleValue"] | components["schemas"]["RecordsGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsGetRecordIdSimpleValue"] | components["schemas"]["RecordsGetReferenceTableSimpleValue"] | components["schemas"]["RecordsGetSimpleTableValue"] | components["schemas"]["RecordsGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsGetSingleSelectSimpleValue"] | components["schemas"]["RecordsGetStatusSimpleValue"] | components["schemas"]["RecordsGetTimeSimpleValue"] | components["schemas"]["RecordsGetUserSelectSimpleValue"] | components["schemas"]["RecordsGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsGetGroupSelectSimpleValue"] | components["schemas"]["RecordsGetRevisionSimpleValue"] | components["schemas"]["RecordsGetRawRecordIdSimpleValue"];
                         }[];
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The total count of records that match the query conditions.
+                         *     If the totalCount parameter is ignored or is set as `false` in the request, `null` is returned.
+                         *
+                         */
                         totalCount?: number;
                     };
                 };
@@ -25356,10 +25881,20 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description Holds an array of objects that include id/updateKey, revision and record objects.
+                     *      */
                     records: components["schemas"]["RecordsPutRecordForm"][];
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description A mode where adding and updating records can be processed at the same time.
+                     *
+                     */
                     upsert?: boolean;
                 };
             };
@@ -25391,8 +25926,17 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description Holds an array of record objects, that contains field codes and their values.
+                     *
+                     *     Fields that are not included in the objects are added with their default value.
+                     *     Objects containing field codes that do not exist are ignored.
+                     *      */
                     records: {
                         [key: string]: components["schemas"]["RecordsPostCalcSimpleValue"] | components["schemas"]["RecordsPostCategorySimpleValue"] | components["schemas"]["RecordsPostDateSimpleValue"] | components["schemas"]["RecordsPostDatetimeSimpleValue"] | components["schemas"]["RecordsPostDecimalSimpleValue"] | components["schemas"]["RecordsPostEditorSimpleValue"] | components["schemas"]["RecordsPostFileSimpleValue"] | components["schemas"]["RecordsPostGroupSimpleValue"] | components["schemas"]["RecordsPostLinkSimpleValue"] | components["schemas"]["RecordsPostModifiedAtSimpleValue"] | components["schemas"]["RecordsPostModifierSimpleValue"] | components["schemas"]["RecordsPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordsPostMultipleSelectSimpleValue"] | components["schemas"]["RecordsPostRecordIdSimpleValue"] | components["schemas"]["RecordsPostReferenceTableSimpleValue"] | components["schemas"]["RecordsPostSimpleTableValue"] | components["schemas"]["RecordsPostSingleLineTextSimpleValue"] | components["schemas"]["RecordsPostSingleSelectSimpleValue"] | components["schemas"]["RecordsPostStatusSimpleValue"] | components["schemas"]["RecordsPostTimeSimpleValue"] | components["schemas"]["RecordsPostUserSelectSimpleValue"] | components["schemas"]["RecordsPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordsPostGroupSelectSimpleValue"] | components["schemas"]["RecordsPostRevisionSimpleValue"] | components["schemas"]["RecordsPostRawRecordIdSimpleValue"];
                     }[];
@@ -25407,7 +25951,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The Record IDs of the created records.
+                         *      */
                         ids?: number[];
+                        /** @description The revision numbers of the records.
+                         *      */
                         revisions?: number[];
                     };
                 };
@@ -25417,8 +25965,18 @@ export interface operations {
     deleteRecordsForGuestSpace: {
         parameters: {
             query: {
+                /** @description The app ID.
+                 *      */
                 app: number;
+                /** @description Array of record IDs that will be deleted.
+                 *     Up to 100 records can be specified.
+                 *      */
                 ids: number[];
+                /** @description The Expected revision number.
+                 *     The first id number will correspond to the first revision number in the array, the second id to the second revision number, and so on.
+                 *     If the revision number does not match, an error will occur and no records will be deleted.
+                 *     If the revision number is left blank or is -1, the revision number will not be checked for the corresponding record ID.
+                 *      */
                 revisions?: number[];
             };
             header?: never;
@@ -25479,6 +26037,8 @@ export interface operations {
     getRecordsCursorForGuestSpace: {
         parameters: {
             query: {
+                /** @description The cursor ID.
+                 *      */
                 id: string;
             };
             header?: never;
@@ -25497,7 +26057,17 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description States whether there are more records that can be acquired from the cursor.
+                         *     - true: There are still records to be acquired.
+                         *     - false: There are no more records to be acquired.
+                         *
+                         *     Run this API again with the same parameters to obtain the next set of records.
+                         *     The cursor will remain valid until all records have been obtained.
+                         *      */
                         next?: boolean;
+                        /** @description An array of objects that includes field data of records that match the query.
+                         *     The response is the same as the response for the Get Records API.
+                         *      */
                         records?: {
                             [key: string]: components["schemas"]["RecordsCursorGetCalcSimpleValue"] | components["schemas"]["RecordsCursorGetCategorySimpleValue"] | components["schemas"]["RecordsCursorGetDateSimpleValue"] | components["schemas"]["RecordsCursorGetDatetimeSimpleValue"] | components["schemas"]["RecordsCursorGetDecimalSimpleValue"] | components["schemas"]["RecordsCursorGetEditorSimpleValue"] | components["schemas"]["RecordsCursorGetFileSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSimpleValue"] | components["schemas"]["RecordsCursorGetLinkSimpleValue"] | components["schemas"]["RecordsCursorGetModifiedAtSimpleValue"] | components["schemas"]["RecordsCursorGetModifierSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRecordIdSimpleValue"] | components["schemas"]["RecordsCursorGetReferenceTableSimpleValue"] | components["schemas"]["RecordsCursorGetSimpleTableValue"] | components["schemas"]["RecordsCursorGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetSingleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetStatusSimpleValue"] | components["schemas"]["RecordsCursorGetTimeSimpleValue"] | components["schemas"]["RecordsCursorGetUserSelectSimpleValue"] | components["schemas"]["RecordsCursorGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRevisionSimpleValue"] | components["schemas"]["RecordsCursorGetRawRecordIdSimpleValue"];
                         }[];
@@ -25519,12 +26089,29 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description The field codes to be included in the response when using the Get Cursor API.
+                     *     If ignored, all accessible fields in the app will be returned.
+                     *      */
                     fields?: string[];
-                    /** Format: query */
+                    /**
+                     * Format: query
+                     * @description The query string that will specify what records will be responded when using the Get Cursor API.
+                     *     If ignored, all accessible records from the App will be returned.
+                     *
+                     */
                     query?: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The maximum number of records the Get Cursor API can retrieve from this cursor with one request.
+                     *     The maximum number is 500 records. If ignored, the default number of records to be retrieved is 100.
+                     *
+                     */
                     size?: number;
                 };
             };
@@ -25537,8 +26124,14 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The cursor ID.
+                         *      */
                         id?: string;
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The total count of records that match the query conditions.
+                         *
+                         */
                         totalCount?: number;
                     };
                 };
@@ -25548,6 +26141,8 @@ export interface operations {
     deleteRecordsCursorForGuestSpace: {
         parameters: {
             query: {
+                /** @description The cursor ID.
+                 *      */
                 id: string;
             };
             header?: never;
@@ -25583,8 +26178,15 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description An array including information of the record to be updated. Up to 100 records can be specified.
+                     *     Specifying more than 100 records will result in an error.
+                     *      */
                     records: components["schemas"]["RecordsStatusPutRecordsStatusPutFormRecord"][];
                 };
             };
@@ -25597,6 +26199,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description An array including information of the updated records.
+                         *      */
                         records?: components["schemas"]["RecordsStatusPutRecordsStatusPutOutputFormRecord"][];
                     };
                 };
@@ -25632,11 +26236,9 @@ export interface operations {
                         coverUrl?: string;
                         creator?: {
                             /** @description The log in name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             code?: string;
                             /** @description The display name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             name?: string;
                         };
@@ -25651,11 +26253,9 @@ export interface operations {
                         memberCount?: number;
                         modifier?: {
                             /** @description The log in name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             code?: string;
                             /** @description The display name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             name?: string;
                         };
@@ -26085,11 +26685,9 @@ export interface operations {
                          *      */
                         creator?: {
                             /** @description The log in name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             code?: string;
                             /** @description The display name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             name?: string;
                         };
@@ -26108,11 +26706,9 @@ export interface operations {
                          *      */
                         modifier?: {
                             /** @description The log in name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             code?: string;
                             /** @description The display name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             name?: string;
                         };
@@ -27001,6 +27597,8 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description An array of requests. The maximum number of requests is 20.
+                     *      */
                     requests: components["schemas"]["BulkRequestPostRequestForm"][];
                 };
             };
@@ -27013,6 +27611,10 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The response from each API request. The order of the response is the same as the order of the requests.
+                         *     If an API request fails, an error will be included in the index of the failed API.
+                         *     In this case, all other indexes will be responded with {} (empty objects).
+                         *      */
                         results?: (components["schemas"]["BulkRequestPostRecordPostOutputForm"] | components["schemas"]["BulkRequestPostRecordPutOutputForm"] | components["schemas"]["BulkRequestPostRecordStatusPutOutputForm"] | components["schemas"]["BulkRequestPostRecordAssigneesPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsDeleteOutputForm"] | components["schemas"]["BulkRequestPostRecordsPostOutputForm"] | components["schemas"]["BulkRequestPostRecordsPutOutputForm"] | components["schemas"]["BulkRequestPostRecordsStatusPutOutputForm"])[];
                     };
                 };
@@ -29287,7 +29889,11 @@ export interface operations {
     getRecord: {
         parameters: {
             query: {
+                /** @description The App ID.
+                 *      */
                 app: number;
+                /** @description The Record ID.
+                 *      */
                 id: number;
             };
             header?: never;
@@ -29303,6 +29909,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The type and value of all fields within the record are included in the object.
+                         *      */
                         record?: {
                             [key: string]: components["schemas"]["RecordGetCalcSimpleValue"] | components["schemas"]["RecordGetCategorySimpleValue"] | components["schemas"]["RecordGetDateSimpleValue"] | components["schemas"]["RecordGetDatetimeSimpleValue"] | components["schemas"]["RecordGetDecimalSimpleValue"] | components["schemas"]["RecordGetEditorSimpleValue"] | components["schemas"]["RecordGetFileSimpleValue"] | components["schemas"]["RecordGetGroupSimpleValue"] | components["schemas"]["RecordGetLinkSimpleValue"] | components["schemas"]["RecordGetModifiedAtSimpleValue"] | components["schemas"]["RecordGetModifierSimpleValue"] | components["schemas"]["RecordGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordGetMultipleSelectSimpleValue"] | components["schemas"]["RecordGetRecordIdSimpleValue"] | components["schemas"]["RecordGetReferenceTableSimpleValue"] | components["schemas"]["RecordGetSimpleTableValue"] | components["schemas"]["RecordGetSingleLineTextSimpleValue"] | components["schemas"]["RecordGetSingleSelectSimpleValue"] | components["schemas"]["RecordGetStatusSimpleValue"] | components["schemas"]["RecordGetTimeSimpleValue"] | components["schemas"]["RecordGetUserSelectSimpleValue"] | components["schemas"]["RecordGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordGetGroupSelectSimpleValue"] | components["schemas"]["RecordGetRevisionSimpleValue"] | components["schemas"]["RecordGetRawRecordIdSimpleValue"];
                         };
@@ -29321,14 +29929,32 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Record ID of the record to be updated.
+                     *     Required, if updateKey will not be specified.
+                     *
+                     */
                     id?: number;
+                    /** @description Field codes and values are specified in this object.
+                     *     If ignored, the record will not be updated.
+                     *      */
                     record?: {
                         [key: string]: components["schemas"]["RecordPutCalcSimpleValue"] | components["schemas"]["RecordPutCategorySimpleValue"] | components["schemas"]["RecordPutDateSimpleValue"] | components["schemas"]["RecordPutDatetimeSimpleValue"] | components["schemas"]["RecordPutDecimalSimpleValue"] | components["schemas"]["RecordPutEditorSimpleValue"] | components["schemas"]["RecordPutFileSimpleValue"] | components["schemas"]["RecordPutGroupSimpleValue"] | components["schemas"]["RecordPutLinkSimpleValue"] | components["schemas"]["RecordPutModifiedAtSimpleValue"] | components["schemas"]["RecordPutModifierSimpleValue"] | components["schemas"]["RecordPutMultipleLineTextSimpleValue"] | components["schemas"]["RecordPutMultipleSelectSimpleValue"] | components["schemas"]["RecordPutRecordIdSimpleValue"] | components["schemas"]["RecordPutReferenceTableSimpleValue"] | components["schemas"]["RecordPutSimpleTableValue"] | components["schemas"]["RecordPutSingleLineTextSimpleValue"] | components["schemas"]["RecordPutSingleSelectSimpleValue"] | components["schemas"]["RecordPutStatusSimpleValue"] | components["schemas"]["RecordPutTimeSimpleValue"] | components["schemas"]["RecordPutUserSelectSimpleValue"] | components["schemas"]["RecordPutOrganizationSelectSimpleValue"] | components["schemas"]["RecordPutGroupSelectSimpleValue"] | components["schemas"]["RecordPutRevisionSimpleValue"] | components["schemas"]["RecordPutRawRecordIdSimpleValue"];
                     };
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The expected revision number.
+                     *     If the value does not match, an error will occur and the record will not be updated.
+                     *     If the value is not specified or is -1, the revision number will not be checked.
+                     *
+                     */
                     revision?: number;
                     updateKey?: components["schemas"]["RecordPutUpdateKey"];
                 };
@@ -29359,8 +29985,16 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description Field codes and values are specified in this object.
+                     *     If ignored, the record will be added with default field values.
+                     *     If field codes that don't exist are specified, these will be ignored.
+                     *      */
                     record: {
                         [key: string]: components["schemas"]["RecordPostCalcSimpleValue"] | components["schemas"]["RecordPostCategorySimpleValue"] | components["schemas"]["RecordPostDateSimpleValue"] | components["schemas"]["RecordPostDatetimeSimpleValue"] | components["schemas"]["RecordPostDecimalSimpleValue"] | components["schemas"]["RecordPostEditorSimpleValue"] | components["schemas"]["RecordPostFileSimpleValue"] | components["schemas"]["RecordPostGroupSimpleValue"] | components["schemas"]["RecordPostLinkSimpleValue"] | components["schemas"]["RecordPostModifiedAtSimpleValue"] | components["schemas"]["RecordPostModifierSimpleValue"] | components["schemas"]["RecordPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordPostMultipleSelectSimpleValue"] | components["schemas"]["RecordPostRecordIdSimpleValue"] | components["schemas"]["RecordPostReferenceTableSimpleValue"] | components["schemas"]["RecordPostSimpleTableValue"] | components["schemas"]["RecordPostSingleLineTextSimpleValue"] | components["schemas"]["RecordPostSingleSelectSimpleValue"] | components["schemas"]["RecordPostStatusSimpleValue"] | components["schemas"]["RecordPostTimeSimpleValue"] | components["schemas"]["RecordPostUserSelectSimpleValue"] | components["schemas"]["RecordPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordPostGroupSelectSimpleValue"] | components["schemas"]["RecordPostRevisionSimpleValue"] | components["schemas"]["RecordPostRawRecordIdSimpleValue"];
                     };
@@ -29375,9 +30009,17 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Record ID of the created Record.
+                         *
+                         */
                         id?: number;
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The revision number of the Record.
+                         *
+                         */
                         revision?: number;
                     };
                 };
@@ -29489,12 +30131,28 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description The user code(s) (log in names) of the Assignee(s). If empty, no users will be assigned. The maximum number of Assignees is 100.
+                     *      */
                     assignees: string[];
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The record ID.
+                     *
+                     */
                     id: number;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The revision number of the record before updating the Assignees.
+                     *     If the specified revision is not the latest revision, the request will result in an error.
+                     *     The revision will not be checked if this parameter is ignored, or -1 is specified.
+                     *
+                     */
                     revision?: number;
                 };
             };
@@ -29507,7 +30165,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The revision number of the record after updating the Assignees.
+                         *
+                         */
                         revision?: number;
                     };
                 };
@@ -29524,13 +30186,27 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description An object including comment details.
+                     *      */
                     comment: {
+                        /** @description An array including information to mention other users.
+                         *      */
                         mentions?: components["schemas"]["RecordCommentPostMentionForm"][];
+                        /** @description The comment text. The maximum characters of the comment is 65535.
+                         *      */
                         text: string;
                     };
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Record ID.
+                     *
+                     */
                     record: number;
                 };
             };
@@ -29543,7 +30219,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Comment ID.
+                         *
+                         */
                         id?: number;
                     };
                 };
@@ -29553,8 +30233,14 @@ export interface operations {
     deleteRecordComment: {
         parameters: {
             query: {
+                /** @description The App ID.
+                 *      */
                 app: number;
+                /** @description The Record ID.
+                 *      */
                 record: number;
+                /** @description The Comment ID.
+                 *      */
                 comment: number;
             };
             header?: never;
@@ -29577,10 +30263,23 @@ export interface operations {
     getRecordComments: {
         parameters: {
             query: {
+                /** @description The App ID.
+                 *      */
                 app: number;
+                /** @description This skips the retrieval of the first number of comments.
+                 *     "offset": 30 skips the first 30 comments, and retrieves from the 31st comment. There is no maximum for this value.
+                 *      */
                 offset?: number;
+                /** @description The Record ID.
+                 *      */
                 record: number;
+                /** @description The number of records to retrieve.
+                 *     "limit": 5 will retrieve the first 5 comments. The default and maximum is 10 comments.
+                 *      */
                 limit?: number;
+                /** @description The sort order of the Comment ID. Specifying "asc" will sort the comments in ascending order, and "desc" will sort the comments in descending order.
+                 *     If ignored, "desc" will be set.
+                 *      */
                 order?: "ASC" | "DESC";
             };
             header?: never;
@@ -29596,8 +30295,18 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description An array of comments. An empty array is returned if no conditions are met.
+                         *      */
                         comments?: components["schemas"]["RecordCommentsGetCommentOutputForm"][];
+                        /** @description Information of newer comments:
+                         *     - true: Newer comments exist.
+                         *     - false: Newer comments do not exist. (i.e. the last comment)
+                         *      */
                         newer?: boolean;
+                        /** @description Information of older comments:
+                         *     - true: Older comments exist.
+                         *     - false: Older comments do not exist (i.e. the first comment)
+                         *      */
                         older?: boolean;
                     };
                 };
@@ -29614,13 +30323,36 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The Action name of the action to run.
+                     *     If the localization feature has been used to apply multiple translations of the Action name,
+                     *     specify the name of the Action in the language settings of the user that will run the API.
+                     *     API Tokens follow the language settings set in the User & System Administration settings.
+                     *      */
                     action: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description The next Assignee. Specify the Assignee's log in name.
+                     *     Required, if the "Assignee List" of the current status is set to "User chooses one assignee from the list to take action",
+                     *     and a selectable assignee exists.
+                     *      */
                     assignee?: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The record ID.
+                     *
+                     */
                     id: number;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The revision number of the record before updating the status.
+                     *     If the specified revision is not the latest revision, the request will result in an error.
+                     *     The revision will not be checked if this parameter is ignored, or -1 is specified.
+                     *
+                     */
                     revision?: number;
                 };
             };
@@ -29633,7 +30365,12 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The revision number of the record after updating the status.
+                         *     The revision number will increase by 2, as two operations are preformed - running the action, and updating the status.
+                         *
+                         */
                         revision?: number;
                     };
                 };
@@ -29643,9 +30380,20 @@ export interface operations {
     getRecords: {
         parameters: {
             query: {
+                /** @description The App ID.
+                 *      */
                 app: number;
+                /** @description The query string that specifies what records to include in the response.
+                 *     Ignoring this parameter will return all accessible records from the App.
+                 *      */
                 query?: string;
+                /** @description The field codes to be included in the response.
+                 *     Ignoring this parameter will return all accessible fields that exist in the App.
+                 *      */
                 fields?: string[];
+                /** @description If set to true, the total count of records that match the query conditions will be included in the response.
+                 *     If ignored, null is returned for the totalCount value.
+                 *      */
                 totalCount?: boolean;
             };
             header?: never;
@@ -29661,10 +30409,17 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description An array of objects, including field types and field values within the matching records.
+                         *      */
                         records?: {
                             [key: string]: components["schemas"]["RecordsGetCalcSimpleValue"] | components["schemas"]["RecordsGetCategorySimpleValue"] | components["schemas"]["RecordsGetDateSimpleValue"] | components["schemas"]["RecordsGetDatetimeSimpleValue"] | components["schemas"]["RecordsGetDecimalSimpleValue"] | components["schemas"]["RecordsGetEditorSimpleValue"] | components["schemas"]["RecordsGetFileSimpleValue"] | components["schemas"]["RecordsGetGroupSimpleValue"] | components["schemas"]["RecordsGetLinkSimpleValue"] | components["schemas"]["RecordsGetModifiedAtSimpleValue"] | components["schemas"]["RecordsGetModifierSimpleValue"] | components["schemas"]["RecordsGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsGetRecordIdSimpleValue"] | components["schemas"]["RecordsGetReferenceTableSimpleValue"] | components["schemas"]["RecordsGetSimpleTableValue"] | components["schemas"]["RecordsGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsGetSingleSelectSimpleValue"] | components["schemas"]["RecordsGetStatusSimpleValue"] | components["schemas"]["RecordsGetTimeSimpleValue"] | components["schemas"]["RecordsGetUserSelectSimpleValue"] | components["schemas"]["RecordsGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsGetGroupSelectSimpleValue"] | components["schemas"]["RecordsGetRevisionSimpleValue"] | components["schemas"]["RecordsGetRawRecordIdSimpleValue"];
                         }[];
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The total count of records that match the query conditions.
+                         *     If the totalCount parameter is ignored or is set as `false` in the request, `null` is returned.
+                         *
+                         */
                         totalCount?: number;
                     };
                 };
@@ -29681,10 +30436,20 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description Holds an array of objects that include id/updateKey, revision and record objects.
+                     *      */
                     records: components["schemas"]["RecordsPutRecordForm"][];
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description A mode where adding and updating records can be processed at the same time.
+                     *
+                     */
                     upsert?: boolean;
                 };
             };
@@ -29713,8 +30478,17 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description Holds an array of record objects, that contains field codes and their values.
+                     *
+                     *     Fields that are not included in the objects are added with their default value.
+                     *     Objects containing field codes that do not exist are ignored.
+                     *      */
                     records: {
                         [key: string]: components["schemas"]["RecordsPostCalcSimpleValue"] | components["schemas"]["RecordsPostCategorySimpleValue"] | components["schemas"]["RecordsPostDateSimpleValue"] | components["schemas"]["RecordsPostDatetimeSimpleValue"] | components["schemas"]["RecordsPostDecimalSimpleValue"] | components["schemas"]["RecordsPostEditorSimpleValue"] | components["schemas"]["RecordsPostFileSimpleValue"] | components["schemas"]["RecordsPostGroupSimpleValue"] | components["schemas"]["RecordsPostLinkSimpleValue"] | components["schemas"]["RecordsPostModifiedAtSimpleValue"] | components["schemas"]["RecordsPostModifierSimpleValue"] | components["schemas"]["RecordsPostMultipleLineTextSimpleValue"] | components["schemas"]["RecordsPostMultipleSelectSimpleValue"] | components["schemas"]["RecordsPostRecordIdSimpleValue"] | components["schemas"]["RecordsPostReferenceTableSimpleValue"] | components["schemas"]["RecordsPostSimpleTableValue"] | components["schemas"]["RecordsPostSingleLineTextSimpleValue"] | components["schemas"]["RecordsPostSingleSelectSimpleValue"] | components["schemas"]["RecordsPostStatusSimpleValue"] | components["schemas"]["RecordsPostTimeSimpleValue"] | components["schemas"]["RecordsPostUserSelectSimpleValue"] | components["schemas"]["RecordsPostOrganizationSelectSimpleValue"] | components["schemas"]["RecordsPostGroupSelectSimpleValue"] | components["schemas"]["RecordsPostRevisionSimpleValue"] | components["schemas"]["RecordsPostRawRecordIdSimpleValue"];
                     }[];
@@ -29729,7 +30503,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The Record IDs of the created records.
+                         *      */
                         ids?: number[];
+                        /** @description The revision numbers of the records.
+                         *      */
                         revisions?: number[];
                     };
                 };
@@ -29739,8 +30517,18 @@ export interface operations {
     deleteRecords: {
         parameters: {
             query: {
+                /** @description The app ID.
+                 *      */
                 app: number;
+                /** @description Array of record IDs that will be deleted.
+                 *     Up to 100 records can be specified.
+                 *      */
                 ids: number[];
+                /** @description The Expected revision number.
+                 *     The first id number will correspond to the first revision number in the array, the second id to the second revision number, and so on.
+                 *     If the revision number does not match, an error will occur and no records will be deleted.
+                 *     If the revision number is left blank or is -1, the revision number will not be checked for the corresponding record ID.
+                 *      */
                 revisions?: number[];
             };
             header?: never;
@@ -29795,6 +30583,8 @@ export interface operations {
     getRecordsCursor: {
         parameters: {
             query: {
+                /** @description The cursor ID.
+                 *      */
                 id: string;
             };
             header?: never;
@@ -29810,7 +30600,17 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description States whether there are more records that can be acquired from the cursor.
+                         *     - true: There are still records to be acquired.
+                         *     - false: There are no more records to be acquired.
+                         *
+                         *     Run this API again with the same parameters to obtain the next set of records.
+                         *     The cursor will remain valid until all records have been obtained.
+                         *      */
                         next?: boolean;
+                        /** @description An array of objects that includes field data of records that match the query.
+                         *     The response is the same as the response for the Get Records API.
+                         *      */
                         records?: {
                             [key: string]: components["schemas"]["RecordsCursorGetCalcSimpleValue"] | components["schemas"]["RecordsCursorGetCategorySimpleValue"] | components["schemas"]["RecordsCursorGetDateSimpleValue"] | components["schemas"]["RecordsCursorGetDatetimeSimpleValue"] | components["schemas"]["RecordsCursorGetDecimalSimpleValue"] | components["schemas"]["RecordsCursorGetEditorSimpleValue"] | components["schemas"]["RecordsCursorGetFileSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSimpleValue"] | components["schemas"]["RecordsCursorGetLinkSimpleValue"] | components["schemas"]["RecordsCursorGetModifiedAtSimpleValue"] | components["schemas"]["RecordsCursorGetModifierSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetMultipleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRecordIdSimpleValue"] | components["schemas"]["RecordsCursorGetReferenceTableSimpleValue"] | components["schemas"]["RecordsCursorGetSimpleTableValue"] | components["schemas"]["RecordsCursorGetSingleLineTextSimpleValue"] | components["schemas"]["RecordsCursorGetSingleSelectSimpleValue"] | components["schemas"]["RecordsCursorGetStatusSimpleValue"] | components["schemas"]["RecordsCursorGetTimeSimpleValue"] | components["schemas"]["RecordsCursorGetUserSelectSimpleValue"] | components["schemas"]["RecordsCursorGetOrganizationSelectSimpleValue"] | components["schemas"]["RecordsCursorGetGroupSelectSimpleValue"] | components["schemas"]["RecordsCursorGetRevisionSimpleValue"] | components["schemas"]["RecordsCursorGetRawRecordIdSimpleValue"];
                         }[];
@@ -29829,12 +30629,29 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description The field codes to be included in the response when using the Get Cursor API.
+                     *     If ignored, all accessible fields in the app will be returned.
+                     *      */
                     fields?: string[];
-                    /** Format: query */
+                    /**
+                     * Format: query
+                     * @description The query string that will specify what records will be responded when using the Get Cursor API.
+                     *     If ignored, all accessible records from the App will be returned.
+                     *
+                     */
                     query?: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The maximum number of records the Get Cursor API can retrieve from this cursor with one request.
+                     *     The maximum number is 500 records. If ignored, the default number of records to be retrieved is 100.
+                     *
+                     */
                     size?: number;
                 };
             };
@@ -29847,8 +30664,14 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The cursor ID.
+                         *      */
                         id?: string;
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The total count of records that match the query conditions.
+                         *
+                         */
                         totalCount?: number;
                     };
                 };
@@ -29858,6 +30681,8 @@ export interface operations {
     deleteRecordsCursor: {
         parameters: {
             query: {
+                /** @description The cursor ID.
+                 *      */
                 id: string;
             };
             header?: never;
@@ -29887,8 +30712,15 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The App ID.
+                     *
+                     */
                     app: number;
+                    /** @description An array including information of the record to be updated. Up to 100 records can be specified.
+                     *     Specifying more than 100 records will result in an error.
+                     *      */
                     records: components["schemas"]["RecordsStatusPutRecordsStatusPutFormRecord"][];
                 };
             };
@@ -29901,6 +30733,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description An array including information of the updated records.
+                         *      */
                         records?: components["schemas"]["RecordsStatusPutRecordsStatusPutOutputFormRecord"][];
                     };
                 };
@@ -29933,11 +30767,9 @@ export interface operations {
                         coverUrl?: string;
                         creator?: {
                             /** @description The log in name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             code?: string;
                             /** @description The display name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             name?: string;
                         };
@@ -29952,11 +30784,9 @@ export interface operations {
                         memberCount?: number;
                         modifier?: {
                             /** @description The log in name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             code?: string;
                             /** @description The display name of the creator.
-                             *     An empty string is returned for inactive users and deleted users.
                              *      */
                             name?: string;
                         };
