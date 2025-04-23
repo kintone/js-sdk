@@ -378,9 +378,13 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: operations["getFileForGuestSpace"];
+        /** @description Downloads files from an attachment field in an App.
+         *      */
+        get: operations["downloadFileForGuestSpace"];
         put?: never;
-        post: operations["postFileForGuestSpace"];
+        /** @description Uploads a file to Kintone.
+         *      */
+        post: operations["uploadFileForGuestSpace"];
         delete?: never;
         options?: never;
         head?: never;
@@ -429,9 +433,15 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates an imported plug-in in the Kintone environment.
+         *      */
         put: operations["putPluginForGuestSpace"];
-        post: operations["postPluginForGuestSpace"];
-        delete: operations["deletePluginForGuestSpace"];
+        /** @description Imports a plug-in into Kintone.
+         *      */
+        post: operations["installPluginForGuestSpace"];
+        /** @description The fileKey representing an uploaded file. Use the Upload File API to upload the file and retrieve the fileKey.
+         *      */
+        delete: operations["uninstallPluginForGuestSpace"];
         options?: never;
         head?: never;
         patch?: never;
@@ -444,6 +454,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets Apps that have the specified plug-in added.
+         *      */
         get: operations["getPluginAppsForGuestSpace"];
         put?: never;
         post?: never;
@@ -460,6 +472,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets the list of plug-ins imported into Kintone.
+         *      */
         get: operations["getPluginsForGuestSpace"];
         put?: never;
         post?: never;
@@ -476,6 +490,9 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets the list of plug-ins that have been deleted from Kintone, but have already been added to Apps.
+         *     This can occur when a plug-in is installed, added to an App, and then proceeded to be uninstalled from the Kintone environment.
+         *      */
         get: operations["getPluginsRequiredForGuestSpace"];
         put?: never;
         post?: never;
@@ -1607,9 +1624,13 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: operations["getFile"];
+        /** @description Downloads files from an attachment field in an App.
+         *      */
+        get: operations["downloadFile"];
         put?: never;
-        post: operations["postFile"];
+        /** @description Uploads a file to Kintone.
+         *      */
+        post: operations["uploadFile"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1658,9 +1679,15 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates an imported plug-in in the Kintone environment.
+         *      */
         put: operations["putPlugin"];
-        post: operations["postPlugin"];
-        delete: operations["deletePlugin"];
+        /** @description Imports a plug-in into Kintone.
+         *      */
+        post: operations["installPlugin"];
+        /** @description The fileKey representing an uploaded file. Use the Upload File API to upload the file and retrieve the fileKey.
+         *      */
+        delete: operations["uninstallPlugin"];
         options?: never;
         head?: never;
         patch?: never;
@@ -1673,6 +1700,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets Apps that have the specified plug-in added.
+         *      */
         get: operations["getPluginApps"];
         put?: never;
         post?: never;
@@ -1689,6 +1718,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets the list of plug-ins imported into Kintone.
+         *      */
         get: operations["getPlugins"];
         put?: never;
         post?: never;
@@ -1705,6 +1736,9 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets the list of plug-ins that have been deleted from Kintone, but have already been added to Apps.
+         *     This can occur when a plug-in is installed, added to an App, and then proceeded to be uninstalled from the Kintone environment.
+         *      */
         get: operations["getPluginsRequired"];
         put?: never;
         post?: never;
@@ -8232,19 +8266,43 @@ export interface components {
             timezone: string;
         };
         PluginAppsGetAppDto: {
+            /** @description The App ID.
+             *      */
             id?: string;
+            /** @description The name of the App.
+             *      */
             name?: string;
         };
         PluginsGetPluginDto: {
+            /** @description The Plug-in description. If there is no description, an empty string will be returned.
+             *      */
             description?: string;
+            /** @description The plug-in ID.
+             *      */
             id?: string;
+            /** @description States whether or not the plug-in is a Marketplace plug-in.
+             *     - `true`: The plug-in is a Marketplace plug-in.
+             *     - `false`: The plug-in is not a Marketplace plug-in.
+             *      */
             isMarketPlugin?: boolean;
+            /** @description The name of the plug-in.
+             *      */
             name?: string;
+            /** @description The version number of the plug-in.
+             *      */
             version?: string;
         };
         PluginsRequiredGetPluginDto: {
+            /** @description The Plugin ID.
+             *      */
             id?: string;
+            /** @description States whether or not the plug-in is a Marketplace plug-in.
+             *     - true: The plug-in is a Marketplace plug-in.
+             *     - false: The plug-in is not a Marketplace plug-in.
+             *      */
             isMarketPlugin?: boolean;
+            /** @description The name of the Plugin.
+             *      */
             name?: string;
         };
         PreviewAppAclGetRight: {
@@ -22968,9 +23026,11 @@ export interface operations {
             };
         };
     };
-    getFileForGuestSpace: {
+    downloadFileForGuestSpace: {
         parameters: {
             query: {
+                /** @description The value that is set on the Attachment field in the response data returned when using the Get Record API.
+                 *      */
                 fileKey: string;
             };
             header?: never;
@@ -22991,7 +23051,7 @@ export interface operations {
             };
         };
     };
-    postFileForGuestSpace: {
+    uploadFileForGuestSpace: {
         parameters: {
             query?: never;
             header?: never;
@@ -23016,6 +23076,13 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The fileKey representing an uploaded file.
+                         *     Use this fileKey with the following APIs to attach it to an Attachment field of an app:
+                         *     - Add Record
+                         *     - Add Records
+                         *     - Update Record
+                         *     - Update Records
+                         *      */
                         fileKey?: string;
                     };
                 };
@@ -23118,7 +23185,11 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The fileKey representing an uploaded file. Use the Upload File API to upload the file and retrieve the fileKey.
+                     *      */
                     fileKey: string;
+                    /** @description The ID of the plug-in to be updated.
+                     *      */
                     id: string;
                 };
             };
@@ -23131,14 +23202,18 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The plug-in ID of the updated plug-in.
+                         *      */
                         id?: string;
+                        /** @description The version number of the plug-in.
+                         *      */
                         version?: string;
                     };
                 };
             };
         };
     };
-    postPluginForGuestSpace: {
+    installPluginForGuestSpace: {
         parameters: {
             query?: never;
             header?: never;
@@ -23151,6 +23226,8 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The fileKey representing an uploaded file. Use the Upload File API to upload the file and retrieve the fileKey.
+                     *      */
                     fileKey: string;
                 };
             };
@@ -23163,16 +23240,22 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The installed plug-in ID.
+                         *      */
                         id?: string;
+                        /** @description The version number of the plug-in.
+                         *      */
                         version?: string;
                     };
                 };
             };
         };
     };
-    deletePluginForGuestSpace: {
+    uninstallPluginForGuestSpace: {
         parameters: {
             query: {
+                /** @description The ID of the plug-in.
+                 *      */
                 id: string;
             };
             header?: never;
@@ -23198,8 +23281,17 @@ export interface operations {
     getPluginAppsForGuestSpace: {
         parameters: {
             query: {
+                /** @description The number of plug-ins to skip from the list of plug-ins.
+                 *     If ignored, this value is 0.
+                 *      */
                 offset?: string;
+                /** @description The maximum number of plug-ins to retrieve.
+                 *     Must be between 1 and 500.
+                 *     The default number is 100.
+                 *      */
                 limit?: string;
+                /** @description The ID of the plug-in.
+                 *      */
                 id: string;
             };
             header?: never;
@@ -23218,6 +23310,9 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of objects containing the plug-in ID and name.
+                         *     Objects are listed in ascending order of their App IDs.
+                         *      */
                         apps?: components["schemas"]["PluginAppsGetAppDto"][];
                     };
                 };
@@ -23227,8 +23322,18 @@ export interface operations {
     getPluginsForGuestSpace: {
         parameters: {
             query?: {
+                /** @description The number of plug-ins to skip from the list of installed plug-ins.
+                 *     If ignored, this value is 0.
+                 *      */
                 offset?: string;
+                /** @description The maximum number of plug-ins to retrieve.
+                 *     Must be between 1 and 100.
+                 *     The default number is 100.
+                 *      */
                 limit?: string;
+                /** @description The plug-in ids. The maximum limit of ids that can be specified is 100.
+                 *     If null or an empty array is specified, this parameter will be ignored, and a list of plug-ins will be returned.
+                 *      */
                 ids?: string[];
             };
             header?: never;
@@ -23247,6 +23352,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of plug-ins added to the App.<br>Plug-ins are listed in descending order of the datetime they are added.
+                         *      */
                         plugins?: components["schemas"]["PluginsGetPluginDto"][];
                     };
                 };
@@ -23256,7 +23363,14 @@ export interface operations {
     getPluginsRequiredForGuestSpace: {
         parameters: {
             query?: {
+                /** @description The number of plug-ins to skip from the list of required plug-ins.
+                 *     If ignored, this value is 0.
+                 *      */
                 offset?: string;
+                /** @description The maximum number of plug-ins to retrieve.
+                 *     Must be between 1 and 100.
+                 *     The default number is 100.
+                 *      */
                 limit?: string;
             };
             header?: never;
@@ -23275,6 +23389,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of Plug-ins that needs to be installed.
+                         *      */
                         plugins?: components["schemas"]["PluginsRequiredGetPluginDto"][];
                     };
                 };
@@ -27706,9 +27822,11 @@ export interface operations {
             };
         };
     };
-    getFile: {
+    downloadFile: {
         parameters: {
             query: {
+                /** @description The value that is set on the Attachment field in the response data returned when using the Get Record API.
+                 *      */
                 fileKey: string;
             };
             header?: never;
@@ -27726,7 +27844,7 @@ export interface operations {
             };
         };
     };
-    postFile: {
+    uploadFile: {
         parameters: {
             query?: never;
             header?: never;
@@ -27748,6 +27866,13 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The fileKey representing an uploaded file.
+                         *     Use this fileKey with the following APIs to attach it to an Attachment field of an app:
+                         *     - Add Record
+                         *     - Add Records
+                         *     - Update Record
+                         *     - Update Records
+                         *      */
                         fileKey?: string;
                     };
                 };
@@ -27838,7 +27963,11 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The fileKey representing an uploaded file. Use the Upload File API to upload the file and retrieve the fileKey.
+                     *      */
                     fileKey: string;
+                    /** @description The ID of the plug-in to be updated.
+                     *      */
                     id: string;
                 };
             };
@@ -27851,14 +27980,18 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The plug-in ID of the updated plug-in.
+                         *      */
                         id?: string;
+                        /** @description The version number of the plug-in.
+                         *      */
                         version?: string;
                     };
                 };
             };
         };
     };
-    postPlugin: {
+    installPlugin: {
         parameters: {
             query?: never;
             header?: never;
@@ -27868,6 +28001,8 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The fileKey representing an uploaded file. Use the Upload File API to upload the file and retrieve the fileKey.
+                     *      */
                     fileKey: string;
                 };
             };
@@ -27880,16 +28015,22 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description The installed plug-in ID.
+                         *      */
                         id?: string;
+                        /** @description The version number of the plug-in.
+                         *      */
                         version?: string;
                     };
                 };
             };
         };
     };
-    deletePlugin: {
+    uninstallPlugin: {
         parameters: {
             query: {
+                /** @description The ID of the plug-in.
+                 *      */
                 id: string;
             };
             header?: never;
@@ -27912,8 +28053,17 @@ export interface operations {
     getPluginApps: {
         parameters: {
             query: {
+                /** @description The number of plug-ins to skip from the list of plug-ins.
+                 *     If ignored, this value is 0.
+                 *      */
                 offset?: string;
+                /** @description The maximum number of plug-ins to retrieve.
+                 *     Must be between 1 and 500.
+                 *     The default number is 100.
+                 *      */
                 limit?: string;
+                /** @description The ID of the plug-in.
+                 *      */
                 id: string;
             };
             header?: never;
@@ -27929,6 +28079,9 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of objects containing the plug-in ID and name.
+                         *     Objects are listed in ascending order of their App IDs.
+                         *      */
                         apps?: components["schemas"]["PluginAppsGetAppDto"][];
                     };
                 };
@@ -27938,8 +28091,18 @@ export interface operations {
     getPlugins: {
         parameters: {
             query?: {
+                /** @description The number of plug-ins to skip from the list of installed plug-ins.
+                 *     If ignored, this value is 0.
+                 *      */
                 offset?: string;
+                /** @description The maximum number of plug-ins to retrieve.
+                 *     Must be between 1 and 100.
+                 *     The default number is 100.
+                 *      */
                 limit?: string;
+                /** @description The plug-in ids. The maximum limit of ids that can be specified is 100.
+                 *     If null or an empty array is specified, this parameter will be ignored, and a list of plug-ins will be returned.
+                 *      */
                 ids?: string[];
             };
             header?: never;
@@ -27955,6 +28118,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of plug-ins added to the App.<br>Plug-ins are listed in descending order of the datetime they are added.
+                         *      */
                         plugins?: components["schemas"]["PluginsGetPluginDto"][];
                     };
                 };
@@ -27964,7 +28129,14 @@ export interface operations {
     getPluginsRequired: {
         parameters: {
             query?: {
+                /** @description The number of plug-ins to skip from the list of required plug-ins.
+                 *     If ignored, this value is 0.
+                 *      */
                 offset?: string;
+                /** @description The maximum number of plug-ins to retrieve.
+                 *     Must be between 1 and 100.
+                 *     The default number is 100.
+                 *      */
                 limit?: string;
             };
             header?: never;
@@ -27980,6 +28152,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of Plug-ins that needs to be installed.
+                         *      */
                         plugins?: components["schemas"]["PluginsRequiredGetPluginDto"][];
                     };
                 };
