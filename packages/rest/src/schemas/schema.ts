@@ -418,7 +418,13 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Adds Guest users to Kintone.
+         *     This does not affiliate Guest users with any Guest Spaces, and does not send any invitation emails.
+         *     To affiliate a Guest user with a Guest Space, follow up this API call with the Update Guest Members API.
+         *      */
         post: operations["postGuestsForGuestSpace"];
+        /** @description Deletes a Guest user from Kintone. To remove a user from a Guest Space without deleting their account, use the Update Guest Members API.
+         *      */
         delete: operations["deleteGuestsForGuestSpace"];
         options?: never;
         head?: never;
@@ -1129,9 +1135,15 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets information of a Space.
+         *      */
         get: operations["getSpaceForGuestSpace"];
+        /** @description Updates the settings of a Space.
+         *      */
         put: operations["putSpaceForGuestSpace"];
         post?: never;
+        /** @description Deletes a Space.
+         *      */
         delete: operations["deleteSpaceForGuestSpace"];
         options?: never;
         head?: never;
@@ -1146,6 +1158,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the body of a Space.
+         *      */
         put: operations["putSpaceBodyForGuestSpace"];
         post?: never;
         delete?: never;
@@ -1162,6 +1176,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the Guest Members of a Space.
+         *      */
         put: operations["putSpaceGuestsForGuestSpace"];
         post?: never;
         delete?: never;
@@ -1177,7 +1193,11 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets the list of Space Members of a Space.
+         *      */
         get: operations["getSpaceMembersForGuestSpace"];
+        /** @description Updates the Members of a Space.
+         *      */
         put: operations["putSpaceMembersForGuestSpace"];
         post?: never;
         delete?: never;
@@ -1194,7 +1214,11 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates a Thread of a Space.
+         *      */
         put: operations["putSpaceThreadForGuestSpace"];
+        /** @description Adds a Thread in a Space.
+         *      */
         post: operations["postSpaceThreadForGuestSpace"];
         delete?: never;
         options?: never;
@@ -1211,6 +1235,8 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Adds a comment to a Thread of a Space.
+         *      */
         post: operations["postSpaceThreadCommentForGuestSpace"];
         delete?: never;
         options?: never;
@@ -1243,6 +1269,8 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Creates a Space from a Space template.
+         *      */
         post: operations["postTemplateSpaceForGuestSpace"];
         delete?: never;
         options?: never;
@@ -1664,7 +1692,13 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Adds Guest users to Kintone.
+         *     This does not affiliate Guest users with any Guest Spaces, and does not send any invitation emails.
+         *     To affiliate a Guest user with a Guest Space, follow up this API call with the Update Guest Members API.
+         *      */
         post: operations["postGuests"];
+        /** @description Deletes a Guest user from Kintone. To remove a user from a Guest Space without deleting their account, use the Update Guest Members API.
+         *      */
         delete: operations["deleteGuests"];
         options?: never;
         head?: never;
@@ -2375,9 +2409,15 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets information of a Space.
+         *      */
         get: operations["getSpace"];
+        /** @description Updates the settings of a Space.
+         *      */
         put: operations["putSpace"];
         post?: never;
+        /** @description Deletes a Space.
+         *      */
         delete: operations["deleteSpace"];
         options?: never;
         head?: never;
@@ -2392,6 +2432,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the body of a Space.
+         *      */
         put: operations["putSpaceBody"];
         post?: never;
         delete?: never;
@@ -2408,6 +2450,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates the Guest Members of a Space.
+         *      */
         put: operations["putSpaceGuests"];
         post?: never;
         delete?: never;
@@ -2423,7 +2467,11 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** @description Gets the list of Space Members of a Space.
+         *      */
         get: operations["getSpaceMembers"];
+        /** @description Updates the Members of a Space.
+         *      */
         put: operations["putSpaceMembers"];
         post?: never;
         delete?: never;
@@ -2440,7 +2488,11 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
+        /** @description Updates a Thread of a Space.
+         *      */
         put: operations["putSpaceThread"];
+        /** @description Adds a Thread in a Space.
+         *      */
         post: operations["postSpaceThread"];
         delete?: never;
         options?: never;
@@ -2457,6 +2509,8 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Adds a comment to a Thread of a Space.
+         *      */
         post: operations["postSpaceThreadComment"];
         delete?: never;
         options?: never;
@@ -2489,6 +2543,8 @@ export interface paths {
         };
         get?: never;
         put?: never;
+        /** @description Creates a Space from a Space template.
+         *      */
         post: operations["postTemplateSpace"];
         delete?: never;
         options?: never;
@@ -8249,20 +8305,62 @@ export interface components {
             type?: "LABEL" | "SPACER" | "HR" | "CREATED_TIME" | "CREATOR" | "DATE" | "DATETIME" | "NUMBER" | "CALC" | "RICH_TEXT" | "FILE" | "UPDATED_TIME" | "MODIFIER" | "CHECK_BOX" | "MULTI_LINE_TEXT" | "MULTI_SELECT" | "RECORD_NUMBER" | "RADIO_BUTTON" | "SINGLE_LINE_TEXT" | "DROP_DOWN" | "SUBTABLE" | "TIME" | "USER_SELECT" | "ORGANIZATION_SELECT" | "GROUP_SELECT" | "REFERENCE_TABLE" | "LINK";
         };
         GuestsPostGuestUserForm: {
+            /** @description The Skype Name of the Guest user.
+             *     The maximum limit is 256 characters.
+             *      */
             callto?: string;
-            /** Format: email */
+            /**
+             * Format: email
+             * @description The email address (log in name) of the Guest user.
+             *
+             */
             code: string;
+            /** @description The Company name to display on the Guest User's profile.
+             *     The maximum limit is 100 characters.
+             *      */
             company?: string;
+            /** @description The Department name to display on the Guest User's profile.
+             *     The maximum limit is 100 characters.
+             *      */
             division?: string;
+            /** @description The Phonetic Given Name settings of the Guest User. The maximum limit is 64 characters.
+             *      */
             givenNameReading?: string;
+            /** @description The profile image of the Guest user.
+             *     Specify a fileKey of an uploaded file. fileKeys can be found from the response of the Upload File API.
+             *     If ignored, a default image will be set.
+             *      */
             image?: string;
-            /** Format: locale */
+            /**
+             * Format: locale
+             * @description The language settings of the Guest user.
+             *     - auto: Use web browser settings.
+             *     - en: English
+             *     - zh: Chinese
+             *     - ja: Japanese
+             *     If ignored, auto will be set.
+             *
+             */
             locale?: string;
+            /** @description The display name of the user.
+             *     Must be between 1 - 128 characters.
+             *      */
             name: string;
+            /** @description The log in password of the Guest user.
+             *      */
             password: string;
+            /** @description The Phone number to display on the Guest User's profile.
+             *     The maximum limit is 100 characters.
+             *      */
             phone?: string;
+            /** @description The Phonetic Surname settings of the Guest User. The maximum limit is 64 characters.
+             *      */
             surNameReading?: string;
-            /** Format: timezone */
+            /**
+             * Format: timezone
+             * @description The timezone of the Guest user.
+             *
+             */
             timezone: string;
         };
         PluginAppsGetAppDto: {
@@ -21792,45 +21890,132 @@ export interface components {
              *     The localization language will be dependent on the language settings of the Kintone user authenticating this API.
              *      */
             name?: string;
-            /** Format: long */
+            /**
+             * Format: long
+             * @description The Thread ID of the thread that the App was created in.
+             *     Apps that are created inside Spaces using the GUI will be automatically allocated to the default Thread.
+             *
+             */
             threadId?: number;
         };
         SpaceMembersGetGroupBean: {
+            /** @description The entity information of the Space member.
+             *      */
             entity?: {
+                /** @description The code of the Space member.
+                 *      */
                 code?: string;
+                /** @description The entity type of the Space member.
+                 *     - USER: User
+                 *     - GROUP: Group
+                 *     - ORGANIZATION: Department
+                 *      */
                 type?: string;
             };
+            /** @description The Space Admin settings of the Space member
+             *     - true: The Space Member is the Space Administrator.
+             *     - false: The Space Member is not the Space Administrator.
+             *      */
             isAdmin?: boolean;
         };
         SpaceMembersGetOrganizationBean: {
+            /** @description The entity information of the Space member.
+             *      */
             entity?: {
+                /** @description The code of the Space member.
+                 *      */
                 code?: string;
+                /** @description The entity type of the Space member.
+                 *     - USER: User
+                 *     - GROUP: Group
+                 *     - ORGANIZATION: Department
+                 *      */
                 type?: string;
             };
+            /** @description The "Include Affiliated Departments" setting of the Department Space Member.
+             *     - true: Affiliated Departments are included.
+             *     - false: Affiliated Departments are not included.
+             *      */
             includeSubs?: boolean;
+            /** @description The Space Admin settings of the Space member
+             *     - true: The Space Member is the Space Administrator.
+             *     - false: The Space Member is not the Space Administrator.
+             *      */
             isAdmin?: boolean;
         };
         SpaceMembersGetUserBean: {
+            /** @description The entity information of the Space member.
+             *      */
             entity?: {
+                /** @description The code of the Space member.
+                 *      */
                 code?: string;
+                /** @description The entity type of the Space member.
+                 *     - USER: User
+                 *     - GROUP: Group
+                 *     - ORGANIZATION: Department
+                 *      */
                 type?: string;
             };
+            /** @description The Space Admin settings of the Space member
+             *     - true: The Space Member is the Space Administrator.
+             *     - false: The Space Member is not the Space Administrator.
+             *      */
             isAdmin?: boolean;
+            /** @description If the Space Member is added as a User or not.
+             *     - true: The Space Member is not added as a user, and is added as part of a Group or Department.
+             *     - false: The Space Member is added as a User.
+             *     This is not responded for GROUP and ORGANIZATION entities.
+             *      */
             isImplicit?: boolean;
         };
         SpaceMembersPutMemberForm: {
+            /** @description The entity information of the Space member.
+             *     Guest users cannot be specified.
+             *      */
             entity: {
+                /** @description The code of the entity.
+                 *      */
                 code: string;
-                /** @enum {string} */
+                /**
+                 * @description The entity type of the Space member.
+                 *     - USER: User
+                 *     - Group: Group
+                 *     - ORGANIZATION: Department
+                 *
+                 * @enum {string}
+                 */
                 type: "USER" | "GROUP" | "ORGANIZATION";
             };
-            /** Format: boolean */
+            /**
+             * Format: boolean
+             * @description The "Include Affiliated Departments" settings of the department.
+             *     - true: Affiliated departments will be included.
+             *     - false: Affiliated departments will not be included.
+             *     If ignored, this value is false.
+             *
+             */
             includeSubs?: boolean;
-            /** Format: boolean */
+            /**
+             * Format: boolean
+             * @description The Space Administration settings of the user.
+             *     - true: The member will be the Administrator of the Space.
+             *     - false: The member will not be the Administrator of the Space.
+             *     At least 1 Space Administrator is required to be set in the API call.
+             *     If ignored, this value is false.
+             *
+             */
             isAdmin?: boolean;
         };
         SpaceThreadCommentPostFileForm: {
+            /** @description The fileKey of the attachment file.
+             *     fileKeys can be found from the response of the Upload File API.
+             *      */
             fileKey: string;
+            /** @description A width can be specified if the attachment file is an image.
+             *     The minimum is 100, and the maximum is 750.
+             *     If this parameter is ignored, the original width will be set (this width is the same size as the size when "Original" is chosen when adding an image to a thread via GUI). This parameter is ignored if the file is not an image.
+             *      */
             width?: string;
         };
         SpaceThreadCommentPostMentionForm: {
@@ -21881,14 +22066,41 @@ export interface components {
             name?: string;
         };
         TemplateSpacePostMemberForm: {
+            /** @description The entity information of the Space member.
+             *     Guest users cannot be specified.
+             *      */
             entity: {
+                /** @description The code of the entity.
+                 *      */
                 code: string;
-                /** @enum {string} */
+                /**
+                 * @description The entity type of the Space member.
+                 *     - USER: User
+                 *     - Group: Group
+                 *     - ORGANIZATION: Department
+                 *
+                 * @enum {string}
+                 */
                 type: "USER" | "GROUP" | "ORGANIZATION";
             };
-            /** Format: boolean */
+            /**
+             * Format: boolean
+             * @description The "Include Affiliated Departments" settings of the department.
+             *     - true: Affiliated departments will be included.
+             *     - false: Affiliated departments will not be included.
+             *     If ignored, this value is false.
+             *
+             */
             includeSubs?: boolean;
-            /** Format: boolean */
+            /**
+             * Format: boolean
+             * @description The Space Administration settings of the user.
+             *     - true: The member will be the Administrator of the Space.
+             *     - false: The member will not be the Administrator of the Space.
+             *     At least 1 Space Administrator is required to be set in the API call.
+             *     If ignored, this value is false.
+             *
+             */
             isAdmin?: boolean;
         };
     };
@@ -23131,6 +23343,8 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description A list of Guest user data.
+                     *      */
                     guests: components["schemas"]["GuestsPostGuestUserForm"][];
                 };
             };
@@ -23150,6 +23364,9 @@ export interface operations {
     deleteGuestsForGuestSpace: {
         parameters: {
             query: {
+                /** @description A list of email addresses of Guest users.
+                 *     Up to 100 Guests can be deleted.
+                 *      */
                 guests: string[];
             };
             header?: never;
@@ -26326,6 +26543,10 @@ export interface operations {
     getSpaceForGuestSpace: {
         parameters: {
             query: {
+                /** @description The Space ID.
+                 *     The Space ID can be found in the URL of the Space.
+                 *     A Space with the URL of https://{domainname}.cybozu.com/k/#/space/111 has a Space ID of 111.
+                 *      */
                 id: number;
             };
             header?: never;
@@ -26344,12 +26565,31 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of Apps that are in the thread.
+                         *     This does not include Apps that are not live yet.
+                         *      */
                         attachedApps?: components["schemas"]["SpaceGetAttachedApp"][];
+                        /** @description The HTML of the Space body.
+                         *     Null is returned if the HTML in the body is empty.
+                         *     However, if the body has been set before, the HTML tags may be set even if nothing is displayed on the screen and the string will be returned.
+                         *      */
                         body?: string;
+                        /** @description The key of the Cover Photo.
+                         *      */
                         coverKey?: string;
-                        /** @enum {string} */
+                        /**
+                         * @description The image type of the Cover Photo.
+                         *     - BLOB: An uploaded image.
+                         *     - PRESET: A preset image.
+                         *
+                         * @enum {string}
+                         */
                         coverType?: "BLOB" | "PRESET";
+                        /** @description The URL of the Cover Photo.
+                         *      */
                         coverUrl?: string;
+                        /** @description An object containing information of the creator of the Space.
+                         *      */
                         creator?: {
                             /** @description The log in name of the creator.
                              *      */
@@ -26358,15 +26598,41 @@ export interface operations {
                              *      */
                             name?: string;
                         };
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Thread ID of the default thread that was created when the Space was made.
+                         *
+                         */
                         defaultThread?: number;
+                        /** @description The options set for the Block users from joining or leaving the space and following or unfollowing the threads setting.
+                         *     - true: Users cannot join/leave the Space or follow/unfollow threads.
+                         *     - false: Users can join/leave the Space and follow/unfollow threads.
+                         *      */
                         fixedMember?: boolean;
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Space ID.
+                         *
+                         */
                         id?: number;
+                        /** @description The Guest Space setting.
+                         *     - true: The Space is a Guest Space.
+                         *     - false: The Space is not a Guest Space.
+                         *      */
                         isGuest?: boolean;
+                        /** @description The "Private" settings of the Space.
+                         *     - true: The Space is private.
+                         *     - false: The Space is not private.
+                         *      */
                         isPrivate?: boolean;
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The number of members of the Space.
+                         *
+                         */
                         memberCount?: number;
+                        /** @description An object containing information of the updater of the Space.
+                         *      */
                         modifier?: {
                             /** @description The log in name of the creator.
                              *      */
@@ -26375,16 +26641,55 @@ export interface operations {
                              *      */
                             name?: string;
                         };
+                        /** @description The name of the Space
+                         *      */
                         name?: string;
+                        /** @description An object containing information of the space's permission settings.
+                         *      */
                         permissions?: {
-                            /** @enum {string} */
+                            /**
+                             * @description The option set for the Only Allow Space Administrators to Create Apps setting
+                             *     - EVERYONE: all users can create Apps.
+                             *     - ADMIN: only administrators can create Apps.
+                             *
+                             * @enum {string}
+                             */
                             createApp?: "EVERYONE" | "ADMIN";
                         };
+                        /** @description The display status for the Announcement widget.
+                         *     - true: The Announcement widget is displayed.
+                         *     - false: The Announcement widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showAnnouncement?: boolean;
+                        /** @description The display status for the Apps widget.
+                         *     - true: The Apps widget is displayed.
+                         *     - false: The Apps widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showAppList?: boolean;
+                        /** @description The display status for the People widget.
+                         *     - true: The People widget is displayed.
+                         *     - false: The People widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showMemberList?: boolean;
+                        /** @description The display status for the Related Apps & Spaces widget.
+                         *     - true: The Related Apps & Spaces widget is displayed.
+                         *     - false: The Related Apps & Spaces widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showRelatedLinkList?: boolean;
+                        /** @description The display status for the Threads widget.
+                         *     - true: The Threads widget is displayed.
+                         *     - false: The Threads widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showThreadList?: boolean;
+                        /** @description The Enable multiple threads setting.
+                         *     - true: The Space is a Multi-threaded Space.
+                         *     - false: The Space is a Single-threaded Space.
+                         *      */
                         useMultiThread?: boolean;
                     };
                 };
@@ -26404,28 +26709,90 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The options set for the Block users from joining or leaving the space and following or unfollowing the threads setting.
+                     *     - true: Users cannot join/leave the Space or follow/unfollow threads.
+                     *     - false: Users can join/leave the Space and follow/unfollow threads.
+                     *
+                     */
                     fixedMember?: boolean;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     id: number;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The Private settings of the Space.
+                     *     - true: The Space is private.
+                     *     - false: The Space is not private.
+                     *
+                     */
                     isPrivate?: boolean;
+                    /** @description The new name of the Space.
+                     *      */
                     name?: string;
+                    /** @description An object containing information of the space's permission settings.
+                     *      */
                     permissions?: {
-                        /** @enum {string} */
+                        /**
+                         * @description The option set for the Only Allow Space Administrators to Create Apps setting
+                         *     - EVERYONE: all users can create apps.
+                         *     - ADMIN: only administrators can create apps.
+                         *
+                         * @enum {string}
+                         */
                         createApp?: "EVERYONE" | "ADMIN";
                     };
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the Announcement widget.
+                     *     - true: The Announcement widget is displayed.
+                     *     - false: The Announcement widget is not displayed.
+                     *
+                     */
                     showAnnouncement?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the Apps widget.
+                     *     - true: The Apps widget is displayed.
+                     *     - false: The Apps widget is not displayed.
+                     *
+                     */
                     showAppList?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the People widget.
+                     *     - true: The People widget is displayed.
+                     *     - false: The People widget is not displayed.
+                     *
+                     */
                     showMemberList?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the Related Apps & Spaces widget.
+                     *     - true: The Related Apps & Spaces widget is displayed.
+                     *     - false: The Related Apps & Spaces widget is not displayed.
+                     *
+                     */
                     showRelatedLinkList?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the Threads widget.
+                     *     - true: The Threads widget is displayed.
+                     *     - false: The Threads widget is not displayed.
+                     *
+                     */
                     showThreadList?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The Enable multiple threads setting.
+                     *     - true: The Space is a Multi-threaded Space.
+                     *     - false: The setting will not be updated, as a Multi-Threaded Space can not be reverted to a Single-threaded Space.
+                     *
+                     */
                     useMultiThread?: boolean;
                 };
             };
@@ -26445,6 +26812,8 @@ export interface operations {
     deleteSpaceForGuestSpace: {
         parameters: {
             query: {
+                /** @description The Space ID.
+                 *      */
                 id: number;
             };
             header?: never;
@@ -26480,8 +26849,17 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The contents of the body as an HTML string.
+                     *     HTML tags that cannot be used will be automatically removed.
+                     *     HTML can be used to attach Apps, files and Emoji.
+                     *     The usage of the @ mark to mention a user will not notify that user.
+                     *      */
                     body: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     id: number;
                 };
             };
@@ -26511,8 +26889,16 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description A list of email addresses of Guest users.
+                     *     Guest users must first be added as a Guest user of Kintone before they can be affiliated with Spaces. To do this, use the Add Guests API.
+                     *     Users who are not Guest users, or are inactive/deleted users cannot be added to the list.
+                     *      */
                     guests: string[];
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Guest Space ID.
+                     *
+                     */
                     id: number;
                 };
             };
@@ -26532,6 +26918,8 @@ export interface operations {
     getSpaceMembersForGuestSpace: {
         parameters: {
             query: {
+                /** @description The Space ID.
+                 *      */
                 id: number;
             };
             header?: never;
@@ -26550,6 +26938,9 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of Space members.
+                         *     Guest users, inactive users and deleted users will not be included.
+                         *      */
                         members?: (components["schemas"]["SpaceMembersGetUserBean"] | components["schemas"]["SpaceMembersGetOrganizationBean"] | components["schemas"]["SpaceMembersGetGroupBean"])[];
                     };
                 };
@@ -26569,8 +26960,16 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     id: number;
+                    /** @description A list of members of the Space.
+                     *     At least one Space Administrator must be specified.
+                     *     Inactive and deleted users cannot be specified.
+                     *      */
                     members?: components["schemas"]["SpaceMembersPutMemberForm"][];
                 };
             };
@@ -26600,9 +26999,26 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The contents of the Thread body.
+                     *     Write the contents as an HTML string, within 65535 characters
+                     *     HTML tags that cannot be used will be automatically removed.
+                     *     HTML can be used to attach Apps, files and Emoji.
+                     *     The usage of the @ mark to mention a user will not notify that user.
+                     *      */
                     body?: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Thread ID.
+                     *     The Thread ID can be found in the URL of the Thread.
+                     *     A Space with the URL of https://{domainname}.cybozu.com/k/#/space/111/thread/222 has a Space ID of 111 and a Thread ID of 222.
+                     *
+                     */
                     id: number;
+                    /** @description The new name of the Thread.
+                     *     Must be between 1 - 128 characters.
+                     *     The name will not be updated if this parameter is ignored.
+                     *     The Thread name of single threaded Spaces cannot be updated.
+                     *      */
                     name?: string;
                 };
             };
@@ -26632,8 +27048,15 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The new name of the Thread.
+                     *     Must be between 1 - 128 characters.
+                     *      */
                     name: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     space: number;
                 };
             };
@@ -26646,7 +27069,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Thread ID of the created Thread.
+                         *
+                         */
                         id?: number;
                     };
                 };
@@ -26666,14 +27093,34 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description An object including comment details.
+                     *      */
                     comment: {
+                        /** @description An array including data of attachment files.
+                         *     The maximum number of the files is 5.
+                         *     Required, if comment.text is not set.
+                         *      */
                         files?: components["schemas"]["SpaceThreadCommentPostFileForm"][];
+                        /** @description An array including mentions, that notify other Kintone users.
+                         *      */
                         mentions?: components["schemas"]["SpaceThreadCommentPostMentionForm"][];
+                        /** @description The comment contents.
+                         *     A line break can be specified by LF.
+                         *     The maximum characters of the comment is 65535. Required, if comment.files is not set.
+                         *      */
                         text?: string;
                     };
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     space: number;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Thread ID.
+                     *
+                     */
                     thread: number;
                 };
             };
@@ -26686,7 +27133,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The comment ID of the created comment.
+                         *
+                         */
                         id?: number;
                     };
                 };
@@ -26734,15 +27185,48 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The "Block users from joining or leaving the space and following or unfollowing the threads." settings of the Space.
+                     *     - true: Users will not be able to join/leave the Space or follow/unfollow threads.
+                     *     - false: Users will be able to join/leave the Space and follow/unfollow threads.
+                     *     If ignored, this value is false.
+                     *
+                     */
                     fixedMember?: boolean;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space Template ID.
+                     *     The Space Template ID is listed on the Space Templates list page, found under https://{domainname}.cybozu.com/k/admin/system/spacetemplate/
+                     *
+                     */
                     id: number;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The Guest Space settings of the Space.
+                     *     - true: The Space will be a Guest Space
+                     *     - false: The Space will be a normal Space.
+                     *     If ignored, this value is false.
+                     *
+                     */
                     isGuest?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The "Private" settings of the Space.
+                     *     - true: The Space will be Private.
+                     *     - false: The Space will not be Private.
+                     *     If the isGuest parameter is set to true, this value is also true.
+                     *     If ignored, this value is false.
+                     *
+                     */
                     isPrivate?: boolean;
+                    /** @description A list of members of the Space.
+                     *     At least one Space Administrator must be specified.
+                     *     Inactive and deleted users cannot be specified.
+                     *      */
                     members?: components["schemas"]["TemplateSpacePostMemberForm"][];
+                    /** @description The new name of the Space.
+                     *      */
                     name: string;
                 };
             };
@@ -26755,7 +27239,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Space ID of the created Space.
+                         *
+                         */
                         id?: number;
                     };
                 };
@@ -27915,6 +28403,8 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description A list of Guest user data.
+                     *      */
                     guests: components["schemas"]["GuestsPostGuestUserForm"][];
                 };
             };
@@ -27934,6 +28424,9 @@ export interface operations {
     deleteGuests: {
         parameters: {
             query: {
+                /** @description A list of email addresses of Guest users.
+                 *     Up to 100 Guests can be deleted.
+                 *      */
                 guests: string[];
             };
             header?: never;
@@ -30918,6 +31411,10 @@ export interface operations {
     getSpace: {
         parameters: {
             query: {
+                /** @description The Space ID.
+                 *     The Space ID can be found in the URL of the Space.
+                 *     A Space with the URL of https://{domainname}.cybozu.com/k/#/space/111 has a Space ID of 111.
+                 *      */
                 id: number;
             };
             header?: never;
@@ -30933,12 +31430,31 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of Apps that are in the thread.
+                         *     This does not include Apps that are not live yet.
+                         *      */
                         attachedApps?: components["schemas"]["SpaceGetAttachedApp"][];
+                        /** @description The HTML of the Space body.
+                         *     Null is returned if the HTML in the body is empty.
+                         *     However, if the body has been set before, the HTML tags may be set even if nothing is displayed on the screen and the string will be returned.
+                         *      */
                         body?: string;
+                        /** @description The key of the Cover Photo.
+                         *      */
                         coverKey?: string;
-                        /** @enum {string} */
+                        /**
+                         * @description The image type of the Cover Photo.
+                         *     - BLOB: An uploaded image.
+                         *     - PRESET: A preset image.
+                         *
+                         * @enum {string}
+                         */
                         coverType?: "BLOB" | "PRESET";
+                        /** @description The URL of the Cover Photo.
+                         *      */
                         coverUrl?: string;
+                        /** @description An object containing information of the creator of the Space.
+                         *      */
                         creator?: {
                             /** @description The log in name of the creator.
                              *      */
@@ -30947,15 +31463,41 @@ export interface operations {
                              *      */
                             name?: string;
                         };
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Thread ID of the default thread that was created when the Space was made.
+                         *
+                         */
                         defaultThread?: number;
+                        /** @description The options set for the Block users from joining or leaving the space and following or unfollowing the threads setting.
+                         *     - true: Users cannot join/leave the Space or follow/unfollow threads.
+                         *     - false: Users can join/leave the Space and follow/unfollow threads.
+                         *      */
                         fixedMember?: boolean;
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Space ID.
+                         *
+                         */
                         id?: number;
+                        /** @description The Guest Space setting.
+                         *     - true: The Space is a Guest Space.
+                         *     - false: The Space is not a Guest Space.
+                         *      */
                         isGuest?: boolean;
+                        /** @description The "Private" settings of the Space.
+                         *     - true: The Space is private.
+                         *     - false: The Space is not private.
+                         *      */
                         isPrivate?: boolean;
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The number of members of the Space.
+                         *
+                         */
                         memberCount?: number;
+                        /** @description An object containing information of the updater of the Space.
+                         *      */
                         modifier?: {
                             /** @description The log in name of the creator.
                              *      */
@@ -30964,16 +31506,55 @@ export interface operations {
                              *      */
                             name?: string;
                         };
+                        /** @description The name of the Space
+                         *      */
                         name?: string;
+                        /** @description An object containing information of the space's permission settings.
+                         *      */
                         permissions?: {
-                            /** @enum {string} */
+                            /**
+                             * @description The option set for the Only Allow Space Administrators to Create Apps setting
+                             *     - EVERYONE: all users can create Apps.
+                             *     - ADMIN: only administrators can create Apps.
+                             *
+                             * @enum {string}
+                             */
                             createApp?: "EVERYONE" | "ADMIN";
                         };
+                        /** @description The display status for the Announcement widget.
+                         *     - true: The Announcement widget is displayed.
+                         *     - false: The Announcement widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showAnnouncement?: boolean;
+                        /** @description The display status for the Apps widget.
+                         *     - true: The Apps widget is displayed.
+                         *     - false: The Apps widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showAppList?: boolean;
+                        /** @description The display status for the People widget.
+                         *     - true: The People widget is displayed.
+                         *     - false: The People widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showMemberList?: boolean;
+                        /** @description The display status for the Related Apps & Spaces widget.
+                         *     - true: The Related Apps & Spaces widget is displayed.
+                         *     - false: The Related Apps & Spaces widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showRelatedLinkList?: boolean;
+                        /** @description The display status for the Threads widget.
+                         *     - true: The Threads widget is displayed.
+                         *     - false: The Threads widget is not displayed.
+                         *     - null is returned for Spaces with the Enable multiple threads option turned off.
+                         *      */
                         showThreadList?: boolean;
+                        /** @description The Enable multiple threads setting.
+                         *     - true: The Space is a Multi-threaded Space.
+                         *     - false: The Space is a Single-threaded Space.
+                         *      */
                         useMultiThread?: boolean;
                     };
                 };
@@ -30990,28 +31571,90 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The options set for the Block users from joining or leaving the space and following or unfollowing the threads setting.
+                     *     - true: Users cannot join/leave the Space or follow/unfollow threads.
+                     *     - false: Users can join/leave the Space and follow/unfollow threads.
+                     *
+                     */
                     fixedMember?: boolean;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     id: number;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The Private settings of the Space.
+                     *     - true: The Space is private.
+                     *     - false: The Space is not private.
+                     *
+                     */
                     isPrivate?: boolean;
+                    /** @description The new name of the Space.
+                     *      */
                     name?: string;
+                    /** @description An object containing information of the space's permission settings.
+                     *      */
                     permissions?: {
-                        /** @enum {string} */
+                        /**
+                         * @description The option set for the Only Allow Space Administrators to Create Apps setting
+                         *     - EVERYONE: all users can create apps.
+                         *     - ADMIN: only administrators can create apps.
+                         *
+                         * @enum {string}
+                         */
                         createApp?: "EVERYONE" | "ADMIN";
                     };
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the Announcement widget.
+                     *     - true: The Announcement widget is displayed.
+                     *     - false: The Announcement widget is not displayed.
+                     *
+                     */
                     showAnnouncement?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the Apps widget.
+                     *     - true: The Apps widget is displayed.
+                     *     - false: The Apps widget is not displayed.
+                     *
+                     */
                     showAppList?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the People widget.
+                     *     - true: The People widget is displayed.
+                     *     - false: The People widget is not displayed.
+                     *
+                     */
                     showMemberList?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the Related Apps & Spaces widget.
+                     *     - true: The Related Apps & Spaces widget is displayed.
+                     *     - false: The Related Apps & Spaces widget is not displayed.
+                     *
+                     */
                     showRelatedLinkList?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The display status for the Threads widget.
+                     *     - true: The Threads widget is displayed.
+                     *     - false: The Threads widget is not displayed.
+                     *
+                     */
                     showThreadList?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The Enable multiple threads setting.
+                     *     - true: The Space is a Multi-threaded Space.
+                     *     - false: The setting will not be updated, as a Multi-Threaded Space can not be reverted to a Single-threaded Space.
+                     *
+                     */
                     useMultiThread?: boolean;
                 };
             };
@@ -31031,6 +31674,8 @@ export interface operations {
     deleteSpace: {
         parameters: {
             query: {
+                /** @description The Space ID.
+                 *      */
                 id: number;
             };
             header?: never;
@@ -31060,8 +31705,17 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The contents of the body as an HTML string.
+                     *     HTML tags that cannot be used will be automatically removed.
+                     *     HTML can be used to attach Apps, files and Emoji.
+                     *     The usage of the @ mark to mention a user will not notify that user.
+                     *      */
                     body: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     id: number;
                 };
             };
@@ -31088,8 +31742,16 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description A list of email addresses of Guest users.
+                     *     Guest users must first be added as a Guest user of Kintone before they can be affiliated with Spaces. To do this, use the Add Guests API.
+                     *     Users who are not Guest users, or are inactive/deleted users cannot be added to the list.
+                     *      */
                     guests: string[];
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Guest Space ID.
+                     *
+                     */
                     id: number;
                 };
             };
@@ -31109,6 +31771,8 @@ export interface operations {
     getSpaceMembers: {
         parameters: {
             query: {
+                /** @description The Space ID.
+                 *      */
                 id: number;
             };
             header?: never;
@@ -31124,6 +31788,9 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @description A list of Space members.
+                         *     Guest users, inactive users and deleted users will not be included.
+                         *      */
                         members?: (components["schemas"]["SpaceMembersGetUserBean"] | components["schemas"]["SpaceMembersGetOrganizationBean"] | components["schemas"]["SpaceMembersGetGroupBean"])[];
                     };
                 };
@@ -31140,8 +31807,16 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     id: number;
+                    /** @description A list of members of the Space.
+                     *     At least one Space Administrator must be specified.
+                     *     Inactive and deleted users cannot be specified.
+                     *      */
                     members?: components["schemas"]["SpaceMembersPutMemberForm"][];
                 };
             };
@@ -31168,9 +31843,26 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The contents of the Thread body.
+                     *     Write the contents as an HTML string, within 65535 characters
+                     *     HTML tags that cannot be used will be automatically removed.
+                     *     HTML can be used to attach Apps, files and Emoji.
+                     *     The usage of the @ mark to mention a user will not notify that user.
+                     *      */
                     body?: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Thread ID.
+                     *     The Thread ID can be found in the URL of the Thread.
+                     *     A Space with the URL of https://{domainname}.cybozu.com/k/#/space/111/thread/222 has a Space ID of 111 and a Thread ID of 222.
+                     *
+                     */
                     id: number;
+                    /** @description The new name of the Thread.
+                     *     Must be between 1 - 128 characters.
+                     *     The name will not be updated if this parameter is ignored.
+                     *     The Thread name of single threaded Spaces cannot be updated.
+                     *      */
                     name?: string;
                 };
             };
@@ -31197,8 +31889,15 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description The new name of the Thread.
+                     *     Must be between 1 - 128 characters.
+                     *      */
                     name: string;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     space: number;
                 };
             };
@@ -31211,7 +31910,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Thread ID of the created Thread.
+                         *
+                         */
                         id?: number;
                     };
                 };
@@ -31228,14 +31931,34 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @description An object including comment details.
+                     *      */
                     comment: {
+                        /** @description An array including data of attachment files.
+                         *     The maximum number of the files is 5.
+                         *     Required, if comment.text is not set.
+                         *      */
                         files?: components["schemas"]["SpaceThreadCommentPostFileForm"][];
+                        /** @description An array including mentions, that notify other Kintone users.
+                         *      */
                         mentions?: components["schemas"]["SpaceThreadCommentPostMentionForm"][];
+                        /** @description The comment contents.
+                         *     A line break can be specified by LF.
+                         *     The maximum characters of the comment is 65535. Required, if comment.files is not set.
+                         *      */
                         text?: string;
                     };
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space ID.
+                     *
+                     */
                     space: number;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Thread ID.
+                     *
+                     */
                     thread: number;
                 };
             };
@@ -31248,7 +31971,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The comment ID of the created comment.
+                         *
+                         */
                         id?: number;
                     };
                 };
@@ -31290,15 +32017,48 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The "Block users from joining or leaving the space and following or unfollowing the threads." settings of the Space.
+                     *     - true: Users will not be able to join/leave the Space or follow/unfollow threads.
+                     *     - false: Users will be able to join/leave the Space and follow/unfollow threads.
+                     *     If ignored, this value is false.
+                     *
+                     */
                     fixedMember?: boolean;
-                    /** Format: long */
+                    /**
+                     * Format: long
+                     * @description The Space Template ID.
+                     *     The Space Template ID is listed on the Space Templates list page, found under https://{domainname}.cybozu.com/k/admin/system/spacetemplate/
+                     *
+                     */
                     id: number;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The Guest Space settings of the Space.
+                     *     - true: The Space will be a Guest Space
+                     *     - false: The Space will be a normal Space.
+                     *     If ignored, this value is false.
+                     *
+                     */
                     isGuest?: boolean;
-                    /** Format: boolean */
+                    /**
+                     * Format: boolean
+                     * @description The "Private" settings of the Space.
+                     *     - true: The Space will be Private.
+                     *     - false: The Space will not be Private.
+                     *     If the isGuest parameter is set to true, this value is also true.
+                     *     If ignored, this value is false.
+                     *
+                     */
                     isPrivate?: boolean;
+                    /** @description A list of members of the Space.
+                     *     At least one Space Administrator must be specified.
+                     *     Inactive and deleted users cannot be specified.
+                     *      */
                     members?: components["schemas"]["TemplateSpacePostMemberForm"][];
+                    /** @description The new name of the Space.
+                     *      */
                     name: string;
                 };
             };
@@ -31311,7 +32071,11 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** Format: long */
+                        /**
+                         * Format: long
+                         * @description The Space ID of the created Space.
+                         *
+                         */
                         id?: number;
                     };
                 };
