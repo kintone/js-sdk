@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.1.1...@kintone/rest@0.2.0) (2025-04-28)
+
+
+### Features
+
+* add description to file plugin ([#3281](https://github.com/kintone/js-sdk/issues/3281)) ([3623bf9](https://github.com/kintone/js-sdk/commit/3623bf9c6f4803907feb4336d2fe4b6c716d428b))
+* **rest:** add description for spaces ([#3282](https://github.com/kintone/js-sdk/issues/3282)) ([2c9a8a2](https://github.com/kintone/js-sdk/commit/2c9a8a24abc54c100af805627601049aa27a91cb))
+* **rest:** add description to schema.ts ([#3280](https://github.com/kintone/js-sdk/issues/3280)) ([9b0a760](https://github.com/kintone/js-sdk/commit/9b0a76079e0e02d3ded9e11196127fe57d009e65))
+
 ## [0.1.1](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.1.0...@kintone/rest@0.1.1) (2025-04-17)
 
 
