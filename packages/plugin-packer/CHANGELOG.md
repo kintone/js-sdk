@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.2.0...@kintone/plugin-packer@8.2.1) (2025-05-01)
+
+
+### Bug Fixes
+
+* **rest-api-client:** commit for release ([#3286](https://github.com/kintone/js-sdk/issues/3286)) ([fc1f211](https://github.com/kintone/js-sdk/commit/fc1f21193f3bcd920bfec8f9698e1c8d1daa6817))
+
 ## [8.2.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.1.3...@kintone/plugin-packer@8.2.0) (2025-02-17)
 
 

@@ -1,14 +1,14 @@
 {
-  "packages/create-plugin": "8.2.4",
-  "packages/customize-uploader": "8.0.13",
-  "packages/dts-gen": "8.1.1",
+  "packages/create-plugin": "8.2.5",
+  "packages/customize-uploader": "8.0.14",
+  "packages/dts-gen": "8.1.2",
   "@kintone/eslint-plugin": "0.0.0",
-  "packages/plugin-manifest-validator": "10.3.0",
-  "packages/plugin-packer": "8.2.0",
-  "packages/plugin-uploader": "9.1.4",
-  "packages/profile-loader": "5.0.1",
-  "packages/rest-api-client": "5.7.1",
-  "packages/webpack-plugin-kintone-plugin": "8.0.10",
-  "packages/eslint-plugin": "0.0.2",
-  "packages/rest": "0.2.0"
+  "packages/plugin-manifest-validator": "10.3.1",
+  "packages/plugin-packer": "8.2.1",
+  "packages/plugin-uploader": "9.1.5",
+  "packages/profile-loader": "5.0.2",
+  "packages/rest-api-client": "5.7.2",
+  "packages/webpack-plugin-kintone-plugin": "8.0.11",
+  "packages/eslint-plugin": "0.0.3",
+  "packages/rest": "0.2.1"
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.2.0...@kintone/rest@0.2.1) (2025-05-01)
+
+
+### Bug Fixes
+
+* **rest-api-client:** commit for release ([#3286](https://github.com/kintone/js-sdk/issues/3286)) ([fc1f211](https://github.com/kintone/js-sdk/commit/fc1f21193f3bcd920bfec8f9698e1c8d1daa6817))
+
 ## [0.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.1.1...@kintone/rest@0.2.0) (2025-04-28)
 
 
