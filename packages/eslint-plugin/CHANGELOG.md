@@ -1,12 +1,5 @@
 # Changelog
 
-## [0.0.3](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.0.2...@kintone/eslint-plugin@0.0.3) (2025-05-01)
-
-
-### Bug Fixes
-
-* **rest-api-client:** commit for release ([#3286](https://github.com/kintone/js-sdk/issues/3286)) ([fc1f211](https://github.com/kintone/js-sdk/commit/fc1f21193f3bcd920bfec8f9698e1c8d1daa6817))
-
 ## [0.0.2](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.0.1...@kintone/eslint-plugin@0.0.2) (2025-04-17)
 
 
