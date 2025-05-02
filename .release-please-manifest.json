@@ -7,7 +7,7 @@
   "packages/plugin-packer": "8.2.0",
   "packages/plugin-uploader": "9.1.4",
   "packages/profile-loader": "5.0.1",
-  "packages/rest-api-client": "5.7.1",
+  "packages/rest-api-client": "5.7.2",
   "packages/webpack-plugin-kintone-plugin": "8.0.10",
   "packages/eslint-plugin": "0.0.2",
   "packages/rest": "0.2.0"
