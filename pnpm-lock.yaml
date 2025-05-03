@@ -13,7 +13,7 @@ overrides:
   follow-redirects@<1.15.4: '>=1.15.4'
   pac-resolver: '>=7.0.1'
   socks: '>=2.8.4'
-  ws: '>=8.18.1'
+  ws: '>=8.18.2'
 
 importers:
 
@@ -9318,7 +9318,7 @@ packages:
       whatwg-encoding: 2.0.0
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
-      ws: 8.18.1
+      ws: 8.18.2
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -11164,7 +11164,7 @@ packages:
       debug: 4.4.0(supports-color@9.4.0)
       devtools-protocol: 0.0.1312386
       typed-query-selector: 2.12.0
-      ws: 8.18.1
+      ws: 8.18.2
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -13609,7 +13609,7 @@ packages:
       webpack: 5.98.0(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack-dev-server@5.2.1)(webpack@5.98.0)
       webpack-dev-middleware: 7.4.2(webpack@5.98.0)
-      ws: 8.18.1
+      ws: 8.18.2
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -13852,8 +13852,8 @@ packages:
       signal-exit: 3.0.7
     dev: true
 
-  /ws@8.18.1:
-    resolution: {integrity: sha512-RKW2aJZMXeMxVpnZ6bck+RswznaxmzdULiBr6KY7XkTnW8uvt0iT9H5DkHUChXrc+uurzwa0rVI16n/Xzjdz1w==}
+  /ws@8.18.2:
+    resolution: {integrity: sha512-DMricUmwGZUVr++AEAe2uiVM7UoO9MAVZMDu05UQOaUII0lp+zOzLLU4Xqh/JvTqklB1T4uELaaPBKyjE1r4fQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
