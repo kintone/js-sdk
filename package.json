@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
-    "@babel/preset-env": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
     "@babel/preset-typescript": "^7.27.1",
     "@cybozu/eslint-config": "^24.0.0",
     "@cybozu/license-manager": "^1.2.1",
