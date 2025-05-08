@@ -472,8 +472,8 @@ importers:
         version: 7.4.0
     devDependencies:
       '@arethetypeswrong/cli':
-        specifier: ^0.17.4
-        version: 0.17.4
+        specifier: ^0.18.0
+        version: 0.18.0
       vite:
         specifier: ^5.4.15
         version: 5.4.16(@types/node@18.19.86)
@@ -634,12 +634,12 @@ packages:
       js-yaml: 4.1.0
     dev: true
 
-  /@arethetypeswrong/cli@0.17.4:
-    resolution: {integrity: sha512-AeiKxtf67XD/NdOqXgBOE5TZWH3EOCt+0GkbUpekOzngc+Q/cRZ5azjWyMxISxxfp0EItgm5NoSld9p7BAA5xQ==}
-    engines: {node: '>=18'}
+  /@arethetypeswrong/cli@0.18.0:
+    resolution: {integrity: sha512-Kf09mDQTGHfjR7Hlex70jsebN8tCy92AUnu37wiyIuMh+noiyssBwq5iuzVdnTyJKScKKfXLKoqQOa3eF8ZNrw==}
+    engines: {node: '>=20'}
     hasBin: true
     dependencies:
-      '@arethetypeswrong/core': 0.17.4
+      '@arethetypeswrong/core': 0.18.0
       chalk: 4.1.2
       cli-table3: 0.6.5
       commander: 10.0.1
@@ -648,15 +648,15 @@ packages:
       semver: 7.7.1
     dev: true
 
-  /@arethetypeswrong/core@0.17.4:
-    resolution: {integrity: sha512-Izvir8iIoU+X4SKtDAa5kpb+9cpifclzsbA8x/AZY0k0gIfXYQ1fa1B6Epfe6vNA2YfDX8VtrZFgvnXB6aPEoQ==}
-    engines: {node: '>=18'}
+  /@arethetypeswrong/core@0.18.0:
+    resolution: {integrity: sha512-a6JikWs7WxYx7CfZYkV+sBQsI0nhLI4uES1/cSPVSRMR6PnfbiMV2b3LBzsuXzh/UI8FoUGmJJaSKoZFa7mF9g==}
+    engines: {node: '>=20'}
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
       '@loaderkit/resolve': 1.0.4
       cjs-module-lexer: 1.2.3
       fflate: 0.8.2
-      lru-cache: 10.4.3
+      lru-cache: 11.0.2
       semver: 7.7.1
       typescript: 5.6.1-rc
       validate-npm-package-name: 5.0.1
@@ -9587,10 +9587,6 @@ packages:
   /lru-cache@10.2.0:
     resolution: {integrity: sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==}
     engines: {node: 14 || >=16.14}
-
-  /lru-cache@10.4.3:
-    resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
-    dev: true
 
   /lru-cache@11.0.2:
     resolution: {integrity: sha512-123qHRfJBmo2jXDbo/a5YOQrJoHF/GNQTLzQ5+IdK5pWpceK17yRc6ozlWd25FxvGKQbIUs91fDFkXmDHTKcyA==}
