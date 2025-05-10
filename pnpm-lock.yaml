@@ -484,8 +484,8 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1(rollup@4.40.2)(vite@5.4.16)
       vite-plugin-static-copy:
-        specifier: ^2.3.1
-        version: 2.3.1(vite@5.4.16)
+        specifier: ^3.0.0
+        version: 3.0.0(vite@5.4.16)
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@18.19.86)
@@ -7552,6 +7552,17 @@ packages:
       picomatch: 4.0.2
     dev: true
 
+  /fdir@6.4.4(picomatch@4.0.2):
+    resolution: {integrity: sha512-1NZP+GK4GfuAv3PqKvxQRDMjdSRZjnkq7KfhlNrCNNlZ0ygQFpebfrnfnq/W7fpUnAv9aGWmY1zKx7FYL3gwhg==}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
+    dependencies:
+      picomatch: 4.0.2
+    dev: true
+
   /fflate@0.8.2:
     resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
     dev: true
@@ -12647,6 +12658,14 @@ packages:
       picomatch: 4.0.2
     dev: true
 
+  /tinyglobby@0.2.13:
+    resolution: {integrity: sha512-mEwzpUgrLySlveBwEVDMKk5B57bhLPYovRfPAXD5gA/98Opn0rCDj3GtLwFvCvH5RK9uPCExUROW5NjDwvqkxw==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      fdir: 6.4.4(picomatch@4.0.2)
+      picomatch: 4.0.2
+    dev: true
+
   /tinypool@1.0.2:
     resolution: {integrity: sha512-al6n+QEANGFOMf/dmUMsuS5/r9B06uwlyNjZZql/zv8J7ybHCgoihBNORZCY2mzUuAnomQa2JdhyHKzZxPCrFA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -13258,17 +13277,17 @@ packages:
       - rollup
     dev: true
 
-  /vite-plugin-static-copy@2.3.1(vite@5.4.16):
-    resolution: {integrity: sha512-EfsPcBm3ewg3UMG8RJaC0ADq6/qnUZnokXx4By4+2cAcipjT9i0Y0owIJGqmZI7d6nxk4qB1q5aXOwNuSyPdyA==}
+  /vite-plugin-static-copy@3.0.0(vite@5.4.16):
+    resolution: {integrity: sha512-Uki9pPUQ4ZnoMEdIFabvoh9h6Bh9Q1m3iF7BrZvoiF30reREpJh2gZb4jOnW1/uYFzyRiLCmFSkM+8hwiq1vWQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0
     dependencies:
       chokidar: 3.6.0
-      fast-glob: 3.3.2
       fs-extra: 11.3.0
       p-map: 7.0.3
       picocolors: 1.1.1
+      tinyglobby: 0.2.13
       vite: 5.4.16(@types/node@18.19.86)
     dev: true
 
