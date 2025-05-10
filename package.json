@@ -52,7 +52,7 @@
     "jsonc-eslint-parser": "^2.4.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.4.2",
-    "prettier-plugin-packagejson": "^2.5.11",
+    "prettier-plugin-packagejson": "^2.5.12",
     "publint": "^0.3.12",
     "rimraf": "^5.0.10",
     "ts-node": "^10.9.2",
