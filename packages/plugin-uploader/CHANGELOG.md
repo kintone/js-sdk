@@ -11,6 +11,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - We dropped Node v14 support. Now supported versions are v16, v18, and v20.
 
+## [9.1.5](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@9.1.4...@kintone/plugin-uploader@9.1.5) (2025-05-13)
+
+
+### Bug Fixes
+
+* **dts-gen:** update axios ([#3284](https://github.com/kintone/js-sdk/issues/3284)) ([#3303](https://github.com/kintone/js-sdk/issues/3303)) ([edf7861](https://github.com/kintone/js-sdk/commit/edf78612a6ce06aee48bd5f409b764c7dab2337a))
+* **rest-api-client:** commit for release ([#3286](https://github.com/kintone/js-sdk/issues/3286)) ([fc1f211](https://github.com/kintone/js-sdk/commit/fc1f21193f3bcd920bfec8f9698e1c8d1daa6817))
+
 ## [9.1.4](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@9.1.3...@kintone/plugin-uploader@9.1.4) (2024-10-29)
 
 

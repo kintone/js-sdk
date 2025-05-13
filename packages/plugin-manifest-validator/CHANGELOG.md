@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.3.0...@kintone/plugin-manifest-validator@10.3.1) (2025-05-13)
+
+
+### Bug Fixes
+
+* **dts-gen:** update axios ([#3284](https://github.com/kintone/js-sdk/issues/3284)) ([#3303](https://github.com/kintone/js-sdk/issues/3303)) ([edf7861](https://github.com/kintone/js-sdk/commit/edf78612a6ce06aee48bd5f409b764c7dab2337a))
+* **rest-api-client:** commit for release ([#3286](https://github.com/kintone/js-sdk/issues/3286)) ([fc1f211](https://github.com/kintone/js-sdk/commit/fc1f21193f3bcd920bfec8f9698e1c8d1daa6817))
+
 ## [10.3.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@10.2.2...@kintone/plugin-manifest-validator@10.3.0) (2025-02-01)
 
 
