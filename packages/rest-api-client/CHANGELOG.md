@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.7.2...@kintone/rest-api-client@5.7.3) (2025-05-13)
+
+
+### Bug Fixes
+
+* **dts-gen:** update axios ([#3284](https://github.com/kintone/js-sdk/issues/3284)) ([#3303](https://github.com/kintone/js-sdk/issues/3303)) ([edf7861](https://github.com/kintone/js-sdk/commit/edf78612a6ce06aee48bd5f409b764c7dab2337a))
+
 ## [5.7.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.7.1...@kintone/rest-api-client@5.7.2) (2025-05-01)
 
 
