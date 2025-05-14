@@ -147,7 +147,7 @@ importers:
         specifier: ^5.3.8
         version: 5.3.8
       '@kintone/rest-api-client':
-        specifier: ^5.5.2
+        specifier: ^5.7.3
         version: link:../rest-api-client
       chokidar:
         specifier: ^3.6.0
