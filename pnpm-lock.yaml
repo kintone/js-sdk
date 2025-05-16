@@ -478,8 +478,8 @@ importers:
         specifier: ^5.4.15
         version: 5.4.16(@types/node@18.19.86)
       vite-plugin-dts:
-        specifier: ^4.5.3
-        version: 4.5.3(@types/node@18.19.86)(rollup@4.40.2)(typescript@5.8.2)(vite@5.4.16)
+        specifier: ^4.5.4
+        version: 4.5.4(@types/node@18.19.86)(rollup@4.40.2)(typescript@5.8.2)(vite@5.4.16)
       vite-plugin-license:
         specifier: ^0.0.1
         version: 0.0.1(rollup@4.40.2)(vite@5.4.16)
@@ -4330,7 +4330,7 @@ packages:
   /@vue/compiler-core@3.5.13:
     resolution: {integrity: sha512-oOdAkwqUfW1WqpwSYJce06wvt6HljgY3fGeM9NcVA1HaYOij3mZG9Rkysn0OHuyUAGMbEbARIpsG+LPVlBJ5/Q==}
     dependencies:
-      '@babel/parser': 7.27.0
+      '@babel/parser': 7.27.1
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -13231,8 +13231,8 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-dts@4.5.3(@types/node@18.19.86)(rollup@4.40.2)(typescript@5.8.2)(vite@5.4.16):
-    resolution: {integrity: sha512-P64VnD00dR+e8S26ESoFELqc17+w7pKkwlBpgXteOljFyT0zDwD8hH4zXp49M/kciy//7ZbVXIwQCekBJjfWzA==}
+  /vite-plugin-dts@4.5.4(@types/node@18.19.86)(rollup@4.40.2)(typescript@5.8.2)(vite@5.4.16):
+    resolution: {integrity: sha512-d4sOM8M/8z7vRXHHq/ebbblfaxENjogAAekcfcDCCwAyvGqnPrc7f4NZbvItS+g4WTgerW0xDwSz5qz11JT3vg==}
     peerDependencies:
       typescript: '*'
       vite: '*'
