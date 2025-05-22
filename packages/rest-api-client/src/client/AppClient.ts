@@ -259,8 +259,8 @@ export class AppClient extends BaseClient {
     enable: boolean;
     states: {
       [statusName: string]: StateForResponse;
-    };
-    actions: ActionForResponse[];
+    } | null;
+    actions: ActionForResponse[] | null;
     revision: string;
   }> {
     const { preview, ...rest } = params;
