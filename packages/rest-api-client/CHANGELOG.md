@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.7.3...@kintone/rest-api-client@5.7.4) (2025-06-01)
+
+
+### Bug Fixes
+
+* **rest-api-client:** fix getProcessManagement type ([#3324](https://github.com/kintone/js-sdk/issues/3324)) ([b4845be](https://github.com/kintone/js-sdk/commit/b4845bead4ebb9c18971496d49e3a4ea73b97370))
+
 ## [5.7.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.7.2...@kintone/rest-api-client@5.7.3) (2025-05-13)
 
 
