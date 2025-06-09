@@ -472,8 +472,8 @@ importers:
         version: 7.4.0
     devDependencies:
       '@arethetypeswrong/cli':
-        specifier: ^0.18.1
-        version: 0.18.1
+        specifier: ^0.18.2
+        version: 0.18.2
       vite:
         specifier: ^5.4.15
         version: 5.4.16(@types/node@18.19.86)
@@ -634,12 +634,12 @@ packages:
       js-yaml: 4.1.0
     dev: true
 
-  /@arethetypeswrong/cli@0.18.1:
-    resolution: {integrity: sha512-SS1Z5gRSvbP4tl98KlNygSUp3Yfenktt782MQKEbYm6GFPowztnnvdEUhQGm2uVDIH4YkU6av+n8Lm6OEOigqA==}
+  /@arethetypeswrong/cli@0.18.2:
+    resolution: {integrity: sha512-PcFM20JNlevEDKBg4Re29Rtv2xvjvQZzg7ENnrWFSS0PHgdP2njibVFw+dRUhNkPgNfac9iUqO0ohAXqQL4hbw==}
     engines: {node: '>=20'}
     hasBin: true
     dependencies:
-      '@arethetypeswrong/core': 0.18.1
+      '@arethetypeswrong/core': 0.18.2
       chalk: 4.1.2
       cli-table3: 0.6.5
       commander: 10.0.1
@@ -648,8 +648,8 @@ packages:
       semver: 7.7.1
     dev: true
 
-  /@arethetypeswrong/core@0.18.1:
-    resolution: {integrity: sha512-uUw47cLgB6zYOpAxFp94NG/J9ev0wcOC+UOmTCFEWtbDEn4vpR0ScoPxD7LCGcPczOd7bDJSJL/gMSz3BknYcw==}
+  /@arethetypeswrong/core@0.18.2:
+    resolution: {integrity: sha512-GiwTmBFOU1/+UVNqqCGzFJYfBXEytUkiI+iRZ6Qx7KmUVtLm00sYySkfe203C9QtPG11yOz1ZaMek8dT/xnlgg==}
     engines: {node: '>=20'}
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
