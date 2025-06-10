@@ -12,7 +12,7 @@ overrides:
   express: '>=4.19.2'
   follow-redirects@<1.15.4: '>=1.15.4'
   pac-resolver: '>=7.0.1'
-  socks: '>=2.8.4'
+  socks: '>=2.8.5'
   ws: '>=8.18.2'
 
 importers:
@@ -12050,13 +12050,13 @@ packages:
     dependencies:
       agent-base: 7.1.0
       debug: 4.4.1(supports-color@9.4.0)
-      socks: 2.8.4
+      socks: 2.8.5
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /socks@2.8.4:
-    resolution: {integrity: sha512-D3YaD0aRxR3mEcqnidIs7ReYJFVzWdd6fXJYUM8ixcQcJRGTka/b3saV0KflYhyVJXKhb947GndU35SxYNResQ==}
+  /socks@2.8.5:
+    resolution: {integrity: sha512-iF+tNDQla22geJdTyJB1wM/qrX9DMRwWrciEPwWLPRWAUEM8sQiyxgckLxWT1f7+9VabJS0jTGGr4QgBuvi6Ww==}
     engines: {node: '>= 10.0.0', npm: '>= 3.0.0'}
     dependencies:
       ip-address: 9.0.5
