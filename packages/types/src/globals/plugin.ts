@@ -1,3 +1,5 @@
+import { PluginConfig } from "../js-api/index.js";
+
 export type Plugin = {
   app: {
     // https://cybozu.dev/ja/kintone/docs/js-api/plugins/get-config/
@@ -64,5 +66,3 @@ export type Plugin = {
     };
   };
 };
-
-type PluginConfig = { [key: string]: string };

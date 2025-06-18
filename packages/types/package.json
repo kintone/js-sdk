@@ -25,6 +25,7 @@
   "exports": {
     ".": "./lib/index.d.ts",
     "./globals": "./lib/globals/index.d.ts",
+    "./js-api": "./lib/js-api/index.d.ts",
     "./package.json": "./package.json"
   },
   "files": [
