@@ -463,13 +463,13 @@ importers:
         version: 0.13.8
       openapi-typescript:
         specifier: ^7.6.1
-        version: 7.6.1(typescript@5.8.2)
+        version: 7.6.1(typescript@5.8.3)
       openapi-typescript-helpers:
         specifier: ^0.0.15
         version: 0.0.15
       undici:
         specifier: ^7.4.0
-        version: 7.4.0
+        version: 7.5.0
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ^0.18.2
@@ -479,7 +479,7 @@ importers:
         version: 5.4.16(@types/node@18.19.86)
       vite-plugin-dts:
         specifier: ^4.5.4
-        version: 4.5.4(@types/node@18.19.86)(rollup@4.44.0)(typescript@5.8.2)(vite@5.4.16)
+        version: 4.5.4(@types/node@18.19.86)(rollup@4.44.0)(typescript@5.8.3)(vite@5.4.16)
       vite-plugin-license:
         specifier: ^0.0.1
         version: 0.0.1(rollup@4.44.0)(vite@5.4.16)
@@ -4360,7 +4360,7 @@ packages:
       he: 1.2.0
     dev: true
 
-  /@vue/language-core@2.2.0(typescript@5.8.2):
+  /@vue/language-core@2.2.0(typescript@5.8.3):
     resolution: {integrity: sha512-O1ZZFaaBGkKbsRfnVH1ifOK1/1BUkyK+3SQsfnh6PmMmD4qJcTU8godCeA96jjDRTL6zgnK7YzCHfaUlH2r0Mw==}
     peerDependencies:
       typescript: '*'
@@ -4376,7 +4376,7 @@ packages:
       minimatch: 9.0.5
       muggle-string: 0.4.1
       path-browserify: 1.0.1
-      typescript: 5.8.2
+      typescript: 5.8.3
     dev: true
 
   /@vue/shared@3.5.13:
@@ -10203,7 +10203,7 @@ packages:
     resolution: {integrity: sha512-opyTPaunsklCBpTK8JGef6mfPhLSnyy5a0IN9vKtx3+4aExf+KxEqYwIy3hqkedXIB97u357uLMJsOnm3GVjsw==}
     dev: false
 
-  /openapi-typescript@7.6.1(typescript@5.8.2):
+  /openapi-typescript@7.6.1(typescript@5.8.3):
     resolution: {integrity: sha512-F7RXEeo/heF3O9lOXo2bNjCOtfp7u+D6W3a3VNEH2xE6v+fxLtn5nq0uvUcA1F5aT+CMhNeC5Uqtg5tlXFX/ag==}
     hasBin: true
     peerDependencies:
@@ -10214,7 +10214,7 @@ packages:
       change-case: 5.4.4
       parse-json: 8.1.0
       supports-color: 9.4.0
-      typescript: 5.8.2
+      typescript: 5.8.3
       yargs-parser: 21.1.1
     dev: false
 
@@ -12995,6 +12995,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  /typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   /ufo@1.5.4:
     resolution: {integrity: sha512-UsUk3byDzKd04EyoZ7U4DOlxQaD14JUKQl6/P7wiX4FNvUfm3XL246n9W5AmqwW5RSFJ27NAuM0iLscAOYUiGQ==}
     dev: true
@@ -13030,8 +13035,8 @@ packages:
   /undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
-  /undici@7.4.0:
-    resolution: {integrity: sha512-PUQM3/es3noM24oUn10u3kNNap0AbxESOmnssmW+dOi9yGwlUSi5nTNYl3bNbTkWOF8YZDkx2tCmj9OtQ3iGGw==}
+  /undici@7.5.0:
+    resolution: {integrity: sha512-NFQG741e8mJ0fLQk90xKxFdaSM7z4+IQpAgsFI36bCDY9Z2+aXXZjVy2uUksMouWfMI9+w5ejOq5zYYTBCQJDQ==}
     engines: {node: '>=20.18.1'}
     dev: false
 
@@ -13239,7 +13244,7 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-dts@4.5.4(@types/node@18.19.86)(rollup@4.44.0)(typescript@5.8.2)(vite@5.4.16):
+  /vite-plugin-dts@4.5.4(@types/node@18.19.86)(rollup@4.44.0)(typescript@5.8.3)(vite@5.4.16):
     resolution: {integrity: sha512-d4sOM8M/8z7vRXHHq/ebbblfaxENjogAAekcfcDCCwAyvGqnPrc7f4NZbvItS+g4WTgerW0xDwSz5qz11JT3vg==}
     peerDependencies:
       typescript: '*'
@@ -13251,13 +13256,13 @@ packages:
       '@microsoft/api-extractor': 7.52.2(@types/node@18.19.86)
       '@rollup/pluginutils': 5.1.4(rollup@4.44.0)
       '@volar/typescript': 2.4.12
-      '@vue/language-core': 2.2.0(typescript@5.8.2)
+      '@vue/language-core': 2.2.0(typescript@5.8.3)
       compare-versions: 6.1.1
       debug: 4.4.1(supports-color@9.4.0)
       kolorist: 1.8.0
       local-pkg: 1.1.1
       magic-string: 0.30.17
-      typescript: 5.8.2
+      typescript: 5.8.3
       vite: 5.4.16(@types/node@18.19.86)
     transitivePeerDependencies:
       - '@types/node'
