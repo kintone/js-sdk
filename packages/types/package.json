@@ -1,0 +1,53 @@
+{
+  "name": "@kintone/types",
+  "version": "0.0.0",
+  "description": "The type definition for kintone",
+  "keywords": [
+    "kintone",
+    "type",
+    "TypeScript"
+  ],
+  "homepage": "https://github.com/kintone/js-sdk/tree/master/packages/types#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/types"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.d.ts",
+    "./globals": "./lib/globals/index.d.ts",
+    "./js-api": "./lib/js-api/index.d.ts",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "lib",
+    "!**/*.tsbuildinfo"
+  ],
+  "scripts": {
+    "build": "tsc --build --force",
+    "fix": "pnpm lint:eslint --fix",
+    "lint": "pnpm \"/^lint:.*/\"",
+    "lint:attw": "attw --pack . --profile esm-only",
+    "lint:eslint": "eslint . --max-warnings 0",
+    "lint:package": "publint --strict",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
+    "eslint": "^9.20.1",
+    "publint": "^0.3.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
