@@ -89,8 +89,8 @@ importers:
         specifier: ^5.3.8
         version: 5.3.8
       chalk:
-        specifier: ^4.1.2
-        version: 4.1.2
+        specifier: ^5.5.0
+        version: 5.5.0
       glob:
         specifier: ^10.4.5
         version: 10.4.5
@@ -425,8 +425,8 @@ importers:
         specifier: ^5.3.8
         version: 5.3.8
       chalk:
-        specifier: ^4.1.2
-        version: 4.1.2
+        specifier: ^5.5.0
+        version: 5.5.0
       meow:
         specifier: ^9.0.0
         version: 9.0.0
@@ -5660,10 +5660,9 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  /chalk@5.4.1:
-    resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
+  /chalk@5.5.0:
+    resolution: {integrity: sha512-1tm8DTaJhPBG3bIkVeZt1iZM9GfSX2lzOeDVZH9R9ffRHpmHvxZ/QhgQH/aDTkswQVt+YHdXAdS/In/30OjCbg==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
-    dev: true
 
   /change-case@5.4.4:
     resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
@@ -9809,7 +9808,7 @@ packages:
     dependencies:
       ansi-escapes: 7.0.0
       ansi-regex: 6.1.0
-      chalk: 5.4.1
+      chalk: 5.5.0
       cli-highlight: 2.1.11
       cli-table3: 0.6.5
       marked: 9.1.6
