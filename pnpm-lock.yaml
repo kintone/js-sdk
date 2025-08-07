@@ -450,8 +450,8 @@ importers:
   packages/rest:
     dependencies:
       core-js:
-        specifier: ^3.41.0
-        version: 3.41.0
+        specifier: ^3.45.0
+        version: 3.45.0
       fs:
         specifier: 0.0.1-security
         version: 0.0.1-security
@@ -496,8 +496,8 @@ importers:
         specifier: ^1.8.4
         version: 1.8.4
       core-js:
-        specifier: ^3.40.0
-        version: 3.40.0
+        specifier: ^3.45.0
+        version: 3.45.0
       form-data:
         specifier: ^4.0.1
         version: 4.0.1
@@ -5966,13 +5966,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /core-js@3.40.0:
-    resolution: {integrity: sha512-7vsMc/Lty6AGnn7uFpYT56QesI5D2Y/UkgKounk87OP9Z2H9Z8kj6jzcSGAxFmUtDOS0ntK6lbQz+Nsa0Jj6mQ==}
-    requiresBuild: true
-    dev: false
-
-  /core-js@3.41.0:
-    resolution: {integrity: sha512-SJ4/EHwS36QMJd6h/Rg+GyR4A5xE0FSI3eZ+iBVpfqf1x0eTSg1smWLHrA+2jQThZSh97fmSgFSU8B61nxosxA==}
+  /core-js@3.45.0:
+    resolution: {integrity: sha512-c2KZL9lP4DjkN3hk/an4pWn5b5ZefhRJnAc42n6LJ19kSnbeRbdQZE5dSeE2LBol1OwJD3X1BQvFTAsa8ReeDA==}
     requiresBuild: true
     dev: false
 
@@ -13503,7 +13498,7 @@ packages:
       '@types/node': 22.13.17
       esbuild: 0.21.5
       postcss: 8.5.6
-      rollup: 4.46.2
+      rollup: 4.39.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
