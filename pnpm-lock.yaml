@@ -32,8 +32,8 @@ importers:
         specifier: ^24.0.0
         version: 24.0.0(eslint@9.20.1)(prettier@3.4.2)(typescript@5.8.2)
       '@cybozu/license-manager':
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.3.1
+        version: 1.3.1
       '@octokit/rest':
         specifier: ^20.1.2
         version: 20.1.2
@@ -225,8 +225,8 @@ importers:
         specifier: ^24.0.0
         version: 24.0.0(eslint@9.20.1)(prettier@3.4.2)(typescript@5.8.2)
       '@cybozu/license-manager':
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.3.1
+        version: 1.3.1
       '@types/node':
         specifier: ^22.13.14
         version: 22.13.17
@@ -2173,14 +2173,14 @@ packages:
       - supports-color
     dev: true
 
-  /@cybozu/license-manager@1.2.1:
-    resolution: {integrity: sha512-my0f4N/e6XVNZ5q9vJlkA/MBiY7scy7neBRhf2dXpdaYGR5Ti1Xjig4dkKlgy/u0+h4hnkE/8sd5MlhjPNqwuw==}
+  /@cybozu/license-manager@1.3.1:
+    resolution: {integrity: sha512-4BOZdZA2e6r1MzhGbdAV+dT+/y/lPKdnByPIa7ltGwcqs/4/za/pioz7mVfKM6X7SV9+CDTsJc/gawRK1T33ug==}
     engines: {node: '>=18.14.0', npm: '>=9.3.1', pnpm: '>=8.10.0'}
     hasBin: true
     dependencies:
       commander: 9.5.0
       glob: 8.1.0
-      picocolors: 1.0.0
+      picocolors: 1.1.1
     dev: true
 
   /@discoveryjs/json-ext@0.5.7:
@@ -10662,10 +10662,6 @@ packages:
   /pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
     dev: false
-
-  /picocolors@1.0.0:
-    resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
-    dev: true
 
   /picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
