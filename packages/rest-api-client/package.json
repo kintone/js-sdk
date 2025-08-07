@@ -64,7 +64,7 @@
     "babel-loader": "^9.2.1",
     "cross-env": "^7.0.3",
     "rimraf": "^5.0.10",
-    "rollup": "^4.46.0",
+    "rollup": "^4.46.2",
     "rollup-plugin-ecma-version-validator": "^0.2.13",
     "rollup-plugin-license": "^3.6.0",
     "rollup-plugin-node-globals": "^1.4.0",
