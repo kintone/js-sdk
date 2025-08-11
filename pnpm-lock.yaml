@@ -456,8 +456,8 @@ importers:
         specifier: 0.0.1-security
         version: 0.0.1-security
       js-base64:
-        specifier: ^3.7.7
-        version: 3.7.7
+        specifier: ^3.7.8
+        version: 3.7.8
       openapi-fetch:
         specifier: ^0.13.8
         version: 0.13.8
@@ -502,8 +502,8 @@ importers:
         specifier: ^4.0.1
         version: 4.0.1
       js-base64:
-        specifier: ^3.7.7
-        version: 3.7.7
+        specifier: ^3.7.8
+        version: 3.7.8
       mime:
         specifier: ^3.0.0
         version: 3.0.0
@@ -3977,7 +3977,7 @@ packages:
     resolution: {integrity: sha512-Zw33oQNAvDdAN9b0IE5stH0y2MylYvtU7VVTKEJPxhyM2q57CVaNJhtJW258ah24NRtaiA23tptUmVn3dmTKpw==}
     deprecated: This is a stub types definition. js-base64 provides its own type definitions, so you do not need this installed.
     dependencies:
-      js-base64: 3.7.7
+      js-base64: 3.7.8
     dev: true
 
   /@types/jsdom@20.0.1:
@@ -9433,8 +9433,8 @@ packages:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
     dev: true
 
-  /js-base64@3.7.7:
-    resolution: {integrity: sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==}
+  /js-base64@3.7.8:
+    resolution: {integrity: sha512-hNngCeKxIUQiEUN3GPJOkz4wF/YvdUdbNL9hsBcMQTkKzboD7T/q3OYOuuPZLUE6dBxSGpwhk5mwuDud7JVAow==}
 
   /js-levenshtein@1.1.6:
     resolution: {integrity: sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==}
