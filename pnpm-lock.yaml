@@ -7,7 +7,7 @@ settings:
 overrides:
   body-parser: '>=1.20.3'
   braces: '>=3.0.3'
-  browserify-sign@<4.2.2: '>=4.2.2'
+  browserify-sign@<4.2.2: '>=4.2.3'
   cross-spawn: '>=7.0.6'
   express: '>=4.19.2'
   follow-redirects@<1.15.4: '>=1.15.4'
@@ -13381,7 +13381,7 @@ packages:
       '@types/node': 22.13.17
       esbuild: 0.21.5
       postcss: 8.5.6
-      rollup: 4.50.1
+      rollup: 4.39.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
