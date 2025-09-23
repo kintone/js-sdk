@@ -7,7 +7,11 @@ import * as browserDeps from "../../platform/browser";
 import * as nodeDeps from "../../platform/node";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
-jest.mock("form-data");
+jest.mock("form-data", () => {
+  const MockFormData = jest.fn();
+  MockFormData.prototype.append = jest.fn();
+  return MockFormData;
+})
 
 describe("FileClient", () => {
   let mockClient: MockClient;
