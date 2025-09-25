@@ -11,7 +11,7 @@ jest.mock("form-data", () => {
   const MockFormData = jest.fn();
   MockFormData.prototype.append = jest.fn();
   return MockFormData;
-})
+});
 
 describe("FileClient", () => {
   let mockClient: MockClient;
