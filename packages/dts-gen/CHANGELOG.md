@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.3](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.1.2...@kintone/dts-gen@8.1.3) (2025-09-25)
+
+
+### Bug Fixes
+
+* bump axios and form-data npms for CVE-2025-7783 ([#3395](https://github.com/kintone/js-sdk/issues/3395)) ([109059b](https://github.com/kintone/js-sdk/commit/109059bc7d6a45103bc024b2e322d82be0c9876a))
+
 ## [8.1.2](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@8.1.1...@kintone/dts-gen@8.1.2) (2025-05-10)
 
 
