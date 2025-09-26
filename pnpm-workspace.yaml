@@ -3,3 +3,5 @@ packages:
   - "!**/lib/**"
   - "!**/esm/**"
   - "!**/templates/**"
+
+minimumReleaseAge: 1440
