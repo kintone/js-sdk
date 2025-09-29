@@ -1,22 +1,27 @@
-import { beforeAll } from "vitest";
+/* eslint-disable n/no-unsupported-features/node-builtins */
+// Import basic Blob from Node.js buffer module first
+if (typeof globalThis.Blob === "undefined") {
+  const { Blob } = require("buffer");
+  globalThis.Blob = Blob;
+}
 
-beforeAll(() => {
-  // Import Web APIs from undici for Node.js environment
-  try {
-    const { File, FormData, Blob } = require("undici");
-    
-    if (typeof globalThis.File === "undefined") {
-      globalThis.File = File;
+// Define minimal File implementation to satisfy undici
+if (typeof globalThis.File === "undefined") {
+  globalThis.File = class File extends globalThis.Blob {
+    constructor(fileBits, fileName, options = {}) {
+      super(fileBits, options);
+      this.name = fileName;
+      this.lastModified = options.lastModified || Date.now();
     }
-    
-    if (typeof globalThis.FormData === "undefined") {
-      globalThis.FormData = FormData;
-    }
-    
-    if (typeof globalThis.Blob === "undefined") {
-      globalThis.Blob = Blob;
-    }
-  } catch (error) {
-    console.warn("Failed to import Web APIs from undici:", error);
+  };
+}
+
+// Import FormData from undici after File is defined
+try {
+  const { FormData } = require("undici");
+  if (typeof globalThis.FormData === "undefined") {
+    globalThis.FormData = FormData;
   }
-});
+} catch (error) {
+  console.warn("Failed to import FormData from undici:", error);
+}

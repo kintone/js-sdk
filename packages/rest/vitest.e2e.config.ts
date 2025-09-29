@@ -5,5 +5,11 @@ export default defineConfig({
     root: "__e2e__",
     environment: "node",
     setupFiles: ["./setup.ts"],
+    pool: "forks",
+    poolOptions: {
+      forks: {
+        singleFork: true,
+      },
+    },
   },
 });
