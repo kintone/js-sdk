@@ -98,6 +98,7 @@ store.subscribe(() => {
 const uploadPluginZipHandler = createFileHanlder((promise) => {
   promise
     .then((result) => {
+      // eslint-disable-next-line n/no-unsupported-features/node-builtins
       if (result instanceof File) {
         store.dispatch(
           uploadPlugin(
@@ -129,6 +130,7 @@ const uploadPluginZipHandler = createFileHanlder((promise) => {
 const uploadPPKHanlder = createFileHanlder((promise) => {
   promise
     .then((result) => {
+      // eslint-disable-next-line n/no-unsupported-features/node-builtins
       if (result instanceof File) {
         store.dispatch(uploadPPK(result.name, () => readText(result)));
         // Uploading a directory

@@ -9,6 +9,7 @@ const streamBuffers = require("stream-buffers");
  * @param {string} url
  * @return {void}
  */
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
 const revokeDownloadUrl = (url) => URL.revokeObjectURL(url);
 
 /**
@@ -18,6 +19,7 @@ const revokeDownloadUrl = (url) => URL.revokeObjectURL(url);
  * @return {string}
  */
 const createDownloadUrl = (data, type) =>
+  // eslint-disable-next-line n/no-unsupported-features/node-builtins
   URL.createObjectURL(new Blob([data], { type }));
 
 const isDropEvent = (e) => e.type === "drop";
