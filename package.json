@@ -58,7 +58,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
-  "packageManager": "pnpm@10.16.1",
+  "packageManager": "pnpm@10.17.1",
   "pnpm": {
     "overrides": {
       "body-parser": ">=1.20.3",
