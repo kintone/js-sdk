@@ -40,7 +40,8 @@ describe("Webpack Bundler tests", () => {
         },
       };
       try {
-        const compiler = webpack(config);
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        const compiler = webpack(config)!;
         await promisify(compiler.run)
           .bind(compiler)()
           .then((stats: webpack.Stats | undefined) => {

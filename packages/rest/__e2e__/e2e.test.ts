@@ -1,3 +1,4 @@
+/* eslint-disable n/no-unsupported-features/node-builtins */
 import { describe, it, expect } from "vitest";
 
 import { createClient } from "../src/index.js";
@@ -62,7 +63,6 @@ describe("kintone/rest", () => {
     });
 
     it("file.json", async () => {
-      // eslint-disable-next-line n/no-unsupported-features/node-builtins
       const formData = new FormData();
       formData.append("file", new Blob(["test data"]), "test.txt");
 

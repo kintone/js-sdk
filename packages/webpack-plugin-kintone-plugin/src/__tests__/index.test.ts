@@ -60,7 +60,8 @@ describe("KintonePlugin", () => {
         }),
       ],
     });
-    const compiler = webpack(config);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const compiler = webpack(config)!;
     await promisify(compiler.run).bind(compiler)();
     verifyPluginZip(pluginZipPath);
     await promisify(compiler.close).bind(compiler)();
@@ -83,7 +84,8 @@ describe("KintonePlugin", () => {
         }),
       ],
     });
-    const compiler = webpack(config);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const compiler = webpack(config)!;
     await promisify(compiler.run).bind(compiler)();
     verifyPluginZip(pluginZipPath);
     await promisify(compiler.close).bind(compiler)();
@@ -99,7 +101,8 @@ describe("KintonePlugin", () => {
         }),
       ],
     });
-    const compiler = webpack(config);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const compiler = webpack(config)!;
     await promisify(compiler.run).bind(compiler)();
     verifyPluginZip(pluginZipPath);
     await promisify(compiler.close).bind(compiler)();
@@ -124,7 +127,8 @@ describe("KintonePlugin", () => {
         }),
       ],
     });
-    const compiler = webpack(config);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const compiler = webpack(config)!;
     await promisify(compiler.run).bind(compiler)();
     verifyPluginZip(pluginZipPath);
     await promisify(compiler.close).bind(compiler)();
