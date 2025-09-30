@@ -5,9 +5,16 @@ import globals from "globals";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
+  {
+    ignores: ["**/eslint.config.mjs"],
+  },
   ...siteConfig.map((configObject) => ({
     files: ["site/**/*.{js,ts}"],
     ...configObject,
+    rules: {
+      ...configObject.rules,
+      "n/no-unsupported-features/node-builtins": "off",
+    },
   })),
   ...binConfig.map((configObject) => ({
     files: ["bin/**/*.{js,ts}"],

@@ -3,13 +3,22 @@ import presetsPrettier from "@cybozu/eslint-config/flat/presets/prettier.js";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
-  ...presetsPrettier,
+  ...presetsPrettier.map(config => ({
+    ...config,
+    rules: {
+      ...config.rules,
+      "n/no-unsupported-features/node-builtins": "off",
+    },
+  })),
   {
     languageOptions: {
       globals: {
         ...globals.jest,
-        ...globals.node,
+        ...globals.browser,
       },
+    },
+    rules: {
+      "n/no-unsupported-features/node-builtins": "off",
     },
   },
 ];

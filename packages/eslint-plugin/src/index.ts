@@ -1,5 +1,7 @@
 import { rules } from "./rules/index.js";
 import module from "node:module";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { TSESLint } from "@typescript-eslint/utils";
 const require = module.createRequire(import.meta.url);
 
@@ -22,7 +24,7 @@ const configs = {
     languageOptions: {
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: import.meta.dirname,
+        tsconfigRootDir: dirname(fileURLToPath(import.meta.url)),
       },
     },
     rules: {

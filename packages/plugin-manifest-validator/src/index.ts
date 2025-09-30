@@ -85,7 +85,9 @@ export default (
       return true;
     }
 
-    const maxBytes = bytes.parse(schema);
+    // NOTE: Schema is defined within this package, so parse result will never be null
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const maxBytes = bytes.parse(schema)!;
     const result = maxFileSize(maxBytes, filePath);
     const defaultMessage = `file size should be <= ${schema}`;
 

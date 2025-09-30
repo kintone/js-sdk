@@ -46,6 +46,10 @@ const config = createConfig({
     if (dep.name === "@braidai/lang") {
       return "MIT";
     }
+    // https://www.npmjs.com/package/source-map
+    if(dep.name === "source-map") {
+      return "BSD-3-Clause"
+    }
     return undefined;
   },
   packageManager: "pnpm",

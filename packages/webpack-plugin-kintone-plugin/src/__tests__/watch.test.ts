@@ -103,7 +103,8 @@ describe("KintonePlugin", () => {
       })
       .on("error", (err) => done(err));
 
-    compiler = webpack(webpackConfig);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    compiler = webpack(webpackConfig)!;
     const watching = compiler.watch({}, (err) => {
       if (err) {
         done(err);
@@ -167,7 +168,8 @@ describe("KintonePlugin", () => {
         console.log("Initial scan complete. Ready for changes"),
       );
 
-    compiler = webpack(webpackConfig);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    compiler = webpack(webpackConfig)!;
     const watching = compiler.watch({}, (err) => {
       if (err) {
         done(err);
