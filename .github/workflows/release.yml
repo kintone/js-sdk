@@ -53,6 +53,9 @@ jobs:
           cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
 
+      # Ensure npm 11.5.1 or later is installed
+      # ref. https://docs.npmjs.com/trusted-publishers#github-actions-configuration
+      - run: npm install -g npm@latest
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm -r publish --access public
