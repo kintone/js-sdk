@@ -17,10 +17,11 @@ Please file an issue there.
 
 ### Setup
 
-This repository is a monorepo using pnpm.
+This repository is a monorepo using pnpm, and Node.js and pnpm versions are managed by mise.
 
 ```sh
 % cd js-sdk
+% mise install
 % pnpm install
 ```
 
