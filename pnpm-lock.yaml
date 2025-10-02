@@ -453,7 +453,7 @@ importers:
   packages/rest:
     dependencies:
       core-js:
-        specifier: ^3.41.0
+        specifier: ^3.45.1
         version: 3.45.1
       fs:
         specifier: 0.0.1-security
@@ -499,7 +499,7 @@ importers:
         specifier: ^1.12.2
         version: 1.12.2
       core-js:
-        specifier: ^3.40.0
+        specifier: ^3.45.1
         version: 3.45.1
       form-data:
         specifier: ^4.0.4
