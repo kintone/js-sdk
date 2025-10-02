@@ -274,7 +274,7 @@ importers:
         specifier: ^7.27.1
         version: 7.27.1(@babel/core@7.28.4)
       '@types/bytes':
-        specifier: ^3.1.4
+        specifier: ^3.1.5
         version: 3.1.5
       babel-plugin-replace-ts-export-assignment:
         specifier: ^0.0.2
