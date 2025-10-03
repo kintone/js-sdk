@@ -465,7 +465,7 @@ importers:
         specifier: ^0.13.8
         version: 0.13.8
       openapi-typescript:
-        specifier: ^7.6.1
+        specifier: ^7.9.1
         version: 7.9.1(typescript@5.9.2)
       openapi-typescript-helpers:
         specifier: ^0.0.15
