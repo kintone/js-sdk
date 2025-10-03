@@ -74,7 +74,7 @@ importers:
         specifier: ^2.5.19
         version: 2.5.19(prettier@3.6.2)
       publint:
-        specifier: ^0.3.12
+        specifier: ^0.3.13
         version: 0.3.13
       rimraf:
         specifier: ^5.0.10
