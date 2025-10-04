@@ -48,6 +48,6 @@
     "puppeteer": "^23.11.1"
   },
   "devDependencies": {
-    "@types/inquirer": "8.2.12"
+    "@types/inquirer": "9.0.9"
   }
 }
