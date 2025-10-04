@@ -212,7 +212,7 @@ importers:
         specifier: ^9.5.4
         version: 9.5.4(typescript@5.9.2)(webpack@5.101.3)
       webpack:
-        specifier: ^5.98.0
+        specifier: ^5.101.3
         version: 5.101.3(webpack-cli@5.1.4)
       webpack-cli:
         specifier: ^5.1.4
@@ -413,7 +413,7 @@ importers:
         specifier: ^0.12.5
         version: 0.12.5
       webpack:
-        specifier: ^5.98.0
+        specifier: ^5.101.3
         version: 5.101.3(webpack-cli@5.1.4)
       webpack-cli:
         specifier: 5.1.4
@@ -569,7 +569,7 @@ importers:
         specifier: ^5.4.20
         version: 5.4.20(@types/node@22.18.6)(terser@5.44.0)
       webpack:
-        specifier: ^5.98.0
+        specifier: ^5.101.3
         version: 5.101.3(webpack-cli@5.1.4)
       webpack-cli:
         specifier: ^5.1.4
@@ -597,7 +597,7 @@ importers:
         specifier: ^5.0.10
         version: 5.0.10
       webpack:
-        specifier: ^5.98.0
+        specifier: ^5.101.3
         version: 5.101.3(webpack-cli@5.1.4)
       webpack-cli:
         specifier: 5.1.4
