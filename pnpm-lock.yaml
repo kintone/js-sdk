@@ -221,7 +221,7 @@ importers:
   packages/eslint-plugin:
     dependencies:
       '@typescript-eslint/utils':
-        specifier: ^8.20.0
+        specifier: ^8.44.0
         version: 8.44.1(eslint@9.36.0)(typescript@5.9.2)
     devDependencies:
       '@cybozu/eslint-config':
@@ -234,7 +234,7 @@ importers:
         specifier: ^22.18.6
         version: 22.18.6
       '@typescript-eslint/rule-tester':
-        specifier: ^8.20.0
+        specifier: ^8.44.0
         version: 8.44.1(eslint@9.36.0)(typescript@5.9.2)
       eslint:
         specifier: ^9.36.0
