@@ -59,7 +59,7 @@ importers:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@18.19.127)(ts-node@10.9.2(@types/node@18.19.127)(typescript@5.9.2))
       jsonc-eslint-parser:
-        specifier: ^2.4.0
+        specifier: ^2.4.1
         version: 2.4.1
       npm:
         specifier: ^11.6.1
