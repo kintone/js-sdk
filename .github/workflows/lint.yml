@@ -9,7 +9,7 @@ on:
 
 jobs:
   lint:
-    name: Node.js ubuntu-latest 18.x
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: Kesin11/actions-timeline@da70beff098ff89b15d279e8bf2f60519a8dadd7 # v2
@@ -20,7 +20,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "24"
           cache: "pnpm"
 
       - run: pnpm install --frozen-lockfile

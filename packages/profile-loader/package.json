@@ -2,14 +2,21 @@
   "name": "@kintone/profile-loader",
   "version": "5.0.2",
   "private": true,
-  "publishConfig": {
-    "access": "public"
+  "description": "A loader for Kintone setting",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/profile-loader#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/profile-loader"
+  },
+  "license": "MIT",
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
-  "description": "A loader for Kintone setting",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {
@@ -19,30 +26,23 @@
   "files": [
     "lib"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kintone/js-sdk.git",
-    "directory": "packages/profile-loader"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kintone/js-sdk/issues"
-  },
-  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/profile-loader#readme",
-  "engines": {
-    "node": ">=18"
-  },
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
-    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
-    "test": "jest",
-    "test:ci": "jest --runInBand",
     "clean": "rimraf lib esm umd",
     "fix": "pnpm lint --fix",
-    "start": "pnpm build --watch"
+    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
+    "start": "pnpm build --watch",
+    "test": "jest",
+    "test:ci": "jest --runInBand"
   },
   "dependencies": {
     "toml": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
