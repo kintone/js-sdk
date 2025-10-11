@@ -1,31 +1,41 @@
 {
   "name": "@kintone/plugin-manifest-validator",
   "version": "10.3.1",
+  "keywords": [
+    "kintone"
+  ],
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-manifest-validator#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/plugin-manifest-validator"
+  },
+  "license": "MIT",
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "files": [
     "manifest-schema.d.ts",
     "manifest-schema.json",
     "dist"
   ],
-  "types": "dist/src/index.d.ts",
   "scripts": {
-    "start": "pnpm build --watch",
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "postbuild": "pnpm gen-dts",
-    "gen-dts": "node script/generate-dts.js",
-    "test": "jest",
-    "test:ci": "jest --runInBand",
-    "lint": "eslint src --max-warnings 0",
+    "clean": "rimraf dist",
     "fix": "pnpm lint --fix",
-    "clean": "rimraf dist"
+    "gen-dts": "node script/generate-dts.js",
+    "lint": "eslint src --max-warnings 0",
+    "start": "pnpm build --watch",
+    "test": "jest",
+    "test:ci": "jest --runInBand"
   },
   "dependencies": {
     "ajv": "^8.17.1",
@@ -40,17 +50,7 @@
     "json-schema-to-typescript": "^15.0.4",
     "power-assert": "^1.6.1"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-manifest-validator#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kintone/js-sdk.git",
-    "directory": "packages/plugin-manifest-validator"
-  },
-  "bugs": {
-    "url": "https://github.com/kintone/js-sdk/issues"
-  },
-  "keywords": [
-    "kintone"
-  ],
-  "license": "MIT"
+  "engines": {
+    "node": ">=20"
+  }
 }

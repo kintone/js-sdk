@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x, 22.x, 24.x]
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
@@ -23,10 +23,9 @@ jobs:
       - uses: pnpm/action-setup@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
 
       - name: Checkout kintone/rest-api-spec
         uses: actions/checkout@v4

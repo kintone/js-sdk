@@ -2,44 +2,41 @@
   "name": "@kintone/plugin-uploader",
   "version": "9.1.5",
   "description": "A kintone plugin uploader using puppeteer",
-  "bin": {
-    "kintone-plugin-uploader": "bin/cli.js"
-  },
-  "main": "dist/index.js",
-  "engines": {
-    "node": ">=18"
-  },
-  "scripts": {
-    "start": "pnpm build --watch",
-    "prebuild": "pnpm clean",
-    "build": "tsc --build --force",
-    "clean": "rimraf dist",
-    "lint": "eslint 'src/**/*.ts' 'bin/*.js' --max-warnings 0",
-    "fix": "pnpm lint --fix",
-    "test": "echo 'no test'",
-    "test:ci": "pnpm test"
-  },
-  "files": [
-    "bin",
-    "dist"
-  ],
   "keywords": [
     "kintone"
   ],
-  "author": {
-    "name": "Cybozu, Inc.",
-    "url": "https://cybozu.co.jp"
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-uploader#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kintone/js-sdk.git",
     "directory": "packages/plugin-uploader"
   },
-  "bugs": {
-    "url": "https://github.com/kintone/js-sdk/issues"
+  "license": "MIT",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-uploader#readme",
+  "main": "dist/index.js",
+  "bin": {
+    "kintone-plugin-uploader": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "pnpm clean",
+    "build": "tsc --build --force",
+    "clean": "rimraf dist",
+    "fix": "pnpm lint --fix",
+    "lint": "eslint 'src/**/*.ts' 'bin/*.js' --max-warnings 0",
+    "start": "pnpm build --watch",
+    "test": "echo 'no test'",
+    "test:ci": "pnpm test"
+  },
   "dependencies": {
     "@inquirer/prompts": "^5.5.0",
     "chalk": "^4.1.2",
@@ -49,5 +46,8 @@
   },
   "devDependencies": {
     "@types/inquirer": "8.2.12"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

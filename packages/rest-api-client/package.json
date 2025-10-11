@@ -1,55 +1,73 @@
 {
   "name": "@kintone/rest-api-client",
   "version": "5.7.5",
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": {
-    "name": "Cybozu, Inc.",
-    "url": "https://cybozu.co.jp"
-  },
   "description": "Kintone REST API client for JavaScript",
-  "main": "lib/src/index.js",
-  "module": "esm/src/index.js",
-  "browser": "lib/src/index.browser.js",
-  "types": "lib/src/index.d.ts",
-  "scripts": {
-    "prebuild": "pnpm clean",
-    "build": "tsc --build --force",
-    "postbuild": "run-p build:*",
-    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
-    "prepublishOnly": "run-p build:umd_*",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
-    "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand",
-    "build:umd_dev": "rollup -c --environment BUILD:development",
-    "build:umd_prod": "rollup -c --environment BUILD:production",
-    "clean": "rimraf lib esm umd",
-    "fix": "pnpm lint --fix",
-    "start": "pnpm build --watch"
+  "keywords": [
+    "kintone",
+    "rest",
+    "api-client"
+  ],
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kintone/js-sdk.git",
     "directory": "packages/rest-api-client"
   },
+  "license": "MIT",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./esm/src/index.d.ts",
+        "require": "./lib/src/index.d.ts",
+        "default": "./lib/src/index.d.ts"
+      },
+      "node": {
+        "import": "./index.mjs",
+        "require": "./lib/src/index.js",
+        "default": "./lib/src/index.js"
+      },
+      "browser": "./lib/src/index.browser.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib/src/index.js",
+  "module": "esm/src/index.js",
+  "browser": "lib/src/index.browser.js",
+  "types": "lib/src/index.d.ts",
   "files": [
     "esm",
     "lib",
     "umd",
     "index.mjs"
   ],
-  "keywords": [
-    "kintone",
-    "rest",
-    "api-client"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kintone/js-sdk/issues"
+  "scripts": {
+    "prebuild": "pnpm clean",
+    "build": "tsc --build --force",
+    "postbuild": "run-p build:*",
+    "build:umd_dev": "rollup -c --environment BUILD:development",
+    "build:umd_prod": "rollup -c --environment BUILD:production",
+    "clean": "rimraf lib esm umd",
+    "fix": "pnpm lint --fix",
+    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
+    "prepublishOnly": "run-p build:umd_*",
+    "start": "pnpm build --watch",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/rest-api-client#readme",
-  "engines": {
-    "node": ">=18"
+  "dependencies": {
+    "axios": "^1.12.2",
+    "core-js": "^3.45.1",
+    "form-data": "^4.0.4",
+    "js-base64": "^3.7.8",
+    "mime": "^3.0.0",
+    "qs": "^6.14.0"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
@@ -73,28 +91,10 @@
     "webpack": "^5.101.3",
     "webpack-cli": "^5.1.4"
   },
-  "dependencies": {
-    "axios": "^1.12.2",
-    "core-js": "^3.45.1",
-    "form-data": "^4.0.4",
-    "js-base64": "^3.7.8",
-    "mime": "^3.0.0",
-    "qs": "^6.14.0"
+  "engines": {
+    "node": ">=20"
   },
-  "exports": {
-    ".": {
-      "types": {
-        "import": "./esm/src/index.d.ts",
-        "require": "./lib/src/index.d.ts",
-        "default": "./lib/src/index.d.ts"
-      },
-      "node": {
-        "import": "./index.mjs",
-        "require": "./lib/src/index.js",
-        "default": "./lib/src/index.js"
-      },
-      "browser": "./lib/src/index.browser.js"
-    },
-    "./package.json": "./package.json"
+  "publishConfig": {
+    "access": "public"
   }
 }

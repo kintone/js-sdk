@@ -2,41 +2,42 @@
   "name": "@kintone/webpack-plugin-kintone-plugin",
   "version": "8.0.11",
   "description": "A webpack plugin to generate a plugin zip",
-  "main": "dist/index.js",
-  "engines": {
-    "node": ">=18"
-  },
-  "scripts": {
-    "start": "pnpm build --watch",
-    "prebuild": "pnpm clean",
-    "build": "tsc --build --force",
-    "clean": "rimraf dist",
-    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
-    "fix": "pnpm lint --fix",
-    "test": "jest --runInBand",
-    "test:ci": "jest --runInBand"
-  },
   "keywords": [
     "webpack",
     "kintone"
   ],
-  "files": [
-    "dist"
-  ],
-  "author": {
-    "name": "Cybozu, Inc.",
-    "url": "https://cybozu.co.jp"
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/webpack-plugin-kintone-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kintone/js-sdk.git",
     "directory": "packages/webpack-plugin-kintone-plugin"
   },
-  "bugs": {
-    "url": "https://github.com/kintone/js-sdk/issues"
+  "license": "MIT",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/webpack-plugin-kintone-plugin#readme",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "pnpm clean",
+    "build": "tsc --build --force",
+    "clean": "rimraf dist",
+    "fix": "pnpm lint --fix",
+    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
+    "start": "pnpm build --watch",
+    "test": "jest --runInBand",
+    "test:ci": "jest --runInBand"
+  },
+  "dependencies": {
+    "@kintone/plugin-packer": "^8.2.1",
+    "mkdirp": "^3.0.1"
+  },
   "devDependencies": {
     "@types/adm-zip": "^0.5.7",
     "adm-zip": "^0.5.16",
@@ -49,8 +50,7 @@
   "peerDependencies": {
     "webpack": "^4.0.0 || ^5.0.0"
   },
-  "dependencies": {
-    "@kintone/plugin-packer": "^8.2.1",
-    "mkdirp": "^3.0.1"
+  "engines": {
+    "node": ">=20"
   }
 }

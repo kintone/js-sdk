@@ -1,19 +1,27 @@
 {
   "name": "@kintone/plugin-packer",
-  "description": "Package your kintone plugin with pure JavaScript",
   "version": "8.2.1",
+  "description": "Package your kintone plugin with pure JavaScript",
+  "keywords": [
+    "kintone"
+  ],
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-packer",
+  "bugs": "https://github.com/kintone/js-sdk/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/plugin-packer"
+  },
+  "license": "MIT",
   "author": {
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "kintone-plugin-packer": "bin/cli.js"
   },
-  "types": "dist/index.d.ts",
   "files": [
     "bin",
     "dist",
@@ -23,20 +31,20 @@
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "postbuild": "run-p js css",
-    "clean": "rimraf dist",
-    "lint": "eslint \"*.{js,ts}\" bin src site test --max-warnings 0",
-    "fix": "pnpm lint --fix",
-    "test": "run-p jest site:test",
-    "test:ci": "pnpm test",
     "build:dev": "tsc --build --force --watch",
+    "clean": "rimraf dist",
     "css": "postcss --config postcss.config.js ./node_modules/normalize.css/normalize.css > docs/dist/normalize.min.css",
+    "fix": "pnpm lint --fix",
+    "jest": "jest",
     "js": "webpack --mode production",
     "js:dev": "webpack serve --mode development",
-    "jest": "jest",
+    "lint": "eslint \"*.{js,ts}\" bin src site test --max-warnings 0",
     "site": "run-p js css",
     "site:dev": "run-p css js:dev",
     "site:test": "jest --config site/jest.config.js",
-    "start": "npm-run-all -l -s clean build -p build:dev site:dev"
+    "start": "npm-run-all -l -s clean build -p build:dev site:dev",
+    "test": "run-p jest site:test",
+    "test:ci": "pnpm test"
   },
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^10.3.1",
@@ -85,15 +93,7 @@
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "^5.2.2"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/plugin-packer",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kintone/js-sdk.git",
-    "directory": "packages/plugin-packer"
-  },
-  "bugs": "https://github.com/kintone/js-sdk/issues",
-  "keywords": [
-    "kintone"
-  ],
-  "license": "MIT"
+  "engines": {
+    "node": ">=20"
+  }
 }

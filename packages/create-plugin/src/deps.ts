@@ -19,6 +19,7 @@ export const installDependencies = (
   const result = spawnSync("npm", ["install"], {
     cwd: outputDirectory,
     stdio: "inherit",
+    // TODO: Consider to remove shell option to avoid security vulnerability
     shell: true,
   });
   if (result.status !== 0) {
