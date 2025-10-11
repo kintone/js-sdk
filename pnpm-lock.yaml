@@ -41,7 +41,7 @@ importers:
         specifier: ^29.5.14
         version: 29.5.14
       '@types/node':
-        specifier: ^18.19.84
+        specifier: ^18.19.127
         version: 18.19.127
       babel-jest:
         specifier: ^29.7.0
