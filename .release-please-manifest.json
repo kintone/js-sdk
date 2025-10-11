@@ -1,6 +1,6 @@
 {
   "packages/create-plugin": "8.2.5",
-  "packages/customize-uploader": "8.0.14",
+  "packages/customize-uploader": "8.0.15",
   "packages/dts-gen": "8.1.3",
   "@kintone/eslint-plugin": "0.0.0",
   "packages/plugin-manifest-validator": "10.3.1",
