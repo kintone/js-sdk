@@ -15,10 +15,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 18.x
+          node-version: "24"
           cache: "pnpm"
 
       - name: Install dependencies
