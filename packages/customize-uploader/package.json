@@ -47,7 +47,7 @@
     "rimraf": "^5.0.10"
   },
   "devDependencies": {
-    "@types/inquirer": "8.2.12"
+    "@types/inquirer": "9.0.9"
   },
   "engines": {
     "node": ">=20"
