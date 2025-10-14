@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.0](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@8.0.11...@kintone/webpack-plugin-kintone-plugin@9.0.0) (2025-10-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* We dropped Node.js v18. The minimum Node.js version is now v20.
+
+### Miscellaneous Chores
+
+* bump minimum Node.js version to v20 ([#3431](https://github.com/kintone/js-sdk/issues/3431)) ([dbef119](https://github.com/kintone/js-sdk/commit/dbef11984d1d41099375f279640e7de13427c8c6))
+
 ## [8.0.11](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@8.0.10...@kintone/webpack-plugin-kintone-plugin@8.0.11) (2025-05-13)
 
 

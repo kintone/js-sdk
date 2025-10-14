@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-packer",
-  "version": "8.2.1",
+  "version": "9.0.0",
   "description": "Package your kintone plugin with pure JavaScript",
   "keywords": [
     "kintone"

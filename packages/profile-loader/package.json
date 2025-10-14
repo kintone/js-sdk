@@ -1,6 +1,6 @@
 {
   "name": "@kintone/profile-loader",
-  "version": "5.0.2",
+  "version": "6.0.0",
   "private": true,
   "description": "A loader for Kintone setting",
   "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/profile-loader#readme",

@@ -1,6 +1,6 @@
 {
   "name": "@kintone/webpack-plugin-kintone-plugin",
-  "version": "8.0.11",
+  "version": "9.0.0",
   "description": "A webpack plugin to generate a plugin zip",
   "keywords": [
     "webpack",
