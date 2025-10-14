@@ -50,6 +50,10 @@ const messages = {
     en: "Import Button is not displayed.",
     ja: "「読み込む」ボタンが表示されていません。",
   },
+  Warning_PuppeteerIgnoreDefaultArgs: {
+    en: "Warning: The --puppeteer-ignore-default-args option is deprecated.",
+    ja: "--puppeteer-ignore-default-argsオプションは廃止されました。",
+  },
   Uploaded: {
     en: "has been uploaded!",
     ja: "をアップロードしました!",

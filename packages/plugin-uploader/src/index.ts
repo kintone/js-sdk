@@ -3,13 +3,13 @@ import { getBoundMessage } from "./messages";
 import type { BasicAuth } from "./controllers/ControllerBase";
 import PluginSystemController from "./controllers/PluginSystemController";
 import type { Lang } from "./lang";
+import { KintoneRestAPIClient } from "@kintone/rest-api-client";
 
 interface Option {
   proxyServer?: string;
   watch?: boolean;
   lang: Lang;
   basicAuth?: BasicAuth;
-  puppeteerIgnoreDefaultArgs?: string[];
 }
 
 export const run = async (
@@ -19,59 +19,31 @@ export const run = async (
   pluginPath: string,
   options: Option,
 ): Promise<void> => {
-  const { lang, basicAuth } = options;
+  const { lang, basicAuth, proxyServer } = options;
   const boundMessage = getBoundMessage(lang);
 
-  const browserOptions = {
-    proxy: options.proxyServer,
-    ignoreDefaultArgs: options.puppeteerIgnoreDefaultArgs,
-  };
-  const pluginSystemController = new PluginSystemController();
-  await pluginSystemController.launchBrowser(browserOptions);
+  const apiClient = new KintoneRestAPIClient({
+    baseUrl,
+    auth: { username: userName, password: password },
+    basicAuth: basicAuth,
+    userAgent: `${packageJson.name}@${packageJson.version}`,
+    // TODO: プロキシサポート
+  });
+
+  // cli-kintone plugin installコマンド使ってもらうほうが良さそう
 
   try {
-    await pluginSystemController.openNewPage();
-    await pluginSystemController.readyForUpload({
-      baseUrl,
-      userName,
-      password,
-      lang,
-      basicAuth,
-    });
-    await pluginSystemController.upload(pluginPath, lang);
     if (options.watch) {
-      let uploading = false;
       fs.watch(pluginPath, async () => {
-        if (uploading) {
-          return;
-        }
         try {
-          uploading = true;
-          await pluginSystemController.upload(pluginPath, lang);
         } catch (e) {
           console.log(e);
           console.log(boundMessage("Error_retry"));
-          await pluginSystemController.closeBrowser();
-          await pluginSystemController.launchBrowser(browserOptions);
-          await pluginSystemController.openNewPage();
-          await pluginSystemController.readyForUpload({
-            baseUrl,
-            userName,
-            password,
-            lang,
-            basicAuth,
-          });
-          await pluginSystemController.upload(pluginPath, lang);
-        } finally {
-          uploading = false;
         }
       });
-    } else {
-      await pluginSystemController.closeBrowser();
     }
   } catch (e) {
     console.error(boundMessage("Error"), e);
-    await pluginSystemController.closeBrowser();
 
     // eslint-disable-next-line n/no-process-exit
     process.exit(1);

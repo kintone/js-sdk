@@ -31,7 +31,6 @@ const cli = meow(
     --watch Watch the changes of plugin zip and re-run
     --waiting-dialog-ms The waiting time for showing the input dialog in milliseconds
     --lang Using language (en or ja)
-    --puppeteer-ignore-default-args Ignore default arguments of puppeteer
 
     You can set the values through environment variables
     base-url: KINTONE_BASE_URL
@@ -79,6 +78,7 @@ const cli = meow(
         type: "string",
         default: getDefaultLang(osLocale.sync()),
       },
+      // Deprecated parameter
       puppeteerIgnoreDefaultArgs: {
         type: "string",
       },
@@ -110,6 +110,10 @@ if (!isLang(lang)) {
   );
 }
 
+if (puppeteerIgnoreDefaultArgs && puppeteerIgnoreDefaultArgs.length > 0) {
+  console.log(getMessage(lang, "Warning_PuppeteerIgnoreDefaultArgs"));
+}
+
 const basicAuth =
   basicAuthUsername !== "" && basicAuthPassword !== ""
     ? {
@@ -122,7 +126,6 @@ const options = {
   lang,
   proxyServer: proxy !== "" ? proxy : undefined,
   basicAuth,
-  puppeteerIgnoreDefaultArgs: puppeteerIgnoreDefaultArgs?.split(" "),
 };
 
 if (!pluginPath) {
