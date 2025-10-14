@@ -2,21 +2,43 @@
   "name": "@kintone/create-plugin",
   "version": "8.2.5",
   "description": "A CLI tool for creating a kintone plugin!",
-  "bin": {
-    "create-plugin": "bin/cli.js",
-    "create-kintone-plugin": "bin/cli.js"
-  },
-  "main": "dist/src/index.js",
-  "engines": {
-    "node": ">=18"
-  },
+  "keywords": [
+    "kintone"
+  ],
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/create-plugin",
+  "bugs": "https://github.com/kintone/js-sdk/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kintone/js-sdk.git",
     "directory": "packages/create-plugin"
   },
-  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/create-plugin",
-  "bugs": "https://github.com/kintone/js-sdk/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "main": "dist/src/index.js",
+  "bin": {
+    "create-plugin": "bin/cli.js",
+    "create-kintone-plugin": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "dist/src",
+    "templates"
+  ],
+  "scripts": {
+    "build": "pnpm clean && tsc --build --force",
+    "clean": "rimraf dist",
+    "fix": "pnpm lint --fix",
+    "lint": "eslint src --max-warnings 0",
+    "start": "pnpm build --watch",
+    "test": "jest --testPathIgnorePatterns=/__tests__/generator\\.test\\.ts$",
+    "test:all": "run-p test test:generator test:e2e",
+    "test:ci": "pnpm test test:generator",
+    "test:e2e": "cross-env NODE_ENV=e2e jest --config=jest.e2e.config.js",
+    "test:generator": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/generator\\.test\\.ts$"
+  },
   "dependencies": {
     "@inquirer/prompts": "^5.5.0",
     "chalk": "^4.1.2",
@@ -39,29 +61,7 @@
     "cross-env": "^7.0.3",
     "jest-environment-node": "^29.7.0"
   },
-  "files": [
-    "bin",
-    "dist/src",
-    "templates"
-  ],
-  "scripts": {
-    "start": "pnpm build --watch",
-    "build": "pnpm clean && tsc --build --force",
-    "clean": "rimraf dist",
-    "lint": "eslint src --max-warnings 0",
-    "fix": "pnpm lint --fix",
-    "test": "jest --testPathIgnorePatterns=/__tests__/generator\\.test\\.ts$",
-    "test:generator": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/generator\\.test\\.ts$",
-    "test:ci": "pnpm test test:generator",
-    "test:e2e": "cross-env NODE_ENV=e2e jest --config=jest.e2e.config.js",
-    "test:all": "run-p test test:generator test:e2e"
-  },
-  "keywords": [
-    "kintone"
-  ],
-  "author": {
-    "name": "Cybozu, Inc.",
-    "url": "https://cybozu.co.jp"
-  },
-  "license": "MIT"
+  "engines": {
+    "node": ">=20"
+  }
 }
