@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.2.1...@kintone/rest@0.3.0) (2025-10-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* We dropped Node.js v18. The minimum Node.js version is now v20.
+
+### Miscellaneous Chores
+
+* bump minimum Node.js version to v20 ([#3431](https://github.com/kintone/js-sdk/issues/3431)) ([dbef119](https://github.com/kintone/js-sdk/commit/dbef11984d1d41099375f279640e7de13427c8c6))
+
 ## [0.2.1](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.2.0...@kintone/rest@0.2.1) (2025-05-13)
 
 

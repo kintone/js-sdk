@@ -1,6 +1,6 @@
 {
   "name": "@kintone/plugin-uploader",
-  "version": "9.1.5",
+  "version": "10.0.0",
   "description": "A kintone plugin uploader using puppeteer",
   "keywords": [
     "kintone"

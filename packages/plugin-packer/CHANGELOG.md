@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.2.1...@kintone/plugin-packer@9.0.0) (2025-10-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* We dropped Node.js v18. The minimum Node.js version is now v20.
+
+### Miscellaneous Chores
+
+* bump minimum Node.js version to v20 ([#3431](https://github.com/kintone/js-sdk/issues/3431)) ([dbef119](https://github.com/kintone/js-sdk/commit/dbef11984d1d41099375f279640e7de13427c8c6))
+
 ## [8.2.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.2.0...@kintone/plugin-packer@8.2.1) (2025-05-13)
 
 
