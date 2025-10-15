@@ -9,6 +9,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @kintone/rest-api-client bumped from ^4.0.3 to ^4.1.0
 
+## [9.0.0](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@8.0.14...@kintone/customize-uploader@9.0.0) (2025-10-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* We dropped Node.js v18. The minimum Node.js version is now v20.
+
+### Bug Fixes
+
+* **deps:** update dependency @kintone/rest-api-client to ^5.7.4 ([#3408](https://github.com/kintone/js-sdk/issues/3408)) ([1c4278c](https://github.com/kintone/js-sdk/commit/1c4278c3b859d56c07e8a82dba2cffdc19736c23))
+
+
+### Miscellaneous Chores
+
+* bump minimum Node.js version to v20 ([#3431](https://github.com/kintone/js-sdk/issues/3431)) ([dbef119](https://github.com/kintone/js-sdk/commit/dbef11984d1d41099375f279640e7de13427c8c6))
+
 ## [8.0.14](https://github.com/kintone/js-sdk/compare/@kintone/customize-uploader@8.0.13...@kintone/customize-uploader@8.0.14) (2025-05-13)
 
 
