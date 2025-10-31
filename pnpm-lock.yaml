@@ -578,8 +578,8 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/plugin-packer':
-        specifier: ^8.2.1
-        version: 8.2.1
+        specifier: ^9.0.0
+        version: 9.0.0
       mkdirp:
         specifier: ^3.0.1
         version: 3.0.1
@@ -1717,9 +1717,9 @@ packages:
     resolution: {integrity: sha512-/vPOaAooB+xkr9ZQ70DXQsEan/mLqj9zsiwiK/oO6hIv08kt6MwN2Nytam1G14Zxrui7Y8Nvcbqj2QeTV4VNLw==}
     engines: {node: '>=20'}
 
-  '@kintone/plugin-packer@8.2.1':
-    resolution: {integrity: sha512-DwUqqUr3Gt6pAE7Y91AJoRb53PnOyWzgtVcAL08aruo1Qe6dQb9dx7bvUPnKd/yjQxAKzuVBHGPpRY+pVTYVew==}
-    engines: {node: '>=18'}
+  '@kintone/plugin-packer@9.0.0':
+    resolution: {integrity: sha512-aoVnnxmWgiw26j6wX2zjL+BBq+tEYFqZ9Ujlx8L7HL/b289cC9jrpXqhM7QtjeQ0CpOzHlFUX9+mHQykT+d8Kg==}
+    engines: {node: '>=20'}
     hasBin: true
 
   '@kintone/rest-api-client@6.0.0':
@@ -9106,7 +9106,7 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.17.1)
       bytes: 3.1.2
 
-  '@kintone/plugin-packer@8.2.1':
+  '@kintone/plugin-packer@9.0.0':
     dependencies:
       '@kintone/plugin-manifest-validator': 10.3.1
       chokidar: 3.6.0
