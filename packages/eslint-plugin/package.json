@@ -51,7 +51,7 @@
   "devDependencies": {
     "@cybozu/eslint-config": "^24.3.0",
     "@cybozu/license-manager": "^1.4.0",
-    "@types/node": "^22.18.7",
+    "@types/node": "^22.18.11",
     "@typescript-eslint/rule-tester": "^8.46.1",
     "eslint": "^9.36.0",
     "globals": "^15.15.0",
