@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - run: git config --global core.autocrlf false
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: pnpm/action-setup@v3
 
@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Checkout kintone/rest-api-spec
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: kintone/rest-api-spec
           ref: main
