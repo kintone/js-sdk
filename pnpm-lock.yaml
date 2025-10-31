@@ -487,8 +487,8 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1(rollup@4.52.5)(vite@5.4.21(@types/node@22.18.13)(terser@5.44.0))
       vite-plugin-static-copy:
-        specifier: ^2.3.2
-        version: 2.3.2(vite@5.4.21(@types/node@22.18.13)(terser@5.44.0))
+        specifier: ^3.1.4
+        version: 3.1.4(vite@5.4.21(@types/node@22.18.13)(terser@5.44.0))
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@22.18.13)(jsdom@20.0.3)(terser@5.44.0)
@@ -7205,11 +7205,11 @@ packages:
     peerDependencies:
       vite: ^6.0.0
 
-  vite-plugin-static-copy@2.3.2:
-    resolution: {integrity: sha512-iwrrf+JupY4b9stBttRWzGHzZbeMjAHBhkrn67MNACXJVjEMRpCI10Q3AkxdBkl45IHaTfw/CNVevzQhP7yTwg==}
+  vite-plugin-static-copy@3.1.4:
+    resolution: {integrity: sha512-iCmr4GSw4eSnaB+G8zc2f4dxSuDjbkjwpuBLLGvQYR9IW7rnDzftnUjOH5p4RYR+d4GsiBqXRvzuFhs5bnzVyw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
-      vite: ^5.0.0 || ^6.0.0
+      vite: ^5.0.0 || ^6.0.0 || ^7.0.0
 
   vite@5.4.20:
     resolution: {integrity: sha512-j3lYzGC3P+B5Yfy/pfKNgVEg4+UtcIJcVRt2cDjIOmhLourAqPqf8P7acgxeiSgUB7E3p2P8/3gNIgDLpwzs4g==}
@@ -15577,13 +15577,12 @@ snapshots:
       - picomatch
       - rollup
 
-  vite-plugin-static-copy@2.3.2(vite@5.4.21(@types/node@22.18.13)(terser@5.44.0)):
+  vite-plugin-static-copy@3.1.4(vite@5.4.21(@types/node@22.18.13)(terser@5.44.0)):
     dependencies:
       chokidar: 3.6.0
-      fast-glob: 3.3.3
-      fs-extra: 11.3.2
       p-map: 7.0.3
       picocolors: 1.1.1
+      tinyglobby: 0.2.15
       vite: 5.4.21(@types/node@22.18.13)(terser@5.44.0)
 
   vite@5.4.20(@types/node@22.18.13)(terser@5.44.0):
