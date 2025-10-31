@@ -19,6 +19,11 @@ jobs:
         with:
           node-version: "24"
           cache: "pnpm"
+        # To avoid setup-node cache failure.
+        # ref. https://github.com/actions/setup-node/issues/1137
+      - name: create pnpm cache directory
+        shell: bash
+        run: mkdir -vp $(pnpm store path --silent)
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
