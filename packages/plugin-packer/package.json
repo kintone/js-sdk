@@ -76,7 +76,7 @@
     "cssnano": "^7.1.1",
     "execa": "^5.1.1",
     "glob": "^10.4.5",
-    "globals": "^15.15.0",
+    "globals": "^16.4.0",
     "jest-environment-jsdom": "^29.7.0",
     "normalize.css": "^8.0.1",
     "path-browserify": "^1.0.1",

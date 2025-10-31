@@ -240,8 +240,8 @@ importers:
         specifier: ^9.37.0
         version: 9.38.0
       globals:
-        specifier: ^15.15.0
-        version: 15.15.0
+        specifier: ^16.4.0
+        version: 16.4.0
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -374,8 +374,8 @@ importers:
         specifier: ^10.4.5
         version: 10.4.5
       globals:
-        specifier: ^15.15.0
-        version: 15.15.0
+        specifier: ^16.4.0
+        version: 16.4.0
       jest-environment-jsdom:
         specifier: ^29.7.0
         version: 29.7.0
