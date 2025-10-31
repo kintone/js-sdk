@@ -150,8 +150,8 @@ importers:
         specifier: ^5.5.0
         version: 5.5.0
       '@kintone/rest-api-client':
-        specifier: ^5.7.5
-        version: 5.7.5
+        specifier: ^6.0.0
+        version: 6.0.0
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
@@ -1706,9 +1706,9 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@kintone/rest-api-client@5.7.5':
-    resolution: {integrity: sha512-H+xo3EUvKuj5ROjrZ/6nLOiFeRRxJtodjfW1qg8jUmrau/rZ+FpldJ7jghLQNHNo/72siCDtJDjgJl6QjNTJaw==}
-    engines: {node: '>=18'}
+  '@kintone/rest-api-client@6.0.0':
+    resolution: {integrity: sha512-Ekf71DhWoiz3sZ8ISS656CqCfCvwBM9GyOlxDcP1u2aK9TANuBpzsKR8O6PcuPMXzGQ3Cm1hg1xfFR+n553T6A==}
+    engines: {node: '>=20'}
 
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
@@ -9053,7 +9053,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@kintone/rest-api-client@5.7.5':
+  '@kintone/rest-api-client@6.0.0':
     dependencies:
       axios: 1.12.2
       core-js: 3.45.1
