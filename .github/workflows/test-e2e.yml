@@ -37,8 +37,8 @@ jobs:
       - name: Start mock server
         shell: bash
         run: |
-          npx @stoplight/prism-cli@5.12.0 mock rest-api-spec/kintone/$(ls rest-api-spec/kintone | sort | tail -n 1)/openapi.yaml &
-          npx wait-on -t 180s tcp:127.0.0.1:4010
+          pnpm dlx @stoplight/prism-cli@5.12.0 mock rest-api-spec/kintone/$(ls rest-api-spec/kintone | sort | tail -n 1)/openapi.yaml &
+          pnpm dlx wait-on -t 180s tcp:127.0.0.1:4010
 
       - run: pnpm install --fetch-timeout 900000 --frozen-lockfile
       - run: pnpm build
