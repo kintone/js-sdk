@@ -50,7 +50,7 @@ importers:
         specifier: ^4.4.1
         version: 4.4.1
       eslint:
-        specifier: ^9.37.0
+        specifier: ^9.38.0
         version: 9.38.0
       eslint-plugin-package-json:
         specifier: ^0.57.0
@@ -184,7 +184,7 @@ importers:
         specifier: ^12.1.0
         version: 12.1.0
       eslint:
-        specifier: ^9.37.0
+        specifier: ^9.38.0
         version: 9.38.0
       form-data:
         specifier: ^4.0.4
@@ -237,7 +237,7 @@ importers:
         specifier: ^8.46.1
         version: 8.46.2(eslint@9.38.0)(typescript@5.9.3)
       eslint:
-        specifier: ^9.37.0
+        specifier: ^9.38.0
         version: 9.38.0
       globals:
         specifier: ^16.4.0
