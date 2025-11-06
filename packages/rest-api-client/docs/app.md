@@ -1492,3 +1492,24 @@ Adds Plug-ins to an App.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/add-plugins/
+
+### getStatistics
+
+Gets usage statistics for multiple Apps.
+
+#### Parameters
+
+| Name   |  Type  | Required | Description                                                                |
+| ------ | :----: | :------: | -------------------------------------------------------------------------- |
+| offset | Number |          | The offset. Default value is 0 if this parameter is ignored or `-1` is specified. |
+| limit  | Number |          | The number of Apps to retrieve. Must be between 1 and 100. Default value is 100 if this parameter is ignored or `-1` is specified. |
+
+#### Returns
+
+| Name |  Type  | Description                                                                                                                                                                 |
+| ---- | :----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| apps | Array  | An array of objects containing App usage statistics. <br/>For each object's properties, see "Response Parameters" section of [the reference](https://cybozu.dev/en/kintone/docs/rest-api/apps/get-apps-statistics/) |
+
+#### Reference
+
+- https://cybozu.dev/ja/kintone/docs/rest-api/apps/get-apps-statistics/

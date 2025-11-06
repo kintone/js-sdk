@@ -112,4 +112,40 @@ describe("App Test", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("getStatistics", () => {
+    describe("without params", () => {
+      beforeEach(async () => {
+        await appClient.getStatistics();
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/apps/statistics.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass empty params to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual({});
+      });
+    });
+
+    describe("with offset and limit", () => {
+      const params = {
+        offset: 10,
+        limit: 50,
+      };
+      beforeEach(async () => {
+        await appClient.getStatistics(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/apps/statistics.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass offset and limit as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+  });
 });
