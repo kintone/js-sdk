@@ -41,7 +41,7 @@
 - [move](#move)
 - [getPlugins](#getPlugins)
 - [addPlugins](#addPlugins)
-
+- [getStatistics](#getStatistics)
 ## Overview
 
 ```ts
@@ -1496,6 +1496,9 @@ Adds Plug-ins to an App.
 ### getStatistics
 
 Gets usage statistics for multiple Apps.
+
+> [!NOTE]
+> This API is available only in Wide Course.
 
 #### Parameters
 
