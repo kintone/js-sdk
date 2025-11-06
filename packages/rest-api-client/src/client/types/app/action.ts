@@ -19,6 +19,7 @@ type ActionPropertyForParameter = (
   name?: string;
   index: string | number;
   entities?: Entity[];
+  filterCond?: string;
 };
 
 type DestAppForParameter =
@@ -41,6 +42,7 @@ type ActionPropertyForResponse = {
   destApp: DestAppForResponse;
   mappings: Mapping[];
   entities: Entity[];
+  filterCond: string;
 };
 
 type DestAppForResponse = {

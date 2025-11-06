@@ -82,6 +82,7 @@ describe("Actions", () => {
               code: "Administrator",
             },
           ],
+          filterCond: 'Status = "Active"',
         },
       },
     };
