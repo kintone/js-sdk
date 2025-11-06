@@ -47,11 +47,17 @@ export type StateForParameter = {
   };
 };
 
+type ActionType = "PRIMARY" | "SECONDARY";
+
 export type ActionForResponse = {
   name: string;
   from: string;
   to: string;
   filterCond: string;
+  type: ActionType;
+  executableUser?: {
+    entities: AssigneeEntityForResponse[];
+  };
 };
 
 export type ActionForParameter = {
@@ -59,4 +65,8 @@ export type ActionForParameter = {
   from: string;
   to: string;
   filterCond?: string;
+  type?: ActionType;
+  executableUser?: {
+    entities: AssigneeEntityForParameter[];
+  };
 };

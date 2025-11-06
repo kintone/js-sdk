@@ -35,12 +35,21 @@ const states = {
 };
 
 const actions = [
-  { name: "action1to2", from: "status1", to: "status2" },
+  {
+    name: "action1to2",
+    from: "status1",
+    to: "status2",
+    type: "PRIMARY" as const,
+  },
   {
     name: "action2to3",
     from: "status2",
     to: "status3",
     filterCond: 'field = "foo"',
+    type: "SECONDARY" as const,
+    executableUser: {
+      entities: [{ entity: { type: "USER" as const, code: "user1" } }],
+    },
   },
 ];
 
