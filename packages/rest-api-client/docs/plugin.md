@@ -32,10 +32,11 @@ Gets the list of plug-ins imported into Kintone.
 
 #### Parameters
 
-| Name   |  Type  | Required | Description                                                                                                |
-| ------ | :----: | :------: | ---------------------------------------------------------------------------------------------------------- |
-| offset | Number |          | The number of plug-ins to skip from the list of installed plug-ins.<br />If ignored, this value is 0.      |
-| limit  | Number |          | The maximum number of plug-ins to retrieve.<br />Must be between 1 and 100.The default<br />number is 100. |
+| Name   |  Type  | Required | Description                                                                                                                                                                                                                    |
+| ------ | :----: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| offset | Number |          | The number of plug-ins to skip from the list of installed plug-ins.<br />If ignored, this value is 0.                                                                                                                          |
+| limit  | Number |          | The maximum number of plug-ins to retrieve.<br />Must be between 1 and 100.The default<br />number is 100.                                                                                                                     |
+| ids    | Array  |          | The IDs of the plug-ins to retrieve.<br />A maximum of 100 plug-in IDs can be specified.<br />If null or an empty array is specified, this parameter will be treated as if it was omitted, and all plug-ins will be retrieved. |
 
 #### Returns
 
@@ -44,6 +45,7 @@ Gets the list of plug-ins imported into Kintone.
 | plugins                  |  Array  | A list of Plug-ins added to the App.<br />Plug-ins are listed in descending order of the datetime they are added.                                                                                    |
 | plugins[].id             | String  | The Plugin ID.                                                                                                                                                                                       |
 | plugins[].name           | String  | The name of the Plugin.                                                                                                                                                                              |
+| plugins[].description    | String  | The description of the plug-in.<br />An empty string is returned if no description is set.                                                                                                           |
 | plugins[].isMarketPlugin | Boolean | States whether or not the plug-in is a Marketplace plug-in.<br /><strong>true</strong>: The plug-in is a Marketplace plug-in.<br /><strong>false</strong>: The plug-in is not a Marketplace plug-in. |
 | plugins[].version        | String  | The version number of the plug-in                                                                                                                                                                    |
 
