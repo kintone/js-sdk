@@ -1438,7 +1438,7 @@ Changes the Space to which an App belongs.
 | Name  |           Type           | Required | Description                                                                                                                                    |
 | ----- | :----------------------: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | app   |     Number or String     |   Yes    | The App ID.                                                                                                                                    |
-| space | Number or String or null |    No    | The Space ID of where the App will be moved to. <br />To remove an App from its current space, `null` or omit this parameter can be specified. |
+| space | Number or String or null |          | The Space ID of where the App will be moved to. <br />To remove an App from its current space, `null` or omit this parameter can be specified. |
 
 #### Returns
 
