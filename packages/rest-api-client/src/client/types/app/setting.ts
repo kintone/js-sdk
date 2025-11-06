@@ -46,6 +46,7 @@ export type GetAppSettingsForResponse = {
     roundingMode: "HALF_EVEN" | "UP" | "DOWN";
   };
   firstMonthOfFiscalYear: string;
+  enableInlineRecordEditing: boolean;
   revision: string;
 };
 
@@ -75,6 +76,7 @@ export type UpdateAppSettingsForRequest = {
     roundingMode?: "HALF_EVEN" | "UP" | "DOWN";
   };
   firstMonthOfFiscalYear?: string | number;
+  enableInlineRecordEditing?: boolean;
   revision?: Revision;
 };
 

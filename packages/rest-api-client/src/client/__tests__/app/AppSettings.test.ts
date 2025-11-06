@@ -74,6 +74,7 @@ describe("AppSettings", () => {
         roundingMode: "HALF_EVEN" as const,
       },
       firstMonthOfFiscalYear: 12,
+      enableInlineRecordEditing: true,
     };
     beforeEach(async () => {
       await appClient.updateAppSettings(params);
