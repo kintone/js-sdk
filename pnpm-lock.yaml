@@ -53,8 +53,8 @@ importers:
         specifier: ^9.38.0
         version: 9.38.0
       eslint-plugin-package-json:
-        specifier: ^0.57.0
-        version: 0.57.0(@types/estree@1.0.8)(eslint@9.38.0)(jsonc-eslint-parser@2.4.1)
+        specifier: ^0.58.0
+        version: 0.58.0(@types/estree@1.0.8)(eslint@9.38.0)(jsonc-eslint-parser@2.4.1)
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@18.19.130)(ts-node@10.9.2(@types/node@18.19.130)(typescript@5.9.3))
@@ -3865,8 +3865,8 @@ packages:
     peerDependencies:
       eslint: '>=8.23.0'
 
-  eslint-plugin-package-json@0.57.0:
-    resolution: {integrity: sha512-3X0nODFG+8r0Cqmqmw/JwWdtWNPrQX0mxg6HrHISFm2WIDvmc3hukGKG4so0zDbi+nYsd5/9QbE71MAyWGiFXQ==}
+  eslint-plugin-package-json@0.58.0:
+    resolution: {integrity: sha512-g5/veEamkTSb+HiR7ncQmHmgIvMAPJJkfFVyCDj4qhH6mc8FnYFeOzB3v5aAoAq8Ejxqzh7jIsq79/BLGmIBBA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       eslint: '>=8.0.0'
@@ -11287,7 +11287,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  eslint-plugin-package-json@0.57.0(@types/estree@1.0.8)(eslint@9.38.0)(jsonc-eslint-parser@2.4.1):
+  eslint-plugin-package-json@0.58.0(@types/estree@1.0.8)(eslint@9.38.0)(jsonc-eslint-parser@2.4.1):
     dependencies:
       '@altano/repository-tools': 2.0.1
       change-case: 5.4.4
