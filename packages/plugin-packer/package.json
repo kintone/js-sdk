@@ -62,7 +62,7 @@
     "@reduxjs/toolkit": "^2.9.2",
     "@types/debug": "^4.1.12",
     "@types/node-rsa": "^1.1.4",
-    "@types/stream-buffers": "^3.0.7",
+    "@types/stream-buffers": "^3.0.8",
     "@types/yauzl": "^2.10.3",
     "@types/yazl": "^2.4.6",
     "ajv": "^8.17.1",
