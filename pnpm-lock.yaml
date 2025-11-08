@@ -53,8 +53,8 @@ importers:
         specifier: ^9.38.0
         version: 9.38.0
       eslint-plugin-package-json:
-        specifier: ^0.58.0
-        version: 0.58.0(@types/estree@1.0.8)(eslint@9.38.0)(jsonc-eslint-parser@2.4.1)
+        specifier: ^0.59.0
+        version: 0.59.1(@types/estree@1.0.8)(eslint@9.38.0)(jsonc-eslint-parser@2.4.1)
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@18.19.130)(ts-node@10.9.2(@types/node@18.19.130)(typescript@5.9.3))
@@ -3865,8 +3865,8 @@ packages:
     peerDependencies:
       eslint: '>=8.23.0'
 
-  eslint-plugin-package-json@0.58.0:
-    resolution: {integrity: sha512-g5/veEamkTSb+HiR7ncQmHmgIvMAPJJkfFVyCDj4qhH6mc8FnYFeOzB3v5aAoAq8Ejxqzh7jIsq79/BLGmIBBA==}
+  eslint-plugin-package-json@0.59.1:
+    resolution: {integrity: sha512-dalsU3Zsz8RYLkV6FnNBJh408WlTuqQaDfxV/ae29yK7pTzjNNJN+kqU9YhHfHkbJ5XBax4xHWvidvAk4xE31w==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       eslint: '>=8.0.0'
@@ -7042,9 +7042,9 @@ packages:
     resolution: {integrity: sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  validate-npm-package-name@6.0.2:
-    resolution: {integrity: sha512-IUoow1YUtvoBBC06dXs8bR8B9vuA3aJfmQNKMoaPG/OFsPmoQvw8xh+6Ye25Gx9DQhoEom3Pcu9MKHerm/NpUQ==}
-    engines: {node: ^18.17.0 || >=20.5.0}
+  validate-npm-package-name@7.0.0:
+    resolution: {integrity: sha512-bwVk/OK+Qu108aJcMAEiU4yavHUI7aN20TgZNBj9MR2iU1zPUl1Z1Otr7771ExfYTPTvfN8ZJ1pbr5Iklgt4xg==}
+    engines: {node: ^20.17.0 || >=22.9.0}
 
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
@@ -11287,7 +11287,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  eslint-plugin-package-json@0.58.0(@types/estree@1.0.8)(eslint@9.38.0)(jsonc-eslint-parser@2.4.1):
+  eslint-plugin-package-json@0.59.1(@types/estree@1.0.8)(eslint@9.38.0)(jsonc-eslint-parser@2.4.1):
     dependencies:
       '@altano/repository-tools': 2.0.1
       change-case: 5.4.4
@@ -11300,7 +11300,7 @@ snapshots:
       semver: 7.7.3
       sort-object-keys: 2.0.0
       sort-package-json: 3.4.0
-      validate-npm-package-name: 6.0.2
+      validate-npm-package-name: 7.0.0
     transitivePeerDependencies:
       - '@types/estree'
 
@@ -14976,7 +14976,7 @@ snapshots:
 
   validate-npm-package-name@5.0.1: {}
 
-  validate-npm-package-name@6.0.2: {}
+  validate-npm-package-name@7.0.0: {}
 
   vary@1.1.2: {}
 
