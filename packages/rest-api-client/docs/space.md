@@ -383,6 +383,9 @@ Creates a Space from a Space template.
 
 Gets the statistical information of Spaces.
 
+> [!NOTE]
+> This API is available only in Wide Course.
+
 #### Parameters
 
 | Name   |       Type       | Required | Description                                                                                                             |
