@@ -47,7 +47,7 @@
     "meow": "^9.0.0",
     "node-rsa": "^1.1.1",
     "normalize-path": "^3.0.0",
-    "os-locale": "^5.0.0",
+    "os-locale": "^6.0.2",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "sort-package-json": "^3.4.0"
