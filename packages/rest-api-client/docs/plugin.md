@@ -32,11 +32,11 @@ Gets the list of plug-ins imported into Kintone.
 
 #### Parameters
 
-| Name   |  Type  | Required | Description                                                                                                                                                                                                                    |
-| ------ | :----: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| offset | Number |          | The number of plug-ins to skip from the list of installed plug-ins.<br />If ignored, this value is 0.                                                                                                                          |
-| limit  | Number |          | The maximum number of plug-ins to retrieve.<br />Must be between 1 and 100.The default<br />number is 100.                                                                                                                     |
-| ids    | Array  |          | The IDs of the plug-ins to retrieve.<br />A maximum of 100 plug-in IDs can be specified.<br />If null or an empty array is specified, this parameter will be treated as if it was omitted, and all plug-ins will be retrieved. |
+| Name   |  Type  | Required | Description                                                                                                                                                                                                            |
+| ------ | :----: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| offset | Number |          | The number of plug-ins to skip from the list of installed plug-ins.<br />If ignored, this value is 0.                                                                                                                  |
+| limit  | Number |          | The maximum number of plug-ins to retrieve.<br />Must be between 1 and 100. The default<br />number is 100.                                                                                                            |
+| ids    | Array  |          | The IDs of the plug-ins to retrieve.<br />A maximum of 100 plug-in IDs can be specified.<br />If an empty array is specified, this parameter will be treated as if it was omitted, and all plug-ins will be retrieved. |
 
 #### Returns
 
@@ -60,10 +60,10 @@ This can occur when a plug-in is installed, added to an App, and then proceeded 
 
 #### Parameters
 
-| Name   |  Type  | Required | Description                                                                                                |
-| ------ | :----: | :------: | ---------------------------------------------------------------------------------------------------------- |
-| offset | Number |          | The number of plug-ins to skip from the list of required plug-ins.<br />If ignored, this value is 0.       |
-| limit  | Number |          | The maximum number of plug-ins to retrieve.<br />Must be between 1 and 100.The default<br />number is 100. |
+| Name   |  Type  | Required | Description                                                                                                 |
+| ------ | :----: | :------: | ----------------------------------------------------------------------------------------------------------- |
+| offset | Number |          | The number of plug-ins to skip from the list of required plug-ins.<br />If ignored, this value is 0.        |
+| limit  | Number |          | The maximum number of plug-ins to retrieve.<br />Must be between 1 and 100. The default<br />number is 100. |
 
 #### Returns
 
@@ -84,11 +84,11 @@ Gets Apps that have the specified plug-in added.
 
 #### Parameters
 
-| Name   |  Type  | Required | Description                                                                                            |
-| ------ | :----: | :------: | ------------------------------------------------------------------------------------------------------ |
-| id     | String |   Yes    | The ID of the plug-in.                                                                                 |
-| offset | Number |          | The number of apps to skip from the list of app.<br />If ignored, this value is 0.                     |
-| limit  | Number |          | The maximum number of apps to retrieve.<br />Must be between 1 and 500.The default<br />number is 100. |
+| Name   |  Type  | Required | Description                                                                                             |
+| ------ | :----: | :------: | ------------------------------------------------------------------------------------------------------- |
+| id     | String |   Yes    | The ID of the plug-in.                                                                                  |
+| offset | Number |          | The number of apps to skip from the list of app.<br />If ignored, this value is 0.                      |
+| limit  | Number |          | The maximum number of apps to retrieve.<br />Must be between 1 and 500. The default<br />number is 100. |
 
 #### Returns
 
