@@ -27,6 +27,26 @@ type AssigneeEntityForParameter = {
   includeSubs?: boolean;
 };
 
+type ExecutableUserEntityForResponse = {
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY";
+        code: string;
+      };
+  includeSubs: boolean;
+};
+
+type ExecutableUserEntityForParameter = {
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY";
+        code: string;
+      };
+  includeSubs?: boolean;
+};
+
 type AssigneeType = "ONE" | "ALL" | "ANY";
 
 export type StateForResponse = {
@@ -56,7 +76,7 @@ export type ActionForResponse = {
   filterCond: string;
   type: ActionType;
   executableUser?: {
-    entities: AssigneeEntityForResponse[];
+    entities: ExecutableUserEntityForResponse[];
   };
 };
 
@@ -67,6 +87,6 @@ export type ActionForParameter = {
   filterCond?: string;
   type?: ActionType;
   executableUser?: {
-    entities: AssigneeEntityForParameter[];
+    entities: ExecutableUserEntityForParameter[];
   };
 };
