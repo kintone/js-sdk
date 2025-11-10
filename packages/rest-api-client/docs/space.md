@@ -13,6 +13,7 @@
 - [deleteGuests](#deleteGuests)
 - [updateSpaceGuests](#updateSpaceGuests)
 - [addSpaceFromTemplate](#addSpaceFromTemplate)
+- [getSpacesStatistics](#getSpacesStatistics)
 
 ## Overview
 
@@ -377,3 +378,24 @@ Creates a Space from a Space template.
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/add-space/
+
+### getSpacesStatistics
+
+Gets the statistical information of Spaces.
+
+#### Parameters
+
+| Name   |       Type       | Required | Description                                                                                                             |
+| ------ | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------- |
+| offset | Number or String |          | The offset to start retrieving spaces from.<br />If omitted, the default value is 0.                                    |
+| limit  | Number or String |          | The number of spaces to retrieve.<br />Must be an integer between 1 and 100.<br />If omitted, the default value is 100. |
+
+#### Returns
+
+| Name   | Type  | Description                                                                                                                                                                                                                                                   |
+| ------ | :---: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| spaces | Array | A list of space statistics.<br />Only spaces that the user can access will be returned.<br />For each property of this array, see "Response Parameters" section of [the reference](https://cybozu.dev/ja/kintone/docs/rest-api/spaces/get-spaces-statistics/) |
+
+#### Reference
+
+- https://cybozu.dev/ja/kintone/docs/rest-api/spaces/get-spaces-statistics/
