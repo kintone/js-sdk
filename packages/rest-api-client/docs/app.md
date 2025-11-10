@@ -1503,16 +1503,16 @@ Gets usage statistics for multiple Apps.
 
 #### Parameters
 
-| Name   |  Type  | Required | Description                                                                                                                        |
-| ------ | :----: | :------: | ---------------------------------------------------------------------------------------------------------------------------------- |
-| offset | Number |          | The offset. Default value is 0 if this parameter is ignored or `-1` is specified.                                                  |
-| limit  | Number |          | The number of Apps to retrieve. Must be between 1 and 100. Default value is 100 if this parameter is ignored or `-1` is specified. |
+| Name   |  Type  | Required | Description                                                                                                   |
+| ------ | :----: | :------: | ------------------------------------------------------------------------------------------------------------- |
+| offset | Number |          | The offset. Default value is 0 if this parameter is ignored.                                                  |
+| limit  | Number |          | The number of Apps to retrieve. Must be between 1 and 100. Default value is 100 if this parameter is ignored. |
 
 #### Returns
 
-| Name | Type  | Description                                                                                                                                                                                                         |
-| ---- | :---: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| apps | Array | An array of objects containing App usage statistics. <br/>For each object's properties, see "Response Parameters" section of [the reference](https://cybozu.dev/en/kintone/docs/rest-api/apps/get-apps-statistics/) |
+| Name | Type  | Description                                                                                                                                                                                                          |
+| ---- | :---: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| apps | Array | An array of objects containing App usage statistics. <br/>For each object's properties, see "Response Parameters" section of [the reference](https://kintone.dev/en/kintone/docs/rest-api/apps/get-apps-statistics/) |
 
 #### Reference
 

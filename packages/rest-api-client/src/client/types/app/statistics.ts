@@ -1,13 +1,15 @@
+import type { AppID, SpaceID } from "../";
+
 export type GetStatisticsRequest = {
   offset?: number;
   limit?: number;
 };
 
 export type AppStatistics = {
-  id: string;
+  id: AppID;
   name: string;
   space: {
-    id: string;
+    id: SpaceID;
     name: string;
   } | null;
   appGroup: string;
