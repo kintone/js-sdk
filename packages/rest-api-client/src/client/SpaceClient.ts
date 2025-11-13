@@ -9,6 +9,8 @@ import type {
   SpaceTemplateID,
   UpdateSpaceForRequest,
   Space,
+  GetSpacesStatisticsRequest,
+  GetSpacesStatisticsResponse,
 } from "./types";
 import { BaseClient } from "./BaseClient";
 
@@ -124,5 +126,14 @@ export class SpaceClient extends BaseClient {
       endpointName: "template/space",
     });
     return this.client.post(path, params);
+  }
+
+  public getSpacesStatistics(
+    params: GetSpacesStatisticsRequest = {},
+  ): Promise<GetSpacesStatisticsResponse> {
+    const path = this.buildPath({
+      endpointName: "spaces/statistics",
+    });
+    return this.client.get(path, params);
   }
 }

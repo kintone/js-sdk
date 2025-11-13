@@ -107,3 +107,25 @@ export type Guest = {
   phone?: string;
   callto?: string;
 };
+
+export type SpaceStatistics = {
+  id: string;
+  name: string;
+  administratorCount: string;
+  memberCount: string;
+  isPrivate: boolean;
+  isGuest: boolean;
+  creator: { code: string; name: string };
+  createdAt: string;
+  modifier: { code: string; name: string };
+  modifiedAt: string;
+};
+
+export type GetSpacesStatisticsRequest = {
+  offset?: number | string;
+  limit?: number | string;
+};
+
+export type GetSpacesStatisticsResponse = {
+  spaces: SpaceStatistics[];
+};
