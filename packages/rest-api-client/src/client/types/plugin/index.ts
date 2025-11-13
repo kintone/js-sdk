@@ -3,6 +3,7 @@ import type { PluginID } from "..";
 type Plugin = {
   id: string;
   name: string;
+  description: string;
   isMarketPlugin: boolean;
   version: string;
 };
@@ -12,6 +13,7 @@ type RequiredPlugin = Omit<Plugin, "revision">;
 export type GetPluginsForRequest = {
   offset?: number;
   limit?: number;
+  ids?: string[];
 };
 
 export type GetPluginsForResponse = {
