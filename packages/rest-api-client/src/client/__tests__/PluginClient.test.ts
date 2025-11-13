@@ -58,6 +58,65 @@ describe("PluginClient", () => {
         expect(mockClient.getLogs()[0].params).toEqual(paramsWithIds);
       });
     });
+
+    describe("validation for ids parameter", () => {
+      it("should throw an error if ids is not an array", () => {
+        const invalidParams = {
+          offset: 0,
+          limit: 10,
+          ids: "not-an-array",
+        };
+        // @ts-expect-error Testing runtime validation
+        expect(() => pluginClient.getPlugins(invalidParams)).toThrow(
+          "the `ids` parameter must be an array of string.",
+        );
+      });
+
+      it("should throw an error if ids contains non-string values", () => {
+        const invalidParams = {
+          offset: 0,
+          limit: 10,
+          ids: ["plugin1", 123, "plugin3"],
+        };
+        // @ts-expect-error Testing runtime validation
+        expect(() => pluginClient.getPlugins(invalidParams)).toThrow(
+          "the `ids` parameter must be an array of string.",
+        );
+      });
+
+      it("should throw an error if ids contains object values", () => {
+        const invalidParams = {
+          offset: 0,
+          limit: 10,
+          ids: ["plugin1", { id: "plugin2" }, "plugin3"],
+        };
+        // @ts-expect-error Testing runtime validation
+        expect(() => pluginClient.getPlugins(invalidParams)).toThrow(
+          "the `ids` parameter must be an array of string.",
+        );
+      });
+
+      it("should not throw an error if ids is undefined", async () => {
+        const validParams = {
+          offset: 0,
+          limit: 10,
+        };
+        await expect(
+          pluginClient.getPlugins(validParams),
+        ).resolves.not.toThrow();
+      });
+
+      it("should not throw an error if ids is an empty array", async () => {
+        const validParams = {
+          offset: 0,
+          limit: 10,
+          ids: [],
+        };
+        await expect(
+          pluginClient.getPlugins(validParams),
+        ).resolves.not.toThrow();
+      });
+    });
   });
 
   describe("getRequiredPlugins", () => {
