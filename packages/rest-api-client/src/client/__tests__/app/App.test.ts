@@ -98,18 +98,36 @@ describe("App Test", () => {
   });
 
   describe("move", () => {
-    const params = { app: APP_ID, space: 1 } as const;
-    beforeEach(async () => {
-      await appClient.move(params);
+    describe("with space parameter", () => {
+      const params = { app: APP_ID, space: 1 } as const;
+      beforeEach(async () => {
+        await appClient.move(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/move.json");
+      });
+      it("should send a post request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("post");
+      });
+      it("should pass app and space as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
     });
-    it("should pass the path to the http client", () => {
-      expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/move.json");
-    });
-    it("should send a post request", () => {
-      expect(mockClient.getLogs()[0].method).toBe("post");
-    });
-    it("should pass app and space as a param to the http client", () => {
-      expect(mockClient.getLogs()[0].params).toEqual(params);
+
+    describe("without space parameter", () => {
+      const params = { app: APP_ID } as const;
+      beforeEach(async () => {
+        await appClient.move(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/app/move.json");
+      });
+      it("should send a post request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("post");
+      });
+      it("should pass only app as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
     });
   });
 });
