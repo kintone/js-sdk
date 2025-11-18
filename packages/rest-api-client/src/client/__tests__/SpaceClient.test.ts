@@ -357,6 +357,46 @@ describe("SpaceClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("getSpacesStatistics", () => {
+    describe("without parameters", () => {
+      beforeEach(async () => {
+        await spaceClient.getSpacesStatistics();
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/spaces/statistics.json",
+        );
+      });
+      it("should send a GET request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass empty params to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual({});
+      });
+    });
+
+    describe("with offset and limit parameters", () => {
+      const params = {
+        offset: 10,
+        limit: 50,
+      };
+      beforeEach(async () => {
+        await spaceClient.getSpacesStatistics(params);
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/spaces/statistics.json",
+        );
+      });
+      it("should send a GET request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass offset and limit to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+  });
 });
 
 describe("SpaceClient with guestSpaceId", () => {
