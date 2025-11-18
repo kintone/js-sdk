@@ -28,3 +28,4 @@ export * from "./notification";
 export * from "./report";
 export * from "./action";
 export * from "./adminNotes";
+export * from "./statistics";

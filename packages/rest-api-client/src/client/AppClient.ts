@@ -37,6 +37,8 @@ import type {
   AdminNotesForParameter,
   SpaceID,
   PluginLocale,
+  GetStatisticsRequest,
+  GetStatisticsResponse,
 } from "./types";
 import { BaseClient } from "./BaseClient";
 import type { AppPlugin } from "./types/app/plugin";
@@ -634,5 +636,14 @@ export class AppClient extends BaseClient {
       preview: true,
     });
     return this.client.post(path, params);
+  }
+
+  public getStatistics(
+    params?: GetStatisticsRequest,
+  ): Promise<GetStatisticsResponse> {
+    const path = this.buildPath({
+      endpointName: "apps/statistics",
+    });
+    return this.client.get(path, params ?? {});
   }
 }
