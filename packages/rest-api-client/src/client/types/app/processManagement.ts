@@ -27,6 +27,26 @@ type AssigneeEntityForParameter = {
   includeSubs?: boolean;
 };
 
+type ExecutableUserEntityForResponse = {
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY";
+        code: string;
+      };
+  includeSubs: boolean;
+};
+
+type ExecutableUserEntityForParameter = {
+  entity:
+    | Entity
+    | {
+        type: "FIELD_ENTITY";
+        code: string;
+      };
+  includeSubs?: boolean;
+};
+
 type AssigneeType = "ONE" | "ALL" | "ANY";
 
 export type StateForResponse = {
@@ -47,11 +67,17 @@ export type StateForParameter = {
   };
 };
 
+type ActionType = "PRIMARY" | "SECONDARY";
+
 export type ActionForResponse = {
   name: string;
   from: string;
   to: string;
   filterCond: string;
+  type: ActionType;
+  executableUser?: {
+    entities: ExecutableUserEntityForResponse[];
+  };
 };
 
 export type ActionForParameter = {
@@ -59,4 +85,8 @@ export type ActionForParameter = {
   from: string;
   to: string;
   filterCond?: string;
+  type?: ActionType;
+  executableUser?: {
+    entities: ExecutableUserEntityForParameter[];
+  };
 };
