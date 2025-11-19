@@ -359,9 +359,9 @@ describe("SpaceClient", () => {
   });
 
   describe("getStatistics", () => {
-    describe("without parameters", () => {
+    describe("empty parameters", () => {
       beforeEach(async () => {
-        await spaceClient.getStatistics();
+        await spaceClient.getStatistics({});
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(

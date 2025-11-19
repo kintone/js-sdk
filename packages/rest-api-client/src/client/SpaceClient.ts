@@ -129,7 +129,7 @@ export class SpaceClient extends BaseClient {
   }
 
   public getStatistics(
-    params: GetSpacesStatisticsRequest = {},
+    params: GetSpacesStatisticsRequest,
   ): Promise<GetSpacesStatisticsResponse> {
     const path = this.buildPath({
       endpointName: "spaces/statistics",
