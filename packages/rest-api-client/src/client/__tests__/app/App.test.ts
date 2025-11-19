@@ -132,9 +132,9 @@ describe("App Test", () => {
   });
 
   describe("getStatistics", () => {
-    describe("without params", () => {
+    describe("with empty params", () => {
       beforeEach(async () => {
-        await appClient.getStatistics();
+        await appClient.getStatistics({});
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe("/k/v1/apps/statistics.json");

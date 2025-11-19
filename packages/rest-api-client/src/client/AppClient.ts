@@ -639,11 +639,11 @@ export class AppClient extends BaseClient {
   }
 
   public getStatistics(
-    params?: GetStatisticsRequest,
+    params: GetStatisticsRequest,
   ): Promise<GetStatisticsResponse> {
     const path = this.buildPath({
       endpointName: "apps/statistics",
     });
-    return this.client.get(path, params ?? {});
+    return this.client.get(path, params);
   }
 }
