@@ -128,7 +128,7 @@ export class SpaceClient extends BaseClient {
     return this.client.post(path, params);
   }
 
-  public getSpacesStatistics(
+  public getStatistics(
     params: GetSpacesStatisticsRequest = {},
   ): Promise<GetSpacesStatisticsResponse> {
     const path = this.buildPath({

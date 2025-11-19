@@ -358,10 +358,10 @@ describe("SpaceClient", () => {
     });
   });
 
-  describe("getSpacesStatistics", () => {
+  describe("getStatistics", () => {
     describe("without parameters", () => {
       beforeEach(async () => {
-        await spaceClient.getSpacesStatistics();
+        await spaceClient.getStatistics();
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
@@ -382,7 +382,7 @@ describe("SpaceClient", () => {
         limit: 50,
       };
       beforeEach(async () => {
-        await spaceClient.getSpacesStatistics(params);
+        await spaceClient.getStatistics(params);
       });
       it("should pass the path to the http client", () => {
         expect(mockClient.getLogs()[0].path).toBe(
