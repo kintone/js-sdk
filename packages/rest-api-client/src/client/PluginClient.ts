@@ -17,14 +17,6 @@ export class PluginClient extends BaseClient {
   public getPlugins(
     params: GetPluginsForRequest,
   ): Promise<GetPluginsForResponse> {
-    if (params.ids !== undefined) {
-      if (
-        !Array.isArray(params.ids) ||
-        !params.ids.every((id) => typeof id === "string")
-      ) {
-        throw new Error("the `ids` parameter must be an array of string.");
-      }
-    }
     const path = this.buildPath({ endpointName: "plugins" });
     return this.client.get(path, params);
   }
