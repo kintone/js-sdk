@@ -67,26 +67,36 @@ export type StateForParameter = {
   };
 };
 
-type ActionType = "PRIMARY" | "SECONDARY";
-
 export type ActionForResponse = {
   name: string;
   from: string;
   to: string;
   filterCond: string;
-  type: ActionType;
-  executableUser?: {
-    entities: ExecutableUserEntityForResponse[];
-  };
-};
+} & (
+  | {
+      type: "PRIMARY";
+    }
+  | {
+      type: "SECONDARY";
+      executableUser: {
+        entities: ExecutableUserEntityForResponse[];
+      };
+    }
+);
 
 export type ActionForParameter = {
   name: string;
   from: string;
   to: string;
   filterCond?: string;
-  type?: ActionType;
-  executableUser?: {
-    entities: ExecutableUserEntityForParameter[];
-  };
-};
+} & (
+  | {
+      type?: "PRIMARY";
+    }
+  | {
+      type: "SECONDARY";
+      executableUser: {
+        entities: ExecutableUserEntityForParameter[];
+      };
+    }
+);
