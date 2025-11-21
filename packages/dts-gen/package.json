@@ -44,7 +44,7 @@
     "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand"
   },
   "dependencies": {
-    "@cybozu/eslint-config": "^24.3.0",
+    "@cybozu/eslint-config": "^25.0.0",
     "axios": "^1.12.2",
     "commander": "^12.1.0",
     "eslint": "^9.38.0",

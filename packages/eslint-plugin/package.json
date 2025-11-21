@@ -49,7 +49,7 @@
     "@typescript-eslint/utils": "^8.46.3"
   },
   "devDependencies": {
-    "@cybozu/eslint-config": "^24.3.0",
+    "@cybozu/eslint-config": "^25.0.0",
     "@cybozu/license-manager": "^1.4.0",
     "@types/node": "^22.19.0",
     "@typescript-eslint/rule-tester": "^8.46.3",
