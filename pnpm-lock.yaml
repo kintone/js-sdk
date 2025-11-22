@@ -484,8 +484,8 @@ importers:
         specifier: ^4.5.4
         version: 4.5.4(@types/node@22.19.1)(rollup@4.53.3)(typescript@5.9.3)(vite@5.4.21(@types/node@22.19.1)(terser@5.44.0))
       vite-plugin-license:
-        specifier: ^0.0.1
-        version: 0.0.1(rollup@4.53.3)(vite@5.4.21(@types/node@22.19.1)(terser@5.44.0))
+        specifier: ^0.0.2
+        version: 0.0.2(rollup@4.53.3)(vite@5.4.21(@types/node@22.19.1)(terser@5.44.0))
       vite-plugin-static-copy:
         specifier: ^3.1.4
         version: 3.1.4(vite@5.4.21(@types/node@22.19.1)(terser@5.44.0))
@@ -7231,10 +7231,10 @@ packages:
       vite:
         optional: true
 
-  vite-plugin-license@0.0.1:
-    resolution: {integrity: sha512-3H9FMwA0Mn49T2M62yFaL27w1beT/7dL8Y1fjLi373aqPmpUfhATWu4rHhnrW0flb1idQy4ZaI4SeUPaGJe7ZQ==}
+  vite-plugin-license@0.0.2:
+    resolution: {integrity: sha512-fLmctLo77KfSYeFWDuBeCk8R1xlOwBygB8nCTI6HGH+xAnuclJ6kR4HEhmGx3rvCU3x/G1OYZGkIaWlZODFMkQ==}
     peerDependencies:
-      vite: ^6.0.0
+      vite: ^7.1.12
 
   vite-plugin-static-copy@3.1.4:
     resolution: {integrity: sha512-iCmr4GSw4eSnaB+G8zc2f4dxSuDjbkjwpuBLLGvQYR9IW7rnDzftnUjOH5p4RYR+d4GsiBqXRvzuFhs5bnzVyw==}
@@ -15281,7 +15281,7 @@ snapshots:
       - rollup
       - supports-color
 
-  vite-plugin-license@0.0.1(rollup@4.53.3)(vite@5.4.21(@types/node@22.19.1)(terser@5.44.0)):
+  vite-plugin-license@0.0.2(rollup@4.53.3)(vite@5.4.21(@types/node@22.19.1)(terser@5.44.0)):
     dependencies:
       rollup-plugin-license: 3.6.0(picomatch@4.0.3)(rollup@4.53.3)
       vite: 5.4.21(@types/node@22.19.1)(terser@5.44.0)
