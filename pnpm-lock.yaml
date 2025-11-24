@@ -551,7 +551,7 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       rollup:
-        specifier: ^4.53.1
+        specifier: ^4.53.2
         version: 4.53.3
       rollup-plugin-ecma-version-validator:
         specifier: ^0.2.13
