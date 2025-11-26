@@ -13,7 +13,7 @@
 - [deleteGuests](#deleteGuests)
 - [updateSpaceGuests](#updateSpaceGuests)
 - [addSpaceFromTemplate](#addSpaceFromTemplate)
-- [getSpacesStatistics](#getSpacesStatistics)
+- [getStatistics](#getStatistics)
 
 ## Overview
 
@@ -379,7 +379,7 @@ Creates a Space from a Space template.
 
 - https://kintone.dev/en/docs/kintone/rest-api/spaces/add-space/
 
-### getSpacesStatistics
+### getStatistics
 
 Gets the statistical information of Spaces.
 

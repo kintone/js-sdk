@@ -128,8 +128,8 @@ export class SpaceClient extends BaseClient {
     return this.client.post(path, params);
   }
 
-  public getSpacesStatistics(
-    params: GetSpacesStatisticsRequest = {},
+  public getStatistics(
+    params: GetSpacesStatisticsRequest,
   ): Promise<GetSpacesStatisticsResponse> {
     const path = this.buildPath({
       endpointName: "spaces/statistics",
