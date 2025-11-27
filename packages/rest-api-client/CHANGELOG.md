@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.0.0...@kintone/rest-api-client@6.1.0) (2025-11-27)
+
+
+### Features
+
+* **rest-api-client:** add enableInlineRecordEditing to app setting ([#3481](https://github.com/kintone/js-sdk/issues/3481)) ([638bdb7](https://github.com/kintone/js-sdk/commit/638bdb7d1ae383a2cdd46b88c9351517dd777b47))
+* **rest-api-client:** add filterCond to actions ([#3482](https://github.com/kintone/js-sdk/issues/3482)) ([7150850](https://github.com/kintone/js-sdk/commit/71508503e5a697e30369182397b0a84645e1a0d6))
+* **rest-api-client:** add get app statistics api ([#3479](https://github.com/kintone/js-sdk/issues/3479)) ([04e704e](https://github.com/kintone/js-sdk/commit/04e704e7a78bad8a16ee7d8bbd022cbd0ef0ed4c))
+* **rest-api-client:** add params of action settings ([#3483](https://github.com/kintone/js-sdk/issues/3483)) ([c30ab8a](https://github.com/kintone/js-sdk/commit/c30ab8a53993ea372ae8c9f003e784c3d71e6e0a))
+* **rest-api-client:** add space statistics api ([#3484](https://github.com/kintone/js-sdk/issues/3484)) ([bae93df](https://github.com/kintone/js-sdk/commit/bae93df5cd32c00bbbb9eba3292ebc699612d091))
+* **rest-api-client:** update get plugins api ([#3480](https://github.com/kintone/js-sdk/issues/3480)) ([1d0815b](https://github.com/kintone/js-sdk/commit/1d0815b5cfd01168062f070598f4441a8aea1dae))
+
+
+### Bug Fixes
+
+* change get space statistics api interface ([#3499](https://github.com/kintone/js-sdk/issues/3499)) ([423cd47](https://github.com/kintone/js-sdk/commit/423cd470051f00dd27d05a6f0056f4db5b8719a4))
+* make app.getStatistics params to required ([#3500](https://github.com/kintone/js-sdk/issues/3500)) ([f75f345](https://github.com/kintone/js-sdk/commit/f75f345d197adf9e2c135b26b340cea3bbece3b7))
+* remove param valiidation of getPlugins ([#3502](https://github.com/kintone/js-sdk/issues/3502)) ([2fabdf6](https://github.com/kintone/js-sdk/commit/2fabdf60fa9184b49aa0079ba205d0b27b133dbc))
+* **rest-api-client:** update app move space api params to optional ([#3478](https://github.com/kintone/js-sdk/issues/3478)) ([87697b3](https://github.com/kintone/js-sdk/commit/87697b36bd8b93331ddc63e6fce451aea64633fb))
+* update action type definition ([#3501](https://github.com/kintone/js-sdk/issues/3501)) ([9da8764](https://github.com/kintone/js-sdk/commit/9da876486325f5cabc7643bd224428cae7fa8954))
+
 ## [6.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@5.7.5...@kintone/rest-api-client@6.0.0) (2025-10-14)
 
 
