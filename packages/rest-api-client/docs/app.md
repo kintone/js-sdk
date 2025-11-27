@@ -705,6 +705,8 @@ Gets the app permissions of an app.
 
 Updates the app permissions of an app.
 
+> **Note:** This method only updates the pre-live settings. To deploy the changes to the live app, use the [`deployApp()`](#deployApp) method.
+
 #### Parameters
 
 | Name                      |       Type       |          Required           | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -799,6 +801,8 @@ Gets the record permission settings of an app.
 
 Updates the record permission settings of an app.
 
+> **Note:** This method only updates the pre-live settings. To deploy the changes to the live app, use the [`deployApp()`](#deployApp) method.
+
 #### Parameters
 
 | Name                            |       Type       | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -858,6 +862,8 @@ Gets the field permission settings of an app.
 ### updateFieldAcl
 
 Updates the field permission settings of an app.
+
+> **Note:** This method only updates the pre-live settings. To deploy the changes to the live app, use the [`deployApp()`](#deployApp) method.
 
 #### Parameters
 
