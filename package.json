@@ -40,7 +40,7 @@
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
     "@cybozu/eslint-config": "^24.3.0",
-    "@cybozu/license-manager": "^1.4.0",
+    "@cybozu/license-manager": "^1.4.1",
     "@octokit/rest": "^22.0.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^18.19.130",

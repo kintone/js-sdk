@@ -32,8 +32,8 @@ importers:
         specifier: ^24.3.0
         version: 24.3.0(@types/eslint@9.6.1)(@typescript-eslint/utils@8.47.0(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0)(prettier@3.6.2)(typescript@5.9.3)
       '@cybozu/license-manager':
-        specifier: ^1.4.0
-        version: 1.4.0
+        specifier: ^1.4.1
+        version: 1.4.1
       '@octokit/rest':
         specifier: ^22.0.1
         version: 22.0.1
@@ -228,8 +228,8 @@ importers:
         specifier: ^24.3.0
         version: 24.3.0(@types/eslint@9.6.1)(@typescript-eslint/utils@8.47.0(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0)(prettier@3.6.2)(typescript@5.9.3)
       '@cybozu/license-manager':
-        specifier: ^1.4.0
-        version: 1.4.0
+        specifier: ^1.4.1
+        version: 1.4.1
       '@types/node':
         specifier: ^22.19.1
         version: 22.19.1
@@ -1250,9 +1250,9 @@ packages:
       eslint: ^8.56.0 || ^9.0.0-0
       typescript: '>=4.7.5 || ^5.0.0'
 
-  '@cybozu/license-manager@1.4.0':
-    resolution: {integrity: sha512-vXqQ6PHdDtbnIOCs3lrasrG3bYOpzT1sGBkbu22uOfqiQZlMCHFQ15DNo7cV0D4sKtfoKfmvc0bsLjyYyQPVOw==}
-    engines: {node: '>=18.14.0', npm: '>=9.3.1', pnpm: '>=8.10.0'}
+  '@cybozu/license-manager@1.4.1':
+    resolution: {integrity: sha512-BVtzSullyMMzu/8YHdj9e8zKlkcC7x+XdAzfXaObSsMvNQXrq7BS89p0vn7p5esq0rSuXvhRFd2CclPDtUPi9g==}
+    engines: {npm: '>=9.3.1', pnpm: '>=8.10.0'}
     hasBin: true
 
   '@discoveryjs/json-ext@0.6.3':
@@ -3392,12 +3392,12 @@ packages:
     resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
     engines: {node: '>=18'}
 
+  commander@14.0.2:
+    resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
+    engines: {node: '>=20'}
+
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
-
-  commander@9.5.0:
-    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
-    engines: {node: ^12.20.0 || >=14}
 
   comment-json@4.4.1:
     resolution: {integrity: sha512-r1To31BQD5060QdkC+Iheai7gHwoSZobzunqkf2/kQ6xIAfJyrKNAFUwdKvkK7Qgu7pVTKQEa7ok7Ed3ycAJgg==}
@@ -4414,11 +4414,6 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Glob versions prior to v9 are no longer supported
-
-  glob@8.1.0:
-    resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
-    engines: {node: '>=12'}
     deprecated: Glob versions prior to v9 are no longer supported
 
   globals@14.0.0:
@@ -8388,10 +8383,10 @@ snapshots:
       - prettier
       - supports-color
 
-  '@cybozu/license-manager@1.4.0':
+  '@cybozu/license-manager@1.4.1':
     dependencies:
-      commander: 9.5.0
-      glob: 8.1.0
+      commander: 14.0.2
+      glob: 11.0.3
       picocolors: 1.1.1
 
   '@discoveryjs/json-ext@0.6.3': {}
@@ -10769,9 +10764,9 @@ snapshots:
 
   commander@12.1.0: {}
 
-  commander@2.20.3: {}
+  commander@14.0.2: {}
 
-  commander@9.5.0: {}
+  commander@2.20.3: {}
 
   comment-json@4.4.1:
     dependencies:
@@ -12073,14 +12068,6 @@ snapshots:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
-
-  glob@8.1.0:
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 5.1.6
-      once: 1.4.0
 
   globals@14.0.0: {}
 
