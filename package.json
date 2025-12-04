@@ -53,7 +53,7 @@
     "npm": "^11.6.4",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.6.2",
-    "prettier-plugin-packagejson": "^2.5.19",
+    "prettier-plugin-packagejson": "^2.5.20",
     "publint": "^0.3.15",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
