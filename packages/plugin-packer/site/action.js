@@ -93,7 +93,7 @@ const createPluginZip = (generatePluginZip) => (dispatch, getState) => {
       if (window.dataLayer) {
         window.dataLayer.push({
           event: "plugin_packaged",
-          plugin_id: result.id,
+          // plugin_id: result.id,
         });
       }
       dispatch({
