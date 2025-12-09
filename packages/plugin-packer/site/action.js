@@ -89,6 +89,13 @@ const createPluginZip = (generatePluginZip) => (dispatch, getState) => {
     delay(300),
   ]).then(
     ([result]) => {
+      // Send custom event to Google Analytics
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: "plugin_packaged",
+          plugin_id: result.id,
+        });
+      }
       dispatch({
         type: CREATE_PLUGIN_ZIP,
         payload: result,
