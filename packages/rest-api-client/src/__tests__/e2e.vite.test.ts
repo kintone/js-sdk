@@ -1,3 +1,13 @@
+import {
+  describe,
+  it,
+  test,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+  expect,
+} from "vitest";
 import { spawnSync } from "child_process";
 import fs from "fs";
 import path from "path";

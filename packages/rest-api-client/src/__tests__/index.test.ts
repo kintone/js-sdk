@@ -1,3 +1,13 @@
+import {
+  describe,
+  it,
+  test,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+  expect,
+} from "vitest";
 import * as index from "../index";
 import { KintoneAbortSearchError } from "../error/KintoneAbortSearchError";
 import { KintoneAllRecordsError } from "../error/KintoneAllRecordsError";

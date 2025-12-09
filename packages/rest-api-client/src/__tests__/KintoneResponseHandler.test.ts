@@ -1,3 +1,13 @@
+import {
+  describe,
+  it,
+  test,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+  expect,
+} from "vitest";
 import { KintoneRestAPIError } from "../error/KintoneRestAPIError";
 import { KintoneAbortSearchError } from "../error/KintoneAbortSearchError";
 import type {

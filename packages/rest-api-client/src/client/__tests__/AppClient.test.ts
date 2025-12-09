@@ -1,3 +1,13 @@
+import {
+  describe,
+  it,
+  test,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+  expect,
+} from "vitest";
 import { APP_ID, makeClients } from "./fixtures/AppClientFixture";
 
 describe("AppClient with guestSpaceId", () => {

@@ -1,3 +1,13 @@
+import {
+  describe,
+  it,
+  test,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+  expect,
+} from "vitest";
 import type { MockClient } from "../../../http/MockClient";
 import { BulkRequestClient } from "../../BulkRequestClient";
 import { RecordClient } from "../../RecordClient";

@@ -1,3 +1,13 @@
+import {
+  describe,
+  it,
+  test,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+  expect,
+} from "vitest";
 import type { ProxyConfig } from "../http/HttpClientInterface";
 import { KintoneRequestConfigBuilder } from "../KintoneRequestConfigBuilder";
 import FormData from "form-data";

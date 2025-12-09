@@ -1,3 +1,13 @@
+import {
+  describe,
+  it,
+  test,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+  expect,
+} from "vitest";
 import type { MockClient } from "../../http/MockClient";
 import { buildMockClient } from "../../http/MockClient";
 import { FileClient } from "../FileClient";

@@ -1,3 +1,13 @@
+import {
+  describe,
+  it,
+  test,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+  expect,
+} from "vitest";
 import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";

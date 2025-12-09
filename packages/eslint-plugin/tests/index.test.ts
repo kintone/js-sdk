@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, expect } from "vitest";
 import module from "node:module";
 const require = module.createRequire(import.meta.url);
 import plugin from "../src/index.js";

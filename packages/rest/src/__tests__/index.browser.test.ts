@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { assertType, describe, it } from "vitest";
+import { assertType, describe, it, expect } from "vitest";
 import { createClient } from "../client/index.js";
 import type { Client } from "openapi-fetch";
 

@@ -1,5 +1,5 @@
 /* eslint-disable n/no-unsupported-features/node-builtins */
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, expect } from "vitest";
 
 import { createClient } from "../src/index.js";
 
