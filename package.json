@@ -55,7 +55,7 @@
     "prettier": "^3.6.2",
     "prettier-plugin-packagejson": "^2.5.20",
     "publint": "^0.3.16",
-    "rimraf": "^6.0.1",
+    "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
