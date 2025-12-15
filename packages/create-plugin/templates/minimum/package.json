@@ -10,6 +10,6 @@
   "devDependencies": {
     "@cybozu/eslint-config": "^24.3.0",
     "@kintone/plugin-packer": "^9.0.0",
-    "eslint": "^9.38.0"
+    "eslint": "^9.39.2"
   }
 }
