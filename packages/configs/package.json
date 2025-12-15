@@ -1,0 +1,36 @@
+{
+  "name": "@kintone/configs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared configurations for kintone projects (ESLint, TypeScript, Renovate)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kintone/js-sdk.git",
+    "directory": "packages/configs"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./eslint-config": "./eslint/config.js",
+    "./tsconfig": "./tsconfig/tsconfig.json",
+    "./renovate-config": "./renovate/default.json5",
+    "./license-manager": "./license-manager/base.cjs",
+    "./commitlint-config": "./commitlint/config.cjs",
+    "./package.json": "./package.json"
+  },
+  "main": "index.js",
+  "bin": {
+    "kintone-configs": "./scripts/init.js"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@cybozu/eslint-config": "^24.3.0",
+    "eslint-plugin-package-json": "^0.29.1",
+    "globals": "^16.4.0"
+  }
+}

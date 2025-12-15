@@ -1,0 +1,30 @@
+{
+  extends: ["github>cybozu/renovate-config", ":prConcurrentLimitNone"],
+  "git-submodules": {
+    enabled: true,
+  },
+  npm: {
+    packageRules: [
+      {
+        // set `chore` to the commit for updating packages
+        matchPackagePatterns: ["*"],
+        semanticCommitType: "chore",
+      },
+      {
+        // automerge minor updates of devDependencies
+        matchPackagePatterns: ["*"],
+        matchDepTypes: ["devDependencies"],
+        matchUpdateTypes: ["minor"],
+        automerge: true,
+      },
+    ],
+  },
+  packageRules: [
+    {
+      // Third party actions should be pinned with digest
+      matchDepTypes: ["action"],
+      excludePackagePrefixes: ["actions/", "cybozu/"],
+      pinDigests: true,
+    },
+  ],
+}
