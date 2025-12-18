@@ -314,7 +314,11 @@ export class RecordClient extends BaseClient {
     fields?: string[];
     query?: string;
   }): Promise<T[]> {
-    const { id } = await this.createCursor(params);
+    const paramsWithSize = {
+      ...params,
+      size: 500,
+    };
+    const { id } = await this.createCursor(paramsWithSize);
     try {
       let allRecords: T[] = [];
       while (true) {
