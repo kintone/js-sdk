@@ -1,7 +1,6 @@
 {
   "name": "@kintone/configs",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
   "description": "Shared configurations for kintone projects (ESLint, TypeScript, Renovate)",
   "repository": {
     "type": "git",
@@ -32,5 +31,8 @@
     "@cybozu/eslint-config": "^24.3.0",
     "eslint-plugin-package-json": "^0.29.1",
     "globals": "^16.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

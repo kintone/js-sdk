@@ -24,11 +24,21 @@ export default config;
 }
 `,
 
-  "license-manager.config.cjs": `const { createConfig } = require("@cybozu/license-manager");
-const { allowLicenses } = require("@kintone/configs/license-manager");
+  "license-manager.config.cjs": `const { isMatchName, createConfig } = require("@cybozu/license-manager");
+const {
+  allowLicenses,
+  allowPackages,
+  createOverrideLicense,
+  createOverrideLicenseText,
+} = require("@kintone/configs/license-manager");
 
 module.exports = createConfig({
-  analyze: { allowLicenses },
+  analyze: {
+    allowLicenses,
+    allowPackages,
+  },
+  overrideLicense: createOverrideLicense(),
+  overrideLicenseText: createOverrideLicenseText(isMatchName),
   packageManager: "pnpm",
 });
 `,
