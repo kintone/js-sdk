@@ -14,14 +14,14 @@ kintone プロジェクト向けの Renovate 共通設定。
 
 ## 提供する設定
 
-| 設定 | 説明 |
-|------|------|
-| `github>cybozu/renovate-config` | Cybozu 共通の Renovate 設定を継承 |
-| `:prConcurrentLimitNone` | 同時 PR 数の制限を解除 |
-| `git-submodules: enabled` | Git サブモジュールの自動更新を有効化 |
-| `semanticCommitType: "chore"` | パッケージ更新のコミットを `chore:` に統一 |
-| devDependencies automerge | 開発依存の minor 更新を自動マージ |
-| Third party actions pinDigests | サードパーティ Actions を SHA でピン |
+| 設定                            | 説明                                       |
+| ------------------------------- | ------------------------------------------ |
+| `github>cybozu/renovate-config` | Cybozu 共通の Renovate 設定を継承          |
+| `:prConcurrentLimitNone`        | 同時 PR 数の制限を解除                     |
+| `git-submodules: enabled`       | Git サブモジュールの自動更新を有効化       |
+| `semanticCommitType: "chore"`   | パッケージ更新のコミットを `chore:` に統一 |
+| devDependencies automerge       | 開発依存の minor 更新を自動マージ          |
+| Third party actions pinDigests  | サードパーティ Actions を SHA でピン       |
 
 ## サードパーティ Actions の digest ピン
 

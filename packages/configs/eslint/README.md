@@ -13,12 +13,12 @@ export default [...defaultConfig];
 
 ## 提供するルール
 
-| ルール | 説明 |
-|--------|------|
-| `curly: ["error", "all"]` | if/for/while 等で常に `{}` を強制 |
-| `@typescript-eslint/consistent-type-imports` | 型のみの import に `import type` を強制 |
-| `@typescript-eslint/no-unused-vars` | 未使用変数を警告（`_` プレフィックスは許可） |
-| `n/no-missing-import: off` | TypeScript で冗長なため無効化 |
+| ルール                                       | 説明                                         |
+| -------------------------------------------- | -------------------------------------------- |
+| `curly: ["error", "all"]`                    | if/for/while 等で常に `{}` を強制            |
+| `@typescript-eslint/consistent-type-imports` | 型のみの import に `import type` を強制      |
+| `@typescript-eslint/no-unused-vars`          | 未使用変数を警告（`_` プレフィックスは許可） |
+| `n/no-missing-import: off`                   | TypeScript で冗長なため無効化                |
 
 ## カスタマイズ
 

@@ -27,17 +27,17 @@ Semantic Commit Messages を使用してコミットメッセージの形式を�
 module.exports = {
   extends: ["@commitlint/config-conventional"],
   rules: {
-    "subject-case": [0],  // subject の大文字小文字を強制しない
+    "subject-case": [0], // subject の大文字小文字を強制しない
   },
 };
 ```
 
 ### 設定の意味
 
-| 設定 | 意味 |
-|------|------|
-| `@commitlint/config-conventional` | Conventional Commits 仕様に準拠 |
-| `subject-case: [0]` | subject の大文字小文字ルールを無効化（日本語対応） |
+| 設定                              | 意味                                               |
+| --------------------------------- | -------------------------------------------------- |
+| `@commitlint/config-conventional` | Conventional Commits 仕様に準拠                    |
+| `subject-case: [0]`               | subject の大文字小文字ルールを無効化（日本語対応） |
 
 ### 使用方法
 

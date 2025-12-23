@@ -10,16 +10,16 @@
 
 ### 調査結果
 
-| ルール | cli-kintone | js-sdk | mcp-server | plugin-sandbox |
-|--------|-------------|--------|------------|----------------|
-| curly: all | ✅ | ✅ | ❌ | ❌ |
-| func-style | ✅ | ✅ | ❌ | ❌ |
-| consistent-type-imports | ✅ | ✅ | ✅ | ✅ |
-| no-empty-object-type: off | ✅ | ✅ | ❌ | ❌ |
-| no-wrapper-object-types: off | ✅ | ✅ | ❌ | ❌ |
-| no-unused-vars (カスタム) | ✅ | ❌ | ❌ | ❌ |
-| n/no-missing-import: off | ✅ | ✅ | カスタム | ❌ |
-| eslint-plugin-package-json | ❌ | ✅ | ✅ | ✅ |
+| ルール                       | cli-kintone | js-sdk | mcp-server | plugin-sandbox |
+| ---------------------------- | ----------- | ------ | ---------- | -------------- |
+| curly: all                   | ✅          | ✅     | ❌         | ❌             |
+| func-style                   | ✅          | ✅     | ❌         | ❌             |
+| consistent-type-imports      | ✅          | ✅     | ✅         | ✅             |
+| no-empty-object-type: off    | ✅          | ✅     | ❌         | ❌             |
+| no-wrapper-object-types: off | ✅          | ✅     | ❌         | ❌             |
+| no-unused-vars (カスタム)    | ✅          | ❌     | ❌         | ❌             |
+| n/no-missing-import: off     | ✅          | ✅     | カスタム   | ❌             |
+| eslint-plugin-package-json   | ❌          | ✅     | ✅         | ✅             |
 
 ## 決定
 
@@ -53,20 +53,20 @@
 
 ### 採用しないルール
 
-| ルール | 理由 |
-|--------|------|
-| `func-style` | 好みの問題。強制しない |
-| `no-empty-object-type: off` | レガシー対応。本来は error 推奨 |
+| ルール                         | 理由                            |
+| ------------------------------ | ------------------------------- |
+| `func-style`                   | 好みの問題。強制しない          |
+| `no-empty-object-type: off`    | レガシー対応。本来は error 推奨 |
 | `no-wrapper-object-types: off` | レガシー対応。本来は error 推奨 |
 
 ### 各ルールの意味
 
-| ルール | 意味 | 2025年ベストプラクティス |
-|--------|------|-------------------------|
-| `curly: ["error", "all"]` | if/for/while等で常に`{}`を強制。省略によるバグを防止 | ✅ 推奨 |
-| `consistent-type-imports` | 型のみのimportに`import type`を強制。バンドル最適化 | ✅ 推奨 |
-| `no-unused-vars` | 未使用変数を検出。`_`プレフィックスで意図的な未使用を明示 | ✅ 推奨 |
-| `n/no-missing-import: off` | import先ファイル存在チェック。TypeScriptで冗長 | ✅ off推奨 |
+| ルール                     | 意味                                                      | 2025年ベストプラクティス |
+| -------------------------- | --------------------------------------------------------- | ------------------------ |
+| `curly: ["error", "all"]`  | if/for/while等で常に`{}`を強制。省略によるバグを防止      | ✅ 推奨                  |
+| `consistent-type-imports`  | 型のみのimportに`import type`を強制。バンドル最適化       | ✅ 推奨                  |
+| `no-unused-vars`           | 未使用変数を検出。`_`プレフィックスで意図的な未使用を明示 | ✅ 推奨                  |
+| `n/no-missing-import: off` | import先ファイル存在チェック。TypeScriptで冗長            | ✅ off推奨               |
 
 ### プラグイン
 
