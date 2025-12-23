@@ -1,8 +1,6 @@
 {
-  extends: [
-    "github>cybozu/renovate-config",
-    ":prConcurrentLimitNone"
-  ],
+  extends: ["local>kintone/js-sdk:packages/configs/renovate/default.json5"],
+  // js-sdk specific settings
   ignorePaths: [
     "**/node_modules/**",
     "**/bower_components/**",
@@ -16,40 +14,5 @@
     fileMatch: [
       "^packages/create-plugin/templates/([^/]+/)*with-plugin-uploader\\.json$",
     ],
-    packageRules: [
-      {
-        // set `chore` to the commit for updating packages
-        matchPackagePatterns: [
-          "*"
-        ],
-        semanticCommitType: "chore",
-      },
-      {
-        // automerge minor updates of devDependencies
-        matchPackagePatterns: [
-          "*"
-        ],
-        matchDepTypes: [
-          "devDependencies"
-        ],
-        matchUpdateTypes: [
-          "minor"
-        ],
-        automerge: true,
-      },
-    ],
   },
-  "packageRules": [
-    {
-      // Third party actions should be pinned with digest
-      "matchDepTypes": [
-        "action"
-      ],
-      excludePackagePrefixes: [
-        "actions/",
-        "cybozu/"
-      ],
-      "pinDigests": true
-    }
-  ]
 }

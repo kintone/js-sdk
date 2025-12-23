@@ -36,6 +36,7 @@
     "update-contributors": "ts-node ./scripts/update-contributors.ts"
   },
   "devDependencies": {
+    "@kintone/configs": "workspace:*",
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",

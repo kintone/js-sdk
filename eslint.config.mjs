@@ -1,33 +1,15 @@
-import presetsNodeTypescriptPrettier from "@cybozu/eslint-config/flat/presets/node-typescript-prettier.js";
-import eslintPluginPackageJson from "eslint-plugin-package-json";
+import defaultConfig from "@kintone/configs/eslint-config";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
-  ...presetsNodeTypescriptPrettier,
+  ...defaultConfig,
   {
     rules: {
-      curly: ["error", "all"],
+      // js-sdk specific overrides
       "func-style": ["error"],
-
       "@typescript-eslint/no-empty-object-type": "off",
-
       "@typescript-eslint/no-wrapper-object-types": "off",
-
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
-        {
-          prefer: "type-imports",
-        },
-      ],
-
-      "n/no-missing-import": "off",
-    },
-  },
-  {
-    ...eslintPluginPackageJson.configs.recommended,
-    rules: {
-      ...eslintPluginPackageJson.configs.recommended.rules,
-      "@typescript-eslint/consistent-type-imports": "off",
+      "@typescript-eslint/no-unused-vars": "off",
     },
   },
 ];
