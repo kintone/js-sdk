@@ -316,7 +316,7 @@ export class RecordClient extends BaseClient {
   }): Promise<T[]> {
     const paramsWithSize = {
       ...params,
-      size: 500,
+      size: GET_RECORDS_LIMIT,
     };
     const { id } = await this.createCursor(paramsWithSize);
     try {
