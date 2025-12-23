@@ -15,18 +15,23 @@
   "type": "module",
   "exports": {
     ".": "./index.js",
-    "./eslint-config": "./eslint/config.js",
-    "./tsconfig": "./tsconfig/tsconfig.json",
-    "./renovate-config": "./renovate/default.json5",
-    "./license-manager": "./license-manager/base.cjs",
     "./commitlint-config": "./commitlint/config.cjs",
-    "./package.json": "./package.json"
+    "./eslint-config": "./eslint/config.js",
+    "./license-manager": "./license-manager/base.cjs",
+    "./package.json": "./package.json",
+    "./renovate-config": "./renovate/default.json5",
+    "./tsconfig": "./tsconfig/tsconfig.json"
   },
   "main": "index.js",
   "bin": {
     "kintone-configs": "./scripts/init.js"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "echo 'No build required for configs package'",
+    "lint": "eslint . --max-warnings 0",
+    "test": "echo 'No tests for configs package'",
+    "test:ci": "echo 'No tests for configs package'"
+  },
   "dependencies": {
     "@cybozu/eslint-config": "^24.3.0",
     "eslint-plugin-package-json": "^0.29.1",

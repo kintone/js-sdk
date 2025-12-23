@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable n/no-process-exit */
 
 import { writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
