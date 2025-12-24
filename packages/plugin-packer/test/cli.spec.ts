@@ -1,3 +1,4 @@
+import type { Mock } from "vitest";
 import fs from "fs";
 import path from "path";
 import { rimraf } from "rimraf";
@@ -36,67 +37,62 @@ describe("cli", () => {
   });
 
   describe("validation", () => {
-    let packer;
+    let packer: Mock;
     beforeEach(() => {
-      packer = jest.fn().mockReturnValue({
+      packer = vi.fn().mockReturnValue({
         id: ID,
         privateKey: PRIVATE_KEY,
         plugin: PLUGIN_BUFFER,
       });
     });
 
-    it("invalid `url`", (done) => {
-      cli(path.join(fixturesDir, "plugin-invalid-url"), {
-        packerMock_: packer,
-      }).catch((error) => {
-        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
-        done();
-      });
+    it("invalid `url`", async () => {
+      await expect(
+        cli(path.join(fixturesDir, "plugin-invalid-url"), {
+          packerMock_: packer,
+        }),
+      ).rejects.toThrow(/Invalid manifest.json/);
     });
 
-    it("invalid `https-url`", (done) => {
-      cli(path.join(fixturesDir, "plugin-invalid-https-url"), {
-        packerMock_: packer,
-      }).catch((error) => {
-        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
-        done();
-      });
+    it("invalid `https-url`", async () => {
+      await expect(
+        cli(path.join(fixturesDir, "plugin-invalid-https-url"), {
+          packerMock_: packer,
+        }),
+      ).rejects.toThrow(/Invalid manifest.json/);
     });
 
-    it("invalid `relative-path`", (done) => {
-      cli(path.join(fixturesDir, "plugin-invalid-relative-path"), {
-        packerMock_: packer,
-      }).catch((error) => {
-        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
-        done();
-      });
+    it("invalid `relative-path`", async () => {
+      await expect(
+        cli(path.join(fixturesDir, "plugin-invalid-relative-path"), {
+          packerMock_: packer,
+        }),
+      ).rejects.toThrow(/Invalid manifest.json/);
     });
 
-    it("invalid `maxFileSize`", (done) => {
-      cli(path.join(fixturesDir, "plugin-invalid-maxFileSize"), {
-        packerMock_: packer,
-      }).catch((error) => {
-        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
-        done();
-      });
+    it("invalid `maxFileSize`", async () => {
+      await expect(
+        cli(path.join(fixturesDir, "plugin-invalid-maxFileSize"), {
+          packerMock_: packer,
+        }),
+      ).rejects.toThrow(/Invalid manifest.json/);
     });
 
-    it("invalid `fileExists`", (done) => {
-      cli(path.join(fixturesDir, "plugin-non-file-exists"), {
-        packerMock_: packer,
-      }).catch((error) => {
-        expect(/Invalid manifest.json/.test(error.message)).toBe(true);
-        done();
-      });
+    it("invalid `fileExists`", async () => {
+      await expect(
+        cli(path.join(fixturesDir, "plugin-non-file-exists"), {
+          packerMock_: packer,
+        }),
+      ).rejects.toThrow(/Invalid manifest.json/);
     });
   });
 
   describe("without ppk", () => {
     const pluginDir = path.join(sampleDir, "plugin-dir");
-    let packer;
-    let resultPluginPath;
+    let packer: Mock;
+    let resultPluginPath: string;
     beforeEach(() => {
-      packer = jest.fn().mockReturnValue({
+      packer = vi.fn().mockReturnValue({
         id: ID,
         privateKey: PRIVATE_KEY,
         plugin: PLUGIN_BUFFER,
@@ -109,15 +105,13 @@ describe("cli", () => {
         });
     });
 
-    it("calles `packer` with contents.zip as the 1st argument", (done) => {
+    it("calles `packer` with contents.zip as the 1st argument", async () => {
       expect(packer.mock.calls.length).toBe(1);
       expect(packer.mock.calls[0][0]).toBeTruthy();
-      readZipContentsNames(packer.mock.calls[0][0]).then((files) => {
-        expect(files.sort()).toStrictEqual(
-          ["image/icon.png", "manifest.json"].sort(),
-        );
-        done();
-      });
+      const files = await readZipContentsNames(packer.mock.calls[0][0]);
+      expect(files.sort()).toStrictEqual(
+        ["image/icon.png", "manifest.json"].sort(),
+      );
     });
 
     it("calles `packer` with privateKey as the 2nd argument", () => {
@@ -141,9 +135,9 @@ describe("cli", () => {
 
   describe("with ppk", () => {
     const pluginDir = path.join(sampleDir, "plugin-dir");
-    let packer;
+    let packer: Mock;
     beforeEach(() => {
-      packer = jest.fn().mockReturnValue({
+      packer = vi.fn().mockReturnValue({
         id: ID,
         privateKey: PRIVATE_KEY,
         plugin: PLUGIN_BUFFER,
@@ -168,7 +162,7 @@ describe("cli", () => {
 
   it("includes files listed in manifest.json only", () => {
     const pluginDir = path.join(fixturesDir, "plugin-full-manifest");
-    const packer = jest.fn().mockReturnValue({
+    const packer = vi.fn().mockReturnValue({
       id: ID,
       privateKey: PRIVATE_KEY,
       plugin: PLUGIN_BUFFER,
@@ -195,11 +189,11 @@ describe("cli", () => {
       });
   });
 
-  it("includes files listed in manifest.json only", () => {
+  it("outputs plugin zip and ppk to specified directory", () => {
     const pluginDir = path.join(sampleDir, "plugin-dir");
     const outputDir = path.join("test", ".output");
     const outputPluginPath = path.join(outputDir, "foo.zip");
-    const packer = jest.fn().mockReturnValue({
+    const packer = vi.fn().mockReturnValue({
       id: ID,
       privateKey: PRIVATE_KEY,
       plugin: PLUGIN_BUFFER,

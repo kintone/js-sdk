@@ -1,5 +1,7 @@
 "use strict";
 
+import { describe, it, expect, vi, beforeEach } from "vitest";
+
 const {
   UPLOAD_PPK,
   UPLOAD_PPK_START,
@@ -20,7 +22,7 @@ const {
 describe("action", () => {
   let dispatch;
   beforeEach(() => {
-    dispatch = jest.fn();
+    dispatch = vi.fn();
   });
   describe("uploadFailure", () => {
     it("should dispatch an UPLOAD_FAILURE action with an error", () => {
@@ -41,34 +43,32 @@ describe("action", () => {
         { type: UPLOAD_PPK_START },
       ]);
     });
-    it("should dispatch an UPLOAD_PPK action with payload including data and name properties", () => {
+    it("should dispatch an UPLOAD_PPK action with payload including data and name properties", async () => {
       const promise = Promise.resolve("value");
       uploadPPK("hoge.ppk", () => promise)(dispatch);
-      return promise.then(() => {
-        expect(dispatch.mock.calls.length).toBe(2);
-        expect([...dispatch.mock.calls[1]]).toStrictEqual([
-          {
-            type: UPLOAD_PPK,
-            payload: {
-              data: "value",
-              name: "hoge.ppk",
-            },
+      await promise;
+      expect(dispatch.mock.calls.length).toBe(2);
+      expect([...dispatch.mock.calls[1]]).toStrictEqual([
+        {
+          type: UPLOAD_PPK,
+          payload: {
+            data: "value",
+            name: "hoge.ppk",
           },
-        ]);
-      });
+        },
+      ]);
     });
-    it("should dispatch UPLOAD_FAILURE action if fileReader was failure", (done) => {
+    it("should dispatch UPLOAD_FAILURE action if fileReader was failure", async () => {
       uploadPPK("hoge.ppk", () => Promise.reject("ng"))(dispatch);
-      setTimeout(() => {
+      await vi.waitFor(() => {
         expect(dispatch.mock.calls.length).toBe(2);
-        expect([...dispatch.mock.calls[1]]).toStrictEqual([
-          {
-            type: UPLOAD_FAILURE,
-            payload: "ng",
-          },
-        ]);
-        done();
       });
+      expect([...dispatch.mock.calls[1]]).toStrictEqual([
+        {
+          type: UPLOAD_FAILURE,
+          payload: "ng",
+        },
+      ]);
     });
   });
   describe("uploadPlugin", () => {
@@ -83,48 +83,44 @@ describe("action", () => {
         { type: UPLOAD_PLUGIN_START },
       ]);
     });
-    it("should dispatch UPLOAD_PLUGIN action if validateManifest was success", (done) => {
-      const validateManifestStub = jest.fn().mockResolvedValue();
+    it("should dispatch UPLOAD_PLUGIN action if validateManifest was success", async () => {
+      const validateManifestStub = vi.fn().mockResolvedValue();
       uploadPlugin(
         "hoge.zip",
         () => Promise.resolve("ok"),
         validateManifestStub,
       )(dispatch);
-      // In order to guarantee to execute assertion after uploadPlugin has finished
-      setTimeout(() => {
+      await vi.waitFor(() => {
         expect(dispatch.mock.calls.length).toBe(2);
-        expect(validateManifestStub.mock.calls[0][0]).toBe("ok");
-        expect([...dispatch.mock.calls[1]]).toStrictEqual([
-          {
-            type: UPLOAD_PLUGIN,
-            payload: {
-              data: "ok",
-              name: "hoge.zip",
-            },
-          },
-        ]);
-        done();
       });
+      expect(validateManifestStub.mock.calls[0][0]).toBe("ok");
+      expect([...dispatch.mock.calls[1]]).toStrictEqual([
+        {
+          type: UPLOAD_PLUGIN,
+          payload: {
+            data: "ok",
+            name: "hoge.zip",
+          },
+        },
+      ]);
     });
-    it("should dispatch UPLOAD_FAILURE action if validateManifest was failure", (done) => {
-      const validateManifestStub = jest.fn().mockRejectedValue("error");
+    it("should dispatch UPLOAD_FAILURE action if validateManifest was failure", async () => {
+      const validateManifestStub = vi.fn().mockRejectedValue("error");
       uploadPlugin(
         "hoge.zip",
         () => Promise.resolve("ng"),
         validateManifestStub,
       )(dispatch);
-      // In order to guarantee to execute assertion after uploadPlugin has finished
-      setTimeout(() => {
+      await vi.waitFor(() => {
         expect(dispatch.mock.calls.length).toBe(2);
-        expect(validateManifestStub.mock.calls[0][0]).toBe("ng");
-        expect([...dispatch.mock.calls[1]]).toStrictEqual([
-          {
-            type: UPLOAD_FAILURE,
-            payload: "error",
-          },
-        ]);
-        done();
       });
+      expect(validateManifestStub.mock.calls[0][0]).toBe("ng");
+      expect([...dispatch.mock.calls[1]]).toStrictEqual([
+        {
+          type: UPLOAD_FAILURE,
+          payload: "error",
+        },
+      ]);
     });
   });
   describe("createPluginZip", () => {
@@ -139,41 +135,39 @@ describe("action", () => {
       ]);
     });
   });
-  it("should dispatch CREATE_PLUGIN_ZIP action with the payload if generatePluginZip was success", (done) => {
+  it("should dispatch CREATE_PLUGIN_ZIP action with the payload if generatePluginZip was success", async () => {
     const getState = () => ({
       contents: {},
       ppk: {},
     });
     createPluginZip(() => Promise.resolve({ foo: "bar" }))(dispatch, getState);
-    setTimeout(() => {
+    await vi.waitFor(() => {
       expect(dispatch.mock.calls.length).toBe(2);
-      expect([...dispatch.mock.calls[1]]).toStrictEqual([
-        {
-          type: CREATE_PLUGIN_ZIP,
-          payload: {
-            foo: "bar",
-          },
+    });
+    expect([...dispatch.mock.calls[1]]).toStrictEqual([
+      {
+        type: CREATE_PLUGIN_ZIP,
+        payload: {
+          foo: "bar",
         },
-      ]);
-      done();
-    }, 500);
+      },
+    ]);
   });
-  it("should dispatch CREATE_PLUGIN_ZIP_FAILURE action with the error if generatePluginZip was failure", (done) => {
+  it("should dispatch CREATE_PLUGIN_ZIP_FAILURE action with the error if generatePluginZip was failure", async () => {
     const getState = () => ({
       contents: {},
       ppk: {},
     });
     createPluginZip(() => Promise.reject("error"))(dispatch, getState);
-    setTimeout(() => {
+    await vi.waitFor(() => {
       expect(dispatch.mock.calls.length).toBe(2);
-      expect([...dispatch.mock.calls[1]]).toStrictEqual([
-        {
-          type: CREATE_PLUGIN_ZIP_FAILURE,
-          payload: "error",
-        },
-      ]);
-      done();
-    }, 500);
+    });
+    expect([...dispatch.mock.calls[1]]).toStrictEqual([
+      {
+        type: CREATE_PLUGIN_ZIP_FAILURE,
+        payload: "error",
+      },
+    ]);
   });
   describe("reset", () => {
     it("should dispatch RESET action", () => {

@@ -1,5 +1,7 @@
 "use strict";
 
+import { describe, it, expect, beforeEach } from "vitest";
+
 const {
   reducer,
   getDownloadPluginZipName,
