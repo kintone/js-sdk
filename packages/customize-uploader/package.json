@@ -34,8 +34,8 @@
     "fix": "pnpm lint --fix",
     "lint": "eslint src --max-warnings 0",
     "start": "pnpm build --watch",
-    "test": "jest",
-    "test:ci": "jest --runInBand"
+    "test": "vitest run",
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "@inquirer/prompts": "^5.5.0",
@@ -47,7 +47,8 @@
     "rimraf": "^6.0.1"
   },
   "devDependencies": {
-    "@types/inquirer": "9.0.9"
+    "@types/inquirer": "9.0.9",
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=20"

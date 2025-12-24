@@ -6,7 +6,9 @@
     "rootDir": "./src",
     "resolveJsonModule": true
   },
+  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"],
   "references": [
-    { "path": "../rest-api-client" }
+    { "path": "../rest-api-client" },
+    { "path": "./tsconfig.test.json" }
   ]
 }
