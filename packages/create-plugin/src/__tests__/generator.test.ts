@@ -8,8 +8,6 @@ import { rimraf } from "rimraf";
 import { generatePlugin } from "../generator";
 
 describe("generator", function () {
-  // This timeout is for npm install
-  jest.setTimeout(300000);
   let outputDir: string;
   beforeEach(() => {
     outputDir = fs.mkdtempSync(`${os.tmpdir()}${path.sep}`);
