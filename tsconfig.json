@@ -62,5 +62,11 @@
 
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
-  }
+  },
+  "exclude": ["**/__test__/**", "**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"],
+  "references": [
+    {
+      "path": "./tsconfig.test.json"
+    },
+  ],
 }
