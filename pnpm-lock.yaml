@@ -91,6 +91,9 @@ importers:
       '@inquirer/prompts':
         specifier: ^5.5.0
         version: 5.5.0
+      '@kintone/logger':
+        specifier: workspace:^
+        version: link:../logger
       chalk:
         specifier: ^4.1.2
         version: 4.1.2
@@ -174,6 +177,9 @@ importers:
       '@cybozu/eslint-config':
         specifier: ^24.3.0
         version: 24.3.0(@types/eslint@9.6.1)(@typescript-eslint/utils@8.47.0(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0)(prettier@3.6.2)(typescript@5.9.3)
+      '@kintone/logger':
+        specifier: workspace:^
+        version: link:../logger
       axios:
         specifier: ^1.12.2
         version: 1.12.2
@@ -255,8 +261,8 @@ importers:
   packages/logger:
     dependencies:
       chalk:
-        specifier: ^4.1.2
-        version: 4.1.2
+        specifier: ^5.6.2
+        version: 5.6.2
     devDependencies:
       '@kintone/configs':
         specifier: workspace:^

@@ -1,4 +1,4 @@
-import { stderr as chalkStderr } from "chalk";
+import chalk from "chalk";
 import type {
   Logger,
   LogConfigLevel,
@@ -77,12 +77,12 @@ export class StandardLogger implements Logger {
   private format(event: LogEvent): string {
     const timestamp = new Date().toISOString();
     const eventLevelLabels: { [level in LogEventLevel]: string } = {
-      trace: chalkStderr.bgGreen("TRACE"),
-      debug: chalkStderr.green("DEBUG"),
-      info: chalkStderr.blue("INFO"),
-      warn: chalkStderr.yellow("WARN"),
-      error: chalkStderr.red("ERROR"),
-      fatal: chalkStderr.bgRed("FATAL"),
+      trace: chalk.bgGreen("TRACE"),
+      debug: chalk.green("DEBUG"),
+      info: chalk.blue("INFO"),
+      warn: chalk.yellow("WARN"),
+      error: chalk.red("ERROR"),
+      fatal: chalk.bgRed("FATAL"),
     };
     const stringifiedMessage = stringifyMessage(event.message);
     const prefix = `[${timestamp}] ${eventLevelLabels[event.level]}:`;

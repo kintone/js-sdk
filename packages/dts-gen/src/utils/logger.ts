@@ -1,3 +1,5 @@
+import { logger } from "@kintone/logger";
+
 export const log = (message: string) => {
-  console.log(message);
+  logger.info(message);
 };
