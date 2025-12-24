@@ -1,3 +1,4 @@
+import { expect } from "vitest";
 import fs from "fs";
 import AdmZip from "adm-zip";
 

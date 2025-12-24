@@ -6,10 +6,13 @@
     "typeRoots": [
       "node_modules/@types",
       "../../node_modules/@types",
+      "../../node_modules",
       "types"
     ]
   },
+  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"],
   "references": [
-    { "path": "../plugin-packer" }
+    { "path": "../plugin-packer" },
+    { "path": "./tsconfig.test.json" }
   ]
 }
