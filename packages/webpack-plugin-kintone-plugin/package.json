@@ -31,8 +31,8 @@
     "fix": "pnpm lint --fix",
     "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "start": "pnpm build --watch",
-    "test": "jest --runInBand",
-    "test:ci": "jest --runInBand"
+    "test": "vitest run",
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "@kintone/plugin-packer": "^9.0.0",
@@ -43,6 +43,7 @@
     "adm-zip": "^0.5.16",
     "chokidar": "^3.6.0",
     "rimraf": "^6.0.1",
+    "vitest": "^3.2.4",
     "webpack": "^5.101.3",
     "webpack-cli": "6.0.1",
     "webpack-merge": "^6.0.1"
