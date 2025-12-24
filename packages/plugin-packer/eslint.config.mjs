@@ -6,7 +6,7 @@ import globals from "globals";
 /** @type {import("eslint").Linter.Config[]} */
 export default [
   {
-    ignores: ["**/eslint.config.mjs"],
+    ignores: ["**/eslint.config.mjs", "**/vitest.config.ts"],
   },
   ...siteConfig.map((configObject) => ({
     files: ["site/**/*.{js,ts}"],
@@ -28,7 +28,7 @@ export default [
     files: ["test/**/*.{js,ts}"],
     languageOptions: {
       globals: {
-        ...globals.jest,
+        ...globals.node,
       },
     },
   },
