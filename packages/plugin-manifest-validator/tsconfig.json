@@ -3,14 +3,18 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
   },
   "include": [
     "./src/**/*.ts",
     "./manifest-schema.json"
   ],
   "exclude": [
-    "./src/__tests__/*.ts"
+     "**/__test__/**", "**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"
   ],
-  "references": []
+  "references": [
+    {
+    "path": "./tsconfig.test.json"
+    }
+  ],
 }
