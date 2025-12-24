@@ -34,8 +34,8 @@
     "gen-dts": "tsx script/generate-dts.ts",
     "lint": "eslint src --max-warnings 0",
     "start": "pnpm build --watch",
-    "test": "jest",
-    "test:ci": "jest --runInBand"
+    "test": "vitest run",
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "ajv": "^8.17.1",
@@ -43,12 +43,9 @@
     "bytes": "^3.1.2"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.28.5",
     "@types/bytes": "^3.1.5",
-    "babel-plugin-replace-ts-export-assignment": "^0.0.2",
-    "intelli-espower-loader": "^1.1.0",
     "json-schema-to-typescript": "^15.0.4",
-    "power-assert": "^1.6.1"
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=20"
