@@ -1,9 +1,21 @@
 import presetsNodeTypescriptPrettier from "@cybozu/eslint-config/flat/presets/node-typescript-prettier.js";
 import eslintPluginPackageJson from "eslint-plugin-package-json";
+import vitest from "eslint-plugin-vitest";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
   ...presetsNodeTypescriptPrettier,
+  {
+    files: ["**/*.test.ts", "**/*.spec.ts", "**/__tests__/**/*.ts"],
+    plugins: {
+      vitest,
+    },
+    languageOptions: {
+      globals: {
+        ...vitest.environments.env.globals,
+      },
+    },
+  },
   {
     rules: {
       curly: ["error", "all"],
