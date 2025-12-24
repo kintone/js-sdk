@@ -58,8 +58,7 @@
     "@types/lodash": "^4.17.21",
     "@types/node-rsa": "^1.1.4",
     "@types/normalize-path": "^3.0.2",
-    "cross-env": "^10.1.0",
-    "vitest": "^3.2.4"
+    "cross-env": "^10.1.0"
   },
   "engines": {
     "node": ">=20"
