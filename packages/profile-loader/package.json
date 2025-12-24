@@ -33,11 +33,14 @@
     "fix": "pnpm lint --fix",
     "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "start": "pnpm build --watch",
-    "test": "jest",
-    "test:ci": "jest --runInBand"
+    "test": "vitest run",
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "toml": "^3.0.0"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=20"
