@@ -252,6 +252,22 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  packages/logger:
+    dependencies:
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+    devDependencies:
+      '@kintone/configs':
+        specifier: workspace:^
+        version: link:../configs
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      vitest:
+        specifier: ^3.0.0
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@20.0.3)(terser@5.44.0)
+
   packages/plugin-manifest-validator:
     dependencies:
       ajv:
