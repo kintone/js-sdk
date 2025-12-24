@@ -40,8 +40,8 @@
     "lint": "run-p lint:*",
     "lint:eslint": "eslint 'src/**/*.ts' --max-warnings 0",
     "lint:prettier": "prettier --parser typescript --check \"src/**/*.{ts,tsx}\" ./kintone.d.ts",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
-    "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules vitest run",
+    "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules vitest run"
   },
   "dependencies": {
     "@cybozu/eslint-config": "^24.3.0",
@@ -58,6 +58,7 @@
     "assert": "^2.1.0",
     "cross-env": "^10.1.0",
     "ts-loader": "^9.5.4",
+    "vitest": "^3.2.4",
     "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1"
   },
