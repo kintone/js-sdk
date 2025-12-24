@@ -66,7 +66,7 @@ describe("AllRecordsTest", () => {
       });
     });
 
-    describe("success with condition", () => {
+    describe("success with condition and pagination", () => {
       const params = {
         app: APP_ID,
         fields: ["$id"],
@@ -307,11 +307,11 @@ describe("AllRecordsTest", () => {
         condition: `${fieldCode} = "foo"`,
         orderBy: `${fieldCode} asc`,
       };
-      let withCursorMockFn: jest.Mock;
-      let withOffsetMockFn: jest.Mock;
+      let withCursorMockFn: any;
+      let withOffsetMockFn: any;
       beforeEach(() => {
-        withCursorMockFn = jest.fn();
-        withOffsetMockFn = jest.fn();
+        withCursorMockFn = vi.fn();
+        withOffsetMockFn = vi.fn();
         recordClient.getAllRecordsWithCursor = withCursorMockFn;
         recordClient.getAllRecordsWithOffset = withOffsetMockFn;
       });
@@ -345,9 +345,9 @@ describe("AllRecordsTest", () => {
         orderBy: "",
       };
       const { orderBy, ...expected } = params;
-      let mockFn: jest.Mock;
+      let mockFn: any;
       beforeEach(() => {
-        mockFn = jest.fn();
+        mockFn = vi.fn();
         recordClient.getAllRecordsWithId = mockFn;
       });
       it("should call `getAllRecordsWithId` if `withCursor` is not specified", async () => {
@@ -371,9 +371,9 @@ describe("AllRecordsTest", () => {
         app: APP_ID,
         condition: `${fieldCode} = "foo"`,
       };
-      let mockFn: jest.Mock;
+      let mockFn: any;
       beforeEach(() => {
-        mockFn = jest.fn();
+        mockFn = vi.fn();
         recordClient.getAllRecordsWithId = mockFn;
       });
       it("should call `getAllRecordsWithId` if `withCursor` is not specified", async () => {
