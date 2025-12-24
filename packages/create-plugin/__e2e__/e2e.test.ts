@@ -47,7 +47,7 @@ export type TestPattern = {
     };
     validation?: {
       stdout?: string;
-    }
+    };
   };
 };
 
@@ -134,27 +134,20 @@ describe("create-plugin", function () {
           );
         }
       }
+
+      // テスト成功時のみワーキングディレクトリを削除
+      rimrafSync(workingDir);
+      console.log(`Working directory ${workingDir} has been removed`);
     } catch (e: any) {
+      // テスト失敗時はデバッグ用にワーキングディレクトリを残す
+      console.log(
+        `Test failed. Working directory ${workingDir} has been kept for debugging.`,
+      );
       assert.fail(e);
     }
   });
 
   afterEach(async () => {
     await createPlugin?.teardownProcess();
-    const testName = expect.getState().currentTestName;
-    if (!testName || !workingDir) {
-      return;
-    }
-
-    // @ts-ignore
-    const match = Object.keys(globalThis.testStatuses).find((item: string) =>
-      testName.includes(item),
-    );
-
-    // @ts-ignore
-    if (match && globalThis.testStatuses[match] === "passed") {
-      rimrafSync(workingDir);
-      console.log(`Working directory ${workingDir} has been removed`);
-    }
   });
 });

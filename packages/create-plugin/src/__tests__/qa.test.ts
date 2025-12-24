@@ -28,27 +28,25 @@ describe("qa", () => {
   describe("runPrompt", () => {
     describe("optional lang parameters", () => {
       beforeEach(() => {
-        jest.spyOn(prompt, "promptForName").mockResolvedValue("pass");
-        jest.spyOn(prompt, "promptForDescription").mockResolvedValue("pass");
-        jest.spyOn(prompt, "promptForOptionalName").mockResolvedValue("pass");
-        jest
-          .spyOn(prompt, "promptForOptionalDescription")
-          .mockResolvedValue("pass");
-        jest.spyOn(prompt, "promptForHomepage").mockResolvedValue("pass");
-        jest.spyOn(prompt, "promptForSupportLang").mockResolvedValue(true);
-        jest.spyOn(prompt, "promptForSupportMobile").mockResolvedValue(true);
-        jest
-          .spyOn(prompt, "promptForEnablePluginUploader")
-          .mockResolvedValue(true);
+        vi.spyOn(prompt, "promptForName").mockResolvedValue("pass");
+        vi.spyOn(prompt, "promptForDescription").mockResolvedValue("pass");
+        vi.spyOn(prompt, "promptForOptionalName").mockResolvedValue("pass");
+        vi.spyOn(prompt, "promptForOptionalDescription").mockResolvedValue(
+          "pass",
+        );
+        vi.spyOn(prompt, "promptForHomepage").mockResolvedValue("pass");
+        vi.spyOn(prompt, "promptForSupportLang").mockResolvedValue(true);
+        vi.spyOn(prompt, "promptForSupportMobile").mockResolvedValue(true);
+        vi.spyOn(prompt, "promptForEnablePluginUploader").mockResolvedValue(
+          true,
+        );
       });
       it("should be set ja parameters in supportJa is true", async () => {
-        jest
-          .spyOn(prompt, "promptForSupportLang")
-          .mockImplementation(
-            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
-              return supportLang === "Ja";
-            },
-          );
+        vi.spyOn(prompt, "promptForSupportLang").mockImplementation(
+          async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+            return supportLang === "Ja";
+          },
+        );
         const result1 = await runPrompt(
           getBoundMessage("ja"),
           "foo/bar/dist",
@@ -60,13 +58,11 @@ describe("qa", () => {
         assert.notEqual(result1.homepage_url?.ja, undefined);
       });
       it("should not be set ja parameters in supportJa is false", async () => {
-        jest
-          .spyOn(prompt, "promptForSupportLang")
-          .mockImplementation(
-            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
-              return !(supportLang === "Ja");
-            },
-          );
+        vi.spyOn(prompt, "promptForSupportLang").mockImplementation(
+          async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+            return !(supportLang === "Ja");
+          },
+        );
         const result2 = await runPrompt(
           getBoundMessage("en"),
           "foo/bar/dist",
@@ -76,13 +72,11 @@ describe("qa", () => {
         assert.equal(result2.description.ja, undefined);
       });
       it("should be set zh parameters in supportZh is true", async () => {
-        jest
-          .spyOn(prompt, "promptForSupportLang")
-          .mockImplementation(
-            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
-              return supportLang === "Zh";
-            },
-          );
+        vi.spyOn(prompt, "promptForSupportLang").mockImplementation(
+          async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+            return supportLang === "Zh";
+          },
+        );
         const result1 = await runPrompt(
           getBoundMessage("ja"),
           "foo/bar/dist",
@@ -94,13 +88,11 @@ describe("qa", () => {
         assert.notEqual(result1.homepage_url?.zh, undefined);
       });
       it("should not be set zh parameters in supportZh is false", async () => {
-        jest
-          .spyOn(prompt, "promptForSupportLang")
-          .mockImplementation(
-            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
-              return !(supportLang === "Zh");
-            },
-          );
+        vi.spyOn(prompt, "promptForSupportLang").mockImplementation(
+          async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+            return !(supportLang === "Zh");
+          },
+        );
         const result2 = await runPrompt(
           getBoundMessage("en"),
           "foo/bar/dist",
@@ -110,13 +102,11 @@ describe("qa", () => {
         assert.equal(result2.description.zh, undefined);
       });
       it("should be set es parameters in supportEs is true", async () => {
-        jest
-          .spyOn(prompt, "promptForSupportLang")
-          .mockImplementation(
-            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
-              return supportLang === "Es";
-            },
-          );
+        vi.spyOn(prompt, "promptForSupportLang").mockImplementation(
+          async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+            return supportLang === "Es";
+          },
+        );
         const result1 = await runPrompt(
           getBoundMessage("ja"),
           "foo/bar/dist",
@@ -128,13 +118,11 @@ describe("qa", () => {
         assert.notEqual(result1.homepage_url?.es, undefined);
       });
       it("should not be set es parameters in supportEs is false", async () => {
-        jest
-          .spyOn(prompt, "promptForSupportLang")
-          .mockImplementation(
-            async (m: BoundMessage, supportLang: prompt.SupportLang) => {
-              return !(supportLang === "Es");
-            },
-          );
+        vi.spyOn(prompt, "promptForSupportLang").mockImplementation(
+          async (m: BoundMessage, supportLang: prompt.SupportLang) => {
+            return !(supportLang === "Es");
+          },
+        );
         const result2 = await runPrompt(
           getBoundMessage("en"),
           "foo/bar/dist",
