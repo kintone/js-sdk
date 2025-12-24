@@ -6,11 +6,18 @@
     "include" : [
         "src/**/*.ts"
     ],
+    "exclude": [
+        "**/__test__/**", "**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"
+    ],
     "compilerOptions": {
         "lib": ["es2015", "dom"],
         "outDir": "./dist",
         "rootDir": "./src",
         "strict": false // TODO enable strict mode
     },
-    "references": []
+    "references": [
+    {
+    "path": "./tsconfig.test.json"
+    }
+  ],
 }
