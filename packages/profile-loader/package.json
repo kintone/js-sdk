@@ -39,7 +39,9 @@
   "dependencies": {
     "toml": "^3.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  },
   "engines": {
     "node": ">=20"
   },
