@@ -35,7 +35,7 @@
     "start": "pnpm build --watch",
     "test": "jest --testPathIgnorePatterns=/__tests__/generator\\.test\\.ts$",
     "test:all": "run-p test test:generator test:e2e",
-    "test:ci": "pnpm test test:generator",
+    "test:ci": "pnpm test && pnpm test:generator",
     "test:e2e": "cross-env NODE_ENV=e2e jest --config=jest.e2e.config.js",
     "test:generator": "cross-env NODE_ENV=e2e jest --testPathPattern=/__tests__/generator\\.test\\.ts$"
   },

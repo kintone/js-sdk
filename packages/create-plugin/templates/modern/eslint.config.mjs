@@ -1,4 +1,4 @@
-import presetsPrettier from "@cybozu/eslint-config/flat/presets/prettier.js";
+import kintoneCustomizePrettier from "@cybozu/eslint-config/flat/presets/kintone-customize-prettier.js";
 
 /** @type {import("eslint").Linter.Config[]} */
-export default [...presetsPrettier];
+export default [...kintoneCustomizePrettier];
