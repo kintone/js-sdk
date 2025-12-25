@@ -42,6 +42,7 @@
     "@types/adm-zip": "^0.5.7",
     "adm-zip": "^0.5.16",
     "chokidar": "^3.6.0",
+    "eslint-plugin-vitest": "^0.5.4",
     "rimraf": "^6.0.1",
     "vitest": "^3.2.4",
     "webpack": "^5.101.3",

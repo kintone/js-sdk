@@ -1,6 +1,7 @@
 import rootConfig from "../../eslint.config.mjs";
 import siteConfig from "./site/eslint.config.mjs";
 import binConfig from "./bin/eslint.config.mjs";
+import vitest from "eslint-plugin-vitest";
 import globals from "globals";
 
 /** @type {import("eslint").Linter.Config[]} */
@@ -25,10 +26,12 @@ export default [
     ...configObject,
   })),
   {
-    files: ["test/**/*.{js,ts}"],
+    files: ["**/*.spec.ts", "test/**/*.{js,ts}"],
+    plugins: { vitest },
     languageOptions: {
       globals: {
         ...globals.node,
+        ...vitest.environments.env.globals,
       },
     },
   },

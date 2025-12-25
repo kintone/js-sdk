@@ -4,8 +4,5 @@
     "outDir": "./lib",
     "rootDir": "./src"
   },
-  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"],
-  "references": [
-    { "path": "./tsconfig.test.json" }
-  ]
+  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"]
 }

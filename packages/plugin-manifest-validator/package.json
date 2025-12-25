@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@types/bytes": "^3.1.5",
+    "eslint-plugin-vitest": "^0.5.4",
     "json-schema-to-typescript": "^15.0.4",
     "vitest": "^3.2.4"
   },

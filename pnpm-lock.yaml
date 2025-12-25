@@ -140,6 +140,9 @@ importers:
       cross-env:
         specifier: ^10.1.0
         version: 10.1.0
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0)
@@ -171,6 +174,9 @@ importers:
       '@types/inquirer':
         specifier: 9.0.9
         version: 9.0.9
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0)
@@ -211,6 +217,9 @@ importers:
       cross-env:
         specifier: ^10.1.0
         version: 10.1.0
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       ts-loader:
         specifier: ^9.5.4
         version: 9.5.4(typescript@5.9.3)(webpack@5.101.3)
@@ -245,6 +254,9 @@ importers:
       eslint:
         specifier: ^9.38.0
         version: 9.38.0
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       globals:
         specifier: ^16.5.0
         version: 16.5.0
@@ -279,6 +291,9 @@ importers:
       '@types/bytes':
         specifier: ^3.1.5
         version: 3.1.5
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       json-schema-to-typescript:
         specifier: ^15.0.4
         version: 15.0.4
@@ -364,6 +379,9 @@ importers:
       cssnano:
         specifier: ^7.1.2
         version: 7.1.2(postcss@8.5.6)
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       execa:
         specifier: ^5.1.1
         version: 5.1.1
@@ -450,6 +468,9 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
     devDependencies:
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0)
@@ -481,6 +502,9 @@ importers:
       '@arethetypeswrong/cli':
         specifier: ^0.18.2
         version: 0.18.2
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       vite:
         specifier: ^5.4.21
         version: 5.4.21(@types/node@22.19.3)(terser@5.44.0)
@@ -548,6 +572,9 @@ importers:
       babel-loader:
         specifier: ^9.2.1
         version: 9.2.1(@babel/core@7.28.5)(webpack@5.101.3)
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -597,6 +624,9 @@ importers:
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
+      eslint-plugin-vitest:
+        specifier: ^0.5.4
+        version: 0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0))
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -10751,6 +10781,16 @@ snapshots:
       eslint: 9.38.0
     optionalDependencies:
       vitest: 3.2.4(@types/debug@4.1.12)(@types/node@18.19.130)(jsdom@26.1.0)(terser@5.44.0)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  eslint-plugin-vitest@0.5.4(eslint@9.38.0)(typescript@5.9.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0)):
+    dependencies:
+      '@typescript-eslint/utils': 7.18.0(eslint@9.38.0)(typescript@5.9.3)
+      eslint: 9.38.0
+    optionalDependencies:
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jsdom@26.1.0)(terser@5.44.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
