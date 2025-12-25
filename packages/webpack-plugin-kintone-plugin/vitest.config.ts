@@ -10,5 +10,8 @@ export default defineConfig({
       "**/src/__tests__/helpers/**",
     ],
     testTimeout: 30000,
+    sequence: {
+      hooks: "list",
+    },
   },
 });
