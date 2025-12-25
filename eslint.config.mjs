@@ -6,14 +6,10 @@ import vitest from "eslint-plugin-vitest";
 export default [
   ...presetsNodeTypescriptPrettier,
   {
-    files: ["**/*.test.ts", "**/*.spec.ts", "**/__tests__/**/*.ts"],
-    plugins: {
-      vitest,
-    },
+    files: ["__tests__/**/*.ts", "vitest.config.ts"],
+    plugins: { vitest },
     languageOptions: {
-      globals: {
-        ...vitest.environments.env.globals,
-      },
+      globals: vitest.environments.env.globals,
     },
   },
   {

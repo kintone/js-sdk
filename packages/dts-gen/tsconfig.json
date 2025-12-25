@@ -7,17 +7,12 @@
         "src/**/*.ts"
     ],
     "exclude": [
-        "**/__test__/**", "**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"
+        "**/__test__/**", "**/__tests__/**", "**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"
     ],
     "compilerOptions": {
         "lib": ["es2015", "dom"],
         "outDir": "./dist",
         "rootDir": "./src",
         "strict": false // TODO enable strict mode
-    },
-    "references": [
-    {
-    "path": "./tsconfig.test.json"
     }
-  ],
 }

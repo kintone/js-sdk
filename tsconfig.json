@@ -61,12 +61,7 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
 
     /* Advanced Options */
-    "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
-  },
-  "exclude": ["**/__test__/**", "**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"],
-  "references": [
-    {
-      "path": "./tsconfig.test.json"
-    },
-  ],
+    "forceConsistentCasingInFileNames": true,  /* Disallow inconsistently-cased references to the same file. */
+    "types": ["vitest/globals", "node"]
+  }
 }

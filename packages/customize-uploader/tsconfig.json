@@ -6,9 +6,8 @@
     "rootDir": "./src",
     "resolveJsonModule": true
   },
-  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"],
+  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"],
   "references": [
-    { "path": "../rest-api-client" },
-    { "path": "./tsconfig.test.json" }
+    { "path": "../rest-api-client" }
   ]
 }

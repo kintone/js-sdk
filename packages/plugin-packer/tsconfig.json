@@ -7,7 +7,6 @@
   },
   "exclude": ["site/**", "test/**", "dist/**", "vitest.config.ts"],
   "references": [
-    { "path": "../plugin-manifest-validator" },
-    { "path": "./tsconfig.test.json" }
+    { "path": "../plugin-manifest-validator" }
   ]
 }
