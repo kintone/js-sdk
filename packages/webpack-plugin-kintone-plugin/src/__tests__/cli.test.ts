@@ -14,10 +14,10 @@ const pluginJsOutputPaths = [
 
 const runWebpack = (config = "webpack.config.js") => {
   const isWindows = os.platform() === "win32";
-  const webpackCommand = `webpack${isWindows ? ".cmd" : ""}`;
+  // Use npx to ensure webpack-cli is found in PATH
   return spawnSync(
-    webpackCommand,
-    ["--config", config, "--mode", "production"],
+    isWindows ? "npx.cmd" : "npx",
+    ["webpack", "--config", config, "--mode", "production"],
     {
       cwd: pluginDir,
       shell: isWindows,
