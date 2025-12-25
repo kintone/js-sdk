@@ -30,7 +30,7 @@
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
-    "postbuild": "node bin/npm-build.js && pnpm build:integration",
+    "postbuild": "node scripts/npm-build.ts && pnpm build:integration",
     "build:integration": "webpack --mode development --config webpack.config.js",
     "clean": "rimraf dist",
     "fix": "run-p fix:*",
