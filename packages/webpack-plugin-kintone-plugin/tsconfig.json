@@ -9,6 +9,7 @@
       "types"
     ]
   },
+  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"],
   "references": [
     { "path": "../plugin-packer" }
   ]

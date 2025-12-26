@@ -18,8 +18,8 @@
   "scripts": {
     "prebuild": "pnpm -r --parallel run prebuild",
     "build": "pnpm prebuild && tsc --build packages --force && pnpm build:rest && pnpm postbuild",
-    "build:rest": "pnpm --filter @kintone/rest build",
     "postbuild": "pnpm -r --parallel run postbuild",
+    "build:rest": "pnpm --filter @kintone/rest build",
     "fix": "run-s fix:*",
     "fix:prettier": "pnpm lint:prettier --write",
     "fix:workspace": "pnpm -r --parallel run fix",
@@ -32,7 +32,7 @@
     "test": "pnpm test:root && pnpm -r --parallel run test",
     "test:ci": "pnpm test:root && pnpm -r --stream run test:ci",
     "test:e2e": "pnpm -r --parallel run test:e2e",
-    "test:root": "jest",
+    "test:root": "vitest run",
     "update-contributors": "ts-node ./scripts/update-contributors.ts"
   },
   "devDependencies": {
@@ -42,13 +42,11 @@
     "@cybozu/eslint-config": "^24.3.0",
     "@cybozu/license-manager": "^1.4.1",
     "@octokit/rest": "^22.0.1",
-    "@types/jest": "^29.5.14",
     "@types/node": "^18.19.130",
-    "babel-jest": "^29.7.0",
     "comment-json": "^4.5.0",
     "eslint": "^9.38.0",
     "eslint-plugin-package-json": "^0.59.1",
-    "jest": "^29.7.0",
+    "eslint-plugin-vitest": "^0.5.4",
     "jsonc-eslint-parser": "^2.4.2",
     "npm": "^11.7.0",
     "npm-run-all": "^4.1.5",
@@ -57,7 +55,8 @@
     "publint": "^0.3.16",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
   },
   "packageManager": "pnpm@10.18.3",
   "pnpm": {

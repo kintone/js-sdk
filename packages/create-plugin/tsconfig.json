@@ -7,8 +7,8 @@
       "node_modules/@types",
       "../../node_modules/@types",
       "types"
-    ],
+    ]
   },
   "include": ["src/**/*.ts"],
-  "references": []
+  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"]
 }

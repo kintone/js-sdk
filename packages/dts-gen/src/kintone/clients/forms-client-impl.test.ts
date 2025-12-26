@@ -39,11 +39,11 @@ describe("VisibleForTesting.constructUrl", () => {
 
 describe("FormsClientImpl#fetchFormProperties", () => {
   test("#fertchFormProperties calls AxoisInstance#request", () => {
-    const mockConstructUrl = jest.fn();
+    const mockConstructUrl = vi.fn();
     mockConstructUrl.mockReturnValue("/k/v1/app/form/fields.json");
     VisibleForTesting.constructUrl = mockConstructUrl;
 
-    const mockRequest = jest.fn();
+    const mockRequest = vi.fn();
     mockRequest.mockReturnValue(
       Promise.resolve({
         data: {
@@ -52,7 +52,7 @@ describe("FormsClientImpl#fetchFormProperties", () => {
       }),
     );
 
-    const mockNewAxiosInstance = jest.fn();
+    const mockNewAxiosInstance = vi.fn();
     mockNewAxiosInstance.mockReturnValue({
       request: mockRequest,
     });

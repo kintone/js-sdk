@@ -1,3 +1,4 @@
+import type { Mock } from "vitest";
 import { KintoneAllRecordsError, KintoneRestAPIError } from "../../../error";
 import type { MockClient } from "../../../http/MockClient";
 import type { RecordClient } from "../../RecordClient";
@@ -307,11 +308,11 @@ describe("AllRecordsTest", () => {
         condition: `${fieldCode} = "foo"`,
         orderBy: `${fieldCode} asc`,
       };
-      let withCursorMockFn: jest.Mock;
-      let withOffsetMockFn: jest.Mock;
+      let withCursorMockFn: Mock;
+      let withOffsetMockFn: Mock;
       beforeEach(() => {
-        withCursorMockFn = jest.fn();
-        withOffsetMockFn = jest.fn();
+        withCursorMockFn = vi.fn();
+        withOffsetMockFn = vi.fn();
         recordClient.getAllRecordsWithCursor = withCursorMockFn;
         recordClient.getAllRecordsWithOffset = withOffsetMockFn;
       });
@@ -345,9 +346,9 @@ describe("AllRecordsTest", () => {
         orderBy: "",
       };
       const { orderBy, ...expected } = params;
-      let mockFn: jest.Mock;
+      let mockFn: Mock;
       beforeEach(() => {
-        mockFn = jest.fn();
+        mockFn = vi.fn();
         recordClient.getAllRecordsWithId = mockFn;
       });
       it("should call `getAllRecordsWithId` if `withCursor` is not specified", async () => {
@@ -371,9 +372,9 @@ describe("AllRecordsTest", () => {
         app: APP_ID,
         condition: `${fieldCode} = "foo"`,
       };
-      let mockFn: jest.Mock;
+      let mockFn: Mock;
       beforeEach(() => {
-        mockFn = jest.fn();
+        mockFn = vi.fn();
         recordClient.getAllRecordsWithId = mockFn;
       });
       it("should call `getAllRecordsWithId` if `withCursor` is not specified", async () => {
