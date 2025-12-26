@@ -19,13 +19,22 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./from-manifest": {
+      "types": "./dist/pack-plugin-from-manifest.d.ts",
+      "default": "./dist/pack-plugin-from-manifest.js"
+    }
+  },
   "bin": {
     "kintone-plugin-packer": "bin/cli.js"
   },
   "files": [
     "bin",
-    "dist",
-    "from-manifest.js"
+    "dist"
   ],
   "scripts": {
     "prebuild": "pnpm clean",

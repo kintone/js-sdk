@@ -3,7 +3,7 @@ import path from "path";
 import { rimraf } from "rimraf";
 import { globSync } from "glob";
 import { readZipContentsNames } from "./helper/zip";
-import cli from "../src/cli";
+import cli from "../src/packer-cli";
 import console from "../src/console";
 
 const fixturesDir = path.posix.join(__dirname, "fixtures");

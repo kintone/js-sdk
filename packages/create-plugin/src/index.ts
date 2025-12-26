@@ -110,5 +110,4 @@ const run = (outputDir: string, lang: Lang, templateType: TemplateType) => {
     });
 };
 
-module.exports = run;
-module.exports.default = run;
+export default run;
