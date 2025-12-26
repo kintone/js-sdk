@@ -5,7 +5,7 @@ import { getDefaultLang } from "./lang";
 import type { TemplateType } from "./template";
 import { isValidTemplateType, SUPPORT_TEMPLATE_TYPE } from "./template";
 
-const run = require("./index");
+import run from "./index";
 
 const cli = meow(
   `
