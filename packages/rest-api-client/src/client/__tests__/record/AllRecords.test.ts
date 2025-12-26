@@ -1,3 +1,4 @@
+import type { Mock } from "vitest";
 import { KintoneAllRecordsError, KintoneRestAPIError } from "../../../error";
 import type { MockClient } from "../../../http/MockClient";
 import type { RecordClient } from "../../RecordClient";
@@ -66,7 +67,7 @@ describe("AllRecordsTest", () => {
       });
     });
 
-    describe("success with condition and pagination", () => {
+    describe("success with condition", () => {
       const params = {
         app: APP_ID,
         fields: ["$id"],
@@ -307,8 +308,8 @@ describe("AllRecordsTest", () => {
         condition: `${fieldCode} = "foo"`,
         orderBy: `${fieldCode} asc`,
       };
-      let withCursorMockFn: any;
-      let withOffsetMockFn: any;
+      let withCursorMockFn: Mock;
+      let withOffsetMockFn: Mock;
       beforeEach(() => {
         withCursorMockFn = vi.fn();
         withOffsetMockFn = vi.fn();
@@ -345,7 +346,7 @@ describe("AllRecordsTest", () => {
         orderBy: "",
       };
       const { orderBy, ...expected } = params;
-      let mockFn: any;
+      let mockFn: Mock;
       beforeEach(() => {
         mockFn = vi.fn();
         recordClient.getAllRecordsWithId = mockFn;
@@ -371,7 +372,7 @@ describe("AllRecordsTest", () => {
         app: APP_ID,
         condition: `${fieldCode} = "foo"`,
       };
-      let mockFn: any;
+      let mockFn: Mock;
       beforeEach(() => {
         mockFn = vi.fn();
         recordClient.getAllRecordsWithId = mockFn;
