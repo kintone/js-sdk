@@ -153,8 +153,8 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0
       chokidar:
-        specifier: ^3.6.0
-        version: 3.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
       meow:
         specifier: ^9.0.0
         version: 9.0.0
@@ -295,8 +295,8 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
       chokidar:
-        specifier: ^3.6.0
-        version: 3.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
       debug:
         specifier: ^4.4.3
         version: 4.4.3(supports-color@10.2.2)
@@ -591,8 +591,8 @@ importers:
         specifier: ^0.5.16
         version: 0.5.16
       chokidar:
-        specifier: ^3.6.0
-        version: 3.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -3298,6 +3298,10 @@ packages:
   chokidar@3.6.0:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
+
+  chokidar@5.0.0:
+    resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
+    engines: {node: '>= 20.19.0'}
 
   chrome-trace-event@1.0.4:
     resolution: {integrity: sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==}
@@ -6268,6 +6272,10 @@ packages:
   readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
+
+  readdirp@5.0.0:
+    resolution: {integrity: sha512-9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ==}
+    engines: {node: '>= 20.19.0'}
 
   rechoir@0.8.0:
     resolution: {integrity: sha512-/vxpCXddiX8NGfGO/mTafwjq4aFa/71pvamip0++IQk3zG8cbCj0fifNPrjjF1XMXUne91jL9OoxmdykoEtifQ==}
@@ -10684,6 +10692,10 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
+  chokidar@5.0.0:
+    dependencies:
+      readdirp: 5.0.0
+
   chrome-trace-event@1.0.4: {}
 
   chromium-bidi@0.11.0(devtools-protocol@0.0.1367902):
@@ -14123,6 +14135,8 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
+
+  readdirp@5.0.0: {}
 
   rechoir@0.8.0:
     dependencies:
