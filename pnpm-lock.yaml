@@ -150,8 +150,8 @@ importers:
         specifier: ^5.5.0
         version: 5.5.0
       '@kintone/rest-api-client':
-        specifier: ^6.0.0
-        version: 6.0.0
+        specifier: ^6.1.0
+        version: 6.1.0
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
@@ -1711,8 +1711,8 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@kintone/rest-api-client@6.0.0':
-    resolution: {integrity: sha512-Ekf71DhWoiz3sZ8ISS656CqCfCvwBM9GyOlxDcP1u2aK9TANuBpzsKR8O6PcuPMXzGQ3Cm1hg1xfFR+n553T6A==}
+  '@kintone/rest-api-client@6.1.0':
+    resolution: {integrity: sha512-kg+UpaKDAxjuG6s3m3SeTl2aqO2JSZbeX9asNpw4xKPYMuG7jH2RYt4d83h9VtgR+yu5IdeXbIMlYEEI9za6RQ==}
     engines: {node: '>=20'}
 
   '@leichtgewicht/ip-codec@2.0.5':
@@ -3472,9 +3472,6 @@ packages:
     resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
     deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
 
-  core-js@3.45.1:
-    resolution: {integrity: sha512-L4NPsJlCfZsPeXukyzHFlg/i7IIVwHSItR0wg0FLNqYClJ4MQYTYLbC7EkjKYRLZF2iof2MUgN0EGy7MdQFChg==}
-
   core-js@3.46.0:
     resolution: {integrity: sha512-vDMm9B0xnqqZ8uSBpZ8sNtRtOdmfShrvT6h2TuQGLs0Is+cR0DYbj/KWP6ALVNbWPpqA/qPLoOuppJN07humpA==}
 
@@ -4302,10 +4299,6 @@ packages:
   foreground-child@3.3.1:
     resolution: {integrity: sha512-gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==}
     engines: {node: '>=14'}
-
-  form-data@4.0.4:
-    resolution: {integrity: sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==}
-    engines: {node: '>= 6'}
 
   form-data@4.0.5:
     resolution: {integrity: sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==}
@@ -8956,11 +8949,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@kintone/rest-api-client@6.0.0':
+  '@kintone/rest-api-client@6.1.0':
     dependencies:
       axios: 1.12.2
-      core-js: 3.45.1
-      form-data: 4.0.4
+      core-js: 3.46.0
+      form-data: 4.0.5
       js-base64: 3.7.8
       mime: 3.0.0
       qs: 6.14.0
@@ -10841,8 +10834,6 @@ snapshots:
 
   core-js@2.6.12: {}
 
-  core-js@3.45.1: {}
-
   core-js@3.46.0: {}
 
   core-util-is@1.0.3: {}
@@ -11948,14 +11939,6 @@ snapshots:
     dependencies:
       cross-spawn: 7.0.6
       signal-exit: 4.1.0
-
-  form-data@4.0.4:
-    dependencies:
-      asynckit: 0.4.0
-      combined-stream: 1.0.8
-      es-set-tostringtag: 2.1.0
-      hasown: 2.0.2
-      mime-types: 2.1.35
 
   form-data@4.0.5:
     dependencies:
