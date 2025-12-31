@@ -101,8 +101,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       meow:
-        specifier: ^9.0.0
-        version: 9.0.0
+        specifier: ^14.0.0
+        version: 14.0.0
       node-rsa:
         specifier: ^1.1.1
         version: 1.1.1
@@ -156,8 +156,8 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       meow:
-        specifier: ^9.0.0
-        version: 9.0.0
+        specifier: ^14.0.0
+        version: 14.0.0
       mkdirp:
         specifier: ^3.0.1
         version: 3.0.1
@@ -304,8 +304,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1
       meow:
-        specifier: ^9.0.0
-        version: 9.0.0
+        specifier: ^14.0.0
+        version: 14.0.0
       mkdirp:
         specifier: ^3.0.1
         version: 3.0.1
@@ -431,8 +431,8 @@ importers:
         specifier: ^4.1.2
         version: 4.1.2
       meow:
-        specifier: ^9.0.0
-        version: 9.0.0
+        specifier: ^14.0.0
+        version: 14.0.0
       os-locale:
         specifier: ^5.0.0
         version: 5.0.0
@@ -5298,6 +5298,10 @@ packages:
   memorystream@0.3.1:
     resolution: {integrity: sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw==}
     engines: {node: '>= 0.10.0'}
+
+  meow@14.0.0:
+    resolution: {integrity: sha512-JhC3R1f6dbspVtmF3vKjAWz1EVIvwFrGGPLSdU6rK79xBwHWTuHoLnRX/t1/zHS1Ch1Y2UtIrih7DAHuH9JFJA==}
+    engines: {node: '>=20'}
 
   meow@9.0.0:
     resolution: {integrity: sha512-+obSblOQmRhcyBt62furQqRAQpNyWXo8BuQ5bN7dG8wmwQ+vwHKp/rCFD4CrTP8CsDQD1sjoZ94K417XEUk8IQ==}
@@ -13156,6 +13160,8 @@ snapshots:
       tslib: 2.8.1
 
   memorystream@0.3.1: {}
+
+  meow@14.0.0: {}
 
   meow@9.0.0:
     dependencies:
