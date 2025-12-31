@@ -42,7 +42,7 @@
     "@cybozu/eslint-config": "^24.3.0",
     "@cybozu/license-manager": "^1.4.1",
     "@octokit/rest": "^22.0.1",
-    "@types/jest": "^29.5.14",
+    "@types/jest": "^30.0.0",
     "@types/node": "^18.19.130",
     "babel-jest": "^29.7.0",
     "comment-json": "^4.5.1",
