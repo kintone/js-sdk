@@ -181,8 +181,8 @@ importers:
         specifier: ^1.12.2
         version: 1.12.2
       commander:
-        specifier: ^12.1.0
-        version: 12.1.0
+        specifier: ^14.0.2
+        version: 14.0.2
       eslint:
         specifier: ^9.38.0
         version: 9.38.0
