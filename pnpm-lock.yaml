@@ -119,8 +119,8 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       sort-package-json:
-        specifier: ^3.4.0
-        version: 3.4.0
+        specifier: ^3.6.0
+        version: 3.6.0
     devDependencies:
       '@types/glob':
         specifier: ^8.1.0
@@ -6608,6 +6608,9 @@ packages:
   sort-object-keys@2.0.0:
     resolution: {integrity: sha512-FTUWjmUumK0IGXn1INzkS3lS2Fqw81JuomcExd7LsFvQnNl+9+IZ575fC21F/AwrR/6lMrH7lTX0e7qLBk1wMg==}
 
+  sort-object-keys@2.0.1:
+    resolution: {integrity: sha512-R89fO+z3x7hiKPXX5P0qim+ge6Y60AjtlW+QQpRozrrNcR1lw9Pkpm5MLB56HoNvdcLHL4wbpq16OcvGpEDJIg==}
+
   sort-package-json@3.4.0:
     resolution: {integrity: sha512-97oFRRMM2/Js4oEA9LJhjyMlde+2ewpZQf53pgue27UkbEXfHJnDzHlUxQ/DWUkzqmp7DFwJp8D+wi/TYeQhpA==}
     engines: {node: '>=20'}
@@ -6615,6 +6618,11 @@ packages:
 
   sort-package-json@3.5.0:
     resolution: {integrity: sha512-moY4UtptUuP5sPuu9H9dp8xHNel7eP5/Kz/7+90jTvC0IOiPH2LigtRM/aSFSxreaWoToHUVUpEV4a2tAs2oKQ==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+  sort-package-json@3.6.0:
+    resolution: {integrity: sha512-fyJsPLhWvY7u2KsKPZn1PixbXp+1m7V8NWqU8CvgFRbMEX41Ffw1kD8n0CfJiGoaSfoAvbrqRRl/DcHO8omQOQ==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -14562,6 +14570,8 @@ snapshots:
 
   sort-object-keys@2.0.0: {}
 
+  sort-object-keys@2.0.1: {}
+
   sort-package-json@3.4.0:
     dependencies:
       detect-indent: 7.0.2
@@ -14580,6 +14590,16 @@ snapshots:
       is-plain-obj: 4.1.0
       semver: 7.7.3
       sort-object-keys: 2.0.0
+      tinyglobby: 0.2.15
+
+  sort-package-json@3.6.0:
+    dependencies:
+      detect-indent: 7.0.2
+      detect-newline: 4.0.1
+      git-hooks-list: 4.1.1
+      is-plain-obj: 4.1.0
+      semver: 7.7.3
+      sort-object-keys: 2.0.1
       tinyglobby: 0.2.15
 
   source-map-js@1.2.1: {}
