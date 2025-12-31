@@ -178,8 +178,8 @@ importers:
         specifier: ^24.3.0
         version: 24.3.0(@types/eslint@9.6.1)(@typescript-eslint/utils@8.47.0(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0)(prettier@3.6.2)(typescript@5.9.3)
       axios:
-        specifier: ^1.12.2
-        version: 1.12.2
+        specifier: ^1.13.2
+        version: 1.13.2
       commander:
         specifier: ^12.1.0
         version: 12.1.0
@@ -496,8 +496,8 @@ importers:
   packages/rest-api-client:
     dependencies:
       axios:
-        specifier: ^1.12.2
-        version: 1.12.2
+        specifier: ^1.13.2
+        version: 1.13.2
       core-js:
         specifier: ^3.46.0
         version: 3.46.0
@@ -3005,6 +3005,9 @@ packages:
 
   axios@1.12.2:
     resolution: {integrity: sha512-vMJzPewAlRyOgxV2dU0Cuz2O8zzzx9VYtbJOaBgXFeLc4IV/Eg50n4LowmehOOR61S8ZMpc2K5Sa7g6A4jfkUw==}
+
+  axios@1.13.2:
+    resolution: {integrity: sha512-VPk9ebNqPcy5lRGuSlKx752IlDatOjT9paPlm8A7yOuW2Fbvp4X3JznJtT4f0GzGLLiWE9W8onz51SqLYwzGaA==}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -10314,6 +10317,14 @@ snapshots:
   axe-core@4.10.3: {}
 
   axios@1.12.2:
+    dependencies:
+      follow-redirects: 1.15.11(debug@4.4.3)
+      form-data: 4.0.5
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+
+  axios@1.13.2:
     dependencies:
       follow-redirects: 1.15.11(debug@4.4.3)
       form-data: 4.0.5
