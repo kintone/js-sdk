@@ -95,8 +95,8 @@ importers:
         specifier: ^4.1.2
         version: 4.1.2
       glob:
-        specifier: ^10.4.5
-        version: 10.4.5
+        specifier: ^11.0.0
+        version: 11.0.3
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -371,8 +371,8 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1
       glob:
-        specifier: ^10.4.5
-        version: 10.4.5
+        specifier: ^11.0.0
+        version: 11.0.3
       globals:
         specifier: ^16.5.0
         version: 16.5.0
