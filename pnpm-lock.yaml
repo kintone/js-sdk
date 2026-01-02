@@ -511,7 +511,7 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       qs:
-        specifier: ^6.14.0
+        specifier: ^6.14.1
         version: 6.14.1
     devDependencies:
       '@rollup/plugin-babel':
