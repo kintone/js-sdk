@@ -47,9 +47,7 @@
     "rimraf": "^6.0.1"
   },
   "devDependencies": {
-    "@types/inquirer": "9.0.9",
-    "eslint-plugin-vitest": "^0.5.4",
-    "vitest": "^3.2.4"
+    "@types/inquirer": "9.0.9"
   },
   "engines": {
     "node": ">=20"

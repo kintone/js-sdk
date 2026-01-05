@@ -29,6 +29,12 @@ export default [
       ],
 
       "n/no-missing-import": "off",
+      "n/no-extraneous-import": [
+        "error",
+        {
+          allowModules: ["eslint-plugin-vitest", "vitest"],
+        },
+      ],
     },
   },
   {
