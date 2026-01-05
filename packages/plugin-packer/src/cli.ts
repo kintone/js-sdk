@@ -1,175 +1,52 @@
-import path from "path";
-import fs from "fs";
-import { promisify } from "util";
-import os from "os";
-import * as chokidar from "chokidar";
-import { mkdirp } from "mkdirp";
-import _debug from "debug";
-import validate from "@kintone/plugin-manifest-validator";
-import packer from ".";
-import console from "./console";
-import { generateErrorMessages } from "./gen-error-msg";
-import { createContentsZip } from "./create-contents-zip";
+import meow from "meow";
+import packerCli from "./packer-cli";
 
-const debug = _debug("cli");
-const writeFile = promisify(fs.writeFile);
+const USAGE = "$ kintone-plugin-packer [options] PLUGIN_DIR";
 
-type Options = Partial<{
-  ppk: string;
-  out: string;
-  watch: boolean;
-  packerMock_: typeof packer;
-}>;
+const cli = meow(
+  `
+Usage
+  ${USAGE}
 
-const cli = (pluginDir: string, options_?: Options) => {
-  const options = options_ || {};
-  const packerLocal = options.packerMock_ ? options.packerMock_ : packer;
+Options
+  --ppk PPK_FILE: Private key file. If omitted, it's generated into '<Plugin ID>.ppk' in the same directory of PLUGIN_DIR.
+  --out PLUGIN_FILE: The default is 'plugin.zip' in the same directory of PLUGIN_DIR.
+  --watch: Watch PLUGIN_DIR for the changes.
+`,
+  {
+    flags: {
+      ppk: {
+        type: "string",
+      },
+      out: {
+        type: "string",
+      },
+      watch: {
+        type: "boolean",
+        alias: "w",
+      },
+    },
+  },
+);
 
-  return Promise.resolve()
-    .then(() => {
-      // 1. check if pluginDir is a directory
-      if (!fs.statSync(pluginDir).isDirectory()) {
-        throw new Error(`${pluginDir} should be a directory.`);
-      }
+const pluginDir = cli.input[0];
 
-      // 2. check pluginDir/manifest.json
-      const manifestJsonPath = path.join(pluginDir, "manifest.json");
-      if (!fs.statSync(manifestJsonPath).isFile()) {
-        throw new Error("Manifest file $PLUGIN_DIR/manifest.json not found.");
-      }
+if (!pluginDir) {
+  console.error("Error: An argument `PLUGIN_DIR` is required.");
+  cli.showHelp();
+}
 
-      // 3. validate manifest.json
-      const manifest = loadJson(manifestJsonPath);
-      throwIfInvalidManifest(manifest, pluginDir);
+const { ppk, out, watch } = cli.flags;
 
-      let outputDir = path.dirname(path.resolve(pluginDir));
-      let outputFile = path.join(outputDir, "plugin.zip");
-      if (options.out) {
-        outputFile = options.out;
-        outputDir = path.dirname(path.resolve(outputFile));
-      }
-      debug(`outputDir : ${outputDir}`);
-      debug(`outputFile : ${outputFile}`);
-
-      // 4. generate new ppk if not specified
-      const ppkFile = options.ppk;
-      let privateKey: string;
-      if (ppkFile) {
-        debug(`loading an existing key: ${ppkFile}`);
-        privateKey = fs.readFileSync(ppkFile, "utf8");
-      }
-
-      // 5. package plugin.zip
-      return Promise.all([
-        mkdirp(outputDir),
-        createContentsZip(pluginDir, manifest).then((contentsZip) =>
-          packerLocal(contentsZip, privateKey),
-        ),
-      ]).then((result) => {
-        const output = result[1];
-        const ppkFilePath = path.join(outputDir, `${output.id}.ppk`);
-        if (!ppkFile) {
-          fs.writeFileSync(ppkFilePath, output.privateKey, "utf8");
-        }
-
-        if (options.watch) {
-          // change events are fired before chagned files are flushed on Windows,
-          // which generate an invalid plugin zip.
-          // in order to fix this, we use awaitWriteFinish option only on Windows.
-          const watchOptions =
-            os.platform() === "win32"
-              ? {
-                  awaitWriteFinish: {
-                    stabilityThreshold: 1000,
-                    pollInterval: 250,
-                  },
-                }
-              : {};
-          const watcher = chokidar.watch(pluginDir, watchOptions);
-          watcher.on("change", () => {
-            cli(
-              pluginDir,
-              Object.assign({}, options, {
-                watch: false,
-                ppk: options.ppk || ppkFilePath,
-              }),
-            );
-          });
-        }
-        return outputPlugin(outputFile, output.plugin);
-      });
-    })
-    .then((outputFile) => {
-      console.log("Succeeded:", outputFile);
-      return outputFile;
-    })
-    .catch((error) => {
-      console.error("Failed:", error.message);
-      return Promise.reject(error);
-    });
-};
-
-export = cli;
-
-const throwIfInvalidManifest = (manifest: any, pluginDir: string) => {
-  const result = validate(manifest, {
-    maxFileSize: validateMaxFileSize(pluginDir),
-    fileExists: validateFileExists(pluginDir),
-  });
-  debug(result);
-
-  if (result.warnings && result.warnings.length > 0) {
-    result.warnings.forEach((warning) => {
-      console.warn(`WARN: ${warning.message}`);
-    });
+if (process.env.NODE_ENV === "test") {
+  const flags: Record<string, string | boolean> = { watch: watch ?? false };
+  if (ppk) {
+    flags.ppk = ppk;
   }
-
-  if (!result.valid) {
-    const msgs = generateErrorMessages(result.errors ?? []);
-    console.error("Invalid manifest.json:");
-    msgs.forEach((msg) => {
-      console.error(`- ${msg}`);
-    });
-    throw new Error("Invalid manifest.json");
+  if (out) {
+    flags.out = out;
   }
-};
-
-/**
- * Create and save plugin.zip
- */
-const outputPlugin = (outputPath: string, plugin: Buffer): Promise<string> => {
-  return writeFile(outputPath, plugin).then((arg) => outputPath);
-};
-
-/**
- * Load JSON file without caching
- */
-const loadJson = (jsonPath: string) => {
-  const content = fs.readFileSync(jsonPath, "utf8");
-  return JSON.parse(content);
-};
-
-/**
- * Return validator for `maxFileSize` keyword
- */
-const validateMaxFileSize = (pluginDir: string) => {
-  return (maxBytes: number, filePath: string) => {
-    try {
-      const stat = fs.statSync(path.join(pluginDir, filePath));
-      return stat.size <= maxBytes;
-    } catch (e) {
-      return false;
-    }
-  };
-};
-
-const validateFileExists = (pluginDir: string) => {
-  return (filePath: string) => {
-    try {
-      const stat = fs.statSync(path.join(pluginDir, filePath));
-      return stat.isFile();
-    } catch (e) {
-      return false;
-    }
-  };
-};
+  console.log(JSON.stringify({ pluginDir, flags }));
+} else {
+  packerCli(pluginDir, { ppk, out, watch });
+}

@@ -31,7 +31,7 @@
     "postbuild": "pnpm gen-dts",
     "clean": "rimraf dist",
     "fix": "pnpm lint --fix",
-    "gen-dts": "node script/generate-dts.js",
+    "gen-dts": "tsx script/generate-dts.ts",
     "lint": "eslint src --max-warnings 0",
     "start": "pnpm build --watch",
     "test": "jest",
