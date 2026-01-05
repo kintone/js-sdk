@@ -82,7 +82,6 @@
     "constants-browserify": "^1.0.0",
     "crypto-browserify": "^3.12.1",
     "cssnano": "^7.1.2",
-    "eslint-plugin-vitest": "^0.5.4",
     "execa": "^5.1.1",
     "glob": "^10.4.5",
     "globals": "^16.5.0",
@@ -98,7 +97,6 @@
     "setimmediate": "^1.0.5",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.5",
-    "vitest": "^3.2.4",
     "webpack": "^5.101.3",
     "webpack-cli": "6.0.1",
     "webpack-dev-server": "^5.2.2"

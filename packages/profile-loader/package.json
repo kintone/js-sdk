@@ -39,10 +39,7 @@
   "dependencies": {
     "toml": "^3.0.0"
   },
-  "devDependencies": {
-    "eslint-plugin-vitest": "^0.5.4",
-    "vitest": "^3.2.4"
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">=20"
   },
