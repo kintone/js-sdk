@@ -13,6 +13,7 @@ export default [
     },
   },
   {
+    files: ["**/*.{js,cjs,mjs,ts,cts,mts,jsx,tsx}"],
     rules: {
       curly: ["error", "all"],
       "func-style": ["error"],
