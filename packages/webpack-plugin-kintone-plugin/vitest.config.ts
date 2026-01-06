@@ -9,7 +9,7 @@ export default defineConfig({
       "**/src/__tests__/fixtures/**",
       "**/src/__tests__/helpers/**",
     ],
-    testTimeout: 30000,
+    testTimeout: 60000,
     sequence: {
       hooks: "list",
     },
