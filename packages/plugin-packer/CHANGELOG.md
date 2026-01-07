@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@9.0.0...@kintone/plugin-packer@9.0.1) (2026-01-06)
+
+
+### Bug Fixes
+
+* update js script to ts ([#3543](https://github.com/kintone/js-sdk/issues/3543)) ([372eada](https://github.com/kintone/js-sdk/commit/372eada1a48cb03c36bd761cc373afc6df5a9c9d))
+
 ## [9.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@8.2.1...@kintone/plugin-packer@9.0.0) (2025-10-14)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.1](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@9.0.0...@kintone/create-plugin@9.0.1) (2026-01-06)
+
+
+### Bug Fixes
+
+* **create-plugin:** use correct @cybozu/eslint-config flat config API ([#3542](https://github.com/kintone/js-sdk/issues/3542)) ([1487119](https://github.com/kintone/js-sdk/commit/14871194452301f69518bdb38902b0c2c38801f1))
+* update js script to ts ([#3543](https://github.com/kintone/js-sdk/issues/3543)) ([372eada](https://github.com/kintone/js-sdk/commit/372eada1a48cb03c36bd761cc373afc6df5a9c9d))
+
 ## [9.0.0](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@8.2.5...@kintone/create-plugin@9.0.0) (2025-10-14)
 
 
