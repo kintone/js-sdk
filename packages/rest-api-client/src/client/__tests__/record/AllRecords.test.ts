@@ -425,11 +425,11 @@ describe("AllRecordsTest", () => {
         result = await recordClient.getAllRecordsWithCursor<Record>(params);
       });
 
-      it("should create a cursor", () => {
+      it("should create a cursor with size 500", () => {
         expect(mockClient.getLogs()[0]).toEqual({
           path: "/k/v1/records/cursor.json",
           method: "post",
-          params,
+          params: { ...params, size: 500 },
         });
       });
 
