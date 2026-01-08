@@ -1,4 +1,4 @@
-export { StandardLogger, logger } from "./logger.js";
+export { StandardLogger, logger } from "./logger";
 export {
   LOG_CONFIG_LEVELS,
   type Logger,
@@ -6,4 +6,4 @@ export {
   type LogEvent,
   type LogEventLevel,
   type Printer,
-} from "./types.js";
+} from "./types";

@@ -1,11 +1,10 @@
-import chalk from "chalk";
 import type {
   Logger,
   LogConfigLevel,
   LogEvent,
   LogEventLevel,
   Printer,
-} from "./types.js";
+} from "./types";
 
 export class StandardLogger implements Logger {
   private readonly printer: Printer = console.error;
@@ -77,12 +76,12 @@ export class StandardLogger implements Logger {
   private format(event: LogEvent): string {
     const timestamp = new Date().toISOString();
     const eventLevelLabels: { [level in LogEventLevel]: string } = {
-      trace: chalk.bgGreen("TRACE"),
-      debug: chalk.green("DEBUG"),
-      info: chalk.blue("INFO"),
-      warn: chalk.yellow("WARN"),
-      error: chalk.red("ERROR"),
-      fatal: chalk.bgRed("FATAL"),
+      trace: "TRACE",
+      debug: "DEBUG",
+      info: "INFO",
+      warn: "WARN",
+      error: "ERROR",
+      fatal: "FATAL",
     };
     const stringifiedMessage = stringifyMessage(event.message);
     const prefix = `[${timestamp}] ${eventLevelLabels[event.level]}:`;
