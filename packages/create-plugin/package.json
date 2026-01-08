@@ -53,7 +53,7 @@
     "sort-package-json": "^3.4.0"
   },
   "devDependencies": {
-    "@types/glob": "^8.1.0",
+    "@types/glob": "^9.0.0",
     "@types/inquirer": "^9.0.9",
     "@types/lodash": "^4.17.21",
     "@types/node-rsa": "^1.1.4",
