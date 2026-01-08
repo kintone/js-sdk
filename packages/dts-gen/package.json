@@ -44,6 +44,7 @@
     "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules vitest run"
   },
   "dependencies": {
+    "@kintone/logger": "workspace:^",
     "@cybozu/eslint-config": "^24.3.0",
     "axios": "^1.12.2",
     "commander": "^12.1.0",

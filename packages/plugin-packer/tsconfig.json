@@ -7,6 +7,7 @@
   },
   "exclude": ["site/**", "test/**", "dist/**", "vitest.config.ts"],
   "references": [
+    { "path": "../logger" },
     { "path": "../plugin-manifest-validator" }
   ]
 }
