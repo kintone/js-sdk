@@ -34,8 +34,8 @@
     "fix": "pnpm lint --fix",
     "lint": "eslint src --max-warnings 0",
     "start": "pnpm build --watch",
-    "test": "jest",
-    "test:ci": "jest --runInBand"
+    "test": "vitest run",
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "@inquirer/prompts": "^5.5.0",
