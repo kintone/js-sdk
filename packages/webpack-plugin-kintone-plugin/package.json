@@ -32,6 +32,7 @@
     "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "start": "pnpm build --watch",
     "test": "vitest run",
+    "pretest:ci": "pnpm build",
     "test:ci": "vitest run"
   },
   "dependencies": {
