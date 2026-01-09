@@ -3,7 +3,7 @@ import presetsPrettier from "@cybozu/eslint-config/flat/presets/prettier.js";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
-  ...presetsPrettier.map(config => ({
+  ...presetsPrettier.map((config) => ({
     ...config,
     rules: {
       ...config.rules,
@@ -13,7 +13,6 @@ export default [
   {
     languageOptions: {
       globals: {
-        ...globals.jest,
         ...globals.browser,
       },
     },

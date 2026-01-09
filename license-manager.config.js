@@ -4,6 +4,7 @@ const config = createConfig({
   analyze: {
     allowLicenses: [
       "MIT",
+      "MIT-0",
       "Apache-2.0",
       "BSD-2-Clause",
       "BSD-3-Clause",
@@ -47,8 +48,8 @@ const config = createConfig({
       return "MIT";
     }
     // https://www.npmjs.com/package/source-map
-    if(dep.name === "source-map") {
-      return "BSD-3-Clause"
+    if (dep.name === "source-map") {
+      return "BSD-3-Clause";
     }
     return undefined;
   },

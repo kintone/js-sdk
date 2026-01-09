@@ -31,8 +31,9 @@
     "fix": "pnpm lint --fix",
     "lint": "eslint 'src/**/*.ts' --max-warnings 0",
     "start": "pnpm build --watch",
-    "test": "jest --runInBand",
-    "test:ci": "jest --runInBand"
+    "test": "vitest run",
+    "pretest:ci": "pnpm build",
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "@kintone/plugin-packer": "^9.0.0",

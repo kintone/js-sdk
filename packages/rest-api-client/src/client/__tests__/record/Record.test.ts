@@ -1,3 +1,4 @@
+import type { Mock, MockInstance } from "vitest";
 import type { MockClient } from "../../../http/MockClient";
 import { BulkRequestClient } from "../../BulkRequestClient";
 import { RecordClient } from "../../RecordClient";
@@ -83,11 +84,11 @@ describe("RecordTest", () => {
         record,
         revision: 5,
       };
-      let getRecordsMockFn: jest.Mock;
-      let updateRecordMockFn: jest.Mock;
-      let addRecordMockFn: jest.Mock;
+      let getRecordsMockFn: Mock;
+      let updateRecordMockFn: Mock;
+      let addRecordMockFn: Mock;
       beforeEach(async () => {
-        getRecordsMockFn = jest.fn().mockResolvedValue({
+        getRecordsMockFn = vi.fn().mockResolvedValue({
           records: [
             {
               $id: {
@@ -97,10 +98,10 @@ describe("RecordTest", () => {
             },
           ],
         });
-        updateRecordMockFn = jest.fn().mockResolvedValue({
+        updateRecordMockFn = vi.fn().mockResolvedValue({
           revision: "2",
         });
-        addRecordMockFn = jest.fn();
+        addRecordMockFn = vi.fn();
         const bulkRequestClient = new BulkRequestClient(mockClient);
         recordClient = new RecordClient(mockClient, bulkRequestClient);
         recordClient.getRecords = getRecordsMockFn;
@@ -143,15 +144,15 @@ describe("RecordTest", () => {
         record,
         revision: 5,
       };
-      let getRecordsMockFn: jest.Mock;
-      let updateRecordMockFn: jest.Mock;
-      let addRecordMockFn: jest.Mock;
+      let getRecordsMockFn: Mock;
+      let updateRecordMockFn: Mock;
+      let addRecordMockFn: Mock;
       beforeEach(() => {
-        getRecordsMockFn = jest.fn().mockResolvedValue({
+        getRecordsMockFn = vi.fn().mockResolvedValue({
           records: [],
         });
-        updateRecordMockFn = jest.fn();
-        addRecordMockFn = jest.fn().mockResolvedValue({
+        updateRecordMockFn = vi.fn();
+        addRecordMockFn = vi.fn().mockResolvedValue({
           id: "10",
           revision: "1",
         });
@@ -217,9 +218,9 @@ describe("RecordTest", () => {
       });
     });
     describe("with offset", () => {
-      let consoleWarnMock: jest.SpyInstance;
+      let consoleWarnMock: MockInstance;
       beforeEach(() => {
-        consoleWarnMock = jest.spyOn(console, "warn");
+        consoleWarnMock = vi.spyOn(console, "warn");
         consoleWarnMock.mockImplementation((x) => x);
       });
       describe("offset <= 10000", () => {

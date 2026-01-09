@@ -7,10 +7,10 @@ import * as browserDeps from "../../platform/browser";
 import * as nodeDeps from "../../platform/node";
 import { KintoneRequestConfigBuilder } from "../../KintoneRequestConfigBuilder";
 
-jest.mock("form-data", () => {
-  const MockFormData = jest.fn();
-  MockFormData.prototype.append = jest.fn();
-  return MockFormData;
+vi.mock("form-data", () => {
+  const MockFormData = vi.fn();
+  MockFormData.prototype.append = vi.fn();
+  return { default: MockFormData };
 });
 
 describe("FileClient", () => {
@@ -42,8 +42,7 @@ describe("FileClient", () => {
         expect(mockClient.getLogs()[0].method).toBe("post");
       });
       it("should pass file object includes name and data as a param to the http client", () => {
-        const MockFormData = FormData as jest.MockedClass<typeof FormData>;
-        expect(MockFormData.prototype.append.mock.calls[0]).toEqual([
+        expect(vi.mocked(FormData.prototype.append).mock.calls[0]).toEqual([
           "file",
           params.file.data,
           params.file.name,
@@ -66,8 +65,7 @@ describe("FileClient", () => {
           }),
         });
         await fileClient.uploadFile(params);
-        const MockFormData = FormData as jest.MockedClass<typeof FormData>;
-        expect(MockFormData.prototype.append.mock.calls[0]).toEqual([
+        expect(vi.mocked(FormData.prototype.append).mock.calls[0]).toEqual([
           "file",
           "Hello!",
           params.file.path,
