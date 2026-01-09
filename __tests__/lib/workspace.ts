@@ -5,7 +5,7 @@ import fs from "fs";
 // eslint-disable-next-line node/no-unpublished-import
 import commentJSON from "comment-json";
 
-const IGNORE_PACKAGES: string[] = [];
+const IGNORE_PACKAGES: string[] = ["@kintone/configs"];
 
 let __cacheWorkspacesInfo: PnpmWorkSpaceInfo;
 
