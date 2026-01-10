@@ -58,7 +58,7 @@
     "assert": "^2.1.0",
     "cross-env": "^10.1.0",
     "ts-loader": "^9.5.4",
-    "webpack": "^5.101.3",
+    "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1"
   },
   "engines": {
