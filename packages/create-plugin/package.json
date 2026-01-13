@@ -40,6 +40,7 @@
     "test:generator": "cross-env NODE_ENV=e2e vitest run --config=vitest.generator.config.ts"
   },
   "dependencies": {
+    "@kintone/logger": "workspace:^",
     "@inquirer/prompts": "^5.5.0",
     "chalk": "^4.1.2",
     "glob": "^10.4.5",

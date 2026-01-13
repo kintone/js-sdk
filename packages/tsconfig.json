@@ -2,6 +2,7 @@
   "files": [],
   "include": [],
   "references": [
+    { "path": "./logger"},
     { "path": "./create-plugin"},
     { "path": "./customize-uploader"},
     { "path": "./dts-gen"},

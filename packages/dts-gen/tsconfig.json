@@ -14,5 +14,8 @@
         "outDir": "./dist",
         "rootDir": "./src",
         "strict": false // TODO enable strict mode
-    }
+    },
+    "references": [
+        { "path": "../logger" }
+    ]
 }

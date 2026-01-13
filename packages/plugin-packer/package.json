@@ -55,6 +55,7 @@
     "test:ci": "pnpm test"
   },
   "dependencies": {
+    "@kintone/logger": "workspace:^",
     "@kintone/plugin-manifest-validator": "^11.0.1",
     "chokidar": "^3.6.0",
     "debug": "^4.4.3",

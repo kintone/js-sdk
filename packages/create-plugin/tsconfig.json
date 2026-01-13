@@ -10,5 +10,8 @@
     ]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"]
+  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"],
+  "references": [
+    { "path": "../logger" }
+  ]
 }
