@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.0...@kintone/rest-api-client@6.1.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* **rest-api-client:** set cursor size to 500 in getAllRecordsWithCursor ([#3537](https://github.com/kintone/js-sdk/issues/3537)) ([4655911](https://github.com/kintone/js-sdk/commit/4655911373bbe4e58f986375812db7d790a5a6c0))
+
 ## [6.1.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.0.0...@kintone/rest-api-client@6.1.0) (2025-11-27)
 
 
