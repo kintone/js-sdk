@@ -5,6 +5,15 @@ import type {
   LogEventLevel,
   Printer,
 } from "./types";
+import { LOG_CONFIG_LEVELS } from "./types";
+
+const LEVEL_ORDER = LOG_CONFIG_LEVELS.reduce(
+  (acc, level, index) => {
+    acc[level] = index;
+    return acc;
+  },
+  {} as Record<LogConfigLevel, number>,
+);
 
 export class StandardLogger implements Logger {
   private readonly printer: Printer = console.error;
@@ -55,36 +64,20 @@ export class StandardLogger implements Logger {
       return;
     }
     const formattedMessage = this.format(event);
-    this.print(formattedMessage);
+    this.printer(formattedMessage);
   }
 
   private isPrintable(event: LogEvent): boolean {
-    const logConfigLevelMatrix: {
-      [configLevel in LogConfigLevel]: LogEventLevel[];
-    } = {
-      trace: ["trace", "debug", "info", "warn", "error", "fatal"],
-      debug: ["debug", "info", "warn", "error", "fatal"],
-      info: ["info", "warn", "error", "fatal"],
-      warn: ["warn", "error", "fatal"],
-      error: ["error", "fatal"],
-      fatal: ["fatal"],
-      none: [],
-    };
-    return logConfigLevelMatrix[this.logConfigLevel].includes(event.level);
+    if (this.logConfigLevel === "none") {
+      return false;
+    }
+    return LEVEL_ORDER[event.level] >= LEVEL_ORDER[this.logConfigLevel];
   }
 
   private format(event: LogEvent): string {
     const timestamp = new Date().toISOString();
-    const eventLevelLabels: { [level in LogEventLevel]: string } = {
-      trace: "TRACE",
-      debug: "DEBUG",
-      info: "INFO",
-      warn: "WARN",
-      error: "ERROR",
-      fatal: "FATAL",
-    };
-    const stringifiedMessage = stringifyMessage(event.message);
-    const prefix = `[${timestamp}] ${eventLevelLabels[event.level]}:`;
+    const stringifiedMessage = this.stringifyMessage(event.message);
+    const prefix = `[${timestamp}] ${event.level.toUpperCase()}:`;
 
     return stringifiedMessage
       .split("\n")
@@ -93,16 +86,12 @@ export class StandardLogger implements Logger {
       .join("\n");
   }
 
-  private print(message: string): void {
-    this.printer(message);
+  private stringifyMessage(message: unknown): string {
+    if (message instanceof Error) {
+      return message.toString();
+    }
+    return String(message);
   }
 }
 
 export const logger = new StandardLogger();
-
-const stringifyMessage = (message: unknown): string => {
-  if (message instanceof Error) {
-    return message.toString();
-  }
-  return String(message);
-};

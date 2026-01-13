@@ -19,13 +19,7 @@ export const LOG_CONFIG_LEVELS = [
 
 export type LogConfigLevel = (typeof LOG_CONFIG_LEVELS)[number];
 
-export type LogEventLevel =
-  | "trace"
-  | "debug"
-  | "info"
-  | "warn"
-  | "error"
-  | "fatal";
+export type LogEventLevel = Exclude<LogConfigLevel, "none">;
 
 export type LogEvent = {
   level: LogEventLevel;
