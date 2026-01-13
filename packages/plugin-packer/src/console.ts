@@ -1,5 +1,10 @@
+import { logger } from "@kintone/logger";
+
+const formatArgs = (...args: unknown[]): string =>
+  args.map((arg) => String(arg)).join(" ");
+
 export = {
-  log: console.log,
-  error: console.error,
-  warn: console.warn,
+  log: (...args: unknown[]) => logger.info(formatArgs(...args)),
+  error: (...args: unknown[]) => logger.error(formatArgs(...args)),
+  warn: (...args: unknown[]) => logger.warn(formatArgs(...args)),
 };

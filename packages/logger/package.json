@@ -1,0 +1,51 @@
+{
+  "name": "@kintone/logger",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Logger utility for kintone CLI tools",
+  "homepage": "https://github.com/kintone/js-sdk/tree/main/packages/logger#readme",
+  "bugs": {
+    "url": "https://github.com/kintone/js-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintone/js-sdk.git",
+    "directory": "packages/logger"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Cybozu, Inc.",
+    "url": "https://cybozu.co.jp"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "!**/*.tsbuildinfo"
+  ],
+  "scripts": {
+    "prebuild": "pnpm clean",
+    "build": "tsc --build --force",
+    "clean": "rimraf lib",
+    "fix": "pnpm lint --fix",
+    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
+    "start": "pnpm build --watch",
+    "test": "vitest run",
+    "test:ci": "vitest run"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

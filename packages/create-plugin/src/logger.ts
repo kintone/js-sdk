@@ -1,17 +1,9 @@
-"use strict";
+import { logger } from "@kintone/logger";
 
-/**
- * Print logs
- * @param texts
- */
 export const printLog = (...texts: string[]) => {
-  texts.forEach((t) => console.log(t));
+  texts.forEach((t) => logger.info(t));
 };
 
-/**
- * Print errors
- * @param errors
- */
 export const printError = (...errors: string[]) => {
-  errors.forEach((e) => console.error(e));
+  errors.forEach((e) => logger.error(e));
 };
