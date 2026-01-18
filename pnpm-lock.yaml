@@ -228,7 +228,7 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1
       '@types/node':
-        specifier: ^22.19.6
+        specifier: ^22.19.7
         version: 22.19.7
       '@typescript-eslint/rule-tester':
         specifier: ^8.47.0
@@ -9023,7 +9023,7 @@ snapshots:
 
   '@types/adm-zip@0.5.7':
     dependencies:
-      '@types/node': 18.19.130
+      '@types/node': 22.19.7
 
   '@types/argparse@1.0.38': {}
 
@@ -9198,11 +9198,11 @@ snapshots:
 
   '@types/stream-buffers@3.0.8':
     dependencies:
-      '@types/node': 18.19.130
+      '@types/node': 22.19.7
 
   '@types/through@0.0.33':
     dependencies:
-      '@types/node': 18.19.130
+      '@types/node': 22.19.7
 
   '@types/wrap-ansi@3.0.0': {}
 
@@ -9212,11 +9212,11 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 18.19.130
+      '@types/node': 22.19.7
 
   '@types/yazl@2.4.6':
     dependencies:
-      '@types/node': 18.19.130
+      '@types/node': 22.19.7
 
   '@typescript-eslint/eslint-plugin@8.44.1(@typescript-eslint/parser@8.44.1(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0)(typescript@5.9.3)':
     dependencies:
