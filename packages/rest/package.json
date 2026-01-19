@@ -63,7 +63,7 @@
     "core-js": "^3.46.0",
     "fs": "0.0.1-security",
     "js-base64": "^3.7.8",
-    "openapi-fetch": "^0.13.8",
+    "openapi-fetch": "^0.15.0",
     "openapi-typescript": "^7.10.1",
     "openapi-typescript-helpers": "^0.0.15",
     "undici": "^7.16.0"
