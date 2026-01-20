@@ -3,13 +3,25 @@ import { toTsExpressions } from "./expression";
 import { Converter as FieldTypeConverter } from "./typescriptfieldtypeconverter";
 
 export class FieldGroup implements TsExpression {
+  private stringFields: TsDefinedField[];
+  private calculatedFields: TsDefinedField[];
+  private stringListFields: TsDefinedField[];
+  private entityListFields: TsDefinedField[];
+  private fileFields: TsDefinedField[];
+
   constructor(
-    private stringFields: TsDefinedField[],
-    private calculatedFields: TsDefinedField[],
-    private stringListFields: TsDefinedField[],
-    private entityListFields: TsDefinedField[],
-    private fileFields: TsDefinedField[],
-  ) {}
+    stringFields: TsDefinedField[],
+    calculatedFields: TsDefinedField[],
+    stringListFields: TsDefinedField[],
+    entityListFields: TsDefinedField[],
+    fileFields: TsDefinedField[],
+  ) {
+    this.stringFields = stringFields;
+    this.calculatedFields = calculatedFields;
+    this.stringListFields = stringListFields;
+    this.entityListFields = entityListFields;
+    this.fileFields = fileFields;
+  }
 
   tsExpression(): string {
     return `
@@ -39,11 +51,15 @@ export class TsDefinedField implements TsExpression {
 }
 
 export class SubTableField implements TsExpression {
-  constructor(
-    private fieldName: string,
-    private fieldType: string,
-    private fieldGroup: FieldGroup,
-  ) {}
+  private fieldName: string;
+  private fieldType: string;
+  private fieldGroup: FieldGroup;
+
+  constructor(fieldName: string, fieldType: string, fieldGroup: FieldGroup) {
+    this.fieldName = fieldName;
+    this.fieldType = fieldType;
+    this.fieldGroup = fieldGroup;
+  }
   tsExpression(): string {
     return `
 "${this.fieldName}" : {

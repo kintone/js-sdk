@@ -39,7 +39,7 @@ const packer = (
     })) as any;
 };
 
-export = packer;
+export default packer;
 
 /**
  * Create plugin.zip

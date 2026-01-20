@@ -3,11 +3,19 @@ import type { TsExpression } from "./expression";
 import { toTsExpressions } from "./expression";
 
 export class TypeDefinition implements TsExpression {
+  private typeName: string;
+  private fieldGroup: FieldGroup;
+  private subtableFields: SubTableField[];
+
   constructor(
-    private typeName: string,
-    private fieldGroup: FieldGroup,
-    private subtableFields: SubTableField[],
-  ) {}
+    typeName: string,
+    fieldGroup: FieldGroup,
+    subtableFields: SubTableField[],
+  ) {
+    this.typeName = typeName;
+    this.fieldGroup = fieldGroup;
+    this.subtableFields = subtableFields;
+  }
   tsExpression(): string {
     return `
 interface ${this.typeName} {
@@ -18,11 +26,19 @@ interface ${this.typeName} {
 }
 
 export class SavedTypeDefinition implements TsExpression {
+  private typeName: string;
+  private userFields: TsDefinedField[];
+  private stringFieldsInSavedRecord: TsDefinedField[];
+
   constructor(
-    private typeName: string,
-    private userFields: TsDefinedField[],
-    private stringFieldsInSavedRecord: TsDefinedField[],
-  ) {}
+    typeName: string,
+    userFields: TsDefinedField[],
+    stringFieldsInSavedRecord: TsDefinedField[],
+  ) {
+    this.typeName = typeName;
+    this.userFields = userFields;
+    this.stringFieldsInSavedRecord = stringFieldsInSavedRecord;
+  }
 
   tsExpression(): string {
     return `
