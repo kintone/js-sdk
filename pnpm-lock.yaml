@@ -554,8 +554,8 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/plugin-packer':
-        specifier: ^9.0.0
-        version: 9.0.0
+        specifier: ^9.0.1
+        version: 9.0.1
       mkdirp:
         specifier: ^3.0.1
         version: 3.0.1
@@ -1760,16 +1760,12 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@kintone/plugin-manifest-validator@10.3.1':
-    resolution: {integrity: sha512-tvnJBgE0QalaSAi2v1P5MTIwaExKkI5s1O+wj24y1H5NiCTed/3EibSjFboJkKg3T6m83TtxtgXC3AfwV3MO5Q==}
-    engines: {node: '>=18'}
-
   '@kintone/plugin-manifest-validator@11.0.1':
     resolution: {integrity: sha512-FIgiGpv9Xzl1ORPOLl0KUjsoHNfR2bRw09S8KqkBn2SCDQIZIHV64gPfYzz/FW7d1J4xqC84P98+KbaELMbQBA==}
     engines: {node: '>=20'}
 
-  '@kintone/plugin-packer@9.0.0':
-    resolution: {integrity: sha512-aoVnnxmWgiw26j6wX2zjL+BBq+tEYFqZ9Ujlx8L7HL/b289cC9jrpXqhM7QtjeQ0CpOzHlFUX9+mHQykT+d8Kg==}
+  '@kintone/plugin-packer@9.0.1':
+    resolution: {integrity: sha512-acYU//MtkcAGci40PcxwGHevkb2Kw0uF6xrDkEFm8+CVz1k+6jC5Fwdp0oCLiwTg6lg9JkAMPLt0qII0sT2J8A==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -8450,21 +8446,15 @@ snapshots:
       '@jsonjoy.com/codegen': 1.0.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@kintone/plugin-manifest-validator@10.3.1':
-    dependencies:
-      ajv: 8.17.1
-      ajv-formats: 3.0.1(ajv@8.17.1)
-      bytes: 3.1.2
-
   '@kintone/plugin-manifest-validator@11.0.1':
     dependencies:
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
       bytes: 3.1.2
 
-  '@kintone/plugin-packer@9.0.0':
+  '@kintone/plugin-packer@9.0.1':
     dependencies:
-      '@kintone/plugin-manifest-validator': 10.3.1
+      '@kintone/plugin-manifest-validator': 11.0.1
       chokidar: 3.6.0
       debug: 4.4.3(supports-color@10.2.2)
       denodeify: 1.2.1
