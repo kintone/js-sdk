@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.2](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@9.0.1...@kintone/create-plugin@9.0.2) (2026-01-26)
+
+
+### Bug Fixes
+
+* enable erasableSyntaxOnly option ([#3571](https://github.com/kintone/js-sdk/issues/3571)) ([78eaa02](https://github.com/kintone/js-sdk/commit/78eaa02e53e779e15ec76642b2e3f50b1c4102c6))
+
 ## [9.0.1](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@9.0.0...@kintone/create-plugin@9.0.1) (2026-01-06)
 
 
