@@ -469,8 +469,8 @@ importers:
         specifier: ^0.0.2
         version: 0.0.2(picomatch@4.0.3)(rollup@4.55.1)(vite@5.4.21(@types/node@22.19.7)(terser@5.44.0))
       vite-plugin-static-copy:
-        specifier: ^3.1.4
-        version: 3.1.4(vite@5.4.21(@types/node@22.19.7)(terser@5.44.0))
+        specifier: ^3.1.6
+        version: 3.1.6(vite@5.4.21(@types/node@22.19.7)(terser@5.44.0))
 
   packages/rest-api-client:
     dependencies:
@@ -5361,8 +5361,8 @@ packages:
     resolution: {integrity: sha512-wPrq66Llhl7/4AGC6I+cqxT07LhXvWL08LNXz1fENOw0Ap4sRZZ/gZpTTJ5jpurzzzfS2W/Ge9BY3LgLjCShcw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  p-map@7.0.3:
-    resolution: {integrity: sha512-VkndIv2fIB99swvQoA65bm+fsmt6UNdGeIB0oxBs+WhAhdh08QA04JXpI7rbB9r08/nkbysKoya9rtDERYOYMA==}
+  p-map@7.0.4:
+    resolution: {integrity: sha512-tkAQEw8ysMzmkhgw8k+1U/iPhWNhykKnSk4Rd5zLoPJCuJaGRPo6YposrZgaxHKzDHdDWWZvE/Sk7hsL2X/CpQ==}
     engines: {node: '>=18'}
 
   p-retry@6.2.1:
@@ -6781,8 +6781,8 @@ packages:
     peerDependencies:
       vite: ^7.1.12
 
-  vite-plugin-static-copy@3.1.4:
-    resolution: {integrity: sha512-iCmr4GSw4eSnaB+G8zc2f4dxSuDjbkjwpuBLLGvQYR9IW7rnDzftnUjOH5p4RYR+d4GsiBqXRvzuFhs5bnzVyw==}
+  vite-plugin-static-copy@3.1.6:
+    resolution: {integrity: sha512-dO8Qc71yVCmcrsKrJRgSWmWj9khI7X8fLy8X35/ZFR+Nik8CQ1uUgK7iD2KQc2AQdG51sNegSj8Tb4mDKeNYZA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0 || ^7.0.0
@@ -12391,7 +12391,7 @@ snapshots:
     dependencies:
       p-limit: 4.0.0
 
-  p-map@7.0.3: {}
+  p-map@7.0.4: {}
 
   p-retry@6.2.1:
     dependencies:
@@ -14022,10 +14022,10 @@ snapshots:
       - picomatch
       - rollup
 
-  vite-plugin-static-copy@3.1.4(vite@5.4.21(@types/node@22.19.7)(terser@5.44.0)):
+  vite-plugin-static-copy@3.1.6(vite@5.4.21(@types/node@22.19.7)(terser@5.44.0)):
     dependencies:
       chokidar: 3.6.0
-      p-map: 7.0.3
+      p-map: 7.0.4
       picocolors: 1.1.1
       tinyglobby: 0.2.15
       vite: 5.4.21(@types/node@22.19.7)(terser@5.44.0)
