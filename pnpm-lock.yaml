@@ -98,7 +98,7 @@ importers:
         specifier: ^10.4.5
         version: 10.4.5
       lodash:
-        specifier: ^4.17.21
+        specifier: ^4.17.23
         version: 4.17.23
       meow:
         specifier: ^9.0.0
@@ -187,7 +187,7 @@ importers:
         specifier: ^4.0.5
         version: 4.0.5
       lodash:
-        specifier: ^4.17.21
+        specifier: ^4.17.23
         version: 4.17.23
       prettier:
         specifier: ^3.6.2
