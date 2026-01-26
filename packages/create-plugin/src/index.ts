@@ -1,6 +1,6 @@
 "use strict";
 
-import chalk = require("chalk");
+import chalk from "chalk";
 import * as fs from "fs";
 import { rimraf } from "rimraf";
 import { generatePlugin } from "./generator";

@@ -16,6 +16,7 @@ export type UpdateAppCustomizeParameter = {
 
 export default class KintoneApiClient {
   private restApiClient: KintoneRestAPIClient;
+  public options: Option;
   public constructor(
     username: string | null,
     password: string | null,
@@ -23,8 +24,9 @@ export default class KintoneApiClient {
     basicAuthUsername: string | null,
     basicAuthPassword: string | null,
     baseUrl: string,
-    public options: Option,
+    options: Option,
   ) {
+    this.options = options;
     let auth;
     if (username && password) {
       auth = {
