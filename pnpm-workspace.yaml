@@ -5,3 +5,6 @@ packages:
   - "!**/templates/**"
 
 minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  # Renovate security update: lodash@4.17.23
+  - lodash@4.17.23
