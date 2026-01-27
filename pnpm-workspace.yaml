@@ -8,3 +8,5 @@ minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   # Renovate security update: lodash@4.17.23
   - lodash@4.17.23
+  # Renovate security update: body-parser@2.2.1
+  - body-parser@2.2.1
