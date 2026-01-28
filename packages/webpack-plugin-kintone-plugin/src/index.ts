@@ -19,10 +19,8 @@ type PluginZipPathFunction = (
 class KintonePlugin implements WebpackPluginInstance {
   private readonly options: Option;
   private readonly name: string;
-  private privateKey: string | null;
   constructor(options: Partial<Option> = {}) {
     this.name = "KintonePlugin";
-    this.privateKey = null;
     this.options = Object.assign(
       {
         manifestJSONPath: "./plugin/manifest.json",
@@ -41,7 +39,6 @@ class KintonePlugin implements WebpackPluginInstance {
       if (!fs.existsSync(privateKeyPath)) {
         throw new Error(`privateKeyPath cannot found: ${privateKeyPath}`);
       }
-      this.privateKey = fs.readFileSync(privateKeyPath, "utf-8");
 
       if (compiler.options.watch || compiler.watchMode) {
         compiler.hooks.afterCompile.tap(this.name, (compilation) => {
@@ -70,28 +67,27 @@ class KintonePlugin implements WebpackPluginInstance {
   /**
    * Generate a plugin zip
    */
-  private generatePlugin(): Promise<void> {
-    const { manifestJSONPath, pluginZipPath } = this.options;
-    return generatePlugin(manifestJSONPath, this.privateKey).then((result) => {
-      const zipPath =
-        // You can customize the zip file name using the plugin id and manifest
-        typeof pluginZipPath === "function"
-          ? pluginZipPath(
-              result.id,
-              JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8")),
-            )
-          : pluginZipPath;
-      const zipDir = path.dirname(zipPath);
-      if (!fs.existsSync(zipDir)) {
-        mkdirp.sync(zipDir);
-      }
-      fs.writeFileSync(zipPath, result.buffer);
-      console.log("----------------------");
-      console.log("Success to create a plugin zip!");
-      console.log(`Plugin ID: ${result.id}`);
-      console.log(`Path: ${zipPath}`);
-      console.log("----------------------");
-    });
+  private async generatePlugin(): Promise<void> {
+    const { manifestJSONPath, pluginZipPath, privateKeyPath } = this.options;
+    const result = await generatePlugin(manifestJSONPath, privateKeyPath);
+    const zipPath =
+      // You can customize the zip file name using the plugin id and manifest
+      typeof pluginZipPath === "function"
+        ? pluginZipPath(
+            result.id,
+            JSON.parse(fs.readFileSync(manifestJSONPath, "utf-8")),
+          )
+        : pluginZipPath;
+    const zipDir = path.dirname(zipPath);
+    if (!fs.existsSync(zipDir)) {
+      mkdirp.sync(zipDir);
+    }
+    fs.writeFileSync(zipPath, result.buffer);
+    console.log("----------------------");
+    console.log("Success to create a plugin zip!");
+    console.log(`Plugin ID: ${result.id}`);
+    console.log(`Path: ${zipPath}`);
+    console.log("----------------------");
   }
 }
 

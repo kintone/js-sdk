@@ -41,6 +41,16 @@ The settings is the following structure.
 - `private.ppk` is the private key for the plugin
 - `dist/plugin.zip` is the plugin zip file.
 
+## Private Key Generation
+
+To generate a private key for your plugin, use the cli-kintone command:
+
+```bash
+npx @kintone/cli plugin keygen --output ./private.ppk
+```
+
+For more details, see the [cli-kintone documentation](https://github.com/kintone/cli-kintone).
+
 ## Install
 
 ```
