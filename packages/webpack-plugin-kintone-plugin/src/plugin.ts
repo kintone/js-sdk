@@ -1,12 +1,9 @@
+import crypto from "crypto";
 import fs from "fs";
 import path from "path";
+import os from "os";
 
-const packFromManifest = require("@kintone/plugin-packer/from-manifest");
-
-interface PackedPlugin {
-  id: string;
-  plugin: Buffer;
-}
+import { getPluginInfo, packPlugin } from "./cli-runner";
 
 interface Manifest {
   desktop?: {
@@ -58,17 +55,29 @@ export const getAssetPaths = (manifestJSONPath: string): string[] => {
     path.resolve(path.dirname(manifestJSONPath), file),
   );
 };
+
 /**
  * Generate a plugin zip
- * @param manifestJSONPath
- * @param pluginZipPath
- * @param privateKey
+ * @param manifestJSONPath Path to manifest.json
+ * @param privateKeyPath Path to private key file
  */
-export const generatePlugin = (
+export const generatePlugin = async (
   manifestJSONPath: string,
-  privateKey: string | null,
+  privateKeyPath: string,
 ): Promise<{ id: string; buffer: Buffer }> => {
-  return packFromManifest(manifestJSONPath, privateKey).then(
-    (output: PackedPlugin) => ({ id: output.id, buffer: output.plugin }),
+  const tempOutputPath = path.join(
+    os.tmpdir(),
+    `kintone-plugin-${crypto.randomUUID()}.zip`,
   );
+
+  try {
+    await packPlugin(manifestJSONPath, privateKeyPath, tempOutputPath);
+    const { id: pluginId } = await getPluginInfo(tempOutputPath);
+    const buffer = await fs.promises.readFile(tempOutputPath);
+    return { id: pluginId, buffer };
+  } finally {
+    if (fs.existsSync(tempOutputPath)) {
+      fs.unlinkSync(tempOutputPath);
+    }
+  }
 };

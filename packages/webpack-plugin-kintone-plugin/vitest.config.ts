@@ -20,5 +20,7 @@ export default defineConfig({
     sequence: {
       hooks: "list",
     },
+    // Run test files sequentially to avoid file conflicts in shared fixtures
+    fileParallelism: false,
   },
 });
