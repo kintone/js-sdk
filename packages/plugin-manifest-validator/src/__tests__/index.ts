@@ -515,14 +515,15 @@ describe("validator", () => {
 
   describe("supported language", () => {
     it.each`
-      languageCode | name        | description    | homepage_url
-      ${"ja"}      | ${"名前"}   | ${"説明"}      | ${"https://example.com/ja"}
-      ${"en"}      | ${"name"}   | ${"desc"}      | ${"https://example.com/en"}
-      ${"zh"}      | ${"名称"}   | ${"描述"}      | ${"https://example.com/zh"}
-      ${"zh-TW"}   | ${"名稱"}   | ${"描述"}      | ${"https://example.com/zh-TW"}
-      ${"es"}      | ${"nombre"} | ${"desc"}      | ${"https://example.com/es"}
-      ${"th"}      | ${"ชื่อ"}   | ${"คำอธิบาย"}  | ${"https://example.com/th"}
-      ${"pt-BR"}   | ${"nome"}   | ${"descrição"} | ${"https://example.com/pt-BR"}
+      languageCode | name        | description     | homepage_url
+      ${"ja"}      | ${"名前"}   | ${"説明"}       | ${"https://example.com/ja"}
+      ${"en"}      | ${"name"}   | ${"desc"}       | ${"https://example.com/en"}
+      ${"zh"}      | ${"名称"}   | ${"描述"}       | ${"https://example.com/zh"}
+      ${"zh-TW"}   | ${"名稱"}   | ${"描述"}       | ${"https://example.com/zh-TW"}
+      ${"es"}      | ${"nombre"} | ${"desc"}       | ${"https://example.com/es"}
+      ${"th"}      | ${"ชื่อ"}   | ${"คำอธิบาย"}   | ${"https://example.com/th"}
+      ${"pt-BR"}   | ${"nome"}   | ${"descrição"}  | ${"https://example.com/pt-BR"}
+      ${"ms-MY"}   | ${"nama"}   | ${"keterangan"} | ${"https://example.com/ms-MY"}
     `(
       `should return no error when the supported language is specified: $languageCode`,
       ({ languageCode, name, description, homepage_url }) => {
@@ -562,6 +563,7 @@ describe("validator", () => {
       ${"es"}      | ${"nombre"}
       ${"th"}      | ${"ชื่อ"}
       ${"pt-BR"}   | ${"nome"}
+      ${"ms-MY"}   | ${"nama"}
     `(
       `should return warnings when the name of the language "$languageCode" is specified and homepage_url is missing`,
       ({ languageCode, name }) => {
@@ -597,6 +599,7 @@ describe("validator", () => {
       ${"es"}      | ${"https://example.com/es"}
       ${"th"}      | ${"https://example.com/th"}
       ${"pt-BR"}   | ${"https://example.com/pt-BR"}
+      ${"ms-MY"}   | ${"https://example.com/ms-MY"}
     `(
       `should return errors when the homepage_url of the language "$languageCode" is specified and name is missing`,
       ({ languageCode, homepage_url }) => {
