@@ -98,7 +98,16 @@ export type Guest = {
   code: string;
   password: string;
   timezone: string;
-  locale?: "auto" | "en" | "zh" | "ja";
+  locale?:
+    | "auto"
+    | "en"
+    | "zh"
+    | "zh-TW"
+    | "ja"
+    | "es"
+    | "pt-BR"
+    | "th"
+    | "ms-MY";
   image?: string;
   surNameReading?: string;
   givenNameReading?: string;
