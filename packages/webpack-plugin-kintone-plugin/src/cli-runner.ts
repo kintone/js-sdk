@@ -58,20 +58,12 @@ const runCliKintone = (
   });
 };
 
-interface PluginInfo {
-  id: string;
-  name: string;
-  version: number;
-  description: string;
-}
-
 /**
- * Get plugin information from a plugin zip file
+ * Get plugin ID from a plugin zip file
  * @param pluginZipPath Path to the plugin zip file
+ * @returns Plugin ID
  */
-export const getPluginInfo = async (
-  pluginZipPath: string,
-): Promise<PluginInfo> => {
+export const getPluginId = async (pluginZipPath: string): Promise<string> => {
   const stdout = await runCliKintone([
     "plugin",
     "info",
@@ -82,7 +74,8 @@ export const getPluginInfo = async (
   ]);
 
   try {
-    return JSON.parse(stdout);
+    const info: { id: string } = JSON.parse(stdout);
+    return info.id;
   } catch {
     throw new Error(`Failed to parse plugin info JSON: ${stdout}`);
   }

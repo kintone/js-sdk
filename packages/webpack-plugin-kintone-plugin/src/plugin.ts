@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 
-import { getPluginInfo, packPlugin } from "./cli-runner";
+import { getPluginId, packPlugin } from "./cli-runner";
 
 interface Manifest {
   desktop?: {
@@ -72,7 +72,7 @@ export const generatePlugin = async (
 
   try {
     await packPlugin(manifestJSONPath, privateKeyPath, tempOutputPath);
-    const { id: pluginId } = await getPluginInfo(tempOutputPath);
+    const pluginId = await getPluginId(tempOutputPath);
     const buffer = await fs.promises.readFile(tempOutputPath);
     return { id: pluginId, buffer };
   } finally {
