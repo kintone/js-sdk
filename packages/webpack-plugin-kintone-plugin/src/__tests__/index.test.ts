@@ -4,18 +4,17 @@ import path from "path";
 import { rimrafSync } from "rimraf";
 import webpack from "webpack";
 import { promisify } from "util";
-import { verifyPluginZip } from "./helpers";
 import merge from "webpack-merge";
 import KintonePlugin from "../index";
-
-const pluginDir = path.resolve(__dirname, "fixtures", "sample");
-const pluginJsOutputPaths = [
-  path.resolve(pluginDir, "plugin", "js", "desktop.js"),
-  path.resolve(pluginDir, "plugin", "js", "mobile.js"),
-  path.resolve(pluginDir, "plugin", "js", "config.js"),
-];
-
-const PLUGIN_ID = "nfjiheanbocphdnoehhpddjmkhciokjb";
+import {
+  verifyPluginZip,
+  fixtureDir,
+  pluginDir,
+  manifestJSONPath,
+  privateKeyPath,
+  expectedPluginId,
+  cleanupJsFiles,
+} from "./helpers";
 
 const tempDir = fs.mkdtempSync(
   path.join(os.tmpdir(), "kintone-webpack-plugin-kintone-plugin-index-"),
@@ -24,12 +23,12 @@ const tempDir = fs.mkdtempSync(
 const webpackBaseConfig: webpack.Configuration = {
   mode: "production",
   entry: {
-    desktop: path.resolve(pluginDir, "src", "desktop.js"),
-    mobile: path.resolve(pluginDir, "src", "mobile.js"),
-    config: path.resolve(pluginDir, "src", "config.js"),
+    desktop: path.resolve(fixtureDir, "src", "desktop.js"),
+    mobile: path.resolve(fixtureDir, "src", "mobile.js"),
+    config: path.resolve(fixtureDir, "src", "config.js"),
   },
   output: {
-    path: path.resolve(pluginDir, "plugin", "js"),
+    path: path.resolve(pluginDir, "js"),
     filename: "[name].js",
   },
 };
@@ -40,13 +39,7 @@ describe("KintonePlugin", () => {
   });
 
   afterEach(() => {
-    [...pluginJsOutputPaths].forEach((generatedFilePath) => {
-      try {
-        fs.unlinkSync(generatedFilePath);
-      } catch (e) {
-        // noop
-      }
-    });
+    cleanupJsFiles();
   });
 
   it("should be able to create a plugin zip", async () => {
@@ -54,8 +47,8 @@ describe("KintonePlugin", () => {
     const config = merge(webpackBaseConfig, {
       plugins: [
         new KintonePlugin({
-          manifestJSONPath: path.resolve(pluginDir, "plugin", "manifest.json"),
-          privateKeyPath: path.resolve(pluginDir, "private.ppk"),
+          manifestJSONPath,
+          privateKeyPath,
           pluginZipPath,
         }),
       ],
@@ -69,13 +62,13 @@ describe("KintonePlugin", () => {
   it("should be able to customize the zip name", async () => {
     const pluginZipPath = path.resolve(
       tempDir,
-      `${PLUGIN_ID}.sample.plugin.zip`,
+      `${expectedPluginId}.sample.plugin.zip`,
     );
     const config = merge(webpackBaseConfig, {
       plugins: [
         new KintonePlugin({
-          manifestJSONPath: path.resolve(pluginDir, "plugin", "manifest.json"),
-          privateKeyPath: path.resolve(pluginDir, "private.ppk"),
+          manifestJSONPath,
+          privateKeyPath,
           pluginZipPath: (id, manifest) =>
             path.resolve(
               tempDir,
@@ -95,8 +88,8 @@ describe("KintonePlugin", () => {
     const config = merge(webpackBaseConfig, {
       plugins: [
         new KintonePlugin({
-          manifestJSONPath: path.resolve(pluginDir, "plugin", "manifest.json"),
-          privateKeyPath: path.resolve(pluginDir, "private.ppk"),
+          manifestJSONPath,
+          privateKeyPath,
           pluginZipPath,
         }),
       ],
@@ -111,13 +104,13 @@ describe("KintonePlugin", () => {
     const pluginZipPath = path.resolve(
       tempDir,
       "nonExistDirWithCustomizeName",
-      `${PLUGIN_ID}.sample.plugin.zip`,
+      `${expectedPluginId}.sample.plugin.zip`,
     );
     const config = merge(webpackBaseConfig, {
       plugins: [
         new KintonePlugin({
-          manifestJSONPath: path.resolve(pluginDir, "plugin", "manifest.json"),
-          privateKeyPath: path.resolve(pluginDir, "private.ppk"),
+          manifestJSONPath,
+          privateKeyPath,
           pluginZipPath: (id, manifest) =>
             path.resolve(
               tempDir,

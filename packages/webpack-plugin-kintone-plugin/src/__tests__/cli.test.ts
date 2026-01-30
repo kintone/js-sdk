@@ -2,15 +2,9 @@ import { spawnSync } from "child_process";
 import fs from "fs";
 import os from "os";
 import path from "path";
-import { verifyPluginZip } from "./helpers";
+import { verifyPluginZip, fixtureDir, cleanupJsFiles } from "./helpers";
 
-const pluginDir = path.resolve(__dirname, "fixtures", "sample");
-const pluginZipPath = path.resolve(pluginDir, "dist", "plugin.zip");
-const pluginJsOutputPaths = [
-  path.resolve(pluginDir, "plugin", "js", "desktop.js"),
-  path.resolve(pluginDir, "plugin", "js", "mobile.js"),
-  path.resolve(pluginDir, "plugin", "js", "config.js"),
-];
+const pluginZipPath = path.resolve(fixtureDir, "dist", "plugin.zip");
 
 const runWebpack = (config = "webpack.config.js") => {
   const isWindows = os.platform() === "win32";
@@ -19,7 +13,7 @@ const runWebpack = (config = "webpack.config.js") => {
     isWindows ? "npx.cmd" : "npx",
     ["webpack", "--config", config, "--mode", "production"],
     {
-      cwd: pluginDir,
+      cwd: fixtureDir,
       shell: isWindows,
     },
   );
@@ -28,13 +22,12 @@ const runWebpack = (config = "webpack.config.js") => {
 describe("KintonePlugin", () => {
   afterAll(() => {
     // Cleanup the zip
-    [pluginZipPath, ...pluginJsOutputPaths].forEach((generatedFilePath) => {
-      try {
-        fs.unlinkSync(generatedFilePath);
-      } catch (e) {
-        // noop
-      }
-    });
+    try {
+      fs.unlinkSync(pluginZipPath);
+    } catch {
+      // noop
+    }
+    cleanupJsFiles();
   });
   it("should be able to create a plugin zip", () => {
     const rs = runWebpack();
