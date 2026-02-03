@@ -23,6 +23,7 @@ export interface KintonePluginManifestJson {
     es?: string;
     th?: string;
     "pt-BR"?: string;
+    "ms-MY"?: string;
   };
   description?: {
     ja?: string;
@@ -32,6 +33,7 @@ export interface KintonePluginManifestJson {
     es?: string;
     th?: string;
     "pt-BR"?: string;
+    "ms-MY"?: string;
   };
   /**
    * internal only
@@ -45,6 +47,7 @@ export interface KintonePluginManifestJson {
     es?: string;
     th?: string;
     "pt-BR"?: string;
+    "ms-MY"?: string;
   };
   desktop?: {
     js?: Resources;

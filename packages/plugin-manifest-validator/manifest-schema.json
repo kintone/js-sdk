@@ -136,6 +136,21 @@
             ],
             "warn": true
           }
+        },
+        "ms-MY": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "requiredProperties": {
+            "items": [
+              {
+                "homepage_url": {
+                  "properties": ["ms-MY"]
+                }
+              }
+            ],
+            "warn": true
+          }
         }
       },
       "required": ["en"]
@@ -175,6 +190,11 @@
           "maxLength": 200
         },
         "pt-BR": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "ms-MY": {
           "type": "string",
           "minLength": 1,
           "maxLength": 200
@@ -287,6 +307,20 @@
               {
                 "name": {
                   "properties": ["pt-BR"]
+                }
+              }
+            ]
+          }
+        },
+        "ms-MY": {
+          "type": "string",
+          "minLength": 1,
+          "format": "http-url",
+          "requiredProperties": {
+            "items": [
+              {
+                "name": {
+                  "properties": ["ms-MY"]
                 }
               }
             ]
