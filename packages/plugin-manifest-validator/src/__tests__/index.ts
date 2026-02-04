@@ -523,7 +523,7 @@ describe("validator", () => {
       ${"es"}      | ${"nombre"} | ${"desc"}       | ${"https://example.com/es"}
       ${"th"}      | ${"ชื่อ"}   | ${"คำอธิบาย"}   | ${"https://example.com/th"}
       ${"pt-BR"}   | ${"nome"}   | ${"descrição"}  | ${"https://example.com/pt-BR"}
-      ${"ms-MY"}   | ${"nama"}   | ${"keterangan"} | ${"https://example.com/ms-MY"}
+      ${"ms"}      | ${"nama"}   | ${"keterangan"} | ${"https://example.com/ms"}
     `(
       `should return no error when the supported language is specified: $languageCode`,
       ({ languageCode, name, description, homepage_url }) => {
@@ -563,7 +563,7 @@ describe("validator", () => {
       ${"es"}      | ${"nombre"}
       ${"th"}      | ${"ชื่อ"}
       ${"pt-BR"}   | ${"nome"}
-      ${"ms-MY"}   | ${"nama"}
+      ${"ms"}      | ${"nama"}
     `(
       `should return warnings when the name of the language "$languageCode" is specified and homepage_url is missing`,
       ({ languageCode, name }) => {
@@ -599,7 +599,7 @@ describe("validator", () => {
       ${"es"}      | ${"https://example.com/es"}
       ${"th"}      | ${"https://example.com/th"}
       ${"pt-BR"}   | ${"https://example.com/pt-BR"}
-      ${"ms-MY"}   | ${"https://example.com/ms-MY"}
+      ${"ms"}      | ${"https://example.com/ms"}
     `(
       `should return errors when the homepage_url of the language "$languageCode" is specified and name is missing`,
       ({ languageCode, homepage_url }) => {
