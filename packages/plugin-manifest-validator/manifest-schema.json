@@ -137,7 +137,7 @@
             "warn": true
           }
         },
-        "ms-MY": {
+        "ms": {
           "type": "string",
           "minLength": 1,
           "maxLength": 64,
@@ -145,7 +145,7 @@
             "items": [
               {
                 "homepage_url": {
-                  "properties": ["ms-MY"]
+                  "properties": ["ms"]
                 }
               }
             ],
@@ -194,7 +194,7 @@
           "minLength": 1,
           "maxLength": 200
         },
-        "ms-MY": {
+        "ms": {
           "type": "string",
           "minLength": 1,
           "maxLength": 200
@@ -312,7 +312,7 @@
             ]
           }
         },
-        "ms-MY": {
+        "ms": {
           "type": "string",
           "minLength": 1,
           "format": "http-url",
@@ -320,7 +320,7 @@
             "items": [
               {
                 "name": {
-                  "properties": ["ms-MY"]
+                  "properties": ["ms"]
                 }
               }
             ]

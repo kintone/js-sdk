@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4010.3.0/packages/plugin-manifest-validator/manifest-schema.json",
+  "$schema": "https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4011.1.0/packages/plugin-manifest-validator/manifest-schema.json",
   "manifest_version": 1,
   "version": 1,
   "type": "APP",
@@ -11,7 +11,7 @@
     "es": "complemento de muestra",
     "pt-BR": "complemento de amostra",
     "th": "ปลั๊กอินตัวอย่าง",
-    "ms-MY": "pemalam sampel"
+    "ms": "pemalam sampel"
   },
   "description": {
     "ja": "これはサンプルプラグインです。",
@@ -21,7 +21,7 @@
     "es": "Este es un complemento de muestra.",
     "pt-BR": "Este é um complemento de amostra.",
     "th": "นี่คือปลั๊กอินตัวอย่าง",
-    "ms-MY": "Ini adalah pemalam sampel."
+    "ms": "Ini adalah pemalam sampel."
   },
   "icon": "image/icon.png",
   "homepage_url": {
@@ -32,7 +32,7 @@
     "es": "http://sample_cybozu.es",
     "pt-BR": "http://sample_cybozu.br",
     "th": "http://sample_cybozu.th",
-    "ms-MY": "http://sample_cybozu.my"
+    "ms": "http://sample_cybozu.my"
   },
   "desktop": {
     "js": ["js/customize.js", "https://example.com/js/customize.js"],
