@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@11.0.1...@kintone/plugin-manifest-validator@11.1.0) (2026-02-05)
+
+
+### Features
+
+* **plugin-manifest-validator:** add ms-MY language support ([#3586](https://github.com/kintone/js-sdk/issues/3586)) ([429a1cb](https://github.com/kintone/js-sdk/commit/429a1cbc1507fe57e4f4ddcc8d30e988c1bf096e))
+
+
+### Bug Fixes
+
+* change locale name of ms ([#3596](https://github.com/kintone/js-sdk/issues/3596)) ([6ecde5c](https://github.com/kintone/js-sdk/commit/6ecde5c9c2291149430b1908d05c2336ef9c9f8e))
+
 ## [11.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@11.0.0...@kintone/plugin-manifest-validator@11.0.1) (2026-01-06)
 
 

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.3](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@9.0.2...@kintone/plugin-packer@9.0.3) (2026-02-05)
+
+
+### Bug Fixes
+
+* **plugin-packer:** fix require for default export in site/plugin.js ([#3593](https://github.com/kintone/js-sdk/issues/3593)) ([1862254](https://github.com/kintone/js-sdk/commit/1862254a911aa938f0c0a1967214add1a47da6f2))
+
 ## [9.0.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@9.0.1...@kintone/plugin-packer@9.0.2) (2026-01-26)
 
 
