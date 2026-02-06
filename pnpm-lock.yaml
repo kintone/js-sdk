@@ -209,7 +209,7 @@ importers:
         specifier: ^9.5.4
         version: 9.5.4(typescript@5.9.3)(webpack@5.104.1)
       webpack:
-        specifier: ^5.101.3
+        specifier: ^5.104.1
         version: 5.104.1(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -395,7 +395,7 @@ importers:
         specifier: ^0.12.5
         version: 0.12.5
       webpack:
-        specifier: ^5.101.3
+        specifier: ^5.104.1
         version: 5.104.1(webpack-cli@6.0.1)
       webpack-cli:
         specifier: 6.0.1
@@ -545,7 +545,7 @@ importers:
         specifier: ^5.4.21
         version: 5.4.21(@types/node@25.2.0)(terser@5.46.0)
       webpack:
-        specifier: ^5.101.3
+        specifier: ^5.104.1
         version: 5.104.1(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -573,7 +573,7 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       webpack:
-        specifier: ^5.101.3
+        specifier: ^5.104.1
         version: 5.104.1(webpack-cli@6.0.1)
       webpack-cli:
         specifier: 6.0.1
@@ -9572,6 +9572,7 @@ snapshots:
   '@types/node@25.2.0':
     dependencies:
       undici-types: 7.16.0
+    optional: true
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -12242,7 +12243,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.2.0
+      '@types/node': 22.19.7
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -14351,7 +14352,8 @@ snapshots:
 
   undici-types@6.21.0: {}
 
-  undici-types@7.16.0: {}
+  undici-types@7.16.0:
+    optional: true
 
   undici@7.16.0: {}
 
@@ -14595,7 +14597,7 @@ snapshots:
       mime-types: 3.0.2
       on-finished: 2.4.1
       range-parser: 1.2.1
-      schema-utils: 4.3.2
+      schema-utils: 4.3.3
     optionalDependencies:
       webpack: 5.104.1(webpack-cli@6.0.1)
 
