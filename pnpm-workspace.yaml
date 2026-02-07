@@ -10,3 +10,5 @@ minimumReleaseAgeExclude:
   - lodash@4.17.23
   # Renovate security update: webpack@5.104.1
   - webpack@5.104.1
+  # Renovate security update: undici@7.18.2
+  - undici@7.18.2
