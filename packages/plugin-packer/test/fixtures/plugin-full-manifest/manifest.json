@@ -9,7 +9,8 @@
     "zh-TW": "插件的例子",
     "es": "complemento de muestra",
     "pt-BR": "complemento de amostra",
-    "th": "ปลั๊กอินตัวอย่าง"
+    "th": "ปลั๊กอินตัวอย่าง",
+    "ms": "pemalam sampel"
   },
   "description": {
     "ja": "これはサンプルプラグインです。",
@@ -18,7 +19,8 @@
     "zh-TW": "這是插件的例子",
     "es": "Este es un complemento de muestra.",
     "pt-BR": "Este é um complemento de amostra.",
-    "th": "นี่คือปลั๊กอินตัวอย่าง"
+    "th": "นี่คือปลั๊กอินตัวอย่าง",
+    "ms": "Ini adalah pemalam sampel."
   },
   "icon": "image/icon.png",
   "homepage_url": {
@@ -28,7 +30,8 @@
     "zh-TW": "http://zh-TW.example.com",
     "es": "http://es.example.com",
     "pt-BR": "http://pt-BR.example.com",
-    "th": "http://th.example.com"
+    "th": "http://th.example.com",
+    "ms": "http://ms.example.com"
   },
   "desktop": {
     "js": ["js/desktop.js", "https://example.com/js/desktop.js"],
