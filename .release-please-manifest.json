@@ -4,7 +4,7 @@
   "packages/dts-gen": "9.0.2",
   "@kintone/eslint-plugin": "0.0.0",
   "packages/plugin-manifest-validator": "11.1.0",
-  "packages/plugin-packer": "9.0.3",
+  "packages/plugin-packer": "9.1.0",
   "packages/plugin-uploader": "10.0.0",
   "packages/profile-loader": "6.0.0",
   "packages/rest-api-client": "6.1.1",
