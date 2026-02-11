@@ -228,8 +228,8 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1
       '@types/node':
-        specifier: ^22.19.8
-        version: 22.19.8
+        specifier: ^22.19.10
+        version: 22.19.11
       '@typescript-eslint/rule-tester':
         specifier: ^8.47.0
         version: 8.47.0(eslint@9.38.0)(typescript@5.9.3)
@@ -2529,8 +2529,8 @@ packages:
   '@types/node@22.18.13':
     resolution: {integrity: sha512-Bo45YKIjnmFtv6I1TuC8AaHBbqXtIo+Om5fE4QiU1Tj8QR/qt+8O3BAtOimG5IFmwaWiPmB3Mv3jtYzBA4Us2A==}
 
-  '@types/node@22.19.8':
-    resolution: {integrity: sha512-ebO/Yl+EAvVe8DnMfi+iaAyIqYdK0q/q0y0rw82INWEKJOBe6b/P3YWE8NW7oOlF/nXFNrHwhARrN/hdgDkraA==}
+  '@types/node@22.19.11':
+    resolution: {integrity: sha512-BH7YwL6rA93ReqeQS1c4bsPpcfOmJasG+Fkr6Y59q83f9M1WcBRHR2vM+P9eOisYRcN3ujQoiZY8uk5W+1WL8w==}
 
   '@types/node@25.2.0':
     resolution: {integrity: sha512-DZ8VwRFUNzuqJ5khrvwMXHmvPe+zGayJhr2CDNiKB1WBE1ST8Djl00D0IC4vvNmHMdj6DlbYRIaFE7WHjlDl5w==}
@@ -8408,7 +8408,7 @@ snapshots:
       '@inquirer/figures': 1.0.13
       '@inquirer/type': 2.0.0
       '@types/mute-stream': 0.0.4
-      '@types/node': 22.19.8
+      '@types/node': 22.19.11
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
@@ -9374,7 +9374,7 @@ snapshots:
 
   '@types/mute-stream@0.0.4':
     dependencies:
-      '@types/node': 22.19.8
+      '@types/node': 22.19.11
 
   '@types/node-rsa@1.1.4':
     dependencies:
@@ -9388,7 +9388,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@22.19.8':
+  '@types/node@22.19.11':
     dependencies:
       undici-types: 6.21.0
 
