@@ -435,8 +435,8 @@ importers:
   packages/rest:
     dependencies:
       core-js:
-        specifier: ^3.46.0
-        version: 3.46.0
+        specifier: ^3.48.0
+        version: 3.48.0
       fs:
         specifier: 0.0.1-security
         version: 0.0.1-security
@@ -478,8 +478,8 @@ importers:
         specifier: ^1.12.2
         version: 1.12.2
       core-js:
-        specifier: ^3.46.0
-        version: 3.46.0
+        specifier: ^3.48.0
+        version: 3.48.0
       form-data:
         specifier: ^4.0.5
         version: 4.0.5
@@ -3597,8 +3597,8 @@ packages:
   core-js@3.45.1:
     resolution: {integrity: sha512-L4NPsJlCfZsPeXukyzHFlg/i7IIVwHSItR0wg0FLNqYClJ4MQYTYLbC7EkjKYRLZF2iof2MUgN0EGy7MdQFChg==}
 
-  core-js@3.46.0:
-    resolution: {integrity: sha512-vDMm9B0xnqqZ8uSBpZ8sNtRtOdmfShrvT6h2TuQGLs0Is+cR0DYbj/KWP6ALVNbWPpqA/qPLoOuppJN07humpA==}
+  core-js@3.48.0:
+    resolution: {integrity: sha512-zpEHTy1fjTMZCKLHUZoVeylt9XrzaIN2rbPXEt0k+q7JE5CkCZdo6bNq55bn24a69CH7ErAVLKijxJja4fw+UQ==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -10577,7 +10577,7 @@ snapshots:
 
   core-js@3.45.1: {}
 
-  core-js@3.46.0: {}
+  core-js@3.48.0: {}
 
   core-util-is@1.0.3: {}
 
