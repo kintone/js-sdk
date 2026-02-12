@@ -28,9 +28,27 @@ const configs = {
       },
     },
     rules: {
+      [`${name}/no-cybozu-data`]: "error",
+      [`${name}/no-kintone-internal-selector`]: "error",
+    } satisfies {
+      [key in `${typeof name}/${keyof typeof rules}`]?: TSESLint.FlatConfig.SeverityString;
+    },
+  },
+  manifestV2: {
+    files: ["**/*.{js,cjs,mjs,ts,cts,mts,jsx,tsx}"],
+    plugins: {
+      [name]: base,
+    },
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: dirname(fileURLToPath(import.meta.url)),
+      },
+    },
+    rules: {
       [`${name}/only-allowed-js-api`]: "error",
     } satisfies {
-      [key in `${typeof name}/${keyof typeof rules}`]: TSESLint.FlatConfig.SeverityString;
+      [key in `${typeof name}/${keyof typeof rules}`]?: TSESLint.FlatConfig.SeverityString;
     },
   },
 } satisfies TSESLint.FlatConfig.Plugin["configs"];
