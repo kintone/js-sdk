@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@9.0.3...@kintone/plugin-packer@9.1.0) (2026-02-11)
+
+
+### Features
+
+* **plugin-packer:** add ms language support ([#3607](https://github.com/kintone/js-sdk/issues/3607)) ([c740b2c](https://github.com/kintone/js-sdk/commit/c740b2cc422acc0449bd5a1087916f063c2469af))
+
 ## [9.0.3](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@9.0.2...@kintone/plugin-packer@9.0.3) (2026-02-05)
 
 
