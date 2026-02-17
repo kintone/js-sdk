@@ -301,8 +301,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0
       yazl:
-        specifier: ^2.5.1
-        version: 2.5.1
+        specifier: ^3.3.1
+        version: 3.3.1
     devDependencies:
       '@reduxjs/toolkit':
         specifier: ^2.11.2
@@ -320,8 +320,8 @@ importers:
         specifier: ^2.10.3
         version: 2.10.3
       '@types/yazl':
-        specifier: ^2.4.6
-        version: 2.4.6
+        specifier: ^3.3.0
+        version: 3.3.0
       ajv:
         specifier: ^8.17.1
         version: 8.17.1
@@ -2580,8 +2580,8 @@ packages:
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
 
-  '@types/yazl@2.4.6':
-    resolution: {integrity: sha512-/ifFjQtcKaoZOjl5NNCQRR0fAKafB3Foxd7J/WvFPTMea46zekapcR30uzkwIkKAAuq5T6d0dkwz754RFH27hg==}
+  '@types/yazl@3.3.0':
+    resolution: {integrity: sha512-mFL6lGkk2N5u5nIxpNV/K5LW3qVSbxhJrMxYGOOxZndWxMgCamr/iCsq/1t9kd8pEwhuNP91LC5qZm/qS9pOEw==}
 
   '@typescript-eslint/eslint-plugin@8.44.1':
     resolution: {integrity: sha512-molgphGqOBT7t4YKCSkbasmu1tb1MgrZ2szGzHbclF7PNmOkSTQVHy+2jXOSnxvR3+Xe1yySHFZoqMpz3TfQsw==}
@@ -7262,9 +7262,6 @@ packages:
     resolution: {integrity: sha512-Ow9nuGZE+qp1u4JIPvg+uCiUr7xGQWdff7JQSk5VGYTAZMDe2q8lxJ10ygv10qmSj031Ty/6FNJpLO4o1Sgc+w==}
     engines: {node: '>=12'}
 
-  yazl@2.5.1:
-    resolution: {integrity: sha512-phENi2PLiHnHb6QBVot+dJnaAZ0xosj7p3fWl+znIjBDlnMI2PsZCJZ306BPTFOaHf5qdDEI8x5qFrSOBN5vrw==}
-
   yazl@3.3.1:
     resolution: {integrity: sha512-BbETDVWG+VcMUle37k5Fqp//7SDOK2/1+T7X8TD96M3D9G8jK5VLUdQVdVjGi8im7FGkazX7kk5hkU8X4L5Bng==}
 
@@ -9446,7 +9443,7 @@ snapshots:
     dependencies:
       '@types/node': 22.19.11
 
-  '@types/yazl@2.4.6':
+  '@types/yazl@3.3.0':
     dependencies:
       '@types/node': 22.19.11
 
@@ -14676,10 +14673,6 @@ snapshots:
     dependencies:
       buffer-crc32: 0.2.13
       pend: 1.2.0
-
-  yazl@2.5.1:
-    dependencies:
-      buffer-crc32: 0.2.13
 
   yazl@3.3.1:
     dependencies:
