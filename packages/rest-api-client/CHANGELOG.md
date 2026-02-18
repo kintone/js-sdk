@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.1...@kintone/rest-api-client@6.1.2) (2026-02-18)
+
+
+### Bug Fixes
+
+* add reference table size of 1 and 3 ([#3619](https://github.com/kintone/js-sdk/issues/3619)) ([eeafb03](https://github.com/kintone/js-sdk/commit/eeafb03645a6a8b11e1c1799fa76b6d6685b83a1))
+
 ## [6.1.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.0...@kintone/rest-api-client@6.1.1) (2026-01-13)
 
 
