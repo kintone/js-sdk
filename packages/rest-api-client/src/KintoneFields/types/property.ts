@@ -290,7 +290,7 @@ export type ReferenceTable = {
     filterCond: string;
     displayFields: string[];
     sort: string;
-    size: "5" | "10" | "20" | "30" | "40" | "50";
+    size: "1" | "3" | "5" | "10" | "20" | "30" | "40" | "50";
   };
 };
 
