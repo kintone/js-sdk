@@ -1,4 +1,3 @@
-// import type { CallExpression, Literal } from "estree";
 import type { TSESLint, TSESTree } from "@typescript-eslint/utils";
 import { createRule } from "../utils/create-rule.js";
 

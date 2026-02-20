@@ -37,7 +37,6 @@ ruleTester.run("no-kintone-internal-selector", rule, {
       errors: [
         {
           messageId: "forbiddenClassname",
-
           data: { className: `gaia-argoui-foo` },
         },
       ],
