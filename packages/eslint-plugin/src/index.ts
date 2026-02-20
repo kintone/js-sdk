@@ -1,7 +1,5 @@
 import { rules } from "./rules/index.js";
 import module from "node:module";
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import type { TSESLint } from "@typescript-eslint/utils";
 const require = module.createRequire(import.meta.url);
 
@@ -21,16 +19,22 @@ const configs = {
     plugins: {
       [name]: base,
     },
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: dirname(fileURLToPath(import.meta.url)),
-      },
+    rules: {
+      [`${name}/no-cybozu-data`]: "error",
+      [`${name}/no-kintone-internal-selector`]: "error",
+    } satisfies {
+      [key in `${typeof name}/${keyof typeof rules}`]?: TSESLint.FlatConfig.SeverityString;
+    },
+  },
+  manifestV2: {
+    files: ["**/*.{js,cjs,mjs,ts,cts,mts,jsx,tsx}"],
+    plugins: {
+      [name]: base,
     },
     rules: {
       [`${name}/only-allowed-js-api`]: "error",
     } satisfies {
-      [key in `${typeof name}/${keyof typeof rules}`]: TSESLint.FlatConfig.SeverityString;
+      [key in `${typeof name}/${keyof typeof rules}`]?: TSESLint.FlatConfig.SeverityString;
     },
   },
 } satisfies TSESLint.FlatConfig.Plugin["configs"];
