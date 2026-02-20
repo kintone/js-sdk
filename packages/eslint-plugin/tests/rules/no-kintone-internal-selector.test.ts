@@ -11,6 +11,16 @@ ruleTester.run("no-kintone-internal-selector", rule, {
     `querySelectorAll('.foo')`,
     `$('.foo')`,
     `$(document).on('click', '.foo', handler)`,
+    // matches and closest with valid class names
+    `element.matches('.foo')`,
+    `element.closest('.bar')`,
+    // template literals with valid class names
+    "element.querySelector(`.foo`)",
+    // eslint-disable-next-line no-template-curly-in-string
+    "element.querySelector(`.${className}`)",
+    // *-gaia pattern should not match as substring (e.g., foo-gaia-bar)
+    `element.querySelector('.foo-gaia-bar')`,
+    `element.querySelector('.some-gaia-component')`,
   ],
   invalid: [
     // .gaia-argoui-*
@@ -302,6 +312,81 @@ ruleTester.run("no-kintone-internal-selector", rule, {
         {
           messageId: "suspiciousClassnameLiteral",
           data: { className: `ocean-foo` },
+        },
+      ],
+    },
+    // matches and closest
+    {
+      code: `element.matches('.gaia-argoui-foo')`,
+      errors: [
+        {
+          messageId: "forbiddenClassname",
+          data: { className: `gaia-argoui-foo` },
+        },
+      ],
+    },
+    {
+      code: `element.closest('.gaia-argoui-foo')`,
+      errors: [
+        {
+          messageId: "forbiddenClassname",
+          data: { className: `gaia-argoui-foo` },
+        },
+      ],
+    },
+    {
+      code: `element.matches('.foo-gaia')`,
+      errors: [
+        {
+          messageId: "forbiddenClassname",
+          data: { className: `foo-gaia` },
+        },
+      ],
+    },
+    {
+      code: `element.closest('.ocean-foo')`,
+      errors: [
+        {
+          messageId: "forbiddenClassname",
+          data: { className: `ocean-foo` },
+        },
+      ],
+    },
+    // template literals
+    {
+      code: "element.querySelector(`.gaia-argoui-foo`)",
+      errors: [
+        {
+          messageId: "forbiddenClassname",
+          data: { className: `gaia-argoui-foo` },
+        },
+      ],
+    },
+    {
+      code: "element.querySelector(`.foo-gaia`)",
+      errors: [
+        {
+          messageId: "forbiddenClassname",
+          data: { className: `foo-gaia` },
+        },
+      ],
+    },
+    {
+      // eslint-disable-next-line no-template-curly-in-string
+      code: "element.querySelector(`.${prefix}-gaia-argoui-foo`)",
+      errors: [
+        {
+          messageId: "forbiddenClassname",
+          data: { className: `gaia-argoui-foo` },
+        },
+      ],
+    },
+    {
+      code: "$(`.gaia-argoui-foo`)",
+      errors: [
+        {
+          messageId: "suspiciousClassnameLiteral",
+          data: { className: `gaia-argoui-foo` },
         },
       ],
     },
