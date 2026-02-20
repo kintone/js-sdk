@@ -18,7 +18,8 @@ export const rule = createRule<Options, MessageIds>({
       requiresTypeChecking: false,
     },
     messages: {
-      forbiddenCybozuDataAccess: "Accessing `cybozu.data` is not allowed.",
+      forbiddenCybozuDataAccess:
+        "Accessing `cybozu.data` may cause unexpected behavior on kintone updates.",
     },
     schema: [],
   },

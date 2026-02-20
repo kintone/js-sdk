@@ -20,7 +20,7 @@ export const rule = createRule<Options, MessageIds>({
     },
     messages: {
       forbiddenClassname:
-        "Using internal kintone UI class name `{{className}}` is not allowed.",
+        "Using internal kintone UI class name `{{className}}` may cause unexpected behavior on kintone updates.",
       suspiciousClassnameLiteral:
         "Possible use of internal kintone UI class name `{{className}}`.",
     },

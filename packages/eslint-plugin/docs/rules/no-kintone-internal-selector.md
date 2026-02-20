@@ -2,7 +2,11 @@
 
 Detects usage of internal CSS class names.
 
-Detects the following patterns:
+## Why
+
+Internal kintone UI class names are not officially supported. They may change or be removed without notice in future kintone updates, which could cause unexpected behavior in your customizations or plugins.
+
+## Detected patterns
 
 - `gaia-argoui-*` (e.g., `gaia-argoui-button`)
 - `*-gaia` (e.g., `button-gaia`)
