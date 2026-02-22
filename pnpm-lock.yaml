@@ -147,8 +147,8 @@ importers:
         specifier: ^5.5.0
         version: 5.5.0
       '@kintone/rest-api-client':
-        specifier: ^6.0.0
-        version: 6.0.0
+        specifier: ^6.1.2
+        version: 6.1.2
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
@@ -1872,8 +1872,8 @@ packages:
     resolution: {integrity: sha512-aw2rXb0h7HbIp8XimoYbtqXGvn/DOzdwkGbfhAReHxbs9UZ/ik3zJGxjgYcZV9j4lw9YR85rIGYWuty7KEs2gg==}
     engines: {node: '>=20'}
 
-  '@kintone/rest-api-client@6.0.0':
-    resolution: {integrity: sha512-Ekf71DhWoiz3sZ8ISS656CqCfCvwBM9GyOlxDcP1u2aK9TANuBpzsKR8O6PcuPMXzGQ3Cm1hg1xfFR+n553T6A==}
+  '@kintone/rest-api-client@6.1.2':
+    resolution: {integrity: sha512-/6RMKD/cNg8KOfQDXLOTzKkfG+EAKuU6czgVF5b5c4Na9uFB9BENmdg7e1eV3qNwszfIt7UpONfT3apCiw2R3Q==}
     engines: {node: '>=20'}
 
   '@leichtgewicht/ip-codec@2.0.5':
@@ -3594,9 +3594,6 @@ packages:
   core-js-compat@3.48.0:
     resolution: {integrity: sha512-OM4cAF3D6VtH/WkLtWvyNC56EZVXsZdU3iqaMG2B4WvYrlqU831pc4UtG5yp0sE9z8Y02wVN7PjW5Zf9Gt0f1Q==}
 
-  core-js@3.45.1:
-    resolution: {integrity: sha512-L4NPsJlCfZsPeXukyzHFlg/i7IIVwHSItR0wg0FLNqYClJ4MQYTYLbC7EkjKYRLZF2iof2MUgN0EGy7MdQFChg==}
-
   core-js@3.46.0:
     resolution: {integrity: sha512-vDMm9B0xnqqZ8uSBpZ8sNtRtOdmfShrvT6h2TuQGLs0Is+cR0DYbj/KWP6ALVNbWPpqA/qPLoOuppJN07humpA==}
 
@@ -4317,10 +4314,6 @@ packages:
   foreground-child@3.3.1:
     resolution: {integrity: sha512-gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==}
     engines: {node: '>=14'}
-
-  form-data@4.0.4:
-    resolution: {integrity: sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==}
-    engines: {node: '>= 6'}
 
   form-data@4.0.5:
     resolution: {integrity: sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==}
@@ -5943,10 +5936,6 @@ packages:
   pvutils@1.1.5:
     resolution: {integrity: sha512-KTqnxsgGiQ6ZAzZCVlJH5eOjSnvlyEgx1m8bkRJfOhmGRqfo5KLvmAlACQkrjEtOQ4B7wF9TdSLIs9O90MX9xA==}
     engines: {node: '>=16.0.0'}
-
-  qs@6.14.0:
-    resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
-    engines: {node: '>=0.6'}
 
   qs@6.14.2:
     resolution: {integrity: sha512-V/yCWTTF7VJ9hIh18Ugr2zhJMP01MY7c5kh4J870L7imm6/DIzBsNLTXzMwUA3yZ5b/KBqLx8Kp3uRvd7xSe3Q==}
@@ -8672,7 +8661,7 @@ snapshots:
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@25.2.0)
       '@kintone/plugin-manifest-validator': 11.0.1
-      '@kintone/rest-api-client': 6.0.0
+      '@kintone/rest-api-client': 6.1.2
       chalk: 4.1.2
       chokidar: 4.0.3
       csv-parse: 5.6.0
@@ -8701,14 +8690,14 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.17.1)
       bytes: 3.1.2
 
-  '@kintone/rest-api-client@6.0.0':
+  '@kintone/rest-api-client@6.1.2':
     dependencies:
       axios: 1.12.2
-      core-js: 3.45.1
-      form-data: 4.0.4
+      core-js: 3.46.0
+      form-data: 4.0.5
       js-base64: 3.7.8
       mime: 3.0.0
-      qs: 6.14.0
+      qs: 6.14.2
     transitivePeerDependencies:
       - debug
 
@@ -10575,8 +10564,6 @@ snapshots:
     dependencies:
       browserslist: 4.28.1
 
-  core-js@3.45.1: {}
-
   core-js@3.46.0: {}
 
   core-util-is@1.0.3: {}
@@ -11528,14 +11515,6 @@ snapshots:
     dependencies:
       cross-spawn: 7.0.6
       signal-exit: 4.1.0
-
-  form-data@4.0.4:
-    dependencies:
-      asynckit: 0.4.0
-      combined-stream: 1.0.8
-      es-set-tostringtag: 2.1.0
-      hasown: 2.0.2
-      mime-types: 2.1.35
 
   form-data@4.0.5:
     dependencies:
@@ -13110,10 +13089,6 @@ snapshots:
       tslib: 2.8.1
 
   pvutils@1.1.5: {}
-
-  qs@6.14.0:
-    dependencies:
-      side-channel: 1.1.0
 
   qs@6.14.2:
     dependencies:
