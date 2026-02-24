@@ -9,6 +9,6 @@
   "packages/profile-loader": "6.0.0",
   "packages/rest-api-client": "6.1.2",
   "packages/webpack-plugin-kintone-plugin": "9.0.1",
-  "packages/eslint-plugin": "0.0.3",
+  "packages/eslint-plugin": "0.1.0",
   "packages/rest": "0.3.0"
 }
