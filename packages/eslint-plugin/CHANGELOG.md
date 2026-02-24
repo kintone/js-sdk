@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.1.0...@kintone/eslint-plugin@0.1.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* **eslint-plugin:** type incompatibility ([#3638](https://github.com/kintone/js-sdk/issues/3638)) ([609bc70](https://github.com/kintone/js-sdk/commit/609bc70a94112c63455a6b0ace9d50e51726a112))
+
 ## [0.1.0](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.0.3...@kintone/eslint-plugin@0.1.0) (2026-02-24)
 
 
