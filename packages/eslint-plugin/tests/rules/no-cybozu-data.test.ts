@@ -68,5 +68,43 @@ ruleTester.run("no-cybozu-data", rule, {
       code: `const foo = window.cybozu["data"]`,
       errors: [{ messageId: "forbiddenCybozuDataAccess" }],
     },
+    // globalThis.cybozu.data
+    {
+      code: `const foo = globalThis.cybozu.data`,
+      errors: [{ messageId: "forbiddenCybozuDataAccess" }],
+    },
+    {
+      code: `const foo = globalThis.cybozu.data.abc`,
+      errors: [{ messageId: "forbiddenCybozuDataAccess" }],
+    },
+    // globalThis["cybozu"]["data"]
+    {
+      code: `const foo = globalThis["cybozu"]["data"]`,
+      errors: [{ messageId: "forbiddenCybozuDataAccess" }],
+    },
+    // globalThis.cybozu["data"]
+    {
+      code: `const foo = globalThis.cybozu["data"]`,
+      errors: [{ messageId: "forbiddenCybozuDataAccess" }],
+    },
+    // globalThis.window.cybozu.data
+    {
+      code: `const foo = globalThis.window.cybozu.data`,
+      errors: [{ messageId: "forbiddenCybozuDataAccess" }],
+    },
+    {
+      code: `const foo = globalThis.window.cybozu.data.abc`,
+      errors: [{ messageId: "forbiddenCybozuDataAccess" }],
+    },
+    // globalThis["window"]["cybozu"]["data"]
+    {
+      code: `const foo = globalThis["window"]["cybozu"]["data"]`,
+      errors: [{ messageId: "forbiddenCybozuDataAccess" }],
+    },
+    // globalThis.window.cybozu["data"]
+    {
+      code: `const foo = globalThis.window.cybozu["data"]`,
+      errors: [{ messageId: "forbiddenCybozuDataAccess" }],
+    },
   ],
 });

@@ -38,15 +38,41 @@ export const rule = createRule<Options, MessageIds>({
       );
     };
 
-    // Check if a node represents `cybozu` or `window.cybozu`
+    // Check if a node represents `window` or `globalThis.window`
+    const isWindowObject = (node: TSESTree.Node): boolean => {
+      if (node.type === "Identifier" && node.name === "window") {
+        return true;
+      }
+      // globalThis.window or globalThis["window"]
+      if (
+        node.type === "MemberExpression" &&
+        node.object.type === "Identifier" &&
+        node.object.name === "globalThis" &&
+        hasPropertyName(node, "window")
+      ) {
+        return true;
+      }
+      return false;
+    };
+
+    // Check if a node represents `cybozu`, `window.cybozu`, `globalThis.cybozu`, or `globalThis.window.cybozu`
     const isCybozuObject = (node: TSESTree.Node): boolean => {
       if (node.type === "Identifier" && node.name === "cybozu") {
         return true;
       }
+      // globalThis.cybozu
       if (
         node.type === "MemberExpression" &&
         node.object.type === "Identifier" &&
-        node.object.name === "window" &&
+        node.object.name === "globalThis" &&
+        hasPropertyName(node, "cybozu")
+      ) {
+        return true;
+      }
+      // window.cybozu or globalThis.window.cybozu
+      if (
+        node.type === "MemberExpression" &&
+        isWindowObject(node.object) &&
         hasPropertyName(node, "cybozu")
       ) {
         return true;
