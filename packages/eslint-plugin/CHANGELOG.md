@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.0.3...@kintone/eslint-plugin@0.1.0) (2026-02-24)
+
+
+### Features
+
+* **eslint-plugin:** add rules for detecting potential issues ([#3616](https://github.com/kintone/js-sdk/issues/3616)) ([4dfbe9d](https://github.com/kintone/js-sdk/commit/4dfbe9d0cb6c5e1863d0b63337276fa02c69fc12))
+
 ## [0.0.3](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.0.2...@kintone/eslint-plugin@0.0.3) (2025-05-13)
 
 
