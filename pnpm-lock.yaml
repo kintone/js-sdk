@@ -533,8 +533,8 @@ importers:
         specifier: ^0.2.13
         version: 0.2.13(rollup@4.57.1)
       rollup-plugin-license:
-        specifier: ^3.6.0
-        version: 3.6.0(picomatch@4.0.3)(rollup@4.57.1)
+        specifier: ^3.7.0
+        version: 3.7.0(picomatch@4.0.3)(rollup@4.57.1)
       rollup-plugin-node-globals:
         specifier: ^1.4.0
         version: 1.4.0
@@ -6125,6 +6125,12 @@ packages:
 
   rollup-plugin-license@3.6.0:
     resolution: {integrity: sha512-1ieLxTCaigI5xokIfszVDRoy6c/Wmlot1fDEnea7Q/WXSR8AqOjYljHDLObAx7nFxHC2mbxT3QnTSPhaic2IYw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
+
+  rollup-plugin-license@3.7.0:
+    resolution: {integrity: sha512-RvvOIF+GH3fBR3wffgc/vmjQn6qOn72WjppWVDp/v+CLpT0BbcRBdSkPeeIOL6U5XccdYgSIMjUyXgxlKEEFcw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
@@ -13312,7 +13318,21 @@ snapshots:
       commenting: 1.1.0
       fdir: 6.5.0(picomatch@4.0.3)
       lodash: 4.17.23
-      magic-string: 0.30.19
+      magic-string: 0.30.21
+      moment: 2.30.1
+      package-name-regex: 2.0.6
+      rollup: 4.57.1
+      spdx-expression-validate: 2.0.0
+      spdx-satisfies: 5.0.1
+    transitivePeerDependencies:
+      - picomatch
+
+  rollup-plugin-license@3.7.0(picomatch@4.0.3)(rollup@4.57.1):
+    dependencies:
+      commenting: 1.1.0
+      fdir: 6.5.0(picomatch@4.0.3)
+      lodash: 4.17.23
+      magic-string: 0.30.21
       moment: 2.30.1
       package-name-regex: 2.0.6
       rollup: 4.57.1
