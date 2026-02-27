@@ -1,10 +1,10 @@
-import fs from "fs";
-import { promisify } from "util";
-import { basename } from "path";
+import fs from "node:fs";
+import { promisify } from "node:util";
+import { basename } from "node:path";
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
-import https from "https";
-import os from "os";
-const packageJson = require("../../package.json");
+import https from "node:https";
+import os from "node:os";
+import packageJson from "../../package.json";
 
 const readFile = promisify(fs.readFile);
 
