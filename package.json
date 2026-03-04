@@ -62,6 +62,7 @@
   "packageManager": "pnpm@10.28.2",
   "pnpm": {
     "overrides": {
+      "@isaacs/brace-expansion": "5.0.1",
       "body-parser": ">=1.20.3",
       "braces": ">=3.0.3",
       "browserify-sign@<4.2.2": ">=4.2.5",
