@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { fileURLToPath } from "url";
 import { ESLint } from "eslint";
+import type { Plugin } from "prettier";
 import { format } from "prettier/standalone";
 import * as prettierPluginTypescript from "prettier/plugins/typescript";
 import * as prettierPluginEstree from "prettier/plugins/estree";
@@ -59,7 +60,10 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
 
   const prettySource = await format(eslintOutput, {
     parser: "typescript",
-    plugins: [prettierPluginTypescript, prettierPluginEstree as any],
+    plugins: [
+      prettierPluginTypescript,
+      prettierPluginEstree as unknown as Plugin,
+    ],
   });
   const outputPath = path.resolve(output);
 
