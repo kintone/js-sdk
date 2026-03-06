@@ -10,6 +10,8 @@
         "**/__test__/**", "**/__tests__/**", "**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"
     ],
     "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
         "lib": ["es2015", "dom"],
         "outDir": "./dist",
         "rootDir": "./src",

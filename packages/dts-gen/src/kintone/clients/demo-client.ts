@@ -2,8 +2,8 @@ import type {
   FetchFormPropertiesInput,
   FormsClient,
   FieldNameAndFieldOrSubTableField,
-} from "./forms-client";
-import { DemoDatas } from "./demo-datas";
+} from "./forms-client.js";
+import { DemoDatas } from "./demo-datas.js";
 
 export class DemoClient implements FormsClient {
   fetchFormProperties(

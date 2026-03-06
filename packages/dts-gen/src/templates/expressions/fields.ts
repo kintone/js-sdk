@@ -1,6 +1,6 @@
-import type { TsExpression } from "./expression";
-import { toTsExpressions } from "./expression";
-import { Converter as FieldTypeConverter } from "./typescriptfieldtypeconverter";
+import type { TsExpression } from "./expression.js";
+import { toTsExpressions } from "./expression.js";
+import { Converter as FieldTypeConverter } from "./typescriptfieldtypeconverter.js";
 
 export class FieldGroup implements TsExpression {
   private stringFields: TsDefinedField[];
