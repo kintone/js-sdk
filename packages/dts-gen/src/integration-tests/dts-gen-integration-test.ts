@@ -1,11 +1,9 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="../../kintone" />
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference path="./testfields.d.ts" />
 import * as assert from "assert";
 
-import { DTSGenApiTest } from "./dts-gen-api-test";
-import { DTSGenFieldsTest } from "./dts-gen-fields-test";
+import { DTSGenApiTest } from "./dts-gen-api-test.js";
+import { DTSGenFieldsTest } from "./dts-gen-fields-test.js";
 
 interface Event {
   appId: number;

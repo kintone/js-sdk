@@ -1,9 +1,9 @@
 import * as fs from "fs";
 import { Command } from "commander";
 
-import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client";
-import { SetupTestApp } from "./setup-test-utils";
-import { log } from "../utils/logger";
+import { SetUpTestAppClient } from "../kintone/clients/setup-test-app-client.js";
+import { SetupTestApp } from "./setup-test-utils.js";
+import { log } from "../utils/logger.js";
 
 const handleSetupApp = async (command) => {
   const newClientInput = {

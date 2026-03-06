@@ -1,8 +1,8 @@
 import type {
   FieldType,
   SubTableFieldType,
-} from "../kintone/clients/forms-client";
-import { objectValues } from "../utils/objectvalues";
+} from "../kintone/clients/forms-client.js";
+import { objectValues } from "../utils/objectvalues.js";
 
 type FieldTypesOrSubTableFieldTypes = FieldType[] | SubTableFieldType[];
 

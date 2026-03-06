@@ -21,6 +21,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    extensionAlias: {
+      ".js": [".ts", ".js"],
+    },
     fallback: {
       assert: require.resolve("assert"),
     },
