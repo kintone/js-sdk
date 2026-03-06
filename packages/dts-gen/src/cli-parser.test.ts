@@ -1,4 +1,4 @@
-import { parse } from "./cli-parser";
+import { parse } from "./cli-parser.js";
 
 describe("parse", () => {
   describe("with environment variables", () => {

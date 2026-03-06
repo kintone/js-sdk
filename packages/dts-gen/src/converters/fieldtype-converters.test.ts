@@ -1,6 +1,6 @@
-import { VisibleForTesting } from "./fileldtype-converter";
-import type { SubTableFieldType } from "../kintone/clients/forms-client";
-import { objectValues } from "../utils/objectvalues";
+import { VisibleForTesting } from "./fileldtype-converter.js";
+import type { SubTableFieldType } from "../kintone/clients/forms-client.js";
+import { objectValues } from "../utils/objectvalues.js";
 
 describe("FileFieldTypeConverter", () => {
   const input = {

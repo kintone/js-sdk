@@ -1,5 +1,5 @@
-import { Namespace } from "./namespace";
-import { TypeDefinition, SavedTypeDefinition } from "./typedefinitions";
+import { Namespace } from "./namespace.js";
+import { TypeDefinition, SavedTypeDefinition } from "./typedefinitions.js";
 
 describe("Namespace", () => {
   class TestTypeDefinition extends TypeDefinition {

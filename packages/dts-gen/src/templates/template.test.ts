@@ -1,15 +1,16 @@
-import { DemoClient } from "../kintone/clients/demo-client";
-import { DemoFullWidthSymbolClient } from "../kintone/clients/demo-fullwidth-symbol-client";
-import { FieldTypeConverter } from "../converters/fileldtype-converter";
-import { objectValues } from "../utils/objectvalues";
+import { DemoClient } from "../kintone/clients/demo-client.js";
+import { DemoFullWidthSymbolClient } from "../kintone/clients/demo-fullwidth-symbol-client.js";
+import { FieldTypeConverter } from "../converters/fileldtype-converter.js";
+import { objectValues } from "../utils/objectvalues.js";
 import * as fs from "fs";
 import { ESLint } from "eslint";
 import path from "path";
-import tsPreset from "@cybozu/eslint-config/flat/presets/typescript";
+import tsPreset from "@cybozu/eslint-config/flat/presets/typescript.js";
 import * as prettierPluginTypescript from "prettier/plugins/typescript";
 import * as prettierPluginEstree from "prettier/plugins/estree";
+import type { Plugin } from "prettier";
 import { format } from "prettier/standalone";
-import { convertToTsExpression } from "./converter";
+import { convertToTsExpression } from "./converter.js";
 
 const writeAndLint = async (filepath: string, expression: string) => {
   await fs.promises.mkdir(path.dirname(filepath), { recursive: true });
@@ -30,10 +31,13 @@ const writeAndLint = async (filepath: string, expression: string) => {
     overrideConfigFile: true,
   });
   const eslintResult = (await eslint.lintFiles(filepath))[0];
-  const eslintOutput = eslintResult.output;
+  const eslintOutput = eslintResult.output ?? eslintResult.source ?? "";
   const prettySource = await format(eslintOutput, {
     parser: "typescript",
-    plugins: [prettierPluginTypescript, prettierPluginEstree],
+    plugins: [
+      prettierPluginTypescript,
+      prettierPluginEstree as unknown as Plugin,
+    ],
   });
 
   await fs.promises.mkdir(path.dirname(filepath), { recursive: true });

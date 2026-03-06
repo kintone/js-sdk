@@ -1,4 +1,4 @@
-import { AxiosUtils, VisibleForTesting } from "./axios-utils";
+import { AxiosUtils, VisibleForTesting } from "./axios-utils.js";
 import type { AxiosRequestConfig } from "axios";
 import { AxiosHeaders } from "axios";
 
