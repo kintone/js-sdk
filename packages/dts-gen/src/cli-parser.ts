@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { validateArgs } from "./validators/args";
+import { validateArgs } from "./validators/args.js";
 
 export interface ParsedArgs {
   baseUrl: string;

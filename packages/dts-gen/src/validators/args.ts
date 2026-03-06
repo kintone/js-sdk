@@ -1,4 +1,4 @@
-import type { ParsedArgs } from "../cli-parser";
+import type { ParsedArgs } from "../cli-parser.js";
 
 export const validateArgs = (args: ParsedArgs) => {
   if (args.baseUrl === null) {
