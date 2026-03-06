@@ -1,9 +1,12 @@
-import type { TsExpression } from "./expression";
-import { toTsExpressions } from "./expression";
+import type { TsExpression } from "./expression.js";
+import { toTsExpressions } from "./expression.js";
 
 describe("toTsExpressions", () => {
   class TestExpression implements TsExpression {
-    constructor(private expression: string) {}
+    expression: string;
+    constructor(expression: string) {
+      this.expression = expression;
+    }
     tsExpression(): string {
       return this.expression;
     }

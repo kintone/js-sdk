@@ -1,4 +1,4 @@
-import { validateArgs } from "../args";
+import { validateArgs } from "../args.js";
 
 const identifierConventionMsg = `In the ECMA262 specification, this is an invalid string as IdentifierName.`;
 const invalidNamespaceMessage = `Invalid namespace option!\n${identifierConventionMsg}`;
