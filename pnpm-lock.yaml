@@ -42,7 +42,7 @@ importers:
         specifier: ^18.19.130
         version: 18.19.130
       comment-json:
-        specifier: ^4.6.1
+        specifier: ^4.6.2
         version: 4.6.2
       eslint:
         specifier: ^9.38.0
