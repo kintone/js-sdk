@@ -95,7 +95,7 @@ const convertSubTableFields = (
 const convertFieldTypesToFieldTypeGroups = (
   properties: FieldTypesOrSubTableFieldTypes,
 ): FieldTypeGroups => {
-  const fieldTypes = Object.values(properties);
+  const fieldTypes = [...properties];
   const stringFields = selectFieldsTypesIn(SIMPLE_VALUE_TYPES, fieldTypes);
   const calculatedFields = selectFieldsTypesIn(
     CALCULATED_VALUE_TYPES,
