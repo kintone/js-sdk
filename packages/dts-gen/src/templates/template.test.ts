@@ -30,7 +30,10 @@ const writeAndLint = async (filepath: string, expression: string) => {
     overrideConfigFile: true,
   });
   const eslintResult = (await eslint.lintFiles(filepath))[0];
-  const eslintOutput = eslintResult.output ?? eslintResult.source ?? "";
+  const eslintOutput = eslintResult.output ?? eslintResult.source;
+  if (eslintOutput === undefined) {
+    throw new Error("unexpected ESLint result: neither output nor source");
+  }
   const prettySource = await format(eslintOutput, {
     parser: "typescript",
     plugins: [
