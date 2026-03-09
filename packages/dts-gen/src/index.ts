@@ -2,7 +2,7 @@ import type { RenderInput } from "./templates/template.js";
 import { FormsClientImpl } from "./kintone/clients/forms-client-impl.js";
 import { FieldTypeConverter } from "./converters/fileldtype-converter.js";
 import { TypeDefinitionTemplate } from "./templates/template.js";
-import { objectValues } from "./utils/objectvalues.js";
+
 import { parse } from "./cli-parser.js";
 
 process.on("uncaughtException", (e) => {
@@ -24,7 +24,7 @@ const fetchFormPropertiesInput = {
 const handler = async () => {
   const properties = await client.fetchFormProperties(fetchFormPropertiesInput);
   const fieldTypeGroups = FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
-    objectValues(properties),
+    Object.values(properties),
   );
   const input: RenderInput = {
     typeName: args.typeName,

@@ -2,7 +2,6 @@ import type {
   FieldType,
   SubTableFieldType,
 } from "../kintone/clients/forms-client.js";
-import { objectValues } from "../utils/objectvalues.js";
 
 type FieldTypesOrSubTableFieldTypes = FieldType[] | SubTableFieldType[];
 
@@ -87,7 +86,7 @@ const convertSubTableFields = (
       code: subTableField.code,
       type: subTableField.type,
       fields: convertFieldTypesToFieldTypeGroups(
-        objectValues(subTableField.fields),
+        Object.values(subTableField.fields),
       ),
     };
   });
@@ -96,7 +95,7 @@ const convertSubTableFields = (
 const convertFieldTypesToFieldTypeGroups = (
   properties: FieldTypesOrSubTableFieldTypes,
 ): FieldTypeGroups => {
-  const fieldTypes = objectValues(properties);
+  const fieldTypes = Object.values(properties);
   const stringFields = selectFieldsTypesIn(SIMPLE_VALUE_TYPES, fieldTypes);
   const calculatedFields = selectFieldsTypesIn(
     CALCULATED_VALUE_TYPES,

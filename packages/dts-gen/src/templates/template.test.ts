@@ -1,7 +1,6 @@
 import { DemoClient } from "../kintone/clients/demo-client.js";
 import { DemoFullWidthSymbolClient } from "../kintone/clients/demo-fullwidth-symbol-client.js";
 import { FieldTypeConverter } from "../converters/fileldtype-converter.js";
-import { objectValues } from "../utils/objectvalues.js";
 import * as fs from "fs";
 import { ESLint } from "eslint";
 import path from "path";
@@ -56,7 +55,7 @@ describe("convertToTsExpression", () => {
       })
       .then((properties) =>
         FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
-          objectValues(properties),
+          Object.values(properties),
         ),
       );
     const input = {
@@ -103,7 +102,7 @@ describe("fullWidthSymbol Test", () => {
       })
       .then((properties) =>
         FieldTypeConverter.convertFieldTypesToFieldTypeGroups(
-          objectValues(properties),
+          Object.values(properties),
         ),
       );
     const input = {
