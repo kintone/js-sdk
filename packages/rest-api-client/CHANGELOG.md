@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.2...@kintone/rest-api-client@6.1.3) (2026-03-11)
+
+
+### Bug Fixes
+
+* remove node:module/require and update import statements to use node: prefix ([#3567](https://github.com/kintone/js-sdk/issues/3567)) ([31d465a](https://github.com/kintone/js-sdk/commit/31d465a047624d88ed6d21c7711a1ef4e49e93e9))
+
 ## [6.1.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.1...@kintone/rest-api-client@6.1.2) (2026-02-18)
 
 
