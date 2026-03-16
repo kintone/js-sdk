@@ -57,8 +57,8 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
       npm:
-        specifier: ^11.11.0
-        version: 11.11.0
+        specifier: ^11.11.1
+        version: 11.11.1
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -5294,8 +5294,8 @@ packages:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
     engines: {node: '>=8'}
 
-  npm@11.11.0:
-    resolution: {integrity: sha512-82gRxKrh/eY5UnNorkTFcdBQAGpgjWehkfGVqAGlJjejEtJZGGJUqjo3mbBTNbc5BTnPKGVtGPBZGhElujX5cw==}
+  npm@11.11.1:
+    resolution: {integrity: sha512-asazCodkFdz1ReQzukyzS/DD77uGCIqUFeRG3gtaT8b9UR0ne1m9QOBuMgT72ij1rt7TRrOox4A1WzntMWIuEg==}
     engines: {node: ^20.17.0 || >=22.9.0}
     hasBin: true
     bundledDependencies:
@@ -12508,7 +12508,7 @@ snapshots:
     dependencies:
       path-key: 3.1.1
 
-  npm@11.11.0: {}
+  npm@11.11.1: {}
 
   nth-check@2.1.1:
     dependencies:
