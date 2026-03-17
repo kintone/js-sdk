@@ -4,9 +4,9 @@ import type {
   AddFormFieldOutput,
   JsCustomizeOutput,
   AddRecordOutput,
-} from "../kintone/clients/setup-test-app-client";
-import { DemoDatas } from "../kintone/clients/demo-datas";
-import { log } from "../utils/logger";
+} from "../kintone/clients/setup-test-app-client.js";
+import { DemoDatas } from "../kintone/clients/demo-datas.js";
+import { log } from "../utils/logger.js";
 
 type Client = SetUpTestAppClient;
 

@@ -19,6 +19,7 @@
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
+  "type": "module",
   "main": "dist/index.js",
   "bin": {
     "kintone-dts-gen": "dist/index.js"
@@ -31,7 +32,7 @@
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
     "postbuild": "tsx scripts/npm-build.ts && pnpm build:integration",
-    "build:integration": "webpack --mode development --config webpack.config.js",
+    "build:integration": "webpack --mode development --config webpack.config.cjs",
     "clean": "rimraf dist",
     "fix": "run-p fix:*",
     "fix:eslint": "pnpm lint:eslint --fix",
@@ -49,12 +50,10 @@
     "commander": "^12.1.0",
     "eslint": "^9.38.0",
     "form-data": "^4.0.5",
-    "lodash": "^4.17.23",
     "prettier": "^3.6.2"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/lodash": "^4.17.24",
     "assert": "^2.1.0",
     "cross-env": "^10.1.0",
     "ts-loader": "^9.5.4",
