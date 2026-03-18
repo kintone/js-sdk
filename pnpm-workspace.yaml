@@ -14,3 +14,5 @@ minimumReleaseAgeExclude:
   - qs@6.14.2
   # Renovate security update: yauzl@3.2.1
   - yauzl@3.2.1
+  # Renovate security update: ajv@8.18.0
+  - ajv@8.18.0
