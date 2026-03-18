@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@kintone/plugin-manifest-validator": "^11.1.0",
-    "chokidar": "^3.6.0",
+    "chokidar": "^5.0.0",
     "debug": "^4.4.3",
     "denodeify": "^1.2.1",
     "meow": "^9.0.0",
