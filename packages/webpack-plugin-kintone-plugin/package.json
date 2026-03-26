@@ -36,15 +36,15 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@kintone/cli": "^1.17.0",
+    "@kintone/cli": "^1.19.1",
     "mkdirp": "^3.0.1"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.8",
     "adm-zip": "^0.5.16",
     "chokidar": "^3.6.0",
-    "rimraf": "^6.0.1",
-    "webpack": "^5.101.3",
+    "rimraf": "^6.1.3",
+    "webpack": "^5.105.4",
     "webpack-cli": "6.0.1",
     "webpack-merge": "^6.0.1"
   },
