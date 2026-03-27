@@ -1,4 +1,4 @@
-import { TsDefinedField, SubTableField, FieldGroup } from "./fields";
+import { TsDefinedField, SubTableField, FieldGroup } from "./fields.js";
 
 describe("TsDefinedField with SINGLE_LINE_TEXT", () => {
   test("toTsExpression()", () => {

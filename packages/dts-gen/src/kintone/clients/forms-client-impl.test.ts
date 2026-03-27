@@ -1,5 +1,5 @@
-import { FormsClientImpl, VisibleForTesting } from "./forms-client-impl";
-import { AxiosUtils } from "./axios-utils";
+import { FormsClientImpl, VisibleForTesting } from "./forms-client-impl.js";
+import { AxiosUtils } from "./axios-utils.js";
 
 describe("VisibleForTesting.constructUrl", () => {
   const testCases = [
