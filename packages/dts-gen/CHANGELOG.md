@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.3](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.2...@kintone/dts-gen@9.0.3) (2026-03-31)
+
+
+### Bug Fixes
+
+* **dts-gen, rest-api-client:** update axios ([#3689](https://github.com/kintone/js-sdk/issues/3689)) ([7759cdd](https://github.com/kintone/js-sdk/commit/7759cdd45baaf6aeb524b984752e93a7a9ea77e1))
+
 ## [9.0.2](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.1...@kintone/dts-gen@9.0.2) (2026-01-26)
 
 
