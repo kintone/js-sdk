@@ -475,9 +475,6 @@ importers:
 
   packages/rest-api-client:
     dependencies:
-      axios:
-        specifier: 1.14.0
-        version: 1.14.0
       core-js:
         specifier: ^3.49.0
         version: 3.49.0
@@ -493,6 +490,9 @@ importers:
       qs:
         specifier: ^6.15.0
         version: 6.15.0
+      undici:
+        specifier: ^7.0.0
+        version: 7.24.6
     devDependencies:
       '@rollup/plugin-babel':
         specifier: ^6.1.0

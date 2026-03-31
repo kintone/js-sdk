@@ -100,6 +100,13 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     params: Data,
     options?: { responseType: "arraybuffer" },
   ) {
+    const dispatcher = platformDeps.buildFetchDispatcher({
+      httpsAgent: this.httpsAgent,
+      clientCertAuth: this.clientCertAuth,
+      proxy: this.proxy,
+      socketTimeout: this.socketTimeout,
+    });
+
     const requestConfig: RequestConfig = {
       method,
       headers: this.headers,
@@ -111,6 +118,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         socketTimeout: this.socketTimeout,
       }),
       proxy: this.buildProxyConfig(this.proxy),
+      ...(dispatcher !== undefined ? { dispatcher } : {}),
     };
 
     switch (method) {
