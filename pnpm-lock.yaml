@@ -555,8 +555,8 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/cli':
-        specifier: ^1.19.1
-        version: 1.19.1(@types/node@25.5.0)
+        specifier: 1.19.2
+        version: 1.19.2(@types/node@25.5.0)
       mkdirp:
         specifier: ^3.0.1
         version: 3.0.1
@@ -1904,8 +1904,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@kintone/cli@1.19.1':
-    resolution: {integrity: sha512-1GUPHfl58NKhuyqcmfOVRsbHtdHZwmjAWDv6eGxkn/mzU5SCkd3AyyWjr3ek0x6A0A48VyZ3N5B6y5THHCASDQ==}
+  '@kintone/cli@1.19.2':
+    resolution: {integrity: sha512-M5BwICU8JqXjMoSeGXJTu1TPiBEa2e0Yuipy9vn+8x/seGiuFGIzhfgbeszwBLPAaQA79b05QgIiXIdRFhTvGg==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -8588,7 +8588,7 @@ snapshots:
       '@jsonjoy.com/codegen': 17.67.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@kintone/cli@1.19.1(@types/node@25.5.0)':
+  '@kintone/cli@1.19.2(@types/node@25.5.0)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@25.5.0)
       '@kintone/plugin-manifest-validator': 11.1.0
