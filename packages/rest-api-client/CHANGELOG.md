@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.3...@kintone/rest-api-client@6.1.4) (2026-03-31)
+
+
+### Bug Fixes
+
+* **dts-gen, rest-api-client:** update axios ([#3689](https://github.com/kintone/js-sdk/issues/3689)) ([7759cdd](https://github.com/kintone/js-sdk/commit/7759cdd45baaf6aeb524b984752e93a7a9ea77e1))
+
 ## [6.1.3](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.2...@kintone/rest-api-client@6.1.3) (2026-03-11)
 
 
