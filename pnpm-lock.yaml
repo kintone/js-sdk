@@ -148,8 +148,8 @@ importers:
         specifier: ^5.5.0
         version: 5.5.0
       '@kintone/rest-api-client':
-        specifier: ^6.1.3
-        version: 6.1.3
+        specifier: ^6.1.4
+        version: 6.1.4
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
@@ -1913,8 +1913,8 @@ packages:
     resolution: {integrity: sha512-aw2rXb0h7HbIp8XimoYbtqXGvn/DOzdwkGbfhAReHxbs9UZ/ik3zJGxjgYcZV9j4lw9YR85rIGYWuty7KEs2gg==}
     engines: {node: '>=20'}
 
-  '@kintone/rest-api-client@6.1.3':
-    resolution: {integrity: sha512-CqMba2cFPPQ8hh82ZaM9gm43j55U9KIiNVe8vsrslAqyvGVLt4eirpq2nIA7oKmFqAELvUY5mwZ+JkAvXm0ouQ==}
+  '@kintone/rest-api-client@6.1.4':
+    resolution: {integrity: sha512-L3E7zcJW4EWnBWHJqo9xr4S6NrxNJsAvjiTr1zWzT+6wfiHe14sTIfW4kO46XGPigu81pLUcKGyKydG9/tQZZg==}
     engines: {node: '>=20'}
 
   '@leichtgewicht/ip-codec@2.0.5':
@@ -3063,9 +3063,6 @@ packages:
   axe-core@4.11.1:
     resolution: {integrity: sha512-BASOg+YwO2C+346x3LZOeoovTIoTrRqEsqMa6fmfAV0P+U9mFr9NsyOEpiYvFjbc64NMrSswhV50WdXzdb/Z5A==}
     engines: {node: '>=4'}
-
-  axios@1.13.6:
-    resolution: {integrity: sha512-ChTCHMouEe2kn713WHbQGcuYrr6fXTBiu460OTwWrWob16g1bXn4vtz07Ope7ewMozJAnEquLk5lWQWtBig9DQ==}
 
   axios@1.14.0:
     resolution: {integrity: sha512-3Y8yrqLSwjuzpXuZ0oIYZ/XGgLwUIBU3uLvbcpb0pidD9ctpShJd43KSlEEkVQg6DS0G9NKyzOvBfUtDKEyHvQ==}
@@ -8595,7 +8592,7 @@ snapshots:
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@25.5.0)
       '@kintone/plugin-manifest-validator': 11.1.0
-      '@kintone/rest-api-client': 6.1.3
+      '@kintone/rest-api-client': 6.1.4
       chalk: 4.1.2
       chokidar: 4.0.3
       csv-parse: 5.6.0
@@ -8618,9 +8615,9 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.18.0)
       bytes: 3.1.2
 
-  '@kintone/rest-api-client@6.1.3':
+  '@kintone/rest-api-client@6.1.4':
     dependencies:
-      axios: 1.13.6
+      axios: 1.14.0
       core-js: 3.49.0
       form-data: 4.0.5
       js-base64: 3.7.8
@@ -9915,14 +9912,6 @@ snapshots:
       possible-typed-array-names: 1.1.0
 
   axe-core@4.11.1: {}
-
-  axios@1.13.6:
-    dependencies:
-      follow-redirects: 1.15.11(debug@4.4.3)
-      form-data: 4.0.5
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
 
   axios@1.14.0:
     dependencies:
