@@ -44,13 +44,13 @@
     "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules vitest run"
   },
   "dependencies": {
-    "@cybozu/eslint-config": "^24.3.0",
+    "@cybozu/eslint-config": "24.3.0",
     "axios": "1.14.0",
-    "commander": "^12.1.0",
-    "eslint": "^9.39.4",
-    "form-data": "^4.0.5",
-    "lodash": "^4.17.23",
-    "prettier": "^3.8.1"
+    "commander": "12.1.0",
+    "eslint": "9.39.4",
+    "form-data": "4.0.5",
+    "lodash": "4.17.23",
+    "prettier": "3.8.1"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",

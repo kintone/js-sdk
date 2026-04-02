@@ -41,6 +41,27 @@
   },
   "packageRules": [
     {
+      // runtime dependencies use bump strategy (update pinned versions)
+      matchDepTypes: ["dependencies"],
+      rangeStrategy: "bump",
+    },
+    {
+      // group transitive-duplicate-risk deps to update together
+      groupName: "axios and related deps",
+      matchPackageNames: ["axios", "form-data"],
+      matchDepTypes: ["dependencies"],
+    },
+    {
+      groupName: "openapi ecosystem deps",
+      matchPackageNames: ["openapi-fetch", "openapi-typescript", "openapi-typescript-helpers"],
+      matchDepTypes: ["dependencies"],
+    },
+    {
+      groupName: "ajv ecosystem deps",
+      matchPackageNames: ["ajv", "ajv-formats"],
+      matchDepTypes: ["dependencies"],
+    },
+    {
       // Third party actions should be pinned with digest
       "matchDepTypes": [
         "action"

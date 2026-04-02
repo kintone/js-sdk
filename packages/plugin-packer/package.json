@@ -55,16 +55,16 @@
     "test:ci": "pnpm test"
   },
   "dependencies": {
-    "@kintone/plugin-manifest-validator": "^11.1.0",
-    "chokidar": "^3.6.0",
-    "debug": "^4.4.3",
-    "denodeify": "^1.2.1",
-    "meow": "^9.0.0",
-    "mkdirp": "^3.0.1",
-    "node-rsa": "~1.1.1",
-    "stream-buffers": "^3.0.3",
-    "yauzl": "^3.2.1",
-    "yazl": "^2.5.1"
+    "@kintone/plugin-manifest-validator": "11.1.0",
+    "chokidar": "3.6.0",
+    "debug": "4.4.3",
+    "denodeify": "1.2.1",
+    "meow": "9.0.0",
+    "mkdirp": "3.0.1",
+    "node-rsa": "1.1.1",
+    "stream-buffers": "3.0.3",
+    "yauzl": "3.2.1",
+    "yazl": "2.5.1"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^2.11.2",
