@@ -53,12 +53,12 @@
     "sort-package-json": "3.6.1"
   },
   "devDependencies": {
-    "@types/glob": "^8.1.0",
-    "@types/inquirer": "^9.0.9",
-    "@types/lodash": "^4.17.24",
-    "@types/node-rsa": "^1.1.4",
-    "@types/normalize-path": "^3.0.2",
-    "cross-env": "^10.1.0"
+    "@types/glob": "8.1.0",
+    "@types/inquirer": "9.0.9",
+    "@types/lodash": "4.17.24",
+    "@types/node-rsa": "1.1.4",
+    "@types/normalize-path": "3.0.2",
+    "cross-env": "10.1.0"
   },
   "engines": {
     "node": ">=20"
