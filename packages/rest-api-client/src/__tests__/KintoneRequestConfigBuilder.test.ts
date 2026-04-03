@@ -362,12 +362,14 @@ describe("options", () => {
     const expectedProxy = Object.assign({}, proxy);
     expectedProxy.protocol = "http";
 
-    expect(requestConfig).toStrictEqual({
+    expect(requestConfig).toMatchObject({
       method: "get",
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers,
       proxy: expectedProxy,
     });
+    // dispatcher is also set when proxy is configured
+    expect(requestConfig.dispatcher).toBeDefined();
   });
 
   it("should accept false when specify false to proxy option", async () => {

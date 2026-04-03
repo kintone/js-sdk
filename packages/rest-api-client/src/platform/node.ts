@@ -4,6 +4,9 @@ import { basename } from "node:path";
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import https from "node:https";
 import os from "node:os";
+import { Agent, ProxyAgent } from "undici";
+import type { Dispatcher } from "undici";
+import type { ProxyConfig } from "../http/HttpClientInterface";
 import packageJson from "../../package.json";
 
 const readFile = promisify(fs.readFile);
@@ -103,4 +106,110 @@ export const buildBaseUrl = (baseUrl: string | undefined) => {
 
 export const getVersion = () => {
   return packageJson.version;
+};
+
+export const buildFetchDispatcher = ({
+  httpsAgent,
+  clientCertAuth,
+  proxy,
+  socketTimeout,
+}: {
+  httpsAgent?: unknown;
+  clientCertAuth?: unknown;
+  proxy?: ProxyConfig;
+  socketTimeout?: number;
+}): unknown => {
+  const tlsOptions = buildTlsOptions({
+    httpsAgent: httpsAgent as https.Agent | undefined,
+    clientCertAuth: clientCertAuth as ClientCertAuth | undefined,
+  });
+
+  // Proxy configuration (proxy can be false to explicitly disable)
+  if (proxy && typeof proxy === "object") {
+    return buildProxyDispatcher(proxy, tlsOptions, socketTimeout);
+  }
+
+  // TLS or timeout configuration
+  if (tlsOptions || socketTimeout) {
+    return new Agent({
+      connect: tlsOptions || {},
+      connectTimeout: socketTimeout,
+    });
+  }
+
+  return undefined;
+};
+
+const buildProxyDispatcher = (
+  proxy: Exclude<ProxyConfig, false | undefined>,
+  tlsOptions: Record<string, unknown> | undefined,
+  socketTimeout?: number,
+): ProxyAgent => {
+  const proxyUrl = buildProxyUrl(proxy);
+
+  return new ProxyAgent({
+    uri: proxyUrl,
+    requestTls: tlsOptions,
+    connectTimeout: socketTimeout,
+  });
+};
+
+const buildProxyUrl = (
+  proxy: Exclude<ProxyConfig, false | undefined>,
+): string => {
+  const protocol = proxy.protocol ?? "http";
+  const auth = proxy.auth
+    ? `${encodeURIComponent(proxy.auth.username)}:${encodeURIComponent(proxy.auth.password)}@`
+    : "";
+  return `${protocol}://${auth}${proxy.host}:${proxy.port}`;
+};
+
+const buildTlsOptions = ({
+  httpsAgent,
+  clientCertAuth,
+}: {
+  httpsAgent?: https.Agent;
+  clientCertAuth?: ClientCertAuth;
+}): Record<string, unknown> | undefined => {
+  // Extract TLS options from existing httpsAgent for compatibility
+  if (httpsAgent) {
+    const options = httpsAgent.options || {};
+    const tlsOptions: Record<string, unknown> = {};
+
+    if (options.pfx) {
+      tlsOptions.pfx = options.pfx;
+    }
+    if (options.passphrase) {
+      tlsOptions.passphrase = options.passphrase;
+    }
+    if (options.cert) {
+      tlsOptions.cert = options.cert;
+    }
+    if (options.key) {
+      tlsOptions.key = options.key;
+    }
+    if (options.ca) {
+      tlsOptions.ca = options.ca;
+    }
+    if (options.rejectUnauthorized !== undefined) {
+      tlsOptions.rejectUnauthorized = options.rejectUnauthorized;
+    }
+
+    return Object.keys(tlsOptions).length > 0 ? tlsOptions : undefined;
+  }
+
+  // Build TLS options from clientCertAuth
+  if (clientCertAuth) {
+    const pfx =
+      "pfx" in clientCertAuth
+        ? clientCertAuth.pfx
+        : fs.readFileSync(clientCertAuth.pfxFilePath);
+
+    return {
+      pfx,
+      passphrase: clientCertAuth.password,
+    };
+  }
+
+  return undefined;
 };

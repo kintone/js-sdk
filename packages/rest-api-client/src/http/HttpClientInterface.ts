@@ -49,6 +49,8 @@ export type RequestConfig = {
   httpsAgent?: any;
   data?: any;
   proxy?: ProxyConfig;
+  responseType?: "arraybuffer";
+  dispatcher?: unknown;
 };
 
 export interface RequestConfigBuilder {

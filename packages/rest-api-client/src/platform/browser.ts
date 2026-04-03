@@ -67,3 +67,8 @@ export const buildBaseUrl = (baseUrl?: string) => {
 export const getVersion = () => {
   return packageJson.version;
 };
+
+export const buildFetchDispatcher = () => {
+  // Browser uses native fetch without dispatcher
+  return undefined;
+};
