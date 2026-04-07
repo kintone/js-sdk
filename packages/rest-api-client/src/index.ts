@@ -1,5 +1,5 @@
-import { injectPlatformDeps } from "./platform/";
-import * as nodeDeps from "./platform/node";
+import { injectPlatformDeps } from "./platform/index.js";
+import * as nodeDeps from "./platform/node.js";
 
 injectPlatformDeps(nodeDeps);
 
