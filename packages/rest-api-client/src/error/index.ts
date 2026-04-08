@@ -1,3 +1,3 @@
-export * from "./KintoneAbortSearchError";
-export * from "./KintoneAllRecordsError";
-export * from "./KintoneRestAPIError";
+export * from "./KintoneAbortSearchError.js";
+export * from "./KintoneAllRecordsError.js";
+export * from "./KintoneRestAPIError.js";

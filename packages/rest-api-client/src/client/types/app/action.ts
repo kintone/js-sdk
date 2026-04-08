@@ -1,5 +1,5 @@
-import type { Entity } from "../entity";
-import type { AppID } from "../index";
+import type { Entity } from "../entity.js";
+import type { AppID } from "../index.js";
 
 // --- Types for request ---
 

@@ -1,4 +1,4 @@
-import * as Field from "./fieldLayout";
+import * as Field from "./fieldLayout.js";
 
 export { Field };
 

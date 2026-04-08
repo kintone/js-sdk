@@ -28,7 +28,7 @@ import type {
   ReferenceTable,
   Lookup,
   Subtable,
-} from "../property";
+} from "../property.js";
 
 type Test_SubtableFieldProperty_OK = Subtable<{
   SingleLineText: SingleLineText;

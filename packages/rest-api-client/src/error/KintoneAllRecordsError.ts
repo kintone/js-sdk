@@ -1,4 +1,4 @@
-import type { KintoneRestAPIError } from "./KintoneRestAPIError";
+import type { KintoneRestAPIError } from "./KintoneRestAPIError.js";
 
 export class KintoneAllRecordsError extends Error {
   processedRecordsResult: any;

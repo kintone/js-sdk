@@ -1,4 +1,4 @@
-import type { AppID, SpaceID } from "../";
+import type { AppID, SpaceID } from "../index.js";
 
 export type GetStatisticsRequest = {
   offset?: number;

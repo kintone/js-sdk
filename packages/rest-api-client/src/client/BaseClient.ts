@@ -1,5 +1,5 @@
-import type { HttpClient } from "../http";
-import { buildPath } from "../url";
+import type { HttpClient } from "../http/index.js";
+import { buildPath } from "../url.js";
 
 export abstract class BaseClient {
   protected client: HttpClient;

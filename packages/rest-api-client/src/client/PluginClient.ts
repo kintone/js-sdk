@@ -1,4 +1,4 @@
-import { BaseClient } from "./BaseClient";
+import { BaseClient } from "./BaseClient.js";
 import type {
   GetAppsForRequest,
   GetAppsForResponse,
@@ -11,7 +11,7 @@ import type {
   InstallPluginForRequest,
   InstallPluginForResponse,
   UninstallPluginForRequest,
-} from "./types/plugin";
+} from "./types/plugin/index.js";
 
 export class PluginClient extends BaseClient {
   public getPlugins(

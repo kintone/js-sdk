@@ -8,9 +8,9 @@ import type {
   HttpMethod,
   Params,
   ProxyConfig,
-} from "./http/HttpClientInterface";
-import type { BasicAuth, DiscriminatedAuth } from "./types/auth";
-import { platformDeps } from "./platform/";
+} from "./http/HttpClientInterface.js";
+import type { BasicAuth, DiscriminatedAuth } from "./types/auth.js";
+import { platformDeps } from "./platform/index.js";
 import type { Agent as HttpsAgent } from "https";
 
 type Data = Params | FormData;

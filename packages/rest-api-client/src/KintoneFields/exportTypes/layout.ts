@@ -1,1 +1,1 @@
-export type { Field, Row, Subtable, Group, OneOf } from "../types/layout";
+export type { Field, Row, Subtable, Group, OneOf } from "../types/layout.js";
