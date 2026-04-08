@@ -38,13 +38,13 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "ajv": "^8.18.0",
-    "ajv-formats": "^3.0.1",
-    "bytes": "^3.1.2"
+    "ajv": "8.18.0",
+    "ajv-formats": "3.0.1",
+    "bytes": "3.1.2"
   },
   "devDependencies": {
-    "@types/bytes": "^3.1.5",
-    "json-schema-to-typescript": "^15.0.4"
+    "@types/bytes": "3.1.5",
+    "json-schema-to-typescript": "15.0.4"
   },
   "engines": {
     "node": ">=20"

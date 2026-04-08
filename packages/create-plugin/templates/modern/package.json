@@ -10,25 +10,25 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "core-js": "^3.46.0",
+    "core-js": "3.46.0",
     "@kintone/rest-api-client": "6.1.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.0",
-    "@babel/preset-env": "^7.29.2",
-    "@babel/preset-react": "^7.28.5",
-    "@babel/preset-typescript": "^7.28.5",
-    "@cybozu/eslint-config": "^24.3.0",
-    "@kintone/dts-gen": "^9.0.3",
-    "@kintone/webpack-plugin-kintone-plugin": "^9.0.1",
-    "ajv": "^8.17.1",
-    "babel-loader": "^9.2.1",
-    "cross-env": "^10.1.0",
-    "eslint": "^9.38.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.6.2",
-    "typescript": "^5.9.3",
-    "webpack": "^5.98.0",
-    "webpack-cli": "^6.0.1"
+    "@babel/core": "7.29.0",
+    "@babel/preset-env": "7.29.2",
+    "@babel/preset-react": "7.28.5",
+    "@babel/preset-typescript": "7.28.5",
+    "@cybozu/eslint-config": "24.3.0",
+    "@kintone/dts-gen": "9.0.3",
+    "@kintone/webpack-plugin-kintone-plugin": "9.0.1",
+    "ajv": "8.17.1",
+    "babel-loader": "9.2.1",
+    "cross-env": "10.1.0",
+    "eslint": "9.38.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "webpack": "5.98.0",
+    "webpack-cli": "6.0.1"
   }
 }
