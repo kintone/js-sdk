@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.1.1...@kintone/eslint-plugin@0.1.2) (2026-04-08)
+
+
+### Bug Fixes
+
+* pin dependency versions and remove unused core-js ([#3697](https://github.com/kintone/js-sdk/issues/3697)) ([5138e95](https://github.com/kintone/js-sdk/commit/5138e957cb2e85e054d555ab5524c3da5bf0740b))
+
 ## [0.1.1](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.1.0...@kintone/eslint-plugin@0.1.1) (2026-02-24)
 
 

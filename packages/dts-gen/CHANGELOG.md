@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.4](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.3...@kintone/dts-gen@9.0.4) (2026-04-08)
+
+
+### Bug Fixes
+
+* pin dependency versions and remove unused core-js ([#3697](https://github.com/kintone/js-sdk/issues/3697)) ([5138e95](https://github.com/kintone/js-sdk/commit/5138e957cb2e85e054d555ab5524c3da5bf0740b))
+
 ## [9.0.3](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.2...@kintone/dts-gen@9.0.3) (2026-03-31)
 
 
