@@ -6,7 +6,7 @@ settings:
 
 overrides:
   '@isaacs/brace-expansion': 5.0.1
-  body-parser: '>=1.20.4'
+  body-parser: '>=2.2.2'
   braces: '>=3.0.3'
   browserify-sign@<4.2.2: '>=4.2.5'
   cross-spawn: '>=7.0.6'
