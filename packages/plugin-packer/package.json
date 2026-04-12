@@ -63,7 +63,7 @@
     "mkdirp": "3.0.1",
     "node-rsa": "1.1.1",
     "stream-buffers": "3.0.3",
-    "yauzl": "3.2.1",
+    "yauzl": "3.3.0",
     "yazl": "2.5.1"
   },
   "devDependencies": {
