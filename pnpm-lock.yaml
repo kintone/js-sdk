@@ -302,8 +302,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1
       yazl:
-        specifier: 2.5.1
-        version: 2.5.1
+        specifier: 3.3.1
+        version: 3.3.1
     devDependencies:
       '@reduxjs/toolkit':
         specifier: 2.11.2
@@ -321,8 +321,8 @@ importers:
         specifier: 2.10.3
         version: 2.10.3
       '@types/yazl':
-        specifier: 2.4.6
-        version: 2.4.6
+        specifier: 3.3.1
+        version: 3.3.1
       ajv:
         specifier: 8.18.0
         version: 8.18.0
@@ -2505,8 +2505,8 @@ packages:
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
 
-  '@types/yazl@2.4.6':
-    resolution: {integrity: sha512-/ifFjQtcKaoZOjl5NNCQRR0fAKafB3Foxd7J/WvFPTMea46zekapcR30uzkwIkKAAuq5T6d0dkwz754RFH27hg==}
+  '@types/yazl@3.3.1':
+    resolution: {integrity: sha512-DIWfCKpsTp6hE5BDBHV3+fIL/bLUF9Bv13iDrWnMlmhQpH67buNvI291ZauQ1xcccxK3FqQ9honnXpq4R8NMuQ==}
 
   '@typescript-eslint/eslint-plugin@8.57.2':
     resolution: {integrity: sha512-NZZgp0Fm2IkD+La5PR81sd+g+8oS6JwJje+aRWsDocxHkjyRw0J5L5ZTlN3LI1LlOcGL7ph3eaIUmTXMIjLk0w==}
@@ -7130,9 +7130,6 @@ packages:
     resolution: {integrity: sha512-k1isifdbpNSFEHFJ1ZY4YDewv0IH9FR61lDetaRMD3j2ae3bIXGV+7c+LHCqtQGofSd8PIyV4X6+dHMAnSr60A==}
     engines: {node: '>=12'}
 
-  yazl@2.5.1:
-    resolution: {integrity: sha512-phENi2PLiHnHb6QBVot+dJnaAZ0xosj7p3fWl+znIjBDlnMI2PsZCJZ306BPTFOaHf5qdDEI8x5qFrSOBN5vrw==}
-
   yazl@3.3.1:
     resolution: {integrity: sha512-BbETDVWG+VcMUle37k5Fqp//7SDOK2/1+T7X8TD96M3D9G8jK5VLUdQVdVjGi8im7FGkazX7kk5hkU8X4L5Bng==}
 
@@ -9301,7 +9298,7 @@ snapshots:
     dependencies:
       '@types/node': 22.19.17
 
-  '@types/yazl@2.4.6':
+  '@types/yazl@3.3.1':
     dependencies:
       '@types/node': 22.19.17
 
@@ -14420,10 +14417,6 @@ snapshots:
     dependencies:
       buffer-crc32: 0.2.13
       pend: 1.2.0
-
-  yazl@2.5.1:
-    dependencies:
-      buffer-crc32: 0.2.13
 
   yazl@3.3.1:
     dependencies:
