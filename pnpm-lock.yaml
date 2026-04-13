@@ -148,8 +148,8 @@ importers:
         specifier: 5.5.0
         version: 5.5.0
       '@kintone/rest-api-client':
-        specifier: 6.1.4
-        version: 6.1.4
+        specifier: 6.1.5
+        version: 6.1.5
       chokidar:
         specifier: 3.6.0
         version: 3.6.0
@@ -1912,6 +1912,10 @@ packages:
 
   '@kintone/rest-api-client@6.1.4':
     resolution: {integrity: sha512-L3E7zcJW4EWnBWHJqo9xr4S6NrxNJsAvjiTr1zWzT+6wfiHe14sTIfW4kO46XGPigu81pLUcKGyKydG9/tQZZg==}
+    engines: {node: '>=20'}
+
+  '@kintone/rest-api-client@6.1.5':
+    resolution: {integrity: sha512-4mKrVry5w/yBE1GWRixbkTN1MnnmYkUtu7oWz6Pnb5vqIp/jci47wwilgKC8kec/MhQokwGlBzroEEL3a6wFkg==}
     engines: {node: '>=20'}
 
   '@leichtgewicht/ip-codec@2.0.5':
@@ -8617,6 +8621,16 @@ snapshots:
     dependencies:
       axios: 1.14.0
       core-js: 3.49.0
+      form-data: 4.0.5
+      js-base64: 3.7.8
+      mime: 3.0.0
+      qs: 6.15.1
+    transitivePeerDependencies:
+      - debug
+
+  '@kintone/rest-api-client@6.1.5':
+    dependencies:
+      axios: 1.14.0
       form-data: 4.0.5
       js-base64: 3.7.8
       mime: 3.0.0
