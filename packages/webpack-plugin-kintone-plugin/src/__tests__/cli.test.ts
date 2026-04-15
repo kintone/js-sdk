@@ -1,20 +1,17 @@
 import { spawnSync } from "child_process";
 import fs from "fs";
-import os from "os";
 import path from "path";
 import { verifyPluginZip, fixtureDir, cleanupJsFiles } from "./helpers";
 
 const pluginZipPath = path.resolve(fixtureDir, "dist", "plugin.zip");
 
 const runWebpack = (config = "webpack.config.js") => {
-  const isWindows = os.platform() === "win32";
-  // Use npx to ensure webpack-cli is found in PATH
+  const webpackBin = require.resolve("webpack-cli/bin/cli.js");
   return spawnSync(
-    isWindows ? "npx.cmd" : "npx",
-    ["webpack", "--config", config, "--mode", "production"],
+    process.execPath,
+    [webpackBin, "--config", config, "--mode", "production"],
     {
       cwd: fixtureDir,
-      shell: isWindows,
     },
   );
 };
