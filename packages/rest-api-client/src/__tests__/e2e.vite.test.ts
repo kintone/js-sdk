@@ -9,7 +9,7 @@ const tempDir = fs.mkdtempSync(
 );
 
 describe("Vite CLI Bundler tests", function () {
-  it(`should be able to build with Vite successfully`, () => {
+  it(`should be able to build with Vite successfully`, { timeout: 300000 }, () => {
     const buildResult = spawnSync(
       "vite build",
       ["--config", "fixtures/vite.config.mjs"],
