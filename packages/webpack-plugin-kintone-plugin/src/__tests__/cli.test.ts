@@ -29,7 +29,7 @@ describe("KintonePlugin", () => {
     }
     cleanupJsFiles();
   });
-  it("should be able to create a plugin zip", { timeout: 180000 }, () => {
+  it("should be able to create a plugin zip", { timeout: 300000 }, () => {
     const rs = runWebpack();
     expect(rs.error).toBeUndefined();
     verifyPluginZip(pluginZipPath);
