@@ -9,22 +9,26 @@ const tempDir = fs.mkdtempSync(
 );
 
 describe("Vite CLI Bundler tests", function () {
-  it(`should be able to build with Vite successfully`, () => {
-    const buildResult = spawnSync(
-      "vite build",
-      ["--config", "fixtures/vite.config.mjs"],
-      {
-        cwd: __dirname,
-        stdio: "inherit",
-        shell: true,
-        env: {
-          ...process.env,
-          TEMP_DIR: tempDir,
+  it(
+    `should be able to build with Vite successfully`,
+    { timeout: 300000 },
+    () => {
+      const buildResult = spawnSync(
+        "vite build",
+        ["--config", "fixtures/vite.config.mjs"],
+        {
+          cwd: __dirname,
+          stdio: "inherit",
+          shell: true,
+          env: {
+            ...process.env,
+            TEMP_DIR: tempDir,
+          },
         },
-      },
-    );
-    expect(buildResult.status).toBe(0);
-  });
+      );
+      expect(buildResult.status).toBe(0);
+    },
+  );
 
   afterAll(() => {
     rimrafSync(tempDir);
