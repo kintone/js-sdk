@@ -38,7 +38,7 @@ jobs:
 
       - uses: flatt-security/setup-takumi-guard-npm@9a5d797c2085b6326d3a2985c08e3a114b9b88c1 # v1.1.1
         with:
-          bot-id: ${{ secrets.TAKUMI_GUARD_BOT_ID }}
+          bot-id: ${{ !github.event.pull_request.head.repo.fork && secrets.TAKUMI_GUARD_BOT_ID || '' }}
 
       - name: Checkout kintone/rest-api-spec
         uses: actions/checkout@v5
