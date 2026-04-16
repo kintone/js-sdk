@@ -11,6 +11,9 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: Kesin11/actions-timeline@da70beff098ff89b15d279e8bf2f60519a8dadd7 # v2
 
@@ -28,6 +31,10 @@ jobs:
       - name: create pnpm cache directory
         shell: bash
         run: mkdir -vp $(pnpm store path --silent)
+
+      - uses: flatt-security/setup-takumi-guard-npm@v1
+        with:
+          bot-id: ${{ secrets.TAKUMI_GUARD_BOT_ID }}
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm build

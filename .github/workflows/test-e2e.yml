@@ -10,6 +10,9 @@ jobs:
   test-e2e:
     name: Node.js ${{ matrix.os }} ${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+      id-token: write
 
     strategy:
       matrix:
@@ -32,6 +35,10 @@ jobs:
       - name: create pnpm cache directory
         shell: bash
         run: mkdir -vp $(pnpm store path --silent)
+
+      - uses: flatt-security/setup-takumi-guard-npm@v1
+        with:
+          bot-id: ${{ secrets.TAKUMI_GUARD_BOT_ID }}
 
       - name: Checkout kintone/rest-api-spec
         uses: actions/checkout@v5
