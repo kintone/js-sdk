@@ -11,6 +11,9 @@ jobs:
   test:
     name: Node.js ${{ matrix.os }} ${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+      id-token: write
 
     strategy:
       matrix:
@@ -33,6 +36,10 @@ jobs:
       - name: create pnpm cache directory
         shell: bash
         run: mkdir -vp $(pnpm store path --silent)
+
+      - uses: flatt-security/setup-takumi-guard-npm@9a5d797c2085b6326d3a2985c08e3a114b9b88c1 # v1.1.1
+        with:
+          bot-id: ${{ !github.event.pull_request.head.repo.fork && secrets.TAKUMI_GUARD_BOT_ID || '' }}
 
       - run: pnpm install --fetch-timeout 900000 --frozen-lockfile
       - run: pnpm build
