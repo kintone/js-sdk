@@ -34,6 +34,45 @@ jobs:
         with:
           token: ${{ steps.create-iat.outputs.token }}
 
+      # release-please's extra-files cannot replace a version substring inside
+      # a URL (jsonpath replaces the whole field), so patch the release PR
+      # directly whenever release-please creates/updates it.
+      - name: Resolve release PR branch
+        id: sync-prep
+        if: ${{ steps.release.outputs.pr }}
+        env:
+          PR_JSON: ${{ steps.release.outputs.pr }}
+        run: |
+          echo "branch=$(jq -r '.headBranchName' <<<"$PR_JSON")" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout release PR branch
+        if: ${{ steps.release.outputs.pr }}
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ steps.sync-prep.outputs.branch }}
+          token: ${{ steps.create-iat.outputs.token }}
+          path: _sync
+
+      - name: Sync plugin-manifest-validator examples/manifest.json
+        if: ${{ steps.release.outputs.pr }}
+        working-directory: _sync
+        run: |
+          set -euo pipefail
+          target="packages/plugin-manifest-validator/examples/manifest.json"
+          new_version=$(jq -r '."packages/plugin-manifest-validator"' .release-please-manifest.json)
+
+          sed -i -E "s|(plugin-manifest-validator%40)[0-9]+\.[0-9]+\.[0-9]+|\1${new_version}|g" "$target"
+
+          if git diff --quiet -- "$target"; then
+            echo "URL already points to ${new_version}; nothing to sync"
+            exit 0
+          fi
+
+          git -c user.name="release-please-bot" \
+              -c user.email="release-please-bot@users.noreply.github.com" \
+              commit -am "chore: sync examples/manifest.json to @kintone/plugin-manifest-validator@${new_version}"
+          git push
+
   publish:
     name: Publish to npm
     permissions:

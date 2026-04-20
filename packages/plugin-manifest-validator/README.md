@@ -61,9 +61,13 @@ let manifest: KintonePluginManifestJson;
 When you are configuring your project, you would better set the $schema property. This property should point to a schema file that validates your manifest.
 We recommend setting the $schema property to the following URI in your manifest.json:
 
+<!-- x-release-please-start-version -->
+
 ```
 https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4011.1.0/packages/plugin-manifest-validator/manifest-schema.json
 ```
+
+<!-- x-release-please-end -->
 
 Note: Add or update the $schema property at the top of the manifest.json.
 
