@@ -64,7 +64,7 @@ We recommend setting the $schema property to the following URI in your manifest.
 <!-- x-release-please-start-version -->
 
 ```
-https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4011.1.0/packages/plugin-manifest-validator/manifest-schema.json
+https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4011.1.1/packages/plugin-manifest-validator/manifest-schema.json
 ```
 
 <!-- x-release-please-end -->
