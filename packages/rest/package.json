@@ -60,7 +60,6 @@
     "watch:umd": "pnpm run build:umd --mode development --watch"
   },
   "dependencies": {
-    "fs": "0.0.1-security",
     "js-base64": "3.7.8",
     "openapi-fetch": "0.13.8",
     "openapi-typescript": "7.13.0",
