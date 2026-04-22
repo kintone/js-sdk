@@ -1,96 +1,111 @@
 {
   extends: [
-    "github>cybozu/renovate-config",
-    ":prConcurrentLimitNone"
+    'github>cybozu/renovate-config',
+    ':prConcurrentLimitNone',
   ],
   ignorePaths: [
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/vendor/**",
-    "**/__tests__/**",
-    "**/test/**",
-    "**/tests/**",
-    "**/__fixtures__/**",
+    '**/node_modules/**',
+    '**/bower_components/**',
+    '**/vendor/**',
+    '**/__tests__/**',
+    '**/test/**',
+    '**/tests/**',
+    '**/__fixtures__/**',
   ],
   npm: {
-    fileMatch: [
-      "^packages/create-plugin/templates/([^/]+/)*with-plugin-uploader\\.json$",
+    managerFilePatterns: [
+      '/^packages/create-plugin/templates/([^/]+/)*with-plugin-uploader\\.json$/',
     ],
     packageRules: [
       {
-        // set `chore` to the commit for updating packages
-        matchPackagePatterns: [
-          "*"
+        semanticCommitType: 'chore',
+        matchPackageNames: [
+          '*',
         ],
-        semanticCommitType: "chore",
       },
       {
-        // automerge minor updates of devDependencies
-        matchPackagePatterns: [
-          "*"
-        ],
         matchDepTypes: [
-          "devDependencies"
+          'devDependencies',
         ],
         matchUpdateTypes: [
-          "minor"
+          'minor',
         ],
         automerge: true,
+        matchPackageNames: [
+          '*',
+        ],
       },
     ],
   },
   customManagers: [
     {
-      // track plugin-manifest-validator version embedded in $schema URLs
-      customType: "regex",
-      fileMatch: [
-        "^packages/create-plugin/src/manifest\\.ts$",
+      customType: 'regex',
+      managerFilePatterns: [
+        '/^packages/create-plugin/src/manifest\\.ts$/',
       ],
       matchStrings: [
-        "plugin-manifest-validator%40(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)",
+        'plugin-manifest-validator%40(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)',
       ],
-      depNameTemplate: "@kintone/plugin-manifest-validator",
-      datasourceTemplate: "npm",
+      depNameTemplate: '@kintone/plugin-manifest-validator',
+      datasourceTemplate: 'npm',
     },
   ],
-  "packageRules": [
+  packageRules: [
     {
-      // URL-embedded validator version bumps are chore: (don't trigger release-please)
-      matchPackageNames: ["@kintone/plugin-manifest-validator"],
-      matchManagers: ["custom.regex"],
-      semanticCommitType: "chore",
-    },
-    {
-      // runtime dependencies use bump strategy (update pinned versions)
-      matchDepTypes: ["dependencies"],
-      rangeStrategy: "bump",
-    },
-    {
-      // group transitive-duplicate-risk deps to update together
-      groupName: "axios and related deps",
-      matchPackageNames: ["axios", "form-data"],
-      matchDepTypes: ["dependencies"],
-    },
-    {
-      groupName: "openapi ecosystem deps",
-      matchPackageNames: ["openapi-fetch", "openapi-typescript", "openapi-typescript-helpers"],
-      matchDepTypes: ["dependencies"],
-    },
-    {
-      groupName: "ajv ecosystem deps",
-      matchPackageNames: ["ajv", "ajv-formats"],
-      matchDepTypes: ["dependencies"],
-    },
-    {
-      // Third party actions should be pinned with digest
-      "matchDepTypes": [
-        "action"
+      matchPackageNames: [
+        '@kintone/plugin-manifest-validator',
       ],
-      excludePackagePrefixes: [
-        "actions/",
-        "cybozu/"
+      matchManagers: [
+        'custom.regex',
       ],
-      "pinDigests": true
-    }
-  ]
+      semanticCommitType: 'chore',
+    },
+    {
+      matchDepTypes: [
+        'dependencies',
+      ],
+      rangeStrategy: 'bump',
+    },
+    {
+      groupName: 'axios and related deps',
+      matchPackageNames: [
+        'axios',
+        'form-data',
+      ],
+      matchDepTypes: [
+        'dependencies',
+      ],
+    },
+    {
+      groupName: 'openapi ecosystem deps',
+      matchPackageNames: [
+        'openapi-fetch',
+        'openapi-typescript',
+        'openapi-typescript-helpers',
+      ],
+      matchDepTypes: [
+        'dependencies',
+      ],
+    },
+    {
+      groupName: 'ajv ecosystem deps',
+      matchPackageNames: [
+        'ajv',
+        'ajv-formats',
+      ],
+      matchDepTypes: [
+        'dependencies',
+      ],
+    },
+    {
+      matchDepTypes: [
+        'action',
+      ],
+      pinDigests: true,
+      matchPackageNames: [
+        '!actions/{/,}**',
+        '!cybozu/{/,}**',
+      ],
+    },
+  ],
 }
