@@ -30,4 +30,4 @@ export type {
   InSubtable,
   Subtable,
   OneOf,
-} from "../types/property";
+} from "../types/property.js";

@@ -19,13 +19,13 @@ export type App = {
   };
 };
 
-export * from "./form";
-export * from "./view";
-export * from "./right";
-export * from "./processManagement";
-export * from "./customize";
-export * from "./notification";
-export * from "./report";
-export * from "./action";
-export * from "./adminNotes";
-export * from "./statistics";
+export * from "./form.js";
+export * from "./view.js";
+export * from "./right.js";
+export * from "./processManagement.js";
+export * from "./customize.js";
+export * from "./notification.js";
+export * from "./report.js";
+export * from "./action.js";
+export * from "./adminNotes.js";
+export * from "./statistics.js";

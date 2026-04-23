@@ -7,7 +7,7 @@ export type GuestSpaceID = string | number;
 export type ThreadID = string | number;
 export type PluginID = string;
 
-export * from "./record";
-export * from "./app";
-export * from "./space";
-export * from "./plugin";
+export * from "./record/index.js";
+export * from "./app/index.js";
+export * from "./space/index.js";
+export * from "./plugin/index.js";

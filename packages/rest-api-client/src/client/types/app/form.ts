@@ -1,10 +1,10 @@
-import type { OneOf as FieldProperty } from "../../../KintoneFields/types/property";
+import type { OneOf as FieldProperty } from "../../../KintoneFields/types/property.js";
 import type {
   Row,
   Subtable,
   Group,
   Field,
-} from "../../../KintoneFields/types/layout";
+} from "../../../KintoneFields/types/layout.js";
 
 export type Properties = {
   [fieldCode: string]: FieldProperty;

@@ -2,10 +2,10 @@ import type {
   HttpClient,
   RequestConfigBuilder,
   ResponseHandler,
-} from "./HttpClientInterface";
-import { Response } from "./HttpClientInterface";
+} from "./HttpClientInterface.js";
+import { Response } from "./HttpClientInterface.js";
 import type FormData from "form-data";
-import { KintoneResponseHandler } from "../KintoneResponseHandler";
+import { KintoneResponseHandler } from "../KintoneResponseHandler.js";
 
 type Log = {
   method: "get" | "post" | "put" | "delete";

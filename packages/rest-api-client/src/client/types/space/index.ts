@@ -1,6 +1,6 @@
-import type { App } from "../app";
-import type { Entity } from "../entity";
-import type { SpaceID, ThreadID } from "../index";
+import type { App } from "../app/index.js";
+import type { Entity } from "../entity.js";
+import type { SpaceID, ThreadID } from "../index.js";
 
 type AttachedApp = Pick<
   App,

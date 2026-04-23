@@ -1,5 +1,5 @@
-import type { HttpClient } from "../http";
-import { BaseClient } from "./BaseClient";
+import type { HttpClient } from "../http/index.js";
+import { BaseClient } from "./BaseClient.js";
 
 export type EndpointName =
   | "record"
