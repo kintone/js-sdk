@@ -66,4 +66,10 @@ export interface KintonePluginManifestJson {
     css?: Resources;
     required_params?: string[];
   };
+  sandbox?: boolean;
+  allowed_hosts?: string[];
+  permissions?: {
+    js_api?: string[];
+    rest_api?: string[];
+  };
 }

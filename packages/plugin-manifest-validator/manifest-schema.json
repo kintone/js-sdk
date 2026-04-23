@@ -379,9 +379,57 @@
           }
         }
       }
+    },
+    "sandbox": {
+      "type": "boolean"
+    },
+    "allowed_hosts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Either a bare \"*\" that matches any host, or a URI with a scheme (e.g. https://example.com). Domain-specific rules (IP literal rejection, cybozu domain exclusion, etc.) are enforced by kintone itself.",
+        "anyOf": [{ "const": "*" }, { "format": "uri" }]
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "js_api": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rest_api": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
     }
   },
   "required": ["manifest_version", "version", "type", "name", "icon"],
+  "allOf": [
+    {
+      "if": {
+        "required": ["sandbox"],
+        "properties": {
+          "sandbox": { "const": true }
+        }
+      },
+      "then": {
+        "required": ["allowed_hosts", "permissions"]
+      }
+    }
+  ],
   "definitions": {
     "resources": {
       "$id": "#resources",
