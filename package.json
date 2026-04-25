@@ -43,7 +43,7 @@
     "@cybozu/license-manager": "1.4.1",
     "@octokit/rest": "22.0.1",
     "@types/node": "18.19.130",
-    "comment-json": "4.6.2",
+    "comment-json": "5.0.0",
     "eslint": "9.39.4",
     "eslint-plugin-package-json": "0.59.1",
     "eslint-plugin-vitest": "0.5.4",
