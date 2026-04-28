@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.3.1...@kintone/rest@0.3.2) (2026-04-26)
+
+
+### Bug Fixes
+
+* **rest:** rm deps of fs ([#3755](https://github.com/kintone/js-sdk/issues/3755)) ([de01709](https://github.com/kintone/js-sdk/commit/de01709ea3bf9c70a739539f62c35a41b55be4f6))
+
 ## [0.3.1](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.3.0...@kintone/rest@0.3.1) (2026-04-08)
 
 
