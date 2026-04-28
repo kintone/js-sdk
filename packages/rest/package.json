@@ -64,7 +64,7 @@
     "openapi-fetch": "0.13.8",
     "openapi-typescript": "7.13.0",
     "openapi-typescript-helpers": "0.0.15",
-    "undici": "7.24.7"
+    "undici": "7.24.8"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.2",
