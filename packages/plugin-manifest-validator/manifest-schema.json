@@ -393,6 +393,11 @@
         "anyOf": [{ "const": "*" }, { "format": "uri" }]
       }
     },
+    "allowed_domains": {
+      "type": "string",
+      "description": "Controls cross-domain access scope inside cybozu products (kintone.api / kintone.proxy). Defaults to \"SELF\" when omitted.",
+      "enum": ["SELF", "ANY"]
+    },
     "permissions": {
       "type": "object",
       "additionalProperties": false,

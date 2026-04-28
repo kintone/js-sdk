@@ -68,6 +68,10 @@ export interface KintonePluginManifestJson {
   };
   sandbox?: boolean;
   allowed_hosts?: string[];
+  /**
+   * Controls cross-domain access scope inside cybozu products (kintone.api / kintone.proxy). Defaults to "SELF" when omitted.
+   */
+  allowed_domains?: "SELF" | "ANY";
   permissions?: {
     js_api?: string[];
     rest_api?: string[];

@@ -660,6 +660,51 @@ describe("validator", () => {
     });
   });
 
+  describe("allowed_domains", () => {
+    it.each(["SELF", "ANY"])("accepts enum value: %s", (value) => {
+      assert.deepStrictEqual(validator(json({ allowed_domains: value })), {
+        valid: true,
+        errors: null,
+        warnings: null,
+      });
+    });
+
+    it("rejects unknown enum value", () => {
+      const actual = validator(json({ allowed_domains: "OTHERS" }));
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) => e.keyword === "enum" && e.instancePath === "/allowed_domains",
+        ),
+      );
+    });
+
+    it("rejects non-string", () => {
+      const actual = validator(
+        json({ allowed_domains: 1 } as Record<string, any>),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) => e.keyword === "type" && e.instancePath === "/allowed_domains",
+        ),
+      );
+    });
+
+    it("does not require allowed_domains when sandbox is true", () => {
+      assert.deepStrictEqual(
+        validator(
+          json({
+            sandbox: true,
+            allowed_hosts: [],
+            permissions: {},
+          }),
+        ),
+        { valid: true, errors: null, warnings: null },
+      );
+    });
+  });
+
   describe("permissions", () => {
     it("accepts js_api and rest_api arrays", () => {
       assert.deepStrictEqual(
