@@ -5,6 +5,7 @@ import { RecordClient } from "./client/RecordClient";
 import { SpaceClient } from "./client/SpaceClient";
 import { FileClient } from "./client/FileClient";
 import { PluginClient } from "./client/PluginClient";
+import { SearchClient } from "./client/SearchClient";
 import { DefaultHttpClient } from "./http/";
 import type { ProxyConfig } from "./http/HttpClientInterface";
 import type { BasicAuth, DiscriminatedAuth } from "./types/auth";
@@ -68,6 +69,7 @@ export class KintoneRestAPIClient {
   space: SpaceClient;
   file: FileClient;
   plugin: PluginClient;
+  search: SearchClient;
   private bulkRequest_: BulkRequestClient;
   private baseUrl?: string;
 
@@ -100,6 +102,7 @@ export class KintoneRestAPIClient {
     this.space = new SpaceClient(httpClient, guestSpaceId);
     this.file = new FileClient(httpClient, guestSpaceId);
     this.plugin = new PluginClient(httpClient);
+    this.search = new SearchClient(httpClient, guestSpaceId);
   }
 
   public static get version() {
