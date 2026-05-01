@@ -464,8 +464,8 @@ importers:
         specifier: 0.0.2
         version: 0.0.2(picomatch@4.0.4)(rollup@4.60.1)(vite@5.4.21(@types/node@25.5.0)(terser@5.46.1))
       vite-plugin-static-copy:
-        specifier: 3.4.0
-        version: 3.4.0(vite@5.4.21(@types/node@25.5.0)(terser@5.46.1))
+        specifier: 4.1.0
+        version: 4.1.0(vite@5.4.21(@types/node@25.5.0)(terser@5.46.1))
 
   packages/rest-api-client:
     dependencies:
@@ -6817,11 +6817,11 @@ packages:
     peerDependencies:
       vite: ^7.1.12
 
-  vite-plugin-static-copy@3.4.0:
-    resolution: {integrity: sha512-ekryzCw0ouAOE8tw4RvVL/dfqguXzumsV3FBKoKso4MQ1MUUrUXtl5RI4KpJQUNGqFEsg9kxl4EvDl02YtA9VQ==}
-    engines: {node: ^18.0.0 || >=20.0.0}
+  vite-plugin-static-copy@4.1.0:
+    resolution: {integrity: sha512-9XOarNV7LgP0KBB7AApxdgFikLXx3daZdqjC3AevYsL6MrUH62zphonLUs2a6LZc1HN1GY+vQdheZ8VVJb6dQQ==}
+    engines: {node: ^22.0.0 || >=24.0.0}
     peerDependencies:
-      vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+      vite: ^6.0.0 || ^7.0.0 || ^8.0.0
 
   vite@5.4.21:
     resolution: {integrity: sha512-o5a9xKjbtuhY6Bi5S3+HvbRERmouabWbyUcpXXUA1u+GNUKoROi9byOJ8M0nHbHYHkYICiMlqxkg1KkYmm25Sw==}
@@ -14123,7 +14123,7 @@ snapshots:
       - picomatch
       - rollup
 
-  vite-plugin-static-copy@3.4.0(vite@5.4.21(@types/node@25.5.0)(terser@5.46.1)):
+  vite-plugin-static-copy@4.1.0(vite@5.4.21(@types/node@25.5.0)(terser@5.46.1)):
     dependencies:
       chokidar: 3.6.0
       p-map: 7.0.4
