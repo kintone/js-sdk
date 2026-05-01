@@ -379,9 +379,62 @@
           }
         }
       }
+    },
+    "sandbox": {
+      "type": "boolean"
+    },
+    "allowed_hosts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Either \"*\" or a URI with a scheme. Domain-level rules are enforced by kintone.",
+        "anyOf": [{ "const": "*" }, { "format": "uri" }]
+      }
+    },
+    "allowed_domains": {
+      "type": "string",
+      "description": "Cross-domain access scope inside cybozu products. Defaults to \"SELF\".",
+      "enum": ["SELF", "ANY"]
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "js_api": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rest_api": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
     }
   },
   "required": ["manifest_version", "version", "type", "name", "icon"],
+  "allOf": [
+    {
+      "if": {
+        "required": ["sandbox"],
+        "properties": {
+          "sandbox": { "const": true }
+        }
+      },
+      "then": {
+        "required": ["allowed_hosts", "permissions"]
+      }
+    }
+  ],
   "definitions": {
     "resources": {
       "$id": "#resources",
