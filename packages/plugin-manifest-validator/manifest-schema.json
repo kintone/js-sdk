@@ -389,13 +389,13 @@
       "items": {
         "type": "string",
         "minLength": 1,
-        "description": "Either a bare \"*\" that matches any host, or a URI with a scheme (e.g. https://example.com). Domain-specific rules (IP literal rejection, cybozu domain exclusion, etc.) are enforced by kintone itself.",
+        "description": "Either \"*\" or a URI with a scheme. Domain-level rules are enforced by kintone.",
         "anyOf": [{ "const": "*" }, { "format": "uri" }]
       }
     },
     "allowed_domains": {
       "type": "string",
-      "description": "Controls cross-domain access scope inside cybozu products (kintone.api / kintone.proxy). Defaults to \"SELF\" when omitted.",
+      "description": "Cross-domain access scope inside cybozu products. Defaults to \"SELF\".",
       "enum": ["SELF", "ANY"]
     },
     "permissions": {
