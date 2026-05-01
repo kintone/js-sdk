@@ -14,7 +14,7 @@ overrides:
   follow-redirects@<1.15.4: '>=1.15.11'
   pac-resolver: '>=7.0.1'
   socks: '>=2.8.8'
-  ws: '>=8.18.3'
+  ws: '>=8.20.0'
 
 importers:
 
