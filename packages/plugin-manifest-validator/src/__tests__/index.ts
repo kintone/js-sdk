@@ -593,8 +593,8 @@ describe("validator", () => {
       );
     });
 
-    it("does not require allowed_hosts/permissions when sandbox is false", () => {
-      assert.deepStrictEqual(validator(json({ sandbox: false })), {
+    it("does not require allowed_hosts/permissions when sandbox is omitted", () => {
+      assert.deepStrictEqual(validator(json({})), {
         valid: true,
         errors: null,
         warnings: null,
@@ -655,6 +655,21 @@ describe("validator", () => {
       assert(
         actual.errors?.some(
           (e) => e.keyword === "type" && e.instancePath === "/allowed_hosts/0",
+        ),
+      );
+    });
+
+    it("rejects duplicated entries", () => {
+      const actual = validator(
+        json({
+          allowed_hosts: ["https://example.com", "https://example.com"],
+        }),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) =>
+            e.keyword === "uniqueItems" && e.instancePath === "/allowed_hosts",
         ),
       );
     });
@@ -753,6 +768,23 @@ describe("validator", () => {
         ),
       );
     });
+
+    it.each(["js_api", "rest_api"] as const)(
+      "rejects duplicated entries in %s",
+      (key) => {
+        const actual = validator(
+          json({ permissions: { [key]: ["app:read", "app:read"] } }),
+        );
+        assert(actual.valid === false);
+        assert(
+          actual.errors?.some(
+            (e) =>
+              e.keyword === "uniqueItems" &&
+              e.instancePath === `/permissions/${key}`,
+          ),
+        );
+      },
+    );
   });
 
   describe("validate required properties", () => {
