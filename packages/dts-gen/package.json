@@ -44,7 +44,7 @@
     "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules vitest run"
   },
   "dependencies": {
-    "@cybozu/eslint-config": "24.3.0",
+    "@cybozu/eslint-config": "25.0.1",
     "axios": "1.15.2",
     "commander": "12.1.0",
     "eslint": "9.39.4",
