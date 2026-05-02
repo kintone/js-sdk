@@ -88,7 +88,7 @@
     "jsdom": "26.1.0",
     "normalize.css": "8.0.1",
     "path-browserify": "1.0.1",
-    "postcss": "8.5.10",
+    "postcss": "8.5.12",
     "postcss-cli": "11.0.1",
     "process": "0.11.10",
     "redux-logger": "3.0.6",
