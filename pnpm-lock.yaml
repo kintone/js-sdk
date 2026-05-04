@@ -448,8 +448,8 @@ importers:
         specifier: 0.0.15
         version: 0.0.15
       undici:
-        specifier: 7.24.8
-        version: 7.24.8
+        specifier: 8.2.0
+        version: 8.2.0
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: 0.18.2
@@ -6867,9 +6867,9 @@ packages:
   undici-types@7.18.2:
     resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
 
-  undici@7.24.8:
-    resolution: {integrity: sha512-6KQ/+QxK49Z/p3HO6E5ZCZWNnCasyZLa5ExaVYyvPxUwKtbCPMKELJOqh7EqOle0t9cH/7d2TaaTRRa6Nhs4YQ==}
-    engines: {node: '>=20.18.1'}
+  undici@8.2.0:
+    resolution: {integrity: sha512-Z+4Hx9GE26Lh9Upwfnc8C7SsrpBPGaM/Gm6kMFtiG7c+5IvQKlXi/t+9x9DrrCh29cww5TSP9YdVaBcnLDs5fQ==}
+    engines: {node: '>=22.19.0'}
 
   unicode-canonical-property-names-ecmascript@2.0.1:
     resolution: {integrity: sha512-dA8WbNeb2a6oQzAQ55YlT5vQAWGV9WXOsi3SskE3bcCdM0P4SDd+24zS/OCacdRq5BkdsRj9q3Pg6YyQoxIGqg==}
@@ -14263,7 +14263,7 @@ snapshots:
   undici-types@7.18.2:
     optional: true
 
-  undici@7.24.8: {}
+  undici@8.2.0: {}
 
   unicode-canonical-property-names-ecmascript@2.0.1: {}
 
