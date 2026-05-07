@@ -1,0 +1,189 @@
+export type SearchHitType =
+  | "RECORD"
+  | "RECORD_COMMENT"
+  | "SPACE"
+  | "THREAD"
+  | "THREAD_COMMENT"
+  | "PEOPLE_COMMENT"
+  | "MESSAGE_COMMENT"
+  | "ATTACHMENT";
+
+export type SearchAttachmentTarget =
+  | "RECORD"
+  | "SPACE"
+  | "THREAD"
+  | "THREAD_COMMENT"
+  | "PEOPLE_COMMENT"
+  | "MESSAGE_COMMENT";
+
+export type SearchScopeType = "SPACE" | "APP" | "PEOPLE" | "MESSAGE";
+
+export type SearchSortBy = "RELEVANCE" | "CREATED_AT";
+export type SearchSortOrder = "ASC" | "DESC";
+
+export type SearchQuery = {
+  operator: "AND" | "NOT";
+  keywords: string[];
+};
+
+export type SearchScope =
+  | { scope: "SPACE"; ids?: Array<number | string> | null }
+  | { scope: "APP"; ids?: Array<number | string> | null }
+  | { scope: "PEOPLE"; codes?: string[] | null }
+  | { scope: "MESSAGE"; codes?: string[] | null };
+
+export type SearchSort =
+  | { by?: "RELEVANCE"; order?: "DESC" }
+  | { by: "CREATED_AT"; order?: SearchSortOrder };
+
+export type SearchRequest = {
+  query: [SearchQuery, ...SearchQuery[]];
+  types?: SearchHitType[] | null;
+  scopes?: SearchScope[] | null;
+  excludeScopes?: SearchScope[] | null;
+  createdAfter?: string | Date;
+  createdBefore?: string | Date;
+  creators?: string[] | null;
+  sort?: SearchSort;
+  limit?: number | string;
+  pageToken?: string | null;
+};
+
+export type SearchUser = { code: string; name: string };
+
+type SearchID = number | string;
+
+type SearchHitBase = {
+  url: string;
+  snippets: string[];
+};
+
+export type SearchHitRecord = {
+  appId: SearchID;
+  appName: string;
+  recordId: SearchID;
+  recordTitle: string;
+  createdAt: string;
+  creator: SearchUser;
+  matchedFields: Array<{ code: string; label: string }>;
+  spaceId?: SearchID;
+  spaceName?: string;
+};
+
+export type SearchHitRecordComment = {
+  appId: SearchID;
+  appName: string;
+  recordId: SearchID;
+  recordTitle: string;
+  commentId: SearchID;
+  createdAt: string;
+  creator: SearchUser;
+  spaceId?: SearchID;
+  spaceName?: string;
+};
+
+export type SearchHitSpace = {
+  spaceId: SearchID;
+  spaceName: string;
+  createdAt: string;
+  creator: SearchUser;
+};
+
+export type SearchHitThread = {
+  spaceId: SearchID;
+  spaceName: string;
+  threadId: SearchID;
+  threadName: string;
+  createdAt: string;
+  creator: SearchUser;
+};
+
+export type SearchHitThreadComment = {
+  commentId: SearchID;
+  replyId?: SearchID | null;
+  spaceId: SearchID;
+  spaceName: string;
+  threadId: SearchID;
+  threadName: string;
+  createdAt: string;
+  creator: SearchUser;
+};
+
+export type SearchHitPeopleComment = {
+  commentId: SearchID;
+  replyId?: SearchID | null;
+  owner: SearchUser;
+  createdAt: string;
+  creator: SearchUser;
+};
+
+export type SearchHitMessageComment = {
+  commentId: SearchID;
+  recipient: SearchUser;
+  createdAt: string;
+  creator: SearchUser;
+};
+
+export type SearchHitAttachment = {
+  attachedTo: SearchAttachmentTarget;
+  fileKey: string;
+  name: string;
+  createdAt: string;
+  creator: SearchUser;
+};
+
+export type SearchHit =
+  | (SearchHitBase & { type: "RECORD"; record: SearchHitRecord })
+  | (SearchHitBase & {
+      type: "RECORD_COMMENT";
+      recordComment: SearchHitRecordComment;
+    })
+  | (SearchHitBase & { type: "SPACE"; space: SearchHitSpace })
+  | (SearchHitBase & { type: "THREAD"; thread: SearchHitThread })
+  | (SearchHitBase & {
+      type: "THREAD_COMMENT";
+      threadComment: SearchHitThreadComment;
+    })
+  | (SearchHitBase & {
+      type: "PEOPLE_COMMENT";
+      peopleComment: SearchHitPeopleComment;
+    })
+  | (SearchHitBase & {
+      type: "MESSAGE_COMMENT";
+      messageComment: SearchHitMessageComment;
+    })
+  | (SearchHitBase & {
+      type: "ATTACHMENT";
+      attachment: SearchHitAttachment & { attachedTo: "RECORD" };
+      record: SearchHitRecord;
+    })
+  | (SearchHitBase & {
+      type: "ATTACHMENT";
+      attachment: SearchHitAttachment & { attachedTo: "SPACE" };
+      space: SearchHitSpace;
+    })
+  | (SearchHitBase & {
+      type: "ATTACHMENT";
+      attachment: SearchHitAttachment & { attachedTo: "THREAD" };
+      thread: SearchHitThread;
+    })
+  | (SearchHitBase & {
+      type: "ATTACHMENT";
+      attachment: SearchHitAttachment & { attachedTo: "THREAD_COMMENT" };
+      threadComment: SearchHitThreadComment;
+    })
+  | (SearchHitBase & {
+      type: "ATTACHMENT";
+      attachment: SearchHitAttachment & { attachedTo: "PEOPLE_COMMENT" };
+      peopleComment: SearchHitPeopleComment;
+    })
+  | (SearchHitBase & {
+      type: "ATTACHMENT";
+      attachment: SearchHitAttachment & { attachedTo: "MESSAGE_COMMENT" };
+      messageComment: SearchHitMessageComment;
+    });
+
+export type SearchResponse = {
+  hits: SearchHit[];
+  nextPageToken?: string;
+};
