@@ -41,9 +41,7 @@ jobs:
       # digits of the version. The jsonpath strategy meanwhile replaces
       # the whole field. Patch the release PR directly via the GraphQL
       # createCommitOnBranch mutation so the resulting commit is signed
-      # by GitHub server-side (verified). The commit author becomes the
-      # App identity used for `create-github-app-token`, not the prior
-      # hardcoded `release-please-bot`.
+      # by GitHub server-side (verified).
       - name: Resolve release PR branch
         id: sync-prep
         if: ${{ steps.release.outputs.pr }}
@@ -75,14 +73,15 @@ jobs:
             "packages/plugin-manifest-validator/README.md"
           )
 
-          additions='[]'
-          for f in "${targets[@]}"; do
-            sed -i -E "s|(plugin-manifest-validator%40)[0-9]+\.[0-9]+\.[0-9]+|\1${new_version}|g" "$f"
-            if ! git diff --quiet -- "$f"; then
-              additions=$(jq --arg path "$f" --arg content "$(base64 -w0 "$f")" \
-                '. + [{path: $path, contents: $content}]' <<<"$additions")
-            fi
-          done
+          additions=$(
+            for f in "${targets[@]}"; do
+              sed -i -E "s|(plugin-manifest-validator%40)[0-9]+\.[0-9]+\.[0-9]+|\1${new_version}|g" "$f"
+              if ! git diff --quiet -- "$f"; then
+                jq -n --arg path "$f" --arg content "$(base64 -w0 "$f")" \
+                  '{path: $path, contents: $content}'
+              fi
+            done | jq -s .
+          )
 
           if [[ "$(jq 'length' <<<"$additions")" == "0" ]]; then
             echo "URLs already point to ${new_version}; nothing to sync"
