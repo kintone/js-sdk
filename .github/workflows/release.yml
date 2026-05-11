@@ -35,11 +35,15 @@ jobs:
           token: ${{ steps.create-iat.outputs.token }}
 
       # release-please's extra-files cannot reliably replace a version
-      # substring embedded in a URL: the inline regex greedy-matches
-      # "%40<digits>" and strips the encoded "@", and the jsonpath strategy
-      # replaces the whole field. Patch the release PR directly via the
-      # GraphQL createCommitOnBranch mutation so the resulting commit is
-      # server-side signed (verified).
+      # substring embedded in a URL: the default version regex
+      # `[0-9]+\.[0-9]+\.[0-9]+` has no boundary anchor, so it consumes
+      # the `40` of an encoded `%40` (URL-encoded `@`) as the leading
+      # digits of the version. The jsonpath strategy meanwhile replaces
+      # the whole field. Patch the release PR directly via the GraphQL
+      # createCommitOnBranch mutation so the resulting commit is signed
+      # by GitHub server-side (verified). The commit author becomes the
+      # App identity used for `create-github-app-token`, not the prior
+      # hardcoded `release-please-bot`.
       - name: Resolve release PR branch
         id: sync-prep
         if: ${{ steps.release.outputs.pr }}
@@ -85,22 +89,29 @@ jobs:
             exit 0
           fi
 
+          # `gh api graphql -F input=@file` sends the variable as a JSON
+          # *string*, which won't coerce to CreateCommitOnBranchInput!.
+          # Build the full {query, variables} body and pass via --input.
           jq -n \
+            --arg query 'mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { url } } }' \
             --arg repo "$REPO_NWO" \
             --arg branch "$BRANCH" \
             --arg msg "chore: sync plugin-manifest-validator schema URLs to ${new_version}" \
             --arg oid "$(git rev-parse HEAD)" \
             --argjson additions "$additions" \
             '{
-              branch: {repositoryNameWithOwner: $repo, branchName: $branch},
-              message: {headline: $msg},
-              fileChanges: {additions: $additions},
-              expectedHeadOid: $oid
-            }' > "${RUNNER_TEMP}/sync-input.json"
+              query: $query,
+              variables: {
+                input: {
+                  branch: {repositoryNameWithOwner: $repo, branchName: $branch},
+                  message: {headline: $msg},
+                  fileChanges: {additions: $additions},
+                  expectedHeadOid: $oid
+                }
+              }
+            }' > "${RUNNER_TEMP}/sync-request.json"
 
-          gh api graphql \
-            -F input=@"${RUNNER_TEMP}/sync-input.json" \
-            -f query='mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { url } } }'
+          gh api graphql --input "${RUNNER_TEMP}/sync-request.json"
 
   publish:
     name: Publish to npm
