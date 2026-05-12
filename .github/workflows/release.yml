@@ -73,44 +73,64 @@ jobs:
             "packages/plugin-manifest-validator/README.md"
           )
 
-          additions=$(
-            for f in "${targets[@]}"; do
-              sed -i -E "s|(plugin-manifest-validator%40)[0-9]+\.[0-9]+\.[0-9]+|\1${new_version}|g" "$f"
-              if ! git diff --quiet -- "$f"; then
-                jq -n --arg path "$f" --arg content "$(base64 -w0 "$f")" \
-                  '{path: $path, contents: $content}'
-              fi
-            done | jq -s .
-          )
+          # release-please may force-push the release PR branch concurrently,
+          # which invalidates `expectedHeadOid`. Refresh the working tree from
+          # origin, re-apply the sed, and retry up to MAX_ATTEMPTS times.
+          MAX_ATTEMPTS=3
+          for attempt in $(seq 1 "$MAX_ATTEMPTS"); do
+            git fetch origin "$BRANCH"
+            git reset --hard "origin/${BRANCH}"
 
-          if [[ "$(jq 'length' <<<"$additions")" == "0" ]]; then
-            echo "URLs already point to ${new_version}; nothing to sync"
-            exit 0
-          fi
+            additions=$(
+              for f in "${targets[@]}"; do
+                sed -i -E "s|(plugin-manifest-validator%40)[0-9]+\.[0-9]+\.[0-9]+|\1${new_version}|g" "$f"
+                if ! git diff --quiet -- "$f"; then
+                  jq -n --arg path "$f" --arg content "$(base64 -w0 "$f")" \
+                    '{path: $path, contents: $content}'
+                fi
+              done | jq -s .
+            )
 
-          # `gh api graphql -F input=@file` sends the variable as a JSON
-          # *string*, which won't coerce to CreateCommitOnBranchInput!.
-          # Build the full {query, variables} body and pass via --input.
-          jq -n \
-            --arg query 'mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { url } } }' \
-            --arg repo "$REPO_NWO" \
-            --arg branch "$BRANCH" \
-            --arg msg "chore: sync plugin-manifest-validator schema URLs to ${new_version}" \
-            --arg oid "$(git rev-parse HEAD)" \
-            --argjson additions "$additions" \
-            '{
-              query: $query,
-              variables: {
-                input: {
-                  branch: {repositoryNameWithOwner: $repo, branchName: $branch},
-                  message: {headline: $msg},
-                  fileChanges: {additions: $additions},
-                  expectedHeadOid: $oid
+            if [[ "$(jq 'length' <<<"$additions")" == "0" ]]; then
+              echo "URLs already point to ${new_version}; nothing to sync"
+              exit 0
+            fi
+
+            # `gh api graphql -F input=@file` sends the variable as a JSON
+            # *string*, which won't coerce to CreateCommitOnBranchInput!.
+            # Build the full {query, variables} body and pass via --input.
+            jq -n \
+              --arg query 'mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { url } } }' \
+              --arg repo "$REPO_NWO" \
+              --arg branch "$BRANCH" \
+              --arg msg "chore: sync plugin-manifest-validator schema URLs to ${new_version}" \
+              --arg oid "$(git rev-parse HEAD)" \
+              --argjson additions "$additions" \
+              '{
+                query: $query,
+                variables: {
+                  input: {
+                    branch: {repositoryNameWithOwner: $repo, branchName: $branch},
+                    message: {headline: $msg},
+                    fileChanges: {additions: $additions},
+                    expectedHeadOid: $oid
+                  }
                 }
-              }
-            }' > "${RUNNER_TEMP}/sync-request.json"
+              }' > "${RUNNER_TEMP}/sync-request.json"
 
-          gh api graphql --input "${RUNNER_TEMP}/sync-request.json"
+            if gh api graphql --input "${RUNNER_TEMP}/sync-request.json" 2> "${RUNNER_TEMP}/sync-error.log"; then
+              exit 0
+            fi
+
+            cat "${RUNNER_TEMP}/sync-error.log"
+            if grep -q "Expected.*head.*oid" "${RUNNER_TEMP}/sync-error.log" && [[ "$attempt" -lt "$MAX_ATTEMPTS" ]]; then
+              echo "expectedHeadOid mismatch on attempt ${attempt}; refreshing and retrying"
+              continue
+            fi
+            echo "createCommitOnBranch failed on attempt ${attempt}. current branch tip:"
+            gh api "repos/${REPO_NWO}/branches/${BRANCH}" --jq '.commit.sha' || true
+            exit 1
+          done
 
   publish:
     name: Publish to npm
