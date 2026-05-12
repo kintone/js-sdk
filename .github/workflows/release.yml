@@ -145,6 +145,17 @@ jobs:
       - run: npm install -g npm@latest
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+      - name: DEBUG working tree state before publish
+        run: |
+          echo "::group::git status"
+          git status
+          echo "::endgroup::"
+          echo "::group::git diff"
+          git diff
+          echo "::endgroup::"
+          echo "::group::git diff --stat"
+          git diff --stat
+          echo "::endgroup::"
       - run: pnpm -r publish --access public --registry https://registry.npmjs.org/
         env:
           NPM_CONFIG_PROVENANCE: true
