@@ -26,9 +26,16 @@ export type SearchQuery = {
   keywords: string[];
 };
 
+type AppID = number | string;
+type SpaceID = number | string;
+type RecordID = number | string;
+type ThreadID = number | string;
+type CommentID = number | string;
+type ReplyID = number | string;
+
 export type SearchScope =
-  | { scope: "SPACE"; ids?: Array<number | string> | null }
-  | { scope: "APP"; ids?: Array<number | string> | null }
+  | { scope: "SPACE"; ids?: SpaceID[] | null }
+  | { scope: "APP"; ids?: AppID[] | null }
   | { scope: "PEOPLE"; codes?: string[] | null }
   | { scope: "MESSAGE"; codes?: string[] | null };
 
@@ -51,74 +58,72 @@ export type SearchRequest = {
 
 export type SearchUser = { code: string; name: string };
 
-type SearchID = number | string;
-
 type SearchHitBase = {
   url: string;
   snippets: string[];
 };
 
 export type SearchHitRecord = {
-  appId: SearchID;
+  appId: AppID;
   appName: string;
-  recordId: SearchID;
+  recordId: RecordID;
   recordTitle: string;
   createdAt: string;
   creator: SearchUser;
-  matchedFields: Array<{ code: string; label: string }>;
-  spaceId?: SearchID;
+  matchedFields: Array<{ code: string; name: string }>;
+  spaceId?: SpaceID;
   spaceName?: string;
 };
 
 export type SearchHitRecordComment = {
-  appId: SearchID;
+  appId: AppID;
   appName: string;
-  recordId: SearchID;
+  recordId: RecordID;
   recordTitle: string;
-  commentId: SearchID;
+  commentId: CommentID;
   createdAt: string;
   creator: SearchUser;
-  spaceId?: SearchID;
+  spaceId?: SpaceID;
   spaceName?: string;
 };
 
 export type SearchHitSpace = {
-  spaceId: SearchID;
+  spaceId: SpaceID;
   spaceName: string;
   createdAt: string;
   creator: SearchUser;
 };
 
 export type SearchHitThread = {
-  spaceId: SearchID;
+  spaceId: SpaceID;
   spaceName: string;
-  threadId: SearchID;
+  threadId: ThreadID;
   threadName: string;
   createdAt: string;
   creator: SearchUser;
 };
 
 export type SearchHitThreadComment = {
-  commentId: SearchID;
-  replyId?: SearchID | null;
-  spaceId: SearchID;
+  commentId: CommentID;
+  replyId?: ReplyID;
+  spaceId: SpaceID;
   spaceName: string;
-  threadId: SearchID;
+  threadId: ThreadID;
   threadName: string;
   createdAt: string;
   creator: SearchUser;
 };
 
 export type SearchHitPeopleComment = {
-  commentId: SearchID;
-  replyId?: SearchID | null;
+  commentId: CommentID;
+  replyId?: ReplyID;
   owner: SearchUser;
   createdAt: string;
   creator: SearchUser;
 };
 
 export type SearchHitMessageComment = {
-  commentId: SearchID;
+  commentId: CommentID;
   recipient: SearchUser;
   createdAt: string;
   creator: SearchUser;
@@ -185,5 +190,5 @@ export type SearchHit =
 
 export type SearchResponse = {
   hits: SearchHit[];
-  nextPageToken?: string;
+  nextPageToken: string | null;
 };

@@ -118,9 +118,8 @@ describe("SearchClient with guestSpaceId", () => {
     const params: SearchRequest = {
       query: [{ operator: "AND", keywords: ["foo"] }],
     };
-    // Use apiToken instead of session — SearchClient always sends with
-    // X-HTTP-Method-Override: GET (POST + body), and session auth requires
-    // a browser-only request token that is not available in Node.js tests.
+    // Use apiToken instead of session — session auth requires a browser-only
+    // request token that is not available in Node.js tests.
     const requestConfigBuilder = new KintoneRequestConfigBuilder({
       baseUrl: "https://example.cybozu.com",
       auth: { type: "apiToken", apiToken: "dummy" },
