@@ -1,4 +1,4 @@
-import type { DiscriminatedAuth } from "../types/auth";
+import type { DiscriminatedAuth } from "../types/auth.js";
 type PlatformDeps = {
   readFileFromPath: (
     filePath: string,

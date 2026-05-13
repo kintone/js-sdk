@@ -39,15 +39,15 @@ import type {
   PluginLocale,
   GetStatisticsRequest,
   GetStatisticsResponse,
-} from "./types";
-import { BaseClient } from "./BaseClient";
-import type { AppPlugin } from "./types/app/plugin";
+} from "./types/index.js";
+import { BaseClient } from "./BaseClient.js";
+import type { AppPlugin } from "./types/app/plugin.js";
 import type {
   GetAppSettingsForRequest,
   GetAppSettingsForResponse,
   UpdateAppSettingsForRequest,
   UpdateAppSettingsForResponse,
-} from "./types/app/setting";
+} from "./types/app/setting.js";
 type RowLayoutForParameter = {
   type: "ROW";
   fields: Array<{ [key: string]: unknown }>;

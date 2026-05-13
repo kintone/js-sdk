@@ -1,6 +1,6 @@
-import type { HttpClient } from "../http";
-import type { BulkRequestClient } from "./BulkRequestClient";
-import { KintoneAllRecordsError } from "../error";
+import type { HttpClient } from "../http/index.js";
+import type { BulkRequestClient } from "./BulkRequestClient.js";
+import { KintoneAllRecordsError } from "../error/index.js";
 import type {
   AppID,
   RecordID,
@@ -11,8 +11,8 @@ import type {
   Comment,
   Mention,
   UpdateRecordsForResponse,
-} from "./types";
-import { BaseClient } from "./BaseClient";
+} from "./types/index.js";
+import { BaseClient } from "./BaseClient.js";
 
 const ADD_RECORDS_LIMIT = 100;
 const UPDATE_RECORDS_LIMIT = 100;

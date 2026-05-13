@@ -56,6 +56,7 @@ export default defineConfig({
     resolve({
       browser: true,
       preferBuiltins: false,
+      extensions,
     }),
     commonjs({ extensions }),
     babel({

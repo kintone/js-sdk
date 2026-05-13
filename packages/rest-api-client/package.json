@@ -50,7 +50,7 @@
   "scripts": {
     "prebuild": "pnpm clean",
     "build": "tsc --build --force",
-    "postbuild": "run-p build:*",
+    "postbuild": "run-p build:* && node scripts/fix-esm-json-import.js",
     "build:umd_dev": "rollup -c --environment BUILD:development",
     "build:umd_prod": "rollup -c --environment BUILD:production",
     "clean": "rimraf lib esm umd",

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { promisify } from "node:util";
 import { basename } from "node:path";
-import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
+import { UnsupportedPlatformError } from "./UnsupportedPlatformError.js";
 import https from "node:https";
 import os from "node:os";
 import packageJson from "../../package.json";

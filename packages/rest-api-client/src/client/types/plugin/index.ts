@@ -1,4 +1,4 @@
-import type { PluginID } from "..";
+import type { PluginID } from "../index.js";
 
 type Plugin = {
   id: string;

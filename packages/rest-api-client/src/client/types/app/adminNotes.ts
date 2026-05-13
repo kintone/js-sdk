@@ -1,4 +1,4 @@
-import type { AppID, Revision } from "..";
+import type { AppID, Revision } from "../index.js";
 
 export type AdminNotes = {
   content: string;

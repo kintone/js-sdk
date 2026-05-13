@@ -1,5 +1,5 @@
-import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
-import type { DiscriminatedAuth } from "../types/auth";
+import { UnsupportedPlatformError } from "./UnsupportedPlatformError.js";
+import type { DiscriminatedAuth } from "../types/auth.js";
 import mime from "mime/lite";
 import packageJson from "../../package.json";
 

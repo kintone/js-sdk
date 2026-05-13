@@ -37,6 +37,9 @@ describe("Webpack Bundler tests", () => {
         },
         resolve: {
           extensions: [".ts", ".js"],
+          extensionAlias: {
+            ".js": [".ts", ".js"],
+          },
         },
       };
       try {

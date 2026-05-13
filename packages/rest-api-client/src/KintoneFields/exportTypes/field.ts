@@ -29,4 +29,4 @@ export type {
   InSubtable,
   Subtable,
   OneOf,
-} from "../types/field";
+} from "../types/field.js";

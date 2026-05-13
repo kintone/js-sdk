@@ -27,7 +27,7 @@ import type {
   Category,
   Status,
   StatusAssignee,
-} from "../field";
+} from "../field.js";
 
 type Test_SubtableField_OK = Subtable<{
   SingleLineText: SingleLineText;

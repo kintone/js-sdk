@@ -1,4 +1,4 @@
-import type { AppID, AppLang, Revision } from "..";
+import type { AppID, AppLang, Revision } from "../index.js";
 type Theme =
   | "WHITE"
   | "CLIPBOARD"

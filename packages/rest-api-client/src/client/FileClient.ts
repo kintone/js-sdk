@@ -1,7 +1,7 @@
 import FormData from "form-data";
-import { platformDeps } from "../platform";
-import { UnsupportedPlatformError } from "../platform/UnsupportedPlatformError";
-import { BaseClient } from "./BaseClient";
+import { platformDeps } from "../platform/index.js";
+import { UnsupportedPlatformError } from "../platform/UnsupportedPlatformError.js";
+import { BaseClient } from "./BaseClient.js";
 
 export class FileClient extends BaseClient {
   public async uploadFile(params: {

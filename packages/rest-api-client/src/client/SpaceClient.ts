@@ -11,8 +11,8 @@ import type {
   Space,
   GetSpacesStatisticsRequest,
   GetSpacesStatisticsResponse,
-} from "./types";
-import { BaseClient } from "./BaseClient";
+} from "./types/index.js";
+import { BaseClient } from "./BaseClient.js";
 
 export class SpaceClient extends BaseClient {
   public getSpace(params: { id: SpaceID }): Promise<Space> {

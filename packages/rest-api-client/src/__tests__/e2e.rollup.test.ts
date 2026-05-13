@@ -38,7 +38,7 @@ describe("Rollup Bundler tests", function () {
             extensions,
             include: ["../**/*"],
           }),
-          resolve({ browser: true, preferBuiltins: false }),
+          resolve({ browser: true, preferBuiltins: false, extensions }),
           commonjs({ extensions }),
           json(),
         ],
