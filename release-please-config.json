@@ -31,8 +31,7 @@
     },
     "packages/plugin-manifest-validator": {
       "package-name": "@kintone/plugin-manifest-validator",
-      "component": "@kintone/plugin-manifest-validator",
-      "extra-files": ["README.md"]
+      "component": "@kintone/plugin-manifest-validator"
     },
     "packages/plugin-packer": {
       "package-name": "@kintone/plugin-packer",
