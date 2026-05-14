@@ -98,8 +98,26 @@ jobs:
         run: mkdir -vp $(pnpm store path --silent)
 
       - uses: flatt-security/setup-takumi-guard-npm@9a5d797c2085b6326d3a2985c08e3a114b9b88c1 # v1.1.1
+        id: setup-takumi-guard
         with:
           bot-id: ${{ !github.event.pull_request.head.repo.fork && secrets.TAKUMI_GUARD_BOT_ID || '' }}
+          set-registry: false
+
+      - name: Configure Takumi Guard registry
+        shell: bash
+        run: |
+          # setup-takumi-guard-npm writes an auth token to the project .npmrc even with
+          # set-registry: false. Since .npmrc is tracked in this repository, that modification
+          # makes the working tree dirty and breaks pnpm publish's git-checks.
+          # Restore .npmrc to its committed state and configure the registry globally instead.
+          git restore .npmrc
+
+          # Configure pnpm's global registry to point to Takumi Guard.
+          # pnpm config --global set writes to ~/.config/pnpm/rc, which is outside
+          # the working tree, so it does not cause pnpm publish to fail with
+          # ERR_PNPM_GIT_UNCLEAN due to dirty git-checks.
+          pnpm config --global set registry https://npm.flatt.tech/
+          pnpm config --global set //npm.flatt.tech/:_authToken "${{ steps.setup-takumi-guard.outputs.token }}"
 
       # Ensure npm 11.5.1 or later is installed
       # ref. https://docs.npmjs.com/trusted-publishers#github-actions-configuration
