@@ -56,125 +56,125 @@ Performs a global search across kintone records, comments, spaces, threads, atta
 
 #### Returns
 
-| Name                  |  Type  | Required | Description                                                                                                                                                       |
-| --------------------- | :----: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| hits                  | Array  |   Yes    | The list of search hits.                                                                                                                                          |
-| hits[].type           | String |   Yes    | The hit type. One of `RECORD`, `RECORD_COMMENT`, `SPACE`, `THREAD`, `THREAD_COMMENT`, `PEOPLE_COMMENT`, `MESSAGE_COMMENT`, `ATTACHMENT`.                          |
-| hits[].url            | String |   Yes    | The URL to the hit. For `ATTACHMENT`, the URL of the attachment's parent.                                                                                         |
-| hits[].snippets       | Array  |   Yes    | Up to 3 text snippets that contain the matched keywords.                                                                                                          |
-| hits[].record         | Object |          | Present when `type` is `RECORD`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `RECORD`. See [record](#record).                                   |
-| hits[].recordComment  | Object |          | Present when `type` is `RECORD_COMMENT`. See [recordComment](#recordcomment).                                                                                     |
-| hits[].space          | Object |          | Present when `type` is `SPACE`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `SPACE`. See [space](#space).                                       |
-| hits[].thread         | Object |          | Present when `type` is `THREAD`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `THREAD`. See [thread](#thread).                                   |
-| hits[].threadComment  | Object |          | Present when `type` is `THREAD_COMMENT`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `THREAD_COMMENT`. See [threadComment](#threadcomment).     |
-| hits[].peopleComment  | Object |          | Present when `type` is `PEOPLE_COMMENT`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `PEOPLE_COMMENT`. See [peopleComment](#peoplecomment).     |
-| hits[].messageComment | Object |          | Present when `type` is `MESSAGE_COMMENT`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `MESSAGE_COMMENT`. See [messageComment](#messagecomment). |
-| hits[].attachment     | Object |          | Present when `type` is `ATTACHMENT`. See [attachment](#attachment).                                                                                               |
-| nextPageToken         | String |          | Token to retrieve the next page. Absent on the last page.                                                                                                         |
+| Name                  |  Type  | Description                                                                                                                                                       |
+| --------------------- | :----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| hits                  | Array  | The list of search hits.                                                                                                                                          |
+| hits[].type           | String | The hit type. One of `RECORD`, `RECORD_COMMENT`, `SPACE`, `THREAD`, `THREAD_COMMENT`, `PEOPLE_COMMENT`, `MESSAGE_COMMENT`, `ATTACHMENT`.                          |
+| hits[].url            | String | The URL to the hit. For `ATTACHMENT`, the URL of the attachment's parent.                                                                                         |
+| hits[].snippets       | Array  | Up to 3 text snippets that contain the matched keywords.                                                                                                          |
+| hits[].record         | Object | Present when `type` is `RECORD`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `RECORD`. See [record](#record).                                   |
+| hits[].recordComment  | Object | Present when `type` is `RECORD_COMMENT`. See [recordComment](#recordcomment).                                                                                     |
+| hits[].space          | Object | Present when `type` is `SPACE`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `SPACE`. See [space](#space).                                       |
+| hits[].thread         | Object | Present when `type` is `THREAD`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `THREAD`. See [thread](#thread).                                   |
+| hits[].threadComment  | Object | Present when `type` is `THREAD_COMMENT`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `THREAD_COMMENT`. See [threadComment](#threadcomment).     |
+| hits[].peopleComment  | Object | Present when `type` is `PEOPLE_COMMENT`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `PEOPLE_COMMENT`. See [peopleComment](#peoplecomment).     |
+| hits[].messageComment | Object | Present when `type` is `MESSAGE_COMMENT`, or when `type` is `ATTACHMENT` and `attachment.attachedTo` is `MESSAGE_COMMENT`. See [messageComment](#messagecomment). |
+| hits[].attachment     | Object | Present when `type` is `ATTACHMENT`. See [attachment](#attachment).                                                                                               |
+| nextPageToken         | String | Token to retrieve the next page. Absent on the last page.                                                                                                         |
 
 ##### record
 
-| Name          |       Type       | Required | Description                                                                          |
-| ------------- | :--------------: | :------: | ------------------------------------------------------------------------------------ |
-| appId         | Number or String |   Yes    | The app ID.                                                                          |
-| appName       |      String      |   Yes    | The app name.                                                                        |
-| recordId      | Number or String |   Yes    | The record ID.                                                                       |
-| recordTitle   |      String      |   Yes    | The record title.                                                                    |
-| createdAt     |      String      |   Yes    | The creation datetime.                                                               |
-| creator       |      Object      |   Yes    | The record creator. See [user](#user).                                               |
-| matchedFields |      Array       |   Yes    | Up to 3 fields whose values matched the keywords. See [matchedField](#matchedfield). |
-| spaceId       | Number or String |          | The space ID. Present only when the app belongs to a space.                          |
-| spaceName     |      String      |          | The space name. Present only when the app belongs to a space.                        |
+| Name          |       Type       | Description                                                                          |
+| ------------- | :--------------: | ------------------------------------------------------------------------------------ |
+| appId         | Number or String | The app ID.                                                                          |
+| appName       |      String      | The app name.                                                                        |
+| recordId      | Number or String | The record ID.                                                                       |
+| recordTitle   |      String      | The record title.                                                                    |
+| createdAt     |      String      | The creation datetime.                                                               |
+| creator       |      Object      | The record creator. See [user](#user).                                               |
+| matchedFields |      Array       | Up to 3 fields whose values matched the keywords. See [matchedField](#matchedfield). |
+| spaceId       | Number or String | The space ID. Present only when the app belongs to a space.                          |
+| spaceName     |      String      | The space name. Present only when the app belongs to a space.                        |
 
 ##### recordComment
 
-| Name        |       Type       | Required | Description                                                   |
-| ----------- | :--------------: | :------: | ------------------------------------------------------------- |
-| appId       | Number or String |   Yes    | The app ID.                                                   |
-| appName     |      String      |   Yes    | The app name.                                                 |
-| recordId    | Number or String |   Yes    | The record ID.                                                |
-| recordTitle |      String      |   Yes    | The record title.                                             |
-| commentId   | Number or String |   Yes    | The comment ID.                                               |
-| createdAt   |      String      |   Yes    | The creation datetime of the comment.                         |
-| creator     |      Object      |   Yes    | The comment author. See [user](#user).                        |
-| spaceId     | Number or String |          | The space ID. Present only when the app belongs to a space.   |
-| spaceName   |      String      |          | The space name. Present only when the app belongs to a space. |
+| Name        |       Type       | Description                                                   |
+| ----------- | :--------------: | ------------------------------------------------------------- |
+| appId       | Number or String | The app ID.                                                   |
+| appName     |      String      | The app name.                                                 |
+| recordId    | Number or String | The record ID.                                                |
+| recordTitle |      String      | The record title.                                             |
+| commentId   | Number or String | The comment ID.                                               |
+| createdAt   |      String      | The creation datetime of the comment.                         |
+| creator     |      Object      | The comment author. See [user](#user).                        |
+| spaceId     | Number or String | The space ID. Present only when the app belongs to a space.   |
+| spaceName   |      String      | The space name. Present only when the app belongs to a space. |
 
 ##### space
 
-| Name      |       Type       | Required | Description                           |
-| --------- | :--------------: | :------: | ------------------------------------- |
-| spaceId   | Number or String |   Yes    | The space ID.                         |
-| spaceName |      String      |   Yes    | The space name.                       |
-| createdAt |      String      |   Yes    | The creation datetime of the space.   |
-| creator   |      Object      |   Yes    | The space creator. See [user](#user). |
+| Name      |       Type       | Description                           |
+| --------- | :--------------: | ------------------------------------- |
+| spaceId   | Number or String | The space ID.                         |
+| spaceName |      String      | The space name.                       |
+| createdAt |      String      | The creation datetime of the space.   |
+| creator   |      Object      | The space creator. See [user](#user). |
 
 ##### thread
 
-| Name       |       Type       | Required | Description                            |
-| ---------- | :--------------: | :------: | -------------------------------------- |
-| spaceId    | Number or String |   Yes    | The space ID that contains the thread. |
-| spaceName  |      String      |   Yes    | The space name.                        |
-| threadId   | Number or String |   Yes    | The thread ID.                         |
-| threadName |      String      |   Yes    | The thread name.                       |
-| createdAt  |      String      |   Yes    | The creation datetime of the thread.   |
-| creator    |      Object      |   Yes    | The thread creator. See [user](#user). |
+| Name       |       Type       | Description                            |
+| ---------- | :--------------: | -------------------------------------- |
+| spaceId    | Number or String | The space ID that contains the thread. |
+| spaceName  |      String      | The space name.                        |
+| threadId   | Number or String | The thread ID.                         |
+| threadName |      String      | The thread name.                       |
+| createdAt  |      String      | The creation datetime of the thread.   |
+| creator    |      Object      | The thread creator. See [user](#user). |
 
 ##### threadComment
 
-| Name       |       Type       | Required | Description                                                                                                   |
-| ---------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------- |
-| commentId  | Number or String |   Yes    | When this entry is a comment, its own ID. When this entry is a reply, the ID of the comment being replied to. |
-| replyId    | Number or String |          | Absent when this entry is a comment. Present only when this entry is a reply, holding the reply's own ID.     |
-| spaceId    | Number or String |   Yes    | The space ID that contains the thread.                                                                        |
-| spaceName  |      String      |   Yes    | The space name.                                                                                               |
-| threadId   | Number or String |   Yes    | The thread ID.                                                                                                |
-| threadName |      String      |   Yes    | The thread name.                                                                                              |
-| createdAt  |      String      |   Yes    | The creation datetime of the comment.                                                                         |
-| creator    |      Object      |   Yes    | The comment author. See [user](#user).                                                                        |
+| Name       |       Type       | Description                                                                                                   |
+| ---------- | :--------------: | ------------------------------------------------------------------------------------------------------------- |
+| commentId  | Number or String | When this entry is a comment, its own ID. When this entry is a reply, the ID of the comment being replied to. |
+| replyId    | Number or String | Absent when this entry is a comment. Present only when this entry is a reply, holding the reply's own ID.     |
+| spaceId    | Number or String | The space ID that contains the thread.                                                                        |
+| spaceName  |      String      | The space name.                                                                                               |
+| threadId   | Number or String | The thread ID.                                                                                                |
+| threadName |      String      | The thread name.                                                                                              |
+| createdAt  |      String      | The creation datetime of the comment.                                                                         |
+| creator    |      Object      | The comment author. See [user](#user).                                                                        |
 
 ##### peopleComment
 
-| Name      |       Type       | Required | Description                                                                                                   |
-| --------- | :--------------: | :------: | ------------------------------------------------------------------------------------------------------------- |
-| commentId | Number or String |   Yes    | When this entry is a comment, its own ID. When this entry is a reply, the ID of the comment being replied to. |
-| replyId   | Number or String |          | Absent when this entry is a comment. Present only when this entry is a reply, holding the reply's own ID.     |
-| owner     |      Object      |   Yes    | The owner of the people page. See [user](#user).                                                              |
-| createdAt |      String      |   Yes    | The creation datetime of the comment.                                                                         |
-| creator   |      Object      |   Yes    | The comment author. See [user](#user).                                                                        |
+| Name      |       Type       | Description                                                                                                   |
+| --------- | :--------------: | ------------------------------------------------------------------------------------------------------------- |
+| commentId | Number or String | When this entry is a comment, its own ID. When this entry is a reply, the ID of the comment being replied to. |
+| replyId   | Number or String | Absent when this entry is a comment. Present only when this entry is a reply, holding the reply's own ID.     |
+| owner     |      Object      | The owner of the people page. See [user](#user).                                                              |
+| createdAt |      String      | The creation datetime of the comment.                                                                         |
+| creator   |      Object      | The comment author. See [user](#user).                                                                        |
 
 ##### messageComment
 
-| Name      |       Type       | Required | Description                                      |
-| --------- | :--------------: | :------: | ------------------------------------------------ |
-| commentId | Number or String |   Yes    | The comment ID.                                  |
-| recipient |      Object      |   Yes    | The recipient of the message. See [user](#user). |
-| createdAt |      String      |   Yes    | The creation datetime of the comment.            |
-| creator   |      Object      |   Yes    | The comment author. See [user](#user).           |
+| Name      |       Type       | Description                                      |
+| --------- | :--------------: | ------------------------------------------------ |
+| commentId | Number or String | The comment ID.                                  |
+| recipient |      Object      | The recipient of the message. See [user](#user). |
+| createdAt |      String      | The creation datetime of the comment.            |
+| creator   |      Object      | The comment author. See [user](#user).           |
 
 ##### attachment
 
-| Name       |  Type  | Required | Description                                                                                                                              |
-| ---------- | :----: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| attachedTo | String |   Yes    | The kind of resource the file is attached to. One of `RECORD`, `SPACE`, `THREAD`, `THREAD_COMMENT`, `PEOPLE_COMMENT`, `MESSAGE_COMMENT`. |
-| fileKey    | String |   Yes    | The file key.                                                                                                                            |
-| name       | String |   Yes    | The file name.                                                                                                                           |
-| createdAt  | String |   Yes    | The creation datetime of the attachment.                                                                                                 |
-| creator    | Object |   Yes    | The uploader. See [user](#user).                                                                                                         |
+| Name       |  Type  | Description                                                                                                                              |
+| ---------- | :----: | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| attachedTo | String | The kind of resource the file is attached to. One of `RECORD`, `SPACE`, `THREAD`, `THREAD_COMMENT`, `PEOPLE_COMMENT`, `MESSAGE_COMMENT`. |
+| fileKey    | String | The file key.                                                                                                                            |
+| name       | String | The file name.                                                                                                                           |
+| createdAt  | String | The creation datetime of the attachment.                                                                                                 |
+| creator    | Object | The uploader. See [user](#user).                                                                                                         |
 
 ##### user
 
-| Name |  Type  | Required | Description       |
-| ---- | :----: | :------: | ----------------- |
-| code | String |   Yes    | The user code.    |
-| name | String |   Yes    | The display name. |
+| Name |  Type  | Description       |
+| ---- | :----: | ----------------- |
+| code | String | The user code.    |
+| name | String | The display name. |
 
 ##### matchedField
 
-| Name |  Type  | Required | Description                    |
-| ---- | :----: | :------: | ------------------------------ |
-| code | String |   Yes    | The field code.                |
-| name | String |   Yes    | The display name of the field. |
+| Name |  Type  | Description                    |
+| ---- | :----: | ------------------------------ |
+| code | String | The field code.                |
+| name | String | The display name of the field. |
 
 #### Notes
 
