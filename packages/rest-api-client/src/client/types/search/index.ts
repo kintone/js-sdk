@@ -28,10 +28,6 @@ export type SearchQuery = {
 
 type AppID = number | string;
 type SpaceID = number | string;
-type RecordID = number | string;
-type ThreadID = number | string;
-type CommentID = number | string;
-type ReplyID = number | string;
 
 export type SearchScope =
   | { scope: "SPACE"; ids?: SpaceID[] | null }
@@ -64,66 +60,66 @@ type SearchHitBase = {
 };
 
 export type SearchHitRecord = {
-  appId: AppID;
+  appId: string;
   appName: string;
-  recordId: RecordID;
+  recordId: string;
   recordTitle: string;
   createdAt: string;
   creator: SearchUser;
   matchedFields: Array<{ code: string; name: string }>;
-  spaceId?: SpaceID;
+  spaceId?: string;
   spaceName?: string;
 };
 
 export type SearchHitRecordComment = {
-  appId: AppID;
+  appId: string;
   appName: string;
-  recordId: RecordID;
+  recordId: string;
   recordTitle: string;
-  commentId: CommentID;
+  commentId: string;
   createdAt: string;
   creator: SearchUser;
-  spaceId?: SpaceID;
+  spaceId?: string;
   spaceName?: string;
 };
 
 export type SearchHitSpace = {
-  spaceId: SpaceID;
+  spaceId: string;
   spaceName: string;
   createdAt: string;
   creator: SearchUser;
 };
 
 export type SearchHitThread = {
-  spaceId: SpaceID;
+  spaceId: string;
   spaceName: string;
-  threadId: ThreadID;
+  threadId: string;
   threadName: string;
   createdAt: string;
   creator: SearchUser;
 };
 
 export type SearchHitThreadComment = {
-  commentId: CommentID;
-  replyId?: ReplyID;
-  spaceId: SpaceID;
+  commentId: string;
+  replyId?: string;
+  spaceId: string;
   spaceName: string;
-  threadId: ThreadID;
+  threadId: string;
   threadName: string;
   createdAt: string;
   creator: SearchUser;
 };
 
 export type SearchHitPeopleComment = {
-  commentId: CommentID;
-  replyId?: ReplyID;
+  commentId: string;
+  replyId?: string;
   owner: SearchUser;
   createdAt: string;
   creator: SearchUser;
 };
 
 export type SearchHitMessageComment = {
-  commentId: CommentID;
+  commentId: string;
   recipient: SearchUser;
   createdAt: string;
   creator: SearchUser;
