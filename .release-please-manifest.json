@@ -3,7 +3,7 @@
   "packages/customize-uploader": "9.0.4",
   "packages/dts-gen": "9.0.5",
   "@kintone/eslint-plugin": "0.0.0",
-  "packages/plugin-manifest-validator": "11.1.1",
+  "packages/plugin-manifest-validator": "11.2.0",
   "packages/plugin-packer": "9.1.1",
   "packages/plugin-uploader": "10.0.1",
   "packages/profile-loader": "6.0.1",
