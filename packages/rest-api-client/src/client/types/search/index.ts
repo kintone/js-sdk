@@ -83,7 +83,7 @@ export type SearchHitRecord = {
   recordTitle: string;
   createdAt: string;
   creator: SearchUser;
-  matchedFields: Array<{ code: string; name: string }>;
+  matchedFields: Array<{ code: string; label: string }>;
   spaceId?: string;
   spaceName?: string;
 };

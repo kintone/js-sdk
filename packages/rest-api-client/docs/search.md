@@ -171,10 +171,10 @@ Performs a global search across kintone records, comments, spaces, threads, atta
 
 ##### matchedField
 
-| Name |  Type  | Description                    |
-| ---- | :----: | ------------------------------ |
-| code | String | The field code.                |
-| name | String | The display name of the field. |
+| Name  |  Type  | Description                    |
+| ----- | :----: | ------------------------------ |
+| code  | String | The field code.                |
+| label | String | The display name of the field. |
 
 #### Notes
 
