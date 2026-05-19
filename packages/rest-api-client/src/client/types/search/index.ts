@@ -21,8 +21,13 @@ export type SearchScopeType = "SPACE" | "APP" | "PEOPLE" | "MESSAGE";
 export type SearchSortBy = "RELEVANCE" | "CREATED_AT";
 export type SearchSortOrder = "ASC" | "DESC";
 
+/**
+ * A single search condition. `query` is AND-joined as a whole, while each
+ * entry's `operator` describes how its `keywords` are matched. If no entry
+ * has `operator` set to `AND` or `OR`, the API returns an empty result set.
+ */
 export type SearchQuery = {
-  operator: "AND" | "NOT";
+  operator: "AND" | "OR" | "NOT";
   keywords: string[];
 };
 
@@ -35,11 +40,23 @@ export type SearchScope =
   | { scope: "PEOPLE"; codes?: string[] | null }
   | { scope: "MESSAGE"; codes?: string[] | null };
 
+/**
+ * Sort condition. Defaults to `{ by: "RELEVANCE", order: "DESC" }`.
+ * The combination `{ by: "RELEVANCE", order: "ASC" }` is rejected by the
+ * API, so the union forbids it at the type level: when `by` is omitted or
+ * `"RELEVANCE"`, only `order: "DESC"` is allowed.
+ */
 export type SearchSort =
   | { by?: "RELEVANCE"; order?: "DESC" }
   | { by: "CREATED_AT"; order?: SearchSortOrder };
 
 export type SearchRequest = {
+  /**
+   * One or more search conditions. The non-empty tuple type reflects the
+   * API's requirement that `query` itself must be present and non-empty
+   * (a CB_VA01 error otherwise). Note that the rev-38 "no AND/OR ⇒ empty
+   * result" relaxation only applies once `query` has at least one entry.
+   */
   query: [SearchQuery, ...SearchQuery[]];
   types?: SearchHitType[] | null;
   scopes?: SearchScope[] | null;

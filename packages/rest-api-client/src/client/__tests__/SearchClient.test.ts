@@ -31,8 +31,8 @@ describe("SearchClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/search.json");
     });
-    it("should send a GET request", () => {
-      expect(mockClient.getLogs()[0].method).toBe("get");
+    it("should send a POST request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
     });
     it("should pass params to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
@@ -81,6 +81,7 @@ describe("SearchClient", () => {
     const params: SearchRequest = {
       query: [
         { operator: "AND", keywords: ["売上", "月次"] },
+        { operator: "OR", keywords: ["速報", "サマリ"] },
         { operator: "NOT", keywords: ["経費"] },
       ],
       types: ["RECORD", "RECORD_COMMENT"],
@@ -103,8 +104,8 @@ describe("SearchClient", () => {
     it("should pass the path to the http client", () => {
       expect(mockClient.getLogs()[0].path).toBe("/k/v1/search.json");
     });
-    it("should send a GET request", () => {
-      expect(mockClient.getLogs()[0].method).toBe("get");
+    it("should send a POST request", () => {
+      expect(mockClient.getLogs()[0].method).toBe("post");
     });
     it("should pass params to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);

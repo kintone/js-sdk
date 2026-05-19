@@ -71,29 +71,6 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
         },
       });
     });
-    it("should serialize nested array-of-object params using dot-notation", async () => {
-      const requestConfig = await kintoneRequestConfigBuilder.build(
-        "get",
-        "/k/v1/search.json",
-        {
-          query: [{ operator: "AND", keywords: ["foo", "bar"] }],
-        },
-      );
-      expect(requestConfig).toStrictEqual({
-        method: "get",
-        proxy: undefined,
-        url: `${baseUrl}/k/v1/search.json?query%5B0%5D.operator=AND&query%5B0%5D.keywords%5B0%5D=foo&query%5B0%5D.keywords%5B1%5D=bar`,
-        headers: {
-          "User-Agent": expectedDefaultUa,
-          "X-Cybozu-API-Token": apiToken,
-        },
-      });
-      // Ensure dot-notation is used for nested keys (qs's default bracket
-      // form `query[0][operator]` would not be accepted by the Search API).
-      const decodedUrl = decodeURIComponent(requestConfig.url ?? "");
-      expect(decodedUrl).toContain("query[0].operator=AND");
-      expect(decodedUrl).not.toContain("query[0][operator]");
-    });
     it("should build post method requestConfig if the request URL is over the threshold", async () => {
       const value = "a".repeat(4096);
       const requestConfig = await kintoneRequestConfigBuilder.build(

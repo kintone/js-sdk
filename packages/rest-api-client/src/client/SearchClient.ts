@@ -7,7 +7,7 @@ export class SearchClient extends BaseClient {
       endpointName: "search",
     });
     const { createdAfter, createdBefore, ...rest } = params;
-    return this.client.get(path, {
+    return this.client.post(path, {
       ...rest,
       ...(createdAfter !== undefined && {
         createdAfter:

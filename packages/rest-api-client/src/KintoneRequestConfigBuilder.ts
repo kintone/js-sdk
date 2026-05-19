@@ -192,13 +192,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
   }
 
   private buildRequestUrl(path: string, params: Data): string {
-    // allowDots: true so nested object keys are emitted in dot-notation
-    // (e.g. `query[0].operator=AND`). The kintone backend uses Spring's
-    // @ModelAttribute binding which expects this form for `List<NestedObject>`
-    // parameters (e.g. /k/v1/search.json). Existing endpoints whose params are
-    // flat or only contain primitive arrays are unaffected because qs leaves
-    // those identical under either setting.
-    return `${this.baseUrl}${path}?${qs.stringify(params, { allowDots: true })}`;
+    return `${this.baseUrl}${path}?${qs.stringify(params)}`;
   }
 
   private async buildData<T extends Data>(params: T): Promise<T> {
