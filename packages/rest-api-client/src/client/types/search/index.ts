@@ -54,8 +54,8 @@ export type SearchRequest = {
   /**
    * One or more search conditions. The non-empty tuple type reflects the
    * API's requirement that `query` itself must be present and non-empty
-   * (a CB_VA01 error otherwise). Note that the rev-38 "no AND/OR ⇒ empty
-   * result" relaxation only applies once `query` has at least one entry.
+   * (a CB_VA01 error otherwise). Note that the "no AND/OR ⇒ empty result"
+   * relaxation only applies once `query` has at least one entry.
    */
   query: [SearchQuery, ...SearchQuery[]];
   types?: SearchHitType[] | null;
