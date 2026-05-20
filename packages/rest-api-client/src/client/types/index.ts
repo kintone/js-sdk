@@ -11,3 +11,4 @@ export * from "./record";
 export * from "./app";
 export * from "./space";
 export * from "./plugin";
+export * from "./search";
