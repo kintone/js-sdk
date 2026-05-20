@@ -393,11 +393,6 @@
         "anyOf": [{ "const": "*" }, { "format": "uri" }]
       }
     },
-    "allowed_domains": {
-      "type": "string",
-      "description": "Cross-domain access scope inside cybozu products. Defaults to \"SELF\".",
-      "enum": ["SELF", "ANY"]
-    },
     "permissions": {
       "type": "object",
       "additionalProperties": false,
