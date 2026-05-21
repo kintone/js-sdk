@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.7...@kintone/rest-api-client@6.2.0) (2026-05-21)
+
+
+### Features
+
+* **rest-api-client:** add SearchClient for global search API ([#3769](https://github.com/kintone/js-sdk/issues/3769)) ([2b3d28b](https://github.com/kintone/js-sdk/commit/2b3d28b2355670d77bbdf6a621df9b931804aeb7))
+
 ## [6.1.7](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.6...@kintone/rest-api-client@6.1.7) (2026-05-18)
 
 
