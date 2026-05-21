@@ -148,8 +148,8 @@ importers:
         specifier: 5.5.0
         version: 5.5.0
       '@kintone/rest-api-client':
-        specifier: 6.1.6
-        version: 6.1.6
+        specifier: 6.1.7
+        version: 6.1.7
       chokidar:
         specifier: 3.6.0
         version: 3.6.0
@@ -2073,8 +2073,8 @@ packages:
     resolution: {integrity: sha512-L3E7zcJW4EWnBWHJqo9xr4S6NrxNJsAvjiTr1zWzT+6wfiHe14sTIfW4kO46XGPigu81pLUcKGyKydG9/tQZZg==}
     engines: {node: '>=20'}
 
-  '@kintone/rest-api-client@6.1.6':
-    resolution: {integrity: sha512-9+js5MovmHHEZMXamK3W7krvWTI0CyASr3sOLg4l92fVvTYZ67DYeXrmv2WkW8p40AfuX90nzAEVxxdg/3zc2w==}
+  '@kintone/rest-api-client@6.1.7':
+    resolution: {integrity: sha512-aOWUavHGorokZcSCNTLE/8QQgqnjSPttw2BjMP24Htsqfzip44GXIfEuKCBupFIZdNFNKz+ONAkHzDf3NKqhuQ==}
     engines: {node: '>=20'}
 
   '@leichtgewicht/ip-codec@2.0.5':
@@ -3368,9 +3368,6 @@ packages:
 
   axios@1.14.0:
     resolution: {integrity: sha512-3Y8yrqLSwjuzpXuZ0oIYZ/XGgLwUIBU3uLvbcpb0pidD9ctpShJd43KSlEEkVQg6DS0G9NKyzOvBfUtDKEyHvQ==}
-
-  axios@1.15.0:
-    resolution: {integrity: sha512-wWyJDlAatxk30ZJer+GeCWS209sA42X+N5jU2jy6oHTp7ufw8uzUTVFBX9+wTfAlhiJXGS0Bq7X6efruWjuK9Q==}
 
   axios@1.16.1:
     resolution: {integrity: sha512-caYkukvroVPO8KrzuJEb50Hm07KwfBZPEC3VeFHTsqWHvKTsy54hjJz9BS/cdaypROE2rH6xvm9mHX4fgWkr3A==}
@@ -9070,15 +9067,16 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@kintone/rest-api-client@6.1.6':
+  '@kintone/rest-api-client@6.1.7':
     dependencies:
-      axios: 1.15.0
+      axios: 1.16.1
       form-data: 4.0.5
       js-base64: 3.7.8
       mime: 3.0.0
       qs: 6.15.1
     transitivePeerDependencies:
       - debug
+      - supports-color
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
@@ -10452,14 +10450,6 @@ snapshots:
   axe-core@4.11.1: {}
 
   axios@1.14.0:
-    dependencies:
-      follow-redirects: 1.15.11(debug@4.4.3)
-      form-data: 4.0.5
-      proxy-from-env: 2.1.0
-    transitivePeerDependencies:
-      - debug
-
-  axios@1.15.0:
     dependencies:
       follow-redirects: 1.15.11(debug@4.4.3)
       form-data: 4.0.5
