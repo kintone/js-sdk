@@ -36,7 +36,7 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@kintone/cli": "1.19.2",
+    "@kintone/cli": "1.19.3",
     "mkdirp": "3.0.1"
   },
   "devDependencies": {
