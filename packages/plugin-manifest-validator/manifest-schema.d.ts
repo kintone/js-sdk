@@ -68,10 +68,6 @@ export interface KintonePluginManifestJson {
   };
   sandbox?: boolean;
   allowed_hosts?: string[];
-  /**
-   * Cross-domain access scope inside cybozu products. Defaults to "SELF".
-   */
-  allowed_domains?: "SELF" | "ANY";
   permissions?: {
     js_api?: string[];
     rest_api?: string[];
