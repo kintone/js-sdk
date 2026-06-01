@@ -586,7 +586,7 @@ describe("validator", () => {
           json({
             sandbox: true,
             allowed_hosts: [],
-            permissions: {},
+            permissions: [],
           }),
         ),
         { valid: true, errors: null, warnings: null },
@@ -676,70 +676,115 @@ describe("validator", () => {
   });
 
   describe("permissions", () => {
-    it("accepts js_api and rest_api arrays", () => {
+    it("accepts an array of permission entries with and without scope", () => {
       assert.deepStrictEqual(
         validator(
           json({
-            permissions: {
-              js_api: ["app:read", "network:connect"],
-              rest_api: ["app_record:read", "file:write"],
-            },
+            permissions: [
+              { permission: "app:read" },
+              { permission: "network:connect" },
+              { permission: "app_record:read", scope: "self" },
+            ],
           }),
         ),
         { valid: true, errors: null, warnings: null },
       );
     });
 
-    it("accepts empty arrays", () => {
-      assert.deepStrictEqual(
-        validator(json({ permissions: { js_api: [], rest_api: [] } })),
-        { valid: true, errors: null, warnings: null },
+    it("accepts an empty array", () => {
+      assert.deepStrictEqual(validator(json({ permissions: [] })), {
+        valid: true,
+        errors: null,
+        warnings: null,
+      });
+    });
+
+    it("rejects the legacy object form", () => {
+      const actual = validator(
+        json({
+          permissions: {
+            js_api: ["app:read"],
+            rest_api: ["app_record:read"],
+          },
+        } as Record<string, any>),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) => e.keyword === "type" && e.instancePath === "/permissions",
+        ),
       );
     });
 
-    it("rejects unknown property", () => {
+    it("requires the permission property", () => {
       const actual = validator(
-        json({ permissions: { unknown: [] } } as Record<string, any>),
+        json({ permissions: [{ scope: "self" }] } as Record<string, any>),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) =>
+            e.keyword === "required" &&
+            e.instancePath === "/permissions/0" &&
+            (e.params as { missingProperty?: string }).missingProperty ===
+              "permission",
+        ),
+      );
+    });
+
+    it("rejects an empty permission string", () => {
+      const actual = validator(json({ permissions: [{ permission: "" }] }));
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) =>
+            e.keyword === "minLength" &&
+            e.instancePath === "/permissions/0/permission",
+        ),
+      );
+    });
+
+    it("rejects an empty scope string", () => {
+      const actual = validator(
+        json({ permissions: [{ permission: "app:read", scope: "" }] }),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) =>
+            e.keyword === "minLength" &&
+            e.instancePath === "/permissions/0/scope",
+        ),
+      );
+    });
+
+    it("rejects unknown properties on an entry", () => {
+      const actual = validator(
+        json({
+          permissions: [{ permission: "app:read", unknown: true }],
+        } as Record<string, any>),
       );
       assert(actual.valid === false);
       assert(
         actual.errors?.some(
           (e) =>
             e.keyword === "additionalProperties" &&
-            e.instancePath === "/permissions",
+            e.instancePath === "/permissions/0",
         ),
       );
     });
 
-    it("rejects non-string entries", () => {
+    it("rejects non-object entries", () => {
       const actual = validator(
-        json({ permissions: { js_api: [123] } } as Record<string, any>),
+        json({ permissions: ["app:read"] } as Record<string, any>),
       );
       assert(actual.valid === false);
       assert(
         actual.errors?.some(
-          (e) =>
-            e.keyword === "type" && e.instancePath === "/permissions/js_api/0",
+          (e) => e.keyword === "type" && e.instancePath === "/permissions/0",
         ),
       );
     });
-
-    it.each(["js_api", "rest_api"] as const)(
-      "rejects duplicated entries in %s",
-      (key) => {
-        const actual = validator(
-          json({ permissions: { [key]: ["app:read", "app:read"] } }),
-        );
-        assert(actual.valid === false);
-        assert(
-          actual.errors?.some(
-            (e) =>
-              e.keyword === "uniqueItems" &&
-              e.instancePath === `/permissions/${key}`,
-          ),
-        );
-      },
-    );
   });
 
   describe("validate required properties", () => {

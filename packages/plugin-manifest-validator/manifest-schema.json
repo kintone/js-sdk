@@ -394,21 +394,17 @@
       }
     },
     "permissions": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "js_api": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["permission"],
+        "properties": {
+          "permission": {
             "type": "string",
             "minLength": 1
-          }
-        },
-        "rest_api": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
+          },
+          "scope": {
             "type": "string",
             "minLength": 1
           }

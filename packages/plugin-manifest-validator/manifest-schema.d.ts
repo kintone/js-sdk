@@ -69,7 +69,7 @@ export interface KintonePluginManifestJson {
   sandbox?: boolean;
   allowed_hosts?: string[];
   permissions?: {
-    js_api?: string[];
-    rest_api?: string[];
-  };
+    permission: string;
+    scope?: string;
+  }[];
 }
