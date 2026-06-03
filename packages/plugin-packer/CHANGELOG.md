@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.2](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@9.1.1...@kintone/plugin-packer@9.1.2) (2026-06-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.20.0 ([01b7e1b](https://github.com/kintone/js-sdk/commit/01b7e1b0a95e697756bee1ecbe868c4cd9e81448))
+
 ## [9.1.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-packer@9.1.0...@kintone/plugin-packer@9.1.1) (2026-04-08)
 
 
