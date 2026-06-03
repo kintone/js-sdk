@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.5](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@9.0.4...@kintone/create-plugin@9.0.5) (2026-06-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.20.0 ([01b7e1b](https://github.com/kintone/js-sdk/commit/01b7e1b0a95e697756bee1ecbe868c4cd9e81448))
+* **deps:** update dependency lodash to v4.18.1 [security] ([#3699](https://github.com/kintone/js-sdk/issues/3699)) ([74b9462](https://github.com/kintone/js-sdk/commit/74b94629225a7b1aa86f25852f5774a3b3d44c79))
+
 ## [9.0.4](https://github.com/kintone/js-sdk/compare/@kintone/create-plugin@9.0.3...@kintone/create-plugin@9.0.4) (2026-04-08)
 
 

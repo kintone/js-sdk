@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.3.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@11.2.0...@kintone/plugin-manifest-validator@11.3.0) (2026-06-03)
+
+
+### Features
+
+* **plugin-manifest-validator:** restructure permissions to array of {permission, scope?} ([#3820](https://github.com/kintone/js-sdk/issues/3820)) ([0fd3643](https://github.com/kintone/js-sdk/commit/0fd36439f15cee793ad6022cbc1aea27bc6bb5d5))
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.20.0 ([#3763](https://github.com/kintone/js-sdk/issues/3763)) ([db485ba](https://github.com/kintone/js-sdk/commit/db485bace2da79b63d479e58fa158f853e93947f))
+
 ## [11.2.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@11.1.1...@kintone/plugin-manifest-validator@11.2.0) (2026-05-15)
 
 
