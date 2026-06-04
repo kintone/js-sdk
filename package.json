@@ -36,8 +36,8 @@
     "update-contributors": "ts-node ./scripts/update-contributors.ts"
   },
   "devDependencies": {
-    "@babel/core": "7.29.0",
-    "@babel/preset-env": "7.29.5",
+    "@babel/core": "7.29.7",
+    "@babel/preset-env": "7.29.7",
     "@babel/preset-typescript": "7.29.7",
     "@cybozu/eslint-config": "24.3.0",
     "@cybozu/license-manager": "1.4.1",
