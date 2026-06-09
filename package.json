@@ -59,19 +59,5 @@
     "typescript": "5.9.3",
     "vitest": "4.1.8"
   },
-  "packageManager": "pnpm@10.28.2",
-  "pnpm": {
-    "overrides": {
-      "@isaacs/brace-expansion": "5.0.1",
-      "body-parser": ">=1.20.5",
-      "braces": ">=3.0.3",
-      "browserify-sign@<4.2.2": ">=4.2.6",
-      "cross-spawn": ">=7.0.6",
-      "express": ">=4.19.2",
-      "follow-redirects@<1.15.4": ">=1.15.11",
-      "pac-resolver": ">=7.0.1",
-      "socks": ">=2.8.9",
-      "ws": ">=8.18.3"
-    }
-  }
+  "packageManager": "pnpm@11.5.2"
 }
