@@ -2,6 +2,7 @@ packages:
   - "packages/**"
   - "!**/lib/**"
   - "!**/esm/**"
+  - "!**/dist/**"
   - "!**/templates/**"
 
 minimumReleaseAge: 1440
