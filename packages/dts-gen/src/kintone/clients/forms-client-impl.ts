@@ -2,10 +2,10 @@ import type {
   FormsClient,
   FetchFormPropertiesInput,
   FieldNameAndFieldOrSubTableField,
-} from "./forms-client";
+} from "./forms-client.js";
 
-import type { NewInstanceInput } from "./axios-utils";
-import { AxiosUtils } from "./axios-utils";
+import type { NewInstanceInput } from "./axios-utils.js";
+import { AxiosUtils } from "./axios-utils.js";
 import type { AxiosInstance, AxiosRequestConfig } from "axios";
 
 export class FormsClientImpl implements FormsClient {

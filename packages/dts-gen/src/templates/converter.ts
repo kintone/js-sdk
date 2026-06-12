@@ -1,11 +1,11 @@
-import type { RenderInput } from "./template";
-import * as F from "./expressions/fields";
-import { Namespace } from "./expressions/namespace";
+import type { RenderInput } from "./template.js";
+import * as F from "./expressions/fields.js";
+import { Namespace } from "./expressions/namespace.js";
 import {
   TypeDefinition,
   SavedTypeDefinition,
-} from "./expressions/typedefinitions";
-import type { FieldType } from "../kintone/clients/forms-client";
+} from "./expressions/typedefinitions.js";
+import type { FieldType } from "../kintone/clients/forms-client.js";
 
 export const convertToTsExpression = ({
   namespace,

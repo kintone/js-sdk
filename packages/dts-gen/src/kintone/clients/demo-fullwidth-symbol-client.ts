@@ -2,8 +2,8 @@ import type {
   FetchFormPropertiesInput,
   FormsClient,
   FieldNameAndFieldOrSubTableField,
-} from "./forms-client";
-import { DemoDatas } from "./demo-fullwidth-symbols-datas";
+} from "./forms-client.js";
+import { DemoDatas } from "./demo-fullwidth-symbols-datas.js";
 
 export class DemoFullWidthSymbolClient implements FormsClient {
   fetchFormProperties(

@@ -1,6 +1,6 @@
-import type { FieldGroup, SubTableField, TsDefinedField } from "./fields";
-import type { TsExpression } from "./expression";
-import { toTsExpressions } from "./expression";
+import type { FieldGroup, SubTableField, TsDefinedField } from "./fields.js";
+import type { TsExpression } from "./expression.js";
+import { toTsExpressions } from "./expression.js";
 
 export class TypeDefinition implements TsExpression {
   private typeName: string;

@@ -1,5 +1,5 @@
-import type { TypeDefinition, SavedTypeDefinition } from "./typedefinitions";
-import type { TsExpression } from "./expression";
+import type { TypeDefinition, SavedTypeDefinition } from "./typedefinitions.js";
+import type { TsExpression } from "./expression.js";
 
 export class Namespace implements TsExpression {
   private namespace: string;

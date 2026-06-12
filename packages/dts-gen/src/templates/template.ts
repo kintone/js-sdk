@@ -1,13 +1,17 @@
 import * as fs from "fs";
 import * as path from "path";
+import { fileURLToPath } from "url";
 import { ESLint } from "eslint";
+import type { Plugin } from "prettier";
 import { format } from "prettier/standalone";
 import * as prettierPluginTypescript from "prettier/plugins/typescript";
 import * as prettierPluginEstree from "prettier/plugins/estree";
 
-import type { FieldTypeGroups } from "../converters/fileldtype-converter";
-import { convertToTsExpression } from "./converter";
-import tsPreset from "@cybozu/eslint-config/flat/presets/typescript";
+import type { FieldTypeGroups } from "../converters/fileldtype-converter.js";
+import { convertToTsExpression } from "./converter.js";
+import tsPreset from "@cybozu/eslint-config/flat/presets/typescript.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export interface RenderInput {
   typeName: string;
@@ -56,7 +60,10 @@ const renderAsFile = async (output: string, renderInput: RenderInput) => {
 
   const prettySource = await format(eslintOutput, {
     parser: "typescript",
-    plugins: [prettierPluginTypescript, prettierPluginEstree],
+    plugins: [
+      prettierPluginTypescript,
+      prettierPluginEstree as unknown as Plugin,
+    ],
   });
   const outputPath = path.resolve(output);
 

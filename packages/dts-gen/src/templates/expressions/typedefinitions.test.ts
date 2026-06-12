@@ -1,5 +1,5 @@
-import { TypeDefinition, SavedTypeDefinition } from "./typedefinitions";
-import { FieldGroup, SubTableField, TsDefinedField } from "./fields";
+import { TypeDefinition, SavedTypeDefinition } from "./typedefinitions.js";
+import { FieldGroup, SubTableField, TsDefinedField } from "./fields.js";
 
 describe("TypeDefinition", () => {
   class TestFieldGroup extends FieldGroup {
