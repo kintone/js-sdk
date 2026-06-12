@@ -6,7 +6,7 @@ import { verifyPluginZip, fixtureDir, cleanupJsFiles } from "./helpers";
 
 const pluginZipPath = path.resolve(fixtureDir, "dist", "plugin.zip");
 
-const runWebpack = (config = "webpack.config.js") => {
+const runWebpack = (config = "webpack.config.cjs") => {
   const isWindows = os.platform() === "win32";
   // Use npx to ensure webpack-cli is found in PATH
   return spawnSync(

@@ -14,7 +14,10 @@ describe("projectReferences", () => {
         /\/packages\//.test(packagePath),
       );
 
-      const ignorePackageList: string[] = ["@kintone/rest"];
+      const ignorePackageList: string[] = [
+        "@kintone/rest",
+        "@kintone/webpack-plugin-kintone-plugin",
+      ];
 
       for (const { packageName, packagePath } of workspaces) {
         if (ignorePackageList.includes(packageName)) {

@@ -1,6 +1,12 @@
 import path from "path";
 import type { SpawnOptions } from "child_process";
 import { spawn } from "child_process";
+import { createRequire } from "node:module";
+
+// This package is authored as ESM, where the CommonJS `require` global is not
+// available. Reconstruct it from import.meta.url to resolve the installed
+// @kintone/cli location. Vite rewrites import.meta.url for the CJS build output.
+const require = createRequire(import.meta.url);
 
 /**
  * Get the path to cli-kintone CLI script
