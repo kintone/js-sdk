@@ -92,5 +92,3 @@ class KintonePlugin implements WebpackPluginInstance {
 }
 
 export default KintonePlugin;
-module.exports = KintonePlugin;
-module.exports.default = module.exports;
