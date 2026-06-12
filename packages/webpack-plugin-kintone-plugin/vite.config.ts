@@ -12,7 +12,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       formats: ["cjs"],
-      fileName: () => "index.js",
+      fileName: () => "index.cjs",
     },
     // Node library: do not bundle dependencies or polyfill Node built-ins.
     ssr: true,

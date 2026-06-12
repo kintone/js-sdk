@@ -6,7 +6,6 @@
     "moduleResolution": "bundler",
     "target": "esnext",
     "noEmit": true,
-    "rootDir": "./src",
     "resolveJsonModule": true
   },
   "include": ["src", "vite.config.ts"],
