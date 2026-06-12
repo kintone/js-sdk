@@ -22,7 +22,7 @@ jobs:
       - run: git config --global core.autocrlf false
       - uses: actions/checkout@v5
 
-      - uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
+      - uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
