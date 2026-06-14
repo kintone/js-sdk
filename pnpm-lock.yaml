@@ -229,8 +229,8 @@ importers:
         specifier: 1.4.1
         version: 1.4.1
       '@types/node':
-        specifier: 22.19.20
-        version: 22.19.20
+        specifier: 22.19.21
+        version: 22.19.21
       '@typescript-eslint/rule-tester':
         specifier: 8.57.2
         version: 8.57.2(eslint@9.39.4)(typescript@5.9.3)
@@ -2764,8 +2764,8 @@ packages:
   '@types/node@22.19.17':
     resolution: {integrity: sha512-wGdMcf+vPYM6jikpS/qhg6WiqSV/OhG+jeeHT/KlVqxYfD40iYJf9/AE1uQxVWFvU7MipKRkRv8NSHiCGgPr8Q==}
 
-  '@types/node@22.19.20':
-    resolution: {integrity: sha512-6tELRwSDYWW9EdZhbeZmYGZ1/7Djkt+Ah3/ScEYT9cDord7UJzasR/4D3VONg9tQI5CDp+/CZC1AXj2pCFOvpw==}
+  '@types/node@22.19.21':
+    resolution: {integrity: sha512-VMeFBSCKQKmm2swI2kW51SFusDqekC6q9trBCvJ/JliDchFSuoYYKN7yVNjPthP1HKZcx3U1gI/wTcEBjEFKTA==}
 
   '@types/node@25.5.0':
     resolution: {integrity: sha512-jp2P3tQMSxWugkCUKLRPVUpGaL5MVFwF8RDuSRztfwgN1wmqJeMSbKlnEtQqU8UrhTmzEmZdu2I6v2dpp7XIxw==}
@@ -8717,7 +8717,7 @@ snapshots:
       '@inquirer/figures': 1.0.15
       '@inquirer/type': 2.0.0
       '@types/mute-stream': 0.0.4
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
@@ -9658,7 +9658,7 @@ snapshots:
 
   '@types/adm-zip@0.5.8':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/argparse@1.0.38': {}
 
@@ -9690,11 +9690,11 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/bonjour@3.5.13':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/bytes@3.1.5': {}
 
@@ -9706,11 +9706,11 @@ snapshots:
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 4.19.8
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/debug@4.1.13':
     dependencies:
@@ -9734,7 +9734,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.8':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
       '@types/qs': 6.15.1
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -9755,7 +9755,7 @@ snapshots:
 
   '@types/http-proxy@1.17.17':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/inquirer@9.0.9':
     dependencies:
@@ -9782,7 +9782,7 @@ snapshots:
 
   '@types/mute-stream@0.0.4':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/node-rsa@1.1.4':
     dependencies:
@@ -9796,7 +9796,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@22.19.20':
+  '@types/node@22.19.21':
     dependencies:
       undici-types: 6.21.0
 
@@ -9820,11 +9820,11 @@ snapshots:
   '@types/send@0.17.6':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -9833,34 +9833,34 @@ snapshots:
   '@types/serve-static@1.15.10':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
       '@types/send': 0.17.6
 
   '@types/sockjs@0.3.36':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/stream-buffers@3.0.8':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/through@0.0.33':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/wrap-ansi@3.0.0': {}
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@types/yazl@2.4.6':
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
 
   '@typescript-eslint/eslint-plugin@8.57.2(@typescript-eslint/parser@8.57.2(eslint@9.39.4)(typescript@5.9.3))(eslint@9.39.4)(typescript@5.9.3)':
     dependencies:
@@ -12459,7 +12459,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.19.20
+      '@types/node': 22.19.21
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
