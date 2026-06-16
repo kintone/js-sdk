@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@types/glob": "8.1.0",
-    "@types/inquirer": "9.0.9",
+    "@types/inquirer": "9.0.10",
     "@types/lodash": "4.17.24",
     "@types/node-rsa": "1.1.4",
     "@types/normalize-path": "3.0.2",
