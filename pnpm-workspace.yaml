@@ -16,3 +16,5 @@ minimumReleaseAgeExclude:
   - yauzl@3.2.1
   # Renovate security update: form-data@4.0.6
   - form-data@4.0.6
+  # Renovate security update: follow-redirects@1.16.0
+  - follow-redirects@1.16.0
