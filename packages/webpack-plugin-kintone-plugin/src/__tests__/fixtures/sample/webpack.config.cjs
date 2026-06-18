@@ -8,7 +8,7 @@ const KintonePlugin = require(path.resolve(
   "..",
   "..",
   "dist",
-  "index"
+  "index.cjs"
 ));
 
 module.exports = {

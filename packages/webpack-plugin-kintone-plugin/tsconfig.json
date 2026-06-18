@@ -1,16 +1,13 @@
 {
   "extends": "../tsconfig-base.json",
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "typeRoots": [
-      "node_modules/@types",
-      "../../node_modules/@types",
-      "types"
-    ]
+    "composite": false,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "esnext",
+    "noEmit": true,
+    "resolveJsonModule": true
   },
-  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"],
-  "references": [
-    { "path": "../plugin-packer" }
-  ]
+  "include": ["src", "vite.config.ts"],
+  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"]
 }
