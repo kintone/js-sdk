@@ -275,8 +275,8 @@ importers:
   packages/plugin-packer:
     dependencies:
       '@kintone/plugin-manifest-validator':
-        specifier: 11.1.1
-        version: 11.1.1
+        specifier: 11.3.0
+        version: 11.3.0
       chokidar:
         specifier: 3.6.0
         version: 3.6.0
@@ -2077,6 +2077,10 @@ packages:
 
   '@kintone/plugin-manifest-validator@11.1.1':
     resolution: {integrity: sha512-ucGgZtgNSFg3cRSpd4ddM5D9AJYMVCa+GWxTzoSbmP+wDxW8n7l8w6kDW5FW9rWMPNeiMx9Idm7nXf0AE6f+qw==}
+    engines: {node: '>=20'}
+
+  '@kintone/plugin-manifest-validator@11.3.0':
+    resolution: {integrity: sha512-ntx3hNnwNsC82GFvIZAcMhyXwelqVaF7bipCq7k7UGVHM6cOgLoC9er9w68RcaH/p9nfUfRVw1cAVP5zS+ADyQ==}
     engines: {node: '>=20'}
 
   '@kintone/rest-api-client@6.2.0':
@@ -9086,6 +9090,12 @@ snapshots:
     dependencies:
       ajv: 8.18.0
       ajv-formats: 3.0.1(ajv@8.18.0)
+      bytes: 3.1.2
+
+  '@kintone/plugin-manifest-validator@11.3.0':
+    dependencies:
+      ajv: 8.20.0
+      ajv-formats: 3.0.1(ajv@8.20.0)
       bytes: 3.1.2
 
   '@kintone/rest-api-client@6.2.0':
