@@ -105,8 +105,8 @@ importers:
         specifier: 9.0.0
         version: 9.0.0
       node-rsa:
-        specifier: 1.1.1
-        version: 1.1.1
+        specifier: 2.0.0
+        version: 2.0.0
       normalize-path:
         specifier: 3.0.0
         version: 3.0.0
@@ -293,8 +293,8 @@ importers:
         specifier: 3.0.1
         version: 3.0.1
       node-rsa:
-        specifier: 1.1.1
-        version: 1.1.1
+        specifier: 2.0.0
+        version: 2.0.0
       stream-buffers:
         specifier: 3.0.3
         version: 3.0.3
@@ -2109,6 +2109,10 @@ packages:
     resolution: {integrity: sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==}
     engines: {node: '>= 16'}
 
+  '@noble/hashes@2.2.0':
+    resolution: {integrity: sha512-IYqDGiTXab6FniAgnSdZwgWbomxpy9FtYvLKs7wCUs2a8RkITG+DFGO1DM9cr+E3/RgADRpFjrKVaJ1z6sjtEg==}
+    engines: {node: '>= 20.19.0'}
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -3341,9 +3345,6 @@ packages:
 
   asn1.js@4.10.1:
     resolution: {integrity: sha512-p32cOF5q0Zqs9uBiONKYLm6BClCoBCM5O9JfeUSlnQLBTxYdTK+pW+nXflm8UkKd2UYlEbYz5qEi0JuZR9ckSw==}
-
-  asn1@0.2.6:
-    resolution: {integrity: sha512-ix/FxPn0MDjeyJ7i/yoHGFt/EX6LyNbxSEhPPXODPL+KB0VPk86UYfL0lMdy+KCnv+fmvIzySwaK5COwqVbWTQ==}
 
   asn1js@3.0.7:
     resolution: {integrity: sha512-uLvq6KJu04qoQM6gvBfKFjlh6Gl0vOKQuR5cJMDHQkmwfMOQeN3F3SHCv9SNYSL+CRoHvOGFfllDlVz03GQjvQ==}
@@ -5510,8 +5511,9 @@ packages:
   node-releases@2.0.36:
     resolution: {integrity: sha512-TdC8FSgHz8Mwtw9g5L4gR/Sh9XhSP/0DEkQxfEFXOpiul5IiHgHan2VhYYb6agDSfp4KuvltmGApc8HMgUrIkA==}
 
-  node-rsa@1.1.1:
-    resolution: {integrity: sha512-Jd4cvbJMryN21r5HgxQOpMEqv+ooke/korixNNK3mGqfGJmy0M77WDDzo/05969+OkMy3XW1UuZsSmW9KQm7Fw==}
+  node-rsa@2.0.0:
+    resolution: {integrity: sha512-7yfzccmBd5rm7pALJf709tPwLL987WvdT7LC/QK5Oxa5S2aabdBPjxRDxhWKkbfCc9/FiC82lwSc+ulGZHH44g==}
+    engines: {node: '>=20'}
 
   normalize-package-data@2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
@@ -9150,6 +9152,8 @@ snapshots:
 
   '@noble/hashes@1.4.0': {}
 
+  '@noble/hashes@2.2.0': {}
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -10446,10 +10450,6 @@ snapshots:
       bn.js: 4.12.3
       inherits: 2.0.4
       minimalistic-assert: 1.0.1
-
-  asn1@0.2.6:
-    dependencies:
-      safer-buffer: 2.1.2
 
   asn1js@3.0.7:
     dependencies:
@@ -12877,9 +12877,9 @@ snapshots:
 
   node-releases@2.0.36: {}
 
-  node-rsa@1.1.1:
+  node-rsa@2.0.0:
     dependencies:
-      asn1: 0.2.6
+      '@noble/hashes': 2.2.0
 
   normalize-package-data@2.5.0:
     dependencies:
