@@ -207,8 +207,8 @@ importers:
         specifier: 10.1.0
         version: 10.1.0
       ts-loader:
-        specifier: 9.6.0
-        version: 9.6.0(typescript@5.9.3)(webpack@5.105.4)
+        specifier: 9.6.1
+        version: 9.6.1(typescript@5.9.3)(webpack@5.105.4)
       webpack:
         specifier: 5.105.4
         version: 5.105.4(webpack-cli@6.0.1)
@@ -6942,8 +6942,8 @@ packages:
     peerDependencies:
       typescript: '>=4.0.0'
 
-  ts-loader@9.6.0:
-    resolution: {integrity: sha512-dsJO0S+T7grTDWTc4a0nTygXGjKncVUpx8Y+af8EvI/D5WgTJby5UEk5eoMCB9EcLQmnvitqh99MqtjtHgAwFQ==}
+  ts-loader@9.6.1:
+    resolution: {integrity: sha512-8FMHnmxtpncUAu0ZjkqpXnOTlwc9eY95esH8WVN94guTPPdkg2ofVdiVM5j8L2lmjiGerXd56zXb/D2JyVQPLg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       loader-utils: '*'
@@ -14483,7 +14483,7 @@ snapshots:
       picomatch: 4.0.4
       typescript: 5.9.3
 
-  ts-loader@9.6.0(typescript@5.9.3)(webpack@5.105.4):
+  ts-loader@9.6.1(typescript@5.9.3)(webpack@5.105.4):
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.20.1
