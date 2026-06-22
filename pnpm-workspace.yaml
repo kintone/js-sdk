@@ -16,3 +16,5 @@ minimumReleaseAgeExclude:
   - yauzl@3.2.1
   # Renovate security update: form-data@4.0.6
   - form-data@4.0.6
+  # Renovate security update: undici@7.28.0
+  - undici@7.28.0
