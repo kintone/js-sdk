@@ -302,8 +302,8 @@ importers:
         specifier: 3.4.0
         version: 3.4.0
       yazl:
-        specifier: 2.5.1
-        version: 2.5.1
+        specifier: 3.3.1
+        version: 3.3.1
     devDependencies:
       '@reduxjs/toolkit':
         specifier: 2.12.0
@@ -321,8 +321,8 @@ importers:
         specifier: 3.4.0
         version: 3.4.0
       '@types/yazl':
-        specifier: 2.4.6
-        version: 2.4.6
+        specifier: 3.3.1
+        version: 3.3.1
       ajv:
         specifier: 8.20.0
         version: 8.20.0
@@ -2108,10 +2108,6 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@kintone/plugin-manifest-validator@11.1.1':
-    resolution: {integrity: sha512-ucGgZtgNSFg3cRSpd4ddM5D9AJYMVCa+GWxTzoSbmP+wDxW8n7l8w6kDW5FW9rWMPNeiMx9Idm7nXf0AE6f+qw==}
-    engines: {node: '>=20'}
-
   '@kintone/plugin-manifest-validator@11.3.0':
     resolution: {integrity: sha512-ntx3hNnwNsC82GFvIZAcMhyXwelqVaF7bipCq7k7UGVHM6cOgLoC9er9w68RcaH/p9nfUfRVw1cAVP5zS+ADyQ==}
     engines: {node: '>=20'}
@@ -2858,8 +2854,8 @@ packages:
   '@types/yauzl@3.4.0':
     resolution: {integrity: sha512-NRPn5w6h8dhcnmx3YIRQcqMywY/+nND/uOkJessedcrowO3C0AssHp3tMJpxKAwOhFOo0OV1y9VtsC5hbKKBAw==}
 
-  '@types/yazl@2.4.6':
-    resolution: {integrity: sha512-/ifFjQtcKaoZOjl5NNCQRR0fAKafB3Foxd7J/WvFPTMea46zekapcR30uzkwIkKAAuq5T6d0dkwz754RFH27hg==}
+  '@types/yazl@3.3.1':
+    resolution: {integrity: sha512-DIWfCKpsTp6hE5BDBHV3+fIL/bLUF9Bv13iDrWnMlmhQpH67buNvI291ZauQ1xcccxK3FqQ9honnXpq4R8NMuQ==}
 
   '@typescript-eslint/eslint-plugin@8.57.2':
     resolution: {integrity: sha512-NZZgp0Fm2IkD+La5PR81sd+g+8oS6JwJje+aRWsDocxHkjyRw0J5L5ZTlN3LI1LlOcGL7ph3eaIUmTXMIjLk0w==}
@@ -7531,9 +7527,6 @@ packages:
     resolution: {integrity: sha512-jIH9yLR9wqr0wOS0TpBvo/g/2UgZH5qePVbjgRliiF0BYvOZyaBknKsF+x9Iht0O6sqgnB93rCICdOZFecJuDw==}
     engines: {node: '>=12'}
 
-  yazl@2.5.1:
-    resolution: {integrity: sha512-phENi2PLiHnHb6QBVot+dJnaAZ0xosj7p3fWl+znIjBDlnMI2PsZCJZ306BPTFOaHf5qdDEI8x5qFrSOBN5vrw==}
-
   yazl@3.3.1:
     resolution: {integrity: sha512-BbETDVWG+VcMUle37k5Fqp//7SDOK2/1+T7X8TD96M3D9G8jK5VLUdQVdVjGi8im7FGkazX7kk5hkU8X4L5Bng==}
 
@@ -9130,12 +9123,6 @@ snapshots:
       - debug
       - supports-color
 
-  '@kintone/plugin-manifest-validator@11.1.1':
-    dependencies:
-      ajv: 8.18.0
-      ajv-formats: 3.0.1(ajv@8.18.0)
-      bytes: 3.1.2
-
   '@kintone/plugin-manifest-validator@11.3.0':
     dependencies:
       ajv: 8.20.0
@@ -9916,7 +9903,7 @@ snapshots:
     dependencies:
       '@types/node': 22.20.0
 
-  '@types/yazl@2.4.6':
+  '@types/yazl@3.3.1':
     dependencies:
       '@types/node': 22.20.0
 
@@ -15150,10 +15137,6 @@ snapshots:
   yauzl@3.4.0:
     dependencies:
       pend: 1.2.0
-
-  yazl@2.5.1:
-    dependencies:
-      buffer-crc32: 0.2.13
 
   yazl@3.3.1:
     dependencies:
