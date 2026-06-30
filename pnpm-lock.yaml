@@ -93,8 +93,8 @@ importers:
         specifier: 5.5.0
         version: 5.5.0
       chalk:
-        specifier: 4.1.2
-        version: 4.1.2
+        specifier: 5.6.2
+        version: 5.6.2
       glob:
         specifier: 13.0.6
         version: 13.0.6
@@ -411,8 +411,8 @@ importers:
         specifier: 5.5.0
         version: 5.5.0
       chalk:
-        specifier: 4.1.2
-        version: 4.1.2
+        specifier: 5.6.2
+        version: 5.6.2
       meow:
         specifier: 9.0.0
         version: 9.0.0
@@ -2107,10 +2107,6 @@ packages:
     resolution: {integrity: sha512-etn00dp2mWqWyXa9CpC/0marC2OCbKZ5Y5iR5EfbZqN+MBouK9PxXDUyORPmKjYb+QwDIeNG0Z1CY9B/igKOcw==}
     engines: {node: '>=20'}
     hasBin: true
-
-  '@kintone/plugin-manifest-validator@11.1.1':
-    resolution: {integrity: sha512-ucGgZtgNSFg3cRSpd4ddM5D9AJYMVCa+GWxTzoSbmP+wDxW8n7l8w6kDW5FW9rWMPNeiMx9Idm7nXf0AE6f+qw==}
-    engines: {node: '>=20'}
 
   '@kintone/plugin-manifest-validator@11.3.0':
     resolution: {integrity: sha512-ntx3hNnwNsC82GFvIZAcMhyXwelqVaF7bipCq7k7UGVHM6cOgLoC9er9w68RcaH/p9nfUfRVw1cAVP5zS+ADyQ==}
@@ -9129,12 +9125,6 @@ snapshots:
       - '@types/node'
       - debug
       - supports-color
-
-  '@kintone/plugin-manifest-validator@11.1.1':
-    dependencies:
-      ajv: 8.18.0
-      ajv-formats: 3.0.1(ajv@8.18.0)
-      bytes: 3.1.2
 
   '@kintone/plugin-manifest-validator@11.3.0':
     dependencies:
