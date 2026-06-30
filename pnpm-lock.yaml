@@ -299,8 +299,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       yauzl:
-        specifier: 3.2.1
-        version: 3.2.1
+        specifier: 3.4.0
+        version: 3.4.0
       yazl:
         specifier: 2.5.1
         version: 2.5.1
@@ -318,8 +318,8 @@ importers:
         specifier: 3.0.8
         version: 3.0.8
       '@types/yauzl':
-        specifier: 2.10.3
-        version: 2.10.3
+        specifier: 3.4.0
+        version: 3.4.0
       '@types/yazl':
         specifier: 2.4.6
         version: 2.4.6
@@ -2821,6 +2821,9 @@ packages:
 
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
+
+  '@types/yauzl@3.4.0':
+    resolution: {integrity: sha512-NRPn5w6h8dhcnmx3YIRQcqMywY/+nND/uOkJessedcrowO3C0AssHp3tMJpxKAwOhFOo0OV1y9VtsC5hbKKBAw==}
 
   '@types/yazl@2.4.6':
     resolution: {integrity: sha512-/ifFjQtcKaoZOjl5NNCQRR0fAKafB3Foxd7J/WvFPTMea46zekapcR30uzkwIkKAAuq5T6d0dkwz754RFH27hg==}
@@ -7523,6 +7526,10 @@ packages:
     resolution: {integrity: sha512-k1isifdbpNSFEHFJ1ZY4YDewv0IH9FR61lDetaRMD3j2ae3bIXGV+7c+LHCqtQGofSd8PIyV4X6+dHMAnSr60A==}
     engines: {node: '>=12'}
 
+  yauzl@3.4.0:
+    resolution: {integrity: sha512-jIH9yLR9wqr0wOS0TpBvo/g/2UgZH5qePVbjgRliiF0BYvOZyaBknKsF+x9Iht0O6sqgnB93rCICdOZFecJuDw==}
+    engines: {node: '>=12'}
+
   yazl@2.5.1:
     resolution: {integrity: sha512-phENi2PLiHnHb6QBVot+dJnaAZ0xosj7p3fWl+znIjBDlnMI2PsZCJZ306BPTFOaHf5qdDEI8x5qFrSOBN5vrw==}
 
@@ -9878,6 +9885,11 @@ snapshots:
       '@types/node': 22.20.0
 
   '@types/yauzl@2.10.3':
+    dependencies:
+      '@types/node': 22.20.0
+    optional: true
+
+  '@types/yauzl@3.4.0':
     dependencies:
       '@types/node': 22.20.0
 
@@ -15156,6 +15168,10 @@ snapshots:
   yauzl@3.2.1:
     dependencies:
       buffer-crc32: 0.2.13
+      pend: 1.2.0
+
+  yauzl@3.4.0:
+    dependencies:
       pend: 1.2.0
 
   yazl@2.5.1:
