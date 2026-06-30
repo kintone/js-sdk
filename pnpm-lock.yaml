@@ -179,8 +179,8 @@ importers:
         specifier: 1.18.1
         version: 1.18.1
       commander:
-        specifier: 12.1.0
-        version: 12.1.0
+        specifier: 15.0.0
+        version: 15.0.0
       eslint:
         specifier: 9.39.4
         version: 9.39.4
@@ -2108,10 +2108,6 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@kintone/plugin-manifest-validator@11.1.1':
-    resolution: {integrity: sha512-ucGgZtgNSFg3cRSpd4ddM5D9AJYMVCa+GWxTzoSbmP+wDxW8n7l8w6kDW5FW9rWMPNeiMx9Idm7nXf0AE6f+qw==}
-    engines: {node: '>=20'}
-
   '@kintone/plugin-manifest-validator@11.3.0':
     resolution: {integrity: sha512-ntx3hNnwNsC82GFvIZAcMhyXwelqVaF7bipCq7k7UGVHM6cOgLoC9er9w68RcaH/p9nfUfRVw1cAVP5zS+ADyQ==}
     engines: {node: '>=20'}
@@ -3758,13 +3754,13 @@ packages:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
 
-  commander@12.1.0:
-    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
-    engines: {node: '>=18'}
-
   commander@14.0.3:
     resolution: {integrity: sha512-H+y0Jo/T1RZ9qPP4Eh1pkcQcLRglraJaSLoyOtHxu6AapkjWVCy2Sit1QQ4x3Dng8qDlSsZEet7g5Pq06MvTgw==}
     engines: {node: '>=20'}
+
+  commander@15.0.0:
+    resolution: {integrity: sha512-z67u4ZhzCL/Tydu1lJARtEZYWbWaN7oYLHbsuzocr6y4N6WZAagG3RQ4FW61V1/0+jImpj293XfrcYnd1qxtPg==}
+    engines: {node: '>=22.12.0'}
 
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -9130,12 +9126,6 @@ snapshots:
       - debug
       - supports-color
 
-  '@kintone/plugin-manifest-validator@11.1.1':
-    dependencies:
-      ajv: 8.18.0
-      ajv-formats: 3.0.1(ajv@8.18.0)
-      bytes: 3.1.2
-
   '@kintone/plugin-manifest-validator@11.3.0':
     dependencies:
       ajv: 8.20.0
@@ -10922,9 +10912,9 @@ snapshots:
 
   commander@11.1.0: {}
 
-  commander@12.1.0: {}
-
   commander@14.0.3: {}
+
+  commander@15.0.0: {}
 
   commander@2.20.3: {}
 
