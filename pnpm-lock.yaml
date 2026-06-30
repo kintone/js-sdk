@@ -238,8 +238,8 @@ importers:
         specifier: 9.39.4
         version: 9.39.4
       globals:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 17.7.0
+        version: 17.7.0
       npm-run-all:
         specifier: 4.1.5
         version: 4.1.5
@@ -357,8 +357,8 @@ importers:
         specifier: 13.0.6
         version: 13.0.6
       globals:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 17.7.0
+        version: 17.7.0
       jsdom:
         specifier: 29.1.1
         version: 29.1.1
@@ -2107,10 +2107,6 @@ packages:
     resolution: {integrity: sha512-etn00dp2mWqWyXa9CpC/0marC2OCbKZ5Y5iR5EfbZqN+MBouK9PxXDUyORPmKjYb+QwDIeNG0Z1CY9B/igKOcw==}
     engines: {node: '>=20'}
     hasBin: true
-
-  '@kintone/plugin-manifest-validator@11.1.1':
-    resolution: {integrity: sha512-ucGgZtgNSFg3cRSpd4ddM5D9AJYMVCa+GWxTzoSbmP+wDxW8n7l8w6kDW5FW9rWMPNeiMx9Idm7nXf0AE6f+qw==}
-    engines: {node: '>=20'}
 
   '@kintone/plugin-manifest-validator@11.3.0':
     resolution: {integrity: sha512-ntx3hNnwNsC82GFvIZAcMhyXwelqVaF7bipCq7k7UGVHM6cOgLoC9er9w68RcaH/p9nfUfRVw1cAVP5zS+ADyQ==}
@@ -4684,6 +4680,10 @@ packages:
 
   globals@16.5.0:
     resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+    engines: {node: '>=18'}
+
+  globals@17.7.0:
+    resolution: {integrity: sha512-Czmyns5dUsq4seFBR/Kdydhmo8y9kC79hiSkPn0YcGtNnYWnrgt0vjrSjx9tspoDGWm2CMarffRuLjM4xUz8xg==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -9130,12 +9130,6 @@ snapshots:
       - debug
       - supports-color
 
-  '@kintone/plugin-manifest-validator@11.1.1':
-    dependencies:
-      ajv: 8.18.0
-      ajv-formats: 3.0.1(ajv@8.18.0)
-      bytes: 3.1.2
-
   '@kintone/plugin-manifest-validator@11.3.0':
     dependencies:
       ajv: 8.20.0
@@ -12100,6 +12094,8 @@ snapshots:
   globals@15.15.0: {}
 
   globals@16.5.0: {}
+
+  globals@17.7.0: {}
 
   globalthis@1.0.4:
     dependencies:
