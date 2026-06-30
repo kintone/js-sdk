@@ -436,8 +436,8 @@ importers:
   packages/rest:
     dependencies:
       js-base64:
-        specifier: 3.7.8
-        version: 3.7.8
+        specifier: 3.8.0
+        version: 3.8.0
       openapi-fetch:
         specifier: 0.13.8
         version: 0.13.8
@@ -476,8 +476,8 @@ importers:
         specifier: 4.0.6
         version: 4.0.6
       js-base64:
-        specifier: 3.7.8
-        version: 3.7.8
+        specifier: 3.8.0
+        version: 3.8.0
       mime:
         specifier: 3.0.0
         version: 3.0.0
@@ -5101,6 +5101,9 @@ packages:
 
   js-base64@3.7.8:
     resolution: {integrity: sha512-hNngCeKxIUQiEUN3GPJOkz4wF/YvdUdbNL9hsBcMQTkKzboD7T/q3OYOuuPZLUE6dBxSGpwhk5mwuDud7JVAow==}
+
+  js-base64@3.8.0:
+    resolution: {integrity: sha512-65kvbemyZhj+ExQt1PEFyBEjL5vAHysu1lJdW1AwhhChkO8ZBPizYk/m9GVrpbS2Je1hF+UYZ+6KywqtZV8mHw==}
 
   js-levenshtein@1.1.6:
     resolution: {integrity: sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==}
@@ -9771,7 +9774,7 @@ snapshots:
 
   '@types/js-base64@3.3.1':
     dependencies:
-      js-base64: 3.7.8
+      js-base64: 3.8.0
 
   '@types/json-schema@7.0.15': {}
 
@@ -12483,6 +12486,8 @@ snapshots:
   jju@1.4.0: {}
 
   js-base64@3.7.8: {}
+
+  js-base64@3.8.0: {}
 
   js-levenshtein@1.1.6: {}
 
