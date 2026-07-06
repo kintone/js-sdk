@@ -214,7 +214,7 @@ importers:
         version: 5.105.4(webpack-cli@7.1.0)
       webpack-cli:
         specifier: 7.1.0
-        version: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@3.0.0)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+        version: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
 
   packages/eslint-plugin:
     dependencies:
@@ -400,7 +400,7 @@ importers:
         version: 5.105.4(webpack-cli@7.1.0)
       webpack-cli:
         specifier: 7.1.0
-        version: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@3.0.0)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+        version: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
       webpack-dev-server:
         specifier: 5.2.6
         version: 5.2.6(debug@4.4.3)(tslib@2.8.1)(webpack-cli@7.1.0)(webpack@5.105.4)
@@ -430,8 +430,8 @@ importers:
   packages/profile-loader:
     dependencies:
       toml:
-        specifier: 3.0.0
-        version: 3.0.0
+        specifier: 4.1.2
+        version: 4.1.2
 
   packages/rest:
     dependencies:
@@ -541,7 +541,7 @@ importers:
         version: 5.105.4(webpack-cli@7.1.0)
       webpack-cli:
         specifier: 7.1.0
-        version: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@3.0.0)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+        version: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
 
   packages/webpack-plugin-kintone-plugin:
     dependencies:
@@ -569,7 +569,7 @@ importers:
         version: 5.105.4(webpack-cli@7.1.0)
       webpack-cli:
         specifier: 7.1.0
-        version: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@3.0.0)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+        version: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
       webpack-merge:
         specifier: 6.0.1
         version: 6.0.1
@@ -6918,8 +6918,9 @@ packages:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
 
-  toml@3.0.0:
-    resolution: {integrity: sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==}
+  toml@4.1.2:
+    resolution: {integrity: sha512-m0vXfHODcw3gk+KONAOlVQ5yNHc3yS3B1ybM3HS1vqDoS0RWTDDVBVVTYi8hH0k+2OM1vmo9fb1WX9EVqjqfHA==}
+    engines: {node: '>=20'}
 
   tough-cookie@6.0.1:
     resolution: {integrity: sha512-LktZQb3IeoUWB9lqR5EWTHgW/VTITCXg4D21M+lvybRVdylLrRMnqaIONLVb5mav8vM19m44HIcGq4qASeu2Qw==}
@@ -14499,7 +14500,7 @@ snapshots:
 
   toidentifier@1.0.1: {}
 
-  toml@3.0.0: {}
+  toml@4.1.2: {}
 
   tough-cookie@6.0.1:
     dependencies:
@@ -14856,7 +14857,7 @@ snapshots:
 
   webidl-conversions@8.0.1: {}
 
-  webpack-cli@7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@3.0.0)(webpack-dev-server@5.2.6)(webpack@5.105.4):
+  webpack-cli@7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4):
     dependencies:
       '@discoveryjs/json-ext': 1.1.0
       commander: 14.0.3
@@ -14870,7 +14871,7 @@ snapshots:
     optionalDependencies:
       js-yaml: 4.1.1
       json5: 2.2.3
-      toml: 3.0.0
+      toml: 4.1.2
       webpack-dev-server: 5.2.6(debug@4.4.3)(tslib@2.8.1)(webpack-cli@7.1.0)(webpack@5.105.4)
 
   webpack-dev-middleware@7.4.5(tslib@2.8.1)(webpack@5.105.4):
@@ -14918,7 +14919,7 @@ snapshots:
       ws: 8.21.0
     optionalDependencies:
       webpack: 5.105.4(webpack-cli@7.1.0)
-      webpack-cli: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@3.0.0)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+      webpack-cli: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -14962,7 +14963,7 @@ snapshots:
       watchpack: 2.5.1
       webpack-sources: 3.3.4
     optionalDependencies:
-      webpack-cli: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@3.0.0)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+      webpack-cli: 7.1.0(js-yaml@4.1.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
