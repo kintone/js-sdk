@@ -10,7 +10,7 @@ import type {
   ProxyConfig,
 } from "./http/HttpClientInterface";
 import type { BasicAuth, DiscriminatedAuth } from "./types/auth";
-import { platformDeps } from "./platform/";
+import { platformDeps } from "./platform";
 import type { Agent as HttpsAgent } from "https";
 
 type Data = Params | FormData;

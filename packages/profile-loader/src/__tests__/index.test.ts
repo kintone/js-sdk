@@ -1,5 +1,5 @@
 import path from "path";
-import { loadProfile } from "../";
+import { loadProfile } from "..";
 
 describe("index", () => {
   let originalUsername: string | undefined;

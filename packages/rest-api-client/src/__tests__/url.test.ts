@@ -1,4 +1,4 @@
-import { buildPath } from "./../url";
+import { buildPath } from "../url";
 
 test.each`
   endpointName | guestSpaceId | preview      | expected

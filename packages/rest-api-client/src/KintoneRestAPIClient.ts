@@ -7,7 +7,7 @@ import { FileClient } from "./client/FileClient";
 import { PluginClient } from "./client/PluginClient";
 import { SearchClient } from "./client/SearchClient";
 import type { SearchRequest, SearchResponse } from "./client/types";
-import { DefaultHttpClient } from "./http/";
+import { DefaultHttpClient } from "./http";
 import type { ProxyConfig } from "./http/HttpClientInterface";
 import type { BasicAuth, DiscriminatedAuth } from "./types/auth";
 import { KintoneRequestConfigBuilder } from "./KintoneRequestConfigBuilder";
