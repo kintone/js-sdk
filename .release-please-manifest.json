@@ -1,13 +1,13 @@
 {
   "packages/create-plugin": "9.0.5",
   "packages/customize-uploader": "9.0.4",
-  "packages/dts-gen": "9.0.7",
+  "packages/dts-gen": "9.0.8",
   "@kintone/eslint-plugin": "0.0.0",
   "packages/plugin-manifest-validator": "11.3.0",
   "packages/plugin-packer": "9.1.2",
   "packages/plugin-uploader": "10.0.1",
   "packages/profile-loader": "6.0.1",
-  "packages/rest-api-client": "6.2.0",
+  "packages/rest-api-client": "6.2.1",
   "packages/webpack-plugin-kintone-plugin": "9.0.4",
   "packages/eslint-plugin": "0.1.2",
   "packages/rest": "0.3.2"
