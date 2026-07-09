@@ -179,9 +179,10 @@ jobs:
           npm config set --location=user registry https://npm.flatt.tech/
           npm config set --location=user //npm.flatt.tech/:_authToken "${TAKUMI_GUARD_TOKEN}"
 
-      # Ensure npm 11.5.1 or later is installed
+      # Ensure npm >=11.5.1 is installed (Trusted Publishers requirement).
+      # Pinned to 11.x because npm 12.0.0 has a sigstore bundling bug (npm/cli#9722).
       # ref. https://docs.npmjs.com/trusted-publishers#github-actions-configuration
-      - run: npm install -g npm@latest
+      - run: npm install -g npm@11
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm -r publish --access public --registry https://registry.npmjs.org/
