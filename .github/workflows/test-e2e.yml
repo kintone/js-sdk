@@ -46,14 +46,23 @@ jobs:
           ref: main
           path: rest-api-spec
 
+      # Only @kintone/rest and @kintone/create-plugin have a test:e2e script,
+      # so install just those packages (plus the workspace root for shared dev tools).
+      # When adding a test:e2e script to another package, add it to this filter too.
+      - run: pnpm install --fetch-timeout 900000 --frozen-lockfile --filter @kintone/js-sdk --filter @kintone/rest --filter @kintone/create-plugin
+
+      # @kintone/rest's e2e tests import the sources directly, so only
+      # @kintone/create-plugin (whose e2e tests run bin/cli.js) needs a build.
+      - run: pnpm --filter @kintone/create-plugin run build
+
+      # prism-cli and wait-on are devDependencies of @kintone/rest,
+      # so the mock server must start after pnpm install.
       - name: Start mock server
         shell: bash
         run: |
-          pnpm dlx @stoplight/prism-cli@5.12.0 mock rest-api-spec/kintone/$(ls rest-api-spec/kintone | sort | tail -n 1)/openapi.yaml &
-          pnpm dlx wait-on -t 180s tcp:127.0.0.1:4010
+          pnpm --filter @kintone/rest exec prism mock "../../rest-api-spec/kintone/$(ls rest-api-spec/kintone | sort | tail -n 1)/openapi.yaml" &
+          pnpm --filter @kintone/rest exec wait-on -t 180s tcp:127.0.0.1:4010
 
-      - run: pnpm install --fetch-timeout 900000 --frozen-lockfile
-      - run: pnpm build
       - run: pnpm test:e2e
 
   actions-timeline:
