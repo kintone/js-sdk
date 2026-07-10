@@ -1,0 +1,70 @@
+name: test generator
+
+# The create-plugin generator tests scaffold real plugin projects and run
+# `npm install` / lint / build inside them. They took ~10 minutes on the
+# slowest legs of the `test` workflow matrix while depending only on the
+# create-plugin package and the public npm registry, so they run here
+# instead: on changes to create-plugin, and nightly to catch breakage
+# caused by new releases of the dependencies used in the templates.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/create-plugin/**"
+      - ".github/workflows/test-generator.yml"
+  pull_request:
+    paths:
+      - "packages/create-plugin/**"
+      - ".github/workflows/test-generator.yml"
+  schedule:
+    - cron: "0 18 * * *" # 03:00 JST
+
+jobs:
+  test-generator:
+    name: Test generator
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+          cache: "pnpm"
+        # To avoid setup-node cache failure.
+        # ref. https://github.com/actions/setup-node/issues/1137
+      - name: create pnpm cache directory
+        shell: bash
+        run: mkdir -vp $(pnpm store path --silent)
+
+      - uses: flatt-security/setup-takumi-guard-npm@9a5d797c2085b6326d3a2985c08e3a114b9b88c1 # v1.1.1
+        with:
+          bot-id: ${{ !github.event.pull_request.head.repo.fork && secrets.TAKUMI_GUARD_BOT_ID || '' }}
+
+      # Cache the npm cache used by `npm install` inside the generated
+      # projects. The generated projects have no lockfile, so version
+      # resolution still runs on every install and nightly runs keep
+      # catching registry-side breakage.
+      - name: Cache npm cache for generated projects
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-cache-generator-${{ runner.os }}-${{ hashFiles('packages/create-plugin/templates/**/package.json', 'packages/create-plugin/templates/**/with-plugin-uploader.json') }}
+          restore-keys: |
+            npm-cache-generator-${{ runner.os }}-
+
+      - run: pnpm install --fetch-timeout 900000 --frozen-lockfile --filter @kintone/js-sdk --filter @kintone/create-plugin
+
+      - name: Run generator tests
+        run: pnpm --filter @kintone/create-plugin run test:generator
+        env:
+          npm_config_audit: "false"
+          npm_config_fund: "false"
+          npm_config_prefer_offline: "true"
