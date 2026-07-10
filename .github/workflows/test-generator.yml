@@ -49,9 +49,10 @@ jobs:
           bot-id: ${{ !github.event.pull_request.head.repo.fork && secrets.TAKUMI_GUARD_BOT_ID || '' }}
 
       # Cache the npm cache used by `npm install` inside the generated
-      # projects. The generated projects have no lockfile, so version
-      # resolution still runs on every install and nightly runs keep
-      # catching registry-side breakage.
+      # projects. Pull request and push runs prefer the cached packages
+      # for speed; nightly runs disable prefer-offline below so that the
+      # cached metadata is revalidated against the registry and new
+      # releases of the template dependencies keep being tested.
       - name: Cache npm cache for generated projects
         uses: actions/cache@v4
         with:
@@ -67,4 +68,4 @@ jobs:
         env:
           npm_config_audit: "false"
           npm_config_fund: "false"
-          npm_config_prefer_offline: "true"
+          npm_config_prefer_offline: ${{ github.event_name == 'schedule' && 'false' || 'true' }}
