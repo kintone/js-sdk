@@ -67,7 +67,7 @@
     "undici": "7.28.0"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.18.4",
+    "@arethetypeswrong/cli": "0.18.5",
     "vite": "5.4.21",
     "vite-plugin-dts": "4.5.4",
     "vite-plugin-license": "0.0.2",
