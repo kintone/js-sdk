@@ -2,7 +2,7 @@ import type { MockClient } from "../../../http/MockClient";
 import type { AppClient } from "../../AppClient";
 import { APP_ID, makeClients } from "../fixtures/AppClientFixture";
 
-describe("RecordNotification", () => {
+describe("AppClient: notifications", () => {
   let mockClient: MockClient;
   let appClient: AppClient;
 
@@ -98,7 +98,7 @@ describe("RecordNotification", () => {
             daysLater: "1",
             hoursLater: "2",
           },
-          filterCond: 'CREATED_TIME in ("user1)',
+          filterCond: 'CREATED_TIME in ("user1")',
           title: "test title1",
           targets: [
             {
@@ -185,7 +185,7 @@ describe("RecordNotification", () => {
     });
   });
 
-  describe("getAppNotificationsReminder", () => {
+  describe("getReminderNotifications", () => {
     const lang = "default";
     const params = { app: APP_ID, lang } as const;
     describe("without preview", () => {
@@ -224,7 +224,7 @@ describe("RecordNotification", () => {
       });
     });
   });
-  describe("updateAppUpdateGeneralNotifications", () => {
+  describe("updateGeneralNotifications", () => {
     const params = {
       app: APP_ID,
       notifications: [
