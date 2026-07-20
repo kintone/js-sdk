@@ -12,7 +12,7 @@ overrides:
   cross-spawn: '>=7.0.6'
   express: '>=4.19.2'
   follow-redirects@<1.15.4: '>=1.16.0'
-  pac-resolver: '>=7.0.1'
+  pac-resolver: '>=9.0.1'
   socks: '>=2.8.9'
   ws: '>=8.21.1'
 
