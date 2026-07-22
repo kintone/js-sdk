@@ -52,7 +52,7 @@ importers:
         version: 0.59.1(@types/estree@1.0.9)(eslint@9.39.5)(jsonc-eslint-parser@2.4.2)
       eslint-plugin-vitest:
         specifier: 0.5.4
-        version: 0.5.4(eslint@9.39.5)(typescript@5.9.3)(vitest@4.1.10(@types/node@18.19.130)(jsdom@29.1.1)(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3)))
+        version: 0.5.4(eslint@9.39.5)(typescript@5.9.3)(vitest@4.1.10(@types/node@18.19.130)(jsdom@29.1.1(@noble/hashes@2.2.0))(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3)))
       jsonc-eslint-parser:
         specifier: 2.4.2
         version: 2.4.2
@@ -85,7 +85,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 4.1.10
-        version: 4.1.10(@types/node@18.19.130)(jsdom@29.1.1)(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3))
+        version: 4.1.10(@types/node@18.19.130)(jsdom@29.1.1(@noble/hashes@2.2.0))(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3))
 
   packages/create-plugin:
     dependencies:
@@ -105,8 +105,8 @@ importers:
         specifier: 9.0.0
         version: 9.0.0
       node-rsa:
-        specifier: 1.1.1
-        version: 1.1.1
+        specifier: 2.0.0
+        version: 2.0.0
       normalize-path:
         specifier: 3.0.0
         version: 3.0.0
@@ -293,8 +293,8 @@ importers:
         specifier: 3.0.1
         version: 3.0.1
       node-rsa:
-        specifier: 1.1.1
-        version: 1.1.1
+        specifier: 2.0.0
+        version: 2.0.0
       stream-buffers:
         specifier: 3.0.3
         version: 3.0.3
@@ -361,7 +361,7 @@ importers:
         version: 16.5.0
       jsdom:
         specifier: 29.1.1
-        version: 29.1.1
+        version: 29.1.1(@noble/hashes@2.2.0)
       normalize.css:
         specifier: 8.0.1
         version: 8.0.1
@@ -2150,6 +2150,10 @@ packages:
     resolution: {integrity: sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==}
     engines: {node: '>= 16'}
 
+  '@noble/hashes@2.2.0':
+    resolution: {integrity: sha512-IYqDGiTXab6FniAgnSdZwgWbomxpy9FtYvLKs7wCUs2a8RkITG+DFGO1DM9cr+E3/RgADRpFjrKVaJ1z6sjtEg==}
+    engines: {node: '>= 20.19.0'}
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -3362,9 +3366,6 @@ packages:
 
   asn1.js@4.10.1:
     resolution: {integrity: sha512-p32cOF5q0Zqs9uBiONKYLm6BClCoBCM5O9JfeUSlnQLBTxYdTK+pW+nXflm8UkKd2UYlEbYz5qEi0JuZR9ckSw==}
-
-  asn1@0.2.6:
-    resolution: {integrity: sha512-ix/FxPn0MDjeyJ7i/yoHGFt/EX6LyNbxSEhPPXODPL+KB0VPk86UYfL0lMdy+KCnv+fmvIzySwaK5COwqVbWTQ==}
 
   asn1js@3.0.7:
     resolution: {integrity: sha512-uLvq6KJu04qoQM6gvBfKFjlh6Gl0vOKQuR5cJMDHQkmwfMOQeN3F3SHCv9SNYSL+CRoHvOGFfllDlVz03GQjvQ==}
@@ -5416,8 +5417,9 @@ packages:
   node-releases@2.0.36:
     resolution: {integrity: sha512-TdC8FSgHz8Mwtw9g5L4gR/Sh9XhSP/0DEkQxfEFXOpiul5IiHgHan2VhYYb6agDSfp4KuvltmGApc8HMgUrIkA==}
 
-  node-rsa@1.1.1:
-    resolution: {integrity: sha512-Jd4cvbJMryN21r5HgxQOpMEqv+ooke/korixNNK3mGqfGJmy0M77WDDzo/05969+OkMy3XW1UuZsSmW9KQm7Fw==}
+  node-rsa@2.0.0:
+    resolution: {integrity: sha512-7yfzccmBd5rm7pALJf709tPwLL987WvdT7LC/QK5Oxa5S2aabdBPjxRDxhWKkbfCc9/FiC82lwSc+ulGZHH44g==}
+    engines: {node: '>=20'}
 
   normalize-package-data@2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
@@ -8544,7 +8546,9 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@exodus/bytes@1.15.1': {}
+  '@exodus/bytes@1.15.1(@noble/hashes@2.2.0)':
+    optionalDependencies:
+      '@noble/hashes': 2.2.0
 
   '@humanfs/core@0.19.1': {}
 
@@ -9051,6 +9055,8 @@ snapshots:
     optional: true
 
   '@noble/hashes@1.4.0': {}
+
+  '@noble/hashes@2.2.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -10315,10 +10321,6 @@ snapshots:
       inherits: 2.0.4
       minimalistic-assert: 1.0.1
 
-  asn1@0.2.6:
-    dependencies:
-      safer-buffer: 2.1.2
-
   asn1js@3.0.7:
     dependencies:
       pvtsutils: 1.3.6
@@ -10899,10 +10901,10 @@ snapshots:
 
   damerau-levenshtein@1.0.8: {}
 
-  data-urls@7.0.0:
+  data-urls@7.0.0(@noble/hashes@2.2.0):
     dependencies:
       whatwg-mimetype: 5.0.0
-      whatwg-url: 16.0.1
+      whatwg-url: 16.0.1(@noble/hashes@2.2.0)
     transitivePeerDependencies:
       - '@noble/hashes'
 
@@ -11422,12 +11424,12 @@ snapshots:
       string.prototype.matchall: 4.0.12
       string.prototype.repeat: 1.0.0
 
-  eslint-plugin-vitest@0.5.4(eslint@9.39.5)(typescript@5.9.3)(vitest@4.1.10(@types/node@18.19.130)(jsdom@29.1.1)(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3))):
+  eslint-plugin-vitest@0.5.4(eslint@9.39.5)(typescript@5.9.3)(vitest@4.1.10(@types/node@18.19.130)(jsdom@29.1.1(@noble/hashes@2.2.0))(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3))):
     dependencies:
       '@typescript-eslint/utils': 7.18.0(eslint@9.39.5)(typescript@5.9.3)
       eslint: 9.39.5
     optionalDependencies:
-      vitest: 4.1.10(@types/node@18.19.130)(jsdom@29.1.1)(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3))
+      vitest: 4.1.10(@types/node@18.19.130)(jsdom@29.1.1(@noble/hashes@2.2.0))(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3))
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -11920,9 +11922,9 @@ snapshots:
       readable-stream: 2.3.8
       wbuf: 1.7.3
 
-  html-encoding-sniffer@6.0.0:
+  html-encoding-sniffer@6.0.0(@noble/hashes@2.2.0):
     dependencies:
-      '@exodus/bytes': 1.15.1
+      '@exodus/bytes': 1.15.1(@noble/hashes@2.2.0)
     transitivePeerDependencies:
       - '@noble/hashes'
 
@@ -12249,17 +12251,17 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  jsdom@29.1.1:
+  jsdom@29.1.1(@noble/hashes@2.2.0):
     dependencies:
       '@asamuzakjp/css-color': 5.1.11
       '@asamuzakjp/dom-selector': 7.1.1
       '@bramus/specificity': 2.4.2
       '@csstools/css-syntax-patches-for-csstree': 1.1.5(css-tree@3.2.1)
-      '@exodus/bytes': 1.15.1
+      '@exodus/bytes': 1.15.1(@noble/hashes@2.2.0)
       css-tree: 3.2.1
-      data-urls: 7.0.0
+      data-urls: 7.0.0(@noble/hashes@2.2.0)
       decimal.js: 10.6.0
-      html-encoding-sniffer: 6.0.0
+      html-encoding-sniffer: 6.0.0(@noble/hashes@2.2.0)
       is-potential-custom-element-name: 1.0.1
       lru-cache: 11.5.1
       parse5: 8.0.1
@@ -12270,7 +12272,7 @@ snapshots:
       w3c-xmlserializer: 5.0.0
       webidl-conversions: 8.0.1
       whatwg-mimetype: 5.0.0
-      whatwg-url: 16.0.1
+      whatwg-url: 16.0.1(@noble/hashes@2.2.0)
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
       - '@noble/hashes'
@@ -12637,9 +12639,9 @@ snapshots:
 
   node-releases@2.0.36: {}
 
-  node-rsa@1.1.1:
+  node-rsa@2.0.0:
     dependencies:
-      asn1: 0.2.6
+      '@noble/hashes': 2.2.0
 
   normalize-package-data@2.5.0:
     dependencies:
@@ -14427,7 +14429,7 @@ snapshots:
       tsx: 4.23.1
       yaml: 2.8.3
 
-  vitest@4.1.10(@types/node@18.19.130)(jsdom@29.1.1)(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3)):
+  vitest@4.1.10(@types/node@18.19.130)(jsdom@29.1.1(@noble/hashes@2.2.0))(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3)):
     dependencies:
       '@vitest/expect': 4.1.10
       '@vitest/mocker': 4.1.10(vite@7.3.1(@types/node@18.19.130)(terser@5.46.1)(tsx@4.23.1)(yaml@2.8.3))
@@ -14451,7 +14453,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 18.19.130
-      jsdom: 29.1.1
+      jsdom: 29.1.1(@noble/hashes@2.2.0)
     transitivePeerDependencies:
       - msw
 
@@ -14598,9 +14600,9 @@ snapshots:
 
   whatwg-mimetype@5.0.0: {}
 
-  whatwg-url@16.0.1:
+  whatwg-url@16.0.1(@noble/hashes@2.2.0):
     dependencies:
-      '@exodus/bytes': 1.15.1
+      '@exodus/bytes': 1.15.1(@noble/hashes@2.2.0)
       tr46: 6.0.0
       webidl-conversions: 8.0.1
     transitivePeerDependencies:
