@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.5](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@9.0.4...@kintone/webpack-plugin-kintone-plugin@9.0.5) (2026-07-23)
+
+
+### Bug Fixes
+
+* **deps:** address security vulnerabilities in transitive dependencies ([#3896](https://github.com/kintone/js-sdk/issues/3896)) ([deffbdc](https://github.com/kintone/js-sdk/commit/deffbdca78bef94cbc1db382d0f7d07ab3208208))
+
 ## [9.0.4](https://github.com/kintone/js-sdk/compare/@kintone/webpack-plugin-kintone-plugin@9.0.3...@kintone/webpack-plugin-kintone-plugin@9.0.4) (2026-05-28)
 
 
