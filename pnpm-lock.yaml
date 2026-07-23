@@ -18,7 +18,7 @@ overrides:
   brace-expansion@^1: '>=1.1.16 <2'
   brace-expansion@^2: '>=2.1.2 <3'
   brace-expansion@^5: '>=5.0.7'
-  js-yaml@^4: '>=4.3.0'
+  js-yaml@^4: '>=5.2.1'
   axios: '>=1.18.1'
   fast-uri: '>=3.1.4'
 
@@ -220,7 +220,7 @@ importers:
         version: 5.105.4(webpack-cli@7.2.1)
       webpack-cli:
         specifier: 7.2.1
-        version: 7.2.1(js-yaml@4.3.0)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+        version: 7.2.1(js-yaml@5.2.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
 
   packages/eslint-plugin:
     dependencies:
@@ -406,7 +406,7 @@ importers:
         version: 5.105.4(webpack-cli@7.2.1)
       webpack-cli:
         specifier: 7.2.1
-        version: 7.2.1(js-yaml@4.3.0)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+        version: 7.2.1(js-yaml@5.2.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
       webpack-dev-server:
         specifier: 5.2.6
         version: 5.2.6(debug@4.4.3)(tslib@2.8.1)(webpack-cli@7.2.1)(webpack@5.105.4)
@@ -547,7 +547,7 @@ importers:
         version: 5.105.4(webpack-cli@7.2.1)
       webpack-cli:
         specifier: 7.2.1
-        version: 7.2.1(js-yaml@4.3.0)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+        version: 7.2.1(js-yaml@5.2.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
 
   packages/webpack-plugin-kintone-plugin:
     dependencies:
@@ -575,7 +575,7 @@ importers:
         version: 5.105.4(webpack-cli@7.2.1)
       webpack-cli:
         specifier: 7.2.1
-        version: 7.2.1(js-yaml@4.3.0)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+        version: 7.2.1(js-yaml@5.2.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
       webpack-merge:
         specifier: 6.0.1
         version: 6.0.1
@@ -5024,8 +5024,8 @@ packages:
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
-  js-yaml@4.3.0:
-    resolution: {integrity: sha512-1td788aAnnZ5qs7V2QIRl1owjtYpbKt749Y3xauqQgwIIGF/xXWz1wMTEBx5O3LK3lXLVuqXPdPxj2BoFHaW9Q==}
+  js-yaml@5.2.1:
+    resolution: {integrity: sha512-zfLtNfQqxVqq3uaTqSkh4x4hZw3KHobGUA0fJUj4wawW8bsQLTVqpHdXSIzidh7o+4lEW36tANuAGdaFx6Zgnw==}
     hasBin: true
 
   jsdom@29.1.1:
@@ -7172,7 +7172,7 @@ packages:
     engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
-      js-yaml: '>=4.3.0'
+      js-yaml: '>=5.2.1'
       json5: ^2.2.3
       toml: ^3.0.0 || ^4.0.0
       webpack: ^5.101.0
@@ -7414,7 +7414,7 @@ snapshots:
     dependencies:
       '@jsdevtools/ono': 7.1.3
       '@types/json-schema': 7.0.15
-      js-yaml: 4.3.0
+      js-yaml: 5.2.1
 
   '@arethetypeswrong/cli@0.18.5':
     dependencies:
@@ -8529,7 +8529,7 @@ snapshots:
       globals: 14.0.0
       ignore: 5.3.2
       import-fresh: 3.3.1
-      js-yaml: 4.3.0
+      js-yaml: 5.2.1
       minimatch: 3.1.5
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
@@ -9256,7 +9256,7 @@ snapshots:
       colorette: 1.4.0
       https-proxy-agent: 7.0.6(supports-color@10.2.2)
       js-levenshtein: 1.1.6
-      js-yaml: 4.3.0
+      js-yaml: 5.2.1
       minimatch: 5.1.9
       pluralize: 8.0.0
       yaml-ast-parser: 0.0.43
@@ -12242,7 +12242,7 @@ snapshots:
 
   js-tokens@4.0.0: {}
 
-  js-yaml@4.3.0:
+  js-yaml@5.2.1:
     dependencies:
       argparse: 2.0.1
 
@@ -12286,7 +12286,7 @@ snapshots:
       '@types/json-schema': 7.0.15
       '@types/lodash': 4.17.24
       is-glob: 4.0.3
-      js-yaml: 4.3.0
+      js-yaml: 5.2.1
       lodash: 4.18.1
       minimist: 1.2.8
       prettier: 3.8.5
@@ -14473,7 +14473,7 @@ snapshots:
 
   webidl-conversions@8.0.1: {}
 
-  webpack-cli@7.2.1(js-yaml@4.3.0)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4):
+  webpack-cli@7.2.1(js-yaml@5.2.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4):
     dependencies:
       '@discoveryjs/json-ext': 1.1.0
       commander: 14.0.3
@@ -14485,7 +14485,7 @@ snapshots:
       webpack: 5.105.4(webpack-cli@7.2.1)
       webpack-merge: 6.0.1
     optionalDependencies:
-      js-yaml: 4.3.0
+      js-yaml: 5.2.1
       json5: 2.2.3
       toml: 4.1.2
       webpack-dev-server: 5.2.6(debug@4.4.3)(tslib@2.8.1)(webpack-cli@7.2.1)(webpack@5.105.4)
@@ -14535,7 +14535,7 @@ snapshots:
       ws: 8.21.1
     optionalDependencies:
       webpack: 5.105.4(webpack-cli@7.2.1)
-      webpack-cli: 7.2.1(js-yaml@4.3.0)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+      webpack-cli: 7.2.1(js-yaml@5.2.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -14579,7 +14579,7 @@ snapshots:
       watchpack: 2.5.1
       webpack-sources: 3.3.4
     optionalDependencies:
-      webpack-cli: 7.2.1(js-yaml@4.3.0)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
+      webpack-cli: 7.2.1(js-yaml@5.2.1)(json5@2.2.3)(toml@4.1.2)(webpack-dev-server@5.2.6)(webpack@5.105.4)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
