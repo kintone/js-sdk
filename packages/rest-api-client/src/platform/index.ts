@@ -18,6 +18,9 @@ type PlatformDeps = {
     proxy?: ProxyConfig;
     socketTimeout?: number;
   }) => unknown;
+  buildFetchFormData: (
+    data: unknown,
+  ) => { body: unknown; contentType?: string } | null;
 };
 
 export const platformDeps: PlatformDeps = {
@@ -46,6 +49,9 @@ export const platformDeps: PlatformDeps = {
     throw new Error("not implemented");
   },
   buildFetchDispatcher: () => {
+    throw new Error("not implemented");
+  },
+  buildFetchFormData: () => {
     throw new Error("not implemented");
   },
 };
@@ -78,5 +84,8 @@ export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   }
   if (deps.buildFetchDispatcher) {
     platformDeps.buildFetchDispatcher = deps.buildFetchDispatcher;
+  }
+  if (deps.buildFetchFormData) {
+    platformDeps.buildFetchFormData = deps.buildFetchFormData;
   }
 };

@@ -69,6 +69,14 @@ export const getVersion = () => {
 };
 
 export const buildFetchDispatcher = () => {
-  // Browser uses native fetch without dispatcher
   return undefined;
+};
+
+export const buildFetchFormData = (
+  data: unknown,
+): { body: unknown; contentType?: string } | null => {
+  if (data instanceof FormData) {
+    return { body: data };
+  }
+  return null;
 };

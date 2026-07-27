@@ -8,8 +8,7 @@ import type {
   HttpClientError,
 } from "./HttpClientInterface";
 import type FormData from "form-data";
-// Note: FormData from form-data package is used for Node.js
-// Browser uses native FormData
+import { platformDeps } from "../platform";
 
 class FetchClientError extends Error implements HttpClientError<ErrorResponse> {
   response?: ErrorResponse;
@@ -196,10 +195,17 @@ export class FetchClient implements HttpClient {
     data?: unknown,
   ): Record<string, string> {
     const fetchHeaders = { ...headers };
+    const formData = platformDeps.buildFetchFormData(data);
 
-    // FormData: let fetch set Content-Type automatically (with boundary)
-    if (this.isFormData(data)) {
-      delete fetchHeaders["Content-Type"];
+    if (formData) {
+      for (const key of Object.keys(fetchHeaders)) {
+        if (key.toLowerCase() === "content-type") {
+          delete fetchHeaders[key];
+        }
+      }
+      if (formData.contentType) {
+        fetchHeaders["Content-Type"] = formData.contentType;
+      }
     } else if (data !== undefined && typeof data === "object") {
       fetchHeaders["Content-Type"] = "application/json";
     }
@@ -208,28 +214,10 @@ export class FetchClient implements HttpClient {
   }
 
   private buildFetchBody(data: unknown): string | globalThis.FormData {
-    if (this.isFormData(data)) {
-      // Node.js form-data package or browser FormData
-      return data as globalThis.FormData;
+    const formData = platformDeps.buildFetchFormData(data);
+    if (formData) {
+      return formData.body as globalThis.FormData;
     }
     return JSON.stringify(data);
-  }
-
-  private isFormData(data: unknown): boolean {
-    if (!data || typeof data !== "object") {
-      return false;
-    }
-    // Node.js form-data package has getHeaders method
-    if (
-      "getHeaders" in data &&
-      typeof (data as any).getHeaders === "function"
-    ) {
-      return true;
-    }
-    // Browser FormData - check constructor name to avoid typeof issues
-    if (data.constructor && data.constructor.name === "FormData") {
-      return true;
-    }
-    return false;
   }
 }

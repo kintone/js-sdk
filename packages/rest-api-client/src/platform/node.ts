@@ -107,6 +107,24 @@ export const getVersion = () => {
   return packageJson.version;
 };
 
+export const buildFetchFormData = (
+  data: unknown,
+): { body: unknown; contentType?: string } | null => {
+  if (
+    !data ||
+    typeof data !== "object" ||
+    !("getBuffer" in data && typeof (data as any).getBuffer === "function") ||
+    !("getBoundary" in data && typeof (data as any).getBoundary === "function")
+  ) {
+    return null;
+  }
+  const fd = data as import("form-data");
+  return {
+    body: fd.getBuffer(),
+    contentType: `multipart/form-data; boundary=${fd.getBoundary()}`,
+  };
+};
+
 export const buildFetchDispatcher = ({
   httpsAgent,
   clientCertAuth,
