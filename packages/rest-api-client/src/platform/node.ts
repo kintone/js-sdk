@@ -5,7 +5,6 @@ import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import https from "node:https";
 import os from "node:os";
 import { Agent, ProxyAgent } from "undici";
-import type { Dispatcher } from "undici";
 import type { ProxyConfig } from "../http/HttpClientInterface";
 import packageJson from "../../package.json";
 
