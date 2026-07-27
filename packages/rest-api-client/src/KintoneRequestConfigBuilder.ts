@@ -119,6 +119,9 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       }),
       proxy: this.buildProxyConfig(this.proxy),
       ...(this.dispatcher !== undefined ? { dispatcher: this.dispatcher } : {}),
+      ...(this.socketTimeout !== undefined
+        ? { timeout: this.socketTimeout }
+        : {}),
     };
 
     switch (method) {

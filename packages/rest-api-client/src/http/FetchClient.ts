@@ -93,7 +93,7 @@ export class FetchClient implements HttpClient {
   }
 
   private async sendRequest(requestConfig: RequestConfig): Promise<unknown> {
-    const { method, url, headers, data, responseType, dispatcher } =
+    const { method, url, headers, data, responseType, dispatcher, timeout } =
       requestConfig;
 
     const fetchOptions: RequestInit & { dispatcher?: unknown } = {
@@ -105,9 +105,12 @@ export class FetchClient implements HttpClient {
       fetchOptions.body = this.buildFetchBody(data);
     }
 
-    // Node.js: undici dispatcher for proxy/TLS support
     if (dispatcher !== undefined) {
       (fetchOptions as any).dispatcher = dispatcher;
+    }
+
+    if (timeout !== undefined) {
+      fetchOptions.signal = AbortSignal.timeout(timeout);
     }
 
     const responsePromise = this.executeFetch(url, fetchOptions, responseType);
@@ -123,6 +126,9 @@ export class FetchClient implements HttpClient {
     try {
       response = await fetch(url, fetchOptions as RequestInit);
     } catch (error) {
+      if (error instanceof DOMException && error.name === "TimeoutError") {
+        throw new FetchClientError(`Request timed out: ${url}`);
+      }
       throw new FetchClientError(
         error instanceof Error ? error.message : String(error),
       );

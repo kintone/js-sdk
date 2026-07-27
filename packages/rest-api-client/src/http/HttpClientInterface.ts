@@ -51,6 +51,7 @@ export type RequestConfig = {
   proxy?: ProxyConfig;
   responseType?: "arraybuffer";
   dispatcher?: unknown;
+  timeout?: number;
 };
 
 export interface RequestConfigBuilder {
