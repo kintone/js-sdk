@@ -6,6 +6,7 @@ import https from "node:https";
 import os from "node:os";
 import { Agent, ProxyAgent } from "undici";
 import type { ProxyConfig } from "../http/HttpClientInterface";
+import type FormData from "form-data";
 import packageJson from "../../package.json";
 
 const readFile = promisify(fs.readFile);
@@ -107,9 +108,9 @@ export const getVersion = () => {
   return packageJson.version;
 };
 
-export const buildFetchFormData = (
+export const buildFetchFormData = async (
   data: unknown,
-): { body: unknown; contentType?: string } | null => {
+): Promise<{ body: unknown; contentType?: string } | null> => {
   if (
     !data ||
     typeof data !== "object" ||
@@ -118,11 +119,33 @@ export const buildFetchFormData = (
   ) {
     return null;
   }
-  const fd = data as import("form-data");
+  const fd = data as FormData;
   return {
-    body: fd.getBuffer(),
+    // `fd.getBuffer()` throws if any appended field is a Stream (e.g. a
+    // `fs.createReadStream()` passed as `file.data`, which docs/file.md
+    // documents as supported). Drain the FormData's own "data"/"end" events
+    // into a Buffer ourselves instead, so a Stream field no longer crashes.
+    // A Buffer (rather than a ReadableStream) also keeps the body resendable
+    // if the server issues a redirect, and lets fetch set Content-Length.
+    body: await bufferFormData(fd),
     contentType: `multipart/form-data; boundary=${fd.getBoundary()}`,
   };
+};
+
+const bufferFormData = (formData: FormData): Promise<Buffer> => {
+  return new Promise((resolve, reject) => {
+    const chunks: Buffer[] = [];
+    formData.on("data", (chunk: Buffer | string) => {
+      // Text fields can come through as plain strings rather than Buffers.
+      chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
+    });
+    formData.on("end", () => resolve(Buffer.concat(chunks)));
+    formData.on("error", reject);
+    // `form-data` (built on `combined-stream`) only starts flowing once
+    // explicitly resumed - unlike modern Readable streams, attaching a
+    // "data" listener alone does not start the flow.
+    formData.resume();
+  });
 };
 
 export const buildFetchDispatcher = ({

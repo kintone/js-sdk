@@ -72,9 +72,9 @@ export const buildFetchDispatcher = () => {
   return undefined;
 };
 
-export const buildFetchFormData = (
+export const buildFetchFormData = async (
   data: unknown,
-): { body: unknown; contentType?: string } | null => {
+): Promise<{ body: unknown; contentType?: string } | null> => {
   if (data instanceof FormData) {
     return { body: data };
   }
