@@ -379,9 +379,53 @@
           }
         }
       }
+    },
+    "sandbox": {
+      "type": "boolean"
+    },
+    "allowed_hosts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Either \"*\" or a URI with a scheme. Domain-level rules are enforced by kintone.",
+        "anyOf": [{ "const": "*" }, { "format": "uri" }]
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["permission"],
+        "properties": {
+          "permission": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
     }
   },
   "required": ["manifest_version", "version", "type", "name", "icon"],
+  "allOf": [
+    {
+      "if": {
+        "required": ["sandbox"],
+        "properties": {
+          "sandbox": { "const": true }
+        }
+      },
+      "then": {
+        "required": ["allowed_hosts", "permissions"]
+      }
+    }
+  ],
   "definitions": {
     "resources": {
       "$id": "#resources",

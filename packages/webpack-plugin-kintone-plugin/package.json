@@ -1,6 +1,6 @@
 {
   "name": "@kintone/webpack-plugin-kintone-plugin",
-  "version": "9.0.2",
+  "version": "9.0.5",
   "description": "A webpack plugin to generate a plugin zip",
   "keywords": [
     "webpack",
@@ -36,17 +36,17 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@kintone/cli": "1.19.2",
-    "mkdirp": "^3.0.1"
+    "@kintone/cli": "1.21.0",
+    "mkdirp": "3.0.1"
   },
   "devDependencies": {
-    "@types/adm-zip": "^0.5.8",
-    "adm-zip": "^0.5.16",
-    "chokidar": "^3.6.0",
-    "rimraf": "^6.1.3",
-    "webpack": "^5.105.4",
-    "webpack-cli": "6.0.1",
-    "webpack-merge": "^6.0.1"
+    "@types/adm-zip": "0.5.8",
+    "adm-zip": "0.6.0",
+    "chokidar": "3.6.0",
+    "rimraf": "6.1.3",
+    "webpack": "5.105.4",
+    "webpack-cli": "7.2.1",
+    "webpack-merge": "6.0.1"
   },
   "peerDependencies": {
     "webpack": "^4.0.0 || ^5.0.0"

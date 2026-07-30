@@ -29,10 +29,108 @@ jobs:
         with:
           app-id: ${{ secrets.RELEASE_GITHUB_APP_ID}}
           private-key: ${{ secrets.RELEASE_GITHUB_APP_KEY }}
-      - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4
+      - uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4
         id: release
         with:
           token: ${{ steps.create-iat.outputs.token }}
+
+      # release-please's extra-files cannot reliably replace a version
+      # substring embedded in a URL: the default version regex
+      # `[0-9]+\.[0-9]+\.[0-9]+` has no boundary anchor, so it consumes
+      # the `40` of an encoded `%40` (URL-encoded `@`) as the leading
+      # digits of the version. The jsonpath strategy meanwhile replaces
+      # the whole field. Patch the release PR directly via the GraphQL
+      # createCommitOnBranch mutation so the resulting commit is signed
+      # by GitHub server-side (verified).
+      - name: Resolve release PR branch
+        id: sync-prep
+        if: ${{ steps.release.outputs.pr }}
+        env:
+          PR_JSON: ${{ steps.release.outputs.pr }}
+        run: |
+          echo "branch=$(jq -r '.headBranchName' <<<"$PR_JSON")" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout release PR branch
+        if: ${{ steps.release.outputs.pr }}
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.sync-prep.outputs.branch }}
+          token: ${{ steps.create-iat.outputs.token }}
+          path: _sync
+
+      - name: Sync plugin-manifest-validator schema URLs
+        if: ${{ steps.release.outputs.pr }}
+        working-directory: _sync
+        env:
+          GH_TOKEN: ${{ steps.create-iat.outputs.token }}
+          BRANCH: ${{ steps.sync-prep.outputs.branch }}
+          REPO_NWO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          new_version=$(jq -r '."packages/plugin-manifest-validator"' .release-please-manifest.json)
+          targets=(
+            "packages/plugin-manifest-validator/examples/manifest.json"
+            "packages/plugin-manifest-validator/README.md"
+          )
+
+          # release-please may force-push the release PR branch concurrently,
+          # which invalidates `expectedHeadOid`. Refresh the working tree from
+          # origin, re-apply the sed, and retry up to MAX_ATTEMPTS times.
+          MAX_ATTEMPTS=3
+          for attempt in $(seq 1 "$MAX_ATTEMPTS"); do
+            git fetch origin "$BRANCH"
+            git reset --hard "origin/${BRANCH}"
+
+            additions=$(
+              for f in "${targets[@]}"; do
+                sed -i -E "s|(plugin-manifest-validator%40)[0-9]+\.[0-9]+\.[0-9]+|\1${new_version}|g" "$f"
+                if ! git diff --quiet -- "$f"; then
+                  jq -n --arg path "$f" --arg content "$(base64 -w0 "$f")" \
+                    '{path: $path, contents: $content}'
+                fi
+              done | jq -s .
+            )
+
+            if [[ "$(jq 'length' <<<"$additions")" == "0" ]]; then
+              echo "URLs already point to ${new_version}; nothing to sync"
+              exit 0
+            fi
+
+            # `gh api graphql -F input=@file` sends the variable as a JSON
+            # *string*, which won't coerce to CreateCommitOnBranchInput!.
+            # Build the full {query, variables} body and pass via --input.
+            jq -n \
+              --arg query 'mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { url } } }' \
+              --arg repo "$REPO_NWO" \
+              --arg branch "$BRANCH" \
+              --arg msg "chore: sync plugin-manifest-validator schema URLs to ${new_version}" \
+              --arg oid "$(git rev-parse HEAD)" \
+              --argjson additions "$additions" \
+              '{
+                query: $query,
+                variables: {
+                  input: {
+                    branch: {repositoryNameWithOwner: $repo, branchName: $branch},
+                    message: {headline: $msg},
+                    fileChanges: {additions: $additions},
+                    expectedHeadOid: $oid
+                  }
+                }
+              }' > "${RUNNER_TEMP}/sync-request.json"
+
+            if gh api graphql --input "${RUNNER_TEMP}/sync-request.json" 2> "${RUNNER_TEMP}/sync-error.log"; then
+              exit 0
+            fi
+
+            cat "${RUNNER_TEMP}/sync-error.log"
+            if grep -q "Expected.*head.*oid" "${RUNNER_TEMP}/sync-error.log" && [[ "$attempt" -lt "$MAX_ATTEMPTS" ]]; then
+              echo "expectedHeadOid mismatch on attempt ${attempt}; refreshing and retrying"
+              continue
+            fi
+            echo "createCommitOnBranch failed on attempt ${attempt}. current branch tip:"
+            gh api "repos/${REPO_NWO}/branches/${BRANCH}" --jq '.commit.sha' || true
+            exit 1
+          done
 
   publish:
     name: Publish to npm
@@ -43,27 +141,51 @@ jobs:
     needs: release
     if: ${{ needs.release.outputs.releases_created == 'true' }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6
 
       - uses: actions/setup-node@v6
         with:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
-          cache: "pnpm"
-        # To avoid setup-node cache failure.
-        # ref. https://github.com/actions/setup-node/issues/1137
-      - name: create pnpm cache directory
-        shell: bash
-        run: mkdir -vp $(pnpm store path --silent)
 
-      # Ensure npm 11.5.1 or later is installed
+      - uses: flatt-security/setup-takumi-guard-npm@9a5d797c2085b6326d3a2985c08e3a114b9b88c1 # v1.1.1
+        id: setup-takumi-guard
+        with:
+          bot-id: ${{ !github.event.pull_request.head.repo.fork && secrets.TAKUMI_GUARD_BOT_ID || '' }}
+          set-registry: false
+
+      - name: Configure Takumi Guard registry
+        shell: bash
+        env:
+          TAKUMI_GUARD_TOKEN: ${{ steps.setup-takumi-guard.outputs.token }}
+        run: |
+          # Mask the token explicitly so it cannot leak into the workflow log even if
+          # echoed by a downstream command.
+          echo "::add-mask::${TAKUMI_GUARD_TOKEN}"
+
+          # setup-takumi-guard-npm writes an auth token to the project .npmrc even with
+          # set-registry: false. Since .npmrc is tracked in this repository, that modification
+          # makes the working tree dirty and breaks pnpm publish's git-checks.
+          # Restore .npmrc to its committed state and configure the registry globally instead.
+          git restore .npmrc
+
+          # Configure pnpm and npm to use Takumi Guard via user-scoped config files
+          # (~/.config/pnpm/rc and ~/.npmrc), which are outside the working tree and
+          # therefore do not trigger ERR_PNPM_GIT_UNCLEAN on pnpm publish.
+          pnpm config --global set registry https://npm.flatt.tech/
+          pnpm config --global set //npm.flatt.tech/:_authToken "${TAKUMI_GUARD_TOKEN}"
+          npm config set --location=user registry https://npm.flatt.tech/
+          npm config set --location=user //npm.flatt.tech/:_authToken "${TAKUMI_GUARD_TOKEN}"
+
+      # Ensure npm >=11.5.1 is installed (Trusted Publishers requirement).
+      # Pinned to 11.x because npm 12.0.0 has a sigstore bundling bug (npm/cli#9722).
       # ref. https://docs.npmjs.com/trusted-publishers#github-actions-configuration
-      - run: npm install -g npm@latest
+      - run: npm install -g npm@11
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-      - run: pnpm -r publish --access public
+      - run: pnpm -r publish --access public --registry https://registry.npmjs.org/
         env:
           NPM_CONFIG_PROVENANCE: true
 

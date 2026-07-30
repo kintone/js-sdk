@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.2.0...@kintone/rest-api-client@6.2.1) (2026-07-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.18.1 ([cf14fea](https://github.com/kintone/js-sdk/commit/cf14fea37393d35d8d9bd8e79113d802e7e4c3dc))
+
+## [6.2.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.7...@kintone/rest-api-client@6.2.0) (2026-05-21)
+
+
+### Features
+
+* **rest-api-client:** add SearchClient for global search API ([#3769](https://github.com/kintone/js-sdk/issues/3769)) ([2b3d28b](https://github.com/kintone/js-sdk/commit/2b3d28b2355670d77bbdf6a621df9b931804aeb7))
+
+## [6.1.7](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.6...@kintone/rest-api-client@6.1.7) (2026-05-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.16.1 ([f66bb8f](https://github.com/kintone/js-sdk/commit/f66bb8f6688b37c3784186ded38f912dd05dca75))
+
+## [6.1.6](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.5...@kintone/rest-api-client@6.1.6) (2026-04-14)
+
+
+### Bug Fixes
+
+* update axios  ([#3737](https://github.com/kintone/js-sdk/issues/3737)) ([1cdc3fd](https://github.com/kintone/js-sdk/commit/1cdc3fd52d04f1aa2446cbe2a65dd26783cb3bb4))
+
+## [6.1.5](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.4...@kintone/rest-api-client@6.1.5) (2026-04-08)
+
+
+### Bug Fixes
+
+* pin dependency versions and remove unused core-js ([#3697](https://github.com/kintone/js-sdk/issues/3697)) ([5138e95](https://github.com/kintone/js-sdk/commit/5138e957cb2e85e054d555ab5524c3da5bf0740b))
+
 ## [6.1.4](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.1.3...@kintone/rest-api-client@6.1.4) (2026-03-31)
 
 

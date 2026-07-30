@@ -11,6 +11,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - We dropped Node v14 support. Now supported versions are v16, v18, and v20.
 
+## [10.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@10.0.0...@kintone/plugin-uploader@10.0.1) (2026-04-08)
+
+
+### Bug Fixes
+
+* pin dependency versions and remove unused core-js ([#3697](https://github.com/kintone/js-sdk/issues/3697)) ([5138e95](https://github.com/kintone/js-sdk/commit/5138e957cb2e85e054d555ab5524c3da5bf0740b))
+
 ## [10.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-uploader@9.1.5...@kintone/plugin-uploader@10.0.0) (2025-10-14)
 
 

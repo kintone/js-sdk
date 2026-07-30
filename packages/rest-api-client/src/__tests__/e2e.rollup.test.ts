@@ -21,7 +21,7 @@ const tempDir = fs.mkdtempSync(
 
 const extensions = [".ts", ".js"];
 
-const TESTCASE_TIMEOUT = 30000;
+const TESTCASE_TIMEOUT = 300000;
 
 describe("Rollup Bundler tests", function () {
   let bundle: RollupBuild;

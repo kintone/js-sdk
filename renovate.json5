@@ -39,7 +39,48 @@
       },
     ],
   },
+  customManagers: [
+    {
+      // track plugin-manifest-validator version embedded in $schema URLs
+      customType: "regex",
+      fileMatch: [
+        "^packages/create-plugin/src/manifest\\.ts$",
+      ],
+      matchStrings: [
+        "plugin-manifest-validator%40(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)",
+      ],
+      depNameTemplate: "@kintone/plugin-manifest-validator",
+      datasourceTemplate: "npm",
+    },
+  ],
   "packageRules": [
+    {
+      // URL-embedded validator version bumps are chore: (don't trigger release-please)
+      matchPackageNames: ["@kintone/plugin-manifest-validator"],
+      matchManagers: ["custom.regex"],
+      semanticCommitType: "chore",
+    },
+    {
+      // runtime dependencies use bump strategy (update pinned versions)
+      matchDepTypes: ["dependencies"],
+      rangeStrategy: "bump",
+    },
+    {
+      // group transitive-duplicate-risk deps to update together
+      groupName: "axios and related deps",
+      matchPackageNames: ["axios", "form-data"],
+      matchDepTypes: ["dependencies"],
+    },
+    {
+      groupName: "openapi ecosystem deps",
+      matchPackageNames: ["openapi-fetch", "openapi-typescript", "openapi-typescript-helpers"],
+      matchDepTypes: ["dependencies"],
+    },
+    {
+      groupName: "ajv ecosystem deps",
+      matchPackageNames: ["ajv", "ajv-formats"],
+      matchDepTypes: ["dependencies"],
+    },
     {
       // Third party actions should be pinned with digest
       "matchDepTypes": [

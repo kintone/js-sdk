@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.8](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.7...@kintone/dts-gen@9.0.8) (2026-07-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.18.1 ([cf14fea](https://github.com/kintone/js-sdk/commit/cf14fea37393d35d8d9bd8e79113d802e7e4c3dc))
+
+## [9.0.7](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.6...@kintone/dts-gen@9.0.7) (2026-06-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lodash to v4.18.1 [security] ([#3699](https://github.com/kintone/js-sdk/issues/3699)) ([74b9462](https://github.com/kintone/js-sdk/commit/74b94629225a7b1aa86f25852f5774a3b3d44c79))
+
+## [9.0.6](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.5...@kintone/dts-gen@9.0.6) (2026-05-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.16.1 ([f66bb8f](https://github.com/kintone/js-sdk/commit/f66bb8f6688b37c3784186ded38f912dd05dca75))
+
+## [9.0.5](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.4...@kintone/dts-gen@9.0.5) (2026-04-14)
+
+
+### Bug Fixes
+
+* update axios  ([#3737](https://github.com/kintone/js-sdk/issues/3737)) ([1cdc3fd](https://github.com/kintone/js-sdk/commit/1cdc3fd52d04f1aa2446cbe2a65dd26783cb3bb4))
+
+## [9.0.4](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.3...@kintone/dts-gen@9.0.4) (2026-04-08)
+
+
+### Bug Fixes
+
+* pin dependency versions and remove unused core-js ([#3697](https://github.com/kintone/js-sdk/issues/3697)) ([5138e95](https://github.com/kintone/js-sdk/commit/5138e957cb2e85e054d555ab5524c3da5bf0740b))
+
 ## [9.0.3](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.2...@kintone/dts-gen@9.0.3) (2026-03-31)
 
 

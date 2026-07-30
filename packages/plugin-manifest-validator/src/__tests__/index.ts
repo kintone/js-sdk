@@ -553,6 +553,240 @@ describe("validator", () => {
     );
   });
 
+  describe("sandbox", () => {
+    it("accepts boolean false", () => {
+      assert.deepStrictEqual(validator(json({ sandbox: false })), {
+        valid: true,
+        errors: null,
+        warnings: null,
+      });
+    });
+
+    it("rejects non-boolean", () => {
+      const actual = validator(json({ sandbox: "yes" }));
+      assert(actual.valid === false);
+      assert(actual.errors?.length === 1);
+      assert.strictEqual(actual.errors[0].instancePath, "/sandbox");
+      assert.strictEqual(actual.errors[0].keyword, "type");
+    });
+
+    it("requires allowed_hosts and permissions when sandbox is true", () => {
+      const actual = validator(json({ sandbox: true }));
+      assert(actual.valid === false);
+      const missing = (actual.errors ?? [])
+        .filter((e) => e.keyword === "required")
+        .map((e) => (e.params as { missingProperty?: string }).missingProperty);
+      assert(missing.includes("allowed_hosts"));
+      assert(missing.includes("permissions"));
+    });
+
+    it("accepts sandbox:true with allowed_hosts and permissions present", () => {
+      assert.deepStrictEqual(
+        validator(
+          json({
+            sandbox: true,
+            allowed_hosts: [],
+            permissions: [],
+          }),
+        ),
+        { valid: true, errors: null, warnings: null },
+      );
+    });
+
+    it("does not require allowed_hosts/permissions when sandbox is omitted", () => {
+      assert.deepStrictEqual(validator(json({})), {
+        valid: true,
+        errors: null,
+        warnings: null,
+      });
+    });
+  });
+
+  describe("allowed_hosts", () => {
+    // Validator only enforces "structure / type / length / simple format".
+    // Domain-specific URL rules (IP literal rejection, trailing-slash-only
+    // rejection, cybozu domain exclusion, etc.) are kintone's job.
+    it("accepts empty array", () => {
+      assert.deepStrictEqual(validator(json({ allowed_hosts: [] })), {
+        valid: true,
+        errors: null,
+        warnings: null,
+      });
+    });
+
+    it("accepts wildcard", () => {
+      assert.deepStrictEqual(validator(json({ allowed_hosts: ["*"] })), {
+        valid: true,
+        errors: null,
+        warnings: null,
+      });
+    });
+
+    it.each([
+      "https://example.com",
+      "https://example.com/api/*",
+      "https://example.com/file.html",
+      "wss://example.com",
+      "https://192.168.0.1",
+      "https://example.com/",
+      "ftp://example.com",
+    ])("accepts URI-form host: %s", (host) => {
+      assert.deepStrictEqual(validator(json({ allowed_hosts: [host] })), {
+        valid: true,
+        errors: null,
+        warnings: null,
+      });
+    });
+
+    it.each([
+      ["missing scheme", "example.com"],
+      ["empty string", ""],
+    ])("rejects non-URI host (%s): %s", (_desc, host) => {
+      const actual = validator(json({ allowed_hosts: [host] }));
+      assert(actual.valid === false);
+      assert(actual.errors !== null);
+    });
+
+    it("rejects non-string entries", () => {
+      const actual = validator(
+        json({ allowed_hosts: [123] } as Record<string, any>),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) => e.keyword === "type" && e.instancePath === "/allowed_hosts/0",
+        ),
+      );
+    });
+
+    it("rejects duplicated entries", () => {
+      const actual = validator(
+        json({
+          allowed_hosts: ["https://example.com", "https://example.com"],
+        }),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) =>
+            e.keyword === "uniqueItems" && e.instancePath === "/allowed_hosts",
+        ),
+      );
+    });
+  });
+
+  describe("permissions", () => {
+    it("accepts an array of permission entries with and without scope", () => {
+      assert.deepStrictEqual(
+        validator(
+          json({
+            permissions: [
+              { permission: "app:read" },
+              { permission: "network:connect" },
+              { permission: "app_record:read", scope: "self" },
+            ],
+          }),
+        ),
+        { valid: true, errors: null, warnings: null },
+      );
+    });
+
+    it("accepts an empty array", () => {
+      assert.deepStrictEqual(validator(json({ permissions: [] })), {
+        valid: true,
+        errors: null,
+        warnings: null,
+      });
+    });
+
+    it("rejects the legacy object form", () => {
+      const actual = validator(
+        json({
+          permissions: {
+            js_api: ["app:read"],
+            rest_api: ["app_record:read"],
+          },
+        } as Record<string, any>),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) => e.keyword === "type" && e.instancePath === "/permissions",
+        ),
+      );
+    });
+
+    it("requires the permission property", () => {
+      const actual = validator(
+        json({ permissions: [{ scope: "self" }] } as Record<string, any>),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) =>
+            e.keyword === "required" &&
+            e.instancePath === "/permissions/0" &&
+            (e.params as { missingProperty?: string }).missingProperty ===
+              "permission",
+        ),
+      );
+    });
+
+    it("rejects an empty permission string", () => {
+      const actual = validator(json({ permissions: [{ permission: "" }] }));
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) =>
+            e.keyword === "minLength" &&
+            e.instancePath === "/permissions/0/permission",
+        ),
+      );
+    });
+
+    it("rejects an empty scope string", () => {
+      const actual = validator(
+        json({ permissions: [{ permission: "app:read", scope: "" }] }),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) =>
+            e.keyword === "minLength" &&
+            e.instancePath === "/permissions/0/scope",
+        ),
+      );
+    });
+
+    it("rejects unknown properties on an entry", () => {
+      const actual = validator(
+        json({
+          permissions: [{ permission: "app:read", unknown: true }],
+        } as Record<string, any>),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) =>
+            e.keyword === "additionalProperties" &&
+            e.instancePath === "/permissions/0",
+        ),
+      );
+    });
+
+    it("rejects non-object entries", () => {
+      const actual = validator(
+        json({ permissions: ["app:read"] } as Record<string, any>),
+      );
+      assert(actual.valid === false);
+      assert(
+        actual.errors?.some(
+          (e) => e.keyword === "type" && e.instancePath === "/permissions/0",
+        ),
+      );
+    });
+  });
+
   describe("validate required properties", () => {
     it.each`
       languageCode | name

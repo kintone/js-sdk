@@ -73,6 +73,9 @@ export default (
       "relative-path": relativePath,
     },
   });
+  // ajv-formats "fast" mode is intentional: allowed_hosts only enforces a
+  // structural URI shape. Stricter URL validity, IP-literal rejection, etc.
+  // are handled by kintone at runtime, not by this validator.
   addFormats(ajv, { mode: "fast", formats: ["uri"] });
 
   const validateMaxFileSize: SchemaValidateFunction = (
