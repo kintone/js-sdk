@@ -23,7 +23,8 @@ export type CapturedRequest = {
 
 type QueuedResponse =
   | { kind: "json"; status: number; body: unknown }
-  | { kind: "binary"; status: number; body: Uint8Array | Buffer };
+  | { kind: "binary"; status: number; body: Uint8Array | Buffer }
+  | { kind: "redirect"; status: number; location: string };
 
 /**
  * Intercepts real outgoing HTTP requests (msw patches Node's http/https module,
@@ -58,9 +59,16 @@ export class HttpTestServer {
         status: 200,
         body: {},
       };
-      return next.kind === "binary"
-        ? new HttpResponse(next.body, { status: next.status })
-        : HttpResponse.json(next.body, { status: next.status });
+      if (next.kind === "binary") {
+        return new HttpResponse(next.body, { status: next.status });
+      }
+      if (next.kind === "redirect") {
+        return new HttpResponse(null, {
+          status: next.status,
+          headers: { Location: next.location },
+        });
+      }
+      return HttpResponse.json(next.body, { status: next.status });
     }),
   );
   private logs: CapturedRequest[] = [];
@@ -76,6 +84,10 @@ export class HttpTestServer {
 
   public mockBinaryResponse(body: Uint8Array | Buffer, status = 200): void {
     this.responseQueue.push({ kind: "binary", status, body });
+  }
+
+  public mockRedirectResponse(location: string, status: number): void {
+    this.responseQueue.push({ kind: "redirect", status, location });
   }
 
   public getLogs(): CapturedRequest[] {
