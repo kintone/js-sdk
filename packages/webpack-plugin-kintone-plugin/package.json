@@ -1,6 +1,6 @@
 {
   "name": "@kintone/webpack-plugin-kintone-plugin",
-  "version": "9.0.4",
+  "version": "9.0.5",
   "description": "A webpack plugin to generate a plugin zip",
   "keywords": [
     "webpack",
@@ -36,7 +36,7 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@kintone/cli": "1.20.0",
+    "@kintone/cli": "1.21.0",
     "mkdirp": "3.0.1"
   },
   "devDependencies": {
