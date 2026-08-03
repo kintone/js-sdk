@@ -19,7 +19,7 @@ overrides:
   brace-expansion@^2: '>=2.1.2 <3'
   brace-expansion@^5: '>=5.0.9'
   js-yaml@^4: '>=4.3.1'
-  axios: '>=1.18.1'
+  axios: '>=1.19.0'
   fast-uri: '>=3.1.5'
 
 importers:
@@ -182,8 +182,8 @@ importers:
         specifier: 24.3.0
         version: 24.3.0(@types/eslint@9.6.1)(@typescript-eslint/utils@8.57.2(eslint@9.39.5)(typescript@5.9.3))(eslint@9.39.5)(prettier@3.8.5)(typescript@5.9.3)
       axios:
-        specifier: '>=1.18.1'
-        version: 1.18.1
+        specifier: '>=1.19.0'
+        version: 1.19.0
       commander:
         specifier: 12.1.0
         version: 12.1.0
@@ -476,8 +476,8 @@ importers:
   packages/rest-api-client:
     dependencies:
       axios:
-        specifier: '>=1.18.1'
-        version: 1.18.1
+        specifier: '>=1.19.0'
+        version: 1.19.0
       form-data:
         specifier: 4.0.6
         version: 4.0.6
@@ -3401,8 +3401,8 @@ packages:
     resolution: {integrity: sha512-BASOg+YwO2C+346x3LZOeoovTIoTrRqEsqMa6fmfAV0P+U9mFr9NsyOEpiYvFjbc64NMrSswhV50WdXzdb/Z5A==}
     engines: {node: '>=4'}
 
-  axios@1.18.1:
-    resolution: {integrity: sha512-3nTvFlvpn9Zu/RkHUqtc7/+al4UpRW5az71ap5zccp6e8RAYEzhMTecX8Dz1wWDYrPpUoB1HAQEGEAEvUr7S9g==}
+  axios@1.19.0:
+    resolution: {integrity: sha512-ht/iuYZXEjFxLH/Hkezgd7m6JKlHHXEUSneaDz8uZe1Gj5QZtCnpyDsckvAiEnT89OEbCLmnte4R4sn7P0EKFw==}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -8992,7 +8992,7 @@ snapshots:
 
   '@kintone/rest-api-client@6.2.0':
     dependencies:
-      axios: 1.18.1
+      axios: 1.19.0
       form-data: 4.0.5
       js-base64: 3.7.8
       mime: 3.0.0
@@ -9003,7 +9003,7 @@ snapshots:
 
   '@kintone/rest-api-client@6.2.1':
     dependencies:
-      axios: 1.18.1
+      axios: 1.19.0
       form-data: 4.0.6
       js-base64: 3.8.0
       mime: 3.0.0
@@ -10360,7 +10360,7 @@ snapshots:
 
   axe-core@4.11.1: {}
 
-  axios@1.18.1:
+  axios@1.19.0:
     dependencies:
       follow-redirects: 1.16.0(debug@4.4.3)
       form-data: 4.0.6
