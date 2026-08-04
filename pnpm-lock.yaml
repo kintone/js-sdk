@@ -18,7 +18,7 @@ overrides:
   brace-expansion@^1: '>=1.1.16 <2'
   brace-expansion@^2: '>=2.1.2 <3'
   brace-expansion@^5: '>=5.0.9'
-  js-yaml@^4: '>=4.3.1'
+  js-yaml@^4: '>=5.2.3'
   axios: '>=1.18.1'
   fast-uri: '>=3.1.5'
 
@@ -7299,7 +7299,7 @@ packages:
     engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
-      js-yaml: '>=4.3.1'
+      js-yaml: '>=5.2.3'
       json5: ^2.2.3
       toml: ^3.0.0 || ^4.0.0
       webpack: ^5.101.0
