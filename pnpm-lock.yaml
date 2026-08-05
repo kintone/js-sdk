@@ -244,8 +244,8 @@ importers:
         specifier: 9.39.5
         version: 9.39.5
       globals:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 17.9.0
+        version: 17.9.0
       npm-run-all:
         specifier: 4.1.5
         version: 4.1.5
@@ -363,8 +363,8 @@ importers:
         specifier: 13.0.6
         version: 13.0.6
       globals:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 17.9.0
+        version: 17.9.0
       jsdom:
         specifier: 29.1.1
         version: 29.1.1
@@ -4670,6 +4670,10 @@ packages:
 
   globals@16.5.0:
     resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+    engines: {node: '>=18'}
+
+  globals@17.9.0:
+    resolution: {integrity: sha512-m/MvAW61QVU5VDNF1Vj8axt016h8w7L5TU1e9zlab7XIttAT2YAlCwl75K1fOqvMM9apmD7lbCIRhpfkhmxhCg==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -12055,6 +12059,8 @@ snapshots:
   globals@15.15.0: {}
 
   globals@16.5.0: {}
+
+  globals@17.9.0: {}
 
   globalthis@1.0.4:
     dependencies:
