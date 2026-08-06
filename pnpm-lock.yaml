@@ -454,8 +454,8 @@ importers:
         specifier: 0.0.15
         version: 0.0.15
       undici:
-        specifier: 7.28.0
-        version: 7.28.0
+        specifier: 7.29.0
+        version: 7.29.0
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: 0.18.5
@@ -7065,6 +7065,10 @@ packages:
 
   undici@7.28.0:
     resolution: {integrity: sha512-cRZYrTDwWznlnRiPjggAGxZXanty6M8RV1ff8Wm4LWXBp7/IG8v5DnOm74DtUBp9OONpK75YlPnIjQqX0dBDtA==}
+    engines: {node: '>=20.18.1'}
+
+  undici@7.29.0:
+    resolution: {integrity: sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw==}
     engines: {node: '>=20.18.1'}
 
   unicode-canonical-property-names-ecmascript@2.0.1:
@@ -14589,6 +14593,8 @@ snapshots:
     optional: true
 
   undici@7.28.0: {}
+
+  undici@7.29.0: {}
 
   unicode-canonical-property-names-ecmascript@2.0.1: {}
 
