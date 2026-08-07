@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import https from "node:https";
 import path from "node:path";
-import { buildPlatformDependentConfig } from "../node";
+import FormData from "form-data";
+import { buildFetchFormData, buildPlatformDependentConfig } from "../node";
 
 const PFX_PATH = path.join(
   __dirname,
@@ -63,5 +64,24 @@ describe("buildPlatformDependentConfig", () => {
     expect(
       buildPlatformDependentConfig({ httpsAgent, socketTimeout: 5000 }),
     ).toStrictEqual({ httpsAgent, timeout: 5000 });
+  });
+});
+
+describe("buildFetchFormData", () => {
+  // A `fs.createReadStream()` field (documented in docs/file.md as a valid
+  // `file.data`) can only be read once. If this ever regresses to returning
+  // the stream itself (or a ReadableStream wrapper) instead of a buffered
+  // Buffer, a 307/308 redirect resend would ship an empty second request --
+  // this is the same regression FileUploadRedirect.http.test.ts guards
+  // end-to-end via a real server (msw can't simulate it, see RedirectTestServer).
+  it("buffers a Stream field into a resendable Buffer, not a stream", async () => {
+    const fd = new FormData();
+    fd.append("file", fs.createReadStream(PFX_PATH), { filename: "cert.pfx" });
+    fd.append("field", "hello");
+
+    const result = await buildFetchFormData(fd);
+
+    expect(result).not.toBeNull();
+    expect(Buffer.isBuffer(result?.body)).toBe(true);
   });
 });
