@@ -2,7 +2,7 @@ import { FileClient } from "../../FileClient";
 import { makeHttpTestClient } from "./HttpClientTestHarness";
 
 /**
- * Wires a real FileClient to a real AxiosClient talking to a real local HTTP server,
+ * Wires a real FileClient to a real FetchClient talking to a real local HTTP server,
  * so these tests assert on the actual wire format (URL, query string, multipart
  * body, binary response, headers) instead of calls to an internal MockClient.
  */

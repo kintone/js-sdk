@@ -143,9 +143,7 @@ export class FetchClient implements HttpClient {
       if (error instanceof DOMException && error.name === "TimeoutError") {
         throw new FetchClientError(`Request timed out: ${url}`);
       }
-      throw new FetchClientError(
-        error instanceof Error ? error.message : String(error),
-      );
+      throw new FetchClientError(this.buildFetchErrorMessage(error));
     }
 
     if (!response.ok) {
@@ -200,6 +198,23 @@ export class FetchClient implements HttpClient {
       statusText: response.statusText,
       headers,
     };
+  }
+
+  // fetch() wraps the underlying cause (e.g. a TLS "mac verify failure" from a
+  // wrong client-cert passphrase) in a generic "fetch failed" TypeError, unlike
+  // Axios which surfaced that message directly. Unwrap it so callers matching
+  // on the error message (e.g. KintoneResponseHandler's clientCertAuth check)
+  // keep working.
+  private buildFetchErrorMessage(error: unknown): string {
+    if (!(error instanceof Error)) {
+      return String(error);
+    }
+    // `Error.cause` isn't in this package's configured tsconfig `lib`, so read
+    // it structurally instead of bumping the lib target for one property.
+    const cause = (error as { cause?: unknown }).cause;
+    return cause instanceof Error
+      ? `${error.message}: ${cause.message}`
+      : error.message;
   }
 
   private convertHeaders(headers: Headers): Record<string, string> {
