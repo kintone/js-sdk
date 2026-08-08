@@ -4,7 +4,7 @@ import { basename } from "node:path";
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
 import https from "node:https";
 import os from "node:os";
-import { Agent, ProxyAgent } from "undici";
+import { Agent, ProxyAgent, fetch as undiciFetch } from "undici";
 import type { ProxyConfig } from "../http/HttpClientInterface";
 import type FormData from "form-data";
 import packageJson from "../../package.json";
@@ -179,6 +179,20 @@ export const buildFetchDispatcher = ({
 
   return undefined;
 };
+
+// Node's global fetch is backed by whichever undici version ships with that
+// Node release (e.g. undici 6.x on Node 22, 7.x on Node 24), which can be
+// older than this package's own `undici` dependency. Handing an
+// Agent/ProxyAgent built from this package's `undici` to Node's global fetch
+// mixes two undici versions, and their internal Dispatcher/Handler protocols
+// aren't guaranteed to be compatible (observed: "invalid onRequestStart
+// method" from the TLS Agent path, and a silent hang from the ProxyAgent
+// path). Routing dispatcher-bearing requests through this package's own
+// `undici.fetch` keeps fetch() and the Agent on the same version.
+export const fetchWithDispatcher = (
+  url: string,
+  options: RequestInit & { dispatcher?: unknown },
+): Promise<unknown> => undiciFetch(url as any, options as any);
 
 const buildProxyDispatcher = (
   proxy: Exclude<ProxyConfig, false | undefined>,

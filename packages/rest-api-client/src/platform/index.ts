@@ -21,6 +21,10 @@ type PlatformDeps = {
   buildFetchFormData: (
     data: unknown,
   ) => Promise<{ body: unknown; contentType?: string } | null>;
+  fetchWithDispatcher: (
+    url: string,
+    options: RequestInit & { dispatcher?: unknown },
+  ) => Promise<unknown>;
 };
 
 export const platformDeps: PlatformDeps = {
@@ -52,6 +56,9 @@ export const platformDeps: PlatformDeps = {
     throw new Error("not implemented");
   },
   buildFetchFormData: () => {
+    throw new Error("not implemented");
+  },
+  fetchWithDispatcher: () => {
     throw new Error("not implemented");
   },
 };
@@ -87,5 +94,8 @@ export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   }
   if (deps.buildFetchFormData) {
     platformDeps.buildFetchFormData = deps.buildFetchFormData;
+  }
+  if (deps.fetchWithDispatcher) {
+    platformDeps.fetchWithDispatcher = deps.fetchWithDispatcher;
   }
 };

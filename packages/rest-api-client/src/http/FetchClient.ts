@@ -138,7 +138,13 @@ export class FetchClient implements HttpClient {
   ): Promise<Response> {
     let response: globalThis.Response;
     try {
-      response = await fetch(url, fetchOptions as RequestInit);
+      response =
+        fetchOptions.dispatcher !== undefined
+          ? ((await platformDeps.fetchWithDispatcher(
+              url,
+              fetchOptions,
+            )) as globalThis.Response)
+          : await fetch(url, fetchOptions as RequestInit);
     } catch (error) {
       if (error instanceof DOMException && error.name === "TimeoutError") {
         throw new FetchClientError(`Request timed out: ${url}`);
@@ -251,9 +257,22 @@ export class FetchClient implements HttpClient {
   private buildFetchBody(
     data: unknown,
     formData: Awaited<ReturnType<typeof platformDeps.buildFetchFormData>>,
-  ): string | globalThis.FormData | Buffer {
+  ): string | globalThis.FormData | Blob {
     if (formData) {
-      return formData.body as globalThis.FormData | Buffer;
+      const { body } = formData;
+      // A Buffer body's backing ArrayBuffer gets detached once undici reads
+      // it to send the request (observed on Node 22's bundled undici 6.x via
+      // FileUploadRedirect.http.test.ts): a 307/308 redirect resend then
+      // fails with "Cannot perform ArrayBuffer.prototype.slice on a detached
+      // ArrayBuffer" while re-extracting the same body. Wrapping it in a
+      // Blob keeps the bytes independently readable across the resend.
+      // `Buffer`'s generic `ArrayBufferLike` parameter doesn't structurally
+      // satisfy `Blob`'s constructor parameter type under every
+      // lib/@types/node combination, even though a real Buffer works fine
+      // as Blob content at runtime (see the similar cast below).
+      return body instanceof globalThis.FormData
+        ? body
+        : new Blob([body] as ConstructorParameters<typeof Blob>[0]);
     }
     return JSON.stringify(data);
   }
