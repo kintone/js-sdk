@@ -112,11 +112,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
       ...(options ? options : {}),
-      ...platformDeps.buildPlatformDependentConfig({
-        httpsAgent: this.httpsAgent,
-        clientCertAuth: this.clientCertAuth,
-        socketTimeout: this.socketTimeout,
-      }),
       proxy: this.buildProxyConfig(this.proxy),
       ...(this.dispatcher !== undefined ? { dispatcher: this.dispatcher } : {}),
       ...(this.socketTimeout !== undefined

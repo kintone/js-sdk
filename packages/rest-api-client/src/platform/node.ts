@@ -2,7 +2,7 @@ import fs from "node:fs";
 import { promisify } from "node:util";
 import { basename } from "node:path";
 import { UnsupportedPlatformError } from "./UnsupportedPlatformError";
-import https from "node:https";
+import type https from "node:https";
 import os from "node:os";
 import { Agent, ProxyAgent, fetch as undiciFetch } from "undici";
 import type { ProxyConfig } from "../http/HttpClientInterface";
@@ -33,55 +33,6 @@ export const getRequestToken = () => {
 
 export const getDefaultAuth = () => {
   throw new UnsupportedPlatformError("Node.js");
-};
-
-export const buildPlatformDependentConfig = ({
-  httpsAgent,
-  clientCertAuth,
-  socketTimeout,
-}: {
-  httpsAgent?: https.Agent;
-  clientCertAuth?: ClientCertAuth;
-  socketTimeout?: number;
-}) => {
-  return {
-    ...buildHttpsAgentConfig({ httpsAgent, clientCertAuth }),
-    ...buildTimeoutConfig({ socketTimeout }),
-  };
-};
-
-const buildHttpsAgentConfig = ({
-  httpsAgent,
-  clientCertAuth,
-}: {
-  httpsAgent?: https.Agent;
-  clientCertAuth?: ClientCertAuth;
-}) => {
-  if (httpsAgent !== undefined) {
-    return { httpsAgent };
-  }
-
-  // use default HTTPS agent
-  if (clientCertAuth !== undefined) {
-    const pfx =
-      "pfx" in clientCertAuth
-        ? clientCertAuth.pfx
-        : fs.readFileSync(clientCertAuth.pfxFilePath);
-    const defaultHttpsAgent = new https.Agent({
-      pfx,
-      passphrase: clientCertAuth.password,
-    });
-    return { httpsAgent: defaultHttpsAgent };
-  }
-  return {};
-};
-
-const buildTimeoutConfig = (params: { socketTimeout?: number }) => {
-  if (params.socketTimeout) {
-    return { timeout: params.socketTimeout };
-  }
-
-  return {};
 };
 
 export const buildHeaders = (params: { userAgent?: string }) => {
@@ -159,25 +110,44 @@ export const buildFetchDispatcher = ({
   proxy?: ProxyConfig;
   socketTimeout?: number;
 }): unknown => {
+  const resolvedHttpsAgent = httpsAgent as https.Agent | undefined;
   const tlsOptions = buildTlsOptions({
-    httpsAgent: httpsAgent as https.Agent | undefined,
+    httpsAgent: resolvedHttpsAgent,
     clientCertAuth: clientCertAuth as ClientCertAuth | undefined,
   });
+  const connectionOptions = buildAgentConnectionOptions(resolvedHttpsAgent);
 
   // Proxy configuration (proxy can be false to explicitly disable)
   if (proxy && typeof proxy === "object") {
     return buildProxyDispatcher(proxy, tlsOptions, socketTimeout);
   }
 
-  // TLS or timeout configuration
-  if (tlsOptions || socketTimeout) {
+  // A caller-supplied httpsAgent must always produce a dispatcher, even if
+  // none of its options translate into undici Agent options: falling back to
+  // Node's global fetch would silently drop the whole agent rather than just
+  // the untranslatable parts of it.
+  if (tlsOptions || socketTimeout || connectionOptions || resolvedHttpsAgent) {
     return new Agent({
       connect: tlsOptions || {},
       connectTimeout: socketTimeout,
+      ...connectionOptions,
     });
   }
 
   return undefined;
+};
+
+// undici's Agent has no on/off keep-alive toggle (`keepAlive` is unsupported;
+// the closest analog, `pipelining`, is a different concept), so only
+// `maxSockets` has a direct equivalent: `connections`, the max concurrent
+// connections per origin.
+export const buildAgentConnectionOptions = (
+  httpsAgent: https.Agent | undefined,
+): { connections: number } | undefined => {
+  const maxSockets = httpsAgent?.options?.maxSockets;
+  return typeof maxSockets === "number"
+    ? { connections: maxSockets }
+    : undefined;
 };
 
 // Node's global fetch is backed by whichever undici version ships with that

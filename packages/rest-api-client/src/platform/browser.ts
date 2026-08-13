@@ -33,10 +33,6 @@ export const getDefaultAuth = (): DiscriminatedAuth => {
   };
 };
 
-export const buildPlatformDependentConfig = () => {
-  return {};
-};
-
 export const buildHeaders = () => {
   return {};
 };

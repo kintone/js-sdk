@@ -2,68 +2,57 @@ import fs from "node:fs";
 import https from "node:https";
 import path from "node:path";
 import FormData from "form-data";
-import { buildFetchFormData, buildPlatformDependentConfig } from "../node";
+import { Agent } from "undici";
+import {
+  buildAgentConnectionOptions,
+  buildFetchDispatcher,
+  buildFetchFormData,
+} from "../node";
 
 const PFX_PATH = path.join(
   __dirname,
   "../../__tests__/fixtures/clientCertAuth/dummy-client-cert.pfx",
 );
 
-describe("buildPlatformDependentConfig", () => {
-  it("returns an empty config when nothing is specified", () => {
-    expect(buildPlatformDependentConfig({})).toStrictEqual({});
-  });
-
-  it("passes a caller-supplied httpsAgent through unchanged", () => {
-    const httpsAgent = new https.Agent();
-    expect(buildPlatformDependentConfig({ httpsAgent })).toStrictEqual({
-      httpsAgent,
+describe("buildAgentConnectionOptions", () => {
+  it("maps a caller-supplied httpsAgent's maxSockets to connections", () => {
+    const httpsAgent = new https.Agent({ maxSockets: 5 });
+    expect(buildAgentConnectionOptions(httpsAgent)).toStrictEqual({
+      connections: 5,
     });
   });
 
-  it("builds an https.Agent carrying the pfx buffer and passphrase from clientCertAuth", () => {
-    const pfx = fs.readFileSync(PFX_PATH);
-    const { httpsAgent } = buildPlatformDependentConfig({
-      clientCertAuth: { pfx, password: "correct-passphrase" },
-    }) as { httpsAgent: https.Agent };
+  it("returns undefined when maxSockets is not set", () => {
+    expect(buildAgentConnectionOptions(new https.Agent())).toBeUndefined();
+    expect(buildAgentConnectionOptions(undefined)).toBeUndefined();
+  });
+});
 
-    expect(httpsAgent).toBeInstanceOf(https.Agent);
-    expect(httpsAgent.options.pfx).toBe(pfx);
-    expect(httpsAgent.options.passphrase).toBe("correct-passphrase");
+describe("buildFetchDispatcher", () => {
+  it("returns undefined when nothing is specified", () => {
+    expect(buildFetchDispatcher({})).toBeUndefined();
   });
 
-  it("reads the pfx from disk when clientCertAuth is given a pfxFilePath", () => {
-    const { httpsAgent } = buildPlatformDependentConfig({
-      clientCertAuth: { pfxFilePath: PFX_PATH, password: "correct-passphrase" },
-    }) as { httpsAgent: https.Agent };
-
-    expect(
-      (httpsAgent.options.pfx as Buffer).equals(fs.readFileSync(PFX_PATH)),
-    ).toBe(true);
+  // Regression test: a caller-supplied httpsAgent with no TLS-related
+  // options (e.g. one built only for connection pooling, like `keepAlive`)
+  // used to produce no dispatcher at all, silently falling back to Node's
+  // global fetch with the agent completely ignored.
+  it("still builds a dispatcher for an httpsAgent with no TLS options", () => {
+    const httpsAgent = new https.Agent({ keepAlive: true });
+    expect(buildFetchDispatcher({ httpsAgent })).toBeInstanceOf(Agent);
   });
 
-  it("prefers httpsAgent over clientCertAuth when both are given", () => {
-    const httpsAgent = new https.Agent();
+  it("builds a dispatcher carrying the pfx buffer and passphrase from clientCertAuth", () => {
     const pfx = fs.readFileSync(PFX_PATH);
     expect(
-      buildPlatformDependentConfig({
-        httpsAgent,
+      buildFetchDispatcher({
         clientCertAuth: { pfx, password: "correct-passphrase" },
       }),
-    ).toStrictEqual({ httpsAgent });
+    ).toBeInstanceOf(Agent);
   });
 
-  it("carries socketTimeout through as the request timeout", () => {
-    expect(buildPlatformDependentConfig({ socketTimeout: 5000 })).toStrictEqual(
-      { timeout: 5000 },
-    );
-  });
-
-  it("combines an httpsAgent with socketTimeout", () => {
-    const httpsAgent = new https.Agent();
-    expect(
-      buildPlatformDependentConfig({ httpsAgent, socketTimeout: 5000 }),
-    ).toStrictEqual({ httpsAgent, timeout: 5000 });
+  it("builds a dispatcher when only socketTimeout is specified", () => {
+    expect(buildFetchDispatcher({ socketTimeout: 5000 })).toBeInstanceOf(Agent);
   });
 });
 

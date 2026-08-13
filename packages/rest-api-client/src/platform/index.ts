@@ -7,7 +7,6 @@ type PlatformDeps = {
   ) => Promise<{ name: string; data: unknown }>;
   getRequestToken: () => Promise<string>;
   getDefaultAuth: () => DiscriminatedAuth;
-  buildPlatformDependentConfig: (params: object) => object;
   buildHeaders: (params: { userAgent?: string }) => Record<string, string>;
   buildFormDataValue: (data: unknown, fileName?: string) => unknown;
   buildBaseUrl: (baseUrl?: string) => string;
@@ -35,9 +34,6 @@ export const platformDeps: PlatformDeps = {
     throw new Error("not implemented");
   },
   getDefaultAuth: () => {
-    throw new Error("not implemented");
-  },
-  buildPlatformDependentConfig: () => {
     throw new Error("not implemented");
   },
   buildHeaders: () => {
@@ -72,10 +68,6 @@ export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   }
   if (deps.getDefaultAuth) {
     platformDeps.getDefaultAuth = deps.getDefaultAuth;
-  }
-  if (deps.buildPlatformDependentConfig) {
-    platformDeps.buildPlatformDependentConfig =
-      deps.buildPlatformDependentConfig;
   }
   if (deps.buildHeaders) {
     platformDeps.buildHeaders = deps.buildHeaders;

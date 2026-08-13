@@ -403,9 +403,13 @@ describe("options", () => {
     });
   });
 
-  it("should build `requestConfig` having `httpsAgent` property", async () => {
+  it("should build `requestConfig` having a `dispatcher` for a caller-supplied httpsAgent", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
+    // A bare `https.Agent()` carries no TLS options, but the dispatcher must
+    // still be built for it: silently falling back to no dispatcher would
+    // drop the caller's agent entirely instead of just its untranslatable
+    // options (see platform/__tests__/node.test.ts for the underlying fix).
     const httpsAgent = new https.Agent();
 
     const kintoneRequestConfigBuilder = new KintoneRequestConfigBuilder({
@@ -422,10 +426,10 @@ describe("options", () => {
       "/k/v1/record.json",
       { key: "value" },
     );
-    expect(requestConfig).toHaveProperty("httpsAgent");
+    expect(requestConfig.dispatcher).toBeDefined();
   });
 
-  it("should build `requestConfig` having `httpsAgent` property from clientCertAuth", async () => {
+  it("should build `requestConfig` having a `dispatcher` from clientCertAuth", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
     const clientCertAuth = {
@@ -447,7 +451,7 @@ describe("options", () => {
       "/k/v1/record.json",
       { key: "value" },
     );
-    expect(requestConfig).toHaveProperty("httpsAgent");
+    expect(requestConfig.dispatcher).toBeDefined();
   });
 });
 
