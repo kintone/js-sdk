@@ -47,7 +47,6 @@ export type RequestConfig = {
   url: string;
   headers: any;
   data?: any;
-  proxy?: ProxyConfig;
   responseType?: "arraybuffer";
   dispatcher?: unknown;
   timeout?: number;

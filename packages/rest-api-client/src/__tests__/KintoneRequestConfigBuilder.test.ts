@@ -36,7 +36,6 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       );
       expect(requestConfig).toStrictEqual({
         method: "get",
-        proxy: undefined,
         url: `${baseUrl}/k/v1/record.json?key=value`,
         headers: {
           "User-Agent": `${expectedDefaultUa} foo`,
@@ -63,7 +62,6 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       );
       expect(requestConfig).toStrictEqual({
         method: "get",
-        proxy: undefined,
         url: `${baseUrl}/k/v1/record.json?key=value`,
         headers: {
           "User-Agent": expectedDefaultUa,
@@ -80,7 +78,6 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       );
       expect(requestConfig).toStrictEqual({
         method: "post",
-        proxy: undefined,
         url: `${baseUrl}/k/v1/record.json`,
         headers: {
           "User-Agent": expectedDefaultUa,
@@ -99,7 +96,6 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       );
       expect(requestConfig).toStrictEqual({
         method: "get",
-        proxy: undefined,
         url: `${baseUrl}/k/v1/record.json?key=value`,
         headers: {
           "User-Agent": expectedDefaultUa,
@@ -116,7 +112,6 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       );
       expect(requestConfig).toStrictEqual({
         method: "post",
-        proxy: undefined,
         url: `${baseUrl}/k/v1/record.json`,
         headers: {
           "User-Agent": expectedDefaultUa,
@@ -138,7 +133,6 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       const { data, ...config } = requestConfig;
       expect(config).toStrictEqual({
         method: "post",
-        proxy: undefined,
         url: `${baseUrl}/k/v1/record.json`,
         headers: {
           "User-Agent": expectedDefaultUa,
@@ -156,7 +150,6 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       );
       expect(requestConfig).toStrictEqual({
         method: "put",
-        proxy: undefined,
         url: `${baseUrl}/k/v1/record.json`,
         headers: {
           "User-Agent": expectedDefaultUa,
@@ -175,7 +168,6 @@ describe("KintoneRequestConfigBuilder in Node.js environment", () => {
       );
       expect(requestConfig).toStrictEqual({
         method: "delete",
-        proxy: undefined,
         url: `${baseUrl}/k/v1/record.json?key=value`,
         headers: {
           "User-Agent": expectedDefaultUa,
@@ -211,7 +203,6 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     );
     expect(requestConfig).toStrictEqual({
       method: "get",
-      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
@@ -227,7 +218,6 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     );
     expect(requestConfig).toStrictEqual({
       method: "post",
-      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
@@ -245,7 +235,6 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     );
     expect(requestConfig).toStrictEqual({
       method: "get",
-      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
@@ -261,7 +250,6 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     );
     expect(requestConfig).toStrictEqual({
       method: "post",
-      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
@@ -283,7 +271,6 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     const { data, ...config } = requestConfig;
     expect(config).toStrictEqual({
       method: "post",
-      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
@@ -300,7 +287,6 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     );
     expect(requestConfig).toStrictEqual({
       method: "put",
-      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json`,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
@@ -319,7 +305,6 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
     );
     expect(requestConfig).toStrictEqual({
       method: "delete",
-      proxy: undefined,
       url: `${baseUrl}/k/v1/record.json?__REQUEST_TOKEN__=${requestToken}&key=value`,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
@@ -329,7 +314,7 @@ describe("KintoneRequestConfigBuilder in Browser environment", () => {
 });
 
 describe("options", () => {
-  it("should build `requestConfig` having `proxy` property", async () => {
+  it("should build `requestConfig` having a `dispatcher` when proxy is configured", async () => {
     const baseUrl = "https://example.kintone.com";
     const apiToken = "apiToken";
     const headers = {
@@ -359,16 +344,15 @@ describe("options", () => {
       "/k/v1/record.json",
       { key: "value" },
     );
-    const expectedProxy = Object.assign({}, proxy);
-    expectedProxy.protocol = "http";
 
     expect(requestConfig).toMatchObject({
       method: "get",
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers,
-      proxy: expectedProxy,
     });
-    // dispatcher is also set when proxy is configured
+    // `proxy` no longer surfaces on `requestConfig` itself -- it is only
+    // ever consumed as a `ProxyAgent` built into `dispatcher`.
+    expect(requestConfig).not.toHaveProperty("proxy");
     expect(requestConfig.dispatcher).toBeDefined();
   });
 
@@ -399,7 +383,6 @@ describe("options", () => {
       method: "get",
       url: `${baseUrl}/k/v1/record.json?key=value`,
       headers,
-      proxy,
     });
   });
 

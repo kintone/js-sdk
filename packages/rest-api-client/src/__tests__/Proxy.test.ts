@@ -50,4 +50,49 @@ describe("proxy", () => {
       proxyServer.close();
     }
   });
+
+  // Regression test for the axios-era behavior (`buildProxyConfig`, removed
+  // when the dead `RequestConfig.proxy` field was deleted): a blank
+  // username/password means "no auth", not "authenticate with an empty
+  // credential".
+  it("omits Proxy-Authorization when proxy.auth has a blank username or password", async () => {
+    const proxyAuthHeaders: Array<string | undefined> = [];
+    const proxyServer = http.createServer((req, res) => {
+      proxyAuthHeaders.push(req.headers["proxy-authorization"]);
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ appId: "1", name: "app" }));
+    });
+    await new Promise<void>((resolve) =>
+      proxyServer.listen(0, "127.0.0.1", resolve),
+    );
+    const proxyPort = (proxyServer.address() as AddressInfo).port;
+
+    const unreachableTargetPort = await new Promise<number>((resolve) => {
+      const probe = http.createServer();
+      probe.listen(0, "localhost", () => {
+        const { port } = probe.address() as AddressInfo;
+        probe.close(() => resolve(port));
+      });
+    });
+
+    try {
+      const client = new KintoneRestAPIClient({
+        baseUrl: `http://localhost:${unreachableTargetPort}`,
+        auth: { apiToken: "dummy-token" },
+        proxy: {
+          host: "127.0.0.1",
+          port: proxyPort,
+          protocol: "http",
+          auth: { username: "", password: "" },
+        },
+      });
+
+      const result = await client.app.getApp({ id: 1 });
+
+      expect(result).toStrictEqual({ appId: "1", name: "app" });
+      expect(proxyAuthHeaders).toStrictEqual([undefined]);
+    } finally {
+      proxyServer.close();
+    }
+  });
 });

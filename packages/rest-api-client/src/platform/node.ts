@@ -182,9 +182,14 @@ const buildProxyUrl = (
   proxy: Exclude<ProxyConfig, false | undefined>,
 ): string => {
   const protocol = proxy.protocol ?? "http";
-  const auth = proxy.auth
-    ? `${encodeURIComponent(proxy.auth.username)}:${encodeURIComponent(proxy.auth.password)}@`
-    : "";
+  const proxyAuth = proxy.auth;
+  // A blank username or password means "no auth" (matches the pre-fetch
+  // axios-based behavior), rather than sending an empty-but-present
+  // Proxy-Authorization credential.
+  const auth =
+    proxyAuth && proxyAuth.username.length > 0 && proxyAuth.password.length > 0
+      ? `${encodeURIComponent(proxyAuth.username)}:${encodeURIComponent(proxyAuth.password)}@`
+      : "";
   return `${protocol}://${auth}${proxy.host}:${proxy.port}`;
 };
 

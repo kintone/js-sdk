@@ -12,10 +12,9 @@ import type {
 import type { BasicAuth, DiscriminatedAuth } from "./types/auth";
 import { platformDeps } from "./platform/";
 import type { Agent as HttpsAgent } from "https";
+import type { Dispatcher } from "undici";
 
 type Data = Params | FormData;
-
-const DEFAULT_PROXY_PROTOCOL = "http";
 
 type KintoneAuthHeader =
   | {
@@ -49,6 +48,10 @@ type Options = {
         pfxFilePath: string;
         password: string;
       };
+  // Escape hatch for connection strategies `proxy`/`httpsAgent`/`clientCertAuth`
+  // can't express (e.g. a SOCKS proxy): a caller-supplied undici Dispatcher,
+  // used as-is instead of one built from the other options.
+  dispatcher?: Dispatcher;
   userAgent?: string;
   socketTimeout?: number;
 };
@@ -93,12 +96,31 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     this.proxy = options.proxy;
     this.requestToken = null;
     this.socketTimeout = options.socketTimeout;
-    this.dispatcher = platformDeps.buildFetchDispatcher({
-      httpsAgent: this.httpsAgent,
-      clientCertAuth: this.clientCertAuth,
-      proxy: this.proxy,
-      socketTimeout: this.socketTimeout,
-    });
+
+    // A caller-supplied dispatcher is an escape hatch for connection
+    // strategies (e.g. a SOCKS proxy) that `proxy`/`httpsAgent`/
+    // `clientCertAuth` can't express. Combining it with any of them would
+    // mean two independent ways of deciding how to connect, so reject the
+    // combination instead of silently picking one.
+    if (options.dispatcher !== undefined) {
+      if (options.proxy !== undefined) {
+        throw new Error("Cannot specify proxy along with dispatcher.");
+      }
+      if (this.httpsAgent !== undefined) {
+        throw new Error("Cannot specify httpsAgent along with dispatcher.");
+      }
+      if (this.clientCertAuth !== undefined) {
+        throw new Error("Cannot specify clientCertAuth along with dispatcher.");
+      }
+      this.dispatcher = options.dispatcher;
+    } else {
+      this.dispatcher = platformDeps.buildFetchDispatcher({
+        httpsAgent: this.httpsAgent,
+        clientCertAuth: this.clientCertAuth,
+        proxy: this.proxy,
+        socketTimeout: this.socketTimeout,
+      });
+    }
   }
 
   public async build(
@@ -112,7 +134,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       headers: this.headers,
       url: `${this.baseUrl}${path}`,
       ...(options ? options : {}),
-      proxy: this.buildProxyConfig(this.proxy),
       ...(this.dispatcher !== undefined ? { dispatcher: this.dispatcher } : {}),
       ...(this.socketTimeout !== undefined
         ? { timeout: this.socketTimeout }
@@ -173,28 +194,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         throw new Error(`${method} method is not supported`);
       }
     }
-  }
-
-  private buildProxyConfig(proxyConfig?: ProxyConfig): ProxyConfig | undefined {
-    if (proxyConfig === undefined) {
-      return undefined;
-    }
-
-    if (proxyConfig === false) {
-      return false;
-    }
-
-    const proxy = proxyConfig;
-    if (
-      proxy.auth &&
-      (proxy.auth.username.length === 0 || proxy.auth.password.length === 0)
-    ) {
-      proxy.auth = undefined;
-    }
-
-    proxy.protocol = proxy.protocol ?? DEFAULT_PROXY_PROTOCOL;
-
-    return proxy;
   }
 
   private buildRequestUrl(path: string, params: Data): string {
