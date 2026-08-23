@@ -84,12 +84,16 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       basicAuth: options.basicAuth,
       userAgent: options.userAgent,
     });
-    if ("httpsAgent" in options) {
-      if ("clientCertAuth" in options) {
+    // `!== undefined` rather than `"httpsAgent" in options`/`"clientCertAuth"
+    // in options`: the `in` form treats `{ httpsAgent: undefined,
+    // clientCertAuth: {...} }` (e.g. from spreading a partially-optional
+    // config object) as "both specified" and throws on two falsy values.
+    if (options.httpsAgent !== undefined) {
+      if (options.clientCertAuth !== undefined) {
         throw new Error("Cannot specify clientCertAuth along with httpsAgent.");
       }
       this.httpsAgent = options.httpsAgent;
-    } else if ("clientCertAuth" in options) {
+    } else if (options.clientCertAuth !== undefined) {
       this.clientCertAuth = options.clientCertAuth;
     }
 
