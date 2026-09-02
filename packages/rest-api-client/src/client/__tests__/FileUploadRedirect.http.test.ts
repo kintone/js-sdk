@@ -1,7 +1,9 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { makeHttpClients } from "./fixtures/FileClientHttpFixture";
+import { FileClient } from "../FileClient";
+import { makeFetchHttpClient } from "./fixtures/HttpClientTestHarness";
+import { RedirectTestServer } from "./fixtures/RedirectTestServer";
 
 const FILE_CONTENT = "Hello!";
 
@@ -27,8 +29,18 @@ describe.each([307, 308])(
       fs.rmSync(tempFilePath, { force: true });
     });
 
+    // Uses a real node:http server (RedirectTestServer), not the msw-based
+    // HttpTestServer the other HTTP-level tests share: msw's fetch interceptor
+    // unconditionally rejects a 307/308 redirect whenever the request has a
+    // body, regardless of whether the underlying source is a re-readable
+    // Buffer (see RedirectTestServer's comment). Only a real server can show
+    // undici's actual (correct) resend behavior for this case.
     it("resends the exact same method and multipart body to the redirect target", async () => {
-      const { fileClient, httpServer } = makeHttpClients();
+      const httpServer = new RedirectTestServer();
+      await httpServer.listen();
+      const httpClient = makeFetchHttpClient(httpServer.baseUrl);
+      const fileClient = new FileClient(httpClient);
+
       try {
         httpServer.mockRedirectResponse("/k/v1/file.json", redirectStatus);
         httpServer.mockResponse({ fileKey: "some_file_key" });
@@ -44,10 +56,9 @@ describe.each([307, 308])(
         // 307/308 (unlike 301/302/303) must preserve the original method and body.
         expect(redirected.method).toBe(initial.method);
         expect(redirected.method).toBe("post");
-        expect(redirected.body).toStrictEqual(initial.body);
-        expect(initial.body).toStrictEqual({
-          file: { kind: "file", filename: "text.txt", content: FILE_CONTENT },
-        });
+        expect(initial.body.length).toBeGreaterThan(0);
+        expect(redirected.body.equals(initial.body)).toBe(true);
+        expect(initial.body.toString("utf-8")).toContain(FILE_CONTENT);
       } finally {
         httpServer.close();
       }

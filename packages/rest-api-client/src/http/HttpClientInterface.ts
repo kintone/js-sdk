@@ -46,9 +46,10 @@ export type RequestConfig = {
   method: HttpMethod;
   url: string;
   headers: any;
-  httpsAgent?: any;
   data?: any;
-  proxy?: ProxyConfig;
+  responseType?: "arraybuffer";
+  dispatcher?: unknown;
+  timeout?: number;
 };
 
 export interface RequestConfigBuilder {
