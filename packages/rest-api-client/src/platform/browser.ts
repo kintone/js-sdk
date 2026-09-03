@@ -67,3 +67,16 @@ export const buildBaseUrl = (baseUrl?: string) => {
 export const getVersion = () => {
   return packageJson.version;
 };
+
+export const buildFetchDispatcher = () => {
+  return undefined;
+};
+
+export const buildFetchFormData = async (
+  data: unknown,
+): Promise<{ body: unknown; contentType?: string } | null> => {
+  if (data instanceof FormData) {
+    return { body: data };
+  }
+  return null;
+};

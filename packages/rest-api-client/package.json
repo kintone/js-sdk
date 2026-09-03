@@ -62,11 +62,11 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "axios": "1.18.1",
     "form-data": "4.0.6",
     "js-base64": "3.8.1",
     "mime": "3.0.0",
-    "qs": "6.15.3"
+    "qs": "6.15.3",
+    "undici": "8.9.0"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "6.1.0",
@@ -91,7 +91,7 @@
     "webpack-cli": "7.2.2"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"
