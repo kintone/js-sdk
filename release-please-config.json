@@ -13,14 +13,6 @@
   "monorepo-tags": true,
   "group-pull-request-title-pattern": "chore: release from ${branch}",
   "packages": {
-    "packages/create-plugin": {
-      "package-name": "@kintone/create-plugin",
-      "component": "@kintone/create-plugin"
-    },
-    "packages/customize-uploader": {
-      "package-name": "@kintone/customize-uploader",
-      "component": "@kintone/customize-uploader"
-    },
     "packages/dts-gen": {
       "package-name": "@kintone/dts-gen",
       "component": "@kintone/dts-gen"
@@ -32,14 +24,6 @@
     "packages/plugin-manifest-validator": {
       "package-name": "@kintone/plugin-manifest-validator",
       "component": "@kintone/plugin-manifest-validator"
-    },
-    "packages/plugin-packer": {
-      "package-name": "@kintone/plugin-packer",
-      "component": "@kintone/plugin-packer"
-    },
-    "packages/plugin-uploader": {
-      "package-name": "@kintone/plugin-uploader",
-      "component": "@kintone/plugin-uploader"
     },
     "packages/profile-loader": {
       "package-name": "@kintone/profile-loader",

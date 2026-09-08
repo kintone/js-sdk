@@ -1,8 +1,0 @@
-node_modules
-.vault
-test/fixtures/sample-plugin/plugin.zip
-test/fixtures/sample-plugin/*.ppk
-test/.output
-docs/dist/*
-!docs/dist/.gitkeep
-/dist
