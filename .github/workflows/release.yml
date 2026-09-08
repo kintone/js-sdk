@@ -1,10 +1,6 @@
 # WARNING: When you rename a workflow filename, remember to update the Trusted Publishing settings as well.
 # - https://www.npmjs.com/package/@kintone/webpack-plugin-kintone-plugin/access
-# - https://www.npmjs.com/package/@kintone/plugin-uploader/access
-# - https://www.npmjs.com/package/@kintone/create-plugin/access
 # - https://www.npmjs.com/package/@kintone/plugin-manifest-validator/access
-# - https://www.npmjs.com/package/@kintone/plugin-packer/access
-# - https://www.npmjs.com/package/@kintone/customize-uploader/access
 # - https://www.npmjs.com/package/@kintone/dts-gen/access
 # - https://www.npmjs.com/package/@kintone/rest-api-client/access
 # - https://www.npmjs.com/package/@kintone/eslint-plugin/access
