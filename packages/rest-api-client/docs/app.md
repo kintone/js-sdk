@@ -425,6 +425,9 @@ Updates the field layout info of a form in an app.
 
 Gets the JavaScript and CSS customization settings of an app.
 
+> [!NOTE]
+> The `permissions` and `allowedHosts` properties are experimental. They may change without notice until they are officially released.
+
 #### Parameters
 
 | Name    |       Type       | Required | Description                                                               |
@@ -472,6 +475,9 @@ A `Permission` object has the following properties:
 ### updateAppCustomize
 
 Updates the JavaScript and CSS customization settings of an app.
+
+> [!NOTE]
+> The `permissions` and `allowedHosts` parameters are experimental. They may change without notice until they are officially released.
 
 #### Parameters
 
