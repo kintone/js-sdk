@@ -98,7 +98,7 @@ describe("AppCustomize", () => {
       const paramsWithSandboxSettings = {
         ...params,
         permissions: [{ permission: "kintone:app_record:read" }],
-        allowedHosts: ["https://www.example.com/*"],
+        allowedHosts: ["https://www.example.com"],
       };
       beforeEach(async () => {
         await appClient.updateAppCustomize(paramsWithSandboxSettings);

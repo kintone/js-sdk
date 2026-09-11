@@ -39,18 +39,24 @@ export type AppCustomizeForParameter = {
 
 /**
  * A permission granted to the customization when the Secure Option is used.
+ *
+ * The available permissions are the same as the ones for plugins.
  */
 export type AppCustomizePermission = {
   permission: string;
 };
 
 /**
- * Secure Option settings of the JavaScript and CSS Customization.
+ * Secure Option settings of the JavaScript and CSS customization.
  *
  * These properties are absent unless the app has the Secure Option turned on.
  */
 export type AppCustomizeSandboxForResponse = {
   permissions?: AppCustomizePermission[];
+  /**
+   * Each entry specifies a scheme and does not contain a path,
+   * such as `https://example.com` or `https://*.cybozu.com`.
+   */
   allowedHosts?: string[];
 };
 
@@ -60,9 +66,13 @@ export type AppCustomizeSandboxForResponse = {
  * Omitting a property leaves the current setting unchanged.
  * Passing an empty array clears the setting.
  *
- * The request fails unless the app has the Secure Option turned on.
+ * Specifying either property fails unless the app has the Secure Option turned on.
  */
 export type AppCustomizeSandboxForParameter = {
   permissions?: AppCustomizePermission[];
+  /**
+   * Each entry must specify a scheme and must not contain a path,
+   * such as `https://example.com` or `https://*.cybozu.com`.
+   */
   allowedHosts?: string[];
 };
