@@ -33,10 +33,6 @@ export const getDefaultAuth = (): DiscriminatedAuth => {
   };
 };
 
-export const buildPlatformDependentConfig = () => {
-  return {};
-};
-
 export const buildHeaders = () => {
   return {};
 };
@@ -66,4 +62,23 @@ export const buildBaseUrl = (baseUrl?: string) => {
 
 export const getVersion = () => {
   return packageJson.version;
+};
+
+export const buildFetchDispatcher = () => {
+  return undefined;
+};
+
+// buildFetchDispatcher() above never returns a dispatcher in the browser, so
+// this is never actually invoked; it exists to satisfy the platformDeps
+// interface shared with the Node.js implementation.
+export const fetchWithDispatcher = (url: string, options: RequestInit) =>
+  fetch(url, options);
+
+export const buildFetchFormData = async (
+  data: unknown,
+): Promise<{ body: unknown; contentType?: string } | null> => {
+  if (data instanceof FormData) {
+    return { body: data };
+  }
+  return null;
 };
