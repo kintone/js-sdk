@@ -85,7 +85,7 @@ describe("AppCustomize", () => {
       it("should pass app, scope, desktop, mobile and revision as a param to the http client", () => {
         expect(mockClient.getLogs()[0].params).toEqual(params);
       });
-      it("should not pass secure option settings when they are omitted", () => {
+      it("should not pass sandbox settings when they are omitted", () => {
         expect(mockClient.getLogs()[0].params).not.toHaveProperty(
           "permissions",
         );
@@ -94,7 +94,7 @@ describe("AppCustomize", () => {
         );
       });
     });
-    describe("secure option settings are specified", () => {
+    describe("sandbox settings are specified", () => {
       const paramsWithSandboxSettings = {
         ...params,
         permissions: [{ permission: "kintone:app_record:read" }],
@@ -109,7 +109,7 @@ describe("AppCustomize", () => {
         );
       });
     });
-    describe("secure option settings are empty arrays", () => {
+    describe("sandbox settings are empty arrays", () => {
       const paramsWithEmptySandboxSettings = {
         ...params,
         permissions: [],

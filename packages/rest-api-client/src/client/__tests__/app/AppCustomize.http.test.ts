@@ -86,7 +86,7 @@ describe("AppCustomize (HTTP level)", () => {
         });
       });
     });
-    describe("secure option settings are specified", () => {
+    describe("sandbox settings are specified", () => {
       const paramsWithSandboxSettings = {
         ...params,
         permissions: [{ permission: "kintone:app_record:read" }],
@@ -103,7 +103,7 @@ describe("AppCustomize (HTTP level)", () => {
         });
       });
     });
-    describe("secure option settings are omitted", () => {
+    describe("sandbox settings are omitted", () => {
       beforeEach(async () => {
         await appClient.updateAppCustomize({
           ...params,
