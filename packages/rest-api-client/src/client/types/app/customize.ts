@@ -47,7 +47,7 @@ export type AppCustomizePermission = {
 /**
  * Secure Option settings of the JavaScript and CSS Customization.
  *
- * These properties are absent when the Update Option for the Secure Option is disabled.
+ * These properties are absent unless the app has the Secure Option turned on.
  */
 export type AppCustomizeSandboxForResponse = {
   permissions?: AppCustomizePermission[];
@@ -59,6 +59,8 @@ export type AppCustomizeSandboxForResponse = {
  *
  * Omitting a property leaves the current setting unchanged.
  * Passing an empty array clears the setting.
+ *
+ * The request fails unless the app has the Secure Option turned on.
  */
 export type AppCustomizeSandboxForParameter = {
   permissions?: AppCustomizePermission[];
