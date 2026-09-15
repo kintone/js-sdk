@@ -1,4 +1,6 @@
 import type { DiscriminatedAuth } from "../types/auth";
+import type { ProxyConfig } from "../http/HttpClientInterface";
+
 type PlatformDeps = {
   readFileFromPath: (
     filePath: string,
@@ -10,6 +12,15 @@ type PlatformDeps = {
   buildFormDataValue: (data: unknown, fileName?: string) => unknown;
   buildBaseUrl: (baseUrl?: string) => string;
   getVersion: () => string;
+  buildFetchDispatcher: (params: {
+    httpsAgent?: unknown;
+    clientCertAuth?: unknown;
+    proxy?: ProxyConfig;
+    socketTimeout?: number;
+  }) => unknown;
+  buildFetchFormData: (
+    data: unknown,
+  ) => Promise<{ body: unknown; contentType?: string } | null>;
 };
 
 export const platformDeps: PlatformDeps = {
@@ -35,6 +46,12 @@ export const platformDeps: PlatformDeps = {
     throw new Error("not implemented");
   },
   getVersion: () => {
+    throw new Error("not implemented");
+  },
+  buildFetchDispatcher: () => {
+    throw new Error("not implemented");
+  },
+  buildFetchFormData: () => {
     throw new Error("not implemented");
   },
 };
@@ -64,5 +81,11 @@ export const injectPlatformDeps = (deps: Partial<PlatformDeps>) => {
   }
   if (deps.getVersion) {
     platformDeps.getVersion = deps.getVersion;
+  }
+  if (deps.buildFetchDispatcher) {
+    platformDeps.buildFetchDispatcher = deps.buildFetchDispatcher;
+  }
+  if (deps.buildFetchFormData) {
+    platformDeps.buildFetchFormData = deps.buildFetchFormData;
   }
 };

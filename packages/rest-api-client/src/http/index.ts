@@ -1,2 +1,2 @@
-export { AxiosClient as DefaultHttpClient } from "./AxiosClient";
+export { FetchClient as DefaultHttpClient } from "./FetchClient";
 export type { HttpClient } from "./HttpClientInterface";
