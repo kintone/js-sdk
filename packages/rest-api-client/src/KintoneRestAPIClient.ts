@@ -103,7 +103,11 @@ export class KintoneRestAPIClient {
     this.space = new SpaceClient(httpClient, guestSpaceId);
     this.file = new FileClient(httpClient, guestSpaceId);
     this.plugin = new PluginClient(httpClient);
-    this.search_ = new SearchClient(httpClient, guestSpaceId);
+    this.search_ = new SearchClient(
+      httpClient,
+      guestSpaceId,
+      isUSRegion(this.baseUrl),
+    );
   }
 
   public static get version() {
@@ -151,6 +155,16 @@ const validateBaseUrl = (baseUrl: Options["baseUrl"]) => {
   if (url.hostname !== "localhost" && url.protocol !== "https:") {
     throw new Error('The protocol of baseUrl must be "https".');
   }
+};
+
+const isUSRegion = (baseUrl: Options["baseUrl"]): boolean => {
+  if (baseUrl === undefined) {
+    return false;
+  }
+  const url = new URL(baseUrl);
+  return (
+    url.hostname === "kintone.com" || url.hostname.endsWith(".kintone.com")
+  );
 };
 
 const validateGuestSpaceId = (guestSpaceId: Options["guestSpaceId"]) => {
