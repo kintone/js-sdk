@@ -141,6 +141,33 @@ describe("KintoneRestAPIClient", () => {
     });
   });
 
+  describe("search", () => {
+    const auth = { apiToken: "foo" };
+    const query: [{ operator: "AND"; keywords: string[] }] = [
+      { operator: "AND", keywords: ["foo"] },
+    ];
+
+    it('should throw an error when useSynonyms is "true" and baseUrl is in the US region (*.kintone.com)', () => {
+      const client = new KintoneRestAPIClient({
+        baseUrl: "https://example.kintone.com",
+        auth,
+      });
+      expect(() => client.search({ query, useSynonyms: "true" })).toThrow(
+        "Can't use useSynonyms parameter in US Region",
+      );
+    });
+
+    it('should NOT throw an error when useSynonyms is "true" and baseUrl is NOT in the US region', () => {
+      const client = new KintoneRestAPIClient({
+        baseUrl: "https://example.cybozu.com",
+        auth,
+      });
+      expect(() =>
+        client.search({ query, useSynonyms: "true" }).catch(() => undefined),
+      ).not.toThrow();
+    });
+  });
+
   describe("version", () => {
     it("should provide this library version", () => {
       expect(KintoneRestAPIClient.version).toBe(
