@@ -7,7 +7,7 @@ export class SearchClient extends BaseClient {
 
   constructor(
     client: HttpClient,
-    guestSpaceId: number | string | undefined,
+    guestSpaceId?: number | string,
     isUsRegion: boolean = false,
   ) {
     super(client, guestSpaceId);
