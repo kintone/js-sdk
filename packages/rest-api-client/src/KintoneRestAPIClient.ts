@@ -162,9 +162,7 @@ const isUSRegion = (baseUrl: Options["baseUrl"]): boolean => {
     return false;
   }
   const url = new URL(baseUrl);
-  return (
-    url.hostname === "kintone.com" || url.hostname.endsWith(".kintone.com")
-  );
+  return url.hostname.endsWith(".kintone.com");
 };
 
 const validateGuestSpaceId = (guestSpaceId: Options["guestSpaceId"]) => {

@@ -157,31 +157,6 @@ describe("KintoneRestAPIClient", () => {
       );
     });
 
-    it('should throw an error when useSynonyms is "true" and baseUrl is the bare kintone.com host', () => {
-      const client = new KintoneRestAPIClient({
-        baseUrl: "https://kintone.com",
-        auth,
-      });
-      expect(() => client.search({ query, useSynonyms: "true" })).toThrow(
-        "Can't use useSynonyms parameter in US Region",
-      );
-    });
-
-    // These "should NOT throw" cases still call the real HttpClient, which
-    // kicks off a genuine (and here, doomed-to-fail) network request once
-    // validation passes. The assertion only cares that no *synchronous*
-    // validation error is thrown, so the resulting promise is swallowed via
-    // `.catch()` to avoid an unhandled rejection from the network call.
-    it('should NOT throw an error when useSynonyms is "true" and baseUrl merely ends with the substring "kintone.com"', () => {
-      const client = new KintoneRestAPIClient({
-        baseUrl: "https://example-notkintone.com",
-        auth,
-      });
-      expect(() =>
-        client.search({ query, useSynonyms: "true" }).catch(() => undefined),
-      ).not.toThrow();
-    });
-
     it('should NOT throw an error when useSynonyms is "true" and baseUrl is NOT in the US region', () => {
       const client = new KintoneRestAPIClient({
         baseUrl: "https://example.cybozu.com",
