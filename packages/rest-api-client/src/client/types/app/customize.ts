@@ -55,7 +55,7 @@ export type AppCustomizeSandboxForResponse = {
   permissions?: AppCustomizePermission[];
   /**
    * Each entry specifies a scheme and does not contain a path,
-   * such as `https://example.com` or `https://*.cybozu.com`.
+   * such as `https://example.com` or `https://*.example.com`.
    */
   allowedHosts?: string[];
 };
@@ -72,7 +72,7 @@ export type AppCustomizeSandboxForParameter = {
   permissions?: AppCustomizePermission[];
   /**
    * Each entry must specify a scheme and must not contain a path,
-   * such as `https://example.com` or `https://*.cybozu.com`.
+   * such as `https://example.com` or `https://*.example.com`.
    */
   allowedHosts?: string[];
 };
