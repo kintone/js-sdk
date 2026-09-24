@@ -23,8 +23,7 @@ import type {
   AppCustomizeScope,
   AppCustomizeForResponse,
   AppCustomizeForParameter,
-  AppCustomizeSandboxForResponse,
-  AppCustomizeSandboxForParameter,
+  AppCustomizePermission,
   GeneralNotificationForParameter,
   GeneralNotificationForResponse,
   PerRecordNotificationForParameter,
@@ -405,14 +404,14 @@ export class AppClient extends BaseClient {
     return this.client.put(path, params);
   }
 
-  public getAppCustomize(params: { app: AppID; preview?: boolean }): Promise<
-    {
-      scope: AppCustomizeScope;
-      desktop: AppCustomizeForResponse;
-      mobile: AppCustomizeForResponse;
-      revision: string;
-    } & AppCustomizeSandboxForResponse
-  > {
+  public getAppCustomize(params: { app: AppID; preview?: boolean }): Promise<{
+    scope: AppCustomizeScope;
+    desktop: AppCustomizeForResponse;
+    mobile: AppCustomizeForResponse;
+    permissions?: AppCustomizePermission[];
+    allowedHosts?: string[];
+    revision: string;
+  }> {
     const { preview, ...rest } = params;
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/customize",
@@ -421,15 +420,15 @@ export class AppClient extends BaseClient {
     return this.client.get(path, { ...rest });
   }
 
-  public updateAppCustomize(
-    params: {
-      app: AppID;
-      scope?: AppCustomizeScope;
-      desktop?: AppCustomizeForParameter;
-      mobile?: AppCustomizeForParameter;
-      revision?: Revision;
-    } & AppCustomizeSandboxForParameter,
-  ): Promise<{ revision: string }> {
+  public updateAppCustomize(params: {
+    app: AppID;
+    scope?: AppCustomizeScope;
+    desktop?: AppCustomizeForParameter;
+    mobile?: AppCustomizeForParameter;
+    permissions?: AppCustomizePermission[];
+    allowedHosts?: string[];
+    revision?: Revision;
+  }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "app/customize",
       preview: true,

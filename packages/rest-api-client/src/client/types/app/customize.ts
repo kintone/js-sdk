@@ -45,34 +45,3 @@ export type AppCustomizeForParameter = {
 export type AppCustomizePermission = {
   permission: string;
 };
-
-/**
- * The sandbox settings of the JavaScript and CSS customization.
- *
- * These properties are absent if the corresponding Update Option is disabled.
- */
-export type AppCustomizeSandboxForResponse = {
-  permissions?: AppCustomizePermission[];
-  /**
-   * Each entry specifies a scheme and does not contain a path,
-   * such as `https://example.com` or `https://*.example.com`.
-   */
-  allowedHosts?: string[];
-};
-
-/**
- * The sandbox settings to update.
- *
- * Omitting a property leaves the current setting unchanged.
- * Passing an empty array clears the setting.
- *
- * Specifying either property fails if the corresponding Update Option is disabled.
- */
-export type AppCustomizeSandboxForParameter = {
-  permissions?: AppCustomizePermission[];
-  /**
-   * Each entry must specify a scheme and must not contain a path,
-   * such as `https://example.com` or `https://*.example.com`.
-   */
-  allowedHosts?: string[];
-};
