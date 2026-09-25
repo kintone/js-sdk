@@ -425,9 +425,6 @@ Updates the field layout info of a form in an app.
 
 Gets the JavaScript and CSS customization settings of an app.
 
-> [!NOTE]
-> The `permissions` and `allowedHosts` properties are experimental. They may change without notice until they are officially released.
-
 #### Parameters
 
 | Name    |       Type       | Required | Description                                                               |
@@ -437,18 +434,16 @@ Gets the JavaScript and CSS customization settings of an app.
 
 #### Returns
 
-| Name         |            Type            | Description                                                                                                                                                                                                                                                   |
-| ------------ | :------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| allowedHosts |      Array\<String\>       | An array listing the hosts that the customization is allowed to communicate with. Each entry specifies a scheme and does not contain a path, such as `https://example.com` or `https://*.example.com`. Absent if the corresponding Update Option is disabled. |
-| desktop      |           Object           | An object containing data of JavaScript and CSS files for the desktop.                                                                                                                                                                                        |
-| desktop.css  | Array\<CustomizationFile\> | An array listing data of CSS files for desktop.                                                                                                                                                                                                               |
-| desktop.js   | Array\<CustomizationFile\> | An array listing data of JavaScript files for desktop.                                                                                                                                                                                                        |
-| mobile       |           Object           | An object containing data of JavaScript and CSS files for the mobile.                                                                                                                                                                                         |
-| mobile.css   | Array\<CustomizationFile\> | An array listing data of CSS files for mobile.                                                                                                                                                                                                                |
-| mobile.js    | Array\<CustomizationFile\> | An array listing data of JavaScript files for mobile.                                                                                                                                                                                                         |
-| permissions  |    Array\<Permission\>     | An array listing the permissions that the customization may use. Absent if the corresponding Update Option is disabled.                                                                                                                                       |
-| revision     |           String           | The revision number of the app settings.                                                                                                                                                                                                                      |
-| scope        |           String           | The scope of customization<ul><li>`ALL`: Affect all users</li><li>`ADMIN`: Affect only app administrators</li><li>`NONE`: Disable</li></ul>                                                                                                                   |
+| Name        |            Type            | Description                                                                                                                                 |
+| ----------- | :------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| desktop     |           Object           | An object containing data of JavaScript and CSS files for the desktop.                                                                      |
+| desktop.css | Array\<CustomizationFile\> | An array listing data of CSS files for desktop.                                                                                             |
+| desktop.js  | Array\<CustomizationFile\> | An array listing data of JavaScript files for desktop.                                                                                      |
+| mobile      |           Object           | An object containing data of JavaScript and CSS files for the mobile.                                                                       |
+| mobile.css  | Array\<CustomizationFile\> | An array listing data of CSS files for mobile.                                                                                              |
+| mobile.js   | Array\<CustomizationFile\> | An array listing data of JavaScript files for mobile.                                                                                       |
+| revision    |           String           | The revision number of the app settings.                                                                                                    |
+| scope       |           String           | The scope of customization<ul><li>`ALL`: Affect all users</li><li>`ADMIN`: Affect only app administrators</li><li>`NONE`: Disable</li></ul> |
 
 A `CustomizationFile` object has the following properties:
 
@@ -462,12 +457,6 @@ A `CustomizationFile` object has the following properties:
 | type             | String | The end-point type of the JavaScript or CSS file:<ul><li>`URL`: the JavaScript or CSS file is specified with a URL.</li><li>`FILE`: the JavaScript or CSS file is uploaded to the app.</li></ul> |
 | url              | String | The URL of the JavaScript or CSS file, which exists if `type` property is `URL`.                                                                                                                 |
 
-A `Permission` object has the following properties:
-
-| Name       |  Type  | Description                                                                                 |
-| ---------- | :----: | ------------------------------------------------------------------------------------------- |
-| permission | String | The name of the permission. The available permissions are the same as the ones for plugins. |
-
 #### Reference
 
 - https://kintone.dev/en/docs/kintone/rest-api/apps/get-customization/
@@ -476,24 +465,19 @@ A `Permission` object has the following properties:
 
 Updates the JavaScript and CSS customization settings of an app.
 
-> [!NOTE]
-> The `permissions` and `allowedHosts` parameters are experimental. They may change without notice until they are officially released.
-
 #### Parameters
 
-| Name         |                Type                 | Required | Description                                                                                                                                                                                                                                                                                                                                                                                |
-| ------------ | :---------------------------------: | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| allowedHosts |           Array\<String\>           |          | An array listing the hosts that the customization is allowed to communicate with. Each entry must specify a scheme and must not contain a path, such as `https://example.com` or `https://*.example.com`. Omitting this parameter leaves the current setting unchanged. Specifying an empty array clears the setting. An error is returned if the corresponding Update Option is disabled. |
-| app          |          Number or String           |   Yes    | The app ID.                                                                                                                                                                                                                                                                                                                                                                                |
-| desktop      |               Object                |          | An object containing data of JavaScript and CSS files for the desktop.                                                                                                                                                                                                                                                                                                                     |
-| desktop.css  | Array\<CustomizationFileForUpdate\> |          | An array listing data of CSS files for desktop.                                                                                                                                                                                                                                                                                                                                            |
-| desktop.js   | Array\<CustomizationFileForUpdate\> |          | An array listing data of JavaScript files for desktop.                                                                                                                                                                                                                                                                                                                                     |
-| mobile       |               Object                |          | An object containing data of JavaScript and CSS files for the mobile.                                                                                                                                                                                                                                                                                                                      |
-| mobile.css   | Array\<CustomizationFileForUpdate\> |          | An array listing data of CSS files for mobile.                                                                                                                                                                                                                                                                                                                                             |
-| mobile.js    | Array\<CustomizationFileForUpdate\> |          | An array listing data of JavaScript files for mobile.                                                                                                                                                                                                                                                                                                                                      |
-| permissions  |    Array\<PermissionForUpdate\>     |          | An array listing the permissions that the customization may use. Omitting this parameter leaves the current setting unchanged. Specifying an empty array clears the setting. An error is returned if the corresponding Update Option is disabled.                                                                                                                                          |
-| revision     |          Number or String           |          | Specify the revision number of the settings that will be deployed. The request will fail if the revision number is not the latest revision. The revision will not be checked if this parameter is ignored, or `-1` is specified.                                                                                                                                                           |
-| scope        |               String                |          | The scope of customization<ul><li>`ALL`: Affect all users</li><li>`ADMIN`: Affect only app administrators</li><li>NONE: Disable</li></ul>                                                                                                                                                                                                                                                  |
+| Name        |                Type                 | Required | Description                                                                                                                                                                                                                      |
+| ----------- | :---------------------------------: | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app         |          Number or String           |   Yes    | The app ID.                                                                                                                                                                                                                      |
+| desktop     |               Object                |          | An object containing data of JavaScript and CSS files for the desktop.                                                                                                                                                           |
+| desktop.css | Array\<CustomizationFileForUpdate\> |          | An array listing data of CSS files for desktop.                                                                                                                                                                                  |
+| desktop.js  | Array\<CustomizationFileForUpdate\> |          | An array listing data of JavaScript files for desktop.                                                                                                                                                                           |
+| mobile      |               Object                |          | An object containing data of JavaScript and CSS files for the mobile.                                                                                                                                                            |
+| mobile.css  | Array\<CustomizationFileForUpdate\> |          | An array listing data of CSS files for mobile.                                                                                                                                                                                   |
+| mobile.js   | Array\<CustomizationFileForUpdate\> |          | An array listing data of JavaScript files for mobile.                                                                                                                                                                            |
+| revision    |          Number or String           |          | Specify the revision number of the settings that will be deployed. The request will fail if the revision number is not the latest revision. The revision will not be checked if this parameter is ignored, or `-1` is specified. |
+| scope       |               String                |          | The scope of customization<ul><li>`ALL`: Affect all users</li><li>`ADMIN`: Affect only app administrators</li><li>NONE: Disable</li></ul>                                                                                        |
 
 A `CustomizationFileForUpdate` object has the following properties:
 
@@ -503,12 +487,6 @@ A `CustomizationFileForUpdate` object has the following properties:
 | file.fileKey | String | Conditionally<br />Required | The fileKey of the JavaScript or CSS file. To attach a file, specify the fileKey that is responded when using the Upload File API. To keep the current JavaScript or CSS files that are attached to the app, specify the fileKeys that are responded when using the Get Customization API for the pre-live settings. |
 | type         | String | Conditionally<br />Required | The end-point type of the JavaScript or CSS file:<ul><li>`URL`: the JavaScript or CSS file is specified with a URL.</li><li>`FILE`: the JavaScript or CSS file is uploaded to the app.</li></ul>                                                                                                                     |
 | url          | String | Conditionally<br />Required | The URL of the JavaScript or CSS file. Required, if `type` property is `URL`.                                                                                                                                                                                                                                        |
-
-A `PermissionForUpdate` object has the following properties:
-
-| Name       |  Type  | Required | Description                                                                                 |
-| ---------- | :----: | :------: | ------------------------------------------------------------------------------------------- |
-| permission | String |   Yes    | The name of the permission. The available permissions are the same as the ones for plugins. |
 
 #### Returns
 
