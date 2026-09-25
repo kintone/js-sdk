@@ -85,6 +85,44 @@ describe("AppCustomize", () => {
       it("should pass app, scope, desktop, mobile and revision as a param to the http client", () => {
         expect(mockClient.getLogs()[0].params).toEqual(params);
       });
+      it("should not pass sandbox settings when they are omitted", () => {
+        expect(mockClient.getLogs()[0].params).not.toHaveProperty(
+          "permissions",
+        );
+        expect(mockClient.getLogs()[0].params).not.toHaveProperty(
+          "allowedHosts",
+        );
+      });
+    });
+    describe("sandbox settings are specified", () => {
+      const paramsWithSandboxSettings = {
+        ...params,
+        permissions: [{ permission: "kintone:app_record:read" }],
+        allowedHosts: ["https://www.example.com"],
+      };
+      beforeEach(async () => {
+        await appClient.updateAppCustomize(paramsWithSandboxSettings);
+      });
+      it("should pass permissions and allowedHosts as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(
+          paramsWithSandboxSettings,
+        );
+      });
+    });
+    describe("sandbox settings are empty arrays", () => {
+      const paramsWithEmptySandboxSettings = {
+        ...params,
+        permissions: [],
+        allowedHosts: [],
+      };
+      beforeEach(async () => {
+        await appClient.updateAppCustomize(paramsWithEmptySandboxSettings);
+      });
+      it("should pass the empty arrays as a param to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual(
+          paramsWithEmptySandboxSettings,
+        );
+      });
     });
   });
 });

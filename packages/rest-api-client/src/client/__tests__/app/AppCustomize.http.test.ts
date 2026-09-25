@@ -86,5 +86,38 @@ describe("AppCustomize (HTTP level)", () => {
         });
       });
     });
+    describe("sandbox settings are specified", () => {
+      const paramsWithSandboxSettings = {
+        ...params,
+        permissions: [{ permission: "kintone:app_record:read" }],
+        allowedHosts: ["https://www.example.com"],
+      };
+      beforeEach(async () => {
+        await appClient.updateAppCustomize(paramsWithSandboxSettings);
+      });
+      it("should send the exact request over the wire", () => {
+        expectRequest(httpServer, 0, {
+          method: "put",
+          path: "/k/v1/preview/app/customize.json",
+          body: paramsWithSandboxSettings,
+        });
+      });
+    });
+    describe("sandbox settings are omitted", () => {
+      beforeEach(async () => {
+        await appClient.updateAppCustomize({
+          ...params,
+          permissions: undefined,
+          allowedHosts: undefined,
+        });
+      });
+      it("should not send the keys over the wire", () => {
+        expectRequest(httpServer, 0, {
+          method: "put",
+          path: "/k/v1/preview/app/customize.json",
+          body: params,
+        });
+      });
+    });
   });
 });
