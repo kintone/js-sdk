@@ -23,6 +23,7 @@ import type {
   AppCustomizeScope,
   AppCustomizeForResponse,
   AppCustomizeForParameter,
+  AppCustomizePermission,
   GeneralNotificationForParameter,
   GeneralNotificationForResponse,
   PerRecordNotificationForParameter,
@@ -407,6 +408,8 @@ export class AppClient extends BaseClient {
     scope: AppCustomizeScope;
     desktop: AppCustomizeForResponse;
     mobile: AppCustomizeForResponse;
+    permissions?: AppCustomizePermission[];
+    allowedHosts?: string[];
     revision: string;
   }> {
     const { preview, ...rest } = params;
@@ -422,6 +425,8 @@ export class AppClient extends BaseClient {
     scope?: AppCustomizeScope;
     desktop?: AppCustomizeForParameter;
     mobile?: AppCustomizeForParameter;
+    permissions?: AppCustomizePermission[];
+    allowedHosts?: string[];
     revision?: Revision;
   }): Promise<{ revision: string }> {
     const path = this.buildPathWithGuestSpaceId({

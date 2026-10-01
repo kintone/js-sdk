@@ -36,3 +36,12 @@ export type AppCustomizeForParameter = {
   js?: AppCustomizeResourceForParameter[];
   css?: AppCustomizeResourceForParameter[];
 };
+
+/**
+ * A permission that the customization may use.
+ *
+ * The available permissions are the same as the ones for plugins.
+ */
+export type AppCustomizePermission = {
+  permission: string;
+};
