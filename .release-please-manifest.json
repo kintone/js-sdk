@@ -6,5 +6,5 @@
   "packages/rest-api-client": "6.2.1",
   "packages/webpack-plugin-kintone-plugin": "9.0.5",
   "packages/eslint-plugin": "0.1.2",
-  "packages/rest": "0.3.2"
+  "packages/rest": "0.3.3"
 }

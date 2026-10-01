@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.3.2...@kintone/rest@0.3.3) (2026-10-01)
+
+
+### Bug Fixes
+
+* **deps:** bump fast-uri, undici and brace-expansion past their advisories ([#3958](https://github.com/kintone/js-sdk/issues/3958)) ([b949705](https://github.com/kintone/js-sdk/commit/b949705da5d7528d1099c9fa97085c631071e8ac))
+
 ## [0.3.2](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.3.1...@kintone/rest@0.3.2) (2026-04-26)
 
 
