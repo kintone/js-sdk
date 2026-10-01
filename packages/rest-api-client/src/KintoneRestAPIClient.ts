@@ -15,6 +15,7 @@ import { KintoneResponseHandler } from "./KintoneResponseHandler";
 import { platformDeps } from "./platform";
 import { UnsupportedPlatformError } from "./platform/UnsupportedPlatformError";
 import type { Agent as HttpsAgent } from "https";
+import type { Dispatcher } from "undici";
 
 type OmitTypePropertyFromUnion<T> = T extends unknown ? Omit<T, "type"> : never;
 type Auth = OmitTypePropertyFromUnion<DiscriminatedAuth>;
@@ -35,6 +36,12 @@ type Options = {
         pfxFilePath: string;
         password: string;
       };
+  // Escape hatch for connection strategies `proxy`/`httpsAgent`/
+  // `clientCertAuth` can't express (e.g. a SOCKS proxy): a caller-supplied
+  // undici Dispatcher, used as-is instead of one built from the other
+  // options. Available only in Node.js environment, and mutually exclusive
+  // with `proxy`/`httpsAgent`/`clientCertAuth`.
+  dispatcher?: Dispatcher;
   featureFlags?: {
     enableAbortSearchError: boolean;
   };
