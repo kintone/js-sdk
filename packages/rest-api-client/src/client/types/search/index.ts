@@ -64,7 +64,7 @@ export type SearchRequest = {
   createdAfter?: string | Date;
   createdBefore?: string | Date;
   creators?: string[] | null;
-  useSynonyms?: "true" | "false" | boolean;
+  includeSynonyms?: "true" | "false" | boolean;
   sort?: SearchSort;
   limit?: number | string;
   pageToken?: string | null;

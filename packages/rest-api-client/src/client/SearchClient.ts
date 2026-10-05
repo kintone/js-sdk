@@ -18,7 +18,7 @@ export class SearchClient extends BaseClient {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "search",
     });
-    const { createdAfter, createdBefore, useSynonyms, ...rest } = params;
+    const { createdAfter, createdBefore, includeSynonyms, ...rest } = params;
     return this.client.post(path, {
       ...rest,
       ...(createdAfter !== undefined && {
@@ -33,18 +33,18 @@ export class SearchClient extends BaseClient {
             ? createdBefore.toISOString()
             : createdBefore,
       }),
-      ...(useSynonyms !== undefined && {
-        useSynonyms: this.validatedUseSynonymsOptions(useSynonyms),
+      ...(includeSynonyms !== undefined && {
+        includeSynonyms: this.validatedIncludeSynonymsOptions(includeSynonyms),
       }),
     });
   }
 
-  validatedUseSynonymsOptions(
-    useSynonyms: SearchRequest["useSynonyms"],
-  ): SearchRequest["useSynonyms"] {
-    if (this.isUsRegion && typeof useSynonyms !== "undefined") {
-      throw new Error("Can't use useSynonyms parameter in US Region");
+  validatedIncludeSynonymsOptions(
+    includeSynonyms: SearchRequest["includeSynonyms"],
+  ): SearchRequest["includeSynonyms"] {
+    if (this.isUsRegion && typeof includeSynonyms !== "undefined") {
+      throw new Error("Can't use includeSynonyms parameter in US Region");
     }
-    return useSynonyms;
+    return includeSynonyms;
   }
 }
