@@ -30,7 +30,10 @@ type QueuedResponse =
  * Intercepts real outgoing HTTP requests (msw patches Node's http/https module,
  * and also global fetch) so these tests assert on the actual bytes AppClient sends
  * over the wire, not on calls to an internal mock client. That keeps them valid
- * regardless of which HttpClient implementation is underneath (Axios today, fetch later).
+ * regardless of which HttpClient implementation is underneath (fetch today, Axios
+ * before it). Note msw's fetch interceptor only sees the Request as constructed
+ * by fetch(), not the headers undici's dispatcher adds when actually sending it
+ * on the wire -- see HttpClientTestHarness.ts's expectedHeaders comment.
  */
 export class HttpTestServer {
   // Unique per instance so concurrently-running test files/instances can never
