@@ -113,23 +113,17 @@ describe("SearchClient", () => {
   });
 
   describe("search with includeSynonyms in a non-US region", () => {
-    it('should pass includeSynonyms: "true" through to the http client', async () => {
-      const params: SearchRequest = {
-        query: [{ operator: "AND", keywords: ["foo"] }],
-        includeSynonyms: "true",
-      };
-      await searchClient.search(params);
-      expect(mockClient.getLogs()[0].params).toEqual(params);
-    });
-
-    it('should pass includeSynonyms: "false" through to the http client', async () => {
-      const params: SearchRequest = {
-        query: [{ operator: "AND", keywords: ["foo"] }],
-        includeSynonyms: "false",
-      };
-      await searchClient.search(params);
-      expect(mockClient.getLogs()[0].params).toEqual(params);
-    });
+    it.each([true, "true", false, "false"] as const)(
+      "should pass includeSynonyms: %j through to the http client",
+      async (includeSynonyms) => {
+        const params: SearchRequest = {
+          query: [{ operator: "AND", keywords: ["foo"] }],
+          includeSynonyms,
+        };
+        await searchClient.search(params);
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      },
+    );
 
     it("should not include includeSynonyms in the posted params when it is omitted", async () => {
       const params: SearchRequest = {
@@ -156,27 +150,31 @@ describe("SearchClient in a US region", () => {
     searchClient = new SearchClient(mockClient, undefined, true);
   });
 
-  it('should throw an error when includeSynonyms is "true"', () => {
-    const params: SearchRequest = {
-      query: [{ operator: "AND", keywords: ["foo"] }],
-      includeSynonyms: "true",
-    };
-    expect(() => searchClient.search(params)).toThrow(
-      "Can't use includeSynonyms parameter in US Region",
-    );
-    expect(mockClient.getLogs()).toHaveLength(0);
-  });
+  it.each([true, "true"] as const)(
+    "should reject with an error when includeSynonyms is %j",
+    async (includeSynonyms) => {
+      const params: SearchRequest = {
+        query: [{ operator: "AND", keywords: ["foo"] }],
+        includeSynonyms,
+      };
+      await expect(searchClient.search(params)).rejects.toThrow(
+        "Can't use includeSynonyms parameter in US Region",
+      );
+      expect(mockClient.getLogs()).toHaveLength(0);
+    },
+  );
 
-  it('should throw an error when includeSynonyms is "false" (specifying the parameter at all is rejected)', () => {
-    const params: SearchRequest = {
-      query: [{ operator: "AND", keywords: ["foo"] }],
-      includeSynonyms: "false",
-    };
-    expect(() => searchClient.search(params)).toThrow(
-      "Can't use includeSynonyms parameter in US Region",
-    );
-    expect(mockClient.getLogs()).toHaveLength(0);
-  });
+  it.each([false, "false"] as const)(
+    "should pass includeSynonyms: %j through to the http client",
+    async (includeSynonyms) => {
+      const params: SearchRequest = {
+        query: [{ operator: "AND", keywords: ["foo"] }],
+        includeSynonyms,
+      };
+      await searchClient.search(params);
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    },
+  );
 
   it("should NOT throw an error when includeSynonyms is omitted", async () => {
     const params: SearchRequest = {

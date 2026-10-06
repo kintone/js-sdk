@@ -14,7 +14,7 @@ export class SearchClient extends BaseClient {
     this.isUsRegion = isUsRegion;
   }
 
-  public search(params: SearchRequest): Promise<SearchResponse> {
+  public async search(params: SearchRequest): Promise<SearchResponse> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "search",
     });
@@ -42,7 +42,10 @@ export class SearchClient extends BaseClient {
   validatedIncludeSynonymsOptions(
     includeSynonyms: SearchRequest["includeSynonyms"],
   ): SearchRequest["includeSynonyms"] {
-    if (this.isUsRegion && typeof includeSynonyms !== "undefined") {
+    if (
+      this.isUsRegion &&
+      (includeSynonyms === true || includeSynonyms === "true")
+    ) {
       throw new Error("Can't use includeSynonyms parameter in US Region");
     }
     return includeSynonyms;
