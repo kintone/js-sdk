@@ -70,10 +70,18 @@
         minimumReleaseAge: "14 days",
       },
       {
-        // lockFileMaintenance の更新は package manager が解決するため待機の対象外
-        description: "Exempt lock file maintenance from minimumReleaseAge",
+        // 上の上書きで潰れる security:minimumReleaseAgeNpm の除外を戻す。
+        // これらは release timestamp を持たず、待機を課すと更新が上がらなくなる
+        description: "Restore the update types that carry no release timestamp",
         matchDatasources: ["npm"],
-        matchUpdateTypes: ["lockFileMaintenance"],
+        matchUpdateTypes: [
+          "lockFileMaintenance",
+          "replacement",
+          "pin",
+          "bump",
+          "lockfileUpdate",
+          "rollback",
+        ],
         minimumReleaseAge: null,
       },
     ],
