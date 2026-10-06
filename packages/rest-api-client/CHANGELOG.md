@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.2.1...@kintone/rest-api-client@6.2.2) (2026-10-06)
+
+
+### Bug Fixes
+
+* **deps:** bump axios past its advisories ([#3960](https://github.com/kintone/js-sdk/issues/3960)) ([5467e72](https://github.com/kintone/js-sdk/commit/5467e7295dfa6376f21f8f92c69e3c28f524207c))
+
 ## [6.2.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.2.0...@kintone/rest-api-client@6.2.1) (2026-07-08)
 
 
