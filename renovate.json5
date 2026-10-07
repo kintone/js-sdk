@@ -1,8 +1,16 @@
 {
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    "github>cybozu/renovate-config",
-    ":prConcurrentLimitNone"
+    ":ignoreModulesAndTests",
+    ":label(renovate)",
+    ":timezone(Asia/Tokyo)",
+    "group:monorepos",
+    ":widenPeerDependencies",
+    ":prImmediately",
+    ":dependencyDashboard",
+    ":prConcurrentLimitNone",
   ],
+  minimumReleaseAge: "14 days",
   ignorePaths: [
     "**/node_modules/**",
     "**/bower_components/**",
@@ -13,30 +21,72 @@
     "**/__fixtures__/**",
   ],
   npm: {
+    extends: [
+      ":automergePatch",
+      ":noUnscheduledUpdates",
+      ":separatePatchReleases",
+      "security:minimumReleaseAgeNpm",
+      "helpers:disableTypesNodeMajor",
+    ],
+    schedule: ["after 9pm", "before 9am"],
+    rangeStrategy: "bump",
+    postUpdateOptions: ["npmDedupe"],
     packageRules: [
       {
         // set `chore` to the commit for updating packages
-        matchPackagePatterns: [
-          "*"
-        ],
+        matchPackageNames: ["*"],
         semanticCommitType: "chore",
       },
       {
+        matchDepTypes: ["dependencies", "peerDependencies"],
+        semanticCommitType: "fix",
+      },
+      {
+        groupName: "ESLint and Prettier",
+        matchPackageNames: [
+          "eslint",
+          "prettier",
+          "/^eslint-config-/",
+          "/^eslint-plugin-/",
+        ],
+      },
+      {
         // automerge minor updates of devDependencies
-        matchPackagePatterns: [
-          "*"
-        ],
-        matchDepTypes: [
-          "devDependencies"
-        ],
-        matchUpdateTypes: [
-          "minor"
-        ],
+        matchPackageNames: ["*"],
+        matchDepTypes: ["devDependencies"],
+        matchUpdateTypes: ["minor"],
         automerge: true,
+      },
+      {
+        description: "disable package.json > engines update",
+        matchDepTypes: ["engines"],
+        enabled: false,
+      },
+      {
+        // security:minimumReleaseAgeNpm が npm datasource に敷く 3 days を、
+        // 社内ルールの 14 days に引き上げる
+        description: "Apply the organization-wide minimumReleaseAge to npm packages",
+        matchDatasources: ["npm"],
+        minimumReleaseAge: "14 days",
+      },
+      {
+        // 上の上書きで潰れる security:minimumReleaseAgeNpm の除外を戻す。
+        // これらは release timestamp を持たず、待機を課すと更新が上がらなくなる
+        description: "Restore the update types that carry no release timestamp",
+        matchDatasources: ["npm"],
+        matchUpdateTypes: [
+          "lockFileMaintenance",
+          "replacement",
+          "pin",
+          "bump",
+          "lockfileUpdate",
+          "rollback",
+        ],
+        minimumReleaseAge: null,
       },
     ],
   },
-  "packageRules": [
+  packageRules: [
     {
       // runtime dependencies use bump strategy (update pinned versions)
       matchDepTypes: ["dependencies"],
@@ -50,7 +100,11 @@
     },
     {
       groupName: "openapi ecosystem deps",
-      matchPackageNames: ["openapi-fetch", "openapi-typescript", "openapi-typescript-helpers"],
+      matchPackageNames: [
+        "openapi-fetch",
+        "openapi-typescript",
+        "openapi-typescript-helpers",
+      ],
       matchDepTypes: ["dependencies"],
     },
     {
@@ -60,14 +114,9 @@
     },
     {
       // Third party actions should be pinned with digest
-      "matchDepTypes": [
-        "action"
-      ],
-      excludePackagePrefixes: [
-        "actions/",
-        "cybozu/"
-      ],
-      "pinDigests": true
-    }
-  ]
+      matchDepTypes: ["action"],
+      matchPackageNames: ["!actions/{/,}**", "!cybozu/{/,}**"],
+      pinDigests: true,
+    },
+  ],
 }
