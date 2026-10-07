@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.2.2...@kintone/rest-api-client@6.3.0) (2026-10-07)
+
+
+### Features
+
+* **rest-api-client:** add sandbox settings to the app customize APIs ([#3955](https://github.com/kintone/js-sdk/issues/3955)) ([d836eb3](https://github.com/kintone/js-sdk/commit/d836eb3bcdef08a2fd91f942b6a4c05340537c4f))
+
 ## [6.2.2](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.2.1...@kintone/rest-api-client@6.2.2) (2026-10-06)
 
 
