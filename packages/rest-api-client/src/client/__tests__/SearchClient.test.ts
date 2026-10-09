@@ -111,6 +111,80 @@ describe("SearchClient", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
   });
+
+  describe("search with includeSynonyms in a non-US region", () => {
+    it.each([true, "true", false, "false"] as const)(
+      "should pass includeSynonyms: %j through to the http client",
+      async (includeSynonyms) => {
+        const params: SearchRequest = {
+          query: [{ operator: "AND", keywords: ["foo"] }],
+          includeSynonyms,
+        };
+        await searchClient.search(params);
+        expect(mockClient.getLogs()[0].params).toEqual(params);
+      },
+    );
+
+    it("should not include includeSynonyms in the posted params when it is omitted", async () => {
+      const params: SearchRequest = {
+        query: [{ operator: "AND", keywords: ["foo"] }],
+      };
+      await searchClient.search(params);
+      expect(mockClient.getLogs()[0].params).not.toHaveProperty(
+        "includeSynonyms",
+      );
+    });
+  });
+});
+
+describe("SearchClient in a US region", () => {
+  let mockClient: MockClient;
+  let searchClient: SearchClient;
+
+  beforeEach(() => {
+    const requestConfigBuilder = new KintoneRequestConfigBuilder({
+      baseUrl: "https://example.kintone.com",
+      auth: { type: "apiToken", apiToken: "dummy" },
+    });
+    mockClient = buildMockClient(requestConfigBuilder);
+    searchClient = new SearchClient(mockClient, undefined, true);
+  });
+
+  it.each([true, "true"] as const)(
+    "should reject with an error when includeSynonyms is %j",
+    async (includeSynonyms) => {
+      const params: SearchRequest = {
+        query: [{ operator: "AND", keywords: ["foo"] }],
+        includeSynonyms,
+      };
+      await expect(searchClient.search(params)).rejects.toThrow(
+        "Can't use includeSynonyms parameter in US Region",
+      );
+      expect(mockClient.getLogs()).toHaveLength(0);
+    },
+  );
+
+  it.each([false, "false"] as const)(
+    "should pass includeSynonyms: %j through to the http client",
+    async (includeSynonyms) => {
+      const params: SearchRequest = {
+        query: [{ operator: "AND", keywords: ["foo"] }],
+        includeSynonyms,
+      };
+      await searchClient.search(params);
+      expect(mockClient.getLogs()[0].params).toEqual(params);
+    },
+  );
+
+  it("should NOT throw an error when includeSynonyms is omitted", async () => {
+    const params: SearchRequest = {
+      query: [{ operator: "AND", keywords: ["foo"] }],
+    };
+    await searchClient.search(params);
+    expect(mockClient.getLogs()[0].params).not.toHaveProperty(
+      "includeSynonyms",
+    );
+  });
 });
 
 describe("SearchClient with guestSpaceId", () => {

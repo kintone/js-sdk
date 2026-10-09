@@ -1,4 +1,6 @@
+import type { MockInstance } from "vitest";
 import { KintoneRestAPIClient } from "../KintoneRestAPIClient";
+import { AxiosClient } from "../http/AxiosClient";
 import { injectPlatformDeps } from "../platform";
 import * as browserDeps from "../platform/browser";
 
@@ -137,6 +139,46 @@ describe("KintoneRestAPIClient", () => {
               new KintoneRestAPIClient({ baseUrl, auth, socketTimeout }),
           ).toThrow("Invalid socketTimeout. Must be a positive number.");
         });
+      });
+    });
+  });
+
+  describe("search", () => {
+    const auth = { apiToken: "foo" };
+    const query: [{ operator: "AND"; keywords: string[] }] = [
+      { operator: "AND", keywords: ["foo"] },
+    ];
+
+    let postSpy: MockInstance;
+    beforeEach(() => {
+      postSpy = vi
+        .spyOn(AxiosClient.prototype, "post")
+        .mockResolvedValue({ hits: [], nextPageToken: null });
+    });
+    afterEach(() => {
+      postSpy.mockRestore();
+    });
+
+    it('should reject with an error when includeSynonyms is "true" and baseUrl is in the US region (*.kintone.com)', async () => {
+      const client = new KintoneRestAPIClient({
+        baseUrl: "https://example.kintone.com",
+        auth,
+      });
+      await expect(
+        client.search({ query, includeSynonyms: "true" }),
+      ).rejects.toThrow("Can't use includeSynonyms parameter in US Region");
+      expect(postSpy).not.toHaveBeenCalled();
+    });
+
+    it('should send includeSynonyms when it is "true" and baseUrl is NOT in the US region', async () => {
+      const client = new KintoneRestAPIClient({
+        baseUrl: "https://example.cybozu.com",
+        auth,
+      });
+      await client.search({ query, includeSynonyms: "true" });
+      expect(postSpy).toHaveBeenCalledWith("/k/v1/search.json", {
+        query,
+        includeSynonyms: "true",
       });
     });
   });
