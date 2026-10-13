@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.3.0...@kintone/rest-api-client@6.4.0) (2026-10-09)
+
+
+### Features
+
+* **rest-api-client:** introduce includeSynonyms parameter of search API ([#3956](https://github.com/kintone/js-sdk/issues/3956)) ([83d5a54](https://github.com/kintone/js-sdk/commit/83d5a54d6774c4f83c49b37be22a3268b6b87889))
+
 ## [6.3.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.2.2...@kintone/rest-api-client@6.3.0) (2026-10-07)
 
 
