@@ -359,6 +359,18 @@ describe("SpaceClient (HTTP level)", () => {
         });
       });
     });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        await spaceClient.getStatistics();
+      });
+      it("should send the exact request over the wire", () => {
+        expectRequest(httpServer, 0, {
+          method: "get",
+          path: "/k/v1/spaces/statistics.json",
+        });
+      });
+    });
   });
 });
 

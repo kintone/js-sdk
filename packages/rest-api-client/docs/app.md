@@ -609,6 +609,8 @@ Gets general information of multiple apps, including the name, description, rela
 
 #### Parameters
 
+All parameters are optional, so the `params` argument can be omitted.
+
 | Name     |           Type            | Required | Description                                                                                                                                                                             |
 | -------- | :-----------------------: | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ids      | Array\<Number or String\> |          | The app IDs.<br />Up to 100 IDs can be specified.                                                                                                                                       |
@@ -1524,6 +1526,8 @@ Gets usage statistics for multiple Apps.
 > This API is available only in Wide Course.
 
 #### Parameters
+
+All parameters are optional, so the `params` argument can be omitted.
 
 | Name   |  Type  | Required | Description                                                                                                   |
 | ------ | :----: | :------: | ------------------------------------------------------------------------------------------------------------- |

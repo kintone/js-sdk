@@ -65,6 +65,19 @@ describe("App Test (HTTP level)", () => {
         query: wireParams(params),
       });
     });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        await appClient.getApps();
+      });
+      it("should send the exact request over the wire", () => {
+        expectRequest(httpServer, 1, {
+          method: "get",
+          path: "/k/v1/apps.json",
+          query: {},
+        });
+      });
+    });
   });
 
   describe("addApp", () => {
@@ -169,6 +182,19 @@ describe("App Test (HTTP level)", () => {
           method: "get",
           path: "/k/v1/apps/statistics.json",
           query: wireParams(params),
+        });
+      });
+    });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        await appClient.getStatistics();
+      });
+      it("should send the exact request over the wire", () => {
+        expectRequest(httpServer, 0, {
+          method: "get",
+          path: "/k/v1/apps/statistics.json",
+          query: {},
         });
       });
     });

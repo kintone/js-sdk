@@ -15,14 +15,14 @@ import type {
 
 export class PluginClient extends BaseClient {
   public getPlugins(
-    params: GetPluginsForRequest,
+    params: GetPluginsForRequest = {},
   ): Promise<GetPluginsForResponse> {
     const path = this.buildPath({ endpointName: "plugins" });
     return this.client.get(path, params);
   }
 
   public getRequiredPlugins(
-    params: GetRequiredPluginsForRequest,
+    params: GetRequiredPluginsForRequest = {},
   ): Promise<GetRequiredPluginsForResponse> {
     const path = this.buildPath({ endpointName: "plugins/required" });
     return this.client.get(path, params);

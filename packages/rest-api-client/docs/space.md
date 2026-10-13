@@ -388,6 +388,8 @@ Gets the statistical information of Spaces.
 
 #### Parameters
 
+All parameters are optional, so the `params` argument can be omitted.
+
 | Name   |       Type       | Required | Description                                                                                                             |
 | ------ | :--------------: | :------: | ----------------------------------------------------------------------------------------------------------------------- |
 | offset | Number or String |          | The offset to start retrieving spaces from.<br />If omitted, the default value is 0.                                    |

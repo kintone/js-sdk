@@ -32,6 +32,8 @@ Gets the list of plug-ins imported into Kintone.
 
 #### Parameters
 
+All parameters are optional, so the `params` argument can be omitted.
+
 | Name   |  Type  | Required | Description                                                                                                                                                                                                            |
 | ------ | :----: | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | offset | Number |          | The number of plug-ins to skip from the list of installed plug-ins.<br />If ignored, this value is 0.                                                                                                                  |
@@ -59,6 +61,8 @@ Gets the list of plug-ins that have been deleted from Kintone, but have already 
 This can occur when a plug-in is installed, added to an App, and then proceeded to be uninstalled from the Kintone environment.
 
 #### Parameters
+
+All parameters are optional, so the `params` argument can be omitted.
 
 | Name   |  Type  | Required | Description                                                                                                 |
 | ------ | :----: | :------: | ----------------------------------------------------------------------------------------------------------- |
