@@ -30,7 +30,7 @@
     ],
     schedule: ["after 9pm every weekday"],
     rangeStrategy: "bump",
-    postUpdateOptions: ["npmDedupe"],
+    postUpdateOptions: ["pnpmDedupe"],
     packageRules: [
       {
         // set `chore` to the commit for updating packages
