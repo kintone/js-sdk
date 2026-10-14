@@ -25,7 +25,6 @@
       ":automergePatch",
       ":noUnscheduledUpdates",
       ":separatePatchReleases",
-      "security:minimumReleaseAgeNpm",
       "helpers:disableTypesNodeMajor",
     ],
     schedule: ["after 9pm every weekday"],
@@ -63,31 +62,21 @@
         matchDepTypes: ["engines"],
         enabled: false,
       },
-      {
-        // security:minimumReleaseAgeNpm が npm datasource に敷く 3 days を、
-        // 社内ルールの 14 days に引き上げる
-        description: "Apply the organization-wide minimumReleaseAge to npm packages",
-        matchDatasources: ["npm"],
-        minimumReleaseAge: "14 days",
-      },
-      {
-        // 上の上書きで潰れる security:minimumReleaseAgeNpm の除外を戻す。
-        // これらは release timestamp を持たず、待機を課すと更新が上がらなくなる
-        description: "Restore the update types that carry no release timestamp",
-        matchDatasources: ["npm"],
-        matchUpdateTypes: [
-          "lockFileMaintenance",
-          "replacement",
-          "pin",
-          "bump",
-          "lockfileUpdate",
-          "rollback",
-        ],
-        minimumReleaseAge: null,
-      },
     ],
   },
   packageRules: [
+    {
+      description: "Renovate cannot enforce minimumReleaseAge for these update types",
+      matchUpdateTypes: [
+        "lockFileMaintenance",
+        "replacement",
+        "pin",
+        "bump",
+        "lockfileUpdate",
+        "rollback",
+      ],
+      minimumReleaseAge: null,
+    },
     {
       // runtime dependencies use bump strategy (update pinned versions)
       matchDepTypes: ["dependencies"],
