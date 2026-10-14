@@ -28,7 +28,7 @@
       "security:minimumReleaseAgeNpm",
       "helpers:disableTypesNodeMajor",
     ],
-    schedule: ["after 9pm", "before 9am"],
+    schedule: ["after 9pm every weekday"],
     rangeStrategy: "bump",
     postUpdateOptions: ["npmDedupe"],
     packageRules: [
