@@ -27,7 +27,7 @@
       ":separatePatchReleases",
       "helpers:disableTypesNodeMajor",
     ],
-    schedule: ["after 9pm every weekday"],
+    schedule: ["* 9-11 * * 1-5"],
     rangeStrategy: "bump",
     postUpdateOptions: ["pnpmDedupe"],
     packageRules: [
