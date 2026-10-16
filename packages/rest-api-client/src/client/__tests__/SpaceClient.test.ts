@@ -396,6 +396,23 @@ describe("SpaceClient", () => {
         expect(mockClient.getLogs()[0].params).toEqual(params);
       });
     });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        await spaceClient.getStatistics();
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/spaces/statistics.json",
+        );
+      });
+      it("should send a GET request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass empty params to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual({});
+      });
+    });
   });
 });
 

@@ -51,6 +51,22 @@ describe("App Test", () => {
     it("should pass ids, codes, name, spaceIds, limit, and offset as a param to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
     });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        mockClient.logs.length = 0;
+        await appClient.getApps();
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/apps.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass empty params to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual({});
+      });
+    });
   });
 
   describe("addApp", () => {
@@ -163,6 +179,21 @@ describe("App Test", () => {
       });
       it("should pass offset and limit as a param to the http client", () => {
         expect(mockClient.getLogs()[0].params).toEqual(params);
+      });
+    });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        await appClient.getStatistics();
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/apps/statistics.json");
+      });
+      it("should send a get request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass empty params to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual({});
       });
     });
   });

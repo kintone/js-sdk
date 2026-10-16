@@ -53,6 +53,19 @@ describe("PluginClient (HTTP level)", () => {
         });
       });
     });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        await pluginClient.getPlugins();
+      });
+      it("should send the exact request over the wire", () => {
+        expectRequest(httpServer, 1, {
+          method: "get",
+          path: "/k/v1/plugins.json",
+          query: {},
+        });
+      });
+    });
   });
 
   describe("getRequiredPlugins", () => {
@@ -68,6 +81,19 @@ describe("PluginClient (HTTP level)", () => {
         method: "get",
         path: "/k/v1/plugins/required.json",
         query: wireParams(params),
+      });
+    });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        await pluginClient.getRequiredPlugins();
+      });
+      it("should send the exact request over the wire", () => {
+        expectRequest(httpServer, 1, {
+          method: "get",
+          path: "/k/v1/plugins/required.json",
+          query: {},
+        });
       });
     });
   });

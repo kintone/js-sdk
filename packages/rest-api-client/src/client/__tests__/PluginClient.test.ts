@@ -58,6 +58,22 @@ describe("PluginClient", () => {
         expect(mockClient.getLogs()[0].params).toEqual(paramsWithIds);
       });
     });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        mockClient.logs.length = 0;
+        await pluginClient.getPlugins();
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe("/k/v1/plugins.json");
+      });
+      it("should send a GET request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass empty params to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual({});
+      });
+    });
   });
 
   describe("getRequiredPlugins", () => {
@@ -76,6 +92,24 @@ describe("PluginClient", () => {
     });
     it("should pass the param to the http client", () => {
       expect(mockClient.getLogs()[0].params).toEqual(params);
+    });
+
+    describe("without params", () => {
+      beforeEach(async () => {
+        mockClient.logs.length = 0;
+        await pluginClient.getRequiredPlugins();
+      });
+      it("should pass the path to the http client", () => {
+        expect(mockClient.getLogs()[0].path).toBe(
+          "/k/v1/plugins/required.json",
+        );
+      });
+      it("should send a GET request", () => {
+        expect(mockClient.getLogs()[0].method).toBe("get");
+      });
+      it("should pass empty params to the http client", () => {
+        expect(mockClient.getLogs()[0].params).toEqual({});
+      });
     });
   });
 

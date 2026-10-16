@@ -191,14 +191,16 @@ export class AppClient extends BaseClient {
     return this.client.get(path, params);
   }
 
-  public getApps(params: {
-    ids?: AppID[] | null;
-    codes?: string[] | null;
-    name?: string | null;
-    spaceIds?: Array<string | number> | null;
-    limit?: string | number;
-    offset?: string | number;
-  }): Promise<{ apps: App[] }> {
+  public getApps(
+    params: {
+      ids?: AppID[] | null;
+      codes?: string[] | null;
+      name?: string | null;
+      spaceIds?: Array<string | number> | null;
+      limit?: string | number;
+      offset?: string | number;
+    } = {},
+  ): Promise<{ apps: App[] }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: "apps",
     });
@@ -644,7 +646,7 @@ export class AppClient extends BaseClient {
   }
 
   public getStatistics(
-    params: GetStatisticsRequest,
+    params: GetStatisticsRequest = {},
   ): Promise<GetStatisticsResponse> {
     const path = this.buildPath({
       endpointName: "apps/statistics",
