@@ -1,8 +1,16 @@
 {
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    "github>cybozu/renovate-config",
-    ":prConcurrentLimitNone"
+    ":ignoreModulesAndTests",
+    ":label(renovate)",
+    ":timezone(Asia/Tokyo)",
+    "group:monorepos",
+    ":widenPeerDependencies",
+    ":prImmediately",
+    ":dependencyDashboard",
+    ":prConcurrentLimitNone",
   ],
+  minimumReleaseAge: "14 days",
   ignorePaths: [
     "**/node_modules/**",
     "**/bower_components/**",
@@ -13,30 +21,62 @@
     "**/__fixtures__/**",
   ],
   npm: {
+    extends: [
+      ":automergePatch",
+      ":noUnscheduledUpdates",
+      ":separatePatchReleases",
+      "helpers:disableTypesNodeMajor",
+    ],
+    schedule: ["* 9-11 * * 1-5"],
+    rangeStrategy: "bump",
+    postUpdateOptions: ["pnpmDedupe"],
     packageRules: [
       {
         // set `chore` to the commit for updating packages
-        matchPackagePatterns: [
-          "*"
-        ],
+        matchPackageNames: ["*"],
         semanticCommitType: "chore",
       },
       {
+        matchDepTypes: ["dependencies", "peerDependencies"],
+        semanticCommitType: "fix",
+      },
+      {
+        groupName: "ESLint and Prettier",
+        matchPackageNames: [
+          "eslint",
+          "prettier",
+          "/^eslint-config-/",
+          "/^eslint-plugin-/",
+          "@cybozu/eslint-config",
+        ],
+      },
+      {
         // automerge minor updates of devDependencies
-        matchPackagePatterns: [
-          "*"
-        ],
-        matchDepTypes: [
-          "devDependencies"
-        ],
-        matchUpdateTypes: [
-          "minor"
-        ],
+        matchPackageNames: ["*"],
+        matchDepTypes: ["devDependencies"],
+        matchUpdateTypes: ["minor"],
         automerge: true,
+      },
+      {
+        description: "disable package.json > engines update",
+        matchDepTypes: ["engines"],
+        enabled: false,
       },
     ],
   },
-  "packageRules": [
+  packageRules: [
+    {
+      description: "Renovate cannot enforce minimumReleaseAge for these update types",
+      matchUpdateTypes: [
+        "lockFileMaintenance",
+        "replacement",
+        "pin",
+        "bump",
+        "lockfileUpdate",
+        "rollback",
+      ],
+      minimumReleaseAge: null,
+    },
     {
       // runtime dependencies use bump strategy (update pinned versions)
       matchDepTypes: ["dependencies"],
@@ -50,7 +90,11 @@
     },
     {
       groupName: "openapi ecosystem deps",
-      matchPackageNames: ["openapi-fetch", "openapi-typescript", "openapi-typescript-helpers"],
+      matchPackageNames: [
+        "openapi-fetch",
+        "openapi-typescript",
+        "openapi-typescript-helpers",
+      ],
       matchDepTypes: ["dependencies"],
     },
     {
@@ -60,14 +104,9 @@
     },
     {
       // Third party actions should be pinned with digest
-      "matchDepTypes": [
-        "action"
-      ],
-      excludePackagePrefixes: [
-        "actions/",
-        "cybozu/"
-      ],
-      "pinDigests": true
-    }
-  ]
+      matchDepTypes: ["action"],
+      matchPackageNames: ["!actions/{/,}**", "!cybozu/{/,}**"],
+      pinDigests: true,
+    },
+  ],
 }
