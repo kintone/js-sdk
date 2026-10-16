@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.4.0...@kintone/rest-api-client@6.5.0) (2026-10-16)
+
+
+### Features
+
+* **rest-api-client:** allow omitting params when all of its properties are optional ([#3965](https://github.com/kintone/js-sdk/issues/3965)) ([b8720a4](https://github.com/kintone/js-sdk/commit/b8720a446644c67241b1eadda00b4791edfb9d23))
+
+
+### Bug Fixes
+
+* **deps:** update dependency js-base64 to v3.9.4 ([#3889](https://github.com/kintone/js-sdk/issues/3889)) ([97b2ffc](https://github.com/kintone/js-sdk/commit/97b2ffc1be22cdd4f78002457ca96e31e449a709))
+* **deps:** update dependency qs to v6.16.0 [security] ([#3969](https://github.com/kintone/js-sdk/issues/3969)) ([aec7b46](https://github.com/kintone/js-sdk/commit/aec7b460aeed3413de27f454b0766feb2f0cda09))
+
 ## [6.4.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.3.0...@kintone/rest-api-client@6.4.0) (2026-10-09)
 
 

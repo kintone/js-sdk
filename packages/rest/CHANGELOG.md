@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.4](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.3.3...@kintone/rest@0.3.4) (2026-10-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency js-base64 to v3.9.4 ([#3889](https://github.com/kintone/js-sdk/issues/3889)) ([97b2ffc](https://github.com/kintone/js-sdk/commit/97b2ffc1be22cdd4f78002457ca96e31e449a709))
+
 ## [0.3.3](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.3.2...@kintone/rest@0.3.3) (2026-10-01)
 
 
