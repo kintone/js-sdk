@@ -37,7 +37,7 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "toml": "4.3.0"
+    "toml": "5.0.0"
   },
   "devDependencies": {},
   "engines": {
