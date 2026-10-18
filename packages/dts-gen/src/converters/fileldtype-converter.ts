@@ -25,6 +25,7 @@ const SIMPLE_VALUE_IN_SAVED_RECORD = [
   "RECORD_NUMBER",
   "CREATED_TIME",
   "UPDATED_TIME",
+  "STATUS",
 ];
 
 const USER_TYPES_IN_SAVED_RECORD = ["CREATOR", "MODIFIER"];
@@ -105,6 +106,11 @@ const convertFieldTypesToFieldTypeGroups = (
   const stringFieldsInSavedRecord = selectFieldsTypesIn(
     SIMPLE_VALUE_IN_SAVED_RECORD,
     fieldTypes,
+  ).filter(
+    (field) =>
+      field.type !== "STATUS" ||
+      !("enabled" in field) ||
+      field.enabled !== false,
   );
   const userFieldsInSavedRecord = selectFieldsTypesIn(
     USER_TYPES_IN_SAVED_RECORD,

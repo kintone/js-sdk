@@ -381,6 +381,11 @@ declare namespace kintone {
       value: string;
     }
 
+    interface Status {
+      type: "STATUS";
+      value: string;
+    }
+
     interface UpdatedTime {
       type: "UPDATED_TIME";
       value: string;

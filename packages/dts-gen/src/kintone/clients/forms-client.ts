@@ -8,6 +8,7 @@ export interface FieldType {
   type: string;
   code: string;
   relatedApp?: string;
+  enabled?: boolean;
 }
 
 export interface SubTableFieldType {
