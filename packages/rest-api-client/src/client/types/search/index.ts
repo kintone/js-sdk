@@ -82,11 +82,11 @@ export type SearchHitRecord = {
   appName: string;
   recordId: string;
   recordTitle: string;
-  createdAt: string;
-  creator: SearchUser;
+  createdAt: string | null;
+  creator: SearchUser | null;
   matchedFields: Array<{ code: string; label: string }>;
-  spaceId?: string;
-  spaceName?: string;
+  spaceId: string | null;
+  spaceName: string | null;
 };
 
 export type SearchHitRecordComment = {
@@ -97,8 +97,8 @@ export type SearchHitRecordComment = {
   commentId: string;
   createdAt: string;
   creator: SearchUser;
-  spaceId?: string;
-  spaceName?: string;
+  spaceId: string | null;
+  spaceName: string | null;
 };
 
 export type SearchHitSpace = {
@@ -119,7 +119,7 @@ export type SearchHitThread = {
 
 export type SearchHitThreadComment = {
   commentId: string;
-  replyId?: string;
+  replyId: string | null;
   spaceId: string;
   spaceName: string;
   threadId: string;
@@ -130,7 +130,7 @@ export type SearchHitThreadComment = {
 
 export type SearchHitPeopleComment = {
   commentId: string;
-  replyId?: string;
+  replyId: string | null;
   owner: SearchUser;
   createdAt: string;
   creator: SearchUser;
@@ -147,8 +147,8 @@ export type SearchHitAttachment = {
   attachedTo: SearchAttachmentTarget;
   fileKey: string;
   name: string;
-  createdAt: string;
-  creator: SearchUser;
+  createdAt: string | null;
+  creator: SearchUser | null;
 };
 
 export type SearchHit =
