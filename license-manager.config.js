@@ -24,11 +24,7 @@ const config = createConfig({
       "(BSD-3-Clause OR GPL-2.0)",
       "Unlicense",
     ],
-    allowPackages: [
-      // https://github.com/npm/cli/blob/latest/LICENSE
-      "npm",
-      "indexof",
-    ],
+    allowPackages: ["indexof"],
   },
   overrideLicense: (dep) => {
     // https://github.com/mafintosh/browserify-fs?tab=readme-ov-file#license
