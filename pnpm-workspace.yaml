@@ -25,3 +25,5 @@ minimumReleaseAgeExclude:
   - form-data@4.0.6
   # Renovate security update: adm-zip@0.6.1
   - adm-zip@0.6.1
+  # Renovate security update: follow-redirects@1.16.1
+  - follow-redirects@1.16.1
