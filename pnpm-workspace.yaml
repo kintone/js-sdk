@@ -27,3 +27,5 @@ minimumReleaseAgeExclude:
   - adm-zip@0.6.1
   # Renovate security update: follow-redirects@1.16.1
   - follow-redirects@1.16.1
+  # Renovate security update: vite@7.3.7
+  - vite@7.3.7
