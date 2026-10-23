@@ -13,6 +13,7 @@ const layout = [
       },
       {
         type: "LABEL",
+        elementId: "label1",
         label: "label1",
         size: { width: "100" },
       },
