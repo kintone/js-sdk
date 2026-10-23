@@ -320,8 +320,8 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/cli':
-        specifier: 1.21.1
-        version: 1.21.1(@types/node@25.5.0)
+        specifier: 1.21.4
+        version: 1.21.4(@types/node@25.5.0)
       mkdirp:
         specifier: 3.0.1
         version: 3.0.1
@@ -1830,8 +1830,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@kintone/cli@1.21.1':
-    resolution: {integrity: sha512-K0VprJ+4KOsYSbx6iZLb0cQEz/PkKBokiAtzHwuqAlBm4dQX9mNLP76SKM9aUpFHPSBwri0kEJuct+/bw5kkXQ==}
+  '@kintone/cli@1.21.4':
+    resolution: {integrity: sha512-SUzjkpK27Mel8V+3soHHYOu9HsaFull4faKjLNwLoSK/+euo2UaznZDTywCd+47rwoZT5/h7HzyN59PbWKdK6w==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -7674,7 +7674,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@kintone/cli@1.21.1(@types/node@25.5.0)':
+  '@kintone/cli@1.21.4(@types/node@25.5.0)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@25.5.0)
       '@kintone/plugin-manifest-validator': 11.3.0
