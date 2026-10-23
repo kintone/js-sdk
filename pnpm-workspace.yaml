@@ -27,3 +27,5 @@ minimumReleaseAgeExclude:
   - adm-zip@0.6.1
   # Renovate security update: follow-redirects@1.16.1
   - follow-redirects@1.16.1
+  # Renovate security update: toml@5.0.1
+  - toml@5.0.1
