@@ -29,3 +29,5 @@ minimumReleaseAgeExclude:
   - follow-redirects@1.16.1
   # Renovate security update: toml@5.0.1
   - toml@5.0.1
+  # Renovate security update: undici@7.30.1
+  - undici@7.30.1
