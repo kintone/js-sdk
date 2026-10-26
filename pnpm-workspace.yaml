@@ -31,3 +31,5 @@ minimumReleaseAgeExclude:
   - toml@5.0.1
   # Renovate security update: undici@7.30.1
   - undici@7.30.1
+  # Renovate security update: body-parser@2.4.0
+  - body-parser@2.4.0
