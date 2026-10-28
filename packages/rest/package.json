@@ -1,6 +1,6 @@
 {
   "name": "@kintone/rest",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "kintone REST API Client for JavaScript",
   "keywords": [
     "kintone",

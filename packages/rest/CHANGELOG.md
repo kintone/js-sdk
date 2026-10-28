@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.5](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.3.4...@kintone/rest@0.3.5) (2026-10-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency undici to v7.30.1 [security] ([#3994](https://github.com/kintone/js-sdk/issues/3994)) ([e69be46](https://github.com/kintone/js-sdk/commit/e69be4671cc9646f3b9c893a94b3ccbf7c3f8573))
+
 ## [0.3.4](https://github.com/kintone/js-sdk/compare/@kintone/rest@0.3.3...@kintone/rest@0.3.4) (2026-10-21)
 
 
