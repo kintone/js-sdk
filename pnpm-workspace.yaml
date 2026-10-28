@@ -17,8 +17,8 @@ minimumReleaseAgeExclude:
   - lodash@4.17.23 || 4.18.1
   # Renovate security update: webpack@5.104.1
   - webpack@5.104.1
-  # Renovate security update: qs@6.14.2 || 6.16.0
-  - qs@6.14.2 || 6.16.0
+  # Renovate security update: qs@6.14.2 || 6.16.0 || 6.16.1
+  - qs@6.14.2 || 6.16.0 || 6.16.1
   # Renovate security update: yauzl@3.2.1
   - yauzl@3.2.1
   # Renovate security update: form-data@4.0.6
