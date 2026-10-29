@@ -280,8 +280,8 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/cli':
-        specifier: 1.21.4
-        version: 1.21.4(@types/node@25.5.0)
+        specifier: 1.22.1
+        version: 1.22.1(@types/node@25.5.0)
       mkdirp:
         specifier: 3.0.1
         version: 3.0.1
@@ -1771,8 +1771,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@kintone/cli@1.21.4':
-    resolution: {integrity: sha512-SUzjkpK27Mel8V+3soHHYOu9HsaFull4faKjLNwLoSK/+euo2UaznZDTywCd+47rwoZT5/h7HzyN59PbWKdK6w==}
+  '@kintone/cli@1.22.1':
+    resolution: {integrity: sha512-C8P+bOr0PojhLy1K+81G0/uOMfRtg+wdq3VPFrHbqZTEsVdU+sZ5ndxP7qsE/5sqHtwgariM+Bem4uSUBfcXBA==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -1780,8 +1780,8 @@ packages:
     resolution: {integrity: sha512-ntx3hNnwNsC82GFvIZAcMhyXwelqVaF7bipCq7k7UGVHM6cOgLoC9er9w68RcaH/p9nfUfRVw1cAVP5zS+ADyQ==}
     engines: {node: '>=20'}
 
-  '@kintone/rest-api-client@6.2.1':
-    resolution: {integrity: sha512-sPFz+0wy/pGmxbORPT/WLtwHvmwwtu7M/f/0Oqi7S+omwb46SGyx16TuSLdrTX1cJEr6YnHjQrI/tNsBlDWzmw==}
+  '@kintone/rest-api-client@6.3.0':
+    resolution: {integrity: sha512-KzGblg44Eegqzyvd9AihuwtA5HtXKMeUSDcTZaokCXSNtxU8nYen6qMlkXMZW9C2NE+yBOYmz05elqyCN62etg==}
     engines: {node: '>=20'}
 
   '@leichtgewicht/ip-codec@2.0.5':
@@ -3972,8 +3972,8 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
 
-  js-base64@3.8.0:
-    resolution: {integrity: sha512-65kvbemyZhj+ExQt1PEFyBEjL5vAHysu1lJdW1AwhhChkO8ZBPizYk/m9GVrpbS2Je1hF+UYZ+6KywqtZV8mHw==}
+  js-base64@3.8.1:
+    resolution: {integrity: sha512-5xVjhUZlHHeuO2W7w2rDFj/Kl1xLX+HjZxdOQwCsUOifl6UaoH1o1wsbsTMz+r0aeC7gCijvru02j6TfKZWzKg==}
 
   js-base64@3.9.4:
     resolution: {integrity: sha512-PtOMXpEGuP0RRiRXsjzHzl44dMHxSu2CPvAhinupR1tBa88me+1DPqsobl7eupn5UukjLkln1ZnAOAOXOrYG0Q==}
@@ -7091,11 +7091,11 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@kintone/cli@1.21.4(@types/node@25.5.0)':
+  '@kintone/cli@1.22.1(@types/node@25.5.0)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@25.5.0)
       '@kintone/plugin-manifest-validator': 11.3.0
-      '@kintone/rest-api-client': 6.2.1
+      '@kintone/rest-api-client': 6.3.0
       chalk: 4.1.2
       chokidar: 4.0.3
       csv-parse: 5.6.0
@@ -7117,11 +7117,11 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.20.0)
       bytes: 3.1.2
 
-  '@kintone/rest-api-client@6.2.1':
+  '@kintone/rest-api-client@6.3.0':
     dependencies:
       axios: 1.20.0
       form-data: 4.0.6
-      js-base64: 3.8.0
+      js-base64: 3.8.1
       mime: 3.0.0
       qs: 6.15.3
     transitivePeerDependencies:
@@ -9673,7 +9673,7 @@ snapshots:
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
-  js-base64@3.8.0: {}
+  js-base64@3.8.1: {}
 
   js-base64@3.9.4: {}
 
