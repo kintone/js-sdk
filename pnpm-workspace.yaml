@@ -22,11 +22,13 @@ overrides:
   "axios": ">=1.20.0 <2"
   "fast-uri": ">=4.1.4 <5"
 
+# The packages build and test without running the build scripts of these
+# dependencies, so keep them from running, as pnpm 10 did by default.
 allowBuilds:
-  core-js: true
-  esbuild: true
+  core-js: false
+  esbuild: false
   msw: false
-  unrs-resolver: true
+  unrs-resolver: false
 
 # unrs-resolver falls back to this WebAssembly binding on a platform it ships no
 # native binding for. Nothing we build on is such a platform, and keeping it makes

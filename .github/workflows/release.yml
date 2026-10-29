@@ -166,9 +166,9 @@ jobs:
           # Restore .npmrc to its committed state and configure the registry globally instead.
           git restore .npmrc
 
-          # Configure pnpm and npm to use Takumi Guard via user-scoped config files
-          # (~/.config/pnpm/auth.ini and ~/.npmrc), which are outside the working tree and
-          # therefore do not trigger ERR_PNPM_GIT_UNCLEAN on pnpm publish.
+          # Configure pnpm and npm to use Takumi Guard via user-scoped config files, which are
+          # outside the working tree and therefore do not trigger ERR_PNPM_GIT_UNCLEAN on
+          # pnpm publish.
           pnpm config --global set registry https://npm.flatt.tech/
           pnpm config --global set //npm.flatt.tech/:_authToken "${TAKUMI_GUARD_TOKEN}"
           npm config set --location=user registry https://npm.flatt.tech/
