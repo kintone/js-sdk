@@ -4,7 +4,6 @@
 # - https://www.npmjs.com/package/@kintone/dts-gen/access
 # - https://www.npmjs.com/package/@kintone/rest-api-client/access
 # - https://www.npmjs.com/package/@kintone/eslint-plugin/access
-# - https://www.npmjs.com/package/@kintone/rest/access
 # ref. https://docs.npmjs.com/trusted-publishers
 
 name: Release
