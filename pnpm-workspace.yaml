@@ -4,6 +4,32 @@ packages:
   - "!**/esm/**"
   - "!**/templates/**"
 
+overrides:
+  "@isaacs/brace-expansion": "5.0.1"
+  "body-parser": ">=2.4.0"
+  "braces": ">=3.0.3"
+  "browserify-sign@<4.2.2": ">=4.2.6"
+  "cross-spawn": ">=7.0.6"
+  "express": ">=4.19.2"
+  "follow-redirects@<1.15.4": ">=1.16.1"
+  "pac-resolver": ">=7.0.1"
+  "socks": ">=2.8.10"
+  "ws": ">=8.22.0"
+  "brace-expansion@^1": ">=1.1.20 <2"
+  "brace-expansion@^2": ">=2.1.6 <3"
+  "brace-expansion@^5": ">=5.0.11 <6"
+  "js-yaml@^4": ">=4.3.2"
+  "axios": ">=1.20.0 <2"
+  "fast-uri": ">=4.1.4 <5"
+
+# The packages build and test without running the build scripts of these
+# dependencies, so keep them from running, as pnpm 10 did by default.
+allowBuilds:
+  core-js: false
+  esbuild: false
+  msw: false
+  unrs-resolver: false
+
 # unrs-resolver falls back to this WebAssembly binding on a platform it ships no
 # native binding for. Nothing we build on is such a platform, and keeping it makes
 # `pnpm licenses list` fail: the binding is the only path to tslib, which no install
