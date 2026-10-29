@@ -47,6 +47,6 @@
     "json-schema-to-typescript": "15.0.4"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }
