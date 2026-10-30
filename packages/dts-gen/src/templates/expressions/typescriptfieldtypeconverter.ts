@@ -14,6 +14,7 @@ const KintoneFieldTypeAndTypeScriptFieldTypeName = {
   CHECK_BOX: "kintone.fieldTypes.CheckBox",
   MULTI_SELECT: "kintone.fieldTypes.MultiSelect",
   RECORD_NUMBER: "kintone.fieldTypes.RecordNumber",
+  STATUS: "kintone.fieldTypes.Status",
   CREATED_TIME: "kintone.fieldTypes.CreatedTime",
   UPDATED_TIME: "kintone.fieldTypes.UpdatedTime",
   MODIFIER: "kintone.fieldTypes.Modifier",
