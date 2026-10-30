@@ -55,7 +55,7 @@
     "typescript": "5.9.3",
     "vitest": "4.1.11"
   },
-  "packageManager": "pnpm@10.28.2",
+  "packageManager": "pnpm@12.14.0",
   "pnpm": {
     "overrides": {
       "@isaacs/brace-expansion": "5.0.1",
