@@ -53,7 +53,7 @@
     "ts-node": "10.9.2",
     "tsx": "4.23.15",
     "typescript": "5.9.3",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   },
   "packageManager": "pnpm@10.28.2",
   "pnpm": {
@@ -64,7 +64,7 @@
       "browserify-sign@<4.2.2": ">=4.2.6",
       "cross-spawn": ">=7.0.6",
       "express": ">=4.19.2",
-      "follow-redirects@<1.15.4": ">=1.16.1",
+      "follow-redirects@<1.15.4": ">=1.16.2",
       "pac-resolver": ">=7.0.1",
       "socks": ">=2.8.10",
       "ws": ">=8.22.0",
