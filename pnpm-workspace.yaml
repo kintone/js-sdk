@@ -23,7 +23,7 @@ overrides:
   "fast-uri": ">=4.1.4 <5"
 
 # The packages build and test without running the build scripts of these
-# dependencies, so keep them from running, as pnpm 10 did by default.
+# dependencies, so keep them from running.
 allowBuilds:
   core-js: false
   esbuild: false
