@@ -13,6 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     permissions:
       contents: read
+      id-token: write # Required for Takumi Guard bot authentication (OIDC)
 
     strategy:
       matrix:
@@ -36,7 +37,7 @@ jobs:
         shell: bash
         run: mkdir -vp $(pnpm store path --silent)
 
-      - uses: flatt-security/setup-takumi-guard-npm@9a5d797c2085b6326d3a2985c08e3a114b9b88c1 # v1.1.1
+      - uses: flatt-security/setup-takumi-guard-npm@14f07d0cbc739b42a1b7c70a04c2b84cd1318ddd # v1.4.0
         with:
           bot-id: ${{ !github.event.pull_request.head.repo.fork && secrets.TAKUMI_GUARD_BOT_ID || '' }}
 
