@@ -89,15 +89,6 @@
       matchDepTypes: ["dependencies"],
     },
     {
-      groupName: "openapi ecosystem deps",
-      matchPackageNames: [
-        "openapi-fetch",
-        "openapi-typescript",
-        "openapi-typescript-helpers",
-      ],
-      matchDepTypes: ["dependencies"],
-    },
-    {
       groupName: "ajv ecosystem deps",
       matchPackageNames: ["ajv", "ajv-formats"],
       matchDepTypes: ["dependencies"],

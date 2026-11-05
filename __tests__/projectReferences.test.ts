@@ -14,13 +14,7 @@ describe("projectReferences", () => {
         /\/packages\//.test(packagePath),
       );
 
-      const ignorePackageList: string[] = ["@kintone/rest"];
-
       for (const { packageName, packagePath } of workspaces) {
-        if (ignorePackageList.includes(packageName)) {
-          continue;
-        }
-
         assert.ok(
           referencePaths.includes(packagePath),
           `${packageName} must be included in the references field in packages/tsconfig.json`,

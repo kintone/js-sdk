@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.6.0...@kintone/rest-api-client@6.6.1) (2026-11-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency qs to v6.16.1 [security] ([#4000](https://github.com/kintone/js-sdk/issues/4000)) ([ef07a07](https://github.com/kintone/js-sdk/commit/ef07a078c50f3c76226253504620273013384ea6))
+
+## [6.6.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.5.0...@kintone/rest-api-client@6.6.0) (2026-10-28)
+
+
+### Features
+
+* **rest-api-client:** add elementId to label and border fields of form layout ([#3975](https://github.com/kintone/js-sdk/issues/3975)) ([802a577](https://github.com/kintone/js-sdk/commit/802a5779d5f82df74228bb71a3648c9319376eaa))
+
 ## [6.5.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.4.0...@kintone/rest-api-client@6.5.0) (2026-10-21)
 
 
