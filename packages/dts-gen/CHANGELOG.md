@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.0](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.9...@kintone/dts-gen@10.0.0) (2026-11-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump minimum Node.js version to v22 ([#4005](https://github.com/kintone/js-sdk/issues/4005))
+
+### Miscellaneous Chores
+
+* bump minimum Node.js version to v22 ([#4005](https://github.com/kintone/js-sdk/issues/4005)) ([0021c93](https://github.com/kintone/js-sdk/commit/0021c9353050b3d599b18ce6230968756f697a68))
+
 ## [9.0.9](https://github.com/kintone/js-sdk/compare/@kintone/dts-gen@9.0.8...@kintone/dts-gen@9.0.9) (2026-10-06)
 
 

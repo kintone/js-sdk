@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.6.1...@kintone/rest-api-client@7.0.0) (2026-11-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump minimum Node.js version to v22 ([#4005](https://github.com/kintone/js-sdk/issues/4005))
+
+### Miscellaneous Chores
+
+* bump minimum Node.js version to v22 ([#4005](https://github.com/kintone/js-sdk/issues/4005)) ([0021c93](https://github.com/kintone/js-sdk/commit/0021c9353050b3d599b18ce6230968756f697a68))
+
 ## [6.6.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.6.0...@kintone/rest-api-client@6.6.1) (2026-11-02)
 
 
