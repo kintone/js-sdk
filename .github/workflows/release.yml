@@ -142,7 +142,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: "24"
+          node-version: "26"
           registry-url: "https://registry.npmjs.org"
 
       - uses: flatt-security/setup-takumi-guard-npm@14f07d0cbc739b42a1b7c70a04c2b84cd1318ddd # v1.4.0
