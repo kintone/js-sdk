@@ -280,8 +280,8 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/cli':
-        specifier: 1.21.4
-        version: 1.21.4(@types/node@22.20.5)(supports-color@8.1.1)
+        specifier: 1.22.2
+        version: 1.22.2(@types/node@22.20.5)(supports-color@8.1.1)
       mkdirp:
         specifier: 3.0.1
         version: 3.0.1
@@ -1771,8 +1771,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@kintone/cli@1.21.4':
-    resolution: {integrity: sha512-SUzjkpK27Mel8V+3soHHYOu9HsaFull4faKjLNwLoSK/+euo2UaznZDTywCd+47rwoZT5/h7HzyN59PbWKdK6w==}
+  '@kintone/cli@1.22.2':
+    resolution: {integrity: sha512-R6FCBRjQWogP4qoMxUsri+kW9UPOs4/uzOuWg3gprQexwi3dT1aTQVu7+k3L1rRIZ0sPtFBphOjYoPWDK8u91g==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -1780,8 +1780,8 @@ packages:
     resolution: {integrity: sha512-ntx3hNnwNsC82GFvIZAcMhyXwelqVaF7bipCq7k7UGVHM6cOgLoC9er9w68RcaH/p9nfUfRVw1cAVP5zS+ADyQ==}
     engines: {node: '>=20'}
 
-  '@kintone/rest-api-client@6.2.1':
-    resolution: {integrity: sha512-sPFz+0wy/pGmxbORPT/WLtwHvmwwtu7M/f/0Oqi7S+omwb46SGyx16TuSLdrTX1cJEr6YnHjQrI/tNsBlDWzmw==}
+  '@kintone/rest-api-client@6.3.0':
+    resolution: {integrity: sha512-KzGblg44Eegqzyvd9AihuwtA5HtXKMeUSDcTZaokCXSNtxU8nYen6qMlkXMZW9C2NE+yBOYmz05elqyCN62etg==}
     engines: {node: '>=20'}
 
   '@leichtgewicht/ip-codec@2.0.5':
@@ -2790,9 +2790,6 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
-  buffer-crc32@0.2.13:
-    resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
-
   buffer-crc32@1.0.0:
     resolution: {integrity: sha512-Db1SbgBS/fg/392AblrMJk97KggmvYhr4pB5ZIMTWtaivCPMWLkmb7m21cJvpvgK+J3nsU2CmmixNBZx4vFj/w==}
     engines: {node: '>=8.0.0'}
@@ -3003,8 +3000,8 @@ packages:
     resolution: {integrity: sha512-X7sjQzceUhu1u7Y/ylrRZFU2FS6LRiFVp6rKLPg23y3x3c3DOKAwuXGDp+PAGjh6CSnCjYeAul8pcT8bAl+lSA==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
 
-  csv-parse@5.6.0:
-    resolution: {integrity: sha512-l3nz3euub2QMg5ouu5U09Ew9Wf6/wQ8I++ch1loQ0ljmzhmfZYrH9fflS22i/PQEvsPvxCwxgz5q7UB8K1JO4Q==}
+  csv-parse@7.0.3:
+    resolution: {integrity: sha512-YFd3QM/yo17vH91L1IOZuvl09zM0zEEtdfTcOCKWcMdM++MNaQSyp09slXyFCLaPXvHstQFx/xC8myiFHSMUvw==}
 
   csv-stringify@6.5.2:
     resolution: {integrity: sha512-RFPahj0sXcmUyjrObAK+DOWtMvMIFV328n4qZJhgX3x2RqkQgOTU2mCUmiFR0CzM6AzChlRSUErjiJeEt8BaQA==}
@@ -3966,8 +3963,8 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
 
-  js-base64@3.8.0:
-    resolution: {integrity: sha512-65kvbemyZhj+ExQt1PEFyBEjL5vAHysu1lJdW1AwhhChkO8ZBPizYk/m9GVrpbS2Je1hF+UYZ+6KywqtZV8mHw==}
+  js-base64@3.8.1:
+    resolution: {integrity: sha512-5xVjhUZlHHeuO2W7w2rDFj/Kl1xLX+HjZxdOQwCsUOifl6UaoH1o1wsbsTMz+r0aeC7gCijvru02j6TfKZWzKg==}
 
   js-base64@3.9.4:
     resolution: {integrity: sha512-PtOMXpEGuP0RRiRXsjzHzl44dMHxSu2CPvAhinupR1tBa88me+1DPqsobl7eupn5UukjLkln1ZnAOAOXOrYG0Q==}
@@ -5574,8 +5571,8 @@ packages:
     resolution: {integrity: sha512-4UEqdc2RYGHZc7Doyqkrqiln3p9X2DZVxaGbwhn2pi7MrRagKaOcIKe8L3OxYcbhXLgLFUS3zAYuQjKBQgmuNg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=23}
 
-  yauzl@3.2.1:
-    resolution: {integrity: sha512-k1isifdbpNSFEHFJ1ZY4YDewv0IH9FR61lDetaRMD3j2ae3bIXGV+7c+LHCqtQGofSd8PIyV4X6+dHMAnSr60A==}
+  yauzl@3.4.0:
+    resolution: {integrity: sha512-jIH9yLR9wqr0wOS0TpBvo/g/2UgZH5qePVbjgRliiF0BYvOZyaBknKsF+x9Iht0O6sqgnB93rCICdOZFecJuDw==}
     engines: {node: '>=12'}
 
   yazl@3.3.1:
@@ -7053,20 +7050,20 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@kintone/cli@1.21.4(@types/node@22.20.5)(supports-color@8.1.1)':
+  '@kintone/cli@1.22.2(@types/node@22.20.5)(supports-color@8.1.1)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@22.20.5)
       '@kintone/plugin-manifest-validator': 11.3.0
-      '@kintone/rest-api-client': 6.2.1(supports-color@8.1.1)
+      '@kintone/rest-api-client': 6.3.0(supports-color@8.1.1)
       chalk: 4.1.2
       chokidar: 4.0.3
-      csv-parse: 5.6.0
+      csv-parse: 7.0.3
       csv-stringify: 6.5.2
       https-proxy-agent: 7.0.6(supports-color@8.1.1)
       iconv-lite: 0.7.3
       tar: 7.5.22
       yargs: 17.7.3
-      yauzl: 3.2.1
+      yauzl: 3.4.0
       yazl: 3.3.1
     transitivePeerDependencies:
       - '@types/node'
@@ -7079,11 +7076,11 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.20.0)
       bytes: 3.1.2
 
-  '@kintone/rest-api-client@6.2.1(supports-color@8.1.1)':
+  '@kintone/rest-api-client@6.3.0(supports-color@8.1.1)':
     dependencies:
       axios: 1.20.0(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       form-data: 4.0.6
-      js-base64: 3.8.0
+      js-base64: 3.8.1
       mime: 3.0.0
       qs: 6.15.3
     transitivePeerDependencies:
@@ -8232,8 +8229,6 @@ snapshots:
       node-releases: 2.0.36
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
-  buffer-crc32@0.2.13: {}
-
   buffer-crc32@1.0.0: {}
 
   buffer-es6@4.9.3: {}
@@ -8438,7 +8433,7 @@ snapshots:
       source-map-js: 1.2.1
     optional: true
 
-  csv-parse@5.6.0: {}
+  csv-parse@7.0.3: {}
 
   csv-stringify@6.5.2: {}
 
@@ -9633,7 +9628,7 @@ snapshots:
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
-  js-base64@3.8.0: {}
+  js-base64@3.8.1: {}
 
   js-base64@3.9.4: {}
 
@@ -11471,9 +11466,8 @@ snapshots:
       y18n: 5.0.8
       yargs-parser: 22.0.0
 
-  yauzl@3.2.1:
+  yauzl@3.4.0:
     dependencies:
-      buffer-crc32: 0.2.13
       pend: 1.2.0
 
   yazl@3.3.1:
