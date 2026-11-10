@@ -154,9 +154,6 @@ importers:
       eslint:
         specifier: 9.39.5
         version: 9.39.5(supports-color@8.1.1)
-      globals:
-        specifier: 16.5.0
-        version: 16.5.0
       npm-run-all:
         specifier: 4.1.5
         version: 4.1.5
