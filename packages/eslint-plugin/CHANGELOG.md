@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.2.0...@kintone/eslint-plugin@0.2.1) (2026-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update typescript-eslint monorepo to v8.72.1 ([#3525](https://github.com/kintone/js-sdk/issues/3525)) ([c0c408e](https://github.com/kintone/js-sdk/commit/c0c408e73fade33c41cb3e701a88c105b07ed2c1))
+
 ## [0.2.0](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.1.2...@kintone/eslint-plugin@0.2.0) (2026-11-10)
 
 

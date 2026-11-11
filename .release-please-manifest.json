@@ -3,7 +3,7 @@
   "@kintone/eslint-plugin": "0.0.0",
   "packages/plugin-manifest-validator": "12.0.0",
   "packages/profile-loader": "7.0.0",
-  "packages/rest-api-client": "7.0.0",
+  "packages/rest-api-client": "7.0.1",
   "packages/webpack-plugin-kintone-plugin": "10.0.0",
-  "packages/eslint-plugin": "0.2.0"
+  "packages/eslint-plugin": "0.2.1"
 }

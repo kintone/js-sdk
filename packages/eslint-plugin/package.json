@@ -1,6 +1,6 @@
 {
   "name": "@kintone/eslint-plugin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An ESLint plugin for kintone customization and plugin development.",
   "keywords": [
     "eslint",
