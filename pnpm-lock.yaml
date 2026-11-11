@@ -225,9 +225,6 @@ importers:
       '@rollup/plugin-terser':
         specifier: 1.0.2
         version: 1.0.2(rollup@4.65.0)
-      '@types/js-base64':
-        specifier: 3.3.1
-        version: 3.3.1
       '@types/mime':
         specifier: 3.0.4
         version: 3.0.4
@@ -2199,10 +2196,6 @@ packages:
 
   '@types/http-proxy@1.17.17':
     resolution: {integrity: sha512-ED6LB+Z1AVylNTu7hdzuBqOgMnvG/ld6wGCG8wFnAzKX5uyW2K3WD52v0gnLCTK/VLpXtKckgWuyScYK6cSPaw==}
-
-  '@types/js-base64@3.3.1':
-    resolution: {integrity: sha512-Zw33oQNAvDdAN9b0IE5stH0y2MylYvtU7VVTKEJPxhyM2q57CVaNJhtJW258ah24NRtaiA23tptUmVn3dmTKpw==}
-    deprecated: This is a stub types definition. js-base64 provides its own type definitions, so you do not need this installed.
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -7536,10 +7529,6 @@ snapshots:
     dependencies:
       '@types/node': 22.20.5
     optional: true
-
-  '@types/js-base64@3.3.1':
-    dependencies:
-      js-base64: 3.9.4
 
   '@types/json-schema@7.0.15': {}
 
