@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@7.0.0...@kintone/rest-api-client@7.0.1) (2026-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency js-base64 to v3.9.5 ([#4019](https://github.com/kintone/js-sdk/issues/4019)) ([3d2a477](https://github.com/kintone/js-sdk/commit/3d2a47778705fa6aff8e551175079dab7a45391c))
+* **deps:** update dependency qs to v6.17.0 ([#4024](https://github.com/kintone/js-sdk/issues/4024)) ([996b0bd](https://github.com/kintone/js-sdk/commit/996b0bd00001c78eac59e9e0e57da4ced79bb820))
+
 ## [7.0.0](https://github.com/kintone/js-sdk/compare/@kintone/rest-api-client@6.6.1...@kintone/rest-api-client@7.0.0) (2026-11-10)
 
 
