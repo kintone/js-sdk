@@ -108,9 +108,6 @@ importers:
         specifier: 3.8.5
         version: 3.8.5
     devDependencies:
-      '@types/eslint':
-        specifier: 9.6.1
-        version: 9.6.1
       '@types/lodash':
         specifier: 4.17.27
         version: 4.17.27
