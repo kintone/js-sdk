@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.1.2...@kintone/eslint-plugin@0.2.0) (2026-11-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump minimum Node.js version to v22 ([#4005](https://github.com/kintone/js-sdk/issues/4005))
+
+### Miscellaneous Chores
+
+* bump minimum Node.js version to v22 ([#4005](https://github.com/kintone/js-sdk/issues/4005)) ([0021c93](https://github.com/kintone/js-sdk/commit/0021c9353050b3d599b18ce6230968756f697a68))
+
 ## [0.1.2](https://github.com/kintone/js-sdk/compare/@kintone/eslint-plugin@0.1.1...@kintone/eslint-plugin@0.1.2) (2026-04-08)
 
 
