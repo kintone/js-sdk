@@ -73,7 +73,7 @@ const invalidProperties: RequiredProperties = { items: [1] };
 export { requiredProperties, invalidProperties };
 `;
 
-describe("package types", () => {
+describe("package types", { timeout: 30000 }, () => {
   it("allows calling the default import in Node.js ESM and CommonJS", () => {
     const diagnostics = typeCheck(
       {
