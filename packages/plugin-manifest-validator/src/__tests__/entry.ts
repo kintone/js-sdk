@@ -19,7 +19,7 @@ describe("package entry", () => {
   });
 
   it("returns the validator function from a default import in Node.js ESM", () => {
-    const entryUrl = pathToFileURL(path.join(packageDir, "index.js")).href;
+    const entryUrl = pathToFileURL(requireFromPackage.resolve(packageDir)).href;
     const output = execFileSync(
       process.execPath,
       [

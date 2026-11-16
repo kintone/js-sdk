@@ -46,7 +46,7 @@ type Options = {
  * @param {Object=} options
  * @return {{valid: boolean, errors: Array<!Object>}} errors is null if valid
  */
-export default (
+const validator = (
   json: Record<string, any>,
   options: Options = {},
 ): ValidateResult => {
@@ -224,3 +224,7 @@ const transformErrors = (
   // shallow copy
   return errors.slice();
 };
+
+export default validator;
+module.exports = validator;
+module.exports.default = module.exports;
