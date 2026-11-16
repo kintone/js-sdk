@@ -3,13 +3,24 @@ import path from "path";
 import ts from "typescript";
 
 const packageName = "@kintone/plugin-manifest-validator";
-const packageDir = path.resolve(__dirname, "../..");
-const fixtureDir = path.join(packageDir, "__type-fixtures__");
-const installedPackageDir = path.join(fixtureDir, "node_modules", packageName);
+// The compiler host receives file names with forward slashes on every platform.
+const packageDir = path
+  .resolve(__dirname, "../..")
+  .split(path.sep)
+  .join(path.posix.sep);
+const fixtureDir = path.posix.join(packageDir, "__type-fixtures__");
+const installedPackageDir = path.posix.join(
+  fixtureDir,
+  "node_modules",
+  packageName,
+);
 
 const toPackagePath = (fileName: string) =>
   fileName.startsWith(installedPackageDir)
-    ? path.join(packageDir, path.relative(installedPackageDir, fileName))
+    ? path.posix.join(
+        packageDir,
+        path.posix.relative(installedPackageDir, fileName),
+      )
     : fileName;
 
 /**
@@ -22,7 +33,7 @@ const typeCheck = (
 ): string[] => {
   const files = new Map(
     Object.entries(fixtures).map(([name, text]) => [
-      path.join(fixtureDir, name),
+      path.posix.join(fixtureDir, name),
       text,
     ]),
   );
