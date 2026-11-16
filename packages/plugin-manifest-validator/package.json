@@ -18,9 +18,10 @@
     "name": "Cybozu, Inc.",
     "url": "https://cybozu.co.jp"
   },
-  "main": "dist/src/index.js",
+  "main": "index.js",
   "types": "dist/src/index.d.ts",
   "files": [
+    "index.js",
     "manifest-schema.d.ts",
     "manifest-schema.json",
     "dist"
