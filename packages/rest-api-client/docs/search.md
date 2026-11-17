@@ -1,8 +1,5 @@
 # Search
 
-> [!NOTE]
-> This API is part of the kintone API Lab. The endpoint and parameters may change without notice until it is officially released.
-
 - [search](#search)
 
 ## Overview
