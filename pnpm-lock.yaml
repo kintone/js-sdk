@@ -265,8 +265,8 @@ importers:
   packages/webpack-plugin-kintone-plugin:
     dependencies:
       '@kintone/cli':
-        specifier: 1.22.2
-        version: 1.22.2(@types/node@22.20.5)(supports-color@8.1.1)
+        specifier: 1.22.3
+        version: 1.22.3(@types/node@22.20.5)(supports-color@8.1.1)
       mkdirp:
         specifier: 3.0.1
         version: 3.0.1
@@ -1458,8 +1458,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@kintone/cli@1.22.2':
-    resolution: {integrity: sha512-R6FCBRjQWogP4qoMxUsri+kW9UPOs4/uzOuWg3gprQexwi3dT1aTQVu7+k3L1rRIZ0sPtFBphOjYoPWDK8u91g==}
+  '@kintone/cli@1.22.3':
+    resolution: {integrity: sha512-hRGIAp7M4BOOIKNcJ4Myx/XQ+DfiFt2Z2uvnAEcPoW/jFAkPsoEc+gkaVG9EJ8sbZiughMnlxeL+/oja6W+RHg==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -1467,8 +1467,8 @@ packages:
     resolution: {integrity: sha512-ntx3hNnwNsC82GFvIZAcMhyXwelqVaF7bipCq7k7UGVHM6cOgLoC9er9w68RcaH/p9nfUfRVw1cAVP5zS+ADyQ==}
     engines: {node: '>=20'}
 
-  '@kintone/rest-api-client@6.3.0':
-    resolution: {integrity: sha512-KzGblg44Eegqzyvd9AihuwtA5HtXKMeUSDcTZaokCXSNtxU8nYen6qMlkXMZW9C2NE+yBOYmz05elqyCN62etg==}
+  '@kintone/rest-api-client@6.4.0':
+    resolution: {integrity: sha512-ckUAJx4YOUhJRZByQHbPMSc4wkFkJhCq3anOwMHTsB6Ytr8XPJhRGM0TUgJyHk7w4RevfNKvt1/KsB0tpbpYMA==}
     engines: {node: '>=20'}
 
   '@leichtgewicht/ip-codec@2.0.5':
@@ -2713,8 +2713,8 @@ packages:
   csv-parse@7.0.3:
     resolution: {integrity: sha512-YFd3QM/yo17vH91L1IOZuvl09zM0zEEtdfTcOCKWcMdM++MNaQSyp09slXyFCLaPXvHstQFx/xC8myiFHSMUvw==}
 
-  csv-stringify@6.5.2:
-    resolution: {integrity: sha512-RFPahj0sXcmUyjrObAK+DOWtMvMIFV328n4qZJhgX3x2RqkQgOTU2mCUmiFR0CzM6AzChlRSUErjiJeEt8BaQA==}
+  csv-stringify@6.9.0:
+    resolution: {integrity: sha512-6b3e29CILFfSQ2nDRuZMRROzQOpPuJ+s8zPB5H7eK5ncXBbFOyVuRLU5Sx/zAUmVri3Ly49GyC8NEme4SVSAbA==}
 
   damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -6515,15 +6515,15 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@kintone/cli@1.22.2(@types/node@22.20.5)(supports-color@8.1.1)':
+  '@kintone/cli@1.22.3(@types/node@22.20.5)(supports-color@8.1.1)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@22.20.5)
       '@kintone/plugin-manifest-validator': 11.3.0
-      '@kintone/rest-api-client': 6.3.0(supports-color@8.1.1)
+      '@kintone/rest-api-client': 6.4.0(supports-color@8.1.1)
       chalk: 4.1.2
       chokidar: 4.0.3
       csv-parse: 7.0.3
-      csv-stringify: 6.5.2
+      csv-stringify: 6.9.0
       https-proxy-agent: 7.0.6(supports-color@8.1.1)
       iconv-lite: 0.7.3
       tar: 7.5.22
@@ -6541,7 +6541,7 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.20.0)
       bytes: 3.1.2
 
-  '@kintone/rest-api-client@6.3.0(supports-color@8.1.1)':
+  '@kintone/rest-api-client@6.4.0(supports-color@8.1.1)':
     dependencies:
       axios: 1.20.0(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       form-data: 4.0.6
@@ -7960,7 +7960,7 @@ snapshots:
 
   csv-parse@7.0.3: {}
 
-  csv-stringify@6.5.2: {}
+  csv-stringify@6.9.0: {}
 
   damerau-levenshtein@1.0.8: {}
 
