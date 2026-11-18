@@ -69,8 +69,8 @@ importers:
         specifier: 3.8.5
         version: 3.8.5
       rimraf:
-        specifier: 6.1.3
-        version: 6.1.3
+        specifier: 6.1.4
+        version: 6.1.4
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@22.20.5)(typescript@5.9.3)
@@ -155,8 +155,8 @@ importers:
         specifier: 3.8.5
         version: 3.8.5
       rimraf:
-        specifier: 6.1.3
-        version: 6.1.3
+        specifier: 6.1.4
+        version: 6.1.4
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -235,8 +235,8 @@ importers:
         specifier: 2.15.0
         version: 2.15.0(@types/node@22.20.5)(typescript@5.9.3)
       rimraf:
-        specifier: 6.1.3
-        version: 6.1.3
+        specifier: 6.1.4
+        version: 6.1.4
       rollup:
         specifier: 4.65.1
         version: 4.65.1
@@ -281,8 +281,8 @@ importers:
         specifier: 3.6.0
         version: 3.6.0
       rimraf:
-        specifier: 6.1.3
-        version: 6.1.3
+        specifier: 6.1.4
+        version: 6.1.4
       webpack:
         specifier: 5.112.2
         version: 5.112.2(esbuild@0.28.0)(lightningcss@1.33.0)(postcss@8.5.33)(webpack-cli@7.2.3)
@@ -1321,6 +1321,9 @@ packages:
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
+
+  '@isaacs/nonrecursive-glob-match@1.1.0':
+    resolution: {integrity: sha512-GPm/Dbvk5RLmhRnxXIa7nTpK0xtl4E0wj0MslsuNiJ1FIROU+2+9lgUC/dgF7Ey4QCWhfEsgxilMRMCdHPfDfw==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -3392,6 +3395,10 @@ packages:
     resolution: {integrity: sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==}
     engines: {node: 18 || 20 || >=22}
 
+  glob@14.0.6:
+    resolution: {integrity: sha512-OwXjVP2svY5EyLY75Vek96C8qK43gqrt4xsZ+qSILdnaEiJPXkd62mcfUSNx/TQErQRdu5uM5kF67sfONragKw==}
+    engines: {node: 18 || 20 || >=22}
+
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
@@ -4009,6 +4016,10 @@ packages:
     resolution: {integrity: sha512-oRjTw/97aTBN0RHbYCdtF1MQfvusSIBQM0IZEgzl6426+8jSC0nF1a/GmnVLpfB9yyr6g6FTqWqiZVbxrtaCIg==}
     engines: {node: 18 || 20 || >=22}
 
+  minimatch@11.0.9:
+    resolution: {integrity: sha512-KCFkfyjqerNlSstjlhIGNXIKZGA/6O4V4RlhZ+Dsr621SPPw0mzlypE9D9ZOoPiVefHID+j7/XuMMlqfD/F60Q==}
+    engines: {node: 20 || >=22}
+
   minimatch@3.1.5:
     resolution: {integrity: sha512-VgjWUsnnT6n+NUk6eZq77zeFdpW2LWDzP6zFGrCbHXiYNul5Dzqk2HHQ5uFH2DNW5Xbp8+jVzaeNt94ssEEl4w==}
 
@@ -4293,6 +4304,10 @@ packages:
     resolution: {integrity: sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg==}
     engines: {node: 18 || 20 || >=22}
 
+  path-scurry@3.0.0:
+    resolution: {integrity: sha512-1pTbQqH1wIwMi/eleQ5leFTTCkzFsPcgXNjwOA8YGGW/W4/kHT3dssE7Z6NH+zuqNLOzOB0uaD61yl7cAcVhgg==}
+    engines: {node: 18 || 20 || >=22}
+
   path-to-regexp@6.3.0:
     resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
 
@@ -4512,8 +4527,8 @@ packages:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
-  rimraf@6.1.3:
-    resolution: {integrity: sha512-LKg+Cr2ZF61fkcaK1UdkH2yEBBKnYjTyWzTJT6KNPcSPaiT7HSdhtMXQuN5wkTX0Xu72KQ1l8S42rlmexS2hSA==}
+  rimraf@6.1.4:
+    resolution: {integrity: sha512-Fk3reQDVPZUMbEm7Zwxz03BWQMW3V5buSk9aU8OckTrO8A1nQtbqvYsAantGNermwsIsXcuOBqcoJ3HuMELctw==}
     engines: {node: 20 || >=22}
     hasBin: true
 
@@ -6538,6 +6553,8 @@ snapshots:
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
       minipass: 7.1.3
+
+  '@isaacs/nonrecursive-glob-match@1.1.0': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -8932,6 +8949,12 @@ snapshots:
       minipass: 7.1.3
       path-scurry: 2.0.2
 
+  glob@14.0.6:
+    dependencies:
+      minimatch: 11.0.9
+      minipass: 7.1.3
+      path-scurry: 3.0.0
+
   globals@14.0.0: {}
 
   globals@15.15.0: {}
@@ -9557,6 +9580,11 @@ snapshots:
     dependencies:
       brace-expansion: 5.0.12
 
+  minimatch@11.0.9:
+    dependencies:
+      '@isaacs/nonrecursive-glob-match': 1.1.0
+      brace-expansion: 5.0.12
+
   minimatch@3.1.5:
     dependencies:
       brace-expansion: 1.1.21
@@ -9820,6 +9848,11 @@ snapshots:
       lru-cache: 11.5.1
       minipass: 7.1.3
 
+  path-scurry@3.0.0:
+    dependencies:
+      lru-cache: 11.5.1
+      minipass: 7.1.3
+
   path-to-regexp@6.3.0: {}
 
   path-to-regexp@8.3.0:
@@ -10046,9 +10079,9 @@ snapshots:
 
   reusify@1.1.0: {}
 
-  rimraf@6.1.3:
+  rimraf@6.1.4:
     dependencies:
-      glob: 13.0.6
+      glob: 14.0.6
       package-json-from-dist: 1.0.1
 
   rolldown@1.2.19:
