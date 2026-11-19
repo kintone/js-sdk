@@ -127,4 +127,25 @@ describe("package types", { timeout: 30000 }, () => {
       assert.deepStrictEqual(diagnostics, []);
     },
   );
+
+  it("re-exports every type exported by the generated declarations", () => {
+    const generated = path.posix.join(packageDir, "dist/src/index.d.ts");
+    const handWritten = path.posix.join(packageDir, "index.d.ts");
+    const program = ts.createProgram([generated, handWritten], commonOptions);
+    const checker = program.getTypeChecker();
+    const exportNames = (fileName: string) => {
+      const sourceFile = program.getSourceFile(fileName);
+      assert(sourceFile);
+      const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
+      assert(moduleSymbol);
+      return checker
+        .getExportsOfModule(moduleSymbol)
+        .map((symbol) => symbol.getName());
+    };
+    const handWrittenNames = exportNames(handWritten);
+    const missing = exportNames(generated).filter(
+      (name) => name !== "default" && !handWrittenNames.includes(name),
+    );
+    assert.deepStrictEqual(missing, []);
+  });
 });
