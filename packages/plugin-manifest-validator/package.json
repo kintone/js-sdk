@@ -19,8 +19,9 @@
     "url": "https://cybozu.co.jp"
   },
   "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "types": "index.d.ts",
   "files": [
+    "index.d.ts",
     "manifest-schema.d.ts",
     "manifest-schema.json",
     "dist"
@@ -44,7 +45,8 @@
   },
   "devDependencies": {
     "@types/bytes": "3.1.6",
-    "json-schema-to-typescript": "15.0.4"
+    "json-schema-to-typescript": "15.0.4",
+    "typescript": "5.9.3"
   },
   "engines": {
     "node": ">=22"
