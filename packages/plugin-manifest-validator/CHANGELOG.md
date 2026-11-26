@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.1](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@12.0.0...@kintone/plugin-manifest-validator@12.0.1) (2026-11-26)
+
+
+### Bug Fixes
+
+* **plugin-manifest-validator:** return the validator function from require() ([#4030](https://github.com/kintone/js-sdk/issues/4030)) ([e8ffabd](https://github.com/kintone/js-sdk/commit/e8ffabd0b918f47a2c12c510a3b7e0dc3fd76bde))
+
 ## [12.0.0](https://github.com/kintone/js-sdk/compare/@kintone/plugin-manifest-validator@11.3.0...@kintone/plugin-manifest-validator@12.0.0) (2026-11-10)
 
 
